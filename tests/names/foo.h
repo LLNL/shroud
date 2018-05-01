@@ -57,7 +57,10 @@ extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_TES_names;
+struct s_TES_names {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_TES_names TES_names;
 
 // splicer begin class.Names.C_declarations

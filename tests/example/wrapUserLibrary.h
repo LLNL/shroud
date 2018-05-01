@@ -62,7 +62,10 @@ extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_SIDRE_group;
+struct s_SIDRE_group {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_SIDRE_group SIDRE_group;
 
 // splicer begin C_declarations

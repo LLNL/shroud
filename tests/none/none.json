@@ -715,7 +715,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -822,7 +822,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -833,7 +833,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"

@@ -1110,7 +1110,6 @@ class Declaration(Node):
             # XXX - used with constructor but seems wrong for abstract arguments
             # The C wrapper wants a pointer to the type.
             declarator = Declarator()
-            declarator.pointer = [ Ptr('*') ]
             declarator.name = self.name
         else:
             declarator = self.declarator

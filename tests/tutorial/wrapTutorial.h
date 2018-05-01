@@ -73,10 +73,11 @@ struct s_TUT_struct1 {
 typedef struct s_TUT_struct1 TUT_struct1;
 
 // declaration of shadow types
-struct s_TUT_class1;
+struct s_TUT_class1 {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_TUT_class1 TUT_class1;
-struct s_TUT_struct1;
-typedef struct s_TUT_struct1 TUT_struct1;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -162,9 +163,9 @@ int TUT_direction_func(int arg);
 
 int TUT_useclass(const TUT_class1 * arg1);
 
-const TUT_class1 * TUT_getclass2();
+TUT_class1 TUT_getclass2();
 
-TUT_class1 * TUT_getclass3();
+TUT_class1 TUT_getclass3();
 
 int TUT_callback1(int in, int ( * incr)(int));
 

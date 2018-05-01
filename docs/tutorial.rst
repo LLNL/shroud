@@ -982,50 +982,59 @@ To wrap the class add the lines to the YAML file::
     - decl: class Class1
       declarations:
       - decl: Class1()  +name(new)
+        format:
+          function_suffix: _default
       - decl: ~Class1() +name(delete)
-      - decl: void Method1()
+      - decl: int Method1()
 
 The constructor and destructor have no method name associated with
 them.  They default to **ctor** and **dtor**.  The names can be
 overridden by supplying the **+name** annotation.  These declarations
 will create wrappers over the ``new`` and ``delete`` C++ keywords.
 
-The file ``wrapClass1.h`` will have an opaque struct for the class.
+The file ``wrapClass1.h`` will have a struct for the class which contains
+a pointer to the instance and an index used to destroy the memory.
 This is to allows some measure of type safety over using ``void``
 pointers for every instance::
 
-    struct s_TUT_class1;
+    struct s_TUT_class1 {
+        void *addr;  /* address of C++ memory */
+        int idtor;   /* index of destructor */
+    };
     typedef struct s_TUT_class1 TUT_class1;
 
 
-    TUT_class1 * TUT_class1_new()
+    TUT_class1 TUT_class1_new_default()
     {
-        tutorial::Class1 * SHCXX_rv = new Class1();
-        TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(
-            static_cast<void *>(SHCXX_rv));
+        tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
+        TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
         return SHC_rv;
     }
 
     void TUT_class1_delete(TUT_class1 * self)
     {
-        tutorial::Class1 *SH_this = 
-            static_cast<tutorial::Class1 *>(static_cast<void *>(self));
+        tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(self->addr);
         delete SH_this;
         return;
     }
 
     void TUT_class1_method1(TUT_class1 * self)
     {
-        tutorial::Class1 *SH_this =
-            static_cast<tutorial::Class1 *>(static_cast<void *>(self));
-        SH_this->Method1();
-        return;
+        tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(self->addr);
+        int SHC_rv = SH_this->Method1();
+        return SHC_rv;
     }
 
 For Fortran a derived type is created::
 
-    type class1
-        type(C_PTR) voidptr
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+    type SHROUD_capsule
+        private
+        type(SHROUD_capsule_data) :: mem
     contains
         procedure :: method1 => class1_method1
     end type class1
@@ -1035,21 +1044,22 @@ And the subroutines::
     function class1_new() &
             result(SHT_rv)
         type(class1) :: SHT_rv
-        SHT_rv%voidptr = c_class1_new()
+        SHT_rv%voidptr = c_class1_new_default()
     end function class1_new
     
     subroutine class1_delete(obj)
         use iso_c_binding, only : C_NULL_PTR
         class(class1) :: obj
         call c_class1_delete(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
     end subroutine class1_delete
 
-    subroutine class1_method1(obj)
+    function class1_method1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
         class(class1) :: obj
-        call c_class1_method1(obj%voidptr)
-    end subroutine class1_method1
-
+        integer(C_INT) :: SHT_rv
+        SHT_rv = c_class1_method1(obj%voidptr)
+    end function class1_method1
 
 The C++ code to call the function::
 

@@ -57,15 +57,21 @@ extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_FOR_class2;
+struct s_FOR_class2 {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_FOR_class2 FOR_class2;
-struct s_TUT_class1;
+struct s_TUT_class1 {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_TUT_class1 TUT_class1;
 
 // splicer begin class.Class2.C_declarations
 // splicer end class.Class2.C_declarations
 
-FOR_class2 * FOR_class2_ctor();
+FOR_class2 FOR_class2_ctor();
 
 void FOR_class2_dtor(FOR_class2 * self);
 

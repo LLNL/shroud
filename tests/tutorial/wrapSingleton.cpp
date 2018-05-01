@@ -53,12 +53,11 @@ extern "C" {
 
 // static Singleton & getReference()
 // function_index=10
-TUT_singleton * TUT_singleton_get_reference()
+TUT_singleton TUT_singleton_get_reference()
 {
 // splicer begin class.Singleton.method.get_reference
     Singleton & SHCXX_rv = Singleton::getReference();
-    TUT_singleton * SHC_rv = static_cast<TUT_singleton *>(
-        static_cast<void *>(&SHCXX_rv));
+    TUT_singleton SHC_rv = { static_cast<void *>(&SHCXX_rv), 0 };
     return SHC_rv;
 // splicer end class.Singleton.method.get_reference
 }

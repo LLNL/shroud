@@ -49,7 +49,7 @@
                             "C_call_code": "SH_this->method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method1", 
-                            "C_pre_call": "Names *SH_this = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "Names *SH_this = \tstatic_cast<Names *>(self->addr);", 
                             "C_prototype": "TES_names * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -65,6 +65,7 @@
                             "PY_name_impl": "PY_names_method1", 
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -95,7 +96,7 @@
                             "C_call_code": "SH_this->method2(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method2", 
-                            "C_pre_call": "Names *SH_this2 = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself2));", 
+                            "C_pre_call": "Names *SH_this2 = \tstatic_cast<Names *>(self2->addr);", 
                             "C_prototype": "TES_names * self2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -113,6 +114,7 @@
                             "PY_name_impl": "PY_names_method2", 
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self2", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -430,6 +432,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "i", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -524,6 +527,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "i", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
@@ -614,7 +618,8 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "rv", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -726,7 +731,8 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "rv", 
                             "c_var_trim": "Lrv", 
                             "cxx_member": ".", 
@@ -1013,16 +1019,23 @@
             "PY_from_object": "PP_Names_from_Object", 
             "PY_to_object": "PP_Names_to_Object", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Names *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
-            "c_type": "TES_names", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TES_names *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "Names", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "post_call": [
+                        "TES_names {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                    ]
+                }
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Names *>({c_var}{c_member}addr)", 
+            "c_type": "TES_names", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "Names", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "FNames", 
             "f_module": {
                 "name_module": [
@@ -1069,16 +1082,23 @@
             "PY_from_object": "PP_Names2_from_Object", 
             "PY_to_object": "PP_Names2_to_Object", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Names2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
-            "c_type": "TES_names2", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TES_names2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "Names2", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "post_call": [
+                        "TES_names2 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                    ]
+                }
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Names2 *>({c_var}{c_member}addr)", 
+            "c_type": "TES_names2", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "Names2", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "names2", 
             "f_module": {
                 "names2_mod": [
@@ -1636,7 +1656,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -1743,7 +1763,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -1754,7 +1774,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"

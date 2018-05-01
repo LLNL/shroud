@@ -57,7 +57,10 @@ extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_AA_exclass3;
+struct s_AA_exclass3 {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_AA_exclass3 AA_exclass3;
 
 // splicer begin class.ExClass3.C_declarations

@@ -242,7 +242,10 @@ class Wrapc(util.WrapperMixin):
             for name in sorted(self.header_forward.keys()):
                 write_file = True
                 output.append(
-                    'struct s_{C_type_name};\n'
+                    'struct s_{C_type_name} {{+\n'
+                    'void *addr;  /* address of C++ memory */\n'
+                    'int idtor;   /* index of destructor */\n'
+                    '-}};\n'
                     'typedef struct s_{C_type_name} {C_type_name};'.
                     format(C_type_name=name))
         output.append('')
@@ -476,10 +479,6 @@ class Wrapc(util.WrapperMixin):
         if result_typedef.cxx_header:
             # include any dependent header in generated source
             self.header_impl_include[result_typedef.cxx_header] = True
-        if result_typedef.forward:
-            # create forward references for other types being wrapped
-            # i.e. This method returns a wrapped type
-            self.header_forward[result_typedef.c_type] = True
 
         if result_is_const:
             fmt_func.c_const = 'const '
@@ -494,6 +493,8 @@ class Wrapc(util.WrapperMixin):
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
             if result_typedef.c_union and not is_pointer:
                 # 'convert' via fields of a union
+                # used with structs where casting will not work
+                # XXX - maybe change to convert to pointer to C++ struct.
                 is_union_scalar = True
                 fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.c_var
@@ -531,6 +532,7 @@ class Wrapc(util.WrapperMixin):
         return_code = []
 
         if cls:
+            # Add 'this' argument
             need_wrapper = True
             is_static = 'static' in ast.storage
             if is_ctor:
@@ -541,6 +543,7 @@ class Wrapc(util.WrapperMixin):
                 else:
                     fmt_func.c_const = ''
                 fmt_func.c_deref = '*'
+                fmt_func.c_member = '->'
                 fmt_func.c_var = fmt_func.C_this
                 if is_static:
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
@@ -587,12 +590,14 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_arg.c_const = ''
             arg_is_union_scalar = False
-            if arg.is_pointer():
+            if arg.is_indirect():    # is_pointer?
                 fmt_arg.c_deref = '*'
+                fmt_arg.c_member = '->'
                 fmt_arg.cxx_member = '->'
 #                fmt_arg.cxx_addr = ''
             else:
                 fmt_arg.c_deref = ''
+                fmt_arg.c_member = '.'
                 fmt_arg.cxx_member = '.'
 #                fmt_arg.cxx_addr = '&'
                 if arg_typedef.c_union:
@@ -601,6 +606,7 @@ class Wrapc(util.WrapperMixin):
             cxx_local_var = ''
 
             if c_attrs.get('_is_result', False):
+                # This argument is the C function result
                 arg_call = False
 
                 # Note that result_type is void, so use arg_typedef.
@@ -631,7 +637,6 @@ class Wrapc(util.WrapperMixin):
                         fmt_arg.cxx_addr = ''
                         fmt_arg.cxx_member = '->'
             else:
-                # Argument is the result of the function.
                 arg_call = arg
                 if arg_is_union_scalar:
                     # Argument is passed from Fortran to C by value.
@@ -674,6 +679,9 @@ class Wrapc(util.WrapperMixin):
             for buf_arg in intent_blk.get('buf_args', self._default_buf_args):
                 if buf_arg == 'arg':
                     # vector<int> -> int *
+                    proto_list.append(arg.gen_arg_as_c(continuation=True))
+                    continue
+                elif buf_arg == 'shadow':
                     proto_list.append(arg.gen_arg_as_c(continuation=True))
                     continue
 
@@ -797,6 +805,9 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif is_dtor:
             fmt_func.C_return_type = 'void'
+        elif result_typedef.base == 'shadow':
+            # Return capsule_data by value. It contains pointer to results.
+            fmt_func.C_return_type = result_typedef.c_type
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type
         elif node.return_pointer_as == 'scalar':
@@ -820,13 +831,17 @@ class Wrapc(util.WrapperMixin):
         # generate the C body
         C_return_code = 'return;'
         if is_ctor:
+            # Always create a pointer to the instance.
+            fmt_func.cxx_rv_decl = result_typedef.cxx_type + ' *' + fmt_result.cxx_var
             append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
                           '{cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
                 fmt_func.c_rv_decl = CXX_ast.gen_arg_as_c(
                     name=fmt_result.c_var, params=None, continuation=True)
                 fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
-            append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
+            append_format(post_call,
+                          result_typedef.c_type + ' {c_var} = {{ {c_val}, 0 }};',
+                          fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
             append_format(call_code, 'delete {CXX_this};', fmt_func)
@@ -841,6 +856,17 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == 'c':
                     pass
+                elif result_typedef.base == 'shadow':
+                    # c_statements.post_call creates return value
+                    if result_is_const:
+                        # cast away constness
+                        fmt_result.cxx_type = result_typedef.cxx_type
+                        fmt_result.cxx_cast_to_void_ptr = wformat(
+                            'static_cast<void *>\t(const_cast<'
+                            '{cxx_type} *>\t({cxx_addr}{cxx_var}))', fmt_result)
+                    else:
+                        fmt_result.cxx_cast_to_void_ptr = wformat(
+                            'static_cast<void *>({cxx_addr}{cxx_var})', fmt_result)
                 elif is_union_scalar:
                     pass
                 elif result_typedef.cxx_to_c is not None:
@@ -853,6 +879,13 @@ class Wrapc(util.WrapperMixin):
 
                 c_statements = result_typedef.c_statements
                 intent_blk = c_statements.get('result' + generated_suffix, {})
+                cmd_list = intent_blk.get('pre_call', [])
+                for cmd in cmd_list:
+                    append_format(pre_call, cmd, fmt_result)
+                cmd_list = intent_blk.get('call', [])
+                for cmd in cmd_list:
+                    added_call_code = True
+                    append_format(call_code, cmd, fmt_result)
                 cmd_list = intent_blk.get('post_call', [])
                 for cmd in cmd_list:
                     append_format(post_call, cmd, fmt_result)

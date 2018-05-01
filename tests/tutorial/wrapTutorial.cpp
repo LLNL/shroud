@@ -488,13 +488,13 @@ int TUT_direction_func(int arg)
 // splicer end function.direction_func
 }
 
-// int useclass(const Class1 * arg1 +intent(in)+value)
+// int useclass(const Class1 * arg1 +intent(in))
 // function_index=38
 int TUT_useclass(const TUT_class1 * arg1)
 {
 // splicer begin function.useclass
     const tutorial::Class1 * SHCXX_arg1 = static_cast<const tutorial::
-        Class1 *>(static_cast<const void *>(arg1));
+        Class1 *>(arg1->addr);
     int SHC_rv = tutorial::useclass(SHCXX_arg1);
     return SHC_rv;
 // splicer end function.useclass
@@ -502,24 +502,23 @@ int TUT_useclass(const TUT_class1 * arg1)
 
 // const Class1 * getclass2()
 // function_index=39
-const TUT_class1 * TUT_getclass2()
+TUT_class1 TUT_getclass2()
 {
 // splicer begin function.getclass2
     const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
-    const TUT_class1 * SHC_rv = static_cast<const TUT_class1 *>(
-        static_cast<const void *>(SHCXX_rv));
+    TUT_class1 SHC_rv = { static_cast<void *>(const_cast<tutorial::
+        Class1 *>(SHCXX_rv)), 0 };
     return SHC_rv;
 // splicer end function.getclass2
 }
 
 // Class1 * getclass3()
 // function_index=40
-TUT_class1 * TUT_getclass3()
+TUT_class1 TUT_getclass3()
 {
 // splicer begin function.getclass3
     tutorial::Class1 * SHCXX_rv = tutorial::getclass3();
-    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
-        SHCXX_rv));
+    TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
     return SHC_rv;
 // splicer end function.getclass3
 }

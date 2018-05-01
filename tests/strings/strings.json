@@ -131,6 +131,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "status", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
@@ -290,6 +291,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -384,6 +386,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "dest", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -394,6 +397,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "src", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -496,6 +500,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
                             "cxx_member": "->", 
@@ -511,6 +516,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
                             "cxx_member": "->", 
@@ -619,6 +625,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "s", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -715,6 +722,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
@@ -876,6 +884,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1042,6 +1051,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1202,6 +1212,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "", 
@@ -1423,6 +1434,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -1566,6 +1578,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
@@ -1782,6 +1795,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1955,7 +1969,8 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -2127,7 +2142,8 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -2293,7 +2309,8 @@
                     "output": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
@@ -2537,7 +2554,8 @@
                     "SHF_rv": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -2706,6 +2724,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -2882,6 +2901,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3051,6 +3071,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3222,6 +3243,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -3319,7 +3341,8 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -3414,7 +3437,8 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
                             "cxx_member": ".", 
@@ -3499,7 +3523,8 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -3597,7 +3622,8 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "cxx_member": ".", 
@@ -3683,7 +3709,8 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -3781,7 +3808,8 @@
                     "arg1": {
                         "fmtc": {
                             "c_const": "", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
@@ -3870,6 +3898,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -3967,6 +3996,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
@@ -4215,6 +4245,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "name", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -4307,6 +4338,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
                             "cxx_member": "->", 
@@ -4390,6 +4422,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "name", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -4469,6 +4502,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
                             "cxx_member": "->", 
@@ -4551,6 +4585,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "status", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
@@ -4714,6 +4749,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
@@ -4809,6 +4845,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "dest", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -4819,6 +4856,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "src", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -4922,6 +4960,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
                             "cxx_member": "->", 
@@ -4937,6 +4976,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
                             "cxx_member": "->", 
@@ -5647,7 +5687,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -5754,7 +5794,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -5765,7 +5805,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"

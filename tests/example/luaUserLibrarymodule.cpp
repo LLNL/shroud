@@ -361,13 +361,13 @@ static int l_exclass2_get_name_length(lua_State *L)
     // splicer end class.ExClass2.method.GetNameLength
 }
 
-// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
+// ExClass1 * get_class1(const ExClass1 * in +intent(in))
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
     const example::nested::ExClass1 * in = static_cast<example::nested::
-        ExClass1 *>(static_cast<void *>((l_ExClass2_Type *)
-        luaL_checkudata(L, 1, "ExClass2.metatable")));
+        ExClass1 *>((l_ExClass2_Type *) luaL_checkudata(
+        L, 1, "ExClass2.metatable")->addr);
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
     example::nested::
@@ -767,25 +767,25 @@ static int l_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in))
 static int l_testgroup1(lua_State *L)
 {
     // splicer begin function.testgroup1
     axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
-        static_cast<void *>((XXLUA_userdata_type *) luaL_checkudata(
-        L, 1, "XXLUA_metadata")));
+        (XXLUA_userdata_type *) luaL_checkudata(
+        L, 1, "XXLUA_metadata")->addr);
     example::nested::testgroup1(grp);
     return 0;
     // splicer end function.testgroup1
 }
 
-// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in))
 static int l_testgroup2(lua_State *L)
 {
     // splicer begin function.testgroup2
     const axom::sidre::Group * grp = static_cast<axom::sidre::Group *>(
-        static_cast<void *>((XXLUA_userdata_type *) luaL_checkudata(
-        L, 1, "XXLUA_metadata")));
+        (XXLUA_userdata_type *) luaL_checkudata(
+        L, 1, "XXLUA_metadata")->addr);
     example::nested::testgroup2(grp);
     return 0;
     // splicer end function.testgroup2

@@ -58,17 +58,23 @@ extern "C" {
 #endif
 
 // declaration of shadow types
-struct s_AA_exclass1;
+struct s_AA_exclass1 {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_AA_exclass1 AA_exclass1;
-struct s_AA_exclass2;
+struct s_AA_exclass2 {
+    void *addr;  /* address of C++ memory */
+    int idtor;   /* index of destructor */
+};
 typedef struct s_AA_exclass2 AA_exclass2;
 
 // splicer begin class.ExClass2.C_declarations
 // splicer end class.ExClass2.C_declarations
 
-AA_exclass2 * AA_exclass2_ctor(const char * name);
+AA_exclass2 AA_exclass2_ctor(const char * name);
 
-AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
+AA_exclass2 AA_exclass2_ctor_bufferify(const char * name,
     int trim_name);
 
 void AA_exclass2_dtor(AA_exclass2 * self);
@@ -95,7 +101,7 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self, char * SHF_rv,
 
 int AA_exclass2_get_name_length(const AA_exclass2 * self);
 
-AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self,
+AA_exclass1 AA_exclass2_get_class1(AA_exclass2 * self,
     const AA_exclass1 * in);
 
 void AA_exclass2_declare_0(AA_exclass2 * self, int type);

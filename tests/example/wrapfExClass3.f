@@ -46,17 +46,22 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass3_mod
-    use iso_c_binding, only : C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin class.ExClass3.module_use
     ! splicer end class.ExClass3.module_use
     implicit none
 
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
     ! splicer begin class.ExClass3.module_top
     ! splicer end class.ExClass3.module_top
 
     type exclass3
-        type(C_PTR), private :: voidptr = C_NULL_PTR
+        type(SHROUD_capsule_data), private :: voidptr
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
@@ -87,18 +92,19 @@ module exclass3_mod
 #ifdef USE_CLASS3_A
         subroutine c_exclass3_exfunc_0(self) &
                 bind(C, name="AA_exclass3_exfunc_0")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_exclass3_exfunc_0
 #endif
 
 #ifndef USE_CLASS3_A
         subroutine c_exclass3_exfunc_1(self, flag) &
                 bind(C, name="AA_exclass3_exfunc_1")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_exclass3_exfunc_1
 #endif
@@ -137,14 +143,14 @@ contains
         use iso_c_binding, only: C_PTR
         class(exclass3), intent(IN) :: obj
         type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        voidptr = obj%voidptr%addr
     end function exclass3_yadda
 
     function exclass3_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(exclass3), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%voidptr%addr)
     end function exclass3_associated
 
     ! splicer begin class.ExClass3.additional_functions
@@ -154,7 +160,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass3), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -165,7 +171,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass3), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
             rv = .true.
         else
             rv = .false.

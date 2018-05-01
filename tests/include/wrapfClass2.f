@@ -45,13 +45,18 @@
 !! \brief Shroud generated wrapper for Class2 class
 !<
 module class2_mod
-    use iso_c_binding, only : C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
 
     type class2
-        type(C_PTR), private :: voidptr = C_NULL_PTR
+        type(SHROUD_capsule_data), private :: voidptr
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
@@ -72,18 +77,20 @@ module class2_mod
 
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="DEF_class2_method1")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: comm
         end subroutine c_class2_method1
 
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="DEF_class2_method2")
-            use iso_c_binding, only : C_PTR
+            use class1_mod, only : class1
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
-            type(C_PTR), value, intent(IN) :: c2
+            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: c2
         end subroutine c_class2_method2
 
     end interface
@@ -99,29 +106,30 @@ contains
     subroutine class2_method2(obj, c2)
         use class1_mod, only : class1
         class(class2) :: obj
-        type(class1), value, intent(IN) :: c2
-        call c_class2_method2(obj%voidptr, c2%get_instance())
+        type(class1), intent(IN) :: c2
+        call c_class2_method2(obj%voidptr, c2%voidptr)
     end subroutine class2_method2
 
     function class2_get_instance(obj) result (voidptr)
         use iso_c_binding, only: C_PTR
         class(class2), intent(IN) :: obj
         type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        voidptr = obj%voidptr%addr
     end function class2_get_instance
 
     subroutine class2_set_instance(obj, voidptr)
         use iso_c_binding, only: C_PTR
         class(class2), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr = voidptr
+        obj%voidptr%addr = voidptr
+        obj%voidptr%idtor = 0
     end subroutine class2_set_instance
 
     function class2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(class2), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%voidptr%addr)
     end function class2_associated
 
 
@@ -129,7 +137,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class2), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -140,7 +148,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class2), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
             rv = .true.
         else
             rv = .false.

@@ -253,6 +253,7 @@ class Wrapf(util.WrapperMixin):
         self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
+        self.f_helper['capsule_data_helper'] = True
         self.f_type_decl.append('')
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_top', self.f_type_decl)
@@ -260,7 +261,7 @@ class Wrapf(util.WrapperMixin):
                 '',
                 wformat('type {F_derived_name}', fmt_class),
                 1,
-                wformat('type(C_PTR), private :: {F_derived_member} = C_NULL_PTR', fmt_class),
+                wformat('type({F_capsule_data_type}), private :: {F_derived_member}', fmt_class),
                 ])
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_NULL_PTR')
         self._create_splicer('component_part', self.f_type_decl)
@@ -318,14 +319,14 @@ class Wrapf(util.WrapperMixin):
         # overload operators
         self.overload_compare(
             fmt_class, '.eq.', fmt_class.class_lower + '_eq',
-            wformat('c_associated(a%{F_derived_member}, b%{F_derived_member})',
+            wformat('c_associated(a%{F_derived_member}%addr, b%{F_derived_member}%addr)',
                     fmt_class))
 #        self.overload_compare(fmt_class, '==', fmt_class.class_lower + '_eq', None)
         self.overload_compare(
             fmt_class, '.ne.', fmt_class.class_lower + '_ne',
             wformat(
                 '.not. c_associated'
-                '(a%{F_derived_member}, b%{F_derived_member})',
+                '(a%{F_derived_member}%addr, b%{F_derived_member}%addr)',
                 fmt_class))
 #        self.overload_compare(fmt_class, '/=', fmt_class.class_lower + '_ne', None)
 
@@ -383,7 +384,7 @@ class Wrapf(util.WrapperMixin):
             append_format(
                 impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
             append_format(impl, 'type(C_PTR) :: {F_derived_member}', fmt)
-            append_format(impl, '{F_derived_member} = {F_this}%{F_derived_member}', fmt)
+            append_format(impl, '{F_derived_member} = {F_this}%{F_derived_member}%addr', fmt)
             impl.append(-1)
             append_format(impl, 'end function {F_name_impl}', fmt)
 
@@ -407,7 +408,9 @@ class Wrapf(util.WrapperMixin):
                 fmt)
             append_format(
                 impl, 'type(C_PTR), intent(IN) :: {F_derived_member}', fmt)
-            append_format(impl, '{F_this}%{F_derived_member} = {F_derived_member}', fmt)
+            # XXX - release existing pointer?
+            append_format(impl, '{F_this}%{F_derived_member}%addr = {F_derived_member}', fmt)
+            append_format(impl, '{F_this}%{F_derived_member}%idtor = 0', fmt)
             impl.append(-1)
             append_format(impl, 'end subroutine {F_name_impl}', fmt)
 
@@ -428,7 +431,7 @@ class Wrapf(util.WrapperMixin):
             append_format(
                 impl, 'class({F_derived_name}), intent(IN) :: {F_this}', fmt)
             impl.append('logical rv')
-            append_format(impl, 'rv = c_associated({F_this}%{F_derived_member})', fmt)
+            append_format(impl, 'rv = c_associated({F_this}%{F_derived_member}%addr)', fmt)
             impl.append(-1)
             append_format(impl, 'end function {F_name_impl}', fmt)
 
@@ -679,9 +682,10 @@ class Wrapf(util.WrapperMixin):
             else:
                 # Add 'this' argument
                 arg_c_names.append(fmt.C_this)
-                arg_c_decl.append(
-                    'type(C_PTR), value, intent(IN) :: ' + fmt.C_this)
-                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+                append_format(
+                    arg_c_decl,
+                    'type({F_capsule_data_type}), intent(IN) :: {C_this}', fmt)
+                imports[fmt.F_capsule_data_type] = True
 
         args_all_in = True   # assume all arguments are intent(in)
         for arg in ast.params:
@@ -723,6 +727,11 @@ class Wrapf(util.WrapperMixin):
                         imports[absiface] = True
                     else:
                         arg_c_decl.append(arg.bind_c())
+                    continue
+                elif buf_arg == 'shadow':
+                    arg_c_names.append(arg.name)
+                    arg_c_decl.append(arg.bind_c())
+                    imports[fmt.F_capsule_data_type] = True
                     continue
 
                 if buf_arg not in attrs:
@@ -789,9 +798,12 @@ class Wrapf(util.WrapperMixin):
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
                 else:
                     arg_c_decl.append(rvast.bind_c())
-                self.update_f_module(modules,
-                                     result_typedef.f_c_module or
-                                     result_typedef.f_module)
+                if result_typedef.base == 'shadow':
+                    imports[fmt.F_capsule_data_type] = True
+                else:
+                    self.update_f_module(modules,
+                                         result_typedef.f_c_module or
+                                         result_typedef.f_module)
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name, imports)
 
@@ -942,12 +954,12 @@ class Wrapf(util.WrapperMixin):
                 pass
             else:
                 # Add 'this' argument
-                # could use {f_to_c} but I'd rather not hide the shadow class
-                arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
                 arg_f_names.append(fmt_func.F_this)
                 arg_f_decl.append(wformat(
                         'class({F_derived_name}) :: {F_this}',
                         fmt_func))
+                # could use {f_to_c} but I'd rather not hide the shadow class
+                arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1079,6 +1091,11 @@ class Wrapf(util.WrapperMixin):
                         self.update_f_module(modules, arg_typedef.f_module)
                     else:
                         arg_c_call.append(fmt_arg.c_var)
+                    continue
+                elif buf_arg == 'shadow':
+                    # Pass down the BIND(C) part of shadow type
+                    need_wrapper = True
+                    append_format(arg_c_call, '{f_var}%{F_derived_member}', fmt_arg)
                     continue
 
                 need_wrapper = True
@@ -1251,7 +1268,9 @@ class Wrapf(util.WrapperMixin):
             if is_dtor:
                 # Put C pointer into shadow class
                 F_code.append(wformat(
-                    '{F_this}%{F_derived_member} = C_NULL_PTR', fmt_func))
+                    '{F_this}%{F_derived_member}%addr = C_NULL_PTR', fmt_func))
+                F_code.append(wformat(
+                    '{F_this}%{F_derived_member}%idtor = 0', fmt_func))
                 self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
             elif return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
@@ -1295,38 +1314,58 @@ class Wrapf(util.WrapperMixin):
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
 
+    def _gather_helper_code(self, name, done):
+        """Add for for helper
+
+        First recursively process dependent_helpers
+        to add code in order.
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = whelpers.FHelpers[name]
+        if 'dependent_helpers' in helper_info:
+            for dep in helper_info['dependent_helpers']:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        lines = helper_info.get('derived_type', None)
+        if lines:
+            self.helper_derived_type.append(lines)
+
+        lines = helper_info.get('interface', None)
+        if lines:
+            self.interface_lines.append(lines)
+
+        lines = helper_info.get('source', None)
+        if lines:
+            self.helper_source.append(lines)
+
+        mods = helper_info.get('modules', None)
+        if mods:
+            self.update_f_module(self.module_use, mods)
+
+        if 'private' in helper_info:
+            private_names = helper_info['private']
+            self.private_lines.append('')
+            self.private_lines.append('private ' + ', '.join(private_names))
+
     def gather_helper_code(self):
         """Gather up all helpers requested and insert code into output.
+
+        Add in sorted order.  However, first process dependent_helpers
+        to add code in order.
+        Helpers are duplicated in each module as needed.
         """
-        # Insert any helper functions needed
-        # (They are duplicated in each module)
         self.helper_derived_type = []
         self.helper_source = []
-        private_names = []
         self.private_lines = []
         self.interface_lines = []
 
-        if self.f_helper:
-            helperdict = whelpers.find_all_helpers('f', self.f_helper)
-            helpers = sorted(self.f_helper)
-            for helper in helpers:
-                helper_info = helperdict[helper]
-                private_names.extend(helper_info.get('private', []))
-                lines = helper_info.get('derived_type', None)
-                if lines:
-                    self.helper_derived_type.append(lines)
-                lines = helper_info.get('interface', None)
-                if lines:
-                    self.interface_lines.append(lines)
-                lines = helper_info.get('source', None)
-                if lines:
-                    self.helper_source.append(lines)
-                mods = helper_info.get('modules', None)
-                if mods:
-                    self.update_f_module(self.module_use, mods)
-            if private_names:
-                self.private_lines.append('')
-                self.private_lines.append('private ' + ', '.join(private_names))
+        done = {}  # avoid duplicates
+        for name in sorted(self.f_helper.keys()):
+            self._gather_helper_code(name, done)
 
     def write_module(self, library, cls):
         """ Write Fortran wrapper module.
@@ -1361,6 +1400,8 @@ class Wrapf(util.WrapperMixin):
         if cls is None:
             self._create_splicer('module_top', output)
 
+        output.extend(self.helper_derived_type)
+
         output.extend(self.enum_impl)
 
         # XXX output.append('! splicer push class')
@@ -1382,7 +1423,6 @@ class Wrapf(util.WrapperMixin):
         self.dump_abstract_interfaces()
         self.dump_generic_interfaces()
 
-        output.extend(self.helper_derived_type)
         output.extend(self.abstract_interface)
         output.extend(self.c_interface)
         output.extend(self.generic_interface)

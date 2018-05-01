@@ -54,6 +54,7 @@ module vectors_mod
 
     ! splicer begin module_top
     ! splicer end module_top
+
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

@@ -173,6 +173,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
@@ -201,6 +202,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg2", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -325,6 +327,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "len", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -355,6 +358,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "result", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -385,6 +389,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "values", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -520,6 +525,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
@@ -630,6 +636,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
@@ -659,6 +666,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
@@ -689,6 +697,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg3", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
@@ -821,6 +830,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -845,6 +855,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -984,6 +995,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -1000,6 +1012,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
                             "cxx_member": "->", 
@@ -1015,6 +1028,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg2", 
                             "c_var_trim": "Larg2", 
                             "cxx_member": "->", 
@@ -1149,6 +1163,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "argin", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1177,6 +1192,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arginout", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1207,6 +1223,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "argout", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1337,6 +1354,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "in", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
@@ -1368,6 +1386,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "out", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
@@ -1400,6 +1419,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1537,6 +1557,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "in", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
@@ -1568,6 +1589,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "out", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1600,6 +1622,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1737,6 +1760,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "array", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1770,6 +1794,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -2530,7 +2555,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -2637,7 +2662,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -2648,7 +2673,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"

@@ -1079,7 +1079,7 @@ c_statements
     A nested dictionary of code template to add.
     The first layer is *intent_in*, *intent_out*, *intent_inout*, *result*,
     *intent_in_buf*, *intent_out_buf*, *intent_inout_buf*, and *result_buf*.
-    The second layer is *pre_call*, *pre_call_buf*, *post_call*, *cxx_header*.
+    The second layer is *pre_call*, *call*, *post_call*, *cxx_header*.
     The entries are a list of format strings.
 
     intent_in

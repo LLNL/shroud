@@ -204,15 +204,42 @@ end interface""", fmt)
 
 def add_capsule_helper(fmt):
     """Share info with C++ to allow Fortran to release memory.
+
+    Used with shadow classes and std::vector.
     """
-    name = 'capsule_data'
+    name = 'capsule_data_helper'
     if name not in FHelpers:
         helper = dict(
-            derived_type=wformat("""type, bind(C) :: {F_capsule_data_type}+
+            derived_type=wformat("""
+type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
--end type {F_capsule_data_type}
+-end type {F_capsule_data_type}""", fmt),
+            modules = dict(
+                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_INT' ],
+            ),
+        )
+        FHelpers[name] = helper
 
+
+    if name not in CHelpers:
+        helper = dict(
+            h_source=wformat("""
+struct s_{C_capsule_data_type} {{
+  void *addr;     /* address of C++ memory */
+  int idtor;      /* index of destructor */
+}};
+typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
+        )
+        CHelpers[name] = helper
+
+    ########################################
+    name = 'capsule_helper'
+    if name not in FHelpers:
+# XXX split helper into to parts, one for each derived type
+        helper = dict(
+            dependent_helpers=[ 'capsule_data_helper' ],
+            derived_type=wformat("""
 type {F_capsule_type}+
 private
 type({F_capsule_data_type}) :: mem
@@ -220,9 +247,6 @@ type({F_capsule_data_type}) :: mem
 +final :: {F_capsule_final_function}
 -end type {F_capsule_type}""", fmt),
 # cannot be declared with both PRIVATE and BIND(C) attributes
-            modules = dict(
-                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_INT' ],
-            ),
             source = wformat("""
 subroutine {F_capsule_final_function}(cap)+
 type({F_capsule_type}), intent(INOUT) :: cap
@@ -238,17 +262,6 @@ call array_destructor(cap%mem)
             """, fmt),
         )
         FHelpers[name] = helper
-
-    if name not in CHelpers:
-        helper = dict(
-            h_source=wformat("""
-struct s_{C_capsule_data_type} {{
-  void *addr;     /* address of C++ memory */
-  int idtor;      /* index of destructor */
-}};
-typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
-        )
-        CHelpers[name] = helper
 
 def add_vector_copy_helper(fmt):
     """Create function to copy contents of a vector.
@@ -349,7 +362,8 @@ typedef struct s_SHROUD_vector_context SHROUD_vector_context;
 #
 # Fortran helper functions which may be added to a module.
 #
-# f_helpers = dictionary of helpers needed by this helper
+# dependent_helpers = list of helpers names needed by this helper
+#                     They will be added to the output before current helper.
 # private   = names for PRIVATE statement 
 # interface = code for INTERFACE
 # source    = code for CONTAINS
@@ -357,6 +371,7 @@ typedef struct s_SHROUD_vector_context SHROUD_vector_context;
 FHelpers = dict(
     fstr=dict(
         f_helper=dict(fstr_ptr=True, fstr_arr=True),
+        dependent_helpers=[ 'fstr_ptr', 'fstr_arr' ],
         private=['fstr'],
         interface="""
 interface fstr
@@ -366,6 +381,7 @@ end interface""",
 
     fstr_ptr=dict(
         f_helper=dict(strlen_ptr=True),
+        dependent_helpers=[ 'strlen_ptr' ],
         private=['fstr_ptr'],
         source="""
 ! Convert a null-terminated C "char *" pointer to a Fortran string.
@@ -384,6 +400,7 @@ end function fstr_ptr"""
 
     fstr_arr=dict(
         f_helper=dict(strlen_arr=True),
+        dependent_helpers=[ 'strlen_arr' ],
         private=['fstr_arr'],
         source="""
 ! Convert a null-terminated array of characters to a Fortran string.

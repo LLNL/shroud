@@ -53,12 +53,11 @@ extern "C" {
 
 // Class2()
 // function_index=0
-FOR_class2 * FOR_class2_ctor()
+FOR_class2 FOR_class2_ctor()
 {
 // splicer begin class.Class2.method.ctor
-    tutorial::Class2 * SHCXX_rv = new tutorial::Class2();
-    FOR_class2 * SHC_rv = static_cast<FOR_class2 *>(static_cast<void *>(
-        SHCXX_rv));
+    tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
+    FOR_class2 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }
@@ -68,22 +67,22 @@ FOR_class2 * FOR_class2_ctor()
 void FOR_class2_dtor(FOR_class2 * self)
 {
 // splicer begin class.Class2.method.dtor
-    tutorial::Class2 *SH_this = static_cast<tutorial::Class2 *>(
-        static_cast<void *>(self));
+    tutorial::Class2 *SH_this = static_cast<tutorial::
+        Class2 *>(self->addr);
     delete SH_this;
     return;
 // splicer end class.Class2.method.dtor
 }
 
-// void func1(Class1 * arg +intent(in)+value)
+// void func1(Class1 * arg +intent(in))
 // function_index=2
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {
 // splicer begin class.Class2.method.func1
-    tutorial::Class2 *SH_this = static_cast<tutorial::Class2 *>(
-        static_cast<void *>(self));
-    tutorial::Class1 * SHCXX_arg = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(arg));
+    tutorial::Class2 *SH_this = static_cast<tutorial::
+        Class2 *>(self->addr);
+    tutorial::Class1 * SHCXX_arg = 
+        static_cast<tutorial::Class1 *>(arg->addr);
     SH_this->func1(SHCXX_arg);
     return;
 // splicer end class.Class2.method.func1

@@ -771,7 +771,7 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'capsule', 'context' ],
                     cxx_local_var='pointer',
-                    c_helper='capsule_data vector_context vector_copy_{cxx_T}',
+                    c_helper='capsule_data_helper vector_context vector_copy_{cxx_T}',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
@@ -865,7 +865,7 @@ def initialize():
 
             f_statements=dict(
                 intent_out_buf=dict(
-                    f_helper='capsule_data vector_context vector_copy_{cxx_T}',
+                    f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
@@ -874,7 +874,7 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
-                    f_helper='capsule_data vector_context vector_copy_{cxx_T}',
+                    f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
@@ -1035,6 +1035,11 @@ def create_enum_typedef(node):
     return typedef
 
 def create_class_typedef(cls):
+    """Create a typedef for a typedef.
+
+    The C type is a capsule_data which will contains a pointer to the
+    C++ memory and information on how to delete the memory.
+    """
     fmt_class = cls.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
@@ -1052,6 +1057,7 @@ def create_class_typedef(cls):
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
+            f_c_type = 'type({})'.format(fmt_class.F_capsule_data_type),
             )
         typedef_shadow_defaults(typedef)
         Typedef.register(type_name, typedef)
@@ -1068,20 +1074,29 @@ def typedef_shadow_defaults(typedef):
     if typedef.base != 'shadow':
         return
 
-    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
-                      typedef.c_type)
+    # Convert to void * to add to struct
+    typedef.cxx_to_c='static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})'
 
-    # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
+    # void pointer in struct -> class instance pointer
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>({c_var}{c_member}addr)' %
                       typedef.cxx_type)
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
-    typedef.f_c_type='type(C_PTR)'
 
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
+
+    # Return a C_capsule_data_type
+    typedef.c_statements = dict(
+        intent_in=dict(
+           buf_args = [ 'shadow' ]
+        ),
+        result=dict(
+            post_call=[
+                '%s {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};' % typedef.c_type,
+            ]
+        ),
+    )
 
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
@@ -1094,7 +1109,9 @@ def typedef_shadow_defaults(typedef):
                 ],
             )
         )
-    typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
+
+# The import is added in wrapf.py
+#    typedef.f_c_module={ '-import-': ['F_capsule_data_type']}
 
     typedef.py_statements=dict(
         intent_in=dict(
@@ -1230,9 +1247,6 @@ def typedef_struct_defaults(typedef):
                      '(\t{LUA_state_var}, 1, "{LUA_metadata}")')
     # typedef.LUA_push=None  # XXX create a userdata object with metatable
     # typedef.LUA_statements={}
-
-    # allow forward declarations to avoid recursive headers
-    typedef.forward=typedef.cxx_type
 
 
 def lookup_c_statements(arg):

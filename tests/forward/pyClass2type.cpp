@@ -92,7 +92,7 @@ PY_class2_func1(
   PyObject *args,
   PyObject *kwds)
 {
-// void func1(Class1 * arg +intent(in)+value)
+// void func1(Class1 * arg +intent(in))
 // splicer begin class.Class2.method.func1
     TUT_class1 arg;
     const char *SHT_kwlist[] = {

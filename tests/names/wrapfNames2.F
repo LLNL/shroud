@@ -47,17 +47,22 @@
 ! splicer begin file_top
 ! splicer end file_top
 module names2_mod
-    use iso_c_binding, only : C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin class.Names2.module_use
     ! splicer end class.Names2.module_use
     implicit none
 
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
     ! splicer begin class.Names2.module_top
     ! splicer end class.Names2.module_top
 
     type names2
-        type(C_PTR), private :: voidptr = C_NULL_PTR
+        type(SHROUD_capsule_data), private :: voidptr
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -88,21 +93,22 @@ contains
         use iso_c_binding, only: C_PTR
         class(names2), intent(IN) :: obj
         type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        voidptr = obj%voidptr%addr
     end function names2_get_instance
 
     subroutine names2_set_instance(obj, voidptr)
         use iso_c_binding, only: C_PTR
         class(names2), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr = voidptr
+        obj%voidptr%addr = voidptr
+        obj%voidptr%idtor = 0
     end subroutine names2_set_instance
 
     function names2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(names2), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%voidptr%addr)
     end function names2_associated
 
     ! splicer begin class.Names2.additional_functions
@@ -112,7 +118,7 @@ contains
         use iso_c_binding, only: c_associated
         type(names2), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%voidptr%addr, b%voidptr%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -123,7 +129,7 @@ contains
         use iso_c_binding, only: c_associated
         type(names2), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%voidptr%addr, b%voidptr%addr)) then
             rv = .true.
         else
             rv = .false.

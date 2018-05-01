@@ -25,6 +25,7 @@
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_deref": "", 
+                                    "c_member": ".", 
                                     "c_var": "arg1", 
                                     "cxx_member": ".", 
                                     "cxx_type": "CustomType", 
@@ -74,7 +75,7 @@
                             "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
-                            "C_pre_call": "three::\tClass1 *SH_this = \tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "three::\tClass1 *SH_this = \tstatic_cast<three::\tClass1 *>(self->addr);", 
                             "C_prototype": "DEF_class1 * self,\t int arg1", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -89,6 +90,7 @@
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -123,6 +125,7 @@
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_deref": "", 
+                                    "c_member": ".", 
                                     "c_var": "comm", 
                                     "cxx_decl": "MPI_Comm SHCXX_comm", 
                                     "cxx_member": ".", 
@@ -174,7 +177,7 @@
                             "C_call_code": "SH_this->method1(\tSHCXX_comm);", 
                             "C_call_list": "SHCXX_comm", 
                             "C_name": "DEF_class2_method1", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nMPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(self->addr);\nMPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
                             "C_prototype": "DEF_class2 * self,\t MPI_Fint comm", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -189,6 +192,7 @@
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -201,11 +205,12 @@
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_deref": "*", 
+                                    "c_member": "->", 
                                     "c_var": "c2", 
                                     "cxx_decl": "three::\tClass1 * SHCXX_c2", 
                                     "cxx_member": "->", 
                                     "cxx_type": "three::\tClass1", 
-                                    "cxx_val": "\tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2))", 
+                                    "cxx_val": "\tstatic_cast<three::\tClass1 *>(c2->addr)", 
                                     "cxx_var": "SHCXX_c2"
                                 }, 
                                 "fmtf": {
@@ -230,7 +235,7 @@
                                     "attrs": {
                                         "_typename": "three::Class1", 
                                         "intent": "in", 
-                                        "value": true
+                                        "value": false
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -252,26 +257,27 @@
                             ]
                         }, 
                         "decl": "void method2(three::Class1 * c2)", 
-                        "declgen": "void method2(three::Class1 * c2 +intent(in)+value)", 
+                        "declgen": "void method2(three::Class1 * c2 +intent(in))", 
                         "format": {
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
                             "C_name": "DEF_class2_method2", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nthree::\tClass1 * SHCXX_c2 = \tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2));", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(self->addr);\nthree::\tClass1 * SHCXX_c2 = \tstatic_cast<three::\tClass1 *>(c2->addr);", 
                             "C_prototype": "DEF_class2 * self,\t DEF_class1 * c2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_method2", 
                             "F_C_name": "c_class2_method2", 
-                            "F_arg_c_call": "obj%voidptr,\t c2%get_instance()", 
+                            "F_arg_c_call": "obj%voidptr,\t c2%voidptr", 
                             "F_arguments": "obj,\t c2", 
-                            "F_call_code": "call c_class2_method2(obj%voidptr,\t c2%get_instance())", 
+                            "F_call_code": "call c_class2_method2(obj%voidptr,\t c2%voidptr)", 
                             "F_name_function": "method2", 
                             "F_name_generic": "method2", 
                             "F_name_impl": "class2_method2", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -512,16 +518,23 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
-            "c_type": "DEF_class2", 
-            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "Class2", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "post_call": [
+                        "DEF_class2 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                    ]
+                }
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>({c_var}{c_member}addr)", 
+            "c_type": "DEF_class2", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "Class2", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class2", 
             "f_module": {
                 "class2_mod": [
@@ -1116,7 +1129,7 @@
                         "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -1223,7 +1236,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -1234,7 +1247,7 @@
                     ]
                 }, 
                 "intent_out_buf": {
-                    "f_helper": "capsule_data vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -1305,16 +1318,23 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
-            "c_type": "DEF_class1", 
-            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "three::\tClass1", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "post_call": [
+                        "DEF_class1 {c_var} = {{ {cxx_cast_to_void_ptr}, 0 }};"
+                    ]
+                }
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>({c_var}{c_member}addr)", 
+            "c_type": "DEF_class1", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "three::\tClass1", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
                 "class1_mod": [

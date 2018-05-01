@@ -209,26 +209,25 @@ void AA_testmpi_serial()
 }
 #endif  // ifndef HAVE_MPI
 
-// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in))
 // function_index=60
 void AA_testgroup1(SIDRE_group * grp)
 {
 // splicer begin function.testgroup1
-    axom::sidre::Group * SHCXX_grp = static_cast<axom::sidre::Group *>(
-        static_cast<void *>(grp));
+    axom::sidre::Group * SHCXX_grp = 
+        static_cast<axom::sidre::Group *>(grp->addr);
     example::nested::testgroup1(SHCXX_grp);
     return;
 // splicer end function.testgroup1
 }
 
-// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in))
 // function_index=61
 void AA_testgroup2(const SIDRE_group * grp)
 {
 // splicer begin function.testgroup2
     const axom::sidre::Group * SHCXX_grp = 
-        static_cast<const axom::sidre::Group *>(
-        static_cast<const void *>(grp));
+        static_cast<const axom::sidre::Group *>(grp->addr);
     example::nested::testgroup2(SHCXX_grp);
     return;
 // splicer end function.testgroup2

@@ -458,7 +458,9 @@ module strings_mod
         ! splicer end additional_interfaces
     end interface
 
-    private fstr_ptr, strlen_ptr
+    private strlen_ptr
+
+    private fstr_ptr
 
     interface
        subroutine SHROUD_string_copy_and_free(cptr, str) &
