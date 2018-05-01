@@ -381,7 +381,7 @@
                             "description": "longer description joined with previous line"
                         }, 
                         "format": {
-                            "C_call_code": "delete SH_this;", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;\nself->idtor = 0;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
                             "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
@@ -2143,7 +2143,7 @@
                             "brief": "destructor"
                         }, 
                         "format": {
-                            "C_call_code": "delete SH_this;", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;\nself->idtor = 0;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 

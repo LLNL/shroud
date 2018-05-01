@@ -123,7 +123,7 @@
                         "decl": "~Class2()", 
                         "declgen": "~Class2()", 
                         "format": {
-                            "C_call_code": "delete SH_this;", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;\nself->idtor = 0;", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_dtor", 
                             "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(self->addr);", 

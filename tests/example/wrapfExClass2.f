@@ -357,12 +357,9 @@ contains
     !!
     !<
     subroutine exclass2_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
         class(exclass2) :: obj
         ! splicer begin class.ExClass2.method.delete
         call c_exclass2_dtor(obj%voidptr)
-        obj%voidptr%addr = C_NULL_PTR
-        obj%voidptr%idtor = 0
         ! splicer end class.ExClass2.method.delete
     end subroutine exclass2_dtor
 

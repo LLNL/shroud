@@ -70,6 +70,8 @@ void FOR_class2_dtor(FOR_class2 * self)
     tutorial::Class2 *SH_this = static_cast<tutorial::
         Class2 *>(self->addr);
     delete SH_this;
+    self->addr = NULL;
+    self->idtor = 0;
     return;
 // splicer end class.Class2.method.dtor
 }

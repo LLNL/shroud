@@ -130,6 +130,8 @@ void AA_exclass1_dtor(AA_exclass1 * self)
     example::nested::ExClass1 *SH_this = static_cast<example::nested::
         ExClass1 *>(self->addr);
     delete SH_this;
+    self->addr = NULL;
+    self->idtor = 0;
     return;
 // splicer end class.ExClass1.method.dtor
 }

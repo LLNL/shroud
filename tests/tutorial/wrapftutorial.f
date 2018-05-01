@@ -770,12 +770,9 @@ contains
     ! ~Class1() +name(delete)
     ! function_index=2
     subroutine class1_delete(obj)
-        use iso_c_binding, only : C_NULL_PTR
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%voidptr)
-        obj%voidptr%addr = C_NULL_PTR
-        obj%voidptr%idtor = 0
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
 

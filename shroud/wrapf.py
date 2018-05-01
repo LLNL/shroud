@@ -1265,14 +1265,7 @@ class Wrapf(util.WrapperMixin):
 #                need_wrapper = True
 #                # adjust return value or cleanup
 #                append_format(F_code, result_typedef.f_post_call, fmt_func)
-            if is_dtor:
-                # Put C pointer into shadow class
-                F_code.append(wformat(
-                    '{F_this}%{F_derived_member}%addr = C_NULL_PTR', fmt_func))
-                F_code.append(wformat(
-                    '{F_this}%{F_derived_member}%idtor = 0', fmt_func))
-                self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
-            elif return_pointer_as == 'pointer':
+            if return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)
                 if dim:
