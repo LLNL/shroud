@@ -606,10 +606,14 @@ F_capsule_type
     Contains a *F_capsule_data_type*.
 
 F_derived_member
-    The name of the member of the Fortran derived type which
-    wraps a C++ class.  It will contain a ``type(C_PTR)`` which
-    points to the C++ instance.
+    Fortran ``POINTER`` to *F_derived_ptr*.
     Defaults to *cxxmem*.
+
+F_derived_ptr
+    The name of the ``type(C_PTR)`` member of the Fortran derived type which 
+    points to a *F_capsule_data_type*. 
+    Accessible from Fortran using *F_derived_member*.
+    Defaults ot *cxxpr*.
 
 F_filename_suffix:
    Suffix added to Fortran files.

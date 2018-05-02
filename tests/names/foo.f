@@ -62,7 +62,8 @@ module name_module
     ! splicer end class.Names.module_top
 
     type FNames
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.Names.component_part
         ! splicer end class.Names.component_part
     contains
@@ -88,16 +89,16 @@ module name_module
 
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_names_method1")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_names_method2")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self2
+            type(C_PTR), value, intent(IN) :: self2
         end subroutine xxx_tes_names_method2
 
         ! splicer begin class.Names.additional_interfaces
@@ -111,7 +112,7 @@ contains
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin class.Names.method.type_method1
-        call xxx_tes_names_method1(obj%cxxmem)
+        call xxx_tes_names_method1(obj%cxxptr)
         ! splicer end class.Names.method.type_method1
     end subroutine names_method1
 
@@ -120,7 +121,7 @@ contains
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin class.Names.method.method2
-        call xxx_tes_names_method2(obj2%cxxmem)
+        call xxx_tes_names_method2(obj2%cxxptr)
         ! splicer end class.Names.method.method2
     end subroutine names_method2
 
@@ -149,14 +150,14 @@ contains
     subroutine names_final(obj)
         type(FNames), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="TES_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine names_final
 
     ! splicer begin class.Names.additional_functions

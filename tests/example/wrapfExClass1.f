@@ -62,7 +62,8 @@ module exclass1_mod
     ! splicer end class.ExClass1.module_top
 
     type exclass1
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -102,46 +103,43 @@ module exclass1_mod
         function c_exclass1_ctor_0() &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_0")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_exclass1_ctor_0
 
         function c_exclass1_ctor_1(name) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_1")
-            use iso_c_binding, only : C_CHAR
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_exclass1_ctor_1
 
         function c_exclass1_ctor_1_bufferify(name, Lname) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_1_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_exclass1_ctor_1_bufferify
 
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_exclass1_dtor")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine c_exclass1_dtor
 
         function c_exclass1_increment_count(self, incr) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_increment_count")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: incr
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
@@ -150,19 +148,17 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_error_pattern")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_pattern
 
         subroutine c_exclass1_get_name_error_pattern_bufferify(self, &
                 SHF_rv, NSHF_rv) &
                 bind(C, name="AA_exclass1_get_name_error_pattern_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass1_get_name_error_pattern_bufferify
@@ -170,10 +166,9 @@ module exclass1_mod
         pure function c_exclass1_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_length")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_exclass1_get_name_length
 
@@ -181,19 +176,17 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_error_check")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_check
 
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 SHF_rv, NSHF_rv) &
                 bind(C, name="AA_exclass1_get_name_error_check_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
@@ -202,18 +195,16 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_arg")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_arg
 
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_exclass1_get_name_arg_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: name(*)
             integer(C_INT), value, intent(IN) :: Nname
         end subroutine c_exclass1_get_name_arg_bufferify
@@ -222,19 +213,17 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_root")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             type(C_PTR) :: SHT_rv
         end function c_exclass1_get_root
 
         function c_exclass1_get_value_from_int(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_value_from_int")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: value
             integer(C_INT) :: SHT_rv
         end function c_exclass1_get_value_from_int
@@ -242,10 +231,9 @@ module exclass1_mod
         function c_exclass1_get_value_1(self, value) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_value_1")
-            use iso_c_binding, only : C_LONG
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_LONG, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_LONG), value, intent(IN) :: value
             integer(C_LONG) :: SHT_rv
         end function c_exclass1_get_value_1
@@ -254,28 +242,26 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_addr")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             type(C_PTR) :: SHT_rv
         end function c_exclass1_get_addr
 
         function c_exclass1_has_addr(self, in) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_has_addr")
-            use iso_c_binding, only : C_BOOL
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_BOOL, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             logical(C_BOOL), value, intent(IN) :: in
             logical(C_BOOL) :: SHT_rv
         end function c_exclass1_has_addr
 
         subroutine c_exclass1_splicer_special(self) &
                 bind(C, name="AA_exclass1_splicer_special")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine c_exclass1_splicer_special
 
         ! splicer begin class.ExClass1.additional_interfaces
@@ -293,9 +279,11 @@ contains
     ! function_index=0
     function exclass1_ctor_0() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_0
-        SHT_rv%cxxmem = c_exclass1_ctor_0()
+        SHT_rv%cxxptr = c_exclass1_ctor_0()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.ExClass1.method.ctor_0
     end function exclass1_ctor_0
 
@@ -312,12 +300,13 @@ contains
     !<
     function exclass1_ctor_1(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, c_f_pointer
         character(*), intent(IN) :: name
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_1
-        SHT_rv%cxxmem = c_exclass1_ctor_1_bufferify(name, &
+        SHT_rv%cxxptr = c_exclass1_ctor_1_bufferify(name, &
             len_trim(name, kind=C_INT))
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
 
@@ -331,7 +320,7 @@ contains
     subroutine exclass1_dtor(obj)
         class(exclass1) :: obj
         ! splicer begin class.ExClass1.method.delete
-        call c_exclass1_dtor(obj%cxxmem)
+        call c_exclass1_dtor(obj%cxxptr)
         ! splicer end class.ExClass1.method.delete
     end subroutine exclass1_dtor
 
@@ -344,7 +333,7 @@ contains
         integer(C_INT), value, intent(IN) :: incr
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.increment_count
-        SHT_rv = c_exclass1_increment_count(obj%cxxmem, incr)
+        SHT_rv = c_exclass1_increment_count(obj%cxxptr, incr)
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
@@ -358,7 +347,7 @@ contains
         character(kind=C_CHAR, &
             len=aa_exclass1_get_name_length(obj%cxxmem)) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_pattern
-        call c_exclass1_get_name_error_pattern_bufferify(obj%cxxmem, &
+        call c_exclass1_get_name_error_pattern_bufferify(obj%cxxptr, &
             SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_error_pattern
     end function exclass1_get_name_error_pattern
@@ -375,7 +364,7 @@ contains
         class(exclass1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_length
-        SHT_rv = c_exclass1_get_name_length(obj%cxxmem)
+        SHT_rv = c_exclass1_get_name_length(obj%cxxptr)
         ! splicer end class.ExClass1.method.get_name_length
     end function exclass1_get_name_length
 
@@ -387,10 +376,10 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
         character(kind=C_CHAR, len=strlen_ptr( &
-            c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
+            c_exclass1_get_name_error_check_bufferify(obj%cxxptr, &
             SHT_rv, len(SHT_rv, kind=C_INT)))) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_check
-        call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
+        call c_exclass1_get_name_error_check_bufferify(obj%cxxptr, &
             SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
@@ -403,7 +392,7 @@ contains
         class(exclass1) :: obj
         character(*), intent(OUT) :: name
         ! splicer begin class.ExClass1.method.get_name_arg
-        call c_exclass1_get_name_arg_bufferify(obj%cxxmem, name, &
+        call c_exclass1_get_name_arg_bufferify(obj%cxxptr, name, &
             len(name, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
@@ -416,7 +405,7 @@ contains
         class(exclass1) :: obj
         type(C_PTR) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_root
-        SHT_rv = c_exclass1_get_root(obj%cxxmem)
+        SHT_rv = c_exclass1_get_root(obj%cxxptr)
         ! splicer end class.ExClass1.method.get_root
     end function exclass1_get_root
 
@@ -429,7 +418,7 @@ contains
         integer(C_INT), value, intent(IN) :: value
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_value_from_int
-        SHT_rv = c_exclass1_get_value_from_int(obj%cxxmem, value)
+        SHT_rv = c_exclass1_get_value_from_int(obj%cxxptr, value)
         ! splicer end class.ExClass1.method.get_value_from_int
     end function exclass1_get_value_from_int
 
@@ -442,7 +431,7 @@ contains
         integer(C_LONG), value, intent(IN) :: value
         integer(C_LONG) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_value_1
-        SHT_rv = c_exclass1_get_value_1(obj%cxxmem, value)
+        SHT_rv = c_exclass1_get_value_1(obj%cxxptr, value)
         ! splicer end class.ExClass1.method.get_value_1
     end function exclass1_get_value_1
 
@@ -454,7 +443,7 @@ contains
         class(exclass1) :: obj
         type(C_PTR) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_addr
-        SHT_rv = c_exclass1_get_addr(obj%cxxmem)
+        SHT_rv = c_exclass1_get_addr(obj%cxxptr)
         ! splicer end class.ExClass1.method.get_addr
     end function exclass1_get_addr
 
@@ -469,7 +458,7 @@ contains
         logical :: SHT_rv
         SH_in = in  ! coerce to C_BOOL
         ! splicer begin class.ExClass1.method.has_addr
-        SHT_rv = c_exclass1_has_addr(obj%cxxmem, SH_in)
+        SHT_rv = c_exclass1_has_addr(obj%cxxptr, SH_in)
         ! splicer end class.ExClass1.method.has_addr
     end function exclass1_has_addr
 
@@ -499,14 +488,14 @@ contains
     subroutine exclass1_final(obj)
         type(exclass1), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="AA_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine exclass1_final
 
     ! splicer begin class.ExClass1.additional_functions

@@ -72,6 +72,7 @@
             "F_capsule_final_function": "SHROUD_capsule_final", 
             "F_capsule_type": "SHROUD_capsule", 
             "F_derived_member": "cxxmem", 
+            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfclibrary.f", 
             "F_module_name": "clibrary_mod", 

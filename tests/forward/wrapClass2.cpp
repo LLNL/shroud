@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapClass2.h"
+#include <stdlib.h>
 #include "tutorial.hpp"
 
 // splicer begin class.Class2.CXX_definitions
@@ -53,11 +54,13 @@ extern "C" {
 
 // Class2()
 // function_index=0
-FOR_class2 FOR_class2_ctor()
+FOR_class2 * FOR_class2_ctor()
 {
 // splicer begin class.Class2.method.ctor
     tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
-    FOR_class2 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+    FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }
@@ -76,7 +79,7 @@ void FOR_class2_dtor(FOR_class2 * self)
 // splicer end class.Class2.method.dtor
 }
 
-// void func1(Class1 * arg +intent(in))
+// void func1(Class1 * arg +intent(in)+value)
 // function_index=2
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {

@@ -56,7 +56,8 @@ module class1_mod
 
 
     type class1
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
     contains
         procedure :: method1 => class1_method1
         procedure :: get_instance => class1_get_instance
@@ -77,10 +78,9 @@ module class1_mod
 
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="DEF_class1_method1")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 
@@ -92,7 +92,7 @@ contains
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: arg1
-        call c_class1_method1(obj%cxxmem, arg1)
+        call c_class1_method1(obj%cxxptr, arg1)
     end subroutine class1_method1
 
     function class1_get_instance(obj) result (cxxmem)
@@ -120,14 +120,14 @@ contains
     subroutine class1_final(obj)
         type(class1), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="DEF_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine class1_final
 
 

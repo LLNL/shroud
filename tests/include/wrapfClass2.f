@@ -56,7 +56,8 @@ module class2_mod
 
 
     type class2
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
@@ -78,20 +79,18 @@ module class2_mod
 
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="DEF_class2_method1")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: comm
         end subroutine c_class2_method1
 
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="DEF_class2_method2")
-            use class1_mod, only : class1
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
-            type(SHROUD_capsule_data), intent(IN) :: c2
+            type(C_PTR), value, intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: c2
         end subroutine c_class2_method2
 
     end interface
@@ -101,14 +100,14 @@ contains
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
-        call c_class2_method1(obj%cxxmem, comm)
+        call c_class2_method1(obj%cxxptr, comm)
     end subroutine class2_method1
 
     subroutine class2_method2(obj, c2)
         use class1_mod, only : class1
         class(class2) :: obj
-        type(class1), intent(IN) :: c2
-        call c_class2_method2(obj%cxxmem, c2%cxxmem)
+        type(class1), value, intent(IN) :: c2
+        call c_class2_method2(obj%cxxptr, c2%cxxptr)
     end subroutine class2_method2
 
     function class2_get_instance(obj) result (cxxmem)
@@ -136,14 +135,14 @@ contains
     subroutine class2_final(obj)
         type(class2), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="DEF_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine class2_final
 
 

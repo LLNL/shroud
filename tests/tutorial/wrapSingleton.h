@@ -66,7 +66,7 @@ typedef struct s_TUT_singleton TUT_singleton;
 // splicer begin class.Singleton.C_declarations
 // splicer end class.Singleton.C_declarations
 
-TUT_singleton TUT_singleton_get_reference();
+TUT_singleton * TUT_singleton_get_reference();
 
 #ifdef __cplusplus
 }

@@ -81,7 +81,8 @@ module tutorial_mod
     ! splicer end class.Class1.module_top
 
     type class1
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -105,7 +106,8 @@ module tutorial_mod
     ! splicer end class.Singleton.module_top
 
     type singleton
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
@@ -144,63 +146,59 @@ module tutorial_mod
         function c_class1_new_default() &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_default")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_class1_new_default
 
         function c_class1_new_flag(flag) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_flag")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_class1_new_flag
 
         subroutine c_class1_delete(self) &
                 bind(C, name="TUT_class1_delete")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine c_class1_delete
 
         function c_class1_method1(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_method1")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_method1
 
         pure function c_class1_equivalent(self, obj2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_equivalent")
-            use iso_c_binding, only : C_BOOL
-            import :: SHROUD_capsule_data, class1
+            use iso_c_binding, only : C_BOOL, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
-            type(SHROUD_capsule_data), intent(IN) :: obj2
+            type(C_PTR), value, intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: obj2
             logical(C_BOOL) :: SHT_rv
         end function c_class1_equivalent
 
         subroutine c_class1_return_this(self) &
                 bind(C, name="TUT_class1_return_this")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine c_class1_return_this
 
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_direction_func")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_class1_direction_func
@@ -208,29 +206,26 @@ module tutorial_mod
         function c_class1_get_m_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_m_flag")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_m_flag
 
         function c_class1_get_test(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_test")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_test
 
         subroutine c_class1_set_test(self, val) &
                 bind(C, name="TUT_class1_set_test")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_class1_set_test
 
@@ -240,9 +235,9 @@ module tutorial_mod
         function c_singleton_get_reference() &
                 result(SHT_rv) &
                 bind(C, name="TUT_singleton_get_reference")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_singleton_get_reference
 
         ! splicer begin class.Singleton.additional_interfaces
@@ -587,37 +582,35 @@ module tutorial_mod
         function c_useclass(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TUT_useclass")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data, class1
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: arg1
+            type(C_PTR), value, intent(IN) :: arg1
             integer(C_INT) :: SHT_rv
         end function c_useclass
 
         function c_getclass2() &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass2")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_getclass2
 
         function c_getclass3() &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass3")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_getclass3
 
         function c_get_class_new(flag) &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_class_new")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_class_new
 
         function callback1(in, incr) &
@@ -761,9 +754,11 @@ contains
     ! function_index=0
     function class1_new_default() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new_default
-        SHT_rv%cxxmem = c_class1_new_default()
+        SHT_rv%cxxptr = c_class1_new_default()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_default
     end function class1_new_default
 
@@ -771,11 +766,12 @@ contains
     ! function_index=1
     function class1_new_flag(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new_flag
-        SHT_rv%cxxmem = c_class1_new_flag(flag)
+        SHT_rv%cxxptr = c_class1_new_flag(flag)
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_flag
     end function class1_new_flag
 
@@ -784,7 +780,7 @@ contains
     subroutine class1_delete(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
-        call c_class1_delete(obj%cxxmem)
+        call c_class1_delete(obj%cxxptr)
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
 
@@ -800,11 +796,11 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.method1
-        SHT_rv = c_class1_method1(obj%cxxmem)
+        SHT_rv = c_class1_method1(obj%cxxptr)
         ! splicer end class.Class1.method.method1
     end function class1_method1
 
-    ! bool equivalent(const Class1 & obj2 +intent(in)) const
+    ! bool equivalent(const Class1 & obj2 +intent(in)+value) const
     ! function_index=4
     !>
     !! \brief Pass in reference to instance
@@ -814,10 +810,10 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
         class(class1) :: obj
-        type(class1), intent(IN) :: obj2
+        type(class1), value, intent(IN) :: obj2
         logical :: SHT_rv
         ! splicer begin class.Class1.method.equivalent
-        SHT_rv = c_class1_equivalent(obj%cxxmem, obj2%cxxmem)
+        SHT_rv = c_class1_equivalent(obj%cxxptr, obj2%cxxptr)
         ! splicer end class.Class1.method.equivalent
     end function class1_equivalent
 
@@ -830,7 +826,7 @@ contains
     subroutine class1_return_this(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.return_this
-        call c_class1_return_this(obj%cxxmem)
+        call c_class1_return_this(obj%cxxptr)
         ! splicer end class.Class1.method.return_this
     end subroutine class1_return_this
 
@@ -843,7 +839,7 @@ contains
         integer(C_INT), value, intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.direction_func
-        SHT_rv = c_class1_direction_func(obj%cxxmem, arg)
+        SHT_rv = c_class1_direction_func(obj%cxxptr, arg)
         ! splicer end class.Class1.method.direction_func
     end function class1_direction_func
 
@@ -855,7 +851,7 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_m_flag
-        SHT_rv = c_class1_get_m_flag(obj%cxxmem)
+        SHT_rv = c_class1_get_m_flag(obj%cxxptr)
         ! splicer end class.Class1.method.get_m_flag
     end function class1_get_m_flag
 
@@ -867,7 +863,7 @@ contains
         class(class1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_test
-        SHT_rv = c_class1_get_test(obj%cxxmem)
+        SHT_rv = c_class1_get_test(obj%cxxptr)
         ! splicer end class.Class1.method.get_test
     end function class1_get_test
 
@@ -878,7 +874,7 @@ contains
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Class1.method.set_test
-        call c_class1_set_test(obj%cxxmem, val)
+        call c_class1_set_test(obj%cxxptr, val)
         ! splicer end class.Class1.method.set_test
     end subroutine class1_set_test
 
@@ -907,14 +903,14 @@ contains
     subroutine class1_final(obj)
         type(class1), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="TUT_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine class1_final
 
     ! splicer begin class.Class1.additional_functions
@@ -924,9 +920,11 @@ contains
     ! function_index=10
     function singleton_get_reference() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(singleton) :: SHT_rv
         ! splicer begin class.Singleton.method.get_reference
-        SHT_rv%cxxmem = c_singleton_get_reference()
+        SHT_rv%cxxptr = c_singleton_get_reference()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
 
@@ -955,14 +953,14 @@ contains
     subroutine singleton_final(obj)
         type(singleton), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="TUT_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine singleton_final
 
     ! splicer begin class.Singleton.additional_functions
@@ -1335,15 +1333,15 @@ contains
         ! splicer end function.overload1_5
     end function overload1_5
 
-    ! int useclass(const Class1 * arg1 +intent(in))
+    ! int useclass(const Class1 * arg1 +intent(in)+value)
     ! function_index=38
     function useclass(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        type(class1), intent(IN) :: arg1
+        type(class1), value, intent(IN) :: arg1
         integer(C_INT) :: SHT_rv
         ! splicer begin function.useclass
-        SHT_rv = c_useclass(arg1%cxxmem)
+        SHT_rv = c_useclass(arg1%cxxptr)
         ! splicer end function.useclass
     end function useclass
 
@@ -1351,9 +1349,11 @@ contains
     ! function_index=39
     function getclass2() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(class1) :: SHT_rv
         ! splicer begin function.getclass2
-        SHT_rv%cxxmem = c_getclass2()
+        SHT_rv%cxxptr = c_getclass2()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end function.getclass2
     end function getclass2
 
@@ -1361,9 +1361,11 @@ contains
     ! function_index=40
     function getclass3() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(class1) :: SHT_rv
         ! splicer begin function.getclass3
-        SHT_rv%cxxmem = c_getclass3()
+        SHT_rv%cxxptr = c_getclass3()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
 
@@ -1375,11 +1377,12 @@ contains
     !<
     function get_class_new(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_new
-        SHT_rv%cxxmem = c_get_class_new(flag)
+        SHT_rv%cxxptr = c_get_class_new(flag)
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new
 

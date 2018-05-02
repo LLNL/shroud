@@ -80,7 +80,7 @@ static int l_class2_dtor(lua_State *L)
     // splicer end class.Class2.method.__gc
 }
 
-// void func1(Class1 * arg +intent(in))
+// void func1(Class1 * arg +intent(in)+value)
 static int l_class2_func1(lua_State *L)
 {
     // splicer begin class.Class2.method.func1

@@ -108,6 +108,17 @@ Exascale Programming: Adapting What We Have Can (and Must) Work
 
 http://www.hpcwire.com/2016/01/14/24151/
 
+https://github.com/Trilinos/ForTrilinos
+
+This is the new effort to provide Fortran interfaces to Trilinos
+through automatic code generation using SWIG. The previous effort
+(ca. 2008-2012) can be obtained by downloading Trilinos releases prior
+to 12.12.
+
+https://trilinos.github.io/ForTrilinos/files/ForTrilinos_Design_Document.pdf
+
+The custom version of swig available at https://github.com/sethrj/swig
+
 MPICH
 -----
 

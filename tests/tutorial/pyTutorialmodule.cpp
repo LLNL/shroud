@@ -862,7 +862,7 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
-// int useclass(const Class1 * arg1 +intent(in))
+// int useclass(const Class1 * arg1 +intent(in)+value)
 // splicer begin function.useclass
     PY_Class1 * SHPy_arg1;
     const char *SHT_kwlist[] = {

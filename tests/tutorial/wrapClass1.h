@@ -74,9 +74,9 @@ typedef struct s_TUT_class1 TUT_class1;
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-TUT_class1 TUT_class1_new_default();
+TUT_class1 * TUT_class1_new_default();
 
-TUT_class1 TUT_class1_new_flag(int flag);
+TUT_class1 * TUT_class1_new_flag(int flag);
 
 void TUT_class1_delete(TUT_class1 * self);
 

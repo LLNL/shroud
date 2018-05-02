@@ -61,7 +61,8 @@ module exclass3_mod
     ! splicer end class.ExClass3.module_top
 
     type exclass3
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
@@ -93,19 +94,18 @@ module exclass3_mod
 #ifdef USE_CLASS3_A
         subroutine c_exclass3_exfunc_0(self) &
                 bind(C, name="AA_exclass3_exfunc_0")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine c_exclass3_exfunc_0
 #endif
 
 #ifndef USE_CLASS3_A
         subroutine c_exclass3_exfunc_1(self, flag) &
                 bind(C, name="AA_exclass3_exfunc_1")
-            use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_exclass3_exfunc_1
 #endif
@@ -122,7 +122,7 @@ contains
     subroutine exclass3_exfunc_0(obj)
         class(exclass3) :: obj
         ! splicer begin class.ExClass3.method.exfunc_0
-        call c_exclass3_exfunc_0(obj%cxxmem)
+        call c_exclass3_exfunc_0(obj%cxxptr)
         ! splicer end class.ExClass3.method.exfunc_0
     end subroutine exclass3_exfunc_0
 #endif
@@ -135,7 +135,7 @@ contains
         class(exclass3) :: obj
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin class.ExClass3.method.exfunc_1
-        call c_exclass3_exfunc_1(obj%cxxmem, flag)
+        call c_exclass3_exfunc_1(obj%cxxptr, flag)
         ! splicer end class.ExClass3.method.exfunc_1
     end subroutine exclass3_exfunc_1
 #endif
@@ -157,14 +157,14 @@ contains
     subroutine exclass3_final(obj)
         type(exclass3), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="AA_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine exclass3_final
 
     ! splicer begin class.ExClass3.additional_functions

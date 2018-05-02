@@ -64,7 +64,8 @@ module forward_mod
     ! splicer end class.Class2.module_top
 
     type class2
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -91,25 +92,24 @@ module forward_mod
         function c_class2_ctor() &
                 result(SHT_rv) &
                 bind(C, name="FOR_class2_ctor")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_class2_ctor
 
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_class2_dtor")
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: self
         end subroutine c_class2_dtor
 
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_class2_func1")
-            use tutorial_mod, only : class1
-            import :: SHROUD_capsule_data
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
-            type(class1), intent(IN) :: arg
+            type(C_PTR), value, intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: arg
         end subroutine c_class2_func1
 
         ! splicer begin class.Class2.additional_interfaces
@@ -122,9 +122,11 @@ contains
     ! function_index=0
     function class2_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(class2) :: SHT_rv
         ! splicer begin class.Class2.method.ctor
-        SHT_rv%cxxmem = c_class2_ctor()
+        SHT_rv%cxxptr = c_class2_ctor()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.Class2.method.ctor
     end function class2_ctor
 
@@ -133,18 +135,18 @@ contains
     subroutine class2_dtor(obj)
         class(class2) :: obj
         ! splicer begin class.Class2.method.dtor
-        call c_class2_dtor(obj%cxxmem)
+        call c_class2_dtor(obj%cxxptr)
         ! splicer end class.Class2.method.dtor
     end subroutine class2_dtor
 
-    ! void func1(Class1 * arg +intent(in))
+    ! void func1(Class1 * arg +intent(in)+value)
     ! function_index=2
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj
-        type(class1), intent(IN) :: arg
+        type(class1), value, intent(IN) :: arg
         ! splicer begin class.Class2.method.func1
-        call c_class2_func1(obj%cxxmem, arg%cxxmem)
+        call c_class2_func1(obj%cxxptr, arg%cxxptr)
         ! splicer end class.Class2.method.func1
     end subroutine class2_func1
 
@@ -173,14 +175,14 @@ contains
     subroutine class2_final(obj)
         type(class2), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="FOR_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine class2_final
 
     ! splicer begin class.Class2.additional_functions

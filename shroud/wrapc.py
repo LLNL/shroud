@@ -439,6 +439,18 @@ class Wrapc(util.WrapperMixin):
         output[-1] = output[-1][:-1]        # Avoid trailing comma for older compilers
         append_format(output, '-}};', fmt_enum)
 
+    def add_c_statements_headers(self, intent_blk):
+        """Add headers required by intent_blk.
+        """
+        # include any dependent header in generated source
+        if self.language == 'c':
+            headers = intent_blk.get('c_header', None)
+        else:
+            headers = intent_blk.get('cxx_header', None)
+        if headers:
+            for h in headers.split():
+                self.header_impl_include[h] = True
+
     def wrap_function(self, cls, node):
         """
         Wrap a C++ function with C
@@ -465,10 +477,6 @@ class Wrapc(util.WrapperMixin):
         else:
             # C++ will need C wrappers to deal with name mangling.
             need_wrapper = True
-        if self.language == 'c':
-            lang_header = 'c_header'
-        else:
-            lang_header = 'cxx_header'
 
         # Look for C++ routine to wrap
         # Usually the same node unless it is generated (i.e. bufferified)
@@ -535,6 +543,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
             if result_typedef.base == 'shadow' and not CXX_ast.is_indirect() and not is_ctor:
+                #- decl: Class1 getClassNew() 
                 is_shadow_scalar = True
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True, force_ptr=True)
@@ -800,11 +809,7 @@ class Wrapc(util.WrapperMixin):
                 for helper in c_helper.split():
                     self.c_helper[helper] = True
 
-            cxx_header = intent_blk.get(lang_header, None)
-            # include any dependent header in generated source
-            if cxx_header:
-                for h in cxx_header.split():
-                    self.header_impl_include[h] = True
+            self.add_c_statements_headers(intent_blk)
 
             if arg_call:
                 # Collect arguments to pass to wrapped function.
@@ -847,8 +852,8 @@ class Wrapc(util.WrapperMixin):
         elif is_dtor:
             fmt_func.C_return_type = 'void'
         elif result_typedef.base == 'shadow':
-            # Return capsule_data by value. It contains pointer to results.
-            fmt_func.C_return_type = result_typedef.c_type
+            # Return pointer to capsule_data. It contains pointer to results.
+            fmt_func.C_return_type = result_typedef.c_type + ' *'
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type
         elif node.return_pointer_as == 'scalar':
@@ -877,11 +882,16 @@ class Wrapc(util.WrapperMixin):
             append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
                           '{cxx_class}({C_call_list});', fmt_func)
             if result_typedef.cxx_to_c is not None:
-                fmt_func.c_rv_decl = CXX_ast.gen_arg_as_c(
-                    name=fmt_result.c_var, params=None, continuation=True)
+                fmt_func.c_rv_decl = result_typedef.c_type + ' *' + fmt_result.c_var
                 fmt_result.c_val = wformat(result_typedef.cxx_to_c, fmt_result)
+            fmt_result.c_type = result_typedef.c_type;
+            fmt_result.idtor  = '0'
+            self.header_impl_include['<stdlib.h>'] = True  # for malloc
+            # XXX - similar to c_statements.result
             append_format(post_call,
-                          result_typedef.c_type + ' {c_var} = {{ {c_val}, 0 }};',
+                          '{c_type} *{c_var} = ({c_type} *) malloc(sizeof({c_type}));\n'
+                          '{c_var}->addr = {c_val};\n'
+                          '{c_var}->idtor = {idtor};',
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
@@ -924,6 +934,7 @@ class Wrapc(util.WrapperMixin):
 
                 c_statements = result_typedef.c_statements
                 intent_blk = c_statements.get('result' + generated_suffix, {})
+                self.add_c_statements_headers(intent_blk)
                 cmd_list = intent_blk.get('pre_call', [])
                 for cmd in cmd_list:
                     append_format(pre_call, cmd, fmt_result)

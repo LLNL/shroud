@@ -135,7 +135,7 @@ PY_class1_equivalent(
   PyObject *args,
   PyObject *kwds)
 {
-// bool equivalent(const Class1 & obj2 +intent(in)) const
+// bool equivalent(const Class1 & obj2 +intent(in)+value) const
 // splicer begin class.Class1.method.equivalent
     PY_Class1 * SHPy_obj2;
     const char *SHT_kwlist[] = {

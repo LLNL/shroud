@@ -1059,7 +1059,6 @@ def create_class_typedef(cls):
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
-            f_c_type = 'type({})'.format(fmt_class.F_capsule_data_type),
             )
         typedef_shadow_defaults(typedef)
         Typedef.register(type_name, typedef)
@@ -1084,6 +1083,8 @@ def typedef_shadow_defaults(typedef):
                       typedef.cxx_type)
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
+    typedef.f_c_type='type(C_PTR)'
+    typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
 
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
@@ -1094,8 +1095,13 @@ def typedef_shadow_defaults(typedef):
            buf_args = [ 'shadow' ]
         ),
         result=dict(
+            c_header='<stdlib.h>',
+            cxx_header='<stdlib.h>',
             post_call=[
-                '%s {c_var} = {{ {cxx_cast_to_void_ptr}, {idtor} }};' % typedef.c_type,
+                '%s *{c_var} = (%s *) malloc(sizeof(%s));' % (
+                    typedef.c_type, typedef.c_type, typedef.c_type),
+                '{c_var}->addr = {cxx_cast_to_void_ptr};',
+                '{c_var}->idtor = {idtor};',
             ]
         ),
     )
@@ -1105,9 +1111,14 @@ def typedef_shadow_defaults(typedef):
     typedef.f_statements = dict(
         result=dict(
             need_wrapper=True,
+            f_module=dict(iso_c_binding=['c_f_pointer']),
             call=[
-                ('{F_result}%{F_derived_member} = '
-                 '{F_C_call}({F_arg_c_call})')
+                ('{F_result}%{F_derived_ptr} = '
+                 '{F_C_call}({F_arg_c_call})'),
+                ],
+            post_call=[
+                ('call c_f_pointer({F_result}%{F_derived_ptr}, '
+                 '{F_result}%{F_derived_member})'),
                 ],
             )
         )

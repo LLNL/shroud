@@ -261,7 +261,8 @@ class Wrapf(util.WrapperMixin):
                 '',
                 wformat('type {F_derived_name}', fmt_class),
                 1,
-                wformat('type({F_capsule_data_type}), private :: {F_derived_member}', fmt_class),
+                wformat('type(C_PTR), private :: {F_derived_ptr}', fmt_class),
+                wformat('type({F_capsule_data_type}), pointer, private :: {F_derived_member}', fmt_class),
                 ])
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_NULL_PTR')
         self._create_splicer('component_part', self.f_type_decl)
@@ -434,13 +435,13 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
 subroutine {F_name_impl}({F_this})+
 type({F_derived_name}), intent(INOUT) :: {F_this}
 interface+
-subroutine array_destructor(mem)\t bind(C, name="{C_memory_dtor_function}")+
-import {F_capsule_data_type}
+subroutine array_destructor(ptr)\t bind(C, name="{C_memory_dtor_function}")+
+use iso_c_binding, only : C_PTR
 implicit none
-type({F_capsule_data_type}), intent(INOUT) :: mem
+type(C_PTR), value, intent(IN) :: ptr
 -end subroutine array_destructor
 -end interface
-call array_destructor({F_this}%{F_derived_member})
+call array_destructor({F_this}%{F_derived_ptr})
 -end subroutine {F_name_impl}""", fmt)
 
     def overload_compare(self, fmt_class, operator, procedure, predicate):
@@ -685,8 +686,8 @@ rv = .false.
                 arg_c_names.append(fmt.C_this)
                 append_format(
                     arg_c_decl,
-                    'type({F_capsule_data_type}), intent(IN) :: {C_this}', fmt)
-                imports[fmt.F_capsule_data_type] = True
+                    'type(C_PTR), value, intent(IN) :: {C_this}', fmt)
+                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
 
         args_all_in = True   # assume all arguments are intent(in)
         for arg in ast.params:
@@ -732,7 +733,7 @@ rv = .false.
                 elif buf_arg == 'shadow':
                     arg_c_names.append(arg.name)
                     arg_c_decl.append(arg.bind_c())
-                    imports[fmt.F_capsule_data_type] = True
+                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
                     continue
 
                 if buf_arg not in attrs:
@@ -751,7 +752,6 @@ rv = .false.
                     arg_c_decl.append(
                         'type(%s), intent(INOUT) :: %s' % (
                             fmt.F_capsule_data_type, buf_arg_name))
-#                    self.set_f_module(modules, 'iso_c_binding', 'capsule_struct')
                     imports[fmt.F_capsule_data_type] = True
                 elif buf_arg == 'context':
                     arg_c_names.append(buf_arg_name)
@@ -799,12 +799,9 @@ rv = .false.
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
                 else:
                     arg_c_decl.append(rvast.bind_c())
-                if result_typedef.base == 'shadow':
-                    imports[fmt.F_capsule_data_type] = True
-                else:
-                    self.update_f_module(modules,
-                                         result_typedef.f_c_module or
-                                         result_typedef.f_module)
+                self.update_f_module(modules,
+                                     result_typedef.f_c_module or
+                                     result_typedef.f_module)
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name, imports)
 
@@ -960,7 +957,7 @@ rv = .false.
                         'class({F_derived_name}) :: {F_this}',
                         fmt_func))
                 # could use {f_to_c} but I'd rather not hide the shadow class
-                arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
+                arg_c_call.append(wformat('{F_this}%{F_derived_ptr}', fmt_func))
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1094,9 +1091,9 @@ rv = .false.
                         arg_c_call.append(fmt_arg.c_var)
                     continue
                 elif buf_arg == 'shadow':
-                    # Pass down the BIND(C) part of shadow type
+                    # Pass down the pointer to {F_capsule_data_type}
                     need_wrapper = True
-                    append_format(arg_c_call, '{f_var}%{F_derived_member}', fmt_arg)
+                    append_format(arg_c_call, '{f_var}%{F_derived_ptr}', fmt_arg)
                     continue
 
                 need_wrapper = True
@@ -1236,9 +1233,14 @@ rv = .false.
         else:
             F_code = []
             if is_ctor:
+                # construct returns a C_PTR.  Then setup fortran POINTER member.
+                # XXX - f_statements.result has same code
                 fmt_func.F_call_code = wformat(
-                    '{F_result}%{F_derived_member} = '
-                    '{F_C_call}({F_arg_c_call})', fmt_func)
+                    '{F_result}%{F_derived_ptr} = '
+                    '{F_C_call}({F_arg_c_call})\n'
+                    'call c_f_pointer({F_result}%{F_derived_ptr}, '
+                    '{F_result}%{F_derived_member})', fmt_func)
+                self.set_f_module(modules, 'iso_c_binding', 'c_f_pointer')
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == 'function':
                 f_statements = result_typedef.f_statements
@@ -1250,11 +1252,14 @@ rv = .false.
                 else:
                     cmd_list = [ '{F_result} = {F_C_call}({F_arg_c_call})']
 #                for cmd in cmd_list:  # only allow a single statment for now
-#                    append_format(pre_call, cmd, fmt_arg)
+#                    append_format(pre_call, cmd, fmt_func)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
                 F_code.append(fmt_func.F_call_code)
 
-                # Find any helper routines needed
+                if util.append_format_cmds(F_code, intent_blk, 'post_call', fmt_func):
+                    need_wrapper = True
+                if 'f_module' in intent_blk:
+                    self.update_f_module(modules, intent_blk['f_module'])
                 if 'f_helper' in intent_blk:
                     for helper in intent_blk['f_helper'].split():
                         self.f_helper[helper] = True
@@ -1262,10 +1267,6 @@ rv = .false.
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
 
-#            if result_typedef.f_post_call:
-#                need_wrapper = True
-#                # adjust return value or cleanup
-#                append_format(F_code, result_typedef.f_post_call, fmt_func)
             if return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)

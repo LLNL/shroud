@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapClass1.h"
+#include <stdlib.h>
 #include "tutorial.hpp"
 
 // splicer begin class.Class1.CXX_definitions
@@ -53,22 +54,26 @@ extern "C" {
 
 // Class1() +name(new)
 // function_index=0
-TUT_class1 TUT_class1_new_default()
+TUT_class1 * TUT_class1_new_default()
 {
 // splicer begin class.Class1.method.new_default
     tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
-    TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class1.method.new_default
 }
 
 // Class1(int flag +intent(in)+value) +name(new)
 // function_index=1
-TUT_class1 TUT_class1_new_flag(int flag)
+TUT_class1 * TUT_class1_new_flag(int flag)
 {
 // splicer begin class.Class1.method.new_flag
     tutorial::Class1 *SHCXX_rv = new tutorial::Class1(flag);
-    TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class1.method.new_flag
 }
@@ -103,7 +108,7 @@ int TUT_class1_method1(TUT_class1 * self)
 // splicer end class.Class1.method.method1
 }
 
-// bool equivalent(const Class1 & obj2 +intent(in)) const
+// bool equivalent(const Class1 & obj2 +intent(in)+value) const
 // function_index=4
 /**
  * \brief Pass in reference to instance

@@ -58,9 +58,28 @@ def wformat(template, dct):
         raise SystemExit('Error with template: ' + '%r'%template)
 
 
-def append_format(lst, template, dct):
+def append_format(lstout, template, fmt):
+    """Format template and append to lstout.
+    """
     # shorthand, wrap fmt.vformat
-    lst.append(wformat(template, dct))
+    lstout.append(wformat(template, fmt))
+
+def append_format_lst(lstout, lstin, fmt):
+    """Format entries in lstin and append to lstout.
+    """
+    for template in lstin:
+        lstout.append(wformat(template, fmt))
+
+def append_format_cmds(lstout, dictin, name, fmt):
+    """Format entries in dictin[name] and append to lstout.
+    Return True if found.
+    Used with c_statements and f_statements.
+    """
+    if name not in dictin:
+        return False
+    for template in dictin[name]:
+        lstout.append(wformat(template, fmt))
+    return True
 
 def append_format_indent(lst, template, dct, indent='    '):
     """Split lines, indent each by 4 blanks, append to out. 

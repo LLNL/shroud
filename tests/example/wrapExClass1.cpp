@@ -41,6 +41,7 @@
 // #######################################################################
 #include "wrapExClass1.h"
 #include <cstring>
+#include <stdlib.h>
 #include <string>
 #include "ExClass1.hpp"
 
@@ -65,12 +66,14 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 
 // ExClass1()
 // function_index=0
-AA_exclass1 AA_exclass1_ctor_0()
+AA_exclass1 * AA_exclass1_ctor_0()
 {
 // splicer begin class.ExClass1.method.ctor_0
     example::nested::ExClass1 *SHCXX_rv = new example::nested::
         ExClass1();
-    AA_exclass1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+    AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_0
 }
@@ -85,13 +88,15 @@ AA_exclass1 AA_exclass1_ctor_0()
  *
  * \return return new instance
  */
-AA_exclass1 AA_exclass1_ctor_1(const char * name)
+AA_exclass1 * AA_exclass1_ctor_1(const char * name)
 {
 // splicer begin class.ExClass1.method.ctor_1
     const std::string SH_name(name);
     example::nested::ExClass1 *SHCXX_rv = new example::nested::
         ExClass1(&SH_name);
-    AA_exclass1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+    AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1
 }
@@ -106,13 +111,15 @@ AA_exclass1 AA_exclass1_ctor_1(const char * name)
  *
  * \return return new instance
  */
-AA_exclass1 AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
+AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
 {
 // splicer begin class.ExClass1.method.ctor_1_bufferify
     const std::string SH_name(name, Lname);
     example::nested::ExClass1 *SHCXX_rv = new example::nested::
         ExClass1(&SH_name);
-    AA_exclass1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+    AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1_bufferify
 }

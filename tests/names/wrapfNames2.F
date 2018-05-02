@@ -62,7 +62,8 @@ module names2_mod
     ! splicer end class.Names2.module_top
 
     type names2
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(C_PTR), private :: cxxptr
+        type(SHROUD_capsule_data), pointer, private :: cxxmem
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -115,14 +116,14 @@ contains
     subroutine names2_final(obj)
         type(names2), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr) &
                 bind(C, name="TES_SHROUD_array_destructor_function")
-                import SHROUD_capsule_data
+                use iso_c_binding, only : C_PTR
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem
+                type(C_PTR), value, intent(IN) :: ptr
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxmem)
+        call array_destructor(obj%cxxptr)
     end subroutine names2_final
 
     ! splicer begin class.Names2.additional_functions
