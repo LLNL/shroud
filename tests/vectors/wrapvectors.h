@@ -61,6 +61,7 @@ extern "C" {
 struct s_SHROUD_capsule_data {
   void *addr;     /* address of C++ memory */
   int idtor;      /* index of destructor */
+  int refcount;   /* reference count */
 };
 typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
 
@@ -84,6 +85,9 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg);
+
+void VEC_SHROUD_array_destructor_function
+    (SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }

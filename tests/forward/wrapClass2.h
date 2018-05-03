@@ -58,13 +58,15 @@ extern "C" {
 
 // declaration of shadow types
 struct s_FOR_class2 {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_FOR_class2 FOR_class2;
 struct s_TUT_class1 {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_TUT_class1 TUT_class1;
 
@@ -76,6 +78,8 @@ FOR_class2 * FOR_class2_ctor();
 void FOR_class2_dtor(FOR_class2 * self);
 
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg);
+
+void FOR_SHROUD_array_destructor_function(FOR_class2 *cap, bool gc);
 
 #ifdef __cplusplus
 }

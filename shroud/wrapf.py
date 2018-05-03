@@ -257,12 +257,13 @@ class Wrapf(util.WrapperMixin):
         self.f_type_decl.append('')
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_top', self.f_type_decl)
+        # XXX - make members private later, but not now for debugging.
         self.f_type_decl.extend([
                 '',
                 wformat('type {F_derived_name}', fmt_class),
                 1,
-                wformat('type(C_PTR), private :: {F_derived_ptr}', fmt_class),
-                wformat('type({F_capsule_data_type}), pointer, private :: {F_derived_member}', fmt_class),
+                wformat('type(C_PTR), private :: {F_derived_ptr} = C_NULL_PTR', fmt_class),
+                wformat('type({F_capsule_data_type}), pointer :: {F_derived_member} => null()', fmt_class),
                 ])
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_NULL_PTR')
         self._create_splicer('component_part', self.f_type_decl)
@@ -367,7 +368,7 @@ class Wrapf(util.WrapperMixin):
         impl = self.impl
         fmt = util.Scope(fmt_class)
 
-        # get
+        # getter
         fmt.underscore_name = fmt_class.F_name_instance_get
         if fmt.underscore_name:
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
@@ -378,14 +379,19 @@ class Wrapf(util.WrapperMixin):
 
             append_format(
                 impl, """
-function {F_name_impl}({F_this}) result ({F_derived_member})+
-use iso_c_binding, only: C_PTR
+! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+function {F_name_impl}({F_this}) result ({F_derived_ptr})+
+use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
 class({F_derived_name}), intent(IN) :: {F_this}
-type(C_PTR) :: {F_derived_member}
-{F_derived_member} = {F_this}%{F_derived_member}%addr
+type(C_PTR) :: {F_derived_ptr}
+if (c_associated({F_this}%{F_derived_ptr})) then+
+{F_derived_ptr} = {F_this}%{F_derived_member}%addr
+-else+
+{F_derived_ptr} = C_NULL_PTR
+-endif
 -end function {F_name_impl}""", fmt)
 
-        # set
+        # setter
         fmt.underscore_name = fmt_class.F_name_instance_set
         if fmt.underscore_name:
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
@@ -423,6 +429,30 @@ logical rv
 rv = c_associated({F_this}%{F_derived_member}%addr)
 -end function {F_name_impl}""", fmt)
 
+        # assign
+        fmt.underscore_name = fmt_class.F_name_assign
+        fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+        fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
+
+        self.type_bound_part.append('procedure :: %s' % fmt.F_name_impl)
+        self.type_bound_part.append('generic :: assignment(=) => %s' % fmt.F_name_impl)
+
+        append_format(
+            impl, """
+subroutine {F_name_impl}(lhs, rhs)+
+use iso_c_binding, only : c_associated, c_f_pointer
+class({F_derived_name}), intent(INOUT) :: lhs
+class({F_derived_name}), intent(IN) :: rhs
+
+lhs%{F_derived_ptr} = rhs%{F_derived_ptr}
+if (c_associated(lhs%{F_derived_ptr})) then+
+call c_f_pointer(lhs%{F_derived_ptr}, lhs%{F_derived_member})
+lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
+-else+
+nullify(lhs%{F_derived_member})
+-endif
+-end subroutine {F_name_impl}""", fmt)
+
         # final
         fmt.underscore_name = fmt_class.F_name_final
         fmt.F_name_function = wformat(options.F_name_function_template, fmt)
@@ -433,15 +463,21 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
         append_format(
             impl, """
 subroutine {F_name_impl}({F_this})+
+use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
 type({F_derived_name}), intent(INOUT) :: {F_this}
 interface+
-subroutine array_destructor(ptr)\t bind(C, name="{C_memory_dtor_function}")+
-use iso_c_binding, only : C_PTR
+subroutine array_destructor(ptr, gc)\t bind(C, name="{C_memory_dtor_function}")+
+use iso_c_binding, only : C_BOOL, C_INT, C_PTR
 implicit none
 type(C_PTR), value, intent(IN) :: ptr
+logical(C_BOOL), value, intent(IN) :: gc
 -end subroutine array_destructor
 -end interface
-call array_destructor({F_this}%{F_derived_ptr})
+if (c_associated({F_this}%{F_derived_ptr})) then+
+call array_destructor({F_this}%{F_derived_ptr}, .true._C_BOOL)
+{F_this}%{F_derived_ptr} = C_NULL_PTR
+nullify({F_this}%{F_derived_member})
+-endif
 -end subroutine {F_name_impl}""", fmt)
 
     def overload_compare(self, fmt_class, operator, procedure, predicate):
@@ -1266,6 +1302,14 @@ rv = .false.
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
+                if is_dtor:
+                    # post_call for destructor.
+                    self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
+                    append_format(
+                        F_code,
+                        '{F_this}%{F_derived_ptr} = C_NULL_PTR\n'
+                        'nullify({F_this}%{F_derived_member})',
+                        fmt_func)
 
             if return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer

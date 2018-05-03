@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "top.h"
+#include <stdlib.h>
 #include <string>
 
 // splicer begin CXX_definitions
@@ -135,9 +136,14 @@ void TES_init_ns1()
 // splicer end function.init_ns1
 }
 
-// function to release C++ allocated memory
-void TES_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+// Release C++ allocated memory if refcount reaches 0.
+void TES_SHROUD_array_destructor_function
+    (SHROUD_capsule_data *cap, bool gc)
 {
+    --cap->refcount;
+    if (cap->refcount > 0) {
+        return;
+    }
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:
@@ -163,7 +169,12 @@ void TES_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->idtor = 0;  // avoid deleting again
+    if (gc) {
+        free(cap);
+    } else {
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
 }
 
 }  // extern "C"

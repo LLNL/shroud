@@ -772,8 +772,12 @@ F_module_name
     which is **{class_lower}_mod**.
     Only defined if *F_module_per_class* is true.
 
+F_name_assign
+    Name of method that controls assignment of shadow types.
+    Used to help with reference counting.
+
 F_name_associated
-    Name of method to report if aa is associated.
+    Name of method to report if shadow type is associated.
     If the name is blank, no function is generated.
 
 F_name_final

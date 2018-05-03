@@ -61,6 +61,7 @@ extern "C" {
 struct s_SHROUD_capsule_data {
   void *addr;     /* address of C++ memory */
   int idtor;      /* index of destructor */
+  int refcount;   /* reference count */
 };
 typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
 
@@ -80,8 +81,9 @@ typedef struct s_TUT_struct1 TUT_struct1;
 
 // declaration of shadow types
 struct s_TUT_class1 {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_TUT_class1 TUT_class1;
 
@@ -192,6 +194,9 @@ void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg);
 const char * TUT_last_function_called();
 
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
+
+void TUT_SHROUD_array_destructor_function
+    (SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }

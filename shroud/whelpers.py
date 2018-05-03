@@ -186,9 +186,10 @@ def add_capsule_helper(fmt):
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
+integer(C_INT) :: refcount = 0    ! reference count
 -end type {F_capsule_data_type}""", fmt),
             modules = dict(
-                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_INT' ],
+                iso_c_binding=['C_PTR', 'C_INT', 'C_NULL_PTR' ],
             ),
         )
         FHelpers[name] = helper
@@ -199,6 +200,7 @@ integer(C_INT) :: idtor = 0       ! index of destructor
 struct s_{C_capsule_data_type} {{
   void *addr;     /* address of C++ memory */
   int idtor;      /* index of destructor */
+  int refcount;   /* reference count */
 }};
 typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
         )
@@ -219,16 +221,20 @@ type({F_capsule_data_type}) :: mem
 -end type {F_capsule_type}""", fmt),
 # cannot be declared with both PRIVATE and BIND(C) attributes
             source = wformat("""
+! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
+use iso_c_binding, only : C_BOOL
 type({F_capsule_type}), intent(INOUT) :: cap
 interface+
-subroutine array_destructor(mem)\tbind(C, name="{C_memory_dtor_function}")+
+subroutine array_destructor(ptr, gc)\tbind(C, name="{C_memory_dtor_function}")+
+use iso_c_binding, only : C_BOOL
 import {F_capsule_data_type}
 implicit none
-type({F_capsule_data_type}), intent(INOUT) :: mem      
+type({F_capsule_data_type}), intent(INOUT) :: ptr
+logical(C_BOOL), value, intent(IN) :: gc
 -end subroutine array_destructor
 -end interface
-call array_destructor(cap%mem)
+call array_destructor(cap%mem, .false._C_BOOL)
 -end subroutine {F_capsule_final_function}
             """, fmt),
         )

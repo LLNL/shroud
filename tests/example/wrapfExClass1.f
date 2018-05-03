@@ -55,6 +55,7 @@ module exclass1_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
     ! splicer begin class.ExClass1.module_top
@@ -62,8 +63,8 @@ module exclass1_mod
     ! splicer end class.ExClass1.module_top
 
     type exclass1
-        type(C_PTR), private :: cxxptr
-        type(SHROUD_capsule_data), pointer, private :: cxxmem
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -83,6 +84,8 @@ module exclass1_mod
         procedure :: splicer_special => exclass1_splicer_special
         procedure :: yadda => exclass1_yadda
         procedure :: associated => exclass1_associated
+        procedure :: exclass1_assign
+        generic :: assignment(=) => exclass1_assign
         final :: exclass1_final
         generic :: get_value => get_value_from_int, get_value_1
         ! splicer begin class.ExClass1.type_bound_procedure_part
@@ -318,9 +321,12 @@ contains
     !! longer description joined with previous line
     !<
     subroutine exclass1_dtor(obj)
+        use iso_c_binding, only : C_NULL_PTR
         class(exclass1) :: obj
         ! splicer begin class.ExClass1.method.delete
         call c_exclass1_dtor(obj%cxxptr)
+        obj%cxxptr = C_NULL_PTR
+        nullify(obj%cxxmem)
         ! splicer end class.ExClass1.method.delete
     end subroutine exclass1_dtor
 
@@ -471,11 +477,16 @@ contains
         ! splicer end class.ExClass1.method.splicer_special
     end subroutine exclass1_splicer_special
 
-    function exclass1_yadda(obj) result (cxxmem)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function exclass1_yadda(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(exclass1), intent(IN) :: obj
-        type(C_PTR) :: cxxmem
-        cxxmem = obj%cxxmem%addr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function exclass1_yadda
 
     function exclass1_associated(obj) result (rv)
@@ -485,17 +496,37 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function exclass1_associated
 
+    subroutine exclass1_assign(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(exclass1), intent(INOUT) :: lhs
+        class(exclass1), intent(IN) :: rhs
+
+        lhs%cxxptr = rhs%cxxptr
+        if (c_associated(lhs%cxxptr)) then
+            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
+            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
+        else
+            nullify(lhs%cxxmem)
+        endif
+    end subroutine exclass1_assign
+
     subroutine exclass1_final(obj)
+        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
         type(exclass1), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(ptr) &
+            subroutine array_destructor(ptr, gc) &
                 bind(C, name="AA_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_PTR
+                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
                 implicit none
                 type(C_PTR), value, intent(IN) :: ptr
+                logical(C_BOOL), value, intent(IN) :: gc
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxptr)
+        if (c_associated(obj%cxxptr)) then
+            call array_destructor(obj%cxxptr, .true._C_BOOL)
+            obj%cxxptr = C_NULL_PTR
+            nullify(obj%cxxmem)
+        endif
     end subroutine exclass1_final
 
     ! splicer begin class.ExClass1.additional_functions

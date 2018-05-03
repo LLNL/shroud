@@ -59,6 +59,7 @@ extern "C" {
 struct s_SHROUD_capsule_data {
   void *addr;     /* address of C++ memory */
   int idtor;      /* index of destructor */
+  int refcount;   /* reference count */
 };
 typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
 
@@ -87,6 +88,9 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv);
 void YYY_TES_fiveplus();
 
 void TES_init_ns1();
+
+void TES_SHROUD_array_destructor_function
+    (SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }

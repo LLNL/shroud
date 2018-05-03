@@ -61,6 +61,7 @@ TUT_singleton * TUT_singleton_get_reference()
     TUT_singleton *SHC_rv = (TUT_singleton *) malloc(sizeof(TUT_singleton));
     SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.Singleton.method.get_reference
 }

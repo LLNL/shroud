@@ -52,18 +52,21 @@ module class2_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
 
     type class2
-        type(C_PTR), private :: cxxptr
-        type(SHROUD_capsule_data), pointer, private :: cxxmem
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
         procedure :: get_instance => class2_get_instance
         procedure :: set_instance => class2_set_instance
         procedure :: associated => class2_associated
+        procedure :: class2_assign
+        generic :: assignment(=) => class2_assign
         final :: class2_final
     end type class2
 
@@ -110,11 +113,16 @@ contains
         call c_class2_method2(obj%cxxptr, c2%cxxptr)
     end subroutine class2_method2
 
-    function class2_get_instance(obj) result (cxxmem)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function class2_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(class2), intent(IN) :: obj
-        type(C_PTR) :: cxxmem
-        cxxmem = obj%cxxmem%addr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function class2_get_instance
 
     subroutine class2_set_instance(obj, cxxmem)
@@ -132,17 +140,37 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function class2_associated
 
+    subroutine class2_assign(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        class(class2), intent(IN) :: rhs
+
+        lhs%cxxptr = rhs%cxxptr
+        if (c_associated(lhs%cxxptr)) then
+            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
+            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
+        else
+            nullify(lhs%cxxmem)
+        endif
+    end subroutine class2_assign
+
     subroutine class2_final(obj)
+        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
         type(class2), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(ptr) &
+            subroutine array_destructor(ptr, gc) &
                 bind(C, name="DEF_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_PTR
+                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
                 implicit none
                 type(C_PTR), value, intent(IN) :: ptr
+                logical(C_BOOL), value, intent(IN) :: gc
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxptr)
+        if (c_associated(obj%cxxptr)) then
+            call array_destructor(obj%cxxptr, .true._C_BOOL)
+            obj%cxxptr = C_NULL_PTR
+            nullify(obj%cxxmem)
+        endif
     end subroutine class2_final
 
 

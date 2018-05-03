@@ -233,6 +233,8 @@ be controlled directly by the input file::
 
         ! F_name_getter, F_name_setter, F_name_instance_get as underscore_name
         procedure :: [F_name_function_template] => [F_name_impl_template]
+
+        final :: {F_name_final}
       end type {F_derived_name}
 
       abstract interface

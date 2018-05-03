@@ -61,6 +61,7 @@ FOR_class2 * FOR_class2_ctor()
     FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }
@@ -70,11 +71,7 @@ FOR_class2 * FOR_class2_ctor()
 void FOR_class2_dtor(FOR_class2 * self)
 {
 // splicer begin class.Class2.method.dtor
-    tutorial::Class2 *SH_this = static_cast<tutorial::
-        Class2 *>(self->addr);
-    delete SH_this;
-    self->addr = NULL;
-    self->idtor = 0;
+    FOR_SHROUD_array_destructor_function(self, true);
     return;
 // splicer end class.Class2.method.dtor
 }

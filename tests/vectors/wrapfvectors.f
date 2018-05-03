@@ -58,6 +58,7 @@ module vectors_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
     type SHROUD_capsule
@@ -197,17 +198,21 @@ contains
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
+    ! finalize a static SHROUD_capsule_data
     subroutine SHROUD_capsule_final(cap)
+        use iso_c_binding, only : C_BOOL
         type(SHROUD_capsule), intent(INOUT) :: cap
         interface
-            subroutine array_destructor(mem) &
+            subroutine array_destructor(ptr, gc) &
                 bind(C, name="VEC_SHROUD_array_destructor_function")
+                use iso_c_binding, only : C_BOOL
                 import SHROUD_capsule_data
                 implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: mem      
+                type(SHROUD_capsule_data), intent(INOUT) :: ptr
+                logical(C_BOOL), value, intent(IN) :: gc
             end subroutine array_destructor
         end interface
-        call array_destructor(cap%mem)
+        call array_destructor(cap%mem, .false._C_BOOL)
     end subroutine SHROUD_capsule_final
                 
 

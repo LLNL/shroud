@@ -56,20 +56,23 @@ module names2_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
     ! splicer begin class.Names2.module_top
     ! splicer end class.Names2.module_top
 
     type names2
-        type(C_PTR), private :: cxxptr
-        type(SHROUD_capsule_data), pointer, private :: cxxmem
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
         procedure :: get_instance => names2_get_instance
         procedure :: set_instance => names2_set_instance
         procedure :: associated => names2_associated
+        procedure :: names2_assign
+        generic :: assignment(=) => names2_assign
         final :: names2_final
         ! splicer begin class.Names2.type_bound_procedure_part
         ! splicer end class.Names2.type_bound_procedure_part
@@ -91,11 +94,16 @@ module names2_mod
 
 contains
 
-    function names2_get_instance(obj) result (cxxmem)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function names2_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(names2), intent(IN) :: obj
-        type(C_PTR) :: cxxmem
-        cxxmem = obj%cxxmem%addr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function names2_get_instance
 
     subroutine names2_set_instance(obj, cxxmem)
@@ -113,17 +121,37 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function names2_associated
 
+    subroutine names2_assign(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(names2), intent(INOUT) :: lhs
+        class(names2), intent(IN) :: rhs
+
+        lhs%cxxptr = rhs%cxxptr
+        if (c_associated(lhs%cxxptr)) then
+            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
+            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
+        else
+            nullify(lhs%cxxmem)
+        endif
+    end subroutine names2_assign
+
     subroutine names2_final(obj)
+        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
         type(names2), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(ptr) &
+            subroutine array_destructor(ptr, gc) &
                 bind(C, name="TES_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_PTR
+                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
                 implicit none
                 type(C_PTR), value, intent(IN) :: ptr
+                logical(C_BOOL), value, intent(IN) :: gc
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxptr)
+        if (c_associated(obj%cxxptr)) then
+            call array_destructor(obj%cxxptr, .true._C_BOOL)
+            obj%cxxptr = C_NULL_PTR
+            nullify(obj%cxxmem)
+        endif
     end subroutine names2_final
 
     ! splicer begin class.Names2.additional_functions

@@ -61,6 +61,7 @@ TUT_class1 * TUT_class1_new_default()
     TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.Class1.method.new_default
 }
@@ -74,6 +75,7 @@ TUT_class1 * TUT_class1_new_flag(int flag)
     TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.Class1.method.new_flag
 }
@@ -83,11 +85,7 @@ TUT_class1 * TUT_class1_new_flag(int flag)
 void TUT_class1_delete(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.delete
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
-    delete SH_this;
-    self->addr = NULL;
-    self->idtor = 0;
+    TUT_SHROUD_array_destructor_function(self, true);
     return;
 // splicer end class.Class1.method.delete
 }

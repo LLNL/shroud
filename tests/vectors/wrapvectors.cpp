@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapvectors.h"
+#include <stdlib.h>
 #include <string>
 #include "vectors.hpp"
 
@@ -101,6 +102,7 @@ void VEC_vector_iota_bufferify(SHROUD_capsule_data *Carg,
     std::vector<int> *SH_arg = new std::vector<int>;
     Carg->addr = static_cast<void *>(SH_arg);
     Carg->idtor = 1;  // index of destructor
+    Carg->refcount = 1;     // reference count
     vector_iota(*SH_arg);
     Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->size = SH_arg->size();
@@ -116,7 +118,8 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 // splicer begin function.vector_increment_bufferify
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
     Carg->addr = static_cast<void *>(SH_arg);
-    Carg->idtor = 0;  // index of destructor
+    Carg->idtor = 0;        // index of destructor
+    Carg->refcount = 1;     // reference count
     vector_increment(*SH_arg);
     Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->size = SH_arg->size();
@@ -150,9 +153,14 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer end function.vector_string_count_bufferify
 }
 
-// function to release C++ allocated memory
-void VEC_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+// Release C++ allocated memory if refcount reaches 0.
+void VEC_SHROUD_array_destructor_function
+    (SHROUD_capsule_data *cap, bool gc)
 {
+    --cap->refcount;
+    if (cap->refcount > 0) {
+        return;
+    }
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:
@@ -173,7 +181,12 @@ void VEC_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->idtor = 0;  // avoid deleting again
+    if (gc) {
+        free(cap);
+    } else {
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
 }
 
 }  // extern "C"

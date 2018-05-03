@@ -288,6 +288,7 @@
             "F_filename_suffix": "F", 
             "F_impl_filename": "top.f", 
             "F_module_name": "top_module", 
+            "F_name_assign": "assign", 
             "F_name_associated": "associated", 
             "F_name_final": "final", 
             "F_name_instance_get": "get_instance", 
@@ -1035,7 +1036,8 @@
                     "post_call": [
                         "TES_names *{c_var} = (TES_names *) malloc(sizeof(TES_names));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -1116,7 +1118,8 @@
                     "post_call": [
                         "TES_names2 *{c_var} = (TES_names2 *) malloc(sizeof(TES_names2));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -1688,7 +1691,8 @@
                     "pre_call": [
                         "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;  // index of destructor"
+                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -1710,7 +1714,8 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = {idtor};  // index of destructor"
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
                     ]
                 }
             }, 

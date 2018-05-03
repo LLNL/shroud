@@ -87,7 +87,7 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1 *", 
@@ -234,7 +234,7 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
                             "C_return_code": "return SHC_rv;", 
@@ -345,7 +345,7 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
                             "C_return_code": "return SHC_rv;", 
@@ -387,10 +387,9 @@
                             "description": "longer description joined with previous line"
                         }, 
                         "format": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;\nself->idtor = 0;", 
+                            "C_call_code": "AA_SHROUD_array_destructor_function\t(self, true);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2020,7 +2019,7 @@
                             "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
-                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
                             "C_return_code": "return SHC_rv;", 
@@ -2125,7 +2124,7 @@
                             "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
-                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_pre_call": "const std::string SH_name(name, trim_name);", 
                             "C_prototype": "const char * name,\t int trim_name", 
                             "C_return_code": "return SHC_rv;", 
@@ -2166,10 +2165,9 @@
                             "brief": "destructor"
                         }, 
                         "format": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;\nself->idtor = 0;", 
+                            "C_call_code": "AA_SHROUD_array_destructor_function\t(self, true);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3128,7 +3126,7 @@
                             "C_call_code": "example::\tnested::\tExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
                             "C_call_list": "SHCXX_in", 
                             "C_name": "AA_exclass2_get_class1", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);\nconst example::\tnested::\tExClass1 * SHCXX_in = \tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
                             "C_return_code": "return SHC_rv;", 
@@ -4854,6 +4852,7 @@
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfuserlibrary.f", 
             "F_module_name": "userlibrary_mod", 
+            "F_name_assign": "assign", 
             "F_name_associated": "associated", 
             "F_name_final": "final", 
             "F_name_instance_get": "yadda", 
@@ -9150,7 +9149,8 @@
                     "post_call": [
                         "SIDRE_group *{c_var} = (SIDRE_group *) malloc(sizeof(SIDRE_group));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -9444,7 +9444,8 @@
                     "post_call": [
                         "AA_exclass1 *{c_var} = (AA_exclass1 *) malloc(sizeof(AA_exclass1));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -9525,7 +9526,8 @@
                     "post_call": [
                         "AA_exclass2 *{c_var} = (AA_exclass2 *) malloc(sizeof(AA_exclass2));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -9602,7 +9604,8 @@
                     "post_call": [
                         "AA_exclass3 *{c_var} = (AA_exclass3 *) malloc(sizeof(AA_exclass3));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -9961,7 +9964,8 @@
                     "pre_call": [
                         "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;  // index of destructor"
+                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -9983,7 +9987,8 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = {idtor};  // index of destructor"
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
                     ]
                 }
             }, 

@@ -780,6 +780,7 @@ def initialize():
                         # Return address of vector.
                         '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
                         '{c_var_capsule}->idtor = {idtor};  // index of destructor',
+                        '{c_var_capsule}->refcount = 1;     // reference count',
                     ],
                     post_call=[
                         # Return address and size of vector data.
@@ -820,7 +821,8 @@ def initialize():
                         '\t{c_var}, {c_var} + {c_var_size});',
                         # Return address of vector.
                         '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
-                        '{c_var_capsule}->idtor = 0;  // index of destructor',
+                        '{c_var_capsule}->idtor = 0;        // index of destructor',
+                        '{c_var_capsule}->refcount = 1;     // reference count',
                     ],
                     post_call=[
                         # Return address and size of vector data.
@@ -1102,6 +1104,7 @@ def typedef_shadow_defaults(typedef):
                     typedef.c_type, typedef.c_type, typedef.c_type),
                 '{c_var}->addr = {cxx_cast_to_void_ptr};',
                 '{c_var}->idtor = {idtor};',
+                '{c_var}->refcount = 0;',
             ]
         ),
     )

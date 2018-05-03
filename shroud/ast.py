@@ -451,6 +451,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_C_prefix='c_',
             F_derived_ptr = 'cxxptr',
             F_derived_member = 'cxxmem',
+            F_name_assign = 'assign',
             F_name_associated = 'associated',
             F_name_instance_get = 'get_instance',
             F_name_instance_set = 'set_instance',

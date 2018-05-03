@@ -240,7 +240,7 @@
                             "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new_default", 
-                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
@@ -381,7 +381,7 @@
                             "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1(flag);", 
                             "C_call_list": "flag", 
                             "C_name": "TUT_class1_new_flag", 
-                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_prototype": "int flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
@@ -426,10 +426,9 @@
                         "decl": "~Class1()        +name(delete)", 
                         "declgen": "~Class1() +name(delete)", 
                         "format": {
-                            "C_call_code": "delete SH_this;\nself->addr = NULL;\nself->idtor = 0;", 
+                            "C_call_code": "TUT_SHROUD_array_destructor_function\t(self, true);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1193,7 +1192,7 @@
                             "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_singleton_get_reference", 
-                            "C_post_call": "TUT_singleton *SHC_rv = (TUT_singleton *) malloc(sizeof(TUT_singleton));\nSHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_post_call": "TUT_singleton *SHC_rv = (TUT_singleton *) malloc(sizeof(TUT_singleton));\nSHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_singleton *", 
@@ -1358,6 +1357,7 @@
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapftutorial.f", 
             "F_module_name": "tutorial_mod", 
+            "F_name_assign": "assign", 
             "F_name_associated": "associated", 
             "F_name_final": "final", 
             "F_name_instance_get": "get_instance", 
@@ -7207,7 +7207,7 @@
                     "C_call_code": "const tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass2(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass2", 
-                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv->idtor = 0;", 
+                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1 *", 
@@ -7280,7 +7280,7 @@
                     "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass3(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass3", 
-                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;", 
+                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1 *", 
@@ -7373,7 +7373,7 @@
                     "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassNew(\tflag);", 
                     "C_call_list": "flag", 
                     "C_name": "TUT_get_class_new", 
-                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;", 
+                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;\nSHC_rv->refcount = 0;", 
                     "C_pre_call": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1;", 
                     "C_prototype": "int flag", 
                     "C_return_code": "return SHC_rv;", 
@@ -8623,7 +8623,8 @@
                     "post_call": [
                         "TUT_singleton *{c_var} = (TUT_singleton *) malloc(sizeof(TUT_singleton));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 
@@ -9195,7 +9196,8 @@
                     "pre_call": [
                         "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;  // index of destructor"
+                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
                     ]
                 }, 
                 "intent_out_buf": {
@@ -9217,7 +9219,8 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
                         "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = {idtor};  // index of destructor"
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
                     ]
                 }
             }, 
@@ -9408,7 +9411,8 @@
                     "post_call": [
                         "TUT_class1 *{c_var} = (TUT_class1 *) malloc(sizeof(TUT_class1));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};"
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 0;"
                     ]
                 }
             }, 

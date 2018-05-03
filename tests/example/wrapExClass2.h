@@ -59,13 +59,15 @@ extern "C" {
 
 // declaration of shadow types
 struct s_AA_exclass1 {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_AA_exclass1 AA_exclass1;
 struct s_AA_exclass2 {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_AA_exclass2 AA_exclass2;
 
@@ -124,6 +126,8 @@ void AA_exclass2_set_value_double(AA_exclass2 * self, double value);
 int AA_exclass2_get_value_int(AA_exclass2 * self);
 
 double AA_exclass2_get_value_double(AA_exclass2 * self);
+
+void AA_SHROUD_array_destructor_function(AA_exclass2 *cap, bool gc);
 
 #ifdef __cplusplus
 }

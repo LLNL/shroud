@@ -58,8 +58,9 @@ extern "C" {
 
 // declaration of shadow types
 struct s_TES_names {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_TES_names TES_names;
 
@@ -69,6 +70,8 @@ typedef struct s_TES_names TES_names;
 void XXX_TES_names_method1(TES_names * self);
 
 void XXX_TES_names_method2(TES_names * self2);
+
+void TES_SHROUD_array_destructor_function(TES_names *cap, bool gc);
 
 #ifdef __cplusplus
 }

@@ -57,8 +57,9 @@ extern "C" {
 
 // declaration of shadow types
 struct s_AA_exclass1 {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_AA_exclass1 AA_exclass1;
 
@@ -105,6 +106,8 @@ void * AA_exclass1_get_addr(AA_exclass1 * self);
 bool AA_exclass1_has_addr(AA_exclass1 * self, bool in);
 
 void AA_exclass1_splicer_special(AA_exclass1 * self);
+
+void AA_SHROUD_array_destructor_function(AA_exclass1 *cap, bool gc);
 
 #ifdef __cplusplus
 }

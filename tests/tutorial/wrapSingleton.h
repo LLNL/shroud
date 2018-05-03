@@ -58,8 +58,9 @@ extern "C" {
 
 // declaration of shadow types
 struct s_TUT_singleton {
-    void *addr;  /* address of C++ memory */
-    int idtor;   /* index of destructor */
+    void *addr;   /* address of C++ memory */
+    int idtor;    /* index of destructor */
+    int refcount; /* reference count */
 };
 typedef struct s_TUT_singleton TUT_singleton;
 
@@ -67,6 +68,8 @@ typedef struct s_TUT_singleton TUT_singleton;
 // splicer end class.Singleton.C_declarations
 
 TUT_singleton * TUT_singleton_get_reference();
+
+void TUT_SHROUD_array_destructor_function(TUT_singleton *cap, bool gc);
 
 #ifdef __cplusplus
 }

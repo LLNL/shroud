@@ -275,12 +275,20 @@ contains
 
   ! Simple test of FINAL useful with debugger.
   subroutine test_class1_final
-    type(class1) obj0
+    type(class1) obj0, obj1
 
     call set_case_name("test_class1_final")
 
     ! Test generic constructor
     obj0 = class1_new()
+    call assert_equals(1, obj0%cxxmem%refcount)
+
+    obj1 = obj0
+    call assert_equals(2, obj0%cxxmem%refcount)
+    call assert_equals(2, obj1%cxxmem%refcount)
+
+    call obj0%delete
+    call assert_equals(1, obj1%cxxmem%refcount)
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.

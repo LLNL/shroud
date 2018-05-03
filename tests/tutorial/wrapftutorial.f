@@ -58,6 +58,7 @@ module tutorial_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
     !  DIRECTION
@@ -81,8 +82,8 @@ module tutorial_mod
     ! splicer end class.Class1.module_top
 
     type class1
-        type(C_PTR), private :: cxxptr
-        type(SHROUD_capsule_data), pointer, private :: cxxmem
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -97,6 +98,8 @@ module tutorial_mod
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
+        procedure :: class1_assign
+        generic :: assignment(=) => class1_assign
         final :: class1_final
         ! splicer begin class.Class1.type_bound_procedure_part
         ! splicer end class.Class1.type_bound_procedure_part
@@ -106,8 +109,8 @@ module tutorial_mod
     ! splicer end class.Singleton.module_top
 
     type singleton
-        type(C_PTR), private :: cxxptr
-        type(SHROUD_capsule_data), pointer, private :: cxxmem
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
@@ -115,6 +118,8 @@ module tutorial_mod
         procedure :: get_instance => singleton_get_instance
         procedure :: set_instance => singleton_set_instance
         procedure :: associated => singleton_associated
+        procedure :: singleton_assign
+        generic :: assignment(=) => singleton_assign
         final :: singleton_final
         ! splicer begin class.Singleton.type_bound_procedure_part
         ! splicer end class.Singleton.type_bound_procedure_part
@@ -778,9 +783,12 @@ contains
     ! ~Class1() +name(delete)
     ! function_index=2
     subroutine class1_delete(obj)
+        use iso_c_binding, only : C_NULL_PTR
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%cxxptr)
+        obj%cxxptr = C_NULL_PTR
+        nullify(obj%cxxmem)
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
 
@@ -878,11 +886,16 @@ contains
         ! splicer end class.Class1.method.set_test
     end subroutine class1_set_test
 
-    function class1_get_instance(obj) result (cxxmem)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function class1_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(class1), intent(IN) :: obj
-        type(C_PTR) :: cxxmem
-        cxxmem = obj%cxxmem%addr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function class1_get_instance
 
     subroutine class1_set_instance(obj, cxxmem)
@@ -900,17 +913,37 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
 
+    subroutine class1_assign(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        class(class1), intent(IN) :: rhs
+
+        lhs%cxxptr = rhs%cxxptr
+        if (c_associated(lhs%cxxptr)) then
+            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
+            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
+        else
+            nullify(lhs%cxxmem)
+        endif
+    end subroutine class1_assign
+
     subroutine class1_final(obj)
+        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
         type(class1), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(ptr) &
+            subroutine array_destructor(ptr, gc) &
                 bind(C, name="TUT_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_PTR
+                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
                 implicit none
                 type(C_PTR), value, intent(IN) :: ptr
+                logical(C_BOOL), value, intent(IN) :: gc
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxptr)
+        if (c_associated(obj%cxxptr)) then
+            call array_destructor(obj%cxxptr, .true._C_BOOL)
+            obj%cxxptr = C_NULL_PTR
+            nullify(obj%cxxmem)
+        endif
     end subroutine class1_final
 
     ! splicer begin class.Class1.additional_functions
@@ -928,11 +961,16 @@ contains
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
 
-    function singleton_get_instance(obj) result (cxxmem)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function singleton_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(singleton), intent(IN) :: obj
-        type(C_PTR) :: cxxmem
-        cxxmem = obj%cxxmem%addr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function singleton_get_instance
 
     subroutine singleton_set_instance(obj, cxxmem)
@@ -950,17 +988,37 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function singleton_associated
 
+    subroutine singleton_assign(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(singleton), intent(INOUT) :: lhs
+        class(singleton), intent(IN) :: rhs
+
+        lhs%cxxptr = rhs%cxxptr
+        if (c_associated(lhs%cxxptr)) then
+            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
+            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
+        else
+            nullify(lhs%cxxmem)
+        endif
+    end subroutine singleton_assign
+
     subroutine singleton_final(obj)
+        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
         type(singleton), intent(INOUT) :: obj
         interface
-            subroutine array_destructor(ptr) &
+            subroutine array_destructor(ptr, gc) &
                 bind(C, name="TUT_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_PTR
+                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
                 implicit none
                 type(C_PTR), value, intent(IN) :: ptr
+                logical(C_BOOL), value, intent(IN) :: gc
             end subroutine array_destructor
         end interface
-        call array_destructor(obj%cxxptr)
+        if (c_associated(obj%cxxptr)) then
+            call array_destructor(obj%cxxptr, .true._C_BOOL)
+            obj%cxxptr = C_NULL_PTR
+            nullify(obj%cxxmem)
+        endif
     end subroutine singleton_final
 
     ! splicer begin class.Singleton.additional_functions

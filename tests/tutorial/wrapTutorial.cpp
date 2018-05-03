@@ -511,6 +511,7 @@ TUT_class1 * TUT_getclass2()
     SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
         (SHCXX_rv));
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end function.getclass2
 }
@@ -524,6 +525,7 @@ TUT_class1 * TUT_getclass3()
     TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end function.getclass3
 }
@@ -542,6 +544,7 @@ TUT_class1 * TUT_get_class_new(int flag)
     TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end function.get_class_new
 }
@@ -652,9 +655,14 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.last_function_called_bufferify
 }
 
-// function to release C++ allocated memory
-void TUT_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
+// Release C++ allocated memory if refcount reaches 0.
+void TUT_SHROUD_array_destructor_function
+    (SHROUD_capsule_data *cap, bool gc)
 {
+    --cap->refcount;
+    if (cap->refcount > 0) {
+        return;
+    }
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:
@@ -681,7 +689,12 @@ void TUT_SHROUD_array_destructor_function(SHROUD_capsule_data *cap)
         break;
     }
     }
-    cap->idtor = 0;  // avoid deleting again
+    if (gc) {
+        free(cap);
+    } else {
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
 }
 
 }  // extern "C"

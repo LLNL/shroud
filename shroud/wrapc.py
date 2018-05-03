@@ -259,8 +259,9 @@ class Wrapc(util.WrapperMixin):
                 write_file = True
                 output.append(
                     'struct s_{C_type_name} {{+\n'
-                    'void *addr;  /* address of C++ memory */\n'
-                    'int idtor;   /* index of destructor */\n'
+                    'void *addr;   /* address of C++ memory */\n'
+                    'int idtor;    /* index of destructor */\n'
+                    'int refcount; /* reference count */\n'
                     '-}};\n'
                     'typedef struct s_{C_type_name} {C_type_name};'.
                     format(C_type_name=name))
@@ -412,6 +413,13 @@ class Wrapc(util.WrapperMixin):
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
+
+        # XXX - this prototype also appears in wraplibrary.h
+        #  but the type of cap is different.
+        append_format(
+            self.header_proto_c,
+            '\nvoid {C_memory_dtor_function}\t(%s *cap, bool gc);' % cname,
+            fmt_class)
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
@@ -594,14 +602,18 @@ class Wrapc(util.WrapperMixin):
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 
-                    # LHS is class' cxx_to_c
-                    cls_typedef = cls.typedef
-                    if cls_typedef.c_to_cxx is None:
-                        # This should be set in typemap.typedef_shadow_defaults
-                        raise RuntimeError("Wappped class does not have c_to_cxx set")
-                    append_format(pre_call, 
-                                  '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
-                                  cls_typedef.c_to_cxx + ';', fmt_func)
+                    # destructor does not need cxx_var since it passes c_var
+                    # to C_memory_dtor_function (to account for reference count)
+                    if not is_dtor:
+                        # LHS is class' cxx_to_c
+                        cls_typedef = cls.typedef
+                        if cls_typedef.c_to_cxx is None:
+                            # This should be set in typemap.typedef_shadow_defaults
+                            raise RuntimeError("Wappped class does not have c_to_cxx set")
+                        append_format(
+                            pre_call, 
+                            '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
+                            cls_typedef.c_to_cxx + ';', fmt_func)
 
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
@@ -891,14 +903,14 @@ class Wrapc(util.WrapperMixin):
             append_format(post_call,
                           '{c_type} *{c_var} = ({c_type} *) malloc(sizeof({c_type}));\n'
                           '{c_var}->addr = {c_val};\n'
-                          '{c_var}->idtor = {idtor};',
+                          '{c_var}->idtor = {idtor};\n'
+                          '{c_var}->refcount = 0;',
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
+            # Call C_memory_dtor_function to decrement reference count.
             append_format(call_code,
-                          'delete {CXX_this};\n'
-                          '{c_var}->addr = NULL;\n'
-                          '{c_var}->idtor = 0;',
+                          '{C_memory_dtor_function}\t({C_this}, true);',
                           fmt_func)
         elif CXX_subprogram == 'subroutine':
             append_format(call_code, '{CXX_this_call}{function_name}'
@@ -1061,15 +1073,26 @@ class Wrapc(util.WrapperMixin):
 
         self.c_helper['capsule_data_helper'] = True
         fmt = library.fmtdict
+
+        append_format(
+            self.header_proto_c,
+            '\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc);',
+            fmt)
+
         output = self.impl
-        append_format(output,
-                      '\n'
-                      '// function to release C++ allocated memory\n'
-                      'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n'
-                      '{{+\n'
-                      'void *ptr = cap->addr;\n'
-                      'switch (cap->idtor) {{'
-                      , fmt)
+        append_format(
+            output,
+            '\n'
+            '// Release C++ allocated memory if refcount reaches 0.\n'
+            'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc)\n'
+            '{{+\n'
+            '@--cap->refcount;\n'
+            'if (cap->refcount > 0) {{+\n'
+            'return;\n'
+            '-}}\n'
+            'void *ptr = cap->addr;\n'
+            'switch (cap->idtor) {{'
+            , fmt)
 
         for i, name in enumerate(self.capsule_order):
             output.append('case {}:\n{{+'.format(i))
@@ -1082,9 +1105,15 @@ class Wrapc(util.WrapperMixin):
             'break;\n'
             '-}\n'
             '}\n'
+            'if (gc) {+\n'
+            'free(cap);\n'
+            '-} else {+\n'
+            'cap->addr = NULL;\n'
             'cap->idtor = 0;  // avoid deleting again\n'
+            '-}\n'
             '-}'
         )
+        self.header_impl_include['<stdlib.h>'] = True  # for free
 
     capsule_helpers = {}
     capsule_order = []
@@ -1096,4 +1125,3 @@ class Wrapc(util.WrapperMixin):
             self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
             self.capsule_order.append(name)
         return self.capsule_helpers[name][0]
-

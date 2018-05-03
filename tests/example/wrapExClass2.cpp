@@ -80,6 +80,7 @@ AA_exclass2 * AA_exclass2_ctor(const char * name)
     AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.ExClass2.method.ctor
 }
@@ -100,6 +101,7 @@ AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
     AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.ExClass2.method.ctor_bufferify
 }
@@ -113,11 +115,7 @@ AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
 void AA_exclass2_dtor(AA_exclass2 * self)
 {
 // splicer begin class.ExClass2.method.dtor
-    example::nested::ExClass2 *SH_this = static_cast<example::nested::
-        ExClass2 *>(self->addr);
-    delete SH_this;
-    self->addr = NULL;
-    self->idtor = 0;
+    AA_SHROUD_array_destructor_function(self, true);
     return;
 // splicer end class.ExClass2.method.dtor
 }
@@ -277,6 +275,7 @@ AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self,
     AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
+    SHC_rv->refcount = 0;
     return SHC_rv;
 // splicer end class.ExClass2.method.get_class1
 }
