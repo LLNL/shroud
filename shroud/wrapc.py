@@ -1034,9 +1034,9 @@ class Wrapc(util.WrapperMixin):
             self.header_proto_c.append('')
             if node.cpp_if:
                 self.header_proto_c.append('#' + node.cpp_if)
-            self.header_proto_c.append(
-                wformat('{C_return_type} {C_name}(\t{C_prototype});',
-                        fmt_func))
+            append_format(self.header_proto_c,
+                          '{C_return_type} {C_name}(\t{C_prototype});',
+                          fmt_func)
             if node.cpp_if:
                 self.header_proto_c.append('#endif')
 
@@ -1049,9 +1049,9 @@ class Wrapc(util.WrapperMixin):
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
                 self.impl.append('#' + node.cpp_if)
-            impl.append(
-                wformat('{C_return_type} {C_name}(\t{C_prototype})',
-                        fmt_func))
+            append_format(impl,
+                          '{C_return_type} {C_name}(\t{C_prototype})',
+                          fmt_func)
             impl.append('{')
             self._create_splicer(fmt_func.underscore_name +
                                  fmt_func.function_suffix, impl, C_code)

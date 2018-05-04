@@ -337,11 +337,9 @@ return rv;""", fmt)
 
         self.py_helper_functions.append('')
         self.py_helper_functions.append(proto)
-        self.py_helper_functions.append('{')
-        self.py_helper_functions.append(1)
+        self.py_helper_functions.append('{+')
         self._create_splicer('to_object', self.py_helper_functions, to_object)
-        self.py_helper_functions.append(-1)
-        self.py_helper_functions.append('}')
+        self.py_helper_functions.append('-}')
 
         # From
         from_object = wformat("""if (obj->ob_type != &{PY_PyTypeObject}) {{
@@ -492,7 +490,7 @@ return 1;""", fmt)
         """
         options = node.options
         fmt_var = node.fmtdict
-        fmt_var.PY_getter =  wformat(options.PY_member_getter_template, fmt_var)
+        fmt_var.PY_getter = wformat(options.PY_member_getter_template, fmt_var)
         fmt_var.PY_setter = 'NULL'  # readonly
 
         fmt = util.Scope(fmt_var)
@@ -519,7 +517,7 @@ return 1;""", fmt)
         
         # setter
         if not ast.attrs.get('readonly', False):
-            fmt_var.PY_setter =  wformat(options.PY_member_setter_template, fmt_var)
+            fmt_var.PY_setter = wformat(options.PY_member_setter_template, fmt_var)
             if typedef.PY_get:
                 fmt.get = wformat(typedef.PY_get, fmt)
             else:
@@ -1367,38 +1365,35 @@ return 1;""", fmt)
         """
         body = self.PyMethodBody
         if expose:
-            body.extend([
-                    '',
-                    wformat('static char {PY_name_impl}__doc__[] =', fmt),
-                    '"%s"' % fmt.PY_doc_string,
-                    ';',
-                    ])
+            append_format(
+                body,
+                '\n'
+                'static char {PY_name_impl}__doc__[] =\n'
+                '"{PY_doc_string}"\n'
+                ';',
+                fmt)
 
         body.append('')
         if is_ctor:
             body.append('static int')
         else:
             body.append('static PyObject *')
-        body.append(wformat('{PY_name_impl}(', fmt))
+        append_format(body, '{PY_name_impl}(', fmt)
 
         if fmt.PY_used_param_self:
-            body.append(wformat(
-                '  {PY_PyObject} *{PY_param_self},', fmt))
+            append_format(body, '  {PY_PyObject} *{PY_param_self},', fmt)
         else:
-            body.append(wformat(
-                '  PyObject *SHROUD_UNUSED({PY_param_self}),', fmt))
+            append_format(
+                body, '  PyObject *SHROUD_UNUSED({PY_param_self}),', fmt)
         if fmt.PY_used_param_args:
-            body.append(wformat(
-                '  PyObject *{PY_param_args},', fmt))
+            append_format(
+                body, '  PyObject *{PY_param_args},', fmt)
         else:
-            body.append(wformat(
-                '  PyObject *SHROUD_UNUSED({PY_param_args}),', fmt)),
+            append_format(body, '  PyObject *SHROUD_UNUSED({PY_param_args}),', fmt)
         if fmt.PY_used_param_args:
-            body.append(wformat(
-                '  PyObject *{PY_param_kwds})', fmt))
+            append_format(body, '  PyObject *{PY_param_kwds})', fmt)
         else:
-            body.append(wformat(
-                '  PyObject *SHROUD_UNUSED({PY_param_kwds}))', fmt))
+            append_format(body, '  PyObject *SHROUD_UNUSED({PY_param_kwds}))', fmt)
 
         body.append('{')
 # use function_suffix in splicer name since a single C++ function may
@@ -1413,11 +1408,12 @@ return 1;""", fmt)
 
         if expose is True:
             # default name
-            self.PyMethodDef.append(
-                wformat('{{"{function_name}{function_suffix}",\t '
-                        '(PyCFunction){PY_name_impl},\t '
-                        '{PY_ml_flags},\t '
-                        '{PY_name_impl}__doc__}},', fmt))
+            append_format(
+                self.PyMethodDef,
+                '{{"{function_name}{function_suffix}",\t '
+                '(PyCFunction){PY_name_impl},\t '
+                '{PY_ml_flags},\t '
+                '{PY_name_impl}__doc__}},', fmt)
 #        elif expose is not False:
 #            # override name
 #            fmt = util.Scope(fmt)
@@ -1494,7 +1490,7 @@ return 1;""", fmt)
 
         output = []
 
-        output.append(wformat('#include "{PY_header_filename}"', fmt))
+        append_format(output, '#include "{PY_header_filename}"', fmt)
 #        if self.need_numpy:
 #            output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
 #            output.append('#include "numpy/arrayobject.h"')
@@ -1535,8 +1531,8 @@ return 1;""", fmt)
         output.extend(self.PyGetSetBody)
         if self.PyGetSetDef:
             fmt_type['tp_getset'] = wformat('{PY_prefix}{cxx_class}_getset', fmt)
-            output.append(
-                wformat('\nstatic PyGetSetDef {tp_getset}[] = {{+', fmt_type))
+            append_format(output,
+                          '\nstatic PyGetSetDef {tp_getset}[] = {{+', fmt_type)
             output.extend(self.PyGetSetDef)
             self._create_splicer('PyGetSetDef', output)
             output.append('{NULL}            /* sentinel */')
@@ -1545,15 +1541,15 @@ return 1;""", fmt)
             fmt_type['tp_getset'] = fmt_type['nullptr0']
 
         fmt_type['tp_methods'] = wformat('{PY_prefix}{cxx_class}_methods', fmt)
-        output.append(
-            wformat('static PyMethodDef {tp_methods}[] = {{+', fmt_type))
+        append_format(output,
+                      'static PyMethodDef {tp_methods}[] = {{+', fmt_type)
         output.extend(self.PyMethodDef)
         self._create_splicer('PyMethodDef', output)
         output.append('{NULL,   (PyCFunction)NULL, 0, NULL}'
                       '            /* sentinel */')
         output.append('-};')
 
-        output.append(wformat(PyTypeObject_template, fmt_type))
+        append_format(output, PyTypeObject_template, fmt_type)
 
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1679,7 +1675,7 @@ return 1;""", fmt)
 
         output.append('')
         output.extend(self.py_type_structs)
-        output.append(wformat("""
+        append_format(output, """
 extern PyObject *{PY_prefix}error_obj;
 
 #if PY_MAJOR_VERSION >= 3
@@ -1687,7 +1683,7 @@ extern PyObject *{PY_prefix}error_obj;
 #else
 {PY_extern_C_begin}PyMODINIT_FUNC init{PY_module_name}(void);
 #endif
-""", fmt))
+""", fmt)
         output.append('#endif  /* %s */' % guard)
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1701,7 +1697,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         output = []
 
-        output.append(wformat('#include "{PY_header_filename}"', fmt))
+        append_format(output, '#include "{PY_header_filename}"', fmt)
         if self.need_numpy:
             output.append('#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION')
             output.append('#include "numpy/arrayobject.h"')
@@ -1713,14 +1709,14 @@ extern PyObject *{PY_prefix}error_obj;
         output.append('')
         self._create_splicer('C_definition', output)
 
-        output.append(wformat('PyObject *{PY_prefix}error_obj;', fmt))
+        append_format(output, 'PyObject *{PY_prefix}error_obj;', fmt)
         output.extend(self.define_arraydescr)
 
         self._create_splicer('additional_functions', output)
         output.extend(self.PyMethodBody)
 
-        output.append(
-            wformat('static PyMethodDef {PY_prefix}methods[] = {{', fmt))
+        append_format(output,
+                      'static PyMethodDef {PY_prefix}methods[] = {{', fmt)
         output.extend(
             self.PyMethodDef)
         output.append(
@@ -1730,9 +1726,9 @@ extern PyObject *{PY_prefix}error_obj;
 
         output.extend(self.arraydescr)
 
-        output.append(wformat(module_begin, fmt))
+        append_format(output, module_begin, fmt)
         self._create_splicer('C_init_locals', output)
-        output.append(wformat(module_middle, fmt))
+        append_format(output, module_middle, fmt)
         if self.need_numpy:
             output.append('import_array();')
         output.extend(self.py_type_object_creation)
@@ -1741,9 +1737,9 @@ extern PyObject *{PY_prefix}error_obj;
             output.append('')
             output.append('// Define PyArray_Descr for structs')
             output.extend(self.call_arraydescr)
-        output.append(wformat(module_middle2, fmt))
+        append_format(output, module_middle2, fmt)
         self._create_splicer('C_init_body', output)
-        output.append(wformat(module_end, fmt))
+        append_format(output, module_end, fmt)
 
         self.write_output_file(fname, self.config.python_dir, output)
 
@@ -1751,7 +1747,7 @@ extern PyObject *{PY_prefix}error_obj;
         node = self.newlibrary
         fmt = node.fmtdict
         output = []
-        output.append(wformat('#include "{PY_header_filename}"', fmt))
+        append_format(output, '#include "{PY_header_filename}"', fmt)
         if self.capsule_order:
             # header file may be needed to fully qualify types capsule destructors
             for include in node.cxx_header.split():

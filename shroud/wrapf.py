@@ -258,18 +258,16 @@ class Wrapf(util.WrapperMixin):
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_top', self.f_type_decl)
         # XXX - make members private later, but not now for debugging.
-        self.f_type_decl.extend([
-                '',
-                wformat('type {F_derived_name}', fmt_class),
-                1,
-                wformat('type(C_PTR), private :: {F_derived_ptr} = C_NULL_PTR', fmt_class),
-                wformat('type({F_capsule_data_type}), pointer :: {F_derived_member} => null()', fmt_class),
-                ])
+        append_format(
+            self.f_type_decl,
+            '\n'
+            'type {F_derived_name}\n+'
+            'type(C_PTR), private :: {F_derived_ptr} = C_NULL_PTR\n'
+            'type({F_capsule_data_type}), pointer :: {F_derived_member} => null()',
+            fmt_class)
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_NULL_PTR')
         self._create_splicer('component_part', self.f_type_decl)
-        self.f_type_decl.extend([
-                -1, 'contains', 1,
-                ])
+        self.f_type_decl.append('-contains+')
         self.f_type_decl.extend(self.type_bound_part)
 
         # Look for generics
@@ -308,10 +306,7 @@ class Wrapf(util.WrapperMixin):
 #        self._pop_splicer('generic')
 
         self._create_splicer('type_bound_procedure_part', self.f_type_decl)
-        self.f_type_decl.extend([
-                 -1,
-                 wformat('end type {F_derived_name}', fmt_class),
-                 ])
+        append_format(self.f_type_decl, '-end type {F_derived_name}', fmt_class)
 
         self.c_interface.append('')
         self._create_splicer('additional_interfaces', self.c_interface)
