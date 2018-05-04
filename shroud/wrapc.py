@@ -796,26 +796,16 @@ class Wrapc(util.WrapperMixin):
             if destructor_name:
                 destructor_name = wformat(destructor_name, fmt_arg)
                 if destructor_name not in self.capsule_helpers:
-                    cmd_list = intent_blk['destructor']
                     del_lines = []
-                    for cmd in cmd_list:
-                        append_format(del_lines, cmd, fmt_arg)
+                    util.append_format_cmds(del_lines, intent_blk, 'destructor', fmt_arg)
                     fmt_arg.idtor = self.add_capsule_helper(destructor_name, del_lines)
 
             # Add code for intent of argument
             # pre_call.append('// intent=%s' % intent)
-            cmd_list = intent_blk.get('pre_call', [])
-            if cmd_list:
+            if util.append_format_cmds(pre_call, intent_blk, 'pre_call', fmt_arg):
                 need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(pre_call, cmd, fmt_arg)
-
-            cmd_list = intent_blk.get('post_call', [])
-            if cmd_list:
+            if util.append_format_cmds(post_call, intent_blk, 'post_call', fmt_arg):
                 need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(post_call, cmd, fmt_arg)
-
             if 'c_helper' in intent_blk:
                 c_helper = wformat(intent_blk['c_helper'], fmt_arg)
                 for helper in c_helper.split():
@@ -947,16 +937,14 @@ class Wrapc(util.WrapperMixin):
                 c_statements = result_typedef.c_statements
                 intent_blk = c_statements.get('result' + generated_suffix, {})
                 self.add_c_statements_headers(intent_blk)
-                cmd_list = intent_blk.get('pre_call', [])
-                for cmd in cmd_list:
-                    append_format(pre_call, cmd, fmt_result)
-                cmd_list = intent_blk.get('call', [])
-                for cmd in cmd_list:
+
+                if util.append_format_cmds(pre_call, intent_blk, 'pre_call', fmt_result):
+                    need_wrapper = True
+                if util.append_format_cmds(call_code, intent_blk, 'call', fmt_result):
+                    need_wrapper = True
                     added_call_code = True
-                    append_format(call_code, cmd, fmt_result)
-                cmd_list = intent_blk.get('post_call', [])
-                for cmd in cmd_list:
-                    append_format(post_call, cmd, fmt_result)
+                if util.append_format_cmds(post_call, intent_blk, 'post_call', fmt_result):
+                    need_wrapper = True
                 # XXX release rv if necessary
                 if 'c_helper' in intent_blk:
                     for helper in intent_blk['c_helper'].split():

@@ -721,11 +721,8 @@ return 1;""", fmt)
             ctor = None
             ctorvar = fmt.py_var
         elif 'post_call' in intent_blk:
-            cmd_list = intent_blk['post_call']
             # If post_call is None, the Object has already been created
-            if cmd_list is not None:
-                for cmd in cmd_list:
-                    append_format(post_call, cmd, fmt)
+            util.append_format_cmds(post_call, intent_blk, 'post_call', fmt)
             format = 'O'
             vargs = fmt.py_var
             ctor = None
@@ -1076,21 +1073,11 @@ return 1;""", fmt)
                         None, None, arg, arg_typedef, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
-            cmd_list = intent_blk.get('decl', [])
-            for cmd in cmd_list:
-                append_format(PY_decl, cmd, fmt_arg)
-            cmd_list = intent_blk.get('post_parse', [])
-            for cmd in cmd_list:
-                append_format(post_parse, cmd, fmt_arg)
-            cmd_list = intent_blk.get('pre_call', [])
-            for cmd in cmd_list:
-                append_format(pre_call, cmd, fmt_arg)
-            cmd_list = intent_blk.get('cleanup', [])
-            for cmd in cmd_list:
-                append_format(cleanup_code, cmd, fmt_arg)
-            cmd_list = intent_blk.get('fail', [])
-            for cmd in cmd_list:
-                append_format(fail_code, cmd, fmt_arg)
+            util.append_format_cmds(PY_decl,      intent_blk, 'decl', fmt_arg)
+            util.append_format_cmds(post_parse,   intent_blk, 'post_parse', fmt_arg)
+            util.append_format_cmds(pre_call,     intent_blk, 'pre_call', fmt_arg)
+            util.append_format_cmds(cleanup_code, intent_blk, 'cleanup', fmt_arg)
+            util.append_format_cmds(fail_code,    intent_blk, 'fail', fmt_arg)
 
             if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
                 # Make intermediate C++ variable

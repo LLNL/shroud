@@ -211,21 +211,16 @@ class Wrapf(util.WrapperMixin):
         output = self.f_type_decl
         output.append('')
         self._push_splicer(fmt_class.cxx_class)
-        output.extend([
-                '',
-                wformat('type, bind(C) :: {F_derived_name}', fmt_class),
-                1,
-                ])
+        append_format(output,
+                '\ntype, bind(C) :: {F_derived_name}+', fmt_class)
         for var in node.variables:
             ast = var.ast
             result_type = ast.typename
             typedef = typemap.Typedef.lookup(result_type)
             output.append(ast.gen_arg_as_fortran())
             self.update_f_module(self.module_use, typedef.f_module)
-        output.extend([
-                 -1,
-                 wformat('end type {F_derived_name}', fmt_class),
-                 ])
+        append_format(output,
+                      '-end type {F_derived_name}', fmt_class)
         self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node):
@@ -1163,25 +1158,12 @@ rv = .false.
             # Add code for intent of argument
             if 'f_module' in f_intent_blk:
                 self.update_f_module(modules, f_intent_blk['f_module'])
-
-            cmd_list = f_intent_blk.get('declare', [])
-            if cmd_list:
+            if util.append_format_cmds(arg_f_decl, f_intent_blk, 'declare', fmt_arg):
                 need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(arg_f_decl, cmd, fmt_arg)
-
-            cmd_list = f_intent_blk.get('pre_call', [])
-            if cmd_list:
+            if util.append_format_cmds(pre_call, f_intent_blk, 'pre_call', fmt_arg):
                 need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(pre_call, cmd, fmt_arg)
-
-            cmd_list = f_intent_blk.get('post_call', [])
-            if cmd_list:
+            if util.append_format_cmds(post_call, f_intent_blk, 'post_call', fmt_arg):
                 need_wrapper = True
-                for cmd in cmd_list:
-                    append_format(post_call, cmd, fmt_arg)
-
             # Find any helper routines needed
             if 'f_helper' in f_intent_blk:
                 f_helper = wformat(f_intent_blk['f_helper'], fmt_arg)
@@ -1331,10 +1313,10 @@ rv = .false.
                 impl.append('! function_index=%d' % node._function_index)
                 if options.doxygen and node.doxygen:
                     self.write_doxygen(impl, node.doxygen)
-            impl.append(
-                wformat('\r{F_subprogram} {F_name_impl}(\t'
+            append_format(impl,
+                          '\r{F_subprogram} {F_name_impl}(\t'
                         '{F_arguments}){F_result_clause}',
-                        fmt_func))
+                          fmt_func)
             impl.append(1)
             impl.extend(arg_f_use)
             impl.extend(arg_f_decl)
@@ -1342,7 +1324,7 @@ rv = .false.
             self._create_splicer(sname, impl, F_code)
             impl.extend(post_call)
             impl.append(-1)
-            impl.append(wformat('end {F_subprogram} {F_name_impl}', fmt_func))
+            append_format(impl, 'end {F_subprogram} {F_name_impl}', fmt_func)
             if node.cpp_if:
                 impl.append('#endif')
         else:

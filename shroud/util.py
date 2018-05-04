@@ -77,8 +77,11 @@ def append_format_cmds(lstout, dictin, name, fmt):
     """
     if name not in dictin:
         return False
-    for template in dictin[name]:
-        lstout.append(wformat(template, fmt))
+    cmd_list = dictin.get(name, None)
+    if cmd_list is None:
+        return False
+    for cmd in cmd_list:
+        lstout.append(wformat(cmd, fmt))
     return True
 
 def append_format_indent(lst, template, dct, indent='    '):
