@@ -157,10 +157,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 void VEC_SHROUD_array_destructor_function
     (SHROUD_capsule_data *cap, bool gc)
 {
-    --cap->refcount;
-    if (cap->refcount > 0) {
-        return;
-    }
+
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:

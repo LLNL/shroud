@@ -352,10 +352,7 @@ void AA_cos_doubles(double * in, double * out, int sizein)
 void AA_SHROUD_array_destructor_function
     (SHROUD_capsule_data *cap, bool gc)
 {
-    --cap->refcount;
-    if (cap->refcount > 0) {
-        return;
-    }
+
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:

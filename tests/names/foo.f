@@ -73,9 +73,6 @@ module name_module
         procedure :: get_instance => names_get_instance
         procedure :: set_instance => names_set_instance
         procedure :: associated => names_associated
-        procedure :: names_assign
-        generic :: assignment(=) => names_assign
-        final :: names_final
         ! splicer begin class.Names.type_bound_procedure_part
         ! splicer end class.Names.type_bound_procedure_part
     end type FNames
@@ -154,39 +151,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function names_associated
-
-    subroutine names_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(FNames), intent(INOUT) :: lhs
-        class(FNames), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine names_assign
-
-    subroutine names_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(FNames), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="TES_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine names_final
 
     ! splicer begin class.Names.additional_functions
     ! splicer end class.Names.additional_functions

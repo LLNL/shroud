@@ -659,10 +659,7 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 void TUT_SHROUD_array_destructor_function
     (SHROUD_capsule_data *cap, bool gc)
 {
-    --cap->refcount;
-    if (cap->refcount > 0) {
-        return;
-    }
+
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:

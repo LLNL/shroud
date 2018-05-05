@@ -317,6 +317,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
             F_standard=2003,
+            F_auto_reference_count=False,
 
             wrap_c=True,
             wrap_fortran=True,

@@ -419,16 +419,17 @@ logical rv
 rv = c_associated({F_this}%{F_derived_member}%addr)
 -end function {F_name_impl}""", fmt)
 
-        # assign
-        fmt.underscore_name = fmt_class.F_name_assign
-        fmt.F_name_function = wformat(options.F_name_function_template, fmt)
-        fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
+        if options.F_auto_reference_count:
+            # assign
+            fmt.underscore_name = fmt_class.F_name_assign
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-        self.type_bound_part.append('procedure :: %s' % fmt.F_name_impl)
-        self.type_bound_part.append('generic :: assignment(=) => %s' % fmt.F_name_impl)
+            self.type_bound_part.append('procedure :: %s' % fmt.F_name_impl)
+            self.type_bound_part.append('generic :: assignment(=) => %s' % fmt.F_name_impl)
 
-        append_format(
-            impl, """
+            append_format(
+                impl, """
 subroutine {F_name_impl}(lhs, rhs)+
 use iso_c_binding, only : c_associated, c_f_pointer
 class({F_derived_name}), intent(INOUT) :: lhs
@@ -443,15 +444,16 @@ nullify(lhs%{F_derived_member})
 -endif
 -end subroutine {F_name_impl}""", fmt)
 
-        # final
-        fmt.underscore_name = fmt_class.F_name_final
-        fmt.F_name_function = wformat(options.F_name_function_template, fmt)
-        fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
+        if options.F_auto_reference_count:
+            # final
+            fmt.underscore_name = fmt_class.F_name_final
+            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-        self.type_bound_part.append('final :: %s' % fmt.F_name_impl)
+            self.type_bound_part.append('final :: %s' % fmt.F_name_impl)
 
-        append_format(
-            impl, """
+            append_format(
+                impl, """
 subroutine {F_name_impl}({F_this})+
 use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
 type({F_derived_name}), intent(INOUT) :: {F_this}

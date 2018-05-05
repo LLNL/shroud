@@ -89,9 +89,6 @@ module exclass2_mod
         procedure :: get_value_double => exclass2_get_value_double
         procedure :: yadda => exclass2_yadda
         procedure :: associated => exclass2_associated
-        procedure :: exclass2_assign
-        generic :: assignment(=) => exclass2_assign
-        final :: exclass2_final
         generic :: declare => declare_0_int, declare_0_long,  &
             declare_1_int, declare_1_long
         generic :: set_value => set_value_int, set_value_long,  &
@@ -608,39 +605,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass2_associated
-
-    subroutine exclass2_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(exclass2), intent(INOUT) :: lhs
-        class(exclass2), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine exclass2_assign
-
-    subroutine exclass2_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(exclass2), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="AA_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine exclass2_final
 
     ! splicer begin class.ExClass2.additional_functions
     ! splicer end class.ExClass2.additional_functions

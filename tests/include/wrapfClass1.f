@@ -64,9 +64,6 @@ module class1_mod
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
-        procedure :: class1_assign
-        generic :: assignment(=) => class1_assign
-        final :: class1_final
     end type class1
 
     interface operator (.eq.)
@@ -124,39 +121,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
-
-    subroutine class1_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(class1), intent(INOUT) :: lhs
-        class(class1), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine class1_assign
-
-    subroutine class1_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(class1), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="DEF_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine class1_final
 
 
     function class1_eq(a,b) result (rv)

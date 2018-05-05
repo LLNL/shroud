@@ -1058,6 +1058,7 @@ class Wrapc(util.WrapperMixin):
             # Only the 0 slot has been added, so return
             # since the function will be unused.
             return
+        options = library.options
 
         self.c_helper['capsule_data_helper'] = True
         fmt = library.fmtdict
@@ -1074,10 +1075,20 @@ class Wrapc(util.WrapperMixin):
             '// Release C++ allocated memory if refcount reaches 0.\n'
             'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc)\n'
             '{{+\n'
-            '@--cap->refcount;\n'
-            'if (cap->refcount > 0) {{+\n'
-            'return;\n'
-            '-}}\n'
+            , fmt)
+
+        if options.F_auto_reference_count:
+            # check refererence before deleting
+            append_format(
+                output,
+                '@--cap->refcount;\n'
+                'if (cap->refcount > 0) {{+\n'
+                'return;\n'
+                '-}}\n'
+                , fmt)
+
+        append_format(
+            output,
             'void *ptr = cap->addr;\n'
             'switch (cap->idtor) {{'
             , fmt)

@@ -98,9 +98,6 @@ module tutorial_mod
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
         procedure :: associated => class1_associated
-        procedure :: class1_assign
-        generic :: assignment(=) => class1_assign
-        final :: class1_final
         ! splicer begin class.Class1.type_bound_procedure_part
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
@@ -118,9 +115,6 @@ module tutorial_mod
         procedure :: get_instance => singleton_get_instance
         procedure :: set_instance => singleton_set_instance
         procedure :: associated => singleton_associated
-        procedure :: singleton_assign
-        generic :: assignment(=) => singleton_assign
-        final :: singleton_final
         ! splicer begin class.Singleton.type_bound_procedure_part
         ! splicer end class.Singleton.type_bound_procedure_part
     end type singleton
@@ -913,39 +907,6 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
 
-    subroutine class1_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(class1), intent(INOUT) :: lhs
-        class(class1), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine class1_assign
-
-    subroutine class1_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(class1), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="TUT_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine class1_final
-
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
 
@@ -987,39 +948,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function singleton_associated
-
-    subroutine singleton_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(singleton), intent(INOUT) :: lhs
-        class(singleton), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine singleton_assign
-
-    subroutine singleton_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(singleton), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="TUT_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine singleton_final
 
     ! splicer begin class.Singleton.additional_functions
     ! splicer end class.Singleton.additional_functions

@@ -71,9 +71,6 @@ module exclass3_mod
         procedure :: exfunc_1 => exclass3_exfunc_1
         procedure :: yadda => exclass3_yadda
         procedure :: associated => exclass3_associated
-        procedure :: exclass3_assign
-        generic :: assignment(=) => exclass3_assign
-        final :: exclass3_final
 #ifdef USE_CLASS3_A
         generic :: exfunc => exfunc_0
 #endif
@@ -161,39 +158,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function exclass3_associated
-
-    subroutine exclass3_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(exclass3), intent(INOUT) :: lhs
-        class(exclass3), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine exclass3_assign
-
-    subroutine exclass3_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(exclass3), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="AA_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine exclass3_final
 
     ! splicer begin class.ExClass3.additional_functions
     ! splicer end class.ExClass3.additional_functions

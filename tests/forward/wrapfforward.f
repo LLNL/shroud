@@ -75,9 +75,6 @@ module forward_mod
         procedure :: get_instance => class2_get_instance
         procedure :: set_instance => class2_set_instance
         procedure :: associated => class2_associated
-        procedure :: class2_assign
-        generic :: assignment(=) => class2_assign
-        final :: class2_final
         ! splicer begin class.Class2.type_bound_procedure_part
         ! splicer end class.Class2.type_bound_procedure_part
     end type class2
@@ -182,39 +179,6 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class2_associated
-
-    subroutine class2_assign(lhs, rhs)
-        use iso_c_binding, only : c_associated, c_f_pointer
-        class(class2), intent(INOUT) :: lhs
-        class(class2), intent(IN) :: rhs
-
-        lhs%cxxptr = rhs%cxxptr
-        if (c_associated(lhs%cxxptr)) then
-            call c_f_pointer(lhs%cxxptr, lhs%cxxmem)
-            lhs%cxxmem%refcount = lhs%cxxmem%refcount + 1
-        else
-            nullify(lhs%cxxmem)
-        endif
-    end subroutine class2_assign
-
-    subroutine class2_final(obj)
-        use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
-        type(class2), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="FOR_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL, C_INT, C_PTR
-                implicit none
-                type(C_PTR), value, intent(IN) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxptr)) then
-            call array_destructor(obj%cxxptr, .true._C_BOOL)
-            obj%cxxptr = C_NULL_PTR
-            nullify(obj%cxxmem)
-        endif
-    end subroutine class2_final
 
     ! splicer begin class.Class2.additional_functions
     ! splicer end class.Class2.additional_functions
