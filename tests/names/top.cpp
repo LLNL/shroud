@@ -140,7 +140,6 @@ void TES_init_ns1()
 void TES_SHROUD_array_destructor_function
     (SHROUD_capsule_data *cap, bool gc)
 {
-
     void *ptr = cap->addr;
     switch (cap->idtor) {
     case 0:

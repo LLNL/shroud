@@ -311,8 +311,10 @@ class Wrapf(util.WrapperMixin):
         # overload operators
         self.overload_compare(
             fmt_class, '.eq.', fmt_class.class_lower + '_eq',
-            wformat('c_associated(a%{F_derived_member}%addr, b%{F_derived_member}%addr)',
-                    fmt_class))
+            wformat(
+                'c_associated'
+                '(a%{F_derived_member}%addr, b%{F_derived_member}%addr)',
+                fmt_class))
 #        self.overload_compare(fmt_class, '==', fmt_class.class_lower + '_eq', None)
         self.overload_compare(
             fmt_class, '.ne.', fmt_class.class_lower + '_ne',
@@ -785,9 +787,9 @@ rv = .false.
                     arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
                         'type(%s), intent(INOUT) :: %s' %
-                        (fmt.f_context_type, buf_arg_name))
-#                    self.set_f_module(modules, 'iso_c_binding', fmt.f_context_type)
-                    imports[fmt.f_context_type] = True
+                        (fmt.F_context_type, buf_arg_name))
+#                    self.set_f_module(modules, 'iso_c_binding', fmt.F_context_type)
+                    imports[fmt.F_context_type] = True
                 elif buf_arg == 'len_trim':
                     arg_c_names.append(buf_arg_name)
                     arg_c_decl.append(
@@ -1138,9 +1140,9 @@ rv = .false.
                 elif buf_arg == 'context':
                     fmt_arg.c_var_context = c_attrs['context']
                     append_format(arg_f_decl,
-                                  'type({f_context_type}) :: {c_var_context}', fmt_arg)
+                                  'type({F_context_type}) :: {c_var_context}', fmt_arg)
                     arg_c_call.append(fmt_arg.c_var_context)
-#                    self.set_f_module(modules, 'iso_c_binding', fmt.f_context_type)
+#                    self.set_f_module(modules, 'iso_c_binding', fmt.F_context_type)
                 elif buf_arg == 'len_trim':
                     append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')

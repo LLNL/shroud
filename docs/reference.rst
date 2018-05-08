@@ -535,6 +535,10 @@ C_capsule_data_type
     Name of struct used to share memory information with Fortran.
     Defaults to *SHROUD_capsule_data*.
 
+C_context_type
+    Name of array context information struct and typedef.
+    Defaults to *SHROUD_vector_context*.
+
 C_header_filename
     Name of generated header file for the library.
     Defaulted from expansion of option *C_header_filename_library_template*.
@@ -604,6 +608,10 @@ F_capsule_type
     Name of derived type used to release memory allocated by C or C++.
     Defaults to *SHROUD_capsule*.
     Contains a *F_capsule_data_type*.
+
+F_context_type
+    Name of array context information derived type.
+    Defaults to *SHROUD_vector_context*.
 
 F_derived_member
     Fortran ``POINTER`` to *F_derived_ptr*.
@@ -1040,12 +1048,6 @@ Fortran. [#f1]_
 
 .. list from util.py class Typedef
 
-base
-    Base type.
-    For example, string and string_from_buffer both have a 
-    base time of *string*.
-    Defaults to *unknown*
-
 forward
     Forward declaration.
     Defaults to *None*.
@@ -1054,319 +1056,15 @@ typedef
     Initialize from existing type
     Defaults to *None*.
 
-c_header
-    Name of C header file required for implementation.
-    Only used with *language=c*.
-    Defaults to *None*.
-
-cxx_type
-    Name of type in C++.
-    Defaults to *None*.
-
-cxx_to_c
-    Expression to convert from C++ to C.
-    Defaults to *None* which implies *{cxx_var}*.  i.e. no conversion required.
-
-cxx_header
-    Name of C++ header file required for implementation.
-    For example, if cxx_to_c was a function.
-    Only used with *language=c++*.
-    Defaults to *None*.
-
-c_type
-    name of type in C.
-    Defaults to *None*.
-
-c_header
-    Name of C header file required for type.
-    This file is included in the interface header.
-    Defaults to *None*.
-
-c_to_cxx
-    Expression to convert from C to C++.
-    Defaults to *None* which implies *{c_var}*.  i.e. no conversion required.
-
-c_statements
-    A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, *intent_inout*, *result*,
-    *intent_in_buf*, *intent_out_buf*, *intent_inout_buf*, and *result_buf*.
-    The second layer is *pre_call*, *call*, *post_call*, *cxx_header*.
-    The entries are a list of format strings.
-
-    intent_in
-        Code to add for argument with ``intent(IN)``.
-        Can be used to convert types or copy-in semantics.
-        For example, ``char *`` to ``std::string``.
-
-    intent_out
-        Code to add after call when ``intent(OUT)``.
-        Used to implement copy-out semantics.
-
-    intent_inout
-        Code to add after call when ``intent(INOUT)``.
-        Used to implement copy-out semantics.
-
-    result
-        Code to use when passing result as an argument.
-
-
-        buf_args
-           An array of arguments which will be passed to the
-           C wrapper.
-           Useful with bufferified version of a function to pass 
-           additional information.
-           Defaults to *[ 'arg' ]*
-
-           arg
-              Argument from Fortran function
-
-           capsule
-              A struct which contains a pointer to data
-              and destructor index.
-
-           context
-              Additional information which is passed to or
-              returned from a function.
-              For example, used with ``std::vector`` to hold
-              address and size of data contained in the argument
-              in a form which may be used directly by Fortran.
-
-           len
-              Fortran intrinsic ``LEN``, of type *int*.
-
-           len_trim
-              Fortran intrinsic ``LEN_TRIM``, of type *int*.
-
-           size
-              Fortran intrinsic ``SIZE``, of type *long*.
-
-        cxx_header
-           string of blank delimited header names
-
-        cxx_local_var
-           Set if a local C++ variable is created.
-           This is the case when C and C++ are not directly compatible.
-           Usually a C++ constructor or cast is involved.
-           Set to **scalar** when a local variable is being created, for example ``std::string``.
-           Or set to **pointer** when used with a pointer, for example ``char *``.
-           This sets *cxx_var* is set to ``SH_{c_var}``.
-
-        c_helper
-           A blank delimited list of helper routines to add.
-           These functions are defined in whelper.py.
-           There is no current way to add additional functions.
-
-c_templates
-    A dictionary indexed by type of specialized *c_statements*
-    When an argument has a *template* field, such as type ``vector<string>``,
-    some additional specialization of c_statements may be required::
-
-        c_templates:
-            string:
-               intent_in_buf:
-               - code to copy CHARACTER to vector<string>
-
-f_c_module
-    Fortran modules needed for type in the interface.
-    A dictionary keyed on the module name with the value being a list of symbols.
-    Similar to **f_module**.
-    Defaults to *None*.
-
-f_c_type
-    Type declaration for ``bind(C)`` interface.
-    Defaults to *None* which will then use *f_type*.
-
-f_kind
-    Fortran kind of type. For example, ``C_INT`` or ``C_LONG``.
-    Defaults to *None*.
-
-f_type
-    Name of type in Fortran.
-    Defaults to *None*.
-
-f_derived_type
-    Fortran derived type name.
-    Defaults to *None* which will use the C++ class name
-    for the Fortran derived type name.
-
-.. f_args
-    Arguments in the Fortran wrapper to pass to the C function.
-    This can pass multiple arguments to C for a single
-    argument to the wrapper; for example, an address and length
-    for a ``character(*)`` argument.
-    Or it may be intermediate values.
-    For example, a Fortran character variable can be converted
-    to a ``NULL`` terminated string with
-    ``trim({var}) // C_NULL_CHAR``.
-    Defaults to *None*  i.e. pass argument unchanged.
-
-f_module
-    Fortran modules needed for type in the implementation wrapper.
-    A dictionary keyed on the module name with the value being a list of symbols.
-    Defaults to *None*.::
-
-        f_module:
-           iso_c_binding:
-             - C_INT
-
 f_return_code
     Fortran code used to call function and assign the return value.
     Defaults to *None*.
-
-f_cast
-    Expression to convert Fortran type to C type.
-    This is used when creating a Fortran generic functions which
-    accept several type but call a single C function which expects
-    a specific type.
-    For example, type ``int`` is defined as ``int({f_var}, C_INT)``.
-    This expression converts *f_var* to a ``integer(C_INT)``.
-    Defaults to *{f_var}*  i.e. no conversion.
-
-..  See tutorial function9 for example.  f_cast is only used if the types are different.
 
 f_to_c
     Expression to convert Fortran type to C type.
     If this field is set, it will be used before f_cast.
     Defaults to *None*.
 
-f_statement
-    A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, *intent_inout*, *result_pure* and *result*.
-    The second layer is *declare*, *pre_call*, and *post_call*
-    The entries are a list of format strings.
-
-    c_local_var
-        If true, generate a local variable using the C declaration for the argument.
-        This variable can be used by the pre_call and post_call statements.
-        A single declaration will be added even if with ``intent(inout)``.
-
-    declare
-        A list of declarations needed by *pre_call* or *f_post_call*.
-        Usually a *c_local_var* is sufficient.
-        If both *pre_call* and *post_call* are specified then both *declare*
-        clause will be added and thus should not declare the same variable.
-
-    pre_call
-        Statement to execute before call, often to coerce types
-        when *f_cast* cannot be used.
-
-    call
-        Code used to call the function.
-        Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
-
-    post_call
-        Statement to execute after call.
-        Can be use to cleanup after *f_pre_call*
-        or to coerce the return value.
-
-    need_wrapper
-        If true, the Fortran wrapper will always be created.
-        This is used when an assignment is needed to do a type coercion;
-        for example, with logical types.
-
-    f_helper
-        Blank delimited list of helper function names to add to generated Fortran code.
-        These functions are defined in whelper.py.
-        There is no current way to add additional functions.
-
-        private
-           List of names which should be ``PRIVATE`` to the module
-
-        interface
-           Code to add to the non-executable part of the module.
-
-        source
-           Code to add in the ``CONTAINS`` section of the module.
-
-    f_module
-        ``USE`` statements to add to Fortran wrapper.
-        A dictionary of list of ``ONLY`` names::
-
-            f_module=dict(iso_c_binding=['C_SIZE_T']),
-
-idtor
-    Index of ``capsule_data`` destructor in the function
-    *C_memory_dtor_function*.
-    Defaults to *0* indicating no destructor.
-
-result_as_arg
-    Override fields when result should be treated as an argument.
-    Defaults to *None*.
-
-PY_build_arg
-    Argument for Py_BuildValue.  Defaults to *{cxx_var}*.
-    This field can be used to turn the argument into an expression such as
-    *(int) {cxx_var}*  or *{cxx_var}{cxx_member}c_str()*
-    *PY_format* is used as the format:: 
-
-       Py_BuildValue("{PY_format}", {PY_build_arg});
-
-PY_format
-    'format unit' for PyArg_Parse and Py_BuildValue.
-    Defaults to *O*
-
-PY_PyTypeObject
-    Variable name of PyTypeObject instance.
-    Defaults to *None*.
-
-PY_PyObject
-    Typedef name of PyObject instance.
-    Defaults to *None*.
-
-PY_ctor
-    Expression to create object.
-    ex. ``PyInt_FromLong({rv})``
-    Defaults to *None*.
-
-PY_get
-    Expression to get value from an object.
-    ex. ``PyInt_AsLong({py_var})``
-    Defaults to *None*.
-
-PY_to_object
-    PyBuild - object = converter(address).
-    Defaults to *None*.
-
-PY_from_object
-    PyArg_Parse - status = converter(object, address).
-    Defaults to *None*.
-
-py_statement
-    A nested dictionary of code template to add.
-    The first layer is *intent_in*, *intent_out*, and *result*.
-    The entries are a list of format strings.
-
-..    declare
-        A list of declarations needed by *pre_call* or *f_post_call*.
-
-    post_parse
-        Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.
-        Used to convert C values into C++ values.
-	Ex. ``{var} = PyObject_IsTrue({var_obj});``
-
-    ctor
-        Statements to create a Python object.
-	Must ensure that ``py_var = cxx_var`` in some form.
-
-..    post_call
-        Statement to execute after call.
-        Can be use to cleanup after *f_pre_call*
-        or to coerce the return value.
-
-        cxx_local_var
-           True if a local C++ variable is created.
-           This is the case when C and C++ are not directly compatible.
-           Usually a C++ constructor or cast is involved.
-
-PYN_descr
-    Name of ``PyArray_Descr`` variable which describe type.
-    Used with structs.
-    Defaults to *None*.
-
-PYN_typenum
-    NumPy type number.
-    ex. ``NPY_INT``
-    Defaults to *None*.
 
 Annotations
 -----------

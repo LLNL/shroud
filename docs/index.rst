@@ -72,6 +72,9 @@ Contents
    input
    types
    functions
+   cwrapper
+   fortran
+   python
    reference
    previouswork
    pypreviouswork

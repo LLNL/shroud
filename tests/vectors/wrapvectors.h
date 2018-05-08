@@ -66,8 +66,8 @@ struct s_SHROUD_capsule_data {
 typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
 
 struct s_SHROUD_vector_context {
-  void *addr;     /* address of data in std::vector */
-  size_t size;    /* size of data in std::vector */
+    void *addr;     /* address of data in std::vector */
+    size_t size;    /* size of data in std::vector */
 };
 typedef struct s_SHROUD_vector_context SHROUD_vector_context;
 

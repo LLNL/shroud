@@ -283,14 +283,16 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
             'extern PyTypeObject {PY_PyTypeObject};', fmt_class))
 
         self._create_splicer('C_declaration', self.py_type_structs)
-        self.py_type_structs.append('')
-        self.py_type_structs.append('typedef struct {')
-        self.py_type_structs.append('PyObject_HEAD')
-        self.py_type_structs.append(1)
-        append_format(self.py_type_structs, '{namespace_scope}{cxx_class} * {PY_obj};', fmt_class)
+        append_format(self.py_type_structs,
+                      '\n'
+                      'typedef struct {{\n'
+                      'PyObject_HEAD\n'
+                      '+{namespace_scope}{cxx_class} * {PY_obj};',
+                      fmt_class)
         self._create_splicer('C_object', self.py_type_structs)
-        self.py_type_structs.append(-1)
-        self.py_type_structs.append(wformat('}} {PY_PyObject};', fmt_class))
+        append_format(self.py_type_structs,
+                      '-}} {PY_PyObject};',
+                      fmt_class)
 
         self.wrap_enums(node)
 

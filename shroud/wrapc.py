@@ -756,7 +756,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(proto_list, '{C_capsule_data_type} *{c_var_capsule}', fmt_arg)
                 elif buf_arg == 'context':
                     fmt_arg.c_var_context = c_attrs['context']
-                    append_format(proto_list, '{c_context_type} *{c_var_context}', fmt_arg)
+                    append_format(proto_list, '{C_context_type} *{c_var_context}', fmt_arg)
                 elif buf_arg == 'len_trim':
                     fmt_arg.c_var_trim = c_attrs['len_trim']
                     append_format(proto_list, 'int {c_var_trim}', fmt_arg)
@@ -1074,7 +1074,7 @@ class Wrapc(util.WrapperMixin):
             '\n'
             '// Release C++ allocated memory if refcount reaches 0.\n'
             'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc)\n'
-            '{{+\n'
+            '{{+'
             , fmt)
 
         if options.F_auto_reference_count:
@@ -1084,7 +1084,7 @@ class Wrapc(util.WrapperMixin):
                 '@--cap->refcount;\n'
                 'if (cap->refcount > 0) {{+\n'
                 'return;\n'
-                '-}}\n'
+                '-}}'
                 , fmt)
 
         append_format(

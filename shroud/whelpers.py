@@ -243,6 +243,21 @@ call array_destructor(cap%mem, .false._C_BOOL)
 def add_vector_copy_helper(fmt):
     """Create function to copy contents of a vector.
     """
+    name = 'vector_context'
+    if name not in CHelpers:
+        helper = dict(
+            h_header='<stddef.h>',
+            h_source=wformat("""
+struct s_{C_context_type} {{+
+void *addr;     /* address of data in std::vector */
+size_t size;    /* size of data in std::vector */
+-}};
+typedef struct s_{C_context_type} {C_context_type};
+""", fmt),
+        )
+        CHelpers[name] = helper
+
+    ########################################
     name = wformat('vector_copy_{cxx_T}', fmt)
     if name not in CHelpers:
         helper = dict(
@@ -320,17 +335,6 @@ int ShroudLenTrim(const char *s, int ls) {
 
     return i + 1;
 }
-"""
-    ),
-
-    vector_context=dict(
-        h_header='<stddef.h>',
-        h_source="""
-struct s_SHROUD_vector_context {
-  void *addr;     /* address of data in std::vector */
-  size_t size;    /* size of data in std::vector */
-};
-typedef struct s_SHROUD_vector_context SHROUD_vector_context;
 """
     ),
 

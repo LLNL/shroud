@@ -664,6 +664,7 @@ class GenFunctions(object):
                     cxx_T = cxx_T,
                     f_kind = template_typedef.f_kind,
                     C_capsule_data_type = fmt.C_capsule_data_type,
+                    C_context_type = fmt.C_context_type,
                     C_prefix = fmt.C_prefix,
                 ))
 

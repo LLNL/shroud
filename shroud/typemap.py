@@ -754,11 +754,6 @@ def initialize():
             cxx_header='<vector>',
 #            cxx_to_c='{cxx_var}.data()',  # C++11
 
-            format=dict(
-                c_context_type='SHROUD_vector_context',
-                f_context_type='SHROUD_vector_context',
-            ),
-
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args = [ 'arg', 'size' ],
