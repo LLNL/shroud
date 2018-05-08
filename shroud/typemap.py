@@ -1099,7 +1099,7 @@ def typedef_shadow_defaults(typedef):
                     typedef.c_type, typedef.c_type, typedef.c_type),
                 '{c_var}->addr = {cxx_cast_to_void_ptr};',
                 '{c_var}->idtor = {idtor};',
-                '{c_var}->refcount = 0;',
+                '{c_var}->refcount = 1;',
             ]
         ),
     )

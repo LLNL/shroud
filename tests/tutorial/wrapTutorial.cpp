@@ -511,7 +511,7 @@ TUT_class1 * TUT_getclass2()
     SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
         (SHCXX_rv));
     SHC_rv->idtor = 0;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end function.getclass2
 }
@@ -525,7 +525,7 @@ TUT_class1 * TUT_getclass3()
     TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end function.getclass3
 }
@@ -544,7 +544,7 @@ TUT_class1 * TUT_get_class_new(int flag)
     TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end function.get_class_new
 }

@@ -127,11 +127,8 @@ intent_inout
     Used to implement copy-out semantics.
 
 result
-    Code to use when passing result as an argument.
-
-
-
-
+    Result of function.
+    Including when it is passed as an argument, *F_string_result_as_arg*.
 
 
 Each intent is then broken down into code to be added into

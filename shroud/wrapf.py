@@ -40,37 +40,6 @@
 """
 Generate Fortran bindings for C++ code.
 
-module {F_module_name}
-
-  type {F_derived_name}
-    type(C_PTR), private :: {F_derived_member} = C_NULL_PTR
-  contains
-    procedure :: {F_name_function} => {F_name_impl}
-    generic :: {F_name_generic} => {F_name_function}, ...
-  end type {F_derived_name}
-
-  ! interface for C functions
-  interface
-    {F_C_pure_clause}{F_C_subprogram} {F_C_name}({F_C_arguments}) &
-        {F_C_result_clause} &
-        bind(C, name="{C_name}")
-      {arg_c_decl}
-    end {F_C_subprogram} {F_C_name}
-  end interface
-
-  interface {F_name_generic}
-    module procedure {F_name_impl}
-  end interface {F_name_generic}
-
-contains
-
-  {F_pure_clause} {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
-      {F_C_name}({F_arg_c_call})
-     {F_code}
-  end {F_subprogram} {F_name_impl}
-
-end module {F_module_name}
-----------
 """
 from __future__ import print_function
 from __future__ import absolute_import
@@ -700,7 +669,6 @@ rv = .false.
 
         # find subprogram type
         # compute first to get order of arguments correct.
-#YYYY
         if subprogram == 'subroutine':
             fmt.F_C_subprogram = 'subroutine'
         else:
@@ -1250,7 +1218,7 @@ rv = .false.
         else:
             F_code = []
             if is_ctor:
-                # construct returns a C_PTR.  Then setup fortran POINTER member.
+                # constructor returns a C_PTR.  Then setup fortran POINTER member.
                 # XXX - f_statements.result has same code
                 fmt_func.F_call_code = wformat(
                     '{F_result}%{F_derived_ptr} = '

@@ -537,7 +537,7 @@
                         "DEF_class2 *{c_var} = (DEF_class2 *) malloc(sizeof(DEF_class2));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
                         "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 0;"
+                        "{c_var}->refcount = 1;"
                     ]
                 }
             }, 
@@ -1354,7 +1354,7 @@
                         "DEF_class1 *{c_var} = (DEF_class1 *) malloc(sizeof(DEF_class1));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
                         "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 0;"
+                        "{c_var}->refcount = 1;"
                     ]
                 }
             }, 

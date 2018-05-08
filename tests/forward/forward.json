@@ -80,7 +80,7 @@
                             "C_call_code": "tutorial::\tClass2 *SHCXX_rv = new tutorial::\tClass2();", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_ctor", 
-                            "C_post_call": "FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 0;", 
+                            "C_post_call": "FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "FOR_class2 *", 
@@ -1213,7 +1213,7 @@
                         "TUT_class1 *{c_var} = (TUT_class1 *) malloc(sizeof(TUT_class1));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
                         "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 0;"
+                        "{c_var}->refcount = 1;"
                     ]
                 }
             }, 
@@ -1294,7 +1294,7 @@
                         "FOR_class2 *{c_var} = (FOR_class2 *) malloc(sizeof(FOR_class2));", 
                         "{c_var}->addr = {cxx_cast_to_void_ptr};", 
                         "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 0;"
+                        "{c_var}->refcount = 1;"
                     ]
                 }
             }, 

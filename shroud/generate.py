@@ -226,7 +226,7 @@ class VerifyAttrs(object):
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
-        capsule_name = attrs.get('size', False)
+        capsule_name = attrs.get('capsule', False)
         if capsule_name is True:
             attrs['capsule'] = options.C_var_capsule_template.format(c_var=argname)
         len_name = attrs.get('len', False)

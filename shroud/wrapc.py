@@ -894,7 +894,7 @@ class Wrapc(util.WrapperMixin):
                           '{c_type} *{c_var} = ({c_type} *) malloc(sizeof({c_type}));\n'
                           '{c_var}->addr = {c_val};\n'
                           '{c_var}->idtor = {idtor};\n'
-                          '{c_var}->refcount = 0;',
+                          '{c_var}->refcount = 1;',
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:

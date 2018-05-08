@@ -61,7 +61,7 @@ FOR_class2 * FOR_class2_ctor()
     FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }

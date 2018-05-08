@@ -74,7 +74,7 @@ AA_exclass1 * AA_exclass1_ctor_0()
     AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_0
 }
@@ -98,7 +98,7 @@ AA_exclass1 * AA_exclass1_ctor_1(const char * name)
     AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1
 }
@@ -122,7 +122,7 @@ AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
     AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
-    SHC_rv->refcount = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1_bufferify
 }
