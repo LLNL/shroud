@@ -733,7 +733,7 @@ class Wrapc(util.WrapperMixin):
                         # base==string will have a pre_call block which sets cxx_local_var
                         cxx_local_var = 'pointer'
                     
-                stmts = 'intent_' + c_attrs['intent'] + generated_suffix
+                stmts = 'intent_' + c_attrs['intent'] + c_attrs.get('_generated_suffix','')
 
             intent_blk = c_statements.get(stmts, {})
 
@@ -935,6 +935,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
 
                 c_statements = result_typedef.c_statements
+                generated_suffix = ast.attrs.get('_generated_suffix','')
                 intent_blk = c_statements.get('result' + generated_suffix, {})
                 self.add_c_statements_headers(intent_blk)
 

@@ -335,6 +335,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char_scalar", 
                                 "intent": "out", 
@@ -551,6 +552,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Ndest", 
@@ -572,6 +574,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Lsrc", 
@@ -758,6 +761,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "inout", 
                                 "len": "Ns", 
@@ -927,6 +931,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
@@ -1100,6 +1105,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
@@ -1262,6 +1268,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
@@ -1332,6 +1339,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
@@ -1486,6 +1494,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -1630,6 +1639,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -1701,6 +1711,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -1851,6 +1862,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "intent": "out", 
@@ -2022,6 +2034,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -2201,6 +2214,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -2369,6 +2383,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -2440,6 +2455,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -2617,6 +2633,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -2790,6 +2807,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "intent": "out", 
@@ -2967,6 +2985,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "std::string", 
                                 "intent": "out", 
@@ -3141,6 +3160,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "intent": "out", 
@@ -3315,6 +3335,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "intent": "out", 
@@ -3498,6 +3519,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Larg1", 
@@ -3683,6 +3705,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Narg1", 
@@ -3870,6 +3893,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::string", 
                                 "intent": "inout", 
                                 "len": "Narg1", 
@@ -4057,6 +4081,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::string", 
                                 "intent": "inout", 
                                 "len": "Narg1", 
@@ -4398,6 +4423,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "AAlen", 
@@ -4562,6 +4588,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "out", 
                                 "len": "AAtrim", 
@@ -4820,6 +4847,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char_scalar", 
                                 "intent": "out", 
@@ -5038,6 +5066,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Ndest", 
@@ -5059,6 +5088,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Lsrc", 

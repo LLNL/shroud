@@ -1034,7 +1034,7 @@ def create_enum_typedef(node):
     return typedef
 
 def create_class_typedef(cls):
-    """Create a typedef for a typedef.
+    """Create a typedef for a class.
 
     The C type is a capsule_data which will contains a pointer to the
     C++ memory and information on how to delete the memory.
@@ -1162,6 +1162,8 @@ def typedef_shadow_defaults(typedef):
 
 
 def create_struct_typedef(cls):
+    """Create a typedef for a struct.
+    """
     fmt_class = cls.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')

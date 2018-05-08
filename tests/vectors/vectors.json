@@ -222,6 +222,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
@@ -374,6 +375,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::vector", 
                                 "capsule": "Carg", 
                                 "context": "Darg", 
@@ -527,6 +529,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::vector", 
                                 "capsule": "Carg", 
                                 "context": "Darg", 
@@ -692,6 +695,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 

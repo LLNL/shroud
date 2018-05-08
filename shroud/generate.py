@@ -724,6 +724,9 @@ class GenFunctions(object):
 
             # set names for implied buffer arguments
             stmts = 'intent_' + attrs['intent'] + '_buf'
+            if stmts in c_statements:
+                arg.attrs['_generated_suffix'] = '_buf'
+
             intent_blk = c_statements.get(stmts, {})
             for buf_arg in intent_blk.get('buf_args', []):
                 if buf_arg in attrs:
@@ -761,6 +764,7 @@ class GenFunctions(object):
                 attrs['len'] = options.C_var_len_template.format(c_var=result_name)
             attrs['intent'] = 'out'
             attrs['_is_result'] = True
+            attrs['_generated_suffix'] = '_buf'
             # convert to subroutine
             C_new._subprogram = 'subroutine'
 
