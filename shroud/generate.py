@@ -138,7 +138,7 @@ class VerifyAttrs(object):
                     .format(attr, argname, node.decl))
 
         argtype = arg.typename
-        typedef = typemap.Typedef.lookup(argtype)
+        typedef = typemap.Typemap.lookup(argtype)
         if typedef is None:
             # if the type does not exist, make sure it is defined by cxx_template
             #- decl: void Function7(ArgType arg)
@@ -245,7 +245,7 @@ class VerifyAttrs(object):
             if not temp:
                 raise RuntimeError("std::vector must have template argument: %s" % (
                         arg.gen_decl()))
-            typedef = typemap.Typedef.lookup(temp)
+            typedef = typemap.Typemap.lookup(temp)
             if typedef is None:
                 raise RuntimeError("check_arg_attr: No such type %s for template: %s" % (
                         temp, arg.gen_decl()))
@@ -334,7 +334,7 @@ class GenFunctions(object):
         class member variables.
         """
         ast = var.ast
-        typedef = typemap.Typedef.lookup(ast.typename)
+        typedef = typemap.Typemap.lookup(ast.typename)
         fieldname = ast.name  # attrs.get('name', ast.name)
 
         fmt = util.Scope(var.fmtdict)
@@ -541,7 +541,7 @@ class GenFunctions(object):
                     if arg.name == argname:
                         # Convert any typedef to native type with f_type
                         argtype = arg.typename
-                        typedef = typemap.Typedef.lookup(argtype)
+                        typedef = typemap.Typemap.lookup(argtype)
                         if not typedef.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
@@ -621,7 +621,7 @@ class GenFunctions(object):
         # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node.ast
         result_type = ast.typename
-        result_typedef = typemap.Typedef.lookup(result_type)
+        result_typedef = typemap.Typemap.lookup(result_type)
         # shadow classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
@@ -648,7 +648,7 @@ class GenFunctions(object):
         has_implied_arg = False
         for arg in ast.params:
             argtype = arg.typename
-            typedef = typemap.Typedef.lookup(argtype)
+            typedef = typemap.Typemap.lookup(argtype)
             if typedef.base == 'string':
                 is_ptr = arg.is_indirect()
                 if is_ptr:
@@ -659,7 +659,7 @@ class GenFunctions(object):
                 has_implied_arg = True
                 # Create helpers for vector template.
                 cxx_T = arg.attrs['template']
-                template_typedef = typemap.Typedef.lookup(cxx_T)
+                template_typedef = typemap.Typemap.lookup(cxx_T)
                 whelpers.add_vector_copy_helper(dict(
                     cxx_T = cxx_T,
                     f_kind = template_typedef.f_kind,
@@ -711,7 +711,7 @@ class GenFunctions(object):
         for arg in C_new.ast.params:
             attrs = arg.attrs
             argtype = arg.typename
-            arg_typedef = typemap.Typedef.lookup(argtype)
+            arg_typedef = typemap.Typemap.lookup(argtype)
             if arg_typedef.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -827,17 +827,17 @@ class GenFunctions(object):
             return
         ast = node.ast
         rv_type = ast.typename
-        typedef = typemap.Typedef.lookup(rv_type)
+        typedef = typemap.Typemap.lookup(rv_type)
         if typedef is None:
             raise RuntimeError(
                 "Unknown type {} for function decl: {}"
                 .format(rv_type, node['decl']))
-        result_typedef = typemap.Typedef.lookup(rv_type)
+        result_typedef = typemap.Typemap.lookup(rv_type)
         # XXX - make sure it exists
         used_types[rv_type] = result_typedef
         for arg in ast.params:
             argtype = arg.typename
-            typedef = typemap.Typedef.lookup(argtype)
+            typedef = typemap.Typemap.lookup(argtype)
             if typedef is None:
                 raise RuntimeError("%s not defined" % argtype)
             if typedef.base == 'shadow':
@@ -975,9 +975,9 @@ class Preprocess(object):
         node.C_return_type = C_result_type
         node.F_return_type = F_result_type
 
-        node.CXX_result_typedef = typemap.Typedef.lookup(CXX_result_type)
-        node.C_result_typedef = typemap.Typedef.lookup(C_result_type)
-        node.F_result_typedef = typemap.Typedef.lookup(F_result_type)
+        node.CXX_result_typedef = typemap.Typemap.lookup(CXX_result_type)
+        node.C_result_typedef = typemap.Typemap.lookup(C_result_type)
+        node.F_result_typedef = typemap.Typemap.lookup(F_result_type)
 #        if not result_typedef:
 #            raise RuntimeError("Unknown type {} in {}",
 #                               CXX_result_type, fmt_func.function_name)

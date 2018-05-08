@@ -115,7 +115,7 @@ class TypeOut(util.WrapperMixin):
                     output.append('declarations: ' + name)
                     splitup(nxt, output)
                     output.append(-1)
-                elif isinstance(nxt, typemap.Typedef):
+                elif isinstance(nxt, typemap.Typemap):
                     output.append('@- type: ' + name)
                     output.append(1)
                     output.append('fields:')
@@ -140,7 +140,7 @@ class TypeOut(util.WrapperMixin):
 def dump_jsonfile(logdir, basename, newlibrary):
     """Write a JSON file for debugging.
     """
-    def_types = typemap.Typedef.get_global_types()
+    def_types = typemap.Typemap.get_global_types()
 
     jsonpath = os.path.join(logdir, basename + '.json')
     fp = open(jsonpath, 'w')

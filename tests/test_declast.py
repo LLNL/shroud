@@ -1166,7 +1166,7 @@ class CheckTypedef(unittest.TestCase):
         library.add_declaration('typedef int TD2;')
         self.assertIn('TD2', library.symbols)
 
-        typedef = typemap.Typedef.lookup('TD2')
+        typedef = typemap.Typemap.lookup('TD2')
         self.assertIsNotNone(typedef)
         self.assertEqual('TD2', typedef.name)
         self.assertEqual('TD2', typedef.cxx_type)
@@ -1270,7 +1270,7 @@ class CheckClass(unittest.TestCase):
         self.assertIn('Class1', library.symbols)
         self.assertIsInstance(library.symbols['Class1'], ast.TypedefNode)
 
-        typedef = typemap.Typedef.lookup('Class1')
+        typedef = typemap.Typemap.lookup('Class1')
         self.assertIsNotNone(typedef)
         self.assertEqual('Class1', typedef.name)
         self.assertEqual('Class1', typedef.cxx_type)
@@ -1294,7 +1294,7 @@ class CheckClass(unittest.TestCase):
         self.assertIn('Class2', ns.symbols)
         self.assertIsInstance(ns.symbols['Class2'], ast.TypedefNode)
 
-        typedef = typemap.Typedef.lookup('ns::Class2')
+        typedef = typemap.Typemap.lookup('ns::Class2')
         self.assertIsNotNone(typedef)
         self.assertEqual('ns::Class2', typedef.name)
         self.assertEqual('ns::Class2', typedef.cxx_type)

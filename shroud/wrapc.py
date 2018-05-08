@@ -366,7 +366,7 @@ class Wrapc(util.WrapperMixin):
         for var in node.variables:
             ast = var.ast
             result_type = ast.typename
-            typedef = typemap.Typedef.lookup(result_type)
+            typedef = typemap.Typemap.lookup(result_type)
             output.append(ast.gen_arg_as_c() + ';')
         output.extend([
             -1,
@@ -637,7 +637,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
 
-            arg_typedef = typemap.Typedef.lookup(arg.typename)  # XXX - look up vector
+            arg_typedef = typemap.Typemap.lookup(arg.typename)  # XXX - look up vector
             fmt_arg.update(arg_typedef.format)
 
             if arg_typedef.base == 'vector':
@@ -767,7 +767,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.c_var_len = c_attrs['lenout']
                     append_format(proto_list, 'size_t *{c_var_len}', fmt_arg)
                     self.header_typedef_nodes['size_t'] = \
-                        typemap.Typedef.lookup('size_t')
+                        typemap.Typemap.lookup('size_t')
                 else:
                     raise RuntimeError("wrap_function: unhandled case {}"
                                        .format(buf_arg))

@@ -44,7 +44,7 @@ Create and manage typemaps used to convert between languages.
 from . import util
 from . import whelpers
 
-class Typedef(object):
+class Typemap(object):
     """ Collect fields for an argument.
     This used to be a dict but a class has better access semantics:
        i.attr vs d['attr']
@@ -136,12 +136,12 @@ class Typedef(object):
                 raise RuntimeError("Unknown key for Argument %s", key)
 
     def XXXcopy(self):
-        n = Typedef(self.name)
+        n = Typemap(self.name)
         n.update(self._to_dict())
         return n
 
     def clone_as(self, name):
-        n = Typedef(name)
+        n = Typemap(name)
         n.update(self._to_dict())
         return n
 
@@ -166,7 +166,7 @@ class Typedef(object):
                     args.append("{0}='{1}'".format(key, value))
                 else:
                     args.append("{0}={1}".format(key, value))
-        return "Typedef('%s', " % self.name + ','.join(args) + ')'
+        return "Typemap('%s', " % self.name + ','.join(args) + ')'
 
     def __as_yaml__(self, indent, output):
         """Write out entire typedef as YAML.
@@ -213,7 +213,7 @@ class Typedef(object):
 
 def initialize():
     def_types = dict(
-        void=Typedef(
+        void=Typemap(
             'void',
             c_type='void',
             cxx_type='void',
@@ -222,7 +222,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_PTR']),
             PY_ctor='PyCapsule_New({cxx_var}, NULL, NULL)',
             ),
-        int=Typedef(
+        int=Typemap(
             'int',
             c_type='int',
             cxx_type='int',
@@ -238,7 +238,7 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
-        long=Typedef(
+        long=Typemap(
             'long',
             c_type='long',
             cxx_type='long',
@@ -254,7 +254,7 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
-        long_long=Typedef(
+        long_long=Typemap(
             'long_long',
             c_type='long long',
             cxx_type='long long',
@@ -269,7 +269,7 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
-        size_t=Typedef(
+        size_t=Typemap(
             'size_t',
             c_type='size_t',
             cxx_type='size_t',
@@ -284,7 +284,7 @@ def initialize():
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
 
-        float=Typedef(
+        float=Typemap(
             'float',
             c_type='float',
             cxx_type='float',
@@ -300,7 +300,7 @@ def initialize():
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
             ),
-        double=Typedef(
+        double=Typemap(
             'double',
             c_type='double',
             cxx_type='double',
@@ -317,7 +317,7 @@ def initialize():
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
             ),
 
-        bool=Typedef(
+        bool=Typemap(
             'bool',
             c_type='bool',
             cxx_type='bool',
@@ -391,7 +391,7 @@ def initialize():
             ),
 
         # implies null terminated string
-        char=Typedef(
+        char=Typemap(
             'char',
             cxx_type='char',
 
@@ -481,7 +481,7 @@ def initialize():
             ),
 
         # char scalar
-        char_scalar=Typedef(
+        char_scalar=Typemap(
             'char_scalar',
             cxx_type='char',
 
@@ -516,7 +516,7 @@ def initialize():
             ),
 
         # C++ std::string
-        string=Typedef(
+        string=Typemap(
             'string',
             cxx_type='std::string',
             cxx_header='<string>',
@@ -653,7 +653,7 @@ def initialize():
         #    allocate(character(len=lenout): Fout)
         #    c_step2(Fout, out)
         # only used with bufferifed routines and intent(out) or result
-        stringout=Typedef(
+        stringout=Typemap(
             'stringout',
             cxx_type='std::string',
             cxx_header='<string>',
@@ -748,7 +748,7 @@ def initialize():
 
         # C++ std::vector
         # No c_type or f_type, use attr[template]
-        vector=Typedef(
+        vector=Typemap(
             'vector',
             cxx_type='std::vector<{cxx_T}>',
             cxx_header='<vector>',
@@ -988,7 +988,7 @@ def initialize():
             base='vector',
             ),
 
-        MPI_Comm=Typedef(
+        MPI_Comm=Typemap(
             'MPI_Comm',
             cxx_type='MPI_Comm',
             c_header='mpi.h',
@@ -1010,7 +1010,7 @@ def initialize():
     def_types['std::vector'] = def_types['vector']
     del def_types['vector']
 
-    Typedef.set_global_types(def_types)
+    Typemap.set_global_types(def_types)
 
     return def_types
 
@@ -1022,15 +1022,15 @@ def create_enum_typedef(node):
     cxx_name = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(type_name)
+    typedef = Typemap.lookup(type_name)
     if typedef is None:
-        inttypedef = Typedef.lookup('int')
+        inttypedef = Typemap.lookup('int')
         typedef = inttypedef.clone_as(type_name)
         typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
         typedef.c_to_cxx = util.wformat(
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
         typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
-        Typedef.register(type_name, typedef)
+        Typemap.register(type_name, typedef)
     return typedef
 
 def create_class_typedef(cls):
@@ -1043,12 +1043,12 @@ def create_class_typedef(cls):
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(cxx_name)
+    typedef = Typemap.lookup(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
         c_name = fmt_class.C_prefix + f_name
-        typedef = Typedef(
+        typedef = Typemap(
             type_name,
             base='shadow',
             cxx_type=cxx_name,
@@ -1058,7 +1058,7 @@ def create_class_typedef(cls):
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
         typedef_shadow_defaults(typedef)
-        Typedef.register(type_name, typedef)
+        Typemap.register(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
@@ -1166,12 +1166,12 @@ def create_struct_typedef(cls):
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(cxx_name)
+    typedef = Typemap.lookup(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
         c_name = fmt_class.C_prefix + f_name
-        typedef = Typedef(
+        typedef = Typemap(
             type_name,
             base='struct',
             cxx_type=cxx_name,
@@ -1181,7 +1181,7 @@ def create_struct_typedef(cls):
             PYN_descr=fmt_class.PY_struct_array_descr_variable,
         )
         typedef_struct_defaults(typedef)
-        Typedef.register(type_name, typedef)
+        Typemap.register(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
@@ -1267,12 +1267,12 @@ def lookup_c_statements(arg):
     """
     attrs = arg.attrs
     argtype = arg.typename
-    arg_typedef = Typedef.lookup(argtype)
+    arg_typedef = Typemap.lookup(argtype)
 
     c_statements = arg_typedef.c_statements
     if 'template' in attrs:
         cxx_T = attrs['template']
         c_statements = arg_typedef.c_templates.get(
             cxx_T, c_statements)
-        arg_typedef = Typedef.lookup(cxx_T)
+        arg_typedef = Typemap.lookup(cxx_T)
     return arg_typedef, c_statements

@@ -170,7 +170,7 @@ class ToDict(visitor.Visitor):
 
 ######################################################################
 
-    def visit_Typedef(self, node):
+    def visit_Typemap(self, node):
         # only export non-default values
         a = {}
         for key, defvalue in node.defaults.items():
