@@ -719,6 +719,17 @@
                     {
                         "_PTR_F_C_index": 11, 
                         "_fmtargs": {
+                            "flag": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_deref": "", 
+                                    "c_member": ".", 
+                                    "c_var": "flag", 
+                                    "cxx_member": ".", 
+                                    "cxx_type": "bool", 
+                                    "cxx_var": "flag"
+                                }
+                            }, 
                             "name": {
                                 "fmtc": {
                                     "c_const": "", 
@@ -777,31 +788,46 @@
                                     "specifier": [
                                         "std::string"
                                     ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "_typename": "bool", 
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "flag", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "bool"
+                                    ]
                                 }
                             ], 
                             "specifier": [
                                 "Class1"
                             ]
                         }, 
-                        "decl": "Class1 * returnThisBuffer(std::string & name +intent(in));", 
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in))", 
+                        "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);", 
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)", 
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         }, 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name);", 
-                            "C_call_list": "SH_name", 
+                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
+                            "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer", 
                             "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name);", 
-                            "C_prototype": "TUT_class1 * self,\t char * name", 
+                            "C_prototype": "TUT_class1 * self,\t char * name,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
                             "F_C_call": "c_class1_return_this_buffer_bufferify", 
                             "F_C_name": "c_class1_return_this_buffer", 
-                            "F_arg_c_call": "obj%cxxptr,\t name,\t len_trim(name, kind=C_INT)", 
-                            "F_arguments": "obj,\t name", 
-                            "F_call_code": "SHT_rv%cxxptr = c_class1_return_this_buffer_bufferify(obj%cxxptr,\t name,\t len_trim(name, kind=C_INT))", 
+                            "F_arg_c_call": "obj%cxxptr,\t name,\t len_trim(name, kind=C_INT),\t SH_flag", 
+                            "F_arguments": "obj,\t name,\t flag", 
+                            "F_call_code": "SHT_rv%cxxptr = c_class1_return_this_buffer_bufferify(obj%cxxptr,\t name,\t len_trim(name, kind=C_INT),\t SH_flag)", 
                             "F_name_function": "return_this_buffer", 
                             "F_name_generic": "return_this_buffer", 
                             "F_name_impl": "class1_return_this_buffer", 
@@ -823,6 +849,21 @@
                     {
                         "_PTR_C_CXX_index": 6, 
                         "_fmtargs": {
+                            "flag": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_deref": "", 
+                                    "c_member": ".", 
+                                    "c_var": "flag", 
+                                    "cxx_member": ".", 
+                                    "cxx_type": "bool", 
+                                    "cxx_var": "flag"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "SH_flag", 
+                                    "f_var": "flag"
+                                }
+                            }, 
                             "name": {
                                 "fmtc": {
                                     "c_const": "", 
@@ -889,24 +930,39 @@
                                     "specifier": [
                                         "std::string"
                                     ]
+                                }, 
+                                {
+                                    "attrs": {
+                                        "_typename": "bool", 
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "flag", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "bool"
+                                    ]
                                 }
                             ], 
                             "specifier": [
                                 "Class1"
                             ]
                         }, 
-                        "decl": "Class1 * returnThisBuffer(std::string & name +intent(in));", 
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname))", 
+                        "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);", 
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)", 
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         }, 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name);", 
-                            "C_call_list": "SH_name", 
+                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
+                            "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer_bufferify", 
                             "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name, Lname);", 
-                            "C_prototype": "TUT_class1 * self,\t char * name,\t int Lname", 
+                            "C_prototype": "TUT_class1 * self,\t char * name,\t int Lname,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1 *", 
                             "F_C_name": "c_class1_return_this_buffer_bufferify", 
@@ -9537,7 +9593,7 @@
             "cxx_header": "<vector>", 
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
-                "intent_inout_buf": {
+                "intent_inout": {
                     "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
@@ -9548,7 +9604,7 @@
                         "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
-                "intent_out_buf": {
+                "intent_out": {
                     "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
@@ -9601,7 +9657,7 @@
             }, 
             "f_c_type": "type(C_PTR)", 
             "f_statements": {
-                "result_buf": {
+                "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [

@@ -733,7 +733,7 @@ def initialize():
             f_c_module=dict(iso_c_binding=['C_PTR']),
 
             f_statements=dict(
-                result_buf=dict(
+                result=dict(
                     need_wrapper=True,
                     f_helper='copy_string',
                     post_call=[
@@ -863,7 +863,7 @@ def initialize():
             ),
 
             f_statements=dict(
-                intent_out_buf=dict(
+                intent_out=dict(
                     f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
@@ -872,7 +872,7 @@ def initialize():
 #                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
                     ],
                 ),
-                intent_inout_buf=dict(
+                intent_inout=dict(
                     f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[

@@ -1121,7 +1121,7 @@
             "cxx_header": "<vector>", 
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
-                "intent_inout_buf": {
+                "intent_inout": {
                     "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
@@ -1132,7 +1132,7 @@
                         "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
-                "intent_out_buf": {
+                "intent_out": {
                     "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
@@ -1185,7 +1185,7 @@
             }, 
             "f_c_type": "type(C_PTR)", 
             "f_statements": {
-                "result_buf": {
+                "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [

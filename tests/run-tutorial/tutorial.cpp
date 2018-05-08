@@ -318,7 +318,7 @@ Class1 * Class1::returnThis()
     return this;
 }
 
-Class1 *Class1::returnThisBuffer(std::string & name)
+Class1 *Class1::returnThisBuffer(std::string & name, bool flag)
 {
     global_str = name;
     last_function_called = "Class1::getThisBuffer";

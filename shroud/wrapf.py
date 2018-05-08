@@ -994,7 +994,7 @@ rv = .false.
                 if is_allocatable:
                     allocatable_result = True
                 c_stmts = 'result' + generated_suffix
-                f_stmts = 'result' + generated_suffix
+                f_stmts = 'result' #+ generated_suffix
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1003,7 +1003,7 @@ rv = .false.
                     need_wrapper = True
             else:
                 c_stmts = 'intent_' + intent + generated_suffix
-                f_stmts = 'intent_' + intent + generated_suffix
+                f_stmts = 'intent_' + intent #+ generated_suffix
 
             if is_f_arg:
                 # An argument to the C and Fortran function

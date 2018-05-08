@@ -133,7 +133,7 @@ public:
     int Method1();
     bool equivalent(Class1 const &obj2) const;
     Class1 * returnThis();
-    Class1 * returnThisBuffer(std::string & name);
+    Class1 * returnThisBuffer(std::string & name, bool flag);
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 

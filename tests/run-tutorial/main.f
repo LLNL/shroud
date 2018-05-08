@@ -355,7 +355,7 @@ contains
     call obj0%return_this()
 
     ! This function has return_this=False, so it returns obj0
-    obj2 = obj0%return_this_buffer("bufferify")
+    obj2 = obj0%return_this_buffer("bufferify", .true.)
     call assert_true(obj0 .eq. obj2, "return_this_buffer equal")
 
     direction = -1

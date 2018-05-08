@@ -193,25 +193,27 @@ module tutorial_mod
             type(C_PTR), value, intent(IN) :: self
         end subroutine c_class1_return_this
 
-        function c_class1_return_this_buffer(self, name) &
+        function c_class1_return_this_buffer(self, name, flag) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer")
-            use iso_c_binding, only : C_CHAR, C_PTR
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
+            logical(C_BOOL), value, intent(IN) :: flag
             type(C_PTR) :: SHT_rv
         end function c_class1_return_this_buffer
 
         function c_class1_return_this_buffer_bufferify(self, name, &
-                Lname) &
+                Lname, flag) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
             implicit none
             type(C_PTR), value, intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
+            logical(C_BOOL), value, intent(IN) :: flag
             type(C_PTR) :: SHT_rv
         end function c_class1_return_this_buffer_bufferify
 
@@ -855,22 +857,25 @@ contains
         ! splicer end class.Class1.method.return_this
     end subroutine class1_return_this
 
-    ! Class1 * returnThisBuffer(std::string & name +intent(in))
+    ! Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
     ! arg_to_buffer
     ! function_index=6
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
     !<
-    function class1_return_this_buffer(obj, name) &
+    function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, c_f_pointer
+        use iso_c_binding, only : C_BOOL, C_INT, c_f_pointer
         class(class1) :: obj
         character(*), intent(IN) :: name
+        logical, value, intent(IN) :: flag
+        logical(C_BOOL) SH_flag
         type(class1) :: SHT_rv
+        SH_flag = flag  ! coerce to C_BOOL
         ! splicer begin class.Class1.method.return_this_buffer
         SHT_rv%cxxptr = c_class1_return_this_buffer_bufferify(obj%cxxptr, &
-            name, len_trim(name, kind=C_INT))
+            name, len_trim(name, kind=C_INT), SH_flag)
         call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
