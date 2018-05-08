@@ -140,7 +140,7 @@ class TypeOut(util.WrapperMixin):
 def dump_jsonfile(logdir, basename, newlibrary):
     """Write a JSON file for debugging.
     """
-    def_types = typemap.Typemap.get_global_types()
+    def_types = typemap.get_global_types()
 
     jsonpath = os.path.join(logdir, basename + '.json')
     fp = open(jsonpath, 'w')

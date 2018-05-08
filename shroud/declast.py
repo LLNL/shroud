@@ -1096,10 +1096,10 @@ class Declaration(Node):
             decl.append('const ')
 
         if 'template' in self.attrs:
-            typedef = typemap.Typemap.lookup(self.attrs['template'])
+            typedef = typemap.lookup_type(self.attrs['template'])
         else:
             typename = self.typename
-            typedef = typemap.Typemap.lookup(typename)
+            typedef = typemap.lookup_type(typename)
         if typedef is None:
             raise RuntimeError("gen_arg_as_lang: No such type: {}".format(typename))
 
@@ -1147,12 +1147,12 @@ class Declaration(Node):
         """Generate an argument used with the bind(C) interface from Fortran.
         """
         t = []
-        typedef = typemap.Typemap.lookup(self.typename)
+        typedef = typemap.lookup_type(self.typename)
         basedef = typedef
         attrs = self.attrs
         if 'template' in attrs:
             # If a template, use its type
-            typedef = typemap.Typemap.lookup(attrs['template'])
+            typedef = typemap.lookup_type(attrs['template'])
 
         typ = typedef.f_c_type or typedef.f_type
         if typ is None:
@@ -1196,11 +1196,11 @@ class Declaration(Node):
                      i.e. [ 'pointer' ]
         """
         t = []
-        typedef = typemap.Typemap.lookup(self.typename)
+        typedef = typemap.lookup_type(self.typename)
         attrs = self.attrs
         if 'template' in attrs:
             # If a template, use its type
-            typedef = typemap.Typemap.lookup(attrs['template'])
+            typedef = typemap.lookup_type(attrs['template'])
 
         typ = typedef.f_type
         t.append(typ)

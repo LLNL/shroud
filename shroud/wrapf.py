@@ -216,7 +216,7 @@ class Wrapf(util.WrapperMixin):
         for var in node.variables:
             ast = var.ast
             result_type = ast.typename
-            typedef = typemap.Typemap.lookup(result_type)
+            typedef = typemap.lookup_type(result_type)
             output.append(ast.gen_arg_as_fortran())
             self.update_f_module(self.module_use, typedef.f_module)
         append_format(output,
@@ -723,7 +723,7 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typedef = typemap.Typemap.lookup(arg.typename)
+            arg_typedef = typemap.lookup_type(arg.typename)
             fmt.update(arg_typedef.format)
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
@@ -1069,12 +1069,12 @@ rv = .false.
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
 
             arg_type = f_arg.typename
-            arg_typedef = typemap.Typemap.lookup(arg_type)
+            arg_typedef = typemap.lookup_type(arg_type)
             base_typedef = arg_typedef
             if 'template' in c_attrs:
                 # If a template, use its type
                 cxx_T = c_attrs['template']
-                arg_typedef = typemap.Typemap.lookup(cxx_T)
+                arg_typedef = typemap.lookup_type(cxx_T)
                 fmt_arg.cxx_T = cxx_T
 
             self.update_f_module(modules, arg_typedef.f_module)
@@ -1496,7 +1496,7 @@ class ToImplied(todict.PrintNode):
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
             argname = node.args[0].name
-            arg_typedef = typemap.Typemap.lookup(self.arg.typename)
+            arg_typedef = typemap.lookup_type(self.arg.typename)
             return 'size({},kind={})'.format(argname, arg_typedef.f_kind)
         else:
             return self.param_list(node)

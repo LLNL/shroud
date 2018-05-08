@@ -260,7 +260,7 @@ class Wrapp(util.WrapperMixin):
         self.log.write("class {1.name}\n".format(self, node))
         name = node.name
         unname = util.un_camel(name)
-        typedef = typemap.Typemap.lookup(name)
+        typedef = typemap.lookup_type(name)
 
         options = node.options
         fmt_class = node.fmtdict
@@ -431,7 +431,7 @@ return 1;""", fmt)
                 'PyList_SET_ITEM(lnames, {}, obj);'.format(i),
             ])
 
-            typedef = typemap.Typemap.lookup(ast.typename)
+            typedef = typemap.lookup_type(ast.typename)
             output.extend([
                 'obj = (PyObject *) PyArray_DescrFromType({});'.format(typedef.PYN_typenum),
                 'if (obj == NULL) goto fail;',
@@ -501,7 +501,7 @@ return 1;""", fmt)
         fmt.py_var = 'value'  # Used with PY_get
 
         ast = node.ast
-        typedef = typemap.Typemap.lookup(ast.typename)
+        typedef = typemap.lookup_type(ast.typename)
 
         if typedef.PY_ctor:
             fmt.ctor = wformat(typedef.PY_ctor, fmt)
@@ -931,7 +931,7 @@ return 1;""", fmt)
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = 'SHPy_' + arg_name
 
-            arg_typedef = typemap.Typemap.lookup(arg.typename)
+            arg_typedef = typemap.lookup_type(arg.typename)
             fmt_arg.numpy_type = arg_typedef.PYN_typenum
             # Add formats used by py_statements
             fmt_arg.c_type = arg_typedef.c_type
@@ -2187,7 +2187,7 @@ def attr_allocatable(language, allocatable, node, arg):
 
         # Create Descr if types are different
         if arg.typename != moldarg.typename:
-            arg_typedef = typemap.Typemap.lookup(arg.typename)
+            arg_typedef = typemap.lookup_type(arg.typename)
             descr = 'SHDPy_' + arg.name
             descr_code = ('PyArray_Descr * {} = '
                           'PyArray_DescrFromType({});\n'

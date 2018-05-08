@@ -221,7 +221,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             # XXX           result_is_ptr = False
             CXX_subprogram = 'subroutine'
 
-        # XXX       result_typedef = typemap.Typemap.lookup(result_type)
+        # XXX       result_typedef = typemap.lookup_type(result_type)
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         if is_dtor:
@@ -240,7 +240,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             found_default = False
             for arg in function.ast.params:
-                arg_typedef = typemap.Typemap.lookup(arg.typename)
+                arg_typedef = typemap.lookup_type(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
                     all_calls.append(LuaFunction(
@@ -293,7 +293,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = typemap.Typemap.lookup(arg.typename)
+                        arg_typedef = typemap.lookup_type(arg.typename)
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typedef.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -511,7 +511,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typedef = typemap.Typemap.lookup(arg.typename)
+            arg_typedef = typemap.lookup_type(arg.typename)
             fmt_arg.cxx_type = arg_typedef.cxx_type
             LUA_statements = arg_typedef.LUA_statements
             if attrs['intent'] in ['inout', 'in']:

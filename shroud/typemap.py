@@ -189,29 +189,29 @@ class Typemap(object):
         ], indent, output)
 
 
-    ### Manage collection of typedefs
-    _typedict = {}   # dictionary of registered types
-    @classmethod
-    def set_global_types(cls, typedict):
-        cls._typedict = typedict
+### Manage collection of typedefs
+_typedict = {}   # dictionary of registered types
 
-    @classmethod
-    def get_global_types(cls):
-        return cls._typedict
+def set_global_types(typedict):
+    global _typedict
+    _typedict = typedict
 
-    @classmethod
-    def register(cls, name, typedef):
-        """Register a typedef"""
-        cls._typedict[name] = typedef
+def get_global_types():
+    return _typedict
 
-    @classmethod
-    def lookup(cls, name):
-        """Lookup name in registered types taking aliases into account."""
-        typedef = cls._typedict.get(name)
-        return typedef
+def register_type(name, typedef):
+    """Register a typedef"""
+    global _typedict
+    _typedict[name] = typedef
 
+def lookup_type(name):
+    """Lookup name in registered types taking aliases into account."""
+    global _typedict
+    typedef = _typedict.get(name)
+    return typedef
 
 def initialize():
+    set_global_types({})
     def_types = dict(
         void=Typemap(
             'void',
@@ -1010,7 +1010,7 @@ def initialize():
     def_types['std::vector'] = def_types['vector']
     del def_types['vector']
 
-    Typemap.set_global_types(def_types)
+    set_global_types(def_types)
 
     return def_types
 
@@ -1022,15 +1022,15 @@ def create_enum_typedef(node):
     cxx_name = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typemap.lookup(type_name)
+    typedef = lookup_type(type_name)
     if typedef is None:
-        inttypedef = Typemap.lookup('int')
+        inttypedef = lookup_type('int')
         typedef = inttypedef.clone_as(type_name)
         typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
         typedef.c_to_cxx = util.wformat(
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
         typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
-        Typemap.register(type_name, typedef)
+        register_type(type_name, typedef)
     return typedef
 
 def create_class_typedef(cls):
@@ -1043,7 +1043,7 @@ def create_class_typedef(cls):
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typemap.lookup(cxx_name)
+    typedef = lookup_type(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
@@ -1058,7 +1058,7 @@ def create_class_typedef(cls):
             f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
             )
         typedef_shadow_defaults(typedef)
-        Typemap.register(type_name, typedef)
+        register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
@@ -1166,7 +1166,7 @@ def create_struct_typedef(cls):
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typemap.lookup(cxx_name)
+    typedef = lookup_type(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
@@ -1181,7 +1181,7 @@ def create_struct_typedef(cls):
             PYN_descr=fmt_class.PY_struct_array_descr_variable,
         )
         typedef_struct_defaults(typedef)
-        Typemap.register(type_name, typedef)
+        register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
@@ -1267,12 +1267,12 @@ def lookup_c_statements(arg):
     """
     attrs = arg.attrs
     argtype = arg.typename
-    arg_typedef = Typemap.lookup(argtype)
+    arg_typedef = lookup_type(argtype)
 
     c_statements = arg_typedef.c_statements
     if 'template' in attrs:
         cxx_T = attrs['template']
         c_statements = arg_typedef.c_templates.get(
             cxx_T, c_statements)
-        arg_typedef = Typemap.lookup(cxx_T)
+        arg_typedef = lookup_type(cxx_T)
     return arg_typedef, c_statements

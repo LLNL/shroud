@@ -137,7 +137,7 @@ class NamespaceMixin(object):
                 raise TypeError("fields must be a dictionary")
             typedef.update(value)
         typemap.typedef_shadow_defaults(typedef)
-        typemap.Typemap.register(typedef.name, typedef)
+        typemap.register_type(typedef.name, typedef)
         return typedef
 
     def create_typedef(self, ast, **kwargs):
@@ -150,7 +150,7 @@ class NamespaceMixin(object):
 
         key = ast.declarator.name
         copy_type = ast.attrs['_typename']
-        def_types = typemap.Typemap.get_global_types()
+        def_types = typemap.get_global_types()
         orig = def_types.get(copy_type, None)
         if not orig:
             raise RuntimeError(
@@ -162,7 +162,7 @@ class NamespaceMixin(object):
         if 'fields' in kwargs:
             fields = kwargs['fields']
             typedef.update(fields)
-        typemap.Typemap.register(typedef.name, typedef)
+        typemap.register_type(typedef.name, typedef)
         return typedef
 
     def add_enum(self, decl, ast=None, **kwargs):
@@ -1181,7 +1181,7 @@ def add_declarations(parent, node):
             # Update fields for a type. For example, set cpp_if
             key = subnode['type']
             value = subnode['fields']
-            def_types = typemap.Typemap.get_global_types()
+            def_types = typemap.get_global_types()
             typedef = def_types.get(key, None)
             if not typedef:
                 raise RuntimeError(
