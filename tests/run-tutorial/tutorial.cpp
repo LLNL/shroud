@@ -308,12 +308,20 @@ int Class1::Method1()
 
 bool Class1::equivalent(Class1 const &obj2) const
 {
+    last_function_called = "Class1::equivalent";
     return m_flag == obj2.m_flag;
 }
 
 Class1 * Class1::returnThis()
 {
-    last_function_called = "returnThis";
+    last_function_called = "Class1::returnThis";
+    return this;
+}
+
+Class1 *Class1::returnThisBuffer(std::string & name)
+{
+    global_str = name;
+    last_function_called = "Class1::getThisBuffer";
     return this;
 }
 

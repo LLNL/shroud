@@ -42,6 +42,7 @@
 // #######################################################################
 #include "wrapClass1.h"
 #include <stdlib.h>
+#include <string>
 #include "tutorial.hpp"
 
 // splicer begin class.Class1.CXX_definitions
@@ -141,8 +142,52 @@ void TUT_class1_return_this(TUT_class1 * self)
 // splicer end class.Class1.method.return_this
 }
 
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// Class1 * returnThisBuffer(std::string & name +intent(in))
 // function_index=6
+/**
+ * \brief Return pointer to 'this' to allow chaining calls
+ *
+ */
+TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
+    char * name)
+{
+// splicer begin class.Class1.method.return_this_buffer
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
+    std::string SH_name(name);
+    tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name);
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
+    return SHC_rv;
+// splicer end class.Class1.method.return_this_buffer
+}
+
+// Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname))
+// function_index=11
+/**
+ * \brief Return pointer to 'this' to allow chaining calls
+ *
+ */
+TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
+    char * name, int Lname)
+{
+// splicer begin class.Class1.method.return_this_buffer_bufferify
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
+    std::string SH_name(name, Lname);
+    tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name);
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
+    return SHC_rv;
+// splicer end class.Class1.method.return_this_buffer_bufferify
+}
+
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// function_index=7
 int TUT_class1_direction_func(TUT_class1 * self, int arg)
 {
 // splicer begin class.Class1.method.direction_func
@@ -158,7 +203,7 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg)
 }
 
 // int getM_flag()
-// function_index=7
+// function_index=8
 int TUT_class1_get_m_flag(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.get_m_flag
@@ -169,7 +214,7 @@ int TUT_class1_get_m_flag(TUT_class1 * self)
 }
 
 // int getTest()
-// function_index=8
+// function_index=9
 int TUT_class1_get_test(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.get_test
@@ -180,7 +225,7 @@ int TUT_class1_get_test(TUT_class1 * self)
 }
 
 // void setTest(int val +intent(in)+value)
-// function_index=9
+// function_index=10
 void TUT_class1_set_test(TUT_class1 * self, int val)
 {
 // splicer begin class.Class1.method.set_test

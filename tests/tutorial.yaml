@@ -243,7 +243,7 @@ declarations:
          brief: returns the value of flag member
   
     - decl: bool equivalent(Class1 const &obj2) const;
-      # Note that Fortran adds an obj argument
+      # Note that Fortran adds an obj argument so use obj2 instead.
       doxygen:
          brief: Pass in reference to instance
       options:
@@ -252,6 +252,17 @@ declarations:
 
     - decl: Class1 * returnThis();
       return_this: True
+      doxygen:
+         brief: Return pointer to 'this' to allow chaining calls
+      options:
+         wrap_python: False
+         wrap_lua: False
+  
+    - decl: Class1 * returnThisBuffer(std::string & name +intent(in));
+      # do not set return_this
+      # passing in a string will cause node.generated_suffix to be set to '_buf'.
+      # but result is not bufferified so look for c_statements['result'], not
+      # 'result_buf'.
       doxygen:
          brief: Return pointer to 'this' to allow chaining calls
       options:

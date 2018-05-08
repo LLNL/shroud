@@ -317,7 +317,7 @@ contains
   subroutine test_class1
     integer iflag, mtest
     integer direction
-    type(class1) obj0, obj1
+    type(class1) obj0, obj1, obj2
     type(class1) obj0a
     type(c_ptr) ptr
 
@@ -351,7 +351,12 @@ contains
     call assert_true(obj0%equivalent(obj0))
     call assert_false(obj0%equivalent(obj1))
 
+    ! This function has return_this=True, so it returns nothing
     call obj0%return_this()
+
+    ! This function has return_this=False, so it returns obj0
+    obj2 = obj0%return_this_buffer("bufferify")
+    call assert_true(obj0 .eq. obj2, "return_this_buffer equal")
 
     direction = -1
     direction = obj0%direction_func(class1_direction_left)
