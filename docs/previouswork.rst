@@ -41,7 +41,7 @@
 Fortran Previous Work
 =====================
 
-Communicating between languages has a long history of similar work.
+Communicating between languages has a long history.
 
 Babel
 -----
@@ -69,7 +69,11 @@ allows arrays to be created in one language and then passed to and
 used by the other
 language. http://www.cs.uoregon.edu/research/pdt/users.php
 
-http://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-01-4955
+
+ * `CHASM: Static Analysis and Automatic Code Generation for Improved Fortran 90 and C++ Interoperability <http://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-01-4955>`_ 
+    C.E. Rasmussen, K.A. Lindlan, B. Mohr, J. Striegnitz
+
+ * `Bridging the language gap in scientific computing: the Chasm approach <https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.909>`_ C. E. Rasmussen, M. J. Sottile, S. S. Shende, A. D. Malony (2005)
 
 wrap
 ----
@@ -85,8 +89,8 @@ http://trilinos.org/
 
 Trilonos wraps C++ with C, then the Fortran over the C.  Described in the book Scientific Software Design. http://www.amazon.com/Scientific-Software-Design-The-Object-Oriented/dp/0521888131
 
-  * `On the object-oriented design of reference-counted shadow objects <https://dl.acm.org/citation.cfm?doid=1985782.1985786>`_ Karla Morris, Damian W.I. Rouson, Jim Xia
-  * `This Isn't Your Parents' Fortran: Managing C++ Objects with Modern Fortran <http://ieeexplore.ieee.org/document/6159199>`_ Damian Rouson, Karla Morris, Jim Xia
+  * `On the object-oriented design of reference-counted shadow objects <https://dl.acm.org/citation.cfm?doid=1985782.1985786>`_ Karla Morris, Damian W.I. Rouson, Jim Xia (2011)
+  * `This Isn't Your Parents' Fortran: Managing C++ Objects with Modern Fortran <http://ieeexplore.ieee.org/document/6159199>`_ Damian Rouson, Karla Morris, Jim Xia (2012)
 
 
 Directory packages/ForTrilinos/src/skeleton has a basic template which must be edited to create a wrapper for a class.
@@ -109,6 +113,7 @@ Exascale Programming: Adapting What We Have Can (and Must) Work
 http://www.hpcwire.com/2016/01/14/24151/
 
 https://github.com/Trilinos/ForTrilinos
+https://www.researchgate.net/project/ForTrilinos
 
 This is the new effort to provide Fortran interfaces to Trilinos
 through automatic code generation using SWIG. The previous effort
@@ -164,5 +169,6 @@ Links
 -----
 
   * `Generating C Interfaces <http://fortranwiki.org/fortran/show/Generating+C+Interfaces>`_
-  * `Shadow-object interface between Fortran95 and C++ <http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=753048>`_  Mark G. Gray, Randy M. Roberts, and Tom M. Evans
+  * `Shadow-object interface between Fortran95 and C++ <http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=753048>`_  Mark G. Gray, Randy M. Roberts, and Tom M. Evans (1999)
   * `Generate C interface from C++ source code using Clang libtooling <http://samanbarghi.com/blog/2016/12/06/generate-c-interface-from-c-source-code-using-clang-libtooling/>`_
+  * `Memory leaks in derived types revisited <https://dl.acm.org/citation.cfm?id=962183>`_ G. W. Stewart (2003)
