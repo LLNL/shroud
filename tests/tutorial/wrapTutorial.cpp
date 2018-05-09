@@ -673,12 +673,6 @@ void TUT_SHROUD_array_destructor_function
         delete cxx_ptr;
         break;
     }
-    case 2:
-    {
-        Singleton *cxx_ptr = reinterpret_cast<Singleton *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
     default:
     {
         // Unexpected case in destructor

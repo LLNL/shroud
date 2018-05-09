@@ -41,7 +41,6 @@
 //
 // #######################################################################
 #include "wrapdefault_library.h"
-#include <stdlib.h>
 #include "global_header.hpp"
 
 
@@ -52,43 +51,6 @@ void DEF_function1()
 {
     one::two::function1();
     return;
-}
-
-// Release C++ allocated memory if refcount reaches 0.
-void DEF_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:
-    {
-        three::Class1 *cxx_ptr = reinterpret_cast<three::Class1 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:
-    {
-        Class2 *cxx_ptr = reinterpret_cast<Class2 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    if (gc) {
-        free(cap);
-    } else {
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
 }
 
 }  // extern "C"

@@ -9662,7 +9662,6 @@
             "f_to_c": "{f_var}%yadda()", 
             "f_type": "type(exclass3)", 
             "forward": "example::\tnested::\tExClass3", 
-            "idtor": "3", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 

@@ -8944,7 +8944,6 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(singleton)", 
             "forward": "Singleton", 
-            "idtor": "2", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 

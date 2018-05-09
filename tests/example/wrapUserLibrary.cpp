@@ -42,6 +42,8 @@
 #include "wrapUserLibrary.h"
 #include <stdlib.h>
 #include <string>
+#include "ExClass1.hpp"
+#include "ExClass2.hpp"
 #include "sidre/Group.hpp"
 
 // splicer begin CXX_definitions
@@ -370,13 +372,6 @@ void AA_SHROUD_array_destructor_function
     {
         example::nested::ExClass2 *cxx_ptr = 
             reinterpret_cast<example::nested::ExClass2 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 3:
-    {
-        example::nested::ExClass3 *cxx_ptr = 
-            reinterpret_cast<example::nested::ExClass3 *>(ptr);
         delete cxx_ptr;
         break;
     }

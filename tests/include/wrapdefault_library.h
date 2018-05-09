@@ -54,18 +54,8 @@
 extern "C" {
 #endif
 
-struct s_SHROUD_capsule_data {
-  void *addr;     /* address of C++ memory */
-  int idtor;      /* index of destructor */
-  int refcount;   /* reference count */
-};
-typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
-
 
 void DEF_function1();
-
-void DEF_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }

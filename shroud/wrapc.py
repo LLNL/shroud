@@ -387,8 +387,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typedef
-        cname = typedef.c_type
+        cname = node.typedef.c_type
 
         fmt_class = node.fmtdict
         # call method syntax
@@ -396,16 +395,7 @@ class Wrapc(util.WrapperMixin):
 
         # create a forward declaration for this type
         self.header_forward[cname] = True
-
-        # Create a capsule destructor for type
-        cxx_type = node.typedef.cxx_type
-        cxx_type = cxx_type.replace('\t', '')
-        del_lines=[
-            '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
-                cxx_type=cxx_type) ,
-            'delete cxx_ptr;',
-        ]
-        node.typedef.idtor = self.add_capsule_helper(cxx_type, node.typedef, del_lines)
+        self.compute_idtor(node)
 
         self.wrap_enums(node)
 
@@ -420,6 +410,32 @@ class Wrapc(util.WrapperMixin):
             self.header_proto_c,
             '\nvoid {C_memory_dtor_function}\t(%s *cap, bool gc);' % cname,
             fmt_class)
+
+    def compute_idtor(self, node):
+        """Create a capsule destructor for type.
+
+        Only call add_capsule_helper if the destructor is wrapped.
+        Otherwise, there is no way to delete the object.
+        i.e. the class has a private destructor.
+        """
+        has_dtor = False
+        for method in node.functions:
+            if '_destructor' in method.ast.attrs:
+                has_dtor = True
+                break
+
+        typemap = node.typedef
+        if has_dtor:
+            cxx_type = typemap.cxx_type
+            cxx_type = cxx_type.replace('\t', '')
+            del_lines=[
+                '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
+                    cxx_type=cxx_type) ,
+                'delete cxx_ptr;',
+            ]
+            typemap.idtor = self.add_capsule_helper(cxx_type, typemap, del_lines)
+        else:
+            typemap.idtor = '0'
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
@@ -1064,6 +1080,8 @@ class Wrapc(util.WrapperMixin):
         self.c_helper['capsule_data_helper'] = True
         fmt = library.fmtdict
 
+        self.header_impl_include.update(self.capsule_include)
+
         append_format(
             self.header_proto_c,
             '\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc);',
@@ -1117,6 +1135,7 @@ class Wrapc(util.WrapperMixin):
 
     capsule_helpers = {}
     capsule_order = []
+    capsule_include = {}  # includes needed by C_memory_dtor_function
     def add_capsule_helper(self, name, typemap, lines):
         """Add unique names to capsule_helpers.
         Return index of name.
@@ -1127,6 +1146,6 @@ class Wrapc(util.WrapperMixin):
 
             if typemap and typemap.cxx_header:
                 for include in typemap.cxx_header.split():
-                    self.header_impl_include[include] = True
+                    self.capsule_include[include] = True
 
         return self.capsule_helpers[name][0]

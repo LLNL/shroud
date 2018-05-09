@@ -1080,7 +1080,6 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(FNames)", 
             "forward": "Names", 
-            "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
@@ -1162,7 +1161,6 @@
             "f_to_c": "{f_var}%get_instance()", 
             "f_type": "type(names2)", 
             "forward": "Names2", 
-            "idtor": "2", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
