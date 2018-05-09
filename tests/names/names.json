@@ -263,11 +263,12 @@
             "CXX_this_call": "", 
             "C_argument": "ARG_", 
             "C_bufferify_suffix": "_bufferify", 
-            "C_capsule_data_type": "SHROUD_capsule_data", 
-            "C_context_type": "SHROUD_vector_context", 
+            "C_capsule_data_type": "TES_SHROUD_capsule_data", 
+            "C_context_type": "TES_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "top.h", 
             "C_header_filename_suffix": "hh", 
+            "C_header_helper": "typestestnames.hh", 
             "C_impl_filename": "top.cpp", 
             "C_impl_filename_suffix": "cc", 
             "C_local": "SHC_", 
@@ -916,6 +917,7 @@
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+            "C_header_helper_template": "types{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
@@ -1077,7 +1079,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(FNames)", 
             "forward": "Names", 
             "py_statements": {
@@ -1158,7 +1160,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(names2)", 
             "forward": "Names2", 
             "py_statements": {

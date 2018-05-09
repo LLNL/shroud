@@ -1,10 +1,10 @@
 Wrote testnames_types.yaml
 Wrote foo.h
 Wrote foo.cpp
-Wrote wrapNames2.hh
 Wrote wrapNames2.cc
 Wrote top.h
 Wrote top.cpp
+Wrote typestestnames.hh
 Wrote foo.f
 Wrote wrapfNames2.F
 Wrote top.f

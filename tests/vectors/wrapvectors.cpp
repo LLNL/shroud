@@ -43,6 +43,7 @@
 #include "wrapvectors.h"
 #include <stdlib.h>
 #include <string>
+#include "typesvectors.h"
 #include "vectors.hpp"
 
 // splicer begin CXX_definitions
@@ -66,8 +67,8 @@ int ShroudLenTrim(const char *s, int ls) {
 }
 
 
-void VEC_SHROUD_vector_copy_int(SHROUD_capsule_data *cap, int *c_var, 
-    size_t c_var_size)
+void VEC_SHROUD_vector_copy_int(VEC_SHROUD_capsule_data *cap, 
+    int *c_var, size_t c_var_size)
 {
     std::vector<int> *cxx_var = reinterpret_cast<std::vector<int> *>
         (cap->addr);
@@ -95,8 +96,8 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 
 // void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))
 // function_index=7
-void VEC_vector_iota_bufferify(SHROUD_capsule_data *Carg,
-    SHROUD_vector_context *Darg)
+void VEC_vector_iota_bufferify(VEC_SHROUD_capsule_data *Carg,
+    VEC_SHROUD_vector_context *Darg)
 {
 // splicer begin function.vector_iota_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
@@ -113,7 +114,7 @@ void VEC_vector_iota_bufferify(SHROUD_capsule_data *Carg,
 // void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 // function_index=8
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
-    SHROUD_capsule_data *Carg, SHROUD_vector_context *Darg)
+    VEC_SHROUD_capsule_data *Carg, VEC_SHROUD_vector_context *Darg)
 {
 // splicer begin function.vector_increment_bufferify
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
@@ -153,9 +154,9 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer end function.vector_string_count_bufferify
 }
 
-// Release C++ allocated memory if refcount reaches 0.
+// Release C++ allocated memory.
 void VEC_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc)
+    (VEC_SHROUD_capsule_data *cap, bool gc)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {

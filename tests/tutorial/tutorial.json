@@ -426,7 +426,7 @@
                         "decl": "~Class1()        +name(delete)", 
                         "declgen": "~Class1() +name(delete)", 
                         "format": {
-                            "C_call_code": "TUT_SHROUD_array_destructor_function\t(self, true);", 
+                            "C_call_code": "TUT_SHROUD_array_destructor_function\t(reinterpret_cast<TUT_SHROUD_capsule_data *>(self), true);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
                             "C_prototype": "TUT_class1 * self", 
@@ -1598,11 +1598,12 @@
             "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
-            "C_capsule_data_type": "SHROUD_capsule_data", 
-            "C_context_type": "SHROUD_vector_context", 
+            "C_capsule_data_type": "TUT_SHROUD_capsule_data", 
+            "C_context_type": "TUT_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapTutorial.h", 
             "C_header_filename_suffix": "h", 
+            "C_header_helper": "typesTutorial.h", 
             "C_impl_filename": "wrapTutorial.cpp", 
             "C_impl_filename_suffix": "cpp", 
             "C_local": "SHC_", 
@@ -8747,6 +8748,7 @@
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+            "C_header_helper_template": "types{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
@@ -8941,7 +8943,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(singleton)", 
             "forward": "Singleton", 
             "py_statements": {
@@ -9724,7 +9726,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(class1)", 
             "forward": "tutorial::\tClass1", 
             "idtor": "1", 

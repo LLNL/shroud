@@ -1056,7 +1056,8 @@ def create_class_typedef(cls):
             c_type=c_name,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
-            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
+#            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
+            f_to_c = '{f_var}%%%s' % fmt_class.F_derived_ptr,
             )
         typedef_shadow_defaults(typedef)
         register_type(type_name, typedef)

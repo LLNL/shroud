@@ -72,13 +72,15 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_begin = '/**'
         self.doxygen_cont = ' *'
         self.doxygen_end = ' */'
+        self.shared_helper = {}
+        self.shared_proto_c = []
 
     _default_buf_args = ['arg']
 
     def _begin_output_file(self):
         """Start a new class for output"""
-        # forward declarations of C++ class as opaque C struct.
-        self.header_forward = {}
+#        # forward declarations of C++ class as opaque C struct.
+#        self.header_forward = {}
         # include files required by typedefs
         self.header_typedef_nodes = {}  # [arg_typedef.name] = arg_typedef
         # headers needed by implementation, i.e. helper functions
@@ -109,12 +111,12 @@ class Wrapc(util.WrapperMixin):
             self._pop_splicer(node.name)
         self._pop_splicer('class')
 
-        if self.newlibrary.functions:
-            self.write_file(newlibrary, None, structs)
+        self.write_file(newlibrary, None, structs)
+
+        self.write_shared_helper()
 
     def write_file(self, library, cls, structs):
-        """Write a file for the library and its functions or
-        a class and its methods.
+        """Write a file for the library or class.
         """
         node = cls or library
         fmt = node.fmtdict
@@ -134,8 +136,15 @@ class Wrapc(util.WrapperMixin):
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
-        self.gather_helper_code()
-        self.write_header(library, cls, c_header)
+
+        self.gather_helper_code(self.c_helper)
+        # always include helper header
+        self.c_helper_include[library.fmtdict.C_header_helper] = True
+        self.shared_helper.update(self.c_helper)  # accumulate all helpers
+
+        if not self.write_header(library, cls, c_header):
+            # The header will not be written if it is empty
+            c_header = None
         self.write_impl(library, cls, c_header, c_impl)
 
     def wrap_enums(self, node):
@@ -189,16 +198,73 @@ class Wrapc(util.WrapperMixin):
                 self.c_helper_include[include] = True
         if 'h_source' in helper_info:
             self.helper_header.append(helper_info['h_source'])
-
-    def gather_helper_code(self):
+        if 'h_shared' in helper_info:
+            self.helper_shared.append(helper_info['h_shared'])
+ 
+    def gather_helper_code(self, helpers):
         """Gather up all helpers requested and insert code into output.
+
+        helpers should be self.c_helper or self.shared_helper
         """
+        # per class
         self.helper_source = []
         self.helper_header = []
+        self.helper_shared = []
 
         done = {}  # avoid duplicates
-        for name in sorted(self.c_helper.keys()):
+        for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
+
+    def write_shared_helper(self):
+        """Write a helper file with type definitions.
+        """
+        self.gather_helper_code(self.shared_helper)
+        
+        fmt = self.newlibrary.fmtdict
+        fname = fmt.C_header_helper
+        output = []
+
+        guard = fname.replace(".", "_").upper()
+        
+        output.extend([
+                '// For C users and %s implementation' % self.language.upper(),
+                '',
+                '#ifndef %s' % guard,
+                '#define %s' % guard,
+                ])
+
+        if self.language == 'c++':
+            output.append('')
+#            if self._create_splicer('CXX_declarations', output):
+#                write_file = True
+            output.extend([
+                    '',
+                    '#ifdef __cplusplus',
+                    'extern "C" {',
+                    '#endif'
+                    ])
+
+        output.extend(self.helper_shared)
+
+        if self.shared_proto_c:
+            output.extend(self.shared_proto_c)
+
+        if self.language == 'c++':
+            output.extend([
+                    '',
+                    '#ifdef __cplusplus',
+                    '}',
+                    '#endif'
+                    ])
+
+        output.extend([
+                '',
+                '#endif  // ' + guard
+                ])
+
+        self.config.cfiles.append(
+            os.path.join(self.config.c_fortran_dir, fname))
+        self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_header(self, library, cls, fname):
         """ Write header file for a library node or a class node.
@@ -250,21 +316,21 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(self.struct_impl)
 
-        if self.header_forward:
-            output.extend([
-                '',
-                '// declaration of shadow types'
-            ])
-            for name in sorted(self.header_forward.keys()):
-                write_file = True
-                output.append(
-                    'struct s_{C_type_name} {{+\n'
-                    'void *addr;   /* address of C++ memory */\n'
-                    'int idtor;    /* index of destructor */\n'
-                    'int refcount; /* reference count */\n'
-                    '-}};\n'
-                    'typedef struct s_{C_type_name} {C_type_name};'.
-                    format(C_type_name=name))
+#        if self.header_forward:
+#            output.extend([
+#                '',
+#                '// declaration of shadow types'
+#            ])
+#            for name in sorted(self.header_forward.keys()):
+#                write_file = True
+#                output.append(
+#                    'struct s_{C_type_name} {{+\n'
+#                    'void *addr;   /* address of C++ memory */\n'
+#                    'int idtor;    /* index of destructor */\n'
+#                    'int refcount; /* reference count */\n'
+#                    '-}};\n'
+#                    'typedef struct s_{C_type_name} {C_type_name};'.
+#                    format(C_type_name=name))
         output.append('')
         if self._create_splicer('C_declarations', output):
             write_file = True
@@ -289,6 +355,7 @@ class Wrapc(util.WrapperMixin):
             self.config.cfiles.append(
                 os.path.join(self.config.c_fortran_dir, fname))
             self.write_output_file(fname, self.config.c_fortran_dir, output)
+        return write_file
 
     def write_impl(self, library, cls, hname, fname):
         """Write implementation
@@ -302,7 +369,8 @@ class Wrapc(util.WrapperMixin):
         if cls and cls.cpp_if:
             output.append('#' + node.cpp_if)
 
-        output.append('#include "%s"' % hname)
+        if hname:
+            output.append('#include "%s"' % hname)
 
         # Use headers from class if they exist or else library
         if cls and cls.cxx_header:
@@ -394,7 +462,9 @@ class Wrapc(util.WrapperMixin):
         fmt_class.CXX_this_call = fmt_class.CXX_this + '->'
 
         # create a forward declaration for this type
-        self.header_forward[cname] = True
+        hname = whelpers.add_shadow_helper(node)
+        self.shared_helper[hname] = True
+#        self.header_forward[cname] = True
         self.compute_idtor(node)
 
         self.wrap_enums(node)
@@ -403,13 +473,6 @@ class Wrapc(util.WrapperMixin):
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer('method')
-
-        # XXX - this prototype also appears in wraplibrary.h
-        #  but the type of cap is different.
-        append_format(
-            self.header_proto_c,
-            '\nvoid {C_memory_dtor_function}\t(%s *cap, bool gc);' % cname,
-            fmt_class)
 
     def compute_idtor(self, node):
         """Create a capsule destructor for type.
@@ -538,6 +601,10 @@ class Wrapc(util.WrapperMixin):
         if result_typedef.cxx_header:
             # include any dependent header in generated source
             self.header_impl_include[result_typedef.cxx_header] = True
+#        if result_typedef.forward:
+#            # create forward references for other types being wrapped
+#            # i.e. This method returns a wrapped type
+#            self.header_forward[result_typedef.c_type] = True
 
         if result_is_const:
             fmt_func.c_const = 'const '
@@ -857,10 +924,10 @@ class Wrapc(util.WrapperMixin):
             if arg_typedef.cxx_header:
                 # include any dependent header in generated source
                 self.header_impl_include[arg_typedef.cxx_header] = True
-            if arg_typedef.forward:
-                # create forward references for other types being wrapped
-                # i.e. This argument is another wrapped type
-                self.header_forward[arg_typedef.c_type] = True
+#            if arg_typedef.forward:
+#                # create forward references for other types being wrapped
+#                # i.e. This argument is another wrapped type
+#                self.header_forward[arg_typedef.c_type] = True
         fmt_func.C_call_list = ',\t '.join(call_list)
 
         fmt_func.C_prototype = options.get('C_prototype', ',\t '.join(proto_list))
@@ -916,7 +983,7 @@ class Wrapc(util.WrapperMixin):
         elif is_dtor:
             # Call C_memory_dtor_function to decrement reference count.
             append_format(call_code,
-                          '{C_memory_dtor_function}\t({C_this}, true);',
+                          '{C_memory_dtor_function}\t(reinterpret_cast<{C_capsule_data_type} *>({C_this}), true);',
                           fmt_func)
         elif CXX_subprogram == 'subroutine':
             append_format(call_code, '{CXX_this_call}{function_name}'
@@ -1081,9 +1148,10 @@ class Wrapc(util.WrapperMixin):
         fmt = library.fmtdict
 
         self.header_impl_include.update(self.capsule_include)
+        self.header_impl_include[fmt.C_header_helper] = True
 
         append_format(
-            self.header_proto_c,
+            self.shared_proto_c,
             '\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc);',
             fmt)
 
@@ -1091,7 +1159,7 @@ class Wrapc(util.WrapperMixin):
         append_format(
             output,
             '\n'
-            '// Release C++ allocated memory if refcount reaches 0.\n'
+            '// Release C++ allocated memory.\n'
             'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc)\n'
             '{{+'
             , fmt)
@@ -1144,6 +1212,7 @@ class Wrapc(util.WrapperMixin):
             self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
             self.capsule_order.append(name)
 
+            # include files required by the type
             if typemap and typemap.cxx_header:
                 for include in typemap.cxx_header.split():
                     self.capsule_include[include] = True

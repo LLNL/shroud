@@ -6,6 +6,8 @@ C method ~Class2()
 C method void func1(Class1 * arg +intent(in)+value)
 Close wrapClass2.h
 Close wrapClass2.cpp
+Close wrapforward.cpp
+Close typesforward.h
 class Class2
 C-interface, Fortran method Class2()
 C-interface, Fortran method ~Class2()

@@ -5,6 +5,7 @@ C function void vector_increment(std::vector<int> & arg +capsule(Carg)+context(D
 C function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
 Close wrapvectors.h
 Close wrapvectors.cpp
+Close typesvectors.h
 Fortran function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 C-interface function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
 Fortran function void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))

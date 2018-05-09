@@ -339,6 +339,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_header_filename_class_template='wrap{cxx_class}.{C_header_filename_suffix}',
             C_impl_filename_class_template='wrap{cxx_class}.{C_impl_filename_suffix}',
 
+            C_header_helper_template='types{library}.{C_header_filename_suffix}',
+
             C_enum_template='{C_prefix}{class_prefix}{enum_name}',
             C_enum_member_template='{enum_member_name}',
 
@@ -431,11 +433,12 @@ class LibraryNode(AstNode, NamespaceMixin):
         format templates in options.
         """
 
+        C_prefix = self.library.upper()[:3] + '_'  # function prefix
         fmt_library = util.Scope(
             parent=None,
 
             C_bufferify_suffix='_bufferify',
-            C_prefix = self.library.upper()[:3] + '_',  # function prefix
+            C_prefix = C_prefix,
             C_result = 'rv',        # return value
             C_argument = 'SH_',
             c_temp = 'SHT_',
@@ -464,12 +467,12 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
 
-            C_capsule_data_type='SHROUD_capsule_data',
+            C_capsule_data_type=C_prefix + 'SHROUD_capsule_data',
             F_capsule_data_type='SHROUD_capsule_data',
             F_capsule_type='SHROUD_capsule',
             F_capsule_final_function='SHROUD_capsule_final',
 
-            C_context_type='SHROUD_vector_context',
+            C_context_type=C_prefix + 'SHROUD_vector_context',
             F_context_type='SHROUD_vector_context',
 
             PY_result = 'SHTPy_rv',      # Create PyObject for result
@@ -538,6 +541,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         # default some format strings based on other format strings
         self.eval_template('C_header_filename', '_library')
         self.eval_template('C_impl_filename', '_library')
+        self.eval_template('C_header_helper')
 
         self.eval_template('C_memory_dtor_function')
 

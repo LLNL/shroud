@@ -12,6 +12,7 @@ C function void truncate_to_int(double * in +dimension(:)+intent(in), int * out 
 C function void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 Close wrapClibrary.h
 Close wrapClibrary.c
+Close typesClibrary.h
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C-interface, Fortran function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))

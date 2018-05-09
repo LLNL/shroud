@@ -45,6 +45,7 @@
 #include <stdlib.h>
 #include <string>
 #include "tutorial.hpp"
+#include "typesTutorial.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -655,9 +656,9 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.last_function_called_bufferify
 }
 
-// Release C++ allocated memory if refcount reaches 0.
+// Release C++ allocated memory.
 void TUT_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc)
+    (TUT_SHROUD_capsule_data *cap, bool gc)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {

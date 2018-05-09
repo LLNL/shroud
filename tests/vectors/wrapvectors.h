@@ -50,6 +50,7 @@
 #define WRAPVECTORS_H
 
 #include <stddef.h>
+#include "typesvectors.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -58,36 +59,19 @@
 extern "C" {
 #endif
 
-struct s_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
-};
-typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
-
-struct s_SHROUD_vector_context {
-    void *addr;     /* address of data in std::vector */
-    size_t size;    /* size of data in std::vector */
-};
-typedef struct s_SHROUD_vector_context SHROUD_vector_context;
-
-
 // splicer begin C_declarations
 // splicer end C_declarations
 
 int VEC_vector_sum_bufferify(const int * arg, long Sarg);
 
-void VEC_vector_iota_bufferify(SHROUD_capsule_data *Carg,
-    SHROUD_vector_context *Darg);
+void VEC_vector_iota_bufferify(VEC_SHROUD_capsule_data *Carg,
+    VEC_SHROUD_vector_context *Darg);
 
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
-    SHROUD_capsule_data *Carg, SHROUD_vector_context *Darg);
+    VEC_SHROUD_capsule_data *Carg, VEC_SHROUD_vector_context *Darg);
 
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg);
-
-void VEC_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }

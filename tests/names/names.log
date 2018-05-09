@@ -6,7 +6,6 @@ C method void method2()
 Close foo.h
 Close foo.cpp
 class Names2
-Close wrapNames2.hh
 Close wrapNames2.cc
 C function void function1()
 C function void function2()
@@ -18,6 +17,7 @@ C function void function5() +name(fiveplus)
 C function void init_ns1()
 Close top.h
 Close top.cpp
+Close typestestnames.hh
 class Names
 C-interface, Fortran method void method1()
 C-interface, Fortran method void method2()

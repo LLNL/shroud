@@ -49,6 +49,8 @@
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
 
+#include "typesTutorial.h"
+
 // splicer begin class.Class1.CXX_declarations
 // splicer end class.Class1.CXX_declarations
 
@@ -63,14 +65,6 @@ enum TUT_class1_DIRECTION {
     LEFT = 100,
     RIGHT
 };
-
-// declaration of shadow types
-struct s_TUT_class1 {
-    void *addr;   /* address of C++ memory */
-    int idtor;    /* index of destructor */
-    int refcount; /* reference count */
-};
-typedef struct s_TUT_class1 TUT_class1;
 
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
@@ -101,8 +95,6 @@ int TUT_class1_get_m_flag(TUT_class1 * self);
 int TUT_class1_get_test(TUT_class1 * self);
 
 void TUT_class1_set_test(TUT_class1 * self, int val);
-
-void TUT_SHROUD_array_destructor_function(TUT_class1 *cap, bool gc);
 
 #ifdef __cplusplus
 }

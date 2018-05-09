@@ -116,7 +116,8 @@ AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
 void AA_exclass2_dtor(AA_exclass2 * self)
 {
 // splicer begin class.ExClass2.method.dtor
-    AA_SHROUD_array_destructor_function(self, true);
+    AA_SHROUD_array_destructor_function
+        (reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);
     return;
 // splicer end class.ExClass2.method.dtor
 }

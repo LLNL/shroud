@@ -108,6 +108,7 @@ extern "C" {
 # h_header    = Blank delimited list of headers to #include in
 #               c wrapper header.
 # h_source    = code for include file. Must be compatible with language=c.
+# h_shared    = header code written to C_header_helper file.
 # source      = Code inserted before any wrappers.
 #               The functions should be file static.
 #               Used if c_source or cxx_source is not defined.
@@ -174,6 +175,26 @@ end interface""", fmt)
         )
     ##########
 
+def add_shadow_helper(node):
+    """
+    """
+    fmt = node.fmtdict
+    cname = node.typedef.c_type
+    
+    name = 'capsule_{}'.format(cname)
+    if name not in CHelpers:
+        helper = dict(
+            h_shared="""
+struct s_{C_type_name} {{+
+void *addr;     /* address of C++ memory */
+int idtor;      /* index of destructor */
+int refcount;   /* reference count */
+-}};
+typedef struct s_{C_type_name} {C_type_name};""".format(C_type_name=cname),
+        )
+        CHelpers[name] = helper
+    return name
+
 def add_capsule_helper(fmt):
     """Share info with C++ to allow Fortran to release memory.
 
@@ -196,7 +217,7 @@ integer(C_INT) :: refcount = 0    ! reference count
 
     if name not in CHelpers:
         helper = dict(
-            h_source=wformat("""
+            h_shared=wformat("""
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
@@ -247,7 +268,7 @@ def add_vector_copy_helper(fmt):
     if name not in CHelpers:
         helper = dict(
             h_header='<stddef.h>',
-            h_source=wformat("""
+            h_shared=wformat("""
 struct s_{C_context_type} {{+
 void *addr;     /* address of data in std::vector */
 size_t size;    /* size of data in std::vector */
@@ -282,8 +303,8 @@ interface+
 subroutine SHROUD_vector_copy_{cxx_T}(cap, c_var, c_var_size) &+
 bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
-import {C_capsule_data_type}
-type({C_capsule_data_type}) :: cap
+import {F_capsule_data_type}
+type({F_capsule_data_type}) :: cap
 integer({f_kind}) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_vector_copy_{cxx_T}

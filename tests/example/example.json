@@ -388,7 +388,7 @@
                             "description": "longer description joined with previous line"
                         }, 
                         "format": {
-                            "C_call_code": "AA_SHROUD_array_destructor_function\t(self, true);", 
+                            "C_call_code": "AA_SHROUD_array_destructor_function\t(reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
                             "C_prototype": "AA_exclass1 * self", 
@@ -2171,7 +2171,7 @@
                             "brief": "destructor"
                         }, 
                         "format": {
-                            "C_call_code": "AA_SHROUD_array_destructor_function\t(self, true);", 
+                            "C_call_code": "AA_SHROUD_array_destructor_function\t(reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
                             "C_prototype": "AA_exclass2 * self", 
@@ -4837,11 +4837,12 @@
             "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
-            "C_capsule_data_type": "SHROUD_capsule_data", 
-            "C_context_type": "SHROUD_vector_context", 
+            "C_capsule_data_type": "USE_SHROUD_capsule_data", 
+            "C_context_type": "USE_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapUserLibrary.h", 
             "C_header_filename_suffix": "h", 
+            "C_header_helper": "typesUserLibrary.h", 
             "C_impl_filename": "wrapUserLibrary.cpp", 
             "C_impl_filename_suffix": "cpp", 
             "C_local": "SHC_", 
@@ -9018,6 +9019,7 @@
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+            "C_header_helper_template": "types{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
@@ -9498,7 +9500,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%yadda()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(exclass1)", 
             "forward": "example::\tnested::\tExClass1", 
             "idtor": "1", 
@@ -9581,7 +9583,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%yadda()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(exclass2)", 
             "forward": "example::\tnested::\tExClass2", 
             "idtor": "2", 
@@ -9659,7 +9661,7 @@
                     ]
                 }
             }, 
-            "f_to_c": "{f_var}%yadda()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(exclass3)", 
             "forward": "example::\tnested::\tExClass3", 
             "py_statements": {

@@ -663,9 +663,10 @@ class GenFunctions(object):
                 whelpers.add_vector_copy_helper(dict(
                     cxx_T = cxx_T,
                     f_kind = template_typedef.f_kind,
-                    C_capsule_data_type = fmt.C_capsule_data_type,
-                    C_context_type = fmt.C_context_type,
                     C_prefix = fmt.C_prefix,
+                    C_context_type = fmt.C_context_type,
+                    C_capsule_data_type = fmt.C_capsule_data_type,
+                    F_capsule_data_type = fmt.F_capsule_data_type,
                 ))
 
         has_string_result = False

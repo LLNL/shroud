@@ -12,6 +12,7 @@ Close wrapClass2.cpp
 C function void function1()
 Close wrapdefault_library.h
 Close wrapdefault_library.cpp
+Close typesdefault_library.h
 class Class1
 C-interface, Fortran method void method1(CustomType arg1 +intent(in)+value)
 Close wrapfClass1.f

@@ -49,6 +49,8 @@
 #ifndef WRAPDEFAULT_LIBRARY_H
 #define WRAPDEFAULT_LIBRARY_H
 
+#include "typesdefault_library.h"
+
 
 #ifdef __cplusplus
 extern "C" {

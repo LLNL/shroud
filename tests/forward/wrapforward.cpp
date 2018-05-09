@@ -1,4 +1,4 @@
-// wrapClass2.cpp
+// wrapforward.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2018, Lawrence Livermore National Security, LLC.
@@ -40,55 +40,48 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapClass2.h"
 #include <stdlib.h>
 #include "tutorial.hpp"
+#include "typesforward.h"
 
-// splicer begin class.Class2.CXX_definitions
-// splicer end class.Class2.CXX_definitions
+// splicer begin CXX_definitions
+// splicer end CXX_definitions
 
 extern "C" {
 
-// splicer begin class.Class2.C_definitions
-// splicer end class.Class2.C_definitions
+// splicer begin C_definitions
+// splicer end C_definitions
 
-// Class2()
-// function_index=0
-FOR_class2 * FOR_class2_ctor()
+// Release C++ allocated memory.
+void FOR_SHROUD_array_destructor_function
+    (FOR_SHROUD_capsule_data *cap, bool gc)
 {
-// splicer begin class.Class2.method.ctor
-    tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
-    FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
-    return SHC_rv;
-// splicer end class.Class2.method.ctor
-}
-
-// ~Class2()
-// function_index=1
-void FOR_class2_dtor(FOR_class2 * self)
-{
-// splicer begin class.Class2.method.dtor
-    FOR_SHROUD_array_destructor_function
-        (reinterpret_cast<FOR_SHROUD_capsule_data *>(self), true);
-    return;
-// splicer end class.Class2.method.dtor
-}
-
-// void func1(Class1 * arg +intent(in)+value)
-// function_index=2
-void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
-{
-// splicer begin class.Class2.method.func1
-    tutorial::Class2 *SH_this = static_cast<tutorial::
-        Class2 *>(self->addr);
-    tutorial::Class1 * SHCXX_arg = 
-        static_cast<tutorial::Class1 *>(arg->addr);
-    SH_this->func1(SHCXX_arg);
-    return;
-// splicer end class.Class2.method.func1
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:
+    {
+        tutorial::Class2 *cxx_ptr = 
+            reinterpret_cast<tutorial::Class2 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
+    if (gc) {
+        free(cap);
+    } else {
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
 }
 
 }  // extern "C"

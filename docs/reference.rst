@@ -543,10 +543,13 @@ C_header_filename
     Name of generated header file for the library.
     Defaulted from expansion of option *C_header_filename_library_template*.
 
-C_header_filename_suffix:
+C_header_filename_suffix
    Suffix added to C header files.
    Defaults to ``h``.
    Other useful values might be ``hh`` or ``hxx``.
+
+C_header_helper
+   A header file with shared Shroud internal typedefs for the library.
 
 C_impl_filename
     Name of generated C++ implementation file for the library.

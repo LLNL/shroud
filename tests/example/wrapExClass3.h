@@ -49,20 +49,14 @@
 #define WRAPEXCLASS3_H
 #ifdef USE_CLASS3
 
+#include "typesUserLibrary.h"
+
 // splicer begin class.ExClass3.CXX_declarations
 // splicer end class.ExClass3.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_AA_exclass3 {
-    void *addr;   /* address of C++ memory */
-    int idtor;    /* index of destructor */
-    int refcount; /* reference count */
-};
-typedef struct s_AA_exclass3 AA_exclass3;
 
 // splicer begin class.ExClass3.C_declarations
 // splicer end class.ExClass3.C_declarations
@@ -74,8 +68,6 @@ void AA_exclass3_exfunc_0(AA_exclass3 * self);
 #ifndef USE_CLASS3_A
 void AA_exclass3_exfunc_1(AA_exclass3 * self, int flag);
 #endif
-
-void AA_SHROUD_array_destructor_function(AA_exclass3 *cap, bool gc);
 
 #ifdef __cplusplus
 }

@@ -45,6 +45,7 @@
 #include "ExClass1.hpp"
 #include "ExClass2.hpp"
 #include "sidre/Group.hpp"
+#include "typesUserLibrary.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -350,9 +351,9 @@ void AA_cos_doubles(double * in, double * out, int sizein)
 // splicer end function.cos_doubles
 }
 
-// Release C++ allocated memory if refcount reaches 0.
+// Release C++ allocated memory.
 void AA_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc)
+    (USE_SHROUD_capsule_data *cap, bool gc)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {

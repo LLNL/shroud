@@ -53,6 +53,7 @@
 #include "mpi.h"
 #endif
 #include "sidre/wrapGroup.h"
+#include "typesUserLibrary.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -60,21 +61,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-struct s_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
-};
-typedef struct s_SHROUD_capsule_data SHROUD_capsule_data;
-
-// declaration of shadow types
-struct s_SIDRE_group {
-    void *addr;   /* address of C++ memory */
-    int idtor;    /* index of destructor */
-    int refcount; /* reference count */
-};
-typedef struct s_SIDRE_group SIDRE_group;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -142,9 +128,6 @@ int AA_verylongfunctionname2(int verylongname1, int verylongname2,
     int verylongname9, int verylongname10);
 
 void AA_cos_doubles(double * in, double * out, int sizein);
-
-void AA_SHROUD_array_destructor_function
-    (SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }

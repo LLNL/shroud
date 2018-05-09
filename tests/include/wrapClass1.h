@@ -50,24 +50,15 @@
 #define WRAPCLASS1_H
 
 #include "type_header.h"
+#include "typesdefault_library.h"
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// declaration of shadow types
-struct s_DEF_class1 {
-    void *addr;   /* address of C++ memory */
-    int idtor;    /* index of destructor */
-    int refcount; /* reference count */
-};
-typedef struct s_DEF_class1 DEF_class1;
-
 
 void DEF_class1_method1(DEF_class1 * self, int arg1);
-
-void DEF_SHROUD_array_destructor_function(DEF_class1 *cap, bool gc);
 
 #ifdef __cplusplus
 }
