@@ -197,11 +197,11 @@ integer(C_INT) :: refcount = 0    ! reference count
     if name not in CHelpers:
         helper = dict(
             h_source=wformat("""
-struct s_{C_capsule_data_type} {{
-  void *addr;     /* address of C++ memory */
-  int idtor;      /* index of destructor */
-  int refcount;   /* reference count */
-}};
+struct s_{C_capsule_data_type} {{+
+void *addr;     /* address of C++ memory */
+int idtor;      /* index of destructor */
+int refcount;   /* reference count */
+-}};
 typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
         )
         CHelpers[name] = helper
