@@ -48,6 +48,7 @@ declarations:
       - type: ExClass1
         fields:
           base: shadow
+          cxx_header: ExClass1.hpp
           cxx_type: example::nested::ExClass1
           c_type: AA_exclass1
           f_derived_type: exclass1
@@ -58,6 +59,7 @@ declarations:
       - type: ExClass2
         fields:
           base: shadow
+          cxx_header: ExClass2.hpp
           cxx_type: example::nested::ExClass2
           c_type: AA_exclass2
           f_derived_type: exclass2

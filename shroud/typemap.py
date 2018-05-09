@@ -1052,6 +1052,7 @@ def create_class_typedef(cls):
             type_name,
             base='shadow',
             cxx_type=cxx_name,
+            cxx_header=cls.cxx_header or None,
             c_type=c_name,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},

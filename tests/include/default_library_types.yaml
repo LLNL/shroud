@@ -57,6 +57,7 @@ declarations:
     - type: Class1
       fields:
         base: shadow
+        cxx_header: class_header.hpp
         cxx_type: three::Class1
         c_type: DEF_class1
         f_derived_type: class1

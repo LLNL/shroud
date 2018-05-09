@@ -9467,6 +9467,7 @@
             }, 
             "c_to_cxx": "\tstatic_cast<{c_const}example::\tnested::\tExClass1 *>({c_var}{c_member}addr)", 
             "c_type": "AA_exclass1", 
+            "cxx_header": "ExClass1.hpp", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass1", 
             "f_c_module": {
@@ -9549,6 +9550,7 @@
             }, 
             "c_to_cxx": "\tstatic_cast<{c_const}example::\tnested::\tExClass2 *>({c_var}{c_member}addr)", 
             "c_type": "AA_exclass2", 
+            "cxx_header": "ExClass2.hpp", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass2", 
             "f_c_module": {

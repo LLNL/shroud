@@ -95,7 +95,7 @@ class Wrapc(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
         structs = []
         # reserved the 0 slot of capsule_order
-        self.add_capsule_helper('--none--', [ '// Nothing to delete' ])
+        self.add_capsule_helper('--none--', None, [ '// Nothing to delete' ])
 
         self._push_splicer('class')
         for node in newlibrary.classes:
@@ -405,7 +405,7 @@ class Wrapc(util.WrapperMixin):
                 cxx_type=cxx_type) ,
             'delete cxx_ptr;',
         ]
-        node.typedef.idtor = self.add_capsule_helper(cxx_type, del_lines)
+        node.typedef.idtor = self.add_capsule_helper(cxx_type, node.typedef, del_lines)
 
         self.wrap_enums(node)
 
@@ -798,7 +798,7 @@ class Wrapc(util.WrapperMixin):
                 if destructor_name not in self.capsule_helpers:
                     del_lines = []
                     util.append_format_cmds(del_lines, intent_blk, 'destructor', fmt_arg)
-                    fmt_arg.idtor = self.add_capsule_helper(destructor_name, del_lines)
+                    fmt_arg.idtor = self.add_capsule_helper(destructor_name, arg_typedef, del_lines)
 
             # Add code for intent of argument
             # pre_call.append('// intent=%s' % intent)
@@ -1117,11 +1117,16 @@ class Wrapc(util.WrapperMixin):
 
     capsule_helpers = {}
     capsule_order = []
-    def add_capsule_helper(self, name, lines):
+    def add_capsule_helper(self, name, typemap, lines):
         """Add unique names to capsule_helpers.
         Return index of name.
         """
         if name not in self.capsule_helpers:
             self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
             self.capsule_order.append(name)
+
+            if typemap and typemap.cxx_header:
+                for include in typemap.cxx_header.split():
+                    self.header_impl_include[include] = True
+
         return self.capsule_helpers[name][0]
