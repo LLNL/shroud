@@ -45,7 +45,6 @@
 #define TUTORIAL_HPP
 
 #include <string>
-#include <vector>
 
 extern int global_flag;
 
@@ -134,6 +133,7 @@ public:
     int Method1();
     bool equivalent(Class1 const &obj2) const;
     Class1 * returnThis();
+    Class1 * returnThisBuffer(std::string & name, bool flag);
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 
@@ -147,14 +147,7 @@ int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();
 Class1 * getclass3();
-
-int vector_sum(const std::vector<int> &arg);
-void vector_iota(std::vector<int> &arg);
-void vector_increment(std::vector<int> &arg);
-
-int vector_string_count(const std::vector< std::string > &arg);
-void vector_string_fill(std::vector< std::string > &arg);
-void vector_string_append(std::vector< std::string > &arg);
+Class1 getClassNew(int flag);
 
 int callback1(int in, int (*incr)(int));
 

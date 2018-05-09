@@ -128,7 +128,7 @@ class NamespaceMixin(object):
         """
         self.add_typedef(key)
         fullname = self.scope + key
-        typedef = typemap.Typedef(fullname,
+        typedef = typemap.Typemap(fullname,
                                   base='shadow',
                                   cxx_type=fullname)
         if 'fields' in kwargs:
@@ -136,8 +136,8 @@ class NamespaceMixin(object):
             if not isinstance(value, dict):
                 raise TypeError("fields must be a dictionary")
             typedef.update(value)
-        typemap.typedef_shadow_defaults(typedef)
-        typemap.Typedef.register(typedef.name, typedef)
+        typemap.fill_shadow_typemap_defaults(typedef)
+        typemap.register_type(typedef.name, typedef)
         return typedef
 
     def create_typedef(self, ast, **kwargs):
@@ -150,7 +150,7 @@ class NamespaceMixin(object):
 
         key = ast.declarator.name
         copy_type = ast.attrs['_typename']
-        def_types, def_types_alias = typemap.Typedef.get_global_types()
+        def_types = typemap.get_global_types()
         orig = def_types.get(copy_type, None)
         if not orig:
             raise RuntimeError(
@@ -162,7 +162,7 @@ class NamespaceMixin(object):
         if 'fields' in kwargs:
             fields = kwargs['fields']
             typedef.update(fields)
-        typemap.Typedef.register(typedef.name, typedef)
+        typemap.register_type(typedef.name, typedef)
         return typedef
 
     def add_enum(self, decl, ast=None, **kwargs):
@@ -317,6 +317,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
             F_standard=2003,
+            F_auto_reference_count=False,
 
             wrap_c=True,
             wrap_fortran=True,
@@ -338,12 +339,18 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_header_filename_class_template='wrap{cxx_class}.{C_header_filename_suffix}',
             C_impl_filename_class_template='wrap{cxx_class}.{C_impl_filename_suffix}',
 
+            C_header_helper_template='types{library}.{C_header_filename_suffix}',
+
             C_enum_template='{C_prefix}{class_prefix}{enum_name}',
             C_enum_member_template='{enum_member_name}',
 
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
+            C_memory_dtor_function_template=(
+                '{C_prefix}SHROUD_array_destructor_function'),
 
+            C_var_capsule_template = 'C{c_var}',     # capsule argument
+            C_var_context_template = 'D{c_var}',     # context argument
             C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
             C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
             C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
@@ -426,11 +433,12 @@ class LibraryNode(AstNode, NamespaceMixin):
         format templates in options.
         """
 
+        C_prefix = self.library.upper()[:3] + '_'  # function prefix
         fmt_library = util.Scope(
             parent=None,
 
             C_bufferify_suffix='_bufferify',
-            C_prefix = self.library.upper()[:3] + '_',  # function prefix
+            C_prefix = C_prefix,
             C_result = 'rv',        # return value
             C_argument = 'SH_',
             c_temp = 'SHT_',
@@ -445,16 +453,27 @@ class LibraryNode(AstNode, NamespaceMixin):
             class_scope='',
 
             F_C_prefix='c_',
-            F_derived_member = 'voidptr',
+            F_derived_ptr = 'cxxptr',
+            F_derived_member = 'cxxmem',
+            F_name_assign = 'assign',
             F_name_associated = 'associated',
             F_name_instance_get = 'get_instance',
             F_name_instance_set = 'set_instance',
+            F_name_final = 'final',
             F_result = 'SHT_rv',
             F_pointer = 'SHT_ptr',
             F_this = 'obj',
 
             C_string_result_as_arg = 'SHF_rv',
             F_string_result_as_arg = '',
+
+            C_capsule_data_type=C_prefix + 'SHROUD_capsule_data',
+            F_capsule_data_type='SHROUD_capsule_data',
+            F_capsule_type='SHROUD_capsule',
+            F_capsule_final_function='SHROUD_capsule_final',
+
+            C_context_type=C_prefix + 'SHROUD_vector_context',
+            F_context_type='SHROUD_vector_context',
 
             PY_result = 'SHTPy_rv',      # Create PyObject for result
             LUA_result = 'rv',
@@ -522,6 +541,10 @@ class LibraryNode(AstNode, NamespaceMixin):
         # default some format strings based on other format strings
         self.eval_template('C_header_filename', '_library')
         self.eval_template('C_impl_filename', '_library')
+        self.eval_template('C_header_helper')
+
+        self.eval_template('C_memory_dtor_function')
+
         # All class/methods and functions may go into this file or
         # just functions.
         self.eval_template('F_module_name', '_library')
@@ -687,10 +710,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.scope = self.typename + '::'
         self.symbols = {}
         if as_struct:
-            self.typedef = typemap.create_struct_typedef(self)
+            self.typemap = typemap.create_struct_typemap(self)
         else:
-            self.typedef = typemap.create_class_typedef(self)
-        self.typedef_name = self.typedef.name   # fully qualified name
+            self.typemap = typemap.create_class_typemap(self)
+        self.typemap_name = self.typemap.name   # fully qualified name
 
 ##### namespace behavior
 
@@ -1009,8 +1032,8 @@ class EnumNode(AstNode):
         # Add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-        self.typedef = typemap.create_enum_typedef(self)
-        self.typedef_name = self.typedef.name
+        self.typemap = typemap.create_enum_typedef(self)
+        self.typemap_name = self.typemap.name
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -1086,8 +1109,8 @@ class VariableNode(AstNode):
         # Add to namespace
 #        self.typename = self.parent.scope + self.name
 #        self.scope = self.typename + '::'
-#        self.typedef = typemap.create_struct_typedef(self)
-#        self.typedef_name = self.typedef.name
+#        self.typemap = typemap.create_struct_typemap(self)
+#        self.typemap_name = self.typemap.name
 
 ######################################################################
 
@@ -1162,7 +1185,7 @@ def add_declarations(parent, node):
             # Update fields for a type. For example, set cpp_if
             key = subnode['type']
             value = subnode['fields']
-            def_types, def_types_alias = typemap.Typedef.get_global_types()
+            def_types = typemap.get_global_types()
             typedef = def_types.get(key, None)
             if not typedef:
                 raise RuntimeError(

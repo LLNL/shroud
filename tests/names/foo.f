@@ -47,17 +47,24 @@
 ! splicer begin file_top
 ! splicer end file_top
 module name_module
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin class.Names.module_use
     ! splicer end class.Names.module_use
     implicit none
 
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
+    end type SHROUD_capsule_data
+
     ! splicer begin class.Names.module_top
     ! splicer end class.Names.module_top
 
     type FNames
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.Names.component_part
         ! splicer end class.Names.component_part
     contains
@@ -105,7 +112,7 @@ contains
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin class.Names.method.type_method1
-        call xxx_tes_names_method1(obj%voidptr)
+        call xxx_tes_names_method1(obj%cxxptr)
         ! splicer end class.Names.method.type_method1
     end subroutine names_method1
 
@@ -114,29 +121,35 @@ contains
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin class.Names.method.method2
-        call xxx_tes_names_method2(obj2%voidptr)
+        call xxx_tes_names_method2(obj2%cxxptr)
         ! splicer end class.Names.method.method2
     end subroutine names_method2
 
-    function names_get_instance(obj) result (voidptr)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function names_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(FNames), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function names_get_instance
 
-    subroutine names_set_instance(obj, voidptr)
+    subroutine names_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(FNames), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr = voidptr
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine names_set_instance
 
     function names_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(FNames), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%cxxmem%addr)
     end function names_associated
 
     ! splicer begin class.Names.additional_functions
@@ -146,7 +159,7 @@ contains
         use iso_c_binding, only: c_associated
         type(FNames), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -157,7 +170,7 @@ contains
         use iso_c_binding, only: c_associated
         type(FNames), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

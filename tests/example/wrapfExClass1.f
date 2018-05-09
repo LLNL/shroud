@@ -46,18 +46,25 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass1_mod
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin class.ExClass1.module_use
     ! splicer end class.ExClass1.module_use
     implicit none
 
+
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
+    end type SHROUD_capsule_data
 
     ! splicer begin class.ExClass1.module_top
     top of module splicer  1
     ! splicer end class.ExClass1.module_top
 
     type exclass1
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -272,9 +279,11 @@ contains
     ! function_index=0
     function exclass1_ctor_0() &
             result(SHT_rv)
+        use iso_c_binding, only : c_f_pointer
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_0
-        SHT_rv%voidptr = c_exclass1_ctor_0()
+        SHT_rv%cxxptr = c_exclass1_ctor_0()
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.ExClass1.method.ctor_0
     end function exclass1_ctor_0
 
@@ -291,12 +300,13 @@ contains
     !<
     function exclass1_ctor_1(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, c_f_pointer
         character(*), intent(IN) :: name
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_1
-        SHT_rv%voidptr = c_exclass1_ctor_1_bufferify(name, &
+        SHT_rv%cxxptr = c_exclass1_ctor_1_bufferify(name, &
             len_trim(name, kind=C_INT))
+        call c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)
         ! splicer end class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
 
@@ -311,8 +321,9 @@ contains
         use iso_c_binding, only : C_NULL_PTR
         class(exclass1) :: obj
         ! splicer begin class.ExClass1.method.delete
-        call c_exclass1_dtor(obj%voidptr)
-        obj%voidptr = C_NULL_PTR
+        call c_exclass1_dtor(obj%cxxptr)
+        obj%cxxptr = C_NULL_PTR
+        nullify(obj%cxxmem)
         ! splicer end class.ExClass1.method.delete
     end subroutine exclass1_dtor
 
@@ -325,7 +336,7 @@ contains
         integer(C_INT), value, intent(IN) :: incr
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.increment_count
-        SHT_rv = c_exclass1_increment_count(obj%voidptr, incr)
+        SHT_rv = c_exclass1_increment_count(obj%cxxptr, incr)
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
@@ -337,9 +348,9 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
         character(kind=C_CHAR, &
-            len=aa_exclass1_get_name_length(obj%voidptr)) :: SHT_rv
+            len=aa_exclass1_get_name_length(obj%cxxmem)) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_pattern
-        call c_exclass1_get_name_error_pattern_bufferify(obj%voidptr, &
+        call c_exclass1_get_name_error_pattern_bufferify(obj%cxxptr, &
             SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_error_pattern
     end function exclass1_get_name_error_pattern
@@ -356,7 +367,7 @@ contains
         class(exclass1) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_length
-        SHT_rv = c_exclass1_get_name_length(obj%voidptr)
+        SHT_rv = c_exclass1_get_name_length(obj%cxxptr)
         ! splicer end class.ExClass1.method.get_name_length
     end function exclass1_get_name_length
 
@@ -368,10 +379,10 @@ contains
         use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
         character(kind=C_CHAR, len=strlen_ptr( &
-            c_exclass1_get_name_error_check_bufferify(obj%voidptr, &
+            c_exclass1_get_name_error_check_bufferify(obj%cxxptr, &
             SHT_rv, len(SHT_rv, kind=C_INT)))) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_check
-        call c_exclass1_get_name_error_check_bufferify(obj%voidptr, &
+        call c_exclass1_get_name_error_check_bufferify(obj%cxxptr, &
             SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
@@ -384,7 +395,7 @@ contains
         class(exclass1) :: obj
         character(*), intent(OUT) :: name
         ! splicer begin class.ExClass1.method.get_name_arg
-        call c_exclass1_get_name_arg_bufferify(obj%voidptr, name, &
+        call c_exclass1_get_name_arg_bufferify(obj%cxxptr, name, &
             len(name, kind=C_INT))
         ! splicer end class.ExClass1.method.get_name_arg
     end subroutine exclass1_get_name_arg
@@ -397,7 +408,7 @@ contains
         class(exclass1) :: obj
         type(C_PTR) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_root
-        SHT_rv = c_exclass1_get_root(obj%voidptr)
+        SHT_rv = c_exclass1_get_root(obj%cxxptr)
         ! splicer end class.ExClass1.method.get_root
     end function exclass1_get_root
 
@@ -410,7 +421,7 @@ contains
         integer(C_INT), value, intent(IN) :: value
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_value_from_int
-        SHT_rv = c_exclass1_get_value_from_int(obj%voidptr, value)
+        SHT_rv = c_exclass1_get_value_from_int(obj%cxxptr, value)
         ! splicer end class.ExClass1.method.get_value_from_int
     end function exclass1_get_value_from_int
 
@@ -423,7 +434,7 @@ contains
         integer(C_LONG), value, intent(IN) :: value
         integer(C_LONG) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_value_1
-        SHT_rv = c_exclass1_get_value_1(obj%voidptr, value)
+        SHT_rv = c_exclass1_get_value_1(obj%cxxptr, value)
         ! splicer end class.ExClass1.method.get_value_1
     end function exclass1_get_value_1
 
@@ -435,7 +446,7 @@ contains
         class(exclass1) :: obj
         type(C_PTR) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_addr
-        SHT_rv = c_exclass1_get_addr(obj%voidptr)
+        SHT_rv = c_exclass1_get_addr(obj%cxxptr)
         ! splicer end class.ExClass1.method.get_addr
     end function exclass1_get_addr
 
@@ -450,7 +461,7 @@ contains
         logical :: SHT_rv
         SH_in = in  ! coerce to C_BOOL
         ! splicer begin class.ExClass1.method.has_addr
-        SHT_rv = c_exclass1_has_addr(obj%voidptr, SH_in)
+        SHT_rv = c_exclass1_has_addr(obj%cxxptr, SH_in)
         ! splicer end class.ExClass1.method.has_addr
     end function exclass1_has_addr
 
@@ -463,18 +474,23 @@ contains
         ! splicer end class.ExClass1.method.splicer_special
     end subroutine exclass1_splicer_special
 
-    function exclass1_yadda(obj) result (voidptr)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function exclass1_yadda(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(exclass1), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function exclass1_yadda
 
     function exclass1_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(exclass1), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%cxxmem%addr)
     end function exclass1_associated
 
     ! splicer begin class.ExClass1.additional_functions
@@ -484,7 +500,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass1), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -495,7 +511,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass1), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

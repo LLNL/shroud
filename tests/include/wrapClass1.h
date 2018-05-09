@@ -50,15 +50,12 @@
 #define WRAPCLASS1_H
 
 #include "type_header.h"
+#include "typesdefault_library.h"
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_DEF_class1;
-typedef struct s_DEF_class1 DEF_class1;
 
 
 void DEF_class1_method1(DEF_class1 * self, int arg1);

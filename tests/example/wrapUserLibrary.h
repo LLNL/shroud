@@ -53,6 +53,7 @@
 #include "mpi.h"
 #endif
 #include "sidre/wrapGroup.h"
+#include "typesUserLibrary.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -60,10 +61,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_SIDRE_group;
-typedef struct s_SIDRE_group SIDRE_group;
 
 // splicer begin C_declarations
 // splicer end C_declarations

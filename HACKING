@@ -45,4 +45,5 @@ ast.py
 declast.py
 typemap.py
 todict.py
-util.py visitor.py  whelpers.py  # no dependencies
+whelpers.py
+util.py visitor.py  # no dependencies

@@ -40,7 +40,8 @@ copyright:
 -
 - '#######################################################################'
 
-# Add a class to the tutorial demo in a separate file
+# Add a class to the tutorial demo in a separate file.
+# This file should only contain a class.
 
 library: forward
 cxx_header: tutorial.hpp

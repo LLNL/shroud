@@ -49,18 +49,14 @@
 #ifndef WRAPCLASS2_H
 #define WRAPCLASS2_H
 
+#include "typesforward.h"
+
 // splicer begin class.Class2.CXX_declarations
 // splicer end class.Class2.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_FOR_class2;
-typedef struct s_FOR_class2 FOR_class2;
-struct s_TUT_class1;
-typedef struct s_TUT_class1 TUT_class1;
 
 // splicer begin class.Class2.C_declarations
 // splicer end class.Class2.C_declarations

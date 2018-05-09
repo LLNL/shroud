@@ -50,6 +50,7 @@
 #define WRAPTUTORIAL_H
 
 #include <stddef.h>
+#include "typesTutorial.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -70,12 +71,6 @@ struct s_TUT_struct1 {
     int ifield;
     double dfield;
 };
-typedef struct s_TUT_struct1 TUT_struct1;
-
-// declaration of shadow types
-struct s_TUT_class1;
-typedef struct s_TUT_class1 TUT_class1;
-struct s_TUT_struct1;
 typedef struct s_TUT_struct1 TUT_struct1;
 
 // splicer begin C_declarations
@@ -162,23 +157,11 @@ int TUT_direction_func(int arg);
 
 int TUT_useclass(const TUT_class1 * arg1);
 
-const TUT_class1 * TUT_getclass2();
+TUT_class1 * TUT_getclass2();
 
 TUT_class1 * TUT_getclass3();
 
-int TUT_vector_sum_bufferify(const int * arg, long Sarg);
-
-void TUT_vector_iota_bufferify(int * arg, long Sarg);
-
-void TUT_vector_increment_bufferify(int * arg, long Sarg);
-
-int TUT_vector_string_count_bufferify(const char * arg, long Sarg,
-    int Narg);
-
-int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg);
-
-void TUT_vector_string_append_bufferify(char * arg, long Sarg,
-    int Narg);
+TUT_class1 * TUT_get_class_new(int flag);
 
 int TUT_callback1(int in, int ( * incr)(int));
 

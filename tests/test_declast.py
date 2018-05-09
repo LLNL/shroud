@@ -704,8 +704,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         # must provide the name since the ctor has no name
-        self.assertEqual('Class1 * ctor()', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 * ctor', r.gen_arg_as_c(params=None))
+        self.assertEqual('Class1 ctor()', r.gen_arg_as_cxx())
+        self.assertEqual('CC_class1 ctor', r.gen_arg_as_c(params=None))
 
     def test_decl09b(self):
         """Test constructor +name
@@ -733,8 +733,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 * new', r.gen_arg_as_cxx(params=None))
-        self.assertEqual('CC_class1 * new()', r.gen_arg_as_c())
+        self.assertEqual('Class1 new', r.gen_arg_as_cxx(params=None))
+        self.assertEqual('CC_class1 new()', r.gen_arg_as_c())
 
     def test_decl09c(self):
         """Test destructor
@@ -761,8 +761,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 * dtor()', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 * dtor()', r.gen_arg_as_c())
+        self.assertEqual('Class1 dtor()', r.gen_arg_as_cxx())
+        self.assertEqual('CC_class1 dtor()', r.gen_arg_as_c())
 
     def test_decl09d(self):
         """Return pointer to Class instance
@@ -1166,7 +1166,7 @@ class CheckTypedef(unittest.TestCase):
         library.add_declaration('typedef int TD2;')
         self.assertIn('TD2', library.symbols)
 
-        typedef = typemap.Typedef.lookup('TD2')
+        typedef = typemap.lookup_type('TD2')
         self.assertIsNotNone(typedef)
         self.assertEqual('TD2', typedef.name)
         self.assertEqual('TD2', typedef.cxx_type)
@@ -1270,7 +1270,7 @@ class CheckClass(unittest.TestCase):
         self.assertIn('Class1', library.symbols)
         self.assertIsInstance(library.symbols['Class1'], ast.TypedefNode)
 
-        typedef = typemap.Typedef.lookup('Class1')
+        typedef = typemap.lookup_type('Class1')
         self.assertIsNotNone(typedef)
         self.assertEqual('Class1', typedef.name)
         self.assertEqual('Class1', typedef.cxx_type)
@@ -1294,7 +1294,7 @@ class CheckClass(unittest.TestCase):
         self.assertIn('Class2', ns.symbols)
         self.assertIsInstance(ns.symbols['Class2'], ast.TypedefNode)
 
-        typedef = typemap.Typedef.lookup('ns::Class2')
+        typedef = typemap.lookup_type('ns::Class2')
         self.assertIsNotNone(typedef)
         self.assertEqual('ns::Class2', typedef.name)
         self.assertEqual('ns::Class2', typedef.cxx_type)

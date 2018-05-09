@@ -64,6 +64,8 @@ To wrap the class add the lines to the YAML file::
     - class: Class1
       declarations:
       - decl: Class1 new()  +name(new)
+        format:
+          function_suffix: _default
       - decl: ~Class1()  +name(delete)
       - decl: void Method1()
 
@@ -77,45 +79,50 @@ The file ``wrapClass1.h`` will have an opaque struct for the class.
 This is to allows some measure of type safety over using ``void``
 pointers for every instance::
 
-    struct s_TUT_class1;
+    struct s_TUT_class1 {
+        void *addr;  /* address of C++ memory */
+        int idtor;   /* index of destructor */
+    };
     typedef struct s_TUT_class1 TUT_class1;
 
 
-    TUT_class1 * TUT_class1_new()
+    TUT_class1 TUT_class1_new_default()
     {
-        Class1 *SH_rv = new Class1();
-        return static_cast<TUT_class1 *>(static_cast<void *>(SH_rv));
+        tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
+        TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+        return SHC_rv;
     }
 
     void TUT_class1_method1(TUT_class1 * self)
     {
-        Class1 *SH_this = static_cast<Class1 *>(static_cast<void *>(self));
-        SH_this->Method1();
-        return;
+        tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(self->addr);
+        int SHC_rv = SH_this->Method1();
+        return SHC_rv;
     }
 
 For Fortran a derived type is created::
 
     type class1
-        type(C_PTR) voidptr
+        type(SHROUD_capsule_data), private :: cxxmem
     contains
         procedure :: method1 => class1_method1
     end type class1
 
 And the subroutines::
 
-    function class1_new() result(rv)
-        implicit none
-        type(class1) :: rv
-        rv%voidptr = c_class1_new()
+    function class1_new_default() &
+            result(SHT_rv)
+        type(class1) :: SHT_rv
+        SHT_rv%cxxmem = c_class1_new_default()
     end function class1_new
     
-    subroutine class1_method1(obj)
-        implicit none
+    function class1_method1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
         class(class1) :: obj
-        call c_class1_method1(obj%voidptr)
-    end subroutine class1_method1
-
+        integer(C_INT) :: SHT_rv
+        SHT_rv = c_class1_method1(obj%cxxmem)
+    end function class1_method1
 
 The additional C++ code to call the function::
 

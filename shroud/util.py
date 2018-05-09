@@ -53,14 +53,36 @@ def wformat(template, dct):
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError as e:
-#        raise
+#        raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
         raise SystemExit('Error with template: ' + '%r'%template)
 
 
-def append_format(lst, template, dct):
+def append_format(lstout, template, fmt):
+    """Format template and append to lstout.
+    """
     # shorthand, wrap fmt.vformat
-    lst.append(wformat(template, dct))
+    lstout.append(wformat(template, fmt))
+
+def append_format_lst(lstout, lstin, fmt):
+    """Format entries in lstin and append to lstout.
+    """
+    for template in lstin:
+        lstout.append(wformat(template, fmt))
+
+def append_format_cmds(lstout, dictin, name, fmt):
+    """Format entries in dictin[name] and append to lstout.
+    Return True if found.
+    Used with c_statements and f_statements.
+    """
+    if name not in dictin:
+        return False
+    cmd_list = dictin.get(name, None)
+    if cmd_list is None:
+        return False
+    for cmd in cmd_list:
+        lstout.append(wformat(cmd, fmt))
+    return True
 
 def append_format_indent(lst, template, dct, indent='    '):
     """Split lines, indent each by 4 blanks, append to out. 
@@ -229,7 +251,7 @@ class WrapperMixin(object):
 
     def namespace(self, library, cls, position, output, comment=True):
         if cls:
-            namespace = cls.typedef_name.split('::')
+            namespace = cls.typemap_name.split('::')
             namespace.pop()  # remove class name
         else:
             namespace = []
@@ -256,29 +278,40 @@ class WrapperMixin(object):
             else:
                 output.append('#include "%s"' % header)
 
-    def write_headers_nodes(self, lang_header, types, output):
+    def write_headers_nodes(self, lang_header, types, hlist, output):
         """Write out headers required by types
 
         types - dictionary[typedef.name] = typedef
+        hlist - list of headers to include
+                From helper routines
+
+        headers[hdr] [ typedef, None, ... ]
+        None from helper files
         """
         # find which headers are required and who requires them
         headers = {}
-        for typ in types.values():
-            hdr = getattr(typ, lang_header)
-            if hdr:
-                headers.setdefault(hdr, []).append(typ)
+        for hdr in hlist:
+            headers.setdefault(hdr, []).append(None)
 
+        for typedef in types.values():
+            hdr = getattr(typedef, lang_header)
+            if hdr:
+                headers.setdefault(hdr, []).append(typedef)
+
+        if headers:
+            output.append('')
         for hdr in sorted(headers):
             if len(headers[hdr]) == 1:
                 # Only one type uses the include, check for if_cpp
+                # For example, add conditional around mpi.h
                 typedef = headers[hdr][0]
-                if typedef.cpp_if:
+                if typedef and typedef.cpp_if:
                     output.append('#' + typedef.cpp_if)
                 if hdr[0] == '<':
                     output.append('#include %s' % hdr)
                 else:
                     output.append('#include "%s"' % hdr)
-                if typedef.cpp_if:
+                if typedef and typedef.cpp_if:
                     output.append('#endif')
             else:
                 # XXX - unclear how to mix header and cpp_if
@@ -378,6 +411,12 @@ class WrapperMixin(object):
 
     def write_lines(self, fp, lines, spaces='    '):
         """ Write lines with indention and newlines.
+
+        #  preprocessor, start in column 1
+        @  literal line (ignore leading formating characters
+        0  start line in column 1
+        +  indent line
+        -  deindent line
         """
         for line in lines:
             if isinstance(line, int):
@@ -392,13 +431,15 @@ class WrapperMixin(object):
                         fp.write('\n')
                     elif subline[0] == '@':
                         # literal line with indent
-                        # For example, "@-" to avoid treating the "-" as deindent.
+                        # For example, "@-" to avoid treating the "-" as deindent
+                        # or "@0" to start line with a "0".
                         self.write_continue(fp, subline[1:], spaces)
                     elif subline[0] == '0':
                         # line start in column 1 (like labels)
                         fp.write(subline[1:])
                         fp.write('\n')
                     elif subline[0] == '+':
+                        #   +text[-]
                         self.indent += 1
                         if subline[-1] == '-':
                             # indent a single line
@@ -406,14 +447,16 @@ class WrapperMixin(object):
                             self.indent -= 1
                         else:
                             self.write_continue(fp, subline[1:], spaces)
-                    elif subline[-1] == '+':
-                        self.write_continue(fp, subline[:-1], spaces)
-                        self.indent += 1
                     else:
+                        # [-]*text[+]
                         while subline[0] == '-':
                             self.indent -= 1
                             subline = subline[1:]
-                        self.write_continue(fp, subline, spaces)
+                        if subline[-1] == '+':
+                            self.write_continue(fp, subline[:-1], spaces)
+                            self.indent += 1 
+                        else:
+                            self.write_continue(fp, subline, spaces)
 
     def write_doxygen_file(self, output, fname, library, cls):
         """ Write a doxygen comment block for a file.

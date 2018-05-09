@@ -45,13 +45,20 @@
 !! \brief Shroud generated wrapper for Class2 class
 !<
 module class2_mod
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
+    end type SHROUD_capsule_data
+
 
     type class2
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
@@ -93,35 +100,41 @@ contains
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
-        call c_class2_method1(obj%voidptr, comm)
+        call c_class2_method1(obj%cxxptr, comm)
     end subroutine class2_method1
 
     subroutine class2_method2(obj, c2)
         use class1_mod, only : class1
         class(class2) :: obj
         type(class1), value, intent(IN) :: c2
-        call c_class2_method2(obj%voidptr, c2%get_instance())
+        call c_class2_method2(obj%cxxptr, c2%cxxptr)
     end subroutine class2_method2
 
-    function class2_get_instance(obj) result (voidptr)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function class2_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(class2), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function class2_get_instance
 
-    subroutine class2_set_instance(obj, voidptr)
+    subroutine class2_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(class2), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: voidptr
-        obj%voidptr = voidptr
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
     end subroutine class2_set_instance
 
     function class2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(class2), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%cxxmem%addr)
     end function class2_associated
 
 
@@ -129,7 +142,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class2), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -140,7 +153,7 @@ contains
         use iso_c_binding, only: c_associated
         type(class2), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

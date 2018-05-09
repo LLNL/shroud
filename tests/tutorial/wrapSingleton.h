@@ -49,16 +49,14 @@
 #ifndef WRAPSINGLETON_H
 #define WRAPSINGLETON_H
 
+#include "typesTutorial.h"
+
 // splicer begin class.Singleton.CXX_declarations
 // splicer end class.Singleton.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_TUT_singleton;
-typedef struct s_TUT_singleton TUT_singleton;
 
 // splicer begin class.Singleton.C_declarations
 // splicer end class.Singleton.C_declarations

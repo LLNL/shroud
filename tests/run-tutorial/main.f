@@ -65,11 +65,11 @@ program tester
   call test_enums
   call test_functions
 
-  call test_vector
-
   call test_callback
 
   call test_struct1
+  call test_class1_final
+  call test_class1_new_by_value
   call test_class1
   call test_singleton
 
@@ -218,48 +218,6 @@ contains
 
   end subroutine test_functions
 
-  subroutine test_vector
-    integer(C_INT) intv(5)
-    character(10) :: names(3)
-    integer irv
-
-    call set_case_name("test_vector")
-
-    intv = [1,2,3,4,5]
-    irv = vector_sum(intv)
-    call assert_true(irv .eq. 15)
-
-    intv(:) = 0
-    call vector_iota(intv)
-    call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
-
-    intv = [1,2,3,4,5]
-    call vector_increment(intv)
-    call assert_true(all(intv(:) .eq. [2,3,4,5,6]))
-
-    ! count number of underscores
-    names = [ "dog_cat   ", "bird_mouse", "__        " ]
-    irv = vector_string_count(names)
-    call assert_true(irv == 4)
-
-    ! Fill strings into names
-    names = " "
-    irv = vector_string_fill(names)
-    call assert_true(irv == 2)
-    call assert_true( names(1) == "dog")
-    call assert_true( names(2) == "bird")
-    call assert_true( names(3) == " ")
-
-    ! Append -like to names.
-    ! Note that strings will be truncated to len(names)
-    names = [ "fish      ", "toolong   ", "          " ]
-    call vector_string_append(names)
-    call assert_true( names(1) == "fish-like")
-    call assert_true( names(2) == "toolong-li")
-    call assert_true( names(3) == "-like")
- 
-  end subroutine test_vector
-
   subroutine test_callback
 
     integer irv
@@ -315,10 +273,51 @@ contains
 
   end subroutine test_struct1
 
+  ! Simple test of FINAL useful with debugger.
+  subroutine test_class1_final
+    type(class1) obj0, obj1
+
+    call set_case_name("test_class1_final")
+
+    ! Test generic constructor
+    obj0 = class1_new()
+!    call assert_equals(1, obj0%cxxmem%refcount, "reference count after new")
+
+    obj1 = obj0
+!    call assert_equals(2, obj0%cxxmem%refcount, "rhs reference count after assign")
+!    call assert_equals(2, obj1%cxxmem%refcount, "lhs reference count after assign")
+
+    call obj0%delete
+!    call assert_equals(1, obj1%cxxmem%refcount, "reference count after delete")
+
+    ! should call TUT_SHROUD_array_destructor_function as part of 
+    ! FINAL of capsule_data.
+  end subroutine test_class1_final
+
+  subroutine test_class1_new_by_value
+    integer mflag
+    type(class1) obj0
+
+    call set_case_name("test_class1_new_by_value")
+
+    ! Return a new instance.
+    ! The C wrapper creates an instance then assigns function results into it.
+    ! idtor is set to cause it to be released when it goes out of scope.
+    obj0 = get_class_new(5)
+
+    mflag = obj0%get_m_flag()
+    call assert_equals(5, mflag)
+
+    ! should call TUT_SHROUD_array_destructor_function as part of 
+    ! FINAL of capsule_data.
+    call obj0%delete
+
+  end subroutine test_class1_new_by_value
+
   subroutine test_class1
     integer iflag, mtest
     integer direction
-    type(class1) obj0, obj1
+    type(class1) obj0, obj1, obj2
     type(class1) obj0a
     type(c_ptr) ptr
 
@@ -352,7 +351,12 @@ contains
     call assert_true(obj0%equivalent(obj0))
     call assert_false(obj0%equivalent(obj1))
 
+    ! This function has return_this=True, so it returns nothing
     call obj0%return_this()
+
+    ! This function has return_this=False, so it returns obj0
+    obj2 = obj0%return_this_buffer("bufferify", .true.)
+    call assert_true(obj0 .eq. obj2, "return_this_buffer equal")
 
     direction = -1
     direction = obj0%direction_func(class1_direction_left)

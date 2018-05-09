@@ -51,12 +51,16 @@
             "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
+            "C_capsule_data_type": "CLI_SHROUD_capsule_data", 
+            "C_context_type": "CLI_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapClibrary.h", 
             "C_header_filename_suffix": "h", 
+            "C_header_helper": "typesClibrary.h", 
             "C_impl_filename": "wrapClibrary.c", 
             "C_impl_filename_suffix": "c", 
             "C_local": "SHC_", 
+            "C_memory_dtor_function": "CLI_SHROUD_array_destructor_function", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "CLI_", 
@@ -66,11 +70,18 @@
             "F_C_prefix": "c_", 
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
-            "F_derived_member": "voidptr", 
+            "F_capsule_data_type": "SHROUD_capsule_data", 
+            "F_capsule_final_function": "SHROUD_capsule_final", 
+            "F_capsule_type": "SHROUD_capsule", 
+            "F_context_type": "SHROUD_vector_context", 
+            "F_derived_member": "cxxmem", 
+            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfclibrary.f", 
             "F_module_name": "clibrary_mod", 
+            "F_name_assign": "assign", 
             "F_name_associated": "associated", 
+            "F_name_final": "final", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
             "F_pointer": "SHT_ptr", 
@@ -168,6 +179,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
@@ -196,6 +208,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg2", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -226,7 +239,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -320,6 +334,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "len", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -350,6 +365,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "result", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -380,6 +396,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "values", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -392,7 +409,7 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "int * values", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "int", 
                             "c_var": "values", 
                             "cxx_addr": "", 
@@ -515,6 +532,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
@@ -546,7 +564,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -625,6 +644,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
@@ -654,6 +674,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
@@ -684,6 +705,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg3", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
@@ -816,6 +838,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -824,7 +847,7 @@
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_decl": "const char * arg1", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "char", 
                             "c_var": "arg1", 
                             "cxx_addr": "", 
@@ -840,6 +863,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
@@ -848,7 +872,7 @@
                         "fmtpy": {
                             "c_const": "const ", 
                             "c_decl": "const char * arg2", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "char", 
                             "c_var": "arg2", 
                             "cxx_addr": "", 
@@ -866,7 +890,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -979,6 +1004,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
@@ -995,6 +1021,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
                             "cxx_member": "->", 
@@ -1010,6 +1037,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arg2", 
                             "c_var_trim": "Larg2", 
                             "cxx_member": "->", 
@@ -1027,7 +1055,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 10, 
@@ -1046,6 +1075,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Larg1", 
@@ -1067,6 +1097,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Larg2", 
@@ -1088,6 +1119,7 @@
                         }, 
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "char", 
                                 "intent": "out", 
@@ -1144,6 +1176,7 @@
                         "fmtc": {
                             "c_const": "const ", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "argin", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1172,6 +1205,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "arginout", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1202,6 +1236,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "argout", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1332,6 +1367,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "in", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
@@ -1344,7 +1380,7 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "double * in", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "double", 
                             "c_var": "in", 
                             "cxx_addr": "", 
@@ -1363,6 +1399,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "out", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
@@ -1378,7 +1415,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "double * out", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "double", 
                             "c_var": "out", 
                             "cxx_addr": "", 
@@ -1395,6 +1432,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1532,6 +1570,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "in", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
@@ -1544,7 +1583,7 @@
                         "fmtpy": {
                             "c_const": "", 
                             "c_decl": "double * in", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "double", 
                             "c_var": "in", 
                             "cxx_addr": "", 
@@ -1563,6 +1602,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "out", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1578,7 +1618,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int * out", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "int", 
                             "c_var": "out", 
                             "cxx_addr": "", 
@@ -1595,6 +1635,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1732,6 +1773,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "array", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
@@ -1746,7 +1788,7 @@
                             "PyTypeObject": null, 
                             "c_const": "", 
                             "c_decl": "int * array", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
                             "c_type": "int", 
                             "c_var": "array", 
                             "cxx_addr": "", 
@@ -1765,6 +1807,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -1882,16 +1925,21 @@
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+            "C_header_helper_template": "types{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
+            "C_memory_dtor_function_template": "{C_prefix}SHROUD_array_destructor_function", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_capsule_template": "C{c_var}", 
+            "C_var_context_template": "D{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
+            "F_auto_reference_count": false, 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -1944,13 +1992,6 @@
             "wrap_lua": false, 
             "wrap_python": true
         }
-    }, 
-    "typealias": {
-        "integer(C_INT)": "int", 
-        "integer(C_LONG)": "long", 
-        "integer(C_LONG_LONG)": "long_long", 
-        "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float"
     }, 
     "types": {
         "EnumTypeID": {
@@ -2083,6 +2124,7 @@
             "c_statements": {
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
@@ -2099,6 +2141,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -2118,6 +2161,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<stdlib.h>", 
@@ -2134,6 +2178,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -2178,6 +2223,7 @@
             "c_statements": {
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -2326,6 +2372,7 @@
                 }, 
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -2345,6 +2392,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -2369,6 +2417,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -2382,6 +2431,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -2440,17 +2490,9 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
-                "intent_in_buf": {
+                "AAAintent_inout_buf": {
                     "buf_args": [
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                }, 
-                "intent_inout_buf": {
-                    "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -2469,8 +2511,9 @@
                         "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
-                "intent_out_buf": {
+                "AAAintent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -2488,12 +2531,70 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
                     ]
+                }, 
+                "intent_in_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size"
+                    ], 
+                    "cxx_local_var": "scalar", 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size", 
+                        "capsule", 
+                        "context"
+                    ], 
+                    "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "buf_args": [
+                        "capsule", 
+                        "context"
+                    ], 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
+                    "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
+                    ]
                 }
             }, 
             "c_templates": {
                 "std::string": {
                     "intent_in_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -2515,6 +2616,7 @@
                     }, 
                     "intent_inout_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -2548,6 +2650,7 @@
                     }, 
                     "intent_out_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -2573,13 +2676,38 @@
                 }
             }, 
             "cxx_header": "<vector>", 
-            "cxx_type": "std::vector<{cxx_T}>"
+            "cxx_type": "std::vector<{cxx_T}>", 
+            "f_statements": {
+                "intent_inout": {
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_out": {
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }
+            }
         }, 
         "stringout": {
             "base": "string", 
             "c_statements": {
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -2593,6 +2721,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -2613,7 +2742,7 @@
             }, 
             "f_c_type": "type(C_PTR)", 
             "f_statements": {
-                "result_buf": {
+                "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [

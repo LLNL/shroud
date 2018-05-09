@@ -40,8 +40,12 @@
 //
 // #######################################################################
 #include "wrapUserLibrary.h"
+#include <stdlib.h>
 #include <string>
+#include "ExClass1.hpp"
+#include "ExClass2.hpp"
 #include "sidre/Group.hpp"
+#include "typesUserLibrary.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -214,8 +218,8 @@ void AA_testmpi_serial()
 void AA_testgroup1(SIDRE_group * grp)
 {
 // splicer begin function.testgroup1
-    axom::sidre::Group * SHCXX_grp = static_cast<axom::sidre::Group *>(
-        static_cast<void *>(grp));
+    axom::sidre::Group * SHCXX_grp = 
+        static_cast<axom::sidre::Group *>(grp->addr);
     example::nested::testgroup1(SHCXX_grp);
     return;
 // splicer end function.testgroup1
@@ -227,8 +231,7 @@ void AA_testgroup2(const SIDRE_group * grp)
 {
 // splicer begin function.testgroup2
     const axom::sidre::Group * SHCXX_grp = 
-        static_cast<const axom::sidre::Group *>(
-        static_cast<const void *>(grp));
+        static_cast<const axom::sidre::Group *>(grp->addr);
     example::nested::testgroup2(SHCXX_grp);
     return;
 // splicer end function.testgroup2
@@ -346,6 +349,45 @@ void AA_cos_doubles(double * in, double * out, int sizein)
     example::nested::cos_doubles(in, out, sizein);
     return;
 // splicer end function.cos_doubles
+}
+
+// Release C++ allocated memory.
+void AA_SHROUD_array_destructor_function
+    (USE_SHROUD_capsule_data *cap, bool gc)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:
+    {
+        example::nested::ExClass1 *cxx_ptr = 
+            reinterpret_cast<example::nested::ExClass1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:
+    {
+        example::nested::ExClass2 *cxx_ptr = 
+            reinterpret_cast<example::nested::ExClass2 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
+    if (gc) {
+        free(cap);
+    } else {
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
 }
 
 }  // extern "C"

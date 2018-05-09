@@ -48,7 +48,7 @@ declarations:
       cxx_type: Class2
       c_type: DEF_class2
       f_derived_type: class2
-      f_to_c: "{f_var}%get_instance()"
+      f_to_c: "{f_var}%cxxptr"
       f_module:
         class2_mod:
         - class2
@@ -57,10 +57,11 @@ declarations:
     - type: Class1
       fields:
         base: shadow
+        cxx_header: class_header.hpp
         cxx_type: three::Class1
         c_type: DEF_class1
         f_derived_type: class1
-        f_to_c: "{f_var}%get_instance()"
+        f_to_c: "{f_var}%cxxptr"
         f_module:
           class1_mod:
           - class1

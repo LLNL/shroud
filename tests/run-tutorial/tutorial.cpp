@@ -289,6 +289,14 @@ Class1 * getclass3()
     return const_cast<Class1 *>(global_class1);
 }
 
+/* Return class instance by value */
+Class1 getClassNew(int flag)
+{
+    Class1 node(flag);
+    last_function_called = "getClassNew";
+    return node;
+}
+
 //----------------------------------------------------------------------
 // class methods
 
@@ -300,12 +308,20 @@ int Class1::Method1()
 
 bool Class1::equivalent(Class1 const &obj2) const
 {
+    last_function_called = "Class1::equivalent";
     return m_flag == obj2.m_flag;
 }
 
 Class1 * Class1::returnThis()
 {
-    last_function_called = "returnThis";
+    last_function_called = "Class1::returnThis";
+    return this;
+}
+
+Class1 *Class1::returnThisBuffer(std::string & name, bool flag)
+{
+    global_str = name;
+    last_function_called = "Class1::getThisBuffer";
     return this;
 }
 
@@ -320,83 +336,6 @@ Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 {
     last_function_called = "directionFunc";
     return Class1::RIGHT;
-}
-
-//----------------------------------------------------------------------
-// vector reference as argument.
-// arg+intent(in)
-
-int vector_sum(const std::vector<int> &arg)
-{
-  int sum = 0;
-  for(std::vector<int>::const_iterator it = arg.begin(); it != arg.end(); ++it) {
-    sum += *it;
-  }
-  return sum;
-}
-
-//----------------------------------------------------------------------
-// vector reference as argument.
-// arg+intent(out)
-
-void vector_iota(std::vector<int> &arg)
-{
-  for(unsigned int i=0; i < arg.size(); i++) {
-    arg[i] = i + 1;
-  }
-  return;
-}
-
-//----------------------------------------------------------------------
-// vector reference as argument.
-// arg+intent(inout)
-
-void vector_increment(std::vector<int> &arg)
-{
-  for(unsigned int i=0; i < arg.size(); i++) {
-    arg[i] += 1;
-  }
-  return;
-}
-
-//----------------------------------------------------------------------
-// count underscore in strings
-// arg+intent(in)
-
-int vector_string_count(const std::vector< std::string > &arg)
-{
-  int count = 0;
-  for(unsigned int i=0; i < arg.size(); i++) {
-    for (unsigned int j = 0; j < arg[i].size(); j++) {
-      if (arg[i][j] == '_') {
-        count++;
-      }
-    }
-  }
-  return count;
-}
-
-//----------------------------------------------------------------------
-// Add strings to arg.
-// arg+intent(out)
-
-void vector_string_fill(std::vector< std::string > &arg)
-{
-  arg.push_back("dog");
-  arg.push_back("bird");
-  return;
-}
-
-//----------------------------------------------------------------------
-// Append to strings in arg.
-// arg+intent(inout)
-
-void vector_string_append(std::vector< std::string > &arg)
-{
-  for(unsigned int i=0; i < arg.size(); i++) {
-    arg[i] += "-like";
-  }
-  return;
 }
 
 //----------------------------------------------------------------------

@@ -247,7 +247,8 @@ PY_ReturnIntPtr(
     int * SHC_rv = tutorial::ReturnIntPtr();
 
     // post_call
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHC_rv);
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
+        SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr
@@ -293,7 +294,8 @@ PY_ReturnIntPtrDim(
 
     // post_call
     npy_intp SHD_ReturnIntPtrDim[1] = { len };
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_ReturnIntPtrDim, NPY_INT, SHC_rv);
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
+        SHD_ReturnIntPtrDim, NPY_INT, SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_dim
@@ -318,7 +320,8 @@ PY_ReturnIntPtrDimNew(
 
     // post_call
     npy_intp SHD_ReturnIntPtrDimNew[1] = { len };
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1, SHD_ReturnIntPtrDimNew, NPY_INT, SHC_rv);
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
+        SHD_ReturnIntPtrDimNew, NPY_INT, SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_dim_new

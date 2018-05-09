@@ -96,12 +96,12 @@ class TypeOut(util.WrapperMixin):
         # split up into namespaces
         top = {}
         for cls in newlibrary.classes:
-            fullname = cls.typedef.name
+            fullname = cls.typemap.name
             parts = fullname.split('::')
             ns = top
             for part in parts[:-1]:
                 ns = ns.setdefault(part, {})
-            ns[parts[-1]] = cls.typedef
+            ns[parts[-1]] = cls.typemap
 
         output = [ ]
 
@@ -115,7 +115,7 @@ class TypeOut(util.WrapperMixin):
                     output.append('declarations: ' + name)
                     splitup(nxt, output)
                     output.append(-1)
-                elif isinstance(nxt, typemap.Typedef):
+                elif isinstance(nxt, typemap.Typemap):
                     output.append('@- type: ' + name)
                     output.append(1)
                     output.append('fields:')
@@ -140,7 +140,7 @@ class TypeOut(util.WrapperMixin):
 def dump_jsonfile(logdir, basename, newlibrary):
     """Write a JSON file for debugging.
     """
-    def_types, def_types_alias = typemap.Typedef.get_global_types()
+    def_types = typemap.get_global_types()
 
     jsonpath = os.path.join(logdir, basename + '.json')
     fp = open(jsonpath, 'w')
@@ -151,7 +151,6 @@ def dump_jsonfile(logdir, basename, newlibrary):
         "and is useful for debugging.",
         library = todict.to_dict(newlibrary),
         types = todict.to_dict(def_types),
-        typealias = def_types_alias,
 #            yaml = all,
     )
 
@@ -297,7 +296,7 @@ def main_with_args(args):
 
 #    print(all)
 
-    def_types, def_types_alias = typemap.initialize()
+    def_types = typemap.initialize()
 
     # Write out native types as YAML if requested
     if config.yaml_types:

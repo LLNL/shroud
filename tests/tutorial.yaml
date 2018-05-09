@@ -243,7 +243,7 @@ declarations:
          brief: returns the value of flag member
   
     - decl: bool equivalent(Class1 const &obj2) const;
-      # Note that Fortran adds an obj argument
+      # Note that Fortran adds an obj argument so use obj2 instead.
       doxygen:
          brief: Pass in reference to instance
       options:
@@ -252,6 +252,21 @@ declarations:
 
     - decl: Class1 * returnThis();
       return_this: True
+      doxygen:
+         brief: Return pointer to 'this' to allow chaining calls
+      options:
+         wrap_python: False
+         wrap_lua: False
+  
+    - decl: Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);
+      # do not set return_this
+      # passing in a string will cause node.generated_suffix to be set to '_buf'.
+      # but result is not bufferified so look for c_statements['result'], not
+      # 'result_buf'.
+
+      # The bool argument tests that wrapf.py does not use _generated_suffix
+      # since it only applies to the generated C function.
+
       doxygen:
          brief: Return pointer to 'this' to allow chaining calls
       options:
@@ -287,46 +302,13 @@ declarations:
 #    wrap_python: False
       wrap_lua: False
   
-# test std::vector
-# const implies intent(in)
-  - decl: int vector_sum(const std::vector<int> &arg)
+  - decl: Class1 getClassNew(int flag)
+    doxygen:
+         brief: Return Class1 instance by value
     options:
       wrap_python: False
       wrap_lua: False
   
-  - decl: void vector_iota(std::vector<int> &arg+intent(out))
-    options:
-      wrap_python: False
-      wrap_lua: False
-  
-# defaults to intent(inout)
-  - decl: void vector_increment(std::vector<int> &arg)
-    options:
-      wrap_python: False
-      wrap_lua: False
-  
-# does multidimensional make sense?  Need to call shape
-#- decl: void vector1XXX(std::vector<int> &arg+dimension(:,:))
-  
-  - decl: int vector_string_count(const std::vector< std::string > &arg)
-    doxygen:
-      brief: count number of underscore in vector of strings
-      decription: |
-        The input will be copied in order to create the C++ argument
-  
-  - decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
-    format:
-      C_return_type: int
-      C_return_code: return SH_arg.size();
-    doxygen:
-      brief: Fill in arg with some animal names
-      description: |
-        The C++ function returns void. But the C and Fortran wrappers return
-        an int with the number of items added to arg.
-  
-  - decl: void vector_string_append(std::vector< std::string > &arg+intent(inout))
-    doxygen:
-      brief: append '-like' to names.
   
 ##################################################
   

@@ -49,6 +49,8 @@
 #ifndef TOP_H
 #define TOP_H
 
+#include "typestestnames.hh"
+
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
 

@@ -48,7 +48,7 @@ declarations:
       cxx_type: Names
       c_type: TES_names
       f_derived_type: FNames
-      f_to_c: "{f_var}%get_instance()"
+      f_to_c: "{f_var}%cxxptr"
       f_module:
         name_module:
         - FNames
@@ -58,7 +58,7 @@ declarations:
       cxx_type: Names2
       c_type: TES_names2
       f_derived_type: names2
-      f_to_c: "{f_var}%get_instance()"
+      f_to_c: "{f_var}%cxxptr"
       f_module:
         names2_mod:
         - names2

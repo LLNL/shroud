@@ -49,16 +49,14 @@
 #define WRAPEXCLASS3_H
 #ifdef USE_CLASS3
 
+#include "typesUserLibrary.h"
+
 // splicer begin class.ExClass3.CXX_declarations
 // splicer end class.ExClass3.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_AA_exclass3;
-typedef struct s_AA_exclass3 AA_exclass3;
 
 // splicer begin class.ExClass3.C_declarations
 // splicer end class.ExClass3.C_declarations

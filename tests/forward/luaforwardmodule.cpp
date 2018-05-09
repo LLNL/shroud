@@ -85,8 +85,8 @@ static int l_class2_func1(lua_State *L)
 {
     // splicer begin class.Class2.method.func1
     tutorial::Class1 * arg = static_cast<tutorial::Class1 *>(
-        static_cast<void *>((l_Class2_Type *) luaL_checkudata(
-        L, 1, "Class2.metatable")));
+        (l_Class2_Type *) luaL_checkudata(
+        L, 1, "Class2.metatable")->addr);
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
         L, 1, "Class2.metatable");
     SH_this->self->func1(arg);

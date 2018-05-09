@@ -42,28 +42,21 @@
 // #######################################################################
 #include "wrapTutorial.h"
 #include <cstring>
+#include <stdlib.h>
 #include <string>
 #include "tutorial.hpp"
+#include "typesTutorial.h"
+
+// splicer begin CXX_definitions
+// splicer end CXX_definitions
+
+extern "C" {
+
 
 typedef union {
   tutorial::struct1 cxx;
   TUT_struct1 c;
 } SH_union_0_t;
-
-
-// Returns the length of character string a with length ls,
-// ignoring any trailing blanks.
-int ShroudLenTrim(const char *s, int ls) {
-    int i;
-
-    for (i = ls - 1; i >= 0; i--) {
-        if (s[i] != ' ') {
-            break;
-        }
-    }
-
-    return i + 1;
-}
 
 
 // Copy s into a, blank fill to la characters
@@ -76,17 +69,11 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
-
-// splicer begin CXX_definitions
-// splicer end CXX_definitions
-
-extern "C" {
-
 // splicer begin C_definitions
 // splicer end C_definitions
 
 // void Function1()
-// function_index=11
+// function_index=13
 void TUT_function1()
 {
 // splicer begin function.function1
@@ -96,7 +83,7 @@ void TUT_function1()
 }
 
 // double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-// function_index=12
+// function_index=14
 double TUT_function2(double arg1, int arg2)
 {
 // splicer begin function.function2
@@ -106,7 +93,7 @@ double TUT_function2(double arg1, int arg2)
 }
 
 // void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-// function_index=13
+// function_index=15
 void TUT_sum(size_t len, int * values, int * result)
 {
 // splicer begin function.sum
@@ -116,7 +103,7 @@ void TUT_sum(size_t len, int * values, int * result)
 }
 
 // long long TypeLongLong(long long arg1 +intent(in)+value)
-// function_index=14
+// function_index=16
 long long TUT_type_long_long(long long arg1)
 {
 // splicer begin function.type_long_long
@@ -126,7 +113,7 @@ long long TUT_type_long_long(long long arg1)
 }
 
 // bool Function3(bool arg +intent(in)+value)
-// function_index=15
+// function_index=17
 bool TUT_function3(bool arg)
 {
 // splicer begin function.function3
@@ -136,7 +123,7 @@ bool TUT_function3(bool arg)
 }
 
 // void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-// function_index=16
+// function_index=18
 void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 {
 // splicer begin function.function3b
@@ -146,7 +133,7 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 }
 
 // int * ReturnIntPtr()
-// function_index=17
+// function_index=19
 int * TUT_return_int_ptr()
 {
 // splicer begin function.return_int_ptr
@@ -156,7 +143,7 @@ int * TUT_return_int_ptr()
 }
 
 // int * ReturnIntPtrScalar()
-// function_index=18
+// function_index=20
 int TUT_return_int_ptr_scalar()
 {
 // splicer begin function.return_int_ptr_scalar
@@ -166,7 +153,7 @@ int TUT_return_int_ptr_scalar()
 }
 
 // int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-// function_index=19
+// function_index=21
 int * TUT_return_int_ptr_dim(int * len)
 {
 // splicer begin function.return_int_ptr_dim
@@ -176,7 +163,7 @@ int * TUT_return_int_ptr_dim(int * len)
 }
 
 // int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
-// function_index=20
+// function_index=22
 int * TUT_return_int_ptr_dim_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_new
@@ -186,7 +173,7 @@ int * TUT_return_int_ptr_dim_new(int * len)
 }
 
 // void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-// function_index=65
+// function_index=62
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
@@ -204,7 +191,7 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1,
 }
 
 // const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
-// function_index=22
+// function_index=24
 const char * TUT_function4b(const char * arg1, const char * arg2)
 {
 // splicer begin function.function4b
@@ -218,7 +205,7 @@ const char * TUT_function4b(const char * arg1, const char * arg2)
 }
 
 // void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-// function_index=66
+// function_index=63
 void TUT_function4b_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * output, int Noutput)
 {
@@ -237,7 +224,7 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1,
 }
 
 // double Function5()
-// function_index=55
+// function_index=52
 double TUT_function5()
 {
 // splicer begin function.function5
@@ -247,7 +234,7 @@ double TUT_function5()
 }
 
 // double Function5(double arg1=3.1415 +intent(in)+value)
-// function_index=56
+// function_index=53
 double TUT_function5_arg1(double arg1)
 {
 // splicer begin function.function5_arg1
@@ -257,7 +244,7 @@ double TUT_function5_arg1(double arg1)
 }
 
 // double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-// function_index=23
+// function_index=25
 double TUT_function5_arg1_arg2(double arg1, bool arg2)
 {
 // splicer begin function.function5_arg1_arg2
@@ -267,7 +254,7 @@ double TUT_function5_arg1_arg2(double arg1, bool arg2)
 }
 
 // void Function6(const std::string & name +intent(in))
-// function_index=24
+// function_index=26
 void TUT_function6_from_name(const char * name)
 {
 // splicer begin function.function6_from_name
@@ -278,7 +265,7 @@ void TUT_function6_from_name(const char * name)
 }
 
 // void Function6(const std::string & name +intent(in)+len_trim(Lname))
-// function_index=68
+// function_index=65
 void TUT_function6_from_name_bufferify(const char * name, int Lname)
 {
 // splicer begin function.function6_from_name_bufferify
@@ -289,7 +276,7 @@ void TUT_function6_from_name_bufferify(const char * name, int Lname)
 }
 
 // void Function6(int indx +intent(in)+value)
-// function_index=25
+// function_index=27
 void TUT_function6_from_index(int indx)
 {
 // splicer begin function.function6_from_index
@@ -299,7 +286,7 @@ void TUT_function6_from_index(int indx)
 }
 
 // void Function7(int arg +intent(in)+value)
-// function_index=57
+// function_index=54
 void TUT_function7_int(int arg)
 {
 // splicer begin function.function7_int
@@ -309,7 +296,7 @@ void TUT_function7_int(int arg)
 }
 
 // void Function7(double arg +intent(in)+value)
-// function_index=58
+// function_index=55
 void TUT_function7_double(double arg)
 {
 // splicer begin function.function7_double
@@ -319,7 +306,7 @@ void TUT_function7_double(double arg)
 }
 
 // int Function8()
-// function_index=59
+// function_index=56
 int TUT_function8_int()
 {
 // splicer begin function.function8_int
@@ -329,7 +316,7 @@ int TUT_function8_int()
 }
 
 // double Function8()
-// function_index=60
+// function_index=57
 double TUT_function8_double()
 {
 // splicer begin function.function8_double
@@ -339,7 +326,7 @@ double TUT_function8_double()
 }
 
 // void Function9(double arg +intent(in)+value)
-// function_index=28
+// function_index=30
 void TUT_function9(double arg)
 {
 // splicer begin function.function9
@@ -349,7 +336,7 @@ void TUT_function9(double arg)
 }
 
 // void Function10()
-// function_index=29
+// function_index=31
 void TUT_function10_0()
 {
 // splicer begin function.function10_0
@@ -359,7 +346,7 @@ void TUT_function10_0()
 }
 
 // void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
-// function_index=30
+// function_index=32
 void TUT_function10_1(const char * name, double arg2)
 {
 // splicer begin function.function10_1
@@ -370,7 +357,7 @@ void TUT_function10_1(const char * name, double arg2)
 }
 
 // void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)
-// function_index=69
+// function_index=66
 void TUT_function10_1_bufferify(const char * name, int Lname,
     double arg2)
 {
@@ -382,7 +369,7 @@ void TUT_function10_1_bufferify(const char * name, int Lname,
 }
 
 // int overload1(int num +intent(in)+value)
-// function_index=61
+// function_index=58
 int TUT_overload1_num(int num)
 {
 // splicer begin function.overload1_num
@@ -392,7 +379,7 @@ int TUT_overload1_num(int num)
 }
 
 // int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
-// function_index=62
+// function_index=59
 int TUT_overload1_num_offset(int num, int offset)
 {
 // splicer begin function.overload1_num_offset
@@ -402,7 +389,7 @@ int TUT_overload1_num_offset(int num, int offset)
 }
 
 // int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// function_index=31
+// function_index=33
 int TUT_overload1_num_offset_stride(int num, int offset, int stride)
 {
 // splicer begin function.overload1_num_offset_stride
@@ -412,7 +399,7 @@ int TUT_overload1_num_offset_stride(int num, int offset, int stride)
 }
 
 // int overload1(double type +intent(in)+value, int num +intent(in)+value)
-// function_index=63
+// function_index=60
 int TUT_overload1_3(double type, int num)
 {
 // splicer begin function.overload1_3
@@ -422,7 +409,7 @@ int TUT_overload1_3(double type, int num)
 }
 
 // int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
-// function_index=64
+// function_index=61
 int TUT_overload1_4(double type, int num, int offset)
 {
 // splicer begin function.overload1_4
@@ -432,7 +419,7 @@ int TUT_overload1_4(double type, int num, int offset)
 }
 
 // int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// function_index=32
+// function_index=34
 int TUT_overload1_5(double type, int num, int offset, int stride)
 {
 // splicer begin function.overload1_5
@@ -442,7 +429,7 @@ int TUT_overload1_5(double type, int num, int offset, int stride)
 }
 
 // TypeID typefunc(TypeID arg +intent(in)+value)
-// function_index=33
+// function_index=35
 int TUT_typefunc(int arg)
 {
 // splicer begin function.typefunc
@@ -452,7 +439,7 @@ int TUT_typefunc(int arg)
 }
 
 // EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
-// function_index=34
+// function_index=36
 int TUT_enumfunc(int arg)
 {
 // splicer begin function.enumfunc
@@ -464,7 +451,7 @@ int TUT_enumfunc(int arg)
 }
 
 // Color colorfunc(Color arg +intent(in)+value)
-// function_index=35
+// function_index=37
 int TUT_colorfunc(int arg)
 {
 // splicer begin function.colorfunc
@@ -476,7 +463,7 @@ int TUT_colorfunc(int arg)
 }
 
 // void getMinMax(int & min +intent(out), int & max +intent(out))
-// function_index=36
+// function_index=38
 /**
  * \brief Pass in reference to scalar
  *
@@ -490,7 +477,7 @@ void TUT_get_min_max(int * min, int * max)
 }
 
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-// function_index=37
+// function_index=39
 int TUT_direction_func(int arg)
 {
 // splicer begin function.direction_func
@@ -504,184 +491,67 @@ int TUT_direction_func(int arg)
 }
 
 // int useclass(const Class1 * arg1 +intent(in)+value)
-// function_index=38
+// function_index=40
 int TUT_useclass(const TUT_class1 * arg1)
 {
 // splicer begin function.useclass
     const tutorial::Class1 * SHCXX_arg1 = static_cast<const tutorial::
-        Class1 *>(static_cast<const void *>(arg1));
+        Class1 *>(arg1->addr);
     int SHC_rv = tutorial::useclass(SHCXX_arg1);
     return SHC_rv;
 // splicer end function.useclass
 }
 
 // const Class1 * getclass2()
-// function_index=39
-const TUT_class1 * TUT_getclass2()
+// function_index=41
+TUT_class1 * TUT_getclass2()
 {
 // splicer begin function.getclass2
     const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
-    const TUT_class1 * SHC_rv = static_cast<const TUT_class1 *>(
-        static_cast<const void *>(SHCXX_rv));
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
+        (SHCXX_rv));
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end function.getclass2
 }
 
 // Class1 * getclass3()
-// function_index=40
+// function_index=42
 TUT_class1 * TUT_getclass3()
 {
 // splicer begin function.getclass3
     tutorial::Class1 * SHCXX_rv = tutorial::getclass3();
-    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
-        SHCXX_rv));
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end function.getclass3
 }
 
-// int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
-// function_index=70
-int TUT_vector_sum_bufferify(const int * arg, long Sarg)
+// Class1 getClassNew(int flag +intent(in)+value)
+// function_index=43
+/**
+ * \brief Return Class1 instance by value
+ *
+ */
+TUT_class1 * TUT_get_class_new(int flag)
 {
-// splicer begin function.vector_sum_bufferify
-    const std::vector<int> SH_arg(arg, arg + Sarg);
-    int SHC_rv = tutorial::vector_sum(SH_arg);
+// splicer begin function.get_class_new
+    tutorial::Class1 * SHCXX_rv = new tutorial::Class1;
+    *SHCXX_rv = tutorial::getClassNew(flag);
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
+    SHC_rv->refcount = 1;
     return SHC_rv;
-// splicer end function.vector_sum_bufferify
-}
-
-// void vector_iota(std::vector<int> & arg +dimension(:)+intent(out)+size(Sarg))
-// function_index=71
-void TUT_vector_iota_bufferify(int * arg, long Sarg)
-{
-// splicer begin function.vector_iota_bufferify
-    std::vector<int> SH_arg(Sarg);
-    tutorial::vector_iota(SH_arg);
-    {
-        std::vector<int>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(), SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            arg[SHT_i] = SH_arg[SHT_i];
-        }
-    }
-    return;
-// splicer end function.vector_iota_bufferify
-}
-
-// void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout)+size(Sarg))
-// function_index=72
-void TUT_vector_increment_bufferify(int * arg, long Sarg)
-{
-// splicer begin function.vector_increment_bufferify
-    std::vector<int> SH_arg(arg, arg + Sarg);
-    tutorial::vector_increment(SH_arg);
-    {
-        std::vector<int>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(), SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            arg[SHT_i] = SH_arg[SHT_i];
-        }
-    }
-    return;
-// splicer end function.vector_increment_bufferify
-}
-
-// int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
-// function_index=73
-/**
- * \brief count number of underscore in vector of strings
- *
- */
-int TUT_vector_string_count_bufferify(const char * arg, long Sarg,
-    int Narg)
-{
-// splicer begin function.vector_string_count_bufferify
-    std::vector<std::string> SH_arg;
-    {
-          const char * BBB = arg;
-          std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        for(; SHT_i < SHT_n; SHT_i++) {
-            SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
-            BBB += Narg;
-        }
-    }
-    int SHC_rv = tutorial::vector_string_count(SH_arg);
-    return SHC_rv;
-// splicer end function.vector_string_count_bufferify
-}
-
-// void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out)+len(Narg)+size(Sarg))
-// function_index=74
-/**
- * \brief Fill in arg with some animal names
- *
- * The C++ function returns void. But the C and Fortran wrappers return
- * an int with the number of items added to arg.
- */
-int TUT_vector_string_fill_bufferify(char * arg, long Sarg, int Narg)
-{
-// splicer begin function.vector_string_fill_bufferify
-    std::vector<std::string> SH_arg;
-    tutorial::vector_string_fill(SH_arg);
-    {
-        char * BBB = arg;
-        std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(),SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
-            BBB += Narg;
-        }
-    }
-    return SH_arg.size();
-// splicer end function.vector_string_fill_bufferify
-}
-
-// void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout)+len(Narg)+size(Sarg))
-// function_index=75
-/**
- * \brief append '-like' to names.
- *
- */
-void TUT_vector_string_append_bufferify(char * arg, long Sarg, int Narg)
-{
-// splicer begin function.vector_string_append_bufferify
-    std::vector<std::string> SH_arg;
-    {
-        char * BBB = arg;
-        std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        for(; SHT_i < SHT_n; SHT_i++) {
-            SH_arg.push_back(std::string(BBB,ShroudLenTrim(BBB, Narg)));
-            BBB += Narg;
-        }
-    }
-    tutorial::vector_string_append(SH_arg);
-    {
-        char * BBB = arg;
-        std::vector<std::string>::size_type
-            SHT_i = 0,
-            SHT_n = Sarg;
-        SHT_n = std::min(SH_arg.size(),SHT_n);
-        for(; SHT_i < SHT_n; SHT_i++) {
-            ShroudStrCopy(BBB, Narg, SH_arg[SHT_i].c_str());
-            BBB += Narg;
-        }
-    }
-    return;
-// splicer end function.vector_string_append_bufferify
+// splicer end function.get_class_new
 }
 
 // int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
-// function_index=47
+// function_index=44
 int TUT_callback1(int in, int ( * incr)(int))
 {
 // splicer begin function.callback1
@@ -691,7 +561,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 }
 
 // struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-// function_index=48
+// function_index=45
 TUT_struct1 TUT_return_struct(int i, double d)
 {
 // splicer begin function.return_struct
@@ -701,7 +571,7 @@ TUT_struct1 TUT_return_struct(int i, double d)
 }
 
 // struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-// function_index=49
+// function_index=46
 TUT_struct1 * TUT_return_struct_ptr(int i, double d)
 {
 // splicer begin function.return_struct_ptr
@@ -713,7 +583,7 @@ TUT_struct1 * TUT_return_struct_ptr(int i, double d)
 }
 
 // double acceptStructIn(struct1 arg +intent(in)+value)
-// function_index=50
+// function_index=47
 double TUT_accept_struct_in(TUT_struct1 arg)
 {
 // splicer begin function.accept_struct_in
@@ -725,7 +595,7 @@ double TUT_accept_struct_in(TUT_struct1 arg)
 }
 
 // double acceptStructInPtr(struct1 * arg +intent(in))
-// function_index=51
+// function_index=48
 double TUT_accept_struct_in_ptr(TUT_struct1 * arg)
 {
 // splicer begin function.accept_struct_in_ptr
@@ -737,7 +607,7 @@ double TUT_accept_struct_in_ptr(TUT_struct1 * arg)
 }
 
 // void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
-// function_index=52
+// function_index=49
 void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d)
 {
 // splicer begin function.accept_struct_out_ptr
@@ -749,7 +619,7 @@ void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d)
 }
 
 // void acceptStructInOutPtr(struct1 * arg +intent(inout))
-// function_index=53
+// function_index=50
 void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg)
 {
 // splicer begin function.accept_struct_in_out_ptr
@@ -761,7 +631,7 @@ void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg)
 }
 
 // const std::string & LastFunctionCalled() +len(30)
-// function_index=54
+// function_index=51
 const char * TUT_last_function_called()
 {
 // splicer begin function.last_function_called
@@ -772,7 +642,7 @@ const char * TUT_last_function_called()
 }
 
 // void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-// function_index=76
+// function_index=67
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.last_function_called_bufferify
@@ -784,6 +654,38 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
     }
     return;
 // splicer end function.last_function_called_bufferify
+}
+
+// Release C++ allocated memory.
+void TUT_SHROUD_array_destructor_function
+    (TUT_SHROUD_capsule_data *cap, bool gc)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:
+    {
+        tutorial::Class1 *cxx_ptr = 
+            reinterpret_cast<tutorial::Class1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
+    if (gc) {
+        free(cap);
+    } else {
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
 }
 
 }  // extern "C"

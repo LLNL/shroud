@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapSingleton.h"
+#include <stdlib.h>
 #include "tutorial.hpp"
 
 // splicer begin class.Singleton.CXX_definitions
@@ -52,13 +53,15 @@ extern "C" {
 // splicer end class.Singleton.C_definitions
 
 // static Singleton & getReference()
-// function_index=10
+// function_index=12
 TUT_singleton * TUT_singleton_get_reference()
 {
 // splicer begin class.Singleton.method.get_reference
     Singleton & SHCXX_rv = Singleton::getReference();
-    TUT_singleton * SHC_rv = static_cast<TUT_singleton *>(
-        static_cast<void *>(&SHCXX_rv));
+    TUT_singleton *SHC_rv = (TUT_singleton *) malloc(sizeof(TUT_singleton));
+    SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.Singleton.method.get_reference
 }

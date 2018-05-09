@@ -46,17 +46,24 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass3_mod
-    use iso_c_binding, only : C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin class.ExClass3.module_use
     ! splicer end class.ExClass3.module_use
     implicit none
 
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: refcount = 0    ! reference count
+    end type SHROUD_capsule_data
+
     ! splicer begin class.ExClass3.module_top
     ! splicer end class.ExClass3.module_top
 
     type exclass3
-        type(C_PTR), private :: voidptr
+        type(C_PTR), private :: cxxptr = C_NULL_PTR
+        type(SHROUD_capsule_data), pointer :: cxxmem => null()
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
@@ -115,7 +122,7 @@ contains
     subroutine exclass3_exfunc_0(obj)
         class(exclass3) :: obj
         ! splicer begin class.ExClass3.method.exfunc_0
-        call c_exclass3_exfunc_0(obj%voidptr)
+        call c_exclass3_exfunc_0(obj%cxxptr)
         ! splicer end class.ExClass3.method.exfunc_0
     end subroutine exclass3_exfunc_0
 #endif
@@ -128,23 +135,28 @@ contains
         class(exclass3) :: obj
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin class.ExClass3.method.exfunc_1
-        call c_exclass3_exfunc_1(obj%voidptr, flag)
+        call c_exclass3_exfunc_1(obj%cxxptr, flag)
         ! splicer end class.ExClass3.method.exfunc_1
     end subroutine exclass3_exfunc_1
 #endif
 
-    function exclass3_yadda(obj) result (voidptr)
-        use iso_c_binding, only: C_PTR
+    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    function exclass3_yadda(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(exclass3), intent(IN) :: obj
-        type(C_PTR) :: voidptr
-        voidptr = obj%voidptr
+        type(C_PTR) :: cxxptr
+        if (c_associated(obj%cxxptr)) then
+            cxxptr = obj%cxxmem%addr
+        else
+            cxxptr = C_NULL_PTR
+        endif
     end function exclass3_yadda
 
     function exclass3_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(exclass3), intent(IN) :: obj
         logical rv
-        rv = c_associated(obj%voidptr)
+        rv = c_associated(obj%cxxmem%addr)
     end function exclass3_associated
 
     ! splicer begin class.ExClass3.additional_functions
@@ -154,7 +166,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass3), intent(IN) ::a,b
         logical :: rv
-        if (c_associated(a%voidptr, b%voidptr)) then
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
@@ -165,7 +177,7 @@ contains
         use iso_c_binding, only: c_associated
         type(exclass3), intent(IN) ::a,b
         logical :: rv
-        if (.not. c_associated(a%voidptr, b%voidptr)) then
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.

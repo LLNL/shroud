@@ -49,16 +49,14 @@
 #ifndef FOO_H
 #define FOO_H
 
+#include "typestestnames.hh"
+
 // splicer begin class.Names.CXX_declarations
 // splicer end class.Names.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_TES_names;
-typedef struct s_TES_names TES_names;
 
 // splicer begin class.Names.C_declarations
 // splicer end class.Names.C_declarations

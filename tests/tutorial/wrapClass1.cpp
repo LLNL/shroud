@@ -41,6 +41,8 @@
 //
 // #######################################################################
 #include "wrapClass1.h"
+#include <stdlib.h>
+#include <string>
 #include "tutorial.hpp"
 
 // splicer begin class.Class1.CXX_definitions
@@ -56,9 +58,11 @@ extern "C" {
 TUT_class1 * TUT_class1_new_default()
 {
 // splicer begin class.Class1.method.new_default
-    tutorial::Class1 * SHCXX_rv = new tutorial::Class1();
-    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
-        SHCXX_rv));
+    tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.Class1.method.new_default
 }
@@ -68,9 +72,11 @@ TUT_class1 * TUT_class1_new_default()
 TUT_class1 * TUT_class1_new_flag(int flag)
 {
 // splicer begin class.Class1.method.new_flag
-    tutorial::Class1 * SHCXX_rv = new tutorial::Class1(flag);
-    TUT_class1 * SHC_rv = static_cast<TUT_class1 *>(static_cast<void *>(
-        SHCXX_rv));
+    tutorial::Class1 *SHCXX_rv = new tutorial::Class1(flag);
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
     return SHC_rv;
 // splicer end class.Class1.method.new_flag
 }
@@ -80,9 +86,8 @@ TUT_class1 * TUT_class1_new_flag(int flag)
 void TUT_class1_delete(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.delete
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
-    delete SH_this;
+    TUT_SHROUD_array_destructor_function
+        (reinterpret_cast<TUT_SHROUD_capsule_data *>(self), true);
     return;
 // splicer end class.Class1.method.delete
 }
@@ -96,8 +101,8 @@ void TUT_class1_delete(TUT_class1 * self)
 int TUT_class1_method1(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.method1
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
     int SHC_rv = SH_this->Method1();
     return SHC_rv;
 // splicer end class.Class1.method.method1
@@ -114,9 +119,9 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 {
 // splicer begin class.Class1.method.equivalent
     const tutorial::Class1 *SH_this = static_cast<const tutorial::
-        Class1 *>(static_cast<const void *>(self));
+        Class1 *>(self->addr);
     const tutorial::Class1 * SHCXX_obj2 = static_cast<const tutorial::
-        Class1 *>(static_cast<const void *>(obj2));
+        Class1 *>(obj2->addr);
     bool SHC_rv = SH_this->equivalent(*SHCXX_obj2);
     return SHC_rv;
 // splicer end class.Class1.method.equivalent
@@ -131,20 +136,66 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 void TUT_class1_return_this(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.return_this
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
     SH_this->returnThis();
     return;
 // splicer end class.Class1.method.return_this
 }
 
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 // function_index=6
+/**
+ * \brief Return pointer to 'this' to allow chaining calls
+ *
+ */
+TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
+    char * name, bool flag)
+{
+// splicer begin class.Class1.method.return_this_buffer
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
+    std::string SH_name(name);
+    tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name,
+        flag);
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
+    return SHC_rv;
+// splicer end class.Class1.method.return_this_buffer
+}
+
+// Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+// function_index=11
+/**
+ * \brief Return pointer to 'this' to allow chaining calls
+ *
+ */
+TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
+    char * name, int Lname, bool flag)
+{
+// splicer begin class.Class1.method.return_this_buffer_bufferify
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
+    std::string SH_name(name, Lname);
+    tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name,
+        flag);
+    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    SHC_rv->refcount = 1;
+    return SHC_rv;
+// splicer end class.Class1.method.return_this_buffer_bufferify
+}
+
+// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// function_index=7
 int TUT_class1_direction_func(TUT_class1 * self, int arg)
 {
 // splicer begin class.Class1.method.direction_func
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
     tutorial::Class1::DIRECTION SHCXX_arg = static_cast<tutorial::
         Class1::DIRECTION>(arg);
     tutorial::Class1::DIRECTION SHCXX_rv = SH_this->directionFunc(
@@ -155,34 +206,34 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg)
 }
 
 // int getM_flag()
-// function_index=7
+// function_index=8
 int TUT_class1_get_m_flag(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.get_m_flag
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
     return SH_this->m_flag;
 // splicer end class.Class1.method.get_m_flag
 }
 
 // int getTest()
-// function_index=8
+// function_index=9
 int TUT_class1_get_test(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.get_test
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
     return SH_this->m_test;
 // splicer end class.Class1.method.get_test
 }
 
 // void setTest(int val +intent(in)+value)
-// function_index=9
+// function_index=10
 void TUT_class1_set_test(TUT_class1 * self, int val)
 {
 // splicer begin class.Class1.method.set_test
-    tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(
-        static_cast<void *>(self));
+    tutorial::Class1 *SH_this = static_cast<tutorial::
+        Class1 *>(self->addr);
     SH_this->m_test = val;
     return;
 // splicer end class.Class1.method.set_test

@@ -1,6 +1,5 @@
-// wrapNames2.hh
+// typesUserLibrary.h
 // This is generated code, do not edit
-// #######################################################################
 // Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
@@ -40,31 +39,49 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-/**
- * \file wrapNames2.hh
- * \brief Shroud generated wrapper for Names2 class
- */
 // For C users and C++ implementation
 
-#ifndef WRAPNAMES2_HH
-#define WRAPNAMES2_HH
+#ifndef TYPESUSERLIBRARY_H
+#define TYPESUSERLIBRARY_H
 
-// splicer begin class.Names2.CXX_declarations
-// splicer end class.Names2.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// declaration of shadow types
-struct s_TES_names2;
-typedef struct s_TES_names2 TES_names2;
+struct s_AA_exclass1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+    int refcount;   /* reference count */
+};
+typedef struct s_AA_exclass1 AA_exclass1;
 
-// splicer begin class.Names2.C_declarations
-// splicer end class.Names2.C_declarations
+struct s_AA_exclass2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+    int refcount;   /* reference count */
+};
+typedef struct s_AA_exclass2 AA_exclass2;
+
+struct s_AA_exclass3 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+    int refcount;   /* reference count */
+};
+typedef struct s_AA_exclass3 AA_exclass3;
+
+struct s_USE_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+    int refcount;   /* reference count */
+};
+typedef struct s_USE_SHROUD_capsule_data USE_SHROUD_capsule_data;
+
+void AA_SHROUD_array_destructor_function
+    (USE_SHROUD_capsule_data *cap, bool gc);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPNAMES2_HH
+#endif  // TYPESUSERLIBRARY_H

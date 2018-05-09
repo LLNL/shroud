@@ -49,22 +49,23 @@
                             "C_call_code": "SH_this->method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method1", 
-                            "C_pre_call": "Names *SH_this = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "Names *SH_this = \tstatic_cast<Names *>(self->addr);", 
                             "C_prototype": "TES_names * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "xxx_tes_names_method1", 
                             "F_C_name": "xxx_tes_names_method1", 
-                            "F_arg_c_call": "obj%voidptr", 
+                            "F_arg_c_call": "obj%cxxptr", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call xxx_tes_names_method1(obj%voidptr)", 
+                            "F_call_code": "call xxx_tes_names_method1(obj%cxxptr)", 
                             "F_name_function": "type_method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "names_method1", 
                             "F_subprogram": "subroutine", 
                             "PY_name_impl": "PY_names_method1", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -95,16 +96,16 @@
                             "C_call_code": "SH_this->method2(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method2", 
-                            "C_pre_call": "Names *SH_this2 = \tstatic_cast<Names *>(\tstatic_cast<void *>(\tself2));", 
+                            "C_pre_call": "Names *SH_this2 = \tstatic_cast<Names *>(self2->addr);", 
                             "C_prototype": "TES_names * self2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "C_this": "self2", 
                             "F_C_call": "xxx_tes_names_method2", 
                             "F_C_name": "xxx_tes_names_method2", 
-                            "F_arg_c_call": "obj2%voidptr", 
+                            "F_arg_c_call": "obj2%cxxptr", 
                             "F_arguments": "obj2", 
-                            "F_call_code": "call xxx_tes_names_method2(obj2%voidptr)", 
+                            "F_call_code": "call xxx_tes_names_method2(obj2%cxxptr)", 
                             "F_name_function": "method2", 
                             "F_name_generic": "method2", 
                             "F_name_impl": "names_method2", 
@@ -112,7 +113,8 @@
                             "F_this": "obj2", 
                             "PY_name_impl": "PY_names_method2", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self2", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -126,7 +128,7 @@
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "none": "foo"
                 }, 
-                "typedef_name": "Names"
+                "typemap_name": "Names"
             }, 
             {
                 "cxx_header": "", 
@@ -153,7 +155,7 @@
                 }, 
                 "name": "Names2", 
                 "options": {}, 
-                "typedef_name": "Names2"
+                "typemap_name": "Names2"
             }
         ], 
         "copyright": [
@@ -251,7 +253,7 @@
                 "options": {
                     "bar": 4
                 }, 
-                "typedef_name": "Color"
+                "typemap_name": "Color"
             }
         ], 
         "format": {
@@ -261,12 +263,16 @@
             "CXX_this_call": "", 
             "C_argument": "ARG_", 
             "C_bufferify_suffix": "_bufferify", 
+            "C_capsule_data_type": "TES_SHROUD_capsule_data", 
+            "C_context_type": "TES_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "top.h", 
             "C_header_filename_suffix": "hh", 
+            "C_header_helper": "typestestnames.hh", 
             "C_impl_filename": "top.cpp", 
             "C_impl_filename_suffix": "cc", 
             "C_local": "SHC_", 
+            "C_memory_dtor_function": "TES_SHROUD_array_destructor_function", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "TES_", 
@@ -276,11 +282,18 @@
             "F_C_prefix": "c_", 
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
-            "F_derived_member": "voidptr", 
+            "F_capsule_data_type": "SHROUD_capsule_data", 
+            "F_capsule_final_function": "SHROUD_capsule_final", 
+            "F_capsule_type": "SHROUD_capsule", 
+            "F_context_type": "SHROUD_vector_context", 
+            "F_derived_member": "cxxmem", 
+            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "F", 
             "F_impl_filename": "top.f", 
             "F_module_name": "top_module", 
+            "F_name_assign": "assign", 
             "F_name_associated": "associated", 
+            "F_name_final": "final", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
             "F_pointer": "SHT_ptr", 
@@ -425,6 +438,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "i", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
@@ -519,6 +533,7 @@
                         "fmtc": {
                             "c_const": "", 
                             "c_deref": "", 
+                            "c_member": ".", 
                             "c_var": "i", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
@@ -609,7 +624,8 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "rv", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
@@ -636,7 +652,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -721,7 +738,8 @@
                     "rv": {
                         "fmtc": {
                             "c_const": "const ", 
-                            "c_deref": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "rv", 
                             "c_var_trim": "Lrv", 
                             "cxx_member": ".", 
@@ -739,7 +757,8 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_var": "SHC_rv"
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
                     }
                 }, 
                 "_function_index": 9, 
@@ -757,6 +776,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "_generated_suffix": "_buf", 
                                 "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Lrv", 
@@ -897,16 +917,21 @@
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+            "C_header_helper_template": "types{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
+            "C_memory_dtor_function_template": "{C_prefix}SHROUD_array_destructor_function", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_capsule_template": "C{c_var}", 
+            "C_var_context_template": "D{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
+            "F_auto_reference_count": false, 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": true, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -960,13 +985,6 @@
             "wrap_python": true
         }
     }, 
-    "typealias": {
-        "integer(C_INT)": "int", 
-        "integer(C_LONG)": "long", 
-        "integer(C_LONG_LONG)": "long_long", 
-        "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float"
-    }, 
     "types": {
         "Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -1012,9 +1030,26 @@
             "PY_from_object": "PP_Names_from_Object", 
             "PY_to_object": "PP_Names_to_Object", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Names *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "TES_names *{c_var} = (TES_names *) malloc(sizeof(TES_names));", 
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 1;"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "\tstatic_cast<{c_const}Names *>({c_var}{c_member}addr)", 
             "c_type": "TES_names", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TES_names *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Names", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -1031,12 +1066,20 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "need_wrapper": true
+                    "f_module": {
+                        "iso_c_binding": [
+                            "c_f_pointer"
+                        ]
+                    }, 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
+                    ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(FNames)", 
             "forward": "Names", 
             "py_statements": {
@@ -1068,9 +1111,26 @@
             "PY_from_object": "PP_Names2_from_Object", 
             "PY_to_object": "PP_Names2_to_Object", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Names2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "TES_names2 *{c_var} = (TES_names2 *) malloc(sizeof(TES_names2));", 
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 1;"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "\tstatic_cast<{c_const}Names2 *>({c_var}{c_member}addr)", 
             "c_type": "TES_names2", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TES_names2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Names2", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -1087,12 +1147,20 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "need_wrapper": true
+                    "f_module": {
+                        "iso_c_binding": [
+                            "c_f_pointer"
+                        ]
+                    }, 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
+                    ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(names2)", 
             "forward": "Names2", 
             "py_statements": {
@@ -1189,6 +1257,7 @@
             "c_statements": {
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
@@ -1205,6 +1274,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -1224,6 +1294,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<stdlib.h>", 
@@ -1240,6 +1311,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -1284,6 +1356,7 @@
             "c_statements": {
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -1432,6 +1505,7 @@
                 }, 
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -1451,6 +1525,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -1475,6 +1550,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -1488,6 +1564,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -1546,17 +1623,9 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
-                "intent_in_buf": {
+                "AAAintent_inout_buf": {
                     "buf_args": [
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                }, 
-                "intent_inout_buf": {
-                    "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -1575,8 +1644,9 @@
                         "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
-                "intent_out_buf": {
+                "AAAintent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -1594,12 +1664,70 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
                     ]
+                }, 
+                "intent_in_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size"
+                    ], 
+                    "cxx_local_var": "scalar", 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size", 
+                        "capsule", 
+                        "context"
+                    ], 
+                    "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "buf_args": [
+                        "capsule", 
+                        "context"
+                    ], 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
+                    "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
+                    ]
                 }
             }, 
             "c_templates": {
                 "std::string": {
                     "intent_in_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -1621,6 +1749,7 @@
                     }, 
                     "intent_inout_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -1654,6 +1783,7 @@
                     }, 
                     "intent_out_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -1679,13 +1809,38 @@
                 }
             }, 
             "cxx_header": "<vector>", 
-            "cxx_type": "std::vector<{cxx_T}>"
+            "cxx_type": "std::vector<{cxx_T}>", 
+            "f_statements": {
+                "intent_inout": {
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_out": {
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }
+            }
         }, 
         "stringout": {
             "base": "string", 
             "c_statements": {
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -1699,6 +1854,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -1719,7 +1875,7 @@
             }, 
             "f_c_type": "type(C_PTR)", 
             "f_statements": {
-                "result_buf": {
+                "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [

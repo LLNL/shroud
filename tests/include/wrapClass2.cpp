@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapClass2.h"
+#include "class_header.hpp"
 #include "global_header.hpp"
 
 
@@ -49,7 +50,7 @@ extern "C" {
 
 void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm)
 {
-    Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));
+    Class2 *SH_this = static_cast<Class2 *>(self->addr);
     MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);
     SH_this->method1(SHCXX_comm);
     return;
@@ -57,9 +58,8 @@ void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm)
 
 void DEF_class2_method2(DEF_class2 * self, DEF_class1 * c2)
 {
-    Class2 *SH_this = static_cast<Class2 *>(static_cast<void *>(self));
-    three::Class1 * SHCXX_c2 = static_cast<three::Class1 *>(
-        static_cast<void *>(c2));
+    Class2 *SH_this = static_cast<Class2 *>(self->addr);
+    three::Class1 * SHCXX_c2 = static_cast<three::Class1 *>(c2->addr);
     SH_this->method2(SHCXX_c2);
     return;
 }

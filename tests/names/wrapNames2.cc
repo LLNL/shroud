@@ -40,7 +40,6 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapNames2.hh"
 
 // splicer begin class.Names2.CXX_definitions
 // splicer end class.Names2.CXX_definitions

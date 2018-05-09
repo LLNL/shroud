@@ -50,17 +50,12 @@
 #define WRAPCLASS2_H
 
 #include "mpi.h"
+#include "typesdefault_library.h"
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_DEF_class1;
-typedef struct s_DEF_class1 DEF_class1;
-struct s_DEF_class2;
-typedef struct s_DEF_class2 DEF_class2;
 
 
 void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm);

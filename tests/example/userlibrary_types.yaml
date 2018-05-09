@@ -48,20 +48,22 @@ declarations:
       - type: ExClass1
         fields:
           base: shadow
+          cxx_header: ExClass1.hpp
           cxx_type: example::nested::ExClass1
           c_type: AA_exclass1
           f_derived_type: exclass1
-          f_to_c: "{f_var}%yadda()"
+          f_to_c: "{f_var}%cxxptr"
           f_module:
             exclass1_mod:
             - exclass1
       - type: ExClass2
         fields:
           base: shadow
+          cxx_header: ExClass2.hpp
           cxx_type: example::nested::ExClass2
           c_type: AA_exclass2
           f_derived_type: exclass2
-          f_to_c: "{f_var}%yadda()"
+          f_to_c: "{f_var}%cxxptr"
           f_module:
             exclass2_mod:
             - exclass2
@@ -71,7 +73,7 @@ declarations:
           cxx_type: example::nested::ExClass3
           c_type: AA_exclass3
           f_derived_type: exclass3
-          f_to_c: "{f_var}%yadda()"
+          f_to_c: "{f_var}%cxxptr"
           f_module:
             exclass3_mod:
             - exclass3

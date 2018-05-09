@@ -44,7 +44,7 @@ Create and manage typemaps used to convert between languages.
 from . import util
 from . import whelpers
 
-class Typedef(object):
+class Typemap(object):
     """ Collect fields for an argument.
     This used to be a dict but a class has better access semantics:
        i.attr vs d['attr']
@@ -55,9 +55,12 @@ class Typedef(object):
     _order = (
         ('base', 'unknown'),      # Base type: 'string'
         ('forward', None),        # Forward declaration
+        ('format', {}),           # Applied to Scope for variable.
         ('typedef', None),        # Initialize from existing type
 
         ('cpp_if', None),         # C preprocessor test for c_header
+
+        ('idtor', '0'),           # index of capsule_data destructor
 
         ('cxx_type', None),       # Name of type in C++
         ('cxx_to_c', None),       # Expression to convert from C++ to C
@@ -74,8 +77,6 @@ class Typedef(object):
         ('c_return_code', None),
         ('c_union', None),        # Union of C++ and C type (used with structs and complex)
 
-        ('f_c_args', None),       # List of argument names to F_C routine
-        ('f_c_argdecl', None),    # List of declarations to F_C routine
         ('f_c_module', None),     # Fortran modules needed for interface  (dictionary)
 
         ('f_type', None),         # Name of type in Fortran -- integer(C_INT)
@@ -135,12 +136,12 @@ class Typedef(object):
                 raise RuntimeError("Unknown key for Argument %s", key)
 
     def XXXcopy(self):
-        n = Typedef(self.name)
+        n = Typemap(self.name)
         n.update(self._to_dict())
         return n
 
     def clone_as(self, name):
-        n = Typedef(name)
+        n = Typemap(name)
         n.update(self._to_dict())
         return n
 
@@ -165,7 +166,7 @@ class Typedef(object):
                     args.append("{0}='{1}'".format(key, value))
                 else:
                     args.append("{0}={1}".format(key, value))
-        return "Typedef('%s', " % self.name + ','.join(args) + ')'
+        return "Typemap('%s', " % self.name + ','.join(args) + ')'
 
     def __as_yaml__(self, indent, output):
         """Write out entire typedef as YAML.
@@ -188,39 +189,31 @@ class Typedef(object):
         ], indent, output)
 
 
-    ### Manage collection of typedefs
-    _typedict = {}   # dictionary of registered types
-    _typealias = {}  # dictionary of registered type aliases
-    @classmethod
-    def set_global_types(cls, typedict, typealias):
-        cls._typedict = typedict
-        cls._typealias = typealias
+### Manage collection of typedefs
+_typedict = {}   # dictionary of registered types
 
-    @classmethod
-    def get_global_types(cls):
-        return cls._typedict, cls._typealias
+def set_global_types(typedict):
+    global _typedict
+    _typedict = typedict
 
-    @classmethod
-    def register(cls, name, typedef):
-        """Register a typedef"""
-        cls._typedict[name] = typedef
+def get_global_types():
+    return _typedict
 
-    @classmethod
-    def lookup(cls, name):
-        """Lookup name in registered types taking aliases into account."""
-        typedef = cls._typedict.get(cls._typealias.get(name,name), None)
-        return typedef
+def register_type(name, typedef):
+    """Register a typedef"""
+    global _typedict
+    _typedict[name] = typedef
 
-    @classmethod
-    def resolve_alias(cls, name):
-        """return typedef for alias.
-        """
-        return cls._typealias.get(name, name)
-
+def lookup_type(name):
+    """Lookup name in registered types taking aliases into account."""
+    global _typedict
+    typedef = _typedict.get(name)
+    return typedef
 
 def initialize():
+    set_global_types({})
     def_types = dict(
-        void=Typedef(
+        void=Typemap(
             'void',
             c_type='void',
             cxx_type='void',
@@ -229,7 +222,7 @@ def initialize():
             f_module=dict(iso_c_binding=['C_PTR']),
             PY_ctor='PyCapsule_New({cxx_var}, NULL, NULL)',
             ),
-        int=Typedef(
+        int=Typemap(
             'int',
             c_type='int',
             cxx_type='int',
@@ -245,7 +238,7 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
-        long=Typedef(
+        long=Typemap(
             'long',
             c_type='long',
             cxx_type='long',
@@ -261,7 +254,7 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
-        long_long=Typedef(
+        long_long=Typemap(
             'long_long',
             c_type='long long',
             cxx_type='long long',
@@ -276,7 +269,7 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
-        size_t=Typedef(
+        size_t=Typemap(
             'size_t',
             c_type='size_t',
             cxx_type='size_t',
@@ -291,7 +284,7 @@ def initialize():
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
 
-        float=Typedef(
+        float=Typemap(
             'float',
             c_type='float',
             cxx_type='float',
@@ -307,7 +300,7 @@ def initialize():
             LUA_pop='lua_tonumber({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
             ),
-        double=Typedef(
+        double=Typemap(
             'double',
             c_type='double',
             cxx_type='double',
@@ -324,7 +317,7 @@ def initialize():
             LUA_push='lua_pushnumber({LUA_state_var}, {c_var})',
             ),
 
-        bool=Typedef(
+        bool=Typemap(
             'bool',
             c_type='bool',
             cxx_type='bool',
@@ -398,7 +391,7 @@ def initialize():
             ),
 
         # implies null terminated string
-        char=Typedef(
+        char=Typemap(
             'char',
             cxx_type='char',
 
@@ -406,7 +399,7 @@ def initialize():
 
             c_statements=dict(
                 intent_in_buf=dict(
-                    buf_args = [ 'len_trim' ],
+                    buf_args = [ 'arg', 'len_trim' ],
                     cxx_local_var='pointer',
                     c_header='<stdlib.h> <string.h>',
                     cxx_header='<stdlib.h> <cstring>',
@@ -420,7 +413,7 @@ def initialize():
                         ],
                     ),
                 intent_out_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     cxx_local_var='pointer',
                     c_header='<stdlib.h>',
                     cxx_header='<stdlib.h>',
@@ -434,7 +427,7 @@ def initialize():
                         ],
                     ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'len_trim', 'len' ],
+                    buf_args = [ 'arg', 'len_trim', 'len' ],
                     cxx_local_var='pointer',
                     c_helper='ShroudStrCopy',
                     c_header='<stdlib.h> <string.h>',
@@ -450,7 +443,7 @@ def initialize():
                         ],
                     ),
                 result_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     c_header='<string.h>',
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
@@ -488,7 +481,7 @@ def initialize():
             ),
 
         # char scalar
-        char_scalar=Typedef(
+        char_scalar=Typemap(
             'char_scalar',
             cxx_type='char',
 
@@ -496,7 +489,7 @@ def initialize():
 
             c_statements=dict(
                 result_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     c_header='<string.h>',
                     cxx_header='<cstring>',
                     post_call=[
@@ -523,7 +516,7 @@ def initialize():
             ),
 
         # C++ std::string
-        string=Typedef(
+        string=Typemap(
             'string',
             cxx_type='std::string',
             cxx_header='<string>',
@@ -564,7 +557,7 @@ def initialize():
                     ],
                 ),
                 intent_in_buf=dict(
-                    buf_args = [ 'len_trim' ],
+                    buf_args = [ 'arg', 'len_trim' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::string '
@@ -572,7 +565,7 @@ def initialize():
                     ],
                 ),
                 intent_out_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     c_helper='ShroudStrCopy',
                     cxx_local_var='scalar',
                     pre_call=[
@@ -583,7 +576,7 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'len_trim', 'len' ],
+                    buf_args = [ 'arg', 'len_trim', 'len' ],
                     c_helper='ShroudStrCopy',
                     cxx_local_var='scalar',
                     pre_call=[
@@ -595,7 +588,7 @@ def initialize():
                     ],
                 ),
                 result_buf=dict(
-                    buf_args = [ 'len' ],
+                    buf_args = [ 'arg', 'len' ],
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
@@ -660,7 +653,7 @@ def initialize():
         #    allocate(character(len=lenout): Fout)
         #    c_step2(Fout, out)
         # only used with bufferifed routines and intent(out) or result
-        stringout=Typedef(
+        stringout=Typemap(
             'stringout',
             cxx_type='std::string',
             cxx_header='<string>',
@@ -701,7 +694,7 @@ def initialize():
 #--                    ],
 #--                ),
 #--                intent_in_buf=dict(
-#--                    buf_args = [ 'len_trim' ],
+#--                    buf_args = [ 'arg', 'len_trim' ],
 #--                    cxx_local_var='scalar',
 #--                    pre_call=[
 #--                        ('{c_const}std::string '
@@ -709,7 +702,7 @@ def initialize():
 #--                    ],
 #--                ),
                 intent_out_buf=dict(
-                    buf_args = [ 'lenout' ],
+                    buf_args = [ 'arg', 'lenout' ],
                     c_helper='copy_string',
                     cxx_local_var='scalar',
                     pre_call=[
@@ -721,7 +714,7 @@ def initialize():
                 ),
                 result_buf=dict(
                     # pass address of string and length back to Fortran
-                    buf_args = [ 'lenout' ],
+                    buf_args = [ 'arg', 'lenout' ],
                     c_helper='copy_string',
                     # Copy address of result into c_var and save length.
                     # When returning a std::string (and not a reference or pointer)
@@ -740,7 +733,7 @@ def initialize():
             f_c_module=dict(iso_c_binding=['C_PTR']),
 
             f_statements=dict(
-                result_buf=dict(
+                result=dict(
                     need_wrapper=True,
                     f_helper='copy_string',
                     post_call=[
@@ -755,7 +748,7 @@ def initialize():
 
         # C++ std::vector
         # No c_type or f_type, use attr[template]
-        vector=Typedef(
+        vector=Typemap(
             'vector',
             cxx_type='std::vector<{cxx_T}>',
             cxx_header='<vector>',
@@ -763,15 +756,41 @@ def initialize():
 
             c_statements=dict(
                 intent_in_buf=dict(
-                    buf_args = [ 'size' ],
+                    buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         ('{c_const}std::vector<{cxx_T}> '
                          '{cxx_var}({c_var}, {c_var} + {c_var_size});')
                     ],
                 ),
+
+                # cxx_var is always a pointer to a vector
                 intent_out_buf=dict(
-                    buf_args = [ 'size' ],
+                    buf_args = [ 'capsule', 'context' ],
+                    cxx_local_var='pointer',
+                    c_helper='capsule_data_helper vector_context vector_copy_{cxx_T}',
+                    pre_call=[
+                        '{c_const}std::vector<{cxx_T}>'
+                        '\t *{cxx_var} = new std::vector<{cxx_T}>;',
+                        # Return address of vector.
+                        '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
+                        '{c_var_capsule}->idtor = {idtor};  // index of destructor',
+                        '{c_var_capsule}->refcount = 1;     // reference count',
+                    ],
+                    post_call=[
+                        # Return address and size of vector data.
+                        '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
+                        '{c_var_context}->size = {cxx_var}->size();',
+                    ],
+                    destructor_name='std_vector_{cxx_T}',
+                    destructor=[
+                        'std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);',
+                        'delete cxx_ptr;',
+                    ],
+                ),
+
+                AAAintent_out_buf=dict(
+                    buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
@@ -790,7 +809,29 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'size' ],
+                    buf_args = [ 'arg', 'size', 'capsule', 'context' ],
+                    cxx_local_var='pointer',
+                    pre_call=[
+                        'std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t('
+                        '\t{c_var}, {c_var} + {c_var_size});',
+                        # Return address of vector.
+                        '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
+                        '{c_var_capsule}->idtor = 0;        // index of destructor',
+                        '{c_var_capsule}->refcount = 1;     // reference count',
+                    ],
+                    post_call=[
+                        # Return address and size of vector data.
+                        '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
+                        '{c_var_context}->size = {cxx_var}->size();',
+                    ],
+                    destructor_name='std_vector_{cxx_T}',
+                    destructor=[
+                        'std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);',
+                        'delete cxx_ptr;',
+                    ],
+                ),
+                AAAintent_inout_buf=dict(
+                    buf_args = [ 'arg', 'size' ],
                     cxx_local_var='scalar',
                     pre_call=[
                         'std::vector<{cxx_T}> {cxx_var}('
@@ -809,7 +850,7 @@ def initialize():
                     ],
                 ),
 #                result_buf=dict(
-#                    buf_args = [ 'size' ],
+#                    buf_args = [ 'arg', 'size' ],
 #                    c_helper='ShroudStrCopy',
 #                    post_call=[
 #                        'if ({cxx_var}.empty()) {{',
@@ -821,12 +862,33 @@ def initialize():
 #                ),
             ),
 
+            f_statements=dict(
+                intent_out=dict(
+                    f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
+                    f_module=dict(iso_c_binding=['C_SIZE_T']),
+                    post_call=[
+                        'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
+                          '{f_var}, size({f_var},kind=C_SIZE_T))',
+#                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
+                    ],
+                ),
+                intent_inout=dict(
+                    f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
+                    f_module=dict(iso_c_binding=['C_SIZE_T']),
+                    post_call=[
+                        'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
+                          '{f_var}, size({f_var},kind=C_SIZE_T))',
+#                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
+                    ],
+                ),
+            ),
+
 #
             # custom code for templates
             c_templates={
                 'std::string': dict(
                     intent_in_buf=dict(
-                        buf_args = [ 'size', 'len' ],
+                        buf_args = [ 'arg', 'size', 'len' ],
                         c_helper='ShroudLenTrim',
                         cxx_local_var='scalar',
                         pre_call=[
@@ -844,7 +906,7 @@ def initialize():
                         ],
                     ),
                     intent_out_buf=dict(
-                        buf_args = [ 'size', 'len' ],
+                        buf_args = [ 'arg', 'size', 'len' ],
                         c_helper='ShroudLenTrim',
                         cxx_local_var='scalar',
                         pre_call=[
@@ -865,7 +927,7 @@ def initialize():
                         ],
                     ),
                     intent_inout_buf=dict(
-                        buf_args = [ 'size', 'len' ],
+                        buf_args = [ 'arg', 'size', 'len' ],
                         cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
@@ -926,7 +988,7 @@ def initialize():
             base='vector',
             ),
 
-        MPI_Comm=Typedef(
+        MPI_Comm=Typemap(
             'MPI_Comm',
             cxx_type='MPI_Comm',
             c_header='mpi.h',
@@ -948,17 +1010,9 @@ def initialize():
     def_types['std::vector'] = def_types['vector']
     del def_types['vector']
 
-    # aliases
-    def_types_alias = dict()
-    def_types_alias['integer(C_INT)'] = 'int'
-    def_types_alias['integer(C_LONG)'] = 'long'
-    def_types_alias['integer(C_LONG_LONG)'] = 'long_long'
-    def_types_alias['real(C_FLOAT)'] = 'float'
-    def_types_alias['real(C_DOUBLE)'] = 'double'
+    set_global_types(def_types)
 
-    Typedef.set_global_types(def_types, def_types_alias)
-
-    return def_types, def_types_alias
+    return def_types
 
 
 def create_enum_typedef(node):
@@ -968,43 +1022,50 @@ def create_enum_typedef(node):
     cxx_name = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(type_name)
+    typedef = lookup_type(type_name)
     if typedef is None:
-        inttypedef = Typedef.lookup('int')
+        inttypedef = lookup_type('int')
         typedef = inttypedef.clone_as(type_name)
         typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
         typedef.c_to_cxx = util.wformat(
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
         typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
-        Typedef.register(type_name, typedef)
+        register_type(type_name, typedef)
     return typedef
 
-def create_class_typedef(cls):
+def create_class_typemap(cls):
+    """Create a typedef for a class.
+
+    The C type is a capsule_data which will contains a pointer to the
+    C++ memory and information on how to delete the memory.
+    """
     fmt_class = cls.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(cxx_name)
+    typedef = lookup_type(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
         c_name = fmt_class.C_prefix + f_name
-        typedef = Typedef(
+        typedef = Typemap(
             type_name,
             base='shadow',
             cxx_type=cxx_name,
+            cxx_header=cls.cxx_header or None,
             c_type=c_name,
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
-            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get,
+#            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
+            f_to_c = '{f_var}%%%s' % fmt_class.F_derived_ptr,
             )
-        typedef_shadow_defaults(typedef)
-        Typedef.register(type_name, typedef)
+        fill_shadow_typemap_defaults(typedef)
+        register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
-def typedef_shadow_defaults(typedef):
+def fill_shadow_typemap_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores
@@ -1013,33 +1074,57 @@ def typedef_shadow_defaults(typedef):
     if typedef.base != 'shadow':
         return
 
-    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
-                      typedef.c_type)
+    # Convert to void * to add to struct
+    typedef.cxx_to_c='static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})'
 
-    # opaque pointer -> void pointer -> class instance pointer
-    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
-                      '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
+    # void pointer in struct -> class instance pointer
+    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>({c_var}{c_member}addr)' %
                       typedef.cxx_type)
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
     typedef.f_c_type='type(C_PTR)'
+    typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
 
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
+
+    # Return a C_capsule_data_type
+    typedef.c_statements = dict(
+        intent_in=dict(
+           buf_args = [ 'shadow' ]
+        ),
+        result=dict(
+            c_header='<stdlib.h>',
+            cxx_header='<stdlib.h>',
+            post_call=[
+                '%s *{c_var} = (%s *) malloc(sizeof(%s));' % (
+                    typedef.c_type, typedef.c_type, typedef.c_type),
+                '{c_var}->addr = {cxx_cast_to_void_ptr};',
+                '{c_var}->idtor = {idtor};',
+                '{c_var}->refcount = 1;',
+            ]
+        ),
+    )
 
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
     typedef.f_statements = dict(
         result=dict(
             need_wrapper=True,
+            f_module=dict(iso_c_binding=['c_f_pointer']),
             call=[
-                ('{F_result}%{F_derived_member} = '
-                 '{F_C_call}({F_arg_c_call})')
+                ('{F_result}%{F_derived_ptr} = '
+                 '{F_C_call}({F_arg_c_call})'),
+                ],
+            post_call=[
+                ('call c_f_pointer({F_result}%{F_derived_ptr}, '
+                 '{F_result}%{F_derived_member})'),
                 ],
             )
         )
-    typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
+
+# The import is added in wrapf.py
+#    typedef.f_c_module={ '-import-': ['F_capsule_data_type']}
 
     typedef.py_statements=dict(
         intent_in=dict(
@@ -1078,17 +1163,19 @@ def typedef_shadow_defaults(typedef):
     typedef.forward=typedef.cxx_type
 
 
-def create_struct_typedef(cls):
+def create_struct_typemap(cls):
+    """Create a typedef for a struct.
+    """
     fmt_class = cls.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = Typedef.lookup(cxx_name)
+    typedef = lookup_type(cxx_name)
     if typedef is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
         c_name = fmt_class.C_prefix + f_name
-        typedef = Typedef(
+        typedef = Typemap(
             type_name,
             base='struct',
             cxx_type=cxx_name,
@@ -1097,14 +1184,14 @@ def create_struct_typedef(cls):
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             PYN_descr=fmt_class.PY_struct_array_descr_variable,
         )
-        typedef_struct_defaults(typedef)
-        Typedef.register(type_name, typedef)
+        fill_struct_typemap_defaults(typedef)
+        register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
 
-def typedef_struct_defaults(typedef):
+def fill_struct_typemap_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores
@@ -1176,9 +1263,6 @@ def typedef_struct_defaults(typedef):
     # typedef.LUA_push=None  # XXX create a userdata object with metatable
     # typedef.LUA_statements={}
 
-    # allow forward declarations to avoid recursive headers
-    typedef.forward=typedef.cxx_type
-
 
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
@@ -1187,13 +1271,12 @@ def lookup_c_statements(arg):
     """
     attrs = arg.attrs
     argtype = arg.typename
-    arg_typedef = Typedef.lookup(argtype)
+    arg_typedef = lookup_type(argtype)
 
     c_statements = arg_typedef.c_statements
     if 'template' in attrs:
         cxx_T = attrs['template']
-        cxx_T = Typedef.resolve_alias(cxx_T)
         c_statements = arg_typedef.c_templates.get(
             cxx_T, c_statements)
-        arg_typedef = Typedef.lookup(cxx_T)
+        arg_typedef = lookup_type(cxx_T)
     return arg_typedef, c_statements

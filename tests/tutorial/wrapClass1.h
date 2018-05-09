@@ -49,6 +49,8 @@
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
 
+#include "typesTutorial.h"
+
 // splicer begin class.Class1.CXX_declarations
 // splicer end class.Class1.CXX_declarations
 
@@ -63,10 +65,6 @@ enum TUT_class1_DIRECTION {
     LEFT = 100,
     RIGHT
 };
-
-// declaration of shadow types
-struct s_TUT_class1;
-typedef struct s_TUT_class1 TUT_class1;
 
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
@@ -83,6 +81,12 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
     const TUT_class1 * obj2);
 
 void TUT_class1_return_this(TUT_class1 * self);
+
+TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
+    char * name, bool flag);
+
+TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
+    char * name, int Lname, bool flag);
 
 int TUT_class1_direction_func(TUT_class1 * self, int arg);
 

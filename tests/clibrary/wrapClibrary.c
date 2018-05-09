@@ -45,6 +45,7 @@
 #include <string.h>
 #include "clibrary.h"
 
+
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -55,7 +56,6 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    memcpy(a,s,nm);
    if(la > nm) memset(a+nm,' ',la-nm);
 }
-
 // splicer begin C_definitions
 // splicer end C_definitions
 

@@ -49,6 +49,8 @@
 #ifndef WRAPCLIBRARY_H
 #define WRAPCLIBRARY_H
 
+#include "typesClibrary.h"
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

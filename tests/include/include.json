@@ -25,6 +25,7 @@
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_deref": "", 
+                                    "c_member": ".", 
                                     "c_var": "arg1", 
                                     "cxx_member": ".", 
                                     "cxx_type": "CustomType", 
@@ -74,21 +75,22 @@
                             "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
-                            "C_pre_call": "three::\tClass1 *SH_this = \tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tself));", 
+                            "C_pre_call": "three::\tClass1 *SH_this = \tstatic_cast<three::\tClass1 *>(self->addr);", 
                             "C_prototype": "DEF_class1 * self,\t int arg1", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_class1_method1", 
                             "F_C_name": "c_class1_method1", 
-                            "F_arg_c_call": "obj%voidptr,\t arg1", 
+                            "F_arg_c_call": "obj%cxxptr,\t arg1", 
                             "F_arguments": "obj,\t arg1", 
-                            "F_call_code": "call c_class1_method1(obj%voidptr,\t arg1)", 
+                            "F_call_code": "call c_class1_method1(obj%cxxptr,\t arg1)", 
                             "F_name_function": "method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "class1_method1", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -98,7 +100,7 @@
                 ], 
                 "name": "Class1", 
                 "options": {}, 
-                "typedef_name": "three::Class1"
+                "typemap_name": "three::Class1"
             }, 
             {
                 "cxx_header": "", 
@@ -123,6 +125,7 @@
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_deref": "", 
+                                    "c_member": ".", 
                                     "c_var": "comm", 
                                     "cxx_decl": "MPI_Comm SHCXX_comm", 
                                     "cxx_member": ".", 
@@ -174,21 +177,22 @@
                             "C_call_code": "SH_this->method1(\tSHCXX_comm);", 
                             "C_call_list": "SHCXX_comm", 
                             "C_name": "DEF_class2_method1", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nMPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(self->addr);\nMPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
                             "C_prototype": "DEF_class2 * self,\t MPI_Fint comm", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_method1", 
                             "F_C_name": "c_class2_method1", 
-                            "F_arg_c_call": "obj%voidptr,\t comm", 
+                            "F_arg_c_call": "obj%cxxptr,\t comm", 
                             "F_arguments": "obj,\t comm", 
-                            "F_call_code": "call c_class2_method1(obj%voidptr,\t comm)", 
+                            "F_call_code": "call c_class2_method1(obj%cxxptr,\t comm)", 
                             "F_name_function": "method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "class2_method1", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method1", 
                             "underscore_name": "method1"
@@ -201,11 +205,12 @@
                                 "fmtc": {
                                     "c_const": "", 
                                     "c_deref": "*", 
+                                    "c_member": "->", 
                                     "c_var": "c2", 
                                     "cxx_decl": "three::\tClass1 * SHCXX_c2", 
                                     "cxx_member": "->", 
                                     "cxx_type": "three::\tClass1", 
-                                    "cxx_val": "\tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2))", 
+                                    "cxx_val": "\tstatic_cast<three::\tClass1 *>(c2->addr)", 
                                     "cxx_var": "SHCXX_c2"
                                 }, 
                                 "fmtf": {
@@ -257,21 +262,22 @@
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
                             "C_name": "DEF_class2_method2", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(\tstatic_cast<void *>(\tself));\nthree::\tClass1 * SHCXX_c2 = \tstatic_cast<three::\tClass1 *>(\tstatic_cast<void *>(\tc2));", 
+                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(self->addr);\nthree::\tClass1 * SHCXX_c2 = \tstatic_cast<three::\tClass1 *>(c2->addr);", 
                             "C_prototype": "DEF_class2 * self,\t DEF_class1 * c2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_method2", 
                             "F_C_name": "c_class2_method2", 
-                            "F_arg_c_call": "obj%voidptr,\t c2%get_instance()", 
+                            "F_arg_c_call": "obj%cxxptr,\t c2%cxxptr", 
                             "F_arguments": "obj,\t c2", 
-                            "F_call_code": "call c_class2_method2(obj%voidptr,\t c2%get_instance())", 
+                            "F_call_code": "call c_class2_method2(obj%cxxptr,\t c2%cxxptr)", 
                             "F_name_function": "method2", 
                             "F_name_generic": "method2", 
                             "F_name_impl": "class2_method2", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
-                            "c_deref": " *", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "method2", 
                             "underscore_name": "method2"
@@ -281,7 +287,7 @@
                 ], 
                 "name": "Class2", 
                 "options": {}, 
-                "typedef_name": "Class2"
+                "typemap_name": "Class2"
             }
         ], 
         "copyright": [
@@ -334,12 +340,16 @@
             "CXX_this_call": "", 
             "C_argument": "SH_", 
             "C_bufferify_suffix": "_bufferify", 
+            "C_capsule_data_type": "DEF_SHROUD_capsule_data", 
+            "C_context_type": "DEF_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapdefault_library.h", 
             "C_header_filename_suffix": "h", 
+            "C_header_helper": "typesdefault_library.h", 
             "C_impl_filename": "wrapdefault_library.cpp", 
             "C_impl_filename_suffix": "cpp", 
             "C_local": "SHC_", 
+            "C_memory_dtor_function": "DEF_SHROUD_array_destructor_function", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "DEF_", 
@@ -349,11 +359,18 @@
             "F_C_prefix": "c_", 
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
-            "F_derived_member": "voidptr", 
+            "F_capsule_data_type": "SHROUD_capsule_data", 
+            "F_capsule_final_function": "SHROUD_capsule_final", 
+            "F_capsule_type": "SHROUD_capsule", 
+            "F_context_type": "SHROUD_vector_context", 
+            "F_derived_member": "cxxmem", 
+            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfdefault_library.f", 
             "F_module_name": "default_library_mod", 
+            "F_name_assign": "assign", 
             "F_name_associated": "associated", 
+            "F_name_final": "final", 
             "F_name_instance_get": "get_instance", 
             "F_name_instance_set": "set_instance", 
             "F_pointer": "SHT_ptr", 
@@ -436,16 +453,21 @@
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}", 
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}", 
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}", 
+            "C_header_helper_template": "types{library}.{C_header_filename_suffix}", 
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
+            "C_memory_dtor_function_template": "{C_prefix}SHROUD_array_destructor_function", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+            "C_var_capsule_template": "C{c_var}", 
+            "C_var_context_template": "D{c_var}", 
             "C_var_len_template": "N{c_var}", 
             "C_var_size_template": "S{c_var}", 
             "C_var_trim_template": "L{c_var}", 
             "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
+            "F_auto_reference_count": false, 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -499,21 +521,31 @@
             "wrap_python": false
         }
     }, 
-    "typealias": {
-        "integer(C_INT)": "int", 
-        "integer(C_LONG)": "long", 
-        "integer(C_LONG_LONG)": "long_long", 
-        "real(C_DOUBLE)": "double", 
-        "real(C_FLOAT)": "float"
-    }, 
     "types": {
         "Class2": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "DEF_class2 *{c_var} = (DEF_class2 *) malloc(sizeof(DEF_class2));", 
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 1;"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>({c_var}{c_member}addr)", 
             "c_type": "DEF_class2", 
-            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class2 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Class2", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -530,12 +562,20 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "need_wrapper": true
+                    "f_module": {
+                        "iso_c_binding": [
+                            "c_f_pointer"
+                        ]
+                    }, 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
+                    ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(class2)", 
             "forward": "Class2", 
             "py_statements": {
@@ -669,6 +709,7 @@
             "c_statements": {
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "c_header": "<stdlib.h> <string.h>", 
@@ -685,6 +726,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -704,6 +746,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<stdlib.h>", 
@@ -720,6 +763,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -764,6 +808,7 @@
             "c_statements": {
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_header": "<string.h>", 
@@ -912,6 +957,7 @@
                 }, 
                 "intent_in_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -931,6 +977,7 @@
                 }, 
                 "intent_inout_buf": {
                     "buf_args": [
+                        "arg", 
                         "len_trim", 
                         "len"
                     ], 
@@ -955,6 +1002,7 @@
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -968,6 +1016,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "len"
                     ], 
                     "c_helper": "ShroudStrCopy", 
@@ -1026,17 +1075,9 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
-                "intent_in_buf": {
+                "AAAintent_inout_buf": {
                     "buf_args": [
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
-                    ]
-                }, 
-                "intent_inout_buf": {
-                    "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -1055,8 +1096,9 @@
                         "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
-                "intent_out_buf": {
+                "AAAintent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "size"
                     ], 
                     "cxx_local_var": "scalar", 
@@ -1074,12 +1116,70 @@
                     "pre_call": [
                         "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
                     ]
+                }, 
+                "intent_in_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size"
+                    ], 
+                    "cxx_local_var": "scalar", 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+                    ]
+                }, 
+                "intent_inout_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "size", 
+                        "capsule", 
+                        "context"
+                    ], 
+                    "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
+                    ]
+                }, 
+                "intent_out_buf": {
+                    "buf_args": [
+                        "capsule", 
+                        "context"
+                    ], 
+                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
+                    "cxx_local_var": "pointer", 
+                    "destructor": [
+                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
+                        "delete cxx_ptr;"
+                    ], 
+                    "destructor_name": "std_vector_{cxx_T}", 
+                    "post_call": [
+                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->size = {cxx_var}->size();"
+                    ], 
+                    "pre_call": [
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
+                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
+                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
+                        "{c_var_capsule}->refcount = 1;     // reference count"
+                    ]
                 }
             }, 
             "c_templates": {
                 "std::string": {
                     "intent_in_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -1101,6 +1201,7 @@
                     }, 
                     "intent_inout_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -1134,6 +1235,7 @@
                     }, 
                     "intent_out_buf": {
                         "buf_args": [
+                            "arg", 
                             "size", 
                             "len"
                         ], 
@@ -1159,13 +1261,38 @@
                 }
             }, 
             "cxx_header": "<vector>", 
-            "cxx_type": "std::vector<{cxx_T}>"
+            "cxx_type": "std::vector<{cxx_T}>", 
+            "f_statements": {
+                "intent_inout": {
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_out": {
+                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }
+            }
         }, 
         "stringout": {
             "base": "string", 
             "c_statements": {
                 "intent_out_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -1179,6 +1306,7 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
+                        "arg", 
                         "lenout"
                     ], 
                     "c_helper": "copy_string", 
@@ -1199,7 +1327,7 @@
             }, 
             "f_c_type": "type(C_PTR)", 
             "f_statements": {
-                "result_buf": {
+                "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
@@ -1214,9 +1342,27 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
-            "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "DEF_class1 *{c_var} = (DEF_class1 *) malloc(sizeof(DEF_class1));", 
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};", 
+                        "{c_var}->refcount = 1;"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>({c_var}{c_member}addr)", 
             "c_type": "DEF_class1", 
-            "cxx_to_c": "\tstatic_cast<{c_const}DEF_class1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_header": "class_header.hpp", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "three::\tClass1", 
             "f_c_module": {
                 "iso_c_binding": [
@@ -1233,12 +1379,20 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "need_wrapper": true
+                    "f_module": {
+                        "iso_c_binding": [
+                            "c_f_pointer"
+                        ]
+                    }, 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
+                    ]
                 }
             }, 
-            "f_to_c": "{f_var}%get_instance()", 
+            "f_to_c": "{f_var}%cxxptr", 
             "f_type": "type(class1)", 
             "forward": "three::\tClass1", 
             "py_statements": {

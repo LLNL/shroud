@@ -49,6 +49,7 @@
 #define WRAPEXCLASS2_H
 
 #include "sidre/SidreTypes.h"
+#include "typesUserLibrary.h"
 
 // splicer begin class.ExClass2.CXX_declarations
 // splicer end class.ExClass2.CXX_declarations
@@ -56,12 +57,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-// declaration of shadow types
-struct s_AA_exclass1;
-typedef struct s_AA_exclass1 AA_exclass1;
-struct s_AA_exclass2;
-typedef struct s_AA_exclass2 AA_exclass2;
 
 // splicer begin class.ExClass2.C_declarations
 // splicer end class.ExClass2.C_declarations
