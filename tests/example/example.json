@@ -1878,7 +1878,7 @@
                         "richcompare"
                     ]
                 }, 
-                "typedef_name": "example::nested::ExClass1"
+                "typemap_name": "example::nested::ExClass1"
             }, 
             {
                 "cxx_header": "ExClass2.hpp", 
@@ -4607,7 +4607,7 @@
                         "del"
                     ]
                 }, 
-                "typedef_name": "example::nested::ExClass2"
+                "typemap_name": "example::nested::ExClass2"
             }, 
             {
                 "cxx_header": "", 
@@ -4786,7 +4786,7 @@
                 "options": {
                     "wrap_python": false
                 }, 
-                "typedef_name": "example::nested::ExClass3"
+                "typemap_name": "example::nested::ExClass3"
             }
         ], 
         "copyright": [

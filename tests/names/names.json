@@ -128,7 +128,7 @@
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "none": "foo"
                 }, 
-                "typedef_name": "Names"
+                "typemap_name": "Names"
             }, 
             {
                 "cxx_header": "", 
@@ -155,7 +155,7 @@
                 }, 
                 "name": "Names2", 
                 "options": {}, 
-                "typedef_name": "Names2"
+                "typemap_name": "Names2"
             }
         ], 
         "copyright": [
@@ -253,7 +253,7 @@
                 "options": {
                     "bar": 4
                 }, 
-                "typedef_name": "Color"
+                "typemap_name": "Color"
             }
         ], 
         "format": {

@@ -170,7 +170,7 @@ class Wrapf(util.WrapperMixin):
         No methods.
         """
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typedef
+        typedef = node.typemap
 
         fmt_class = node.fmtdict
 
@@ -194,7 +194,7 @@ class Wrapf(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typedef
+        typedef = node.typemap
 
         fmt_class = node.fmtdict
 

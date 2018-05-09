@@ -251,7 +251,7 @@ class WrapperMixin(object):
 
     def namespace(self, library, cls, position, output, comment=True):
         if cls:
-            namespace = cls.typedef_name.split('::')
+            namespace = cls.typemap_name.split('::')
             namespace.pop()  # remove class name
         else:
             namespace = []

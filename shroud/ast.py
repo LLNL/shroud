@@ -136,7 +136,7 @@ class NamespaceMixin(object):
             if not isinstance(value, dict):
                 raise TypeError("fields must be a dictionary")
             typedef.update(value)
-        typemap.typedef_shadow_defaults(typedef)
+        typemap.fill_shadow_typemap_defaults(typedef)
         typemap.register_type(typedef.name, typedef)
         return typedef
 
@@ -710,10 +710,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.scope = self.typename + '::'
         self.symbols = {}
         if as_struct:
-            self.typedef = typemap.create_struct_typedef(self)
+            self.typemap = typemap.create_struct_typemap(self)
         else:
-            self.typedef = typemap.create_class_typedef(self)
-        self.typedef_name = self.typedef.name   # fully qualified name
+            self.typemap = typemap.create_class_typemap(self)
+        self.typemap_name = self.typemap.name   # fully qualified name
 
 ##### namespace behavior
 
@@ -1032,8 +1032,8 @@ class EnumNode(AstNode):
         # Add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-        self.typedef = typemap.create_enum_typedef(self)
-        self.typedef_name = self.typedef.name
+        self.typemap = typemap.create_enum_typedef(self)
+        self.typemap_name = self.typemap.name
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -1109,8 +1109,8 @@ class VariableNode(AstNode):
         # Add to namespace
 #        self.typename = self.parent.scope + self.name
 #        self.scope = self.typename + '::'
-#        self.typedef = typemap.create_struct_typedef(self)
-#        self.typedef_name = self.typedef.name
+#        self.typemap = typemap.create_struct_typemap(self)
+#        self.typemap_name = self.typemap.name
 
 ######################################################################
 

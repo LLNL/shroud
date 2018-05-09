@@ -32,7 +32,7 @@
                 }, 
                 "name": "struct1", 
                 "options": {}, 
-                "typedef_name": "tutorial::struct1", 
+                "typemap_name": "tutorial::struct1", 
                 "variables": [
                     {
                         "ast": {
@@ -155,7 +155,7 @@
                         }, 
                         "name": "DIRECTION", 
                         "options": {}, 
-                        "typedef_name": "tutorial::Class1::DIRECTION"
+                        "typemap_name": "tutorial::Class1::DIRECTION"
                     }
                 ], 
                 "format": {
@@ -1327,7 +1327,7 @@
                 ], 
                 "name": "Class1", 
                 "options": {}, 
-                "typedef_name": "tutorial::Class1", 
+                "typemap_name": "tutorial::Class1", 
                 "variables": [
                     {
                         "ast": {
@@ -1489,7 +1489,7 @@
                 "options": {
                     "wrap_lua": false
                 }, 
-                "typedef_name": "Singleton"
+                "typemap_name": "Singleton"
             }
         ], 
         "copyright": [
@@ -1588,7 +1588,7 @@
                 "options": {
                     "bar": 4
                 }, 
-                "typedef_name": "tutorial::Color"
+                "typemap_name": "tutorial::Color"
             }
         ], 
         "format": {

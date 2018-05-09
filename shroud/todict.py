@@ -204,7 +204,7 @@ class ToDict(visitor.Visitor):
             format = self.visit(node.fmtdict),
             name=node.name,
 #            typename=node.typename,
-            typedef_name=node.typedef_name,
+            typemap_name=node.typemap_name,
             options=self.visit(node.options),
         )
         for key in ['as_struct', 'python']:
@@ -258,7 +258,7 @@ class ToDict(visitor.Visitor):
     def visit_EnumNode(self, node):
         d = dict(
             name=node.name,
-            typedef_name=node.typedef_name,
+            typemap_name=node.typemap_name,
             ast=self.visit(node.ast),
             decl=node.decl,
             format=self.visit(node.fmtdict),

@@ -179,7 +179,7 @@ def add_shadow_helper(node):
     """
     """
     fmt = node.fmtdict
-    cname = node.typedef.c_type
+    cname = node.typemap.c_type
     
     name = 'capsule_{}'.format(cname)
     if name not in CHelpers:

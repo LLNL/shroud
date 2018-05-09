@@ -468,7 +468,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # find class object
         if cls:
-            cls_typedef = cls.typedef
+            cls_typedef = cls.typemap
             if not is_ctor:
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)

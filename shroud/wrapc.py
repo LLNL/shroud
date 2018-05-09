@@ -421,7 +421,7 @@ class Wrapc(util.WrapperMixin):
         XXX - no need to wrap C structs
         """
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typedef
+        typedef = node.typemap
         cname = typedef.c_type
 
         output = self.struct_impl
@@ -434,7 +434,6 @@ class Wrapc(util.WrapperMixin):
         for var in node.variables:
             ast = var.ast
             result_type = ast.typename
-            typedef = typemap.lookup_type(result_type)
             output.append(ast.gen_arg_as_c() + ';')
         output.extend([
             -1,
@@ -445,7 +444,7 @@ class Wrapc(util.WrapperMixin):
         # Add a sanity check on sizes of structs
         if False:
             # XXX - add this to compiled code somewhere
-            typedef = node.typedef
+            typedef = node.typemap
             output.extend([
                 '',
                 '0#if sizeof {} != sizeof {}'.format(typedef.name, typedef.c_type),
@@ -455,7 +454,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        cname = node.typedef.c_type
+        cname = node.typemap.c_type
 
         fmt_class = node.fmtdict
         # call method syntax
@@ -487,18 +486,18 @@ class Wrapc(util.WrapperMixin):
                 has_dtor = True
                 break
 
-        typemap = node.typedef
+        typedef = node.typemap
         if has_dtor:
-            cxx_type = typemap.cxx_type
+            cxx_type = typedef.cxx_type
             cxx_type = cxx_type.replace('\t', '')
             del_lines=[
                 '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
                     cxx_type=cxx_type) ,
                 'delete cxx_ptr;',
             ]
-            typemap.idtor = self.add_capsule_helper(cxx_type, typemap, del_lines)
+            typedef.idtor = self.add_capsule_helper(cxx_type, typedef, del_lines)
         else:
-            typemap.idtor = '0'
+            typedef.idtor = '0'
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
@@ -681,7 +680,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
                 else:
                     # 'this' argument
-                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typedef_name, is_const)
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typemap_name, is_const)
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 
@@ -689,14 +688,14 @@ class Wrapc(util.WrapperMixin):
                     # to C_memory_dtor_function (to account for reference count)
                     if not is_dtor:
                         # LHS is class' cxx_to_c
-                        cls_typedef = cls.typedef
-                        if cls_typedef.c_to_cxx is None:
-                            # This should be set in typemap.typedef_shadow_defaults
+                        cls_typemap = cls.typemap
+                        if cls_typemap.c_to_cxx is None:
+                            # This should be set in typemap.fill_shadow_typemap_defaults
                             raise RuntimeError("Wappped class does not have c_to_cxx set")
                         append_format(
                             pre_call, 
                             '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
-                            cls_typedef.c_to_cxx + ';', fmt_func)
+                            cls_typemap.c_to_cxx + ';', fmt_func)
 
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.

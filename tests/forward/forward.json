@@ -267,7 +267,7 @@
                 ], 
                 "name": "Class2", 
                 "options": {}, 
-                "typedef_name": "tutorial::Class2"
+                "typemap_name": "tutorial::Class2"
             }
         ], 
         "copyright": [

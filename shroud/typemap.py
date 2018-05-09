@@ -1033,7 +1033,7 @@ def create_enum_typedef(node):
         register_type(type_name, typedef)
     return typedef
 
-def create_class_typedef(cls):
+def create_class_typemap(cls):
     """Create a typedef for a class.
 
     The C type is a capsule_data which will contains a pointer to the
@@ -1059,13 +1059,13 @@ def create_class_typedef(cls):
 #            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
             f_to_c = '{f_var}%%%s' % fmt_class.F_derived_ptr,
             )
-        typedef_shadow_defaults(typedef)
+        fill_shadow_typemap_defaults(typedef)
         register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
-def typedef_shadow_defaults(typedef):
+def fill_shadow_typemap_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores
@@ -1163,7 +1163,7 @@ def typedef_shadow_defaults(typedef):
     typedef.forward=typedef.cxx_type
 
 
-def create_struct_typedef(cls):
+def create_struct_typemap(cls):
     """Create a typedef for a struct.
     """
     fmt_class = cls.fmtdict
@@ -1184,14 +1184,14 @@ def create_struct_typedef(cls):
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             PYN_descr=fmt_class.PY_struct_array_descr_variable,
         )
-        typedef_struct_defaults(typedef)
+        fill_struct_typemap_defaults(typedef)
         register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
 
-def typedef_struct_defaults(typedef):
+def fill_struct_typemap_defaults(typedef):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores

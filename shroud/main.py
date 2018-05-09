@@ -96,12 +96,12 @@ class TypeOut(util.WrapperMixin):
         # split up into namespaces
         top = {}
         for cls in newlibrary.classes:
-            fullname = cls.typedef.name
+            fullname = cls.typemap.name
             parts = fullname.split('::')
             ns = top
             for part in parts[:-1]:
                 ns = ns.setdefault(part, {})
-            ns[parts[-1]] = cls.typedef
+            ns[parts[-1]] = cls.typemap
 
         output = [ ]
 

@@ -100,7 +100,7 @@
                 ], 
                 "name": "Class1", 
                 "options": {}, 
-                "typedef_name": "three::Class1"
+                "typemap_name": "three::Class1"
             }, 
             {
                 "cxx_header": "", 
@@ -287,7 +287,7 @@
                 ], 
                 "name": "Class2", 
                 "options": {}, 
-                "typedef_name": "Class2"
+                "typemap_name": "Class2"
             }
         ], 
         "copyright": [
