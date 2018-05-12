@@ -93,7 +93,66 @@ typedef struct {
 extern PyTypeObject PyZbr_Type;
 extern PyTypeObject PyZbrMeta_Type;
 
+/* --- module functions --- */
+
+
+PyObject *
+_wrap_foo_delete_stored_zbr()
+{
+    PyObject *py_retval;
+
+    delete_stored_zbr();
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap_foo_delete_stored_zbr();
+
+
+PyObject *
+_wrap_foo_store_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    PyZbr *zbr;
+    Zbr *zbr_ptr;
+    const char *keywords[] = {"zbr", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyZbr_Type, &zbr)) {
+        return NULL;
+    }
+    zbr_ptr = (zbr ? zbr->obj : NULL);
+    if (zbr) {
+        zbr->obj->Ref();
+    }
+    store_zbr(zbr_ptr);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap_foo_store_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap_foo_invoke_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int retval;
+    int x;
+    const char *keywords[] = {"x", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "i", (char **) keywords, &x)) {
+        return NULL;
+    }
+    retval = invoke_zbr(x);
+    py_retval = Py_BuildValue((char *) "i", retval);
+    return py_retval;
+}
+PyObject * _wrap_foo_invoke_zbr(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
 static PyMethodDef foo_functions[] = {
+    {(char *) "delete_stored_zbr", (PyCFunction) _wrap_foo_delete_stored_zbr, METH_NOARGS, "delete_stored_zbr()\n\n" },
+    {(char *) "store_zbr", (PyCFunction) _wrap_foo_store_zbr, METH_KEYWORDS|METH_VARARGS, "store_zbr(zbr)\n\ntype: zbr: Zbr *" },
+    {(char *) "invoke_zbr", (PyCFunction) _wrap_foo_invoke_zbr, METH_KEYWORDS|METH_VARARGS, "invoke_zbr(x)\n\ntype: x: int" },
     {NULL, NULL, 0, NULL}
 };
 /* --- classes --- */

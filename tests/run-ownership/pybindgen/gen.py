@@ -1,5 +1,5 @@
 import pybindgen
-from pybindgen import (cppclass, Module, Parameter, ReturnValue)
+from pybindgen import (cppclass, Module, param, Parameter, ReturnValue)
 def generate(fp):
     mod = Module('foo')
     mod.add_include ('"ownership.hpp"')
@@ -20,6 +20,11 @@ def generate(fp):
     Zbr.add_static_attribute('instance_count', ReturnValue.new('int'))
     Zbr.add_method('get_value', ReturnValue.new('int'),
                    [Parameter.new('int*', 'x', direction=Parameter.DIRECTION_OUT)])
+
+    mod.add_function('store_zbr', None,
+                     [Parameter.new('Zbr*', 'zbr', transfer_ownership=True)])
+    mod.add_function('invoke_zbr', ReturnValue.new('int'), [Parameter.new('int', 'x')])
+    mod.add_function('delete_stored_zbr', None, [])
 
     mod.generate(fp)
 
