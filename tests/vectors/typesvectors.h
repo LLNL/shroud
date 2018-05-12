@@ -58,7 +58,9 @@ struct s_VEC_SHROUD_capsule_data {
 typedef struct s_VEC_SHROUD_capsule_data VEC_SHROUD_capsule_data;
 
 struct s_VEC_SHROUD_vector_context {
+    void *cxx;      /* address of C++ instance */
     void *addr;     /* address of data in std::vector */
+    size_t len;     /* len of std::string */
     size_t size;    /* size of data in std::vector */
 };
 typedef struct s_VEC_SHROUD_vector_context VEC_SHROUD_vector_context;

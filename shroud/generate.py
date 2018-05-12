@@ -665,8 +665,7 @@ class GenFunctions(object):
                     f_kind = template_typedef.f_kind,
                     C_prefix = fmt.C_prefix,
                     C_context_type = fmt.C_context_type,
-                    C_capsule_data_type = fmt.C_capsule_data_type,
-                    F_capsule_data_type = fmt.F_capsule_data_type,
+                    F_context_type = fmt.F_context_type,
                 ))
 
         has_string_result = False

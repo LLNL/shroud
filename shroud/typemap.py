@@ -766,19 +766,16 @@ def initialize():
 
                 # cxx_var is always a pointer to a vector
                 intent_out_buf=dict(
-                    buf_args = [ 'capsule', 'context' ],
+                    buf_args = [ 'context' ],
                     cxx_local_var='pointer',
                     c_helper='capsule_data_helper vector_context vector_copy_{cxx_T}',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
-                        # Return address of vector.
-                        '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
-                        '{c_var_capsule}->idtor = {idtor};  // index of destructor',
-                        '{c_var_capsule}->refcount = 1;     // reference count',
                     ],
                     post_call=[
                         # Return address and size of vector data.
+                        '{c_var_context}->cxx  = static_cast<void *>({cxx_var});',
                         '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->size = {cxx_var}->size();',
                     ],
@@ -809,18 +806,15 @@ def initialize():
                     ],
                 ),
                 intent_inout_buf=dict(
-                    buf_args = [ 'arg', 'size', 'capsule', 'context' ],
+                    buf_args = [ 'arg', 'size', 'context' ],
                     cxx_local_var='pointer',
                     pre_call=[
                         'std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t('
                         '\t{c_var}, {c_var} + {c_var_size});',
-                        # Return address of vector.
-                        '{c_var_capsule}->addr = static_cast<void *>({cxx_var});',
-                        '{c_var_capsule}->idtor = 0;        // index of destructor',
-                        '{c_var_capsule}->refcount = 1;     // reference count',
                     ],
                     post_call=[
                         # Return address and size of vector data.
+                        '{c_var_context}->cxx  = static_cast<void *>({cxx_var});',
                         '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->size = {cxx_var}->size();',
                     ],
@@ -864,21 +858,19 @@ def initialize():
 
             f_statements=dict(
                 intent_out=dict(
-                    f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
+                    f_helper='vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
-                        'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
+                        'call SHROUD_vector_copy_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
-#                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
                     ],
                 ),
                 intent_inout=dict(
-                    f_helper='capsule_helper vector_context vector_copy_{cxx_T}',
+                    f_helper='vector_context vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
-                        'call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, '
+                        'call SHROUD_vector_copy_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
-#                        'call {F_capsule_final_function}({c_var_capsule})', # called via FINAL
                     ],
                 ),
             ),

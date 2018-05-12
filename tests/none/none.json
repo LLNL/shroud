@@ -699,7 +699,6 @@
                     "buf_args": [
                         "arg", 
                         "size", 
-                        "capsule", 
                         "context"
                     ], 
                     "cxx_local_var": "pointer", 
@@ -709,19 +708,16 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
+                        "{c_var_context}->cxx  = static_cast<void *>({cxx_var});", 
                         "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
-                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
-                        "{c_var_capsule}->refcount = 1;     // reference count"
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
-                        "capsule", 
                         "context"
                     ], 
                     "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
@@ -732,14 +728,12 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
+                        "{c_var_context}->cxx  = static_cast<void *>({cxx_var});", 
                         "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
-                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
-                        "{c_var_capsule}->refcount = 1;     // reference count"
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
                     ]
                 }
             }, 
@@ -832,25 +826,25 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout": {
-                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out": {
-                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "vector_context vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_vector_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
             }

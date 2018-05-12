@@ -270,7 +270,9 @@ def add_vector_copy_helper(fmt):
             h_header='<stddef.h>',
             h_shared=wformat("""
 struct s_{C_context_type} {{+
+void *cxx;      /* address of C++ instance */
 void *addr;     /* address of data in std::vector */
+size_t len;     /* len of std::string */
 size_t size;    /* size of data in std::vector */
 -}};
 typedef struct s_{C_context_type} {C_context_type};
@@ -278,14 +280,34 @@ typedef struct s_{C_context_type} {C_context_type};
         )
         CHelpers[name] = helper
 
+    if name not in FHelpers:
+        # Create a derived type used to communicate with C wrapper.
+        # Should never be exposed to user.
+        helper=dict(
+            derived_type="""
+type, bind(C) :: SHROUD_vector_context
+  type(C_PTR) :: cxx      ! address of C++ instance
+  type(C_PTR) :: addr     ! address of data in std::vector
+  integer(C_SIZE_T) :: len   ! len of std::string
+  integer(C_SIZE_T) :: size  ! size of data in std::vector
+end type SHROUD_vector_context
+""",
+            modules = dict(
+                iso_c_binding=['C_PTR', 'C_SIZE_T' ],
+            )
+        )
+        FHelpers[name] = helper
+
     ########################################
     name = wformat('vector_copy_{cxx_T}', fmt)
     if name not in CHelpers:
         helper = dict(
             cxx_source=wformat("""
-void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_capsule_data_type} *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
+0// Copy std::vector into array c_var(c_var_size).
+0// Then release std::vector.
+void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_context_type} *data, \t{cxx_T} *c_var, \tsize_t c_var_size)
 {{+
-std::vector<{cxx_T}> *cxx_var = \treinterpret_cast<std::vector<{cxx_T}> *>\t(cap->addr);
+std::vector<{cxx_T}> *cxx_var = \treinterpret_cast<std::vector<{cxx_T}> *>\t(data->cxx);
 std::vector<{cxx_T}>::size_type+
 i = 0,
 n = c_var_size;
@@ -293,18 +315,20 @@ n = c_var_size;
 for(; i < n; ++i) {{+
 c_var[i] = (*cxx_var)[i];
 -}}
+delete cxx_var;
 -}}""", fmt))
         CHelpers[name] = helper
+
     if name not in FHelpers:
         helper = dict(
 # XXX when f_kind == C_SIZE_T
             interface=wformat("""
 interface+
-subroutine SHROUD_vector_copy_{cxx_T}(cap, c_var, c_var_size) &+
+subroutine SHROUD_vector_copy_{cxx_T}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
-import {F_capsule_data_type}
-type({F_capsule_data_type}) :: cap
+import {F_context_type}
+type({F_context_type}) :: context
 integer({f_kind}) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_vector_copy_{cxx_T}
@@ -443,19 +467,6 @@ interface
 end interface"""
         ),
 
-    # Create a derived type used to communicate with C wrapper.
-    # Should never be exposed to user.
-    vector_context=dict(
-        derived_type="""
-type, bind(C) :: SHROUD_vector_context
-  type(C_PTR) :: addr     ! address of data in std::vector
-  integer(C_SIZE_T) :: size  ! size of data in std::vector
-end type SHROUD_vector_context
-""",
-        modules = dict(
-            iso_c_binding=['C_PTR', 'C_SIZE_T' ],
-        )
-    ),
 
     ) # end FHelpers
 

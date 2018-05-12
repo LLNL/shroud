@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module vectors_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
+    use iso_c_binding, only : C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -55,21 +55,10 @@ module vectors_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-        integer(C_INT) :: refcount = 0    ! reference count
-    end type SHROUD_capsule_data
-
-    type SHROUD_capsule
-        private
-        type(SHROUD_capsule_data) :: mem
-    contains
-        final :: SHROUD_capsule_final
-    end type SHROUD_capsule
-
     type, bind(C) :: SHROUD_vector_context
+      type(C_PTR) :: cxx      ! address of C++ instance
       type(C_PTR) :: addr     ! address of data in std::vector
+      integer(C_SIZE_T) :: len   ! len of std::string
       integer(C_SIZE_T) :: size  ! size of data in std::vector
     end type SHROUD_vector_context
 
@@ -86,23 +75,21 @@ module vectors_mod
             integer(C_INT) :: SHT_rv
         end function c_vector_sum_bufferify
 
-        subroutine c_vector_iota_bufferify(Carg, Darg) &
+        subroutine c_vector_iota_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_bufferify")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data, SHROUD_vector_context
+            import :: SHROUD_vector_context
             implicit none
-            type(SHROUD_capsule_data), intent(INOUT) :: Carg
             type(SHROUD_vector_context), intent(INOUT) :: Darg
         end subroutine c_vector_iota_bufferify
 
-        subroutine c_vector_increment_bufferify(arg, Sarg, Carg, Darg) &
+        subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_increment_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
-            import :: SHROUD_capsule_data, SHROUD_vector_context
+            import :: SHROUD_vector_context
             implicit none
             integer(C_INT), intent(INOUT) :: arg(*)
             integer(C_LONG), value, intent(IN) :: Sarg
-            type(SHROUD_capsule_data), intent(INOUT) :: Carg
             type(SHROUD_vector_context), intent(INOUT) :: Darg
         end subroutine c_vector_increment_bufferify
 
@@ -122,11 +109,11 @@ module vectors_mod
     end interface
 
     interface
-        subroutine SHROUD_vector_copy_int(cap, c_var, c_var_size) &
+        subroutine SHROUD_vector_copy_int(context, c_var, c_var_size) &
             bind(C, name="VEC_SHROUD_vector_copy_int")
             use iso_c_binding, only : C_INT, C_SIZE_T
-            import SHROUD_capsule_data
-            type(SHROUD_capsule_data) :: cap
+            import SHROUD_vector_context
+            type(SHROUD_vector_context) :: context
             integer(C_INT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine SHROUD_vector_copy_int
@@ -154,12 +141,11 @@ contains
     subroutine vector_iota(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
-        type(SHROUD_capsule) :: Carg
         type(SHROUD_vector_context) :: Darg
         ! splicer begin function.vector_iota
-        call c_vector_iota_bufferify(Carg%mem, Darg)
+        call c_vector_iota_bufferify(Darg)
         ! splicer end function.vector_iota
-        call SHROUD_vector_copy_int(Carg%mem, arg, size(arg,kind=C_SIZE_T))
+        call SHROUD_vector_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
@@ -168,13 +154,12 @@ contains
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(INOUT) :: arg(:)
-        type(SHROUD_capsule) :: Carg
         type(SHROUD_vector_context) :: Darg
         ! splicer begin function.vector_increment
         call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG), &
-            Carg%mem, Darg)
+            Darg)
         ! splicer end function.vector_increment
-        call SHROUD_vector_copy_int(Carg%mem, arg, size(arg,kind=C_SIZE_T))
+        call SHROUD_vector_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_increment
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
@@ -197,23 +182,5 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
-
-    ! finalize a static SHROUD_capsule_data
-    subroutine SHROUD_capsule_final(cap)
-        use iso_c_binding, only : C_BOOL
-        type(SHROUD_capsule), intent(INOUT) :: cap
-        interface
-            subroutine array_destructor(ptr, gc) &
-                bind(C, name="VEC_SHROUD_array_destructor_function")
-                use iso_c_binding, only : C_BOOL
-                import SHROUD_capsule_data
-                implicit none
-                type(SHROUD_capsule_data), intent(INOUT) :: ptr
-                logical(C_BOOL), value, intent(IN) :: gc
-            end subroutine array_destructor
-        end interface
-        call array_destructor(cap%mem, .false._C_BOOL)
-    end subroutine SHROUD_capsule_final
-                
 
 end module vectors_mod

@@ -67,11 +67,13 @@ int ShroudLenTrim(const char *s, int ls) {
 }
 
 
-void VEC_SHROUD_vector_copy_int(VEC_SHROUD_capsule_data *cap, 
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
+void VEC_SHROUD_vector_copy_int(VEC_SHROUD_vector_context *data, 
     int *c_var, size_t c_var_size)
 {
     std::vector<int> *cxx_var = reinterpret_cast<std::vector<int> *>
-        (cap->addr);
+        (data->cxx);
     std::vector<int>::size_type
         i = 0,
         n = c_var_size;
@@ -79,6 +81,7 @@ void VEC_SHROUD_vector_copy_int(VEC_SHROUD_capsule_data *cap,
     for(; i < n; ++i) {
         c_var[i] = (*cxx_var)[i];
     }
+    delete cxx_var;
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -94,34 +97,29 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 // splicer end function.vector_sum_bufferify
 }
 
-// void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))
+// void vector_iota(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
 // function_index=7
-void VEC_vector_iota_bufferify(VEC_SHROUD_capsule_data *Carg,
-    VEC_SHROUD_vector_context *Darg)
+void VEC_vector_iota_bufferify(VEC_SHROUD_vector_context *Darg)
 {
 // splicer begin function.vector_iota_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
-    Carg->addr = static_cast<void *>(SH_arg);
-    Carg->idtor = 1;  // index of destructor
-    Carg->refcount = 1;     // reference count
     vector_iota(*SH_arg);
+    Darg->cxx  = static_cast<void *>(SH_arg);
     Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->size = SH_arg->size();
     return;
 // splicer end function.vector_iota_bufferify
 }
 
-// void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))
+// void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 // function_index=8
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
-    VEC_SHROUD_capsule_data *Carg, VEC_SHROUD_vector_context *Darg)
+    VEC_SHROUD_vector_context *Darg)
 {
 // splicer begin function.vector_increment_bufferify
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
-    Carg->addr = static_cast<void *>(SH_arg);
-    Carg->idtor = 0;        // index of destructor
-    Carg->refcount = 1;     // reference count
     vector_increment(*SH_arg);
+    Darg->cxx  = static_cast<void *>(SH_arg);
     Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->size = SH_arg->size();
     return;
