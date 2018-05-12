@@ -342,9 +342,7 @@ void STR_get_const_string_alloc_bufferify(
     *SHCXX_rv = getConstStringAlloc();
     DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->addr = NULL;
     DSHF_rv->len = SHCXX_rv->size();
-    DSHF_rv->size = 0;
     return;
 // splicer end function.get_const_string_alloc_bufferify
 }
@@ -522,9 +520,7 @@ void STR_get_const_string_ref_alloc_bufferify(
     const std::string & SHCXX_rv = getConstStringRefAlloc();
     DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
         (&SHCXX_rv));
-    DSHF_rv->addr = NULL;
     DSHF_rv->len = SHCXX_rv.size();
-    DSHF_rv->size = 0;
     return;
 // splicer end function.get_const_string_ref_alloc_bufferify
 }
@@ -587,9 +583,7 @@ void STR_get_const_string_ptr_alloc_bufferify(
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
     DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->addr = NULL;
     DSHF_rv->len = SHCXX_rv->size();
-    DSHF_rv->size = 0;
     return;
 // splicer end function.get_const_string_ptr_alloc_bufferify
 }
@@ -614,9 +608,7 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
     DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->addr = NULL;
     DSHF_rv->len = SHCXX_rv->size();
-    DSHF_rv->size = 0;
     return;
 // splicer end function.get_const_string_ptr_owns_alloc_bufferify
 }

@@ -1918,7 +1918,7 @@
                     "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 0;", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->len = SHCXX_rv->size();", 
                     "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -2867,7 +2867,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 0;", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->len = SHCXX_rv.size();", 
                     "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -3221,7 +3221,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 0;", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->len = SHCXX_rv->size();", 
                     "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -3396,7 +3396,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 0;", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->len = SHCXX_rv->size();", 
                     "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5964,9 +5964,7 @@
                     "c_helper": "vector_context copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->addr = NULL;", 
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
-                        "{c_var_context}->size = 0;"
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();"
                     ]
                 }
             }, 

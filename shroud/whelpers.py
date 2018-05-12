@@ -285,13 +285,13 @@ typedef struct s_{C_context_type} {C_context_type};""", fmt),
         helper=dict(
             derived_type="""
 type, bind(C) :: SHROUD_vector_context
-  type(C_PTR) :: cxx      ! address of C++ instance
-  type(C_PTR) :: addr     ! address of data in std::vector
-  integer(C_SIZE_T) :: len   ! len of std::string
-  integer(C_SIZE_T) :: size  ! size of data in std::vector
+  type(C_PTR) :: cxx = C_NULL_PTR        ! address of C++ instance
+  type(C_PTR) :: addr = C_NULL_PTR       ! address of data in std::vector
+  integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! len of std::string
+  integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in std::vector
 end type SHROUD_vector_context""",
             modules = dict(
-                iso_c_binding=['C_PTR', 'C_SIZE_T' ],
+                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T' ],
             )
         )
         FHelpers[name] = helper

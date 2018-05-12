@@ -1861,9 +1861,7 @@
                     "c_helper": "vector_context copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->addr = NULL;", 
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
-                        "{c_var_context}->size = 0;"
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();"
                     ]
                 }
             }, 
