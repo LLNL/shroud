@@ -240,15 +240,15 @@
                             "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new_default", 
-                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TUT_class1 *", 
+                            "C_return_type": "TUT_class1", 
                             "F_C_call": "c_class1_new_default", 
                             "F_C_name": "c_class1_new_default", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxptr = c_class1_new_default()\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_class1_new_default()", 
                             "F_name_function": "new_default", 
                             "F_name_generic": "new", 
                             "F_name_impl": "class1_new_default", 
@@ -383,15 +383,15 @@
                             "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1(flag);", 
                             "C_call_list": "flag", 
                             "C_name": "TUT_class1_new_flag", 
-                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_prototype": "int flag", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TUT_class1 *", 
+                            "C_return_type": "TUT_class1", 
                             "F_C_call": "c_class1_new_flag", 
                             "F_C_name": "c_class1_new_flag", 
                             "F_arg_c_call": "flag", 
                             "F_arguments": "flag", 
-                            "F_call_code": "SHT_rv%cxxptr = c_class1_new_flag(flag)\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_class1_new_flag(flag)", 
                             "F_name_function": "new_flag", 
                             "F_name_generic": "new", 
                             "F_name_impl": "class1_new_flag", 
@@ -437,9 +437,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class1_delete", 
                             "F_C_name": "c_class1_delete", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_class1_delete(obj%cxxptr)", 
+                            "F_call_code": "call c_class1_delete(obj%cxxmem)", 
                             "F_name_function": "delete", 
                             "F_name_generic": "delete", 
                             "F_name_impl": "class1_delete", 
@@ -513,9 +513,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_class1_method1", 
                             "F_C_name": "c_class1_method1", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_class1_method1(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_class1_method1(obj%cxxmem)", 
                             "F_name_function": "method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "class1_method1", 
@@ -607,7 +607,7 @@
                                     "attrs": {
                                         "_typename": "tutorial::Class1", 
                                         "intent": "in", 
-                                        "value": true
+                                        "value": false
                                     }, 
                                     "const": true, 
                                     "declarator": {
@@ -629,7 +629,7 @@
                             ]
                         }, 
                         "decl": "bool equivalent(Class1 const &obj2) const;", 
-                        "declgen": "bool equivalent(const Class1 & obj2 +intent(in)+value) const", 
+                        "declgen": "bool equivalent(const Class1 & obj2 +intent(in)) const", 
                         "doxygen": {
                             "brief": "Pass in reference to instance"
                         }, 
@@ -643,9 +643,9 @@
                             "C_return_type": "bool", 
                             "F_C_call": "c_class1_equivalent", 
                             "F_C_name": "c_class1_equivalent", 
-                            "F_arg_c_call": "obj%cxxptr,\t obj2%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem,\t obj2%cxxmem", 
                             "F_arguments": "obj,\t obj2", 
-                            "F_call_code": "SHT_rv = c_class1_equivalent(obj%cxxptr,\t obj2%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_class1_equivalent(obj%cxxmem,\t obj2%cxxmem)", 
                             "F_name_function": "equivalent", 
                             "F_name_generic": "equivalent", 
                             "F_name_impl": "class1_equivalent", 
@@ -701,9 +701,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class1_return_this", 
                             "F_C_name": "c_class1_return_this", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_class1_return_this(obj%cxxptr)", 
+                            "F_call_code": "call c_class1_return_this(obj%cxxmem)", 
                             "F_name_function": "return_this", 
                             "F_name_generic": "return_this", 
                             "F_name_impl": "class1_return_this", 
@@ -827,16 +827,16 @@
                             "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
                             "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer", 
-                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name);", 
                             "C_prototype": "TUT_class1 * self,\t char * name,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TUT_class1 *", 
+                            "C_return_type": "TUT_class1", 
                             "F_C_call": "c_class1_return_this_buffer_bufferify", 
                             "F_C_name": "c_class1_return_this_buffer", 
-                            "F_arg_c_call": "obj%cxxptr,\t name,\t len_trim(name, kind=C_INT),\t SH_flag", 
+                            "F_arg_c_call": "obj%cxxmem,\t name,\t len_trim(name, kind=C_INT),\t SH_flag", 
                             "F_arguments": "obj,\t name,\t flag", 
-                            "F_call_code": "SHT_rv%cxxptr = c_class1_return_this_buffer_bufferify(obj%cxxptr,\t name,\t len_trim(name, kind=C_INT),\t SH_flag)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_class1_return_this_buffer_bufferify(obj%cxxmem,\t name,\t len_trim(name, kind=C_INT),\t SH_flag)", 
                             "F_name_function": "return_this_buffer", 
                             "F_name_generic": "return_this_buffer", 
                             "F_name_impl": "class1_return_this_buffer", 
@@ -973,11 +973,11 @@
                             "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
                             "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer_bufferify", 
-                            "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name, Lname);", 
                             "C_prototype": "TUT_class1 * self,\t char * name,\t int Lname,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TUT_class1 *", 
+                            "C_return_type": "TUT_class1", 
                             "F_C_name": "c_class1_return_this_buffer_bufferify", 
                             "c_const": "", 
                             "c_deref": "*", 
@@ -1116,9 +1116,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_class1_direction_func", 
                             "F_C_name": "c_class1_direction_func", 
-                            "F_arg_c_call": "obj%cxxptr,\t arg", 
+                            "F_arg_c_call": "obj%cxxmem,\t arg", 
                             "F_arguments": "obj,\t arg", 
-                            "F_call_code": "SHT_rv = c_class1_direction_func(obj%cxxptr,\t arg)", 
+                            "F_call_code": "SHT_rv = c_class1_direction_func(obj%cxxmem,\t arg)", 
                             "F_name_function": "direction_func", 
                             "F_name_generic": "direction_func", 
                             "F_name_impl": "class1_direction_func", 
@@ -1176,9 +1176,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_class1_get_m_flag", 
                             "F_C_name": "c_class1_get_m_flag", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_class1_get_m_flag(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_class1_get_m_flag(obj%cxxmem)", 
                             "F_name_function": "get_m_flag", 
                             "F_name_generic": "get_m_flag", 
                             "F_name_impl": "class1_get_m_flag", 
@@ -1236,9 +1236,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_class1_get_test", 
                             "F_C_name": "c_class1_get_test", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_class1_get_test(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_class1_get_test(obj%cxxmem)", 
                             "F_name_function": "get_test", 
                             "F_name_generic": "get_test", 
                             "F_name_impl": "class1_get_test", 
@@ -1322,9 +1322,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class1_set_test", 
                             "F_C_name": "c_class1_set_test", 
-                            "F_arg_c_call": "obj%cxxptr,\t val", 
+                            "F_arg_c_call": "obj%cxxmem,\t val", 
                             "F_arguments": "obj,\t val", 
-                            "F_call_code": "call c_class1_set_test(obj%cxxptr,\t val)", 
+                            "F_call_code": "call c_class1_set_test(obj%cxxmem,\t val)", 
                             "F_name_function": "set_test", 
                             "F_name_generic": "set_test", 
                             "F_name_impl": "class1_set_test", 
@@ -1475,15 +1475,15 @@
                             "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_singleton_get_reference", 
-                            "C_post_call": "TUT_singleton *SHC_rv = (TUT_singleton *) malloc(sizeof(TUT_singleton));\nSHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "TUT_singleton SHC_rv;\nSHC_rv.addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TUT_singleton *", 
+                            "C_return_type": "TUT_singleton", 
                             "F_C_call": "c_singleton_get_reference", 
                             "F_C_name": "c_singleton_get_reference", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxptr = c_singleton_get_reference()", 
+                            "F_call_code": "SHT_rv%cxxmem = c_singleton_get_reference()", 
                             "F_name_function": "get_reference", 
                             "F_name_generic": "get_reference", 
                             "F_name_impl": "singleton_get_reference", 
@@ -1639,7 +1639,6 @@
             "F_capsule_type": "SHROUD_capsule", 
             "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapftutorial.f", 
             "F_module_name": "tutorial_mod", 
@@ -7522,7 +7521,7 @@
                             "attrs": {
                                 "_typename": "tutorial::Class1", 
                                 "intent": "in", 
-                                "value": true
+                                "value": false
                             }, 
                             "const": true, 
                             "declarator": {
@@ -7544,7 +7543,7 @@
                     ]
                 }, 
                 "decl": "int useclass(const Class1 *arg1)", 
-                "declgen": "int useclass(const Class1 * arg1 +intent(in)+value)", 
+                "declgen": "int useclass(const Class1 * arg1 +intent(in))", 
                 "format": {
                     "C_call_code": "int SHC_rv =\t tutorial::\tuseclass(\tSHCXX_arg1);", 
                     "C_call_list": "SHCXX_arg1", 
@@ -7555,9 +7554,9 @@
                     "C_return_type": "int", 
                     "F_C_call": "c_useclass", 
                     "F_C_name": "c_useclass", 
-                    "F_arg_c_call": "arg1%cxxptr", 
+                    "F_arg_c_call": "arg1%cxxmem", 
                     "F_arguments": "arg1", 
-                    "F_call_code": "SHT_rv = c_useclass(arg1%cxxptr)", 
+                    "F_call_code": "SHT_rv = c_useclass(arg1%cxxmem)", 
                     "F_name_function": "useclass", 
                     "F_name_generic": "useclass", 
                     "F_name_impl": "useclass", 
@@ -7612,15 +7611,15 @@
                     "C_call_code": "const tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass2(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass2", 
-                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "TUT_class1 *", 
+                    "C_return_type": "TUT_class1", 
                     "F_C_call": "c_getclass2", 
                     "F_C_name": "c_getclass2", 
                     "F_arg_c_call": "", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_rv%cxxptr = c_getclass2()", 
+                    "F_call_code": "SHT_rv%cxxmem = c_getclass2()", 
                     "F_name_function": "getclass2", 
                     "F_name_generic": "getclass2", 
                     "F_name_impl": "getclass2", 
@@ -7685,15 +7684,15 @@
                     "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass3(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass3", 
-                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "TUT_class1 *", 
+                    "C_return_type": "TUT_class1", 
                     "F_C_call": "c_getclass3", 
                     "F_C_name": "c_getclass3", 
                     "F_arg_c_call": "", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_rv%cxxptr = c_getclass3()", 
+                    "F_call_code": "SHT_rv%cxxmem = c_getclass3()", 
                     "F_name_function": "getclass3", 
                     "F_name_generic": "getclass3", 
                     "F_name_impl": "getclass3", 
@@ -7780,16 +7779,16 @@
                     "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassNew(\tflag);", 
                     "C_call_list": "flag", 
                     "C_name": "TUT_get_class_new", 
-                    "C_post_call": "TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 1;\nSHC_rv->refcount = 1;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 1;\nSHC_rv.refcount = 1;", 
                     "C_pre_call": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1;", 
                     "C_prototype": "int flag", 
                     "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "TUT_class1 *", 
+                    "C_return_type": "TUT_class1", 
                     "F_C_call": "c_get_class_new", 
                     "F_C_name": "c_get_class_new", 
                     "F_arg_c_call": "flag", 
                     "F_arguments": "flag", 
-                    "F_call_code": "SHT_rv%cxxptr = c_get_class_new(flag)", 
+                    "F_call_code": "SHT_rv%cxxmem = c_get_class_new(flag)", 
                     "F_name_function": "get_class_new", 
                     "F_name_generic": "get_class_new", 
                     "F_name_impl": "get_class_new", 
@@ -9056,10 +9055,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TUT_singleton *{c_var} = (TUT_singleton *) malloc(sizeof(TUT_singleton));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "TUT_singleton {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -9068,11 +9067,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Singleton", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "singleton", 
             "f_module": {
                 "tutorial_mod": [
@@ -9082,20 +9081,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(singleton)", 
             "forward": "Singleton", 
             "py_statements": {
@@ -9826,10 +9817,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TUT_class1 *{c_var} = (TUT_class1 *) malloc(sizeof(TUT_class1));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "TUT_class1 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -9838,11 +9829,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "tutorial::\tClass1", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
                 "tutorial_mod": [
@@ -9852,20 +9843,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class1)", 
             "forward": "tutorial::\tClass1", 
             "idtor": "1", 

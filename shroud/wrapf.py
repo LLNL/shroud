@@ -187,7 +187,7 @@ class Wrapf(util.WrapperMixin):
             result_type = ast.typename
             typedef = typemap.lookup_type(result_type)
             output.append(ast.gen_arg_as_fortran())
-            self.update_f_module(self.module_use, typedef.f_module)
+            self.update_f_module(self.module_use, {}, typedef.f_module) # XXX - self.module_imports?
         append_format(output,
                       '-end type {F_derived_name}', fmt_class)
         self._pop_splicer(fmt_class.cxx_class)
@@ -226,8 +226,7 @@ class Wrapf(util.WrapperMixin):
             self.f_type_decl,
             '\n'
             'type {F_derived_name}\n+'
-            'type(C_PTR), private :: {F_derived_ptr} = C_NULL_PTR\n'
-            'type({F_capsule_data_type}), pointer :: {F_derived_member} => null()',
+            'type({F_capsule_data_type}) :: {F_derived_member}',
             fmt_class)
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_NULL_PTR')
         self._create_splicer('component_part', self.f_type_decl)
@@ -340,16 +339,12 @@ class Wrapf(util.WrapperMixin):
 
             append_format(
                 impl, """
-! Return pointer to C++ memory if allocated, else C_NULL_PTR.
-function {F_name_impl}({F_this}) result ({F_derived_ptr})+
+! Return pointer to C++ memory.
+function {F_name_impl}({F_this}) result (cxxptr)+
 use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
 class({F_derived_name}), intent(IN) :: {F_this}
-type(C_PTR) :: {F_derived_ptr}
-if (c_associated({F_this}%{F_derived_ptr})) then+
-{F_derived_ptr} = {F_this}%{F_derived_member}%addr
--else+
-{F_derived_ptr} = C_NULL_PTR
--endif
+type(C_PTR) :: cxxptr
+cxxptr = {F_this}%{F_derived_member}%addr
 -end function {F_name_impl}""", fmt)
 
         # setter
@@ -504,19 +499,26 @@ rv = .false.
         if options.wrap_c:
             self.wrap_function_interface(cls, node)
 
-    def update_f_module(self, modules, f_module):
+    def update_f_module(self, modules, imports, f_module):
         """aggragate the information from f_module into modules.
         modules is a dictionary of dictionaries:
             modules['iso_c_bindings']['C_INT'] = True
         f_module is a dictionary of lists:
             dict(iso_c_binding=['C_INT'])
+
+        If the module name is '--import--', add to imports.
+        Useful for interfaces.
         """
         if f_module is not None:
             for mname, only in f_module.items():
-                module = modules.setdefault(mname, {})
-                if only:  # Empty list means no ONLY clause
+                if mname == '--import--':
                     for oname in only:
-                        module[oname] = True
+                        imports[oname] = True
+                else:
+                    module = modules.setdefault(mname, {})
+                    if only:  # Empty list means no ONLY clause
+                        for oname in only:
+                            module[oname] = True
 
     def set_f_module(self, modules, mname, *only):
         """Add a module to modules.
@@ -605,6 +607,7 @@ rv = .false.
                 arg_f_names = []
                 arg_c_decl = []
                 modules = {}   # indexed as [module][variable]
+                imports = {}
                 for i, param in enumerate(arg.params):
                     name = param.name
                     if name is None:
@@ -615,7 +618,7 @@ rv = .false.
                     arg_c_decl.append(param.bind_c(name=name))
 
                     arg_typedef, c_statements = typemap.lookup_c_statements(param)
-                    self.update_f_module(modules,
+                    self.update_f_module(modules, imports,
                                          arg_typedef.f_c_module or arg_typedef.f_module)
 
                 if subprogram == 'function':
@@ -684,8 +687,8 @@ rv = .false.
                 arg_c_names.append(fmt.C_this)
                 append_format(
                     arg_c_decl,
-                    'type(C_PTR), value, intent(IN) :: {C_this}', fmt)
-                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+                    'type({F_capsule_data_type}), intent(IN) :: {C_this}', fmt)
+                imports[fmt.F_capsule_data_type] = True
 
         args_all_in = True   # assume all arguments are intent(in)
         for arg in ast.params:
@@ -696,7 +699,7 @@ rv = .false.
             arg_typedef, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
             attrs = arg.attrs
-            self.update_f_module(modules,
+            self.update_f_module(modules, imports,
                                  arg_typedef.f_c_module or arg_typedef.f_module)
 
             intent = attrs.get('intent', 'inout')
@@ -731,7 +734,7 @@ rv = .false.
                 elif buf_arg == 'shadow':
                     arg_c_names.append(arg.name)
                     arg_c_decl.append(arg.bind_c())
-                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+                    imports[fmt.F_capsule_data_type] = True
                     continue
 
                 if buf_arg not in attrs:
@@ -791,7 +794,7 @@ rv = .false.
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
                 else:
                     arg_c_decl.append(rvast.bind_c())
-                self.update_f_module(modules,
+                self.update_f_module(modules, imports,
                                      result_typedef.f_c_module or
                                      result_typedef.f_module)
 
@@ -932,6 +935,7 @@ rv = .false.
         arg_f_names = []     # arguments in subprogram statement
         arg_f_decl = []      # Fortran variable declarations
         modules = {}   # indexed as [module][variable]
+        imports = {}
 
         if subprogram == 'function':
             fmt_func.F_result_clause = '\fresult(%s)' % fmt_func.F_result
@@ -949,7 +953,7 @@ rv = .false.
                         'class({F_derived_name}) :: {F_this}',
                         fmt_func))
                 # could use {f_to_c} but I'd rather not hide the shadow class
-                arg_c_call.append(wformat('{F_this}%{F_derived_ptr}', fmt_func))
+                arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1033,7 +1037,7 @@ rv = .false.
                 arg_typedef = typemap.lookup_type(cxx_T)
                 fmt_arg.cxx_T = cxx_T
 
-            self.update_f_module(modules, arg_typedef.f_module)
+            self.update_f_module(modules, imports, arg_typedef.f_module)
 
             if implied:
                 f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
@@ -1072,14 +1076,14 @@ rv = .false.
                     elif f_arg and c_arg.typename != f_arg.typename:
                         need_wrapper = True
                         append_format(arg_c_call, arg_typedef.f_cast, fmt_arg)
-                        self.update_f_module(modules, arg_typedef.f_module)
+                        self.update_f_module(modules, imports, arg_typedef.f_module)
                     else:
                         arg_c_call.append(fmt_arg.c_var)
                     continue
                 elif buf_arg == 'shadow':
                     # Pass down the pointer to {F_capsule_data_type}
                     need_wrapper = True
-                    append_format(arg_c_call, '{f_var}%{F_derived_ptr}', fmt_arg)
+                    append_format(arg_c_call, '{f_var}%{F_derived_member}', fmt_arg)
                     continue
 
                 need_wrapper = True
@@ -1111,7 +1115,7 @@ rv = .false.
 
             # Add code for intent of argument
             if 'f_module' in f_intent_blk:
-                self.update_f_module(modules, f_intent_blk['f_module'])
+                self.update_f_module(modules, imports, f_intent_blk['f_module'])
             if util.append_format_cmds(arg_f_decl, f_intent_blk, 'declare', fmt_arg):
                 need_wrapper = True
             if util.append_format_cmds(pre_call, f_intent_blk, 'pre_call', fmt_arg):
@@ -1166,7 +1170,7 @@ rv = .false.
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
 
-            self.update_f_module(modules, result_typedef.f_module)
+            self.update_f_module(modules, imports, result_typedef.f_module)
 
         if not node._CXX_return_templated:
             # if return type is templated in C++,
@@ -1200,14 +1204,9 @@ rv = .false.
         else:
             F_code = []
             if is_ctor:
-                # constructor returns a C_PTR.  Then setup fortran POINTER member.
-                # XXX - f_statements.result has same code
                 fmt_func.F_call_code = wformat(
-                    '{F_result}%{F_derived_ptr} = '
-                    '{F_C_call}({F_arg_c_call})\n'
-                    'call c_f_pointer({F_result}%{F_derived_ptr}, '
-                    '{F_result}%{F_derived_member})', fmt_func)
-                self.set_f_module(modules, 'iso_c_binding', 'c_f_pointer')
+                    '{F_result}%{F_derived_member} = '
+                    '{F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == 'function':
                 f_statements = result_typedef.f_statements
@@ -1226,7 +1225,7 @@ rv = .false.
                 if util.append_format_cmds(F_code, intent_blk, 'post_call', fmt_func):
                     need_wrapper = True
                 if 'f_module' in intent_blk:
-                    self.update_f_module(modules, intent_blk['f_module'])
+                    self.update_f_module(modules, imports, intent_blk['f_module'])
                 if 'f_helper' in intent_blk:
                     for helper in intent_blk['f_helper'].split():
                         self.f_helper[helper] = True
@@ -1238,8 +1237,7 @@ rv = .false.
                     self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
                     append_format(
                         F_code,
-                        '{F_this}%{F_derived_ptr} = C_NULL_PTR\n'
-                        'nullify({F_this}%{F_derived_member})',
+                        '{F_this}%{F_derived_member}%addr = C_NULL_PTR',
                         fmt_func)
 
             if return_pointer_as == 'pointer':
@@ -1314,7 +1312,7 @@ rv = .false.
 
         mods = helper_info.get('modules', None)
         if mods:
-            self.update_f_module(self.module_use, mods)
+            self.update_f_module(self.module_use, {},  mods)  # XXX self.module_imports
 
         if 'private' in helper_info:
             if not self.private_lines:

@@ -87,15 +87,15 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_call": "c_exclass1_ctor_0", 
                             "F_C_name": "c_exclass1_ctor_0", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass1_ctor_0()\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass1_ctor_0()", 
                             "F_name_function": "ctor_0", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_0", 
@@ -236,16 +236,16 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_call": "c_exclass1_ctor_1_bufferify", 
                             "F_C_name": "c_exclass1_ctor_1", 
                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)", 
                             "F_arguments": "name", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass1_ctor_1_bufferify(name,\t len_trim(name, kind=C_INT))\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass1_ctor_1_bufferify(name,\t len_trim(name, kind=C_INT))", 
                             "F_name_function": "ctor_1", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_1", 
@@ -350,11 +350,11 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 *SHC_rv", 
@@ -401,9 +401,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass1_dtor", 
                             "F_C_name": "c_exclass1_dtor", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_dtor(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass1_dtor(obj%cxxmem)", 
                             "F_name_function": "delete", 
                             "F_name_generic": "dtor", 
                             "F_name_impl": "exclass1_dtor", 
@@ -534,9 +534,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_increment_count", 
                             "F_C_name": "c_exclass1_increment_count", 
-                            "F_arg_c_call": "obj%cxxptr,\t incr", 
+                            "F_arg_c_call": "obj%cxxmem,\t incr", 
                             "F_arguments": "obj,\t incr", 
-                            "F_call_code": "SHT_rv = c_exclass1_increment_count(obj%cxxptr,\t incr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_increment_count(obj%cxxmem,\t incr)", 
                             "F_name_function": "increment_count", 
                             "F_name_generic": "increment_count", 
                             "F_name_impl": "exclass1_increment_count", 
@@ -623,9 +623,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_error_pattern_bufferify", 
                             "F_C_name": "c_exclass1_get_name_error_pattern", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_get_name_error_pattern_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_error_pattern_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name_error_pattern", 
                             "F_name_generic": "get_name_error_pattern", 
                             "F_name_impl": "exclass1_get_name_error_pattern", 
@@ -806,9 +806,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_name_length", 
                             "F_C_name": "c_exclass1_get_name_length", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_name_length(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_name_length(obj%cxxmem)", 
                             "F_name_function": "get_name_length", 
                             "F_name_generic": "get_name_length", 
                             "F_name_impl": "exclass1_get_name_length", 
@@ -891,9 +891,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_error_check_bufferify", 
                             "F_C_name": "c_exclass1_get_name_error_check", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_get_name_error_check_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_error_check_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name_error_check", 
                             "F_name_generic": "get_name_error_check", 
                             "F_name_impl": "exclass1_get_name_error_check", 
@@ -906,7 +906,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorCheck", 
                             "underscore_name": "get_name_error_check"
@@ -1237,9 +1237,9 @@
                         "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "format": {
                             "F_C_call": "c_exclass1_get_name_arg_bufferify", 
-                            "F_arg_c_call": "obj%cxxptr,\t name,\t len(name, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t name,\t len(name, kind=C_INT)", 
                             "F_arguments": "obj,\t name", 
-                            "F_call_code": "call c_exclass1_get_name_arg_bufferify(obj%cxxptr,\t name,\t len(name, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_arg_bufferify(obj%cxxmem,\t name,\t len(name, kind=C_INT))", 
                             "F_name_function": "get_name_arg", 
                             "F_name_generic": "get_name_arg", 
                             "F_name_impl": "exclass1_get_name_arg", 
@@ -1316,9 +1316,9 @@
                             "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_root", 
                             "F_C_name": "c_exclass1_get_root", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_root(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_root(obj%cxxmem)", 
                             "F_name_function": "get_root", 
                             "F_name_generic": "get_root", 
                             "F_name_impl": "exclass1_get_root", 
@@ -1457,9 +1457,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_value_from_int", 
                             "F_C_name": "c_exclass1_get_value_from_int", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_value_from_int(obj%cxxptr,\t value)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_value_from_int(obj%cxxmem,\t value)", 
                             "F_name_function": "get_value_from_int", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass1_get_value_from_int", 
@@ -1599,9 +1599,9 @@
                             "C_return_type": "long", 
                             "F_C_call": "c_exclass1_get_value_1", 
                             "F_C_name": "c_exclass1_get_value_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_value_1(obj%cxxptr,\t value)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_value_1(obj%cxxmem,\t value)", 
                             "F_name_function": "get_value_1", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass1_get_value_1", 
@@ -1679,9 +1679,9 @@
                             "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_addr", 
                             "F_C_name": "c_exclass1_get_addr", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_addr(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_addr(obj%cxxmem)", 
                             "F_name_function": "get_addr", 
                             "F_name_generic": "get_addr", 
                             "F_name_impl": "exclass1_get_addr", 
@@ -1816,9 +1816,9 @@
                             "C_return_type": "bool", 
                             "F_C_call": "c_exclass1_has_addr", 
                             "F_C_name": "c_exclass1_has_addr", 
-                            "F_arg_c_call": "obj%cxxptr,\t SH_in", 
+                            "F_arg_c_call": "obj%cxxmem,\t SH_in", 
                             "F_arguments": "obj,\t in", 
-                            "F_call_code": "SHT_rv = c_exclass1_has_addr(obj%cxxptr,\t SH_in)", 
+                            "F_call_code": "SHT_rv = c_exclass1_has_addr(obj%cxxmem,\t SH_in)", 
                             "F_name_function": "has_addr", 
                             "F_name_generic": "has_addr", 
                             "F_name_impl": "exclass1_has_addr", 
@@ -1866,7 +1866,7 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass1_splicer_special", 
                             "F_C_name": "c_exclass1_splicer_special", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
                             "F_name_function": "splicer_special", 
                             "F_name_generic": "splicer_special", 
@@ -2042,16 +2042,16 @@
                             "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
-                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2 *", 
+                            "C_return_type": "AA_exclass2", 
                             "F_C_call": "c_exclass2_ctor_bufferify", 
                             "F_C_name": "c_exclass2_ctor", 
                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)", 
                             "F_arguments": "name", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass2_ctor_bufferify(name,\t len_trim(name, kind=C_INT))\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass2_ctor_bufferify(name,\t len_trim(name, kind=C_INT))", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass2_ctor", 
@@ -2150,11 +2150,11 @@
                             "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
-                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "const std::string SH_name(name, trim_name);", 
                             "C_prototype": "const char * name,\t int trim_name", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2 *", 
+                            "C_return_type": "AA_exclass2", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass2 *SHC_rv", 
@@ -2200,9 +2200,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_dtor", 
                             "F_C_name": "c_exclass2_dtor", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_dtor(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass2_dtor(obj%cxxmem)", 
                             "F_name_function": "delete", 
                             "F_name_generic": "dtor", 
                             "F_name_impl": "exclass2_dtor", 
@@ -2283,9 +2283,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name_bufferify", 
                             "F_C_name": "c_exclass2_get_name", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name", 
                             "F_name_generic": "get_name", 
                             "F_name_impl": "exclass2_get_name", 
@@ -2469,9 +2469,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name2_bufferify", 
                             "F_C_name": "c_exclass2_get_name2", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name2_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name2_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name2", 
                             "F_name_generic": "get_name2", 
                             "F_name_impl": "exclass2_get_name2", 
@@ -2484,7 +2484,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName2", 
                             "underscore_name": "get_name2"
@@ -2654,9 +2654,9 @@
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name3_bufferify", 
                             "F_C_name": "c_exclass2_get_name3", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name3_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name3_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name3", 
                             "F_name_generic": "get_name3", 
                             "F_name_impl": "exclass2_get_name3", 
@@ -2669,7 +2669,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName3", 
                             "underscore_name": "get_name3"
@@ -2839,9 +2839,9 @@
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name4_bufferify", 
                             "F_C_name": "c_exclass2_get_name4", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name4_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name4_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name4", 
                             "F_name_generic": "get_name4", 
                             "F_name_impl": "exclass2_get_name4", 
@@ -2854,7 +2854,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
+                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName4", 
                             "underscore_name": "get_name4"
@@ -3019,9 +3019,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_name_length", 
                             "F_C_name": "c_exclass2_get_name_length", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_name_length(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_name_length(obj%cxxmem)", 
                             "F_name_function": "get_name_length", 
                             "F_name_generic": "get_name_length", 
                             "F_name_impl": "exclass2_get_name_length", 
@@ -3136,7 +3136,7 @@
                                     "attrs": {
                                         "_typename": "example::nested::ExClass1", 
                                         "intent": "in", 
-                                        "value": true
+                                        "value": false
                                     }, 
                                     "const": true, 
                                     "declarator": {
@@ -3158,21 +3158,21 @@
                             ]
                         }, 
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
-                        "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
+                        "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in))", 
                         "format": {
                             "C_call_code": "example::\tnested::\tExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
                             "C_call_list": "SHCXX_in", 
                             "C_name": "AA_exclass2_get_class1", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);\nconst example::\tnested::\tExClass1 * SHCXX_in = \tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_call": "c_exclass2_get_class1", 
                             "F_C_name": "c_exclass2_get_class1", 
-                            "F_arg_c_call": "obj%cxxptr,\t in%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem,\t in%cxxmem", 
                             "F_arguments": "obj,\t in", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass2_get_class1(obj%cxxptr,\t in%cxxptr)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass2_get_class1(obj%cxxmem,\t in%cxxmem)", 
                             "F_name_function": "get_class1", 
                             "F_name_generic": "get_class1", 
                             "F_name_impl": "exclass2_get_class1", 
@@ -3330,9 +3330,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_0", 
-                            "F_arg_c_call": "obj%cxxptr,\t type", 
+                            "F_arg_c_call": "obj%cxxmem,\t type", 
                             "F_arguments": "obj,\t type", 
-                            "F_call_code": "call c_exclass2_declare_0(obj%cxxptr,\t type)", 
+                            "F_call_code": "call c_exclass2_declare_0(obj%cxxmem,\t type)", 
                             "F_name_function": "declare_0_int", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_0_int", 
@@ -3394,9 +3394,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_0", 
-                            "F_arg_c_call": "obj%cxxptr,\t type", 
+                            "F_arg_c_call": "obj%cxxmem,\t type", 
                             "F_arguments": "obj,\t type", 
-                            "F_call_code": "call c_exclass2_declare_0(obj%cxxptr,\t type)", 
+                            "F_call_code": "call c_exclass2_declare_0(obj%cxxmem,\t type)", 
                             "F_name_function": "declare_0_long", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_0_long", 
@@ -3667,9 +3667,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t type,\t int(len, C_LONG)", 
+                            "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)", 
                             "F_arguments": "obj,\t type,\t len", 
-                            "F_call_code": "call c_exclass2_declare_1(obj%cxxptr,\t type,\t int(len, C_LONG))", 
+                            "F_call_code": "call c_exclass2_declare_1(obj%cxxmem,\t type,\t int(len, C_LONG))", 
                             "F_name_function": "declare_1_int", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_1_int", 
@@ -3755,9 +3755,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t type,\t int(len, C_LONG)", 
+                            "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)", 
                             "F_arguments": "obj,\t type,\t len", 
-                            "F_call_code": "call c_exclass2_declare_1(obj%cxxptr,\t type,\t int(len, C_LONG))", 
+                            "F_call_code": "call c_exclass2_declare_1(obj%cxxmem,\t type,\t int(len, C_LONG))", 
                             "F_name_function": "declare_1_long", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_1_long", 
@@ -3803,9 +3803,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_destroyall", 
                             "F_C_name": "c_exclass2_destroyall", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_destroyall(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass2_destroyall(obj%cxxmem)", 
                             "F_name_function": "destroyall", 
                             "F_name_generic": "destroyall", 
                             "F_name_impl": "exclass2_destroyall", 
@@ -3880,9 +3880,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_type_id", 
                             "F_C_name": "c_exclass2_get_type_id", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_type_id(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_type_id(obj%cxxmem)", 
                             "F_name_function": "get_type_id", 
                             "F_name_generic": "get_type_id", 
                             "F_name_impl": "exclass2_get_type_id", 
@@ -4048,9 +4048,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_int", 
                             "F_C_name": "c_exclass2_set_value_int", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_int(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_int(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_int", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_int", 
@@ -4165,9 +4165,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_long", 
                             "F_C_name": "c_exclass2_set_value_long", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_long(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_long(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_long", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_long", 
@@ -4280,9 +4280,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_float", 
                             "F_C_name": "c_exclass2_set_value_float", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_float(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_float(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_float", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_float", 
@@ -4395,9 +4395,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_double", 
                             "F_C_name": "c_exclass2_set_value_double", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_double(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_double(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_double", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_double", 
@@ -4514,9 +4514,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_value_int", 
                             "F_C_name": "c_exclass2_get_value_int", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_value_int(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_value_int(obj%cxxmem)", 
                             "F_name_function": "get_value_int", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass2_get_value_int", 
@@ -4600,9 +4600,9 @@
                             "C_return_type": "double", 
                             "F_C_call": "c_exclass2_get_value_double", 
                             "F_C_name": "c_exclass2_get_value_double", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_value_double(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_value_double(obj%cxxmem)", 
                             "F_name_function": "get_value_double", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass2_get_value_double", 
@@ -4708,9 +4708,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass3_exfunc_0", 
                             "F_C_name": "c_exclass3_exfunc_0", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass3_exfunc_0(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass3_exfunc_0(obj%cxxmem)", 
                             "F_name_function": "exfunc_0", 
                             "F_name_generic": "exfunc", 
                             "F_name_impl": "exclass3_exfunc_0", 
@@ -4807,9 +4807,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass3_exfunc_1", 
                             "F_C_name": "c_exclass3_exfunc_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t flag", 
+                            "F_arg_c_call": "obj%cxxmem,\t flag", 
                             "F_arguments": "obj,\t flag", 
-                            "F_call_code": "call c_exclass3_exfunc_1(obj%cxxptr,\t flag)", 
+                            "F_call_code": "call c_exclass3_exfunc_1(obj%cxxmem,\t flag)", 
                             "F_name_function": "exfunc_1", 
                             "F_name_generic": "exfunc", 
                             "F_name_impl": "exclass3_exfunc_1", 
@@ -4904,7 +4904,6 @@
             "F_capsule_type": "SHROUD_capsule", 
             "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfuserlibrary.f", 
             "F_module_name": "userlibrary_mod", 
@@ -6645,7 +6644,7 @@
                             "attrs": {
                                 "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
-                                "value": true
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
@@ -6667,7 +6666,7 @@
                     ]
                 }, 
                 "decl": "void testgroup1(axom::sidre::Group * grp)", 
-                "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in)+value)", 
+                "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in))", 
                 "format": {
                     "C_call_code": "example::\tnested::\ttestgroup1(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
@@ -6678,9 +6677,9 @@
                     "C_return_type": "void", 
                     "F_C_call": "c_testgroup1", 
                     "F_C_name": "c_testgroup1", 
-                    "F_arg_c_call": "grp%cxxptr", 
+                    "F_arg_c_call": "grp%cxxmem", 
                     "F_arguments": "grp", 
-                    "F_call_code": "call c_testgroup1(grp%cxxptr)", 
+                    "F_call_code": "call c_testgroup1(grp%cxxmem)", 
                     "F_name_function": "testgroup1", 
                     "F_name_generic": "testgroup1", 
                     "F_name_impl": "testgroup1", 
@@ -6758,7 +6757,7 @@
                             "attrs": {
                                 "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
-                                "value": true
+                                "value": false
                             }, 
                             "const": true, 
                             "declarator": {
@@ -6780,7 +6779,7 @@
                     ]
                 }, 
                 "decl": "void testgroup2(const axom::sidre::Group * grp)", 
-                "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in)+value)", 
+                "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in))", 
                 "format": {
                     "C_call_code": "example::\tnested::\ttestgroup2(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
@@ -6791,9 +6790,9 @@
                     "C_return_type": "void", 
                     "F_C_call": "c_testgroup2", 
                     "F_C_name": "c_testgroup2", 
-                    "F_arg_c_call": "grp%cxxptr", 
+                    "F_arg_c_call": "grp%cxxmem", 
                     "F_arguments": "grp", 
-                    "F_call_code": "call c_testgroup2(grp%cxxptr)", 
+                    "F_call_code": "call c_testgroup2(grp%cxxmem)", 
                     "F_name_function": "testgroup2", 
                     "F_name_generic": "testgroup2", 
                     "F_name_impl": "testgroup2", 
@@ -9298,10 +9297,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "SIDRE_group *{c_var} = (SIDRE_group *) malloc(sizeof(SIDRE_group));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "SIDRE_group {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -9311,11 +9310,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "axom::sidre::Group", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "datagroup", 
             "f_module": {
                 "sidre_mod": [
@@ -9325,17 +9324,9 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
             "f_to_c": "{f_var}%get_instance()", 
@@ -9593,10 +9584,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass1 *{c_var} = (AA_exclass1 *) malloc(sizeof(AA_exclass1));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "AA_exclass1 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -9606,11 +9597,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass1", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "exclass1", 
             "f_module": {
                 "exclass1_mod": [
@@ -9620,20 +9611,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass1)", 
             "forward": "example::\tnested::\tExClass1", 
             "idtor": "1", 
@@ -9676,10 +9659,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass2 *{c_var} = (AA_exclass2 *) malloc(sizeof(AA_exclass2));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "AA_exclass2 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -9689,11 +9672,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass2", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "exclass2", 
             "f_module": {
                 "exclass2_mod": [
@@ -9703,20 +9686,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass2)", 
             "forward": "example::\tnested::\tExClass2", 
             "idtor": "2", 
@@ -9755,10 +9730,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass3 *{c_var} = (AA_exclass3 *) malloc(sizeof(AA_exclass3));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "AA_exclass3 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -9767,11 +9742,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass3", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "exclass3", 
             "f_module": {
                 "exclass3_mod": [
@@ -9781,20 +9756,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass3)", 
             "forward": "example::\tnested::\tExClass3", 
             "py_statements": {

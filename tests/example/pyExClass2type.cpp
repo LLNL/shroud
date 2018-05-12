@@ -320,7 +320,7 @@ PP_exclass2_get_class1(
   PyObject *args,
   PyObject *kwds)
 {
-// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
+// ExClass1 * get_class1(const ExClass1 * in +intent(in))
 // splicer begin class.ExClass2.method.get_class1
     PP_ExClass1 * SHPy_in;
     const char *SHT_kwlist[] = {

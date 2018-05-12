@@ -1049,15 +1049,15 @@ def create_class_typemap(cls):
             f_derived_type=fmt_class.F_derived_name,
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
 #            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
-            f_to_c = '{f_var}%%%s' % fmt_class.F_derived_ptr,
+            f_to_c = '{f_var}%%%s' % fmt_class.F_derived_member,
             )
-        fill_shadow_typemap_defaults(typedef)
+        fill_shadow_typemap_defaults(typedef, fmt_class)
         register_type(type_name, typedef)
 
     fmt_class.C_type_name = typedef.c_type
     return typedef
 
-def fill_shadow_typemap_defaults(typedef):
+def fill_shadow_typemap_defaults(typedef, fmt):
     """Add some defaults to typedef.
     When dumping typedefs to a file, only a subset is written
     since the rest are boilerplate.  This function restores
@@ -1074,8 +1074,8 @@ def fill_shadow_typemap_defaults(typedef):
                       typedef.cxx_type)
 
     typedef.f_type='type(%s)' % typedef.f_derived_type
-    typedef.f_c_type='type(C_PTR)'
-    typedef.f_c_module={ 'iso_c_binding': ['C_PTR']}
+    typedef.f_c_type='type(%s)' % fmt.F_capsule_data_type
+    typedef.f_c_module={'--import--': [ fmt.F_capsule_data_type ]}
 
     # XXX module name may not conflict with type name
 #    typedef.f_module={fmt_class.F_module_name:[unname]}
@@ -1089,11 +1089,10 @@ def fill_shadow_typemap_defaults(typedef):
             c_header='<stdlib.h>',
             cxx_header='<stdlib.h>',
             post_call=[
-                '%s *{c_var} = (%s *) malloc(sizeof(%s));' % (
-                    typedef.c_type, typedef.c_type, typedef.c_type),
-                '{c_var}->addr = {cxx_cast_to_void_ptr};',
-                '{c_var}->idtor = {idtor};',
-                '{c_var}->refcount = 1;',
+                '%s {c_var};' % (typedef.c_type),
+                '{c_var}.addr = {cxx_cast_to_void_ptr};',
+                '{c_var}.idtor = {idtor};',
+                '{c_var}.refcount = 1;',
             ]
         ),
     )
@@ -1103,14 +1102,9 @@ def fill_shadow_typemap_defaults(typedef):
     typedef.f_statements = dict(
         result=dict(
             need_wrapper=True,
-            f_module=dict(iso_c_binding=['c_f_pointer']),
             call=[
-                ('{F_result}%{F_derived_ptr} = '
+                ('{F_result}%{F_derived_member} = '
                  '{F_C_call}({F_arg_c_call})'),
-                ],
-            post_call=[
-                ('call c_f_pointer({F_result}%{F_derived_ptr}, '
-                 '{F_result}%{F_derived_member})'),
                 ],
             )
         )

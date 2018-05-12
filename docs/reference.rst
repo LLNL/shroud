@@ -617,14 +617,8 @@ F_context_type
     Defaults to *SHROUD_vector_context*.
 
 F_derived_member
-    Fortran ``POINTER`` to *F_derived_ptr*.
+    A *F_capsule_data_type* use to reference C++ memory.
     Defaults to *cxxmem*.
-
-F_derived_ptr
-    The name of the ``type(C_PTR)`` member of the Fortran derived type which 
-    points to a *F_capsule_data_type*. 
-    Accessible from Fortran using *F_derived_member*.
-    Defaults ot *cxxpr*.
 
 F_filename_suffix:
    Suffix added to Fortran files.

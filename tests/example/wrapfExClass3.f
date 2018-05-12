@@ -62,8 +62,7 @@ module exclass3_mod
     ! splicer end class.ExClass3.module_top
 
     type exclass3
-        type(C_PTR), private :: cxxptr = C_NULL_PTR
-        type(SHROUD_capsule_data), pointer :: cxxmem => null()
+        type(SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
@@ -94,18 +93,19 @@ module exclass3_mod
 #ifdef USE_CLASS3_A
         subroutine c_exclass3_exfunc_0(self) &
                 bind(C, name="AA_exclass3_exfunc_0")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_exclass3_exfunc_0
 #endif
 
 #ifndef USE_CLASS3_A
         subroutine c_exclass3_exfunc_1(self, flag) &
                 bind(C, name="AA_exclass3_exfunc_1")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_exclass3_exfunc_1
 #endif
@@ -122,7 +122,7 @@ contains
     subroutine exclass3_exfunc_0(obj)
         class(exclass3) :: obj
         ! splicer begin class.ExClass3.method.exfunc_0
-        call c_exclass3_exfunc_0(obj%cxxptr)
+        call c_exclass3_exfunc_0(obj%cxxmem)
         ! splicer end class.ExClass3.method.exfunc_0
     end subroutine exclass3_exfunc_0
 #endif
@@ -135,21 +135,17 @@ contains
         class(exclass3) :: obj
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin class.ExClass3.method.exfunc_1
-        call c_exclass3_exfunc_1(obj%cxxptr, flag)
+        call c_exclass3_exfunc_1(obj%cxxmem, flag)
         ! splicer end class.ExClass3.method.exfunc_1
     end subroutine exclass3_exfunc_1
 #endif
 
-    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    ! Return pointer to C++ memory.
     function exclass3_yadda(obj) result (cxxptr)
         use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(exclass3), intent(IN) :: obj
         type(C_PTR) :: cxxptr
-        if (c_associated(obj%cxxptr)) then
-            cxxptr = obj%cxxmem%addr
-        else
-            cxxptr = C_NULL_PTR
-        endif
+        cxxptr = obj%cxxmem%addr
     end function exclass3_yadda
 
     function exclass3_associated(obj) result (rv)

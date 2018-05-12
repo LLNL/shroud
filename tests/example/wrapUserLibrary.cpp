@@ -213,7 +213,7 @@ void AA_testmpi_serial()
 }
 #endif  // ifndef HAVE_MPI
 
-// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in))
 // function_index=60
 void AA_testgroup1(SIDRE_group * grp)
 {
@@ -225,7 +225,7 @@ void AA_testgroup1(SIDRE_group * grp)
 // splicer end function.testgroup1
 }
 
-// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in))
 // function_index=61
 void AA_testgroup2(const SIDRE_group * grp)
 {

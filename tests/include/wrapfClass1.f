@@ -57,8 +57,7 @@ module class1_mod
 
 
     type class1
-        type(C_PTR), private :: cxxptr = C_NULL_PTR
-        type(SHROUD_capsule_data), pointer :: cxxmem => null()
+        type(SHROUD_capsule_data) :: cxxmem
     contains
         procedure :: method1 => class1_method1
         procedure :: get_instance => class1_get_instance
@@ -78,9 +77,10 @@ module class1_mod
 
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="DEF_class1_method1")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 
@@ -92,19 +92,15 @@ contains
         use iso_c_binding, only : C_INT
         class(class1) :: obj
         integer(C_INT), value, intent(IN) :: arg1
-        call c_class1_method1(obj%cxxptr, arg1)
+        call c_class1_method1(obj%cxxmem, arg1)
     end subroutine class1_method1
 
-    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    ! Return pointer to C++ memory.
     function class1_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(class1), intent(IN) :: obj
         type(C_PTR) :: cxxptr
-        if (c_associated(obj%cxxptr)) then
-            cxxptr = obj%cxxmem%addr
-        else
-            cxxptr = C_NULL_PTR
-        endif
+        cxxptr = obj%cxxmem%addr
     end function class1_get_instance
 
     subroutine class1_set_instance(obj, cxxmem)

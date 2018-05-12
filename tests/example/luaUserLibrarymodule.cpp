@@ -361,7 +361,7 @@ static int l_exclass2_get_name_length(lua_State *L)
     // splicer end class.ExClass2.method.GetNameLength
 }
 
-// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
+// ExClass1 * get_class1(const ExClass1 * in +intent(in))
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
@@ -767,7 +767,7 @@ static int l_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in))
 static int l_testgroup1(lua_State *L)
 {
     // splicer begin function.testgroup1
@@ -779,7 +779,7 @@ static int l_testgroup1(lua_State *L)
     // splicer end function.testgroup1
 }
 
-// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in))
 static int l_testgroup2(lua_State *L)
 {
     // splicer begin function.testgroup2

@@ -941,7 +941,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif result_typedef.base == 'shadow':
             # Return pointer to capsule_data. It contains pointer to results.
-            fmt_func.C_return_type = result_typedef.c_type + ' *'
+            fmt_func.C_return_type = result_typedef.c_type
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type
         elif node.return_pointer_as == 'scalar':
@@ -977,10 +977,10 @@ class Wrapc(util.WrapperMixin):
             self.header_impl_include['<stdlib.h>'] = True  # for malloc
             # XXX - similar to c_statements.result
             append_format(post_call,
-                          '{c_type} *{c_var} = ({c_type} *) malloc(sizeof({c_type}));\n'
-                          '{c_var}->addr = {c_val};\n'
-                          '{c_var}->idtor = {idtor};\n'
-                          '{c_var}->refcount = 1;',
+                          '{c_type} {c_var};\n'
+                          '{c_var}.addr = {c_val};\n'
+                          '{c_var}.idtor = {idtor};\n'
+                          '{c_var}.refcount = 1;',
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:

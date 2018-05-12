@@ -83,9 +83,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class1_method1", 
                             "F_C_name": "c_class1_method1", 
-                            "F_arg_c_call": "obj%cxxptr,\t arg1", 
+                            "F_arg_c_call": "obj%cxxmem,\t arg1", 
                             "F_arguments": "obj,\t arg1", 
-                            "F_call_code": "call c_class1_method1(obj%cxxptr,\t arg1)", 
+                            "F_call_code": "call c_class1_method1(obj%cxxmem,\t arg1)", 
                             "F_name_function": "method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "class1_method1", 
@@ -187,9 +187,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_method1", 
                             "F_C_name": "c_class2_method1", 
-                            "F_arg_c_call": "obj%cxxptr,\t comm", 
+                            "F_arg_c_call": "obj%cxxmem,\t comm", 
                             "F_arguments": "obj,\t comm", 
-                            "F_call_code": "call c_class2_method1(obj%cxxptr,\t comm)", 
+                            "F_call_code": "call c_class2_method1(obj%cxxmem,\t comm)", 
                             "F_name_function": "method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "class2_method1", 
@@ -241,7 +241,7 @@
                                     "attrs": {
                                         "_typename": "three::Class1", 
                                         "intent": "in", 
-                                        "value": true
+                                        "value": false
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -263,7 +263,7 @@
                             ]
                         }, 
                         "decl": "void method2(three::Class1 * c2)", 
-                        "declgen": "void method2(three::Class1 * c2 +intent(in)+value)", 
+                        "declgen": "void method2(three::Class1 * c2 +intent(in))", 
                         "format": {
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
@@ -274,9 +274,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_method2", 
                             "F_C_name": "c_class2_method2", 
-                            "F_arg_c_call": "obj%cxxptr,\t c2%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem,\t c2%cxxmem", 
                             "F_arguments": "obj,\t c2", 
-                            "F_call_code": "call c_class2_method2(obj%cxxptr,\t c2%cxxptr)", 
+                            "F_call_code": "call c_class2_method2(obj%cxxmem,\t c2%cxxmem)", 
                             "F_name_function": "method2", 
                             "F_name_generic": "method2", 
                             "F_name_impl": "class2_method2", 
@@ -370,7 +370,6 @@
             "F_capsule_type": "SHROUD_capsule", 
             "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfdefault_library.f", 
             "F_module_name": "default_library_mod", 
@@ -542,10 +541,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "DEF_class2 *{c_var} = (DEF_class2 *) malloc(sizeof(DEF_class2));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "DEF_class2 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -554,11 +553,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Class2", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class2", 
             "f_module": {
                 "class2_mod": [
@@ -568,20 +567,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class2)", 
             "forward": "Class2", 
             "py_statements": {
@@ -1345,10 +1336,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "DEF_class1 *{c_var} = (DEF_class1 *) malloc(sizeof(DEF_class1));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "DEF_class1 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -1358,11 +1349,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "three::\tClass1", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
                 "class1_mod": [
@@ -1372,20 +1363,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class1)", 
             "forward": "three::\tClass1", 
             "py_statements": {

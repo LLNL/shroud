@@ -55,9 +55,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "xxx_tes_names_method1", 
                             "F_C_name": "xxx_tes_names_method1", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call xxx_tes_names_method1(obj%cxxptr)", 
+                            "F_call_code": "call xxx_tes_names_method1(obj%cxxmem)", 
                             "F_name_function": "type_method1", 
                             "F_name_generic": "method1", 
                             "F_name_impl": "names_method1", 
@@ -103,9 +103,9 @@
                             "C_this": "self2", 
                             "F_C_call": "xxx_tes_names_method2", 
                             "F_C_name": "xxx_tes_names_method2", 
-                            "F_arg_c_call": "obj2%cxxptr", 
+                            "F_arg_c_call": "obj2%cxxmem", 
                             "F_arguments": "obj2", 
-                            "F_call_code": "call xxx_tes_names_method2(obj2%cxxptr)", 
+                            "F_call_code": "call xxx_tes_names_method2(obj2%cxxmem)", 
                             "F_name_function": "method2", 
                             "F_name_generic": "method2", 
                             "F_name_impl": "names_method2", 
@@ -287,7 +287,6 @@
             "F_capsule_type": "SHROUD_capsule", 
             "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "F", 
             "F_impl_filename": "top.f", 
             "F_module_name": "top_module", 
@@ -1048,10 +1047,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TES_names *{c_var} = (TES_names *) malloc(sizeof(TES_names));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "TES_names {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -1060,11 +1059,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Names", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "FNames", 
             "f_module": {
                 "name_module": [
@@ -1074,20 +1073,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(FNames)", 
             "forward": "Names", 
             "py_statements": {
@@ -1129,10 +1120,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TES_names2 *{c_var} = (TES_names2 *) malloc(sizeof(TES_names2));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "TES_names2 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -1141,11 +1132,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Names2", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "names2", 
             "f_module": {
                 "names2_mod": [
@@ -1155,20 +1146,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(names2)", 
             "forward": "Names2", 
             "py_statements": {

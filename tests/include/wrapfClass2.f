@@ -57,8 +57,7 @@ module class2_mod
 
 
     type class2
-        type(C_PTR), private :: cxxptr = C_NULL_PTR
-        type(SHROUD_capsule_data), pointer :: cxxmem => null()
+        type(SHROUD_capsule_data) :: cxxmem
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
@@ -79,18 +78,19 @@ module class2_mod
 
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="DEF_class2_method1")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: comm
         end subroutine c_class2_method1
 
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="DEF_class2_method2")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
-            type(C_PTR), value, intent(IN) :: c2
+            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: c2
         end subroutine c_class2_method2
 
     end interface
@@ -100,26 +100,22 @@ contains
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
-        call c_class2_method1(obj%cxxptr, comm)
+        call c_class2_method1(obj%cxxmem, comm)
     end subroutine class2_method1
 
     subroutine class2_method2(obj, c2)
         use class1_mod, only : class1
         class(class2) :: obj
-        type(class1), value, intent(IN) :: c2
-        call c_class2_method2(obj%cxxptr, c2%cxxptr)
+        type(class1), intent(IN) :: c2
+        call c_class2_method2(obj%cxxmem, c2%cxxmem)
     end subroutine class2_method2
 
-    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    ! Return pointer to C++ memory.
     function class2_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
         class(class2), intent(IN) :: obj
         type(C_PTR) :: cxxptr
-        if (c_associated(obj%cxxptr)) then
-            cxxptr = obj%cxxmem%addr
-        else
-            cxxptr = C_NULL_PTR
-        endif
+        cxxptr = obj%cxxmem%addr
     end function class2_get_instance
 
     subroutine class2_set_instance(obj, cxxmem)

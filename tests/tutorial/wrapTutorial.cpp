@@ -490,7 +490,7 @@ int TUT_direction_func(int arg)
 // splicer end function.direction_func
 }
 
-// int useclass(const Class1 * arg1 +intent(in)+value)
+// int useclass(const Class1 * arg1 +intent(in))
 // function_index=40
 int TUT_useclass(const TUT_class1 * arg1)
 {
@@ -504,29 +504,29 @@ int TUT_useclass(const TUT_class1 * arg1)
 
 // const Class1 * getclass2()
 // function_index=41
-TUT_class1 * TUT_getclass2()
+TUT_class1 TUT_getclass2()
 {
 // splicer begin function.getclass2
     const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
-    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
-    SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>
+    TUT_class1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(const_cast<tutorial::Class1 *>
         (SHCXX_rv));
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    SHC_rv.idtor = 0;
+    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end function.getclass2
 }
 
 // Class1 * getclass3()
 // function_index=42
-TUT_class1 * TUT_getclass3()
+TUT_class1 TUT_getclass3()
 {
 // splicer begin function.getclass3
     tutorial::Class1 * SHCXX_rv = tutorial::getclass3();
-    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    TUT_class1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
+    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end function.getclass3
 }
@@ -537,15 +537,15 @@ TUT_class1 * TUT_getclass3()
  * \brief Return Class1 instance by value
  *
  */
-TUT_class1 * TUT_get_class_new(int flag)
+TUT_class1 TUT_get_class_new(int flag)
 {
 // splicer begin function.get_class_new
     tutorial::Class1 * SHCXX_rv = new tutorial::Class1;
     *SHCXX_rv = tutorial::getClassNew(flag);
-    TUT_class1 *SHC_rv = (TUT_class1 *) malloc(sizeof(TUT_class1));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 1;
-    SHC_rv->refcount = 1;
+    TUT_class1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 1;
+    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end function.get_class_new
 }

@@ -221,16 +221,16 @@ module userlibrary_mod
 
         subroutine c_testgroup1(grp) &
                 bind(C, name="AA_testgroup1")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: grp
+            type(SHROUD_capsule_data), intent(IN) :: grp
         end subroutine c_testgroup1
 
         subroutine c_testgroup2(grp) &
                 bind(C, name="AA_testgroup2")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: grp
+            type(SHROUD_capsule_data), intent(IN) :: grp
         end subroutine c_testgroup2
 
         subroutine func_ptr1(get) &
@@ -467,23 +467,23 @@ contains
     end subroutine testmpi_serial
 #endif
 
-    ! void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+    ! void testgroup1(axom::sidre::Group * grp +intent(in))
     ! function_index=60
     subroutine testgroup1(grp)
         use sidre_mod, only : group
-        type(datagroup), value, intent(IN) :: grp
+        type(datagroup), intent(IN) :: grp
         ! splicer begin function.testgroup1
-        call c_testgroup1(grp%cxxptr)
+        call c_testgroup1(grp%cxxmem)
         ! splicer end function.testgroup1
     end subroutine testgroup1
 
-    ! void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+    ! void testgroup2(const axom::sidre::Group * grp +intent(in))
     ! function_index=61
     subroutine testgroup2(grp)
         use sidre_mod, only : group
-        type(datagroup), value, intent(IN) :: grp
+        type(datagroup), intent(IN) :: grp
         ! splicer begin function.testgroup2
-        call c_testgroup2(grp%cxxptr)
+        call c_testgroup2(grp%cxxmem)
         ! splicer end function.testgroup2
     end subroutine testgroup2
 

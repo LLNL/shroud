@@ -54,14 +54,14 @@ extern "C" {
 
 // Class2()
 // function_index=0
-FOR_class2 * FOR_class2_ctor()
+FOR_class2 FOR_class2_ctor()
 {
 // splicer begin class.Class2.method.ctor
     tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
-    FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    FOR_class2 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
+    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }
@@ -78,7 +78,7 @@ void FOR_class2_dtor(FOR_class2 * self)
 // splicer end class.Class2.method.dtor
 }
 
-// void func1(Class1 * arg +intent(in)+value)
+// void func1(Class1 * arg +intent(in))
 // function_index=2
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {

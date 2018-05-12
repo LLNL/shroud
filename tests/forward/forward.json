@@ -80,15 +80,15 @@
                             "C_call_code": "tutorial::\tClass2 *SHCXX_rv = new tutorial::\tClass2();", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_ctor", 
-                            "C_post_call": "FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "FOR_class2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "FOR_class2 *", 
+                            "C_return_type": "FOR_class2", 
                             "F_C_call": "c_class2_ctor", 
                             "F_C_name": "c_class2_ctor", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxptr = c_class2_ctor()\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_class2_ctor()", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "class2_ctor", 
@@ -134,9 +134,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_dtor", 
                             "F_C_name": "c_class2_dtor", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_class2_dtor(obj%cxxptr)", 
+                            "F_call_code": "call c_class2_dtor(obj%cxxmem)", 
                             "F_name_function": "dtor", 
                             "F_name_generic": "dtor", 
                             "F_name_impl": "class2_dtor", 
@@ -215,7 +215,7 @@
                                     "attrs": {
                                         "_typename": "tutorial::Class1", 
                                         "intent": "in", 
-                                        "value": true
+                                        "value": false
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -237,7 +237,7 @@
                             ]
                         }, 
                         "decl": "void func1(Class1 *arg)", 
-                        "declgen": "void func1(Class1 * arg +intent(in)+value)", 
+                        "declgen": "void func1(Class1 * arg +intent(in))", 
                         "format": {
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
@@ -248,9 +248,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_class2_func1", 
                             "F_C_name": "c_class2_func1", 
-                            "F_arg_c_call": "obj%cxxptr,\t arg%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem", 
                             "F_arguments": "obj,\t arg", 
-                            "F_call_code": "call c_class2_func1(obj%cxxptr,\t arg%cxxptr)", 
+                            "F_call_code": "call c_class2_func1(obj%cxxmem,\t arg%cxxmem)", 
                             "F_name_function": "func1", 
                             "F_name_generic": "func1", 
                             "F_name_impl": "class2_func1", 
@@ -347,7 +347,6 @@
             "F_capsule_type": "SHROUD_capsule", 
             "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfforward.f", 
             "F_module_name": "forward_mod", 
@@ -1202,10 +1201,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TUT_class1 *{c_var} = (TUT_class1 *) malloc(sizeof(TUT_class1));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "TUT_class1 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -1214,11 +1213,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "tutorial::Class1", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
                 "tutorial_mod": [
@@ -1228,17 +1227,9 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
             "f_to_c": "{f_var}%get_instance()", 
@@ -1283,10 +1274,10 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "FOR_class2 *{c_var} = (FOR_class2 *) malloc(sizeof(FOR_class2));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "FOR_class2 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};", 
+                        "{c_var}.refcount = 1;"
                     ]
                 }
             }, 
@@ -1295,11 +1286,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "tutorial::\tClass2", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class2", 
             "f_module": {
                 "forward_mod": [
@@ -1309,20 +1300,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class2)", 
             "forward": "tutorial::\tClass2", 
             "idtor": "1", 
