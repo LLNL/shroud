@@ -137,8 +137,9 @@ AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
 void AA_exclass1_dtor(AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.dtor
-    AA_SHROUD_array_destructor_function
-        (reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);
+    example::nested::ExClass1 *SH_this = static_cast<example::nested::
+        ExClass1 *>(self->addr);
+    delete SH_this;
     return;
 // splicer end class.ExClass1.method.dtor
 }

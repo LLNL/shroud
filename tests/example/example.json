@@ -392,9 +392,10 @@
                             "description": "longer description joined with previous line"
                         }, 
                         "format": {
-                            "C_call_code": "AA_SHROUD_array_destructor_function\t(reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);", 
+                            "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
+                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2190,9 +2191,10 @@
                             "brief": "destructor"
                         }, 
                         "format": {
-                            "C_call_code": "AA_SHROUD_array_destructor_function\t(reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);", 
+                            "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
+                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 

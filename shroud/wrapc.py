@@ -684,18 +684,15 @@ class Wrapc(util.WrapperMixin):
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 
-                    # destructor does not need cxx_var since it passes c_var
-                    # to C_memory_dtor_function (to account for reference count)
-                    if not is_dtor:
-                        # LHS is class' cxx_to_c
-                        cls_typemap = cls.typemap
-                        if cls_typemap.c_to_cxx is None:
-                            # This should be set in typemap.fill_shadow_typemap_defaults
-                            raise RuntimeError("Wappped class does not have c_to_cxx set")
-                        append_format(
-                            pre_call, 
-                            '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
-                            cls_typemap.c_to_cxx + ';', fmt_func)
+                    # LHS is class' cxx_to_c
+                    cls_typemap = cls.typemap
+                    if cls_typemap.c_to_cxx is None:
+                        # This should be set in typemap.fill_shadow_typemap_defaults
+                        raise RuntimeError("Wappped class does not have c_to_cxx set")
+                    append_format(
+                        pre_call, 
+                        '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
+                        cls_typemap.c_to_cxx + ';', fmt_func)
 
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
@@ -988,9 +985,7 @@ class Wrapc(util.WrapperMixin):
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
             # Call C_memory_dtor_function to decrement reference count.
-            append_format(call_code,
-                          '{C_memory_dtor_function}\t(reinterpret_cast<{C_capsule_data_type} *>({C_this}), true);',
-                          fmt_func)
+            append_format(call_code, 'delete {CXX_this};', fmt_func)
         elif CXX_subprogram == 'subroutine':
             append_format(call_code, '{CXX_this_call}{function_name}'
                           '{CXX_template}(\t{C_call_list});', fmt_func)

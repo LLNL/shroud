@@ -125,9 +125,10 @@
                         "decl": "~Class2()", 
                         "declgen": "~Class2()", 
                         "format": {
-                            "C_call_code": "FOR_SHROUD_array_destructor_function\t(reinterpret_cast<FOR_SHROUD_capsule_data *>(self), true);", 
+                            "C_call_code": "delete SH_this;", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_dtor", 
+                            "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(self->addr);", 
                             "C_prototype": "FOR_class2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
