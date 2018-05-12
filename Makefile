@@ -117,14 +117,16 @@ TESTDIRS = \
     $(tempdir)/run-strings/.. \
     $(tempdir)/run-strings/python/.. \
     $(tempdir)/run-clibrary/.. \
-    $(tempdir)/run-clibrary/python/..
+    $(tempdir)/run-clibrary/python/.. \
+    $(tempdir)/run-ownership/.. \
+    $(tempdir)/run-ownership/python/..
 
 testdirs : $(TESTDIRS)
 
 fortran : tutorial vectors strings clibrary
 
 # Compile the generated Fortran wrapper
-tutorial vectors forward strings clibrary : testdirs
+tutorial vectors forward strings clibrary ownership : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-$@ \
 	    -f $(top)/tests/run-$@/Makefile \
