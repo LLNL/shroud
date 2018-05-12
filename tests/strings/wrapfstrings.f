@@ -463,6 +463,7 @@ module strings_mod
     private fstr_ptr
 
     interface
+        ! Copy the std::string in context into c_var.
         subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
              bind(c,name="STR_ShroudStringCopyAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG

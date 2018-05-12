@@ -39,6 +39,38 @@
 ########################################################################
 """
 Helper functions for C and Fortran wrappers.
+
+
+ C helper functions which may be added to a implementation file.
+
+ c_helpers = Dictionary of helpers needed by this helper
+ c_header    = Blank delimited list of header files to #include
+               in implementation file when wrapping a C library.
+ cxx_header  = Blank delimited list of header files to #include.
+               in implementation file when wrapping a C++ library.
+ c_source    = language=c source.
+ cxx_source  = language=c++ source.
+ dependent_helpers = list of helpers names needed by this helper
+                     They will be added to the output before current helper.
+ h_header    = Blank delimited list of headers to #include in
+               c wrapper header.
+ h_source    = code for include file. Must be compatible with language=c.
+ h_shared    = header code written to C_header_helper file.
+ source      = Code inserted before any wrappers.
+               The functions should be file static.
+               Used if c_source or cxx_source is not defined.
+
+
+ Fortran helper functions which may be added to a module.
+
+ dependent_helpers = list of helpers names needed by this helper
+                     They will be added to the output before current helper.
+ private   = names for PRIVATE statement 
+ interface = code for INTERFACE
+ source    = code for CONTAINS
+
+
+
 """
 
 from . import util
@@ -95,24 +127,6 @@ extern "C" {
 #endif
 /* *INDENT-ON* */"""
 
-#
-# C helper functions which may be added to a implementation file.
-#
-# c_helpers = Dictionary of helpers needed by this helper
-# c_header    = Blank delimited list of header files to #include
-#               in implementation file when wrapping a C library.
-# cxx_header  = Blank delimited list of header files to #include.
-#               in implementation file when wrapping a C++ library.
-# c_source    = language=c source.
-# cxx_source  = language=c++ source.
-# h_header    = Blank delimited list of headers to #include in
-#               c wrapper header.
-# h_source    = code for include file. Must be compatible with language=c.
-# h_shared    = header code written to C_header_helper file.
-# source      = Code inserted before any wrappers.
-#               The functions should be file static.
-#               Used if c_source or cxx_source is not defined.
-
 num_union_helpers = 0
 def add_union_helper(cxx, c, num=0):
     """A union helper is used to convert between a struct in C and C++.
@@ -148,10 +162,12 @@ def add_external_helpers(fmt):
     # Only used with std::string and thus C++
     name = 'copy_string'
     CHelpers[name] = dict(
+        dependent_helpers=[ 'vector_context' ],
         cxx_header='<string>',
 # XXX - mangle name
         source=wformat("""
-// Called by Fortran to deal with allocatable character
+// Copy the std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudStringCopyAndFree({C_context_type} *data, char *c_var, long c_var_len) {{+
 std::string * cxxstr = static_cast<std::string *>(data->cxx);
 
@@ -163,8 +179,10 @@ strncpy(c_var, cxxstr->data(), cxxstr->size());
 
     # Deal with allocatable character
     FHelpers[name] = dict(
+        dependent_helpers=[ 'vector_context' ],
         interface=wformat("""
 interface+
+! Copy the std::string in context into c_var.
 subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudStringCopyAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
@@ -303,6 +321,7 @@ def add_vector_copy_helper(fmt):
     name = wformat('vector_copy_{cxx_T}', fmt)
     if name not in CHelpers:
         helper = dict(
+            dependent_helpers=[ 'vector_context' ],
             cxx_source=wformat("""
 0// Copy std::vector into array c_var(c_var_size).
 0// Then release std::vector.
@@ -323,6 +342,7 @@ delete cxx_var;
     if name not in FHelpers:
         helper = dict(
 # XXX when f_kind == C_SIZE_T
+            dependent_helpers=[ 'vector_context' ],
             interface=wformat("""
 interface+
 subroutine SHROUD_vector_copy_{cxx_T}(context, c_var, c_var_size) &+
@@ -385,14 +405,6 @@ int ShroudLenTrim(const char *s, int ls) {
 
     ) # end CHelpers
 
-#
-# Fortran helper functions which may be added to a module.
-#
-# dependent_helpers = list of helpers names needed by this helper
-#                     They will be added to the output before current helper.
-# private   = names for PRIVATE statement 
-# interface = code for INTERFACE
-# source    = code for CONTAINS
 
 FHelpers = dict(
     fstr=dict(

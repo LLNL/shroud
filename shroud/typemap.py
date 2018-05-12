@@ -703,7 +703,7 @@ def initialize():
 #--                ),
                 intent_out_buf=dict(
                     buf_args = [ 'arg', 'lenout' ],
-                    c_helper='vector_context copy_string',
+                    c_helper='copy_string',
                     cxx_local_var='scalar',
                     pre_call=[
                         'std::string * {cxx_var};'
@@ -715,7 +715,7 @@ def initialize():
                 result_buf=dict(
                     # pass address of string and length back to Fortran
                     buf_args = [ 'context' ],
-                    c_helper='vector_context copy_string',
+                    c_helper='copy_string',
                     # Copy address of result into c_var and save length.
                     # When returning a std::string (and not a reference or pointer)
                     # an intermediate object is created to save the results
@@ -735,7 +735,7 @@ def initialize():
             f_statements=dict(
                 result=dict(
                     need_wrapper=True,
-                    f_helper='vector_context copy_string',
+                    f_helper='copy_string',
                     post_call=[
                         'allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})',
                         'call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
@@ -768,7 +768,7 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'context' ],
                     cxx_local_var='pointer',
-                    c_helper='capsule_data_helper vector_context vector_copy_{cxx_T}',
+                    c_helper='capsule_data_helper vector_copy_{cxx_T}',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
@@ -858,7 +858,7 @@ def initialize():
 
             f_statements=dict(
                 intent_out=dict(
-                    f_helper='vector_context vector_copy_{cxx_T}',
+                    f_helper='vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_context}, '
@@ -866,7 +866,7 @@ def initialize():
                     ],
                 ),
                 intent_inout=dict(
-                    f_helper='vector_context vector_copy_{cxx_T}',
+                    f_helper='vector_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'call SHROUD_vector_copy_{cxx_T}({c_var_context}, '

@@ -1708,7 +1708,7 @@
                     "buf_args": [
                         "context"
                     ], 
-                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper vector_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -1814,7 +1814,7 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout": {
-                    "f_helper": "vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -1825,7 +1825,7 @@
                     ]
                 }, 
                 "intent_out": {
-                    "f_helper": "vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "vector_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -1845,7 +1845,7 @@
                         "arg", 
                         "lenout"
                     ], 
-                    "c_helper": "vector_context copy_string", 
+                    "c_helper": "copy_string", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
                         " post_call intent_out_buf"
@@ -1858,7 +1858,7 @@
                     "buf_args": [
                         "context"
                     ], 
-                    "c_helper": "vector_context copy_string", 
+                    "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx = {cxx_cast_to_void_ptr};", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();"
@@ -1871,7 +1871,7 @@
             "cxx_type": "std::string", 
             "f_statements": {
                 "result": {
-                    "f_helper": "vector_context copy_string", 
+                    "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
                         "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 

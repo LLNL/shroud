@@ -63,7 +63,8 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
 
-// Called by Fortran to deal with allocatable character
+// Copy the std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
 void STR_ShroudStringCopyAndFree(STR_SHROUD_vector_context *data, char *c_var, long c_var_len) {
     std::string * cxxstr = static_cast<std::string *>(data->cxx);
 
