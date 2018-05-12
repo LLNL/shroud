@@ -53,14 +53,12 @@ extern "C" {
 struct s_DEF_class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_DEF_class1 DEF_class1;
 
 struct s_DEF_class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_DEF_class2 DEF_class2;
 

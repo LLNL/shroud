@@ -52,7 +52,6 @@ module class1_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
 

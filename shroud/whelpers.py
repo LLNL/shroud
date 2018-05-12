@@ -208,7 +208,6 @@ def add_shadow_helper(node):
 struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
-int refcount;   /* reference count */
 -}};
 typedef struct s_{C_type_name} {C_type_name};""".format(C_type_name=cname),
         )
@@ -227,10 +226,9 @@ def add_capsule_helper(fmt):
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
-integer(C_INT) :: refcount = 0    ! reference count
 -end type {F_capsule_data_type}""", fmt),
             modules = dict(
-                iso_c_binding=['C_PTR', 'C_INT', 'C_NULL_PTR' ],
+                iso_c_binding=[ 'C_PTR', 'C_INT', 'C_NULL_PTR' ],
             ),
         )
         FHelpers[name] = helper
@@ -241,7 +239,6 @@ integer(C_INT) :: refcount = 0    ! reference count
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
-int refcount;   /* reference count */
 -}};
 typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
         )

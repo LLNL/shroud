@@ -52,28 +52,24 @@ extern "C" {
 struct s_AA_exclass1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_AA_exclass1 AA_exclass1;
 
 struct s_AA_exclass2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_AA_exclass2 AA_exclass2;
 
 struct s_AA_exclass3 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_AA_exclass3 AA_exclass3;
 
 struct s_USE_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_USE_SHROUD_capsule_data USE_SHROUD_capsule_data;
 

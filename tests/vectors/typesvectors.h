@@ -53,7 +53,6 @@ extern "C" {
 struct s_VEC_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_VEC_SHROUD_capsule_data VEC_SHROUD_capsule_data;
 

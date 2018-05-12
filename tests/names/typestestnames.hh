@@ -53,14 +53,12 @@ extern "C" {
 struct s_TES_names {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TES_names TES_names;
 
 struct s_TES_names2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TES_names2 TES_names2;
 

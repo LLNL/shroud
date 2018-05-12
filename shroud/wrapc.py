@@ -979,8 +979,7 @@ class Wrapc(util.WrapperMixin):
             append_format(post_call,
                           '{c_type} {c_var};\n'
                           '{c_var}.addr = {c_val};\n'
-                          '{c_var}.idtor = {idtor};\n'
-                          '{c_var}.refcount = 1;',
+                          '{c_var}.idtor = {idtor};',
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:

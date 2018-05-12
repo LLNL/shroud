@@ -240,7 +240,7 @@
                             "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new_default", 
-                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1", 
@@ -383,7 +383,7 @@
                             "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1(flag);", 
                             "C_call_list": "flag", 
                             "C_name": "TUT_class1_new_flag", 
-                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_prototype": "int flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1", 
@@ -827,7 +827,7 @@
                             "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
                             "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer", 
-                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name);", 
                             "C_prototype": "TUT_class1 * self,\t char * name,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
@@ -973,7 +973,7 @@
                             "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
                             "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer_bufferify", 
-                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                            "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name, Lname);", 
                             "C_prototype": "TUT_class1 * self,\t char * name,\t int Lname,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
@@ -1475,7 +1475,7 @@
                             "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_singleton_get_reference", 
-                            "C_post_call": "TUT_singleton SHC_rv;\nSHC_rv.addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                            "C_post_call": "TUT_singleton SHC_rv;\nSHC_rv.addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_singleton", 
@@ -7611,7 +7611,7 @@
                     "C_call_code": "const tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass2(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass2", 
-                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv.idtor = 0;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1", 
@@ -7684,7 +7684,7 @@
                     "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass3(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass3", 
-                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;\nSHC_rv.refcount = 1;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1", 
@@ -7779,7 +7779,7 @@
                     "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassNew(\tflag);", 
                     "C_call_list": "flag", 
                     "C_name": "TUT_get_class_new", 
-                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 1;\nSHC_rv.refcount = 1;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 1;", 
                     "C_pre_call": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1;", 
                     "C_prototype": "int flag", 
                     "C_return_code": "return SHC_rv;", 
@@ -9057,8 +9057,7 @@
                     "post_call": [
                         "TUT_singleton {c_var};", 
                         "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};", 
-                        "{c_var}.refcount = 1;"
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9819,8 +9818,7 @@
                     "post_call": [
                         "TUT_class1 {c_var};", 
                         "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};", 
-                        "{c_var}.refcount = 1;"
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 

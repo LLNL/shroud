@@ -53,21 +53,18 @@ extern "C" {
 struct s_TUT_class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TUT_class1 TUT_class1;
 
 struct s_TUT_singleton {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TUT_singleton TUT_singleton;
 
 struct s_TUT_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TUT_SHROUD_capsule_data TUT_SHROUD_capsule_data;
 

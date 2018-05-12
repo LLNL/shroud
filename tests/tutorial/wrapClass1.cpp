@@ -62,7 +62,6 @@ TUT_class1 TUT_class1_new_default()
     TUT_class1 SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 0;
-    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end class.Class1.method.new_default
 }
@@ -76,7 +75,6 @@ TUT_class1 TUT_class1_new_flag(int flag)
     TUT_class1 SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 0;
-    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end class.Class1.method.new_flag
 }
@@ -162,7 +160,6 @@ TUT_class1 TUT_class1_return_this_buffer(TUT_class1 * self, char * name,
     TUT_class1 SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 0;
-    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end class.Class1.method.return_this_buffer
 }
@@ -185,7 +182,6 @@ TUT_class1 TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
     TUT_class1 SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 0;
-    SHC_rv.refcount = 1;
     return SHC_rv;
 // splicer end class.Class1.method.return_this_buffer_bufferify
 }

@@ -543,8 +543,7 @@
                     "post_call": [
                         "DEF_class2 {c_var};", 
                         "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};", 
-                        "{c_var}.refcount = 1;"
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
@@ -1338,8 +1337,7 @@
                     "post_call": [
                         "DEF_class1 {c_var};", 
                         "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};", 
-                        "{c_var}.refcount = 1;"
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 

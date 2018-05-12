@@ -1092,7 +1092,6 @@ def fill_shadow_typemap_defaults(typedef, fmt):
                 '%s {c_var};' % (typedef.c_type),
                 '{c_var}.addr = {cxx_cast_to_void_ptr};',
                 '{c_var}.idtor = {idtor};',
-                '{c_var}.refcount = 1;',
             ]
         ),
     )
