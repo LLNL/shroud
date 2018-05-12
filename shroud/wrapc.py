@@ -845,11 +845,6 @@ class Wrapc(util.WrapperMixin):
                 elif buf_arg == 'len':
                     fmt_arg.c_var_len = c_attrs['len']
                     append_format(proto_list, 'int {c_var_len}', fmt_arg)
-                elif buf_arg == 'lenout':
-                    fmt_arg.c_var_len = c_attrs['lenout']
-                    append_format(proto_list, 'size_t *{c_var_len}', fmt_arg)
-                    self.header_typedef_nodes['size_t'] = \
-                        typemap.lookup_type('size_t')
                 else:
                     raise RuntimeError("wrap_function: unhandled case {}"
                                        .format(buf_arg))

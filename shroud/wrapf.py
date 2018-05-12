@@ -768,12 +768,6 @@ rv = .false.
                     arg_c_decl.append(
                         'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                elif buf_arg == 'lenout':
-                    # result of allocatable std::string or std::vector
-                    arg_c_names.append(buf_arg_name)
-                    arg_c_decl.append(
-                        'integer(C_SIZE_T), intent(OUT) :: %s' % buf_arg_name)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_SIZE_T')
                 else:
                     raise RuntimeError("wrap_function_interface: unhandled case {}"
                                        .format(buf_arg))
@@ -1111,12 +1105,6 @@ rv = .false.
                 elif buf_arg == 'len':
                     append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
                     self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                elif buf_arg == 'lenout':
-                    fmt_arg.f_var_len = c_attrs['lenout']
-                    append_format(arg_f_decl, 'integer(C_SIZE_T) :: {f_var_len}',
-                                  fmt_arg)
-                    append_format(arg_c_call, '{f_var_len}', fmt_arg)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_SIZE_T')
                 else:
                     raise RuntimeError("wrap_function_impl: unhandled case {}"
                                        .format(buf_arg))
