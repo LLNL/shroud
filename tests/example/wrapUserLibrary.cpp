@@ -352,8 +352,7 @@ void AA_cos_doubles(double * in, double * out, int sizein)
 }
 
 // Release C++ allocated memory.
-void AA_SHROUD_array_destructor_function
-    (USE_SHROUD_capsule_data *cap, bool gc)
+void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
@@ -382,12 +381,8 @@ void AA_SHROUD_array_destructor_function
         break;
     }
     }
-    if (gc) {
-        free(cap);
-    } else {
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

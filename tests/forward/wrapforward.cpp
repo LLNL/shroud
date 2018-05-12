@@ -53,8 +53,7 @@ extern "C" {
 // splicer end C_definitions
 
 // Release C++ allocated memory.
-void FOR_SHROUD_array_destructor_function
-    (FOR_SHROUD_capsule_data *cap, bool gc)
+void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
@@ -76,12 +75,8 @@ void FOR_SHROUD_array_destructor_function
         break;
     }
     }
-    if (gc) {
-        free(cap);
-    } else {
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

@@ -153,8 +153,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 }
 
 // Release C++ allocated memory.
-void VEC_SHROUD_array_destructor_function
-    (VEC_SHROUD_capsule_data *cap, bool gc)
+void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
@@ -176,12 +175,8 @@ void VEC_SHROUD_array_destructor_function
         break;
     }
     }
-    if (gc) {
-        free(cap);
-    } else {
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

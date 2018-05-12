@@ -340,7 +340,7 @@ C_impl_filename_library_template
 
 C_memory_dtor_function_template
     Name of function used to delete memory allocated by C or C++.
-    defaults to ``{C_prefix}SHROUD_array_destructor_function``.
+    defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
     ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``

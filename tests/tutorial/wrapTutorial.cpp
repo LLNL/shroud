@@ -657,8 +657,7 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 }
 
 // Release C++ allocated memory.
-void TUT_SHROUD_array_destructor_function
-    (TUT_SHROUD_capsule_data *cap, bool gc)
+void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
@@ -680,12 +679,8 @@ void TUT_SHROUD_array_destructor_function
         break;
     }
     }
-    if (gc) {
-        free(cap);
-    } else {
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

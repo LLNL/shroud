@@ -347,7 +347,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
             C_memory_dtor_function_template=(
-                '{C_prefix}SHROUD_array_destructor_function'),
+                '{C_prefix}SHROUD_memory_destructor'),
 
             C_var_capsule_template = 'C{c_var}',     # capsule argument
             C_var_context_template = 'D{c_var}',     # context argument

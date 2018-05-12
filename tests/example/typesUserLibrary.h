@@ -77,8 +77,7 @@ struct s_USE_SHROUD_capsule_data {
 };
 typedef struct s_USE_SHROUD_capsule_data USE_SHROUD_capsule_data;
 
-void AA_SHROUD_array_destructor_function
-    (USE_SHROUD_capsule_data *cap, bool gc);
+void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }

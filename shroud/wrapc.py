@@ -984,7 +984,6 @@ class Wrapc(util.WrapperMixin):
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
-            # Call C_memory_dtor_function to decrement reference count.
             append_format(call_code, 'delete {CXX_this};', fmt_func)
         elif CXX_subprogram == 'subroutine':
             append_format(call_code, '{CXX_this_call}{function_name}'
@@ -1153,7 +1152,7 @@ class Wrapc(util.WrapperMixin):
 
         append_format(
             self.shared_proto_c,
-            '\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc);',
+            '\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap);',
             fmt)
 
         output = self.impl
@@ -1161,7 +1160,7 @@ class Wrapc(util.WrapperMixin):
             output,
             '\n'
             '// Release C++ allocated memory.\n'
-            'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap, bool gc)\n'
+            'void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n'
             '{{+'
             , fmt)
 
@@ -1192,12 +1191,8 @@ class Wrapc(util.WrapperMixin):
             'break;\n'
             '-}\n'
             '}\n'
-            'if (gc) {+\n'
-            'free(cap);\n'
-            '-} else {+\n'
             'cap->addr = NULL;\n'
             'cap->idtor = 0;  // avoid deleting again\n'
-            '-}\n'
             '-}'
         )
         self.header_impl_include['<stdlib.h>'] = True  # for free
