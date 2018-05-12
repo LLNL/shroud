@@ -17,7 +17,7 @@ C function const char * getCharPtr3()
 C function void getCharPtr3(char * output +intent(out)+len(Noutput))
 C function void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
-C function void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C function const string & getConstStringRefPure() +pure
 C function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 C function const string & getConstStringRefLen() +len(30)
@@ -27,13 +27,13 @@ C function void getConstStringRefAsArg(string & output +intent(out)+len(Noutput)
 C function const string & getConstStringRefLenEmpty() +len(30)
 C function void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const std::string & getConstStringRefAlloc() +allocatable
-C function void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C function const string * getConstStringPtrLen() +len(30)
 C function void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const std::string * getConstStringPtrAlloc() +allocatable
-C function void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C function const std::string * getConstStringPtrOwnsAlloc() +allocatable
-C function void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C function void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C function void acceptStringConstReference(const std::string & arg1 +intent(in))
 C function void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 C function void acceptStringReferenceOut(std::string & arg1 +intent(out))
@@ -73,7 +73,7 @@ C-interface function void getConstStringLen(string * SHF_rv +intent(out)+len(NSH
 C-interface function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
 Fortran function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
 Fortran function const std::string getConstStringAlloc() +allocatable
-C-interface function void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface function void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C-interface, Fortran function const string & getConstStringRefPure() +pure
 C-interface function void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure
 C-interface, Fortran function const string & getConstStringRefLen() +len(30)
@@ -84,13 +84,13 @@ Fortran function void getConstStringRefAsArg(string & output +intent(out)+len(No
 C-interface, Fortran function const string & getConstStringRefLenEmpty() +len(30)
 C-interface function void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface, Fortran function const std::string & getConstStringRefAlloc() +allocatable
-C-interface function void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface function void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C-interface, Fortran function const string * getConstStringPtrLen() +len(30)
 C-interface function void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface, Fortran function const std::string * getConstStringPtrAlloc() +allocatable
-C-interface function void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface function void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C-interface, Fortran function const std::string * getConstStringPtrOwnsAlloc() +allocatable
-C-interface function void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable
+C-interface function void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 C-interface, Fortran function void acceptStringConstReference(const std::string & arg1 +intent(in))
 C-interface function void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))
 C-interface, Fortran function void acceptStringReferenceOut(std::string & arg1 +intent(out))

@@ -152,10 +152,10 @@ def add_external_helpers(fmt):
 # XXX - mangle name
         source=wformat("""
 // Called by Fortran to deal with allocatable character
-void {C_prefix}ShroudStringCopyAndFree(void *cptr, char *str) {{+
-std::string * cxxstr = static_cast<std::string *>(cptr);
+void {C_prefix}ShroudStringCopyAndFree({C_context_type} *data, char *c_var, long c_var_len) {{+
+std::string * cxxstr = static_cast<std::string *>(data->cxx);
 
-strncpy(str, cxxstr->data(), cxxstr->size());
+strncpy(c_var, cxxstr->data(), cxxstr->size());
 // free the string?
 -}}
 """, fmt)
@@ -164,14 +164,16 @@ strncpy(str, cxxstr->data(), cxxstr->size());
     # Deal with allocatable character
     FHelpers[name] = dict(
         interface=wformat("""
-interface
-   subroutine SHROUD_string_copy_and_free(cptr, str) &
-     bind(c,name="{C_prefix}ShroudStringCopyAndFree")
-     use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
-     type(C_PTR), value, intent(in) :: cptr
-     character(kind=C_CHAR) :: str(*)
-   end subroutine SHROUD_string_copy_and_free
-end interface""", fmt)
+interface+
+subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
+     bind(c,name="{C_prefix}ShroudStringCopyAndFree")+
+use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
+import {F_context_type}
+type({F_context_type}), intent(IN) :: context
+character(kind=C_CHAR), intent(OUT) :: c_var(*)
+integer(C_LONG), value :: c_var_size
+-end subroutine SHROUD_string_copy_and_free
+-end interface""", fmt)
         )
     ##########
 
@@ -261,13 +263,11 @@ call array_destructor(cap%mem, .false._C_BOOL)
         )
         FHelpers[name] = helper
 
-def add_vector_copy_helper(fmt):
-    """Create function to copy contents of a vector.
-    """
+    ########################################
     name = 'vector_context'
     if name not in CHelpers:
         helper = dict(
-            h_header='<stddef.h>',
+            h_header='<stddef.h>',    # XXX - h_shared_header
             h_shared=wformat("""
 struct s_{C_context_type} {{+
 void *cxx;      /* address of C++ instance */
@@ -275,8 +275,7 @@ void *addr;     /* address of data in std::vector */
 size_t len;     /* len of std::string */
 size_t size;    /* size of data in std::vector */
 -}};
-typedef struct s_{C_context_type} {C_context_type};
-""", fmt),
+typedef struct s_{C_context_type} {C_context_type};""", fmt),
         )
         CHelpers[name] = helper
 
@@ -290,15 +289,17 @@ type, bind(C) :: SHROUD_vector_context
   type(C_PTR) :: addr     ! address of data in std::vector
   integer(C_SIZE_T) :: len   ! len of std::string
   integer(C_SIZE_T) :: size  ! size of data in std::vector
-end type SHROUD_vector_context
-""",
+end type SHROUD_vector_context""",
             modules = dict(
                 iso_c_binding=['C_PTR', 'C_SIZE_T' ],
             )
         )
         FHelpers[name] = helper
 
-    ########################################
+
+def add_vector_copy_helper(fmt):
+    """Create function to copy contents of a vector.
+    """
     name = wformat('vector_copy_{cxx_T}', fmt)
     if name not in CHelpers:
         helper = dict(
@@ -328,12 +329,11 @@ subroutine SHROUD_vector_copy_{cxx_T}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_context_type}
-type({F_context_type}) :: context
-integer({f_kind}) :: c_var(*)
+type({F_context_type}), intent(IN) :: context
+integer({f_kind}), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_vector_copy_{cxx_T}
--end interface
-""", fmt),
+-end interface""", fmt),
         )
         FHelpers[name] = helper
     return name

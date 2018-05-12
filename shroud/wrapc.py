@@ -738,12 +738,12 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_deref = '*'
                 fmt_arg.c_member = '->'
                 fmt_arg.cxx_member = '->'
-#                fmt_arg.cxx_addr = ''
+                fmt_arg.cxx_addr = ''
             else:
                 fmt_arg.c_deref = ''
                 fmt_arg.c_member = '.'
                 fmt_arg.cxx_member = '.'
-#                fmt_arg.cxx_addr = '&'
+                fmt_arg.cxx_addr = '&'
                 if arg_typedef.c_union:
                     arg_is_union_scalar = True
             fmt_arg.cxx_type = arg_typedef.cxx_type
@@ -873,6 +873,18 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_member = '.'
             elif cxx_local_var == 'pointer':
                 fmt_arg.cxx_member = '->'
+
+            if self.language == 'c':
+                pass
+            elif arg.const:
+                # cast away constness
+                fmt_arg.cxx_type = arg_typedef.cxx_type
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    'static_cast<void *>\t(const_cast<'
+                    '{cxx_type} *>\t({cxx_addr}{cxx_var}))', fmt_arg)
+            else:
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    'static_cast<void *>({cxx_addr}{cxx_var})', fmt_arg)
 
             destructor_name = intent_blk.get('destructor_name', None)
             if destructor_name:

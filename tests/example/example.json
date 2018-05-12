@@ -128,6 +128,8 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "name", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SH_name"
@@ -275,6 +277,8 @@
                                     "c_member": "->", 
                                     "c_var": "name", 
                                     "c_var_trim": "Lname", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SH_name"
@@ -422,6 +426,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "incr", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&incr)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "incr"
@@ -651,6 +657,7 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -916,6 +923,7 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -1092,6 +1100,7 @@
                                     "c_var": "name", 
                                     "c_var_len": "Nname", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -1339,6 +1348,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "value"
@@ -1479,6 +1490,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "long", 
                                     "cxx_var": "value"
@@ -1694,6 +1707,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "in", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&in)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "bool", 
                                     "cxx_var": "in"
@@ -1920,6 +1935,8 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "name", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SH_name"
@@ -2062,6 +2079,8 @@
                                     "c_member": "->", 
                                     "c_var": "name", 
                                     "c_var_trim": "trim_name", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SH_name"
@@ -2295,6 +2314,7 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2480,6 +2500,7 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2664,6 +2685,7 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -2848,6 +2870,7 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
@@ -3023,6 +3046,8 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "in", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<example::\tnested::\tExClass1 *>\t(SHCXX_in))", 
                                     "cxx_decl": "const example::\tnested::\tExClass1 * SHCXX_in", 
                                     "cxx_member": "->", 
                                     "cxx_type": "example::\tnested::\tExClass1", 
@@ -3172,6 +3197,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "type", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_type)", 
                                     "cxx_decl": "TypeID SHCXX_type", 
                                     "cxx_member": ".", 
                                     "cxx_type": "TypeID", 
@@ -3395,6 +3422,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "len", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&len)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "SidreLength", 
                                     "cxx_var": "len"
@@ -3435,6 +3464,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "type", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_type)", 
                                     "cxx_decl": "TypeID SHCXX_type", 
                                     "cxx_member": ".", 
                                     "cxx_type": "TypeID", 
@@ -3931,6 +3962,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "value"
@@ -4046,6 +4079,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "long", 
                                     "cxx_var": "value"
@@ -4159,6 +4194,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "float", 
                                     "cxx_var": "value"
@@ -4272,6 +4309,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "double", 
                                     "cxx_var": "value"
@@ -4698,6 +4737,8 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "flag", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "flag"
@@ -4977,6 +5018,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
@@ -5112,6 +5155,8 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
@@ -5277,6 +5322,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg1"
@@ -5318,6 +5365,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg2", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg2)", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg2"
@@ -5360,6 +5409,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg3", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg3)", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
                             "cxx_var": "arg3"
@@ -5510,6 +5561,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
@@ -5622,6 +5675,8 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
@@ -5709,6 +5764,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "flag", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "flag"
@@ -5745,6 +5802,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
@@ -5869,6 +5928,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "flag", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "flag"
@@ -5885,6 +5946,8 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_name"
@@ -6031,6 +6094,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "i", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i"
@@ -6118,6 +6183,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "i", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "i"
@@ -6158,6 +6225,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "j", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&j)", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
                             "cxx_var": "j"
@@ -6360,6 +6429,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "comm", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_comm)", 
                             "cxx_decl": "MPI_Comm SHCXX_comm", 
                             "cxx_member": ".", 
                             "cxx_type": "MPI_Comm", 
@@ -6516,6 +6587,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "grp", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_grp)", 
                             "cxx_decl": "axom::sidre::Group * SHCXX_grp", 
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
@@ -6627,6 +6700,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "grp", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<axom::sidre::Group *>\t(SHCXX_grp))", 
                             "cxx_decl": "const axom::sidre::Group * SHCXX_grp", 
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
@@ -6738,6 +6813,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "void", 
                             "cxx_var": "get"
@@ -6853,6 +6930,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "get", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(get)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
                             "cxx_var": "get"
@@ -6973,6 +7052,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "get"
@@ -7115,6 +7196,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
                             "cxx_var": "get"
@@ -7229,6 +7312,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "void", 
                             "cxx_var": "get"
@@ -7482,6 +7567,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname1)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname1"
@@ -7524,6 +7611,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname10", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname10)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname10"
@@ -7566,6 +7655,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname2", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname2)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname2"
@@ -7608,6 +7699,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname3", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname3)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname3"
@@ -7650,6 +7743,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname4", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname4)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname4"
@@ -7692,6 +7787,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname5", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname5)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname5"
@@ -7734,6 +7831,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname6", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname6)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname6"
@@ -7776,6 +7875,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname7", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname7)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname7"
@@ -7818,6 +7919,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname8", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname8)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname8"
@@ -7860,6 +7963,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname9", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname9)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname9"
@@ -8151,6 +8256,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname1)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname1"
@@ -8191,6 +8298,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname10", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname10)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname10"
@@ -8231,6 +8340,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname2", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname2)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname2"
@@ -8271,6 +8382,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname3", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname3)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname3"
@@ -8311,6 +8424,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname4", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname4)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname4"
@@ -8351,6 +8466,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname5", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname5)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname5"
@@ -8391,6 +8508,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname6", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname6)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname6"
@@ -8431,6 +8550,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname7", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname7)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname7"
@@ -8471,6 +8592,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname8", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname8)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname8"
@@ -8511,6 +8634,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname9", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname9)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "verylongname9"
@@ -8780,6 +8905,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "in", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(in)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
                             "cxx_var": "in"
@@ -8823,6 +8950,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "out", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(out)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
                             "cxx_var": "out"
@@ -8867,6 +8996,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "sizein", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "sizein"
@@ -10125,7 +10256,7 @@
                         "arg", 
                         "lenout"
                     ], 
-                    "c_helper": "copy_string", 
+                    "c_helper": "vector_context copy_string", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
                         " post_call intent_out_buf"
@@ -10136,13 +10267,14 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
-                        "arg", 
-                        "lenout"
+                        "context"
                     ], 
-                    "c_helper": "copy_string", 
+                    "c_helper": "vector_context copy_string", 
                     "post_call": [
-                        "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->cxx = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->addr = NULL;", 
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 0;"
                     ]
                 }
             }, 
@@ -10150,19 +10282,13 @@
             "cxx_header": "<string>", 
             "cxx_to_c": "static_cast<void *>({cxx_var})", 
             "cxx_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
             "f_statements": {
                 "result": {
-                    "f_helper": "copy_string", 
+                    "f_helper": "vector_context copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                        "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }
             }, 

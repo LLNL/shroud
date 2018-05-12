@@ -65,7 +65,6 @@ struct s_VEC_SHROUD_vector_context {
 };
 typedef struct s_VEC_SHROUD_vector_context VEC_SHROUD_vector_context;
 
-
 void VEC_SHROUD_array_destructor_function
     (VEC_SHROUD_capsule_data *cap, bool gc);
 

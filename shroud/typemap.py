@@ -649,9 +649,9 @@ def initialize():
         # C++ std::string
         # Uses a two part call to copy results of std::string into a 
         # allocatable Fortran array.
-        #    c_step1(stringout **out, int lenout)
-        #    allocate(character(len=lenout): Fout)
-        #    c_step2(Fout, out)
+        #    c_step1(context)
+        #    allocate(character(len=context%len): Fout)
+        #    c_step2(context, Fout, context%len)
         # only used with bufferifed routines and intent(out) or result
         stringout=Typemap(
             'stringout',
@@ -703,7 +703,7 @@ def initialize():
 #--                ),
                 intent_out_buf=dict(
                     buf_args = [ 'arg', 'lenout' ],
-                    c_helper='copy_string',
+                    c_helper='vector_context copy_string',
                     cxx_local_var='scalar',
                     pre_call=[
                         'std::string * {cxx_var};'
@@ -714,31 +714,33 @@ def initialize():
                 ),
                 result_buf=dict(
                     # pass address of string and length back to Fortran
-                    buf_args = [ 'arg', 'lenout' ],
-                    c_helper='copy_string',
+                    buf_args = [ 'context' ],
+                    c_helper='vector_context copy_string',
                     # Copy address of result into c_var and save length.
                     # When returning a std::string (and not a reference or pointer)
                     # an intermediate object is created to save the results
                     # which will be passed to copy_string
                     post_call=[
-                        '*{c_var} = {cxx_addr}{cxx_var};',
-                        '*{c_var_len} = {cxx_var}{cxx_member}size();',
+                        '{c_var_context}->cxx = {cxx_cast_to_void_ptr};',
+                        '{c_var_context}->addr = NULL;',
+                        '{c_var_context}->len = {cxx_var}{cxx_member}size();',
+                        '{c_var_context}->size = 0;',
                     ],
                 ),
             ),
 
             f_type='type(C_PTR)YY',
 #            f_kind='C_CHAR',
-            f_c_type='type(C_PTR)',
-            f_c_module=dict(iso_c_binding=['C_PTR']),
+##            f_c_type='type(C_PTR)',
+##            f_c_module=dict(iso_c_binding=['C_PTR']),
 
             f_statements=dict(
                 result=dict(
                     need_wrapper=True,
-                    f_helper='copy_string',
+                    f_helper='vector_context copy_string',
                     post_call=[
-                        'allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})',
-                        'call SHROUD_string_copy_and_free({f_cptr}, {f_var})',
+                        'allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})',
+                        'call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
                         ],
                     )
                 ),

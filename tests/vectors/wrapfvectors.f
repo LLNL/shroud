@@ -62,7 +62,6 @@ module vectors_mod
       integer(C_SIZE_T) :: size  ! size of data in std::vector
     end type SHROUD_vector_context
 
-
     interface
 
         function c_vector_sum_bufferify(arg, Sarg) &
@@ -113,12 +112,11 @@ module vectors_mod
             bind(C, name="VEC_SHROUD_vector_copy_int")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import SHROUD_vector_context
-            type(SHROUD_vector_context) :: context
-            integer(C_INT) :: c_var(*)
+            type(SHROUD_vector_context), intent(IN) :: context
+            integer(C_INT), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine SHROUD_vector_copy_int
     end interface
-
 
 contains
 

@@ -139,6 +139,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "status", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&status)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status"
@@ -302,6 +304,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHC_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -397,6 +400,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "dest", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
@@ -408,6 +413,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "src", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
@@ -512,6 +519,8 @@
                             "c_member": "->", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_dest"
@@ -528,6 +537,8 @@
                             "c_member": "->", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SH_src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_src"
@@ -638,6 +649,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "s", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(s)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "s"
@@ -737,6 +750,8 @@
                             "c_var": "s", 
                             "c_var_len": "Ns", 
                             "c_var_trim": "Ls", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_s)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_s"
@@ -901,6 +916,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -1071,6 +1087,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -1235,6 +1252,7 @@
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -1460,6 +1478,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -1606,6 +1625,7 @@
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -1799,9 +1819,9 @@
                 "declgen": "const std::string getConstStringAlloc() +allocatable", 
                 "format": {
                     "F_C_call": "c_get_const_string_alloc_bufferify", 
-                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
+                    "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_const_string_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_call_code": "call c_get_const_string_alloc_bufferify(DSHF_rv)", 
                     "F_name_function": "get_const_string_alloc", 
                     "F_name_generic": "get_const_string_alloc", 
                     "F_name_impl": "get_const_string_alloc", 
@@ -1824,17 +1844,17 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
-                            "f_cptr": "SHP_SHF_rv", 
-                            "f_var": "SHT_rv", 
-                            "f_var_len": "NSHF_rv"
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -1866,8 +1886,8 @@
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
-                                "intent": "out", 
-                                "lenout": "NSHF_rv"
+                                "context": "DSHF_rv", 
+                                "intent": "out"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -1893,13 +1913,13 @@
                     ]
                 }, 
                 "decl": "const std::string getConstStringAlloc() +allocatable", 
-                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
-                    "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
-                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 0;", 
+                    "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_const_string_alloc_bufferify", 
@@ -2004,6 +2024,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2180,6 +2201,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2350,6 +2372,7 @@
                             "c_var": "output", 
                             "c_var_len": "Noutput", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2599,6 +2622,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -2744,9 +2768,9 @@
                     "C_return_type": "const char *", 
                     "F_C_call": "c_get_const_string_ref_alloc_bufferify", 
                     "F_C_name": "c_get_const_string_ref_alloc", 
-                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
+                    "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_const_string_ref_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_call_code": "call c_get_const_string_ref_alloc_bufferify(DSHF_rv)", 
                     "F_name_function": "get_const_string_ref_alloc", 
                     "F_name_generic": "get_const_string_ref_alloc", 
                     "F_name_impl": "get_const_string_ref_alloc", 
@@ -2769,17 +2793,17 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
-                            "f_cptr": "SHP_SHF_rv", 
-                            "f_var": "SHT_rv", 
-                            "f_var_len": "NSHF_rv"
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -2811,8 +2835,8 @@
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
-                                "intent": "out", 
-                                "lenout": "NSHF_rv"
+                                "context": "DSHF_rv", 
+                                "intent": "out"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -2838,13 +2862,13 @@
                     ]
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc() +allocatable", 
-                "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc_bufferify", 
-                    "C_post_call": "*SHF_rv = &SHCXX_rv;\n*NSHF_rv = SHCXX_rv.size();", 
-                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 0;", 
+                    "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_const_string_ref_alloc_bufferify", 
@@ -2951,6 +2975,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
@@ -3097,9 +3122,9 @@
                     "C_return_type": "const char *", 
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify", 
                     "F_C_name": "c_get_const_string_ptr_alloc", 
-                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
+                    "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_const_string_ptr_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_call_code": "call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)", 
                     "F_name_function": "get_const_string_ptr_alloc", 
                     "F_name_generic": "get_const_string_ptr_alloc", 
                     "F_name_impl": "get_const_string_ptr_alloc", 
@@ -3122,17 +3147,17 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
-                            "f_cptr": "SHP_SHF_rv", 
-                            "f_var": "SHT_rv", 
-                            "f_var_len": "NSHF_rv"
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -3164,8 +3189,8 @@
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
-                                "intent": "out", 
-                                "lenout": "NSHF_rv"
+                                "context": "DSHF_rv", 
+                                "intent": "out"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -3191,13 +3216,13 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +allocatable", 
-                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
-                    "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
-                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 0;", 
+                    "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify", 
@@ -3272,9 +3297,9 @@
                     "C_return_type": "const char *", 
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify", 
                     "F_C_name": "c_get_const_string_ptr_owns_alloc", 
-                    "F_arg_c_call": "SHP_SHF_rv,\t NSHF_rv", 
+                    "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "call c_get_const_string_ptr_owns_alloc_bufferify(SHP_SHF_rv,\t NSHF_rv)", 
+                    "F_call_code": "call c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv)", 
                     "F_name_function": "get_const_string_ptr_owns_alloc", 
                     "F_name_generic": "get_const_string_ptr_owns_alloc", 
                     "F_name_impl": "get_const_string_ptr_owns_alloc", 
@@ -3297,17 +3322,17 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
-                            "f_cptr": "SHP_SHF_rv", 
-                            "f_var": "SHT_rv", 
-                            "f_var_len": "NSHF_rv"
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -3339,8 +3364,8 @@
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
                                 "_typename": "stringout", 
-                                "intent": "out", 
-                                "lenout": "NSHF_rv"
+                                "context": "DSHF_rv", 
+                                "intent": "out"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -3366,13 +3391,13 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +allocatable", 
-                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +intent(out)+lenout(NSHF_rv)) +allocatable", 
+                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify", 
-                    "C_post_call": "*SHF_rv = SHCXX_rv;\n*NSHF_rv = SHCXX_rv->size();", 
-                    "C_prototype": "const void * * SHF_rv,\t size_t *NSHF_rv", 
+                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->addr = NULL;\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 0;", 
+                    "C_prototype": "STR_SHROUD_vector_context *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify", 
@@ -3398,6 +3423,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -3495,6 +3522,8 @@
                             "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -3581,6 +3610,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -3681,6 +3712,8 @@
                             "c_member": "->", 
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -3768,6 +3801,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -3869,6 +3904,8 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -3957,6 +3994,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -4057,6 +4096,8 @@
                             "c_var": "arg1", 
                             "c_var_len": "Narg1", 
                             "c_var_trim": "Larg1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SH_arg1"
@@ -4305,6 +4346,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
@@ -4399,6 +4442,8 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "AAlen", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_name"
@@ -4483,6 +4528,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "name"
@@ -4564,6 +4611,8 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_len": "AAtrim", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_name"
@@ -4647,6 +4696,8 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "status", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&status)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "status"
@@ -4814,6 +4865,7 @@
                             "c_var": "SHF_rv", 
                             "c_var_len": "NSHF_rv", 
                             "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHC_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
@@ -4910,6 +4962,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "dest", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "dest"
@@ -4921,6 +4975,8 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "src", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "src"
@@ -5026,6 +5082,8 @@
                             "c_member": "->", 
                             "c_var": "dest", 
                             "c_var_len": "Ndest", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_dest"
@@ -5042,6 +5100,8 @@
                             "c_member": "->", 
                             "c_var": "src", 
                             "c_var_trim": "Lsrc", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SH_src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SH_src"
@@ -5888,7 +5948,7 @@
                         "arg", 
                         "lenout"
                     ], 
-                    "c_helper": "copy_string", 
+                    "c_helper": "vector_context copy_string", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
                         " post_call intent_out_buf"
@@ -5899,13 +5959,14 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
-                        "arg", 
-                        "lenout"
+                        "context"
                     ], 
-                    "c_helper": "copy_string", 
+                    "c_helper": "vector_context copy_string", 
                     "post_call": [
-                        "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->cxx = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->addr = NULL;", 
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 0;"
                     ]
                 }
             }, 
@@ -5913,19 +5974,13 @@
             "cxx_header": "<string>", 
             "cxx_to_c": "static_cast<void *>({cxx_var})", 
             "cxx_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
             "f_statements": {
                 "result": {
-                    "f_helper": "copy_string", 
+                    "f_helper": "vector_context copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                        "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }
             }, 

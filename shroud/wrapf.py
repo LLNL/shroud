@@ -1029,12 +1029,6 @@ rv = .false.
             else:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
-                if allocatable_result:
-                    # character allocatable function
-                    fmt_arg.f_cptr = 'SHP_' + arg_name
-                    append_format(arg_f_decl, 'type(C_PTR) :: {f_cptr}',
-                                  fmt_arg)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
 
             arg_type = f_arg.typename
             arg_typedef = typemap.lookup_type(arg_type)
