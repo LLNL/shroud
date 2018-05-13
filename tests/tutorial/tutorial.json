@@ -7773,7 +7773,7 @@
                 "decl": "Class1 getClassNew(int flag)", 
                 "declgen": "Class1 getClassNew(int flag +intent(in)+value)", 
                 "doxygen": {
-                    "brief": "Return Class1 instance by value"
+                    "brief": "Return Class1 instance by value, uses copy constructor"
                 }, 
                 "format": {
                     "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassNew(\tflag);", 

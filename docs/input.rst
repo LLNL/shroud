@@ -153,30 +153,6 @@ the library name.
         declarations:
         -  decl: void method1
 
-Annotations
-^^^^^^^^^^^
-
-Annotations or attributes apply to specific arguments or results.
-They describe semantic behavior for an argument.
-An attribute may be set to true by listing its name or
-it may have a value in parens::
-
-    - decl: Class1()  +name(new)
-    - decl: void Sum(int len, int *values+dimension+intent(in))
-    - decl: const std::string getName() +len(30)
-
-Attributes may also be added external to *decl*::
-
-    - decl: void Sum(int len, int *values)
-      attrs:
-          values:
-              dimension: True
-              intent: in  
-    - decl: const std::string getName()
-      fattrs:
-          len: 30
-  
-
 Options
 ^^^^^^^
 
@@ -214,7 +190,7 @@ For example, setting a format in a class also effects all of the
 functions within the class.
 
 How code is formatted
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Format strings contain “replacement fields” surrounded by curly braces
 ``{}``. Anything that is not contained in braces is considered literal
@@ -223,10 +199,188 @@ a brace character in the literal text, it can be escaped by doubling:
 ``{{`` and ``}}``. [Python_Format]_
 
 
+Attributes
+----------
+
+Annotations or attributes apply to specific arguments or results.
+They describe semantic behavior for an argument.
+An attribute may be set to true by listing its name or
+it may have a value in parens::
+
+    - decl: Class1()  +name(new)
+    - decl: void Sum(int len, int *values+dimension+intent(in))
+    - decl: const std::string getName() +len(30)
+
+Attributes may also be added external to *decl*::
+
+    - decl: void Sum(int len, int *values)
+      attrs:
+          values:
+              dimension: True
+              intent: in  
+    - decl: const std::string getName()
+      fattrs:
+          len: 30
+  
+
+allocatable
+^^^^^^^^^^^
+
+Sometimes it is more convient to have the wrapper allocate an
+``intent(out)`` array before passing it to the C++ function.  This can
+be accomplished by adding the *allocatable* attribute.  For example the
+C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
+argument and assigns it to an ``intent(out)`` argument::
+
+    void cos_doubles(double *in, double *out, int size)
+    {
+        for(int i = 0; i < size; i++) {
+            out[i] = in[i] * 2.;
+        }
+    }
+
+This is wrapped as::
+
+    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                           double * out    +intent(out) +allocatable(mold=in),
+                           int      sizein +implied(size(in)))
+
+The *mold* argument is similar to the *mold* argument in the Fortran
+``allocate`` statement, it will allocate ``out`` as the same shape as
+``in``.  Also notice the use of the *implied* attribute on the
+``size`` argument.  This argument is not added to the Fortran API
+since its value is *implied* to be the size of argument ``in``.
+``size`` is the Fortran intrinsic which returns the number of items
+allocated by its argument.
+
+The Fortran wrapper produced is::
+
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out, mold=in)
+        sizein = size(in)
+        call c_cos_doubles(in, out, sizein)
+    end subroutine cos_doubles
+
+The mold argument was added to the Fortran 2008 standard.  If the
+option **F_standard** is not 2008 then the allocate statement will be::
+
+        allocate(out(lbound(in,1):ubound(in,1)))
+
+
+default
+^^^^^^^
+
+Default value for C++ function argument.
+This value is implied by C++ default argument syntax.
+
+dimension
+^^^^^^^^^
+
+Sets the Fortran DIMENSION attribute.
+Pointer argument should be passed through since it is an
+array.  *value* must be *False*.
+If set without a value, it defaults to ``(*)``.
+
+
+hidden
+^^^^^^
+
+The argument will not appear in the Fortran API.
+But it will be passed to the C wrapper.
+This allows the value to be used in the C wrapper.
+For example, setting the shape of a pointer function::
+
+      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+
+.. assumed intent(out)
+
+
+implied
+^^^^^^^
+.. assumed intent(in)
+
+The value of an arguments to the C++ function may be implied by other arguments.
+If so the *implied* attribute can be used to assign the value to the argument and 
+it will not be included in the wrapped API.
+
+Used to compute value of argument to C++ based on argument
+to Fortran or Python wrapper.  Useful with array sizes::
+
+      int Sum(int * array +intent(in), int len +implied(size(array))
+
+intent
+^^^^^^
+
+Valid valid values are ``in``, ``out``, ``inout``.
+If the argument is ``const``, the default is ``in``.
+
+
+len
+^^^
+
+For a string argument, pass an additional argument to the
+C wrapper with the result of the Fortran intrinsic ``len``.
+If a value for the attribute is provided it will be the name
+of the extra argument.  If no value is provided then the
+argument name defaults to option *C_var_len_template*.
+
+When used with a function, it will be the length of the return
+value of the function using the declaration::
+
+     character(kind=C_CHAR, len={c_var_len}) :: {F_result}
+
+len_trim
+^^^^^^^^
+
+For a string argument, pass an additional argument to the
+C wrapper with the result of the Fortran intrinsic ``len_trim``.
+If a value for the attribute is provided it will be the name
+of the extra argument.  If no value is provided then the
+argument name defaults to option *C_var_trim_template*.
+
+name
+^^^^
+
+Name of the method.
+Useful for constructor and destructor methods which have no names.
+
+owner
+^^^^^
+
+Specifies who is responsible to release the memory associated with the argument/result.
+
+The terms follow Python's reference counting .  [Python_Refcount]_
+
+new
+
+   The caller is responsible to release the memory.
+
+borrow
+
+   The memory belongs to the C++ library.  Do not release.
+
+.. steal  intent(in)
+
+pure
+^^^^
+
+Sets the Fortran PURE attribute for the function.
+
+value
+^^^^^
+
+If true, pass-by-value; else, pass-by-reference.
+This attribute is implied when the argument is not a pointer or reference.
 
 
 .. rubric:: Footnotes
 
-.. [Python_Format] https://docs.python.org/2/library/string.html#format-string-syntax
+.. [Python_Format] `<https://docs.python.org/2/library/string.html#format-string-syntax>`_
+
+.. [Python_Refcount] `<https://docs.python.org/3/c-api/intro.html#reference-count-details>`_
 
 .. [yaml] `yaml.org <http://yaml.org/>`_

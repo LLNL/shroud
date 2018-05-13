@@ -532,7 +532,7 @@ TUT_class1 TUT_getclass3()
 // Class1 getClassNew(int flag +intent(in)+value)
 // function_index=43
 /**
- * \brief Return Class1 instance by value
+ * \brief Return Class1 instance by value, uses copy constructor
  *
  */
 TUT_class1 TUT_get_class_new(int flag)
