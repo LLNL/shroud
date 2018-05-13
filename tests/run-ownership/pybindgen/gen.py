@@ -4,6 +4,8 @@ def generate(fp):
     mod = Module('foo')
     mod.add_include ('"ownership.hpp"')
 
+    Foo = mod.add_class('Foo', automatic_type_narrowing=True)
+
     ## Zbr is a reference counted class
     Zbr = mod.add_class('Zbr',
                         memory_policy=cppclass.ReferenceCountingMethodsPolicy(
@@ -25,6 +27,15 @@ def generate(fp):
                      [Parameter.new('Zbr*', 'zbr', transfer_ownership=True)])
     mod.add_function('invoke_zbr', ReturnValue.new('int'), [Parameter.new('int', 'x')])
     mod.add_function('delete_stored_zbr', None, [])
+
+    SomeObject = mod.add_class('SomeObject', allow_subclassing=True)
+
+    SomeObject.add_method('set_foo_ptr', ReturnValue.new('void'),
+                          [Parameter.new('Foo*', 'foo', transfer_ownership=True)])
+    SomeObject.add_method('set_foo_shared_ptr', ReturnValue.new('void'),
+                          [Parameter.new('Foo*', 'foo', transfer_ownership=False)])
+
+
 
     mod.generate(fp)
 

@@ -85,6 +85,99 @@ typedef enum _PyBindGenWrapperFlags {
 
 typedef struct {
     PyObject_HEAD
+    Foo *obj;
+    PyBindGenWrapperFlags flags:8;
+} PyFoo;
+
+
+extern PyTypeObject PyFoo_Type;
+
+
+
+#include <map>
+#include <string>
+#include <typeinfo>
+#if defined(__GNUC__) && __GNUC__ >= 3 && !defined(__clang__)
+# include <cxxabi.h>
+#endif
+
+#define PBG_TYPEMAP_DEBUG 0
+
+namespace pybindgen {
+
+class TypeMap
+{
+   std::map<std::string, PyTypeObject *> m_map;
+
+public:
+
+   TypeMap() {}
+
+   void register_wrapper(const std::type_info &cpp_type_info, PyTypeObject *python_wrapper)
+   {
+
+#if PBG_TYPEMAP_DEBUG
+   std::cerr << "register_wrapper(this=" << this << ", type_name=" << cpp_type_info.name()
+             << ", python_wrapper=" << python_wrapper->tp_name << ")" << std::endl;
+#endif
+
+       m_map[std::string(cpp_type_info.name())] = python_wrapper;
+   }
+
+
+
+   PyTypeObject * lookup_wrapper(const std::type_info &cpp_type_info, PyTypeObject *fallback_wrapper)
+   {
+
+#if PBG_TYPEMAP_DEBUG
+   std::cerr << "lookup_wrapper(this=" << this << ", type_name=" << cpp_type_info.name() << ")" << std::endl;
+#endif
+
+       PyTypeObject *python_wrapper = m_map[cpp_type_info.name()];
+       if (python_wrapper)
+           return python_wrapper;
+       else {
+#if defined(__GNUC__) && __GNUC__ >= 3 && !defined(__clang__)
+
+           // Get closest (in the single inheritance tree provided by cxxabi.h)
+           // registered python wrapper.
+           const abi::__si_class_type_info *_typeinfo =
+               dynamic_cast<const abi::__si_class_type_info*> (&cpp_type_info);
+#if PBG_TYPEMAP_DEBUG
+          std::cerr << "  -> looking at C++ type " << _typeinfo->name() << std::endl;
+#endif
+           while (_typeinfo && (python_wrapper = m_map[std::string(_typeinfo->name())]) == 0) {
+               _typeinfo = dynamic_cast<const abi::__si_class_type_info*> (_typeinfo->__base_type);
+#if PBG_TYPEMAP_DEBUG
+               std::cerr << "  -> looking at C++ type " << _typeinfo->name() << std::endl;
+#endif
+           }
+
+#if PBG_TYPEMAP_DEBUG
+          if (python_wrapper) {
+              std::cerr << "  -> found match " << std::endl;
+          } else {
+              std::cerr << "  -> return fallback wrapper" << std::endl;
+          }
+#endif
+
+           return python_wrapper? python_wrapper : fallback_wrapper;
+
+#else // non gcc 3+ compilers can only match against explicitly registered classes, not hidden subclasses
+           return fallback_wrapper;
+#endif
+       }
+   }
+};
+
+}
+
+
+extern pybindgen::TypeMap PyFoo__typeid_map;
+
+
+typedef struct {
+    PyObject_HEAD
     Zbr *obj;
     PyBindGenWrapperFlags flags:8;
 } PyZbr;
@@ -92,6 +185,17 @@ typedef struct {
 
 extern PyTypeObject PyZbr_Type;
 extern PyTypeObject PyZbrMeta_Type;
+
+
+typedef struct {
+    PyObject_HEAD
+    SomeObject *obj;
+    PyObject *inst_dict;
+    PyBindGenWrapperFlags flags:8;
+} PySomeObject;
+
+
+extern PyTypeObject PySomeObject_Type;
 
 /* --- module functions --- */
 
@@ -156,6 +260,121 @@ static PyMethodDef foo_functions[] = {
     {NULL, NULL, 0, NULL}
 };
 /* --- classes --- */
+
+
+
+pybindgen::TypeMap PyFoo__typeid_map;
+
+
+static int
+_wrap_PyFoo__tp_init(void)
+{
+    PyErr_SetString(PyExc_TypeError, "class 'Foo' cannot be constructed ()");
+    return -1;
+}
+
+static PyMethodDef PyFoo_methods[] = {
+    {NULL, NULL, 0, NULL}
+};
+
+static void
+_wrap_PyFoo__tp_dealloc(PyFoo *self)
+{
+        Foo *tmp = self->obj;
+        self->obj = NULL;
+        if (!(self->flags&PYBINDGEN_WRAPPER_FLAG_OBJECT_NOT_OWNED)) {
+            delete tmp;
+        }
+    Py_TYPE(self)->tp_free((PyObject*)self);
+}
+
+static PyObject*
+_wrap_PyFoo__tp_richcompare (PyFoo *PYBINDGEN_UNUSED(self), PyFoo *other, int opid)
+{
+
+    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PyFoo_Type)) {
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    }
+    switch (opid)
+    {
+    case Py_LT:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_LE:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_EQ:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_NE:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_GE:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_GT:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    } /* closes switch (opid) */
+    Py_INCREF(Py_NotImplemented);
+    return Py_NotImplemented;
+}
+
+PyTypeObject PyFoo_Type = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char *) "foo.Foo",            /* tp_name */
+    sizeof(PyFoo),                  /* tp_basicsize */
+    0,                                 /* tp_itemsize */
+    /* methods */
+    (destructor)_wrap_PyFoo__tp_dealloc,        /* tp_dealloc */
+    (printfunc)0,                      /* tp_print */
+    (getattrfunc)NULL,       /* tp_getattr */
+    (setattrfunc)NULL,       /* tp_setattr */
+#if PY_MAJOR_VERSION >= 3
+    NULL,
+#else
+    (cmpfunc)NULL,           /* tp_compare */
+#endif
+    (reprfunc)NULL,             /* tp_repr */
+    (PyNumberMethods*)NULL,     /* tp_as_number */
+    (PySequenceMethods*)NULL, /* tp_as_sequence */
+    (PyMappingMethods*)NULL,   /* tp_as_mapping */
+    (hashfunc)NULL,             /* tp_hash */
+    (ternaryfunc)NULL,          /* tp_call */
+    (reprfunc)NULL,              /* tp_str */
+    (getattrofunc)NULL,     /* tp_getattro */
+    (setattrofunc)NULL,     /* tp_setattro */
+    (PyBufferProcs*)NULL,  /* tp_as_buffer */
+    Py_TPFLAGS_DEFAULT,                      /* tp_flags */
+    "",                        /* Documentation string */
+    (traverseproc)NULL,     /* tp_traverse */
+    (inquiry)NULL,             /* tp_clear */
+    (richcmpfunc)_wrap_PyFoo__tp_richcompare,   /* tp_richcompare */
+    0,             /* tp_weaklistoffset */
+    (getiterfunc)NULL,          /* tp_iter */
+    (iternextfunc)NULL,     /* tp_iternext */
+    (struct PyMethodDef*)PyFoo_methods, /* tp_methods */
+    (struct PyMemberDef*)0,              /* tp_members */
+    0,                     /* tp_getset */
+    NULL,                              /* tp_base */
+    NULL,                              /* tp_dict */
+    (descrgetfunc)NULL,    /* tp_descr_get */
+    (descrsetfunc)NULL,    /* tp_descr_set */
+    0,                 /* tp_dictoffset */
+    (initproc)_wrap_PyFoo__tp_init,             /* tp_init */
+    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
+    (newfunc)PyType_GenericNew,               /* tp_new */
+    (freefunc)0,             /* tp_free */
+    (inquiry)NULL,             /* tp_is_gc */
+    NULL,                              /* tp_bases */
+    NULL,                              /* tp_mro */
+    NULL,                              /* tp_cache */
+    NULL,                              /* tp_subclasses */
+    NULL,                              /* tp_weaklist */
+    (destructor) NULL                  /* tp_del */
+};
+
 
 
 static PyObject* _wrap_PyZbr__get_instance_count(PyObject * PYBINDGEN_UNUSED(obj), void * PYBINDGEN_UNUSED(closure))
@@ -451,6 +670,178 @@ PyTypeObject PyZbr_Type = {
 };
 
 
+
+
+static int
+_wrap_PySomeObject__tp_init(void)
+{
+    PyErr_SetString(PyExc_TypeError, "class 'SomeObject' cannot be constructed ()");
+    return -1;
+}
+
+
+PyObject *
+_wrap_PySomeObject_set_foo_shared_ptr(PySomeObject *self, PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    PyFoo *foo;
+    Foo *foo_ptr;
+    const char *keywords[] = {"foo", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyFoo_Type, &foo)) {
+        return NULL;
+    }
+    foo_ptr = (foo ? foo->obj : NULL);
+    self->obj->set_foo_shared_ptr(foo_ptr);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+
+
+PyObject *
+_wrap_PySomeObject_set_foo_ptr(PySomeObject *self, PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    PyFoo *foo;
+    Foo *foo_ptr;
+    const char *keywords[] = {"foo", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyFoo_Type, &foo)) {
+        return NULL;
+    }
+    foo_ptr = (foo ? foo->obj : NULL);
+    self->obj->set_foo_ptr(foo_ptr);
+    if (foo) {
+        foo->obj = NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+
+static PyMethodDef PySomeObject_methods[] = {
+    {(char *) "set_foo_shared_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_shared_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_shared_ptr(foo)\n\ntype: foo: Foo *" },
+    {(char *) "set_foo_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_ptr(foo)\n\ntype: foo: Foo *" },
+    {NULL, NULL, 0, NULL}
+};
+
+static void
+PySomeObject__tp_clear(PySomeObject *self)
+{
+    Py_CLEAR(self->inst_dict);
+        SomeObject *tmp = self->obj;
+    self->obj = NULL;
+    if (!(self->flags&PYBINDGEN_WRAPPER_FLAG_OBJECT_NOT_OWNED)) {
+        delete tmp;
+    }
+}
+
+
+static int
+PySomeObject__tp_traverse(PySomeObject *self, visitproc visit, void *arg)
+{
+    Py_VISIT(self->inst_dict);
+
+    return 0;
+}
+
+
+static void
+_wrap_PySomeObject__tp_dealloc(PySomeObject *self)
+{
+    PySomeObject__tp_clear(self);
+    Py_TYPE(self)->tp_free((PyObject*)self);
+}
+
+static PyObject*
+_wrap_PySomeObject__tp_richcompare (PySomeObject *PYBINDGEN_UNUSED(self), PySomeObject *other, int opid)
+{
+
+    if (!PyObject_IsInstance((PyObject*) other, (PyObject*) &PySomeObject_Type)) {
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    }
+    switch (opid)
+    {
+    case Py_LT:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_LE:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_EQ:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_NE:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_GE:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    case Py_GT:
+        Py_INCREF(Py_NotImplemented);
+        return Py_NotImplemented;
+    } /* closes switch (opid) */
+    Py_INCREF(Py_NotImplemented);
+    return Py_NotImplemented;
+}
+
+PyTypeObject PySomeObject_Type = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    (char *) "foo.SomeObject",            /* tp_name */
+    sizeof(PySomeObject),                  /* tp_basicsize */
+    0,                                 /* tp_itemsize */
+    /* methods */
+    (destructor)_wrap_PySomeObject__tp_dealloc,        /* tp_dealloc */
+    (printfunc)0,                      /* tp_print */
+    (getattrfunc)NULL,       /* tp_getattr */
+    (setattrfunc)NULL,       /* tp_setattr */
+#if PY_MAJOR_VERSION >= 3
+    NULL,
+#else
+    (cmpfunc)NULL,           /* tp_compare */
+#endif
+    (reprfunc)NULL,             /* tp_repr */
+    (PyNumberMethods*)NULL,     /* tp_as_number */
+    (PySequenceMethods*)NULL, /* tp_as_sequence */
+    (PyMappingMethods*)NULL,   /* tp_as_mapping */
+    (hashfunc)NULL,             /* tp_hash */
+    (ternaryfunc)NULL,          /* tp_call */
+    (reprfunc)NULL,              /* tp_str */
+    (getattrofunc)NULL,     /* tp_getattro */
+    (setattrofunc)NULL,     /* tp_setattro */
+    (PyBufferProcs*)NULL,  /* tp_as_buffer */
+    Py_TPFLAGS_BASETYPE|Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_GC,                      /* tp_flags */
+    "",                        /* Documentation string */
+    (traverseproc)PySomeObject__tp_traverse,     /* tp_traverse */
+    (inquiry)PySomeObject__tp_clear,             /* tp_clear */
+    (richcmpfunc)_wrap_PySomeObject__tp_richcompare,   /* tp_richcompare */
+    0,             /* tp_weaklistoffset */
+    (getiterfunc)NULL,          /* tp_iter */
+    (iternextfunc)NULL,     /* tp_iternext */
+    (struct PyMethodDef*)PySomeObject_methods, /* tp_methods */
+    (struct PyMemberDef*)0,              /* tp_members */
+    0,                     /* tp_getset */
+    NULL,                              /* tp_base */
+    NULL,                              /* tp_dict */
+    (descrgetfunc)NULL,    /* tp_descr_get */
+    (descrsetfunc)NULL,    /* tp_descr_set */
+    offsetof(PySomeObject, inst_dict),                 /* tp_dictoffset */
+    (initproc)_wrap_PySomeObject__tp_init,             /* tp_init */
+    (allocfunc)PyType_GenericAlloc,           /* tp_alloc */
+    (newfunc)PyType_GenericNew,               /* tp_new */
+    (freefunc)0,             /* tp_free */
+    (inquiry)NULL,             /* tp_is_gc */
+    NULL,                              /* tp_bases */
+    NULL,                              /* tp_mro */
+    NULL,                              /* tp_cache */
+    NULL,                              /* tp_subclasses */
+    NULL,                              /* tp_weaklist */
+    (destructor) NULL                  /* tp_del */
+};
+
+
 #if PY_VERSION_HEX >= 0x03000000
 static struct PyModuleDef foo_moduledef = {
     PyModuleDef_HEAD_INIT,
@@ -490,6 +881,13 @@ MOD_INIT(foo)
     if (m == NULL) {
         return MOD_ERROR;
     }
+    PyModule_AddObject(m, (char *) "_PyFoo__typeid_map", PyCObject_FromVoidPtr(&PyFoo__typeid_map, NULL));
+    PyFoo__typeid_map.register_wrapper(typeid(Foo), &PyFoo_Type);
+    /* Register the 'Foo' class */
+    if (PyType_Ready(&PyFoo_Type)) {
+        return MOD_ERROR;
+    }
+    PyModule_AddObject(m, (char *) "Foo", (PyObject *) &PyFoo_Type);
     /* Register the 'Zbr' class */
 
     PyZbrMeta_Type.tp_base = Py_TYPE(&PyBaseObject_Type);
@@ -506,5 +904,10 @@ MOD_INIT(foo)
         return MOD_ERROR;
     }
     PyModule_AddObject(m, (char *) "Zbr", (PyObject *) &PyZbr_Type);
+    /* Register the 'SomeObject' class */
+    if (PyType_Ready(&PySomeObject_Type)) {
+        return MOD_ERROR;
+    }
+    PyModule_AddObject(m, (char *) "SomeObject", (PyObject *) &PySomeObject_Type);
     return MOD_RETURN(m);
 }
