@@ -304,7 +304,7 @@ declarations:
   
   - decl: Class1 getClassNew(int flag)
     doxygen:
-         brief: Return Class1 instance by value
+         brief: Return Class1 instance by value, uses copy constructor
     options:
       wrap_python: False
       wrap_lua: False
