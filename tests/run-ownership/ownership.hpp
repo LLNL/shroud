@@ -3,6 +3,21 @@
 
 #include <string>
 
+// Deprecation warnings look ugly and confusing; better to just
+// disable them and change this macro when we want to specifically
+// test them.
+#define ENABLE_DEPRECATIONS 0
+
+#ifndef DEPRECATED
+# if ENABLE_DEPRECATIONS && __GNUC__ > 2
+#  define DEPRECATED  __attribute__((deprecated))
+# else
+#  define DEPRECATED
+# endif
+#endif
+
+
+
 class Foo
 // -#- automatic_type_narrowing=True -#-
 {
@@ -14,7 +29,7 @@ public:
     Foo () : m_datum (""), m_initialized (false)
         { Foo::instance_count++; }
 
-#if 0
+#if 1
     Foo (int xpto)  DEPRECATED : m_initialized (false) { xpto++; }
 
     Foo (std::string const &datum) : m_datum (datum), m_initialized (false)
@@ -255,7 +270,6 @@ public:
         m_foo_shared_ptr = foo;
     }
 
-#if 0
     // return value
     Foo get_foo_value () {
         return m_foo_value;
@@ -273,6 +287,7 @@ public:
         return foo;
     }
 
+#if 0
     // -#- @return(caller_owns_return=true) -#-
     Zbr* get_zbr () {
         if (m_zbr)

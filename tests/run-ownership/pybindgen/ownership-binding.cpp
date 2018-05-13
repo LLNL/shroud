@@ -266,14 +266,113 @@ static PyMethodDef foo_functions[] = {
 pybindgen::TypeMap PyFoo__typeid_map;
 
 
+
 static int
-_wrap_PyFoo__tp_init(void)
+_wrap_PyFoo__tp_init__0(PyFoo *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
 {
-    PyErr_SetString(PyExc_TypeError, "class 'Foo' cannot be constructed ()");
+    const char *datum;
+    Py_ssize_t datum_len;
+    const char *keywords[] = {"datum", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s#", (char **) keywords, &datum, &datum_len)) {
+        {
+            PyObject *exc_type, *traceback;
+            PyErr_Fetch(&exc_type, return_exception, &traceback);
+            Py_XDECREF(exc_type);
+            Py_XDECREF(traceback);
+        }
+        return -1;
+    }
+    self->obj = new Foo(std::string(datum, datum_len));
+    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    return 0;
+}
+
+static int
+_wrap_PyFoo__tp_init__1(PyFoo *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
+{
+    const char *keywords[] = {NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "", (char **) keywords)) {
+        {
+            PyObject *exc_type, *traceback;
+            PyErr_Fetch(&exc_type, return_exception, &traceback);
+            Py_XDECREF(exc_type);
+            Py_XDECREF(traceback);
+        }
+        return -1;
+    }
+    self->obj = new Foo();
+    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    return 0;
+}
+
+static int
+_wrap_PyFoo__tp_init__2(PyFoo *self, PyObject *args, PyObject *kwargs, PyObject **return_exception)
+{
+    PyFoo *foo;
+    const char *keywords[] = {"foo", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "O!", (char **) keywords, &PyFoo_Type, &foo)) {
+        {
+            PyObject *exc_type, *traceback;
+            PyErr_Fetch(&exc_type, return_exception, &traceback);
+            Py_XDECREF(exc_type);
+            Py_XDECREF(traceback);
+        }
+        return -1;
+    }
+    self->obj = new Foo(*((PyFoo *) foo)->obj);
+    self->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    return 0;
+}
+
+int _wrap_PyFoo__tp_init(PyFoo *self, PyObject *args, PyObject *kwargs)
+{
+    int retval;
+    PyObject *error_list;
+    PyObject *exceptions[3] = {0,};
+    retval = _wrap_PyFoo__tp_init__0(self, args, kwargs, &exceptions[0]);
+    if (!exceptions[0]) {
+        return retval;
+    }
+    retval = _wrap_PyFoo__tp_init__1(self, args, kwargs, &exceptions[1]);
+    if (!exceptions[1]) {
+        Py_DECREF(exceptions[0]);
+        return retval;
+    }
+    retval = _wrap_PyFoo__tp_init__2(self, args, kwargs, &exceptions[2]);
+    if (!exceptions[2]) {
+        Py_DECREF(exceptions[0]);
+        Py_DECREF(exceptions[1]);
+        return retval;
+    }
+    error_list = PyList_New(3);
+    PyList_SET_ITEM(error_list, 0, PyObject_Str(exceptions[0]));
+    Py_DECREF(exceptions[0]);
+    PyList_SET_ITEM(error_list, 1, PyObject_Str(exceptions[1]));
+    Py_DECREF(exceptions[1]);
+    PyList_SET_ITEM(error_list, 2, PyObject_Str(exceptions[2]));
+    Py_DECREF(exceptions[2]);
+    PyErr_SetObject(PyExc_TypeError, error_list);
+    Py_DECREF(error_list);
     return -1;
 }
 
+
+static PyObject*
+_wrap_PyFoo__copy__(PyFoo *self)
+{
+
+    PyFoo *py_copy;
+    py_copy = PyObject_New(PyFoo, &PyFoo_Type);
+    py_copy->obj = new Foo(*self->obj);
+    py_copy->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    return (PyObject*) py_copy;
+}
+
 static PyMethodDef PyFoo_methods[] = {
+    {(char *) "__copy__", (PyCFunction) _wrap_PyFoo__copy__, METH_NOARGS, NULL},
     {NULL, NULL, 0, NULL}
 };
 
@@ -347,7 +446,7 @@ PyTypeObject PyFoo_Type = {
     (setattrofunc)NULL,     /* tp_setattro */
     (PyBufferProcs*)NULL,  /* tp_as_buffer */
     Py_TPFLAGS_DEFAULT,                      /* tp_flags */
-    "",                        /* Documentation string */
+    "Foo(datum)\nFoo(foo)\nFoo()",                        /* Documentation string */
     (traverseproc)NULL,     /* tp_traverse */
     (inquiry)NULL,             /* tp_clear */
     (richcmpfunc)_wrap_PyFoo__tp_richcompare,   /* tp_richcompare */
@@ -681,6 +780,28 @@ _wrap_PySomeObject__tp_init(void)
 
 
 PyObject *
+_wrap_PySomeObject_get_foo_ptr(PySomeObject *self)
+{
+    PyObject *py_retval;
+    Foo *retval;
+    PyFoo *py_Foo;
+    PyTypeObject *wrapper_type = 0;
+
+    retval = self->obj->get_foo_ptr();
+    if (!(retval)) {
+        Py_INCREF(Py_None);
+        return Py_None;
+    }
+    wrapper_type = PyFoo__typeid_map.lookup_wrapper(typeid((*retval)), &PyFoo_Type);
+    py_Foo = PyObject_New(PyFoo, wrapper_type);
+    py_Foo->obj = retval;
+    py_Foo->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    py_retval = Py_BuildValue((char *) "N", py_Foo);
+    return py_retval;
+}
+
+
+PyObject *
 _wrap_PySomeObject_set_foo_shared_ptr(PySomeObject *self, PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -720,9 +841,31 @@ _wrap_PySomeObject_set_foo_ptr(PySomeObject *self, PyObject *args, PyObject *kwa
     return py_retval;
 }
 
+
+PyObject *
+_wrap_PySomeObject_get_foo_shared_ptr(PySomeObject *self)
+{
+    PyObject *py_retval;
+    Foo const *retval;
+    PyFoo *py_Foo;
+
+    retval = self->obj->get_foo_shared_ptr();
+    if (!(retval)) {
+        Py_INCREF(Py_None);
+        return Py_None;
+    }
+    py_Foo = PyObject_New(PyFoo, &PyFoo_Type);
+    py_Foo->obj = new Foo((*retval));
+    py_Foo->flags = PYBINDGEN_WRAPPER_FLAG_NONE;
+    py_retval = Py_BuildValue((char *) "N", py_Foo);
+    return py_retval;
+}
+
 static PyMethodDef PySomeObject_methods[] = {
+    {(char *) "get_foo_ptr", (PyCFunction) _wrap_PySomeObject_get_foo_ptr, METH_NOARGS, "get_foo_ptr()\n\n" },
     {(char *) "set_foo_shared_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_shared_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_shared_ptr(foo)\n\ntype: foo: Foo *" },
     {(char *) "set_foo_ptr", (PyCFunction) _wrap_PySomeObject_set_foo_ptr, METH_KEYWORDS|METH_VARARGS, "set_foo_ptr(foo)\n\ntype: foo: Foo *" },
+    {(char *) "get_foo_shared_ptr", (PyCFunction) _wrap_PySomeObject_get_foo_shared_ptr, METH_NOARGS, "get_foo_shared_ptr()\n\n" },
     {NULL, NULL, 0, NULL}
 };
 

@@ -5,6 +5,9 @@ def generate(fp):
     mod.add_include ('"ownership.hpp"')
 
     Foo = mod.add_class('Foo', automatic_type_narrowing=True)
+    Foo.add_constructor([Parameter.new('std::string', 'datum')])
+    Foo.add_constructor([])
+    Foo.add_constructor([Parameter.new('const Foo&', 'foo')])
 
     ## Zbr is a reference counted class
     Zbr = mod.add_class('Zbr',
@@ -34,6 +37,9 @@ def generate(fp):
                           [Parameter.new('Foo*', 'foo', transfer_ownership=True)])
     SomeObject.add_method('set_foo_shared_ptr', ReturnValue.new('void'),
                           [Parameter.new('Foo*', 'foo', transfer_ownership=False)])
+
+    SomeObject.add_method('get_foo_shared_ptr', ReturnValue.new('const Foo*', caller_owns_return=False), [])
+    SomeObject.add_method('get_foo_ptr', ReturnValue.new('Foo*', caller_owns_return=True), [])
 
 
 
