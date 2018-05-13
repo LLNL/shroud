@@ -38,41 +38,65 @@
 #
 # #######################################################################
 #
-# run-ownership
+# test the tutorial module
 #
-ifndef top
-top = ../..
-endif
+from __future__ import print_function
 
-include $(top)/tests/defaults.mk
+import numpy as np
+import unittest
+import tutorial
 
-INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run-ownership \
-    -I$(top)/tests/fruit
+class Ownership(unittest.TestCase):
+    """Test tutorial problem"""
+     
+    def XXsetUp(self):
+        """ Setting up for the test """
+        print("FooTest:setUp_:begin")
+        ## do something...
+        print("FooTest:setUp_:end")
+     
+    def XXtearDown(self):
+        """Cleaning up after the test"""
+        print("FooTest:tearDown_:begin")
+        ## do something...
+        print("FooTest:tearDown_:end")
 
-VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run-ownership \
-    $(top)/tests/fruit
+    def testReturnIntPtr(self):
+        "Return pointer to int scalar"
+        rv = tutorial.ReturnIntPtr()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(1, rv.size)
+        self.assertEqual(1, rv)
 
-OBJS = \
-    ownership.o \
-    wrapfownership.o \
-    wrapownership.o \
-    fruit.o \
-    main.o
+    def testReturnIntPtrScalr(self):
+        "Return pointer as int scalar"
+        rv = tutorial.ReturnIntPtrScalar()
+        self.assertIsInstance(rv, int)
+        self.assertEqual(10, rv)
 
-ownership : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+    def testReturnIntPtrDim(self):
+        "Return pointer to int array"
+        rv = tutorial.ReturnIntPtrDim()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(7, rv.size)
+        self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
 
-clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+    def testReturnIntPtrDimNew(self):
+        "Return pointer to a new int array"
+        rv = tutorial.ReturnIntPtrDimNew()
+        self.assertIsInstance(rv, np.ndarray)
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertEqual(5, rv.size)
+        self.assertTrue(all(np.equal(rv, [0,1,2,3,4])))
 
-ownership.o : ownership.hpp
-wrapOwnership.o : wrapownership.h ownership.hpp
-main.o : wrapfownership.o
 
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o ownership.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+# creating a new test suite
+newSuite = unittest.TestSuite()
+ 
+# adding a test case
+newSuite.addTest(unittest.makeSuite(Tutorial))
+
+if __name__ == "__main__":
+    unittest.main()

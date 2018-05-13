@@ -284,7 +284,7 @@ return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
   (it does not have the *dimension* attribute).
   **scalar** return as a scalar or **pointer** to return as a pointer.
-  This option does not effect the C wrapper.
+  This option does not effect the C or Fortran wrapper.
   For Python, **pointer** will return a NumPy scalar.
   Defaults to *pointer*.
 

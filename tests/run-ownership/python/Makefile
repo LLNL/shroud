@@ -38,41 +38,42 @@
 #
 # #######################################################################
 #
-# run-ownership
+#  Compile the python tutorial
 #
-ifndef top
-top = ../..
-endif
-
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
     -I$(top)/tests/ownership \
     -I$(top)/tests/run-ownership \
-    -I$(top)/tests/fruit
+    $(PYTHON_INC)
 
 VPATH = \
     $(top)/tests/ownership \
     $(top)/tests/run-ownership \
-    $(top)/tests/fruit
+    $(top)/tests/run-ownership/python
 
 OBJS = \
     ownership.o \
-    wrapfownership.o \
-    wrapownership.o \
-    fruit.o \
-    main.o
+    pyownershipmodule.o \
+    pyownershiphelper.o
 
-ownership : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+CXXFLAGS += $(SHARED)
+
+all : ownership.so simple
+
+ownership.so : $(OBJS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+simple : testpython.o $(OBJS)
+	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
+#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+	rm -f *.so *.o simple
+.PHONY : clean
 
-ownership.o : ownership.hpp
-wrapOwnership.o : wrapownership.h ownership.hpp
-main.o : wrapfownership.o
+print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
 
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o ownership.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

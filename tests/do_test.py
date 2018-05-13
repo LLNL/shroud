@@ -324,7 +324,7 @@ if __name__ == '__main__':
         test_names = args.testname
     else:
         test_names = [ 'none', 'tutorial', 'vectors', 'forward', 'example', 'include',
-                       'names', 'strings', 'clibrary', 'interface' ]
+                       'names', 'strings', 'clibrary', 'interface', 'ownership' ]
 
     logging.info('Tests to run: {}'.format( ' '.join(test_names)))
 

@@ -1,8 +1,11 @@
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
-// Produced at the Lawrence Livermore National Laboratory 
+// pyownershipmodule.hpp
+// This is generated code, do not edit
+// #######################################################################
+// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
-// All rights reserved. 
+// All rights reserved.
 //
 // This file is part of Shroud.  For details, see
 // https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -13,7 +16,7 @@
 //
 // * Redistributions of source code must retain the above copyright
 //   notice, this list of conditions and the disclaimer below.
-// 
+//
 // * Redistributions in binary form must reproduce the above copyright
 //   notice, this list of conditions and the disclaimer (as noted below)
 //   in the documentation and/or other materials provided with the
@@ -37,66 +40,24 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
+#ifndef PYOWNERSHIPMODULE_HPP
+#define PYOWNERSHIPMODULE_HPP
+#include <Python.h>
+// splicer begin header.include
+// splicer end header.include
 
-#include "ownership.hpp"
+// splicer begin header.C_declaration
+// splicer end header.C_declaration
 
-//----------------------------------------------------------------------
-// POD pointers
+// helper functions
 
-int * ReturnIntPtr()
-{
-  static int buffer = 1;
-  return &buffer;
-}
 
-int * ReturnIntPtrScalar()
-{
-  static int buffer = 10;
-  return &buffer;
-}
+extern PyObject *PY_error_obj;
 
-// Return a pointer to an existing, static array
-int * ReturnIntPtrDim(int *len)
-{
-  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
-  *len = sizeof buffer / sizeof buffer[1];
-  return buffer;
-}
+#if PY_MAJOR_VERSION >= 3
+extern "C" PyMODINIT_FUNC PyInit_ownership(void);
+#else
+extern "C" PyMODINIT_FUNC initownership(void);
+#endif
 
-// Return a pointer to a new array
-int * ReturnIntPtrDimNew(int *len)
-{
-  int *buffer = new int[5];
-  for (int i=0; i < 5; i++) {
-    buffer[i] = i;
-  }
-  *len = 5;
-  return buffer;
-}
-
-//----------------------------------------------------------------------
-// example lifted from pybindgen PyBindGen-0.18.0/tests/foo.cc
-
-static Zbr *g_zbr = NULL;
-int Zbr::instance_count = 0;
-
-void store_zbr (Zbr *zbr)
-{
-    if (g_zbr)
-        g_zbr->Unref ();
-    // steal the reference
-    g_zbr = zbr;
-}
-
-int invoke_zbr (int x)
-{
-    return g_zbr->get_int (x);
-}
-
-void delete_stored_zbr (void)
-{
-    if (g_zbr)
-        g_zbr->Unref ();
-    g_zbr = NULL;
-}
-//----------------------------------------------------------------------
+#endif  /* PYOWNERSHIPMODULE_HPP */

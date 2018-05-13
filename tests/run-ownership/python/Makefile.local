@@ -38,41 +38,31 @@
 #
 # #######################################################################
 #
-# run-ownership
+#  Compile the python tutorial locally
 #
-ifndef top
-top = ../..
-endif
 
-include $(top)/tests/defaults.mk
+PYTHON = /home/taylor16/testzzz-ets-4.6.3-4.3f
 
-INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run-ownership \
-    -I$(top)/tests/fruit
+# location of Shroud generated files and ownership library
+VPATH = .. ../../ownership
 
-VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run-ownership \
-    $(top)/tests/fruit
+CPPFLAGS = -g -I. -I.. -I../../ownership -I${PYTHON}/include/python2.7  -Wall -fPIC
 
 OBJS = \
     ownership.o \
-    wrapfownership.o \
-    wrapownership.o \
-    fruit.o \
-    main.o
+    pyownershipmodule.o \
+    pyownershiphelper.o
 
-ownership : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+
+all : ownership.so simple
+
+ownership.so : ${OBJS}
+	gcc -shared -o $@ $^ -lstdc++
+
+simple : testpython.o ${OBJS}
+	g++ -pthread -o $@ $^ -L${PYTHON}/lib/python2.7/config -lpython2.7 -ldl -lutil
 
 clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+	rm -f *.so *.o simple
+.PHONY : clean
 
-ownership.o : ownership.hpp
-wrapOwnership.o : wrapownership.h ownership.hpp
-main.o : wrapfownership.o
-
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o ownership.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

@@ -123,7 +123,7 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial vectors strings clibrary
+fortran : tutorial vectors strings clibrary ownership
 
 # Compile the generated Fortran wrapper
 tutorial vectors forward strings clibrary ownership : testdirs
@@ -144,6 +144,7 @@ test-fortran : fortran
 	$(tempdir)/run-vectors/vectors
 	$(tempdir)/run-strings/strings
 	$(tempdir)/run-clibrary/clibrary
+	$(tempdir)/run-ownership/ownership
 
 # Compile the generated Python wrapper
 py-tutorial : testdirs
@@ -164,6 +165,12 @@ py-clibrary : testdirs
 	    -f $(top)/tests/run-clibrary/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+py-ownership : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-ownership/python \
+	    -f $(top)/tests/run-ownership/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
 # Run the Python tests
 test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
@@ -177,7 +184,11 @@ test-python-clibrary : py-clibrary
 	export PYTHONPATH=$(top)/$(tempdir)/run-clibrary/python; \
 	$(PYTHON_BIN) $(top)/tests/run-clibrary/python/test.py
 
-test-python : test-python-tutorial test-python-strings test-python-clibrary
+test-python-ownership : py-ownership
+	export PYTHONPATH=$(top)/$(tempdir)/run-ownership/python; \
+	$(PYTHON_BIN) $(top)/tests/run-ownership/python/test.py
+
+test-python : test-python-tutorial test-python-strings test-python-clibrary #test-python-ownership
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
@@ -200,6 +211,7 @@ test-clean :
 	rm -rf $(tempdir)/run-vectors
 	rm -rf $(tempdir)/run-strings
 	rm -rf $(tempdir)/run-clibrary
+	rm -rf $(tempdir)/run-ownership
 
 ########################################################################
 #
@@ -236,11 +248,12 @@ distclean:
 #	rm -rf .eggs
 
 .PHONY : virtualenv develop docs test testdirs
-.PHONY : fortran test-fortran tutorial vectors strings clibrary
+.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings
 .PHONY : py-clibrary test-python-clibrary
+.PHONY : py-ownership test-python-ownership
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all test-clean
 .PHONY : do-test do-test-replace print-debug
