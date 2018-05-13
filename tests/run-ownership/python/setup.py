@@ -1,8 +1,9 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
-# Produced at the Lawrence Livermore National Laboratory
+#!/usr/bin/env python
+# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
+# Produced at the Lawrence Livermore National Laboratory 
 # 
 # LLNL-CODE-738041.
-# All rights reserved.
+# All rights reserved. 
 #  
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -37,20 +38,37 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 ########################################################################
-"""
-Shroud - generate language bindings
-"""
 
-from main import create_wrapper
-from ast import LibraryNode, ClassNode, FunctionNode
+import os
+from distutils.core import setup, Extension
+import shroud
+import numpy
 
-def print_as_json(node, fp):
-    """Use the _to_dict methods to convert to a dictonary."""
-    import json
-    json.dump(node, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
-    
+try:
+    os.mkdir("build")
+except OSError:
+    pass
+outdir = 'build/source'
+if not os.path.exists(outdir):
+    os.makedirs(outdir)
+shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
+
+outfiles = [os.path.join(outdir, 'pyownershipmodule.cpp'),
+            os.path.join(outdir, 'pyownershiphelper.cpp')]
 
 
-__version__ = "0.9.0"
-version_info = (0,9,0,"beta",0)
-# 'alpha', 'beta', 'candidate', or 'final'.
+ownership = Extension(
+    'ownership',
+    sources = outfiles + ['../ownership.cpp'],
+    include_dirs=[numpy.get_include(), '..']
+)
+
+setup(
+    name='ownership',
+    version="0.0",
+    description='shroud ownership',
+    author='xxx',
+    author_email='yyy@zz',
+    ext_modules=[ownership],
+)
+

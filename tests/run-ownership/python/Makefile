@@ -40,6 +40,10 @@
 #
 #  Compile the python tutorial
 #
+ifndef top
+top = ../../..
+endif
+
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
@@ -76,4 +80,7 @@ print-debug:
 	@echo PYTHON=$(PYTHON)
 	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
 	@echo PYTHON_VER=$(PYTHON_VER)
+
+setup:
+	python setup.py build
 

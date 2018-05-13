@@ -211,12 +211,30 @@ def main():
 #    sys.stderr.write("Some useful message")  # example error message
     sys.exit(0)  # set status for errors
 
+def create_wrapper(input, outdir=''):
+    """Translate function arguments into command line options.
+    Useful with setup.py.
+    """
+    args = argparse.Namespace()
+    args.cmake = ''
+    args.cfiles = ''
+    args.ffiles = ''
+    args.filename = [ input ]
+    args.logdir = ''
+    args.outdir = outdir
+    args.outdir_c_fortran = ''
+    args.outdir_lua = ''
+    args.outdir_python = ''
+    args.outdir_yaml = ''
+    args.path = []
+    args.yaml_types = ''
+
+    main_with_args(args)
 
 def main_with_args(args):
     """Main after args have been parsed.
     Useful for testing.
     """
-
     if args.cmake:
         # Create C make file
         try:
