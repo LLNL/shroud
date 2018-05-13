@@ -44,7 +44,7 @@ from __future__ import print_function
 
 import numpy as np
 import unittest
-import tutorial
+import ownership
 
 class Ownership(unittest.TestCase):
     """Test tutorial problem"""
@@ -63,7 +63,7 @@ class Ownership(unittest.TestCase):
 
     def testReturnIntPtr(self):
         "Return pointer to int scalar"
-        rv = tutorial.ReturnIntPtr()
+        rv = ownership.ReturnIntPtr()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(1, rv.size)
@@ -71,13 +71,13 @@ class Ownership(unittest.TestCase):
 
     def testReturnIntPtrScalr(self):
         "Return pointer as int scalar"
-        rv = tutorial.ReturnIntPtrScalar()
+        rv = ownership.ReturnIntPtrScalar()
         self.assertIsInstance(rv, int)
         self.assertEqual(10, rv)
 
     def testReturnIntPtrDim(self):
         "Return pointer to int array"
-        rv = tutorial.ReturnIntPtrDim()
+        rv = ownership.ReturnIntPtrDim()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(7, rv.size)
@@ -85,7 +85,7 @@ class Ownership(unittest.TestCase):
 
     def testReturnIntPtrDimNew(self):
         "Return pointer to a new int array"
-        rv = tutorial.ReturnIntPtrDimNew()
+        rv = ownership.ReturnIntPtrDimNew()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(5, rv.size)
@@ -96,7 +96,7 @@ class Ownership(unittest.TestCase):
 newSuite = unittest.TestSuite()
  
 # adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
+newSuite.addTest(unittest.makeSuite(Ownership))
 
 if __name__ == "__main__":
     unittest.main()

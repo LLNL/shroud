@@ -188,7 +188,7 @@ test-python-ownership : py-ownership
 	export PYTHONPATH=$(top)/$(tempdir)/run-ownership/python; \
 	$(PYTHON_BIN) $(top)/tests/run-ownership/python/test.py
 
-test-python : test-python-tutorial test-python-strings test-python-clibrary #test-python-ownership
+test-python : test-python-tutorial test-python-strings test-python-clibrary test-python-ownership
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs

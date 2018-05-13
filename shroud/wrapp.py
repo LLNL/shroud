@@ -676,6 +676,7 @@ return 1;""", fmt)
             dim = ast.attrs.get('dimension', None)
             # Create array for shape.
             # Cannot use dimension directly since it may be the wrong type.
+            self.need_numpy = True
             if dim:
                 fmt.npy_ndims = '1'
                 fmt.npy_dims = 'SHD_' + ast.name

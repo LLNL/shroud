@@ -41,6 +41,8 @@
 //
 // #######################################################################
 #include "pyownershipmodule.hpp"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 #include "ownership.hpp"
 
 // splicer begin include
@@ -245,6 +247,7 @@ initownership(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
