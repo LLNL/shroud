@@ -85,8 +85,8 @@ other machines, assuming *python.root* is the same.  Or leaving off
 the ``--python-shebang`` option, it will use the version of Python in
 your path.
 
-Using with CMake
-================
+Building wrappers with CMake
+----------------------------
 
 Shroud can produce a CMake macro file with the option ``-cmake``. 
 This option can be incorporated into a CMakefile as::
@@ -112,3 +112,52 @@ The ``add_shroud`` macro can then be used in other ``CMakeLists.txt`` files as::
         YAML_INPUT_FILE      ${YAML_INPUT_FILE}
         C_FORTRAN_OUTPUT_DIR c_fortran
     )
+
+Building Python extensions
+--------------------------
+
+``setup.py`` can be used to build the extension module from the files created by shroud.
+This example is drawn from the ``run-ownership`` example.  You must provide the paths
+to the input YAML file and the C++ library source files::
+
+    import os
+    from distutils.core import setup, Extension
+    import shroud
+    import numpy
+    
+    outdir = 'build/source'
+    if not os.path.exists(outdir):
+        os.makedirs(outdir)
+    config = shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
+    
+    ownership = Extension(
+        'ownership',
+        sources = config.pyfiles + ['../ownership.cpp'],
+        include_dirs=[numpy.get_include(), '..']
+    )
+    
+    setup(
+        name='ownership',
+        version="0.0",
+        description='shroud ownership',
+        author='xxx',
+        author_email='yyy@zz',
+        ext_modules=[ownership],
+    )
+
+The directory structure is layed out as::
+
+    ownership.yaml
+    run-ownership
+       ownership.cpp   # C++ library to wrap
+       ownership.hpp
+       python
+         setup.py
+         build
+            source
+              # create by shroud
+              pyownershipmodule.cpp
+              pyownershipmodule.hpp
+              pyownershiphelper.cpp
+            lib
+               ownership.so   # generated module

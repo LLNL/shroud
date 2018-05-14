@@ -58,6 +58,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import collections
+import os
 import re
 
 from . import declast
@@ -1541,6 +1542,8 @@ return 1;""", fmt)
 
         append_format(output, PyTypeObject_template, fmt_type)
 
+        self.config.pyfiles.append(
+            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
     def multi_dispatch(self, methods):
@@ -1675,6 +1678,8 @@ extern PyObject *{PY_prefix}error_obj;
 #endif
 """, fmt)
         output.append('#endif  /* %s */' % guard)
+#        self.config.pyfiles.append(
+#            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_module(self, node):
@@ -1731,6 +1736,8 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer('C_init_body', output)
         append_format(output, module_end, fmt)
 
+        self.config.pyfiles.append(
+            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_helper(self):
@@ -1748,6 +1755,8 @@ extern PyObject *{PY_prefix}error_obj;
         output.extend(self.py_helper_functions)
         if self.capsule_order:
             self.write_capsule_helper(output, fmt)
+        self.config.pyfiles.append(
+            os.path.join(self.config.python_dir, fmt.PY_helper_filename))
         self.write_output_file(
             fmt.PY_helper_filename, self.config.python_dir, output)
 

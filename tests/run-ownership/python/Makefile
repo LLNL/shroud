@@ -82,5 +82,5 @@ print-debug:
 	@echo PYTHON_VER=$(PYTHON_VER)
 
 setup:
-	python setup.py build
+	$(PYTHON) setup.py build
 

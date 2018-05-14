@@ -44,22 +44,14 @@ from distutils.core import setup, Extension
 import shroud
 import numpy
 
-try:
-    os.mkdir("build")
-except OSError:
-    pass
 outdir = 'build/source'
 if not os.path.exists(outdir):
     os.makedirs(outdir)
-shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
-
-outfiles = [os.path.join(outdir, 'pyownershipmodule.cpp'),
-            os.path.join(outdir, 'pyownershiphelper.cpp')]
-
+config = shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
 
 ownership = Extension(
     'ownership',
-    sources = outfiles + ['../ownership.cpp'],
+    sources = config.pyfiles + ['../ownership.cpp'],
     include_dirs=[numpy.get_include(), '..']
 )
 

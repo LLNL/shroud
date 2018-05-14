@@ -213,6 +213,7 @@ def main():
 
 def create_wrapper(input, outdir=''):
     """Translate function arguments into command line options.
+    Return config instance. It has list of files created.
     Useful with setup.py.
     """
     args = argparse.Namespace()
@@ -229,7 +230,9 @@ def create_wrapper(input, outdir=''):
     args.path = []
     args.yaml_types = ''
 
-    main_with_args(args)
+    config = main_with_args(args)
+
+    return config
 
 def main_with_args(args):
     """Main after args have been parsed.
@@ -290,6 +293,7 @@ def main_with_args(args):
     config.log = log
     config.cfiles = []  # list of C/C++ files created
     config.ffiles = []  # list of Fortran files created
+    config.pyfiles = [] # list of Python modulle files created
 
     # accumulated input
     all = {}
@@ -390,6 +394,7 @@ def main_with_args(args):
 # It doesn't fix the error, but it does report a better error message
 # http://www.thecodingforums.com/threads/help-with-a-piping-error.749747/
     sys.stdout.flush()
+    return config
 
 
 if __name__ == '__main__':
