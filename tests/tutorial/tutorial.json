@@ -7337,7 +7337,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "getClassNew", 
+                        "name": "getClassCopy", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -7362,34 +7362,34 @@
                         "Class1"
                     ]
                 }, 
-                "decl": "Class1 getClassNew(int flag)", 
-                "declgen": "Class1 getClassNew(int flag +intent(in)+value)", 
+                "decl": "Class1 getClassCopy(int flag)", 
+                "declgen": "Class1 getClassCopy(int flag +intent(in)+value)", 
                 "doxygen": {
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 }, 
                 "format": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassNew(\tflag);", 
+                    "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassCopy(\tflag);", 
                     "C_call_list": "flag", 
-                    "C_name": "TUT_get_class_new", 
+                    "C_name": "TUT_get_class_copy", 
                     "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 1;", 
                     "C_pre_call": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1;", 
                     "C_prototype": "int flag", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1", 
-                    "F_C_call": "c_get_class_new", 
-                    "F_C_name": "c_get_class_new", 
+                    "F_C_call": "c_get_class_copy", 
+                    "F_C_name": "c_get_class_copy", 
                     "F_arg_c_call": "flag", 
                     "F_arguments": "flag", 
-                    "F_call_code": "SHT_rv%cxxmem = c_get_class_new(flag)", 
-                    "F_name_function": "get_class_new", 
-                    "F_name_generic": "get_class_new", 
-                    "F_name_impl": "get_class_new", 
+                    "F_call_code": "SHT_rv%cxxmem = c_get_class_copy(flag)", 
+                    "F_name_function": "get_class_copy", 
+                    "F_name_generic": "get_class_copy", 
+                    "F_name_impl": "get_class_copy", 
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "", 
                     "cxx_rv_decl": "*SHCXX_rv", 
-                    "function_name": "getClassNew", 
-                    "underscore_name": "get_class_new"
+                    "function_name": "getClassCopy", 
+                    "underscore_name": "get_class_copy"
                 }, 
                 "options": {
                     "wrap_lua": false, 

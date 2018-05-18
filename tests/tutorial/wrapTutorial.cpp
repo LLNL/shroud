@@ -489,22 +489,22 @@ TUT_class1 TUT_getclass3()
 // splicer end function.getclass3
 }
 
-// Class1 getClassNew(int flag +intent(in)+value)
+// Class1 getClassCopy(int flag +intent(in)+value)
 // function_index=39
 /**
  * \brief Return Class1 instance by value, uses copy constructor
  *
  */
-TUT_class1 TUT_get_class_new(int flag)
+TUT_class1 TUT_get_class_copy(int flag)
 {
-// splicer begin function.get_class_new
+// splicer begin function.get_class_copy
     tutorial::Class1 * SHCXX_rv = new tutorial::Class1;
-    *SHCXX_rv = tutorial::getClassNew(flag);
+    *SHCXX_rv = tutorial::getClassCopy(flag);
     TUT_class1 SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 1;
     return SHC_rv;
-// splicer end function.get_class_new
+// splicer end function.get_class_copy
 }
 
 // int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)

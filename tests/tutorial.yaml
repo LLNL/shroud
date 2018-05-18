@@ -284,7 +284,7 @@ declarations:
 #    wrap_python: False
       wrap_lua: False
   
-  - decl: Class1 getClassNew(int flag)
+  - decl: Class1 getClassCopy(int flag)
     doxygen:
          brief: Return Class1 instance by value, uses copy constructor
     options:

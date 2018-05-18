@@ -601,15 +601,15 @@ module tutorial_mod
             type(SHROUD_capsule_data) :: SHT_rv
         end function c_getclass3
 
-        function c_get_class_new(flag) &
+        function c_get_class_copy(flag) &
                 result(SHT_rv) &
-                bind(C, name="TUT_get_class_new")
+                bind(C, name="TUT_get_class_copy")
             use iso_c_binding, only : C_INT
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(SHROUD_capsule_data) :: SHT_rv
-        end function c_get_class_new
+        end function c_get_class_copy
 
         function callback1(in, incr) &
                 result(SHT_rv) &
@@ -1317,21 +1317,21 @@ contains
         ! splicer end function.getclass3
     end function getclass3
 
-    ! Class1 getClassNew(int flag +intent(in)+value)
+    ! Class1 getClassCopy(int flag +intent(in)+value)
     ! function_index=39
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
     !<
-    function get_class_new(flag) &
+    function get_class_copy(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        ! splicer begin function.get_class_new
-        SHT_rv%cxxmem = c_get_class_new(flag)
-        ! splicer end function.get_class_new
-    end function get_class_new
+        ! splicer begin function.get_class_copy
+        SHT_rv%cxxmem = c_get_class_copy(flag)
+        ! splicer end function.get_class_copy
+    end function get_class_copy
 
     ! struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
     ! function_index=42

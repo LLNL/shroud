@@ -278,10 +278,10 @@ contains
 
     call set_case_name("test_class1_new_by_value")
 
-    ! Return a new instance.
+    ! Return a new instance via a copy constructor.
     ! The C wrapper creates an instance then assigns function results into it.
     ! idtor is set to cause it to be released when it goes out of scope.
-    obj0 = get_class_new(5)
+    obj0 = get_class_copy(5)
 
     mflag = obj0%get_m_flag()
     call assert_equals(5, mflag)

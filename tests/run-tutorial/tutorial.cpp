@@ -258,7 +258,7 @@ Class1 * getclass3()
 }
 
 /* Return class instance by value */
-Class1 getClassNew(int flag)
+Class1 getClassCopy(int flag)
 {
     Class1 node(flag);
     last_function_called = "getClassNew";

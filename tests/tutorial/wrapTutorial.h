@@ -153,7 +153,7 @@ TUT_class1 TUT_getclass2();
 
 TUT_class1 TUT_getclass3();
 
-TUT_class1 TUT_get_class_new(int flag);
+TUT_class1 TUT_get_class_copy(int flag);
 
 int TUT_callback1(int in, int ( * incr)(int));
 

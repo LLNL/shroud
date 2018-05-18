@@ -65,7 +65,17 @@ Cython
 SIP
 ---
 
+Sip was developed to create PyQt.
+
 * https://www.riverbankcomputing.com/software/sip/intro
+
+Shiboken
+--------
+
+Shiboken was developed to create PySide.
+
+* https://wiki.qt.io/Qt_for_Python
+
 
 Boost Python
 ------------
