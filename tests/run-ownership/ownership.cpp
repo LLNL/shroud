@@ -40,6 +40,8 @@
 
 #include "ownership.hpp"
 
+static const Class1 *global_class1 = NULL;
+
 //----------------------------------------------------------------------
 // POD pointers
 
@@ -72,6 +74,30 @@ int * ReturnIntPtrDimNew(int *len)
   }
   *len = 5;
   return buffer;
+}
+
+//----------------------------------------------------------------------
+// Instance pointers
+
+// Create a global Class1 which may be fetched by getClassStatic
+void createClassStatic(int flag)
+{
+  if (global_class1 != NULL) {
+    delete global_class1;
+  }
+  global_class1 = new Class1(flag);
+}
+
+Class1 * getClassStatic()
+{
+    return const_cast<Class1 *>(global_class1);
+}
+
+/* Return a new instance */
+Class1 * getClassNew(int flag)
+{
+    Class1 *node = new Class1(flag);
+    return node;
 }
 
 //----------------------------------------------------------------------

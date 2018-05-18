@@ -113,6 +113,11 @@ The ``add_shroud`` macro can then be used in other ``CMakeLists.txt`` files as::
         C_FORTRAN_OUTPUT_DIR c_fortran
     )
 
+``CMake`` will treat all Fortran files as free format with the command::
+
+    set(CMAKE_Fortran_FORMAT FREE)
+
+
 Building Python extensions
 --------------------------
 

@@ -1,4 +1,4 @@
-// typesownership.h
+// wrapClass1.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
@@ -40,24 +40,25 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-// For C users and C++ implementation
+#include "wrapClass1.h"
+#include "ownership.hpp"
 
-#ifndef TYPESOWNERSHIP_H
-#define TYPESOWNERSHIP_H
+// splicer begin class.Class1.CXX_definitions
+// splicer end class.Class1.CXX_definitions
 
-
-#ifdef __cplusplus
 extern "C" {
-#endif
 
-struct s_OWN_class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_OWN_class1 OWN_class1;
+// splicer begin class.Class1.C_definitions
+// splicer end class.Class1.C_definitions
 
-#ifdef __cplusplus
+// int getFlag()
+// function_index=0
+int OWN_class1_get_flag(OWN_class1 * self)
+{
+// splicer begin class.Class1.method.get_flag
+    Class1 *SH_this = static_cast<Class1 *>(self->addr);
+    return SH_this->m_flag;
+// splicer end class.Class1.method.get_flag
 }
-#endif
 
-#endif  // TYPESOWNERSHIP_H
+}  // extern "C"

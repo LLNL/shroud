@@ -1,4 +1,4 @@
-// typesownership.h
+// wrapClass1.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
@@ -40,24 +40,31 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
+/**
+ * \file wrapClass1.h
+ * \brief Shroud generated wrapper for Class1 class
+ */
 // For C users and C++ implementation
 
-#ifndef TYPESOWNERSHIP_H
-#define TYPESOWNERSHIP_H
+#ifndef WRAPCLASS1_H
+#define WRAPCLASS1_H
 
+#include "typesownership.h"
+
+// splicer begin class.Class1.CXX_declarations
+// splicer end class.Class1.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-struct s_OWN_class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_OWN_class1 OWN_class1;
+// splicer begin class.Class1.C_declarations
+// splicer end class.Class1.C_declarations
+
+int OWN_class1_get_flag(OWN_class1 * self);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // TYPESOWNERSHIP_H
+#endif  // WRAPCLASS1_H

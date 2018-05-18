@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapownership.h"
+#include <stdlib.h>
 #include "ownership.hpp"
 
 // splicer begin CXX_definitions
@@ -52,7 +53,7 @@ extern "C" {
 // splicer end C_definitions
 
 // int * ReturnIntPtr()
-// function_index=0
+// function_index=1
 int * OWN_return_int_ptr()
 {
 // splicer begin function.return_int_ptr
@@ -62,7 +63,7 @@ int * OWN_return_int_ptr()
 }
 
 // int * ReturnIntPtrScalar()
-// function_index=1
+// function_index=2
 int OWN_return_int_ptr_scalar()
 {
 // splicer begin function.return_int_ptr_scalar
@@ -72,7 +73,7 @@ int OWN_return_int_ptr_scalar()
 }
 
 // int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-// function_index=2
+// function_index=3
 int * OWN_return_int_ptr_dim(int * len)
 {
 // splicer begin function.return_int_ptr_dim
@@ -82,13 +83,53 @@ int * OWN_return_int_ptr_dim(int * len)
 }
 
 // int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
-// function_index=3
+// function_index=4
 int * OWN_return_int_ptr_dim_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_new
     int * SHC_rv = ReturnIntPtrDimNew(len);
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_new
+}
+
+// void createClassStatic(int flag +intent(in)+value)
+// function_index=5
+void OWN_create_class_static(int flag)
+{
+// splicer begin function.create_class_static
+    createClassStatic(flag);
+    return;
+// splicer end function.create_class_static
+}
+
+// Class1 * getClassStatic()
+// function_index=6
+OWN_class1 OWN_get_class_static()
+{
+// splicer begin function.get_class_static
+    Class1 * SHCXX_rv = getClassStatic();
+    OWN_class1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
+    return SHC_rv;
+// splicer end function.get_class_static
+}
+
+// Class1 * getClassNew(int flag +intent(in)+value)
+// function_index=7
+/**
+ * \brief Return pointer to new Class1 instance.
+ *
+ */
+OWN_class1 OWN_get_class_new(int flag)
+{
+// splicer begin function.get_class_new
+    Class1 * SHCXX_rv = getClassNew(flag);
+    OWN_class1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
+    return SHC_rv;
+// splicer end function.get_class_new
 }
 
 }  // extern "C"

@@ -47,6 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module ownership_mod
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -54,7 +55,49 @@ module ownership_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+    ! splicer begin class.Class1.module_top
+    ! splicer end class.Class1.module_top
+
+    type class1
+        type(SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Class1.component_part
+        ! splicer end class.Class1.component_part
+    contains
+        procedure :: get_flag => class1_get_flag
+        procedure :: get_instance => class1_get_instance
+        procedure :: set_instance => class1_set_instance
+        procedure :: associated => class1_associated
+        ! splicer begin class.Class1.type_bound_procedure_part
+        ! splicer end class.Class1.type_bound_procedure_part
+    end type class1
+
+    interface operator (.eq.)
+        module procedure class1_eq
+    end interface
+
+    interface operator (.ne.)
+        module procedure class1_ne
+    end interface
+
     interface
+
+        function c_class1_get_flag(self) &
+                result(SHT_rv) &
+                bind(C, name="OWN_class1_get_flag")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_class1_get_flag
+
+        ! splicer begin class.Class1.additional_interfaces
+        ! splicer end class.Class1.additional_interfaces
 
         function c_return_int_ptr() &
                 result(SHT_rv) &
@@ -90,14 +133,77 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_new
 
+        subroutine create_class_static(flag) &
+                bind(C, name="OWN_create_class_static")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+        end subroutine create_class_static
+
+        function c_get_class_static() &
+                result(SHT_rv) &
+                bind(C, name="OWN_get_class_static")
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data) :: SHT_rv
+        end function c_get_class_static
+
+        function c_get_class_new(flag) &
+                result(SHT_rv) &
+                bind(C, name="OWN_get_class_new")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(SHROUD_capsule_data) :: SHT_rv
+        end function c_get_class_new
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
 contains
 
-    ! int * ReturnIntPtr()
+    ! int getFlag()
     ! function_index=0
+    function class1_get_flag(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(class1) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Class1.method.get_flag
+        SHT_rv = c_class1_get_flag(obj%cxxmem)
+        ! splicer end class.Class1.method.get_flag
+    end function class1_get_flag
+
+    ! Return pointer to C++ memory.
+    function class1_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+        class(class1), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function class1_get_instance
+
+    subroutine class1_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(class1), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine class1_set_instance
+
+    function class1_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(class1), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function class1_associated
+
+    ! splicer begin class.Class1.additional_functions
+    ! splicer end class.Class1.additional_functions
+
+    ! int * ReturnIntPtr()
+    ! function_index=1
     function return_int_ptr() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -110,7 +216,7 @@ contains
     end function return_int_ptr
 
     ! int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=2
+    ! function_index=3
     function return_int_ptr_dim() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -124,7 +230,7 @@ contains
     end function return_int_ptr_dim
 
     ! int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=3
+    ! function_index=4
     function return_int_ptr_dim_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -137,7 +243,55 @@ contains
         ! splicer end function.return_int_ptr_dim_new
     end function return_int_ptr_dim_new
 
+    ! Class1 * getClassStatic()
+    ! function_index=6
+    function get_class_static() &
+            result(SHT_rv)
+        type(class1) :: SHT_rv
+        ! splicer begin function.get_class_static
+        SHT_rv%cxxmem = c_get_class_static()
+        ! splicer end function.get_class_static
+    end function get_class_static
+
+    ! Class1 * getClassNew(int flag +intent(in)+value)
+    ! function_index=7
+    !>
+    !! \brief Return pointer to new Class1 instance.
+    !!
+    !<
+    function get_class_new(flag) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: flag
+        type(class1) :: SHT_rv
+        ! splicer begin function.get_class_new
+        SHT_rv%cxxmem = c_get_class_new(flag)
+        ! splicer end function.get_class_new
+    end function get_class_new
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    function class1_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class1), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class1_eq
+
+    function class1_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class1), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class1_ne
 
 end module ownership_mod

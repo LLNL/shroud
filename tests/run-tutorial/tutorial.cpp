@@ -261,7 +261,7 @@ Class1 * getclass3()
 Class1 getClassCopy(int flag)
 {
     Class1 node(flag);
-    last_function_called = "getClassNew";
+    last_function_called = "getClassCopy";
     return node;
 }
 

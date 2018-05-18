@@ -60,6 +60,7 @@ OBJS = \
     ownership.o \
     wrapfownership.o \
     wrapownership.o \
+    wrapClass1.o \
     fruit.o \
     main.o
 

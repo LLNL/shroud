@@ -160,6 +160,85 @@ PY_ReturnIntPtrDimNew(
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_dim_new
 }
+
+static char PY_createClassStatic__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_createClassStatic(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void createClassStatic(int flag +intent(in)+value)
+// splicer begin function.create_class_static
+    int flag;
+    const char *SHT_kwlist[] = {
+        "flag",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:createClassStatic",
+        const_cast<char **>(SHT_kwlist), &flag))
+        return NULL;
+
+    createClassStatic(flag);
+    Py_RETURN_NONE;
+// splicer end function.create_class_static
+}
+
+static char PY_getClassStatic__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getClassStatic(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class1 * getClassStatic()
+// splicer begin function.get_class_static
+    Class1 * SHCXX_rv = getClassStatic();
+
+    // post_call
+    PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
+    SHTPy_rv->obj = SHCXX_rv;
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_class_static
+}
+
+static char PY_getClassNew__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getClassNew(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// Class1 * getClassNew(int flag +intent(in)+value)
+// splicer begin function.get_class_new
+    int flag;
+    const char *SHT_kwlist[] = {
+        "flag",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:getClassNew",
+        const_cast<char **>(SHT_kwlist), &flag))
+        return NULL;
+
+    Class1 * SHCXX_rv = getClassNew(flag);
+
+    // post_call
+    PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
+    SHTPy_rv->obj = SHCXX_rv;
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_class_new
+}
 static PyMethodDef PY_methods[] = {
 {"ReturnIntPtr", (PyCFunction)PY_ReturnIntPtr, METH_NOARGS,
     PY_ReturnIntPtr__doc__},
@@ -169,6 +248,12 @@ static PyMethodDef PY_methods[] = {
     PY_ReturnIntPtrDim__doc__},
 {"ReturnIntPtrDimNew", (PyCFunction)PY_ReturnIntPtrDimNew, METH_NOARGS,
     PY_ReturnIntPtrDimNew__doc__},
+{"createClassStatic", (PyCFunction)PY_createClassStatic,
+    METH_VARARGS|METH_KEYWORDS, PY_createClassStatic__doc__},
+{"getClassStatic", (PyCFunction)PY_getClassStatic, METH_NOARGS,
+    PY_getClassStatic__doc__},
+{"getClassNew", (PyCFunction)PY_getClassNew, METH_VARARGS|METH_KEYWORDS,
+    PY_getClassNew__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
@@ -248,6 +333,15 @@ initownership(void)
     struct module_state *st = GETSTATE(m);
 
     import_array();
+
+    // Class1
+    PY_Class1_Type.tp_new   = PyType_GenericNew;
+    PY_Class1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Class1_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Class1_Type);
+    PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
+
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

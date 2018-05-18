@@ -47,6 +47,14 @@ extern "C" {
 #endif
 #include "ownership.hpp"
 #include "lua.h"
+// splicer begin class.Class1.C_declaration
+// splicer end class.Class1.C_declaration
+
+typedef struct {
+    Class1 * self;
+    // splicer begin class.Class1.C_object
+    // splicer end class.Class1.C_object
+} l_Class1_Type;
 
 int luaopen_ownership(lua_State *L);
 

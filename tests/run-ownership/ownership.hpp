@@ -38,10 +38,22 @@
 //
 // #######################################################################
 
+class Class1
+{
+public:
+    int m_flag;
+    Class1()         : m_flag(0)    {};
+    Class1(int flag) : m_flag(flag) {};
+};
+
 int * ReturnIntPtr();
 int * ReturnIntPtrScalar();
 int * ReturnIntPtrDim(int *len);
 int * ReturnIntPtrDimNew(int *len);
+
+void createClassStatic(int flag);
+Class1 * getClassStatic();
+Class1 * getClassNew(int flag);
 
 //----------------------------------------------------------------------
 // example lifted from pybindgen PyBindGen-0.18.0/tests/foo.h

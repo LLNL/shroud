@@ -1,20 +1,38 @@
 Read yaml ownership.yaml
+Close ownership_types.yaml
+class Class1
+C method int getFlag()
+Close wrapClass1.h
+Close wrapClass1.cpp
 C function int * ReturnIntPtr()
 C function int * ReturnIntPtrScalar()
 C function int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 C function int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+C function void createClassStatic(int flag +intent(in)+value)
+C function Class1 * getClassStatic()
+C function Class1 * getClassNew(int flag +intent(in)+value)
 Close wrapownership.h
 Close wrapownership.cpp
 Close typesownership.h
+class Class1
+C-interface, Fortran method int getFlag()
 C-interface, Fortran function int * ReturnIntPtr()
 C-interface, Fortran function int * ReturnIntPtrScalar()
 C-interface, Fortran function int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 C-interface, Fortran function int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+C-interface, Fortran function void createClassStatic(int flag +intent(in)+value)
+C-interface, Fortran function Class1 * getClassStatic()
+C-interface, Fortran function Class1 * getClassNew(int flag +intent(in)+value)
 Close wrapfownership.f
+class Class1
+Close pyClass1type.cpp
 Python function int * ReturnIntPtr()
 Python function int * ReturnIntPtrScalar()
 Python function int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 Python function int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+Python function void createClassStatic(int flag +intent(in)+value)
+Python function Class1 * getClassStatic()
+Python function Class1 * getClassNew(int flag +intent(in)+value)
 Close pyownershiphelper.cpp
 Close pyownershipmodule.hpp
 Close pyownershipmodule.cpp

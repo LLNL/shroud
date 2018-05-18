@@ -69,6 +69,12 @@ int * OWN_return_int_ptr_dim(int * len);
 
 int * OWN_return_int_ptr_dim_new(int * len);
 
+void OWN_create_class_static(int flag);
+
+OWN_class1 OWN_get_class_static();
+
+OWN_class1 OWN_get_class_new(int flag);
+
 #ifdef __cplusplus
 }
 #endif
