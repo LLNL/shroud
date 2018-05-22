@@ -132,6 +132,24 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim
 
+        function c_return_int_ptr_dim_pointer(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_pointer")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_pointer
+
+        function c_return_int_ptr_dim_alloc(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_alloc")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_alloc
+
         function c_return_int_ptr_dim_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_new")
@@ -140,6 +158,24 @@ module ownership_mod
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_new
+
+        function c_return_int_ptr_dim_pointer_new(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_pointer_new")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_pointer_new
+
+        function c_return_int_ptr_dim_alloc_new(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_alloc_new")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_alloc_new
 
         subroutine create_class_static(flag) &
                 bind(C, name="OWN_create_class_static")
@@ -248,8 +284,22 @@ contains
         ! splicer end function.return_int_ptr_dim
     end function return_int_ptr_dim
 
-    ! int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+    ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)
     ! function_index=5
+    function return_int_ptr_dim_pointer() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT) :: len
+        integer(C_INT), pointer :: SHT_rv
+        type(C_PTR) :: SHT_ptr
+        ! splicer begin function.return_int_ptr_dim_pointer
+        SHT_ptr = c_return_int_ptr_dim_pointer(len)
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_int_ptr_dim_pointer
+    end function return_int_ptr_dim_pointer
+
+    ! int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+    ! function_index=7
     function return_int_ptr_dim_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -262,8 +312,22 @@ contains
         ! splicer end function.return_int_ptr_dim_new
     end function return_int_ptr_dim_new
 
+    ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)
+    ! function_index=8
+    function return_int_ptr_dim_pointer_new() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT) :: len
+        integer(C_INT), pointer :: SHT_rv
+        type(C_PTR) :: SHT_ptr
+        ! splicer begin function.return_int_ptr_dim_pointer_new
+        SHT_ptr = c_return_int_ptr_dim_pointer_new(len)
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_int_ptr_dim_pointer_new
+    end function return_int_ptr_dim_pointer_new
+
     ! Class1 * getClassStatic() +owner(library)
-    ! function_index=7
+    ! function_index=11
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -273,7 +337,7 @@ contains
     end function get_class_static
 
     ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-    ! function_index=8
+    ! function_index=12
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

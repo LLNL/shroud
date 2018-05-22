@@ -634,10 +634,9 @@
                         "cxx_addr": "", 
                         "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "SHD_ReturnIntPtrDimNew", 
-                        "npy_ndims": "1", 
+                        "npy_dims": "NULL", 
+                        "npy_ndims": "0", 
                         "numpy_type": "NPY_INT", 
-                        "pointer_shape": "len", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -645,7 +644,255 @@
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
-                        "dimension": "len"
+                        "pointer": "len"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimPointer", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +pointer(len)", 
+                "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)", 
+                "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointer(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_pointer", 
+                    "C_prototype": "int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_call": "c_return_int_ptr_dim_pointer", 
+                    "F_C_name": "c_return_int_ptr_dim_pointer", 
+                    "F_arg_c_call": "len", 
+                    "F_arguments": "", 
+                    "F_call_code": "SHT_ptr = c_return_int_ptr_dim_pointer(len)", 
+                    "F_name_function": "return_int_ptr_dim_pointer", 
+                    "F_name_generic": "return_int_ptr_dim_pointer", 
+                    "F_name_impl": "return_int_ptr_dim_pointer", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ReturnIntPtrDimPointer", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
+                    "function_name": "ReturnIntPtrDimPointer", 
+                    "underscore_name": "return_int_ptr_dim_pointer"
+                }, 
+                "options": {
+                    "wrap_lua": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int len", 
+                            "c_deref": "", 
+                            "c_type": "int", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_decl": "int len", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "*", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "npy_dims": "NULL", 
+                        "npy_ndims": "0", 
+                        "numpy_type": "NPY_INT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 6, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "allocatable": "len"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimAlloc", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden) +allocatable(len)", 
+                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +allocatable(len)", 
+                "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_alloc", 
+                    "C_prototype": "int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_name": "c_return_int_ptr_dim_alloc", 
+                    "PY_name_impl": "PY_ReturnIntPtrDimAlloc", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
+                    "function_name": "ReturnIntPtrDimAlloc", 
+                    "underscore_name": "return_int_ptr_dim_alloc"
+                }, 
+                "options": {
+                    "wrap_fortran": false, 
+                    "wrap_lua": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }, 
+                        "fmtf": {
+                            "c_var": "len", 
+                            "f_var": "len"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int len", 
+                            "c_deref": "", 
+                            "c_type": "int", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_decl": "int len", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "*", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "npy_dims": "SHD_ReturnIntPtrDimNew", 
+                        "npy_ndims": "1", 
+                        "numpy_type": "NPY_INT", 
+                        "pointer_shape": "len", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 7, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "dimension": "len", 
+                        "owner": "caller"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -685,8 +932,8 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len)", 
-                "declgen": "int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)", 
+                "decl": "int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len) +owner(caller)", 
+                "declgen": "int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimNew(\tlen);", 
                     "C_call_list": "len", 
@@ -712,6 +959,254 @@
                     "underscore_name": "return_int_ptr_dim_new"
                 }, 
                 "options": {
+                    "wrap_lua": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }, 
+                        "fmtf": {
+                            "c_var": "len", 
+                            "f_var": "len"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int len", 
+                            "c_deref": "", 
+                            "c_type": "int", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_decl": "int len", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "*", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "npy_dims": "NULL", 
+                        "npy_ndims": "0", 
+                        "numpy_type": "NPY_INT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 8, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "owner": "caller", 
+                        "pointer": "len"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimPointerNew", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden) +pointer(len) +owner(caller)", 
+                "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)", 
+                "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointerNew(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_pointer_new", 
+                    "C_prototype": "int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_call": "c_return_int_ptr_dim_pointer_new", 
+                    "F_C_name": "c_return_int_ptr_dim_pointer_new", 
+                    "F_arg_c_call": "len", 
+                    "F_arguments": "", 
+                    "F_call_code": "SHT_ptr = c_return_int_ptr_dim_pointer_new(len)", 
+                    "F_name_function": "return_int_ptr_dim_pointer_new", 
+                    "F_name_generic": "return_int_ptr_dim_pointer_new", 
+                    "F_name_impl": "return_int_ptr_dim_pointer_new", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ReturnIntPtrDimPointerNew", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
+                    "function_name": "ReturnIntPtrDimPointerNew", 
+                    "underscore_name": "return_int_ptr_dim_pointer_new"
+                }, 
+                "options": {
+                    "wrap_lua": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int len", 
+                            "c_deref": "", 
+                            "c_type": "int", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_decl": "int len", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "*", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "npy_dims": "NULL", 
+                        "npy_ndims": "0", 
+                        "numpy_type": "NPY_INT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 9, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "allocatable": "len", 
+                        "owner": "caller"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimAllocNew", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden) +allocatable(len) +owner(caller)", 
+                "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +allocatable(len)+owner(caller)", 
+                "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAllocNew(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_alloc_new", 
+                    "C_prototype": "int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_name": "c_return_int_ptr_dim_alloc_new", 
+                    "PY_name_impl": "PY_ReturnIntPtrDimAllocNew", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
+                    "function_name": "ReturnIntPtrDimAllocNew", 
+                    "underscore_name": "return_int_ptr_dim_alloc_new"
+                }, 
+                "options": {
+                    "wrap_fortran": false, 
                     "wrap_lua": false
                 }
             }, 
@@ -749,7 +1244,7 @@
                         }
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 10, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -830,7 +1325,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 11, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 
@@ -937,7 +1432,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 12, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 

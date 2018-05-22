@@ -82,6 +82,7 @@ declarations:
 
 - decl: int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden) +allocatable(len)
   options:
+    wrap_fortran: False
     wrap_lua: False
 
 - decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len) +owner(caller)
@@ -100,6 +101,7 @@ declarations:
 #  fattrs:
 #     C_free_pattern: delete_int_array
   options:
+    wrap_fortran: False
     wrap_lua: False
 
 ########################################

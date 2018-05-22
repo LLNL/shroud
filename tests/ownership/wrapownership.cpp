@@ -83,8 +83,28 @@ int * OWN_return_int_ptr_dim(int * len)
 // splicer end function.return_int_ptr_dim
 }
 
-// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)
 // function_index=5
+int * OWN_return_int_ptr_dim_pointer(int * len)
+{
+// splicer begin function.return_int_ptr_dim_pointer
+    int * SHC_rv = ReturnIntPtrDimPointer(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_pointer
+}
+
+// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +allocatable(len)
+// function_index=6
+int * OWN_return_int_ptr_dim_alloc(int * len)
+{
+// splicer begin function.return_int_ptr_dim_alloc
+    int * SHC_rv = ReturnIntPtrDimAlloc(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_alloc
+}
+
+// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+// function_index=7
 int * OWN_return_int_ptr_dim_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_new
@@ -93,8 +113,28 @@ int * OWN_return_int_ptr_dim_new(int * len)
 // splicer end function.return_int_ptr_dim_new
 }
 
+// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)
+// function_index=8
+int * OWN_return_int_ptr_dim_pointer_new(int * len)
+{
+// splicer begin function.return_int_ptr_dim_pointer_new
+    int * SHC_rv = ReturnIntPtrDimPointerNew(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_pointer_new
+}
+
+// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +allocatable(len)+owner(caller)
+// function_index=9
+int * OWN_return_int_ptr_dim_alloc_new(int * len)
+{
+// splicer begin function.return_int_ptr_dim_alloc_new
+    int * SHC_rv = ReturnIntPtrDimAllocNew(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_alloc_new
+}
+
 // void createClassStatic(int flag +intent(in)+value)
-// function_index=6
+// function_index=10
 void OWN_create_class_static(int flag)
 {
 // splicer begin function.create_class_static
@@ -104,7 +144,7 @@ void OWN_create_class_static(int flag)
 }
 
 // Class1 * getClassStatic() +owner(library)
-// function_index=7
+// function_index=11
 OWN_class1 OWN_get_class_static()
 {
 // splicer begin function.get_class_static
@@ -117,7 +157,7 @@ OWN_class1 OWN_get_class_static()
 }
 
 // Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-// function_index=8
+// function_index=12
 /**
  * \brief Return pointer to new Class1 instance.
  *

@@ -135,6 +135,56 @@ PY_ReturnIntPtrDim(
 // splicer end function.return_int_ptr_dim
 }
 
+static char PY_ReturnIntPtrDimPointer__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDimPointer(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)
+// splicer begin function.return_int_ptr_dim_pointer
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = ReturnIntPtrDimPointer(&len);
+
+    // post_call
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
+        SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim_pointer
+}
+
+static char PY_ReturnIntPtrDimAlloc__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDimAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +allocatable(len)
+// splicer begin function.return_int_ptr_dim_alloc
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = ReturnIntPtrDimAlloc(&len);
+
+    // post_call
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
+        SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim_alloc
+}
+
 static char PY_ReturnIntPtrDimNew__doc__[] =
 "documentation"
 ;
@@ -145,7 +195,7 @@ PY_ReturnIntPtrDimNew(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
+// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 // splicer begin function.return_int_ptr_dim_new
     // pre_call
     int len;  // intent(out)
@@ -159,6 +209,56 @@ PY_ReturnIntPtrDimNew(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_dim_new
+}
+
+static char PY_ReturnIntPtrDimPointerNew__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDimPointerNew(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)
+// splicer begin function.return_int_ptr_dim_pointer_new
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = ReturnIntPtrDimPointerNew(&len);
+
+    // post_call
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
+        SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim_pointer_new
+}
+
+static char PY_ReturnIntPtrDimAllocNew__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrDimAllocNew(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +allocatable(len)+owner(caller)
+// splicer begin function.return_int_ptr_dim_alloc_new
+    // pre_call
+    int len;  // intent(out)
+
+    int * SHC_rv = ReturnIntPtrDimAllocNew(&len);
+
+    // post_call
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
+        SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_dim_alloc_new
 }
 
 static char PY_createClassStatic__doc__[] =
@@ -246,8 +346,16 @@ static PyMethodDef PY_methods[] = {
     PY_ReturnIntPtrScalar__doc__},
 {"ReturnIntPtrDim", (PyCFunction)PY_ReturnIntPtrDim, METH_NOARGS,
     PY_ReturnIntPtrDim__doc__},
+{"ReturnIntPtrDimPointer", (PyCFunction)PY_ReturnIntPtrDimPointer,
+    METH_NOARGS, PY_ReturnIntPtrDimPointer__doc__},
+{"ReturnIntPtrDimAlloc", (PyCFunction)PY_ReturnIntPtrDimAlloc,
+    METH_NOARGS, PY_ReturnIntPtrDimAlloc__doc__},
 {"ReturnIntPtrDimNew", (PyCFunction)PY_ReturnIntPtrDimNew, METH_NOARGS,
     PY_ReturnIntPtrDimNew__doc__},
+{"ReturnIntPtrDimPointerNew", (PyCFunction)PY_ReturnIntPtrDimPointerNew,
+    METH_NOARGS, PY_ReturnIntPtrDimPointerNew__doc__},
+{"ReturnIntPtrDimAllocNew", (PyCFunction)PY_ReturnIntPtrDimAllocNew,
+    METH_NOARGS, PY_ReturnIntPtrDimAllocNew__doc__},
 {"createClassStatic", (PyCFunction)PY_createClassStatic,
     METH_VARARGS|METH_KEYWORDS, PY_createClassStatic__doc__},
 {"getClassStatic", (PyCFunction)PY_getClassStatic, METH_NOARGS,
