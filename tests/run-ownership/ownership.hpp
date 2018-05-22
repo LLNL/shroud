@@ -48,8 +48,14 @@ public:
 
 int * ReturnIntPtr();
 int * ReturnIntPtrScalar();
+
 int * ReturnIntPtrDim(int *len);
+int * ReturnIntPtrDimPointer(int *len);
+int * ReturnIntPtrDimAlloc(int *len);
+
 int * ReturnIntPtrDimNew(int *len);
+int * ReturnIntPtrDimPointerNew(int *len);
+int * ReturnIntPtrDimAllocNew(int *len);
 
 void createClassStatic(int flag);
 Class1 * getClassStatic();

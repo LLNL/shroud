@@ -103,6 +103,7 @@ class VerifyAttrs(object):
                     'len',
                     'name',
                     'owner',
+                    'pointer',
                     'pure',
                     ]:
                 raise RuntimeError(

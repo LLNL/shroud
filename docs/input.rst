@@ -271,6 +271,9 @@ option **F_standard** is not 2008 then the allocate statement will be::
         allocate(out(lbound(in,1):ubound(in,1)))
 
 
+For Python, same as *dimension*.
+
+
 default
 ^^^^^^^
 
@@ -377,6 +380,16 @@ caller
    the memory.
 
 .. steal  intent(in)
+
+pointer
+^^^^^^^
+
+Specifies that the Fortran ``POINTER`` attribute will be applied.
+The argument will point to memory allocated by the wrapped library.
+If *owner(caller)* is also defined, then an additional argument
+is added which can be used to release the memory.
+
+For Python, same as *dimension*.
 
 pure
 ^^^^

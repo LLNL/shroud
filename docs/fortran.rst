@@ -270,6 +270,30 @@ An ``int`` argument is converted to Fortran with the typemap::
         f_cast: int({f_var}, C_INT)
 
 
+Pointers
+--------
+
+When a function returns a pointer to a POD type several Fortran
+interfaces are possible. When a function returns an ``int *`` the
+simplest result is to return a ``type(C_PTR)``.  This is just the raw
+pointer returned by C++.  It's also the least useful to the caller
+since it cannot be used directly.
+
+If the C++ library function can also provide the length of the
+pointer, then its possible to return a Fortran ``POINTER`` or
+``ALLOCATABLE`` variable.  This allows the caller to directly use the
+returned value of the C++ function.  However, there is a price; the
+user will have to release the memory if *owner(caller)* is set.  To
+accomplish this with ``POINTER`` arguments, an additional argument is
+added to the function which contains information about how to delete
+the array.  If the argument is declared Fortran ``ALLOCATABLE``, then
+the value of the C++ pointer are copied into a newly allocated Fortran
+array. The C++ memory is deleted by the wrapper and it is the callers
+responsibility to ``deallocate`` the Fortran array. However, Fortran
+will release it automatically the array under some conditions when the
+caller function returns. If *owner(library)* is set, the Fortran
+caller never needs to release the memory.
+
 Struct Types
 ------------
 
