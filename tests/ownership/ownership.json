@@ -554,7 +554,7 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)", 
+                "decl": "int * ReturnIntPtrDim(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDim(\tlen);", 
@@ -684,7 +684,7 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +pointer(len)", 
+                "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointer(\tlen);", 
@@ -809,7 +809,7 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden) +allocatable(len)", 
+                "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +allocatable(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);", 
@@ -932,7 +932,7 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len) +owner(caller)", 
+                "decl": "int * ReturnIntPtrDimNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimNew(\tlen);", 
@@ -1063,7 +1063,7 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden) +pointer(len) +owner(caller)", 
+                "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointerNew(\tlen);", 
@@ -1189,7 +1189,7 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden) +allocatable(len) +owner(caller)", 
+                "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +allocatable(len)+owner(caller)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAllocNew(\tlen);", 

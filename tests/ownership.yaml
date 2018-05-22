@@ -72,34 +72,46 @@ declarations:
     return_scalar_pointer: scalar
     wrap_lua: False
 
-- decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
+- decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden)
+  fattrs:
+    dimension: len
   options:
     wrap_lua: False
 
-- decl: int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden) +pointer(len)
+- decl: int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)
+  fattrs:
+    pointer: len
   options:
     wrap_lua: False
 
-- decl: int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden) +allocatable(len)
+- decl: int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)
+  fattrs:
+    allocatable: len
   options:
     wrap_fortran: False
     wrap_lua: False
 
-- decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len) +owner(caller)
-#  fattrs:
-#     C_free_pattern: delete_int_array
+- decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden)
+  fattrs:
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
   options:
     wrap_lua: False
 
-- decl: int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden) +pointer(len) +owner(caller)
-#  fattrs:
-#     C_free_pattern: delete_int_array
+- decl: int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)
+  fattrs:
+    pointer: len
+    owner: caller
+#    C_free_pattern: delete_int_array
   options:
     wrap_lua: False
 
-- decl: int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden) +allocatable(len) +owner(caller)
-#  fattrs:
-#     C_free_pattern: delete_int_array
+- decl: int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)
+  fattrs:
+    allocatable: len
+    owner: caller
+#    C_free_pattern: delete_int_array
   options:
     wrap_fortran: False
     wrap_lua: False
