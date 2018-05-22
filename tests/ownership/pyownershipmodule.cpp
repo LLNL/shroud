@@ -197,7 +197,7 @@ PY_getClassStatic(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// Class1 * getClassStatic()
+// Class1 * getClassStatic() +owner(library)
 // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
 
@@ -219,7 +219,7 @@ PY_getClassNew(
   PyObject *args,
   PyObject *kwds)
 {
-// Class1 * getClassNew(int flag +intent(in)+value)
+// Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 // splicer begin function.get_class_new
     int flag;
     const char *SHT_kwlist[] = {

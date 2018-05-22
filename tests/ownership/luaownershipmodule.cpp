@@ -54,10 +54,23 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
+// ~Class1()
+static int l_class1_dtor(lua_State *L)
+{
+    // splicer begin class.Class1.method.__gc
+    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
+        L, 1, "Class1.metatable");
+    delete SH_this->self;
+    SH_this->self = NULL;
+    return 0;
+    // splicer end class.Class1.method.__gc
+}
+
 // splicer begin class.Class1.additional_functions
 // splicer end class.Class1.additional_functions
 
 static const struct luaL_Reg l_Class1_Reg [] = {
+    {"__gc", l_class1_dtor},
     // splicer begin class.Class1.register
     // splicer end class.Class1.register
     {NULL, NULL}   /*sentinel */

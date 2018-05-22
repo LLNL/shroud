@@ -32,6 +32,51 @@
                 }, 
                 "functions": [
                     {
+                        "_function_index": 0, 
+                        "ast": {
+                            "attrs": {
+                                "_destructor": true, 
+                                "_name": "dtor", 
+                                "_typename": "Class1"
+                            }, 
+                            "const": false, 
+                            "func_const": false, 
+                            "params": [], 
+                            "specifier": [
+                                "Class1"
+                            ]
+                        }, 
+                        "decl": "~Class1()", 
+                        "declgen": "~Class1()", 
+                        "format": {
+                            "C_call_code": "delete SH_this;", 
+                            "C_call_list": "", 
+                            "C_name": "OWN_class1_dtor", 
+                            "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(self->addr);", 
+                            "C_prototype": "OWN_class1 * self", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_class1_dtor", 
+                            "F_C_name": "c_class1_dtor", 
+                            "F_arg_c_call": "obj%cxxmem", 
+                            "F_arguments": "obj", 
+                            "F_call_code": "call c_class1_dtor(obj%cxxmem)", 
+                            "F_name_function": "dtor", 
+                            "F_name_generic": "dtor", 
+                            "F_name_impl": "class1_dtor", 
+                            "F_subprogram": "subroutine", 
+                            "LUA_name": "dtor", 
+                            "LUA_name_impl": "l_class1_dtor", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "function_name": "dtor", 
+                            "underscore_name": "dtor"
+                        }, 
+                        "options": {}
+                    }, 
+                    {
                         "_fmtresult": {
                             "fmtc": {
                                 "c_var": "SHC_rv", 
@@ -41,7 +86,7 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 0, 
+                        "_function_index": 1, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -285,7 +330,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 1, 
+                "_function_index": 2, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -357,7 +402,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 2, 
+                "_function_index": 3, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -465,7 +510,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 3, 
+                "_function_index": 4, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -596,7 +641,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 4, 
+                "_function_index": 5, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -704,7 +749,7 @@
                         }
                     }
                 }, 
-                "_function_index": 5, 
+                "_function_index": 6, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -785,10 +830,11 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 7, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1"
+                        "_typename": "Class1", 
+                        "owner": "library"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -806,8 +852,8 @@
                         "Class1"
                     ]
                 }, 
-                "decl": "Class1 * getClassStatic()", 
-                "declgen": "Class1 * getClassStatic()", 
+                "decl": "Class1 * getClassStatic() +owner(library)", 
+                "declgen": "Class1 * getClassStatic() +owner(library)", 
                 "format": {
                     "C_call_code": "Class1 * SHCXX_rv =\t getClassStatic(\t);", 
                     "C_call_list": "", 
@@ -891,10 +937,11 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 8, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1"
+                        "_typename": "Class1", 
+                        "owner": "caller"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -928,8 +975,8 @@
                         "Class1"
                     ]
                 }, 
-                "decl": "Class1 * getClassNew(int flag)", 
-                "declgen": "Class1 * getClassNew(int flag +intent(in)+value)", 
+                "decl": "Class1 * getClassNew(int flag) +owner(caller)", 
+                "declgen": "Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)", 
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 }, 
@@ -1088,6 +1135,7 @@
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class1)", 
             "forward": "Class1", 
+            "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 

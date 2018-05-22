@@ -68,6 +68,7 @@ module ownership_mod
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
+        procedure :: dtor => class1_dtor
         procedure :: get_flag => class1_get_flag
         procedure :: get_instance => class1_get_instance
         procedure :: set_instance => class1_set_instance
@@ -85,6 +86,13 @@ module ownership_mod
     end interface
 
     interface
+
+        subroutine c_class1_dtor(self) &
+                bind(C, name="OWN_class1_dtor")
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data), intent(IN) :: self
+        end subroutine c_class1_dtor
 
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
@@ -164,8 +172,19 @@ module ownership_mod
 
 contains
 
-    ! int getFlag()
+    ! ~Class1()
     ! function_index=0
+    subroutine class1_dtor(obj)
+        use iso_c_binding, only : C_NULL_PTR
+        class(class1) :: obj
+        ! splicer begin class.Class1.method.dtor
+        call c_class1_dtor(obj%cxxmem)
+        obj%cxxmem%addr = C_NULL_PTR
+        ! splicer end class.Class1.method.dtor
+    end subroutine class1_dtor
+
+    ! int getFlag()
+    ! function_index=1
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -203,7 +222,7 @@ contains
     ! splicer end class.Class1.additional_functions
 
     ! int * ReturnIntPtr()
-    ! function_index=1
+    ! function_index=2
     function return_int_ptr() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -216,7 +235,7 @@ contains
     end function return_int_ptr
 
     ! int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=3
+    ! function_index=4
     function return_int_ptr_dim() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -230,7 +249,7 @@ contains
     end function return_int_ptr_dim
 
     ! int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=4
+    ! function_index=5
     function return_int_ptr_dim_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -243,8 +262,8 @@ contains
         ! splicer end function.return_int_ptr_dim_new
     end function return_int_ptr_dim_new
 
-    ! Class1 * getClassStatic()
-    ! function_index=6
+    ! Class1 * getClassStatic() +owner(library)
+    ! function_index=7
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -253,8 +272,8 @@ contains
         ! splicer end function.get_class_static
     end function get_class_static
 
-    ! Class1 * getClassNew(int flag +intent(in)+value)
-    ! function_index=7
+    ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+    ! function_index=8
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

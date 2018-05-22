@@ -43,6 +43,7 @@
 #include "wrapownership.h"
 #include <stdlib.h>
 #include "ownership.hpp"
+#include "typesownership.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -53,7 +54,7 @@ extern "C" {
 // splicer end C_definitions
 
 // int * ReturnIntPtr()
-// function_index=1
+// function_index=2
 int * OWN_return_int_ptr()
 {
 // splicer begin function.return_int_ptr
@@ -63,7 +64,7 @@ int * OWN_return_int_ptr()
 }
 
 // int * ReturnIntPtrScalar()
-// function_index=2
+// function_index=3
 int OWN_return_int_ptr_scalar()
 {
 // splicer begin function.return_int_ptr_scalar
@@ -73,7 +74,7 @@ int OWN_return_int_ptr_scalar()
 }
 
 // int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-// function_index=3
+// function_index=4
 int * OWN_return_int_ptr_dim(int * len)
 {
 // splicer begin function.return_int_ptr_dim
@@ -83,7 +84,7 @@ int * OWN_return_int_ptr_dim(int * len)
 }
 
 // int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
-// function_index=4
+// function_index=5
 int * OWN_return_int_ptr_dim_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_new
@@ -93,7 +94,7 @@ int * OWN_return_int_ptr_dim_new(int * len)
 }
 
 // void createClassStatic(int flag +intent(in)+value)
-// function_index=5
+// function_index=6
 void OWN_create_class_static(int flag)
 {
 // splicer begin function.create_class_static
@@ -102,8 +103,8 @@ void OWN_create_class_static(int flag)
 // splicer end function.create_class_static
 }
 
-// Class1 * getClassStatic()
-// function_index=6
+// Class1 * getClassStatic() +owner(library)
+// function_index=7
 OWN_class1 OWN_get_class_static()
 {
 // splicer begin function.get_class_static
@@ -115,8 +116,8 @@ OWN_class1 OWN_get_class_static()
 // splicer end function.get_class_static
 }
 
-// Class1 * getClassNew(int flag +intent(in)+value)
-// function_index=7
+// Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+// function_index=8
 /**
  * \brief Return pointer to new Class1 instance.
  *
@@ -130,6 +131,32 @@ OWN_class1 OWN_get_class_new(int flag)
     SHC_rv.idtor = 0;
     return SHC_rv;
 // splicer end function.get_class_new
+}
+
+// Release C++ allocated memory.
+void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:
+    {
+        Class1 *cxx_ptr = reinterpret_cast<Class1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

@@ -56,6 +56,14 @@ struct s_OWN_class1 {
 };
 typedef struct s_OWN_class1 OWN_class1;
 
+struct s_OWN_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_OWN_SHROUD_capsule_data OWN_SHROUD_capsule_data;
+
+void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap);
+
 #ifdef __cplusplus
 }
 #endif

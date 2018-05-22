@@ -102,6 +102,7 @@ class VerifyAttrs(object):
                     'dimension',
                     'len',
                     'name',
+                    'owner',
                     'pure',
                     ]:
                 raise RuntimeError(
