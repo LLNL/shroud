@@ -663,12 +663,12 @@ class GenFunctions(object):
                 cxx_T = arg.attrs['template']
                 template_typedef = typemap.lookup_type(cxx_T)
                 whelpers.add_array_copy_helper(dict(
-                    cxx_T = cxx_T,
                     cxx_type = cxx_T,
                     f_kind = template_typedef.f_kind,
                     C_prefix = fmt.C_prefix,
                     C_array_type = fmt.C_array_type,
                     F_array_type = fmt.F_array_type,
+                    stdlib = fmt.stdlib,
                 ))
 
         has_string_result = False

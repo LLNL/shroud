@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapvectors.h"
+#include <cstring>
 #include <stdlib.h>
 #include <string>
 #include "typesvectors.h"
@@ -69,15 +70,13 @@ int ShroudLenTrim(const char *s, int ls) {
 
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
-void VEC_SHROUD_array_copy_int(VEC_SHROUD_array *data, int *c_var, 
+void VEC_SHROUD_array_copy_int(VEC_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
-    const int *cxx_var = reinterpret_cast<const int *>
-        (data->addr.cvoidp);
+    const void *cxx_var = data->addr.cvoidp;
     int n = c_var_size < data->size ? c_var_size : data->size;
-    for (int i=0; i < n; ++i) {
-        *c_var++ = *cxx_var++;
-    }
+    n *= data->len;
+    std::memcpy(c_var, cxx_var, n);
     // delete cxx_var->cxx
 }
 // splicer begin C_definitions
@@ -104,6 +103,7 @@ void VEC_vector_iota_bufferify(VEC_SHROUD_array *Darg)
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
     Darg->cxx.idtor = 0;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
     return;
 // splicer end function.vector_iota_bufferify
@@ -120,6 +120,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
     Darg->cxx.idtor = 0;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
     return;
 // splicer end function.vector_increment_bufferify

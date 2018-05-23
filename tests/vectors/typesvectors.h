@@ -62,7 +62,7 @@ struct s_VEC_SHROUD_array {
         const void * cvoidp;
         const char * ccharp;
     } addr;
-    size_t len;     /* character len of data in cxx */
+    size_t len;     /* bytes-per-item or character len of data in cxx */
     size_t size;    /* size of data in cxx */
 };
 typedef struct s_VEC_SHROUD_array VEC_SHROUD_array;

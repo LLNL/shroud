@@ -5801,6 +5801,7 @@
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
@@ -5822,6 +5823,7 @@
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [

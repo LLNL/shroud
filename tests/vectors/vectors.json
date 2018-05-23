@@ -410,7 +410,7 @@
                     "C_call_code": "vector_iota(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_bufferify", 
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->size = SH_arg->size();", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
                     "C_prototype": "VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
@@ -564,7 +564,7 @@
                     "C_call_code": "vector_increment(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_increment_bufferify", 
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->size = SH_arg->size();", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);", 
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
@@ -1463,6 +1463,7 @@
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
@@ -1484,6 +1485,7 @@
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
