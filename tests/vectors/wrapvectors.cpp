@@ -69,8 +69,8 @@ int ShroudLenTrim(const char *s, int ls) {
 
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
-void VEC_SHROUD_vector_copy_int(VEC_SHROUD_vector_context *data, 
-    int *c_var, size_t c_var_size)
+void VEC_SHROUD_vector_copy_int(VEC_SHROUD_array *data, int *c_var, 
+    size_t c_var_size)
 {
     std::vector<int> *cxx_var = reinterpret_cast<std::vector<int> *>
         (data->cxx);
@@ -99,7 +99,7 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 
 // void vector_iota(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
 // function_index=7
-void VEC_vector_iota_bufferify(VEC_SHROUD_vector_context *Darg)
+void VEC_vector_iota_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
@@ -114,7 +114,7 @@ void VEC_vector_iota_bufferify(VEC_SHROUD_vector_context *Darg)
 // void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 // function_index=8
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
-    VEC_SHROUD_vector_context *Darg)
+    VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_increment_bufferify
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);

@@ -835,7 +835,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(proto_list, '{C_capsule_data_type} *{c_var_capsule}', fmt_arg)
                 elif buf_arg == 'context':
                     fmt_arg.c_var_context = c_attrs['context']
-                    append_format(proto_list, '{C_context_type} *{c_var_context}', fmt_arg)
+                    append_format(proto_list, '{C_array_type} *{c_var_context}', fmt_arg)
                 elif buf_arg == 'len_trim':
                     fmt_arg.c_var_trim = c_attrs['len_trim']
                     append_format(proto_list, 'int {c_var_trim}', fmt_arg)

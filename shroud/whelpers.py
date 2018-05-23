@@ -168,7 +168,7 @@ def add_external_helpers(fmt):
         source=wformat("""
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void {C_prefix}ShroudStringCopyAndFree({C_context_type} *data, char *c_var, long c_var_len) {{+
+void {C_prefix}ShroudStringCopyAndFree({C_array_type} *data, char *c_var, long c_var_len) {{+
 std::string * cxxstr = static_cast<std::string *>(data->cxx);
 
 strncpy(c_var, cxxstr->data(), cxxstr->size());
@@ -186,8 +186,8 @@ interface+
 subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudStringCopyAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
-import {F_context_type}
-type({F_context_type}), intent(IN) :: context
+import {F_array_type}
+type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_LONG), value :: c_var_size
 -end subroutine SHROUD_string_copy_and_free
@@ -284,13 +284,13 @@ call array_destructor(cap%mem, .false._C_BOOL)
         helper = dict(
             h_header='<stddef.h>',    # XXX - h_shared_header
             h_shared=wformat("""
-struct s_{C_context_type} {{+
+struct s_{C_array_type} {{+
 void *cxx;      /* address of C++ instance */
 void *addr;     /* address of data in std::vector */
 size_t len;     /* len of std::string */
 size_t size;    /* size of data in std::vector */
 -}};
-typedef struct s_{C_context_type} {C_context_type};""", fmt),
+typedef struct s_{C_array_type} {C_array_type};""", fmt),
         )
         CHelpers[name] = helper
 
@@ -298,13 +298,13 @@ typedef struct s_{C_context_type} {C_context_type};""", fmt),
         # Create a derived type used to communicate with C wrapper.
         # Should never be exposed to user.
         helper=dict(
-            derived_type="""
-type, bind(C) :: SHROUD_vector_context
+            derived_type=wformat("""
+type, bind(C) :: {F_array_type}
   type(C_PTR) :: cxx = C_NULL_PTR        ! address of C++ instance
   type(C_PTR) :: addr = C_NULL_PTR       ! address of data in std::vector
   integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! len of std::string
   integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in std::vector
-end type SHROUD_vector_context""",
+end type {F_array_type}""", fmt),
             modules = dict(
                 iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T' ],
             )
@@ -322,7 +322,7 @@ def add_vector_copy_helper(fmt):
             cxx_source=wformat("""
 0// Copy std::vector into array c_var(c_var_size).
 0// Then release std::vector.
-void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_context_type} *data, \t{cxx_T} *c_var, \tsize_t c_var_size)
+void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_array_type} *data, \t{cxx_T} *c_var, \tsize_t c_var_size)
 {{+
 std::vector<{cxx_T}> *cxx_var = \treinterpret_cast<std::vector<{cxx_T}> *>\t(data->cxx);
 std::vector<{cxx_T}>::size_type+
@@ -345,8 +345,8 @@ interface+
 subroutine SHROUD_vector_copy_{cxx_T}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
-import {F_context_type}
-type({F_context_type}), intent(IN) :: context
+import {F_array_type}
+type({F_array_type}), intent(IN) :: context
 integer({f_kind}), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_vector_copy_{cxx_T}

@@ -64,10 +64,10 @@ extern "C" {
 
 int VEC_vector_sum_bufferify(const int * arg, long Sarg);
 
-void VEC_vector_iota_bufferify(VEC_SHROUD_vector_context *Darg);
+void VEC_vector_iota_bufferify(VEC_SHROUD_array *Darg);
 
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
-    VEC_SHROUD_vector_context *Darg);
+    VEC_SHROUD_array *Darg);
 
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg);

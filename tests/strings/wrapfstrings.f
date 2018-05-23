@@ -55,12 +55,12 @@ module strings_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    type, bind(C) :: SHROUD_vector_context
+    type, bind(C) :: SHROUD_array
       type(C_PTR) :: cxx = C_NULL_PTR        ! address of C++ instance
       type(C_PTR) :: addr = C_NULL_PTR       ! address of data in std::vector
       integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! len of std::string
       integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in std::vector
-    end type SHROUD_vector_context
+    end type SHROUD_array
 
     interface
 
@@ -187,9 +187,9 @@ module strings_mod
 
         subroutine c_get_const_string_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_alloc_bufferify")
-            import :: SHROUD_vector_context
+            import :: SHROUD_array
             implicit none
-            type(SHROUD_vector_context), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_get_const_string_alloc_bufferify
 
         pure function c_get_const_string_ref_pure() &
@@ -269,9 +269,9 @@ module strings_mod
 
         subroutine c_get_const_string_ref_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ref_alloc_bufferify")
-            import :: SHROUD_vector_context
+            import :: SHROUD_array
             implicit none
-            type(SHROUD_vector_context), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_get_const_string_ref_alloc_bufferify
 
         function c_get_const_string_ptr_len() &
@@ -300,9 +300,9 @@ module strings_mod
 
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
-            import :: SHROUD_vector_context
+            import :: SHROUD_array
             implicit none
-            type(SHROUD_vector_context), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_alloc_bufferify
 
         function c_get_const_string_ptr_owns_alloc() &
@@ -315,9 +315,9 @@ module strings_mod
 
         subroutine c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_bufferify")
-            import :: SHROUD_vector_context
+            import :: SHROUD_array
             implicit none
-            type(SHROUD_vector_context), intent(INOUT) :: DSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_owns_alloc_bufferify
 
         subroutine c_accept_string_const_reference(arg1) &
@@ -467,8 +467,8 @@ module strings_mod
         subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
              bind(c,name="STR_ShroudStringCopyAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
-            import SHROUD_vector_context
-            type(SHROUD_vector_context), intent(IN) :: context
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_LONG), value :: c_var_size
         end subroutine SHROUD_string_copy_and_free
@@ -623,7 +623,7 @@ contains
     function get_const_string_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        type(SHROUD_vector_context) :: DSHF_rv
+        type(SHROUD_array) :: DSHF_rv
         character(len=:,kind=C_CHAR), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_alloc
         call c_get_const_string_alloc_bufferify(DSHF_rv)
@@ -704,7 +704,7 @@ contains
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        type(SHROUD_vector_context) :: DSHF_rv
+        type(SHROUD_array) :: DSHF_rv
         character(len=:,kind=C_CHAR), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_alloc
         call c_get_const_string_ref_alloc_bufferify(DSHF_rv)
@@ -736,7 +736,7 @@ contains
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        type(SHROUD_vector_context) :: DSHF_rv
+        type(SHROUD_array) :: DSHF_rv
         character(len=:,kind=C_CHAR), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
         call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)
@@ -751,7 +751,7 @@ contains
     function get_const_string_ptr_owns_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_CHAR
-        type(SHROUD_vector_context) :: DSHF_rv
+        type(SHROUD_array) :: DSHF_rv
         character(len=:,kind=C_CHAR), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
         call c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv)

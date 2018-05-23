@@ -65,7 +65,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void STR_ShroudStringCopyAndFree(STR_SHROUD_vector_context *data, char *c_var, long c_var_len) {
+void STR_ShroudStringCopyAndFree(STR_SHROUD_array *data, char *c_var, long c_var_len) {
     std::string * cxxstr = static_cast<std::string *>(data->cxx);
 
     strncpy(c_var, cxxstr->data(), cxxstr->size());
@@ -335,8 +335,7 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 
 // void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 // function_index=39
-void STR_get_const_string_alloc_bufferify(
-    STR_SHROUD_vector_context *DSHF_rv)
+void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_alloc_bufferify
     std::string * SHCXX_rv = new std::string;
@@ -514,8 +513,7 @@ const char * STR_get_const_string_ref_alloc()
 
 // void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 // function_index=45
-void STR_get_const_string_ref_alloc_bufferify(
-    STR_SHROUD_vector_context *DSHF_rv)
+void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ref_alloc_bufferify
     const std::string & SHCXX_rv = getConstStringRefAlloc();
@@ -577,8 +575,7 @@ const char * STR_get_const_string_ptr_alloc()
 
 // void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 // function_index=47
-void STR_get_const_string_ptr_alloc_bufferify(
-    STR_SHROUD_vector_context *DSHF_rv)
+void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
@@ -603,7 +600,7 @@ const char * STR_get_const_string_ptr_owns_alloc()
 // void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable
 // function_index=48
 void STR_get_const_string_ptr_owns_alloc_bufferify(
-    STR_SHROUD_vector_context *DSHF_rv)
+    STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ptr_owns_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();

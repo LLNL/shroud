@@ -666,8 +666,8 @@ class GenFunctions(object):
                     cxx_T = cxx_T,
                     f_kind = template_typedef.f_kind,
                     C_prefix = fmt.C_prefix,
-                    C_context_type = fmt.C_context_type,
-                    F_context_type = fmt.F_context_type,
+                    C_array_type = fmt.C_array_type,
+                    F_array_type = fmt.F_array_type,
                 ))
 
         has_string_result = False

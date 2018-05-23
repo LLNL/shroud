@@ -50,13 +50,13 @@
 extern "C" {
 #endif
 
-struct s_STR_SHROUD_vector_context {
+struct s_STR_SHROUD_array {
     void *cxx;      /* address of C++ instance */
     void *addr;     /* address of data in std::vector */
     size_t len;     /* len of std::string */
     size_t size;    /* size of data in std::vector */
 };
-typedef struct s_STR_SHROUD_vector_context STR_SHROUD_vector_context;
+typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 
 #ifdef __cplusplus
 }

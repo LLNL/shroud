@@ -526,6 +526,11 @@ scope will be recursively searched.
 Library
 ^^^^^^^
 
+C_array_type
+    Name of structure used to store information about an array
+    such as its address and size.
+    Defaults to *{C_prefix}SHROUD_array*.
+
 C_bufferify_suffix
   Suffix appended to generated routine which pass strings as buffers
   with explicit lengths.
@@ -534,10 +539,6 @@ C_bufferify_suffix
 C_capsule_data_type
     Name of struct used to share memory information with Fortran.
     Defaults to *SHROUD_capsule_data*.
-
-C_context_type
-    Name of array context information struct and typedef.
-    Defaults to *SHROUD_vector_context*.
 
 C_header_filename
     Name of generated header file for the library.
@@ -594,6 +595,11 @@ CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
+F_array_type
+    Name of derived type used to store information about an array
+    such as its address and size.
+    Defaults to *SHROUD_array*.
+
 F_C_prefix
     Prefix added to name of generated Fortran interface for C routines.
     Defaults to **c_**.
@@ -611,10 +617,6 @@ F_capsule_type
     Name of derived type used to release memory allocated by C or C++.
     Defaults to *SHROUD_capsule*.
     Contains a *F_capsule_data_type*.
-
-F_context_type
-    Name of array context information derived type.
-    Defaults to *SHROUD_vector_context*.
 
 F_derived_member
     A *F_capsule_data_type* use to reference C++ memory.

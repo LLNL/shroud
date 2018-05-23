@@ -55,12 +55,12 @@ module vectors_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    type, bind(C) :: SHROUD_vector_context
+    type, bind(C) :: SHROUD_array
       type(C_PTR) :: cxx = C_NULL_PTR        ! address of C++ instance
       type(C_PTR) :: addr = C_NULL_PTR       ! address of data in std::vector
       integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! len of std::string
       integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in std::vector
-    end type SHROUD_vector_context
+    end type SHROUD_array
 
     interface
 
@@ -77,19 +77,19 @@ module vectors_mod
         subroutine c_vector_iota_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_bufferify")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_vector_context
+            import :: SHROUD_array
             implicit none
-            type(SHROUD_vector_context), intent(INOUT) :: Darg
+            type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_iota_bufferify
 
         subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_increment_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
-            import :: SHROUD_vector_context
+            import :: SHROUD_array
             implicit none
             integer(C_INT), intent(INOUT) :: arg(*)
             integer(C_LONG), value, intent(IN) :: Sarg
-            type(SHROUD_vector_context), intent(INOUT) :: Darg
+            type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_increment_bufferify
 
         function c_vector_string_count_bufferify(arg, Sarg, Narg) &
@@ -111,8 +111,8 @@ module vectors_mod
         subroutine SHROUD_vector_copy_int(context, c_var, c_var_size) &
             bind(C, name="VEC_SHROUD_vector_copy_int")
             use iso_c_binding, only : C_INT, C_SIZE_T
-            import SHROUD_vector_context
-            type(SHROUD_vector_context), intent(IN) :: context
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
             integer(C_INT), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine SHROUD_vector_copy_int
@@ -139,7 +139,7 @@ contains
     subroutine vector_iota(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
-        type(SHROUD_vector_context) :: Darg
+        type(SHROUD_array) :: Darg
         ! splicer begin function.vector_iota
         call c_vector_iota_bufferify(Darg)
         ! splicer end function.vector_iota
@@ -152,7 +152,7 @@ contains
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(INOUT) :: arg(:)
-        type(SHROUD_vector_context) :: Darg
+        type(SHROUD_array) :: Darg
         ! splicer begin function.vector_increment
         call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG), &
             Darg)
