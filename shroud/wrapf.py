@@ -655,7 +655,7 @@ rv = .false.
         ast = node.ast
         result_type = node.C_return_type
         subprogram = node.C_subprogram
-        result_typedef = node.C_result_typedef
+        result_typemap = node.C_result_typemap
         generated_suffix = node.generated_suffix
         return_pointer_as = node.return_pointer_as
         is_ctor = ast.attrs.get('_constructor', False)
@@ -783,7 +783,7 @@ rv = .false.
             'F_C_arguments', ',\t '.join(arg_c_names))
 
         if fmt.F_C_subprogram == 'function':
-            if result_typedef.base == 'string':
+            if result_typemap.base == 'string':
                 arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
@@ -795,8 +795,8 @@ rv = .false.
                 else:
                     arg_c_decl.append(rvast.bind_c())
                 self.update_f_module(modules, imports,
-                                     result_typedef.f_c_module or
-                                     result_typedef.f_module)
+                                     result_typemap.f_c_module or
+                                     result_typemap.f_module)
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name, imports)
 
@@ -901,7 +901,7 @@ rv = .false.
         # Fortran return type
         result_type = node.F_return_type
         subprogram = node.F_subprogram
-        result_typedef = node.F_result_typedef
+        result_typemap = node.F_result_typemap
         C_subprogram = C_node.C_subprogram
         generated_suffix = C_node.generated_suffix
         ast = node.ast
@@ -927,7 +927,7 @@ rv = .false.
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typedef.f_statements.get('result' + result_generated_suffix, {}) \
+        if result_typemap.f_statements.get('result' + result_generated_suffix, {}) \
                                       .get('need_wrapper', False):
             need_wrapper = True
 
@@ -1141,7 +1141,7 @@ rv = .false.
         if subprogram == 'function':
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
-            if result_typedef.base == 'string':
+            if result_typemap.base == 'string':
                 if is_allocatable:
                     append_format(arg_f_decl,
                                   'character(len=:,kind=C_CHAR), allocatable :: {F_result}',
@@ -1170,7 +1170,7 @@ rv = .false.
             else:
                 arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
 
-            self.update_f_module(modules, imports, result_typedef.f_module)
+            self.update_f_module(modules, imports, result_typemap.f_module)
 
         if not node._CXX_return_templated:
             # if return type is templated in C++,
@@ -1209,7 +1209,7 @@ rv = .false.
                     '{F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == 'function':
-                f_statements = result_typedef.f_statements
+                f_statements = result_typemap.f_statements
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 if 'call' in intent_blk:
                     cmd_list = intent_blk['call']

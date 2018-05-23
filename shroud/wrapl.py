@@ -415,7 +415,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         CXX_subprogram = node.CXX_subprogram
         result_type = node.CXX_return_type
-        result_typedef = node.CXX_result_typedef
+        result_typemap = node.CXX_result_typemap
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
@@ -430,7 +430,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
 # This has been replaced by gen_arg methods, but not sure about const.
-#        if result_typedef.base == 'shadow':
+#        if result_typemap.base == 'shadow':
 #            is_const = False
 #        else:
 #            is_const = None
@@ -450,8 +450,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #                fmt_result.c_member = '.'
                 fmt_result.cxx_member = '.'
                 fmt_result.cxx_addr = '&'
-            if result_typedef.cxx_to_c:
-                fmt_result.c_var = wformat(result_typedef.cxx_to_c, fmt_result)  # if C++
+            if result_typemap.cxx_to_c:
+                fmt_result.c_var = wformat(result_typemap.cxx_to_c, fmt_result)  # if C++
             else:
                 fmt_result.c_var = fmt_result.cxx_var
 
@@ -607,7 +607,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # Compute return value
         if CXX_subprogram == 'function' and not is_ctor:
             fmt.LUA_used_param_state = True
-            tmp = wformat(result_typedef.LUA_push, fmt_result)
+            tmp = wformat(result_typemap.LUA_push, fmt_result)
             LUA_push.append(tmp + ';')
 
         lines = self.splicer_lines

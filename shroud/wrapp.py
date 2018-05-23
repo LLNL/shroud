@@ -814,7 +814,7 @@ return 1;""", fmt)
 
         CXX_subprogram = node.CXX_subprogram
         result_type = node.CXX_return_type
-        result_typedef = node.CXX_result_typedef
+        result_typemap = node.CXX_result_typemap
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
@@ -847,7 +847,7 @@ return 1;""", fmt)
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
 # This has been replaced by gen_arg methods, but not sure about const.
-#        if result_typedef.base == 'shadow':
+#        if result_typemap.base == 'shadow':
 #            is_const = False
 #        else:
 #            is_const = None
@@ -856,13 +856,13 @@ return 1;""", fmt)
             fmt_result = fmt_result0.setdefault('fmtpy', util.Scope(fmt)) # fmt_func
 
             CXX_result = ast
-            if result_typedef.base == 'struct' and not CXX_result.is_pointer():
+            if result_typemap.base == 'struct' and not CXX_result.is_pointer():
                 # Allocate variable to the type returned by the function.
                 # No need to convert to C.
                 is_struct_scalar = True
                 result_return_pointer_as = 'pointer'
                 fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
-            elif result_typedef.cxx_to_c is None:
+            elif result_typemap.cxx_to_c is None:
                 fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
             else:
                 fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
@@ -886,7 +886,7 @@ return 1;""", fmt)
                 fmt_result.cxx_member = '.'
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
-            fmt_result.numpy_type = result_typedef.PYN_typenum
+            fmt_result.numpy_type = result_typemap.PYN_typenum
 #            fmt_pattern = fmt_result
 
         PY_code = []
@@ -1216,7 +1216,7 @@ return 1;""", fmt)
                 # Allocate space for scalar returned by function.
                 # This allows NumPy to pointer to the memory.
                 need_rv = True
-                fmt.cxx_type = result_typedef.cxx_type
+                fmt.cxx_type = result_typemap.cxx_type
                 capsule_type = CXX_result.gen_arg_as_cxx(
                     name=None, force_ptr=True, params=None, continuation=True)
                 if self.language == 'c':
@@ -1272,8 +1272,8 @@ return 1;""", fmt)
         # Compute return value
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
-            result_blk = result_typedef.py_statements.get('intent_out', {})
-            ttt = self.intent_out(result_return_pointer_as, capsule_order, ast, result_typedef,
+            result_blk = result_typemap.py_statements.get('intent_out', {})
+            ttt = self.intent_out(result_return_pointer_as, capsule_order, ast, result_typemap,
                                   result_blk, fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)

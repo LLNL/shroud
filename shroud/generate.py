@@ -935,7 +935,8 @@ class Preprocess(object):
         # that have the template expanded.
         if not node.cxx_template:
             self.process_xxx(cls, node)
-    
+#            self.check_pointer(node, node.ast)
+
     def process_xxx(self, cls, node):
         """Compute information common to all wrapper language.
 
@@ -981,15 +982,15 @@ class Preprocess(object):
         node.C_return_type = C_result_type
         node.F_return_type = F_result_type
 
-        node.CXX_result_typedef = typemap.lookup_type(CXX_result_type)
-        node.C_result_typedef = typemap.lookup_type(C_result_type)
-        node.F_result_typedef = typemap.lookup_type(F_result_type)
+        node.CXX_result_typemap = typemap.lookup_type(CXX_result_type)
+        node.C_result_typemap = typemap.lookup_type(C_result_type)
+        node.F_result_typemap = typemap.lookup_type(F_result_type)
 #        if not result_typedef:
 #            raise RuntimeError("Unknown type {} in {}",
 #                               CXX_result_type, fmt_func.function_name)
 
         # Decide if the function should return a pointer
-        result_typedef = node.CXX_result_typedef
+        result_typedef = node.CXX_result_typemap
         return_pointer_as = None
         if options.F_return_fortran_pointer and ast.is_pointer() \
            and result_typedef.cxx_type != 'void' \
@@ -1008,6 +1009,39 @@ class Preprocess(object):
                 return_pointer_as = 'scalar'
         node.return_pointer_as = return_pointer_as
 
+    def check_pointer(self, node, ast):
+        """Compute how to deal with a pointer argument.
+        """
+        attrs = ast.attrs
+        ast.return_pointer_as = None
+        if ast.is_indirect():
+            if ast.typemap.base == 'shadow':
+                # Pointer to shadow is special case
+                pass
+            elif 'pointer' in attrs:
+                ast.return_pointer_as = 'pointer'
+                illegal = [ 'allocatable', 'scalar' ]
+            elif 'allocatable' in attrs:
+                ast.return_pointer_as = 'allocatable'
+                illegal = [ 'scalar' ]
+            elif 'scalar' in attrs:
+                ast.return_pointer_as = 'scalar'
+                illegal = [ ]
+            else:
+                ast.return_pointer_as = 'c_ptr'
+                illegal = [ ]
+            for attr in illegal:
+                if attr in attrs:
+                    raise RuntimeError(
+                        "Can not mix attribute '{}' and '{}' in {}"
+                        .format(ast.return_pointer_as, attr, node.decl))
+
+        if ast.return_pointer_as is None:
+            for attr in [ 'pointer', 'allocatable', 'scalar' ]:
+                if attr in attrs:
+                    raise RuntimeError(
+                        "Can not add attribute '{}' for argument in {}"
+                        .format(attr, node.decl))
 
 def generate_functions(library, config):
     VerifyAttrs(library, config).verify_attrs()
