@@ -672,7 +672,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if return_pointer_as == 'pointer':
+        if return_pointer_as in [ 'pointer', 'allocatable' ]:
             # Create a 1-d array from pointer
             dim = ast.attrs.get('dimension', None)
             # Create array for shape.
@@ -822,7 +822,7 @@ return 1;""", fmt)
         ml_flags = []
         is_struct_scalar = False
         need_malloc = False
-        result_return_pointer_as = node.return_pointer_as
+        result_return_pointer_as = ast.return_pointer_as
 
         if cls:
             if 'static' in ast.storage:
@@ -1273,7 +1273,8 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typemap.py_statements.get('intent_out', {})
-            ttt = self.intent_out(result_return_pointer_as, capsule_order, ast, result_typemap,
+            ttt = self.intent_out(result_return_pointer_as, capsule_order,
+                                  ast, result_typemap,
                                   result_blk, fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)

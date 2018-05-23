@@ -7842,6 +7842,7 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "struct1"
                     ]

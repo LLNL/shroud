@@ -280,6 +280,42 @@ default
 Default value for C++ function argument.
 This value is implied by C++ default argument syntax.
 
+
+deref
+^^^^^
+
+List how to dereference pointer arguments or function results.
+This is used in conjunction with *dimension* to create arrays.
+
+scalar
+
+    Treat the pointee as a scalar.
+    For Python, this will not create a NumPy object.
+
+pointer
+
+    For Fortran, add ``POINTER`` attribute to argument and is associated
+    with the argument using ``c_f_pointer``.
+    If *owner(caller)* is also defined, add an additional argument
+    which is used to release the memory.
+
+    For Python, create a NumPy array.
+
+allocatable
+
+    For Fortran, add ``ALLOCATABLE`` attribute to argument.
+    An ``ALLOCATE`` is added and the contents of the C++ argument
+    is copied.  If *owner(caller)* is also defined, the C++ argument
+    is released.  The caller is responsible to ``DEALLOCATE`` the array.
+
+    For Python, create a NumPy array (same as *pointer*)
+
+raw
+
+    For Fortran, return a ``type(C_PTR)``.
+
+    For Python, return a ``PyCapsule``.
+
 dimension
 ^^^^^^^^^
 
@@ -380,16 +416,6 @@ caller
    the memory.
 
 .. steal  intent(in)
-
-pointer
-^^^^^^^
-
-Specifies that the Fortran ``POINTER`` attribute will be applied.
-The argument will point to memory allocated by the wrapped library.
-If *owner(caller)* is also defined, then an additional argument
-is added which can be used to release the memory.
-
-For Python, same as *dimension*.
 
 pure
 ^^^^

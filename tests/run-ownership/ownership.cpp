@@ -66,6 +66,7 @@ int * ReturnIntPtrDim(int *len)
 }
 
 // Return a pointer to an existing, static array
+// As Fortran POINTER
 int * ReturnIntPtrDimPointer(int *len)
 {
   static int buffer[] = { 11, 12, 13, 14, 15, 16, 17 };
@@ -74,6 +75,7 @@ int * ReturnIntPtrDimPointer(int *len)
 }
 
 // Return a pointer to an existing, static array
+// As Fortran ALLOCATABLE
 int * ReturnIntPtrDimAlloc(int *len)
 {
   static int buffer[] = { 21, 22, 23, 24, 25, 26, 27 };
@@ -93,6 +95,7 @@ int * ReturnIntPtrDimNew(int *len)
 }
 
 // Return a pointer to a new array
+// As Fortran POINTER
 int * ReturnIntPtrDimPointerNew(int *len)
 {
   int *buffer = new int[5];
@@ -104,6 +107,7 @@ int * ReturnIntPtrDimPointerNew(int *len)
 }
 
 // Return a pointer to a new array
+// As Fortran ALLOCATABLE
 int * ReturnIntPtrDimAllocNew(int *len)
 {
   int *buffer = new int[5];

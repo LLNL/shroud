@@ -98,12 +98,12 @@ class VerifyAttrs(object):
             if attr[0] == '_': # internal attribute
                 continue
             if attr not in [
-                    'allocatable',
+                    'allocatable',  # return a Fortran ALLOCATABLE
+                    'deref',        # How to dereference pointer
                     'dimension',
                     'len',
                     'name',
                     'owner',
-                    'pointer',
                     'pure',
                     ]:
                 raise RuntimeError(
@@ -935,7 +935,7 @@ class Preprocess(object):
         # that have the template expanded.
         if not node.cxx_template:
             self.process_xxx(cls, node)
-#            self.check_pointer(node, node.ast)
+            self.check_pointer(node, node.ast)
 
     def process_xxx(self, cls, node):
         """Compute information common to all wrapper language.
@@ -989,59 +989,34 @@ class Preprocess(object):
 #            raise RuntimeError("Unknown type {} in {}",
 #                               CXX_result_type, fmt_func.function_name)
 
-        # Decide if the function should return a pointer
-        result_typedef = node.CXX_result_typemap
-        return_pointer_as = None
-        if options.F_return_fortran_pointer and ast.is_pointer() \
-           and result_typedef.cxx_type != 'void' \
-           and result_typedef.base != 'string' \
-           and result_typedef.base != 'shadow':
-            # XXX is_indirect?
-            # Change a C++ pointer into a Fortran pointer
-            # return 'void *' as 'type(C_PTR)'
-            # 'shadow' assigns pointer to type(C_PTR) in a derived type
-
-            if 'dimension' in ast.attrs:
-                return_pointer_as = 'pointer'
-            elif options.return_scalar_pointer == 'pointer':
-                return_pointer_as = 'pointer'
-            else:
-                return_pointer_as = 'scalar'
-        node.return_pointer_as = return_pointer_as
-
     def check_pointer(self, node, ast):
         """Compute how to deal with a pointer argument.
         """
+        options = node.options
         attrs = ast.attrs
+        result_typemap = node.CXX_result_typemap
         ast.return_pointer_as = None
-        if ast.is_indirect():
-            if ast.typemap.base == 'shadow':
-                # Pointer to shadow is special case
-                pass
-            elif 'pointer' in attrs:
+        if result_typemap.cxx_type == 'void' or \
+           result_typemap.base == 'string' or \
+           result_typemap.base == 'shadow':
+            # Change a C++ pointer into a Fortran pointer
+            # return 'void *' as 'type(C_PTR)'
+            # 'shadow' assigns pointer to type(C_PTR) in a derived type
+            pass
+        elif ast.is_indirect():
+            if 'deref' in attrs:
+                ast.return_pointer_as = attrs['deref']
+            elif 'dimension' in attrs:
                 ast.return_pointer_as = 'pointer'
-                illegal = [ 'allocatable', 'scalar' ]
-            elif 'allocatable' in attrs:
-                ast.return_pointer_as = 'allocatable'
-                illegal = [ 'scalar' ]
-            elif 'scalar' in attrs:
-                ast.return_pointer_as = 'scalar'
-                illegal = [ ]
+            elif options.return_scalar_pointer == 'pointer':
+                ast.return_pointer_as = 'pointer'
             else:
-                ast.return_pointer_as = 'c_ptr'
-                illegal = [ ]
-            for attr in illegal:
-                if attr in attrs:
-                    raise RuntimeError(
-                        "Can not mix attribute '{}' and '{}' in {}"
-                        .format(ast.return_pointer_as, attr, node.decl))
-
-        if ast.return_pointer_as is None:
-            for attr in [ 'pointer', 'allocatable', 'scalar' ]:
-                if attr in attrs:
-                    raise RuntimeError(
-                        "Can not add attribute '{}' for argument in {}"
-                        .format(attr, node.decl))
+                ast.return_pointer_as = 'scalar'     # options.deref_default)
+        else:
+            if 'deref' in attrs:
+                raise RuntimeError(
+                    "Can not have attribute 'deref' on non-pointer in {}"
+                    .format(node.decl))
 
 def generate_functions(library, config):
     VerifyAttrs(library, config).verify_attrs()

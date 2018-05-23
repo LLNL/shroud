@@ -205,6 +205,24 @@ An ``int`` argument is converted to Python with the typemap::
         PY_get: PyInt_AsLong({py_var})
         PYN_typenum: NPY_INT
 
+Pointers
+--------
+
+When a function returns a pointer to a POD type several Python
+interfaces are possible. When a function returns an ``int *`` the
+simplest result is to return a ``PyCapsule``.  This is just the raw
+pointer returned by C++.  It's also the least useful to the caller
+since it cannot be used directly.
+The more useful option is to assume that the result is a pointer to a scalar.
+In this case a NumPy scalar can be returned or a Python object such 
+as ``int`` or ``float``.
+
+If the C++ library function can also provide the length of the
+pointer, then its possible to return a NumPy array.
+If *owner(library)* is set, the memory will never be released.
+If *owner(caller)* is set, the the memory will be released when the
+object is deleted.
+
 
 Struct Types
 ------------

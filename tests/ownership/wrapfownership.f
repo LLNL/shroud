@@ -257,7 +257,7 @@ contains
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
 
-    ! int * ReturnIntPtr()
+    ! int * ReturnIntPtr() +deref(pointer)
     ! function_index=2
     function return_int_ptr() &
             result(SHT_rv)
@@ -284,17 +284,17 @@ contains
         ! splicer end function.return_int_ptr_dim
     end function return_int_ptr_dim
 
-    ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)
+    ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
     ! function_index=5
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
-        integer(C_INT), pointer :: SHT_rv
+        integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_pointer
         SHT_ptr = c_return_int_ptr_dim_pointer(len)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_pointer
     end function return_int_ptr_dim_pointer
 
@@ -312,17 +312,17 @@ contains
         ! splicer end function.return_int_ptr_dim_new
     end function return_int_ptr_dim_new
 
-    ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)
+    ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
     ! function_index=8
     function return_int_ptr_dim_pointer_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
-        integer(C_INT), pointer :: SHT_rv
+        integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_int_ptr_dim_pointer_new
         SHT_ptr = c_return_int_ptr_dim_pointer_new(len)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
 

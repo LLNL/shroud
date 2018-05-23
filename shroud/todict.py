@@ -93,6 +93,10 @@ class ToDict(visitor.Visitor):
             d['func_const'] = node.func_const
         if node.init is not None:
             d['init'] = node.init
+
+        if hasattr(node, 'return_pointer_as'):
+            if node.return_pointer_as is not None:
+                d['return_pointer_as'] = node.return_pointer_as
         return d
 
     def visit_Identifier(self, node):

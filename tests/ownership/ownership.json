@@ -333,7 +333,8 @@
                 "_function_index": 2, 
                 "ast": {
                     "attrs": {
-                        "_typename": "int"
+                        "_typename": "int", 
+                        "deref": "pointer"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -347,12 +348,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
                     ]
                 }, 
                 "decl": "int * ReturnIntPtr()", 
-                "declgen": "int * ReturnIntPtr()", 
+                "declgen": "int * ReturnIntPtr() +deref(pointer)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtr(\t);", 
                     "C_call_list": "", 
@@ -377,7 +379,6 @@
                     "underscore_name": "return_int_ptr"
                 }, 
                 "options": {
-                    "return_scalar_pointer": "pointer", 
                     "wrap_lua": false
                 }
             }, 
@@ -405,7 +406,8 @@
                 "_function_index": 3, 
                 "ast": {
                     "attrs": {
-                        "_typename": "int"
+                        "_typename": "int", 
+                        "deref": "scalar"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -419,12 +421,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "scalar", 
                     "specifier": [
                         "int"
                     ]
                 }, 
                 "decl": "int * ReturnIntPtrScalar()", 
-                "declgen": "int * ReturnIntPtrScalar()", 
+                "declgen": "int * ReturnIntPtrScalar() +deref(scalar)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrScalar(\t);", 
                     "C_call_list": "", 
@@ -449,7 +452,6 @@
                     "underscore_name": "return_int_ptr_scalar"
                 }, 
                 "options": {
-                    "return_scalar_pointer": "scalar", 
                     "wrap_lua": false
                 }
             }, 
@@ -550,6 +552,7 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
                     ]
@@ -634,9 +637,10 @@
                         "cxx_addr": "", 
                         "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "NULL", 
-                        "npy_ndims": "0", 
+                        "npy_dims": "SHD_ReturnIntPtrDimPointer", 
+                        "npy_ndims": "1", 
                         "numpy_type": "NPY_INT", 
+                        "pointer_shape": "len", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -644,7 +648,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
-                        "pointer": "len"
+                        "deref": "pointer", 
+                        "dimension": "len"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -680,12 +685,13 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
                     ]
                 }, 
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)", 
-                "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)", 
+                "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointer(\tlen);", 
                     "C_call_list": "len", 
@@ -707,6 +713,7 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimPointer", 
+                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr_dim_pointer"
                 }, 
                 "options": {
@@ -759,9 +766,10 @@
                         "cxx_addr": "", 
                         "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "NULL", 
-                        "npy_ndims": "0", 
+                        "npy_dims": "SHD_ReturnIntPtrDimAlloc", 
+                        "npy_ndims": "1", 
                         "numpy_type": "NPY_INT", 
+                        "pointer_shape": "len", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -769,7 +777,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
-                        "allocatable": "len"
+                        "deref": "allocatable", 
+                        "dimension": "len"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -805,12 +814,13 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "int"
                     ]
                 }, 
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)", 
-                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +allocatable(len)", 
+                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);", 
                     "C_call_list": "len", 
@@ -928,6 +938,7 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
                     ]
@@ -1012,9 +1023,10 @@
                         "cxx_addr": "", 
                         "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "NULL", 
-                        "npy_ndims": "0", 
+                        "npy_dims": "SHD_ReturnIntPtrDimPointerNew", 
+                        "npy_ndims": "1", 
                         "numpy_type": "NPY_INT", 
+                        "pointer_shape": "len", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -1022,8 +1034,9 @@
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
-                        "owner": "caller", 
-                        "pointer": "len"
+                        "deref": "pointer", 
+                        "dimension": "len", 
+                        "owner": "caller"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -1059,12 +1072,13 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
                     ]
                 }, 
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)", 
-                "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)", 
+                "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimPointerNew(\tlen);", 
                     "C_call_list": "len", 
@@ -1086,6 +1100,7 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimPointerNew", 
+                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 }, 
                 "options": {
@@ -1138,9 +1153,10 @@
                         "cxx_addr": "", 
                         "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "NULL", 
-                        "npy_ndims": "0", 
+                        "npy_dims": "SHD_ReturnIntPtrDimAllocNew", 
+                        "npy_ndims": "1", 
                         "numpy_type": "NPY_INT", 
+                        "pointer_shape": "len", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
@@ -1148,7 +1164,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
-                        "allocatable": "len", 
+                        "deref": "allocatable", 
+                        "dimension": "len", 
                         "owner": "caller"
                     }, 
                     "const": false, 
@@ -1185,12 +1202,13 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "int"
                     ]
                 }, 
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)", 
-                "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +allocatable(len)+owner(caller)", 
+                "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAllocNew(\tlen);", 
                     "C_call_list": "len", 

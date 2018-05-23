@@ -53,7 +53,7 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// int * ReturnIntPtr()
+// int * ReturnIntPtr() +deref(pointer)
 // function_index=2
 int * OWN_return_int_ptr()
 {
@@ -63,7 +63,7 @@ int * OWN_return_int_ptr()
 // splicer end function.return_int_ptr
 }
 
-// int * ReturnIntPtrScalar()
+// int * ReturnIntPtrScalar() +deref(scalar)
 // function_index=3
 int OWN_return_int_ptr_scalar()
 {
@@ -83,7 +83,7 @@ int * OWN_return_int_ptr_dim(int * len)
 // splicer end function.return_int_ptr_dim
 }
 
-// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +pointer(len)
+// int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
 // function_index=5
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
@@ -93,7 +93,7 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 // splicer end function.return_int_ptr_dim_pointer
 }
 
-// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +allocatable(len)
+// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 // function_index=6
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
@@ -113,7 +113,7 @@ int * OWN_return_int_ptr_dim_new(int * len)
 // splicer end function.return_int_ptr_dim_new
 }
 
-// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +owner(caller)+pointer(len)
+// int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 // function_index=8
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
 {
@@ -123,7 +123,7 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 // splicer end function.return_int_ptr_dim_pointer_new
 }
 
-// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +allocatable(len)+owner(caller)
+// int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 // function_index=9
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {

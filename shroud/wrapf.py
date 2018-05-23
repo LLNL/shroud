@@ -657,7 +657,7 @@ rv = .false.
         subprogram = node.C_subprogram
         result_typemap = node.C_result_typemap
         generated_suffix = node.generated_suffix
-        return_pointer_as = node.return_pointer_as
+        return_pointer_as = ast.return_pointer_as
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
@@ -789,7 +789,7 @@ rv = .false.
             else:
                 # XXX - make sure ptr is set to avoid VALUE
                 rvast = declast.create_this_arg(fmt.F_result, result_type, False)
-                if return_pointer_as == 'pointer':
+                if return_pointer_as in ['pointer', 'allocatable', 'raw']:
                     arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
                 else:
@@ -923,7 +923,7 @@ rv = .false.
         if is_pure:
             result_generated_suffix = '_pure'
 
-        return_pointer_as = node.return_pointer_as
+        return_pointer_as = ast.return_pointer_as
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
@@ -1161,10 +1161,21 @@ rv = .false.
                         fmt_func)
                     arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
-            elif return_pointer_as == 'pointer':
-                need_wrapper= True
+            elif return_pointer_as == 'raw':
                 arg_f_decl.append(ast.gen_arg_as_fortran(
                     name=fmt_func.F_result, is_pointer=True))
+                arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+            elif return_pointer_as == 'pointer':
+                need_wrapper = True
+                arg_f_decl.append(ast.gen_arg_as_fortran(
+                    name=fmt_func.F_result, is_pointer=True))
+                arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+            elif return_pointer_as == 'allocatable':
+                need_wrapper = True
+                arg_f_decl.append(ast.gen_arg_as_fortran(
+                    name=fmt_func.F_result, is_allocatable=True))
                 arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
@@ -1213,7 +1224,7 @@ rv = .false.
                 intent_blk = f_statements.get('result' + result_generated_suffix,{})
                 if 'call' in intent_blk:
                     cmd_list = intent_blk['call']
-                elif return_pointer_as == 'pointer':
+                elif return_pointer_as in [ 'pointer', 'allocatable' ]:
                     cmd_list = [ '{F_pointer} = {F_C_call}({F_arg_c_call})']
                 else:
                     cmd_list = [ '{F_result} = {F_C_call}({F_arg_c_call})']
@@ -1240,7 +1251,17 @@ rv = .false.
                         '{F_this}%{F_derived_member}%addr = C_NULL_PTR',
                         fmt_func)
 
-            if return_pointer_as == 'pointer':
+            if return_pointer_as == 'allocatable':
+                # Copy into allocatable array
+                dim = ast.attrs.get('dimension', None)
+                if dim:
+                    fmt_func.pointer_shape = dim
+                    F_code.append(wformat('allocate({F_result}({pointer_shape}))',
+                                          fmt_func))
+                else:
+                    F_code.append(wformat('allocate({F_result})', fmt_func))
+                F_code.append(wformat('copy_array', fmt_func))
+            elif return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)
                 if dim:
