@@ -162,7 +162,7 @@ def add_external_helpers(fmt):
     # Only used with std::string and thus C++
     name = 'copy_string'
     CHelpers[name] = dict(
-        dependent_helpers=[ 'vector_context' ],
+        dependent_helpers=[ 'array_context' ],
         cxx_header='<string>',
 # XXX - mangle name
         source=wformat("""
@@ -180,7 +180,7 @@ strncpy(c_var, cxx_var, n);
 
     # Deal with allocatable character
     FHelpers[name] = dict(
-        dependent_helpers=[ 'vector_context' ],
+        dependent_helpers=[ 'array_context' ],
         interface=wformat("""
 interface+
 ! Copy the std::string in context into c_var.
@@ -280,7 +280,7 @@ call array_destructor(cap%mem, .false._C_BOOL)
         FHelpers[name] = helper
 
     ########################################
-    name = 'vector_context'
+    name = 'array_context'
     if name not in CHelpers:
         helper = dict(
             h_header='<stddef.h>',    # XXX - h_shared_header
@@ -326,7 +326,7 @@ def add_array_copy_helper(fmt):
     name = wformat('array_copy_{cxx_type}', fmt)
     if name not in CHelpers:
         helper = dict(
-            dependent_helpers=[ 'vector_context' ],
+            dependent_helpers=[ 'array_context' ],
             c_header='<string.h>',
             cxx_header='<cstring>',
             cxx_source=wformat("""
@@ -345,7 +345,7 @@ n *= data->len;
     if name not in FHelpers:
         helper = dict(
 # XXX when f_kind == C_SIZE_T
-            dependent_helpers=[ 'vector_context' ],
+            dependent_helpers=[ 'array_context' ],
             interface=wformat("""
 interface+
 subroutine SHROUD_array_copy_{cxx_type}(context, c_var, c_var_size) &+
