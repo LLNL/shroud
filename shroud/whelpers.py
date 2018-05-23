@@ -169,9 +169,10 @@ def add_external_helpers(fmt):
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudStringCopyAndFree({C_array_type} *data, char *c_var, long c_var_len) {{+
-std::string * cxxstr = static_cast<std::string *>(data->cxx);
-
-strncpy(c_var, cxxstr->data(), cxxstr->size());
+const char *cxx_var = data->addr.ccharp;
+size_t n = c_var_len;
+if (data->len < n) n = data->len;
+strncpy(c_var, cxx_var, n);
 // free the string?
 -}}
 """, fmt)
@@ -283,14 +284,20 @@ call array_destructor(cap%mem, .false._C_BOOL)
     if name not in CHelpers:
         helper = dict(
             h_header='<stddef.h>',    # XXX - h_shared_header
+# Create a union for addr to avoid some casts.
+# And help with debugging since ccharp will display contents.
             h_shared=wformat("""
 struct s_{C_array_type} {{+
-void *cxx;      /* address of C++ instance */
-void *addr;     /* address of data in std::vector */
-size_t len;     /* len of std::string */
-size_t size;    /* size of data in std::vector */
+{C_capsule_data_type} cxx;      /* address of C++ memory */
+union {{+
+const void * cvoidp;
+const char * ccharp;
+-}} addr;
+size_t len;     /* character len of data in cxx */
+size_t size;    /* size of data in cxx */
 -}};
 typedef struct s_{C_array_type} {C_array_type};""", fmt),
+            dependent_helpers = [ 'capsule_data_helper' ],
         )
         CHelpers[name] = helper
 
@@ -299,40 +306,38 @@ typedef struct s_{C_array_type} {C_array_type};""", fmt),
         # Should never be exposed to user.
         helper=dict(
             derived_type=wformat("""
-type, bind(C) :: {F_array_type}
-  type(C_PTR) :: cxx = C_NULL_PTR        ! address of C++ instance
-  type(C_PTR) :: addr = C_NULL_PTR       ! address of data in std::vector
-  integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! len of std::string
-  integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in std::vector
-end type {F_array_type}""", fmt),
+type, bind(C) :: {F_array_type}+
+type({F_capsule_data_type}) :: cxx       ! address of C++ memory
+type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! character len of data in cxx
+integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+-end type {F_array_type}""", fmt),
             modules = dict(
                 iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T' ],
-            )
+            ),
+            dependent_helpers = [ 'capsule_data_helper' ],
         )
         FHelpers[name] = helper
 
 
-def add_vector_copy_helper(fmt):
+def add_array_copy_helper(fmt):
     """Create function to copy contents of a vector.
     """
-    name = wformat('vector_copy_{cxx_T}', fmt)
+    name = wformat('array_copy_{cxx_type}', fmt)
     if name not in CHelpers:
         helper = dict(
             dependent_helpers=[ 'vector_context' ],
             cxx_source=wformat("""
 0// Copy std::vector into array c_var(c_var_size).
 0// Then release std::vector.
-void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_array_type} *data, \t{cxx_T} *c_var, \tsize_t c_var_size)
+void {C_prefix}SHROUD_array_copy_{cxx_type}({C_array_type} *data, \t{cxx_type} *c_var, \tsize_t c_var_size)
 {{+
-std::vector<{cxx_T}> *cxx_var = \treinterpret_cast<std::vector<{cxx_T}> *>\t(data->cxx);
-std::vector<{cxx_T}>::size_type+
-i = 0,
-n = c_var_size;
--n = std::min(cxx_var->size(), n);
-for(; i < n; ++i) {{+
-c_var[i] = (*cxx_var)[i];
+const {cxx_type} *cxx_var = \treinterpret_cast<const {cxx_type} *>\t(data->addr.cvoidp);
+int n = c_var_size < data->size ? c_var_size : data->size;
+for (int i=0; i < n; ++i) {{+
+*c_var++ = *cxx_var++;
 -}}
-delete cxx_var;
+// delete cxx_var->cxx
 -}}""", fmt))
         CHelpers[name] = helper
 
@@ -342,14 +347,14 @@ delete cxx_var;
             dependent_helpers=[ 'vector_context' ],
             interface=wformat("""
 interface+
-subroutine SHROUD_vector_copy_{cxx_T}(context, c_var, c_var_size) &+
-bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
+subroutine SHROUD_array_copy_{cxx_T}(context, c_var, c_var_size) &+
+bind(C, name="{C_prefix}SHROUD_array_copy_{cxx_T}")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 integer({f_kind}), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_vector_copy_{cxx_T}
+-end subroutine SHROUD_array_copy_{cxx_T}
 -end interface""", fmt),
         )
         FHelpers[name] = helper

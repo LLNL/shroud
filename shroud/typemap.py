@@ -721,7 +721,9 @@ def initialize():
                     # an intermediate object is created to save the results
                     # which will be passed to copy_string
                     post_call=[
-                        '{c_var_context}->cxx = {cxx_cast_to_void_ptr};',
+                        '{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};',
+                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();',
                         '{c_var_context}->len = {cxx_var}{cxx_member}size();',
                     ],
                 ),
@@ -768,15 +770,16 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'context' ],
                     cxx_local_var='pointer',
-                    c_helper='capsule_data_helper vector_copy_{cxx_T}',
+                    c_helper='capsule_data_helper array_copy_{cxx_T}',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
                     ],
                     post_call=[
                         # Return address and size of vector data.
-                        '{c_var_context}->cxx  = static_cast<void *>({cxx_var});',
-                        '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
+                        '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});',
+                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->size = {cxx_var}->size();',
                     ],
                     destructor_name='std_vector_{cxx_T}',
@@ -814,8 +817,9 @@ def initialize():
                     ],
                     post_call=[
                         # Return address and size of vector data.
-                        '{c_var_context}->cxx  = static_cast<void *>({cxx_var});',
-                        '{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
+                        '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});',
+                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->size = {cxx_var}->size();',
                     ],
                     destructor_name='std_vector_{cxx_T}',
@@ -858,18 +862,18 @@ def initialize():
 
             f_statements=dict(
                 intent_out=dict(
-                    f_helper='vector_copy_{cxx_T}',
+                    f_helper='array_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
-                        'call SHROUD_vector_copy_{cxx_T}({c_var_context}, '
+                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],
                 ),
                 intent_inout=dict(
-                    f_helper='vector_copy_{cxx_T}',
+                    f_helper='array_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
-                        'call SHROUD_vector_copy_{cxx_T}({c_var_context}, '
+                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],
                 ),

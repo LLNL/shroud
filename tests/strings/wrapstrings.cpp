@@ -66,9 +66,10 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void STR_ShroudStringCopyAndFree(STR_SHROUD_array *data, char *c_var, long c_var_len) {
-    std::string * cxxstr = static_cast<std::string *>(data->cxx);
-
-    strncpy(c_var, cxxstr->data(), cxxstr->size());
+    const char *cxx_var = data->addr.ccharp;
+    size_t n = c_var_len;
+    if (data->len < n) n = data->len;
+    strncpy(c_var, cxx_var, n);
     // free the string?
 }
 
@@ -340,8 +341,10 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // splicer begin function.get_const_string_alloc_bufferify
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = getConstStringAlloc();
-    DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     return;
 // splicer end function.get_const_string_alloc_bufferify
@@ -517,8 +520,10 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ref_alloc_bufferify
     const std::string & SHCXX_rv = getConstStringRefAlloc();
-    DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (&SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv.data();
     DSHF_rv->len = SHCXX_rv.size();
     return;
 // splicer end function.get_const_string_ref_alloc_bufferify
@@ -579,8 +584,10 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
-    DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     return;
 // splicer end function.get_const_string_ptr_alloc_bufferify
@@ -604,8 +611,10 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
 {
 // splicer begin function.get_const_string_ptr_owns_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
-    DSHF_rv->cxx = static_cast<void *>(const_cast<std::string *>
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     return;
 // splicer end function.get_const_string_ptr_owns_alloc_bufferify

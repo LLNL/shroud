@@ -50,11 +50,20 @@
 extern "C" {
 #endif
 
+struct s_STR_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
+
 struct s_STR_SHROUD_array {
-    void *cxx;      /* address of C++ instance */
-    void *addr;     /* address of data in std::vector */
-    size_t len;     /* len of std::string */
-    size_t size;    /* size of data in std::vector */
+    STR_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * cvoidp;
+        const char * ccharp;
+    } addr;
+    size_t len;     /* character len of data in cxx */
+    size_t size;    /* size of data in cxx */
 };
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 

@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module strings_mod
-    use iso_c_binding, only : C_NULL_PTR, C_PTR, C_SIZE_T
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -55,11 +55,16 @@ module strings_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
     type, bind(C) :: SHROUD_array
-      type(C_PTR) :: cxx = C_NULL_PTR        ! address of C++ instance
-      type(C_PTR) :: addr = C_NULL_PTR       ! address of data in std::vector
-      integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! len of std::string
-      integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in std::vector
+        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
+        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! character len of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
 
     interface

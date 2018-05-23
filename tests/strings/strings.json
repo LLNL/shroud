@@ -1917,7 +1917,7 @@
                     "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->len = SHCXX_rv->size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -2866,7 +2866,7 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->len = SHCXX_rv.size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -3220,7 +3220,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->len = SHCXX_rv->size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -3395,7 +3395,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->len = SHCXX_rv->size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5798,8 +5798,9 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
-                        "{c_var_context}->cxx  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
@@ -5810,7 +5811,7 @@
                     "buf_args": [
                         "context"
                     ], 
-                    "c_helper": "capsule_data_helper vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper array_copy_{cxx_T}", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -5818,8 +5819,9 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
-                        "{c_var_context}->cxx  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
@@ -5916,25 +5918,25 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout": {
-                    "f_helper": "vector_copy_{cxx_T}", 
+                    "f_helper": "array_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out": {
-                    "f_helper": "vector_copy_{cxx_T}", 
+                    "f_helper": "array_copy_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
             }
@@ -5962,7 +5964,9 @@
                     ], 
                     "c_helper": "copy_string", 
                     "post_call": [
-                        "{c_var_context}->cxx = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();"
                     ]
                 }
