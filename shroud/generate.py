@@ -140,8 +140,8 @@ class VerifyAttrs(object):
                     .format(attr, argname, node.decl))
 
         argtype = arg.typename
-        typedef = typemap.lookup_type(argtype)
-        if typedef is None:
+        arg_typemap = typemap.lookup_type(argtype)
+        if arg_typemap is None:
             # if the type does not exist, make sure it is defined by cxx_template
             #- decl: void Function7(ArgType arg)
             #  cxx_template:
@@ -170,9 +170,9 @@ class VerifyAttrs(object):
                 attrs['intent'] = 'in'
             elif arg.const:
                 attrs['intent'] = 'in'
-            elif typedef.base == 'string':
+            elif arg_typemap.base == 'string':
                 attrs['intent'] = 'inout'
-            elif typedef.base == 'vector':
+            elif arg_typemap.base == 'vector':
                 attrs['intent'] = 'inout'
             else:
                 # void *
@@ -189,7 +189,7 @@ class VerifyAttrs(object):
         value = attrs.get('value', None)
         if value is None:
             if is_ptr:
-                if (typedef.f_c_type or typedef.f_type) == 'type(C_PTR)':
+                if (arg_typemap.f_c_type or arg_typemap.f_type) == 'type(C_PTR)':
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
                     attrs['value'] = True
@@ -213,7 +213,7 @@ class VerifyAttrs(object):
                     attrs['dimension'] = ':'
                 else:
                     attrs['dimension'] = '*'
-        elif typedef and typedef.base == 'vector':
+        elif arg_typemap and arg_typemap.base == 'vector':
             # default to 1-d assumed shape 
             attrs['dimension'] = ':'
 
@@ -243,12 +243,12 @@ class VerifyAttrs(object):
 
         # Check template attribute
         temp = attrs.get('template', None)
-        if typedef and typedef.base == 'vector':
+        if arg_typemap and arg_typemap.base == 'vector':
             if not temp:
                 raise RuntimeError("std::vector must have template argument: %s" % (
                         arg.gen_decl()))
-            typedef = typemap.lookup_type(temp)
-            if typedef is None:
+            arg_typemap = typemap.lookup_type(temp)
+            if arg_typemap is None:
                 raise RuntimeError("check_arg_attr: No such type %s for template: %s" % (
                         temp, arg.gen_decl()))
         elif temp is not None:
@@ -262,7 +262,7 @@ class VerifyAttrs(object):
 
 class GenFunctions(object):
     """
-    Generate Typedef from class.
+    Generate Typemap from class.
     Generate functions based on overload/template/generic/attributes
     Computes fmt.function_suffix.
     """
@@ -336,7 +336,7 @@ class GenFunctions(object):
         class member variables.
         """
         ast = var.ast
-        typedef = typemap.lookup_type(ast.typename)
+        arg_typemap = typemap.lookup_type(ast.typename)
         fieldname = ast.name  # attrs.get('name', ast.name)
 
         fmt = util.Scope(var.fmtdict)
@@ -351,11 +351,11 @@ class GenFunctions(object):
         argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
         decl = '{}()'.format(argdecl)
         field = wformat('{CXX_this}->{field_name}', fmt)
-        if typedef.cxx_to_c is None:
+        if arg_typemap.cxx_to_c is None:
             val = field
         else:
             fmt.cxx_var = field
-            val = wformat(typedef.cxx_to_c, fmt)
+            val = wformat(arg_typemap.cxx_to_c, fmt)
         return_val = 'return ' + val + ';'
 
         format=dict(
@@ -371,11 +371,11 @@ class GenFunctions(object):
         argdecl = ast.gen_arg_as_c(name='val', continuation=True)
         decl = 'void {}({})'.format(funcname, argdecl)
         field = wformat('{CXX_this}->{field_name}', fmt)
-        if typedef.c_to_cxx is None:
+        if arg_typemap.c_to_cxx is None:
             val = 'val'
         else:
             fmt.c_var = 'val'
-            val = wformat(typedef.c_to_cxx, fmt)
+            val = wformat(arg_typemap.c_to_cxx, fmt)
         set_val = '{} = {};'.format(field, val)
 
         attrs=dict(
@@ -541,10 +541,10 @@ class GenFunctions(object):
                 # Convert typename to type
                 for arg in new.ast.params:
                     if arg.name == argname:
-                        # Convert any typedef to native type with f_type
+                        # Convert any arg_typemap to native type with f_type
                         argtype = arg.typename
-                        typedef = typemap.lookup_type(argtype)
-                        if not typedef.f_cast:
+                        arg_typemap = typemap.lookup_type(argtype)
+                        if not arg_typemap.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
                                 .format(argtype))
@@ -623,12 +623,12 @@ class GenFunctions(object):
         # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node.ast
         result_type = ast.typename
-        result_typedef = typemap.lookup_type(result_type)
+        result_typemap = typemap.lookup_type(result_type)
         # shadow classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
-        if result_typedef and result_typedef.base in ['string', 'vector'] and \
+        if result_typemap and result_typemap.base in ['string', 'vector'] and \
                 result_type != 'char' and \
                 not result_is_ptr:
             options.wrap_c = False
@@ -636,7 +636,7 @@ class GenFunctions(object):
             self.config.log.write("Skipping {}, unable to create C wrapper "
                                   "for function returning {} instance"
                                   " (must return a pointer or reference).\n"
-                                  .format(result_typedef.cxx_type,
+                                  .format(result_typemap.cxx_type,
                                           ast.name))
 
         if options.wrap_fortran is False:
@@ -650,21 +650,21 @@ class GenFunctions(object):
         has_implied_arg = False
         for arg in ast.params:
             argtype = arg.typename
-            typedef = typemap.lookup_type(argtype)
-            if typedef.base == 'string':
+            arg_typemap = typemap.lookup_type(argtype)
+            if arg_typemap.base == 'string':
                 is_ptr = arg.is_indirect()
                 if is_ptr:
                     has_implied_arg = True
                 else:
                     arg.typename = 'char_scalar'
-            elif typedef.base == 'vector':
+            elif arg_typemap.base == 'vector':
                 has_implied_arg = True
                 # Create helpers for vector template.
                 cxx_T = arg.attrs['template']
-                template_typedef = typemap.lookup_type(cxx_T)
+                tempate_typemap = typemap.lookup_type(cxx_T)
                 whelpers.add_array_copy_helper(dict(
                     cxx_type = cxx_T,
-                    f_kind = template_typedef.f_kind,
+                    f_kind = tempate_typemap.f_kind,
                     C_prefix = fmt.C_prefix,
                     C_array_type = fmt.C_array_type,
                     F_array_type = fmt.F_array_type,
@@ -674,9 +674,9 @@ class GenFunctions(object):
         has_string_result = False
         result_as_arg = ''  # only applies to string functions
         is_pure = ast.attrs.get('pure', False)
-        if result_typedef.base == 'vector':
+        if result_typemap.base == 'vector':
             raise NotImplemented("vector result")
-        elif result_typedef.base == 'string':
+        elif result_typemap.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
                 ast.typename = 'char_scalar'
@@ -714,8 +714,8 @@ class GenFunctions(object):
         for arg in C_new.ast.params:
             attrs = arg.attrs
             argtype = arg.typename
-            arg_typedef = typemap.lookup_type(argtype)
-            if arg_typedef.base == 'vector':
+            arg_typemap = typemap.lookup_type(argtype)
+            if arg_typemap.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
                 # TODO: add an option where char** length is determined by looking
@@ -723,7 +723,7 @@ class GenFunctions(object):
                 node.options.wrap_c = False
                 node.options.wrap_python = False  # NotImplemented
                 node.options.wrap_lua = False     # NotImplemented
-            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 
             # set names for implied buffer arguments
             stmts = 'intent_' + attrs['intent'] + '_buf'
@@ -751,7 +751,7 @@ class GenFunctions(object):
                     attrs['len'] = options.C_var_len_template.format(
                         c_var=arg.name)
 
-                ## base typedef
+                ## base typemap
 
         if has_string_result:
             # Add additional argument to hold result
@@ -951,7 +951,7 @@ class Preprocess(object):
         are easier to call from Fortran if they are subroutines.
         There is no way to chain in Fortran:  obj->doA()->doB();
 
-#        Lookup up typedef for result and arguments
+#        Lookup up typemap for result and arguments
         """
 
         options = node.options
