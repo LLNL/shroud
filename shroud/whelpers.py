@@ -323,16 +323,18 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
 def add_array_copy_helper(fmt):
     """Create function to copy contents of a vector.
     """
-    name = wformat('array_copy_{cxx_type}', fmt)
+    name = 'array_copy'
     if name not in CHelpers:
         helper = dict(
             dependent_helpers=[ 'array_context' ],
             c_header='<string.h>',
             cxx_header='<cstring>',
+# Create a single C routine which is called from Fortran via an interface
+# for each cxx_type
             cxx_source=wformat("""
 0// Copy std::vector into array c_var(c_var_size).
 0// Then release std::vector.
-void {C_prefix}SHROUD_array_copy_{cxx_type}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
+void {C_prefix}SHROUD_array_copy({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.cvoidp;
 int n = c_var_size < data->size ? c_var_size : data->size;
@@ -342,6 +344,7 @@ n *= data->len;
 -}}""", fmt))
         CHelpers[name] = helper
 
+    name = wformat('array_copy_{cxx_type}', fmt)
     if name not in FHelpers:
         helper = dict(
 # XXX when f_kind == C_SIZE_T
@@ -349,7 +352,7 @@ n *= data->len;
             interface=wformat("""
 interface+
 subroutine SHROUD_array_copy_{cxx_type}(context, c_var, c_var_size) &+
-bind(C, name="{C_prefix}SHROUD_array_copy_{cxx_type}")
+bind(C, name="{C_prefix}SHROUD_array_copy")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context

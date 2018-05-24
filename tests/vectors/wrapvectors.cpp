@@ -70,7 +70,7 @@ int ShroudLenTrim(const char *s, int ls) {
 
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
-void VEC_SHROUD_array_copy_int(VEC_SHROUD_array *data, void *c_var, 
+void VEC_SHROUD_array_copy(VEC_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
     const void *cxx_var = data->addr.cvoidp;

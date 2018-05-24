@@ -2203,7 +2203,7 @@
                     "buf_args": [
                         "context"
                     ], 
-                    "c_helper": "capsule_data_helper array_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper array_copy", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 

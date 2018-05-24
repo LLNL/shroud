@@ -114,7 +114,7 @@ module vectors_mod
 
     interface
         subroutine SHROUD_array_copy_int(context, c_var, c_var_size) &
-            bind(C, name="VEC_SHROUD_array_copy_int")
+            bind(C, name="VEC_SHROUD_array_copy")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
