@@ -707,8 +707,6 @@ class Wrapc(util.WrapperMixin):
         post_call_allocate = [ ]
         if ast.return_pointer_as == 'allocatable':
             # convert result to an allocatable array in Fortran
-            fmt_result.c_var_context = 'ccc'
-#            fmt_result.c_var_context = options.C_var_context_template
             fmt_result.c_var_context = options.C_var_context_template.format(
                         c_var=fmt_result.c_var)
             fmt_result.c_var_dimension = CXX_ast.attrs['dimension']

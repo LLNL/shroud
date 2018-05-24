@@ -628,9 +628,10 @@ class GenFunctions(object):
         # Only care about string here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
-        if result_typemap and result_typemap.base in ['string', 'vector'] and \
-                result_type != 'char' and \
-                not result_is_ptr:
+        if result_typemap and \
+           result_typemap.base in ['string', 'vector'] and \
+           result_type != 'char' and \
+           not result_is_ptr:
             options.wrap_c = False
 #            options.wrap_fortran = False
             self.config.log.write("Skipping {}, unable to create C wrapper "
@@ -640,8 +641,10 @@ class GenFunctions(object):
                                           ast.name))
 
         if options.wrap_fortran is False:
+            # The buffer function is intended to be called by Fortran.
+            # No Fortran, no need for buffer function.
             return
-        if options.F_string_len_trim is False:  # XXX what about vector
+        if options.F_string_len_trim is False:  # XXX what about vector?
             return
 
         # Is result or any argument a string or vector?
@@ -672,6 +675,7 @@ class GenFunctions(object):
                 ))
 
         has_string_result = False
+        has_allocatable_result = False
         result_as_arg = ''  # only applies to string functions
         is_pure = ast.attrs.get('pure', False)
         if result_typemap.base == 'vector':
@@ -683,8 +687,10 @@ class GenFunctions(object):
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
+        elif result_is_ptr and attrs.get('deref', '') == 'allocatable':
+            has_allocatable_result = True
 
-        if not (has_string_result or has_implied_arg):
+        if not (has_string_result or has_allocatable_result or has_implied_arg):
             return
 
         # XXX       options = node['options']
@@ -770,6 +776,8 @@ class GenFunctions(object):
             attrs['_generated_suffix'] = '_buf'
             # convert to subroutine
             C_new._subprogram = 'subroutine'
+        elif has_allocatable_result:
+            self.setup_allocatable_result(C_new)
 
         if is_pure:
             # pure functions which return a string have result_pure defined.
@@ -796,6 +804,54 @@ class GenFunctions(object):
         else:
             # Fortran function may call C subroutine if string result
             node._PTR_F_C_index = C_new._function_index
+
+    def setup_allocatable_result(self, node):
+        """node has a result with deref(allocatable).
+
+        C wrapper:
+           Add context argument for result
+           Fill in values to describe array.
+
+        Fortran:
+            c_step1(context)
+            allocate(Fout(len))
+            c_step2(context, Fout, size(len))
+       
+        """
+        options = node.options
+        fmt_func = node.fmtdict
+        attrs = node.ast.attrs
+
+        fmt_result0 = node._fmtresult
+        fmtc_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
+
+        # convert result to an allocatable array in Fortran
+        fmtc_result.c_var = 'ccc'
+        fmtc_result.c_var_context = options.C_var_context_template.format(
+            c_var=fmtc_result.c_var)
+        fmtc_result.c_var_dimension = attrs['dimension']
+#       fmtc_result.typemap = result_typemap
+#        fmtc_result.cxx_type = result_typemap.cxx_type
+
+#        append_format(proto_list, '{C_array_type} *{c_var_context}', fmtc_result)
+
+        attrs['context'] = options.C_var_context_template.format(
+            c_var=fmtc_result.c_var)
+
+        node.statements = {}
+        node.statements['c'] = dict(
+            result_buf=dict(
+                buf_args = [ 'context' ],
+                c_helper = 'array_context',
+                post_call = [
+                    '{c_var_context}->cxx.addr  = {cxx_var};',
+                    '{c_var_context}->cxx.idtor = 0;',
+                    '{c_var_context}->addr.cvoidp = {cxx_var};',
+                    '{c_var_context}->len = sizeof({cxx_type});',
+                    '{c_var_context}->size = *{c_var_dimension};',
+                ],
+            ),
+        )
 
     def XXXcheck_class_dependencies(self, node):
         """

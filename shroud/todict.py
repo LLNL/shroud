@@ -252,6 +252,7 @@ class ToDict(visitor.Visitor):
                 d[key] = value
         for key in [
 #            'return_pointer_as',
+            'statements',
         ]:
             if hasattr(node, key):
                 value = getattr(node, key)
