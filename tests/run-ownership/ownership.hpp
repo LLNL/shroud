@@ -51,14 +51,14 @@ int * ReturnIntPtrScalar();
 int * ReturnIntPtrPointer();
 
 int * ReturnIntPtrDimRaw(int *len);
-int * ReturnIntPtrDim(int *len);
 int * ReturnIntPtrDimPointer(int *len);
 int * ReturnIntPtrDimAlloc(int *len);
+int * ReturnIntPtrDimDefault(int *len);
 
 int * ReturnIntPtrDimRawNew(int *len);
-int * ReturnIntPtrDimNew(int *len);
 int * ReturnIntPtrDimPointerNew(int *len);
 int * ReturnIntPtrDimAllocNew(int *len);
+int * ReturnIntPtrDimDefaultNew(int *len);
 
 void createClassStatic(int flag);
 Class1 * getClassStatic();

@@ -68,8 +68,8 @@ int * ReturnIntPtrPointer()
 
 //#######################################
 // return int(len) owner(library)
-
 // Return a pointer to an existing, static array
+
 int * ReturnIntPtrDimRaw(int *len)
 {
   static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
@@ -77,15 +77,6 @@ int * ReturnIntPtrDimRaw(int *len)
   return buffer;
 }
 
-// Return a pointer to an existing, static array
-int * ReturnIntPtrDim(int *len)
-{
-  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
-  *len = sizeof buffer / sizeof buffer[1];
-  return buffer;
-}
-
-// Return a pointer to an existing, static array
 // As Fortran POINTER
 int * ReturnIntPtrDimPointer(int *len)
 {
@@ -94,7 +85,6 @@ int * ReturnIntPtrDimPointer(int *len)
   return buffer;
 }
 
-// Return a pointer to an existing, static array
 // As Fortran ALLOCATABLE
 int * ReturnIntPtrDimAlloc(int *len)
 {
@@ -103,10 +93,18 @@ int * ReturnIntPtrDimAlloc(int *len)
   return buffer;
 }
 
+// as return_dimension_pointer
+int * ReturnIntPtrDimDefault(int *len)
+{
+  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
+  *len = sizeof buffer / sizeof buffer[1];
+  return buffer;
+}
+
 //#######################################
 // return int(len) owner(caller)
-
 // Return a pointer to a new array
+
 int * ReturnIntPtrDimRawNew(int *len)
 {
   int *buffer = new int[5];
@@ -117,18 +115,6 @@ int * ReturnIntPtrDimRawNew(int *len)
   return buffer;
 }
 
-// Return a pointer to a new array
-int * ReturnIntPtrDimNew(int *len)
-{
-  int *buffer = new int[5];
-  for (int i=0; i < 5; i++) {
-    buffer[i] = i;
-  }
-  *len = 5;
-  return buffer;
-}
-
-// Return a pointer to a new array
 // As Fortran POINTER
 int * ReturnIntPtrDimPointerNew(int *len)
 {
@@ -140,13 +126,22 @@ int * ReturnIntPtrDimPointerNew(int *len)
   return buffer;
 }
 
-// Return a pointer to a new array
 // As Fortran ALLOCATABLE
 int * ReturnIntPtrDimAllocNew(int *len)
 {
   int *buffer = new int[5];
   for (int i=0; i < 5; i++) {
     buffer[i] = i + 20;
+  }
+  *len = 5;
+  return buffer;
+}
+
+int * ReturnIntPtrDimDefaultNew(int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i;
   }
   *len = 5;
   return buffer;

@@ -61,31 +61,42 @@ class Ownership(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
 
-    def testReturnIntPtrScalr(self):
+    #----------------------------------------
+    # return scalar
+
+    def testReturnIntPtrScalar(self):
         "Return pointer as int python scalar"
+        # deref(scalar)
         rv = ownership.ReturnIntPtrScalar()
         self.assertIsInstance(rv, int)
         self.assertEqual(10, rv)
 
     def testReturnIntPtrPointer(self):
         "Return pointer to int numpy scalar"
+        # deref(pointer)
         rv = ownership.ReturnIntPtrPointer()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(1, rv.size)
         self.assertEqual(1, rv)
 
-    def testReturnIntPtrDim(self):
-        "Return pointer to int array"
-        rv = ownership.ReturnIntPtrDim()
+    #----------------------------------------
+    # return dimension(len) owner(caller)
+
+    def testReturnIntPtrDimDefault(self):
+        "Return pointer to existing int array"
+        rv = ownership.ReturnIntPtrDimDefault()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(7, rv.size)
         self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
 
-    def testReturnIntPtrDimNew(self):
+    #----------------------------------------
+    # return dimension(len) owner(library)
+
+    def testReturnIntPtrDimDefaultNew(self):
         "Return pointer to a new int array"
-        rv = ownership.ReturnIntPtrDimNew()
+        rv = ownership.ReturnIntPtrDimDefaultNew()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(5, rv.size)

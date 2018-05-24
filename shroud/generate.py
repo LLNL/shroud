@@ -1012,7 +1012,7 @@ class Preprocess(object):
             elif options.return_scalar_pointer == 'pointer':
                 ast.return_pointer_as = 'pointer'
             else:
-                ast.return_pointer_as = 'scalar'     # options.deref_default)
+                ast.return_pointer_as = 'scalar'
         else:
             if 'deref' in attrs:
                 raise RuntimeError(

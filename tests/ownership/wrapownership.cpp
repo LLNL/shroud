@@ -93,18 +93,8 @@ int * OWN_return_int_ptr_dim_raw(int * len)
 // splicer end function.return_int_ptr_dim_raw
 }
 
-// int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-// function_index=6
-int * OWN_return_int_ptr_dim(int * len)
-{
-// splicer begin function.return_int_ptr_dim
-    int * SHC_rv = ReturnIntPtrDim(len);
-    return SHC_rv;
-// splicer end function.return_int_ptr_dim
-}
-
 // int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
-// function_index=7
+// function_index=6
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
 // splicer begin function.return_int_ptr_dim_pointer
@@ -114,13 +104,23 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
-// function_index=8
+// function_index=7
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
 // splicer begin function.return_int_ptr_dim_alloc
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc
+}
+
+// int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+// function_index=8
+int * OWN_return_int_ptr_dim_default(int * len)
+{
+// splicer begin function.return_int_ptr_dim_default
+    int * SHC_rv = ReturnIntPtrDimDefault(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_default
 }
 
 // int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
@@ -133,18 +133,8 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 // splicer end function.return_int_ptr_dim_raw_new
 }
 
-// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-// function_index=10
-int * OWN_return_int_ptr_dim_new(int * len)
-{
-// splicer begin function.return_int_ptr_dim_new
-    int * SHC_rv = ReturnIntPtrDimNew(len);
-    return SHC_rv;
-// splicer end function.return_int_ptr_dim_new
-}
-
 // int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
-// function_index=11
+// function_index=10
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_pointer_new
@@ -154,13 +144,23 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 }
 
 // int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
-// function_index=12
+// function_index=11
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_alloc_new
     int * SHC_rv = ReturnIntPtrDimAllocNew(len);
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc_new
+}
+
+// int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+// function_index=12
+int * OWN_return_int_ptr_dim_default_new(int * len)
+{
+// splicer begin function.return_int_ptr_dim_default_new
+    int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_default_new
 }
 
 // void createClassStatic(int flag +intent(in)+value)

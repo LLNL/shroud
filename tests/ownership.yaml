@@ -50,7 +50,6 @@ options:
   wrap_python: True
   wrap_lua: True
 
-
 declarations:
 - decl: class Class1
   declarations:
@@ -70,7 +69,6 @@ declarations:
     # value of options.return_scalar_pointer
     deref: raw
   options:
-#    return_scalar_pointer: pointer
     wrap_fortran: False
     wrap_lua: False
     wrap_python: False
@@ -102,13 +100,6 @@ declarations:
     wrap_lua: False
     wrap_python: False
 
-- decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden)
-  fattrs:
-#    deref: pointer
-    dimension: len
-  options:
-    wrap_lua: False
-
 - decl: int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)
   fattrs:
     deref: pointer
@@ -124,8 +115,16 @@ declarations:
     wrap_fortran: False
     wrap_lua: False
 
+- decl: int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)
+  fattrs:
+    dimension: len
+  options:
+    wrap_lua: False
+    # without deref attribute, return as a Fortran POINTER
+#    return_dimension_pointer: pointer
+
 ########################################
-# return int(len) owner(caller)
+# return dimension(len) owner(caller)
 
 - decl: int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)
   fattrs:
@@ -137,15 +136,6 @@ declarations:
     wrap_fortran: False
     wrap_lua: False
     wrap_python: False
-
-- decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden)
-  fattrs:
-#    deref: pointer
-    dimension: len
-    owner: caller
-#    C_free_pattern: delete_int_array
-  options:
-    wrap_lua: False
 
 - decl: int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)
   fattrs:
@@ -165,6 +155,16 @@ declarations:
   options:
     wrap_fortran: False
     wrap_lua: False
+
+- decl: int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)
+  fattrs:
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_lua: False
+    # without deref attribute, return as a Fortran POINTER
+#    return_dimension_pointer: pointer
 
 ########################################
 # class 

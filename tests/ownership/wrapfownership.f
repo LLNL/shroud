@@ -140,15 +140,6 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_raw
 
-        function c_return_int_ptr_dim(len) &
-                result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim
-
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer")
@@ -167,6 +158,15 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc
 
+        function c_return_int_ptr_dim_default(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_default")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_default
+
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_raw_new")
@@ -175,15 +175,6 @@ module ownership_mod
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_raw_new
-
-        function c_return_int_ptr_dim_new(len) &
-                result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr_dim_new")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim_new
 
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
@@ -202,6 +193,15 @@ module ownership_mod
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc_new
+
+        function c_return_int_ptr_dim_default_new(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_default_new")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_default_new
 
         subroutine create_class_static(flag) &
                 bind(C, name="OWN_create_class_static")
@@ -296,22 +296,8 @@ contains
         ! splicer end function.return_int_ptr_pointer
     end function return_int_ptr_pointer
 
-    ! int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=6
-    function return_int_ptr_dim() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT) :: len
-        integer(C_INT), pointer :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_int_ptr_dim
-        SHT_ptr = c_return_int_ptr_dim(len)
-        call c_f_pointer(SHT_ptr, SHT_rv, [len])
-        ! splicer end function.return_int_ptr_dim
-    end function return_int_ptr_dim
-
     ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
-    ! function_index=7
+    ! function_index=6
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -324,22 +310,22 @@ contains
         ! splicer end function.return_int_ptr_dim_pointer
     end function return_int_ptr_dim_pointer
 
-    ! int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-    ! function_index=10
-    function return_int_ptr_dim_new() &
+    ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+    ! function_index=8
+    function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_int_ptr_dim_new
-        SHT_ptr = c_return_int_ptr_dim_new(len)
+        ! splicer begin function.return_int_ptr_dim_default
+        SHT_ptr = c_return_int_ptr_dim_default(len)
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
-        ! splicer end function.return_int_ptr_dim_new
-    end function return_int_ptr_dim_new
+        ! splicer end function.return_int_ptr_dim_default
+    end function return_int_ptr_dim_default
 
     ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
-    ! function_index=11
+    ! function_index=10
     function return_int_ptr_dim_pointer_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -351,6 +337,20 @@ contains
         call c_f_pointer(SHT_ptr, SHT_rv, [len])
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
+
+    ! int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+    ! function_index=12
+    function return_int_ptr_dim_default_new() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT) :: len
+        integer(C_INT), pointer :: SHT_rv(:)
+        type(C_PTR) :: SHT_ptr
+        ! splicer begin function.return_int_ptr_dim_default_new
+        SHT_ptr = c_return_int_ptr_dim_default_new(len)
+        call c_f_pointer(SHT_ptr, SHT_rv, [len])
+        ! splicer end function.return_int_ptr_dim_default_new
+    end function return_int_ptr_dim_default_new
 
     ! Class1 * getClassStatic() +owner(library)
     ! function_index=14
