@@ -68,6 +68,7 @@ contains
 
   subroutine test_pod
     integer(C_INT), pointer :: intp, intp1(:)
+!    integer(C_INT), allocatable :: inta1(:)
 
     !----------------------------------------
     ! return scalar
@@ -92,6 +93,13 @@ contains
     call assert_equals(7 , size(intp1))
     call assert_true( all(intp1 == [11,12,13,14,15,16,17]), &
          "return_int_ptr_dim_pointer value")
+
+!    deallocate(inta1)
+!    inta1 = return_int_ptr_dim_alloc()
+!    call assert_true(allocated(inta1))
+!    call assert_equals(7 , size(inta1))
+!    call assert_true( all(intp1 == [21,22,23,24,25,26,27]), &
+!         "return_int_ptr_dim_alloc value")
 
     nullify(intp1)
     intp1 => return_int_ptr_dim_default()

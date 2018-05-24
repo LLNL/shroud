@@ -1260,7 +1260,10 @@ rv = .false.
                                           fmt_func))
                 else:
                     F_code.append(wformat('allocate({F_result})', fmt_func))
-                F_code.append(wformat('copy_array', fmt_func))
+                fmt_func.c_var_context = 'aaaa'
+                F_code.append(wformat(
+                    'call copy_array({c_var_context}, {F_pointer}, '
+                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_func))
             elif return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)
