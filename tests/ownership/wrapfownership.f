@@ -258,7 +258,7 @@ contains
     ! splicer end class.Class1.additional_functions
 
     ! int * ReturnIntPtr() +deref(pointer)
-    ! function_index=2
+    ! function_index=3
     function return_int_ptr() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -271,7 +271,7 @@ contains
     end function return_int_ptr
 
     ! int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=4
+    ! function_index=6
     function return_int_ptr_dim() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -285,7 +285,7 @@ contains
     end function return_int_ptr_dim
 
     ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
-    ! function_index=5
+    ! function_index=7
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -299,7 +299,7 @@ contains
     end function return_int_ptr_dim_pointer
 
     ! int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-    ! function_index=7
+    ! function_index=10
     function return_int_ptr_dim_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -313,7 +313,7 @@ contains
     end function return_int_ptr_dim_new
 
     ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
-    ! function_index=8
+    ! function_index=11
     function return_int_ptr_dim_pointer_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -327,7 +327,7 @@ contains
     end function return_int_ptr_dim_pointer_new
 
     ! Class1 * getClassStatic() +owner(library)
-    ! function_index=11
+    ! function_index=14
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -337,7 +337,7 @@ contains
     end function get_class_static
 
     ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-    ! function_index=12
+    ! function_index=15
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

@@ -45,6 +45,15 @@ static const Class1 *global_class1 = NULL;
 //----------------------------------------------------------------------
 // POD pointers
 
+//#######################################
+// return int scalar
+
+int * ReturnIntPtrRaw()
+{
+  static int buffer = 1;
+  return &buffer;
+}
+
 int * ReturnIntPtr()
 {
   static int buffer = 1;
@@ -55,6 +64,17 @@ int * ReturnIntPtrScalar()
 {
   static int buffer = 10;
   return &buffer;
+}
+
+//#######################################
+// return int(len) owner(library)
+
+// Return a pointer to an existing, static array
+int * ReturnIntPtrDimRaw(int *len)
+{
+  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
+  *len = sizeof buffer / sizeof buffer[1];
+  return buffer;
 }
 
 // Return a pointer to an existing, static array
@@ -80,6 +100,20 @@ int * ReturnIntPtrDimAlloc(int *len)
 {
   static int buffer[] = { 21, 22, 23, 24, 25, 26, 27 };
   *len = sizeof buffer / sizeof buffer[1];
+  return buffer;
+}
+
+//#######################################
+// return int(len) owner(caller)
+
+// Return a pointer to a new array
+int * ReturnIntPtrDimRawNew(int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i;
+  }
+  *len = 5;
   return buffer;
 }
 

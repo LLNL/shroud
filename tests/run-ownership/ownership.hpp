@@ -46,13 +46,16 @@ public:
     Class1(int flag) : m_flag(flag) {};
 };
 
+int * ReturnIntPtrRaw();
 int * ReturnIntPtr();
 int * ReturnIntPtrScalar();
 
+int * ReturnIntPtrDimRaw(int *len);
 int * ReturnIntPtrDim(int *len);
 int * ReturnIntPtrDimPointer(int *len);
 int * ReturnIntPtrDimAlloc(int *len);
 
+int * ReturnIntPtrDimRawNew(int *len);
 int * ReturnIntPtrDimNew(int *len);
 int * ReturnIntPtrDimPointerNew(int *len);
 int * ReturnIntPtrDimAllocNew(int *len);

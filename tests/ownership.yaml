@@ -62,6 +62,20 @@ declarations:
 # Python returns a NumPy array for ReturnIntPtr and
 # a scalar for ReturnIntPtrScalar
 
+########################################
+# return int scalar
+
+- decl: int * ReturnIntPtrRaw()
+  fattrs:
+    # value of options.return_scalar_pointer
+    deref: raw
+  options:
+#    return_scalar_pointer: pointer
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
 - decl: int * ReturnIntPtr()
   fattrs:
     # value of options.return_scalar_pointer
@@ -76,6 +90,19 @@ declarations:
   options:
 #    return_scalar_pointer: scalar
     wrap_lua: False
+
+########################################
+# return int(len) owner(library)
+
+- decl: int * ReturnIntPtrDimRaw(int *len+intent(out)+hidden)
+  fattrs:
+    deref: raw
+    dimension: len
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
 
 - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden)
   fattrs:
@@ -98,6 +125,21 @@ declarations:
   options:
     wrap_fortran: False
     wrap_lua: False
+
+########################################
+# return int(len) owner(caller)
+
+- decl: int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)
+  fattrs:
+#    deref: pointer
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
 
 - decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden)
   fattrs:

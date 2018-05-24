@@ -308,6 +308,43 @@
         }, 
         "functions": [
             {
+                "_function_index": 2, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "deref": "raw"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrRaw", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [], 
+                    "return_pointer_as": "raw", 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrRaw()", 
+                "declgen": "int * ReturnIntPtrRaw() +deref(raw)", 
+                "format": {
+                    "function_name": "ReturnIntPtrRaw", 
+                    "underscore_name": "return_int_ptr_raw"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
@@ -330,7 +367,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 2, 
+                "_function_index": 3, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -403,7 +440,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 3, 
+                "_function_index": 4, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -453,6 +490,65 @@
                 }, 
                 "options": {
                     "wrap_lua": false
+                }
+            }, 
+            {
+                "_function_index": 5, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "deref": "raw", 
+                        "dimension": "len"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimRaw", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "return_pointer_as": "raw", 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out)+hidden)", 
+                "declgen": "int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)", 
+                "format": {
+                    "function_name": "ReturnIntPtrDimRaw", 
+                    "underscore_name": "return_int_ptr_dim_raw"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
                 }
             }, 
             {
@@ -512,7 +608,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 4, 
+                "_function_index": 6, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -644,7 +740,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 5, 
+                "_function_index": 7, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -773,7 +869,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 8, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -841,6 +937,65 @@
                 }
             }, 
             {
+                "_function_index": 9, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "dimension": "len", 
+                        "owner": "caller"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimRawNew", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "return_pointer_as": "pointer", 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)", 
+                "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)", 
+                "format": {
+                    "function_name": "ReturnIntPtrDimRawNew", 
+                    "underscore_name": "return_int_ptr_dim_raw_new"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -897,7 +1052,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 10, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1030,7 +1185,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 11, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1160,7 +1315,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 9, 
+                "_function_index": 12, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1262,7 +1417,7 @@
                         }
                     }
                 }, 
-                "_function_index": 10, 
+                "_function_index": 13, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1343,7 +1498,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 11, 
+                "_function_index": 14, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 
@@ -1450,7 +1605,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 12, 
+                "_function_index": 15, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 
