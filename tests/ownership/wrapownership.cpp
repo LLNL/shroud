@@ -63,24 +63,24 @@ int * OWN_return_int_ptr_raw()
 // splicer end function.return_int_ptr_raw
 }
 
-// int * ReturnIntPtr() +deref(pointer)
-// function_index=3
-int * OWN_return_int_ptr()
-{
-// splicer begin function.return_int_ptr
-    int * SHC_rv = ReturnIntPtr();
-    return SHC_rv;
-// splicer end function.return_int_ptr
-}
-
 // int * ReturnIntPtrScalar() +deref(scalar)
-// function_index=4
+// function_index=3
 int OWN_return_int_ptr_scalar()
 {
 // splicer begin function.return_int_ptr_scalar
     int * SHC_rv = ReturnIntPtrScalar();
     return *SHC_rv;
 // splicer end function.return_int_ptr_scalar
+}
+
+// int * ReturnIntPtrPointer() +deref(pointer)
+// function_index=4
+int * OWN_return_int_ptr_pointer()
+{
+// splicer begin function.return_int_ptr_pointer
+    int * SHC_rv = ReturnIntPtrPointer();
+    return SHC_rv;
+// splicer end function.return_int_ptr_pointer
 }
 
 // int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)

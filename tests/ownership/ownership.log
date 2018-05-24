@@ -6,8 +6,8 @@ C method int getFlag()
 Close wrapClass1.h
 Close wrapClass1.cpp
 C function int * ReturnIntPtrRaw() +deref(raw)
-C function int * ReturnIntPtr() +deref(pointer)
 C function int * ReturnIntPtrScalar() +deref(scalar)
+C function int * ReturnIntPtrPointer() +deref(pointer)
 C function int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)
 C function int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 C function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
@@ -26,8 +26,8 @@ class Class1
 C-interface, Fortran method ~Class1()
 C-interface, Fortran method int getFlag()
 C-interface function int * ReturnIntPtrRaw() +deref(raw)
-C-interface, Fortran function int * ReturnIntPtr() +deref(pointer)
 C-interface, Fortran function int * ReturnIntPtrScalar() +deref(scalar)
+C-interface, Fortran function int * ReturnIntPtrPointer() +deref(pointer)
 C-interface function int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)
 C-interface, Fortran function int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 C-interface, Fortran function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
@@ -43,8 +43,8 @@ Close wrapfownership.f
 class Class1
 Python method ~Class1()
 Close pyClass1type.cpp
-Python function int * ReturnIntPtr() +deref(pointer)
 Python function int * ReturnIntPtrScalar() +deref(scalar)
+Python function int * ReturnIntPtrPointer() +deref(pointer)
 Python function int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
 Python function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
 Python function int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)

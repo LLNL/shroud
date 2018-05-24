@@ -54,15 +54,15 @@ int * ReturnIntPtrRaw()
   return &buffer;
 }
 
-int * ReturnIntPtr()
-{
-  static int buffer = 1;
-  return &buffer;
-}
-
 int * ReturnIntPtrScalar()
 {
   static int buffer = 10;
+  return &buffer;
+}
+
+int * ReturnIntPtrPointer()
+{
+  static int buffer = 1;
   return &buffer;
 }
 

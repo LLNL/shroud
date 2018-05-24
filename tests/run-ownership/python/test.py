@@ -61,19 +61,19 @@ class Ownership(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
 
-    def testReturnIntPtr(self):
-        "Return pointer to int scalar"
-        rv = ownership.ReturnIntPtr()
+    def testReturnIntPtrScalr(self):
+        "Return pointer as int python scalar"
+        rv = ownership.ReturnIntPtrScalar()
+        self.assertIsInstance(rv, int)
+        self.assertEqual(10, rv)
+
+    def testReturnIntPtrPointer(self):
+        "Return pointer to int numpy scalar"
+        rv = ownership.ReturnIntPtrPointer()
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(1, rv.size)
         self.assertEqual(1, rv)
-
-    def testReturnIntPtrScalr(self):
-        "Return pointer as int scalar"
-        rv = ownership.ReturnIntPtrScalar()
-        self.assertIsInstance(rv, int)
-        self.assertEqual(10, rv)
 
     def testReturnIntPtrDim(self):
         "Return pointer to int array"

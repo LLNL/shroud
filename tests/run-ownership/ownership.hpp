@@ -47,8 +47,8 @@ public:
 };
 
 int * ReturnIntPtrRaw();
-int * ReturnIntPtr();
 int * ReturnIntPtrScalar();
+int * ReturnIntPtrPointer();
 
 int * ReturnIntPtrDimRaw(int *len);
 int * ReturnIntPtrDim(int *len);

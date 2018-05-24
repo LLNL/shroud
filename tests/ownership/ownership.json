@@ -378,86 +378,11 @@
                         "cxx_addr": "", 
                         "cxx_member": "->", 
                         "cxx_var": "SHC_rv", 
-                        "npy_dims": "NULL", 
-                        "npy_ndims": "0", 
                         "numpy_type": "NPY_INT", 
                         "py_var": "SHTPy_rv"
                     }
                 }, 
                 "_function_index": 3, 
-                "ast": {
-                    "attrs": {
-                        "_typename": "int", 
-                        "deref": "pointer"
-                    }, 
-                    "const": false, 
-                    "declarator": {
-                        "name": "ReturnIntPtr", 
-                        "pointer": [
-                            {
-                                "const": false, 
-                                "ptr": "*"
-                            }
-                        ]
-                    }, 
-                    "func_const": false, 
-                    "params": [], 
-                    "return_pointer_as": "pointer", 
-                    "specifier": [
-                        "int"
-                    ]
-                }, 
-                "decl": "int * ReturnIntPtr()", 
-                "declgen": "int * ReturnIntPtr() +deref(pointer)", 
-                "format": {
-                    "C_call_code": "int * SHC_rv =\t ReturnIntPtr(\t);", 
-                    "C_call_list": "", 
-                    "C_name": "OWN_return_int_ptr", 
-                    "C_prototype": "", 
-                    "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "int *", 
-                    "F_C_call": "c_return_int_ptr", 
-                    "F_C_name": "c_return_int_ptr", 
-                    "F_arg_c_call": "", 
-                    "F_arguments": "", 
-                    "F_call_code": "SHT_ptr = c_return_int_ptr()", 
-                    "F_name_function": "return_int_ptr", 
-                    "F_name_generic": "return_int_ptr", 
-                    "F_name_impl": "return_int_ptr", 
-                    "F_result_clause": "\fresult(SHT_rv)", 
-                    "F_subprogram": "function", 
-                    "PY_name_impl": "PY_ReturnIntPtr", 
-                    "c_const": "", 
-                    "cxx_rv_decl": "int * SHC_rv", 
-                    "function_name": "ReturnIntPtr", 
-                    "underscore_name": "return_int_ptr"
-                }, 
-                "options": {
-                    "wrap_lua": false
-                }
-            }, 
-            {
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv", 
-                        "cxx_addr": "", 
-                        "cxx_member": "->", 
-                        "cxx_var": "SHC_rv", 
-                        "idtor": "0"
-                    }, 
-                    "fmtpy": {
-                        "PyObject": "PyObject", 
-                        "PyTypeObject": null, 
-                        "c_deref": "*", 
-                        "c_var": "SHC_rv", 
-                        "cxx_addr": "", 
-                        "cxx_member": "->", 
-                        "cxx_var": "SHC_rv", 
-                        "numpy_type": "NPY_INT", 
-                        "py_var": "SHTPy_rv"
-                    }
-                }, 
-                "_function_index": 4, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -504,6 +429,81 @@
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrScalar", 
                     "underscore_name": "return_int_ptr_scalar"
+                }, 
+                "options": {
+                    "wrap_lua": false
+                }
+            }, 
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "*", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "npy_dims": "NULL", 
+                        "npy_ndims": "0", 
+                        "numpy_type": "NPY_INT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "_function_index": 4, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "deref": "pointer"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrPointer", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [], 
+                    "return_pointer_as": "pointer", 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrPointer()", 
+                "declgen": "int * ReturnIntPtrPointer() +deref(pointer)", 
+                "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrPointer(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "OWN_return_int_ptr_pointer", 
+                    "C_prototype": "", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_call": "c_return_int_ptr_pointer", 
+                    "F_C_name": "c_return_int_ptr_pointer", 
+                    "F_arg_c_call": "", 
+                    "F_arguments": "", 
+                    "F_call_code": "SHT_ptr = c_return_int_ptr_pointer()", 
+                    "F_name_function": "return_int_ptr_pointer", 
+                    "F_name_generic": "return_int_ptr_pointer", 
+                    "F_name_impl": "return_int_ptr_pointer", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ReturnIntPtrPointer", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
+                    "function_name": "ReturnIntPtrPointer", 
+                    "underscore_name": "return_int_ptr_pointer"
                 }, 
                 "options": {
                     "wrap_lua": false

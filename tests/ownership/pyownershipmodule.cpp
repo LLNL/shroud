@@ -66,28 +66,6 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_ReturnIntPtr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_ReturnIntPtr(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// int * ReturnIntPtr() +deref(pointer)
-// splicer begin function.return_int_ptr
-    int * SHC_rv = ReturnIntPtr();
-
-    // post_call
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
-        SHC_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_ptr
-}
-
 static char PY_ReturnIntPtrScalar__doc__[] =
 "documentation"
 ;
@@ -107,6 +85,28 @@ PY_ReturnIntPtrScalar(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_scalar
+}
+
+static char PY_ReturnIntPtrPointer__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ReturnIntPtrPointer(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int * ReturnIntPtrPointer() +deref(pointer)
+// splicer begin function.return_int_ptr_pointer
+    int * SHC_rv = ReturnIntPtrPointer();
+
+    // post_call
+    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
+        SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_int_ptr_pointer
 }
 
 static char PY_ReturnIntPtrDim__doc__[] =
@@ -344,10 +344,10 @@ PY_getClassNew(
 // splicer end function.get_class_new
 }
 static PyMethodDef PY_methods[] = {
-{"ReturnIntPtr", (PyCFunction)PY_ReturnIntPtr, METH_NOARGS,
-    PY_ReturnIntPtr__doc__},
 {"ReturnIntPtrScalar", (PyCFunction)PY_ReturnIntPtrScalar, METH_NOARGS,
     PY_ReturnIntPtrScalar__doc__},
+{"ReturnIntPtrPointer", (PyCFunction)PY_ReturnIntPtrPointer,
+    METH_NOARGS, PY_ReturnIntPtrPointer__doc__},
 {"ReturnIntPtrDim", (PyCFunction)PY_ReturnIntPtrDim, METH_NOARGS,
     PY_ReturnIntPtrDim__doc__},
 {"ReturnIntPtrDimPointer", (PyCFunction)PY_ReturnIntPtrDimPointer,

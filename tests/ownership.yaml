@@ -75,19 +75,19 @@ declarations:
     wrap_lua: False
     wrap_python: False
 
-- decl: int * ReturnIntPtr()
-  fattrs:
-    # value of options.return_scalar_pointer
-    deref: pointer
-  options:
-#    return_scalar_pointer: pointer
-    wrap_lua: False
-
 - decl: int * ReturnIntPtrScalar()
   fattrs:
     deref: scalar
   options:
 #    return_scalar_pointer: scalar
+    wrap_lua: False
+
+- decl: int * ReturnIntPtrPointer()
+  fattrs:
+    # value of options.return_scalar_pointer
+    deref: pointer
+  options:
+#    return_scalar_pointer: pointer
     wrap_lua: False
 
 ########################################

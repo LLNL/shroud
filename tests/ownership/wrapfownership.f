@@ -115,14 +115,6 @@ module ownership_mod
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_raw
 
-        function c_return_int_ptr() &
-                result(SHT_rv) &
-                bind(C, name="OWN_return_int_ptr")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr
-
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_scalar")
@@ -130,6 +122,14 @@ module ownership_mod
             implicit none
             integer(C_INT) :: SHT_rv
         end function return_int_ptr_scalar
+
+        function c_return_int_ptr_pointer() &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_pointer")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_pointer
 
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
@@ -283,18 +283,18 @@ contains
     ! splicer begin class.Class1.additional_functions
     ! splicer end class.Class1.additional_functions
 
-    ! int * ReturnIntPtr() +deref(pointer)
-    ! function_index=3
-    function return_int_ptr() &
+    ! int * ReturnIntPtrPointer() +deref(pointer)
+    ! function_index=4
+    function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_int_ptr
-        SHT_ptr = c_return_int_ptr()
+        ! splicer begin function.return_int_ptr_pointer
+        SHT_ptr = c_return_int_ptr_pointer()
         call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end function.return_int_ptr
-    end function return_int_ptr
+        ! splicer end function.return_int_ptr_pointer
+    end function return_int_ptr_pointer
 
     ! int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
     ! function_index=6

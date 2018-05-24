@@ -63,9 +63,9 @@ extern "C" {
 
 int * OWN_return_int_ptr_raw();
 
-int * OWN_return_int_ptr();
-
 int OWN_return_int_ptr_scalar();
+
+int * OWN_return_int_ptr_pointer();
 
 int * OWN_return_int_ptr_dim_raw(int * len);
 
