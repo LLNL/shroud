@@ -89,7 +89,7 @@ class Ownership(unittest.TestCase):
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(7, rv.size)
-        self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
+        self.assertTrue(all(np.equal(rv, [31,32,33,34,35,36,37])))
 
     #----------------------------------------
     # return dimension(len) owner(library)
@@ -100,7 +100,7 @@ class Ownership(unittest.TestCase):
         self.assertIsInstance(rv, np.ndarray)
         self.assertEqual('int32', rv.dtype.name)
         self.assertEqual(5, rv.size)
-        self.assertTrue(all(np.equal(rv, [0,1,2,3,4])))
+        self.assertTrue(all(np.equal(rv, [30,31,32,33,34])))
 
 
 # creating a new test suite

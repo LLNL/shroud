@@ -96,7 +96,7 @@ int * ReturnIntPtrDimAlloc(int *len)
 // as return_dimension_pointer
 int * ReturnIntPtrDimDefault(int *len)
 {
-  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
+  static int buffer[] = { 31, 32, 33, 34, 35, 36, 37 };
   *len = sizeof buffer / sizeof buffer[1];
   return buffer;
 }
@@ -141,7 +141,7 @@ int * ReturnIntPtrDimDefaultNew(int *len)
 {
   int *buffer = new int[5];
   for (int i=0; i < 5; i++) {
-    buffer[i] = i;
+    buffer[i] = i + 30;
   }
   *len = 5;
   return buffer;
