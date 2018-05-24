@@ -53,6 +53,16 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// int * ReturnIntPtrRaw() +deref(raw)
+// function_index=2
+int * OWN_return_int_ptr_raw()
+{
+// splicer begin function.return_int_ptr_raw
+    int * SHC_rv = ReturnIntPtrRaw();
+    return SHC_rv;
+// splicer end function.return_int_ptr_raw
+}
+
 // int * ReturnIntPtr() +deref(pointer)
 // function_index=3
 int * OWN_return_int_ptr()
@@ -71,6 +81,16 @@ int OWN_return_int_ptr_scalar()
     int * SHC_rv = ReturnIntPtrScalar();
     return *SHC_rv;
 // splicer end function.return_int_ptr_scalar
+}
+
+// int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)
+// function_index=5
+int * OWN_return_int_ptr_dim_raw(int * len)
+{
+// splicer begin function.return_int_ptr_dim_raw
+    int * SHC_rv = ReturnIntPtrDimRaw(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_raw
 }
 
 // int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
@@ -101,6 +121,16 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc
+}
+
+// int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+// function_index=9
+int * OWN_return_int_ptr_dim_raw_new(int * len)
+{
+// splicer begin function.return_int_ptr_dim_raw_new
+    int * SHC_rv = ReturnIntPtrDimRawNew(len);
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_raw_new
 }
 
 // int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)

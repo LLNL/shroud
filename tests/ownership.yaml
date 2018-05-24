@@ -71,7 +71,6 @@ declarations:
     deref: raw
   options:
 #    return_scalar_pointer: pointer
-    wrap_c: False
     wrap_fortran: False
     wrap_lua: False
     wrap_python: False
@@ -99,7 +98,6 @@ declarations:
     deref: raw
     dimension: len
   options:
-    wrap_c: False
     wrap_fortran: False
     wrap_lua: False
     wrap_python: False
@@ -136,7 +134,6 @@ declarations:
     owner: caller
 #    C_free_pattern: delete_int_array
   options:
-    wrap_c: False
     wrap_fortran: False
     wrap_lua: False
     wrap_python: False

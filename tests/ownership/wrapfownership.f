@@ -107,6 +107,14 @@ module ownership_mod
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
 
+        function c_return_int_ptr_raw() &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_raw")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_raw
+
         function c_return_int_ptr() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr")
@@ -122,6 +130,15 @@ module ownership_mod
             implicit none
             integer(C_INT) :: SHT_rv
         end function return_int_ptr_scalar
+
+        function c_return_int_ptr_dim_raw(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_raw")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_raw
 
         function c_return_int_ptr_dim(len) &
                 result(SHT_rv) &
@@ -149,6 +166,15 @@ module ownership_mod
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc
+
+        function c_return_int_ptr_dim_raw_new(len) &
+                result(SHT_rv) &
+                bind(C, name="OWN_return_int_ptr_dim_raw_new")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            integer(C_INT), intent(OUT) :: len
+            type(C_PTR) SHT_rv
+        end function c_return_int_ptr_dim_raw_new
 
         function c_return_int_ptr_dim_new(len) &
                 result(SHT_rv) &

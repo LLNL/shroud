@@ -61,15 +61,21 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+int * OWN_return_int_ptr_raw();
+
 int * OWN_return_int_ptr();
 
 int OWN_return_int_ptr_scalar();
+
+int * OWN_return_int_ptr_dim_raw(int * len);
 
 int * OWN_return_int_ptr_dim(int * len);
 
 int * OWN_return_int_ptr_dim_pointer(int * len);
 
 int * OWN_return_int_ptr_dim_alloc(int * len);
+
+int * OWN_return_int_ptr_dim_raw_new(int * len);
 
 int * OWN_return_int_ptr_dim_new(int * len);
 

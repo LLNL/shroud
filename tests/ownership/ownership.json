@@ -308,6 +308,15 @@
         }, 
         "functions": [
             {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }
+                }, 
                 "_function_index": 2, 
                 "ast": {
                     "attrs": {
@@ -334,11 +343,19 @@
                 "decl": "int * ReturnIntPtrRaw()", 
                 "declgen": "int * ReturnIntPtrRaw() +deref(raw)", 
                 "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrRaw(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "OWN_return_int_ptr_raw", 
+                    "C_prototype": "", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_name": "c_return_int_ptr_raw", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrRaw", 
                     "underscore_name": "return_int_ptr_raw"
                 }, 
                 "options": {
-                    "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
@@ -493,6 +510,30 @@
                 }
             }, 
             {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }
+                }, 
                 "_function_index": 5, 
                 "ast": {
                     "attrs": {
@@ -516,7 +557,8 @@
                             "attrs": {
                                 "_typename": "int", 
                                 "hidden": true, 
-                                "intent": "out"
+                                "intent": "out", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
@@ -541,11 +583,19 @@
                 "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)", 
                 "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimRaw(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_raw", 
+                    "C_prototype": "int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_name": "c_return_int_ptr_dim_raw", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimRaw", 
                     "underscore_name": "return_int_ptr_dim_raw"
                 }, 
                 "options": {
-                    "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
@@ -937,6 +987,30 @@
                 }
             }, 
             {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }
+                }, 
                 "_function_index": 9, 
                 "ast": {
                     "attrs": {
@@ -960,7 +1034,8 @@
                             "attrs": {
                                 "_typename": "int", 
                                 "hidden": true, 
-                                "intent": "out"
+                                "intent": "out", 
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
@@ -985,11 +1060,19 @@
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)", 
                 "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimRawNew(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_raw_new", 
+                    "C_prototype": "int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_name": "c_return_int_ptr_dim_raw_new", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimRawNew", 
                     "underscore_name": "return_int_ptr_dim_raw_new"
                 }, 
                 "options": {
-                    "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
