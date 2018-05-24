@@ -75,8 +75,6 @@ class Wrapc(util.WrapperMixin):
         self.shared_helper = {}   # All accumulated helpers
         self.shared_proto_c = []
 
-    _default_buf_args = ['arg']
-
     def _begin_output_file(self):
         """Start a new class for output"""
 #        # forward declarations of C++ class as opaque C struct.
@@ -547,6 +545,56 @@ class Wrapc(util.WrapperMixin):
             for h in headers.split():
                 self.header_impl_include[h] = True
 
+    def build_proto_list(self, fmt, ast, intent_blk, buf_args, proto_list):
+        """Find prototype based on buf_args in c_statements.
+
+        fmt - format dictionary (fmt_arg or fmt_result).
+        ast - abstract syntax tree from parser.
+        intent_blk - from typemap  ex. c_statements.intent_in
+        buf_args - default arguments to add. None = system default.
+        proto_list - prototypes are appended to list.
+
+        return need_wrapper
+        A wrapper will be needed if there is meta data.
+        i.e. there is no C function to call directly.
+        """
+        attrs = ast.attrs
+        need_wrapper = False
+
+        if buf_args is None:
+            # Just add the argument, no meta data.
+            buf_args = ['arg']
+
+        for buf_arg in intent_blk.get('buf_args', buf_args):
+            if buf_arg == 'arg':
+                # vector<int> -> int *
+                proto_list.append(ast.gen_arg_as_c(continuation=True))
+                continue
+            elif buf_arg == 'shadow':
+                proto_list.append(ast.gen_arg_as_c(continuation=True))
+                continue
+
+            need_wrapper = True
+            if buf_arg == 'size':
+                fmt.c_var_size = attrs['size']
+                append_format(proto_list, 'long {c_var_size}', fmt)
+            elif buf_arg == 'capsule':
+                fmt.c_var_capsule = attrs['capsule']
+                append_format(proto_list, '{C_capsule_data_type} *{c_var_capsule}', fmt)
+            elif buf_arg == 'context':
+                fmt.c_var_context = attrs['context']
+                append_format(proto_list, '{C_array_type} *{c_var_context}', fmt)
+            elif buf_arg == 'len_trim':
+                fmt.c_var_trim = attrs['len_trim']
+                append_format(proto_list, 'int {c_var_trim}', fmt)
+            elif buf_arg == 'len':
+                fmt.c_var_len = attrs['len']
+                append_format(proto_list, 'int {c_var_len}', fmt)
+            else:
+                raise RuntimeError("wrap_function: unhandled case {}"
+                                   .format(buf_arg))
+        return need_wrapper
+
     def wrap_function(self, cls, node):
         """
         Wrap a C++ function with C
@@ -844,35 +892,9 @@ class Wrapc(util.WrapperMixin):
 
             intent_blk = c_statements.get(stmts, {})
 
-            # Add implied buffer arguments to prototype
-            for buf_arg in intent_blk.get('buf_args', self._default_buf_args):
-                if buf_arg == 'arg':
-                    # vector<int> -> int *
-                    proto_list.append(arg.gen_arg_as_c(continuation=True))
-                    continue
-                elif buf_arg == 'shadow':
-                    proto_list.append(arg.gen_arg_as_c(continuation=True))
-                    continue
-
-                need_wrapper = True
-                if buf_arg == 'size':
-                    fmt_arg.c_var_size = c_attrs['size']
-                    append_format(proto_list, 'long {c_var_size}', fmt_arg)
-                elif buf_arg == 'capsule':
-                    fmt_arg.c_var_capsule = c_attrs['capsule']
-                    append_format(proto_list, '{C_capsule_data_type} *{c_var_capsule}', fmt_arg)
-                elif buf_arg == 'context':
-                    fmt_arg.c_var_context = c_attrs['context']
-                    append_format(proto_list, '{C_array_type} *{c_var_context}', fmt_arg)
-                elif buf_arg == 'len_trim':
-                    fmt_arg.c_var_trim = c_attrs['len_trim']
-                    append_format(proto_list, 'int {c_var_trim}', fmt_arg)
-                elif buf_arg == 'len':
-                    fmt_arg.c_var_len = c_attrs['len']
-                    append_format(proto_list, 'int {c_var_len}', fmt_arg)
-                else:
-                    raise RuntimeError("wrap_function: unhandled case {}"
-                                       .format(buf_arg))
+            need = self.build_proto_list(
+                fmt_arg, arg, intent_blk, None, proto_list)
+            need_wrapper = need_wrapper or need
 
             # Add any code needed for intent(IN).
             # Usually to convert types.
