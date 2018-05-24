@@ -45,6 +45,8 @@
 #ifndef TYPESVECTORS_H
 #define TYPESVECTORS_H
 
+#include <stddef.h>
+
 
 #ifdef __cplusplus
 extern "C" {

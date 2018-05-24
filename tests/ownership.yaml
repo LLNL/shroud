@@ -113,6 +113,7 @@ declarations:
     dimension: len
   options:
     wrap_fortran: False
+    wrap_c: True
     wrap_lua: False
 
 - decl: int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)

@@ -49,7 +49,6 @@
 #ifndef WRAPVECTORS_H
 #define WRAPVECTORS_H
 
-#include <stddef.h>
 #include "typesvectors.h"
 
 // splicer begin CXX_declarations

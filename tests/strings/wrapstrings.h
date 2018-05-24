@@ -49,7 +49,6 @@
 #ifndef WRAPSTRINGS_H
 #define WRAPSTRINGS_H
 
-#include <stddef.h>
 #include "typesstrings.h"
 
 // splicer begin CXX_declarations

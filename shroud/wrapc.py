@@ -72,7 +72,7 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_begin = '/**'
         self.doxygen_cont = ' *'
         self.doxygen_end = ' */'
-        self.shared_helper = {}
+        self.shared_helper = {}   # All accumulated helpers
         self.shared_proto_c = []
 
     _default_buf_args = ['arg']
@@ -198,8 +198,13 @@ class Wrapc(util.WrapperMixin):
                 self.c_helper_include[include] = True
         if 'h_source' in helper_info:
             self.helper_header.append(helper_info['h_source'])
-        if 'h_shared' in helper_info:
-            self.helper_shared.append(helper_info['h_shared'])
+
+        # helper
+        if 'h_shared_include' in helper_info:
+            for include in helper_info['h_shared_include'].split():
+                self.helper_shared_include[include] = True
+        if 'h_shared_code' in helper_info:
+            self.helper_shared_code.append(helper_info['h_shared_code'])
  
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested and insert code into output.
@@ -209,7 +214,8 @@ class Wrapc(util.WrapperMixin):
         # per class
         self.helper_source = []
         self.helper_header = []
-        self.helper_shared = []
+        self.helper_shared_include = {}
+        self.helper_shared_code = []
 
         done = {}  # avoid duplicates
         for name in sorted(helpers.keys()):
@@ -233,6 +239,10 @@ class Wrapc(util.WrapperMixin):
                 '#define %s' % guard,
                 ])
 
+        # headers required helpers
+        self.write_headers_nodes('c_header', {},
+                                 self.helper_shared_include.keys(), output)
+
         if self.language == 'c++':
             output.append('')
 #            if self._create_splicer('CXX_declarations', output):
@@ -244,7 +254,7 @@ class Wrapc(util.WrapperMixin):
                     '#endif'
                     ])
 
-        output.extend(self.helper_shared)
+        output.extend(self.helper_shared_code)
 
         if self.shared_proto_c:
             output.extend(self.shared_proto_c)
@@ -694,7 +704,27 @@ class Wrapc(util.WrapperMixin):
                         '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
-        if is_shadow_scalar:
+        post_call_allocate = [ ]
+        if ast.return_pointer_as == 'allocatable':
+            # convert result to an allocatable array in Fortran
+            fmt_result.c_var_context = 'ccc'
+#            fmt_result.c_var_context = options.C_var_context_template
+            fmt_result.c_var_context = options.C_var_context_template.format(
+                        c_var=fmt_result.c_var)
+            fmt_result.c_var_dimension = CXX_ast.attrs['dimension']
+#            fmt_result.typemap = result_typemap
+            fmt_result.cxx_type = result_typemap.cxx_type
+            append_format(proto_list, '{C_array_type} *{c_var_context}', fmt_result)
+            post_call_allocate = [
+                '{c_var_context}->cxx.addr  = {cxx_var};',
+                '{c_var_context}->cxx.idtor = 0;',
+                '{c_var_context}->addr.cvoidp = {cxx_var};',
+                '{c_var_context}->len = sizeof({cxx_type});',
+                '{c_var_context}->size = *{c_var_dimension};',
+            ]
+            for helper in ['array_context']:
+                self.c_helper[helper] = True
+        elif is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
             append_format(pre_call,
                           '{cxx_rv_decl} = new %s;' % result_typemap.cxx_type,
@@ -1028,6 +1058,9 @@ class Wrapc(util.WrapperMixin):
                     added_call_code = True
                 if util.append_format_cmds(post_call, intent_blk, 'post_call', fmt_result):
                     need_wrapper = True
+                if post_call_allocate:
+                    need_wrapper = True
+                    util.append_format_lst(post_call, post_call_allocate, fmt_result)
                 # XXX release rv if necessary
                 if 'c_helper' in intent_blk:
                     for helper in intent_blk['c_helper'].split():

@@ -74,6 +74,7 @@ def append_format_cmds(lstout, dictin, name, fmt):
     """Format entries in dictin[name] and append to lstout.
     Return True if found.
     Used with c_statements and f_statements.
+    For example, dictin could be c_statements.intent_in.
     """
     if name not in dictin:
         return False

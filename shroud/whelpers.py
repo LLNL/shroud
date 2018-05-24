@@ -43,7 +43,6 @@ Helper functions for C and Fortran wrappers.
 
  C helper functions which may be added to a implementation file.
 
- c_helpers = Dictionary of helpers needed by this helper
  c_header    = Blank delimited list of header files to #include
                in implementation file when wrapping a C library.
  cxx_header  = Blank delimited list of header files to #include.
@@ -52,10 +51,15 @@ Helper functions for C and Fortran wrappers.
  cxx_source  = language=c++ source.
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
+
  h_header    = Blank delimited list of headers to #include in
                c wrapper header.
  h_source    = code for include file. Must be compatible with language=c.
- h_shared    = header code written to C_header_helper file.
+
+ h_shared_include = include files needed by shared header.
+ h_shared_code    = code written to C_header_helper file.
+                    Useful for struct and typedefs.
+
  source      = Code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
@@ -205,7 +209,7 @@ def add_shadow_helper(node):
     name = 'capsule_{}'.format(cname)
     if name not in CHelpers:
         helper = dict(
-            h_shared="""
+            h_shared_code="""
 struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
@@ -236,7 +240,7 @@ integer(C_INT) :: idtor = 0       ! index of destructor
 
     if name not in CHelpers:
         helper = dict(
-            h_shared=wformat("""
+            h_shared_code=wformat("""
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
@@ -283,10 +287,10 @@ call array_destructor(cap%mem, .false._C_BOOL)
     name = 'array_context'
     if name not in CHelpers:
         helper = dict(
-            h_header='<stddef.h>',    # XXX - h_shared_header
+            h_shared_include='<stddef.h>',
 # Create a union for addr to avoid some casts.
 # And help with debugging since ccharp will display contents.
-            h_shared=wformat("""
+            h_shared_code=wformat("""
 struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
