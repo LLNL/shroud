@@ -42,6 +42,7 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
                                 "cxx_addr": "", 

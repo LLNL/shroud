@@ -117,6 +117,9 @@
         "functions": [
             {
                 "_PTR_F_C_index": 6, 
+                "_fmtresult": {
+                    "fmtf": {}
+                }, 
                 "_function_index": 0, 
                 "ast": {
                     "attrs": {
@@ -584,6 +587,9 @@
             }, 
             {
                 "_PTR_F_C_index": 9, 
+                "_fmtresult": {
+                    "fmtf": {}
+                }, 
                 "_function_index": 3, 
                 "ast": {
                     "attrs": {

@@ -198,7 +198,8 @@
                         "cxx_member": ".", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
-                    }
+                    }, 
+                    "fmtf": {}
                 }, 
                 "_function_index": 1, 
                 "ast": {

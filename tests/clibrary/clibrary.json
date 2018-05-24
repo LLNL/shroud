@@ -243,6 +243,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -572,6 +573,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": "PyBool_Type", 
@@ -903,6 +905,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "30"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1000,7 +1005,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_Function4a", 
                     "c_const": "", 
-                    "c_var_len": "30", 
                     "cxx_rv_decl": "char * SHC_rv", 
                     "function_name": "Function4a", 
                     "underscore_name": "function4a"

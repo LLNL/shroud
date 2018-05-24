@@ -660,6 +660,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 

@@ -937,7 +937,11 @@ rv = .false.
         modules = {}   # indexed as [module][variable]
         imports = {}
 
-        if subprogram == 'function':
+        if subprogram == 'subroutine':
+            fmt_result = fmt_func
+        else:
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault('fmtf', util.Scope(fmt_func))
             fmt_func.F_result_clause = '\fresult(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
@@ -1155,31 +1159,31 @@ rv = .false.
                             fmt_func)
                     else:
                         rvlen = str(rvlen)  # convert integers
-                    fmt_func.c_var_len = wformat(rvlen, fmt_func)
+                    fmt_result.c_var_len = wformat(rvlen, fmt_result)
                     line1 = wformat(
                         'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
-                        fmt_func)
+                        fmt_result)
                     arg_f_decl.append(line1)
                 self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
             elif return_pointer_as == 'raw':
                 arg_f_decl.append(ast.gen_arg_as_fortran(
-                    name=fmt_func.F_result, is_pointer=True))
-                arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                    name=fmt_result.F_result, is_pointer=True))
+                arg_f_decl.append('type(C_PTR) :: ' + fmt_result.F_pointer)
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             elif return_pointer_as == 'pointer':
                 need_wrapper = True
                 arg_f_decl.append(ast.gen_arg_as_fortran(
-                    name=fmt_func.F_result, is_pointer=True))
-                arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                    name=fmt_result.F_result, is_pointer=True))
+                arg_f_decl.append('type(C_PTR) :: ' + fmt_result.F_pointer)
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             elif return_pointer_as == 'allocatable':
                 need_wrapper = True
                 arg_f_decl.append(ast.gen_arg_as_fortran(
-                    name=fmt_func.F_result, is_allocatable=True))
-                arg_f_decl.append('type(C_PTR) :: ' + fmt_func.F_pointer)
+                    name=fmt_result.F_result, is_allocatable=True))
+                arg_f_decl.append('type(C_PTR) :: ' + fmt_result.F_pointer)
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
-                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_func.F_result))
+                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_result.F_result))
 
             self.update_f_module(modules, imports, result_typemap.f_module)
 
@@ -1208,7 +1212,7 @@ rv = .false.
         splicer_code = self.splicer_stack[-1].get(sname, None)
         if fmt_func.inlocal('F_code'):
             need_wrapper = True
-            F_code = [wformat(fmt_func.F_code, fmt_func)]
+            F_code = [wformat(fmt_func.F_code, fmt_result)]
         elif splicer_code:
             need_wrapper = True
             F_code = splicer_code
@@ -1255,24 +1259,24 @@ rv = .false.
                 # Copy into allocatable array
                 dim = ast.attrs.get('dimension', None)
                 if dim:
-                    fmt_func.pointer_shape = dim
+                    fmt_result.pointer_shape = dim
                     F_code.append(wformat('allocate({F_result}({pointer_shape}))',
-                                          fmt_func))
+                                          fmt_result))
                 else:
-                    F_code.append(wformat('allocate({F_result})', fmt_func))
-                fmt_func.c_var_context = 'aaaa'
+                    F_code.append(wformat('allocate({F_result})', fmt_result))
+                fmt_result.c_var_context = 'aaaa'
                 F_code.append(wformat(
                     'call copy_array({c_var_context}, {F_pointer}, '
-                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_func))
+                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
             elif return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)
                 if dim:
-                    fmt_func.pointer_shape = dim
+                    fmt_result.pointer_shape = dim
                     F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result}, '
-                                          '[{pointer_shape}])', fmt_func))
+                                          '[{pointer_shape}])', fmt_result))
                 else:
-                    F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result})', fmt_func))
+                    F_code.append(wformat('call c_f_pointer({F_pointer}, {F_result})', fmt_result))
                 self.set_f_module(modules, 'iso_c_binding', 'c_f_pointer')
 
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)

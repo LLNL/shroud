@@ -234,6 +234,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -839,6 +840,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -897,7 +901,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getCharPtr1", 
                     "c_const": "const ", 
-                    "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))", 
                     "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr1", 
                     "underscore_name": "get_char_ptr1"
@@ -1010,6 +1013,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "30"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1068,7 +1074,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getCharPtr2", 
                     "c_const": "const ", 
-                    "c_var_len": "30", 
                     "cxx_rv_decl": "const char * SHC_rv", 
                     "function_name": "getCharPtr2", 
                     "underscore_name": "get_char_ptr2"
@@ -1412,6 +1417,9 @@
                 "C_error_pattern": "C_invalid_name", 
                 "_PTR_F_C_index": 36, 
                 "_fmtresult": {
+                    "fmtf": {
+                        "c_var_len": "30"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1457,7 +1465,6 @@
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getConstStringLen", 
-                    "c_var_len": "30", 
                     "function_name": "getConstStringLen", 
                     "underscore_name": "get_const_string_len"
                 }, 
@@ -1785,6 +1792,7 @@
             {
                 "_PTR_F_C_index": 39, 
                 "_fmtresult": {
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1946,6 +1954,9 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "strlen_ptr(\tc_get_const_string_ref_pure(\t))"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2005,7 +2016,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getConstStringRefPure", 
                     "c_const": "const ", 
-                    "c_var_len": "strlen_ptr(\tc_get_const_string_ref_pure(\t))", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getConstStringRefPure", 
                     "underscore_name": "get_const_string_ref_pure"
@@ -2121,6 +2131,9 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "30"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2181,7 +2194,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getConstStringRefLen", 
                     "c_const": "const ", 
-                    "c_var_len": "30", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getConstStringRefLen", 
                     "underscore_name": "get_const_string_ref_len"
@@ -2542,6 +2554,9 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "30"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2602,7 +2617,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getConstStringRefLenEmpty", 
                     "c_const": "const ", 
-                    "c_var_len": "30", 
                     "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "getConstStringRefLenEmpty", 
                     "underscore_name": "get_const_string_ref_len_empty"
@@ -2721,6 +2735,7 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2896,6 +2911,9 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "c_var_len": "30"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2956,7 +2974,6 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getConstStringPtrLen", 
                     "c_const": "const ", 
-                    "c_var_len": "30", 
                     "cxx_rv_decl": "const std::string * SHCXX_rv", 
                     "function_name": "getConstStringPtrLen", 
                     "underscore_name": "get_const_string_ptr_len"
@@ -3075,6 +3092,7 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -3250,6 +3268,7 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -4793,6 +4812,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 

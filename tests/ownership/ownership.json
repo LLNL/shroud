@@ -84,7 +84,8 @@
                                 "cxx_member": ".", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
-                            }
+                            }, 
+                            "fmtf": {}
                         }, 
                         "_function_index": 1, 
                         "ast": {
@@ -370,6 +371,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -443,6 +445,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -643,6 +646,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "pointer_shape": "len"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -727,7 +733,6 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimPointer", 
-                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr_dim_pointer"
                 }, 
                 "options": {
@@ -896,6 +901,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "pointer_shape": "len"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -979,7 +987,6 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimDefault", 
-                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr_dim_default"
                 }, 
                 "options": {
@@ -1120,6 +1127,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "pointer_shape": "len"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1205,7 +1215,6 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimPointerNew", 
-                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 }, 
                 "options": {
@@ -1375,6 +1384,9 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {
+                        "pointer_shape": "len"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1459,7 +1471,6 @@
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
                     "function_name": "ReturnIntPtrDimDefaultNew", 
-                    "pointer_shape": "len", 
                     "underscore_name": "return_int_ptr_dim_default_new"
                 }, 
                 "options": {
@@ -1569,6 +1580,7 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PY_Class1", 
                         "PyTypeObject": "PY_Class1_Type", 
@@ -1676,6 +1688,7 @@
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtpy": {
                         "PyObject": "PY_Class1", 
                         "PyTypeObject": "PY_Class1_Type", 

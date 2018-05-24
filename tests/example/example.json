@@ -48,6 +48,7 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
                                 "cxx_addr": "", 
@@ -171,6 +172,7 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
                                 "cxx_addr": "", 
@@ -472,6 +474,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -569,6 +572,9 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {
+                                "c_var_len": "aa_exclass1_get_name_length(obj%cxxmem)"
+                            }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
                                 "cxx_addr": "&", 
@@ -638,7 +644,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "aa_exclass1_get_name_length(obj%cxxmem)", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorPattern", 
                             "underscore_name": "get_name_error_pattern"
@@ -756,6 +761,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -839,6 +845,9 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {
+                                "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))"
+                            }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
                                 "cxx_addr": "&", 
@@ -906,7 +915,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorCheck", 
                             "underscore_name": "get_name_error_check"
@@ -1265,6 +1273,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "", 
@@ -1394,6 +1403,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -1536,6 +1546,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -1628,6 +1639,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "", 
@@ -1754,6 +1766,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -1979,6 +1992,7 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
                                 "cxx_addr": "", 
@@ -2230,6 +2244,9 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {
+                                "c_var_len": "aa_exclass2_get_name_length(obj%cxxmem)"
+                            }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
                                 "cxx_addr": "&", 
@@ -2298,7 +2315,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "aa_exclass2_get_name_length(obj%cxxmem)", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName", 
                             "underscore_name": "get_name"
@@ -2417,6 +2433,9 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {
+                                "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))"
+                            }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
                                 "cxx_addr": "&", 
@@ -2484,7 +2503,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName2", 
                             "underscore_name": "get_name2"
@@ -2602,6 +2620,9 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {
+                                "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))"
+                            }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
                                 "cxx_addr": "&", 
@@ -2669,7 +2690,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName3", 
                             "underscore_name": "get_name3"
@@ -2787,6 +2807,9 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {
+                                "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))"
+                            }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
                                 "cxx_addr": "&", 
@@ -2854,7 +2877,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName4", 
                             "underscore_name": "get_name4"
@@ -2969,6 +2991,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -3097,6 +3120,7 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
                                 "cxx_addr": "", 
@@ -3833,6 +3857,7 @@
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "static_cast<int>(SHCXX_rv)", 
                                 "cxx_addr": "&", 
@@ -4465,6 +4490,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -4551,6 +4577,7 @@
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
+                            "fmtf": {}, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
                                 "cxx_addr": "&", 
@@ -5060,6 +5087,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
@@ -5252,6 +5280,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
@@ -6355,6 +6384,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
@@ -8680,6 +8710,7 @@
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
+                    "fmtf": {}, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
                         "cxx_addr": "&", 
