@@ -545,7 +545,7 @@ class Wrapc(util.WrapperMixin):
             for h in headers.split():
                 self.header_impl_include[h] = True
 
-    def build_proto_list(self, fmt, ast, intent_blk, buf_args, proto_list):
+    def build_proto_list(self, fmt, ast, intent_blk, buf_args, proto_list, need_wrapper):
         """Find prototype based on buf_args in c_statements.
 
         fmt - format dictionary (fmt_arg or fmt_result).
@@ -559,7 +559,6 @@ class Wrapc(util.WrapperMixin):
         i.e. there is no C function to call directly.
         """
         attrs = ast.attrs
-        need_wrapper = False
 
         if buf_args is None:
             # Just add the argument, no meta data.
@@ -593,6 +592,31 @@ class Wrapc(util.WrapperMixin):
             else:
                 raise RuntimeError("wrap_function: unhandled case {}"
                                    .format(buf_arg))
+        return need_wrapper
+
+    def add_code_from_statements(self, fmt, intent_blk, pre_call, post_call, need_wrapper):
+        """Add pre_call and post_call code blocks.
+        Also record the helper functions they need.
+
+        return need_wrapper
+        A wrapper is needed if code is added.
+        """
+
+        if 'pre_call' in intent_blk:
+            need_wrapper = True
+            # pre_call.append('// intent=%s' % intent)
+            for line in intent_blk['pre_call']:
+                append_format(pre_call, line, fmt)
+
+        if 'post_call' in intent_blk:
+            need_wrapper = True
+            for line in intent_blk['post_call']:
+                append_format(post_call, line, fmt)
+
+        if 'c_helper' in intent_blk:
+            c_helper = wformat(intent_blk['c_helper'], fmt)
+            for helper in c_helper.split():
+                self.c_helper[helper] = True
         return need_wrapper
 
     def wrap_function(self, cls, node):
@@ -892,9 +916,8 @@ class Wrapc(util.WrapperMixin):
 
             intent_blk = c_statements.get(stmts, {})
 
-            need = self.build_proto_list(
-                fmt_arg, arg, intent_blk, None, proto_list)
-            need_wrapper = need_wrapper or need
+            need_wrapper = self.build_proto_list(
+                fmt_arg, arg, intent_blk, None, proto_list, need_wrapper)
 
             # Add any code needed for intent(IN).
             # Usually to convert types.
@@ -936,17 +959,8 @@ class Wrapc(util.WrapperMixin):
                     util.append_format_cmds(del_lines, intent_blk, 'destructor', fmt_arg)
                     fmt_arg.idtor = self.add_capsule_helper(destructor_name, arg_typedef, del_lines)
 
-            # Add code for intent of argument
-            # pre_call.append('// intent=%s' % intent)
-            if util.append_format_cmds(pre_call, intent_blk, 'pre_call', fmt_arg):
-                need_wrapper = True
-            if util.append_format_cmds(post_call, intent_blk, 'post_call', fmt_arg):
-                need_wrapper = True
-            if 'c_helper' in intent_blk:
-                c_helper = wformat(intent_blk['c_helper'], fmt_arg)
-                for helper in c_helper.split():
-                    self.c_helper[helper] = True
-
+            need_wrapper = self.add_code_from_statements(
+                fmt_arg, intent_blk, pre_call, post_call, need_wrapper)
             self.add_c_statements_headers(intent_blk)
 
             if arg_call:
@@ -1071,20 +1085,15 @@ class Wrapc(util.WrapperMixin):
                 intent_blk = c_statements.get('result' + generated_suffix, {})
                 self.add_c_statements_headers(intent_blk)
 
-                if util.append_format_cmds(pre_call, intent_blk, 'pre_call', fmt_result):
-                    need_wrapper = True
+                need_wrapper = self.add_code_from_statements(
+                    fmt_result, intent_blk, pre_call, post_call, need_wrapper)
                 if util.append_format_cmds(call_code, intent_blk, 'call', fmt_result):
                     need_wrapper = True
                     added_call_code = True
-                if util.append_format_cmds(post_call, intent_blk, 'post_call', fmt_result):
-                    need_wrapper = True
                 if post_call_allocate:
                     need_wrapper = True
                     util.append_format_lst(post_call, post_call_allocate, fmt_result)
                 # XXX release rv if necessary
-                if 'c_helper' in intent_blk:
-                    for helper in intent_blk['c_helper'].split():
-                        self.c_helper[helper] = True
             elif is_allocatable:
                 if not CXX_node.ast.is_indirect():
                     # Allocate intermediate string before calling function
