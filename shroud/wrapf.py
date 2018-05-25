@@ -638,6 +638,86 @@ rv = .false.
             iface.append('end interface')
         self._pop_splicer('abstract')
 
+    def build_arg_list_interface(
+            self, node, fmt, ast, buf_args,
+            modules, imports,  arg_c_names, arg_c_decl):
+        """
+        Build the Fortran interface for a c wrapper function.
+
+        node - 
+        fmt - 
+        ast - Abstract Syntax Tree from parser
+        buf_args - List of arguments/metadata to add.
+        modules - Build up USE statement.
+        imports - Build up IMPORT statement.
+        arg_c_names - Names of arguments to subprogram.
+        arg_c_decl  - Declaration for arguments.
+        """
+        is_allocatable = node.ast.attrs.get('allocatable', False)
+        attrs = ast.attrs
+
+        # Add implied buffer arguments to prototype
+        for buf_arg in buf_args:
+            if buf_arg == 'arg':
+                arg_c_names.append(ast.name)
+                # argument declarations
+                if attrs.get('_is_result', False) and is_allocatable:
+                    arg_c_decl.append(
+                        'type(C_PTR), intent(OUT) :: {}'.format(
+                            ast.name))
+                elif ast.is_function_pointer():
+                    absiface = self.add_abstract_interface(node, ast)
+                    arg_c_decl.append(
+                        'procedure({}) :: {}'.format(
+                            absiface, ast.name))
+                    imports[absiface] = True
+                else:
+                    arg_c_decl.append(ast.bind_c())
+                continue
+            elif buf_arg == 'shadow':
+                arg_c_names.append(ast.name)
+                arg_c_decl.append(ast.bind_c())
+                imports[fmt.F_capsule_data_type] = True
+                continue
+
+            if buf_arg not in attrs:
+                raise RuntimeError("{} is missing from {} for {}"
+                                   .format(buf_arg,
+                                           str(c_intent_blk['buf_args']),
+                                           node.declgen))
+            buf_arg_name = attrs[buf_arg]
+            if buf_arg == 'size':
+                arg_c_names.append(buf_arg_name)
+                arg_c_decl.append(
+                    'integer(C_LONG), value, intent(IN) :: %s' % buf_arg_name)
+                self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+            elif buf_arg == 'capsule':
+                arg_c_names.append(buf_arg_name)
+                arg_c_decl.append(
+                    'type(%s), intent(INOUT) :: %s' % (
+                        fmt.F_capsule_data_type, buf_arg_name))
+                imports[fmt.F_capsule_data_type] = True
+            elif buf_arg == 'context':
+                arg_c_names.append(buf_arg_name)
+                arg_c_decl.append(
+                    'type(%s), intent(INOUT) :: %s' %
+                    (fmt.F_array_type, buf_arg_name))
+#                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
+                imports[fmt.F_array_type] = True
+            elif buf_arg == 'len_trim':
+                arg_c_names.append(buf_arg_name)
+                arg_c_decl.append(
+                    'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
+                self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+            elif buf_arg == 'len':
+                arg_c_names.append(buf_arg_name)
+                arg_c_decl.append(
+                    'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
+                self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+            else:
+                raise RuntimeError("wrap_function_interface: unhandled case {}"
+                                   .format(buf_arg))
+
     def wrap_function_interface(self, cls, node):
         """
         Write Fortran interface for C function
@@ -662,7 +742,6 @@ rv = .false.
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
-        is_allocatable = ast.attrs.get('allocatable', False)
         func_is_const = ast.func_const
 
         arg_c_names = []  # argument names for functions
@@ -710,70 +789,11 @@ rv = .false.
                 c_stmts = 'result' + generated_suffix
             else:
                 c_stmts = 'intent_' + intent + generated_suffix
-
             c_intent_blk = c_statements.get(c_stmts, {})
-
-            # Add implied buffer arguments to prototype
-            for buf_arg in c_intent_blk.get('buf_args', self._default_buf_args):
-                if buf_arg == 'arg':
-                    arg_c_names.append(arg.name)
-                    # argument declarations
-                    if attrs.get('_is_result', False) and is_allocatable:
-                        arg_c_decl.append(
-                            'type(C_PTR), intent(OUT) :: {}'.format(
-                                arg.name))
-                    elif arg.is_function_pointer():
-                        absiface = self.add_abstract_interface(node, arg)
-                        arg_c_decl.append(
-                            'procedure({}) :: {}'.format(
-                                absiface, arg.name))
-                        imports[absiface] = True
-                    else:
-                        arg_c_decl.append(arg.bind_c())
-                    continue
-                elif buf_arg == 'shadow':
-                    arg_c_names.append(arg.name)
-                    arg_c_decl.append(arg.bind_c())
-                    imports[fmt.F_capsule_data_type] = True
-                    continue
-
-                if buf_arg not in attrs:
-                    raise RuntimeError("{} is missing from {} for {}"
-                                       .format(buf_arg,
-                                               str(c_intent_blk['buf_args']),
-                                               node.declgen))
-                buf_arg_name = attrs[buf_arg]
-                if buf_arg == 'size':
-                    arg_c_names.append(buf_arg_name)
-                    arg_c_decl.append(
-                        'integer(C_LONG), value, intent(IN) :: %s' % buf_arg_name)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
-                elif buf_arg == 'capsule':
-                    arg_c_names.append(buf_arg_name)
-                    arg_c_decl.append(
-                        'type(%s), intent(INOUT) :: %s' % (
-                            fmt.F_capsule_data_type, buf_arg_name))
-                    imports[fmt.F_capsule_data_type] = True
-                elif buf_arg == 'context':
-                    arg_c_names.append(buf_arg_name)
-                    arg_c_decl.append(
-                        'type(%s), intent(INOUT) :: %s' %
-                        (fmt.F_array_type, buf_arg_name))
-#                    self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                    imports[fmt.F_array_type] = True
-                elif buf_arg == 'len_trim':
-                    arg_c_names.append(buf_arg_name)
-                    arg_c_decl.append(
-                        'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                elif buf_arg == 'len':
-                    arg_c_names.append(buf_arg_name)
-                    arg_c_decl.append(
-                        'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                else:
-                    raise RuntimeError("wrap_function_interface: unhandled case {}"
-                                       .format(buf_arg))
+            self.build_arg_list_interface(
+                node, fmt, arg,
+                c_intent_blk.get('buf_args', self._default_buf_args),
+                modules, imports, arg_c_names, arg_c_decl)
 
         if (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
@@ -819,6 +839,87 @@ rv = .false.
         c_interface.append(wformat('end {F_C_subprogram} {F_C_name}', fmt))
         if node.cpp_if:
             c_interface.append('#endif')
+
+    def build_arg_list_impl(
+            self, node, fmt, c_ast, f_ast, arg_typemap,
+            buf_args,
+            modules, imports,  arg_f_decl, arg_c_call,
+            allocatable_result,
+            need_wrapper):
+        """
+        Build up code to call C wrapper.
+        This includes arguments to the function and any
+        additional declarations.
+
+        node -
+        fmt -
+        c_ast - Abstract Syntax Tree from parser
+        f_ast - Abstract Syntax Tree from parser
+        arg_typemap - typemap of resolved argument  i.e. int from vector<int>
+        buf_args - List of arguments/metadata to add.
+        modules - Build up USE statement.
+        imports - Build up IMPORT statement.
+        arg_f_decl - Additional Fortran declarations.
+        arg_c_call - Arguments to C wrapper.
+
+        return need_wrapper
+        A wrapper will be needed if there is meta data.
+        """
+        c_attrs = c_ast.attrs
+
+        # Add any buffer arguments
+        for buf_arg in buf_args:
+            if buf_arg == 'arg':
+                # Attributes   None=skip, True=use default, else use value
+                if allocatable_result:
+                    arg_c_call.append(fmt.f_cptr)
+                elif arg_typemap.f_args:
+                    # TODO - Not sure if this is still needed.
+                    need_wrapper = True
+                    append_format(arg_c_call, arg_typemap.f_args, fmt)
+                elif arg_typemap.f_to_c:
+                    need_wrapper = True
+                    append_format(arg_c_call, arg_typemap.f_to_c, fmt)
+                elif f_ast and c_ast.typename != f_ast.typename:
+                    need_wrapper = True
+                    append_format(arg_c_call, arg_typemap.f_cast, fmt)
+                    self.update_f_module(modules, imports, arg_typemap.f_module)
+                else:
+                    arg_c_call.append(fmt.c_var)
+                continue
+            elif buf_arg == 'shadow':
+                # Pass down the pointer to {F_capsule_data_type}
+                need_wrapper = True
+                append_format(arg_c_call, '{f_var}%{F_derived_member}', fmt)
+                continue
+
+            need_wrapper = True
+            buf_arg_name = c_attrs[buf_arg]
+            if buf_arg == 'size':
+                append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt)
+                self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
+            elif buf_arg == 'capsule':
+                fmt.c_var_capsule = c_attrs['capsule']
+                append_format(arg_f_decl,
+                              'type({F_capsule_type}) :: {c_var_capsule}', fmt)
+                # Pass F_capsule_data_type field to C++.
+                arg_c_call.append(fmt.c_var_capsule + '%mem')
+            elif buf_arg == 'context':
+                fmt.c_var_context = c_attrs['context']
+                append_format(arg_f_decl,
+                              'type({F_array_type}) :: {c_var_context}', fmt)
+                arg_c_call.append(fmt.c_var_context)
+#                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
+            elif buf_arg == 'len_trim':
+                append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt)
+                self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+            elif buf_arg == 'len':
+                append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt)
+                self.set_f_module(modules, 'iso_c_binding', 'C_INT')
+            else:
+                raise RuntimeError("wrap_function_impl: unhandled case {}"
+                                   .format(buf_arg))
+        return need_wrapper
 
     def attr_allocatable(self, allocatable, node, arg, pre_call):
         """Add the allocatable attribute to the pre_call block.
@@ -1064,58 +1165,12 @@ rv = .false.
                 arg_f_decl.append('{} {}'.format(
                     arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
 
-            # Add any buffer arguments
-            for buf_arg in c_intent_blk.get('buf_args', self._default_buf_args):
-                if buf_arg == 'arg':
-                    # Attributes   None=skip, True=use default, else use value
-                    if allocatable_result:
-                        arg_c_call.append(fmt_arg.f_cptr)
-                    elif arg_typedef.f_args:
-                        # TODO - Not sure if this is still needed.
-                        need_wrapper = True
-                        append_format(arg_c_call, arg_typedef.f_args, fmt_arg)
-                    elif arg_typedef.f_to_c:
-                        need_wrapper = True
-                        append_format(arg_c_call, arg_typedef.f_to_c, fmt_arg)
-                    elif f_arg and c_arg.typename != f_arg.typename:
-                        need_wrapper = True
-                        append_format(arg_c_call, arg_typedef.f_cast, fmt_arg)
-                        self.update_f_module(modules, imports, arg_typedef.f_module)
-                    else:
-                        arg_c_call.append(fmt_arg.c_var)
-                    continue
-                elif buf_arg == 'shadow':
-                    # Pass down the pointer to {F_capsule_data_type}
-                    need_wrapper = True
-                    append_format(arg_c_call, '{f_var}%{F_derived_member}', fmt_arg)
-                    continue
-
-                need_wrapper = True
-                buf_arg_name = c_attrs[buf_arg]
-                if buf_arg == 'size':
-                    append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt_arg)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
-                elif buf_arg == 'capsule':
-                    fmt_arg.c_var_capsule = c_attrs['capsule']
-                    append_format(arg_f_decl,
-                                  'type({F_capsule_type}) :: {c_var_capsule}', fmt_arg)
-                    # Pass F_capsule_data_type field to C++.
-                    arg_c_call.append(fmt_arg.c_var_capsule + '%mem')
-                elif buf_arg == 'context':
-                    fmt_arg.c_var_context = c_attrs['context']
-                    append_format(arg_f_decl,
-                                  'type({F_array_type}) :: {c_var_context}', fmt_arg)
-                    arg_c_call.append(fmt_arg.c_var_context)
-#                    self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
-                elif buf_arg == 'len_trim':
-                    append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt_arg)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                elif buf_arg == 'len':
-                    append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt_arg)
-                    self.set_f_module(modules, 'iso_c_binding', 'C_INT')
-                else:
-                    raise RuntimeError("wrap_function_impl: unhandled case {}"
-                                       .format(buf_arg))
+            need_wrapper = self.build_arg_list_impl(
+                node, fmt_arg, c_arg, f_arg, arg_typedef,
+                c_intent_blk.get('buf_args', self._default_buf_args),
+                modules, imports,
+                arg_f_decl, arg_c_call,
+                allocatable_result, need_wrapper)
 
             # Add code for intent of argument
             if 'f_module' in f_intent_blk:

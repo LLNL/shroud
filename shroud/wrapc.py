@@ -75,6 +75,8 @@ class Wrapc(util.WrapperMixin):
         self.shared_helper = {}   # All accumulated helpers
         self.shared_proto_c = []
 
+    _default_buf_args = ['arg']
+
     def _begin_output_file(self):
         """Start a new class for output"""
 #        # forward declarations of C++ class as opaque C struct.
@@ -545,26 +547,21 @@ class Wrapc(util.WrapperMixin):
             for h in headers.split():
                 self.header_impl_include[h] = True
 
-    def build_proto_list(self, fmt, ast, intent_blk, buf_args, proto_list, need_wrapper):
+    def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
         """Find prototype based on buf_args in c_statements.
 
-        fmt - format dictionary (fmt_arg or fmt_result).
-        ast - abstract syntax tree from parser.
-        intent_blk - from typemap  ex. c_statements.intent_in
-        buf_args - default arguments to add. None = system default.
-        proto_list - prototypes are appended to list.
+        fmt - Format dictionary (fmt_arg or fmt_result).
+        ast - Abstract Syntax Tree from parser.
+        buf_args - List of arguments/metadata to add.
+        proto_list - Prototypes are appended to list.
 
         return need_wrapper
         A wrapper will be needed if there is meta data.
-        i.e. there is no C function to call directly.
+        i.e. No wrapper if the C function can be called directly.
         """
         attrs = ast.attrs
 
-        if buf_args is None:
-            # Just add the argument, no meta data.
-            buf_args = ['arg']
-
-        for buf_arg in intent_blk.get('buf_args', buf_args):
+        for buf_arg in buf_args:
             if buf_arg == 'arg':
                 # vector<int> -> int *
                 proto_list.append(ast.gen_arg_as_c(continuation=True))
@@ -781,7 +778,9 @@ class Wrapc(util.WrapperMixin):
             if 'c' in node.statements:
                 iblk = node.statements['c']['result_buf']
                 need_wrapper = self.build_proto_list(
-                    fmt_result, ast, iblk, [], proto_list, need_wrapper)
+                    fmt_result, ast,
+                    iblk.get('buf_args', []),
+                    proto_list, need_wrapper)
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, iblk, pre_call, post_call, need_wrapper)
 
@@ -908,7 +907,9 @@ class Wrapc(util.WrapperMixin):
             intent_blk = c_statements.get(stmts, {})
 
             need_wrapper = self.build_proto_list(
-                fmt_arg, arg, intent_blk, None, proto_list, need_wrapper)
+                fmt_arg, arg,
+                intent_blk.get('buf_args', self._default_buf_args),
+                proto_list, need_wrapper)
 
             # Add any code needed for intent(IN).
             # Usually to convert types.
