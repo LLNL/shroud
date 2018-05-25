@@ -808,6 +808,14 @@ class FunctionNode(AstNode):
       }
     }
 
+    statements = {
+      'c': {
+         'result_buf': 
+       },
+       'f': {
+       },
+    }
+
     _function_index  - sequence number function,
                        used in lieu of a pointer
     _generated       - who generated this function

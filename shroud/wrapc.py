@@ -697,7 +697,7 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
-#            fmt_result.cxx_type = result_typemap.cxx_type
+#            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
             fmt_result.idtor = '0'  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             if result_typemap.c_union and not is_pointer:

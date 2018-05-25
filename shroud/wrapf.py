@@ -769,6 +769,14 @@ rv = .false.
                     'type({F_capsule_data_type}), intent(IN) :: {C_this}', fmt)
                 imports[fmt.F_capsule_data_type] = True
 
+        if hasattr(node, 'statements'):
+            if 'c' in node.statements:
+                iblk = node.statements['c']['result_buf']
+                self.build_arg_list_interface(
+                    node, fmt_func, ast,
+                    iblk.get('buf_args', []),
+                    modules, imports, arg_c_names, arg_c_decl)
+
         args_all_in = True   # assume all arguments are intent(in)
         for arg in ast.params:
             # default argument's intent
@@ -1069,6 +1077,8 @@ rv = .false.
         arg_c_call = []      # arguments to C function
         arg_f_names = []     # arguments in subprogram statement
         arg_f_decl = []      # Fortran variable declarations
+        pre_call = []
+        post_call = []
         modules = {}   # indexed as [module][variable]
         imports = {}
 
@@ -1094,6 +1104,21 @@ rv = .false.
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
 
+        if hasattr(C_node, 'statements'):
+            if 'f' in C_node.statements:
+                iblk = C_node.statements['f']['result_buf']
+                need_wrapper = self.build_arg_list_impl(
+                    node, fmt_result, C_node.ast, ast, result_typemap,
+                    iblk.get('buf_args', []),
+                    modules, imports,
+                    arg_f_decl, arg_c_call,
+                    False, need_wrapper)
+                need_wrapper = self.add_code_from_statements(
+                    need_wrapper,
+                    fmt_func, iblk,
+                    modules, imports,
+                    arg_f_decl, pre_call, post_call)
+
         # Fortran and C arguments may have different types (fortran generic)
         #
         # f_var - argument to Fortran function (wrapper function)
@@ -1102,8 +1127,6 @@ rv = .false.
         # May be one more argument to C function than Fortran function
         # (the result)
         #
-        pre_call = []
-        post_call = []
         f_args = ast.params
         f_index = -1       # index into f_args
         for c_arg in C_node.ast.params:

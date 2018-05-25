@@ -841,6 +841,15 @@ class GenFunctions(object):
                 ],
             ),
         )
+        node.statements['f'] = dict(
+            result_buf=dict(
+                buf_args = [ 'context' ],
+                f_helper = 'array_context',
+                post_call = [
+                    '! context postcall',
+                ],
+            ),
+        )
 
     def XXXcheck_class_dependencies(self, node):
         """
