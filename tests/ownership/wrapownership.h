@@ -71,8 +71,7 @@ int * OWN_return_int_ptr_dim_raw(int * len);
 
 int * OWN_return_int_ptr_dim_pointer(int * len);
 
-int * OWN_return_int_ptr_dim_alloc(OWN_SHROUD_array *DSHC_rv,
-    int * len);
+int * OWN_return_int_ptr_dim_alloc(int * len);
 
 int * OWN_return_int_ptr_dim_default(int * len);
 
@@ -80,8 +79,7 @@ int * OWN_return_int_ptr_dim_raw_new(int * len);
 
 int * OWN_return_int_ptr_dim_pointer_new(int * len);
 
-int * OWN_return_int_ptr_dim_alloc_new(OWN_SHROUD_array *DSHC_rv,
-    int * len);
+int * OWN_return_int_ptr_dim_alloc_new(int * len);
 
 int * OWN_return_int_ptr_dim_default_new(int * len);
 

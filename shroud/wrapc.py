@@ -583,6 +583,9 @@ class Wrapc(util.WrapperMixin):
             elif buf_arg == 'context':
                 fmt.c_var_context = attrs['context']
                 append_format(proto_list, '{C_array_type} *{c_var_context}', fmt)
+                if 'dimension' in attrs:
+                    # XXX - assumes dimension is a single variable.
+                    fmt.c_var_dimension = attrs['dimension']
             elif buf_arg == 'len_trim':
                 fmt.c_var_trim = attrs['len_trim']
                 append_format(proto_list, 'int {c_var_trim}', fmt)
@@ -601,7 +604,6 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
-
         if 'pre_call' in intent_blk:
             need_wrapper = True
             # pre_call.append('// intent=%s' % intent)
@@ -698,20 +700,19 @@ class Wrapc(util.WrapperMixin):
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
+#            fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.idtor = '0'  # no destructor
+            fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             if result_typemap.c_union and not is_pointer:
                 # 'convert' via fields of a union
                 # used with structs where casting will not work
                 # XXX - maybe change to convert to pointer to C++ struct.
                 is_union_scalar = True
-                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.c_var
             elif result_typemap.cxx_to_c is None:
                 # C and C++ are compatible
-                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.c_var
             else:
-                fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
             if result_typemap.base == 'shadow' and not CXX_ast.is_indirect() and not is_ctor:
@@ -776,25 +777,15 @@ class Wrapc(util.WrapperMixin):
                         '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
-        post_call_allocate = [ ]
-        if ast.return_pointer_as == 'allocatable':
-            # convert result to an allocatable array in Fortran
-            fmt_result.c_var_context = options.C_var_context_template.format(
-                        c_var=fmt_result.c_var)
-            fmt_result.c_var_dimension = CXX_ast.attrs['dimension']
-#            fmt_result.typemap = result_typemap
-            fmt_result.cxx_type = result_typemap.cxx_type
-            append_format(proto_list, '{C_array_type} *{c_var_context}', fmt_result)
-            post_call_allocate = [
-                '{c_var_context}->cxx.addr  = {cxx_var};',
-                '{c_var_context}->cxx.idtor = 0;',
-                '{c_var_context}->addr.cvoidp = {cxx_var};',
-                '{c_var_context}->len = sizeof({cxx_type});',
-                '{c_var_context}->size = *{c_var_dimension};',
-            ]
-            for helper in ['array_context']:
-                self.c_helper[helper] = True
-        elif is_shadow_scalar:
+        if hasattr(node, 'statements'):
+            if 'c' in node.statements:
+                iblk = node.statements['c']['result_buf']
+                need_wrapper = self.build_proto_list(
+                    fmt_result, ast, iblk, [], proto_list, need_wrapper)
+                need_wrapper = self.add_code_from_statements(
+                    fmt_result, iblk, pre_call, post_call, need_wrapper)
+
+        if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
             append_format(pre_call,
                           '{cxx_rv_decl} = new %s;' % result_typemap.cxx_type,
@@ -1090,9 +1081,6 @@ class Wrapc(util.WrapperMixin):
                 if util.append_format_cmds(call_code, intent_blk, 'call', fmt_result):
                     need_wrapper = True
                     added_call_code = True
-                if post_call_allocate:
-                    need_wrapper = True
-                    util.append_format_lst(post_call, post_call_allocate, fmt_result)
                 # XXX release rv if necessary
             elif is_allocatable:
                 if not CXX_node.ast.is_indirect():

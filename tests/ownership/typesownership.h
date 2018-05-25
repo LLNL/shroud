@@ -45,35 +45,22 @@
 #ifndef TYPESOWNERSHIP_H
 #define TYPESOWNERSHIP_H
 
-#include <stddef.h>
-
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-struct s_OWN_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_OWN_SHROUD_capsule_data OWN_SHROUD_capsule_data;
-
-struct s_OWN_SHROUD_array {
-    OWN_SHROUD_capsule_data cxx;      /* address of C++ memory */
-    union {
-        const void * cvoidp;
-        const char * ccharp;
-    } addr;
-    size_t len;     /* bytes-per-item or character len of data in cxx */
-    size_t size;    /* size of data in cxx */
-};
-typedef struct s_OWN_SHROUD_array OWN_SHROUD_array;
 
 struct s_OWN_class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_OWN_class1 OWN_class1;
+
+struct s_OWN_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_OWN_SHROUD_capsule_data OWN_SHROUD_capsule_data;
 
 void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap);
 

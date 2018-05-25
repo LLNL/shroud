@@ -105,15 +105,10 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 // function_index=7
-int * OWN_return_int_ptr_dim_alloc(OWN_SHROUD_array *DSHC_rv, int * len)
+int * OWN_return_int_ptr_dim_alloc(int * len)
 {
 // splicer begin function.return_int_ptr_dim_alloc
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.cvoidp = SHC_rv;
-    DSHC_rv->len = sizeof(int);
-    DSHC_rv->size = *len;
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc
 }
@@ -150,16 +145,10 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 
 // int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 // function_index=11
-int * OWN_return_int_ptr_dim_alloc_new(OWN_SHROUD_array *DSHC_rv,
-    int * len)
+int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_alloc_new
     int * SHC_rv = ReturnIntPtrDimAllocNew(len);
-    DSHC_rv->cxx.addr  = SHC_rv;
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.cvoidp = SHC_rv;
-    DSHC_rv->len = sizeof(int);
-    DSHC_rv->size = *len;
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc_new
 }

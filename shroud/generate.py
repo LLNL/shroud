@@ -822,21 +822,10 @@ class GenFunctions(object):
         fmt_func = node.fmtdict
         attrs = node.ast.attrs
 
-        fmt_result0 = node._fmtresult
-        fmtc_result = fmt_result0.setdefault('fmtc', util.Scope(fmt_func))
-
-        # convert result to an allocatable array in Fortran
-        fmtc_result.c_var = 'ccc'
-        fmtc_result.c_var_context = options.C_var_context_template.format(
-            c_var=fmtc_result.c_var)
-        fmtc_result.c_var_dimension = attrs['dimension']
-#       fmtc_result.typemap = result_typemap
-#        fmtc_result.cxx_type = result_typemap.cxx_type
-
-#        append_format(proto_list, '{C_array_type} *{c_var_context}', fmtc_result)
-
+        # XXX - c_var is duplicated in wrapc.py wrap_function
+        c_var = fmt_func.C_local + fmt_func.C_result
         attrs['context'] = options.C_var_context_template.format(
-            c_var=fmtc_result.c_var)
+            c_var=c_var)
 
         node.statements = {}
         node.statements['c'] = dict(
