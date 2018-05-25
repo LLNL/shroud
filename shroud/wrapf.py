@@ -921,6 +921,40 @@ rv = .false.
                                    .format(buf_arg))
         return need_wrapper
 
+    def add_code_from_statements(self, need_wrapper, fmt, intent_blk,
+                                 modules, imports,
+                                 arg_f_decl=None, pre_call=None, post_call=None):
+        """Add pre_call and post_call code blocks.
+        Also record the helper functions they need.
+        Look for blocks 'declare', 'pre_call', 'post_call'.
+
+        return need_wrapper
+        A wrapper is needed if code is added.
+        """
+        if 'f_module' in intent_blk:
+            self.update_f_module(modules, imports, intent_blk['f_module'])
+
+        if arg_f_decl is not None and 'declare' in intent_blk:
+            need_wrapper = True
+            for line in intent_blk['declare']:
+                append_format(arg_f_decl, line, fmt)
+
+        if pre_call is not None and 'pre_call' in intent_blk:
+            need_wrapper = True
+            for line in intent_blk['pre_call']:
+                append_format(pre_call, line, fmt)
+
+        if post_call is not None and 'post_call' in intent_blk:
+            need_wrapper = True
+            for line in intent_blk['post_call']:
+                append_format(post_call, line, fmt)
+
+        if 'f_helper' in intent_blk:
+            f_helper = wformat(intent_blk['f_helper'], fmt)
+            for helper in f_helper.split():
+                self.f_helper[helper] = True
+        return need_wrapper
+
     def attr_allocatable(self, allocatable, node, arg, pre_call):
         """Add the allocatable attribute to the pre_call block.
 
@@ -1172,20 +1206,11 @@ rv = .false.
                 arg_f_decl, arg_c_call,
                 allocatable_result, need_wrapper)
 
-            # Add code for intent of argument
-            if 'f_module' in f_intent_blk:
-                self.update_f_module(modules, imports, f_intent_blk['f_module'])
-            if util.append_format_cmds(arg_f_decl, f_intent_blk, 'declare', fmt_arg):
-                need_wrapper = True
-            if util.append_format_cmds(pre_call, f_intent_blk, 'pre_call', fmt_arg):
-                need_wrapper = True
-            if util.append_format_cmds(post_call, f_intent_blk, 'post_call', fmt_arg):
-                need_wrapper = True
-            # Find any helper routines needed
-            if 'f_helper' in f_intent_blk:
-                f_helper = wformat(f_intent_blk['f_helper'], fmt_arg)
-                for helper in f_helper.split():
-                    self.f_helper[helper] = True
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper,
+                fmt_arg, f_intent_blk,
+                modules, imports,
+                arg_f_decl, pre_call, post_call)
 
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
@@ -1292,13 +1317,11 @@ rv = .false.
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
                 F_code.append(fmt_func.F_call_code)
 
-                if util.append_format_cmds(F_code, intent_blk, 'post_call', fmt_func):
-                    need_wrapper = True
-                if 'f_module' in intent_blk:
-                    self.update_f_module(modules, imports, intent_blk['f_module'])
-                if 'f_helper' in intent_blk:
-                    for helper in intent_blk['f_helper'].split():
-                        self.f_helper[helper] = True
+                need_wrapper = self.add_code_from_statements(
+                    need_wrapper,
+                    fmt_func, intent_blk,
+                    modules, imports,
+                    arg_f_decl, post_call=F_code)
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
