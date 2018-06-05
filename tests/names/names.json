@@ -1815,6 +1815,18 @@
                         "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
+                "intent_inout_allocatable": {
+                    "f_helper": "array_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "allocate({f_var}({c_var_context}%size))", 
+                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
                 "intent_out": {
                     "f_helper": "array_copy_{cxx_T}", 
                     "f_module": {
@@ -1823,6 +1835,18 @@
                         ]
                     }, 
                     "post_call": [
+                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_out_allocatable": {
+                    "f_helper": "array_copy_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "allocate({f_var}({c_var_context}%size))", 
                         "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }

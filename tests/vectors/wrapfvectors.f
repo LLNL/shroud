@@ -87,6 +87,14 @@ module vectors_mod
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_iota_bufferify
 
+        subroutine c_vector_iota_alloc_bufferify(Darg) &
+                bind(C, name="VEC_vector_iota_alloc_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Darg
+        end subroutine c_vector_iota_alloc_bufferify
+
         subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_increment_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
@@ -154,6 +162,24 @@ contains
         ! splicer end function.vector_iota
         call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota
+
+    ! void vector_iota_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
+    ! arg_to_buffer
+    ! function_index=2
+    !>
+    !! \brief Copy vector into Fortran allocatable array
+    !!
+    !<
+    subroutine vector_iota_alloc(arg)
+        use iso_c_binding, only : C_INT, C_SIZE_T
+        integer(C_INT), intent(OUT), allocatable :: arg(:)
+        type(SHROUD_array) :: Darg
+        ! splicer begin function.vector_iota_alloc
+        call c_vector_iota_alloc_bufferify(Darg)
+        ! splicer end function.vector_iota_alloc
+        allocate(arg(Darg%size))
+        call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
+    end subroutine vector_iota_alloc
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer

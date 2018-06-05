@@ -1150,6 +1150,11 @@ rv = .false.
             intent = c_attrs['intent']
             allocatable_result = False  # XXX - kludgeish
 
+            if 'deref' in c_attrs:
+                deref_suffix = '_' + c_attrs['deref']
+            else:
+                deref_suffix = ''
+
             # string C functions may have their results copied
             # into an argument passed in, F_string_result_as_arg.
             # Or the wrapper may provide an argument in the Fortran API
@@ -1168,8 +1173,8 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = 'intent_' + intent + generated_suffix
-                f_stmts = 'intent_' + intent #+ generated_suffix
+                c_stmts = 'intent_' + intent + generated_suffix  # e.g. _buf
+                f_stmts = 'intent_' + intent + deref_suffix      # e.g. _allocatable
 
             if is_f_arg:
                 # An argument to the C and Fortran function
@@ -1181,8 +1186,8 @@ rv = .false.
                         'procedure({}) :: {}'.format(
                             absiface, f_arg.name))
                     arg_f_names.append(fmt_arg.f_var)
-                    # function pointers are pass thru without any change
                     arg_c_call.append(f_arg.name)
+                    # function pointers are pass thru without any other action
                     continue
                 elif hidden or implied:
                     # Argument is not passed into Fortran.

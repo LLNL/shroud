@@ -863,6 +863,8 @@ def initialize():
             ),
 
             f_statements=dict(
+
+                # copy into user's existing array
                 intent_out=dict(
                     f_helper='array_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
@@ -875,6 +877,26 @@ def initialize():
                     f_helper='array_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
+                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
+                          '{f_var}, size({f_var},kind=C_SIZE_T))',
+                    ],
+                ),
+
+                # copy into allocated array
+                intent_out_allocatable=dict(
+                    f_helper='array_copy_{cxx_T}',
+                    f_module=dict(iso_c_binding=['C_SIZE_T']),
+                    post_call=[
+                        'allocate({f_var}({c_var_context}%size))',
+                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
+                          '{f_var}, size({f_var},kind=C_SIZE_T))',
+                    ],
+                ),
+                intent_inout_allocatable=dict(
+                    f_helper='array_copy_{cxx_T}',
+                    f_module=dict(iso_c_binding=['C_SIZE_T']),
+                    post_call=[
+                        'allocate({f_var}({c_var_context}%size))',
                         'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],

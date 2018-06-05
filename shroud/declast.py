@@ -1213,6 +1213,12 @@ class Declaration(Node):
             if intent:
                 t.append('intent(%s)' % intent.upper())
 
+        deref = attrs.get('deref', '')
+        if deref == 'allocatable':
+            is_allocatable = True
+        elif deref == 'pointer':
+            is_pointer = True
+
         if not is_allocatable:
             is_allocatable = attrs.get('allocatable', False)
         if is_allocatable:

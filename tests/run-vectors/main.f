@@ -65,6 +65,7 @@ contains
 
   subroutine test_vector
     integer(C_INT) intv(5)
+    integer(C_INT), allocatable :: inta(:)
     character(10) :: names(3)
     integer irv
 
@@ -77,6 +78,13 @@ contains
     intv(:) = 0
     call vector_iota(intv)
     call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
+
+    call vector_iota_alloc(inta)
+    call assert_true(allocated(inta))
+    call assert_equals(5 , size(inta))
+    call assert_true( all(inta == [1,2,3,4,5]), &
+         "vector_iota_alloc value")
+    deallocate(inta)
 
     intv = [1,2,3,4,5]
     call vector_increment(intv)
