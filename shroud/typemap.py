@@ -896,6 +896,7 @@ def initialize():
                     f_helper='array_copy_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
+                        'if (allocated({f_var})) deallocate({f_var})',
                         'allocate({f_var}({c_var_context}%size))',
                         'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',

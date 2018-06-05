@@ -95,6 +95,16 @@ module vectors_mod
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_iota_out_alloc_bufferify
 
+        subroutine c_vector_iota_inout_alloc_bufferify(arg, Sarg, Darg) &
+                bind(C, name="VEC_vector_iota_inout_alloc_bufferify")
+            use iso_c_binding, only : C_INT, C_LONG
+            import :: SHROUD_array
+            implicit none
+            integer(C_INT), intent(INOUT) :: arg(*)
+            integer(C_LONG), value, intent(IN) :: Sarg
+            type(SHROUD_array), intent(INOUT) :: Darg
+        end subroutine c_vector_iota_inout_alloc_bufferify
+
         subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_increment_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
@@ -181,9 +191,29 @@ contains
         call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_out_alloc
 
-    ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
+    ! void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))
     ! arg_to_buffer
     ! function_index=3
+    !>
+    !! \brief Copy vector into Fortran allocatable array
+    !!
+    !<
+    subroutine vector_iota_inout_alloc(arg)
+        use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
+        integer(C_INT), intent(INOUT), allocatable :: arg(:)
+        type(SHROUD_array) :: Darg
+        ! splicer begin function.vector_iota_inout_alloc
+        call c_vector_iota_inout_alloc_bufferify(arg, &
+            size(arg, kind=C_LONG), Darg)
+        ! splicer end function.vector_iota_inout_alloc
+        if (allocated(arg)) deallocate(arg)
+        allocate(arg(Darg%size))
+        call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
+    end subroutine vector_iota_inout_alloc
+
+    ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
+    ! arg_to_buffer
+    ! function_index=4
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(INOUT) :: arg(:)
@@ -197,7 +227,7 @@ contains
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
-    ! function_index=4
+    ! function_index=5
     !>
     !! \brief count number of underscore in vector of strings
     !!

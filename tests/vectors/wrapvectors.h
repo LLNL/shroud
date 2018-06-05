@@ -67,6 +67,9 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg);
 
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg);
 
+void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
+    VEC_SHROUD_array *Darg);
+
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg);
 

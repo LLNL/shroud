@@ -70,12 +70,12 @@ declarations:
     wrap_python: False
     wrap_lua: False
 
-#- decl: void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
-#  doxygen:
-#    brief: Copy vector into Fortran allocatable array
-#  options:
-#    wrap_python: False
-#    wrap_lua: False
+- decl: void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
+  doxygen:
+    brief: Copy vector into Fortran allocatable array
+  options:
+    wrap_python: False
+    wrap_lua: False
 
 # defaults to intent(inout)
 - decl: void vector_increment(std::vector<int> &arg)
