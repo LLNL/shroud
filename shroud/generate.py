@@ -199,6 +199,11 @@ class VerifyAttrs(object):
             else:
                 attrs['value'] = True
 
+        deref = attrs.get('deref', None)
+        if deref is not None:
+            if deref not in ['allocatable', 'pointer', 'raw']:
+                raise RuntimeError("Illegal value '{}' for deref. "
+                                   "Must be 'allocatable', 'pointer' or 'raw'.".format(deref))
 # XXX deref only on pointer, vector
 
         # dimension
@@ -845,7 +850,7 @@ class GenFunctions(object):
             ),
         )
         node.statements['f'] = dict(
-            result_buf=dict(
+            result_allocatable=dict(
                 buf_args = [ 'context' ],
                 f_helper = 'array_context array_copy_{cxx_type}',
                 post_call = [

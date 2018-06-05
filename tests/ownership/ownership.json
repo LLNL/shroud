@@ -1012,7 +1012,7 @@
                         }
                     }, 
                     "f": {
-                        "result_buf": {
+                        "result_allocatable": {
                             "buf_args": [
                                 "context"
                             ], 

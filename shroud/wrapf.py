@@ -1110,9 +1110,13 @@ rv = .false.
 
         if hasattr(C_node, 'statements'):
             if 'f' in C_node.statements:
+                if 'deref' in ast.attrs:
+                    deref_suffix = '_' + ast.attrs['deref']
+                else:
+                    deref_suffix = ''
                 fmt_result.f_kind = result_typemap.f_kind
                 whelpers.add_array_copy_helper(fmt_result)
-                iblk = C_node.statements['f']['result_buf']
+                iblk = C_node.statements['f']['result' + deref_suffix]
                 need_wrapper = self.build_arg_list_impl(
                     node, fmt_result, C_node.ast, ast, result_typemap,
                     iblk.get('buf_args', []),
@@ -1382,7 +1386,8 @@ rv = .false.
 #                    'call copy_array({c_var_context}, {F_pointer}, '
 #                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
             elif return_pointer_as == 'pointer':
-                # Put C pointer into Fortran pointer
+                # Put C pointer into Fortran pointer.
+                # Used with pointer to struct.
                 dim = ast.attrs.get('dimension', None)
                 if dim:
                     fmt_result.pointer_shape = dim
