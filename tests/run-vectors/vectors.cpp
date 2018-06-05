@@ -61,7 +61,7 @@ int vector_sum(const std::vector<int> &arg)
 // arg+intent(out)
 // Start with empty vector and fill in values
 
-void vector_iota(std::vector<int> &arg)
+void vector_iota_out(std::vector<int> &arg)
 {
   for(unsigned int i=0; i < 5; i++) {
     arg.push_back(i + 1);
@@ -74,7 +74,7 @@ void vector_iota(std::vector<int> &arg)
 // arg+intent(out)+deref(allocatable)
 // Start with empty vector and fill in values
 
-void vector_iota_alloc(std::vector<int> &arg)
+void vector_iota_out_alloc(std::vector<int> &arg)
 {
   for(unsigned int i=0; i < 5; i++) {
     arg.push_back(i + 1);

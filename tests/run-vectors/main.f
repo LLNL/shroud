@@ -76,10 +76,10 @@ contains
     call assert_true(irv .eq. 15)
 
     intv(:) = 0
-    call vector_iota(intv)
+    call vector_iota_out(intv)
     call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
 
-    call vector_iota_alloc(inta)
+    call vector_iota_out_alloc(inta)
     call assert_true(allocated(inta))
     call assert_equals(5 , size(inta))
     call assert_true( all(inta == [1,2,3,4,5]), &

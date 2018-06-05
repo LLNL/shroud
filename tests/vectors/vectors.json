@@ -291,7 +291,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "vector_iota", 
+                        "name": "vector_iota_out", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -323,22 +323,22 @@
                         "void"
                     ]
                 }, 
-                "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-                "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
+                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
+                "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))", 
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 }, 
                 "format": {
-                    "F_C_call": "c_vector_iota_bufferify", 
+                    "F_C_call": "c_vector_iota_out_bufferify", 
                     "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
-                    "F_call_code": "call c_vector_iota_bufferify(Darg)", 
-                    "F_name_function": "vector_iota", 
-                    "F_name_generic": "vector_iota", 
-                    "F_name_impl": "vector_iota", 
+                    "F_call_code": "call c_vector_iota_out_bufferify(Darg)", 
+                    "F_name_function": "vector_iota_out", 
+                    "F_name_generic": "vector_iota_out", 
+                    "F_name_impl": "vector_iota_out", 
                     "F_subprogram": "subroutine", 
-                    "function_name": "vector_iota", 
-                    "underscore_name": "vector_iota"
+                    "function_name": "vector_iota_out", 
+                    "underscore_name": "vector_iota_out"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -382,7 +382,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "vector_iota", 
+                        "name": "vector_iota_out", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -416,25 +416,25 @@
                         "void"
                     ]
                 }, 
-                "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-                "declgen": "void vector_iota(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))", 
+                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
+                "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))", 
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 }, 
                 "format": {
-                    "C_call_code": "vector_iota(\t*SH_arg);", 
+                    "C_call_code": "vector_iota_out(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
-                    "C_name": "VEC_vector_iota_bufferify", 
+                    "C_name": "VEC_vector_iota_out_bufferify", 
                     "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
                     "C_prototype": "VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_vector_iota_bufferify", 
+                    "F_C_name": "c_vector_iota_out_bufferify", 
                     "c_const": "", 
-                    "function_name": "vector_iota", 
+                    "function_name": "vector_iota_out", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_iota"
+                    "underscore_name": "vector_iota_out"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -452,7 +452,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "vector_iota_alloc", 
+                        "name": "vector_iota_out_alloc", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -485,22 +485,22 @@
                         "void"
                     ]
                 }, 
-                "decl": "void vector_iota_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
-                "declgen": "void vector_iota_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))", 
+                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))", 
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
                 "format": {
-                    "F_C_call": "c_vector_iota_alloc_bufferify", 
+                    "F_C_call": "c_vector_iota_out_alloc_bufferify", 
                     "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
-                    "F_call_code": "call c_vector_iota_alloc_bufferify(Darg)", 
-                    "F_name_function": "vector_iota_alloc", 
-                    "F_name_generic": "vector_iota_alloc", 
-                    "F_name_impl": "vector_iota_alloc", 
+                    "F_call_code": "call c_vector_iota_out_alloc_bufferify(Darg)", 
+                    "F_name_function": "vector_iota_out_alloc", 
+                    "F_name_generic": "vector_iota_out_alloc", 
+                    "F_name_impl": "vector_iota_out_alloc", 
                     "F_subprogram": "subroutine", 
-                    "function_name": "vector_iota_alloc", 
-                    "underscore_name": "vector_iota_alloc"
+                    "function_name": "vector_iota_out_alloc", 
+                    "underscore_name": "vector_iota_out_alloc"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -543,7 +543,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "vector_iota_alloc", 
+                        "name": "vector_iota_out_alloc", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -578,25 +578,25 @@
                         "void"
                     ]
                 }, 
-                "decl": "void vector_iota_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
-                "declgen": "void vector_iota_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))", 
+                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))", 
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
                 "format": {
-                    "C_call_code": "vector_iota_alloc(\t*SH_arg);", 
+                    "C_call_code": "vector_iota_out_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
-                    "C_name": "VEC_vector_iota_alloc_bufferify", 
+                    "C_name": "VEC_vector_iota_out_alloc_bufferify", 
                     "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
                     "C_prototype": "VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_vector_iota_alloc_bufferify", 
+                    "F_C_name": "c_vector_iota_out_alloc_bufferify", 
                     "c_const": "", 
-                    "function_name": "vector_iota_alloc", 
+                    "function_name": "vector_iota_out_alloc", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_iota_alloc"
+                    "underscore_name": "vector_iota_out_alloc"
                 }, 
                 "options": {
                     "wrap_c": true, 

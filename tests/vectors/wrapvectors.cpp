@@ -93,44 +93,44 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 // splicer end function.vector_sum_bufferify
 }
 
-// void vector_iota(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+// void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
 // function_index=8
 /**
  * \brief Copy vector into Fortran input array
  *
  */
-void VEC_vector_iota_bufferify(VEC_SHROUD_array *Darg)
+void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
-// splicer begin function.vector_iota_bufferify
+// splicer begin function.vector_iota_out_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
-    vector_iota(*SH_arg);
+    vector_iota_out(*SH_arg);
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
     Darg->cxx.idtor = 0;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
     return;
-// splicer end function.vector_iota_bufferify
+// splicer end function.vector_iota_out_bufferify
 }
 
-// void vector_iota_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
+// void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
 // function_index=9
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
-void VEC_vector_iota_alloc_bufferify(VEC_SHROUD_array *Darg)
+void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
-// splicer begin function.vector_iota_alloc_bufferify
+// splicer begin function.vector_iota_out_alloc_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
-    vector_iota_alloc(*SH_arg);
+    vector_iota_out_alloc(*SH_arg);
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
     Darg->cxx.idtor = 0;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
     return;
-// splicer end function.vector_iota_alloc_bufferify
+// splicer end function.vector_iota_out_alloc_bufferify
 }
 
 // void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
