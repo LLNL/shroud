@@ -141,6 +141,10 @@ contains
     ! void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))
     ! arg_to_buffer
     ! function_index=1
+    !>
+    !! \brief Copy vector into Fortran input array
+    !!
+    !<
     subroutine vector_iota(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
@@ -153,7 +157,7 @@ contains
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer
-    ! function_index=2
+    ! function_index=3
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(INOUT) :: arg(:)
@@ -167,7 +171,7 @@ contains
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
-    ! function_index=3
+    ! function_index=4
     !>
     !! \brief count number of underscore in vector of strings
     !!

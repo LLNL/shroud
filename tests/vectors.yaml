@@ -57,7 +57,18 @@ declarations:
     wrap_lua: False
 
 - decl: void vector_iota(std::vector<int> &arg+intent(out))
+  doxygen:
+    brief: Copy vector into Fortran input array
   options:
+    wrap_python: False
+    wrap_lua: False
+
+- decl: void vector_iota_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
+  doxygen:
+    brief: Copy vector into Fortran allocatable array
+  options:
+    wrap_c: False
+    wrap_fortran: False
     wrap_python: False
     wrap_lua: False
 

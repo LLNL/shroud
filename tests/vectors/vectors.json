@@ -116,7 +116,7 @@
         }, 
         "functions": [
             {
-                "_PTR_F_C_index": 6, 
+                "_PTR_F_C_index": 7, 
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int", 
@@ -216,7 +216,7 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 6, 
+                "_function_index": 7, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -283,7 +283,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 7, 
+                "_PTR_F_C_index": 8, 
                 "_function_index": 1, 
                 "ast": {
                     "attrs": {
@@ -325,6 +325,9 @@
                 }, 
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran input array"
+                }, 
                 "format": {
                     "F_C_call": "c_vector_iota_bufferify", 
                     "F_arg_c_call": "Darg", 
@@ -371,7 +374,7 @@
                         }
                     }
                 }, 
-                "_function_index": 7, 
+                "_function_index": 8, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -415,6 +418,9 @@
                 }, 
                 "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran input array"
+                }, 
                 "format": {
                     "C_call_code": "vector_iota(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
@@ -438,8 +444,63 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 8, 
                 "_function_index": 2, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "vector_iota_alloc", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "std::vector", 
+                                "deref": "allocatable", 
+                                "intent": "out", 
+                                "template": "int"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::vector"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void vector_iota_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
+                "declgen": "void vector_iota_alloc(std::vector<int> & arg +deref(allocatable)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran allocatable array"
+                }, 
+                "format": {
+                    "function_name": "vector_iota_alloc", 
+                    "underscore_name": "vector_iota_alloc"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_PTR_F_C_index": 9, 
+                "_function_index": 3, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -499,7 +560,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 2, 
+                "_PTR_C_CXX_index": 3, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -526,7 +587,7 @@
                         }
                     }
                 }, 
-                "_function_index": 8, 
+                "_function_index": 9, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -594,14 +655,14 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 9, 
+                "_PTR_F_C_index": 10, 
                 "_fmtresult": {
                     "fmtf": {
                         "cxx_type": "int", 
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 3, 
+                "_function_index": 4, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -666,7 +727,7 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 3, 
+                "_PTR_C_CXX_index": 4, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -700,7 +761,7 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 9, 
+                "_function_index": 10, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -772,7 +833,7 @@
                 }
             }, 
             {
-                "_function_index": 4, 
+                "_function_index": 5, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -830,7 +891,7 @@
                 }
             }, 
             {
-                "_function_index": 5, 
+                "_function_index": 6, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"

@@ -127,6 +127,7 @@ class VerifyAttrs(object):
             if attr not in [
                     'allocatable',
                     'capsule',
+                    'deref',
                     'dimension',
                     'hidden',  # omitted in Fortran API, returned from C++
                     'implied', # omitted in Fortran API, value passed to C++
@@ -197,6 +198,8 @@ class VerifyAttrs(object):
                     attrs['value'] = False
             else:
                 attrs['value'] = True
+
+# XXX deref only on pointer, vector
 
         # dimension
         dimension = attrs.get('dimension', None)
