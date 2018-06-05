@@ -67,7 +67,8 @@ int * ReturnIntPtrPointer()
 }
 
 //#######################################
-// return int(len) owner(library)
+//#######################################
+// return dimension(len) owner(library)
 // Return a pointer to an existing, static array
 
 int * ReturnIntPtrDimRaw(int *len)
@@ -145,6 +146,88 @@ int * ReturnIntPtrDimDefaultNew(int *len)
   }
   *len = 5;
   return buffer;
+}
+
+//#######################################
+//#######################################
+// intent(out) dimension(len) owner(library)
+// Return a pointer to an existing, static array
+
+void IntPtrDimRaw(int **array, int *len)
+{
+  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
+  *len = sizeof buffer / sizeof buffer[1];
+  *array = buffer;
+}
+
+// As Fortran POINTER
+void IntPtrDimPointer(int **array, int *len)
+{
+  static int buffer[] = { 11, 12, 13, 14, 15, 16, 17 };
+  *len = sizeof buffer / sizeof buffer[1];
+  *array = buffer;
+}
+
+// As Fortran ALLOCATABLE
+void IntPtrDimAlloc(int **array, int *len)
+{
+  static int buffer[] = { 21, 22, 23, 24, 25, 26, 27 };
+  *len = sizeof buffer / sizeof buffer[1];
+  *array = buffer;
+}
+
+// as return_dimension_pointer
+void IntPtrDimDefault(int **array, int *len)
+{
+  static int buffer[] = { 31, 32, 33, 34, 35, 36, 37 };
+  *len = sizeof buffer / sizeof buffer[1];
+  *array = buffer;
+}
+
+//#######################################
+// return int(len) owner(caller)
+// Return a pointer to a new array
+
+void IntPtrDimRawNew(int **array, int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i;
+  }
+  *len = 5;
+  *array = buffer;
+}
+
+// As Fortran POINTER
+void IntPtrDimPointerNew(int **array, int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i + 10;
+  }
+  *len = 5;
+  *array = buffer;
+}
+
+// As Fortran ALLOCATABLE
+void IntPtrDimAllocNew(int **array, int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i + 20;
+  }
+  *len = 5;
+  *array = buffer;
+}
+
+void IntPtrDimDefaultNew(int **array, int *len)
+{
+  int *buffer = new int[5];
+  for (int i=0; i < 5; i++) {
+    buffer[i] = i + 30;
+  }
+  *len = 5;
+  *array = buffer;
 }
 
 //----------------------------------------------------------------------

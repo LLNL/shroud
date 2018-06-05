@@ -60,6 +60,16 @@ int * ReturnIntPtrDimPointerNew(int *len);
 int * ReturnIntPtrDimAllocNew(int *len);
 int * ReturnIntPtrDimDefaultNew(int *len);
 
+void IntPtrDimRaw(int **array, int *len);
+void IntPtrDimPointer(int **array, int *len);
+void IntPtrDimAlloc(int **array, int *len);
+void IntPtrDimDefault(int **array, int *len);
+
+void IntPtrDimRawNew(int **array, int *len);
+void IntPtrDimPointerNew(int **array, int *len);
+void IntPtrDimAllocNew(int **array, int *len);
+void IntPtrDimDefaultNew(int **array, int *len);
+
 void createClassStatic(int flag);
 Class1 * getClassStatic();
 Class1 * getClassNew(int flag);

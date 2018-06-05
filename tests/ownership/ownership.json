@@ -755,7 +755,7 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 16, 
+                "_PTR_F_C_index": 24, 
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -924,7 +924,7 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 16, 
+                "_function_index": 24, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1655,6 +1655,617 @@
                 }
             }, 
             {
+                "_function_index": 13, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimRaw", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "deref": "raw", 
+                                "intent": "out", 
+                                "owner": "library"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimRaw(int **array, int *len+intent(out))", 
+                "declgen": "void IntPtrDimRaw(int * * array +deref(raw)+intent(out)+owner(library), int * len +intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimRaw", 
+                    "underscore_name": "int_ptr_dim_raw"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 14, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimPointer", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "deref": "pointer", 
+                                "dimension": "len", 
+                                "intent": "out", 
+                                "owner": "library"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimPointer(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimPointer", 
+                    "underscore_name": "int_ptr_dim_pointer"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 15, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimAlloc", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "deref": "allocatable", 
+                                "dimension": "len", 
+                                "intent": "out", 
+                                "owner": "library"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimAlloc(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimAlloc", 
+                    "underscore_name": "int_ptr_dim_alloc"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 16, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimDefault", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "dimension": "len", 
+                                "intent": "out", 
+                                "owner": "library"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimDefault", 
+                    "underscore_name": "int_ptr_dim_default"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 17, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimRawNew", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "deref": "raw", 
+                                "intent": "out", 
+                                "owner": "caller"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimRawNew(int * * array +deref(raw)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimRawNew", 
+                    "underscore_name": "int_ptr_dim_raw_new"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 18, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimPointerNew", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "deref": "pointer", 
+                                "dimension": "len", 
+                                "intent": "out", 
+                                "owner": "caller"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimPointerNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimPointerNew", 
+                    "underscore_name": "int_ptr_dim_pointer_new"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 19, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimAllocNew", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "deref": "allocatable", 
+                                "dimension": "len", 
+                                "intent": "out", 
+                                "owner": "caller"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimAllocNew(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimAllocNew", 
+                    "underscore_name": "int_ptr_dim_alloc_new"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_function_index": 20, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "IntPtrDimDefaultNew", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "dimension": "len", 
+                                "intent": "out", 
+                                "owner": "caller"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "array", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }, 
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)", 
+                "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
+                "format": {
+                    "function_name": "IntPtrDimDefaultNew", 
+                    "underscore_name": "int_ptr_dim_default_new"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -1688,7 +2299,7 @@
                         }
                     }
                 }, 
-                "_function_index": 13, 
+                "_function_index": 21, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1774,7 +2385,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 14, 
+                "_function_index": 22, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 
@@ -1886,7 +2497,7 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 15, 
+                "_function_index": 23, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 

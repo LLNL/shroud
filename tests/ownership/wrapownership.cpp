@@ -127,7 +127,7 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
-// function_index=16
+// function_index=24
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * len)
 {
@@ -193,7 +193,7 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 }
 
 // void createClassStatic(int flag +intent(in)+value)
-// function_index=13
+// function_index=21
 void OWN_create_class_static(int flag)
 {
 // splicer begin function.create_class_static
@@ -203,7 +203,7 @@ void OWN_create_class_static(int flag)
 }
 
 // Class1 * getClassStatic() +owner(library)
-// function_index=14
+// function_index=22
 OWN_class1 OWN_get_class_static()
 {
 // splicer begin function.get_class_static
@@ -216,7 +216,7 @@ OWN_class1 OWN_get_class_static()
 }
 
 // Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-// function_index=15
+// function_index=23
 /**
  * \brief Return pointer to new Class1 instance.
  *

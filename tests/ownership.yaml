@@ -89,7 +89,9 @@ declarations:
     wrap_lua: False
 
 ########################################
-# return int(len) owner(library)
+# Function which return an array pointer
+########################################
+# return dimension(len) owner(library)
 
 - decl: int * ReturnIntPtrDimRaw(int *len+intent(out))
   fattrs:
@@ -164,6 +166,120 @@ declarations:
     wrap_lua: False
     # without deref attribute, return as a Fortran POINTER
 #    return_dimension_pointer: pointer
+
+########################################
+# Function which return an array pointer via an argument
+########################################
+# intent(out) dimension(len) owner(library)
+
+- decl: void IntPtrDimRaw(int **array, int *len+intent(out))
+  attrs:
+    array:
+      intent: out
+      deref: raw
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: pointer
+      dimension: len
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: allocatable
+      dimension: len
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      dimension: len
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+    # without deref attribute, return as a Fortran POINTER
+#    return_dimension_pointer: pointer
+
+########################################
+# intent(out) dimension(len) owner(caller)
+
+- decl: void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: raw
+      owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: pointer
+      dimension: len
+      owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: allocatable
+      dimension: len
+      owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      dimension: len
+      owner: caller
+#     C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
 
 ########################################
 # class 

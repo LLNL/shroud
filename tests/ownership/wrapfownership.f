@@ -399,7 +399,7 @@ contains
     end function return_int_ptr_dim_default_new
 
     ! Class1 * getClassStatic() +owner(library)
-    ! function_index=14
+    ! function_index=22
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -409,7 +409,7 @@ contains
     end function get_class_static
 
     ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-    ! function_index=15
+    ! function_index=23
     !>
     !! \brief Return pointer to new Class1 instance.
     !!
