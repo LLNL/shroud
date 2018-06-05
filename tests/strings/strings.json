@@ -231,10 +231,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "char", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "char", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -320,6 +324,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -837,11 +842,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "char", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))"
+                        "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))", 
+                        "cxx_type": "char", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -930,6 +938,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -1010,11 +1019,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "char", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30"
+                        "c_var_len": "30", 
+                        "cxx_type": "char", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -1107,6 +1119,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -1185,6 +1198,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "char", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
@@ -1272,6 +1286,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -1418,7 +1433,9 @@
                 "_PTR_F_C_index": 36, 
                 "_fmtresult": {
                     "fmtf": {
-                        "c_var_len": "30"
+                        "c_var_len": "30", 
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -1500,6 +1517,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -1647,6 +1665,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -1792,7 +1811,10 @@
             {
                 "_PTR_F_C_index": 39, 
                 "_fmtresult": {
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -1870,6 +1892,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -1951,11 +1974,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "strlen_ptr(\tc_get_const_string_ref_pure(\t))"
+                        "c_var_len": "strlen_ptr(\tc_get_const_string_ref_pure(\t))", 
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2045,6 +2071,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -2128,11 +2155,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30"
+                        "c_var_len": "30", 
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2228,6 +2258,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -2309,6 +2340,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
@@ -2399,6 +2431,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -2551,11 +2584,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30"
+                        "c_var_len": "30", 
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -2651,6 +2687,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -2732,10 +2769,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -2826,6 +2867,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -2908,11 +2950,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30"
+                        "c_var_len": "30", 
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -3007,6 +3052,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -3089,10 +3135,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -3183,6 +3233,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -3265,10 +3316,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -3359,6 +3414,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }
@@ -4809,10 +4865,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "char", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "char", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -4900,6 +4960,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "void", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }

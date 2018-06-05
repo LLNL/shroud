@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapownership.h"
+#include <cstring>
 #include <stdlib.h>
 #include "ownership.hpp"
 #include "typesownership.h"
@@ -50,6 +51,18 @@
 
 extern "C" {
 
+
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
+void OWN_SHROUD_array_copy(OWN_SHROUD_array *data, void *c_var, 
+    size_t c_var_size)
+{
+    const void *cxx_var = data->addr.cvoidp;
+    int n = c_var_size < data->size ? c_var_size : data->size;
+    n *= data->len;
+    std::memcpy(c_var, cxx_var, n);
+    // delete cxx_var->cxx
+}
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -83,7 +96,7 @@ int * OWN_return_int_ptr_pointer()
 // splicer end function.return_int_ptr_pointer
 }
 
-// int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)
+// int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)
 // function_index=5
 int * OWN_return_int_ptr_dim_raw(int * len)
 {
@@ -111,6 +124,22 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
     int * SHC_rv = ReturnIntPtrDimAlloc(len);
     return SHC_rv;
 // splicer end function.return_int_ptr_dim_alloc
+}
+
+// int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
+// function_index=16
+int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
+    int * len)
+{
+// splicer begin function.return_int_ptr_dim_alloc_bufferify
+    int * SHC_rv = ReturnIntPtrDimAlloc(len);
+    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.cvoidp = SHC_rv;
+    DSHC_rv->len = sizeof(int);
+    DSHC_rv->size = *len;
+    return SHC_rv;
+// splicer end function.return_int_ptr_dim_alloc_bufferify
 }
 
 // int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)

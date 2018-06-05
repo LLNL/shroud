@@ -98,6 +98,7 @@ class Wrapc(util.WrapperMixin):
         structs = []
         # reserved the 0 slot of capsule_order
         self.add_capsule_helper('--none--', None, [ '// Nothing to delete' ])
+        whelpers.add_array_copy_helper_c(fmt_library)
 
         self._push_splicer('class')
         for node in newlibrary.classes:
@@ -700,6 +701,7 @@ class Wrapc(util.WrapperMixin):
 #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
             fmt_result.idtor = '0'  # no destructor
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
+            fmt_result.cxx_type = result_typemap.cxx_type
             if result_typemap.c_union and not is_pointer:
                 # 'convert' via fields of a union
                 # used with structs where casting will not work

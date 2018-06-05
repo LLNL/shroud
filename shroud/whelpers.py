@@ -324,7 +324,7 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
         FHelpers[name] = helper
 
 
-def add_array_copy_helper(fmt):
+def add_array_copy_helper_c(fmt):
     """Create function to copy contents of a vector.
     """
     name = 'array_copy'
@@ -348,6 +348,7 @@ n *= data->len;
 -}}""", fmt))
         CHelpers[name] = helper
 
+def add_array_copy_helper(fmt):
     name = wformat('array_copy_{cxx_type}', fmt)
     if name not in FHelpers:
         helper = dict(

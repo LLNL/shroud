@@ -918,6 +918,8 @@ rv = .false.
                               'type({F_array_type}) :: {c_var_context}', fmt)
                 arg_c_call.append(fmt.c_var_context)
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
+                if 'dimension' in c_attrs:
+                    fmt.c_var_dimension = c_attrs['dimension']
             elif buf_arg == 'len_trim':
                 append_format(arg_c_call, 'len_trim({f_var}, kind=C_INT)', fmt)
                 self.set_f_module(modules, 'iso_c_binding', 'C_INT')
@@ -1087,6 +1089,8 @@ rv = .false.
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault('fmtf', util.Scope(fmt_func))
+            fmt_result.f_var = fmt_func.F_result
+            fmt_result.cxx_type = result_typemap.cxx_type
             fmt_func.F_result_clause = '\fresult(%s)' % fmt_func.F_result
         fmt_func.F_subprogram = subprogram
 
@@ -1106,6 +1110,8 @@ rv = .false.
 
         if hasattr(C_node, 'statements'):
             if 'f' in C_node.statements:
+                fmt_result.f_kind = result_typemap.f_kind
+                whelpers.add_array_copy_helper(fmt_result)
                 iblk = C_node.statements['f']['result_buf']
                 need_wrapper = self.build_arg_list_impl(
                     node, fmt_result, C_node.ast, ast, result_typemap,
@@ -1115,7 +1121,7 @@ rv = .false.
                     False, need_wrapper)
                 need_wrapper = self.add_code_from_statements(
                     need_wrapper,
-                    fmt_func, iblk,
+                    fmt_result, iblk,
                     modules, imports,
                     arg_f_decl, pre_call, post_call)
 
@@ -1358,17 +1364,18 @@ rv = .false.
 
             if return_pointer_as == 'allocatable':
                 # Copy into allocatable array
-                dim = ast.attrs.get('dimension', None)
-                if dim:
-                    fmt_result.pointer_shape = dim
-                    F_code.append(wformat('allocate({F_result}({pointer_shape}))',
-                                          fmt_result))
-                else:
-                    F_code.append(wformat('allocate({F_result})', fmt_result))
-                fmt_result.c_var_context = 'aaaa'
-                F_code.append(wformat(
-                    'call copy_array({c_var_context}, {F_pointer}, '
-                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
+                pass
+#                dim = ast.attrs.get('dimension', None)
+#                if dim:
+#                    fmt_result.pointer_shape = dim
+#                    F_code.append(wformat('allocate({F_result}({pointer_shape}))',
+#                                          fmt_result))
+#                else:
+#                    F_code.append(wformat('allocate({F_result})', fmt_result))
+##                fmt_result.c_var_context = 'aaaa'
+#                F_code.append(wformat(
+#                    'call copy_array({c_var_context}, {F_pointer}, '
+#                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
             elif return_pointer_as == 'pointer':
                 # Put C pointer into Fortran pointer
                 dim = ast.attrs.get('dimension', None)

@@ -657,10 +657,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -765,6 +769,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }

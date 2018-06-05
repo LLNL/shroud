@@ -91,10 +91,10 @@ declarations:
 ########################################
 # return int(len) owner(library)
 
-- decl: int * ReturnIntPtrDimRaw(int *len+intent(out)+hidden)
+- decl: int * ReturnIntPtrDimRaw(int *len+intent(out))
   fattrs:
     deref: raw
-    dimension: len
+#    dimension: len
   options:
     wrap_fortran: False
     wrap_lua: False
@@ -112,8 +112,6 @@ declarations:
     deref: allocatable
     dimension: len
   options:
-    wrap_fortran: False
-    wrap_c: True
     wrap_lua: False
 
 - decl: int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)

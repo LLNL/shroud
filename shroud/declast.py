@@ -1232,7 +1232,10 @@ class Declaration(Node):
 
         dimension = attrs.get('dimension', '')
         if dimension:
-            if is_pointer:
+            if is_allocatable:
+                # Assume 1-d.
+                decl.append('(:)')
+            elif is_pointer:
                 decl.append('(:)')  # XXX - 1d only
             else:
                 decl.append('(' + dimension + ')')

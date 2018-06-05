@@ -73,6 +73,9 @@ int * OWN_return_int_ptr_dim_pointer(int * len);
 
 int * OWN_return_int_ptr_dim_alloc(int * len);
 
+int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
+    int * len);
+
 int * OWN_return_int_ptr_dim_default(int * len);
 
 int * OWN_return_int_ptr_dim_raw_new(int * len);

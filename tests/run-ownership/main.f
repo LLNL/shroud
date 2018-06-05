@@ -68,7 +68,9 @@ contains
 
   subroutine test_pod
     integer(C_INT), pointer :: intp, intp1(:)
-!    integer(C_INT), allocatable :: inta1(:)
+    integer(C_INT), allocatable :: inta1(:)
+!    integer(C_INT) :: lencptr
+!    type(C_PTR) cptr
 
     !----------------------------------------
     ! return scalar
@@ -86,6 +88,8 @@ contains
     !----------------------------------------
     ! return dimension(len) owner(library)
 
+!    cptr = return_int_ptr_dim_raw(lencptr)
+
     ! deref(pointer)
     nullify(intp1)
     intp1 => return_int_ptr_dim_pointer()
@@ -94,12 +98,12 @@ contains
     call assert_true( all(intp1 == [11,12,13,14,15,16,17]), &
          "return_int_ptr_dim_pointer value")
 
-!    deallocate(inta1)
-!    inta1 = return_int_ptr_dim_alloc()
-!    call assert_true(allocated(inta1))
-!    call assert_equals(7 , size(inta1))
-!    call assert_true( all(intp1 == [21,22,23,24,25,26,27]), &
-!         "return_int_ptr_dim_alloc value")
+    inta1 = return_int_ptr_dim_alloc()
+    call assert_true(allocated(inta1))
+    call assert_equals(7 , size(inta1))
+    call assert_true( all(inta1 == [21,22,23,24,25,26,27]), &
+         "return_int_ptr_dim_alloc value")
+    deallocate(inta1)
 
     nullify(intp1)
     intp1 => return_int_ptr_dim_default()

@@ -214,7 +214,9 @@ def main():
 def create_wrapper(input, outdir=''):
     """Translate function arguments into command line options.
     Return config instance. It has list of files created.
+    Create a wrapper from a Python program.
     Useful with setup.py.
+       config = shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
     """
     args = argparse.Namespace()
     args.cmake = ''
@@ -293,7 +295,7 @@ def main_with_args(args):
     config.log = log
     config.cfiles = []  # list of C/C++ files created
     config.ffiles = []  # list of Fortran files created
-    config.pyfiles = [] # list of Python modulle files created
+    config.pyfiles = [] # list of Python module files created
 
     # accumulated input
     all = {}

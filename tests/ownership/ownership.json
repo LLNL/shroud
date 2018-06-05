@@ -82,10 +82,14 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "int", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
                             }, 
-                            "fmtf": {}
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
+                            }
                         }, 
                         "_function_index": 1, 
                         "ast": {
@@ -314,6 +318,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -368,10 +373,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -442,10 +451,14 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
                         "PyTypeObject": null, 
@@ -533,6 +546,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -541,8 +555,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
-                        "deref": "raw", 
-                        "dimension": "len"
+                        "deref": "raw"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -559,7 +572,6 @@
                         {
                             "attrs": {
                                 "_typename": "int", 
-                                "hidden": true, 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -583,8 +595,8 @@
                         "int"
                     ]
                 }, 
-                "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out)+hidden)", 
-                "declgen": "int * ReturnIntPtrDimRaw(int * len +hidden+intent(out)) +deref(raw)+dimension(len)", 
+                "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out))", 
+                "declgen": "int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)", 
                 "format": {
                     "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimRaw(\tlen);", 
                     "C_call_list": "len", 
@@ -643,10 +655,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv", 
                         "pointer_shape": "len"
                     }, 
                     "fmtpy": {
@@ -740,6 +755,7 @@
                 }
             }, 
             {
+                "_PTR_F_C_index": 16, 
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -774,8 +790,16 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "c_var_context": "DSHC_rv", 
+                        "c_var_dimension": "len", 
+                        "cxx_type": "int", 
+                        "f_kind": "C_INT", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -847,7 +871,16 @@
                     "C_prototype": "int * len", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int *", 
+                    "F_C_call": "c_return_int_ptr_dim_alloc_bufferify", 
                     "F_C_name": "c_return_int_ptr_dim_alloc", 
+                    "F_arg_c_call": "DSHC_rv,\t len", 
+                    "F_arguments": "", 
+                    "F_call_code": "SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv,\t len)", 
+                    "F_name_function": "return_int_ptr_dim_alloc", 
+                    "F_name_generic": "return_int_ptr_dim_alloc", 
+                    "F_name_impl": "return_int_ptr_dim_alloc", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc", 
                     "c_const": "", 
                     "cxx_rv_decl": "int * SHC_rv", 
@@ -855,9 +888,141 @@
                     "underscore_name": "return_int_ptr_dim_alloc"
                 }, 
                 "options": {
+                    "wrap_lua": false
+                }
+            }, 
+            {
+                "_PTR_C_CXX_index": 7, 
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "len", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(len)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "len"
+                        }, 
+                        "fmtf": {
+                            "c_var": "len", 
+                            "f_var": "len"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "c_var_context": "DSHC_rv", 
+                        "c_var_dimension": "len", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_type": "int", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }
+                }, 
+                "_function_index": 16, 
+                "_generated": "arg_to_buffer", 
+                "ast": {
+                    "attrs": {
+                        "_typename": "int", 
+                        "context": "DSHC_rv", 
+                        "deref": "allocatable", 
+                        "dimension": "len"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "ReturnIntPtrDimAlloc", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "int", 
+                                "hidden": true, 
+                                "intent": "out", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "len", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "int"
+                            ]
+                        }
+                    ], 
+                    "return_pointer_as": "allocatable", 
+                    "specifier": [
+                        "int"
+                    ]
+                }, 
+                "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)", 
+                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)", 
+                "format": {
+                    "C_call_code": "int * SHC_rv =\t ReturnIntPtrDimAlloc(\tlen);", 
+                    "C_call_list": "len", 
+                    "C_name": "OWN_return_int_ptr_dim_alloc_bufferify", 
+                    "C_post_call": "DSHC_rv->cxx.addr  = SHC_rv;\nDSHC_rv->cxx.idtor = 0;\nDSHC_rv->addr.cvoidp = SHC_rv;\nDSHC_rv->len = sizeof(int);\nDSHC_rv->size = *len;", 
+                    "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int *", 
+                    "F_C_name": "c_return_int_ptr_dim_alloc_bufferify", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int * SHC_rv", 
+                    "function_name": "ReturnIntPtrDimAlloc", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "return_int_ptr_dim_alloc"
+                }, 
+                "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
-                    "wrap_lua": false
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }, 
+                "statements": {
+                    "c": {
+                        "result_buf": {
+                            "buf_args": [
+                                "context"
+                            ], 
+                            "c_helper": "array_context array_copy", 
+                            "post_call": [
+                                "{c_var_context}->cxx.addr  = {cxx_var};", 
+                                "{c_var_context}->cxx.idtor = 0;", 
+                                "{c_var_context}->addr.cvoidp = {cxx_var};", 
+                                "{c_var_context}->len = sizeof({cxx_type});", 
+                                "{c_var_context}->size = *{c_var_dimension};"
+                            ]
+                        }
+                    }, 
+                    "f": {
+                        "result_buf": {
+                            "buf_args": [
+                                "context"
+                            ], 
+                            "f_helper": "array_context array_copy_{cxx_type}", 
+                            "post_call": [
+                                "allocate({f_var}({c_var_dimension}))", 
+                                "call SHROUD_array_copy_{cxx_type}({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))"
+                            ]
+                        }
+                    }
                 }
             }, 
             {
@@ -899,10 +1064,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv", 
                         "pointer_shape": "len"
                     }, 
                     "fmtpy": {
@@ -1015,6 +1183,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
@@ -1125,10 +1294,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv", 
                         "pointer_shape": "len"
                     }, 
                     "fmtpy": {
@@ -1257,6 +1429,7 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
@@ -1382,10 +1555,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv", 
                         "pointer_shape": "len"
                     }, 
                     "fmtpy": {
@@ -1578,10 +1754,14 @@
                         "cxx_addr": "", 
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                         "cxx_member": "->", 
+                        "cxx_type": "Class1", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "Class1", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PY_Class1", 
                         "PyTypeObject": "PY_Class1_Type", 
@@ -1686,10 +1866,14 @@
                         "cxx_addr": "", 
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                         "cxx_member": "->", 
+                        "cxx_type": "Class1", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
-                    "fmtf": {}, 
+                    "fmtf": {
+                        "cxx_type": "Class1", 
+                        "f_var": "SHT_rv"
+                    }, 
                     "fmtpy": {
                         "PyObject": "PY_Class1", 
                         "PyTypeObject": "PY_Class1_Type", 

@@ -570,7 +570,7 @@ contains
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:,:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:,:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
         integer(C_INT) :: sizein
         allocate(out, mold=in)
         sizein = size(in,kind=C_INT)
