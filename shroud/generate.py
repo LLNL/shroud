@@ -620,7 +620,11 @@ class GenFunctions(object):
         """Look for function which have implied arguments.
         This includes functions with string or vector arguments.
         If found then create a new C function that
-        will convert argument into a buffer and length.
+        will add arguments buf_args (typically a buffer and length).
+
+        String arguments add deref(allocatable) by default so that
+        char * will create an allocatable string in Fortran.
+
         """
         options = node.options
         fmt = node.fmtdict
@@ -707,7 +711,7 @@ class GenFunctions(object):
         # This keep a version which accepts char * arguments.
 
         # Create a new C function and change arguments
-        # to add len_trim attribute
+        # and add attributes.
         C_new = node.clone()
         ordered_functions.append(C_new)
         self.append_function_index(C_new)
@@ -768,14 +772,37 @@ class GenFunctions(object):
                 ## base typemap
 
         if has_string_result:
-            # Add additional argument to hold result
+            # Add additional argument to hold result.
+            # Default to deref(allocatable).
+            # This will allocate a new character variable to hold the
+            # results of the C++ function.
             ast = C_new.ast
-            if ast.attrs.get('allocatable', False):
+            f_attrs = node.ast.attrs   # Fortran function attributes
+
+            if 'len' in attrs or result_as_arg:
+                # +len implies copying into users buffer.
+                result_as_string = ast.result_as_arg(result_name)
+                attrs = result_as_string.attrs
+                attrs['len'] = options.C_var_len_template.format(c_var=result_name)
+                # Special case for wrapf.py
+                f_attrs['deref'] = 'result_as_arg'
+            elif result_typemap.cxx_type == 'std::string':
                 result_as_string = ast.result_as_voidstarstar(
                     'stringout', result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['context'] = options.C_var_context_template.format(c_var=result_name)
-            else:
+                if 'deref' not in f_attrs:
+                    f_attrs['deref'] = 'allocatable'
+                    attrs['deref'] = 'allocatable'
+            elif result_is_ptr:  # 'char *'
+                result_as_string = ast.result_as_voidstarstar(
+                    'charout', result_name, const=ast.const)
+                attrs = result_as_string.attrs
+                attrs['context'] = options.C_var_context_template.format(c_var=result_name)
+                if 'deref' not in f_attrs:
+                    f_attrs['deref'] = 'allocatable'
+                    attrs['deref'] = 'allocatable'
+            else:  # char
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
                 attrs['len'] = options.C_var_len_template.format(c_var=result_name)
@@ -785,12 +812,10 @@ class GenFunctions(object):
             # convert to subroutine
             C_new._subprogram = 'subroutine'
         elif has_allocatable_result:
+            # Non-string and Non-char results
             self.setup_allocatable_result(C_new)
 
-        if is_pure:
-            # pure functions which return a string have result_pure defined.
-            pass
-        elif result_as_arg:
+        if result_as_arg:
             # Create Fortran function without bufferify function_suffix but
             # with len attributes on string arguments.
             F_new = C_new.clone()
@@ -1056,20 +1081,21 @@ class Preprocess(object):
 #                               CXX_result_type, fmt_func.function_name)
 
     def check_pointer(self, node, ast):
-        """Compute how to deal with a pointer argument.
+        """Compute how to deal with a pointer function result.
         """
         options = node.options
         attrs = ast.attrs
         result_typemap = node.CXX_result_typemap
         ast.return_pointer_as = None
         if result_typemap.cxx_type == 'void' or \
-           result_typemap.base == 'string' or \
            result_typemap.base == 'shadow':
+            # subprogram == subroutine
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             pass
-        elif ast.is_indirect():
+        elif ast.is_indirect() or result_typemap.base == 'string':
+            # std::string is an implied pointer since Fortran cannot deal with it directly.
             if 'deref' in attrs:
                 ast.return_pointer_as = attrs['deref']
             elif 'dimension' in attrs:
@@ -1081,7 +1107,7 @@ class Preprocess(object):
         else:
             if 'deref' in attrs:
                 raise RuntimeError(
-                    "Can not have attribute 'deref' on non-pointer in {}"
+                    "Cannot have attribute 'deref' on non-pointer in {}"
                     .format(node.decl))
 
 def generate_functions(library, config):

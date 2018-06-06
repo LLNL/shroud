@@ -1204,15 +1204,6 @@ class Declaration(Node):
             # If a template, use its type
             typedef = typemap.lookup_type(attrs['template'])
 
-        typ = typedef.f_type
-        t.append(typ)
-        if not local:  # must be dummy argument
-            if attrs.get('value', False):
-                t.append('value')
-            intent = attrs.get('intent', None)
-            if intent:
-                t.append('intent(%s)' % intent.upper())
-
         deref = attrs.get('deref', '')
         if deref == 'allocatable':
             is_allocatable = True
@@ -1221,6 +1212,30 @@ class Declaration(Node):
 
         if not is_allocatable:
             is_allocatable = attrs.get('allocatable', False)
+
+        typ = typedef.f_type
+
+        if typedef.base == 'string':
+            if 'len' in attrs and local:
+                # Also used with function result declaration.
+                t.append('character(len={})'.format(attrs['len']))
+            elif is_allocatable:
+                t.append('character(len=:)')
+            elif not local:
+#                t.append('character(len=*)') # more consistent, but I prefer (*)
+                t.append('character(*)')
+            else:
+                t.append('character')
+        else:
+            t.append(typ)
+
+        if not local:  # must be dummy argument
+            if attrs.get('value', False):
+                t.append('value')
+            intent = attrs.get('intent', None)
+            if intent:
+                t.append('intent(%s)' % intent.upper())
+
         if is_allocatable:
             t.append('allocatable')
         if is_pointer:
@@ -1247,7 +1262,8 @@ class Declaration(Node):
                 decl.append('(' + dimension + ')')
         elif is_allocatable:
             # Assume 1-d.
-            decl.append('(:)')
+            if typedef.base != 'string':
+                decl.append('(:)')
 
         return ''.join(decl)
 

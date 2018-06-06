@@ -78,7 +78,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 
 const char * STR_get_char_ptr1();
 
-void STR_get_char_ptr1_bufferify(char * SHF_rv, int NSHF_rv);
+void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv);
 
 const char * STR_get_char_ptr2();
 
@@ -96,8 +96,7 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv);
 
 const char * STR_get_const_string_ref_pure();
 
-void STR_get_const_string_ref_pure_bufferify(char * SHF_rv,
-    int NSHF_rv);
+void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv);
 
 const char * STR_get_const_string_ref_len();
 

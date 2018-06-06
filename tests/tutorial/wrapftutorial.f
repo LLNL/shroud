@@ -47,7 +47,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -59,6 +59,13 @@ module tutorial_mod
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
+
+    type, bind(C) :: SHROUD_array
+        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
+        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+    end type SHROUD_array
 
     !  DIRECTION
     integer(C_INT), parameter :: class1_direction_up = 2
@@ -325,16 +332,16 @@ module tutorial_mod
         end subroutine c_function3b
 
         subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
-                SHF_rv, NSHF_rv) &
+                DSHF_rv) &
                 bind(C, name="TUT_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
+            import :: SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_function4a_bufferify
 
         function c_function4b(arg1, arg2) &
@@ -746,6 +753,18 @@ module tutorial_mod
         module procedure overload1_5
     end interface overload1
 
+    interface
+        ! Copy the std::string in context into c_var.
+        subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
+             bind(c,name="TUT_ShroudStringCopyAndFree")
+            use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
+            character(kind=C_CHAR), intent(OUT) :: c_var(*)
+            integer(C_LONG), value :: c_var_size
+        end subroutine SHROUD_string_copy_and_free
+    end interface
+
 contains
 
     ! Class1() +name(new)
@@ -1005,20 +1024,22 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
+    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)+len(30)
     ! arg_to_buffer
     ! function_index=19
     function function4a(arg1, arg2) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
+        use iso_c_binding, only : C_INT
         character(*), intent(IN) :: arg1
         character(*), intent(IN) :: arg2
-        character(kind=C_CHAR, len=30) :: SHT_rv
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
         ! splicer begin function.function4a
         call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
         ! splicer end function.function4a
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function function4a
 
     ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
@@ -1348,13 +1369,13 @@ contains
         ! splicer end function.return_struct_ptr
     end function return_struct_ptr
 
-    ! const std::string & LastFunctionCalled() +len(30)
+    ! const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
     ! function_index=47
     function last_function_called() &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
-        character(kind=C_CHAR, len=30) :: SHT_rv
+        use iso_c_binding, only : C_INT
+        character(len=30) :: SHT_rv
         ! splicer begin function.last_function_called
         call c_last_function_called_bufferify(SHT_rv, &
             len(SHT_rv, kind=C_INT))

@@ -2664,7 +2664,6 @@
                 }, 
                 "_fmtresult": {
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -2690,6 +2689,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
+                        "deref": "allocatable", 
                         "len": "30"
                     }, 
                     "const": true, 
@@ -2740,17 +2740,18 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
-                "declgen": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)", 
+                "declgen": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)+len(30)", 
                 "format": {
                     "F_C_call": "c_function4a_bufferify", 
-                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv", 
                     "F_arguments": "arg1,\t arg2", 
-                    "F_call_code": "call c_function4a_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                    "F_call_code": "call c_function4a_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv)", 
                     "F_name_function": "function4a", 
                     "F_name_generic": "function4a", 
                     "F_name_impl": "function4a", 
@@ -2771,19 +2772,20 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
-                            "c_const": "", 
+                            "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "f_var": "SHT_rv"
                         }
                     }, 
@@ -2896,14 +2898,19 @@
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
-                                "intent": "out", 
-                                "len": "NSHF_rv"
+                                "_typename": "stringout", 
+                                "context": "DSHF_rv", 
+                                "deref": "allocatable", 
+                                "intent": "out"
                             }, 
-                            "const": false, 
+                            "const": true, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
                                     {
                                         "const": false, 
                                         "ptr": "*"
@@ -2911,7 +2918,7 @@
                                 ]
                             }, 
                             "specifier": [
-                                "std::string"
+                                "stringout"
                             ]
                         }
                     ], 
@@ -2920,14 +2927,14 @@
                     ]
                 }, 
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
-                "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
+                "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +len(30)", 
                 "format": {
                     "C_call_code": "const std::string SHCXX_rv =\t tutorial::\tFunction4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4a_bufferify", 
-                    "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                     "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
-                    "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t char * SHF_rv,\t int NSHF_rv", 
+                    "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_function4a_bufferify", 
@@ -3055,7 +3062,8 @@
                 "_function_index": 20, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "deref": "result_as_arg"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3110,12 +3118,13 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
-                "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))", 
+                "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
@@ -8507,7 +8516,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -8533,6 +8541,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
+                        "deref": "result_as_arg", 
                         "len": "30"
                     }, 
                     "const": true, 
@@ -8547,12 +8556,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
-                "declgen": "const std::string & LastFunctionCalled() +len(30)", 
+                "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tLastFunctionCalled(\t);", 
                     "C_call_list": "", 
@@ -9089,6 +9099,51 @@
             "f_kind": "C_CHAR", 
             "f_type": "character"
         }, 
+        "charout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.ccharp = {cxx_var};", 
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
+                        "{c_var_context}->size = 1;"
+                    ]
+                }
+            }, 
+            "c_type": "char", 
+            "cxx_type": "char", 
+            "f_statements": {
+                "result": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
+        }, 
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
@@ -9595,7 +9650,8 @@
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 1;"
                     ]
                 }
             }, 
@@ -9608,7 +9664,7 @@
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
                         "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }

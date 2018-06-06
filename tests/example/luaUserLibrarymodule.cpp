@@ -120,7 +120,7 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass1_get_name_error_pattern(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorPattern
@@ -144,7 +144,7 @@ static int l_exclass1_get_name_length(lua_State *L)
     // splicer end class.ExClass1.method.GetNameLength
 }
 
-// const string & getNameErrorCheck() const
+// const string & getNameErrorCheck() const +deref(allocatable)
 static int l_exclass1_get_name_error_check(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorCheck
@@ -156,7 +156,7 @@ static int l_exclass1_get_name_error_check(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
-// const string & getNameArg() const
+// const string & getNameArg() const +deref(result_as_arg)
 static int l_exclass1_get_name_arg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
@@ -301,7 +301,7 @@ static int l_exclass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
@@ -313,7 +313,7 @@ static int l_exclass2_get_name(lua_State *L)
     // splicer end class.ExClass2.method.getName
 }
 
-// const string & getName2()
+// const string & getName2() +deref(allocatable)
 static int l_exclass2_get_name2(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName2
@@ -325,7 +325,7 @@ static int l_exclass2_get_name2(lua_State *L)
     // splicer end class.ExClass2.method.getName2
 }
 
-// string & getName3() const
+// string & getName3() const +deref(allocatable)
 static int l_exclass2_get_name3(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName3
@@ -337,7 +337,7 @@ static int l_exclass2_get_name3(lua_State *L)
     // splicer end class.ExClass2.method.getName3
 }
 
-// string & getName4()
+// string & getName4() +deref(allocatable)
 static int l_exclass2_get_name4(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName4

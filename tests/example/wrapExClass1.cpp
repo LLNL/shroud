@@ -61,6 +61,17 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
+
+// Copy the std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
+void AA_ShroudStringCopyAndFree(USE_SHROUD_array *data, char *c_var, long c_var_len) {
+    const char *cxx_var = data->addr.ccharp;
+    size_t n = c_var_len;
+    if (data->len < n) n = data->len;
+    strncpy(c_var, cxx_var, n);
+    // free the string?
+}
+
 // splicer begin class.ExClass1.C_definitions
 // splicer end class.ExClass1.C_definitions
 
@@ -153,7 +164,7 @@ int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 // splicer end class.ExClass1.method.increment_count
 }
 
-// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // function_index=4
 const char * AA_exclass1_get_name_error_pattern(
     const AA_exclass1 * self)
@@ -206,7 +217,7 @@ int AA_exclass1_get_name_length(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_length
 }
 
-// const string & getNameErrorCheck() const
+// const string & getNameErrorCheck() const +deref(allocatable)
 // function_index=6
 const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 {
@@ -219,25 +230,26 @@ const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_error_check
 }
 
-// void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const
+// void getNameErrorCheck(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 // function_index=16
 void AA_exclass1_get_name_error_check_bufferify(
-    const AA_exclass1 * self, char * SHF_rv, int NSHF_rv)
+    const AA_exclass1 * self, USE_SHROUD_array *DSHF_rv)
 {
 // splicer begin class.ExClass1.method.get_name_error_check_bufferify
     const example::nested::ExClass1 *SH_this = 
         static_cast<const example::nested::ExClass1 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
-    if (SHCXX_rv.empty()) {
-        std::memset(SHF_rv, ' ', NSHF_rv);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
-    }
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
+        (&SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv.data();
+    DSHF_rv->len = SHCXX_rv.size();
+    DSHF_rv->size = 1;
     return;
 // splicer end class.ExClass1.method.get_name_error_check_bufferify
 }
 
-// const string & getNameArg() const
+// const string & getNameArg() const +deref(result_as_arg)
 // function_index=7
 const char * AA_exclass1_get_name_arg(const AA_exclass1 * self)
 {

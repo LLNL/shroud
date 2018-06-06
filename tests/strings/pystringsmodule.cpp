@@ -151,7 +151,7 @@ PY_getCharPtr1(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr1() +pure
+// const char * getCharPtr1() +deref(allocatable)
 // splicer begin function.get_char_ptr1
     const char * SHC_rv = getCharPtr1();
 
@@ -172,7 +172,7 @@ PY_getCharPtr2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr2() +len(30)
+// const char * getCharPtr2() +deref(result_as_arg)+len(30)
 // splicer begin function.get_char_ptr2
     const char * SHC_rv = getCharPtr2();
 
@@ -193,7 +193,7 @@ PY_getCharPtr3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const char * getCharPtr3()
+// const char * getCharPtr3() +deref(result_as_arg)
 // splicer begin function.get_char_ptr3
     const char * SHC_rv = getCharPtr3();
 
@@ -214,7 +214,7 @@ PY_getConstStringLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getConstStringLen() +len(30)
+// const string getConstStringLen() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_len
     const std::string SHCXX_rv = getConstStringLen();
 
@@ -235,7 +235,7 @@ PY_getConstStringAsArg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string getConstStringAsArg()
+// const string getConstStringAsArg() +deref(result_as_arg)
 // splicer begin function.get_const_string_as_arg
     const std::string SHCXX_rv = getConstStringAsArg();
 
@@ -256,7 +256,7 @@ PY_getConstStringAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string getConstStringAlloc() +allocatable
+// const std::string getConstStringAlloc() +allocatable+deref(allocatable)
 // splicer begin function.get_const_string_alloc
     const std::string SHCXX_rv = getConstStringAlloc();
 
@@ -277,7 +277,7 @@ PY_getConstStringRefPure(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefPure() +pure
+// const string & getConstStringRefPure() +deref(allocatable)
 // splicer begin function.get_const_string_ref_pure
     const std::string & SHCXX_rv = getConstStringRefPure();
 
@@ -298,7 +298,7 @@ PY_getConstStringRefLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefLen() +len(30)
+// const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_ref_len
     const std::string & SHCXX_rv = getConstStringRefLen();
 
@@ -319,7 +319,7 @@ PY_getConstStringRefAsArg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefAsArg()
+// const string & getConstStringRefAsArg() +deref(result_as_arg)
 // splicer begin function.get_const_string_ref_as_arg
     const std::string & SHCXX_rv = getConstStringRefAsArg();
 
@@ -340,7 +340,7 @@ PY_getConstStringRefLenEmpty(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getConstStringRefLenEmpty() +len(30)
+// const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_ref_len_empty
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
 
@@ -361,7 +361,7 @@ PY_getConstStringRefAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & getConstStringRefAlloc() +allocatable
+// const std::string & getConstStringRefAlloc() +allocatable+deref(allocatable)
 // splicer begin function.get_const_string_ref_alloc
     const std::string & SHCXX_rv = getConstStringRefAlloc();
 
@@ -382,7 +382,7 @@ PY_getConstStringPtrLen(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string * getConstStringPtrLen() +len(30)
+// const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
 // splicer begin function.get_const_string_ptr_len
     const std::string * SHCXX_rv = getConstStringPtrLen();
 
@@ -403,7 +403,7 @@ PY_getConstStringPtrAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrAlloc() +allocatable
+// const std::string * getConstStringPtrAlloc() +allocatable+deref(allocatable)
 // splicer begin function.get_const_string_ptr_alloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
 
@@ -424,7 +424,7 @@ PY_getConstStringPtrOwnsAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrOwnsAlloc() +allocatable
+// const std::string * getConstStringPtrOwnsAlloc() +allocatable+deref(allocatable)
 // splicer begin function.get_const_string_ptr_owns_alloc
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
 

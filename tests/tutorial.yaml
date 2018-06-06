@@ -107,7 +107,6 @@ declarations:
   - decl: const std::string Function4a(
       const std::string& arg1,
       const std::string& arg2 ) +len(30)
-# +pure
 #  attrs:
 #    result:
 #      len: 30

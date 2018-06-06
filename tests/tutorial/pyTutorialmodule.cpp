@@ -242,7 +242,7 @@ PY_Function4a(
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
+// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)+len(30)
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
@@ -278,7 +278,7 @@ PY_Function4b(
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
 // splicer begin function.function4b
     const char * arg1;
     const char * arg2;
@@ -896,7 +896,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +len(30)
+// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 

@@ -46,7 +46,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass1_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin class.ExClass1.module_use
     ! splicer end class.ExClass1.module_use
     implicit none
@@ -56,6 +56,13 @@ module exclass1_mod
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
+
+    type, bind(C) :: SHROUD_array
+        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
+        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+    end type SHROUD_array
 
     ! splicer begin class.ExClass1.module_top
     top of module splicer  1
@@ -187,14 +194,12 @@ module exclass1_mod
         end function c_exclass1_get_name_error_check
 
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
-                SHF_rv, NSHF_rv) &
+                DSHF_rv) &
                 bind(C, name="AA_exclass1_get_name_error_check_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_array, SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
         pure function c_exclass1_get_name_arg(self) &
@@ -286,6 +291,18 @@ module exclass1_mod
         module procedure exclass1_ctor_1
     end interface exclass1_ctor
 
+    interface
+        ! Copy the std::string in context into c_var.
+        subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
+             bind(c,name="AA_ShroudStringCopyAndFree")
+            use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
+            character(kind=C_CHAR), intent(OUT) :: c_var(*)
+            integer(C_LONG), value :: c_var_size
+        end subroutine SHROUD_string_copy_and_free
+    end interface
+
 contains
 
     ! ExClass1()
@@ -349,15 +366,14 @@ contains
         ! splicer end class.ExClass1.method.increment_count
     end function exclass1_increment_count
 
-    ! const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+    ! const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
     ! arg_to_buffer
     ! function_index=4
     function exclass1_get_name_error_pattern(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
+        use iso_c_binding, only : C_INT
         class(exclass1) :: obj
-        character(kind=C_CHAR, &
-            len=aa_exclass1_get_name_length(obj%cxxmem)) :: SHT_rv
+        character(len=aa_exclass1_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_pattern
         call c_exclass1_get_name_error_pattern_bufferify(obj%cxxmem, &
             SHT_rv, len(SHT_rv, kind=C_INT))
@@ -380,20 +396,20 @@ contains
         ! splicer end class.ExClass1.method.get_name_length
     end function exclass1_get_name_length
 
-    ! const string & getNameErrorCheck() const
+    ! const string & getNameErrorCheck() const +deref(allocatable)
     ! arg_to_buffer
     ! function_index=6
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
         class(exclass1) :: obj
-        character(kind=C_CHAR, len=strlen_ptr( &
-            c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
-            SHT_rv, len(SHT_rv, kind=C_INT)))) :: SHT_rv
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
         ! splicer begin class.ExClass1.method.get_name_error_check
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
-            SHT_rv, len(SHT_rv, kind=C_INT))
+            DSHF_rv)
         ! splicer end class.ExClass1.method.get_name_error_check
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass1_get_name_error_check
 
     ! void getNameArg(string & name +intent(out)+len(Nname)) const

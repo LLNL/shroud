@@ -653,7 +653,6 @@ rv = .false.
         arg_c_names - Names of arguments to subprogram.
         arg_c_decl  - Declaration for arguments.
         """
-        is_allocatable = node.ast.attrs.get('allocatable', False)
         attrs = ast.attrs
 
         # Add implied buffer arguments to prototype
@@ -661,11 +660,7 @@ rv = .false.
             if buf_arg == 'arg':
                 arg_c_names.append(ast.name)
                 # argument declarations
-                if attrs.get('_is_result', False) and is_allocatable:
-                    arg_c_decl.append(
-                        'type(C_PTR), intent(OUT) :: {}'.format(
-                            ast.name))
-                elif ast.is_function_pointer():
+                if ast.is_function_pointer():
                     absiface = self.add_abstract_interface(node, ast)
                     arg_c_decl.append(
                         'procedure({}) :: {}'.format(
@@ -1025,11 +1020,10 @@ rv = .false.
             ast = copy.deepcopy(node.ast)
             ast.typename = result_type
 
-        result_generated_suffix = ''
-        if is_pure:
-            result_generated_suffix = '_pure'
-
-        return_pointer_as = ast.return_pointer_as
+        if 'deref' in ast.attrs:
+            result_generated_suffix = '_' + ast.attrs['deref']
+        else:
+            result_generated_suffix = ''
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
@@ -1071,13 +1065,9 @@ rv = .false.
 
         if hasattr(C_node, 'statements'):
             if 'f' in C_node.statements:
-                if 'deref' in ast.attrs:
-                    deref_suffix = '_' + ast.attrs['deref']
-                else:
-                    deref_suffix = ''
                 fmt_result.f_kind = result_typemap.f_kind
                 whelpers.add_array_copy_helper(fmt_result)
-                iblk = C_node.statements['f']['result' + deref_suffix]
+                iblk = C_node.statements['f']['result' + result_generated_suffix]
                 need_wrapper = self.build_arg_list_impl(
                     node, fmt_result, C_node.ast, ast, result_typemap,
                     iblk.get('buf_args', []),
@@ -1218,31 +1208,11 @@ rv = .false.
         # declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths)
+        return_pointer_as = ast.return_pointer_as
         if subprogram == 'function':
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
-            if result_typemap.base == 'string':
-                is_allocatable = ast.attrs.get('allocatable', False)
-                if is_allocatable:
-                    append_format(arg_f_decl,
-                                  'character(len=:,kind=C_CHAR), allocatable :: {F_result}',
-                                  fmt_func)
-                else:
-                    # special case returning a string
-                    rvlen = ast.attrs.get('len', None)
-                    if rvlen is None:
-                        rvlen = wformat(
-                            'strlen_ptr(\t{F_C_call}(\t{F_arg_c_call}))',
-                            fmt_func)
-                    else:
-                        rvlen = str(rvlen)  # convert integers
-                    fmt_result.c_var_len = wformat(rvlen, fmt_result)
-                    line1 = wformat(
-                        'character(kind=C_CHAR,\t len={c_var_len})\t :: {F_result}',
-                        fmt_result)
-                    arg_f_decl.append(line1)
-                self.set_f_module(modules, 'iso_c_binding', 'C_CHAR')
-            elif return_pointer_as == 'raw':
+            if return_pointer_as == 'raw':
                 arg_f_decl.append(ast.gen_arg_as_fortran(
                     name=fmt_result.F_result, is_pointer=True))
                 arg_f_decl.append('type(C_PTR) :: ' + fmt_result.F_pointer)
@@ -1257,10 +1227,15 @@ rv = .false.
                 need_wrapper = True
                 arg_f_decl.append(ast.gen_arg_as_fortran(
                     name=fmt_result.F_result, is_allocatable=True))
-                arg_f_decl.append('type(C_PTR) :: ' + fmt_result.F_pointer)
-                self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+                if result_typemap.base != 'string':
+                    # XXX - needed with int *, but not char *
+                    arg_f_decl.append('type(C_PTR) :: ' + fmt_result.F_pointer)
+                    self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
-                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_result.F_result))
+                # result_as_arg or None
+                # local=True will add any character len attributes
+                # e.g.  CHARACTER(LEN=30)
+                arg_f_decl.append(ast.gen_arg_as_fortran(name=fmt_result.F_result, local=True))
 
             self.update_f_module(modules, imports, result_typemap.f_module)
 

@@ -78,12 +78,13 @@ declarations:
 - decl: char *Function4a(
     const char *arg1,
     const char *arg2 ) +len(30)
-  format:
-    C_finalize_buf: |
-       // Function4a allocates memory which must be released after it is copied
-       // into the Fortran argument or else it will leak.
-       free({cxx_var});
-# +pure
+
+# XXX - Replace with other code to free memory
+#  format:
+#    C_finalize_buf: |
+#       // Function4a allocates memory which must be released after it is copied
+#       // into the Fortran argument or else it will leak.
+#       free({cxx_var});
 
 ##-- decl: const std::string& Function4b(
 ##-    const std::string& arg1,
@@ -252,7 +253,7 @@ declarations:
 ##-##################################################
 ##-
 ##-# Used with testing
-##-- decl: const std::string& LastFunctionCalled() +pure
+##-- decl: const std::string& LastFunctionCalled()
 ##-
 ##-##################################################
 ##-

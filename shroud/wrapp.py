@@ -672,8 +672,10 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if return_pointer_as in [ 'pointer', 'allocatable' ]:
-            # Create a 1-d array from pointer
+        if return_pointer_as in [ 'pointer', 'allocatable' ] and \
+           typedef.base != 'string':
+            # Create a 1-d array from pointer.
+            # A string is not really an array, so do not deal with it here.
             dim = ast.attrs.get('dimension', None)
             # Create array for shape.
             # Cannot use dimension directly since it may be the wrong type.

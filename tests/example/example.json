@@ -587,7 +587,6 @@
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "c_var_len": "aa_exclass1_get_name_length(obj%cxxmem)", 
                                 "cxx_type": "std::string", 
                                 "f_var": "SHT_rv"
                             }, 
@@ -613,6 +612,7 @@
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
+                                "deref": "result_as_arg", 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "const": true, 
@@ -627,12 +627,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "result_as_arg", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getNameErrorPattern() const", 
-                        "declgen": "const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
+                        "declgen": "const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);", 
                             "C_call_list": "", 
@@ -868,7 +869,6 @@
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                                 "cxx_type": "std::string", 
                                 "f_var": "SHT_rv"
                             }, 
@@ -893,7 +893,8 @@
                         "_function_index": 6, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -907,12 +908,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
-                        "declgen": "const string & getNameErrorCheck() const", 
+                        "declgen": "const string & getNameErrorCheck() const +deref(allocatable)", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
@@ -924,9 +926,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_error_check_bufferify", 
                             "F_C_name": "c_exclass1_get_name_error_check", 
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_get_name_error_check_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_error_check_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name_error_check", 
                             "F_name_generic": "get_name_error_check", 
                             "F_name_impl": "exclass1_get_name_error_check", 
@@ -950,19 +952,20 @@
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
-                                    "c_const": "", 
+                                    "c_const": "const ", 
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -994,22 +997,27 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
-                                    "const": false, 
+                                    "const": true, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
+                                            }, 
+                                            {
+                                                "const": false, 
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -1018,14 +1026,14 @@
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
-                        "declgen": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getNameErrorCheck(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
-                            "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "const AA_exclass1 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass1_get_name_error_check_bufferify", 
@@ -1078,7 +1086,8 @@
                         "_function_index": 7, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "result_as_arg"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -1092,12 +1101,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "result_as_arg", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getNameArg() const", 
-                        "declgen": "const string & getNameArg() const", 
+                        "declgen": "const string & getNameArg() const +deref(result_as_arg)", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
@@ -2298,7 +2308,6 @@
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "c_var_len": "aa_exclass2_get_name_length(obj%cxxmem)", 
                                 "cxx_type": "std::string", 
                                 "f_var": "SHT_rv"
                             }, 
@@ -2324,6 +2333,7 @@
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
+                                "deref": "result_as_arg", 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "const": true, 
@@ -2338,12 +2348,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "result_as_arg", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
+                        "declgen": "const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -2491,7 +2502,6 @@
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                                 "cxx_type": "std::string", 
                                 "f_var": "SHT_rv"
                             }, 
@@ -2516,7 +2526,8 @@
                         "_function_index": 22, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -2530,12 +2541,13 @@
                             }, 
                             "func_const": false, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getName2()", 
-                        "declgen": "const string & getName2()", 
+                        "declgen": "const string & getName2() +deref(allocatable)", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
@@ -2547,9 +2559,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name2_bufferify", 
                             "F_C_name": "c_exclass2_get_name2", 
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name2_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name2_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name2", 
                             "F_name_generic": "get_name2", 
                             "F_name_impl": "exclass2_get_name2", 
@@ -2573,19 +2585,20 @@
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
-                                    "c_const": "", 
+                                    "c_const": "const ", 
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
                                     "cxx_var": "SHCXX_rv"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -2617,22 +2630,27 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
-                                    "const": false, 
+                                    "const": true, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
+                                            }, 
+                                            {
+                                                "const": false, 
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -2641,14 +2659,14 @@
                             ]
                         }, 
                         "decl": "const string& getName2()", 
-                        "declgen": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                        "declgen": "void getName2(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
-                            "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_get_name2_bufferify", 
@@ -2682,7 +2700,6 @@
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                                 "cxx_type": "std::string", 
                                 "f_var": "SHT_rv"
                             }, 
@@ -2707,7 +2724,8 @@
                         "_function_index": 23, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -2721,12 +2739,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "string& getName3() const", 
-                        "declgen": "string & getName3() const", 
+                        "declgen": "string & getName3() const +deref(allocatable)", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
@@ -2738,9 +2757,9 @@
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name3_bufferify", 
                             "F_C_name": "c_exclass2_get_name3", 
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name3_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name3_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name3", 
                             "F_name_generic": "get_name3", 
                             "F_name_impl": "exclass2_get_name3", 
@@ -2768,7 +2787,7 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
@@ -2777,6 +2796,7 @@
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -2808,9 +2828,10 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -2818,12 +2839,16 @@
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
+                                            }, 
+                                            {
+                                                "const": false, 
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -2832,14 +2857,14 @@
                             ]
                         }, 
                         "decl": "string& getName3() const", 
-                        "declgen": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getName3(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
-                            "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "const AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_get_name3_bufferify", 
@@ -2873,7 +2898,6 @@
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                                 "cxx_type": "std::string", 
                                 "f_var": "SHT_rv"
                             }, 
@@ -2898,7 +2922,8 @@
                         "_function_index": 24, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -2912,12 +2937,13 @@
                             }, 
                             "func_const": false, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "string& getName4()", 
-                        "declgen": "string & getName4()", 
+                        "declgen": "string & getName4() +deref(allocatable)", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
@@ -2929,9 +2955,9 @@
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name4_bufferify", 
                             "F_C_name": "c_exclass2_get_name4", 
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name4_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name4_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name4", 
                             "F_name_generic": "get_name4", 
                             "F_name_impl": "exclass2_get_name4", 
@@ -2959,7 +2985,7 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
@@ -2968,6 +2994,7 @@
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -2999,9 +3026,10 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -3009,12 +3037,16 @@
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
+                                            }, 
+                                            {
+                                                "const": false, 
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -3023,14 +3055,14 @@
                             ]
                         }, 
                         "decl": "string& getName4()", 
-                        "declgen": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                        "declgen": "void getName4(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
-                            "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_get_name4_bufferify", 
@@ -9682,6 +9714,51 @@
             "f_kind": "C_CHAR", 
             "f_type": "character"
         }, 
+        "charout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.ccharp = {cxx_var};", 
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
+                        "{c_var_context}->size = 1;"
+                    ]
+                }
+            }, 
+            "c_type": "char", 
+            "cxx_type": "char", 
+            "f_statements": {
+                "result": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
+        }, 
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
@@ -10404,7 +10481,8 @@
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 1;"
                     ]
                 }
             }, 
@@ -10417,7 +10495,7 @@
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
                         "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }

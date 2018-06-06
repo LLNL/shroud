@@ -84,7 +84,7 @@ declarations:
 
 ########################################
 
-- decl: const char * getCharPtr1()  +pure
+- decl: const char * getCharPtr1()
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const char *' as character(*)
@@ -94,7 +94,7 @@ declarations:
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
 
-- decl: const char * getCharPtr3() # +pure
+- decl: const char * getCharPtr3()
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return a 'const char *' as argument
@@ -105,17 +105,17 @@ declarations:
 # return std::string
 
 # This tries to call a C wrapper which is not created
-#- decl: const string getString4() # +pure
+#- decl: const string getString4()
 #  C_error_pattern: C_invalid_name
 #  doxygen:
 #    brief: return a 'const string' as argument
 
-- decl: const string getConstStringLen() +len=30 # +pure
+- decl: const string getConstStringLen() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
 
-- decl: const string getConstStringAsArg() # +pure
+- decl: const string getConstStringAsArg()
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
@@ -127,7 +127,7 @@ declarations:
 ########################################
 # return std::string reference
 
-- decl: const string& getConstStringRefPure()  +pure
+- decl: const string& getConstStringRefPure()
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as character(*)
@@ -150,6 +150,7 @@ declarations:
     brief: Test returning empty string reference
 
 - decl: const std::string& getConstStringRefAlloc() +allocatable
+# The +allocatable is the default
 
 ########################################
 # return std::string pointer

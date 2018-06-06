@@ -189,7 +189,7 @@ static int l_function3(lua_State *L)
     // splicer end function.Function3
 }
 
-// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
+// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)+len(30)
 static int l_function4a(lua_State *L)
 {
     // splicer begin function.Function4a
@@ -201,7 +201,7 @@ static int l_function4a(lua_State *L)
     // splicer end function.Function4a
 }
 
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
 static int l_function4b(lua_State *L)
 {
     // splicer begin function.Function4b
@@ -512,7 +512,7 @@ static int l_direction_func(lua_State *L)
     // splicer end function.directionFunc
 }
 
-// const std::string & LastFunctionCalled() +len(30)
+// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

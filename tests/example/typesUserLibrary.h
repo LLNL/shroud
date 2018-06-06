@@ -44,6 +44,8 @@
 #ifndef TYPESUSERLIBRARY_H
 #define TYPESUSERLIBRARY_H
 
+#include <stddef.h>
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -72,6 +74,17 @@ struct s_USE_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_USE_SHROUD_capsule_data USE_SHROUD_capsule_data;
+
+struct s_USE_SHROUD_array {
+    USE_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * cvoidp;
+        const char * ccharp;
+    } addr;
+    size_t len;     /* bytes-per-item or character len of data in cxx */
+    size_t size;    /* size of data in cxx */
+};
+typedef struct s_USE_SHROUD_array USE_SHROUD_array;
 
 void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap);
 

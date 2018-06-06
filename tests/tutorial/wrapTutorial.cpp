@@ -69,6 +69,17 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
+
+// Copy the std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
+void TUT_ShroudStringCopyAndFree(TUT_SHROUD_array *data, char *c_var, long c_var_len) {
+    const char *cxx_var = data->addr.ccharp;
+    size_t n = c_var_len;
+    if (data->len < n) n = data->len;
+    strncpy(c_var, cxx_var, n);
+    // free the string?
+}
+
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -132,25 +143,26 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 // splicer end function.function3b
 }
 
-// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +len(30)
 // function_index=58
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
+    const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.function4a_bufferify
     const std::string SH_arg1(arg1, Larg1);
     const std::string SH_arg2(arg2, Larg2);
     const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-    if (SHCXX_rv.empty()) {
-        std::memset(SHF_rv, ' ', NSHF_rv);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
-    }
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
+        (&SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv.data();
+    DSHF_rv->len = SHCXX_rv.size();
+    DSHF_rv->size = 1;
     return;
 // splicer end function.function4a_bufferify
 }
 
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
 // function_index=20
 const char * TUT_function4b(const char * arg1, const char * arg2)
 {
@@ -587,7 +599,7 @@ void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg)
 // splicer end function.accept_struct_in_out_ptr
 }
 
-// const std::string & LastFunctionCalled() +len(30)
+// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // function_index=47
 const char * TUT_last_function_called()
 {

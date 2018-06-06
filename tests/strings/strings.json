@@ -837,6 +837,7 @@
                 }
             }, 
             {
+                "_PTR_F_C_index": 32, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_var": "SHC_rv", 
@@ -847,7 +848,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "strlen_ptr(\tc_get_char_ptr1(\t))", 
                         "cxx_type": "char", 
                         "f_var": "SHT_rv"
                     }, 
@@ -867,7 +867,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "char", 
-                        "pure": true
+                        "deref": "allocatable"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -881,12 +881,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "char"
                     ]
                 }, 
-                "decl": "const char * getCharPtr1()  +pure", 
-                "declgen": "const char * getCharPtr1() +pure", 
+                "decl": "const char * getCharPtr1()", 
+                "declgen": "const char * getCharPtr1() +deref(allocatable)", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -897,11 +898,11 @@
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_char_ptr1", 
+                    "F_C_call": "c_get_char_ptr1_bufferify", 
                     "F_C_name": "c_get_char_ptr1", 
-                    "F_arg_c_call": "", 
+                    "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_rv = fstr_ptr(c_get_char_ptr1())", 
+                    "F_call_code": "call c_get_char_ptr1_bufferify(DSHF_rv)", 
                     "F_name_function": "get_char_ptr1", 
                     "F_name_generic": "get_char_ptr1", 
                     "F_name_impl": "get_char_ptr1", 
@@ -920,16 +921,21 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
-                            "c_const": "", 
+                            "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SHC_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
                             "cxx_var": "SHC_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -947,8 +953,7 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
-                        "pure": true
+                        "_typename": "void"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -961,15 +966,19 @@
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char", 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "pure": true
+                                "_typename": "charout", 
+                                "context": "DSHF_rv", 
+                                "deref": "allocatable", 
+                                "intent": "out"
                             }, 
-                            "const": false, 
+                            "const": true, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
                                     {
                                         "const": false, 
                                         "ptr": "*"
@@ -977,7 +986,7 @@
                                 ]
                             }, 
                             "specifier": [
-                                "char"
+                                "charout"
                             ]
                         }
                     ], 
@@ -985,8 +994,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const char * getCharPtr1()  +pure", 
-                "declgen": "void getCharPtr1(char * SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure", 
+                "decl": "const char * getCharPtr1()", 
+                "declgen": "void getCharPtr1(const charout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -994,8 +1003,8 @@
                     "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr1_bufferify", 
-                    "C_post_call": "if (SHC_rv == NULL) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);\n}", 
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<char *>\t(SHC_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHC_rv;\nDSHF_rv->len = SHC_rv == NULL ? 0 : strlen(SHC_rv);\nDSHF_rv->size = 1;", 
+                    "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_char_ptr1_bufferify", 
@@ -1024,7 +1033,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "char", 
                         "f_var": "SHT_rv"
                     }, 
@@ -1044,6 +1052,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "char", 
+                        "deref": "result_as_arg", 
                         "len": "30"
                     }, 
                     "const": true, 
@@ -1058,12 +1067,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
                     ]
                 }, 
                 "decl": "const char * getCharPtr2() +len(30)", 
-                "declgen": "const char * getCharPtr2() +len(30)", 
+                "declgen": "const char * getCharPtr2() +deref(result_as_arg)+len(30)", 
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
@@ -1217,7 +1227,8 @@
                 "_function_index": 6, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char"
+                        "_typename": "char", 
+                        "deref": "result_as_arg"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -1231,12 +1242,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
                     ]
                 }, 
                 "decl": "const char * getCharPtr3()", 
-                "declgen": "const char * getCharPtr3()", 
+                "declgen": "const char * getCharPtr3() +deref(result_as_arg)", 
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 }, 
@@ -1433,7 +1445,6 @@
                 "_PTR_F_C_index": 36, 
                 "_fmtresult": {
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -1453,6 +1464,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
+                        "deref": "result_as_arg", 
                         "len": 30
                     }, 
                     "const": true, 
@@ -1462,12 +1474,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
                     ]
                 }, 
                 "decl": "const string getConstStringLen() +len=30", 
-                "declgen": "const string getConstStringLen() +len(30)", 
+                "declgen": "const string getConstStringLen() +deref(result_as_arg)+len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -1608,7 +1621,8 @@
                 "_function_index": 8, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "deref": "result_as_arg"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -1617,12 +1631,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
                     ]
                 }, 
                 "decl": "const string getConstStringAsArg()", 
-                "declgen": "const string getConstStringAsArg()", 
+                "declgen": "const string getConstStringAsArg() +deref(result_as_arg)", 
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 }, 
@@ -1831,7 +1846,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "allocatable": true
+                        "allocatable": true, 
+                        "deref": "allocatable"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -1840,12 +1856,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string getConstStringAlloc() +allocatable", 
-                "declgen": "const std::string getConstStringAlloc() +allocatable", 
+                "declgen": "const std::string getConstStringAlloc() +allocatable+deref(allocatable)", 
                 "format": {
                     "F_C_call": "c_get_const_string_alloc_bufferify", 
                     "F_arg_c_call": "DSHF_rv", 
@@ -1917,6 +1934,7 @@
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
+                                "deref": "allocatable", 
                                 "intent": "out"
                             }, 
                             "const": true, 
@@ -1943,12 +1961,12 @@
                     ]
                 }, 
                 "decl": "const std::string getConstStringAlloc() +allocatable", 
-                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
+                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -1967,6 +1985,7 @@
                 }
             }, 
             {
+                "_PTR_F_C_index": 40, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -1979,7 +1998,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "strlen_ptr(\tc_get_const_string_ref_pure(\t))", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -1999,7 +2017,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "pure": true
+                        "deref": "allocatable"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2013,12 +2031,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "string"
                     ]
                 }, 
-                "decl": "const string& getConstStringRefPure()  +pure", 
-                "declgen": "const string & getConstStringRefPure() +pure", 
+                "decl": "const string& getConstStringRefPure()", 
+                "declgen": "const string & getConstStringRefPure() +deref(allocatable)", 
                 "doxygen": {
                     "brief": "return a 'const string&' as character(*)"
                 }, 
@@ -2030,11 +2049,11 @@
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
-                    "F_C_call": "c_get_const_string_ref_pure", 
+                    "F_C_call": "c_get_const_string_ref_pure_bufferify", 
                     "F_C_name": "c_get_const_string_ref_pure", 
-                    "F_arg_c_call": "", 
+                    "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
-                    "F_call_code": "SHT_rv = fstr_ptr(c_get_const_string_ref_pure())", 
+                    "F_call_code": "call c_get_const_string_ref_pure_bufferify(DSHF_rv)", 
                     "F_name_function": "get_const_string_ref_pure", 
                     "F_name_generic": "get_const_string_ref_pure", 
                     "F_name_impl": "get_const_string_ref_pure", 
@@ -2053,16 +2072,21 @@
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
-                            "c_const": "", 
+                            "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_len": "NSHF_rv", 
+                            "c_var_context": "DSHF_rv", 
                             "cxx_addr": "&", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
                         }
                     }
                 }, 
@@ -2080,8 +2104,7 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
-                        "pure": true
+                        "_typename": "void"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -2094,23 +2117,27 @@
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
-                                "intent": "out", 
-                                "len": "NSHF_rv", 
-                                "pure": true
+                                "_typename": "stringout", 
+                                "context": "DSHF_rv", 
+                                "deref": "allocatable", 
+                                "intent": "out"
                             }, 
-                            "const": false, 
+                            "const": true, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
                                         "const": false, 
-                                        "ptr": "&"
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "string"
+                                "stringout"
                             ]
                         }
                     ], 
@@ -2118,8 +2145,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const string& getConstStringRefPure()  +pure", 
-                "declgen": "void getConstStringRefPure(string & SHF_rv +intent(out)+len(NSHF_rv)+pure) +pure", 
+                "decl": "const string& getConstStringRefPure()", 
+                "declgen": "void getConstStringRefPure(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "brief": "return a 'const string&' as character(*)"
                 }, 
@@ -2127,8 +2154,8 @@
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_pure_bufferify", 
-                    "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
+                    "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_const_string_ref_pure_bufferify", 
@@ -2160,7 +2187,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -2180,6 +2206,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
+                        "deref": "result_as_arg", 
                         "len": 30
                     }, 
                     "const": true, 
@@ -2194,12 +2221,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
                     ]
                 }, 
                 "decl": "const string& getConstStringRefLen() +len=30", 
-                "declgen": "const string & getConstStringRefLen() +len(30)", 
+                "declgen": "const string & getConstStringRefLen() +deref(result_as_arg)+len(30)", 
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
@@ -2359,7 +2387,8 @@
                 "_function_index": 12, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string"
+                        "_typename": "std::string", 
+                        "deref": "result_as_arg"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2373,12 +2402,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
                     ]
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
-                "declgen": "const string & getConstStringRefAsArg()", 
+                "declgen": "const string & getConstStringRefAsArg() +deref(result_as_arg)", 
                 "doxygen": {
                     "brief": "return a 'const string&' as argument"
                 }, 
@@ -2589,7 +2619,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -2609,6 +2638,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
+                        "deref": "result_as_arg", 
                         "len": 30
                     }, 
                     "const": true, 
@@ -2623,12 +2653,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
                     ]
                 }, 
                 "decl": "const string& getConstStringRefLenEmpty() +len=30", 
-                "declgen": "const string & getConstStringRefLenEmpty() +len(30)", 
+                "declgen": "const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)", 
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 }, 
@@ -2793,7 +2824,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "allocatable": true
+                        "allocatable": true, 
+                        "deref": "allocatable"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -2807,12 +2839,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc() +allocatable", 
-                "declgen": "const std::string & getConstStringRefAlloc() +allocatable", 
+                "declgen": "const std::string & getConstStringRefAlloc() +allocatable+deref(allocatable)", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
@@ -2892,6 +2925,7 @@
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
+                                "deref": "allocatable", 
                                 "intent": "out"
                             }, 
                             "const": true, 
@@ -2918,12 +2952,12 @@
                     ]
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc() +allocatable", 
-                "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
+                "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -2955,7 +2989,6 @@
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "c_var_len": "30", 
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
                     }, 
@@ -2975,6 +3008,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
+                        "deref": "result_as_arg", 
                         "len": 30
                     }, 
                     "const": true, 
@@ -2989,12 +3023,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
                     ]
                 }, 
                 "decl": "const string * getConstStringPtrLen() +len=30", 
-                "declgen": "const string * getConstStringPtrLen() +len(30)", 
+                "declgen": "const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)", 
                 "doxygen": {
                     "brief": "return a 'const string *' as character(*)"
                 }, 
@@ -3159,7 +3194,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "allocatable": true
+                        "allocatable": true, 
+                        "deref": "allocatable"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3173,12 +3209,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +allocatable", 
-                "declgen": "const std::string * getConstStringPtrAlloc() +allocatable", 
+                "declgen": "const std::string * getConstStringPtrAlloc() +allocatable+deref(allocatable)", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
@@ -3258,6 +3295,7 @@
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
+                                "deref": "allocatable", 
                                 "intent": "out"
                             }, 
                             "const": true, 
@@ -3284,12 +3322,12 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +allocatable", 
-                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
+                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -3340,7 +3378,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "allocatable": true
+                        "allocatable": true, 
+                        "deref": "allocatable"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3354,12 +3393,13 @@
                     }, 
                     "func_const": false, 
                     "params": [], 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +allocatable", 
-                "declgen": "const std::string * getConstStringPtrOwnsAlloc() +allocatable", 
+                "declgen": "const std::string * getConstStringPtrOwnsAlloc() +allocatable+deref(allocatable)", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
@@ -3439,6 +3479,7 @@
                                 "_is_result": true, 
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
+                                "deref": "allocatable", 
                                 "intent": "out"
                             }, 
                             "const": true, 
@@ -3465,12 +3506,12 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +allocatable", 
-                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+intent(out)) +allocatable", 
+                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -4392,6 +4433,7 @@
                             ]
                         }
                     ], 
+                    "return_pointer_as": "pointer", 
                     "specifier": [
                         "char"
                     ]
@@ -5569,6 +5611,51 @@
             "f_kind": "C_CHAR", 
             "f_type": "character"
         }, 
+        "charout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.ccharp = {cxx_var};", 
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
+                        "{c_var_context}->size = 1;"
+                    ]
+                }
+            }, 
+            "c_type": "char", 
+            "cxx_type": "char", 
+            "f_statements": {
+                "result": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
+        }, 
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
@@ -6075,7 +6162,8 @@
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 1;"
                     ]
                 }
             }, 
@@ -6088,7 +6176,7 @@
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
                         "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }

@@ -45,6 +45,8 @@
 #ifndef TYPESTUTORIAL_H
 #define TYPESTUTORIAL_H
 
+#include <stddef.h>
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -67,6 +69,17 @@ struct s_TUT_SHROUD_capsule_data {
     int idtor;      /* index of destructor */
 };
 typedef struct s_TUT_SHROUD_capsule_data TUT_SHROUD_capsule_data;
+
+struct s_TUT_SHROUD_array {
+    TUT_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * cvoidp;
+        const char * ccharp;
+    } addr;
+    size_t len;     /* bytes-per-item or character len of data in cxx */
+    size_t size;    /* size of data in cxx */
+};
+typedef struct s_TUT_SHROUD_array TUT_SHROUD_array;
 
 void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap);
 

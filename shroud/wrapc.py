@@ -934,7 +934,8 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_member = '->'
 
             if self.language == 'c':
-                pass
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    '{cxx_addr}{cxx_var}', fmt_arg)
             elif arg.const:
                 # cast away constness
                 fmt_arg.cxx_type = arg_typedef.cxx_type

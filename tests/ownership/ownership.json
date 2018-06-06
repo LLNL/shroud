@@ -2926,6 +2926,51 @@
             "f_kind": "C_CHAR", 
             "f_type": "character"
         }, 
+        "charout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->addr.ccharp = {cxx_var};", 
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
+                        "{c_var_context}->size = 1;"
+                    ]
+                }
+            }, 
+            "c_type": "char", 
+            "cxx_type": "char", 
+            "f_statements": {
+                "result": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
+        }, 
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
@@ -3432,7 +3477,8 @@
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var_context}->cxx.idtor = 0;", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
-                        "{c_var_context}->len = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 1;"
                     ]
                 }
             }, 
@@ -3445,7 +3491,7 @@
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})", 
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
                         "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }

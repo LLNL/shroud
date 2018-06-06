@@ -46,7 +46,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module exclass2_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin class.ExClass2.module_use
     ! splicer end class.ExClass2.module_use
     implicit none
@@ -56,6 +56,13 @@ module exclass2_mod
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
+
+    type, bind(C) :: SHROUD_array
+        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
+        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+    end type SHROUD_array
 
     ! splicer begin class.ExClass2.module_top
     top of module splicer  2
@@ -163,14 +170,12 @@ module exclass2_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name2
 
-        subroutine c_exclass2_get_name2_bufferify(self, SHF_rv, NSHF_rv) &
+        subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_exclass2_get_name2_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_array, SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_exclass2_get_name2_bufferify
 
         pure function c_exclass2_get_name3(self) &
@@ -183,14 +188,12 @@ module exclass2_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name3
 
-        subroutine c_exclass2_get_name3_bufferify(self, SHF_rv, NSHF_rv) &
+        subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_exclass2_get_name3_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_array, SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_exclass2_get_name3_bufferify
 
         function c_exclass2_get_name4(self) &
@@ -203,14 +206,12 @@ module exclass2_mod
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name4
 
-        subroutine c_exclass2_get_name4_bufferify(self, SHF_rv, NSHF_rv) &
+        subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_exclass2_get_name4_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_array, SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
+            type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
         pure function c_exclass2_get_name_length(self) &
@@ -329,6 +330,18 @@ module exclass2_mod
         ! splicer end class.ExClass2.additional_interfaces
     end interface
 
+    interface
+        ! Copy the std::string in context into c_var.
+        subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
+             bind(c,name="AA_ShroudStringCopyAndFree")
+            use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
+            import SHROUD_array
+            type(SHROUD_array), intent(IN) :: context
+            character(kind=C_CHAR), intent(OUT) :: c_var(*)
+            integer(C_LONG), value :: c_var_size
+        end subroutine SHROUD_string_copy_and_free
+    end interface
+
 contains
 
     ! ExClass2(const string * name +intent(in)+len_trim(trim_name))
@@ -364,67 +377,63 @@ contains
         ! splicer end class.ExClass2.method.delete
     end subroutine exclass2_dtor
 
-    ! const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+    ! const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! arg_to_buffer
     ! function_index=21
     function exclass2_get_name(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
+        use iso_c_binding, only : C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, &
-            len=aa_exclass2_get_name_length(obj%cxxmem)) :: SHT_rv
+        character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name
         call c_exclass2_get_name_bufferify(obj%cxxmem, SHT_rv, &
             len(SHT_rv, kind=C_INT))
         ! splicer end class.ExClass2.method.get_name
     end function exclass2_get_name
 
-    ! const string & getName2()
+    ! const string & getName2() +deref(allocatable)
     ! arg_to_buffer
     ! function_index=22
     function exclass2_get_name2(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=strlen_ptr( &
-            c_exclass2_get_name2_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT)))) :: SHT_rv
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name2
-        call c_exclass2_get_name2_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
         ! splicer end class.ExClass2.method.get_name2
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass2_get_name2
 
-    ! string & getName3() const
+    ! string & getName3() const +deref(allocatable)
     ! arg_to_buffer
     ! function_index=23
     function exclass2_get_name3(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=strlen_ptr( &
-            c_exclass2_get_name3_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT)))) :: SHT_rv
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name3
-        call c_exclass2_get_name3_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
         ! splicer end class.ExClass2.method.get_name3
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass2_get_name3
 
-    ! string & getName4()
+    ! string & getName4() +deref(allocatable)
     ! arg_to_buffer
     ! function_index=24
     function exclass2_get_name4(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
         class(exclass2) :: obj
-        character(kind=C_CHAR, len=strlen_ptr( &
-            c_exclass2_get_name4_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT)))) :: SHT_rv
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
         ! splicer begin class.ExClass2.method.get_name4
-        call c_exclass2_get_name4_bufferify(obj%cxxmem, SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)
         ! splicer end class.ExClass2.method.get_name4
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass2_get_name4
 
     ! int GetNameLength() const

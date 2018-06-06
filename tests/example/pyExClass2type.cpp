@@ -215,7 +215,7 @@ PP_exclass2_getName(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // splicer begin class.ExClass2.method.get_name
     const std::string & SHCXX_rv = self->obj->getName();
 
@@ -236,7 +236,7 @@ PP_exclass2_getName2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getName2()
+// const string & getName2() +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name2
     const std::string & SHCXX_rv = self->obj->getName2();
 
@@ -257,7 +257,7 @@ PP_exclass2_getName3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// string & getName3() const
+// string & getName3() const +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name3
     std::string & SHCXX_rv = self->obj->getName3();
 
@@ -278,7 +278,7 @@ PP_exclass2_getName4(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// string & getName4()
+// string & getName4() +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name4
     std::string & SHCXX_rv = self->obj->getName4();
 

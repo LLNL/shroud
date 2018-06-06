@@ -161,7 +161,7 @@ PP_exclass1_getNameErrorPattern(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 // splicer begin class.ExClass1.method.get_name_error_pattern
     const std::string & SHCXX_rv = self->obj->getNameErrorPattern();
     if (! isNameValid(rv)) {
@@ -208,7 +208,7 @@ PP_exclass1_getNameErrorCheck(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getNameErrorCheck() const
+// const string & getNameErrorCheck() const +deref(allocatable)
 // splicer begin class.ExClass1.method.get_name_error_check
     const std::string & SHCXX_rv = self->obj->getNameErrorCheck();
 
@@ -229,7 +229,7 @@ PP_exclass1_getNameArg(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getNameArg() const
+// const string & getNameArg() const +deref(result_as_arg)
 // splicer begin class.ExClass1.method.get_name_arg
     const std::string & SHCXX_rv = self->obj->getNameArg();
 

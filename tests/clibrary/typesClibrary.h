@@ -45,4 +45,23 @@
 #ifndef TYPESCLIBRARY_H
 #define TYPESCLIBRARY_H
 
+#include <stddef.h>
+
+struct s_CLI_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLI_SHROUD_capsule_data CLI_SHROUD_capsule_data;
+
+struct s_CLI_SHROUD_array {
+    CLI_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * cvoidp;
+        const char * ccharp;
+    } addr;
+    size_t len;     /* bytes-per-item or character len of data in cxx */
+    size_t size;    /* size of data in cxx */
+};
+typedef struct s_CLI_SHROUD_array CLI_SHROUD_array;
+
 #endif  // TYPESCLIBRARY_H

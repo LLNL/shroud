@@ -643,6 +643,7 @@ def initialize():
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
+
             base='string',
             ),
 
@@ -662,45 +663,6 @@ def initialize():
             c_type='void',
 
             c_statements=dict(
-#--                intent_in=dict(
-#--                    cxx_local_var='scalar',
-#--                    pre_call=[
-#--                        '{c_const}std::string {cxx_var}({c_var});'
-#--                        ],
-#--                ),
-#--                intent_out=dict(
-#--                    cxx_header='<cstring>',
-#--#                    pre_call=[
-#--#                        'int {c_var_trim} = strlen({c_var});',
-#--#                        ],
-#--                    cxx_local_var='scalar',
-#--                    pre_call=[
-#--                        '{c_const}std::string {cxx_var};'
-#--                        ],
-#--                    post_call=[
-#--                        # This may overwrite c_var if cxx_val is too long
-#--                        'strcpy({c_var}, {cxx_var}{cxx_member}c_str());'
-#--                    ],
-#--                ),
-#--                intent_inout=dict(
-#--                    cxx_header='<cstring>',
-#--                    cxx_local_var='scalar',
-#--                    pre_call=[
-#--                        '{c_const}std::string {cxx_var}({c_var});'
-#--                        ],
-#--                    post_call=[
-#--                        # This may overwrite c_var if cxx_val is too long
-#--                        'strcpy({c_var}, {cxx_var}{cxx_member}c_str());'
-#--                    ],
-#--                ),
-#--                intent_in_buf=dict(
-#--                    buf_args = [ 'arg', 'len_trim' ],
-#--                    cxx_local_var='scalar',
-#--                    pre_call=[
-#--                        ('{c_const}std::string '
-#--                         '{cxx_var}({c_var}, {c_var_trim});')
-#--                    ],
-#--                ),
                 intent_out_buf=dict(
                     buf_args = [ 'arg', 'lenout' ],
                     c_helper='copy_string',
@@ -725,6 +687,7 @@ def initialize():
                         '{c_var_context}->cxx.idtor = 0;',
                         '{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();',
                         '{c_var_context}->len = {cxx_var}{cxx_member}size();',
+                        '{c_var_context}->size = 1;',
                     ],
                 ),
             ),
@@ -739,11 +702,75 @@ def initialize():
                     need_wrapper=True,
                     f_helper='copy_string',
                     post_call=[
-                        'allocate(character(len={c_var_context}%len, kind=C_CHAR):: {f_var})',
+                        'allocate(character(len={c_var_context}%len):: {f_var})',
                         'call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
                         ],
                     )
                 ),
+
+            # No need for Python or Lua code since this type is not wrapped
+            # for those languages.  Only used in bufferified C wrappers.
+
+            base='string',
+            ),
+
+        # Create a context for a char * function.
+        charout=Typemap(
+            'charout',
+            cxx_type='char',
+#            cxx_header='<string>',
+#            cxx_to_c='static_cast<void *>({cxx_var})',
+
+            c_type='char',
+
+            c_statements=dict(
+                intent_out_buf=dict(
+                    buf_args = [ 'arg', 'lenout' ],
+                    c_helper='copy_string',
+                    cxx_local_var='scalar',
+                    pre_call=[
+                        'std::string * {cxx_var};'
+                    ],
+                    post_call=[
+                        ' post_call intent_out_buf'
+                    ],
+                ),
+                result_buf=dict(
+                    # pass address of string and length back to Fortran
+                    buf_args = [ 'context' ],
+                    c_helper='copy_string',
+                    # Copy address of result into c_var and save length.
+                    # When returning a std::string (and not a reference or pointer)
+                    # an intermediate object is created to save the results
+                    # which will be passed to copy_string
+                    post_call=[
+                        '{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};',
+                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->addr.ccharp = {cxx_var};',
+                        '{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});',
+                        '{c_var_context}->size = 1;',
+                    ],
+                ),
+            ),
+
+            f_type='type(C_PTR)YY',
+#            f_kind='C_CHAR',
+##            f_c_type='type(C_PTR)',
+##            f_c_module=dict(iso_c_binding=['C_PTR']),
+
+            f_statements=dict(
+                result=dict(
+                    need_wrapper=True,
+                    f_helper='copy_string',
+                    post_call=[
+                        'allocate(character(len={c_var_context}%len):: {f_var})',
+                        'call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
+                        ],
+                    )
+                ),
+
+            # No need for Python or Lua code since this type is not wrapped
+            # for those languages.  Only used in bufferified C wrappers.
 
             base='string',
             ),
