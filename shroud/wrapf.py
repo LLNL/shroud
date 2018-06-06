@@ -852,7 +852,6 @@ rv = .false.
             self, node, fmt, c_ast, f_ast, arg_typemap,
             buf_args,
             modules, imports,  arg_f_decl, arg_c_call,
-            allocatable_result,
             need_wrapper):
         """
         Build up code to call C wrapper.
@@ -879,9 +878,7 @@ rv = .false.
         for buf_arg in buf_args:
             if buf_arg == 'arg':
                 # Attributes   None=skip, True=use default, else use value
-                if allocatable_result:
-                    arg_c_call.append(fmt.f_cptr)
-                elif arg_typemap.f_args:
+                if arg_typemap.f_args:
                     # TODO - Not sure if this is still needed.
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_args, fmt)
@@ -965,41 +962,6 @@ rv = .false.
                 self.f_helper[helper] = True
         return need_wrapper
 
-    def attr_allocatable(self, allocatable, node, arg, pre_call):
-        """Add the allocatable attribute to the pre_call block.
-
-        Valid values of allocatable:
-           mold=name
-        """
-        fmtargs = node._fmtargs
-
-        p = re.compile('mold\s*=\s*(\w+)')
-        m = p.match(allocatable)
-        if m is not None:
-            moldvar = m.group(1)
-            if moldvar not in fmtargs:
-                raise RuntimeError("Mold argument {} does not exist: {}"
-                                   .format(moldvar, allocatable))
-            for moldarg in node.ast.params:
-                if moldarg.name == moldvar:
-                    break
-            if 'dimension' not in moldarg.attrs:
-                raise RuntimeError("Mold argument {} must have dimension attribute"
-                                   .format(moldvar))
-            fmt = fmtargs[arg.name]['fmtf']
-            if True:
-                rank = len(moldarg.attrs['dimension'].split(','))
-                bounds = []
-                for i in range(1, rank+1):
-                    bounds.append('lbound({var},{dim}):ubound({var},{dim})'.
-                                  format(var=moldvar, dim=i))
-                fmt.mold = ','.join(bounds)  
-                append_format(pre_call, 'allocate({f_var}({mold}))', fmt)
-            else:
-                # f2008 supports the mold option which makes this easier
-                fmt.mold = m.group(0)
-                append_format(pre_call, 'allocate({f_var}, {mold})', fmt)
-
     def attr_implied(self, node, arg, fmt):
         """Add the implied attribute to the pre_call block.
         """
@@ -1054,7 +1016,6 @@ rv = .false.
         is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
-        is_allocatable = ast.attrs.get('allocatable', False)
 
         if fmt_func.C_custom_return_type:
             # User has changed the return type of the C function
@@ -1122,7 +1083,7 @@ rv = .false.
                     iblk.get('buf_args', []),
                     modules, imports,
                     arg_f_decl, arg_c_call,
-                    False, need_wrapper)
+                    need_wrapper)
                 need_wrapper = self.add_code_from_statements(
                     need_wrapper,
                     fmt_result, iblk,
@@ -1152,7 +1113,6 @@ rv = .false.
             implied = c_attrs.get('implied', False)
             hidden = c_attrs.get('hidden', False)
             intent = c_attrs['intent']
-            allocatable_result = False  # XXX - kludgeish
 
             if 'deref' in c_attrs:
                 deref_suffix = '_' + c_attrs['deref']
@@ -1166,8 +1126,6 @@ rv = .false.
             if c_attrs.get('_is_result', False):
                 # XXX - _is_result implies a string result for now
                 # This argument is the C function result
-                if is_allocatable:
-                    allocatable_result = True
                 c_stmts = 'result' + generated_suffix
                 f_stmts = 'result' #+ generated_suffix
                 if not fmt_func.F_string_result_as_arg:
@@ -1242,7 +1200,7 @@ rv = .false.
                 c_intent_blk.get('buf_args', self._default_buf_args),
                 modules, imports,
                 arg_f_decl, arg_c_call,
-                allocatable_result, need_wrapper)
+                need_wrapper)
 
             need_wrapper = self.add_code_from_statements(
                 need_wrapper,
@@ -1264,6 +1222,7 @@ rv = .false.
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
             if result_typemap.base == 'string':
+                is_allocatable = ast.attrs.get('allocatable', False)
                 if is_allocatable:
                     append_format(arg_f_decl,
                                   'character(len=:,kind=C_CHAR), allocatable :: {F_result}',
@@ -1611,6 +1570,9 @@ def attr_allocatable(allocatable, node, arg, pre_call):
     """
     fmtargs = node._fmtargs
 
+    if allocatable is True:
+        # Only do regex on strings
+        return
     p = re.compile('mold\s*=\s*(\w+)')
     m = p.match(allocatable)
     if m is not None:
