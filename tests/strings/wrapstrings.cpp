@@ -505,7 +505,7 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
 // splicer end function.get_const_string_ref_len_empty_bufferify
 }
 
-// const std::string & getConstStringRefAlloc() +allocatable+deref(allocatable)
+// const std::string & getConstStringRefAlloc() +deref(allocatable)
 // function_index=14
 const char * STR_get_const_string_ref_alloc()
 {
@@ -516,7 +516,7 @@ const char * STR_get_const_string_ref_alloc()
 // splicer end function.get_const_string_ref_alloc
 }
 
-// void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable
+// void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // function_index=45
 void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -570,7 +570,7 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_const_string_ptr_len_bufferify
 }
 
-// const std::string * getConstStringPtrAlloc() +allocatable+deref(allocatable)
+// const std::string * getConstStringPtrAlloc() +deref(allocatable)
 // function_index=16
 const char * STR_get_const_string_ptr_alloc()
 {
@@ -581,7 +581,7 @@ const char * STR_get_const_string_ptr_alloc()
 // splicer end function.get_const_string_ptr_alloc
 }
 
-// void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable
+// void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // function_index=47
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -597,7 +597,7 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 
-// const std::string * getConstStringPtrOwnsAlloc() +allocatable+deref(allocatable)
+// const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)
 // function_index=17
 const char * STR_get_const_string_ptr_owns_alloc()
 {
@@ -608,7 +608,7 @@ const char * STR_get_const_string_ptr_owns_alloc()
 // splicer end function.get_const_string_ptr_owns_alloc
 }
 
-// void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable
+// void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // function_index=48
 void STR_get_const_string_ptr_owns_alloc_bufferify(
     STR_SHROUD_array *DSHF_rv)

@@ -239,8 +239,8 @@ contains
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: arg1
-        character(*), intent(IN) :: arg2
+        character(len=*), intent(IN) :: arg1
+        character(len=*), intent(IN) :: arg2
         type(SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.function4a

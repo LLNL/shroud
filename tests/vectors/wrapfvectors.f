@@ -235,7 +235,7 @@ contains
     function vector_string_count(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
-        character(*), intent(IN) :: arg(:)
+        character(len=*), intent(IN) :: arg(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.vector_string_count
         SHT_rv = c_vector_string_count_bufferify(arg, &

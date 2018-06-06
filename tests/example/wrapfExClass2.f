@@ -354,7 +354,7 @@ contains
     function exclass2_ctor(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         type(exclass2) :: SHT_rv
         ! splicer begin class.ExClass2.method.ctor
         SHT_rv%cxxmem = c_exclass2_ctor_bufferify(name, &

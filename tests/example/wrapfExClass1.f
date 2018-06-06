@@ -329,7 +329,7 @@ contains
     function exclass1_ctor_1(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_1
         SHT_rv%cxxmem = c_exclass1_ctor_1_bufferify(name, &
@@ -418,7 +418,7 @@ contains
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
         class(exclass1) :: obj
-        character(*), intent(OUT) :: name
+        character(len=*), intent(OUT) :: name
         ! splicer begin class.ExClass1.method.get_name_arg
         call c_exclass1_get_name_arg_bufferify(obj%cxxmem, name, &
             len(name, kind=C_INT))

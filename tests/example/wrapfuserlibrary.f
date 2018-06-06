@@ -354,7 +354,7 @@ contains
     function is_name_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         logical :: SHT_rv
         ! splicer begin function.is_name_valid
         rv = name .ne. " "
@@ -396,7 +396,7 @@ contains
     ! function_index=54
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         ! splicer begin function.test_names
         call c_test_names_bufferify(name, len_trim(name, kind=C_INT))
         ! splicer end function.test_names
@@ -407,7 +407,7 @@ contains
     ! function_index=55
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin function.test_names_flag
         call c_test_names_flag_bufferify(name, &

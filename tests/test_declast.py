@@ -167,7 +167,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("char * var1", s)
         s = r.gen_arg_as_fortran()
-        self.assertEqual("character(*) :: var1", s)
+        self.assertEqual("character(len=*) :: var1", s)
 
         r = declast.check_decl("char *var1 +len(30)")
         s = r.gen_decl()

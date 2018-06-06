@@ -168,7 +168,7 @@ contains
     function testnames_function4(rv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: rv
+        character(len=*), intent(IN) :: rv
         integer(C_INT) :: SHT_rv
         ! splicer begin function.function4
         SHT_rv = yyy_tes_function4_bufferify(rv, &

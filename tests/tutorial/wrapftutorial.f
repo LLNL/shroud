@@ -857,7 +857,7 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
         class(class1) :: obj
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
         logical(C_BOOL) SH_flag
         type(class1) :: SHT_rv
@@ -1030,8 +1030,8 @@ contains
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: arg1
-        character(*), intent(IN) :: arg2
+        character(len=*), intent(IN) :: arg1
+        character(len=*), intent(IN) :: arg2
         type(SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.function4a
@@ -1047,9 +1047,9 @@ contains
     ! function_index=60
     subroutine function4b(arg1, arg2, output)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: arg1
-        character(*), intent(IN) :: arg2
-        character(*), intent(OUT) :: output
+        character(len=*), intent(IN) :: arg1
+        character(len=*), intent(IN) :: arg2
+        character(len=*), intent(OUT) :: output
         ! splicer begin function.function4b
         call c_function4b_bufferify(arg1, len_trim(arg1, kind=C_INT), &
             arg2, len_trim(arg2, kind=C_INT), output, &
@@ -1102,7 +1102,7 @@ contains
     ! function_index=22
     subroutine function6_from_name(name)
         use iso_c_binding, only : C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         ! splicer begin function.function6_from_name
         call c_function6_from_name_bufferify(name, &
             len_trim(name, kind=C_INT))
@@ -1200,7 +1200,7 @@ contains
     ! function_index=66
     subroutine function10_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         real(C_FLOAT), value, intent(IN) :: arg2
         ! splicer begin function.function10_1_float
         call c_function10_1_bufferify(name, len_trim(name, kind=C_INT), &
@@ -1213,7 +1213,7 @@ contains
     ! function_index=67
     subroutine function10_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
-        character(*), intent(IN) :: name
+        character(len=*), intent(IN) :: name
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin function.function10_1_double
         call c_function10_1_bufferify(name, len_trim(name, kind=C_INT), &

@@ -1222,8 +1222,7 @@ class Declaration(Node):
             elif is_allocatable:
                 t.append('character(len=:)')
             elif not local:
-#                t.append('character(len=*)') # more consistent, but I prefer (*)
-                t.append('character(*)')
+                t.append('character(len=*)')
             else:
                 t.append('character')
         else:
