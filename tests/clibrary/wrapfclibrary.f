@@ -47,25 +47,12 @@
 ! splicer begin file_top
 ! splicer end file_top
 module clibrary_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
-
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
-    type, bind(C) :: SHROUD_array
-        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
-        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
-        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
-    end type SHROUD_array
 
     interface
 
@@ -122,16 +109,16 @@ module clibrary_mod
         end function c_function4a
 
         subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
-                DSHF_rv) &
+                SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
+            integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
         subroutine intargs(argin, arginout, argout) &
@@ -171,18 +158,6 @@ module clibrary_mod
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
-    end interface
-
-    interface
-        ! Copy the std::string in context into c_var.
-        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
-             bind(c,name="CLI_ShroudCopyStringAndFree")
-            use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
-            import SHROUD_array
-            type(SHROUD_array), intent(IN) :: context
-            character(kind=C_CHAR), intent(OUT) :: c_var(*)
-            integer(C_LONG), value :: c_var_size
-        end subroutine SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -233,7 +208,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(allocatable)+len(30)
+    ! char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer
     ! function_index=5
     function function4a(arg1, arg2) &
@@ -241,14 +216,12 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
+        character(len=30) :: SHT_rv
         ! splicer begin function.function4a
         call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
+            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
+            len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function function4a
 
     ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)

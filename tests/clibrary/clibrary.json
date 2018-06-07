@@ -956,7 +956,7 @@
                 "ast": {
                     "attrs": {
                         "_typename": "char", 
-                        "deref": "allocatable", 
+                        "deref": "result_as_arg", 
                         "len": "30"
                     }, 
                     "const": false, 
@@ -1012,13 +1012,13 @@
                             ]
                         }
                     ], 
-                    "return_pointer_as": "allocatable", 
+                    "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
                     ]
                 }, 
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
-                "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(allocatable)+len(30)", 
+                "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)", 
                 "format": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
@@ -1028,9 +1028,9 @@
                     "C_return_type": "char *", 
                     "F_C_call": "c_function4a_bufferify", 
                     "F_C_name": "c_function4a", 
-                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv", 
+                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                     "F_arguments": "arg1,\t arg2", 
-                    "F_call_code": "call c_function4a_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv)", 
+                    "F_call_code": "call c_function4a_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                     "F_name_function": "function4a", 
                     "F_name_generic": "function4a", 
                     "F_name_impl": "function4a", 
@@ -1053,7 +1053,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
-                            "c_var_context": "DSHF_rv", 
+                            "c_var_len": "NSHF_rv", 
                             "cxx_addr": "", 
                             "cxx_cast_to_void_ptr": "SHC_rv", 
                             "cxx_member": "->", 
@@ -1063,7 +1063,6 @@
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
-                            "c_var_context": "DSHF_rv", 
                             "f_var": "SHT_rv"
                         }
                     }, 
@@ -1178,10 +1177,9 @@
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "charout", 
-                                "context": "DSHF_rv", 
-                                "deref": "allocatable", 
-                                "intent": "out"
+                                "_typename": "char", 
+                                "intent": "out", 
+                                "len": "NSHF_rv"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -1190,15 +1188,11 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "charout"
+                                "char"
                             ]
                         }
                     ], 
@@ -1207,14 +1201,14 @@
                     ]
                 }, 
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
-                "declgen": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), charout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +len(30)", 
+                "declgen": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "CLI_function4a_bufferify", 
-                    "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nDSHF_rv->cxx.addr = SHC_rv;\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHC_rv;\nDSHF_rv->len = SHC_rv == NULL ? 0 : strlen(SHC_rv);\nDSHF_rv->size = 1;", 
+                    "C_post_call": "free(SH_arg1);\nfree(SH_arg2);\nif (SHC_rv == NULL) {\n    memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);\n}", 
                     "C_pre_call": "char * SH_arg1 = (char *) malloc(Larg1 + 1);\nmemcpy(SH_arg1, arg1, Larg1);\nSH_arg1[Larg1] = '\\0';\nchar * SH_arg2 = (char *) malloc(Larg2 + 1);\nmemcpy(SH_arg2, arg2, Larg2);\nSH_arg2[Larg2] = '\\0';", 
-                    "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t CLI_SHROUD_array *DSHF_rv", 
+                    "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t char * SHF_rv,\t int NSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_function4a_bufferify", 

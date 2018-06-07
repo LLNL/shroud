@@ -89,7 +89,7 @@ bool TUT_function3(bool arg);
 void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);
 
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
+    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
 const char * TUT_function4b(const char * arg1, const char * arg2);
 

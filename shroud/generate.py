@@ -779,7 +779,7 @@ class GenFunctions(object):
             ast = C_new.ast
             f_attrs = node.ast.attrs   # Fortran function attributes
 
-            if 'len' in attrs or result_as_arg:
+            if 'len' in ast.attrs or result_as_arg:
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs

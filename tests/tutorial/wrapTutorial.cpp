@@ -145,22 +145,20 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 // splicer end function.function3b
 }
 
-// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +len(30)
+// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=59
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
+    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
     const std::string SH_arg1(arg1, Larg1);
     const std::string SH_arg2(arg2, Larg2);
-    std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 2;
-    DSHF_rv->addr.ccharp = SHCXX_rv->data();
-    DSHF_rv->len = SHCXX_rv->size();
-    DSHF_rv->size = 1;
+    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
+    if (SHCXX_rv.empty()) {
+        std::memset(SHF_rv, ' ', NSHF_rv);
+    } else {
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
+    }
     return;
 // splicer end function.function4a_bufferify
 }
@@ -676,12 +674,6 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
     {
         tutorial::Class1 *cxx_ptr = 
             reinterpret_cast<tutorial::Class1 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:
-    {
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
         break;
     }

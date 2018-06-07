@@ -332,16 +332,16 @@ module tutorial_mod
         end subroutine c_function3b
 
         subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
-                DSHF_rv) &
+                SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
+            integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
         function c_function4b(arg1, arg2) &
@@ -1047,7 +1047,7 @@ contains
         arg3 = SH_arg3  ! coerce to logical
     end subroutine function3b
 
-    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)+len(30)
+    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer
     ! function_index=19
     function function4a(arg1, arg2) &
@@ -1055,14 +1055,12 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
+        character(len=30) :: SHT_rv
         ! splicer begin function.function4a
         call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
+            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
+            len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function function4a
 
     ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))

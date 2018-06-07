@@ -47,25 +47,23 @@
 #include "typesClibrary.h"
 
 
-// Copy the std::string in context into c_var.
-// Called by Fortran to deal with allocatable character.
-void CLI_ShroudCopyStringAndFree(CLI_SHROUD_array *data, char *c_var, long c_var_len) {
-    const char *cxx_var = data->addr.ccharp;
-    size_t n = c_var_len;
-    if (data->len < n) n = data->len;
-    strncpy(c_var, cxx_var, n);
-    if (data->cxx.idtor > 0) {
-        CLI_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-    }
+// Copy s into a, blank fill to la characters
+// Truncate if a is too short.
+static void ShroudStrCopy(char *a, int la, const char *s)
+{
+   int ls,nm;
+   ls = strlen(s);
+   nm = ls < la ? ls : la;
+   memcpy(a,s,nm);
+   if(la > nm) memset(a+nm,' ',la-nm);
 }
-
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), charout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +len(30)
+// void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=10
 void CLI_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, CLI_SHROUD_array *DSHF_rv)
+    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
     char * SH_arg1 = (char *) malloc(Larg1 + 1);
@@ -77,11 +75,11 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     char * SHC_rv = Function4a(SH_arg1, SH_arg2);
     free(SH_arg1);
     free(SH_arg2);
-    DSHF_rv->cxx.addr = SHC_rv;
-    DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHC_rv;
-    DSHF_rv->len = SHC_rv == NULL ? 0 : strlen(SHC_rv);
-    DSHF_rv->size = 1;
+    if (SHC_rv == NULL) {
+        memset(SHF_rv, ' ', NSHF_rv);
+    } else {
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
+    }
     return;
 // splicer end function.function4a_bufferify
 }
