@@ -2629,48 +2629,6 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
-                "AAAintent_inout_buf": {
-                    "buf_args": [
-                        "arg", 
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        "{{+", 
-                        "std::vector<{cxx_T}>::size_type+", 
-                        "{c_temp}i = 0,", 
-                        "{c_temp}n = {c_var_size};", 
-                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
-                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "-}}", 
-                        "-}}"
-                    ], 
-                    "pre_call": [
-                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                }, 
-                "AAAintent_out_buf": {
-                    "buf_args": [
-                        "arg", 
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        "{{", 
-                        "    std::vector<{cxx_T}>::size_type", 
-                        "        {c_temp}i = 0,", 
-                        "        {c_temp}n = {c_var_size};", 
-                        "    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "        {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "    }}", 
-                        "}}"
-                    ], 
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
-                    ]
-                }, 
                 "intent_in_buf": {
                     "buf_args": [
                         "arg", 

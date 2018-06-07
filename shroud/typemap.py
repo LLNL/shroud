@@ -817,25 +817,6 @@ def initialize():
                     ],
                 ),
 
-                AAAintent_out_buf=dict(
-                    buf_args = [ 'arg', 'size' ],
-                    cxx_local_var='scalar',
-                    pre_call=[
-                        '{c_const}std::vector<{cxx_T}>'
-                        '\t {cxx_var}({c_var_size});'
-                    ],
-                    post_call=[
-                        '{{',
-                        '    std::vector<{cxx_T}>::size_type',
-                        '        {c_temp}i = 0,',
-                        '        {c_temp}n = {c_var_size};',
-                        '    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
-                        '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                        '        {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
-                        '    }}',
-                        '}}'
-                    ],
-                ),
                 intent_inout_buf=dict(
                     buf_args = [ 'arg', 'size', 'context' ],
                     cxx_local_var='pointer',
@@ -855,25 +836,6 @@ def initialize():
                     destructor=[
                         'std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);',
                         'delete cxx_ptr;',
-                    ],
-                ),
-                AAAintent_inout_buf=dict(
-                    buf_args = [ 'arg', 'size' ],
-                    cxx_local_var='scalar',
-                    pre_call=[
-                        'std::vector<{cxx_T}> {cxx_var}('
-                        '\t{c_var}, {c_var} + {c_var_size});'
-                    ],
-                    post_call=[
-                        '{{+',
-                        'std::vector<{cxx_T}>::size_type+',
-                        '{c_temp}i = 0,',
-                        '{c_temp}n = {c_var_size};',
-                        '-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);',
-                        'for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
-                        '{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];',
-                        '-}}',
-                        '-}}'
                     ],
                 ),
 #                result_buf=dict(
