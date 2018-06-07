@@ -1191,7 +1191,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
-                        "idtor": "0"
+                        "idtor": "2"
                     }
                 }, 
                 "_function_index": 9, 
@@ -1303,7 +1303,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
-                        "idtor": "0"
+                        "idtor": "2"
                     }, 
                     "fmtf": {
                         "cxx_type": "int", 
@@ -1439,7 +1439,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
-                        "idtor": "0"
+                        "idtor": "2"
                     }, 
                     "fmtpy": {
                         "PyObject": "PyObject", 
@@ -1566,7 +1566,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
-                        "idtor": "0"
+                        "idtor": "2"
                     }, 
                     "fmtf": {
                         "cxx_type": "int", 
@@ -2490,7 +2490,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "Class1", 
                         "cxx_var": "SHCXX_rv", 
-                        "idtor": "0"
+                        "idtor": "1"
                     }, 
                     "fmtf": {
                         "cxx_type": "Class1", 
@@ -2555,7 +2555,7 @@
                     "C_call_code": "Class1 * SHCXX_rv =\t getClassNew(\tflag);", 
                     "C_call_list": "flag", 
                     "C_name": "OWN_get_class_new", 
-                    "C_post_call": "OWN_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
+                    "C_post_call": "OWN_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 1;", 
                     "C_prototype": "int flag", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "OWN_class1", 
@@ -3037,7 +3037,8 @@
                     "C_INT"
                 ]
             }, 
-            "f_type": "integer(C_INT)"
+            "f_type": "integer(C_INT)", 
+            "idtor": "2"
         }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 

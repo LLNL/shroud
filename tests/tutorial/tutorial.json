@@ -3875,7 +3875,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
-                        "idtor": "0"
+                        "idtor": "2"
                     }, 
                     "fmtf": {
                         "cxx_type": "std::string", 
@@ -10041,6 +10041,7 @@
                 }
             }, 
             "f_type": "character(*)", 
+            "idtor": "2", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar", 

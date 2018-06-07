@@ -227,7 +227,7 @@ OWN_class1 OWN_get_class_new(int flag)
     Class1 * SHCXX_rv = getClassNew(flag);
     OWN_class1 SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv.idtor = 1;
     return SHC_rv;
 // splicer end function.get_class_new
 }
@@ -246,6 +246,12 @@ void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
     {
         Class1 *cxx_ptr = reinterpret_cast<Class1 *>(ptr);
         delete cxx_ptr;
+        break;
+    }
+    case 2:   // int
+    {
+        int *cxx_ptr = reinterpret_cast<int *>(ptr);
+        free(cxx_ptr);
         break;
     }
     default:

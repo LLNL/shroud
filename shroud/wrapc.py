@@ -776,6 +776,30 @@ class Wrapc(util.WrapperMixin):
                         '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
+        owner = CXX_ast.attrs.get('owner', default_owner)
+        if owner == 'caller':
+            if not node.ast.is_pointer():
+                # default does not apply
+                pass
+            elif result_typemap.idtor != '0':
+                # Some predefined type
+                fmt_result.idtor = result_typemap.idtor
+            elif result_typemap.cxx_to_c:
+                # A C++ native type (std::string, std::vector)
+                # XXX - vector does not assign cxx_to_c
+                fmt_result.idtor = self.add_destructor(fmt_result, result_typemap.cxx_type, [
+                    '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                    'delete cxx_ptr;',
+                ], result_typemap)
+                result_typemap.idtor = fmt_result.idtor
+            else:
+                # A POD type
+                fmt_result.idtor = self.add_destructor(fmt_result, result_typemap.cxx_type, [
+                    '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                    'free(cxx_ptr);',
+                ], result_typemap)
+                result_typemap.idtor = fmt_result.idtor
+
         if hasattr(node, 'statements'):
             if 'c' in node.statements:
                 iblk = node.statements['c']['result_buf']
@@ -1291,5 +1315,5 @@ class Wrapc(util.WrapperMixin):
                 del_lines.append(wformat(cmd, fmt))
             idtor = self.add_capsule_helper(name, arg_typemap, del_lines)
         else:
-            idtor = 'x'
+            idtor = self.capsule_helpers[name][0]
         return idtor
