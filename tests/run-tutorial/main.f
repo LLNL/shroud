@@ -107,6 +107,7 @@ contains
 
     integer(C_LONG_LONG) :: rv_ll
     integer(C_INT) :: minout, maxout
+!    character(len=:), allocatable :: rv4c
 
     call set_case_name("test_functions")
 
@@ -137,6 +138,15 @@ contains
     call assert_true( rv_char == "dogcat")
 
     call assert_true( function4c("dawg", "kat") == "dawgkat")
+
+! warning: ‘.rv4c’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+! gfortran 4.9.3
+!    call assert_false(allocated(rv4c))
+!    rv4c = function4c("one", "two")
+!    call assert_true(allocated(rv4c))
+!    call assert_true(len(rv4c) == 6)
+!    call assert_true(rv4c == "onetwo")
+!    deallocate(rv4c)
 
     call assert_equals(function5(), 13.1415d0)
     call assert_equals(function5(1.d0), 11.d0)

@@ -465,11 +465,11 @@ module strings_mod
         ! Copy the std::string in context into c_var.
         subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="STR_ShroudCopyStringAndFree")
-            use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
+            use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
-            integer(C_LONG), value :: c_var_size
+            integer(C_SIZE_T), value :: c_var_size
         end subroutine SHROUD_copy_string_and_free
     end interface
 

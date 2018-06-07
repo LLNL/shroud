@@ -167,12 +167,12 @@ def add_external_helpers(fmt):
     name = 'copy_string'
     CHelpers[name] = dict(
         dependent_helpers=[ 'array_context' ],
-        cxx_header='<string>',
+        cxx_header='<string> <cstddef>',
 # XXX - mangle name
         source=wformat("""
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, long c_var_len) {{+
+void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
 if (data->len < n) n = data->len;
@@ -192,11 +192,11 @@ interface+
 ! Copy the std::string in context into c_var.
 subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
-use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
+use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
-integer(C_LONG), value :: c_var_size
+integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_copy_string_and_free
 -end interface""", fmt)
         )

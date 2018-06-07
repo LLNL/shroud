@@ -1096,6 +1096,8 @@ The *name* attribute will change the name of generated functions and
 descriptors.  This is helpful when using a naming convention like
 ``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
+.. _MemoryManagementAnchor:
+
 Memory Management
 -----------------
 
