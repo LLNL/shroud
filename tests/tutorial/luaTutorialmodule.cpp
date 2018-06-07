@@ -225,7 +225,7 @@ static int l_function4c(lua_State *L)
     // splicer end function.Function4c
 }
 
-// const std::string * Function4d() +deref(allocatable)
+// const std::string * Function4d() +deref(allocatable)+owner(caller)
 static int l_function4d(lua_State *L)
 {
     // splicer begin function.Function4d

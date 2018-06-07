@@ -409,6 +409,7 @@ library
 
    The memory belongs to the library and should not be deleted by
    the user.
+   This is the default value.
 
 .. steal  intent(in)
 

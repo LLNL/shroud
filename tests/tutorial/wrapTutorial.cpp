@@ -146,6 +146,11 @@ void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
 
 // void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 // function_index=60
+/**
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
+ */
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
@@ -197,6 +202,10 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1,
 
 // const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 // function_index=21
+/**
+ * Note that since a reference is returned, no intermediate string
+ * is allocated.  It is assumed +owner(library).
+ */
 const char * TUT_function4c(const char * arg1, const char * arg2)
 {
 // splicer begin function.function4c
@@ -211,6 +220,10 @@ const char * TUT_function4c(const char * arg1, const char * arg2)
 
 // void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // function_index=63
+/**
+ * Note that since a reference is returned, no intermediate string
+ * is allocated.  It is assumed +owner(library).
+ */
 void TUT_function4c_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
@@ -229,8 +242,12 @@ void TUT_function4c_bufferify(const char * arg1, int Larg1,
 // splicer end function.function4c_bufferify
 }
 
-// const std::string * Function4d() +deref(allocatable)
+// const std::string * Function4d() +deref(allocatable)+owner(caller)
 // function_index=22
+/**
+ * A string is allocated by the library is must be deleted
+ * by the caller.
+ */
 const char * TUT_function4d()
 {
 // splicer begin function.function4d
@@ -240,15 +257,19 @@ const char * TUT_function4d()
 // splicer end function.function4d
 }
 
-// void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +owner(caller)
 // function_index=64
+/**
+ * A string is allocated by the library is must be deleted
+ * by the caller.
+ */
 void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.function4d_bufferify
     const std::string * SHCXX_rv = tutorial::Function4d();
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->cxx.idtor = 2;
     DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     DSHF_rv->size = 1;
@@ -700,6 +721,12 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
     {
         tutorial::Class1 *cxx_ptr = 
             reinterpret_cast<tutorial::Class1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:   // std::string
+    {
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
         break;
     }

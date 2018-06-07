@@ -1110,14 +1110,13 @@ returns ``const std::string &`` for a reference to a string which is
 maintained by the library.  Fortran and Python will both get the
 reference, copy the contents into their own variable (Fortran
 ``CHARACTER`` or Python ``str``), then return without releasing any
-memory.
+memory.  This is the default behavior.
 
 Use **owner(caller)** when the library allocates new memory which is
 returned to the caller.  The caller is then responsible to release the
 memory.  Fortran and Python can both hold on the to memory and then
 provide ways to release it using a C++ callback when it is no longer
 needed.
-
 
 For shadow classes with a destructor defined, the destructor will 
 be used to release the memory.
@@ -1188,8 +1187,13 @@ typical function would look like::
         }
         case 1:   // tutorial::Class1
         {
-            tutorial::Class1 *cxx_ptr = 
-                reinterpret_cast<tutorial::Class1 *>(ptr);
+            tutorial::Class1 *cxx_ptr = reinterpret_cast<tutorial::Class1 *>(ptr);
+            delete cxx_ptr;
+            break;
+        }
+        case 2:   // std::string
+        {
+            std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
             delete cxx_ptr;
             break;
         }
@@ -1252,7 +1256,7 @@ This allows it to be easily accessed from Fortran::
     {
         const std::string * SHCXX_rv = tutorial::Function4d();
         DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>(SHCXX_rv));
-        DSHF_rv->cxx.idtor = 0;
+        DSHF_rv->cxx.idtor = 2;
         DSHF_rv->addr.ccharp = SHCXX_rv->data();
         DSHF_rv->len = SHCXX_rv->size();
         DSHF_rv->size = 1;

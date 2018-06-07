@@ -352,7 +352,7 @@ PY_Function4d(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * Function4d() +deref(allocatable)
+// const std::string * Function4d() +deref(allocatable)+owner(caller)
 // splicer begin function.function4d
     const std::string * SHCXX_rv = tutorial::Function4d();
 

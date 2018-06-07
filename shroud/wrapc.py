@@ -54,6 +54,7 @@ from .util import append_format
 
 wformat = util.wformat
 
+default_owner = 'library'
 
 class Wrapc(util.WrapperMixin):
     """Generate C bindings for C++ classes
@@ -875,10 +876,21 @@ class Wrapc(util.WrapperMixin):
                                       'std::string * {cxx_var} = new std::string;', fmt_arg)
                         fmt_func.cxx_rv_decl = wformat('*{cxx_var}', fmt_arg)
                         # XXX - delete string after copying its contents idtor=
-                        self.add_destructor(fmt_arg, 'new_string', [
+                        fmt_arg.idtor = self.add_destructor(fmt_arg, 'new_string', [
                             'std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);',
                             'delete cxx_ptr;',
                         ], arg_typedef)
+                    else:
+                        owner = CXX_ast.attrs.get('owner', default_owner)
+                        if owner == 'caller':
+                            if arg_typedef.idtor != '0':
+                                # Some predefined type
+                                fmt_arg.idtor = arg_typedef.idtor
+                            else:
+                                fmt_arg.idtor = self.add_destructor(fmt_arg, arg_typedef.cxx_type, [
+                                    '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                                    'delete cxx_ptr;',
+                                ], arg_typedef)
 
             else:
                 arg_call = arg
@@ -1277,4 +1289,7 @@ class Wrapc(util.WrapperMixin):
             del_lines = []
             for cmd in cmd_list:
                 del_lines.append(wformat(cmd, fmt))
-            fmt.idtor = self.add_capsule_helper(name, arg_typemap, del_lines)
+            idtor = self.add_capsule_helper(name, arg_typemap, del_lines)
+        else:
+            idtor = 'x'
+        return idtor

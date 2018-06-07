@@ -2765,6 +2765,9 @@
                 }, 
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
                 "declgen": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)", 
+                "doxygen": {
+                    "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
+                }, 
                 "format": {
                     "F_C_call": "c_function4a_bufferify", 
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
@@ -2943,6 +2946,9 @@
                 }, 
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
                 "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
+                "doxygen": {
+                    "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string SHCXX_rv =\t tutorial::\tFunction4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
@@ -3637,6 +3643,9 @@
                 }, 
                 "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)", 
+                "doxygen": {
+                    "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4c(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
@@ -3829,6 +3838,9 @@
                 }, 
                 "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "doxygen": {
+                    "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4c(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
@@ -3891,7 +3903,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "deref": "allocatable"
+                        "deref": "allocatable", 
+                        "owner": "caller"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3910,8 +3923,11 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string * Function4d()", 
-                "declgen": "const std::string * Function4d() +deref(allocatable)", 
+                "decl": "const std::string * Function4d() +owner(caller)", 
+                "declgen": "const std::string * Function4d() +deref(allocatable)+owner(caller)", 
+                "doxygen": {
+                    "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t tutorial::\tFunction4d(\t);", 
                     "C_call_list": "", 
@@ -3955,7 +3971,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv", 
-                            "idtor": "0"
+                            "idtor": "2"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3978,7 +3994,8 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void"
+                        "_typename": "void", 
+                        "owner": "caller"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -4019,13 +4036,16 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string * Function4d()", 
-                "declgen": "void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "decl": "const std::string * Function4d() +owner(caller)", 
+                "declgen": "void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +owner(caller)", 
+                "doxygen": {
+                    "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t tutorial::\tFunction4d(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function4d_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "TUT_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 

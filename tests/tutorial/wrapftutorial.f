@@ -1065,6 +1065,11 @@ contains
     ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer
     ! function_index=19
+    !>
+    !! Since +len(30) is provided, the result of the function
+    !! will be copied directly into memory provided by Fortran.
+    !! The function will not be ALLOCATABLE.
+    !<
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1096,6 +1101,10 @@ contains
     ! const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
     ! arg_to_buffer
     ! function_index=21
+    !>
+    !! Note that since a reference is returned, no intermediate string
+    !! is allocated.  It is assumed +owner(library).
+    !<
     function function4c(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1111,9 +1120,13 @@ contains
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function function4c
 
-    ! const std::string * Function4d() +deref(allocatable)
+    ! const std::string * Function4d() +deref(allocatable)+owner(caller)
     ! arg_to_buffer
     ! function_index=22
+    !>
+    !! A string is allocated by the library is must be deleted
+    !! by the caller.
+    !<
     function function4d() &
             result(SHT_rv)
         type(SHROUD_array) :: DSHF_rv
