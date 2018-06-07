@@ -136,6 +136,8 @@ contains
     call function4b("dog", "cat", rv_char)
     call assert_true( rv_char == "dogcat")
 
+    call assert_true( function4c("dawg", "kat") == "dawgkat")
+
     call assert_equals(function5(), 13.1415d0)
     call assert_equals(function5(1.d0), 11.d0)
     call assert_equals(function5(1.d0, .false.), 1.d0)

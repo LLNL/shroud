@@ -96,6 +96,11 @@ const char * TUT_function4b(const char * arg1, const char * arg2);
 void TUT_function4b_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * output, int Noutput);
 
+const char * TUT_function4c(const char * arg1, const char * arg2);
+
+void TUT_function4c_bufferify(const char * arg1, int Larg1,
+    const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
+
 double TUT_function5();
 
 double TUT_function5_arg1(double arg1);
