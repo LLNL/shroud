@@ -293,14 +293,14 @@ module exclass1_mod
 
     interface
         ! Copy the std::string in context into c_var.
-        subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
-             bind(c,name="AA_ShroudStringCopyAndFree")
+        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+             bind(c,name="AA_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_LONG), value :: c_var_size
-        end subroutine SHROUD_string_copy_and_free
+        end subroutine SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -409,7 +409,7 @@ contains
             DSHF_rv)
         ! splicer end class.ExClass1.method.get_name_error_check
         allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function exclass1_get_name_error_check
 
     ! void getNameArg(string & name +intent(out)+len(Nname)) const

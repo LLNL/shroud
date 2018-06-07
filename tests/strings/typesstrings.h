@@ -69,6 +69,8 @@ struct s_STR_SHROUD_array {
 };
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 
+void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
+
 #ifdef __cplusplus
 }
 #endif

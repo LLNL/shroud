@@ -54,14 +54,16 @@ extern "C" {
 
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
-void OWN_SHROUD_array_copy(OWN_SHROUD_array *data, void *c_var, 
+void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var, 
     size_t c_var_size)
 {
     const void *cxx_var = data->addr.cvoidp;
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->len;
     std::memcpy(c_var, cxx_var, n);
-    // delete cxx_var->cxx
+    if (data->cxx.idtor > 0) {
+        OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    }
 }
 // splicer begin C_definitions
 // splicer end C_definitions

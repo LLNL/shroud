@@ -64,4 +64,6 @@ struct s_CLI_SHROUD_array {
 };
 typedef struct s_CLI_SHROUD_array CLI_SHROUD_array;
 
+void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap);
+
 #endif  // TYPESCLIBRARY_H

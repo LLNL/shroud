@@ -755,14 +755,14 @@ module tutorial_mod
 
     interface
         ! Copy the std::string in context into c_var.
-        subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
-             bind(c,name="TUT_ShroudStringCopyAndFree")
+        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+             bind(c,name="TUT_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_LONG), value :: c_var_size
-        end subroutine SHROUD_string_copy_and_free
+        end subroutine SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -1039,7 +1039,7 @@ contains
             arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
         ! splicer end function.function4a
         allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_string_copy_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function function4a
 
     ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))

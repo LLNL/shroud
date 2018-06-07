@@ -1066,7 +1066,7 @@ rv = .false.
         if hasattr(C_node, 'statements'):
             if 'f' in C_node.statements:
                 fmt_result.f_kind = result_typemap.f_kind
-                whelpers.add_array_copy_helper(fmt_result)
+                whelpers.add_copy_array_helper(fmt_result)
                 iblk = C_node.statements['f']['result' + result_generated_suffix]
                 need_wrapper = self.build_arg_list_impl(
                     node, fmt_result, C_node.ast, ast, result_typemap,

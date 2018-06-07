@@ -64,12 +64,14 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void AA_ShroudStringCopyAndFree(USE_SHROUD_array *data, char *c_var, long c_var_len) {
+void AA_ShroudCopyStringAndFree(USE_SHROUD_array *data, char *c_var, long c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
     strncpy(c_var, cxx_var, n);
-    // free the string?
+    if (data->cxx.idtor > 0) {
+        AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    }
 }
 
 // splicer begin class.ExClass1.C_definitions

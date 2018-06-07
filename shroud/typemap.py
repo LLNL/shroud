@@ -703,7 +703,7 @@ def initialize():
                     f_helper='copy_string',
                     post_call=[
                         'allocate(character(len={c_var_context}%len):: {f_var})',
-                        'call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
+                        'call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
                         ],
                     )
                 ),
@@ -764,7 +764,7 @@ def initialize():
                     f_helper='copy_string',
                     post_call=[
                         'allocate(character(len={c_var_context}%len):: {f_var})',
-                        'call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
+                        'call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)',
                         ],
                     )
                 ),
@@ -797,7 +797,7 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args = [ 'context' ],
                     cxx_local_var='pointer',
-                    c_helper='capsule_data_helper array_copy',
+                    c_helper='capsule_data_helper copy_array',
                     pre_call=[
                         '{c_const}std::vector<{cxx_T}>'
                         '\t *{cxx_var} = new std::vector<{cxx_T}>;',
@@ -893,39 +893,39 @@ def initialize():
 
                 # copy into user's existing array
                 intent_out=dict(
-                    f_helper='array_copy_{cxx_T}',
+                    f_helper='copy_array_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
-                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
+                        'call SHROUD_copy_array_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],
                 ),
                 intent_inout=dict(
-                    f_helper='array_copy_{cxx_T}',
+                    f_helper='copy_array_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
-                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
+                        'call SHROUD_copy_array_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],
                 ),
 
                 # copy into allocated array
                 intent_out_allocatable=dict(
-                    f_helper='array_copy_{cxx_T}',
+                    f_helper='copy_array_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'allocate({f_var}({c_var_context}%size))',
-                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
+                        'call SHROUD_copy_array_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],
                 ),
                 intent_inout_allocatable=dict(
-                    f_helper='array_copy_{cxx_T}',
+                    f_helper='copy_array_{cxx_T}',
                     f_module=dict(iso_c_binding=['C_SIZE_T']),
                     post_call=[
                         'if (allocated({f_var})) deallocate({f_var})',
                         'allocate({f_var}({c_var_context}%size))',
-                        'call SHROUD_array_copy_{cxx_T}({c_var_context}, '
+                        'call SHROUD_copy_array_{cxx_T}({c_var_context}, '
                           '{f_var}, size({f_var},kind=C_SIZE_T))',
                     ],
                 ),

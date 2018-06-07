@@ -40,19 +40,15 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapdefault_library.h"
-#include "global_header.hpp"
 #include "typesdefault_library.h"
 
+// splicer begin CXX_definitions
+// splicer end CXX_definitions
 
 extern "C" {
 
-
-void DEF_function1()
-{
-    one::two::function1();
-    return;
-}
+// splicer begin C_definitions
+// splicer end C_definitions
 
 // Release C++ allocated memory.
 void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap)

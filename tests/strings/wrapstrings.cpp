@@ -45,6 +45,7 @@
 #include <stdlib.h>
 #include <string>
 #include "strings.hpp"
+#include "typesstrings.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -65,12 +66,14 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void STR_ShroudStringCopyAndFree(STR_SHROUD_array *data, char *c_var, long c_var_len) {
+void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, long c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
     strncpy(c_var, cxx_var, n);
-    // free the string?
+    if (data->cxx.idtor > 0) {
+        STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    }
 }
 
 // splicer begin C_definitions
@@ -858,6 +861,13 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     free(SH_src);
     return;
 // splicer end function.cpass_char_ptr_bufferify
+}
+
+// Release C++ allocated memory.
+void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

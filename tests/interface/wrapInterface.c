@@ -1,4 +1,4 @@
-// wrapdefault_library.cpp
+// wrapInterface.c
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
@@ -40,25 +40,15 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapdefault_library.h"
-#include "global_header.hpp"
-#include "typesdefault_library.h"
+#include "interface.h"
+#include "typesInterface.h"
 
-
-extern "C" {
-
-
-void DEF_function1()
-{
-    one::two::function1();
-    return;
-}
+// splicer begin C_definitions
+// splicer end C_definitions
 
 // Release C++ allocated memory.
-void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap)
+void INT_SHROUD_memory_destructor(INT_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
-
-}  // extern "C"

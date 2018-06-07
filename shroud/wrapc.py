@@ -98,7 +98,7 @@ class Wrapc(util.WrapperMixin):
         structs = []
         # reserved the 0 slot of capsule_order
         self.add_capsule_helper('--none--', None, [ '// Nothing to delete' ])
-        whelpers.add_array_copy_helper_c(fmt_library)
+        whelpers.add_copy_array_helper_c(fmt_library)
 
         self._push_splicer('class')
         for node in newlibrary.classes:
@@ -1189,10 +1189,6 @@ class Wrapc(util.WrapperMixin):
         """Write a function used to delete memory when C/C++
         memory is deleted.
         """
-        if len(self.capsule_order) == 1:
-            # Only the 0 slot has been added, so return
-            # since the function will be unused.
-            return
         options = library.options
 
         self.c_helper['capsule_data_helper'] = True
@@ -1225,28 +1221,33 @@ class Wrapc(util.WrapperMixin):
                 '-}}'
                 , fmt)
 
-        append_format(
-            output,
-            'void *ptr = cap->addr;\n'
-            'switch (cap->idtor) {{'
-            , fmt)
+        if len(self.capsule_order) > 1:
+            # If more than slot 0 is added, create switch statement
+            self.header_impl_include['<stdlib.h>'] = True  # for free
+            append_format(
+                output,
+                'void *ptr = cap->addr;\n'
+                'switch (cap->idtor) {{'
+                , fmt)
 
-        for i, name in enumerate(self.capsule_order):
-            output.append('case {}:\n{{+'.format(i))
-            output.extend(self.capsule_helpers[name][1])
-            output.append('break;\n-}')
+            for i, name in enumerate(self.capsule_order):
+                output.append('case {}:\n{{+'.format(i))
+                output.extend(self.capsule_helpers[name][1])
+                output.append('break;\n-}')
+
+            output.append(
+                'default:\n{+\n'
+                '// Unexpected case in destructor\n'
+                'break;\n'
+                '-}\n'
+                '}'
+            )
 
         output.append(
-            'default:\n{+\n'
-            '// Unexpected case in destructor\n'
-            'break;\n'
-            '-}\n'
-            '}\n'
             'cap->addr = NULL;\n'
             'cap->idtor = 0;  // avoid deleting again\n'
             '-}'
         )
-        self.header_impl_include['<stdlib.h>'] = True  # for free
 
     capsule_helpers = {}
     capsule_order = []

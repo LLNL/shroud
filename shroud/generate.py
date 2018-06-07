@@ -677,7 +677,7 @@ class GenFunctions(object):
                 # Create helpers for vector template.
                 cxx_T = arg.attrs['template']
                 tempate_typemap = typemap.lookup_type(cxx_T)
-                whelpers.add_array_copy_helper(dict(
+                whelpers.add_copy_array_helper(dict(
                     cxx_type = cxx_T,
                     f_kind = tempate_typemap.f_kind,
                     C_prefix = fmt.C_prefix,
@@ -864,7 +864,7 @@ class GenFunctions(object):
         node.statements['c'] = dict(
             result_buf=dict(
                 buf_args = [ 'context' ],
-                c_helper = 'array_context array_copy',
+                c_helper = 'array_context copy_array',
                 post_call = [
                     '{c_var_context}->cxx.addr  = {cxx_var};',
                     '{c_var_context}->cxx.idtor = {idtor};',
@@ -877,11 +877,11 @@ class GenFunctions(object):
         node.statements['f'] = dict(
             result_allocatable=dict(
                 buf_args = [ 'context' ],
-                f_helper = 'array_context array_copy_{cxx_type}',
+                f_helper = 'array_context copy_array_{cxx_type}',
                 post_call = [
                     # XXX - allocate scalar
                     'allocate({f_var}({c_var_dimension}))',
-                    'call SHROUD_array_copy_{cxx_type}({c_var_context}, {f_var}, '
+                    'call SHROUD_copy_array_{cxx_type}({c_var_context}, {f_var}, '
                         'size({f_var}, kind=C_SIZE_T))',
                 ],
             ),

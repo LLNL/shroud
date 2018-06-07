@@ -131,14 +131,14 @@ module vectors_mod
     end interface
 
     interface
-        subroutine SHROUD_array_copy_int(context, c_var, c_var_size) &
-            bind(C, name="VEC_SHROUD_array_copy")
+        subroutine SHROUD_copy_array_int(context, c_var, c_var_size) &
+            bind(C, name="VEC_ShroudCopyArray")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             integer(C_INT), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_array_copy_int
+        end subroutine SHROUD_copy_array_int
     end interface
 
 contains
@@ -170,7 +170,7 @@ contains
         ! splicer begin function.vector_iota_out
         call c_vector_iota_out_bufferify(Darg)
         ! splicer end function.vector_iota_out
-        call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_out
 
     ! void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
@@ -188,7 +188,7 @@ contains
         call c_vector_iota_out_alloc_bufferify(Darg)
         ! splicer end function.vector_iota_out_alloc
         allocate(arg(Darg%size))
-        call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_out_alloc
 
     ! void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))
@@ -208,7 +208,7 @@ contains
         ! splicer end function.vector_iota_inout_alloc
         if (allocated(arg)) deallocate(arg)
         allocate(arg(Darg%size))
-        call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_inout_alloc
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
@@ -222,7 +222,7 @@ contains
         call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG), &
             Darg)
         ! splicer end function.vector_increment
-        call SHROUD_array_copy_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_increment
 
     ! int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))

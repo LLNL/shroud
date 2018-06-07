@@ -278,6 +278,28 @@ cxx_header
 A blank delimited list of header files which will be added to the C wrapper implementation.
 These headers may include C++ code.
 
+destructor
+^^^^^^^^^^
+
+A list of lines of code used to delete memory. Usually allocated by a *pre_call*
+statement.  The code is inserted into *C_memory_dtor_function* which will provide
+the address of the memory to destroy in the variable ``void *ptr``.
+For example::
+
+    destructor:
+    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
+    -  delete cxx_ptr;
+
+
+destructor_name
+^^^^^^^^^^^^^^^
+
+A name for the destructor code in *destructor*.
+Must be unique.  May include format strings::
+
+    destructor_name: std_vector_{cxx_T}
+
+
 pre_call
 ^^^^^^^^
 

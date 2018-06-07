@@ -44,16 +44,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include "clibrary.h"
+#include "typesClibrary.h"
 
 
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void CLI_ShroudStringCopyAndFree(CLI_SHROUD_array *data, char *c_var, long c_var_len) {
+void CLI_ShroudCopyStringAndFree(CLI_SHROUD_array *data, char *c_var, long c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
     strncpy(c_var, cxx_var, n);
-    // free the string?
+    if (data->cxx.idtor > 0) {
+        CLI_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    }
 }
 
 // splicer begin C_definitions
@@ -81,4 +84,11 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     DSHF_rv->size = 1;
     return;
 // splicer end function.function4a_bufferify
+}
+
+// Release C++ allocated memory.
+void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }

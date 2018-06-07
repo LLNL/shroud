@@ -251,14 +251,14 @@ module ownership_mod
     end interface
 
     interface
-        subroutine SHROUD_array_copy_int(context, c_var, c_var_size) &
-            bind(C, name="OWN_SHROUD_array_copy")
+        subroutine SHROUD_copy_array_int(context, c_var, c_var_size) &
+            bind(C, name="OWN_ShroudCopyArray")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             integer(C_INT), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_array_copy_int
+        end subroutine SHROUD_copy_array_int
     end interface
 
 contains
@@ -353,7 +353,7 @@ contains
         SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len)
         ! splicer end function.return_int_ptr_dim_alloc
         allocate(SHT_rv(len))
-        call SHROUD_array_copy_int(DSHC_rv, SHT_rv, size(SHT_rv, kind=C_SIZE_T))
+        call SHROUD_copy_array_int(DSHC_rv, SHT_rv, size(SHT_rv, kind=C_SIZE_T))
     end function return_int_ptr_dim_alloc
 
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)

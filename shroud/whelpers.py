@@ -172,12 +172,14 @@ def add_external_helpers(fmt):
         source=wformat("""
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void {C_prefix}ShroudStringCopyAndFree({C_array_type} *data, char *c_var, long c_var_len) {{+
+void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, long c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
 if (data->len < n) n = data->len;
 strncpy(c_var, cxx_var, n);
-// free the string?
+if (data->cxx.idtor > 0) {{+
+{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+-}}
 -}}
 """, fmt)
     )
@@ -188,14 +190,14 @@ strncpy(c_var, cxx_var, n);
         interface=wformat("""
 interface+
 ! Copy the std::string in context into c_var.
-subroutine SHROUD_string_copy_and_free(context, c_var, c_var_size) &
-     bind(c,name="{C_prefix}ShroudStringCopyAndFree")+
+subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+     bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_LONG
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_LONG), value :: c_var_size
--end subroutine SHROUD_string_copy_and_free
+-end subroutine SHROUD_copy_string_and_free
 -end interface""", fmt)
         )
     ##########
@@ -324,10 +326,10 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
         FHelpers[name] = helper
 
 
-def add_array_copy_helper_c(fmt):
+def add_copy_array_helper_c(fmt):
     """Create function to copy contents of a vector.
     """
-    name = 'array_copy'
+    name = 'copy_array'
     if name not in CHelpers:
         helper = dict(
             dependent_helpers=[ 'array_context' ],
@@ -338,32 +340,34 @@ def add_array_copy_helper_c(fmt):
             cxx_source=wformat("""
 0// Copy std::vector into array c_var(c_var_size).
 0// Then release std::vector.
-void {C_prefix}SHROUD_array_copy({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
+void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.cvoidp;
 int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->len;
 {stdlib}memcpy(c_var, cxx_var, n);
-// delete cxx_var->cxx
+if (data->cxx.idtor > 0) {{+
+{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
+-}}
 -}}""", fmt))
         CHelpers[name] = helper
 
-def add_array_copy_helper(fmt):
-    name = wformat('array_copy_{cxx_type}', fmt)
+def add_copy_array_helper(fmt):
+    name = wformat('copy_array_{cxx_type}', fmt)
     if name not in FHelpers:
         helper = dict(
 # XXX when f_kind == C_SIZE_T
             dependent_helpers=[ 'array_context' ],
             interface=wformat("""
 interface+
-subroutine SHROUD_array_copy_{cxx_type}(context, c_var, c_var_size) &+
-bind(C, name="{C_prefix}SHROUD_array_copy")
+subroutine SHROUD_copy_array_{cxx_type}(context, c_var, c_var_size) &+
+bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 integer({f_kind}), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_array_copy_{cxx_type}
+-end subroutine SHROUD_copy_array_{cxx_type}
 -end interface""", fmt),
         )
         FHelpers[name] = helper

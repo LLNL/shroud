@@ -42,6 +42,7 @@
 // #######################################################################
 #include "top.h"
 #include <string>
+#include "typestestnames.hh"
 
 // splicer begin CXX_definitions
 // Add some text from splicer
@@ -133,6 +134,13 @@ void TES_init_ns1()
     ns1::init_ns1();
     return;
 // splicer end function.init_ns1
+}
+
+// Release C++ allocated memory.
+void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

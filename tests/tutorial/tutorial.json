@@ -9213,7 +9213,7 @@
                     "need_wrapper": true, 
                     "post_call": [
                         "allocate(character(len={c_var_context}%len):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }
             }, 
@@ -9543,7 +9543,7 @@
                     "buf_args": [
                         "context"
                     ], 
-                    "c_helper": "capsule_data_helper array_copy", 
+                    "c_helper": "capsule_data_helper copy_array", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -9651,18 +9651,18 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout": {
-                    "f_helper": "array_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_inout_allocatable": {
-                    "f_helper": "array_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -9671,22 +9671,22 @@
                     "post_call": [
                         "if (allocated({f_var})) deallocate({f_var})", 
                         "allocate({f_var}({c_var_context}%size))", 
-                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out": {
-                    "f_helper": "array_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out_allocatable": {
-                    "f_helper": "array_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
@@ -9694,7 +9694,7 @@
                     }, 
                     "post_call": [
                         "allocate({f_var}({c_var_context}%size))", 
-                        "call SHROUD_array_copy_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
             }
@@ -9740,7 +9740,7 @@
                     "need_wrapper": true, 
                     "post_call": [
                         "allocate(character(len={c_var_context}%len):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }
             }, 
