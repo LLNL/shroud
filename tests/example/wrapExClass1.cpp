@@ -70,9 +70,7 @@ void AA_ShroudCopyStringAndFree(USE_SHROUD_array *data, char *c_var, size_t c_va
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
     strncpy(c_var, cxx_var, n);
-    if (data->cxx.idtor > 0) {
-        AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-    }
+    AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 
 // splicer begin class.ExClass1.C_definitions

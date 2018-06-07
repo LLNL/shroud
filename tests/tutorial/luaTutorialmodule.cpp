@@ -225,6 +225,16 @@ static int l_function4c(lua_State *L)
     // splicer end function.Function4c
 }
 
+// const std::string * Function4d() +deref(allocatable)
+static int l_function4d(lua_State *L)
+{
+    // splicer begin function.Function4d
+    const std::string * SHCXX_rv = tutorial::Function4d();
+    lua_pushstring(L, SHCXX_rv->c_str());
+    return 1;
+    // splicer end function.Function4d
+}
+
 // double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
 static int l_function5(lua_State *L)
 {
@@ -545,6 +555,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Function4a", l_function4a},
     {"Function4b", l_function4b},
     {"Function4c", l_function4c},
+    {"Function4d", l_function4d},
     {"Function5", l_function5},
     {"Function6", l_function6},
     {"Function7", l_function7},

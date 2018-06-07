@@ -342,6 +342,27 @@ PY_Function4c(
 // splicer end function.function4c
 }
 
+static char PY_Function4d__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_Function4d(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string * Function4d() +deref(allocatable)
+// splicer begin function.function4d
+    const std::string * SHCXX_rv = tutorial::Function4d();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.function4d
+}
+
 static char PY_Function5_arg1_arg2__doc__[] =
 "documentation"
 ;
@@ -1111,6 +1132,8 @@ static PyMethodDef PY_methods[] = {
     PY_Function4b__doc__},
 {"Function4c", (PyCFunction)PY_Function4c, METH_VARARGS|METH_KEYWORDS,
     PY_Function4c__doc__},
+{"Function4d", (PyCFunction)PY_Function4d, METH_NOARGS,
+    PY_Function4d__doc__},
 {"Function5", (PyCFunction)PY_Function5_arg1_arg2,
     METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
 {"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,

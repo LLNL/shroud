@@ -72,9 +72,7 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
     strncpy(c_var, cxx_var, n);
-    if (data->cxx.idtor > 0) {
-        STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-    }
+    STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 
 // splicer begin C_definitions
@@ -869,12 +867,12 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
-    case 0:
+    case 0:   // --none--
     {
         // Nothing to delete
         break;
     }
-    case 1:
+    case 1:   // new_string
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;

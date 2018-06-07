@@ -82,6 +82,7 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3);
 const std::string  Function4a(const std::string& arg1, const std::string& arg2);
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
 const std::string  Function4c(const std::string& arg1, const std::string& arg2);
+const std::string * Function4d();
 
 double Function5(double arg1 = 3.1415, bool arg2 = true);
 

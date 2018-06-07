@@ -294,6 +294,8 @@ will release it automatically the array under some conditions when the
 caller function returns. If *owner(library)* is set, the Fortran
 caller never needs to release the memory.
 
+See :ref:`MemoryManagementAnchor` for details of the implementation.
+
 Struct Types
 ------------
 

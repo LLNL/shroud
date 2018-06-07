@@ -1235,7 +1235,7 @@ class Wrapc(util.WrapperMixin):
                 , fmt)
 
             for i, name in enumerate(self.capsule_order):
-                output.append('case {}:\n{{+'.format(i))
+                output.append('case {}:   // {}\n{{+'.format(i, name))
                 output.extend(self.capsule_helpers[name][1])
                 output.append('break;\n-}')
 

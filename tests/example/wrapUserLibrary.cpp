@@ -356,19 +356,19 @@ void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
-    case 0:
+    case 0:   // --none--
     {
         // Nothing to delete
         break;
     }
-    case 1:
+    case 1:   // example::nested::ExClass1
     {
         example::nested::ExClass1 *cxx_ptr = 
             reinterpret_cast<example::nested::ExClass1 *>(ptr);
         delete cxx_ptr;
         break;
     }
-    case 2:
+    case 2:   // example::nested::ExClass2
     {
         example::nested::ExClass2 *cxx_ptr = 
             reinterpret_cast<example::nested::ExClass2 *>(ptr);

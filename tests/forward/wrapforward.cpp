@@ -57,12 +57,12 @@ void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
-    case 0:
+    case 0:   // --none--
     {
         // Nothing to delete
         break;
     }
-    case 1:
+    case 1:   // tutorial::Class2
     {
         tutorial::Class2 *cxx_ptr = 
             reinterpret_cast<tutorial::Class2 *>(ptr);

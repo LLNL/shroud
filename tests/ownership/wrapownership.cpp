@@ -61,9 +61,7 @@ void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var,
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->len;
     std::memcpy(c_var, cxx_var, n);
-    if (data->cxx.idtor > 0) {
-        OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-    }
+    OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -239,12 +237,12 @@ void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
-    case 0:
+    case 0:   // --none--
     {
         // Nothing to delete
         break;
     }
-    case 1:
+    case 1:   // Class1
     {
         Class1 *cxx_ptr = reinterpret_cast<Class1 *>(ptr);
         delete cxx_ptr;

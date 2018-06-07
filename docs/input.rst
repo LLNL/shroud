@@ -395,25 +395,20 @@ Specifies who is responsible to release the memory associated with the argument/
 The terms follow Python's reference counting .  [Python_Refcount]_
 The default is set by option *default_owner* which is initialized to *borrow*.
 
-new
+.. new   The caller is responsible to release the memory.
 
-   The caller is responsible to release the memory.
-
-borrow
-
-   The memory belongs to the C++ library.  Do not release.
-
-library
-
-   The memory belongs to the library and should not be deleted by
-   the user.
-
+.. borrow  The memory belongs to the C++ library.  Do not release.
 
 caller
 
    The memory belongs to the user who is responsible to delete it.
    A shadow class must have a destructor wrapped in order to delete 
    the memory.
+
+library
+
+   The memory belongs to the library and should not be deleted by
+   the user.
 
 .. steal  intent(in)
 

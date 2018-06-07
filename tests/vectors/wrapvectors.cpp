@@ -77,9 +77,7 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
     int n = c_var_size < data->size ? c_var_size : data->size;
     n *= data->len;
     std::memcpy(c_var, cxx_var, n);
-    if (data->cxx.idtor > 0) {
-        VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-    }
+    VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -204,12 +202,12 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
-    case 0:
+    case 0:   // --none--
     {
         // Nothing to delete
         break;
     }
-    case 1:
+    case 1:   // std_vector_int
     {
         std::vector<int> *cxx_ptr = 
             reinterpret_cast<std::vector<int> *>(ptr);

@@ -120,6 +120,9 @@ declarations:
       const std::string& arg1,
       const std::string& arg2 )
   
+  - decl: const std::string * Function4d()
+# XXX - can not deal with non const yet
+  
   - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
     default_arg_suffix:
     -  

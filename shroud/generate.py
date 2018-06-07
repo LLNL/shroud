@@ -161,6 +161,19 @@ class VerifyAttrs(object):
             if not is_ptr:
                 raise RuntimeError("Allocatable may only be used with pointer variables")
 
+        deref = attrs.get('deref', None)
+        if deref is not None:
+            if deref not in ['allocatable', 'pointer', 'raw']:
+                raise RuntimeError("Illegal value '{}' for deref attribute. "
+                                   "Must be 'allocatable', 'pointer' or 'raw'.".format(deref))
+# XXX deref only on pointer, vector
+
+        owner = attrs.get('owner', None)
+        if owner is not None:
+            if owner not in ['caller', 'library']:
+                raise RuntimeError("Illegal value '{}' for owner attribute. "
+                                   "Must be 'caller' or 'library'.".format(deref))
+
         # intent
         intent = attrs.get('intent', None)
         if intent is None:
@@ -198,13 +211,6 @@ class VerifyAttrs(object):
                     attrs['value'] = False
             else:
                 attrs['value'] = True
-
-        deref = attrs.get('deref', None)
-        if deref is not None:
-            if deref not in ['allocatable', 'pointer', 'raw']:
-                raise RuntimeError("Illegal value '{}' for deref. "
-                                   "Must be 'allocatable', 'pointer' or 'raw'.".format(deref))
-# XXX deref only on pointer, vector
 
         # dimension
         dimension = attrs.get('dimension', None)

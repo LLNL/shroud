@@ -177,9 +177,7 @@ const char *cxx_var = data->addr.ccharp;
 size_t n = c_var_len;
 if (data->len < n) n = data->len;
 strncpy(c_var, cxx_var, n);
-if (data->cxx.idtor > 0) {{+
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}
 -}}
 """, fmt)
     )
@@ -346,9 +344,7 @@ const void *cxx_var = data->addr.cvoidp;
 int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->len;
 {stdlib}memcpy(c_var, cxx_var, n);
-if (data->cxx.idtor > 0) {{+
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}
 -}}""", fmt))
         CHelpers[name] = helper
 

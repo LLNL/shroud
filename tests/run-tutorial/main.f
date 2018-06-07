@@ -148,6 +148,8 @@ contains
 !    call assert_true(rv4c == "onetwo")
 !    deallocate(rv4c)
 
+    call assert_true( function4d() == "Function4d")
+
     call assert_equals(function5(), 13.1415d0)
     call assert_equals(function5(1.d0), 11.d0)
     call assert_equals(function5(1.d0, .false.), 1.d0)

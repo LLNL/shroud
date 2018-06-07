@@ -105,6 +105,12 @@ const std::string Function4c(const std::string& arg1, const std::string& arg2)
     return arg1 + arg2;
 }
 
+const std::string * Function4d()
+{
+    const std::string * rv = new std::string("Function4d");
+    return rv;
+}
+
 double Function5(double arg1, bool arg2)
 {
     last_function_called = "Function5";
