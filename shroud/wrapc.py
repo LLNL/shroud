@@ -835,6 +835,7 @@ class Wrapc(util.WrapperMixin):
                 if arg_typedef.c_union:
                     arg_is_union_scalar = True
             fmt_arg.cxx_type = arg_typedef.cxx_type
+            fmt_arg.idtor = '0'
             cxx_local_var = ''
 
             if c_attrs.get('_is_result', False):

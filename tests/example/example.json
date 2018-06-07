@@ -137,7 +137,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtl": {
                                     "LUA_index": 1, 
@@ -291,7 +292,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -442,7 +444,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&incr)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "incr"
+                                    "cxx_var": "incr", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "incr", 
@@ -683,7 +686,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -961,7 +965,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -1148,7 +1153,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -1403,7 +1409,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -1550,7 +1557,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "long", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -1777,7 +1785,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&in)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "bool", 
-                                    "cxx_var": "in"
+                                    "cxx_var": "in", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SH_in", 
@@ -2010,7 +2019,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtl": {
                                     "LUA_index": 1, 
@@ -2159,7 +2169,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -2401,7 +2412,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2594,7 +2606,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2792,7 +2805,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2990,7 +3004,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -3181,7 +3196,8 @@
                                     "cxx_member": "->", 
                                     "cxx_type": "example::\tnested::\tExClass1", 
                                     "cxx_val": "\tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr)", 
-                                    "cxx_var": "SHCXX_in"
+                                    "cxx_var": "SHCXX_in", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "in", 
@@ -3337,7 +3353,8 @@
                                     "cxx_member": ".", 
                                     "cxx_type": "TypeID", 
                                     "cxx_val": "getTypeID(type)", 
-                                    "cxx_var": "SHCXX_type"
+                                    "cxx_var": "SHCXX_type", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "type", 
@@ -3560,7 +3577,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&len)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "SidreLength", 
-                                    "cxx_var": "len"
+                                    "cxx_var": "len", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "len", 
@@ -3604,7 +3622,8 @@
                                     "cxx_member": ".", 
                                     "cxx_type": "TypeID", 
                                     "cxx_val": "getTypeID(type)", 
-                                    "cxx_var": "SHCXX_type"
+                                    "cxx_var": "SHCXX_type", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "type", 
@@ -4105,7 +4124,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4222,7 +4242,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "long", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4337,7 +4358,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "float", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4452,7 +4474,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "double", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4890,7 +4913,8 @@
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "flag"
+                                    "cxx_var": "flag", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "flag", 
@@ -5170,7 +5194,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
@@ -5312,7 +5337,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -5485,7 +5511,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg1"
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg1", 
@@ -5528,7 +5555,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(arg2)", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg2"
+                            "cxx_var": "arg2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg2", 
@@ -5572,7 +5600,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(arg3)", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg3"
+                            "cxx_var": "arg3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg3", 
@@ -5724,7 +5753,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
@@ -5838,7 +5868,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -5927,7 +5958,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "flag"
+                            "cxx_var": "flag", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
@@ -5965,7 +5997,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
@@ -6091,7 +6124,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "flag"
+                            "cxx_var": "flag", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "flag", 
@@ -6109,7 +6143,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -6257,7 +6292,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "i"
+                            "cxx_var": "i", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "i", 
@@ -6346,7 +6382,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "i"
+                            "cxx_var": "i", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "i", 
@@ -6388,7 +6425,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&j)", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
-                            "cxx_var": "j"
+                            "cxx_var": "j", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "j", 
@@ -6599,7 +6637,8 @@
                             "cxx_member": ".", 
                             "cxx_type": "MPI_Comm", 
                             "cxx_val": "MPI_Comm_f2c(comm)", 
-                            "cxx_var": "SHCXX_comm"
+                            "cxx_var": "SHCXX_comm", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "comm", 
@@ -6757,7 +6796,8 @@
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_val": "\tstatic_cast<axom::sidre::Group *>(grp->addr)", 
-                            "cxx_var": "SHCXX_grp"
+                            "cxx_var": "SHCXX_grp", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "grp", 
@@ -6870,7 +6910,8 @@
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_val": "\tstatic_cast<const axom::sidre::Group *>(grp->addr)", 
-                            "cxx_var": "SHCXX_grp"
+                            "cxx_var": "SHCXX_grp", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "grp", 
@@ -6981,7 +7022,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "void", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7098,7 +7140,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(get)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7220,7 +7263,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7364,7 +7408,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7480,7 +7525,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "void", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7735,7 +7781,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname1)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname1"
+                            "cxx_var": "verylongname1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname1", 
@@ -7779,7 +7826,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname10)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname10"
+                            "cxx_var": "verylongname10", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname10", 
@@ -7823,7 +7871,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname2)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname2"
+                            "cxx_var": "verylongname2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname2", 
@@ -7867,7 +7916,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname3)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname3"
+                            "cxx_var": "verylongname3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname3", 
@@ -7911,7 +7961,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname4)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname4"
+                            "cxx_var": "verylongname4", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname4", 
@@ -7955,7 +8006,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname5)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname5"
+                            "cxx_var": "verylongname5", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname5", 
@@ -7999,7 +8051,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname6)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname6"
+                            "cxx_var": "verylongname6", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname6", 
@@ -8043,7 +8096,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname7)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname7"
+                            "cxx_var": "verylongname7", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname7", 
@@ -8087,7 +8141,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname8)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname8"
+                            "cxx_var": "verylongname8", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname8", 
@@ -8131,7 +8186,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname9)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname9"
+                            "cxx_var": "verylongname9", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname9", 
@@ -8424,7 +8480,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname1)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname1"
+                            "cxx_var": "verylongname1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname1", 
@@ -8466,7 +8523,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname10)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname10"
+                            "cxx_var": "verylongname10", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname10", 
@@ -8508,7 +8566,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname2)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname2"
+                            "cxx_var": "verylongname2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname2", 
@@ -8550,7 +8609,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname3)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname3"
+                            "cxx_var": "verylongname3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname3", 
@@ -8592,7 +8652,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname4)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname4"
+                            "cxx_var": "verylongname4", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname4", 
@@ -8634,7 +8695,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname5)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname5"
+                            "cxx_var": "verylongname5", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname5", 
@@ -8676,7 +8738,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname6)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname6"
+                            "cxx_var": "verylongname6", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname6", 
@@ -8718,7 +8781,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname7)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname7"
+                            "cxx_var": "verylongname7", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname7", 
@@ -8760,7 +8824,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname8)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname8"
+                            "cxx_var": "verylongname8", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname8", 
@@ -8802,7 +8867,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname9)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname9"
+                            "cxx_var": "verylongname9", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname9", 
@@ -9078,7 +9144,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(in)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "in"
+                            "cxx_var": "in", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "in", 
@@ -9123,7 +9190,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(out)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "out"
+                            "cxx_var": "out", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "out", 
@@ -9169,7 +9237,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "sizein"
+                            "cxx_var": "sizein", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "sizein", 
@@ -9738,7 +9807,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var};", 
                         "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
                         "{c_var_context}->size = 1;"
@@ -10286,7 +10355,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -10308,7 +10377,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -10479,7 +10548,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
                         "{c_var_context}->size = 1;"

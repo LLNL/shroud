@@ -867,7 +867,7 @@ class GenFunctions(object):
                 c_helper = 'array_context array_copy',
                 post_call = [
                     '{c_var_context}->cxx.addr  = {cxx_var};',
-                    '{c_var_context}->cxx.idtor = 0;',
+                    '{c_var_context}->cxx.idtor = {idtor};',
                     '{c_var_context}->addr.cvoidp = {cxx_var};',
                     '{c_var_context}->len = sizeof({cxx_type});',
                     '{c_var_context}->size = *{c_var_dimension};',

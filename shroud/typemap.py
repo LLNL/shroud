@@ -684,7 +684,7 @@ def initialize():
                     # which will be passed to copy_string
                     post_call=[
                         '{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};',
-                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->cxx.idtor = {idtor};',
                         '{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();',
                         '{c_var_context}->len = {cxx_var}{cxx_member}size();',
                         '{c_var_context}->size = 1;',
@@ -745,7 +745,7 @@ def initialize():
                     # which will be passed to copy_string
                     post_call=[
                         '{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};',
-                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->cxx.idtor = {idtor};',
                         '{c_var_context}->addr.ccharp = {cxx_var};',
                         '{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});',
                         '{c_var_context}->size = 1;',
@@ -805,7 +805,7 @@ def initialize():
                     post_call=[
                         # Return address and size of vector data.
                         '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});',
-                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->cxx.idtor = {idtor};',
                         '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->len = sizeof({cxx_T});',
                         '{c_var_context}->size = {cxx_var}->size();',
@@ -846,7 +846,7 @@ def initialize():
                     post_call=[
                         # Return address and size of vector data.
                         '{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});',
-                        '{c_var_context}->cxx.idtor = 0;',
+                        '{c_var_context}->cxx.idtor = {idtor};',
                         '{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();',
                         '{c_var_context}->len = sizeof({cxx_T});',
                         '{c_var_context}->size = {cxx_var}->size();',

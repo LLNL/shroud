@@ -142,7 +142,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&status)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
-                            "cxx_var": "status"
+                            "cxx_var": "status", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "status", 
@@ -311,7 +312,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHC_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHC_rv"
+                            "cxx_var": "SHC_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -409,7 +411,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "dest"
+                            "cxx_var": "dest", 
+                            "idtor": "0"
                         }
                     }, 
                     "src": {
@@ -422,7 +425,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "src"
+                            "cxx_var": "src", 
+                            "idtor": "0"
                         }
                     }
                 }, 
@@ -528,7 +532,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_dest"
+                            "cxx_var": "SH_dest", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "dest", 
@@ -546,7 +551,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SH_src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_src"
+                            "cxx_var": "SH_src", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "src", 
@@ -658,7 +664,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(s)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "s"
+                            "cxx_var": "s", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -759,7 +766,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_s)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_s"
+                            "cxx_var": "SH_s", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "s", 
@@ -930,7 +938,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SHC_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHC_rv"
+                            "cxx_var": "SHC_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1116,7 +1125,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHC_rv"
+                            "cxx_var": "SHC_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1285,7 +1295,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHC_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHC_rv"
+                            "cxx_var": "SHC_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -1517,7 +1528,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1667,7 +1679,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -1894,7 +1907,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -2080,7 +2094,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -2272,7 +2287,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -2447,7 +2463,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "output", 
@@ -2704,7 +2721,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -2884,7 +2902,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3071,7 +3090,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3252,7 +3272,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3434,7 +3455,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SHCXX_rv"
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3535,7 +3557,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -3634,7 +3657,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -3722,7 +3746,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -3824,7 +3849,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -3913,7 +3939,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -4016,7 +4043,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -4106,7 +4134,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "PyObject": "PyObject", 
@@ -4208,7 +4237,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -4459,7 +4489,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "name"
+                            "cxx_var": "name", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "c_const": "", 
@@ -4555,7 +4586,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -4641,7 +4673,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "name"
+                            "cxx_var": "name", 
+                            "idtor": "0"
                         }
                     }
                 }, 
@@ -4724,7 +4757,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_name)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -4809,7 +4843,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&status)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
-                            "cxx_var": "status"
+                            "cxx_var": "status", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "status", 
@@ -4982,7 +5017,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHC_rv)", 
                             "cxx_member": ".", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHC_rv"
+                            "cxx_var": "SHC_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -5081,7 +5117,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "dest"
+                            "cxx_var": "dest", 
+                            "idtor": "0"
                         }
                     }, 
                     "src": {
@@ -5094,7 +5131,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "src"
+                            "cxx_var": "src", 
+                            "idtor": "0"
                         }
                     }
                 }, 
@@ -5201,7 +5239,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_dest)", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_dest"
+                            "cxx_var": "SH_dest", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "dest", 
@@ -5219,7 +5258,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SH_src))", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_src"
+                            "cxx_var": "SH_src", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "src", 
@@ -5628,7 +5668,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var};", 
                         "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
                         "{c_var_context}->size = 1;"
@@ -5960,7 +6000,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -5982,7 +6022,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -6153,7 +6193,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
                         "{c_var_context}->size = 1;"

@@ -443,7 +443,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "i"
+                            "cxx_var": "i", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "i", 
@@ -540,7 +541,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
-                            "cxx_var": "i"
+                            "cxx_var": "i", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "i", 
@@ -634,7 +636,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(ARG_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "ARG_rv"
+                            "cxx_var": "ARG_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -756,7 +759,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(ARG_rv))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "ARG_rv"
+                            "cxx_var": "ARG_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "rv", 
@@ -1397,7 +1401,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var};", 
                         "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
                         "{c_var_context}->size = 1;"
@@ -1729,7 +1733,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -1751,7 +1755,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -1922,7 +1926,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
                         "{c_var_context}->size = 1;"

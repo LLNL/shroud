@@ -105,7 +105,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
     std::vector<int> *SH_arg = new std::vector<int>;
     vector_iota_out(*SH_arg);
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
-    Darg->cxx.idtor = 0;
+    Darg->cxx.idtor = 1;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->len = sizeof(int);
     Darg->size = SH_arg->size();

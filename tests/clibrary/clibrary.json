@@ -184,7 +184,8 @@
                             "cxx_cast_to_void_ptr": "&arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
-                            "cxx_var": "arg1"
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -215,7 +216,8 @@
                             "cxx_cast_to_void_ptr": "&arg2", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "arg2"
+                            "cxx_var": "arg2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg2", 
@@ -348,7 +350,8 @@
                             "cxx_cast_to_void_ptr": "&len", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "len"
+                            "cxx_var": "len", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "len", 
@@ -381,7 +384,8 @@
                             "cxx_cast_to_void_ptr": "result", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "result"
+                            "cxx_var": "result", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "result", 
@@ -414,7 +418,8 @@
                             "cxx_cast_to_void_ptr": "values", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "values"
+                            "cxx_var": "values", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "values", 
@@ -552,7 +557,8 @@
                             "cxx_cast_to_void_ptr": "&arg", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg"
+                            "cxx_var": "arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg", 
@@ -671,7 +677,8 @@
                             "cxx_cast_to_void_ptr": "&arg1", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg1"
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg1", 
@@ -703,7 +710,8 @@
                             "cxx_cast_to_void_ptr": "arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg2"
+                            "cxx_var": "arg2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg2", 
@@ -736,7 +744,8 @@
                             "cxx_cast_to_void_ptr": "arg3", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg3"
+                            "cxx_var": "arg3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg3", 
@@ -871,7 +880,8 @@
                             "cxx_cast_to_void_ptr": "arg1", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "arg1"
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -898,7 +908,8 @@
                             "cxx_cast_to_void_ptr": "arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "arg2"
+                            "cxx_var": "arg2", 
+                            "idtor": "0"
                         }, 
                         "fmtpy": {
                             "c_const": "const ", 
@@ -1047,7 +1058,8 @@
                             "cxx_cast_to_void_ptr": "SHC_rv", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SHC_rv"
+                            "cxx_var": "SHC_rv", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -1066,7 +1078,8 @@
                             "cxx_cast_to_void_ptr": "SH_arg1", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_arg1"
+                            "cxx_var": "SH_arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg1", 
@@ -1084,7 +1097,8 @@
                             "cxx_cast_to_void_ptr": "SH_arg2", 
                             "cxx_member": "->", 
                             "cxx_type": "char", 
-                            "cxx_var": "SH_arg2"
+                            "cxx_var": "SH_arg2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg2", 
@@ -1229,7 +1243,8 @@
                             "cxx_cast_to_void_ptr": "&argin", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "argin"
+                            "cxx_var": "argin", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "argin", 
@@ -1260,7 +1275,8 @@
                             "cxx_cast_to_void_ptr": "arginout", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "arginout"
+                            "cxx_var": "arginout", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arginout", 
@@ -1293,7 +1309,8 @@
                             "cxx_cast_to_void_ptr": "argout", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "argout"
+                            "cxx_var": "argout", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "argout", 
@@ -1426,7 +1443,8 @@
                             "cxx_cast_to_void_ptr": "in", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "in"
+                            "cxx_var": "in", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "in", 
@@ -1460,7 +1478,8 @@
                             "cxx_cast_to_void_ptr": "out", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "out"
+                            "cxx_var": "out", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "out", 
@@ -1495,7 +1514,8 @@
                             "cxx_cast_to_void_ptr": "&sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "sizein"
+                            "cxx_var": "sizein", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "sizein", 
@@ -1635,7 +1655,8 @@
                             "cxx_cast_to_void_ptr": "in", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "in"
+                            "cxx_var": "in", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "in", 
@@ -1669,7 +1690,8 @@
                             "cxx_cast_to_void_ptr": "out", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "out"
+                            "cxx_var": "out", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "out", 
@@ -1704,7 +1726,8 @@
                             "cxx_cast_to_void_ptr": "&sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "sizein"
+                            "cxx_var": "sizein", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "sizein", 
@@ -1844,7 +1867,8 @@
                             "cxx_cast_to_void_ptr": "array", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "array"
+                            "cxx_var": "array", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "array", 
@@ -1880,7 +1904,8 @@
                             "cxx_cast_to_void_ptr": "&sizein", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "sizein"
+                            "cxx_var": "sizein", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "sizein", 
@@ -2338,7 +2363,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var};", 
                         "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
                         "{c_var_context}->size = 1;"
@@ -2670,7 +2695,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -2692,7 +2717,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -2863,7 +2888,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
                         "{c_var_context}->size = 1;"

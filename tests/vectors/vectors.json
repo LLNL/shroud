@@ -197,7 +197,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(SH_arg))", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -425,7 +426,7 @@
                     "C_call_code": "vector_iota_out(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_out_bufferify", 
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
                     "C_prototype": "VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
@@ -524,7 +525,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -687,7 +689,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -847,7 +850,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -1013,7 +1017,8 @@
                             "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -1524,7 +1529,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var};", 
                         "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
                         "{c_var_context}->size = 1;"
@@ -1856,7 +1861,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -1878,7 +1883,7 @@
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
                         "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
                         "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
@@ -2049,7 +2054,7 @@
                     "c_helper": "copy_string", 
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var_context}->cxx.idtor = 0;", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
                         "{c_var_context}->size = 1;"
