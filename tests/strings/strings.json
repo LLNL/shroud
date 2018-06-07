@@ -1846,7 +1846,6 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "allocatable": true, 
                         "deref": "allocatable"
                     }, 
                     "const": true, 
@@ -1861,8 +1860,8 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string getConstStringAlloc() +allocatable", 
-                "declgen": "const std::string getConstStringAlloc() +allocatable+deref(allocatable)", 
+                "decl": "const std::string getConstStringAlloc()", 
+                "declgen": "const std::string getConstStringAlloc() +deref(allocatable)", 
                 "format": {
                     "F_C_call": "c_get_const_string_alloc_bufferify", 
                     "F_arg_c_call": "DSHF_rv", 
@@ -1918,8 +1917,7 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
-                        "allocatable": true
+                        "_typename": "void"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -1960,19 +1958,20 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string getConstStringAlloc() +allocatable", 
-                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable", 
+                "decl": "const std::string getConstStringAlloc()", 
+                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "format": {
-                    "C_call_code": "std::string * SHCXX_rv = new std::string;\n*SHCXX_rv = getConstStringAlloc(\t);", 
+                    "C_call_code": "*SHCXX_rv =\t getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
                     "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
+                    "C_pre_call": "std::string * SHCXX_rv = new std::string;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_get_const_string_alloc_bufferify", 
                     "c_const": "", 
-                    "cxx_rv_decl": "const std::string SHCXX_rv", 
+                    "cxx_rv_decl": "*SHCXX_rv", 
                     "function_name": "getConstStringAlloc", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_alloc"
@@ -4427,7 +4426,7 @@
                             ]
                         }
                     ], 
-                    "return_pointer_as": "pointer", 
+                    "return_pointer_as": "allocatable", 
                     "specifier": [
                         "char"
                     ]

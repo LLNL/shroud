@@ -334,7 +334,7 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 // splicer end function.get_const_string_as_arg_bufferify
 }
 
-// void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +allocatable
+// void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 // function_index=39
 void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {

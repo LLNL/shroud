@@ -1029,7 +1029,7 @@ class Preprocess(object):
             self.check_pointer(node, node.ast)
 
     def process_xxx(self, cls, node):
-        """Compute information common to all wrapper language.
+        """Compute information common to all wrapper languages.
 
         Compute subprogram.  This may be different for each language.
         CXX_subprogram - The C++ function being wrapped.
@@ -1087,15 +1087,24 @@ class Preprocess(object):
         attrs = ast.attrs
         result_typemap = node.CXX_result_typemap
         ast.return_pointer_as = None
-        if result_typemap.cxx_type == 'void' or \
-           result_typemap.base == 'shadow':
+        if result_typemap.cxx_type == 'void':
             # subprogram == subroutine
+            # deref may be set when a string function is converted into a subroutine.
+            if 'deref' in attrs:
+                ast.return_pointer_as = attrs['deref']
+        elif result_typemap.base == 'shadow':
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
             pass
-        elif ast.is_indirect() or result_typemap.base == 'string':
-            # std::string is an implied pointer since Fortran cannot deal with it directly.
+        elif result_typemap.base == 'string':
+            if 'deref' in attrs:
+                ast.return_pointer_as = attrs['deref']
+            else:
+                # Default strings to create a Fortran allocatable.
+                ast.return_pointer_as = 'allocatable'
+        elif ast.is_indirect():
+            # pointer to a POD  e.g. int *
             if 'deref' in attrs:
                 ast.return_pointer_as = attrs['deref']
             elif 'dimension' in attrs:

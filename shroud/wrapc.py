@@ -670,7 +670,6 @@ class Wrapc(util.WrapperMixin):
         is_ctor = CXX_ast.attrs.get('_constructor', False)
         is_dtor = CXX_ast.attrs.get('_destructor', False)
         is_static = False
-        is_allocatable = CXX_ast.attrs.get('allocatable', False)
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
         is_shadow_scalar = False
@@ -863,12 +862,19 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_member = '.'
                     fmt_arg.cxx_addr = '&'
 
-                if is_allocatable:
+                result_return_pointer_as = c_attrs.get('deref', '')
+                if result_return_pointer_as in [ 'pointer', 'allocatable' ]:
                     if not CXX_ast.is_indirect():
-                        # An intermediate string * is allocated
-                        # to save std::string result.
+                        # As std::string is returned.
+                        # Must allocate the std::string then assign to it via cxx_rv_decl.
+                        # This allows the std::string to outlast the function return.
                         fmt_arg.cxx_addr = ''
                         fmt_arg.cxx_member = '->'
+                        append_format(pre_call, # no const
+                                      'std::string * {cxx_var} = new std::string;', fmt_arg)
+                        fmt_func.cxx_rv_decl = wformat('*{cxx_var}', fmt_arg)
+                        # XXX - delete string after copying its contents idtor=
+
             else:
                 arg_call = arg
                 if arg_is_union_scalar:
@@ -1086,15 +1092,6 @@ class Wrapc(util.WrapperMixin):
                     need_wrapper = True
                     added_call_code = True
                 # XXX release rv if necessary
-            elif is_allocatable:
-                if not CXX_node.ast.is_indirect():
-                    # Allocate intermediate string before calling function
-                    fmt_arg = fmtargs[result_arg.name]['fmtc']
-                    append_format(call_code, # no const
-                                  'std::string * {cxx_var} = new std::string;\n'
-                                  '*{cxx_var} = {CXX_this_call}{function_name}{CXX_template}'
-                                  '(\t{C_call_list});', fmt_arg)
-                    added_call_code = True
 
             if not added_call_code:
                 if is_union_scalar:

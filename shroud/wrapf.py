@@ -1306,7 +1306,8 @@ rv = .false.
                         fmt_func)
 
             if return_pointer_as == 'allocatable':
-                # Copy into allocatable array
+                # Copy into allocatable array.
+                # Processed by types stringout and charout.
                 pass
 #                dim = ast.attrs.get('dimension', None)
 #                if dim:

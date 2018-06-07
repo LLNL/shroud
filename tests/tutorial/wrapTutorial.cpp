@@ -151,12 +151,13 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1,
 // splicer begin function.function4a_bufferify
     const std::string SH_arg1(arg1, Larg1);
     const std::string SH_arg2(arg2, Larg2);
-    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
+    std::string * SHCXX_rv = new std::string;
+    *SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (&SHCXX_rv));
+        (SHCXX_rv));
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    DSHF_rv->addr.ccharp = SHCXX_rv->data();
+    DSHF_rv->len = SHCXX_rv->size();
     DSHF_rv->size = 1;
     return;
 // splicer end function.function4a_bufferify

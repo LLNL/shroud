@@ -610,7 +610,7 @@ contains
         ! splicer end function.get_const_string_as_arg
     end subroutine get_const_string_as_arg
 
-    ! const std::string getConstStringAlloc() +allocatable+deref(allocatable)
+    ! const std::string getConstStringAlloc() +deref(allocatable)
     ! arg_to_buffer
     ! function_index=9
     function get_const_string_alloc() &

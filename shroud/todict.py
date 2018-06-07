@@ -253,6 +253,8 @@ class ToDict(visitor.Visitor):
         for key in [
 #            'return_pointer_as',
             'statements',
+#            'CXX_subprogram', 'C_subprogram', 'F_subprogram',
+#            'CXX_return_type', 'C_return_type', 'F_return_type',
         ]:
             if hasattr(node, key):
                 value = getattr(node, key)

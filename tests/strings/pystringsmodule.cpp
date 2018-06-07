@@ -256,7 +256,7 @@ PY_getConstStringAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string getConstStringAlloc() +allocatable+deref(allocatable)
+// const std::string getConstStringAlloc() +deref(allocatable)
 // splicer begin function.get_const_string_alloc
     const std::string SHCXX_rv = getConstStringAlloc();
 
