@@ -875,6 +875,10 @@ class Wrapc(util.WrapperMixin):
                                       'std::string * {cxx_var} = new std::string;', fmt_arg)
                         fmt_func.cxx_rv_decl = wformat('*{cxx_var}', fmt_arg)
                         # XXX - delete string after copying its contents idtor=
+                        self.add_destructor(fmt_arg, 'new_string', [
+                            'std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);',
+                            'delete cxx_ptr;',
+                        ], arg_typedef)
 
             else:
                 arg_call = arg
@@ -1266,3 +1270,11 @@ class Wrapc(util.WrapperMixin):
                     self.capsule_include[include] = True
 
         return self.capsule_helpers[name][0]
+
+    def add_destructor(self, fmt, name, cmd_list, arg_typemap):
+        """Add a capsule destructor with name and commands."""
+        if name not in self.capsule_helpers:
+            del_lines = []
+            for cmd in cmd_list:
+                del_lines.append(wformat(cmd, fmt))
+            fmt.idtor = self.add_capsule_helper(name, arg_typemap, del_lines)

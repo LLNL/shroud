@@ -346,7 +346,7 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     *SHCXX_rv = getConstStringAlloc();
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->cxx.idtor = 1;
     DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     DSHF_rv->size = 1;
@@ -866,6 +866,25 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
 // Release C++ allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:
+    {
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }

@@ -157,7 +157,7 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1,
     *SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->cxx.idtor = 2;
     DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     DSHF_rv->size = 1;
@@ -642,6 +642,12 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
     {
         tutorial::Class1 *cxx_ptr = 
             reinterpret_cast<tutorial::Class1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:
+    {
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
         break;
     }
