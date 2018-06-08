@@ -526,7 +526,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "SH_arg", 
-                            "idtor": "0"
+                            "idtor": "1"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -589,7 +589,7 @@
                     "C_call_code": "vector_iota_out_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_out_alloc_bufferify", 
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
                     "C_prototype": "VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
@@ -690,7 +690,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "SH_arg", 
-                            "idtor": "0"
+                            "idtor": "1"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -754,7 +754,7 @@
                     "C_call_code": "vector_iota_inout_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify", 
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);", 
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
@@ -851,7 +851,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "SH_arg", 
-                            "idtor": "0"
+                            "idtor": "1"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -911,7 +911,7 @@
                     "C_call_code": "vector_increment(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_increment_bufferify", 
-                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 0;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
                     "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);", 
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 

@@ -125,7 +125,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
     std::vector<int> *SH_arg = new std::vector<int>;
     vector_iota_out_alloc(*SH_arg);
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
-    Darg->cxx.idtor = 0;
+    Darg->cxx.idtor = 1;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
@@ -146,7 +146,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
     vector_iota_inout_alloc(*SH_arg);
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
-    Darg->cxx.idtor = 0;
+    Darg->cxx.idtor = 1;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
@@ -163,7 +163,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
     vector_increment(*SH_arg);
     Darg->cxx.addr  = static_cast<void *>(SH_arg);
-    Darg->cxx.idtor = 0;
+    Darg->cxx.idtor = 1;
     Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
     Darg->len = sizeof(int);
     Darg->size = SH_arg->size();

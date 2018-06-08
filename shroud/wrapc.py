@@ -776,29 +776,7 @@ class Wrapc(util.WrapperMixin):
                         '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
-        owner = CXX_ast.attrs.get('owner', default_owner)
-        if owner == 'caller':
-            if not node.ast.is_pointer():
-                # default does not apply
-                pass
-            elif result_typemap.idtor != '0':
-                # Some predefined type
-                fmt_result.idtor = result_typemap.idtor
-            elif result_typemap.cxx_to_c:
-                # A C++ native type (std::string, std::vector)
-                # XXX - vector does not assign cxx_to_c
-                fmt_result.idtor = self.add_destructor(fmt_result, result_typemap.cxx_type, [
-                    '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
-                    'delete cxx_ptr;',
-                ], result_typemap)
-                result_typemap.idtor = fmt_result.idtor
-            else:
-                # A POD type
-                fmt_result.idtor = self.add_destructor(fmt_result, result_typemap.cxx_type, [
-                    '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
-                    'free(cxx_ptr);',
-                ], result_typemap)
-                result_typemap.idtor = fmt_result.idtor
+        self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
         if hasattr(node, 'statements'):
             if 'c' in node.statements:
@@ -863,6 +841,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.idtor = '0'
             cxx_local_var = ''
 
+            have_idtor = False
             if c_attrs.get('_is_result', False):
                 # This argument is the C function result
                 arg_call = False
@@ -904,9 +883,11 @@ class Wrapc(util.WrapperMixin):
                             'std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);',
                             'delete cxx_ptr;',
                         ], arg_typedef)
+                        have_idtor = True
                     else:
                         owner = CXX_ast.attrs.get('owner', default_owner)
                         if owner == 'caller':
+                            have_idtor = True
                             if arg_typedef.idtor != '0':
                                 # Some predefined type
                                 fmt_arg.idtor = arg_typedef.idtor
@@ -993,13 +974,8 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_cast_to_void_ptr = wformat(
                     'static_cast<void *>({cxx_addr}{cxx_var})', fmt_arg)
 
-            destructor_name = intent_blk.get('destructor_name', None)
-            if destructor_name:
-                destructor_name = wformat(destructor_name, fmt_arg)
-                if destructor_name not in self.capsule_helpers:
-                    del_lines = []
-                    util.append_format_cmds(del_lines, intent_blk, 'destructor', fmt_arg)
-                    fmt_arg.idtor = self.add_capsule_helper(destructor_name, arg_typedef, del_lines)
+            if not have_idtor:
+                self.find_idtor(arg, arg_typedef, fmt_arg, intent_blk)
 
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper)
@@ -1317,3 +1293,55 @@ class Wrapc(util.WrapperMixin):
         else:
             idtor = self.capsule_helpers[name][0]
         return idtor
+
+    def find_idtor(self, ast, atypemap, fmt, intent_blk):
+        """Find the destructor based on the typemap.
+
+        Only arguments have idtor's.
+        For example,
+            int * foo() +owner(caller)
+        will convert to
+            void foo(context+owner(caller) )
+        """
+
+        if intent_blk:
+            destructor_name = intent_blk.get('destructor_name', None)
+            if destructor_name:
+                # Use destructor in typemap to remove intermediate objects
+                # e.g. std::vector
+                destructor_name = wformat(destructor_name, fmt)
+                if destructor_name not in self.capsule_helpers:
+                    del_lines = []
+                    util.append_format_cmds(del_lines, intent_blk, 'destructor', fmt)
+                    fmt.idtor = self.add_capsule_helper(destructor_name, atypemap, del_lines)
+                else:
+                    fmt.idtor = self.capsule_helpers[destructor_name][0]
+                return
+
+        owner = ast.attrs.get('owner', default_owner)
+        if owner == 'library':
+            # Library owns memory, do not let user release.
+#            idtor = '0'
+            pass
+        elif not ast.is_pointer():
+            # Non-pointers do not return memory.
+#            idtor = '0'
+            pass
+        elif atypemap.idtor != '0':
+            # Return cached value.
+            fmt.idtor = atypemap.idtor
+        elif atypemap.cxx_to_c:
+            # A C++ native type (std::string, std::vector)
+            # XXX - vector does not assign cxx_to_c
+            fmt.idtor = self.add_destructor(fmt, atypemap.cxx_type, [
+                '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                'delete cxx_ptr;',
+            ], atypemap)
+            atypemap.idtor = fmt.idtor
+        else:
+            # A POD type
+            fmt.idtor = self.add_destructor(fmt, atypemap.cxx_type, [
+                '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                'free(cxx_ptr);',
+            ], atypemap)
+            atypemap.idtor = fmt.idtor
