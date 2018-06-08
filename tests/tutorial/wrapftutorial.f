@@ -944,7 +944,7 @@ contains
 
     ! Return pointer to C++ memory.
     function class1_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+        use iso_c_binding, only: C_PTR
         class(class1), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
@@ -979,7 +979,7 @@ contains
 
     ! Return pointer to C++ memory.
     function singleton_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+        use iso_c_binding, only: C_PTR
         class(singleton), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr

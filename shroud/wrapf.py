@@ -341,7 +341,7 @@ class Wrapf(util.WrapperMixin):
                 impl, """
 ! Return pointer to C++ memory.
 function {F_name_impl}({F_this}) result (cxxptr)+
-use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+use iso_c_binding, only: C_PTR
 class({F_derived_name}), intent(IN) :: {F_this}
 type(C_PTR) :: cxxptr
 cxxptr = {F_this}%{F_derived_member}%addr

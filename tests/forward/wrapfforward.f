@@ -145,7 +145,7 @@ contains
 
     ! Return pointer to C++ memory.
     function class2_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+        use iso_c_binding, only: C_PTR
         class(class2), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
