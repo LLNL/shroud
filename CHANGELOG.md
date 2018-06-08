@@ -16,10 +16,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   create a wrapper with the POINTER attribute.
   See option **return_scalar_pointer**.
 
-- Add option F_auto_reference_count to add FINAL clauses to allow memory to be
-  released when it goes out of scope.
 - Support returning a class instance with C and Fortran wrapper.
   Allocate and release a wrapper controlled copy of instance.
+
+- Added deref attribute to control how a pointer is returned to Fortran:
+  allocatable, pointer, raw (type(C_PTR)).
+- Support ALLOCATABLE CHARACTER function as the default for char* and std::string
+  functions. Unless +len attribute or F_string_result_as_arg is used.
+- Add owner attribute to define if memory should be released: library or caller.
+- Remove +pure attribute.
+  Also remove the feature where a string C++ function would be called twice,
+  once to get length and once for values.  Instead use ALLOCATABLE string.
+- Change C wrappers of shadow classes to return a capsule_data_type to
+  instead of a void *.  This struct contains the pointer to the shadow class
+  and information to deallocate it.
 
 ## v0.9.0 - 2018-04-04
 ### Added

@@ -694,8 +694,6 @@ def initialize():
 
             f_type='type(C_PTR)YY',
 #            f_kind='C_CHAR',
-##            f_c_type='type(C_PTR)',
-##            f_c_module=dict(iso_c_binding=['C_PTR']),
 
             f_statements=dict(
                 result=dict(
@@ -755,8 +753,6 @@ def initialize():
 
             f_type='type(C_PTR)YY',
 #            f_kind='C_CHAR',
-##            f_c_type='type(C_PTR)',
-##            f_c_module=dict(iso_c_binding=['C_PTR']),
 
             f_statements=dict(
                 result=dict(

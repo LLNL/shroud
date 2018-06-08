@@ -171,7 +171,7 @@ def add_external_helpers(fmt):
 # XXX - mangle name
         source=wformat("""
 // helper function
-// Copy the std::string in context into c_var.
+// Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
@@ -189,7 +189,7 @@ strncpy(c_var, cxx_var, n);
         interface=wformat("""
 interface+
 ! helper function
-! Copy the std::string in context into c_var.
+! Copy the char* or std::string in context into c_var.
 subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T

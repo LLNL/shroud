@@ -332,7 +332,7 @@ module exclass2_mod
 
     interface
         ! helper function
-        ! Copy the std::string in context into c_var.
+        ! Copy the char* or std::string in context into c_var.
         subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="AA_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
