@@ -101,6 +101,7 @@ class VerifyAttrs(object):
                     'allocatable',  # return a Fortran ALLOCATABLE
                     'deref',        # How to dereference pointer
                     'dimension',
+                    'free_pattern',
                     'len',
                     'name',
                     'owner',
@@ -109,9 +110,35 @@ class VerifyAttrs(object):
                 raise RuntimeError(
                     "Illegal attribute '{}' for function {} in {}"
                     .format(attr, node.ast.name, node.decl))
+        self.check_shared_attrs(node.ast)
 
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
+
+    def check_shared_attrs(self, node):
+        """Check attributes which may be assigned to function or argument:
+        deref, free_pattern, owner
+        """
+        attrs = node.attrs
+
+        deref = attrs.get('deref', None)
+        if deref is not None:
+            if deref not in ['allocatable', 'pointer', 'raw']:
+                raise RuntimeError("Illegal value '{}' for deref attribute. "
+                                   "Must be 'allocatable', 'pointer' or 'raw'.".format(deref))
+# XXX deref only on pointer, vector
+
+        owner = attrs.get('owner', None)
+        if owner is not None:
+            if owner not in ['caller', 'library']:
+                raise RuntimeError("Illegal value '{}' for owner attribute. "
+                                   "Must be 'caller' or 'library'.".format(deref))
+
+        free_pattern = attrs.get('free_pattern', None)
+        if free_pattern is not None:
+            if free_pattern not in self.newlibrary.patterns:
+                raise RuntimeError("Illegal value '{}' for free_pattern attribute. "
+                                   "Must be defined in patterns section.".format(free_pattern))
 
     def check_arg_attrs(self, node, arg):
         """Regularize attributes
@@ -153,6 +180,8 @@ class VerifyAttrs(object):
                 raise RuntimeError("check_arg_attrs: No such type %s: %s" % (
                         argtype, node.decl))
 
+        self.check_shared_attrs(arg)
+
         is_ptr = arg.is_indirect()
         attrs = arg.attrs
 
@@ -160,19 +189,6 @@ class VerifyAttrs(object):
         if allocatable:
             if not is_ptr:
                 raise RuntimeError("Allocatable may only be used with pointer variables")
-
-        deref = attrs.get('deref', None)
-        if deref is not None:
-            if deref not in ['allocatable', 'pointer', 'raw']:
-                raise RuntimeError("Illegal value '{}' for deref attribute. "
-                                   "Must be 'allocatable', 'pointer' or 'raw'.".format(deref))
-# XXX deref only on pointer, vector
-
-        owner = attrs.get('owner', None)
-        if owner is not None:
-            if owner not in ['caller', 'library']:
-                raise RuntimeError("Illegal value '{}' for owner attribute. "
-                                   "Must be 'caller' or 'library'.".format(deref))
 
         # intent
         intent = attrs.get('intent', None)
@@ -622,6 +638,28 @@ class GenFunctions(object):
         except IndexError:
             pass
 
+    def move_arg_attributes(self, attrs, old_node, new_node):
+        """After new_node has been created from old_node,
+        the result is being converted into an argument.
+        Move some attributes that are associated with the function
+        to the new argument.
+
+        If deref is not set, then default to allocatable.
+
+        attrs - attributes of the new argument
+        old_node - The FunctionNode of the original function.
+        new_node - The FunctionNode of the new function with 
+        """
+        c_attrs = new_node.ast.attrs
+        f_attrs = old_node.ast.attrs
+        if 'deref' not in f_attrs:
+            f_attrs['deref'] = 'allocatable'
+            attrs['deref'] = 'allocatable'
+        for name in ['owner', 'free_pattern']:
+            if name in c_attrs:
+                attrs[name] = c_attrs[name]
+                del c_attrs[name]
+
     def arg_to_buffer(self, node, ordered_functions):
         """Look for function which have implied arguments.
         This includes functions with string or vector arguments.
@@ -798,25 +836,13 @@ class GenFunctions(object):
                     'stringout', result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['context'] = options.C_var_context_template.format(c_var=result_name)
-                if 'deref' not in f_attrs:
-                    f_attrs['deref'] = 'allocatable'
-                    attrs['deref'] = 'allocatable'
-                if 'owner' in c_attrs:
-                    # Move ownership to new argument
-                    attrs['owner'] = c_attrs['owner']
-                    del c_attrs['owner']
+                self.move_arg_attributes(attrs, node, C_new)
             elif result_is_ptr:  # 'char *'
                 result_as_string = ast.result_as_voidstarstar(
                     'charout', result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['context'] = options.C_var_context_template.format(c_var=result_name)
-                if 'deref' not in f_attrs:
-                    f_attrs['deref'] = 'allocatable'
-                    attrs['deref'] = 'allocatable'
-                if 'owner' in c_attrs:
-                    # Move ownership to new argument
-                    attrs['owner'] = c_attrs['owner']
-                    del c_attrs['owner']
+                self.move_arg_attributes(attrs, node, C_new)
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs

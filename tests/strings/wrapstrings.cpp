@@ -639,7 +639,7 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
 // splicer end function.get_const_string_ptr_owns_alloc_bufferify
 }
 
-// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)
+// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 /**
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
@@ -652,7 +652,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern()
 // splicer end function.get_const_string_ptr_owns_alloc_pattern
 }
 
-// void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
+// void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))
 /**
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
@@ -663,7 +663,7 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 2;
+    DSHF_rv->cxx.idtor = 3;
     DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     DSHF_rv->size = 1;
@@ -912,6 +912,14 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
+        break;
+    }
+    case 3:   // C_string_free
+    {
+        // Used with +free_pattern(C_string_free)
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+        delete cxx_ptr;
+
         break;
     }
     default:

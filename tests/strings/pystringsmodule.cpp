@@ -466,7 +466,7 @@ PY_getConstStringPtrOwnsAllocPattern(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)
+// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // splicer begin function.get_const_string_ptr_owns_alloc_pattern
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
 

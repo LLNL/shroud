@@ -180,6 +180,8 @@ declarations:
   doxygen:
     description: |
       Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+  fattrs:
+    free_pattern: C_string_free
 
 
 ########################################
@@ -300,6 +302,8 @@ patterns:
 #        }}
 
      # This pattern is added to C_memory_dtor_function
+     # XXX - \t is not dealt with properly
     C_string_free: |
-        {cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);
+        // Used with +free_pattern(C_string_free)
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;

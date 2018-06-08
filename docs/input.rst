@@ -324,6 +324,18 @@ Pointer argument should be passed through since it is an
 array.  *value* must be *False*.
 If set without a value, it defaults to ``(*)``.
 
+free_pattern
+^^^^^^^^^^^^
+
+A name in the **patterns** section which lists code to be used to 
+release memory.  Used with function results.
+It is used in the *C_memory_dtor_function* and will have the 
+variable ``void *ptr`` available as the pointer to the memory
+to be released.
+See :ref:`MemoryManagementAnchor` for details.
+
+..  and *intent(out)* arguments.
+
 
 hidden
 ^^^^^^
@@ -412,11 +424,6 @@ library
    This is the default value.
 
 .. steal  intent(in)
-
-pure
-^^^^
-
-Sets the Fortran PURE attribute for the function.
 
 value
 ^^^^^

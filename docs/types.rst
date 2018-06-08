@@ -1134,8 +1134,7 @@ The address of the memory to free will be in the variable ``void *ptr``,
 which should be referenced in the pattern::
 
     declarations:
-    - decl: char * getName()
-      C_free_pattern: free_getName
+    - decl: char * getName() +free_pattern(free_getName)
 
     patterns:
        free_getName: |
@@ -1144,6 +1143,7 @@ which should be referenced in the pattern::
 Without any explicit *destructor_name* or pattern, ``free`` will be
 used to release POD pointers; otherwise, ``delete`` will be used.
 
+.. When to use ``delete[] ptr``?
 
 C and Fortran
 -------------

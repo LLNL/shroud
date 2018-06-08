@@ -3656,7 +3656,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
-                        "idtor": "2"
+                        "idtor": "3"
                     }, 
                     "fmtf": {
                         "cxx_type": "std::string", 
@@ -3678,6 +3678,7 @@
                     "attrs": {
                         "_typename": "std::string", 
                         "deref": "allocatable", 
+                        "free_pattern": "C_string_free", 
                         "owner": "caller"
                     }, 
                     "const": true, 
@@ -3698,7 +3699,7 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
-                "declgen": "const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)", 
+                "declgen": "const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)", 
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 }, 
@@ -3742,7 +3743,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv", 
-                            "idtor": "2"
+                            "idtor": "3"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3780,6 +3781,7 @@
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
+                                "free_pattern": "C_string_free", 
                                 "intent": "out", 
                                 "owner": "caller"
                             }, 
@@ -3807,7 +3809,7 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
-                "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 }, 
@@ -3815,7 +3817,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 3;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 

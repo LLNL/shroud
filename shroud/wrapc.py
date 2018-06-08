@@ -1311,14 +1311,17 @@ class Wrapc(util.WrapperMixin):
                 return
 
         owner = ast.attrs.get('owner', default_owner)
+        free_pattern = ast.attrs.get('free_pattern', None)
         if owner == 'library':
             # Library owns memory, do not let user release.
-#            idtor = '0'
             pass
         elif not ast.is_pointer():
-            # Non-pointers do not return memory.
-#            idtor = '0'
+            # Non-pointers do not return dynamic memory.
             pass
+        elif free_pattern is not None:
+            # free_pattern attribute
+            fmt.idtor = self.add_destructor(
+                fmt, free_pattern, [ self.patterns[free_pattern] ], None)
         elif atypemap.idtor != '0':
             # Return cached value.
             fmt.idtor = atypemap.idtor

@@ -786,7 +786,7 @@ contains
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function get_const_string_ptr_owns_alloc
 
-    ! const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)
+    ! const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! arg_to_buffer
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.

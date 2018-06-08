@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support ALLOCATABLE CHARACTER function as the default for char* and std::string
   functions. Unless +len attribute or F_string_result_as_arg is used.
 - Add owner attribute to define if memory should be released: library or caller.
+- Add free_pattern attribute to define custom code to release memory.
+  For example, if the variable is reference counted.
 - Remove +pure attribute.
   Also remove the feature where a string C++ function would be called twice,
   once to get length and once for values.  Instead use ALLOCATABLE string.
