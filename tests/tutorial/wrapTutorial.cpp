@@ -257,7 +257,7 @@ const char * TUT_function4d()
 // splicer end function.function4d
 }
 
-// void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +owner(caller)
+// void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
 // function_index=64
 /**
  * A string is allocated by the library is must be deleted

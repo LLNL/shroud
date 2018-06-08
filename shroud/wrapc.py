@@ -884,11 +884,6 @@ class Wrapc(util.WrapperMixin):
                             'delete cxx_ptr;',
                         ], arg_typedef)
                         have_idtor = True
-                    else:
-                        owner = CXX_ast.attrs.get('owner', default_owner)
-                        if owner == 'caller':
-                            c_attrs['owner'] = 'caller'
-                        # XXX move this into generate.py
 
             else:
                 arg_call = arg

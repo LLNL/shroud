@@ -783,6 +783,7 @@ class GenFunctions(object):
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             ast = C_new.ast
+            c_attrs = ast.attrs        # C function attributes
             f_attrs = node.ast.attrs   # Fortran function attributes
 
             if 'len' in ast.attrs or result_as_arg:
@@ -800,6 +801,10 @@ class GenFunctions(object):
                 if 'deref' not in f_attrs:
                     f_attrs['deref'] = 'allocatable'
                     attrs['deref'] = 'allocatable'
+                if 'owner' in c_attrs:
+                    # Move ownership to new argument
+                    attrs['owner'] = c_attrs['owner']
+                    del c_attrs['owner']
             elif result_is_ptr:  # 'char *'
                 result_as_string = ast.result_as_voidstarstar(
                     'charout', result_name, const=ast.const)
@@ -808,6 +813,10 @@ class GenFunctions(object):
                 if 'deref' not in f_attrs:
                     f_attrs['deref'] = 'allocatable'
                     attrs['deref'] = 'allocatable'
+                if 'owner' in c_attrs:
+                    # Move ownership to new argument
+                    attrs['owner'] = c_attrs['owner']
+                    del c_attrs['owner']
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs

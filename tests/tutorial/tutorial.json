@@ -3994,8 +3994,7 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
-                        "owner": "caller"
+                        "_typename": "void"
                     }, 
                     "const": false, 
                     "declarator": {
@@ -4038,7 +4037,7 @@
                     ]
                 }, 
                 "decl": "const std::string * Function4d() +owner(caller)", 
-                "declgen": "void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) +owner(caller)", 
+                "declgen": "void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
                 }, 
