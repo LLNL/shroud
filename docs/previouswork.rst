@@ -165,6 +165,15 @@ CDI is a C and Fortran Interface to access Climate and NWP model Data. https://c
 
 "One part of CDI[1] is a such generator. It still has some rough edges and we haven't yet decided what to do about functions returning char * (it seems like that will need some wrapping unless we simply return TYPE(c_ptr) and let the caller deal with that) but if you'd like to have a starting point in Ruby try interfaces/f2003/bindGen.rb from the tarball you can download" https://groups.google.com/d/msg/comp.lang.fortran/oadwd3HHtGA/J8DD8kGeVw8J
 
+Forpy
+-----
+
+This is a Fortran interface over the Python API written using the metaprogramming tool Fypp.
+
+  * `Forpy: A library for Fortran-Python interoperability <https://github.com/ylikx/forpy>`_ 
+  * `Fypp — Python powered Fortran metaprogramming' <https://github.com/aradi/fypp>`_
+
+
 Links
 -----
 
