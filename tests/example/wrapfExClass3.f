@@ -117,7 +117,6 @@ contains
 
 #ifdef USE_CLASS3_A
     ! void exfunc()
-    ! function_index=48
     subroutine exclass3_exfunc_0(obj)
         class(exclass3) :: obj
         ! splicer begin class.ExClass3.method.exfunc_0
@@ -128,7 +127,6 @@ contains
 
 #ifndef USE_CLASS3_A
     ! void exfunc(int flag +intent(in)+value)
-    ! function_index=49
     subroutine exclass3_exfunc_1(obj, flag)
         use iso_c_binding, only : C_INT
         class(exclass3) :: obj

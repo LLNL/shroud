@@ -106,7 +106,6 @@ module name_module
 contains
 
     ! void method1()
-    ! function_index=0
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin class.Names.method.type_method1
@@ -115,7 +114,6 @@ contains
     end subroutine names_method1
 
     ! void method2()
-    ! function_index=1
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin class.Names.method.method2

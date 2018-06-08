@@ -163,7 +163,6 @@ module clibrary_mod
 contains
 
     ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-    ! function_index=2
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: len
@@ -176,7 +175,6 @@ contains
     end subroutine sum
 
     ! bool Function3(bool arg +intent(in)+value)
-    ! function_index=3
     function function3(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -190,7 +188,6 @@ contains
     end function function3
 
     ! void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    ! function_index=4
     subroutine function3b(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
@@ -210,7 +207,6 @@ contains
 
     ! char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer
-    ! function_index=5
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -225,7 +221,6 @@ contains
     end function function4a
 
     ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-    ! function_index=7
     !>
     !! \brief compute cos of IN and save in OUT
     !!
@@ -244,7 +239,6 @@ contains
     end subroutine cos_doubles
 
     ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-    ! function_index=8
     !>
     !! \brief truncate IN argument and save in OUT
     !!
@@ -264,7 +258,6 @@ contains
     end subroutine truncate_to_int
 
     ! void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
-    ! function_index=9
     !>
     !! \brief None
     !!

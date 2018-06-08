@@ -350,7 +350,6 @@ contains
 
     ! bool isNameValid(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=51
     function is_name_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -362,7 +361,6 @@ contains
     end function is_name_valid
 
     ! bool isInitialized()
-    ! function_index=52
     function is_initialized() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -373,7 +371,6 @@ contains
     end function is_initialized
 
     ! void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    ! function_index=53
     subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
@@ -393,7 +390,6 @@ contains
 
     ! void test_names(const std::string & name +intent(in))
     ! arg_to_buffer
-    ! function_index=54
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -404,7 +400,6 @@ contains
 
     ! void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
     ! arg_to_buffer
-    ! function_index=55
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -417,7 +412,6 @@ contains
 
     ! void testoptional()
     ! has_default_arg
-    ! function_index=70
     subroutine testoptional_0()
         ! splicer begin function.testoptional_0
         call c_testoptional_0()
@@ -426,7 +420,6 @@ contains
 
     ! void testoptional(int i=1 +intent(in)+value)
     ! has_default_arg
-    ! function_index=71
     subroutine testoptional_1(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -436,7 +429,6 @@ contains
     end subroutine testoptional_1
 
     ! void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
-    ! function_index=56
     subroutine testoptional_2(i, j)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: i
@@ -448,7 +440,6 @@ contains
 
 #ifdef HAVE_MPI
     ! void testmpi(MPI_Comm comm +intent(in)+value)
-    ! function_index=58
     subroutine testmpi_mpi(comm)
         integer, value, intent(IN) :: comm
         ! splicer begin function.testmpi_mpi
@@ -459,7 +450,6 @@ contains
 
 #ifndef HAVE_MPI
     ! void testmpi()
-    ! function_index=59
     subroutine testmpi_serial()
         ! splicer begin function.testmpi_serial
         call c_testmpi_serial()
@@ -468,7 +458,6 @@ contains
 #endif
 
     ! void testgroup1(axom::sidre::Group * grp +intent(in))
-    ! function_index=60
     subroutine testgroup1(grp)
         use sidre_mod, only : group
         type(datagroup), intent(IN) :: grp
@@ -478,7 +467,6 @@ contains
     end subroutine testgroup1
 
     ! void testgroup2(const axom::sidre::Group * grp +intent(in))
-    ! function_index=61
     subroutine testgroup2(grp)
         use sidre_mod, only : group
         type(datagroup), intent(IN) :: grp
@@ -488,7 +476,6 @@ contains
     end subroutine testgroup2
 
     ! void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
-    ! function_index=64
     !>
     !! \brief abstract argument
     !!
@@ -501,7 +488,6 @@ contains
     end subroutine func_ptr3
 
     ! void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)
-    ! function_index=65
     !>
     !! \brief abstract argument
     !!
@@ -514,7 +500,6 @@ contains
     end subroutine func_ptr4
 
     ! void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
-    ! function_index=67
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10)
@@ -537,7 +522,6 @@ contains
     end subroutine verylongfunctionname1
 
     ! int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-    ! function_index=68
     function verylongfunctionname2(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, verylongname10) &
@@ -562,7 +546,6 @@ contains
     end function verylongfunctionname2
 
     ! void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-    ! function_index=69
     !>
     !! \brief Test multidimensional arrays with allocatable
     !!

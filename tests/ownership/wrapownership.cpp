@@ -68,7 +68,6 @@ void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var,
 // splicer end C_definitions
 
 // int * ReturnIntPtrRaw() +deref(raw)
-// function_index=2
 int * OWN_return_int_ptr_raw()
 {
 // splicer begin function.return_int_ptr_raw
@@ -78,7 +77,6 @@ int * OWN_return_int_ptr_raw()
 }
 
 // int * ReturnIntPtrScalar() +deref(scalar)
-// function_index=3
 int OWN_return_int_ptr_scalar()
 {
 // splicer begin function.return_int_ptr_scalar
@@ -88,7 +86,6 @@ int OWN_return_int_ptr_scalar()
 }
 
 // int * ReturnIntPtrPointer() +deref(pointer)
-// function_index=4
 int * OWN_return_int_ptr_pointer()
 {
 // splicer begin function.return_int_ptr_pointer
@@ -98,7 +95,6 @@ int * OWN_return_int_ptr_pointer()
 }
 
 // int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)
-// function_index=5
 int * OWN_return_int_ptr_dim_raw(int * len)
 {
 // splicer begin function.return_int_ptr_dim_raw
@@ -108,7 +104,6 @@ int * OWN_return_int_ptr_dim_raw(int * len)
 }
 
 // int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
-// function_index=6
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
 // splicer begin function.return_int_ptr_dim_pointer
@@ -118,7 +113,6 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
-// function_index=7
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
 // splicer begin function.return_int_ptr_dim_alloc
@@ -128,7 +122,6 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 }
 
 // int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
-// function_index=24
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * len)
 {
@@ -144,7 +137,6 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
 }
 
 // int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
-// function_index=8
 int * OWN_return_int_ptr_dim_default(int * len)
 {
 // splicer begin function.return_int_ptr_dim_default
@@ -154,7 +146,6 @@ int * OWN_return_int_ptr_dim_default(int * len)
 }
 
 // int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-// function_index=9
 int * OWN_return_int_ptr_dim_raw_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_raw_new
@@ -164,7 +155,6 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 }
 
 // int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
-// function_index=10
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_pointer_new
@@ -174,7 +164,6 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 }
 
 // int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
-// function_index=11
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_alloc_new
@@ -184,7 +173,6 @@ int * OWN_return_int_ptr_dim_alloc_new(int * len)
 }
 
 // int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-// function_index=12
 int * OWN_return_int_ptr_dim_default_new(int * len)
 {
 // splicer begin function.return_int_ptr_dim_default_new
@@ -194,7 +182,6 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 }
 
 // void createClassStatic(int flag +intent(in)+value)
-// function_index=21
 void OWN_create_class_static(int flag)
 {
 // splicer begin function.create_class_static
@@ -204,7 +191,6 @@ void OWN_create_class_static(int flag)
 }
 
 // Class1 * getClassStatic() +owner(library)
-// function_index=22
 OWN_class1 OWN_get_class_static()
 {
 // splicer begin function.get_class_static
@@ -217,7 +203,6 @@ OWN_class1 OWN_get_class_static()
 }
 
 // Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-// function_index=23
 /**
  * \brief Return pointer to new Class1 instance.
  *

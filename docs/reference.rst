@@ -238,6 +238,15 @@ debug
   be useful for debugging.
   Defaults to *false*.
 
+debug_index
+  Print index number of function and relationships between 
+  C and Fortran wrappers in the wrappers and json file.
+  The number changes whenever a new function
+  is inserted and introduces lots of meaningless differenences in the test
+  answers. This option is used to avoid the clutter.  If needed for 
+  debugging, then set to *true*.  **debug** must also be *true*.
+  Defaults to *false*.
+
 doxygen
   If True, create doxygen comments.
 

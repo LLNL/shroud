@@ -65,7 +65,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 0, 
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
@@ -113,7 +112,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 1, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -205,7 +203,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 2, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -479,6 +476,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 

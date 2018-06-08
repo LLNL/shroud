@@ -1171,7 +1171,8 @@ class Wrapc(util.WrapperMixin):
             impl.append('')
             if options.debug:
                 impl.append('// ' + node.declgen)
-                impl.append('// function_index=%d' % node._function_index)
+                if options.debug_index:
+                    impl.append('// function_index=%d' % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:

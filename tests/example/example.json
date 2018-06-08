@@ -71,7 +71,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 0, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -121,7 +120,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_F_C_index": 14, 
                         "_cxx_overload": [
                             0, 
                             1
@@ -200,7 +198,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 1, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -275,7 +272,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 1, 
                         "_cxx_overload": [
                             0, 
                             1
@@ -313,7 +309,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 14, 
                         "_generated": "arg_to_buffer", 
                         "_overloaded": true, 
                         "ast": {
@@ -384,7 +379,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 2, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -509,7 +503,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 3, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -577,7 +570,6 @@
                     {
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
-                        "_PTR_F_C_index": 15, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -611,7 +603,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 4, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -673,7 +664,6 @@
                     {
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
-                        "_PTR_C_CXX_index": 4, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -705,7 +695,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -806,7 +795,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 5, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -860,7 +848,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_F_C_index": 16, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -894,7 +881,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 6, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -952,7 +938,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 6, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -985,7 +970,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 16, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -1088,7 +1072,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 7, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -1140,7 +1123,6 @@
                         }
                     }, 
                     {
-                        "_PTR_C_CXX_index": 7, 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -1172,7 +1154,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 17, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -1242,9 +1223,6 @@
                         }
                     }, 
                     {
-                        "_PTR_C_CXX_index": 7, 
-                        "_PTR_F_C_index": 17, 
-                        "_function_index": 18, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -1339,7 +1317,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 8, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -1474,7 +1451,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 9, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -1622,7 +1598,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 10, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -1719,7 +1694,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 11, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -1851,7 +1825,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 12, 
                         "ast": {
                             "attrs": {
                                 "_typename": "bool"
@@ -1917,7 +1890,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 13, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -2007,7 +1979,6 @@
                 }, 
                 "functions": [
                     {
-                        "_PTR_F_C_index": 39, 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -2082,7 +2053,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 19, 
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
@@ -2156,7 +2126,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 19, 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -2190,7 +2159,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 39, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2258,7 +2226,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 20, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -2306,7 +2273,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_F_C_index": 40, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -2340,7 +2306,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 21, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -2399,7 +2364,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 21, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2431,7 +2395,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2501,7 +2464,6 @@
                         }
                     }, 
                     {
-                        "_PTR_F_C_index": 41, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -2535,7 +2497,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 22, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -2593,7 +2554,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 22, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2626,7 +2586,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 41, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2700,7 +2659,6 @@
                         }
                     }, 
                     {
-                        "_PTR_F_C_index": 42, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "char * SHC_rv", 
@@ -2734,7 +2692,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 23, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -2792,7 +2749,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 23, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2825,7 +2781,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 42, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2899,7 +2854,6 @@
                         }
                     }, 
                     {
-                        "_PTR_F_C_index": 43, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "char * SHC_rv", 
@@ -2933,7 +2887,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 24, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
@@ -2991,7 +2944,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 24, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -3024,7 +2976,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 43, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -3129,7 +3080,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 25, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -3263,7 +3213,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 26, 
                         "ast": {
                             "attrs": {
                                 "_typename": "example::nested::ExClass1"
@@ -3362,7 +3311,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 32, 
                         "_generated": "has_default_arg", 
                         "_overloaded": true, 
                         "ast": {
@@ -3435,8 +3383,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 32, 
-                        "_function_index": 44, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
                         "ast": {
@@ -3499,8 +3445,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 32, 
-                        "_function_index": 45, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
                         "ast": {
@@ -3657,7 +3601,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 27, 
                         "_has_default_arg": true, 
                         "_nargs": [
                             1, 
@@ -3750,11 +3693,9 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 27, 
                         "_default_funcs": [
                             32
                         ], 
-                        "_function_index": 46, 
                         "_generated": "fortran_generic", 
                         "_has_default_arg": true, 
                         "_nargs": [
@@ -3838,11 +3779,9 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 27, 
                         "_default_funcs": [
                             32
                         ], 
-                        "_function_index": 47, 
                         "_generated": "fortran_generic", 
                         "_has_default_arg": true, 
                         "_nargs": [
@@ -3926,7 +3865,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_function_index": 28, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -4007,7 +3945,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 29, 
                         "ast": {
                             "attrs": {
                                 "_typename": "TypeID"
@@ -4058,7 +3995,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 30, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4158,7 +4094,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 33, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4276,7 +4211,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 34, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4392,7 +4326,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 35, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4508,7 +4441,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 36, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4579,7 +4511,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 31, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4648,7 +4579,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 37, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4739,7 +4669,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 38, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4849,7 +4778,6 @@
                             48, 
                             49
                         ], 
-                        "_function_index": 48, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4933,7 +4861,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 49, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -5138,7 +5065,6 @@
         }, 
         "functions": [
             {
-                "_function_index": 50, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -5182,7 +5108,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 72, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5255,7 +5180,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 51, 
                 "ast": {
                     "attrs": {
                         "_typename": "bool"
@@ -5324,7 +5248,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 51, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5356,7 +5279,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 72, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -5454,7 +5376,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 52, 
                 "ast": {
                     "attrs": {
                         "_typename": "bool"
@@ -5637,7 +5558,6 @@
                         }
                     }
                 }, 
-                "_function_index": 53, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -5737,7 +5657,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 73, 
                 "_cxx_overload": [
                     54, 
                     55
@@ -5783,7 +5702,6 @@
                         }
                     }
                 }, 
-                "_function_index": 54, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5851,7 +5769,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 54, 
                 "_cxx_overload": [
                     54, 
                     55
@@ -5877,7 +5794,6 @@
                         }
                     }
                 }, 
-                "_function_index": 73, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5942,7 +5858,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 74, 
                 "_cxx_overload": [
                     54, 
                     55
@@ -6027,7 +5942,6 @@
                         }
                     }
                 }, 
-                "_function_index": 55, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -6108,7 +6022,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 55, 
                 "_cxx_overload": [
                     54, 
                     55
@@ -6152,7 +6065,6 @@
                         }
                     }
                 }, 
-                "_function_index": 74, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -6232,7 +6144,6 @@
                 }
             }, 
             {
-                "_function_index": 70, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6301,7 +6212,6 @@
                         }
                     }
                 }, 
-                "_function_index": 71, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6459,7 +6369,6 @@
                         }
                     }
                 }, 
-                "_function_index": 56, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     0, 
@@ -6574,7 +6483,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 57, 
                 "ast": {
                     "attrs": {
                         "_typename": "size_t"
@@ -6672,7 +6580,6 @@
                         }
                     }
                 }, 
-                "_function_index": 58, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -6739,7 +6646,6 @@
                     58, 
                     59
                 ], 
-                "_function_index": 59, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -6831,7 +6737,6 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6945,7 +6850,6 @@
                         }
                     }
                 }, 
-                "_function_index": 61, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7056,7 +6960,6 @@
                         }
                     }
                 }, 
-                "_function_index": 62, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7174,7 +7077,6 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7297,7 +7199,6 @@
                         }
                     }
                 }, 
-                "_function_index": 64, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7417,7 +7318,6 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7559,7 +7459,6 @@
                         }
                     }
                 }, 
-                "_function_index": 66, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8222,7 +8121,6 @@
                         }
                     }
                 }, 
-                "_function_index": 67, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8932,7 +8830,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 68, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -9273,7 +9170,6 @@
                         }
                     }
                 }, 
-                "_function_index": 69, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -9447,6 +9343,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 

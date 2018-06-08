@@ -117,7 +117,6 @@ module forward_mod
 contains
 
     ! Class2()
-    ! function_index=0
     function class2_ctor() &
             result(SHT_rv)
         type(class2) :: SHT_rv
@@ -127,7 +126,6 @@ contains
     end function class2_ctor
 
     ! ~Class2()
-    ! function_index=1
     subroutine class2_dtor(obj)
         use iso_c_binding, only : C_NULL_PTR
         class(class2) :: obj
@@ -138,7 +136,6 @@ contains
     end subroutine class2_dtor
 
     ! void func1(Class1 * arg +intent(in))
-    ! function_index=2
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj

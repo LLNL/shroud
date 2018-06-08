@@ -347,7 +347,6 @@ contains
 
     ! ExClass2(const string * name +intent(in)+len_trim(trim_name))
     ! arg_to_buffer
-    ! function_index=19
     !>
     !! \brief constructor
     !!
@@ -364,7 +363,6 @@ contains
     end function exclass2_ctor
 
     ! ~ExClass2()
-    ! function_index=20
     !>
     !! \brief destructor
     !!
@@ -380,7 +378,6 @@ contains
 
     ! const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! arg_to_buffer
-    ! function_index=21
     function exclass2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -394,7 +391,6 @@ contains
 
     ! const string & getName2() +deref(allocatable)
     ! arg_to_buffer
-    ! function_index=22
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -409,7 +405,6 @@ contains
 
     ! string & getName3() const +deref(allocatable)
     ! arg_to_buffer
-    ! function_index=23
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -424,7 +419,6 @@ contains
 
     ! string & getName4() +deref(allocatable)
     ! arg_to_buffer
-    ! function_index=24
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -438,7 +432,6 @@ contains
     end function exclass2_get_name4
 
     ! int GetNameLength() const
-    ! function_index=25
     !>
     !! \brief helper function for Fortran
     !!
@@ -454,7 +447,6 @@ contains
     end function exclass2_get_name_length
 
     ! ExClass1 * get_class1(const ExClass1 * in +intent(in))
-    ! function_index=26
     function exclass2_get_class1(obj, in) &
             result(SHT_rv)
         use exclass1_mod, only : exclass1
@@ -468,7 +460,6 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value)
     ! fortran_generic - has_default_arg
-    ! function_index=44
     subroutine exclass2_declare_0_int(obj, type)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
@@ -480,7 +471,6 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value)
     ! fortran_generic - has_default_arg
-    ! function_index=45
     subroutine exclass2_declare_0_long(obj, type)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
@@ -492,7 +482,6 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
     ! fortran_generic
-    ! function_index=46
     subroutine exclass2_declare_1_int(obj, type, len)
         use iso_c_binding, only : C_INT, C_LONG
         class(exclass2) :: obj
@@ -505,7 +494,6 @@ contains
 
     ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
     ! fortran_generic
-    ! function_index=47
     subroutine exclass2_declare_1_long(obj, type, len)
         use iso_c_binding, only : C_INT, C_LONG
         class(exclass2) :: obj
@@ -517,7 +505,6 @@ contains
     end subroutine exclass2_declare_1_long
 
     ! void destroyall()
-    ! function_index=28
     subroutine exclass2_destroyall(obj)
         class(exclass2) :: obj
         ! splicer begin class.ExClass2.method.destroyall
@@ -526,7 +513,6 @@ contains
     end subroutine exclass2_destroyall
 
     ! TypeID getTypeID() const
-    ! function_index=29
     function exclass2_get_type_id(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -539,7 +525,6 @@ contains
 
     ! void setValue(int value +intent(in)+value)
     ! cxx_template
-    ! function_index=33
     subroutine exclass2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
         class(exclass2) :: obj
@@ -551,7 +536,6 @@ contains
 
     ! void setValue(long value +intent(in)+value)
     ! cxx_template
-    ! function_index=34
     subroutine exclass2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
         class(exclass2) :: obj
@@ -563,7 +547,6 @@ contains
 
     ! void setValue(float value +intent(in)+value)
     ! cxx_template
-    ! function_index=35
     subroutine exclass2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
         class(exclass2) :: obj
@@ -575,7 +558,6 @@ contains
 
     ! void setValue(double value +intent(in)+value)
     ! cxx_template
-    ! function_index=36
     subroutine exclass2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(exclass2) :: obj
@@ -587,7 +569,6 @@ contains
 
     ! int getValue()
     ! cxx_template
-    ! function_index=37
     function exclass2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -600,7 +581,6 @@ contains
 
     ! double getValue()
     ! cxx_template
-    ! function_index=38
     function exclass2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE

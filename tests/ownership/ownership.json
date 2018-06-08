@@ -32,7 +32,6 @@
                 }, 
                 "functions": [
                     {
-                        "_function_index": 0, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -91,7 +90,6 @@
                                 "f_var": "SHT_rv"
                             }
                         }, 
-                        "_function_index": 1, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -323,7 +321,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 2, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -393,7 +390,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 3, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -473,7 +469,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 4, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -552,7 +547,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 5, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -681,7 +675,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 6, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -757,7 +750,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 24, 
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -819,7 +811,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 7, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -895,7 +886,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 7, 
                 "_fmtargs": {
                     "len": {
                         "fmtc": {
@@ -928,7 +918,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 24, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -1093,7 +1082,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 8, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1194,7 +1182,6 @@
                         "idtor": "2"
                     }
                 }, 
-                "_function_index": 9, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1325,7 +1312,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 10, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1456,7 +1442,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 11, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1588,7 +1573,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 12, 
                 "ast": {
                     "attrs": {
                         "_typename": "int", 
@@ -1664,7 +1648,6 @@
                 }
             }, 
             {
-                "_function_index": 13, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1739,7 +1722,6 @@
                 }
             }, 
             {
-                "_function_index": 14, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1816,7 +1798,6 @@
                 }
             }, 
             {
-                "_function_index": 15, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1893,7 +1874,6 @@
                 }
             }, 
             {
-                "_function_index": 16, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1969,7 +1949,6 @@
                 }
             }, 
             {
-                "_function_index": 17, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2045,7 +2024,6 @@
                 }
             }, 
             {
-                "_function_index": 18, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2122,7 +2100,6 @@
                 }
             }, 
             {
-                "_function_index": 19, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2199,7 +2176,6 @@
                 }
             }, 
             {
-                "_function_index": 20, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2309,7 +2285,6 @@
                         }
                     }
                 }, 
-                "_function_index": 21, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2395,7 +2370,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 22, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 
@@ -2508,7 +2482,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 23, 
                 "ast": {
                     "attrs": {
                         "_typename": "Class1", 
@@ -2645,6 +2618,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 

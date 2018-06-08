@@ -223,7 +223,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 0, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -356,7 +355,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 1, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -421,7 +419,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 2, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -498,7 +495,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 3, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -613,7 +609,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 4, 
                         "ast": {
                             "attrs": {
                                 "_typename": "bool"
@@ -687,7 +682,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 5, 
                         "ast": {
                             "attrs": {
                                 "_typename": "tutorial::Class1"
@@ -744,7 +738,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 11, 
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
@@ -790,7 +783,6 @@
                                 "f_var": "SHT_rv"
                             }
                         }, 
-                        "_function_index": 6, 
                         "ast": {
                             "attrs": {
                                 "_typename": "tutorial::Class1"
@@ -885,7 +877,6 @@
                         }
                     }, 
                     {
-                        "_PTR_C_CXX_index": 6, 
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
@@ -936,7 +927,6 @@
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 11, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -1109,7 +1099,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 7, 
                         "ast": {
                             "attrs": {
                                 "_typename": "tutorial::Class1::DIRECTION"
@@ -1190,7 +1179,6 @@
                                 "f_var": "SHT_rv"
                             }
                         }, 
-                        "_function_index": 8, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -1255,7 +1243,6 @@
                                 "f_var": "SHT_rv"
                             }
                         }, 
-                        "_function_index": 9, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -1326,7 +1313,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 10, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -1498,7 +1484,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 12, 
                         "ast": {
                             "attrs": {
                                 "_typename": "Singleton"
@@ -1756,7 +1741,6 @@
         }, 
         "functions": [
             {
-                "_function_index": 13, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -1919,7 +1903,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 14, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -2101,7 +2084,6 @@
                         }
                     }
                 }, 
-                "_function_index": 15, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2264,7 +2246,6 @@
                         "vargs": "SHC_rv"
                     }
                 }, 
-                "_function_index": 16, 
                 "ast": {
                     "attrs": {
                         "_typename": "long_long"
@@ -2405,7 +2386,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 17, 
                 "ast": {
                     "attrs": {
                         "_typename": "bool"
@@ -2523,7 +2503,6 @@
                         }
                     }
                 }, 
-                "_function_index": 18, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -2623,7 +2602,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 60, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtl": {
@@ -2703,7 +2681,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 19, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -2789,7 +2766,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 19, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -2859,7 +2835,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 60, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3082,7 +3057,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 20, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -3172,7 +3146,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 20, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -3242,7 +3215,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 61, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3353,9 +3325,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 20, 
-                "_PTR_F_C_index": 61, 
-                "_function_index": 62, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3463,7 +3432,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 63, 
                 "_fmtargs": {
                     "arg1": {
                         "fmtc": {
@@ -3577,7 +3545,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 21, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -3676,7 +3643,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 21, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -3747,7 +3713,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 63, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -3865,7 +3830,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 64, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -3899,7 +3863,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 22, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -3957,7 +3920,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 22, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -3990,7 +3952,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 64, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -4078,7 +4039,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 50, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4168,7 +4128,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 51, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -4365,7 +4324,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 23, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     0, 
@@ -4456,7 +4414,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 65, 
                 "_cxx_overload": [
                     24, 
                     25
@@ -4502,7 +4459,6 @@
                         }
                     }
                 }, 
-                "_function_index": 24, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -4570,7 +4526,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 24, 
                 "_cxx_overload": [
                     24, 
                     25
@@ -4596,7 +4551,6 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -4710,7 +4664,6 @@
                         }
                     }
                 }, 
-                "_function_index": 25, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -4770,7 +4723,6 @@
                 "options": {}
             }, 
             {
-                "_function_index": 26, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -4868,7 +4820,6 @@
                         }
                     }
                 }, 
-                "_function_index": 52, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -4982,7 +4933,6 @@
                         }
                     }
                 }, 
-                "_function_index": 53, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -5049,7 +4999,6 @@
                 }
             }, 
             {
-                "_function_index": 27, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5101,7 +5050,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 54, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -5168,7 +5116,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 55, 
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
@@ -5265,7 +5212,6 @@
                         }
                     }
                 }, 
-                "_function_index": 28, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5326,8 +5272,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 28, 
-                "_function_index": 68, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5384,8 +5328,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 28, 
-                "_function_index": 69, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5446,7 +5388,6 @@
                     29, 
                     30
                 ], 
-                "_function_index": 29, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5492,7 +5433,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 66, 
                 "_cxx_overload": [
                     29, 
                     30
@@ -5577,7 +5517,6 @@
                         }
                     }
                 }, 
-                "_function_index": 30, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5659,12 +5598,10 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 30, 
                 "_cxx_overload": [
                     29, 
                     30
                 ], 
-                "_function_index": 70, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5742,12 +5679,10 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 30, 
                 "_cxx_overload": [
                     29, 
                     30
                 ], 
-                "_function_index": 71, 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5825,7 +5760,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 30, 
                 "_cxx_overload": [
                     29, 
                     30
@@ -5869,7 +5803,6 @@
                         }
                     }
                 }, 
-                "_function_index": 66, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5994,7 +5927,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 56, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6122,7 +6054,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 57, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6380,7 +6311,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 31, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     1, 
@@ -6542,7 +6472,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 58, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6698,7 +6627,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 59, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -7009,7 +6937,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 32, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     2, 
@@ -7199,7 +7126,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 33, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::TypeID"
@@ -7342,7 +7268,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 34, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::EnumTypeID"
@@ -7487,7 +7412,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 35, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::Color"
@@ -7621,7 +7545,6 @@
                         }
                     }
                 }, 
-                "_function_index": 36, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7790,7 +7713,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 37, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::Class1::DIRECTION"
@@ -7916,7 +7838,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 38, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -7999,7 +7920,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 39, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::Class1"
@@ -8077,7 +7997,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 40, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::Class1"
@@ -8164,7 +8083,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 41, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::Class1"
@@ -8283,7 +8201,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 42, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -8476,7 +8393,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 43, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::struct1"
@@ -8649,7 +8565,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 44, 
                 "ast": {
                     "attrs": {
                         "_typename": "tutorial::struct1"
@@ -8769,7 +8684,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 45, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -8868,7 +8782,6 @@
                         "f_var": "SHT_rv"
                     }
                 }, 
-                "_function_index": 46, 
                 "ast": {
                     "attrs": {
                         "_typename": "double"
@@ -8994,7 +8907,6 @@
                         }
                     }
                 }, 
-                "_function_index": 47, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -9112,7 +9024,6 @@
                         }
                     }
                 }, 
-                "_function_index": 48, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -9178,7 +9089,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 67, 
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "const char * SHC_rv", 
@@ -9212,7 +9122,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 49, 
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
@@ -9267,7 +9176,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 49, 
                 "_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
@@ -9299,7 +9207,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 67, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -9430,6 +9337,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 

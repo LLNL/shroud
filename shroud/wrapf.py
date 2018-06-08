@@ -1343,9 +1343,10 @@ rv = .false.
                 impl.append('! %s' % node.declgen)
                 if generated:
                     impl.append('! %s' % ' - '.join(generated))
-                impl.append('! function_index=%d' % node._function_index)
-                if options.doxygen and node.doxygen:
-                    self.write_doxygen(impl, node.doxygen)
+                if options.debug_index:
+                    impl.append('! function_index=%d' % node._function_index)
+            if options.doxygen and node.doxygen:
+                self.write_doxygen(impl, node.doxygen)
             append_format(impl,
                           '\r{F_subprogram} {F_name_impl}(\t'
                         '{F_arguments}){F_result_clause}',

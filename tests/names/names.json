@@ -27,7 +27,6 @@
                 }, 
                 "functions": [
                     {
-                        "_function_index": 0, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -73,7 +72,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 1, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -344,7 +342,6 @@
         }, 
         "functions": [
             {
-                "_function_index": 2, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -386,7 +383,6 @@
                 "options": {}
             }, 
             {
-                "_function_index": 3, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -466,7 +462,6 @@
                         }
                     }
                 }, 
-                "_function_index": 4, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -564,7 +559,6 @@
                         }
                     }
                 }, 
-                "_function_index": 5, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -624,7 +618,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 9, 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -680,7 +673,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 6, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -746,7 +738,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 6, 
                 "_fmtargs": {
                     "rv": {
                         "fmtc": {
@@ -778,7 +769,6 @@
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 9, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -843,7 +833,6 @@
                 }
             }, 
             {
-                "_function_index": 7, 
                 "ast": {
                     "attrs": {
                         "_typename": "void", 
@@ -886,7 +875,6 @@
                 "options": {}
             }, 
             {
-                "_function_index": 8, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -993,6 +981,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 

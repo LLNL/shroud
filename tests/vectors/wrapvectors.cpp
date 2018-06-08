@@ -85,7 +85,6 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 // splicer end C_definitions
 
 // int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
-// function_index=8
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
 // splicer begin function.vector_sum_bufferify
@@ -96,7 +95,6 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 }
 
 // void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
-// function_index=9
 /**
  * \brief Copy vector into Fortran input array
  *
@@ -116,7 +114,6 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 }
 
 // void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
-// function_index=10
 /**
  * \brief Copy vector into Fortran allocatable array
  *
@@ -136,7 +133,6 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 }
 
 // void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
-// function_index=11
 /**
  * \brief Copy vector into Fortran allocatable array
  *
@@ -157,7 +153,6 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 }
 
 // void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
-// function_index=12
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
@@ -174,7 +169,6 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 }
 
 // int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
-// function_index=13
 /**
  * \brief count number of underscore in vector of strings
  *

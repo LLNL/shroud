@@ -224,7 +224,6 @@ class ToDict(visitor.Visitor):
     def visit_FunctionNode(self, node):
         d = dict(
             ast=self.visit(node.ast),
-            _function_index=node._function_index,
             decl=node.decl,
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
@@ -237,7 +236,6 @@ class ToDict(visitor.Visitor):
                     'declgen', 'doxygen', 
                     'fortran_generic', 'return_this',
                     'C_error_pattern', 'PY_error_pattern',
-                    '_PTR_C_CXX_index', '_PTR_F_C_index',
                     '_CXX_return_templated',
                     '_cxx_overload',
                     '_default_funcs',
@@ -250,6 +248,11 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
+        if node.options.debug_index:
+            for key in ['_function_index', '_PTR_C_CXX_index', '_PTR_F_C_index']:
+                value = getattr(node, key)
+                if value is not None:
+                    d[key] = value
         for key in [
 #            'return_pointer_as',
             'statements',

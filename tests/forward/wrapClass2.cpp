@@ -53,7 +53,6 @@ extern "C" {
 // splicer end class.Class2.C_definitions
 
 // Class2()
-// function_index=0
 FOR_class2 FOR_class2_ctor()
 {
 // splicer begin class.Class2.method.ctor
@@ -66,7 +65,6 @@ FOR_class2 FOR_class2_ctor()
 }
 
 // ~Class2()
-// function_index=1
 void FOR_class2_dtor(FOR_class2 * self)
 {
 // splicer begin class.Class2.method.dtor
@@ -78,7 +76,6 @@ void FOR_class2_dtor(FOR_class2 * self)
 }
 
 // void func1(Class1 * arg +intent(in))
-// function_index=2
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {
 // splicer begin class.Class2.method.func1

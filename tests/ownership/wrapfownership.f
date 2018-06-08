@@ -266,7 +266,6 @@ module ownership_mod
 contains
 
     ! ~Class1()
-    ! function_index=0
     subroutine class1_dtor(obj)
         use iso_c_binding, only : C_NULL_PTR
         class(class1) :: obj
@@ -277,7 +276,6 @@ contains
     end subroutine class1_dtor
 
     ! int getFlag()
-    ! function_index=1
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -315,7 +313,6 @@ contains
     ! splicer end class.Class1.additional_functions
 
     ! int * ReturnIntPtrPointer() +deref(pointer)
-    ! function_index=4
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -328,7 +325,6 @@ contains
     end function return_int_ptr_pointer
 
     ! int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
-    ! function_index=6
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -343,7 +339,6 @@ contains
 
     ! int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
     ! arg_to_buffer
-    ! function_index=7
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -359,7 +354,6 @@ contains
     end function return_int_ptr_dim_alloc
 
     ! int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
-    ! function_index=8
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -373,7 +367,6 @@ contains
     end function return_int_ptr_dim_default
 
     ! int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
-    ! function_index=10
     function return_int_ptr_dim_pointer_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -387,7 +380,6 @@ contains
     end function return_int_ptr_dim_pointer_new
 
     ! int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-    ! function_index=12
     function return_int_ptr_dim_default_new() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -401,7 +393,6 @@ contains
     end function return_int_ptr_dim_default_new
 
     ! Class1 * getClassStatic() +owner(library)
-    ! function_index=22
     function get_class_static() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -411,7 +402,6 @@ contains
     end function get_class_static
 
     ! Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-    ! function_index=23
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

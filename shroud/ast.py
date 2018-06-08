@@ -309,6 +309,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         def_options = util.Scope(
             parent=None,
             debug=False,   # print additional debug info
+            debug_index=False,   # print function indexes. debug must also be True.
+                                 # They change when a function is inserted.
             C_line_length=72,
 
             F_line_length=72,
