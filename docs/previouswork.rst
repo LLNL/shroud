@@ -171,7 +171,7 @@ Forpy
 This is a Fortran interface over the Python API written using the metaprogramming tool Fypp.
 
   * `Forpy: A library for Fortran-Python interoperability <https://github.com/ylikx/forpy>`_ 
-  * `Fypp — Python powered Fortran metaprogramming' <https://github.com/aradi/fypp>`_
+  * `Fypp — Python powered Fortran metaprogramming <https://github.com/aradi/fypp>`_
 
 
 Links

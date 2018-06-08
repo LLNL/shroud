@@ -88,6 +88,8 @@ const char * STR_get_char_ptr3();
 
 void STR_get_char_ptr3_bufferify(char * output, int Noutput);
 
+void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv);
+
 void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_get_const_string_as_arg_bufferify(char * output, int Noutput);

@@ -204,6 +204,27 @@ PY_getCharPtr3(
 // splicer end function.get_char_ptr3
 }
 
+static char PY_getConstStringResult__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getConstStringResult(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const string getConstStringResult() +deref(allocatable)
+// splicer begin function.get_const_string_result
+    const std::string SHCXX_rv = getConstStringResult();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_const_string_result
+}
+
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -668,6 +689,8 @@ static PyMethodDef PY_methods[] = {
     PY_getCharPtr2__doc__},
 {"getCharPtr3", (PyCFunction)PY_getCharPtr3, METH_NOARGS,
     PY_getCharPtr3__doc__},
+{"getConstStringResult", (PyCFunction)PY_getConstStringResult,
+    METH_NOARGS, PY_getConstStringResult__doc__},
 {"getConstStringLen", (PyCFunction)PY_getConstStringLen, METH_NOARGS,
     PY_getConstStringLen__doc__},
 {"getConstStringAsArg", (PyCFunction)PY_getConstStringAsArg,

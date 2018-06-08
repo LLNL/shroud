@@ -146,6 +146,11 @@ contains
  
 !--------------------------------------------------
 
+    ! character(:), allocatable function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_result()
+    call assert_true(str == "getConstStringResult", "getConstStringResult")
+
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()

@@ -127,9 +127,10 @@ const std::string& getConstStringRefAlloc()
 
 // -----
 
-const std::string getString4()
+const std::string getConstStringResult()
 {
-    return static_str;
+    const std::string rv("getConstStringResult");
+    return rv;
 }
 
 const std::string getConstStringLen()

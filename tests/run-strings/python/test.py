@@ -88,6 +88,7 @@ class Tutorial(unittest.TestCase):
 
     def testgetConstString(self):
         """return std::string"""
+        self.assertEqual('getConstStringResult', strings.getConstStringResult())
         self.assertEqual(static_str, strings.getConstStringLen())
         self.assertEqual(static_str, strings.getConstStringAsArg())
         self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())

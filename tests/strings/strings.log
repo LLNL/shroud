@@ -1,4 +1,5 @@
 Read yaml strings.yaml
+Skipping std::string, unable to create C wrapper for function returning getConstStringResult instance (must return a pointer or reference).
 Skipping std::string, unable to create C wrapper for function returning getConstStringLen instance (must return a pointer or reference).
 Skipping std::string, unable to create C wrapper for function returning getConstStringAsArg instance (must return a pointer or reference).
 Skipping std::string, unable to create C wrapper for function returning getConstStringAlloc instance (must return a pointer or reference).
@@ -15,6 +16,7 @@ C function const char * getCharPtr2() +deref(result_as_arg)+len(30)
 C function void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const char * getCharPtr3() +deref(result_as_arg)
 C function void getCharPtr3(char * output +intent(out)+len(Noutput))
+C function void getConstStringResult(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C function void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
 C function void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
@@ -68,6 +70,8 @@ C-interface function void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +
 C-interface function const char * getCharPtr3() +deref(result_as_arg)
 C-interface function void getCharPtr3(char * output +intent(out)+len(Noutput))
 Fortran function void getCharPtr3(char * output +intent(out)+len(Noutput))
+Fortran function const string getConstStringResult() +deref(allocatable)
+C-interface function void getConstStringResult(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 Fortran function const string getConstStringLen() +deref(result_as_arg)+len(30)
 C-interface function void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface function void getConstStringAsArg(string * output +intent(out)+len(Noutput))
@@ -115,6 +119,7 @@ Python function void passCharPtrInOut(char * s +intent(inout))
 Python function const char * getCharPtr1() +deref(allocatable)
 Python function const char * getCharPtr2() +deref(result_as_arg)+len(30)
 Python function const char * getCharPtr3() +deref(result_as_arg)
+Python function const string getConstStringResult() +deref(allocatable)
 Python function const string getConstStringLen() +deref(result_as_arg)+len(30)
 Python function const string getConstStringAsArg() +deref(result_as_arg)
 Python function const std::string getConstStringAlloc() +deref(allocatable)
