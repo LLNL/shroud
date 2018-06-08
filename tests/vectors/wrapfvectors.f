@@ -131,6 +131,8 @@ module vectors_mod
     end interface
 
     interface
+        ! helper function
+        ! Copy contents of context into c_var.
         subroutine SHROUD_copy_array_int(context, c_var, c_var_size) &
             bind(C, name="VEC_ShroudCopyArray")
             use iso_c_binding, only : C_INT, C_SIZE_T

@@ -792,6 +792,7 @@ module tutorial_mod
     end interface overload1
 
     interface
+        ! helper function
         ! Copy the std::string in context into c_var.
         subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="TUT_ShroudCopyStringAndFree")

@@ -170,6 +170,7 @@ def add_external_helpers(fmt):
         cxx_header='<string> <cstddef>',
 # XXX - mangle name
         source=wformat("""
+// helper function
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
@@ -187,6 +188,7 @@ strncpy(c_var, cxx_var, n);
         dependent_helpers=[ 'array_context' ],
         interface=wformat("""
 interface+
+! helper function
 ! Copy the std::string in context into c_var.
 subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
@@ -336,6 +338,7 @@ def add_copy_array_helper_c(fmt):
 # Create a single C routine which is called from Fortran via an interface
 # for each cxx_type
             cxx_source=wformat("""
+0// helper function
 0// Copy std::vector into array c_var(c_var_size).
 0// Then release std::vector.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
@@ -356,6 +359,8 @@ def add_copy_array_helper(fmt):
             dependent_helpers=[ 'array_context' ],
             interface=wformat("""
 interface+
+! helper function
+! Copy contents of context into c_var.
 subroutine SHROUD_copy_array_{cxx_type}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
@@ -374,6 +379,7 @@ CHelpers = dict(
         c_header='<string.h>',
         cxx_header='<cstring>',
         c_source="""
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -385,6 +391,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    if(la > nm) memset(a+nm,' ',la-nm);
 }""",
         cxx_source="""
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -398,6 +405,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
         ),
     ShroudLenTrim=dict(
         source="""
+// helper function
 // Returns the length of character string a with length ls,
 // ignoring any trailing blanks.
 int ShroudLenTrim(const char *s, int ls) {

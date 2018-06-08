@@ -60,6 +60,7 @@ typedef union {
 } SH_union_0_t;
 
 
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -71,6 +72,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
 
+// helper function
 // Copy the std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_var_len) {

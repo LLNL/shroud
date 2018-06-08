@@ -52,6 +52,7 @@
 extern "C" {
 
 
+// helper function
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var, 
