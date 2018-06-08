@@ -3309,7 +3309,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "deref": "allocatable"
+                        "deref": "allocatable", 
+                        "owner": "library"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3328,8 +3329,8 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string * getConstStringPtrAlloc()", 
-                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)", 
+                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
+                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
@@ -3408,7 +3409,8 @@
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
-                                "intent": "out"
+                                "intent": "out", 
+                                "owner": "library"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -3433,8 +3435,8 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string * getConstStringPtrAlloc()", 
-                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
+                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
@@ -3636,6 +3638,193 @@
                     "function_name": "getConstStringPtrOwnsAlloc", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ptr_owns_alloc"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_rv_decl": "const char * SHC_rv", 
+                        "c_val": "SHCXX_rv->c_str()", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_type": "std::string", 
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "2"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "std::string", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "*", 
+                        "c_var": "SHCXX_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_var": "SHCXX_rv", 
+                        "numpy_type": null, 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "std::string", 
+                        "deref": "allocatable", 
+                        "owner": "caller"
+                    }, 
+                    "const": true, 
+                    "declarator": {
+                        "name": "getConstStringPtrOwnsAllocPattern", 
+                        "pointer": [
+                            {
+                                "const": false, 
+                                "ptr": "*"
+                            }
+                        ]
+                    }, 
+                    "func_const": false, 
+                    "params": [], 
+                    "return_pointer_as": "allocatable", 
+                    "specifier": [
+                        "std::string"
+                    ]
+                }, 
+                "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
+                "declgen": "const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)", 
+                "doxygen": {
+                    "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
+                }, 
+                "format": {
+                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "STR_get_const_string_ptr_owns_alloc_pattern", 
+                    "C_post_call": "const char * SHC_rv = SHCXX_rv->c_str();", 
+                    "C_prototype": "", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "const char *", 
+                    "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify", 
+                    "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern", 
+                    "F_arg_c_call": "DSHF_rv", 
+                    "F_arguments": "", 
+                    "F_call_code": "call c_get_const_string_ptr_owns_alloc_pattern_bufferify(DSHF_rv)", 
+                    "F_name_function": "get_const_string_ptr_owns_alloc_pattern", 
+                    "F_name_generic": "get_const_string_ptr_owns_alloc_pattern", 
+                    "F_name_impl": "get_const_string_ptr_owns_alloc_pattern", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern", 
+                    "c_const": "const ", 
+                    "cxx_rv_decl": "const std::string * SHCXX_rv", 
+                    "function_name": "getConstStringPtrOwnsAllocPattern", 
+                    "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
+                }, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_const": "const ", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "SHF_rv", 
+                            "c_var_context": "DSHF_rv", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
+                            "cxx_member": "->", 
+                            "cxx_type": "std::string", 
+                            "cxx_var": "SHCXX_rv", 
+                            "idtor": "2"
+                        }, 
+                        "fmtf": {
+                            "c_var": "SHT_rv", 
+                            "c_var_context": "DSHF_rv", 
+                            "f_var": "SHT_rv"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "", 
+                        "cxx_member": "->", 
+                        "cxx_type": "void", 
+                        "cxx_var": "SHCXX_rv", 
+                        "idtor": "0"
+                    }
+                }, 
+                "_generated": "arg_to_buffer", 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "getConstStringPtrOwnsAllocPattern", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf", 
+                                "_is_result": true, 
+                                "_typename": "stringout", 
+                                "context": "DSHF_rv", 
+                                "deref": "allocatable", 
+                                "intent": "out", 
+                                "owner": "caller"
+                            }, 
+                            "const": true, 
+                            "declarator": {
+                                "name": "SHF_rv", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }, 
+                                    {
+                                        "const": false, 
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "stringout"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
+                "doxygen": {
+                    "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
+                }, 
+                "format": {
+                    "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);", 
+                    "C_call_list": "", 
+                    "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
+                    "C_prototype": "STR_SHROUD_array *DSHF_rv", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "const std::string * SHCXX_rv", 
+                    "function_name": "getConstStringPtrOwnsAllocPattern", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 }, 
                 "options": {
                     "wrap_c": true, 

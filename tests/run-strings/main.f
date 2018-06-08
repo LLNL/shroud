@@ -208,6 +208,11 @@ contains
     str = get_const_string_ptr_owns_alloc()
     call assert_true( str == "getConstStringPtrOwnsAlloc", "getConstStringPtrOwnsAlloc")
 
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ptr_owns_alloc_pattern()
+    call assert_true( str == "getConstStringPtrOwnsAllocPatt", &
+         "getConstStringPtrOwnsAllocPattern")
+
 !--------------------------------------------------
 
     call accept_string_const_reference("cat")

@@ -424,7 +424,7 @@ PY_getConstStringPtrAlloc(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string * getConstStringPtrAlloc() +deref(allocatable)
+// const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 // splicer begin function.get_const_string_ptr_alloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
 
@@ -454,6 +454,27 @@ PY_getConstStringPtrOwnsAlloc(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ptr_owns_alloc
+}
+
+static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getConstStringPtrOwnsAllocPattern(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)
+// splicer begin function.get_const_string_ptr_owns_alloc_pattern
+    const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_const_string_ptr_owns_alloc_pattern
 }
 
 static char PY_acceptStringConstReference__doc__[] =
@@ -714,6 +735,9 @@ static PyMethodDef PY_methods[] = {
 {"getConstStringPtrOwnsAlloc",
     (PyCFunction)PY_getConstStringPtrOwnsAlloc, METH_NOARGS,
     PY_getConstStringPtrOwnsAlloc__doc__},
+{"getConstStringPtrOwnsAllocPattern",
+    (PyCFunction)PY_getConstStringPtrOwnsAllocPattern, METH_NOARGS,
+    PY_getConstStringPtrOwnsAllocPattern__doc__},
 {"acceptStringConstReference",
     (PyCFunction)PY_acceptStringConstReference,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStringConstReference__doc__},

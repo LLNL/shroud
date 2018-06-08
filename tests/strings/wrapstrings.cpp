@@ -574,7 +574,7 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.get_const_string_ptr_len_bufferify
 }
 
-// const std::string * getConstStringPtrAlloc() +deref(allocatable)
+// const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
 const char * STR_get_const_string_ptr_alloc()
 {
 // splicer begin function.get_const_string_ptr_alloc
@@ -584,7 +584,7 @@ const char * STR_get_const_string_ptr_alloc()
 // splicer end function.get_const_string_ptr_alloc
 }
 
-// void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ptr_alloc_bufferify
@@ -637,6 +637,38 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_ptr_owns_alloc_bufferify
+}
+
+// const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+owner(caller)
+/**
+ * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+ */
+const char * STR_get_const_string_ptr_owns_alloc_pattern()
+{
+// splicer begin function.get_const_string_ptr_owns_alloc_pattern
+    const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
+    const char * SHC_rv = SHCXX_rv->c_str();
+    return SHC_rv;
+// splicer end function.get_const_string_ptr_owns_alloc_pattern
+}
+
+// void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
+/**
+ * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+ */
+void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
+    STR_SHROUD_array *DSHF_rv)
+{
+// splicer begin function.get_const_string_ptr_owns_alloc_pattern_bufferify
+    const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
+        (SHCXX_rv));
+    DSHF_rv->cxx.idtor = 2;
+    DSHF_rv->addr.ccharp = SHCXX_rv->data();
+    DSHF_rv->len = SHCXX_rv->size();
+    DSHF_rv->size = 1;
+    return;
+// splicer end function.get_const_string_ptr_owns_alloc_pattern_bufferify
 }
 
 // void acceptStringConstReference(const std::string & arg1 +intent(in))

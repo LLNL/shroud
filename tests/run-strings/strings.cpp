@@ -160,14 +160,21 @@ const std::string * getConstStringPtrLen()
 
 const std::string * getConstStringPtrAlloc()
 {
-    // caller_owns_return = False
+    // +owner(library)
     return &static_str;
 }
 
 const std::string * getConstStringPtrOwnsAlloc()
 {
-    // caller_owns_return = True
+    // +owner(caller)
     std::string * rv = new std::string("getConstStringPtrOwnsAlloc");
+    return rv;
+}
+
+const std::string * getConstStringPtrOwnsAllocPattern()
+{
+    // +owner(caller) +pattern
+    std::string * rv = new std::string("getConstStringPtrOwnsAllocPattern");
     return rv;
 }
 

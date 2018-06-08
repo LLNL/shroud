@@ -165,7 +165,7 @@ declarations:
   format:
     C_finalize_buf: delete {cxx_var};
 
-- decl: const std::string * getConstStringPtrAlloc()
+- decl: const std::string * getConstStringPtrAlloc() +owner(library)
 
 - decl: const std::string * getConstStringPtrOwnsAlloc() +owner(caller)
   doxygen:
@@ -175,6 +175,12 @@ declarations:
       This is accomplished +owner(caller) which sets idtor.
       The contents are copied by Fortran so they must outlast
       the return from the C wrapper.
+
+- decl: const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)
+  doxygen:
+    description: |
+      Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+
 
 ########################################
 
@@ -293,3 +299,7 @@ patterns:
 #            return;
 #        }}
 
+     # This pattern is added to C_memory_dtor_function
+    C_string_free: |
+        {cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);
+        delete cxx_ptr;

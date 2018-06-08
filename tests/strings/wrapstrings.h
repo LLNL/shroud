@@ -133,6 +133,11 @@ const char * STR_get_const_string_ptr_owns_alloc();
 void STR_get_const_string_ptr_owns_alloc_bufferify(
     STR_SHROUD_array *DSHF_rv);
 
+const char * STR_get_const_string_ptr_owns_alloc_pattern();
+
+void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
+    STR_SHROUD_array *DSHF_rv);
+
 void STR_accept_string_const_reference(const char * arg1);
 
 void STR_accept_string_const_reference_bufferify(const char * arg1,
