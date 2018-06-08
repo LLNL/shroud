@@ -851,7 +851,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
-                # Set cxx_var for C_finalize which evalutes in fmt_result context
+                # Set cxx_var for C_finalize which evaluates in fmt_result context
                 fmt_result.cxx_var = fmt_arg.cxx_var
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True)
@@ -887,15 +887,8 @@ class Wrapc(util.WrapperMixin):
                     else:
                         owner = CXX_ast.attrs.get('owner', default_owner)
                         if owner == 'caller':
-                            have_idtor = True
-                            if arg_typedef.idtor != '0':
-                                # Some predefined type
-                                fmt_arg.idtor = arg_typedef.idtor
-                            else:
-                                fmt_arg.idtor = self.add_destructor(fmt_arg, arg_typedef.cxx_type, [
-                                    '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
-                                    'delete cxx_ptr;',
-                                ], arg_typedef)
+                            c_attrs['owner'] = 'caller'
+                        # XXX move this into generate.py
 
             else:
                 arg_call = arg

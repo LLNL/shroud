@@ -4011,7 +4011,8 @@
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
-                                "intent": "out"
+                                "intent": "out", 
+                                "owner": "caller"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -10304,7 +10305,8 @@
                     ]
                 }
             }, 
-            "f_type": "type(C_PTR)YY"
+            "f_type": "type(C_PTR)YY", 
+            "idtor": "2"
         }, 
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
