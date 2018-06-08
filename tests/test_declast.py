@@ -1017,22 +1017,22 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void getName(std::string & output) const", s)
 
-    def test_as_voidstarstar(self):
+    def test_as_voidstar(self):
         # Change function return to an argument
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
 
-        r.result_as_voidstarstar('void', 'output', const=r.const)
+        r.result_as_voidstar('void', 'output', const=r.const)
         s = r.gen_decl()
-        self.assertEqual("void getName(const void * * output) const", s)
+        self.assertEqual("void getName(const void * output) const", s)
 
         # Now without const
         r = declast.check_decl("std::string& getName() const")
-        r.result_as_voidstarstar('void', 'output', const=r.const)
+        r.result_as_voidstar('void', 'output', const=r.const)
         s = r.gen_decl()
-        self.assertEqual("void getName(void * * output) const", s)
+        self.assertEqual("void getName(void * output) const", s)
                          
     def test_thisarg01(self):
         """Create an argument for const this"""

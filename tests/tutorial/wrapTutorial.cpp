@@ -210,7 +210,7 @@ const char * TUT_function4c(const char * arg1, const char * arg2)
 // splicer end function.function4c
 }
 
-// void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
@@ -247,7 +247,7 @@ const char * TUT_function4d()
 // splicer end function.function4d
 }
 
-// void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
+// void Function4d(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
 /**
  * A string is allocated by the library is must be deleted
  * by the caller.

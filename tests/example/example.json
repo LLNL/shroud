@@ -998,10 +998,6 @@
                                             {
                                                 "const": false, 
                                                 "ptr": "*"
-                                            }, 
-                                            {
-                                                "const": false, 
-                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
@@ -1015,7 +1011,7 @@
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
-                        "declgen": "void getNameErrorCheck(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
+                        "declgen": "void getNameErrorCheck(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
@@ -2614,10 +2610,6 @@
                                             {
                                                 "const": false, 
                                                 "ptr": "*"
-                                            }, 
-                                            {
-                                                "const": false, 
-                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
@@ -2631,7 +2623,7 @@
                             ]
                         }, 
                         "decl": "const string& getName2()", 
-                        "declgen": "void getName2(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                        "declgen": "void getName2(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
@@ -2809,10 +2801,6 @@
                                             {
                                                 "const": false, 
                                                 "ptr": "*"
-                                            }, 
-                                            {
-                                                "const": false, 
-                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
@@ -2826,7 +2814,7 @@
                             ]
                         }, 
                         "decl": "string& getName3() const", 
-                        "declgen": "void getName3(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
+                        "declgen": "void getName3(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
@@ -3004,10 +2992,6 @@
                                             {
                                                 "const": false, 
                                                 "ptr": "*"
-                                            }, 
-                                            {
-                                                "const": false, 
-                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
@@ -3021,7 +3005,7 @@
                             ]
                         }, 
                         "decl": "string& getName4()", 
-                        "declgen": "void getName4(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                        "declgen": "void getName4(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 

@@ -13,7 +13,7 @@ C method const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa
 C method void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 C method int GetNameLength() const
 C method const string & getNameErrorCheck() const +deref(allocatable)
-C method void getNameErrorCheck(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+C method void getNameErrorCheck(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 C method const string & getNameArg() const +deref(result_as_arg)
 C method void getNameArg(string & name +intent(out)+len(Nname)) const
 C method void * getRoot()
@@ -31,11 +31,11 @@ C method ~ExClass2()
 C method const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C method void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C method const string & getName2() +deref(allocatable)
-C method void getName2(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C method void getName2(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C method string & getName3() const +deref(allocatable)
-C method void getName3(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+C method void getName3(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 C method string & getName4() +deref(allocatable)
-C method void getName4(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C method void getName4(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C method int GetNameLength() const
 C method ExClass1 * get_class1(const ExClass1 * in +intent(in))
 C method void * declare(TypeID type +intent(in)+value)
@@ -93,7 +93,7 @@ C-interface, Fortran method const string & getNameErrorPattern() const +deref(re
 C-interface method void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 C-interface, Fortran method int GetNameLength() const
 C-interface, Fortran method const string & getNameErrorCheck() const +deref(allocatable)
-C-interface method void getNameErrorCheck(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+C-interface method void getNameErrorCheck(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 C-interface method const string & getNameArg() const +deref(result_as_arg)
 C-interface method void getNameArg(string & name +intent(out)+len(Nname)) const
 Fortran method void getNameArg(string & name +intent(out)+len(Nname)) const
@@ -111,11 +111,11 @@ C-interface, Fortran method ~ExClass2()
 C-interface, Fortran method const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C-interface method void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C-interface, Fortran method const string & getName2() +deref(allocatable)
-C-interface method void getName2(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C-interface method void getName2(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C-interface, Fortran method string & getName3() const +deref(allocatable)
-C-interface method void getName3(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+C-interface method void getName3(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 C-interface, Fortran method string & getName4() +deref(allocatable)
-C-interface method void getName4(stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C-interface method void getName4(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C-interface, Fortran method int GetNameLength() const
 C-interface, Fortran method ExClass1 * get_class1(const ExClass1 * in +intent(in))
 C-interface method void * declare(TypeID type +intent(in)+value)

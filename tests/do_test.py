@@ -344,7 +344,7 @@ if __name__ == '__main__':
             print('{} pass'.format(name))
         else:
             fail_names.append(name)
-            print('{} failed'.format(name))
+            print('{} ***FAILED'.format(name))
 
     # summarize results
     if fail_names:

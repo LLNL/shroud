@@ -970,10 +970,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -987,7 +983,7 @@
                     ]
                 }, 
                 "decl": "const char * getCharPtr1()", 
-                "declgen": "void getCharPtr1(const charout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getCharPtr1(const charout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 }, 
@@ -1545,10 +1541,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -1562,7 +1554,7 @@
                     ]
                 }, 
                 "decl": "const string getConstStringResult()", 
-                "declgen": "void getConstStringResult(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getConstStringResult(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 }, 
@@ -2080,10 +2072,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -2097,7 +2085,7 @@
                     ]
                 }, 
                 "decl": "const std::string getConstStringAlloc()", 
-                "declgen": "void getConstStringAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getConstStringAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "format": {
                     "C_call_code": "*SHCXX_rv =\t getConstStringAlloc(\t);", 
                     "C_call_list": "", 
@@ -2263,10 +2251,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -2280,7 +2264,7 @@
                     ]
                 }, 
                 "decl": "const string& getConstStringRefPure()", 
-                "declgen": "void getConstStringRefPure(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getConstStringRefPure(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 }, 
@@ -3053,10 +3037,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -3070,7 +3050,7 @@
                     ]
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc()", 
-                "declgen": "void getConstStringRefAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getConstStringRefAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
@@ -3419,10 +3399,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -3436,7 +3412,7 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
-                "declgen": "void getConstStringPtrAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))", 
+                "declgen": "void getConstStringPtrAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))", 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
@@ -3603,10 +3579,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -3620,7 +3592,7 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
-                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
+                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 }, 
@@ -3792,10 +3764,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -3809,7 +3777,7 @@
                     ]
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
-                "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))", 
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 }, 

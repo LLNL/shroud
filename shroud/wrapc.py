@@ -1319,7 +1319,7 @@ class Wrapc(util.WrapperMixin):
             # Non-pointers do not return dynamic memory.
             pass
         elif free_pattern is not None:
-            # free_pattern attribute
+            # free_pattern attribute.
             fmt.idtor = self.add_destructor(
                 fmt, free_pattern, [ self.patterns[free_pattern] ], None)
         elif atypemap.idtor != '0':

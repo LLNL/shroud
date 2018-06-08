@@ -3785,10 +3785,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -3802,7 +3798,7 @@
                     ]
                 }, 
                 "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
-                "declgen": "void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 }, 
@@ -3981,10 +3977,6 @@
                                     {
                                         "const": false, 
                                         "ptr": "*"
-                                    }, 
-                                    {
-                                        "const": false, 
-                                        "ptr": "*"
                                     }
                                 ]
                             }, 
@@ -3998,7 +3990,7 @@
                     ]
                 }, 
                 "decl": "const std::string * Function4d() +owner(caller)", 
-                "declgen": "void Function4d(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
+                "declgen": "void Function4d(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
                 }, 
