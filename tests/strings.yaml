@@ -129,7 +129,7 @@ declarations:
 - decl: const string& getConstStringRefPure()
 #  C_error_pattern: C_invalid_name
   doxygen:
-    brief: return a 'const string&' as character(*)
+    brief: return a 'const string&' as ALLOCATABLE character
 
 - decl: const string& getConstStringRefLen() +len=30
   C_error_pattern: C_invalid_name
@@ -156,16 +156,25 @@ declarations:
 - decl: const string * getConstStringPtrLen() +len=30
 #  C_error_pattern: C_invalid_name
   doxygen:
-    brief: return a 'const string *' as character(*)
-  description: |
+    brief: return a 'const string *' as character(30)
+    description: |
       It is the caller's responsibility to release the string
       created by the C++ library.
+      This is accomplished with C_finalize_buf which is possible
+      because +len(30) so the contents are copied before returning.
   format:
     C_finalize_buf: delete {cxx_var};
 
 - decl: const std::string * getConstStringPtrAlloc()
 
-- decl: const std::string * getConstStringPtrOwnsAlloc()
+- decl: const std::string * getConstStringPtrOwnsAlloc() +owner(caller)
+  doxygen:
+    description: |
+      It is the caller's responsibility to release the string
+      created by the C++ library.
+      This is accomplished +owner(caller) which sets idtor.
+      The contents are copied by Fortran so they must outlast
+      the return from the C wrapper.
 
 ########################################
 

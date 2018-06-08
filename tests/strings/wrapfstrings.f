@@ -643,7 +643,7 @@ contains
     ! const string & getConstStringRefPure() +deref(allocatable)
     ! arg_to_buffer
     !>
-    !! \brief return a 'const string&' as character(*)
+    !! \brief return a 'const string&' as ALLOCATABLE character
     !!
     !<
     function get_const_string_ref_pure() &
@@ -720,8 +720,12 @@ contains
     ! const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
     ! arg_to_buffer
     !>
-    !! \brief return a 'const string *' as character(*)
+    !! \brief return a 'const string *' as character(30)
     !!
+    !! It is the caller's responsibility to release the string
+    !! created by the C++ library.
+    !! This is accomplished with C_finalize_buf which is possible
+    !! because +len(30) so the contents are copied before returning.
     !<
     function get_const_string_ptr_len() &
             result(SHT_rv)
@@ -746,8 +750,15 @@ contains
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function get_const_string_ptr_alloc
 
-    ! const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)
+    ! const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
     ! arg_to_buffer
+    !>
+    !! It is the caller's responsibility to release the string
+    !! created by the C++ library.
+    !! This is accomplished +owner(caller) which sets idtor.
+    !! The contents are copied by Fortran so they must outlast
+    !! the return from the C wrapper.
+    !<
     function get_const_string_ptr_owns_alloc() &
             result(SHT_rv)
         type(SHROUD_array) :: DSHF_rv

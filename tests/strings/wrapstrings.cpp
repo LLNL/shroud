@@ -361,7 +361,7 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 
 // const string & getConstStringRefPure() +deref(allocatable)
 /**
- * \brief return a 'const string&' as character(*)
+ * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
 const char * STR_get_const_string_ref_pure()
@@ -375,7 +375,7 @@ const char * STR_get_const_string_ref_pure()
 
 // void getConstStringRefPure(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
- * \brief return a 'const string&' as character(*)
+ * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
 void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -532,8 +532,12 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 
 // const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)
 /**
- * \brief return a 'const string *' as character(*)
+ * \brief return a 'const string *' as character(30)
  *
+ * It is the caller's responsibility to release the string
+ * created by the C++ library.
+ * This is accomplished with C_finalize_buf which is possible
+ * because +len(30) so the contents are copied before returning.
  */
 const char * STR_get_const_string_ptr_len()
 {
@@ -546,8 +550,12 @@ const char * STR_get_const_string_ptr_len()
 
 // void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
- * \brief return a 'const string *' as character(*)
+ * \brief return a 'const string *' as character(30)
  *
+ * It is the caller's responsibility to release the string
+ * created by the C++ library.
+ * This is accomplished with C_finalize_buf which is possible
+ * because +len(30) so the contents are copied before returning.
  */
 void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
@@ -591,7 +599,14 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 
-// const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)
+// const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)
+/**
+ * It is the caller's responsibility to release the string
+ * created by the C++ library.
+ * This is accomplished +owner(caller) which sets idtor.
+ * The contents are copied by Fortran so they must outlast
+ * the return from the C wrapper.
+ */
 const char * STR_get_const_string_ptr_owns_alloc()
 {
 // splicer begin function.get_const_string_ptr_owns_alloc
@@ -601,7 +616,14 @@ const char * STR_get_const_string_ptr_owns_alloc()
 // splicer end function.get_const_string_ptr_owns_alloc
 }
 
-// void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
+/**
+ * It is the caller's responsibility to release the string
+ * created by the C++ library.
+ * This is accomplished +owner(caller) which sets idtor.
+ * The contents are copied by Fortran so they must outlast
+ * the return from the C wrapper.
+ */
 void STR_get_const_string_ptr_owns_alloc_bufferify(
     STR_SHROUD_array *DSHF_rv)
 {
@@ -609,7 +631,7 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->cxx.idtor = 2;
     DSHF_rv->addr.ccharp = SHCXX_rv->data();
     DSHF_rv->len = SHCXX_rv->size();
     DSHF_rv->size = 1;
@@ -849,6 +871,12 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
         break;
     }
     case 1:   // new_string
+    {
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:   // std::string
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;

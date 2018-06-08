@@ -2174,7 +2174,7 @@
                 "decl": "const string& getConstStringRefPure()", 
                 "declgen": "const string & getConstStringRefPure() +deref(allocatable)", 
                 "doxygen": {
-                    "brief": "return a 'const string&' as character(*)"
+                    "brief": "return a 'const string&' as ALLOCATABLE character"
                 }, 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);", 
@@ -2282,7 +2282,7 @@
                 "decl": "const string& getConstStringRefPure()", 
                 "declgen": "void getConstStringRefPure(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
-                    "brief": "return a 'const string&' as character(*)"
+                    "brief": "return a 'const string&' as ALLOCATABLE character"
                 }, 
                 "format": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);", 
@@ -3147,7 +3147,8 @@
                 "decl": "const string * getConstStringPtrLen() +len=30", 
                 "declgen": "const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)", 
                 "doxygen": {
-                    "brief": "return a 'const string *' as character(*)"
+                    "brief": "return a 'const string *' as character(30)", 
+                    "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 }, 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrLen(\t);", 
@@ -3251,7 +3252,8 @@
                 "decl": "const string * getConstStringPtrLen() +len=30", 
                 "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "doxygen": {
-                    "brief": "return a 'const string *' as character(*)"
+                    "brief": "return a 'const string *' as character(30)", 
+                    "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 }, 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrLen(\t);", 
@@ -3465,7 +3467,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
-                        "idtor": "0"
+                        "idtor": "2"
                     }, 
                     "fmtf": {
                         "cxx_type": "std::string", 
@@ -3486,7 +3488,8 @@
                 "ast": {
                     "attrs": {
                         "_typename": "std::string", 
-                        "deref": "allocatable"
+                        "deref": "allocatable", 
+                        "owner": "caller"
                     }, 
                     "const": true, 
                     "declarator": {
@@ -3505,8 +3508,11 @@
                         "std::string"
                     ]
                 }, 
-                "decl": "const std::string * getConstStringPtrOwnsAlloc()", 
-                "declgen": "const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)", 
+                "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
+                "declgen": "const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)", 
+                "doxygen": {
+                    "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
@@ -3547,7 +3553,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv", 
-                            "idtor": "0"
+                            "idtor": "2"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3585,7 +3591,8 @@
                                 "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
-                                "intent": "out"
+                                "intent": "out", 
+                                "owner": "caller"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -3610,13 +3617,16 @@
                         "void"
                     ]
                 }, 
-                "decl": "const std::string * getConstStringPtrOwnsAlloc()", 
-                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
+                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
+                "doxygen": {
+                    "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
+                }, 
                 "format": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\nDSHF_rv->size = 1;", 
                     "C_prototype": "STR_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -5966,6 +5976,7 @@
                 }
             }, 
             "f_type": "character(*)", 
+            "idtor": "2", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar", 
@@ -6228,7 +6239,8 @@
                     ]
                 }
             }, 
-            "f_type": "type(C_PTR)YY"
+            "f_type": "type(C_PTR)YY", 
+            "idtor": "2"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 
