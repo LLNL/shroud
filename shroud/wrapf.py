@@ -1297,13 +1297,6 @@ rv = .false.
             else:
                 fmt_func.F_call_code = wformat('call {F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
-                if is_dtor:
-                    # post_call for destructor.
-                    self.set_f_module(modules, 'iso_c_binding', 'C_NULL_PTR')
-                    append_format(
-                        F_code,
-                        '{F_this}%{F_derived_member}%addr = C_NULL_PTR',
-                        fmt_func)
 
             if return_pointer_as == 'allocatable':
                 # Copy into allocatable array.

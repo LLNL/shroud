@@ -84,6 +84,7 @@ void TUT_class1_delete(TUT_class1 * self)
     tutorial::Class1 *SH_this = static_cast<tutorial::
         Class1 *>(self->addr);
     delete SH_this;
+    self->addr = NULL;
     return;
 // splicer end class.Class1.method.delete
 }

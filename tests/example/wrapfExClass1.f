@@ -343,11 +343,9 @@ contains
     !! longer description joined with previous line
     !<
     subroutine exclass1_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
         class(exclass1) :: obj
         ! splicer begin class.ExClass1.method.delete
         call c_exclass1_dtor(obj%cxxmem)
-        obj%cxxmem%addr = C_NULL_PTR
         ! splicer end class.ExClass1.method.delete
     end subroutine exclass1_dtor
 

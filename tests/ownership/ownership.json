@@ -48,7 +48,7 @@
                         "decl": "~Class1()", 
                         "declgen": "~Class1()", 
                         "format": {
-                            "C_call_code": "delete SH_this;", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "OWN_class1_dtor", 
                             "C_pre_call": "Class1 *SH_this = \tstatic_cast<Class1 *>(self->addr);", 

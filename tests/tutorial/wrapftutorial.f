@@ -828,11 +828,9 @@ contains
 
     ! ~Class1() +name(delete)
     subroutine class1_delete(obj)
-        use iso_c_binding, only : C_NULL_PTR
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%cxxmem)
-        obj%cxxmem%addr = C_NULL_PTR
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
 

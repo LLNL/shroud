@@ -436,7 +436,7 @@
                         "decl": "~Class1()        +name(delete)", 
                         "declgen": "~Class1() +name(delete)", 
                         "format": {
-                            "C_call_code": "delete SH_this;", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
                             "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 

@@ -1053,7 +1053,10 @@ class Wrapc(util.WrapperMixin):
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:
-            append_format(call_code, 'delete {CXX_this};', fmt_func)
+            append_format(call_code,
+                          'delete {CXX_this};\n'
+                          '{C_this}->addr = NULL;',
+                          fmt_func)
         elif CXX_subprogram == 'subroutine':
             append_format(call_code, '{CXX_this_call}{function_name}'
                           '{CXX_template}(\t{C_call_list});', fmt_func)

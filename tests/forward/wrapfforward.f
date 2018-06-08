@@ -127,11 +127,9 @@ contains
 
     ! ~Class2()
     subroutine class2_dtor(obj)
-        use iso_c_binding, only : C_NULL_PTR
         class(class2) :: obj
         ! splicer begin class.Class2.method.dtor
         call c_class2_dtor(obj%cxxmem)
-        obj%cxxmem%addr = C_NULL_PTR
         ! splicer end class.Class2.method.dtor
     end subroutine class2_dtor
 
