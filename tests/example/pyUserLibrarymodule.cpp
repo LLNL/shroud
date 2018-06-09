@@ -390,6 +390,10 @@ static char PP_FuncPtr1__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief subroutine
+ *
+ */
 static PyObject *
 PP_FuncPtr1(
   PyObject *SHROUD_UNUSED(self),
@@ -416,6 +420,10 @@ static char PP_FuncPtr2__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a pointer
+ *
+ */
 static PyObject *
 PP_FuncPtr2(
   PyObject *SHROUD_UNUSED(self),
@@ -442,6 +450,10 @@ static char PP_FuncPtr3__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief abstract argument
+ *
+ */
 static PyObject *
 PP_FuncPtr3(
   PyObject *SHROUD_UNUSED(self),
@@ -610,6 +622,10 @@ static char PP_cos_doubles__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Test multidimensional arrays with allocatable
+ *
+ */
 static PyObject *
 PP_cos_doubles(
   PyObject *SHROUD_UNUSED(self),

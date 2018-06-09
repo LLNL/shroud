@@ -119,6 +119,10 @@ static int l_class1_delete(lua_State *L)
 }
 
 // int Method1()
+/**
+ * \brief returns the value of flag member
+ *
+ */
 static int l_class1_method1(lua_State *L)
 {
     // splicer begin class.Class1.method.Method1
@@ -190,6 +194,11 @@ static int l_function3(lua_State *L)
 }
 
 // const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
+/**
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
+ */
 static int l_function4a(lua_State *L)
 {
     // splicer begin function.Function4a
@@ -214,6 +223,10 @@ static int l_function4b(lua_State *L)
 }
 
 // const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+/**
+ * Note that since a reference is returned, no intermediate string
+ * is allocated.  It is assumed +owner(library).
+ */
 static int l_function4c(lua_State *L)
 {
     // splicer begin function.Function4c
@@ -226,6 +239,10 @@ static int l_function4c(lua_State *L)
 }
 
 // const std::string * Function4d() +deref(allocatable)+owner(caller)
+/**
+ * A string is allocated by the library is must be deleted
+ * by the caller.
+ */
 static int l_function4d(lua_State *L)
 {
     // splicer begin function.Function4d

@@ -96,6 +96,14 @@ PP_ExClass1_tp_init_0(
 // splicer end class.ExClass1.method.ctor_0
 }
 
+/**
+ * \brief constructor
+ *
+ * longer description
+ * usually multiple lines
+ *
+ * \return return new instance
+ */
 static int
 PP_ExClass1_tp_init_1(
   PP_ExClass1 *self,
@@ -181,6 +189,10 @@ static char PP_exclass1_GetNameLength__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief helper function for Fortran to get length of name.
+ *
+ */
 static PyObject *
 PP_exclass1_GetNameLength(
   PP_ExClass1 *self,

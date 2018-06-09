@@ -236,6 +236,11 @@ static char PY_Function4a__doc__[] =
 "documentation"
 ;
 
+/**
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
+ */
 static PyObject *
 PY_Function4a(
   PyObject *SHROUD_UNUSED(self),
@@ -309,6 +314,10 @@ static char PY_Function4c__doc__[] =
 "documentation"
 ;
 
+/**
+ * Note that since a reference is returned, no intermediate string
+ * is allocated.  It is assumed +owner(library).
+ */
 static PyObject *
 PY_Function4c(
   PyObject *SHROUD_UNUSED(self),
@@ -346,6 +355,10 @@ static char PY_Function4d__doc__[] =
 "documentation"
 ;
 
+/**
+ * A string is allocated by the library is must be deleted
+ * by the caller.
+ */
 static PyObject *
 PY_Function4d(
   PyObject *SHROUD_UNUSED(self),
@@ -759,6 +772,10 @@ static char PY_getMinMax__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Pass in reference to scalar
+ *
+ */
 static PyObject *
 PY_getMinMax(
   PyObject *SHROUD_UNUSED(self),

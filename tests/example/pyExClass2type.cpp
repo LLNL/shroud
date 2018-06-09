@@ -180,6 +180,10 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // splicer end class.ExClass2.type.del
 }
 
+/**
+ * \brief constructor
+ *
+ */
 static int
 PP_ExClass2_tp_init(
   PP_ExClass2 *self,
@@ -293,6 +297,10 @@ static char PP_exclass2_GetNameLength__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief helper function for Fortran
+ *
+ */
 static PyObject *
 PP_exclass2_GetNameLength(
   PP_ExClass2 *self,

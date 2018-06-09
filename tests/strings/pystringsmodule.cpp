@@ -68,6 +68,10 @@ static char PY_passChar__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief pass a single char argument as a scalar.
+ *
+ */
 static PyObject *
 PY_passChar(
   PyObject *SHROUD_UNUSED(self),
@@ -94,6 +98,10 @@ static char PY_returnChar__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a char argument (non-pointer)
+ *
+ */
 static PyObject *
 PY_returnChar(
   PyObject *SHROUD_UNUSED(self),
@@ -115,6 +123,12 @@ static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief toupper
+ *
+ * Change a string in-place.
+ * For Python, return a new string since strings are immutable.
+ */
 static PyObject *
 PY_passCharPtrInOut(
   PyObject *SHROUD_UNUSED(self),
@@ -145,6 +159,10 @@ static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const char *' as character(*)
+ *
+ */
 static PyObject *
 PY_getCharPtr1(
   PyObject *SHROUD_UNUSED(self),
@@ -166,6 +184,10 @@ static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return 'const char *' with fixed size (len=30)
+ *
+ */
 static PyObject *
 PY_getCharPtr2(
   PyObject *SHROUD_UNUSED(self),
@@ -187,6 +209,10 @@ static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
 static PyObject *
 PY_getCharPtr3(
   PyObject *SHROUD_UNUSED(self),
@@ -208,6 +234,10 @@ static char PY_getConstStringResult__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return an ALLOCATABLE CHARACTER from std::string
+ *
+ */
 static PyObject *
 PY_getConstStringResult(
   PyObject *SHROUD_UNUSED(self),
@@ -229,6 +259,10 @@ static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const string' as argument
+ *
+ */
 static PyObject *
 PY_getConstStringLen(
   PyObject *SHROUD_UNUSED(self),
@@ -250,6 +284,10 @@ static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const string' as argument
+ *
+ */
 static PyObject *
 PY_getConstStringAsArg(
   PyObject *SHROUD_UNUSED(self),
@@ -292,6 +330,10 @@ static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const string&' as ALLOCATABLE character
+ *
+ */
 static PyObject *
 PY_getConstStringRefPure(
   PyObject *SHROUD_UNUSED(self),
@@ -313,6 +355,10 @@ static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return 'const string&' with fixed size (len=30)
+ *
+ */
 static PyObject *
 PY_getConstStringRefLen(
   PyObject *SHROUD_UNUSED(self),
@@ -334,6 +380,10 @@ static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const string&' as argument
+ *
+ */
 static PyObject *
 PY_getConstStringRefAsArg(
   PyObject *SHROUD_UNUSED(self),
@@ -355,6 +405,10 @@ static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Test returning empty string reference
+ *
+ */
 static PyObject *
 PY_getConstStringRefLenEmpty(
   PyObject *SHROUD_UNUSED(self),
@@ -397,6 +451,14 @@ static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a 'const string *' as character(30)
+ *
+ * It is the caller's responsibility to release the string
+ * created by the C++ library.
+ * This is accomplished with C_finalize_buf which is possible
+ * because +len(30) so the contents are copied before returning.
+ */
 static PyObject *
 PY_getConstStringPtrLen(
   PyObject *SHROUD_UNUSED(self),
@@ -439,6 +501,13 @@ static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
 ;
 
+/**
+ * It is the caller's responsibility to release the string
+ * created by the C++ library.
+ * This is accomplished +owner(caller) which sets idtor.
+ * The contents are copied by Fortran so they must outlast
+ * the return from the C wrapper.
+ */
 static PyObject *
 PY_getConstStringPtrOwnsAlloc(
   PyObject *SHROUD_UNUSED(self),
@@ -460,6 +529,9 @@ static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
 ;
 
+/**
+ * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+ */
 static PyObject *
 PY_getConstStringPtrOwnsAllocPattern(
   PyObject *SHROUD_UNUSED(self),
@@ -481,6 +553,13 @@ static char PY_acceptStringConstReference__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Accept a const string reference
+ *
+ * Save contents of arg1.
+ * arg1 is assumed to be intent(IN) since it is const
+ * Will copy in.
+ */
 static PyObject *
 PY_acceptStringConstReference(
   PyObject *SHROUD_UNUSED(self),
@@ -511,6 +590,13 @@ static char PY_acceptStringReferenceOut__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Accept a string reference
+ *
+ * Set out to a constant string.
+ * arg1 is intent(OUT)
+ * Must copy out.
+ */
 static PyObject *
 PY_acceptStringReferenceOut(
   PyObject *SHROUD_UNUSED(self),
@@ -535,6 +621,13 @@ static char PY_acceptStringReference__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Accept a string reference
+ *
+ * Append "dog" to the end of arg1.
+ * arg1 is assumed to be intent(INOUT)
+ * Must copy in and copy out.
+ */
 static PyObject *
 PY_acceptStringReference(
   PyObject *SHROUD_UNUSED(self),
@@ -569,6 +662,10 @@ static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Accept a string pointer
+ *
+ */
 static PyObject *
 PY_acceptStringPointer(
   PyObject *SHROUD_UNUSED(self),
@@ -603,6 +700,10 @@ static char PY_returnStrings__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Test Python returning multiple std::string arguments.
+ *
+ */
 static PyObject *
 PY_returnStrings(
   PyObject *SHROUD_UNUSED(self),
@@ -655,6 +756,10 @@ static char PY_CpassChar__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief pass a single char argument as a scalar, extern "C"
+ *
+ */
 static PyObject *
 PY_CpassChar(
   PyObject *SHROUD_UNUSED(self),
@@ -681,6 +786,10 @@ static char PY_CreturnChar__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief return a char argument (non-pointer), extern "C"
+ *
+ */
 static PyObject *
 PY_CreturnChar(
   PyObject *SHROUD_UNUSED(self),

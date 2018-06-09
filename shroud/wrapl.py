@@ -61,6 +61,9 @@ class Wrapl(util.WrapperMixin):
         self.comment = '//'
         self.cont = ''
         self.linelen = newlibrary.options.C_line_length
+        self.doxygen_begin = '/**'
+        self.doxygen_cont = ' *'
+        self.doxygen_end = ' */'
 
     def reset_file(self):
         pass
@@ -355,6 +358,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if node.options.debug:
             for node in overloads:
                 body.append('// ' + node.declgen)
+        if node.options.doxygen:
+            for node in overloads:
+                if node.doxygen:
+                    self.write_doxygen(body, node.doxygen)
         if fmt.LUA_used_param_state:
             append_format(body,
                           'static int {LUA_name_impl}'

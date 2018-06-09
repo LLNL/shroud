@@ -92,6 +92,9 @@ class Wrapp(util.WrapperMixin):
         self.comment = '//'
         self.cont = ''
         self.linelen = newlibrary.options.C_line_length
+        self.doxygen_begin = '/**'
+        self.doxygen_cont = ' *'
+        self.doxygen_end = ' */'
         self.need_numpy = False
         self.enum_impl = []
         self.arraydescr = []   # Create PyArray_Descr for struct
@@ -1368,6 +1371,8 @@ return 1;""", fmt)
                 fmt)
 
         body.append('')
+        if node and node.options.doxygen and node.doxygen:
+            self.write_doxygen(body, node.doxygen)
         if is_ctor:
             body.append('static int')
         else:

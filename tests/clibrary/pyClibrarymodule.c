@@ -310,6 +310,11 @@ static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief compute cos of IN and save in OUT
+ *
+ * allocate OUT same type as IN implied size of array
+ */
 static PyObject *
 PY_cos_doubles(
   PyObject *SHROUD_UNUSED(self),
@@ -365,6 +370,12 @@ static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief truncate IN argument and save in OUT
+ *
+ * allocate OUT different type as IN
+ * implied size of array
+ */
 static PyObject *
 PY_truncate_to_int(
   PyObject *SHROUD_UNUSED(self),
@@ -421,6 +432,11 @@ static char PY_increment__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief None
+ *
+ * array with intent(INOUT)
+ */
 static PyObject *
 PY_increment(
   PyObject *SHROUD_UNUSED(self),

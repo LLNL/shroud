@@ -317,6 +317,10 @@ static char PY_getClassNew__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Return pointer to new Class1 instance.
+ *
+ */
 static PyObject *
 PY_getClassNew(
   PyObject *SHROUD_UNUSED(self),
