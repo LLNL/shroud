@@ -456,12 +456,12 @@ function which will allocate a ``CHARACTER`` variable of the correct length::
     end function function4c
 
 The type ``SHROUD_array`` contains the address and length of the
-``std::string`` returned by ``Function4c``.  The ``STF_rv`` is
+``std::string`` returned by ``Function4c``.  The result ``STF_rv`` is
 allocated and the routine ``SHROUD_copy_string_and_free`` then copies
 the contents into it and deletes the C++ string if necessary.
 The details of ``SHROUD_array`` are described in :ref:`MemoryManagementAnchor`.
 
-This function can be call similar to ``Function4a``::
+This function can be called similar to ``Function4a``::
 
     character(30) rv4a
     character(len=:), allocatable :: rv4c

@@ -530,7 +530,7 @@ Format Fields
 
 Each scope (library, class, function) has its own format dictionary.
 If a value is not found in the dictionary, then the parent
-scope will be recursively searched.
+scopes will be recursively searched.
 
 Library
 ^^^^^^^

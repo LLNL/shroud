@@ -1129,9 +1129,9 @@ For example, ``std::vector`` provides the lines::
     -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
     -  delete cxx_ptr;
 
-Patterns can be used to provide per function code to free memory.
-The address of the memory to free will be in the variable ``void *ptr``,
-which should be referenced in the pattern::
+Patterns can be used to provide code to free memory for a wrapped
+function.  The address of the memory to free will be in the variable
+``void *ptr``, which should be referenced in the pattern::
 
     declarations:
     - decl: char * getName() +free_pattern(free_getName)
@@ -1169,7 +1169,7 @@ And Fortran::
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
 or ``std::string *``.  *idtor* is a Shroud generated index of the
-destructor code defined by *destructor_name* or *C_free_pattern*.
+destructor code defined by *destructor_name* or the *free_pattern* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
 be released and is used with the **owner(library)** attribute. A
@@ -1218,7 +1218,7 @@ is involved.  For example, ``Function4d`` returns a pointer to a new string::
     - decl: const std::string * Function4d()
 
 The C wrapper calls the function and saves the result along with
-metadata consisting the address of the data within the
+metadata consisting of the address of the data within the
 ``std::string`` and its length.  The Fortran wrappers allocates its
 return value to the proper length, then copies the data from the C++
 variable and deletes it.
@@ -1275,7 +1275,9 @@ to the correct length::
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function function4d
 
-Finally, the helper function ``SHROUD_copy_string_and_free`` is called::
+Finally, the helper function ``SHROUD_copy_string_and_free`` is called
+to set the value of the result and possible free memory for
+**owner(caller)** or intermediate values::
 
     // Copy the std::string in context into c_var.
     // Called by Fortran to deal with allocatable character.
@@ -1287,10 +1289,13 @@ Finally, the helper function ``SHROUD_copy_string_and_free`` is called::
         TUT_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
     }
 
-.. note:: The three steps of call, allocate, copy could be replaced by using
-          the *futher interoperability with C* features of Fortran 2018 
-          (a.k.a TS 29113). However, not all compilers currently support that feature.
-          The current implementation works with Fortran 2003.
+.. note:: The three steps of call, allocate, copy could be replaced
+          with a single call by using the *futher interoperability
+          with C* features of Fortran 2018 (a.k.a TS 29113).  This
+          feature allows Fortran ``ALLOCATABLE`` variables to be
+          allocated by C. However, not all compilers currently support
+          that feature.  The current Shroud implementation works with
+          Fortran 2003.
 
 
 Python
