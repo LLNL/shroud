@@ -57,4 +57,7 @@ int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
 
+std::vector<int> ReturnVectorAlloc(int i);
+
+
 #endif // VECTORS_HPP

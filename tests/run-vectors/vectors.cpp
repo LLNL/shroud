@@ -147,3 +147,15 @@ void vector_string_append(std::vector< std::string > &arg)
   return;
 }
 
+
+//----------------------------------------------------------------------
+
+std::vector<int> ReturnVectorAlloc(int i)
+{
+  std::vector<int> rv;
+  for (int i=0; i < 5; i++) {
+    rv.push_back(i+1);
+  }
+  return rv;
+}
+

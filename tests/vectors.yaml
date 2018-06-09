@@ -115,3 +115,13 @@ declarations:
     wrap_lua: False
   doxygen:
     brief: append '-like' to names.
+
+
+########################################
+# return vectors
+
+#- decl: std::vector<int> ReturnVectorAlloc(int i)
+#  doxygen:
+#    description: |
+#      Return a vector as an ALLOCATABLE array.
+
