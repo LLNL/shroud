@@ -132,11 +132,19 @@ tutorial vectors forward strings clibrary ownership : testdirs
 	    -f $(top)/tests/run-$@/Makefile \
 	    top=$(top) $@
 
+tutorial-c : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-tutorial \
+	    -f $(top)/tests/run-tutorial/Makefile \
+	    top=$(top) testc
+
 tutorial-cpp : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-tutorial \
 	    -f $(top)/tests/run-tutorial/Makefile \
 	    top=$(top) maincpp
+
+test-c : tutorial-c
 
 # Run the Fortran tests
 test-fortran : fortran
@@ -203,7 +211,7 @@ test-lua : lua-tutorial
 	cd $(top)/$(tempdir)/run-tutorial/lua; \
 	$(LUA_BIN) $(top)/tests/run-tutorial/lua/test.lua
 
-test-all : test-fortran test-python test-lua
+test-all : test-c test-fortran test-python test-lua
 
 test-clean :
 	rm -rf $(tempdir)/test
@@ -249,6 +257,7 @@ distclean:
 
 .PHONY : virtualenv develop docs test testdirs
 .PHONY : fortran test-fortran tutorial vectors strings clibrary ownership
+.PHONY : tutorial-c tutorial-cpp
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings
