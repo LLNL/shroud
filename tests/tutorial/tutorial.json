@@ -186,10 +186,6 @@
                 }, 
                 "functions": [
                     {
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "TUT_class1", 
@@ -273,10 +269,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
@@ -4406,10 +4398,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    24, 
-                    25
-                ], 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4518,10 +4506,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    24, 
-                    25
-                ], 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4607,10 +4591,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    24, 
-                    25
-                ], 
                 "_fmtargs": {
                     "indx": {
                         "fmtc": {
@@ -5376,10 +5356,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    29, 
-                    30
-                ], 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5425,10 +5401,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    29, 
-                    30
-                ], 
                 "_fmtargs": {
                     "arg2": {
                         "fmtc": {
@@ -5590,10 +5562,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    29, 
-                    30
-                ], 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5671,10 +5639,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    29, 
-                    30
-                ], 
                 "_generated": "fortran_generic", 
                 "_overloaded": true, 
                 "ast": {
@@ -5752,10 +5716,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    29, 
-                    30
-                ], 
                 "_fmtargs": {
                     "arg2": {
                         "fmtc": {
@@ -5881,10 +5841,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    31, 
-                    32
-                ], 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -5990,10 +5946,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    31, 
-                    32
-                ], 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -6133,10 +6085,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    31, 
-                    32
-                ], 
                 "_default_funcs": [
                     56, 
                     57
@@ -6408,10 +6356,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    31, 
-                    32
-                ], 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -6545,10 +6489,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    31, 
-                    32
-                ], 
                 "_fmtargs": {
                     "num": {
                         "fmtc": {
@@ -6716,10 +6656,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    31, 
-                    32
-                ], 
                 "_default_funcs": [
                     58, 
                     59

@@ -237,7 +237,6 @@ class ToDict(visitor.Visitor):
                     'fortran_generic', 'return_this',
                     'C_error_pattern', 'PY_error_pattern',
                     '_CXX_return_templated',
-                    '_cxx_overload',
                     '_default_funcs',
                     '_generated', '_has_default_arg',
                     '_nargs', '_overloaded',
@@ -249,7 +248,8 @@ class ToDict(visitor.Visitor):
             if value:
                 d[key] = value
         if node.options.debug_index:
-            for key in ['_function_index', '_PTR_C_CXX_index', '_PTR_F_C_index']:
+            for key in ['_cxx_overload', '_function_index',
+                        '_PTR_C_CXX_index', '_PTR_F_C_index']:
                 value = getattr(node, key)
                 if value is not None:
                     d[key] = value

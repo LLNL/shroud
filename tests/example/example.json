@@ -34,10 +34,6 @@
                 }, 
                 "functions": [
                     {
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "AA_exclass1", 
@@ -120,10 +116,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -272,10 +264,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -1367,10 +1355,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            9, 
-                            10
-                        ], 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -1514,10 +1498,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            9, 
-                            10
-                        ], 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -4758,10 +4738,6 @@
                 }, 
                 "functions": [
                     {
-                        "_cxx_overload": [
-                            48, 
-                            49
-                        ], 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4810,10 +4786,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            48, 
-                            49
-                        ], 
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
@@ -5641,10 +5613,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5753,10 +5721,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5842,10 +5806,6 @@
                 }
             }, 
             {
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -6006,10 +5966,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -6512,10 +6468,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    58, 
-                    59
-                ], 
                 "_fmtargs": {
                     "comm": {
                         "fmtc": {
@@ -6626,10 +6578,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    58, 
-                    59
-                ], 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
