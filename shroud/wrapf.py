@@ -170,11 +170,11 @@ class Wrapf(util.WrapperMixin):
         No methods.
         """
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typemap
+        ntypemap = node.typemap
 
         fmt_class = node.fmtdict
 
-        fmt_class.F_derived_name = typedef.f_derived_type
+        fmt_class.F_derived_name = ntypemap.f_derived_type
 
         # type declaration
         output = self.f_type_decl
@@ -185,20 +185,19 @@ class Wrapf(util.WrapperMixin):
         for var in node.variables:
             ast = var.ast
             result_type = ast.typename
-            typedef = typemap.lookup_type(result_type)
+            ntypemap = typemap.lookup_type(result_type)
             output.append(ast.gen_arg_as_fortran())
-            self.update_f_module(self.module_use, {}, typedef.f_module) # XXX - self.module_imports?
+            self.update_f_module(self.module_use, {}, ntypemap.f_module) # XXX - self.module_imports?
         append_format(output,
                       '-end type {F_derived_name}', fmt_class)
         self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typemap
 
         fmt_class = node.fmtdict
 
-        fmt_class.F_derived_name = typedef.f_derived_type
+        fmt_class.F_derived_name = node.typemap.f_derived_type
 
         # wrap methods
         self._push_splicer(fmt_class.cxx_class)
@@ -617,9 +616,9 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typedef, c_statements = typemap.lookup_c_statements(param)
+                    arg_typemap, c_statements = typemap.lookup_c_statements(param)
                     self.update_f_module(modules, imports,
-                                         arg_typedef.f_c_module or arg_typedef.f_module)
+                                         arg_typemap.f_c_module or arg_typemap.f_module)
 
                 if subprogram == 'function':
                     arg_c_decl.append(ast.bind_c(name=key, params=None))
@@ -776,13 +775,13 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typedef = typemap.lookup_type(arg.typename)
-            fmt.update(arg_typedef.format)
-            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap = typemap.lookup_type(arg.typename)
+            fmt.update(arg_typemap.format)
+            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
             attrs = arg.attrs
             self.update_f_module(modules, imports,
-                                 arg_typedef.f_c_module or arg_typedef.f_module)
+                                 arg_typemap.f_c_module or arg_typemap.f_module)
 
             intent = attrs.get('intent', 'inout')
             if intent != 'in':
@@ -1154,28 +1153,28 @@ rv = .false.
                 f_arg = c_arg
 
             arg_type = f_arg.typename
-            arg_typedef = typemap.lookup_type(arg_type)
-            base_typedef = arg_typedef
+            arg_typemap = typemap.lookup_type(arg_type)
+            base_typemap = arg_typemap
             if 'template' in c_attrs:
                 # If a template, use its type
                 cxx_T = c_attrs['template']
-                arg_typedef = typemap.lookup_type(cxx_T)
+                arg_typemap = typemap.lookup_type(cxx_T)
                 fmt_arg.cxx_T = cxx_T
 
-            self.update_f_module(modules, imports, arg_typedef.f_module)
+            self.update_f_module(modules, imports, arg_typemap.f_module)
 
             if implied:
                 f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
             else:
-                f_statements = base_typedef.f_statements  # AAA - new vector
-#                f_statements = arg_typedef.f_statements
+                f_statements = base_typemap.f_statements  # AAA - new vector
+#                f_statements = arg_typemap.f_statements
                 f_intent_blk = f_statements.get(f_stmts, {})
 
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            fmt_arg.update(base_typedef.format)
-            arg_typedef, c_statements = typemap.lookup_c_statements(c_arg)
+            fmt_arg.update(base_typemap.format)
+            arg_typemap, c_statements = typemap.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
             # Create a local variable for C if necessary
@@ -1183,10 +1182,10 @@ rv = .false.
             if have_c_local_var:
                 fmt_arg.c_var = 'SH_' + fmt_arg.f_var
                 arg_f_decl.append('{} {}'.format(
-                    arg_typedef.f_c_type or arg_typedef.f_type, fmt_arg.c_var))
+                    arg_typemap.f_c_type or arg_typemap.f_type, fmt_arg.c_var))
 
             need_wrapper = self.build_arg_list_impl(
-                node, fmt_arg, c_arg, f_arg, arg_typedef,
+                node, fmt_arg, c_arg, f_arg, arg_typemap,
                 c_intent_blk.get('buf_args', self._default_buf_args),
                 modules, imports,
                 arg_f_decl, arg_c_call,
@@ -1519,8 +1518,8 @@ class ToImplied(todict.PrintNode):
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
             argname = node.args[0].name
-            arg_typedef = typemap.lookup_type(self.arg.typename)
-            return 'size({},kind={})'.format(argname, arg_typedef.f_kind)
+            arg_typemap = typemap.lookup_type(self.arg.typename)
+            return 'size({},kind={})'.format(argname, arg_typemap.f_kind)
         else:
             return self.param_list(node)
 

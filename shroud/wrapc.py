@@ -433,8 +433,7 @@ class Wrapc(util.WrapperMixin):
         XXX - no need to wrap C structs
         """
         self.log.write("class {1.name}\n".format(self, node))
-        typedef = node.typemap
-        cname = typedef.c_type
+        cname = node.typemap.c_type
 
         output = self.struct_impl
         output.append('')
@@ -456,11 +455,11 @@ class Wrapc(util.WrapperMixin):
         # Add a sanity check on sizes of structs
         if False:
             # XXX - add this to compiled code somewhere
-            typedef = node.typemap
+            stypemap = node.typemap
             output.extend([
                 '',
-                '0#if sizeof {} != sizeof {}'.format(typedef.name, typedef.c_type),
-                '0#error Sizeof {} and {} do not match'.format(typedef.name, typedef.c_type),
+                '0#if sizeof {} != sizeof {}'.format(stypemap.name, stypemap.c_type),
+                '0#error Sizeof {} and {} do not match'.format(stypemap.name, stypemap.c_type),
                 '0#endif',
             ])
 
@@ -498,18 +497,18 @@ class Wrapc(util.WrapperMixin):
                 has_dtor = True
                 break
 
-        typedef = node.typemap
+        ntypemap = node.typemap
         if has_dtor:
-            cxx_type = typedef.cxx_type
+            cxx_type = ntypemap.cxx_type
             cxx_type = cxx_type.replace('\t', '')
             del_lines=[
                 '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
                     cxx_type=cxx_type) ,
                 'delete cxx_ptr;',
             ]
-            typedef.idtor = self.add_capsule_helper(cxx_type, typedef, del_lines)
+            ntypemap.idtor = self.add_capsule_helper(cxx_type, ntypemap, del_lines)
         else:
-            typedef.idtor = '0'
+            ntypemap.idtor = '0'
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
@@ -810,13 +809,13 @@ class Wrapc(util.WrapperMixin):
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
 
-            arg_typedef = typemap.lookup_type(arg.typename)  # XXX - look up vector
-            fmt_arg.update(arg_typedef.format)
+            arg_typemap = typemap.lookup_type(arg.typename)  # XXX - look up vector
+            fmt_arg.update(arg_typemap.format)
 
-            if arg_typedef.base == 'vector':
+            if arg_typemap.base == 'vector':
                 fmt_arg.cxx_T = c_attrs['template']
 
-            arg_typedef, c_statements = typemap.lookup_c_statements(arg)
+            arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 
             fmt_arg.c_var = arg_name
 
@@ -835,9 +834,9 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.c_member = '.'
                 fmt_arg.cxx_member = '.'
                 fmt_arg.cxx_addr = '&'
-                if arg_typedef.c_union:
+                if arg_typemap.c_union:
                     arg_is_union_scalar = True
-            fmt_arg.cxx_type = arg_typedef.cxx_type
+            fmt_arg.cxx_type = arg_typemap.cxx_type
             fmt_arg.idtor = '0'
             cxx_local_var = ''
 
@@ -846,8 +845,8 @@ class Wrapc(util.WrapperMixin):
                 # This argument is the C function result
                 arg_call = False
 
-                # Note that result_type is void, so use arg_typedef.
-                if arg_typedef.cxx_to_c is None:
+                # Note that result_type is void, so use arg_typemap.
+                if arg_typemap.cxx_to_c is None:
                     fmt_arg.cxx_var = fmt_func.C_local + fmt_func.C_result
                 else:
                     fmt_arg.cxx_var = fmt_func.CXX_local + fmt_func.C_result
@@ -882,7 +881,7 @@ class Wrapc(util.WrapperMixin):
                         fmt_arg.idtor = self.add_destructor(fmt_arg, 'new_string', [
                             'std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);',
                             'delete cxx_ptr;',
-                        ], arg_typedef)
+                        ], arg_typemap)
                         have_idtor = True
 
             else:
@@ -897,18 +896,18 @@ class Wrapc(util.WrapperMixin):
                     tmp = fmt_arg.c_var
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.c_var = '&' + tmp
-                    fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                    fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                     fmt_arg.c_var = tmp
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var, params=None,
                         as_ptr=True, force_ptr=True, continuation=True)
                     append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
-                elif arg_typedef.c_to_cxx is None:
+                elif arg_typemap.c_to_cxx is None:
                     fmt_arg.cxx_var = fmt_arg.c_var      # compatible
                 else:
                     # convert C argument to C++
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-                    fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                    fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var, params=None, as_ptr=True, continuation=True)
                     append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
@@ -940,7 +939,7 @@ class Wrapc(util.WrapperMixin):
 # This uses C_local or CXX_local for arguments.
 #                if 'cxx_T' in fmt_arg:
 #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
-#                elif arg_typedef.cxx_to_c is None:
+#                elif arg_typemap.cxx_to_c is None:
 #                    fmt_arg.cxx_var = fmt_func.C_local + fmt_arg.c_var
 #                else:
 #                    fmt_arg.cxx_var = fmt_func.CXX_local + fmt_arg.c_var
@@ -954,7 +953,7 @@ class Wrapc(util.WrapperMixin):
                     '{cxx_addr}{cxx_var}', fmt_arg)
             elif arg.const:
                 # cast away constness
-                fmt_arg.cxx_type = arg_typedef.cxx_type
+                fmt_arg.cxx_type = arg_typemap.cxx_type
                 fmt_arg.cxx_cast_to_void_ptr = wformat(
                     'static_cast<void *>\t(const_cast<'
                     '{cxx_type} *>\t({cxx_addr}{cxx_var}))', fmt_arg)
@@ -963,7 +962,7 @@ class Wrapc(util.WrapperMixin):
                     'static_cast<void *>({cxx_addr}{cxx_var})', fmt_arg)
 
             if not have_idtor:
-                self.find_idtor(arg, arg_typedef, fmt_arg, intent_blk)
+                self.find_idtor(arg, arg_typemap, fmt_arg, intent_blk)
 
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper)
@@ -991,16 +990,16 @@ class Wrapc(util.WrapperMixin):
                 else:
                     call_list.append(fmt_arg.cxx_var)
 
-            if arg_typedef.c_header:
+            if arg_typemap.c_header:
                 # include any dependent header in generated header
-                self.header_typedef_nodes[arg_typedef.name] = arg_typedef
-            if arg_typedef.cxx_header:
+                self.header_typedef_nodes[arg_typemap.name] = arg_typemap
+            if arg_typemap.cxx_header:
                 # include any dependent header in generated source
-                self.header_impl_include[arg_typedef.cxx_header] = True
-#            if arg_typedef.forward:
+                self.header_impl_include[arg_typemap.cxx_header] = True
+#            if arg_typemap.forward:
 #                # create forward references for other types being wrapped
 #                # i.e. This argument is another wrapped type
-#                self.header_forward[arg_typedef.c_type] = True
+#                self.header_forward[arg_typemap.c_type] = True
         fmt_func.C_call_list = ',\t '.join(call_list)
 
         fmt_func.C_prototype = options.get('C_prototype', ',\t '.join(proto_list))

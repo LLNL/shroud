@@ -112,7 +112,7 @@ class NamespaceMixin(object):
             if 'declarations' in kwargs:
                 node = self.add_class(ast.name, **kwargs)
             else:
-                node = self.create_class_type(ast.name, **kwargs)
+                node = self.create_class_typemap(ast.name, **kwargs)
         elif isinstance(ast, declast.Namespace):
             node = self.add_namespace(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
@@ -123,25 +123,25 @@ class NamespaceMixin(object):
             raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
         return node
 
-    def create_class_type(self, key, **kwargs):
-        """Add a typedef for a class.
+    def create_class_typemap(self, key, **kwargs):
+        """Add a typemap for a class.
         """
         self.add_typedef(key)
         fullname = self.scope + key
-        typedef = typemap.Typemap(fullname,
+        ntypemap = typemap.Typemap(fullname,
                                   base='shadow',
                                   cxx_type=fullname)
         if 'fields' in kwargs:
             value = kwargs['fields']
             if not isinstance(value, dict):
                 raise TypeError("fields must be a dictionary")
-            typedef.update(value)
-        typemap.fill_shadow_typemap_defaults(typedef, self.fmtdict)
-        typemap.register_type(typedef.name, typedef)
-        return typedef
+            ntypemap.update(value)
+        typemap.fill_shadow_typemap_defaults(ntypemap, self.fmtdict)
+        typemap.register_type(ntypemap.name, ntypemap)
+        return ntypemap
 
     def create_typedef(self, ast, **kwargs):
-        """Create a typedef from a Declarator.
+        """Create a typemap from a Declarator.
         """
         if ast.declarator.pointer:
             raise NotImplementedError("Pointers not supported in typedef")
@@ -155,15 +155,15 @@ class NamespaceMixin(object):
         if not orig:
             raise RuntimeError(
                 "No type for typedef {} while defining {}".format(copy_type, key))
-        typedef = orig.clone_as(copy_type)
-        typedef.name = self.scope + key
-        typedef.typedef = copy_type
-        typedef.cxx_type = typedef.name
+        ntypemap = orig.clone_as(copy_type)
+        ntypemap.name = self.scope + key
+        ntypemap.typedef = copy_type
+        ntypemap.cxx_type = ntypemap.name
         if 'fields' in kwargs:
             fields = kwargs['fields']
-            typedef.update(fields)
-        typemap.register_type(typedef.name, typedef)
-        return typedef
+            ntypemap.update(fields)
+        typemap.register_type(ntypemap.name, ntypemap)
+        return ntypemap
 
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
@@ -1041,7 +1041,7 @@ class EnumNode(AstNode):
         # Add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-        self.typemap = typemap.create_enum_typedef(self)
+        self.typemap = typemap.create_enum_typemap(self)
         self.typemap_name = self.typemap.name
         # also 'enum class foo' will alter scope
 
@@ -1195,11 +1195,11 @@ def add_declarations(parent, node):
             key = subnode['type']
             value = subnode['fields']
             def_types = typemap.get_global_types()
-            typedef = def_types.get(key, None)
-            if not typedef:
+            ntypemap = def_types.get(key, None)
+            if not ntypemap:
                 raise RuntimeError(
                     "No type {}".format(key))
-            typedef.update(value)
+            ntypemap.update(value)
         else:
             print(subnode)
             raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef' found {}".format(sorted(subnode.keys())))
