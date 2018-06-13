@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,31 +38,42 @@
 #
 # #######################################################################
 #
-# run-tutorial
+#  Compile the python tutorial
 #
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/clibrary \
-    -I$(top)/tests/run-clibrary \
-    -I$(top)/tests/fruit
+    -I$(top)/tests/strings \
+    -I$(top)/tests/run/strings \
+    $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/clibrary \
-    $(top)/tests/run-clibrary \
-    $(top)/tests/fruit
+    $(top)/tests/strings \
+    $(top)/tests/run/strings \
+    $(top)/tests/run/strings/python
 
 OBJS = \
-    clibrary.o \
-    wrapfclibrary.o \
-    wrapClibrary.o \
-    fruit.o \
-    main.o
+    strings.o \
+    pystringsmodule.o \
+    pystringshelper.o
 
-clibrary : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+CXXFLAGS += $(SHARED)
+
+all : strings.so simple
+
+strings.so : $(OBJS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+simple : testpython.o $(OBJS)
+	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
+#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 clean :
-	rm -f $(OBJS) *.mod clibrary
+	rm -f *.so *.o simple
+.PHONY : clean
 
-main.o : wrapfclibrary.o
+print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
+

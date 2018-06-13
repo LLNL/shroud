@@ -107,19 +107,19 @@ requirements.txt :
 # Used to make sure the generated wrappers work.
 #
 TESTDIRS = \
-    $(tempdir)/run-tutorial/..\
-    $(tempdir)/run-tutorial/python/.. \
-    $(tempdir)/run-tutorial/lua/.. \
-    $(tempdir)/run-vectors/..\
-    $(tempdir)/run-vectors/python/.. \
-    $(tempdir)/run-vectors/lua/.. \
-    $(tempdir)/run-forward/.. \
-    $(tempdir)/run-strings/.. \
-    $(tempdir)/run-strings/python/.. \
-    $(tempdir)/run-clibrary/.. \
-    $(tempdir)/run-clibrary/python/.. \
-    $(tempdir)/run-ownership/.. \
-    $(tempdir)/run-ownership/python/..
+    $(tempdir)/run/tutorial/..\
+    $(tempdir)/run/tutorial/python/.. \
+    $(tempdir)/run/tutorial/lua/.. \
+    $(tempdir)/run/vectors/..\
+    $(tempdir)/run/vectors/python/.. \
+    $(tempdir)/run/vectors/lua/.. \
+    $(tempdir)/run/forward/.. \
+    $(tempdir)/run/strings/.. \
+    $(tempdir)/run/strings/python/.. \
+    $(tempdir)/run/clibrary/.. \
+    $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/ownership/.. \
+    $(tempdir)/run/ownership/python/..
 
 testdirs : $(TESTDIRS)
 
@@ -128,98 +128,94 @@ fortran : tutorial vectors strings clibrary ownership
 # Compile the generated Fortran wrapper
 tutorial vectors forward strings clibrary ownership : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-$@ \
-	    -f $(top)/tests/run-$@/Makefile \
+	    -C $(tempdir)/run/$@ \
+	    -f $(top)/tests/run/$@/Makefile \
 	    top=$(top) $@
 
 tutorial-c : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-tutorial \
-	    -f $(top)/tests/run-tutorial/Makefile \
+	    -C $(tempdir)/run/tutorial \
+	    -f $(top)/tests/run/tutorial/Makefile \
 	    top=$(top) testc
 
 tutorial-cpp : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-tutorial \
-	    -f $(top)/tests/run-tutorial/Makefile \
+	    -C $(tempdir)/run/tutorial \
+	    -f $(top)/tests/run/tutorial/Makefile \
 	    top=$(top) maincpp
 
 test-c : tutorial-c
 
 # Run the Fortran tests
 test-fortran : fortran
-	$(tempdir)/run-tutorial/tutorial
-	$(tempdir)/run-vectors/vectors
-	$(tempdir)/run-strings/strings
-	$(tempdir)/run-clibrary/clibrary
-	$(tempdir)/run-ownership/ownership
+	$(tempdir)/run/tutorial/tutorial
+	$(tempdir)/run/vectors/vectors
+	$(tempdir)/run/strings/strings
+	$(tempdir)/run/clibrary/clibrary
+	$(tempdir)/run/ownership/ownership
 
 # Compile the generated Python wrapper
 py-tutorial : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-tutorial/python \
-	    -f $(top)/tests/run-tutorial/python/Makefile \
+	    -C $(tempdir)/run/tutorial/python \
+	    -f $(top)/tests/run/tutorial/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 py-strings : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-strings/python \
-	    -f $(top)/tests/run-strings/python/Makefile \
+	    -C $(tempdir)/run/strings/python \
+	    -f $(top)/tests/run/strings/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 py-clibrary : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-clibrary/python \
-	    -f $(top)/tests/run-clibrary/python/Makefile \
+	    -C $(tempdir)/run/clibrary/python \
+	    -f $(top)/tests/run/clibrary/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 py-ownership : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-ownership/python \
-	    -f $(top)/tests/run-ownership/python/Makefile \
+	    -C $(tempdir)/run/ownership/python \
+	    -f $(top)/tests/run/ownership/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
 test-python-tutorial : py-tutorial
-	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
-	$(PYTHON_BIN) $(top)/tests/run-tutorial/python/test.py
+	export PYTHONPATH=$(top)/$(tempdir)/run/tutorial/python; \
+	$(PYTHON_BIN) $(top)/tests/run/tutorial/python/test.py
 
 test-python-strings : py-strings
-	export PYTHONPATH=$(top)/$(tempdir)/run-strings/python; \
-	$(PYTHON_BIN) $(top)/tests/run-strings/python/test.py
+	export PYTHONPATH=$(top)/$(tempdir)/run/strings/python; \
+	$(PYTHON_BIN) $(top)/tests/run/strings/python/test.py
 
 test-python-clibrary : py-clibrary
-	export PYTHONPATH=$(top)/$(tempdir)/run-clibrary/python; \
-	$(PYTHON_BIN) $(top)/tests/run-clibrary/python/test.py
+	export PYTHONPATH=$(top)/$(tempdir)/run/clibrary/python; \
+	$(PYTHON_BIN) $(top)/tests/run/clibrary/python/test.py
 
 test-python-ownership : py-ownership
-	export PYTHONPATH=$(top)/$(tempdir)/run-ownership/python; \
-	$(PYTHON_BIN) $(top)/tests/run-ownership/python/test.py
+	export PYTHONPATH=$(top)/$(tempdir)/run/ownership/python; \
+	$(PYTHON_BIN) $(top)/tests/run/ownership/python/test.py
 
 test-python : test-python-tutorial test-python-strings test-python-clibrary test-python-ownership
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
 	$(MAKE) \
-	    -C $(tempdir)/run-tutorial/lua \
-	    -f $(top)/tests/run-tutorial/lua/Makefile \
+	    -C $(tempdir)/run/tutorial/lua \
+	    -f $(top)/tests/run/tutorial/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
 # Run the Lua test
 test-lua : lua-tutorial
-#	export LUA_PATH=$(top)/$(tempdir)/run-tutorial/lua;
-	cd $(top)/$(tempdir)/run-tutorial/lua; \
-	$(LUA_BIN) $(top)/tests/run-tutorial/lua/test.lua
+#	export LUA_PATH=$(top)/$(tempdir)/run/tutorial/lua;
+	cd $(top)/$(tempdir)/run/tutorial/lua; \
+	$(LUA_BIN) $(top)/tests/run/tutorial/lua/test.lua
 
 test-all : test-c test-fortran test-python test-lua
 
 test-clean :
 	rm -rf $(tempdir)/test
-	rm -rf $(tempdir)/run-tutorial
-	rm -rf $(tempdir)/run-vectors
-	rm -rf $(tempdir)/run-strings
-	rm -rf $(tempdir)/run-clibrary
-	rm -rf $(tempdir)/run-ownership
+	rm -rf $(tempdir)/run
 
 ########################################################################
 #

@@ -44,13 +44,13 @@ include $(top)/tests/defaults.mk
 
 INCLUDE = \
     -I$(top)/tests/tutorial \
-    -I$(top)/tests/run-tutorial \
+    -I$(top)/tests/run/tutorial \
     $(LUA_INC)
 
 VPATH = \
     $(top)/tests/tutorial \
-    $(top)/tests/run-tutorial \
-    $(top)/tests/run-tutorial/lua
+    $(top)/tests/run/tutorial \
+    $(top)/tests/run/tutorial/lua
 
 OBJS = \
     tutorial.o \

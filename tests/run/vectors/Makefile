@@ -38,44 +38,37 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+# run/vectors
 #
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/tutorial \
-    -I$(top)/tests/run-tutorial \
-    $(PYTHON_INC)
+    -I$(top)/tests/vectors \
+    -I$(top)/tests/run/vectors \
+    -I$(top)/tests/fruit
 
 VPATH = \
-    $(top)/tests/tutorial \
-    $(top)/tests/run-tutorial \
-    $(top)/tests/run-tutorial/python
+    $(top)/tests/vectors \
+    $(top)/tests/run/vectors \
+    $(top)/tests/fruit
 
 OBJS = \
-    tutorial.o \
-    pyTutorialmodule.o \
-    pyClass1type.o \
-    pySingletontype.o \
-    pyTutorialhelper.o
+    vectors.o \
+    wrapfvectors.o \
+    wrapvectors.o \
+    fruit.o \
+    main.o
 
-CXXFLAGS += $(SHARED)
-
-all : tutorial.so simple
-
-tutorial.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+vectors : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod vectors
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
+vectors.o : vectors.hpp
+wrapvectors.o : wrapvectors.h vectors.hpp
+main.o : wrapfvectors.o
 
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapvectors.o vectors.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

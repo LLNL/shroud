@@ -1,4 +1,4 @@
-# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,42 +38,42 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+# run/ownership
 #
+ifndef top
+top = ../..
+endif
+
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/clibrary \
-    -I$(top)/tests/run-clibrary \
-    $(PYTHON_INC)
+    -I$(top)/tests/ownership \
+    -I$(top)/tests/run/ownership \
+    -I$(top)/tests/fruit
 
 VPATH = \
-    $(top)/tests/clibrary \
-    $(top)/tests/run-clibrary \
-    $(top)/tests/run-clibrary/python
+    $(top)/tests/ownership \
+    $(top)/tests/run/ownership \
+    $(top)/tests/fruit
 
 OBJS = \
-    clibrary.o \
-    pyClibrarymodule.o \
-    pyClibraryhelper.o
+    ownership.o \
+    wrapfownership.o \
+    wrapownership.o \
+    wrapClass1.o \
+    fruit.o \
+    main.o
 
-CFLAGS += $(SHARED)
-
-all : clibrary.so simple
-
-clibrary.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+ownership : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
+ownership.o : ownership.hpp
+wrapOwnership.o : wrapownership.h ownership.hpp
+main.o : wrapfownership.o
 
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o ownership.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

@@ -38,42 +38,31 @@
 #
 # #######################################################################
 #
-# run-ownership
+# run/clibrary
 #
-ifndef top
-top = ../..
-endif
-
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run-ownership \
+    -I$(top)/tests/clibrary \
+    -I$(top)/tests/run/clibrary \
     -I$(top)/tests/fruit
 
 VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run-ownership \
+    $(top)/tests/clibrary \
+    $(top)/tests/run/clibrary \
     $(top)/tests/fruit
 
 OBJS = \
-    ownership.o \
-    wrapfownership.o \
-    wrapownership.o \
-    wrapClass1.o \
+    clibrary.o \
+    wrapfclibrary.o \
+    wrapClibrary.o \
     fruit.o \
     main.o
 
-ownership : $(OBJS)
+clibrary : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+	rm -f $(OBJS) *.mod clibrary
 
-ownership.o : ownership.hpp
-wrapOwnership.o : wrapownership.h ownership.hpp
-main.o : wrapfownership.o
-
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o ownership.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+main.o : wrapfclibrary.o

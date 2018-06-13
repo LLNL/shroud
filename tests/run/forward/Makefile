@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,45 +38,38 @@
 #
 # #######################################################################
 #
-# run-tutorial
+# run-forward
 #
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/tutorial \
+    -I$(top)/tests/forward \
+    -I$(top)/tests/run-forward \
     -I$(top)/tests/run-tutorial \
     -I$(top)/tests/fruit
 
 VPATH = \
-    $(top)/tests/tutorial \
-    $(top)/tests/run-tutorial \
+    $(top)/tests/forward \
+    $(top)/tests/run-forward \
     $(top)/tests/fruit
 
 OBJS = \
-    tutorial.o \
-    wrapftutorial.o \
-    wrapTutorial.o \
-    wrapClass1.o \
-    wrapSingleton.o \
+    forward.o \
+    wrapfforward.o \
+    wrapClass2.o \
     fruit.o \
     main.o
 
-tutorial : $(OBJS)
+forward : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f $(OBJS) *.mod tutorial
+	rm -f $(OBJS) *.mod forward
 
-tutorial.o : tutorial.hpp
-wrapTutorial.o : wrapTutorial.h tutorial.hpp
-wrapClass1.o : wrapClass1.h tutorial.hpp
-wrapSingleton.o : wrapSingleton.h tutorial.hpp
-main.o : wrapftutorial.o
+forward.o : forward.hpp
+wrapClass1.o : wrapClass2.h forward.hpp
+main.o : wrapfforward.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+maincpp : maincpp.o wrapClass2.o forward.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
-
-testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
-testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
-	$(CC) $(CFLAGS) $(LIBS) $^ -o $@

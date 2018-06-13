@@ -43,25 +43,25 @@
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/strings \
-    -I$(top)/tests/run-strings \
+    -I$(top)/tests/clibrary \
+    -I$(top)/tests/run/clibrary \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/strings \
-    $(top)/tests/run-strings \
-    $(top)/tests/run-strings/python
+    $(top)/tests/clibrary \
+    $(top)/tests/run/clibrary \
+    $(top)/tests/run/clibrary/python
 
 OBJS = \
-    strings.o \
-    pystringsmodule.o \
-    pystringshelper.o
+    clibrary.o \
+    pyClibrarymodule.o \
+    pyClibraryhelper.o
 
-CXXFLAGS += $(SHARED)
+CFLAGS += $(SHARED)
 
-all : strings.so simple
+all : clibrary.so simple
 
-strings.so : $(OBJS)
+clibrary.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 simple : testpython.o $(OBJS)

@@ -38,50 +38,31 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+# run/strings
 #
-ifndef top
-top = ../../..
-endif
-
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run-ownership \
-    $(PYTHON_INC)
+    -I$(top)/tests/strings \
+    -I$(top)/tests/run/strings \
+    -I$(top)/tests/fruit
 
 VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run-ownership \
-    $(top)/tests/run-ownership/python
+    $(top)/tests/strings \
+    $(top)/tests/run/strings \
+    $(top)/tests/fruit
 
 OBJS = \
-    ownership.o \
-    pyClass1type.o \
-    pyownershipmodule.o \
-    pyownershiphelper.o
+    strings.o \
+    wrapfstrings.o \
+    wrapstrings.o \
+    fruit.o \
+    main.o
 
-CXXFLAGS += $(SHARED)
-
-all : ownership.so simple
-
-ownership.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+strings : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod strings
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-
-setup:
-	$(PYTHON) setup.py build
-
+main.o : wrapfstrings.o

@@ -38,37 +38,45 @@
 #
 # #######################################################################
 #
-# run-vectors
+# run/tutorial
 #
 include $(top)/tests/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/vectors \
-    -I$(top)/tests/run-vectors \
+    -I$(top)/tests/tutorial \
+    -I$(top)/tests/run/tutorial \
     -I$(top)/tests/fruit
 
 VPATH = \
-    $(top)/tests/vectors \
-    $(top)/tests/run-vectors \
+    $(top)/tests/tutorial \
+    $(top)/tests/run/tutorial \
     $(top)/tests/fruit
 
 OBJS = \
-    vectors.o \
-    wrapfvectors.o \
-    wrapvectors.o \
+    tutorial.o \
+    wrapftutorial.o \
+    wrapTutorial.o \
+    wrapClass1.o \
+    wrapSingleton.o \
     fruit.o \
     main.o
 
-vectors : $(OBJS)
+tutorial : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f $(OBJS) *.mod vectors
+	rm -f $(OBJS) *.mod tutorial
 
-vectors.o : vectors.hpp
-wrapvectors.o : wrapvectors.h vectors.hpp
-main.o : wrapfvectors.o
+tutorial.o : tutorial.hpp
+wrapTutorial.o : wrapTutorial.h tutorial.hpp
+wrapClass1.o : wrapClass1.h tutorial.hpp
+wrapSingleton.o : wrapSingleton.h tutorial.hpp
+main.o : wrapftutorial.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapvectors.o vectors.o
+maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+
+testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
+testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+	$(CC) $(CFLAGS) $(LIBS) $^ -o $@
