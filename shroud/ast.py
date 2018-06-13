@@ -1041,7 +1041,7 @@ class EnumNode(AstNode):
         # Add to namespace
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
-        self.typemap = typemap.create_enum_typedef(self)
+        self.typemap = typemap.create_enum_typemap(self)
         self.typemap_name = self.typemap.name
         # also 'enum class foo' will alter scope
 

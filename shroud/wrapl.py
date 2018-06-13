@@ -224,7 +224,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             # XXX           result_is_ptr = False
             CXX_subprogram = 'subroutine'
 
-        # XXX       result_typedef = typemap.lookup_type(result_type)
+        # XXX       result_typemap = typemap.lookup_type(result_type)
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
         if is_dtor:
@@ -243,7 +243,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             out_args = []
             found_default = False
             for arg in function.ast.params:
-                arg_typedef = typemap.lookup_type(arg.typename)
+                arg_typemap = typemap.lookup_type(arg.typename)
                 attrs = arg.attrs
                 if arg.init is not None:
                     all_calls.append(LuaFunction(
@@ -296,9 +296,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typedef = typemap.lookup_type(arg.typename)
+                        arg_typemap = typemap.lookup_type(arg.typename)
                         fmt.itype_var = itype_vars[iarg]
-                        fmt.itype = arg_typedef.LUA_type
+                        fmt.itype = arg_typemap.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
 
                     # Select cases to help with formating of output
@@ -518,37 +518,37 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typedef = typemap.lookup_type(arg.typename)
-            fmt_arg.cxx_type = arg_typedef.cxx_type
-            LUA_statements = arg_typedef.LUA_statements
+            arg_typemap = typemap.lookup_type(arg.typename)
+            fmt_arg.cxx_type = arg_typemap.cxx_type
+            LUA_statements = arg_typemap.LUA_statements
             if attrs['intent'] in ['inout', 'in']:
-                # XXX lua_pop = wformat(arg_typedef.LUA_pop, fmt_arg)
+                # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
-                fmt_arg.c_var = wformat(arg_typedef.LUA_pop, fmt_arg)
-                if arg_typedef.c_to_cxx is None:
+                fmt_arg.c_var = wformat(arg_typemap.LUA_pop, fmt_arg)
+                if arg_typemap.c_to_cxx is None:
                     lua_pop = fmt_arg.c_var
                 else:
-                    lua_pop = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                    lua_pop = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
             if attrs['intent'] in ['inout', 'out']:
                 # output variable must be a pointer
                 # XXX - fix up for strings
                 # XXX  format, vargs = self.intent_out(
-                # XXX      arg_typedef, fmt_arg, post_call)
+                # XXX      arg_typemap, fmt_arg, post_call)
                 # XXX  build_format.append(format)
                 # XXX  build_vargs.append('*' + vargs)
 
-                # append_format(LUA_push, arg_typedef.LUA_push, fmt_arg)
+                # append_format(LUA_push, arg_typemap.LUA_push, fmt_arg)
                 fmt.LUA_used_param_state = True
-                tmp = wformat(arg_typedef.LUA_push, fmt_arg)
+                tmp = wformat(arg_typemap.LUA_push, fmt_arg)
                 LUA_push.append(tmp + ';')
 
             # argument for C++ function
 # This has been replaced by gen_arg methods, but not sure about const.
 #            lang = 'cxx_type'
 #            arg_const = False
-#            if arg_typedef.base == 'string':
+#            if arg_typemap.base == 'string':
 #                # C++ will coerce char * to std::string
 #                lang = 'c_type'
 #                arg_const = True  # lua_tostring is const
@@ -563,7 +563,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 decl_suffix = ' = {};'.format(lua_pop)
             else:
                 decl_suffix = ';'
-            if arg_typedef.base == 'string':
+            if arg_typemap.base == 'string':
                 LUA_decl.append(arg.gen_arg_as_c(continuation=True) + decl_suffix)
             else:
                 LUA_decl.append(arg.gen_arg_as_cxx(as_ptr=True, continuation=True) + decl_suffix)

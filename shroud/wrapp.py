@@ -160,9 +160,9 @@ class Wrapp(util.WrapperMixin):
         for node in newlibrary.classes:
             if not node.options.wrap_python:
                 continue
-            typedef = node.typemap
+            ntypemap = node.typemap
             fmt = node.fmtdict
-            typedef.PY_format = 'O'
+            ntypemap.PY_format = 'O'
 
             # PyTypeObject for class
             node.eval_template('PY_PyTypeObject')
@@ -175,10 +175,10 @@ class Wrapp(util.WrapperMixin):
             fmt.PY_from_object_func = wformat(
                 'PP_{cxx_class}_from_Object', fmt)
 
-            typedef.PY_PyTypeObject = fmt.PY_PyTypeObject
-            typedef.PY_PyObject = fmt.PY_PyObject
-            typedef.PY_to_object = fmt.PY_to_object_func
-            typedef.PY_from_object = fmt.PY_from_object_func
+            ntypemap.PY_PyTypeObject = fmt.PY_PyTypeObject
+            ntypemap.PY_PyObject = fmt.PY_PyObject
+            ntypemap.PY_to_object = fmt.PY_to_object_func
+            ntypemap.PY_from_object = fmt.PY_from_object_func
 
         self._push_splicer('class')
         for node in newlibrary.classes:
@@ -264,7 +264,6 @@ class Wrapp(util.WrapperMixin):
         self.log.write("class {1.name}\n".format(self, node))
         name = node.name
         unname = util.un_camel(name)
-        typedef = typemap.lookup_type(name)
 
         options = node.options
         fmt_class = node.fmtdict
@@ -435,9 +434,9 @@ return 1;""", fmt)
                 'PyList_SET_ITEM(lnames, {}, obj);'.format(i),
             ])
 
-            typedef = typemap.lookup_type(ast.typename)
+            arg_typemap = typemap.lookup_type(ast.typename)
             output.extend([
-                'obj = (PyObject *) PyArray_DescrFromType({});'.format(typedef.PYN_typenum),
+                'obj = (PyObject *) PyArray_DescrFromType({});'.format(arg_typemap.PYN_typenum),
                 'if (obj == NULL) goto fail;',
                 'PyList_SET_ITEM(ldescr, {}, obj);'.format(i),
             ])
@@ -505,10 +504,10 @@ return 1;""", fmt)
         fmt.py_var = 'value'  # Used with PY_get
 
         ast = node.ast
-        typedef = typemap.lookup_type(ast.typename)
+        arg_typemap = typemap.lookup_type(ast.typename)
 
-        if typedef.PY_ctor:
-            fmt.ctor = wformat(typedef.PY_ctor, fmt)
+        if arg_typemap.PY_ctor:
+            fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
         else:
             fmt.ctor = 'UUUctor'
         fmt.cxx_decl = ast.gen_arg_as_cxx(name='rv')
@@ -524,8 +523,8 @@ return 1;""", fmt)
         # setter
         if not ast.attrs.get('readonly', False):
             fmt_var.PY_setter = wformat(options.PY_member_setter_template, fmt_var)
-            if typedef.PY_get:
-                fmt.get = wformat(typedef.PY_get, fmt)
+            if arg_typemap.PY_get:
+                fmt.get = wformat(arg_typemap.PY_get, fmt)
             else:
                 fmt.get = 'UUUget'
 
@@ -938,11 +937,11 @@ return 1;""", fmt)
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = 'SHPy_' + arg_name
 
-            arg_typedef = typemap.lookup_type(arg.typename)
-            fmt_arg.numpy_type = arg_typedef.PYN_typenum
+            arg_typemap = typemap.lookup_type(arg.typename)
+            fmt_arg.numpy_type = arg_typemap.PYN_typenum
             # Add formats used by py_statements
-            fmt_arg.c_type = arg_typedef.c_type
-            fmt_arg.cxx_type = arg_typedef.cxx_type
+            fmt_arg.c_type = arg_typemap.c_type
+            fmt_arg.cxx_type = arg_typemap.cxx_type
             if arg.const:
                 fmt_arg.c_const = 'const '
             else:
@@ -965,7 +964,7 @@ return 1;""", fmt)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
                 local_var = 'funcptr'
-            elif arg_typedef.base == 'string':
+            elif arg_typemap.base == 'string':
                 fmt_arg.c_decl = wformat('{c_const}char * {c_var}', fmt_arg)
 #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
@@ -999,7 +998,7 @@ return 1;""", fmt)
             elif dimension:
                 intent_blk = self.dimension_blk(arg, fmt_arg)
             else:
-                py_statements = arg_typedef.py_statements
+                py_statements = arg_typemap.py_statements
                 stmts = 'intent_' + intent
                 intent_blk = py_statements.get(stmts, {})
 
@@ -1007,7 +1006,7 @@ return 1;""", fmt)
             cxx_local_var = intent_blk.get('cxx_local_var', '')
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
-                if not arg_typedef.PY_PyTypeObject:
+                if not arg_typemap.PY_PyTypeObject:
                     fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
                 local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
@@ -1042,28 +1041,28 @@ return 1;""", fmt)
                     pass_var = fmt_arg.cxx_var
                     parse_format.append('O')
                     parse_vargs.append('&' + fmt_arg.pytmp_var)
-                elif arg_typedef.PY_PyTypeObject:
+                elif arg_typemap.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
-                    fmt_arg.py_type = arg_typedef.PY_PyObject or 'PyObject'
+                    fmt_arg.py_type = arg_typemap.PY_PyObject or 'PyObject'
                     append_format(PY_decl, '{py_type} * {py_var};', fmt_arg)
                     pass_var = fmt_arg.cxx_var
-                    parse_format.append(arg_typedef.PY_format)
+                    parse_format.append(arg_typemap.PY_format)
                     parse_format.append('!')
-                    parse_vargs.append('&' + arg_typedef.PY_PyTypeObject)
+                    parse_vargs.append('&' + arg_typemap.PY_PyTypeObject)
                     parse_vargs.append('&' + fmt_arg.py_var)
-                elif arg_typedef.PY_from_object:
+                elif arg_typemap.PY_from_object:
                     # Use function to convert object
                     # cxx_var created directly (no c_var)
                     append_format(PY_decl, '{cxx_decl};', fmt_arg)
                     pass_var = fmt_arg.cxx_var
-                    parse_format.append(arg_typedef.PY_format)
+                    parse_format.append(arg_typemap.PY_format)
                     parse_format.append('&')
-                    parse_vargs.append(arg_typedef.PY_from_object)
+                    parse_vargs.append(arg_typemap.PY_from_object)
                     parse_vargs.append('&' + fmt_arg.cxx_var)
                 else:
                     append_format(PY_decl, '{c_decl};', fmt_arg)
-                    parse_format.append(arg_typedef.PY_format)
+                    parse_format.append(arg_typemap.PY_format)
                     parse_vargs.append('&' + fmt_arg.c_var)
 
             if intent in ['inout', 'out']:
@@ -1079,7 +1078,7 @@ return 1;""", fmt)
                 if not hidden:
                     # output variable must be a pointer
                     build_tuples.append(self.intent_out(
-                        None, None, arg, arg_typedef, intent_blk, fmt_arg, post_call))
+                        None, None, arg, arg_typemap, intent_blk, fmt_arg, post_call))
 
             # Code to convert parsed values (C or Python) to C++.
             util.append_format_cmds(PY_decl,      intent_blk, 'decl', fmt_arg)
@@ -1088,14 +1087,14 @@ return 1;""", fmt)
             util.append_format_cmds(cleanup_code, intent_blk, 'cleanup', fmt_arg)
             util.append_format_cmds(fail_code,    intent_blk, 'fail', fmt_arg)
 
-            if intent != 'out' and not cxx_local_var and arg_typedef.c_to_cxx:
+            if intent != 'out' and not cxx_local_var and arg_typemap.c_to_cxx:
                 # Make intermediate C++ variable
                 # Needed to pass address of variable
                 # Helpful with debugging.
                 fmt_arg.cxx_var = 'SH_' + fmt_arg.c_var
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True)
-                fmt_arg.cxx_val = wformat(arg_typedef.c_to_cxx, fmt_arg)
+                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 append_format(post_parse, '{cxx_decl} = {cxx_val};', fmt_arg)
                 pass_var = fmt_arg.cxx_var
 
@@ -2205,11 +2204,11 @@ def attr_allocatable(language, allocatable, node, arg):
 
         # Create Descr if types are different
         if arg.typename != moldarg.typename:
-            arg_typedef = typemap.lookup_type(arg.typename)
+            arg_typemap = typemap.lookup_type(arg.typename)
             descr = 'SHDPy_' + arg.name
             descr_code = ('PyArray_Descr * {} = '
                           'PyArray_DescrFromType({});\n'
-                          .format(descr, arg_typedef.PYN_typenum))
+                          .format(descr, arg_typemap.PYN_typenum))
 
     return (prototype, order, descr, subok), descr_code
 

@@ -169,13 +169,13 @@ class Typemap(object):
         return "Typemap('%s', " % self.name + ','.join(args) + ')'
 
     def __as_yaml__(self, indent, output):
-        """Write out entire typedef as YAML.
+        """Write out entire typemap as YAML.
         """
         util.as_yaml(self, self._keyorder, indent, output)
 
     def __export_yaml__(self, indent, output):
         """Write out a subset of a wrapped type.
-        Other fields are set with typedef_shadow_defaults.
+        Other fields are set with fill_shadow_typemap_defaults.
         """
         util.as_yaml(self, [
             'base',
@@ -189,7 +189,7 @@ class Typemap(object):
         ], indent, output)
 
 
-### Manage collection of typedefs
+### Manage collection of typemaps
 _typedict = {}   # dictionary of registered types
 
 def set_global_types(typedict):
@@ -199,16 +199,16 @@ def set_global_types(typedict):
 def get_global_types():
     return _typedict
 
-def register_type(name, typedef):
-    """Register a typedef"""
+def register_type(name, intypemap):
+    """Register a typemap"""
     global _typedict
-    _typedict[name] = typedef
+    _typedict[name] = intypemap
 
 def lookup_type(name):
     """Lookup name in registered types taking aliases into account."""
     global _typedict
-    typedef = _typedict.get(name)
-    return typedef
+    outtypemap = _typedict.get(name)
+    return outtypemap
 
 def initialize():
     set_global_types({})
@@ -1021,26 +1021,26 @@ def initialize():
     return def_types
 
 
-def create_enum_typedef(node):
-    """Create a typedef similar to an int.
+def create_enum_typemap(node):
+    """Create a typemap similar to an int.
     """
     fmt_enum = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = lookup_type(type_name)
-    if typedef is None:
-        inttypedef = lookup_type('int')
-        typedef = inttypedef.clone_as(type_name)
-        typedef.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
-        typedef.c_to_cxx = util.wformat(
+    ntypemap = lookup_type(type_name)
+    if ntypemap is None:
+        inttypemap = lookup_type('int')
+        ntypemap = inttypemap.clone_as(type_name)
+        ntypemap.cxx_type = util.wformat('{namespace_scope}{enum_name}', fmt_enum)
+        ntypemap.c_to_cxx = util.wformat(
             'static_cast<{namespace_scope}{enum_name}>({{c_var}})', fmt_enum)
-        typedef.cxx_to_c = 'static_cast<int>({cxx_var})'
-        register_type(type_name, typedef)
-    return typedef
+        ntypemap.cxx_to_c = 'static_cast<int>({cxx_var})'
+        register_type(type_name, ntypemap)
+    return ntypemap
 
 def create_class_typemap(cls):
-    """Create a typedef for a class.
+    """Create a typemap for a class.
 
     The C type is a capsule_data which will contains a pointer to the
     C++ memory and information on how to delete the memory.
@@ -1049,12 +1049,12 @@ def create_class_typemap(cls):
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = lookup_type(cxx_name)
-    if typedef is None:
+    ntypemap = lookup_type(cxx_name)
+    if ntypemap is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
         c_name = fmt_class.C_prefix + f_name
-        typedef = Typemap(
+        ntypemap = Typemap(
             type_name,
             base='shadow',
             cxx_type=cxx_name,
@@ -1065,37 +1065,37 @@ def create_class_typemap(cls):
 #            f_to_c = '{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
             f_to_c = '{f_var}%%%s' % fmt_class.F_derived_member,
             )
-        fill_shadow_typemap_defaults(typedef, fmt_class)
-        register_type(type_name, typedef)
+        fill_shadow_typemap_defaults(ntypemap, fmt_class)
+        register_type(type_name, ntypemap)
 
-    fmt_class.C_type_name = typedef.c_type
-    return typedef
+    fmt_class.C_type_name = ntypemap.c_type
+    return ntypemap
 
-def fill_shadow_typemap_defaults(typedef, fmt):
-    """Add some defaults to typedef.
-    When dumping typedefs to a file, only a subset is written
+def fill_shadow_typemap_defaults(ntypemap, fmt):
+    """Add some defaults to typemap.
+    When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
     """
-    if typedef.base != 'shadow':
+    if ntypemap.base != 'shadow':
         return
 
     # Convert to void * to add to struct
-    typedef.cxx_to_c='static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})'
+    ntypemap.cxx_to_c='static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})'
 
     # void pointer in struct -> class instance pointer
-    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>({c_var}{c_member}addr)' %
-                      typedef.cxx_type)
+    ntypemap.c_to_cxx=('\tstatic_cast<{c_const}%s *>({c_var}{c_member}addr)' %
+                      ntypemap.cxx_type)
 
-    typedef.f_type='type(%s)' % typedef.f_derived_type
-    typedef.f_c_type='type(%s)' % fmt.F_capsule_data_type
-    typedef.f_c_module={'--import--': [ fmt.F_capsule_data_type ]}
+    ntypemap.f_type='type(%s)' % ntypemap.f_derived_type
+    ntypemap.f_c_type='type(%s)' % fmt.F_capsule_data_type
+    ntypemap.f_c_module={'--import--': [ fmt.F_capsule_data_type ]}
 
     # XXX module name may not conflict with type name
-#    typedef.f_module={fmt_class.F_module_name:[unname]}
+#    ntypemap.f_module={fmt_class.F_module_name:[unname]}
 
     # Return a C_capsule_data_type
-    typedef.c_statements = dict(
+    ntypemap.c_statements = dict(
         intent_in=dict(
            buf_args = [ 'shadow' ]
         ),
@@ -1103,7 +1103,7 @@ def fill_shadow_typemap_defaults(typedef, fmt):
             c_header='<stdlib.h>',
             cxx_header='<stdlib.h>',
             post_call=[
-                '%s {c_var};' % (typedef.c_type),
+                '%s {c_var};' % (ntypemap.c_type),
                 '{c_var}.addr = {cxx_cast_to_void_ptr};',
                 '{c_var}.idtor = {idtor};',
             ]
@@ -1112,7 +1112,7 @@ def fill_shadow_typemap_defaults(typedef, fmt):
 
     # return from C function
     # f_c_return_decl='type(CPTR)' % unname,
-    typedef.f_statements = dict(
+    ntypemap.f_statements = dict(
         result=dict(
             need_wrapper=True,
             call=[
@@ -1123,21 +1123,21 @@ def fill_shadow_typemap_defaults(typedef, fmt):
         )
 
 # The import is added in wrapf.py
-#    typedef.f_c_module={ '-import-': ['F_capsule_data_type']}
+#    ntypemap.f_c_module={ '-import-': ['F_capsule_data_type']}
 
-    typedef.py_statements=dict(
+    ntypemap.py_statements=dict(
         intent_in=dict(
             cxx_local_var='pointer',
             post_parse=[
                 '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_inout=dict(
             cxx_local_var='pointer',
             post_parse=[
                 '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_out=dict(
@@ -1148,33 +1148,33 @@ def fill_shadow_typemap_defaults(typedef, fmt):
             ]
         ),
     )
-#    if not typedef.PY_PyTypeObject:
-#        typedef.PY_PyTypeObject='UUU'
-    # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
+#    if not ntypemap.PY_PyTypeObject:
+#        ntypemap.PY_PyTypeObject='UUU'
+    # ntypemap.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
 
-    typedef.LUA_type='LUA_TUSERDATA'
-    typedef.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
+    ntypemap.LUA_type='LUA_TUSERDATA'
+    ntypemap.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
                      '(\t{LUA_state_var}, 1, "{LUA_metadata}")')
-    # typedef.LUA_push=None  # XXX create a userdata object with metatable
-    # typedef.LUA_statements={}
+    # ntypemap.LUA_push=None  # XXX create a userdata object with metatable
+    # ntypemap.LUA_statements={}
 
     # allow forward declarations to avoid recursive headers
-    typedef.forward=typedef.cxx_type
+    ntypemap.forward=ntypemap.cxx_type
 
 
 def create_struct_typemap(cls):
-    """Create a typedef for a struct.
+    """Create a typemap for a struct.
     """
     fmt_class = cls.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
     type_name = cxx_name.replace('\t', '')
 
-    typedef = lookup_type(cxx_name)
-    if typedef is None:
+    ntypemap = lookup_type(cxx_name)
+    if ntypemap is None:
         # unname = util.un_camel(name)
         f_name = cls.name.lower()
         c_name = fmt_class.C_prefix + f_name
-        typedef = Typemap(
+        ntypemap = Typemap(
             type_name,
             base='struct',
             cxx_type=cxx_name,
@@ -1183,65 +1183,65 @@ def create_struct_typemap(cls):
             f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
             PYN_descr=fmt_class.PY_struct_array_descr_variable,
         )
-        fill_struct_typemap_defaults(typedef)
-        register_type(type_name, typedef)
+        fill_struct_typemap_defaults(ntypemap)
+        register_type(type_name, ntypemap)
 
-    fmt_class.C_type_name = typedef.c_type
-    return typedef
+    fmt_class.C_type_name = ntypemap.c_type
+    return ntypemap
 
 
-def fill_struct_typemap_defaults(typedef):
-    """Add some defaults to typedef.
-    When dumping typedefs to a file, only a subset is written
+def fill_struct_typemap_defaults(ntypemap):
+    """Add some defaults to typemap.
+    When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
     """
-    if typedef.base != 'struct':
+    if ntypemap.base != 'struct':
         return
 
-    helper = whelpers.add_union_helper(typedef.cxx_type, typedef.c_type)
+    helper = whelpers.add_union_helper(ntypemap.cxx_type, ntypemap.c_type)
 
-    typedef.c_union = helper
+    ntypemap.c_union = helper
 
     # C++ pointer -> void pointer -> C pointer
-    typedef.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
+    ntypemap.cxx_to_c=('\tstatic_cast<{c_const}%s *>('
                       '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
-                      typedef.c_type)
+                      ntypemap.c_type)
 
     # C pointer -> void pointer -> C++ pointer
-    typedef.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
+    ntypemap.c_to_cxx=('\tstatic_cast<{c_const}%s *>('
                       '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
-                      typedef.cxx_type)
+                      ntypemap.cxx_type)
 
     # To convert, extract correct field from union
-#    typedef.cxx_to_c='\t{cxx_addr}{cxx_var}.cxx'
-#    typedef.c_to_cxx='\t{cxx_addr}{cxx_var}.c'
+#    ntypemap.cxx_to_c='\t{cxx_addr}{cxx_var}.cxx'
+#    ntypemap.c_to_cxx='\t{cxx_addr}{cxx_var}.c'
 
-    typedef.f_type='type(%s)' % typedef.f_derived_type
+    ntypemap.f_type='type(%s)' % ntypemap.f_derived_type
 
     # XXX module name may not conflict with type name
-#    typedef.f_module={fmt_class.F_module_name:[unname]}
+#    ntypemap.f_module={fmt_class.F_module_name:[unname]}
 
-    typedef.c_statements=dict(
+    ntypemap.c_statements=dict(
         result=dict(
             c_helper=helper,
         ),
     )
 
-#    typedef.PYN_typenum='NPY_VOID'
-    typedef.py_statements=dict(
+#    ntypemap.PYN_typenum='NPY_VOID'
+    ntypemap.py_statements=dict(
         intent_in=dict(
             cxx_local_var='pointer',
             post_parse=[
                 '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_inout=dict(
             cxx_local_var='pointer',
             post_parse=[
                 '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % typedef.cxx_type,
+                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_out=dict(
@@ -1252,15 +1252,15 @@ def fill_struct_typemap_defaults(typedef):
             ]
         ),
     )
-#    if not typedef.PY_PyTypeObject:
-#        typedef.PY_PyTypeObject='UUU'
-    # typedef.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
+#    if not ntypemap.PY_PyTypeObject:
+#        ntypemap.PY_PyTypeObject='UUU'
+    # ntypemap.PY_ctor='PyObject_New({PyObject}, &{PyTypeObject})'
 
-    typedef.LUA_type='LUA_TUSERDATA'
-    typedef.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
+    ntypemap.LUA_type='LUA_TUSERDATA'
+    ntypemap.LUA_pop=('\t({LUA_userdata_type} *)\t luaL_checkudata'
                      '(\t{LUA_state_var}, 1, "{LUA_metadata}")')
-    # typedef.LUA_push=None  # XXX create a userdata object with metatable
-    # typedef.LUA_statements={}
+    # ntypemap.LUA_push=None  # XXX create a userdata object with metatable
+    # ntypemap.LUA_statements={}
 
 
 def lookup_c_statements(arg):
@@ -1270,12 +1270,12 @@ def lookup_c_statements(arg):
     """
     attrs = arg.attrs
     argtype = arg.typename
-    arg_typedef = lookup_type(argtype)
+    arg_typemap = lookup_type(argtype)
 
-    c_statements = arg_typedef.c_statements
+    c_statements = arg_typemap.c_statements
     if 'template' in attrs:
         cxx_T = attrs['template']
-        c_statements = arg_typedef.c_templates.get(
+        c_statements = arg_typemap.c_templates.get(
             cxx_T, c_statements)
-        arg_typedef = lookup_type(cxx_T)
-    return arg_typedef, c_statements
+        arg_typemap = lookup_type(cxx_T)
+    return arg_typemap, c_statements
