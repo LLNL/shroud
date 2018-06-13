@@ -102,7 +102,7 @@ This option can be incorporated into a CMakefile as::
         include(${CMAKE_CURRENT_BINARY_DIR}/SetupShroud.cmake)
     endif()
 
-The path to Shroud must defined to CMake.  It can be defined on the command line as::
+The path to Shroud must be defined to CMake.  It can be defined on the command line as::
 
     cmake -DSHROUD_EXECUTABLE=/full/path/bin/shroud
 

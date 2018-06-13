@@ -226,7 +226,7 @@ Attributes may also be added external to *decl*::
 allocatable
 ^^^^^^^^^^^
 
-Sometimes it is more convient to have the wrapper allocate an
+Sometimes it is more convenient to have the wrapper allocate an
 ``intent(out)`` array before passing it to the C++ function.  This can
 be accomplished by adding the *allocatable* attribute.  For example the
 C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
@@ -235,7 +235,7 @@ argument and assigns it to an ``intent(out)`` argument::
     void cos_doubles(double *in, double *out, int size)
     {
         for(int i = 0; i < size; i++) {
-            out[i] = in[i] * 2.;
+            out[i] = cos(in[i]);
         }
     }
 
@@ -271,7 +271,8 @@ option **F_standard** is not 2008 then the allocate statement will be::
         allocate(out(lbound(in,1):ubound(in,1)))
 
 
-For Python, same as *dimension*.
+For Python, a similar NumPy array object will be constructed using 
+``PyArray_NewLikeArray``.
 
 
 default
@@ -320,9 +321,12 @@ dimension
 ^^^^^^^^^
 
 Sets the Fortran DIMENSION attribute.
-Pointer argument should be passed through since it is an
-array.  *value* must be *False*.
-If set without a value, it defaults to ``(*)``.
+Pointer argument should be passed through since it is an array.
+*value* attribute must not be *True*.
+If set without a value, it defaults to ``(*)``::
+
+    double *array +dimension
+    double *array +dimension(len)
 
 free_pattern
 ^^^^^^^^^^^^

@@ -42,6 +42,7 @@
 #
 from __future__ import print_function
 
+import math
 import numpy as np
 import unittest
 import clibrary
@@ -86,10 +87,13 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 
     def testcos_doubles(self):
-        rv = clibrary.cos_doubles([1., 2., 3., 4.])
+        # x = np.arange(0, 2 * np.pi, 0.1)
+        inarray = [ 0.0, 0.5*np.pi, np.pi, 1.5*np.pi, 2.0*np.pi ]
+        outarray = [ math.cos(v) for v in inarray]
+        rv = clibrary.cos_doubles(inarray)
         self.assertTrue(isinstance(rv, np.ndarray))
         self.assertEqual('float64', rv.dtype.name)
-        self.assertTrue(np.allclose(rv, [2.,4.,6.,8.]))
+        self.assertTrue(np.allclose(rv, outarray))
 
     def test_truncate(self):
         rv = clibrary.truncate_to_int([1.2, 2.3, 3.4, 4.5])
