@@ -53,16 +53,22 @@ extern "C" {
 struct s_TES_names {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TES_names TES_names;
 
 struct s_TES_names2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_TES_names2 TES_names2;
+
+struct s_TES_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_SHROUD_capsule_data TES_SHROUD_capsule_data;
+
+void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }

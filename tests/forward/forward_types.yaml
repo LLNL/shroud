@@ -50,7 +50,7 @@ declarations:
         cxx_type: tutorial::Class2
         c_type: FOR_class2
         f_derived_type: class2
-        f_to_c: "{f_var}%cxxptr"
+        f_to_c: "{f_var}%cxxmem"
         f_module:
           forward_mod:
           - class2

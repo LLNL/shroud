@@ -39,6 +39,42 @@
 ########################################################################
 """
 Helper functions for C and Fortran wrappers.
+
+
+ C helper functions which may be added to a implementation file.
+
+ c_header    = Blank delimited list of header files to #include
+               in implementation file when wrapping a C library.
+ cxx_header  = Blank delimited list of header files to #include.
+               in implementation file when wrapping a C++ library.
+ c_source    = language=c source.
+ cxx_source  = language=c++ source.
+ dependent_helpers = list of helpers names needed by this helper
+                     They will be added to the output before current helper.
+
+ h_header    = Blank delimited list of headers to #include in
+               c wrapper header.
+ h_source    = code for include file. Must be compatible with language=c.
+
+ h_shared_include = include files needed by shared header.
+ h_shared_code    = code written to C_header_helper file.
+                    Useful for struct and typedefs.
+
+ source      = Code inserted before any wrappers.
+               The functions should be file static.
+               Used if c_source or cxx_source is not defined.
+
+
+ Fortran helper functions which may be added to a module.
+
+ dependent_helpers = list of helpers names needed by this helper
+                     They will be added to the output before current helper.
+ private   = names for PRIVATE statement 
+ interface = code for INTERFACE
+ source    = code for CONTAINS
+
+
+
 """
 
 from . import util
@@ -95,24 +131,6 @@ extern "C" {
 #endif
 /* *INDENT-ON* */"""
 
-#
-# C helper functions which may be added to a implementation file.
-#
-# c_helpers = Dictionary of helpers needed by this helper
-# c_header    = Blank delimited list of header files to #include
-#               in implementation file when wrapping a C library.
-# cxx_header  = Blank delimited list of header files to #include.
-#               in implementation file when wrapping a C++ library.
-# c_source    = language=c source.
-# cxx_source  = language=c++ source.
-# h_header    = Blank delimited list of headers to #include in
-#               c wrapper header.
-# h_source    = code for include file. Must be compatible with language=c.
-# h_shared    = header code written to C_header_helper file.
-# source      = Code inserted before any wrappers.
-#               The functions should be file static.
-#               Used if c_source or cxx_source is not defined.
-
 num_union_helpers = 0
 def add_union_helper(cxx, c, num=0):
     """A union helper is used to convert between a struct in C and C++.
@@ -148,30 +166,39 @@ def add_external_helpers(fmt):
     # Only used with std::string and thus C++
     name = 'copy_string'
     CHelpers[name] = dict(
-        cxx_header='<string>',
+        dependent_helpers=[ 'array_context' ],
+        cxx_header='<string> <cstddef>',
 # XXX - mangle name
         source=wformat("""
-// Called by Fortran to deal with allocatable character
-void {C_prefix}ShroudStringCopyAndFree(void *cptr, char *str) {{+
-std::string * cxxstr = static_cast<std::string *>(cptr);
-
-strncpy(str, cxxstr->data(), cxxstr->size());
-// free the string?
+// helper function
+// Copy the char* or std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
+void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
+const char *cxx_var = data->addr.ccharp;
+size_t n = c_var_len;
+if (data->len < n) n = data->len;
+strncpy(c_var, cxx_var, n);
+{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}
 """, fmt)
     )
 
     # Deal with allocatable character
     FHelpers[name] = dict(
+        dependent_helpers=[ 'array_context' ],
         interface=wformat("""
-interface
-   subroutine SHROUD_string_copy_and_free(cptr, str) &
-     bind(c,name="{C_prefix}ShroudStringCopyAndFree")
-     use, intrinsic :: iso_c_binding, only : C_PTR, C_CHAR
-     type(C_PTR), value, intent(in) :: cptr
-     character(kind=C_CHAR) :: str(*)
-   end subroutine SHROUD_string_copy_and_free
-end interface""", fmt)
+interface+
+! helper function
+! Copy the char* or std::string in context into c_var.
+subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+     bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
+use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+import {F_array_type}
+type({F_array_type}), intent(IN) :: context
+character(kind=C_CHAR), intent(OUT) :: c_var(*)
+integer(C_SIZE_T), value :: c_var_size
+-end subroutine SHROUD_copy_string_and_free
+-end interface""", fmt)
         )
     ##########
 
@@ -184,11 +211,10 @@ def add_shadow_helper(node):
     name = 'capsule_{}'.format(cname)
     if name not in CHelpers:
         helper = dict(
-            h_shared="""
+            h_shared_code="""
 struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
-int refcount;   /* reference count */
 -}};
 typedef struct s_{C_type_name} {C_type_name};""".format(C_type_name=cname),
         )
@@ -207,21 +233,19 @@ def add_capsule_helper(fmt):
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
-integer(C_INT) :: refcount = 0    ! reference count
 -end type {F_capsule_data_type}""", fmt),
             modules = dict(
-                iso_c_binding=['C_PTR', 'C_INT', 'C_NULL_PTR' ],
+                iso_c_binding=[ 'C_PTR', 'C_INT', 'C_NULL_PTR' ],
             ),
         )
         FHelpers[name] = helper
 
     if name not in CHelpers:
         helper = dict(
-            h_shared=wformat("""
+            h_shared_code=wformat("""
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
-int refcount;   /* reference count */
 -}};
 typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
         )
@@ -261,55 +285,91 @@ call array_destructor(cap%mem, .false._C_BOOL)
         )
         FHelpers[name] = helper
 
-def add_vector_copy_helper(fmt):
-    """Create function to copy contents of a vector.
-    """
-    name = 'vector_context'
+    ########################################
+    name = 'array_context'
     if name not in CHelpers:
         helper = dict(
-            h_header='<stddef.h>',
-            h_shared=wformat("""
-struct s_{C_context_type} {{+
-void *addr;     /* address of data in std::vector */
-size_t size;    /* size of data in std::vector */
+            h_shared_include='<stddef.h>',
+# Create a union for addr to avoid some casts.
+# And help with debugging since ccharp will display contents.
+            h_shared_code=wformat("""
+struct s_{C_array_type} {{+
+{C_capsule_data_type} cxx;      /* address of C++ memory */
+union {{+
+const void * cvoidp;
+const char * ccharp;
+-}} addr;
+size_t len;     /* bytes-per-item or character len of data in cxx */
+size_t size;    /* size of data in cxx */
 -}};
-typedef struct s_{C_context_type} {C_context_type};
-""", fmt),
+typedef struct s_{C_array_type} {C_array_type};""", fmt),
+            dependent_helpers = [ 'capsule_data_helper' ],
         )
         CHelpers[name] = helper
 
-    ########################################
-    name = wformat('vector_copy_{cxx_T}', fmt)
+    if name not in FHelpers:
+        # Create a derived type used to communicate with C wrapper.
+        # Should never be exposed to user.
+        helper=dict(
+            derived_type=wformat("""
+type, bind(C) :: {F_array_type}+
+type({F_capsule_data_type}) :: cxx       ! address of C++ memory
+type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
+integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+-end type {F_array_type}""", fmt),
+            modules = dict(
+                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T' ],
+            ),
+            dependent_helpers = [ 'capsule_data_helper' ],
+        )
+        FHelpers[name] = helper
+
+
+def add_copy_array_helper_c(fmt):
+    """Create function to copy contents of a vector.
+    """
+    name = 'copy_array'
     if name not in CHelpers:
         helper = dict(
+            dependent_helpers=[ 'array_context' ],
+            c_header='<string.h>',
+            cxx_header='<cstring>',
+# Create a single C routine which is called from Fortran via an interface
+# for each cxx_type
             cxx_source=wformat("""
-void {C_prefix}SHROUD_vector_copy_{cxx_T}({C_capsule_data_type} *cap, \t{cxx_T} *c_var, \tsize_t c_var_size)
+0// helper function
+0// Copy std::vector into array c_var(c_var_size).
+0// Then release std::vector.
+void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
-std::vector<{cxx_T}> *cxx_var = \treinterpret_cast<std::vector<{cxx_T}> *>\t(cap->addr);
-std::vector<{cxx_T}>::size_type+
-i = 0,
-n = c_var_size;
--n = std::min(cxx_var->size(), n);
-for(; i < n; ++i) {{+
-c_var[i] = (*cxx_var)[i];
--}}
+const void *cxx_var = data->addr.cvoidp;
+int n = c_var_size < data->size ? c_var_size : data->size;
+n *= data->len;
+{stdlib}memcpy(c_var, cxx_var, n);
+{C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}""", fmt))
         CHelpers[name] = helper
+
+def add_copy_array_helper(fmt):
+    name = wformat('copy_array_{cxx_type}', fmt)
     if name not in FHelpers:
         helper = dict(
 # XXX when f_kind == C_SIZE_T
+            dependent_helpers=[ 'array_context' ],
             interface=wformat("""
 interface+
-subroutine SHROUD_vector_copy_{cxx_T}(cap, c_var, c_var_size) &+
-bind(C, name="{C_prefix}SHROUD_vector_copy_{cxx_T}")
+! helper function
+! Copy contents of context into c_var.
+subroutine SHROUD_copy_array_{cxx_type}(context, c_var, c_var_size) &+
+bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
-import {F_capsule_data_type}
-type({F_capsule_data_type}) :: cap
-integer({f_kind}) :: c_var(*)
+import {F_array_type}
+type({F_array_type}), intent(IN) :: context
+integer({f_kind}), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_vector_copy_{cxx_T}
--end interface
-""", fmt),
+-end subroutine SHROUD_copy_array_{cxx_type}
+-end interface""", fmt),
         )
         FHelpers[name] = helper
     return name
@@ -319,6 +379,7 @@ CHelpers = dict(
         c_header='<string.h>',
         cxx_header='<cstring>',
         c_source="""
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -330,6 +391,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    if(la > nm) memset(a+nm,' ',la-nm);
 }""",
         cxx_source="""
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -343,6 +405,7 @@ static void ShroudStrCopy(char *a, int la, const char *s)
         ),
     ShroudLenTrim=dict(
         source="""
+// helper function
 // Returns the length of character string a with length ls,
 // ignoring any trailing blanks.
 int ShroudLenTrim(const char *s, int ls) {
@@ -361,115 +424,9 @@ int ShroudLenTrim(const char *s, int ls) {
 
     ) # end CHelpers
 
-#
-# Fortran helper functions which may be added to a module.
-#
-# dependent_helpers = list of helpers names needed by this helper
-#                     They will be added to the output before current helper.
-# private   = names for PRIVATE statement 
-# interface = code for INTERFACE
-# source    = code for CONTAINS
 
 FHelpers = dict(
-    fstr=dict(
-        dependent_helpers=[ 'fstr_ptr', 'fstr_arr' ],
-        private=['fstr'],
-        interface="""
-interface fstr
-  module procedure fstr_ptr, fstr_arr
-end interface""",
-        ),
-
-    fstr_ptr=dict(
-        dependent_helpers=[ 'strlen_ptr' ],
-        private=['fstr_ptr'],
-        source="""
-! Convert a null-terminated C "char *" pointer to a Fortran string.
-function fstr_ptr(s) result(fs)
-  use, intrinsic :: iso_c_binding, only: c_char, c_ptr, c_f_pointer
-  type(c_ptr), intent(in) :: s
-  character(kind=c_char, len=strlen_ptr(s)) :: fs
-  character(kind=c_char), pointer :: cptr(:)
-  integer :: i
-  call c_f_pointer(s, cptr, [len(fs)])
-  do i=1, len(fs)
-     fs(i:i) = cptr(i)
-  enddo
-end function fstr_ptr"""
-        ),
-
-    fstr_arr=dict(
-        dependent_helpers=[ 'strlen_arr' ],
-        private=['fstr_arr'],
-        source="""
-! Convert a null-terminated array of characters to a Fortran string.
-function fstr_arr(s) result(fs)
-  use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-  character(kind=c_char, len=1), intent(in) :: s(*)
-  character(kind=c_char, len=strlen_arr(s)) :: fs
-  integer :: i
-  do i = 1, len(fs)
-     fs(i:i) = s(i)
-  enddo
-end function fstr_arr"""
-        ),
-
-    strlen_arr=dict(
-        private=['strlen_arr'],
-        source="""
-! Count the characters in a null-terminated array.
-pure function strlen_arr(s)
-  use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-  character(kind=c_char, len=1), intent(in) :: s(*)
-  integer :: i, strlen_arr
-  i=1
-  do
-     if (s(i) == c_null_char) exit
-     i = i+1
-  enddo
-  strlen_arr = i-1
-end function strlen_arr"""
-    ),
-
-    strlen_ptr=dict(
-        private=['strlen_ptr'],
-        interface="""
-interface
-   pure function strlen_ptr(s) result(result) bind(c,name="strlen")
-     use, intrinsic :: iso_c_binding
-     integer(c_int) :: result
-     type(c_ptr), value, intent(in) :: s
-   end function strlen_ptr
-end interface"""
-        ),
-
-    # Create a derived type used to communicate with C wrapper.
-    # Should never be exposed to user.
-    vector_context=dict(
-        derived_type="""
-type, bind(C) :: SHROUD_vector_context
-  type(C_PTR) :: addr     ! address of data in std::vector
-  integer(C_SIZE_T) :: size  ! size of data in std::vector
-end type SHROUD_vector_context
-""",
-        modules = dict(
-            iso_c_binding=['C_PTR', 'C_SIZE_T' ],
-        )
-    ),
-
     ) # end FHelpers
-
-
-# From fstr_mod.f
-#  ! Convert a fortran string in 's' to a null-terminated array of characters.
-#  pure function cstr(s)
-#    use, intrinsic :: iso_c_binding, only : c_char, c_null_char
-#    character(len=*), intent(in) :: s
-#    character(kind=c_char, len=1) :: cstr(len_trim(s)+1)
-#    integer :: i
-#    if (len_trim(s) > 0) cstr = [ (s(i:i), i=1,len_trim(s)) ]
-#    cstr(len_trim(s)+1) = c_null_char
-#  end function cstr
 
 
 cmake = """

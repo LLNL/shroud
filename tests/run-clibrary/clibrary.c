@@ -46,6 +46,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #define MAXLAST 50
 static char last_function_called[MAXLAST];
@@ -270,7 +271,7 @@ void cos_doubles(double *in, double *out, int size)
 {
     int i;
     for(i = 0; i < size; i++) {
-        out[i] = in[i] * 2.;
+      out[i] = cos(in[i]);
     }
 }
 

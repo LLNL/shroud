@@ -43,6 +43,9 @@
 
 #compiler = gcc
 #compiler = intel
+ifeq ($(compiler),)
+compiler = gcc
+endif
 
 ifeq ($(compiler),gcc)
 CC = gcc
@@ -94,6 +97,7 @@ LD_SHARED = -shared
 endif
 
 # 2.7
+ifdef PYTHON
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
 PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")
 PYTHON_PREFIX := $(shell $(PYTHON) -c "import sys;sys.stdout.write(sys.exec_prefix)")
@@ -106,11 +110,14 @@ else
 PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER)m -I$(PYTHON_NUMPY)
 PYTHON_LIB := -L$(PYTHON_PREFIX)/lib -lpython$(PYTHON_VER)m -ldl -lutil
 endif
+endif
 
+ifdef LUA
 LUA_PREFIX = $(abspath $(dir $(LUA))/..)
 LUA_BIN = $(LUA)
 LUA_INC = -I$(LUA_PREFIX)/include
 LUA_LIB = -L$(LUA_PREFIX)/lib -llua -ldl
+endif
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c -o $*.o $<

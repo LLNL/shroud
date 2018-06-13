@@ -34,10 +34,6 @@
                 }, 
                 "functions": [
                     {
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_type": "AA_exclass1", 
@@ -45,8 +41,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "example::\tnested::\tExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -66,7 +67,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 0, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -87,15 +87,15 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_call": "c_exclass1_ctor_0", 
                             "F_C_name": "c_exclass1_ctor_0", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass1_ctor_0()\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass1_ctor_0()", 
                             "F_name_function": "ctor_0", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_0", 
@@ -116,11 +116,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_F_C_index": 14, 
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -128,9 +123,12 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "name", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtl": {
                                     "LUA_index": 1, 
@@ -166,8 +164,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "example::\tnested::\tExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -187,7 +190,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 1, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -234,16 +236,16 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_call": "c_exclass1_ctor_1_bufferify", 
                             "F_C_name": "c_exclass1_ctor_1", 
                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)", 
                             "F_arguments": "name", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass1_ctor_1_bufferify(name,\t len_trim(name, kind=C_INT))\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass1_ctor_1_bufferify(name,\t len_trim(name, kind=C_INT))", 
                             "F_name_function": "ctor_1", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_1", 
@@ -262,11 +264,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 1, 
-                        "_cxx_overload": [
-                            0, 
-                            1
-                        ], 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -275,9 +272,12 @@
                                     "c_member": "->", 
                                     "c_var": "name", 
                                     "c_var_trim": "Lname", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -292,11 +292,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "example::\tnested::\tExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 14, 
                         "_generated": "arg_to_buffer", 
                         "_overloaded": true, 
                         "ast": {
@@ -346,11 +346,11 @@
                             "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
                             "C_prototype": "const char * name,\t int Lname", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 *SHC_rv", 
@@ -367,7 +367,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 2, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -388,17 +387,18 @@
                             "description": "longer description joined with previous line"
                         }, 
                         "format": {
-                            "C_call_code": "AA_SHROUD_array_destructor_function\t(reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
+                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass1_dtor", 
                             "F_C_name": "c_exclass1_dtor", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_dtor(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass1_dtor(obj%cxxmem)", 
                             "F_name_function": "delete", 
                             "F_name_generic": "dtor", 
                             "F_name_impl": "exclass1_dtor", 
@@ -422,9 +422,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "incr", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&incr)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "incr"
+                                    "cxx_var": "incr", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "incr", 
@@ -462,8 +465,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "int", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -483,7 +491,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 3, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -527,9 +534,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_increment_count", 
                             "F_C_name": "c_exclass1_increment_count", 
-                            "F_arg_c_call": "obj%cxxptr,\t incr", 
+                            "F_arg_c_call": "obj%cxxmem,\t incr", 
                             "F_arguments": "obj,\t incr", 
-                            "F_call_code": "SHT_rv = c_exclass1_increment_count(obj%cxxptr,\t incr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_increment_count(obj%cxxmem,\t incr)", 
                             "F_name_function": "increment_count", 
                             "F_name_generic": "increment_count", 
                             "F_name_impl": "exclass1_increment_count", 
@@ -551,7 +558,6 @@
                     {
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
-                        "_PTR_F_C_index": 15, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -559,8 +565,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::string", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -580,10 +591,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 4, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
+                                "deref": "result_as_arg", 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "const": true, 
@@ -598,12 +609,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "result_as_arg", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getNameErrorPattern() const", 
-                        "declgen": "const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
+                        "declgen": "const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);", 
                             "C_call_list": "", 
@@ -616,9 +628,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_error_pattern_bufferify", 
                             "F_C_name": "c_exclass1_get_name_error_pattern", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_get_name_error_pattern_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_error_pattern_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name_error_pattern", 
                             "F_name_generic": "get_name_error_pattern", 
                             "F_name_impl": "exclass1_get_name_error_pattern", 
@@ -631,7 +643,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "aa_exclass1_get_name_length(obj%cxxmem)", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorPattern", 
                             "underscore_name": "get_name_error_pattern"
@@ -641,7 +652,6 @@
                     {
                         "C_error_pattern": "C_invalid_name", 
                         "PY_error_pattern": "PY_invalid_name", 
-                        "_PTR_C_CXX_index": 4, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -651,9 +661,11 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -666,11 +678,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 15, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -745,8 +757,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "int", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -766,7 +783,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 5, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -798,9 +814,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_name_length", 
                             "F_C_name": "c_exclass1_get_name_length", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_name_length(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_name_length(obj%cxxmem)", 
                             "F_name_function": "get_name_length", 
                             "F_name_generic": "get_name_length", 
                             "F_name_impl": "exclass1_get_name_length", 
@@ -820,7 +836,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_F_C_index": 16, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -828,8 +843,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::string", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -849,10 +869,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 6, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -866,12 +886,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
-                        "declgen": "const string & getNameErrorCheck() const", 
+                        "declgen": "const string & getNameErrorCheck() const +deref(allocatable)", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
@@ -883,9 +904,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass1_get_name_error_check_bufferify", 
                             "F_C_name": "c_exclass1_get_name_error_check", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass1_get_name_error_check_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_error_check_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name_error_check", 
                             "F_name_generic": "get_name_error_check", 
                             "F_name_impl": "exclass1_get_name_error_check", 
@@ -898,7 +919,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass1_get_name_error_check_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getNameErrorCheck", 
                             "underscore_name": "get_name_error_check"
@@ -906,22 +926,24 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 6, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
-                                    "c_const": "", 
+                                    "c_const": "const ", 
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -931,11 +953,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 16, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -952,22 +974,23 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
-                                    "const": false, 
+                                    "const": true, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -976,14 +999,14 @@
                             ]
                         }, 
                         "decl": "const string& getNameErrorCheck() const", 
-                        "declgen": "void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getNameErrorCheck(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
-                            "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "const AA_exclass1 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass1_get_name_error_check_bufferify", 
@@ -1011,6 +1034,7 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
@@ -1032,10 +1056,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 7, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "result_as_arg"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -1049,12 +1073,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "result_as_arg", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getNameArg() const", 
-                        "declgen": "const string & getNameArg() const", 
+                        "declgen": "const string & getNameArg() const +deref(result_as_arg)", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
@@ -1082,7 +1107,6 @@
                         }
                     }, 
                     {
-                        "_PTR_C_CXX_index": 7, 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -1092,9 +1116,11 @@
                                     "c_var": "name", 
                                     "c_var_len": "Nname", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -1107,11 +1133,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 17, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -1181,9 +1207,6 @@
                         }
                     }, 
                     {
-                        "_PTR_C_CXX_index": 7, 
-                        "_PTR_F_C_index": 17, 
-                        "_function_index": 18, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -1227,9 +1250,9 @@
                         "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const", 
                         "format": {
                             "F_C_call": "c_exclass1_get_name_arg_bufferify", 
-                            "F_arg_c_call": "obj%cxxptr,\t name,\t len(name, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t name,\t len(name, kind=C_INT)", 
                             "F_arguments": "obj,\t name", 
-                            "F_call_code": "call c_exclass1_get_name_arg_bufferify(obj%cxxptr,\t name,\t len(name, kind=C_INT))", 
+                            "F_call_code": "call c_exclass1_get_name_arg_bufferify(obj%cxxmem,\t name,\t len(name, kind=C_INT))", 
                             "F_name_function": "get_name_arg", 
                             "F_name_generic": "get_name_arg", 
                             "F_name_impl": "exclass1_get_name_arg", 
@@ -1252,8 +1275,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "void", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1273,7 +1301,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 8, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -1306,9 +1333,9 @@
                             "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_root", 
                             "F_C_name": "c_exclass1_get_root", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_root(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_root(obj%cxxmem)", 
                             "F_name_function": "get_root", 
                             "F_name_generic": "get_root", 
                             "F_name_impl": "exclass1_get_root", 
@@ -1328,10 +1355,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            9, 
-                            10
-                        ], 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -1339,9 +1362,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -1379,8 +1405,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "int", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1400,7 +1431,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 9, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -1445,9 +1475,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass1_get_value_from_int", 
                             "F_C_name": "c_exclass1_get_value_from_int", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_value_from_int(obj%cxxptr,\t value)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_value_from_int(obj%cxxmem,\t value)", 
                             "F_name_function": "get_value_from_int", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass1_get_value_from_int", 
@@ -1468,10 +1498,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            9, 
-                            10
-                        ], 
                         "_fmtargs": {
                             "value": {
                                 "fmtc": {
@@ -1479,9 +1505,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "long", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -1519,8 +1548,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "long", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "long", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1540,7 +1574,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 10, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -1585,9 +1618,9 @@
                             "C_return_type": "long", 
                             "F_C_call": "c_exclass1_get_value_1", 
                             "F_C_name": "c_exclass1_get_value_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_value_1(obj%cxxptr,\t value)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_value_1(obj%cxxmem,\t value)", 
                             "F_name_function": "get_value_1", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass1_get_value_1", 
@@ -1611,8 +1644,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "void", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1632,7 +1670,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 11, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -1665,9 +1702,9 @@
                             "C_return_type": "void *", 
                             "F_C_call": "c_exclass1_get_addr", 
                             "F_C_name": "c_exclass1_get_addr", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass1_get_addr(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass1_get_addr(obj%cxxmem)", 
                             "F_name_function": "get_addr", 
                             "F_name_generic": "get_addr", 
                             "F_name_impl": "exclass1_get_addr", 
@@ -1694,9 +1731,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "in", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&in)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "bool", 
-                                    "cxx_var": "in"
+                                    "cxx_var": "in", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SH_in", 
@@ -1735,8 +1775,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "bool", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "bool", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -1756,7 +1801,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 12, 
                         "ast": {
                             "attrs": {
                                 "_typename": "bool"
@@ -1800,9 +1844,9 @@
                             "C_return_type": "bool", 
                             "F_C_call": "c_exclass1_has_addr", 
                             "F_C_name": "c_exclass1_has_addr", 
-                            "F_arg_c_call": "obj%cxxptr,\t SH_in", 
+                            "F_arg_c_call": "obj%cxxmem,\t SH_in", 
                             "F_arguments": "obj,\t in", 
-                            "F_call_code": "SHT_rv = c_exclass1_has_addr(obj%cxxptr,\t SH_in)", 
+                            "F_call_code": "SHT_rv = c_exclass1_has_addr(obj%cxxmem,\t SH_in)", 
                             "F_name_function": "has_addr", 
                             "F_name_generic": "has_addr", 
                             "F_name_impl": "exclass1_has_addr", 
@@ -1822,7 +1866,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 13, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -1850,7 +1893,7 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass1_splicer_special", 
                             "F_C_name": "c_exclass1_splicer_special", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
                             "F_name_function": "splicer_special", 
                             "F_name_generic": "splicer_special", 
@@ -1912,7 +1955,6 @@
                 }, 
                 "functions": [
                     {
-                        "_PTR_F_C_index": 39, 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -1920,9 +1962,12 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "name", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtl": {
                                     "LUA_index": 1, 
@@ -1958,8 +2003,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "example::\tnested::\tExClass2", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "example::\tnested::\tExClass2", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -1979,7 +2029,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 19, 
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
@@ -2024,16 +2073,16 @@
                             "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
-                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name);", 
                             "C_prototype": "const char * name", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2 *", 
+                            "C_return_type": "AA_exclass2", 
                             "F_C_call": "c_exclass2_ctor_bufferify", 
                             "F_C_name": "c_exclass2_ctor", 
                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)", 
                             "F_arguments": "name", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass2_ctor_bufferify(name,\t len_trim(name, kind=C_INT))\ncall c_f_pointer(SHT_rv%cxxptr, SHT_rv%cxxmem)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass2_ctor_bufferify(name,\t len_trim(name, kind=C_INT))", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass2_ctor", 
@@ -2053,7 +2102,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 19, 
                         "_fmtargs": {
                             "name": {
                                 "fmtc": {
@@ -2062,9 +2110,12 @@
                                     "c_member": "->", 
                                     "c_var": "name", 
                                     "c_var_trim": "trim_name", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SH_name"
+                                    "cxx_var": "SH_name", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "name", 
@@ -2079,11 +2130,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
+                                "cxx_type": "example::\tnested::\tExClass2", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 39, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2130,11 +2181,11 @@
                             "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
-                            "C_post_call": "AA_exclass2 *SHC_rv = (AA_exclass2 *) malloc(sizeof(AA_exclass2));\nSHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name, trim_name);", 
                             "C_prototype": "const char * name,\t int trim_name", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2 *", 
+                            "C_return_type": "AA_exclass2", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass2 *SHC_rv", 
@@ -2151,7 +2202,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 20, 
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
@@ -2171,17 +2221,18 @@
                             "brief": "destructor"
                         }, 
                         "format": {
-                            "C_call_code": "AA_SHROUD_array_destructor_function\t(reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);", 
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
+                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_dtor", 
                             "F_C_name": "c_exclass2_dtor", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_dtor(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass2_dtor(obj%cxxmem)", 
                             "F_name_function": "delete", 
                             "F_name_generic": "dtor", 
                             "F_name_impl": "exclass2_dtor", 
@@ -2198,7 +2249,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_F_C_index": 40, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -2206,8 +2256,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::string", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2227,10 +2282,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 21, 
                         "ast": {
                             "attrs": {
                                 "_typename": "std::string", 
+                                "deref": "result_as_arg", 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "const": true, 
@@ -2245,12 +2300,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "result_as_arg", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getName() const", 
-                        "declgen": "const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
+                        "declgen": "const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
@@ -2262,9 +2318,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name_bufferify", 
                             "F_C_name": "c_exclass2_get_name", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name_bufferify(obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
                             "F_name_function": "get_name", 
                             "F_name_generic": "get_name", 
                             "F_name_impl": "exclass2_get_name", 
@@ -2277,7 +2333,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "aa_exclass2_get_name_length(obj%cxxmem)", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName", 
                             "underscore_name": "get_name"
@@ -2285,7 +2340,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 21, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2295,9 +2349,11 @@
                                     "c_var": "SHF_rv", 
                                     "c_var_len": "NSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
@@ -2310,11 +2366,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 40, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2384,7 +2440,6 @@
                         }
                     }, 
                     {
-                        "_PTR_F_C_index": 41, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "const char * SHC_rv", 
@@ -2392,8 +2447,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::string", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2413,10 +2473,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 22, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": true, 
                             "declarator": {
@@ -2430,12 +2490,13 @@
                             }, 
                             "func_const": false, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "const string& getName2()", 
-                        "declgen": "const string & getName2()", 
+                        "declgen": "const string & getName2() +deref(allocatable)", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
@@ -2447,9 +2508,9 @@
                             "C_return_type": "const char *", 
                             "F_C_call": "c_exclass2_get_name2_bufferify", 
                             "F_C_name": "c_exclass2_get_name2", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name2_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name2_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name2", 
                             "F_name_generic": "get_name2", 
                             "F_name_impl": "exclass2_get_name2", 
@@ -2462,7 +2523,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name2_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "const std::string & SHCXX_rv", 
                             "function_name": "getName2", 
                             "underscore_name": "get_name2"
@@ -2470,22 +2530,24 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 22, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
-                                    "c_const": "", 
+                                    "c_const": "const ", 
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -2495,11 +2557,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 41, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2516,22 +2578,23 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
-                                    "const": false, 
+                                    "const": true, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -2540,14 +2603,14 @@
                             ]
                         }, 
                         "decl": "const string& getName2()", 
-                        "declgen": "void getName2(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                        "declgen": "void getName2(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                         "format": {
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
-                            "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_get_name2_bufferify", 
@@ -2568,7 +2631,6 @@
                         }
                     }, 
                     {
-                        "_PTR_F_C_index": 42, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "char * SHC_rv", 
@@ -2576,8 +2638,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::string", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2597,10 +2664,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 23, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -2614,12 +2681,13 @@
                             }, 
                             "func_const": true, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "string& getName3() const", 
-                        "declgen": "string & getName3() const", 
+                        "declgen": "string & getName3() const +deref(allocatable)", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
@@ -2631,9 +2699,9 @@
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name3_bufferify", 
                             "F_C_name": "c_exclass2_get_name3", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name3_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name3_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name3", 
                             "F_name_generic": "get_name3", 
                             "F_name_impl": "exclass2_get_name3", 
@@ -2646,7 +2714,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name3_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName3", 
                             "underscore_name": "get_name3"
@@ -2654,7 +2721,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 23, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2662,14 +2728,17 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -2679,11 +2748,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 42, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2700,9 +2769,10 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -2710,12 +2780,12 @@
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -2724,14 +2794,14 @@
                             ]
                         }, 
                         "decl": "string& getName3() const", 
-                        "declgen": "void getName3(string & SHF_rv +intent(out)+len(NSHF_rv)) const", 
+                        "declgen": "void getName3(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
-                            "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "const AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_get_name3_bufferify", 
@@ -2752,7 +2822,6 @@
                         }
                     }, 
                     {
-                        "_PTR_F_C_index": 43, 
                         "_fmtresult": {
                             "fmtc": {
                                 "c_rv_decl": "char * SHC_rv", 
@@ -2760,8 +2829,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "std::string", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::string", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()", 
@@ -2781,10 +2855,10 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 24, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string"
+                                "_typename": "std::string", 
+                                "deref": "allocatable"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -2798,12 +2872,13 @@
                             }, 
                             "func_const": false, 
                             "params": [], 
+                            "return_pointer_as": "allocatable", 
                             "specifier": [
                                 "string"
                             ]
                         }, 
                         "decl": "string& getName4()", 
-                        "declgen": "string & getName4()", 
+                        "declgen": "string & getName4() +deref(allocatable)", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
@@ -2815,9 +2890,9 @@
                             "C_return_type": "char *", 
                             "F_C_call": "c_exclass2_get_name4_bufferify", 
                             "F_C_name": "c_exclass2_get_name4", 
-                            "F_arg_c_call": "obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)", 
+                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_get_name4_bufferify(obj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT))", 
+                            "F_call_code": "call c_exclass2_get_name4_bufferify(obj%cxxmem,\t DSHF_rv)", 
                             "F_name_function": "get_name4", 
                             "F_name_generic": "get_name4", 
                             "F_name_impl": "exclass2_get_name4", 
@@ -2830,7 +2905,6 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "c_var_len": "strlen_ptr(\tc_exclass2_get_name4_bufferify(\tobj%cxxptr,\t SHT_rv,\t len(SHT_rv, kind=C_INT)))", 
                             "cxx_rv_decl": "std::string & SHCXX_rv", 
                             "function_name": "getName4", 
                             "underscore_name": "get_name4"
@@ -2838,7 +2912,6 @@
                         "options": {}
                     }, 
                     {
-                        "_PTR_C_CXX_index": 24, 
                         "_fmtargs": {
                             "SHF_rv": {
                                 "fmtc": {
@@ -2846,14 +2919,17 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "SHF_rv", 
-                                    "c_var_len": "NSHF_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "std::string", 
-                                    "cxx_var": "SHCXX_rv"
+                                    "cxx_var": "SHCXX_rv", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "SHT_rv", 
+                                    "c_var_context": "DSHF_rv", 
                                     "f_var": "SHT_rv"
                                 }
                             }
@@ -2863,11 +2939,11 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "void", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
                         }, 
-                        "_function_index": 43, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
@@ -2884,9 +2960,10 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
-                                        "intent": "out", 
-                                        "len": "NSHF_rv"
+                                        "_typename": "stringout", 
+                                        "context": "DSHF_rv", 
+                                        "deref": "allocatable", 
+                                        "intent": "out"
                                     }, 
                                     "const": false, 
                                     "declarator": {
@@ -2894,12 +2971,12 @@
                                         "pointer": [
                                             {
                                                 "const": false, 
-                                                "ptr": "&"
+                                                "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
-                                        "string"
+                                        "stringout"
                                     ]
                                 }
                             ], 
@@ -2908,14 +2985,14 @@
                             ]
                         }, 
                         "decl": "string& getName4()", 
-                        "declgen": "void getName4(string & SHF_rv +intent(out)+len(NSHF_rv))", 
+                        "declgen": "void getName4(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                         "format": {
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4_bufferify", 
-                            "C_post_call": "if (SHCXX_rv.empty()) {\n    std::memset(SHF_rv, ' ', NSHF_rv);\n} else {\n    ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());\n}", 
+                            "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);\nDSHF_rv->cxx.idtor = 0;\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\nDSHF_rv->size = 1;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
-                            "C_prototype": "AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
+                            "C_prototype": "AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass2_get_name4_bufferify", 
@@ -2941,8 +3018,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "int", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -2962,7 +3044,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 25, 
                         "ast": {
                             "attrs": {
                                 "_typename": "int"
@@ -2994,9 +3075,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_name_length", 
                             "F_C_name": "c_exclass2_get_name_length", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_name_length(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_name_length(obj%cxxmem)", 
                             "F_name_function": "get_name_length", 
                             "F_name_generic": "get_name_length", 
                             "F_name_impl": "exclass2_get_name_length", 
@@ -3023,11 +3104,14 @@
                                     "c_deref": "*", 
                                     "c_member": "->", 
                                     "c_var": "in", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<example::\tnested::\tExClass1 *>\t(SHCXX_in))", 
                                     "cxx_decl": "const example::\tnested::\tExClass1 * SHCXX_in", 
                                     "cxx_member": "->", 
                                     "cxx_type": "example::\tnested::\tExClass1", 
                                     "cxx_val": "\tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr)", 
-                                    "cxx_var": "SHCXX_in"
+                                    "cxx_var": "SHCXX_in", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "in", 
@@ -3067,8 +3151,13 @@
                                 "cxx_addr": "", 
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                                 "cxx_member": "->", 
+                                "cxx_type": "example::\tnested::\tExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<void *>(\tSHCXX_rv)", 
@@ -3088,7 +3177,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 26, 
                         "ast": {
                             "attrs": {
                                 "_typename": "example::nested::ExClass1"
@@ -3109,7 +3197,7 @@
                                     "attrs": {
                                         "_typename": "example::nested::ExClass1", 
                                         "intent": "in", 
-                                        "value": true
+                                        "value": false
                                     }, 
                                     "const": true, 
                                     "declarator": {
@@ -3131,21 +3219,21 @@
                             ]
                         }, 
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
-                        "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)", 
+                        "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in))", 
                         "format": {
                             "C_call_code": "example::\tnested::\tExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
                             "C_call_list": "SHCXX_in", 
                             "C_name": "AA_exclass2_get_class1", 
-                            "C_post_call": "AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));\nSHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;\nSHC_rv->refcount = 1;", 
+                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);\nconst example::\tnested::\tExClass1 * SHCXX_in = \tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1 *", 
+                            "C_return_type": "AA_exclass1", 
                             "F_C_call": "c_exclass2_get_class1", 
                             "F_C_name": "c_exclass2_get_class1", 
-                            "F_arg_c_call": "obj%cxxptr,\t in%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem,\t in%cxxmem", 
                             "F_arguments": "obj,\t in", 
-                            "F_call_code": "SHT_rv%cxxptr = c_exclass2_get_class1(obj%cxxptr,\t in%cxxptr)", 
+                            "F_call_code": "SHT_rv%cxxmem = c_exclass2_get_class1(obj%cxxmem,\t in%cxxmem)", 
                             "F_name_function": "get_class1", 
                             "F_name_generic": "get_class1", 
                             "F_name_impl": "exclass2_get_class1", 
@@ -3172,11 +3260,14 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "type", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_type)", 
                                     "cxx_decl": "TypeID SHCXX_type", 
                                     "cxx_member": ".", 
                                     "cxx_type": "TypeID", 
                                     "cxx_val": "getTypeID(type)", 
-                                    "cxx_var": "SHCXX_type"
+                                    "cxx_var": "SHCXX_type", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "type", 
@@ -3184,7 +3275,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 32, 
                         "_generated": "has_default_arg", 
                         "_overloaded": true, 
                         "ast": {
@@ -3257,8 +3347,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 32, 
-                        "_function_index": 44, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
                         "ast": {
@@ -3301,9 +3389,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_0", 
-                            "F_arg_c_call": "obj%cxxptr,\t type", 
+                            "F_arg_c_call": "obj%cxxmem,\t type", 
                             "F_arguments": "obj,\t type", 
-                            "F_call_code": "call c_exclass2_declare_0(obj%cxxptr,\t type)", 
+                            "F_call_code": "call c_exclass2_declare_0(obj%cxxmem,\t type)", 
                             "F_name_function": "declare_0_int", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_0_int", 
@@ -3321,8 +3409,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 32, 
-                        "_function_index": 45, 
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
                         "ast": {
@@ -3365,9 +3451,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_0", 
-                            "F_arg_c_call": "obj%cxxptr,\t type", 
+                            "F_arg_c_call": "obj%cxxmem,\t type", 
                             "F_arguments": "obj,\t type", 
-                            "F_call_code": "call c_exclass2_declare_0(obj%cxxptr,\t type)", 
+                            "F_call_code": "call c_exclass2_declare_0(obj%cxxmem,\t type)", 
                             "F_name_function": "declare_0_long", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_0_long", 
@@ -3395,9 +3481,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "len", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&len)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "SidreLength", 
-                                    "cxx_var": "len"
+                                    "cxx_var": "len", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "len", 
@@ -3435,11 +3524,14 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "type", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_type)", 
                                     "cxx_decl": "TypeID SHCXX_type", 
                                     "cxx_member": ".", 
                                     "cxx_type": "TypeID", 
                                     "cxx_val": "getTypeID(type)", 
-                                    "cxx_var": "SHCXX_type"
+                                    "cxx_var": "SHCXX_type", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "type", 
@@ -3473,7 +3565,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 27, 
                         "_has_default_arg": true, 
                         "_nargs": [
                             1, 
@@ -3566,11 +3657,9 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 27, 
                         "_default_funcs": [
                             32
                         ], 
-                        "_function_index": 46, 
                         "_generated": "fortran_generic", 
                         "_has_default_arg": true, 
                         "_nargs": [
@@ -3634,9 +3723,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t type,\t int(len, C_LONG)", 
+                            "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)", 
                             "F_arguments": "obj,\t type,\t len", 
-                            "F_call_code": "call c_exclass2_declare_1(obj%cxxptr,\t type,\t int(len, C_LONG))", 
+                            "F_call_code": "call c_exclass2_declare_1(obj%cxxmem,\t type,\t int(len, C_LONG))", 
                             "F_name_function": "declare_1_int", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_1_int", 
@@ -3654,11 +3743,9 @@
                         "return_this": true
                     }, 
                     {
-                        "_PTR_F_C_index": 27, 
                         "_default_funcs": [
                             32
                         ], 
-                        "_function_index": 47, 
                         "_generated": "fortran_generic", 
                         "_has_default_arg": true, 
                         "_nargs": [
@@ -3722,9 +3809,9 @@
                         "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)", 
                         "format": {
                             "F_C_call": "c_exclass2_declare_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t type,\t int(len, C_LONG)", 
+                            "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)", 
                             "F_arguments": "obj,\t type,\t len", 
-                            "F_call_code": "call c_exclass2_declare_1(obj%cxxptr,\t type,\t int(len, C_LONG))", 
+                            "F_call_code": "call c_exclass2_declare_1(obj%cxxmem,\t type,\t int(len, C_LONG))", 
                             "F_name_function": "declare_1_long", 
                             "F_name_generic": "declare", 
                             "F_name_impl": "exclass2_declare_1_long", 
@@ -3742,7 +3829,6 @@
                         "return_this": true
                     }, 
                     {
-                        "_function_index": 28, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -3770,9 +3856,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_destroyall", 
                             "F_C_name": "c_exclass2_destroyall", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass2_destroyall(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass2_destroyall(obj%cxxmem)", 
                             "F_name_function": "destroyall", 
                             "F_name_generic": "destroyall", 
                             "F_name_impl": "exclass2_destroyall", 
@@ -3797,8 +3883,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "TypeID", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "TypeID", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "static_cast<int>(SHCXX_rv)", 
@@ -3818,7 +3909,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 29, 
                         "ast": {
                             "attrs": {
                                 "_typename": "TypeID"
@@ -3847,9 +3937,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_type_id", 
                             "F_C_name": "c_exclass2_get_type_id", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_type_id(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_type_id(obj%cxxmem)", 
                             "F_name_function": "get_type_id", 
                             "F_name_generic": "get_type_id", 
                             "F_name_impl": "exclass2_get_type_id", 
@@ -3869,7 +3959,6 @@
                         "options": {}
                     }, 
                     {
-                        "_function_index": 30, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -3931,9 +4020,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -3966,7 +4058,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 33, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4013,9 +4104,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_int", 
                             "F_C_name": "c_exclass2_set_value_int", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_int(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_int(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_int", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_int", 
@@ -4046,9 +4137,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "long", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4081,7 +4175,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 34, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4128,9 +4221,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_long", 
                             "F_C_name": "c_exclass2_set_value_long", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_long(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_long(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_long", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_long", 
@@ -4159,9 +4252,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "float", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4194,7 +4290,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 35, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4241,9 +4336,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_float", 
                             "F_C_name": "c_exclass2_set_value_float", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_float(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_float(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_float", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_float", 
@@ -4272,9 +4367,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "double", 
-                                    "cxx_var": "value"
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "value", 
@@ -4307,7 +4405,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 36, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4354,9 +4451,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass2_set_value_double", 
                             "F_C_name": "c_exclass2_set_value_double", 
-                            "F_arg_c_call": "obj%cxxptr,\t value", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_exclass2_set_value_double(obj%cxxptr,\t value)", 
+                            "F_call_code": "call c_exclass2_set_value_double(obj%cxxmem,\t value)", 
                             "F_name_function": "set_value_double", 
                             "F_name_generic": "set_value", 
                             "F_name_impl": "exclass2_set_value_double", 
@@ -4378,7 +4475,6 @@
                         }
                     }, 
                     {
-                        "_function_index": 31, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4421,8 +4517,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "int", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -4442,7 +4543,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 37, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4473,9 +4573,9 @@
                             "C_return_type": "int", 
                             "F_C_call": "c_exclass2_get_value_int", 
                             "F_C_name": "c_exclass2_get_value_int", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_value_int(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_value_int(obj%cxxmem)", 
                             "F_name_function": "get_value_int", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass2_get_value_int", 
@@ -4507,8 +4607,13 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
+                                "cxx_type": "double", 
                                 "cxx_var": "SHC_rv", 
                                 "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "double", 
+                                "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
                                 "c_var": "SHCXX_rv", 
@@ -4528,7 +4633,6 @@
                                 "py_var": "SHTPy_rv"
                             }
                         }, 
-                        "_function_index": 38, 
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
@@ -4559,9 +4663,9 @@
                             "C_return_type": "double", 
                             "F_C_call": "c_exclass2_get_value_double", 
                             "F_C_name": "c_exclass2_get_value_double", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "SHT_rv = c_exclass2_get_value_double(obj%cxxptr)", 
+                            "F_call_code": "SHT_rv = c_exclass2_get_value_double(obj%cxxmem)", 
                             "F_name_function": "get_value_double", 
                             "F_name_generic": "get_value", 
                             "F_name_impl": "exclass2_get_value_double", 
@@ -4634,11 +4738,6 @@
                 }, 
                 "functions": [
                     {
-                        "_cxx_overload": [
-                            48, 
-                            49
-                        ], 
-                        "_function_index": 48, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4667,9 +4766,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass3_exfunc_0", 
                             "F_C_name": "c_exclass3_exfunc_0", 
-                            "F_arg_c_call": "obj%cxxptr", 
+                            "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_exclass3_exfunc_0(obj%cxxptr)", 
+                            "F_call_code": "call c_exclass3_exfunc_0(obj%cxxmem)", 
                             "F_name_function": "exfunc_0", 
                             "F_name_generic": "exfunc", 
                             "F_name_impl": "exclass3_exfunc_0", 
@@ -4687,10 +4786,6 @@
                         "options": {}
                     }, 
                     {
-                        "_cxx_overload": [
-                            48, 
-                            49
-                        ], 
                         "_fmtargs": {
                             "flag": {
                                 "fmtc": {
@@ -4698,9 +4793,12 @@
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "flag", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
-                                    "cxx_var": "flag"
+                                    "cxx_var": "flag", 
+                                    "idtor": "0"
                                 }, 
                                 "fmtf": {
                                     "c_var": "flag", 
@@ -4719,7 +4817,6 @@
                                 }
                             }
                         }, 
-                        "_function_index": 49, 
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -4764,9 +4861,9 @@
                             "C_return_type": "void", 
                             "F_C_call": "c_exclass3_exfunc_1", 
                             "F_C_name": "c_exclass3_exfunc_1", 
-                            "F_arg_c_call": "obj%cxxptr,\t flag", 
+                            "F_arg_c_call": "obj%cxxmem,\t flag", 
                             "F_arguments": "obj,\t flag", 
-                            "F_call_code": "call c_exclass3_exfunc_1(obj%cxxptr,\t flag)", 
+                            "F_call_code": "call c_exclass3_exfunc_1(obj%cxxmem,\t flag)", 
                             "F_name_function": "exfunc_1", 
                             "F_name_generic": "exfunc", 
                             "F_name_impl": "exclass3_exfunc_1", 
@@ -4836,9 +4933,9 @@
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
             "C_argument": "SH_", 
+            "C_array_type": "USE_SHROUD_array", 
             "C_bufferify_suffix": "_bufferify", 
             "C_capsule_data_type": "USE_SHROUD_capsule_data", 
-            "C_context_type": "USE_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapUserLibrary.h", 
             "C_header_filename_suffix": "h", 
@@ -4846,7 +4943,7 @@
             "C_impl_filename": "wrapUserLibrary.cpp", 
             "C_impl_filename_suffix": "cpp", 
             "C_local": "SHC_", 
-            "C_memory_dtor_function": "AA_SHROUD_array_destructor_function", 
+            "C_memory_dtor_function": "AA_SHROUD_memory_destructor", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "AA_", 
@@ -4856,12 +4953,11 @@
             "F_C_prefix": "c_", 
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
+            "F_array_type": "SHROUD_array", 
             "F_capsule_data_type": "SHROUD_capsule_data", 
             "F_capsule_final_function": "SHROUD_capsule_final", 
             "F_capsule_type": "SHROUD_capsule", 
-            "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfuserlibrary.f", 
             "F_module_name": "userlibrary_mod", 
@@ -4925,7 +5021,6 @@
         }, 
         "functions": [
             {
-                "_function_index": 50, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -4969,7 +5064,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 72, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -4977,9 +5071,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
@@ -5013,8 +5110,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "bool", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "bool", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -5034,7 +5136,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 51, 
                 "ast": {
                     "attrs": {
                         "_typename": "bool"
@@ -5103,7 +5204,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 51, 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5112,9 +5212,12 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -5127,11 +5230,11 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "bool", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 72, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -5203,8 +5306,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "bool", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "bool", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -5224,7 +5332,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 52, 
                 "ast": {
                     "attrs": {
                         "_typename": "bool"
@@ -5277,9 +5384,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
                             "cxx_member": ".", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg1"
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg1", 
@@ -5318,9 +5428,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg2", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg2)", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg2"
+                            "cxx_var": "arg2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg2", 
@@ -5360,9 +5473,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg3", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg3)", 
                             "cxx_member": "->", 
                             "cxx_type": "bool", 
-                            "cxx_var": "arg3"
+                            "cxx_var": "arg3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "SH_arg3", 
@@ -5398,7 +5514,6 @@
                         }
                     }
                 }, 
-                "_function_index": 53, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -5498,11 +5613,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_F_C_index": 73, 
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5510,9 +5620,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
@@ -5541,7 +5654,6 @@
                         }
                     }
                 }, 
-                "_function_index": 54, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5609,11 +5721,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 54, 
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "name": {
                         "fmtc": {
@@ -5622,9 +5729,12 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -5632,7 +5742,6 @@
                         }
                     }
                 }, 
-                "_function_index": 73, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5697,11 +5806,6 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 74, 
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -5709,9 +5813,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "flag", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "flag"
+                            "cxx_var": "flag", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 2, 
@@ -5745,9 +5852,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "name", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtl": {
                             "LUA_index": 1, 
@@ -5776,7 +5886,6 @@
                         }
                     }
                 }, 
-                "_function_index": 55, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -5857,11 +5966,6 @@
                 "options": {}
             }, 
             {
-                "_PTR_C_CXX_index": 55, 
-                "_cxx_overload": [
-                    54, 
-                    55
-                ], 
                 "_fmtargs": {
                     "flag": {
                         "fmtc": {
@@ -5869,9 +5973,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "flag", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "flag"
+                            "cxx_var": "flag", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "flag", 
@@ -5885,9 +5992,12 @@
                             "c_member": "->", 
                             "c_var": "name", 
                             "c_var_trim": "Lname", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_name))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_name"
+                            "cxx_var": "SH_name", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "name", 
@@ -5895,7 +6005,6 @@
                         }
                     }
                 }, 
-                "_function_index": 74, 
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
@@ -5975,7 +6084,6 @@
                 }
             }, 
             {
-                "_function_index": 70, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6031,9 +6139,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "i", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "i"
+                            "cxx_var": "i", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "i", 
@@ -6041,7 +6152,6 @@
                         }
                     }
                 }, 
-                "_function_index": 71, 
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
@@ -6118,9 +6228,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "i", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "i"
+                            "cxx_var": "i", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "i", 
@@ -6158,9 +6271,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "j", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&j)", 
                             "cxx_member": ".", 
                             "cxx_type": "long", 
-                            "cxx_var": "j"
+                            "cxx_var": "j", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "j", 
@@ -6193,7 +6309,6 @@
                         }
                     }
                 }, 
-                "_function_index": 56, 
                 "_has_default_arg": true, 
                 "_nargs": [
                     0, 
@@ -6282,8 +6397,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "size_t", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "size_t", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -6303,7 +6423,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 57, 
                 "ast": {
                     "attrs": {
                         "_typename": "size_t"
@@ -6349,10 +6468,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    58, 
-                    59
-                ], 
                 "_fmtargs": {
                     "comm": {
                         "fmtc": {
@@ -6360,11 +6475,14 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "comm", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_comm)", 
                             "cxx_decl": "MPI_Comm SHCXX_comm", 
                             "cxx_member": ".", 
                             "cxx_type": "MPI_Comm", 
                             "cxx_val": "MPI_Comm_f2c(comm)", 
-                            "cxx_var": "SHCXX_comm"
+                            "cxx_var": "SHCXX_comm", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "comm", 
@@ -6398,7 +6516,6 @@
                         }
                     }
                 }, 
-                "_function_index": 58, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -6461,11 +6578,6 @@
                 "options": {}
             }, 
             {
-                "_cxx_overload": [
-                    58, 
-                    59
-                ], 
-                "_function_index": 59, 
                 "_overloaded": true, 
                 "ast": {
                     "attrs": {
@@ -6516,11 +6628,14 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "grp", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_grp)", 
                             "cxx_decl": "axom::sidre::Group * SHCXX_grp", 
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_val": "\tstatic_cast<axom::sidre::Group *>(grp->addr)", 
-                            "cxx_var": "SHCXX_grp"
+                            "cxx_var": "SHCXX_grp", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "grp", 
@@ -6554,7 +6669,6 @@
                         }
                     }
                 }, 
-                "_function_index": 60, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6570,7 +6684,7 @@
                             "attrs": {
                                 "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
-                                "value": true
+                                "value": false
                             }, 
                             "const": false, 
                             "declarator": {
@@ -6592,7 +6706,7 @@
                     ]
                 }, 
                 "decl": "void testgroup1(axom::sidre::Group * grp)", 
-                "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in)+value)", 
+                "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in))", 
                 "format": {
                     "C_call_code": "example::\tnested::\ttestgroup1(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
@@ -6603,9 +6717,9 @@
                     "C_return_type": "void", 
                     "F_C_call": "c_testgroup1", 
                     "F_C_name": "c_testgroup1", 
-                    "F_arg_c_call": "grp%cxxptr", 
+                    "F_arg_c_call": "grp%cxxmem", 
                     "F_arguments": "grp", 
-                    "F_call_code": "call c_testgroup1(grp%cxxptr)", 
+                    "F_call_code": "call c_testgroup1(grp%cxxmem)", 
                     "F_name_function": "testgroup1", 
                     "F_name_generic": "testgroup1", 
                     "F_name_impl": "testgroup1", 
@@ -6627,11 +6741,14 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "grp", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<axom::sidre::Group *>\t(SHCXX_grp))", 
                             "cxx_decl": "const axom::sidre::Group * SHCXX_grp", 
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
                             "cxx_val": "\tstatic_cast<const axom::sidre::Group *>(grp->addr)", 
-                            "cxx_var": "SHCXX_grp"
+                            "cxx_var": "SHCXX_grp", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "grp", 
@@ -6665,7 +6782,6 @@
                         }
                     }
                 }, 
-                "_function_index": 61, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6681,7 +6797,7 @@
                             "attrs": {
                                 "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
-                                "value": true
+                                "value": false
                             }, 
                             "const": true, 
                             "declarator": {
@@ -6703,7 +6819,7 @@
                     ]
                 }, 
                 "decl": "void testgroup2(const axom::sidre::Group * grp)", 
-                "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in)+value)", 
+                "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in))", 
                 "format": {
                     "C_call_code": "example::\tnested::\ttestgroup2(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
@@ -6714,9 +6830,9 @@
                     "C_return_type": "void", 
                     "F_C_call": "c_testgroup2", 
                     "F_C_name": "c_testgroup2", 
-                    "F_arg_c_call": "grp%cxxptr", 
+                    "F_arg_c_call": "grp%cxxmem", 
                     "F_arguments": "grp", 
-                    "F_call_code": "call c_testgroup2(grp%cxxptr)", 
+                    "F_call_code": "call c_testgroup2(grp%cxxmem)", 
                     "F_name_function": "testgroup2", 
                     "F_name_generic": "testgroup2", 
                     "F_name_impl": "testgroup2", 
@@ -6738,9 +6854,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "void", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -6773,7 +6892,6 @@
                         }
                     }
                 }, 
-                "_function_index": 62, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6853,9 +6971,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "get", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(get)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -6888,7 +7009,6 @@
                         }
                     }
                 }, 
-                "_function_index": 63, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -6973,9 +7093,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7008,7 +7131,6 @@
                         }
                     }
                 }, 
-                "_function_index": 64, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7115,9 +7237,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "double", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7125,7 +7250,6 @@
                         }
                     }
                 }, 
-                "_function_index": 65, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7229,9 +7353,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "get", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&get)", 
                             "cxx_member": ".", 
                             "cxx_type": "void", 
-                            "cxx_var": "get"
+                            "cxx_var": "get", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "get", 
@@ -7264,7 +7391,6 @@
                         }
                     }
                 }, 
-                "_function_index": 66, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -7482,9 +7608,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname1", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname1)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname1"
+                            "cxx_var": "verylongname1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname1", 
@@ -7524,9 +7653,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname10", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname10)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname10"
+                            "cxx_var": "verylongname10", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname10", 
@@ -7566,9 +7698,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname2", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname2)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname2"
+                            "cxx_var": "verylongname2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname2", 
@@ -7608,9 +7743,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname3", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname3)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname3"
+                            "cxx_var": "verylongname3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname3", 
@@ -7650,9 +7788,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname4", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname4)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname4"
+                            "cxx_var": "verylongname4", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname4", 
@@ -7692,9 +7833,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname5", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname5)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname5"
+                            "cxx_var": "verylongname5", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname5", 
@@ -7734,9 +7878,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname6", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname6)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname6"
+                            "cxx_var": "verylongname6", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname6", 
@@ -7776,9 +7923,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname7", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname7)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname7"
+                            "cxx_var": "verylongname7", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname7", 
@@ -7818,9 +7968,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname8", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname8)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname8"
+                            "cxx_var": "verylongname8", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname8", 
@@ -7860,9 +8013,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "verylongname9", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(verylongname9)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname9"
+                            "cxx_var": "verylongname9", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname9", 
@@ -7897,7 +8053,6 @@
                         }
                     }
                 }, 
-                "_function_index": 67, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -8151,9 +8306,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname1)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname1"
+                            "cxx_var": "verylongname1", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname1", 
@@ -8191,9 +8349,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname10", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname10)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname10"
+                            "cxx_var": "verylongname10", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname10", 
@@ -8231,9 +8392,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname2", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname2)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname2"
+                            "cxx_var": "verylongname2", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname2", 
@@ -8271,9 +8435,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname3", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname3)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname3"
+                            "cxx_var": "verylongname3", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname3", 
@@ -8311,9 +8478,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname4", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname4)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname4"
+                            "cxx_var": "verylongname4", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname4", 
@@ -8351,9 +8521,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname5", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname5)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname5"
+                            "cxx_var": "verylongname5", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname5", 
@@ -8391,9 +8564,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname6", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname6)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname6"
+                            "cxx_var": "verylongname6", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname6", 
@@ -8431,9 +8607,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname7", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname7)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname7"
+                            "cxx_var": "verylongname7", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname7", 
@@ -8471,9 +8650,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname8", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname8)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname8"
+                            "cxx_var": "verylongname8", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname8", 
@@ -8511,9 +8693,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "verylongname9", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&verylongname9)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "verylongname9"
+                            "cxx_var": "verylongname9", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "verylongname9", 
@@ -8551,8 +8736,13 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv"
                     }, 
                     "fmtl": {
                         "c_var": "SHCXX_rv", 
@@ -8572,7 +8762,6 @@
                         "py_var": "SHTPy_rv"
                     }
                 }, 
-                "_function_index": 68, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -8780,9 +8969,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "in", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(in)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "in"
+                            "cxx_var": "in", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "in", 
@@ -8823,9 +9015,12 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "out", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(out)", 
                             "cxx_member": "->", 
                             "cxx_type": "double", 
-                            "cxx_var": "out"
+                            "cxx_var": "out", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "out", 
@@ -8867,9 +9062,12 @@
                             "c_deref": "", 
                             "c_member": ".", 
                             "c_var": "sizein", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "sizein"
+                            "cxx_var": "sizein", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "sizein", 
@@ -8904,7 +9102,6 @@
                         }
                     }
                 }, 
-                "_function_index": 69, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -9023,7 +9220,7 @@
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
-            "C_memory_dtor_function_template": "{C_prefix}SHROUD_array_destructor_function", 
+            "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "C_var_capsule_template": "C{c_var}", 
             "C_var_context_template": "D{c_var}", 
@@ -9078,6 +9275,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 
@@ -9165,10 +9363,9 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "SIDRE_group *{c_var} = (SIDRE_group *) malloc(sizeof(SIDRE_group));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "SIDRE_group {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9178,11 +9375,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "axom::sidre::Group", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "datagroup", 
             "f_module": {
                 "sidre_mod": [
@@ -9192,17 +9389,9 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
             "f_to_c": "{f_var}%get_instance()", 
@@ -9423,6 +9612,51 @@
             "f_kind": "C_CHAR", 
             "f_type": "character"
         }, 
+        "charout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.ccharp = {cxx_var};", 
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
+                        "{c_var_context}->size = 1;"
+                    ]
+                }
+            }, 
+            "c_type": "char", 
+            "cxx_type": "char", 
+            "f_statements": {
+                "result": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
+        }, 
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})", 
@@ -9460,10 +9694,9 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass1 *{c_var} = (AA_exclass1 *) malloc(sizeof(AA_exclass1));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "AA_exclass1 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9473,11 +9706,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass1", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "exclass1", 
             "f_module": {
                 "exclass1_mod": [
@@ -9487,20 +9720,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass1)", 
             "forward": "example::\tnested::\tExClass1", 
             "idtor": "1", 
@@ -9543,10 +9768,9 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass2 *{c_var} = (AA_exclass2 *) malloc(sizeof(AA_exclass2));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "AA_exclass2 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9556,11 +9780,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass2", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "exclass2", 
             "f_module": {
                 "exclass2_mod": [
@@ -9570,20 +9794,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass2)", 
             "forward": "example::\tnested::\tExClass2", 
             "idtor": "2", 
@@ -9622,10 +9838,9 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass3 *{c_var} = (AA_exclass3 *) malloc(sizeof(AA_exclass3));", 
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}->idtor = {idtor};", 
-                        "{c_var}->refcount = 1;"
+                        "AA_exclass3 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9634,11 +9849,11 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "example::\tnested::\tExClass3", 
             "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
+                "--import--": [
+                    "SHROUD_capsule_data"
                 ]
             }, 
-            "f_c_type": "type(C_PTR)", 
+            "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "exclass3", 
             "f_module": {
                 "exclass3_mod": [
@@ -9648,20 +9863,12 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_ptr} = {F_C_call}({F_arg_c_call})"
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
                     ], 
-                    "f_module": {
-                        "iso_c_binding": [
-                            "c_f_pointer"
-                        ]
-                    }, 
-                    "need_wrapper": true, 
-                    "post_call": [
-                        "call c_f_pointer({F_result}%{F_derived_ptr}, {F_result}%{F_derived_member})"
-                    ]
+                    "need_wrapper": true
                 }
             }, 
-            "f_to_c": "{f_var}%cxxptr", 
+            "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass3)", 
             "forward": "example::\tnested::\tExClass3", 
             "py_statements": {
@@ -9911,48 +10118,6 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
-                "AAAintent_inout_buf": {
-                    "buf_args": [
-                        "arg", 
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        "{{+", 
-                        "std::vector<{cxx_T}>::size_type+", 
-                        "{c_temp}i = 0,", 
-                        "{c_temp}n = {c_var_size};", 
-                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
-                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "-}}", 
-                        "-}}"
-                    ], 
-                    "pre_call": [
-                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                }, 
-                "AAAintent_out_buf": {
-                    "buf_args": [
-                        "arg", 
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        "{{", 
-                        "    std::vector<{cxx_T}>::size_type", 
-                        "        {c_temp}i = 0,", 
-                        "        {c_temp}n = {c_var_size};", 
-                        "    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "        {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "    }}", 
-                        "}}"
-                    ], 
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
-                    ]
-                }, 
                 "intent_in_buf": {
                     "buf_args": [
                         "arg", 
@@ -9967,7 +10132,6 @@
                     "buf_args": [
                         "arg", 
                         "size", 
-                        "capsule", 
                         "context"
                     ], 
                     "cxx_local_var": "pointer", 
@@ -9977,22 +10141,21 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
-                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
-                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
-                        "{c_var_capsule}->refcount = 1;     // reference count"
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
-                        "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper copy_array", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -10000,14 +10163,14 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
-                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
-                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
-                        "{c_var_capsule}->refcount = 1;     // reference count"
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
                     ]
                 }
             }, 
@@ -10100,25 +10263,50 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout": {
-                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_inout_allocatable": {
+                    "f_helper": "copy_array_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "if (allocated({f_var})) deallocate({f_var})", 
+                        "allocate({f_var}({c_var_context}%size))", 
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out": {
-                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_out_allocatable": {
+                    "f_helper": "copy_array_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "allocate({f_var}({c_var_context}%size))", 
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
             }
@@ -10142,13 +10330,15 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
-                        "arg", 
-                        "lenout"
+                        "context"
                     ], 
                     "c_helper": "copy_string", 
                     "post_call": [
-                        "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 1;"
                     ]
                 }
             }, 
@@ -10156,19 +10346,13 @@
             "cxx_header": "<string>", 
             "cxx_to_c": "static_cast<void *>({cxx_var})", 
             "cxx_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
             "f_statements": {
                 "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }
             }, 

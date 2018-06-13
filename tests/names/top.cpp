@@ -42,6 +42,7 @@
 // #######################################################################
 #include "top.h"
 #include <string>
+#include "typestestnames.hh"
 
 // splicer begin CXX_definitions
 // Add some text from splicer
@@ -54,7 +55,6 @@ extern "C" {
 // splicer end C_definitions
 
 // void function1()
-// function_index=2
 void YYY_TES_function1()
 {
 // splicer begin function.function1
@@ -64,7 +64,6 @@ void YYY_TES_function1()
 }
 
 // void function2()
-// function_index=3
 void c_name_special()
 {
 // splicer begin function.function2
@@ -74,7 +73,6 @@ void c_name_special()
 }
 
 // void function3a(int i +intent(in)+value)
-// function_index=4
 void YYY_TES_function3a_0(int i)
 {
 // splicer begin function.function3a_0
@@ -84,7 +82,6 @@ void YYY_TES_function3a_0(int i)
 }
 
 // void function3a(long i +intent(in)+value)
-// function_index=5
 void YYY_TES_function3a_1(long i)
 {
 // splicer begin function.function3a_1
@@ -94,7 +91,6 @@ void YYY_TES_function3a_1(long i)
 }
 
 // int function4(const std::string & rv +intent(in))
-// function_index=6
 int YYY_TES_function4(const char * rv)
 {
 // splicer begin function.function4
@@ -105,7 +101,6 @@ int YYY_TES_function4(const char * rv)
 }
 
 // int function4(const std::string & rv +intent(in)+len_trim(Lrv))
-// function_index=9
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
 // splicer begin function.function4_bufferify
@@ -116,7 +111,6 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 }
 
 // void function5() +name(fiveplus)
-// function_index=7
 void YYY_TES_fiveplus()
 {
 // splicer begin function.fiveplus
@@ -126,13 +120,19 @@ void YYY_TES_fiveplus()
 }
 
 // void init_ns1()
-// function_index=8
 void TES_init_ns1()
 {
 // splicer begin function.init_ns1
     ns1::init_ns1();
     return;
 // splicer end function.init_ns1
+}
+
+// Release C++ allocated memory.
+void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

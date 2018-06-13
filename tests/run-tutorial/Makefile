@@ -76,3 +76,7 @@ main.o : wrapftutorial.o
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+
+testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
+testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+	$(CC) $(CFLAGS) $(LIBS) $^ -o $@

@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapvectors.h"
+#include <cstring>
 #include <stdlib.h>
 #include <string>
 #include "typesvectors.h"
@@ -52,6 +53,7 @@
 extern "C" {
 
 
+// helper function
 // Returns the length of character string a with length ls,
 // ignoring any trailing blanks.
 int ShroudLenTrim(const char *s, int ls) {
@@ -67,24 +69,22 @@ int ShroudLenTrim(const char *s, int ls) {
 }
 
 
-void VEC_SHROUD_vector_copy_int(VEC_SHROUD_capsule_data *cap, 
-    int *c_var, size_t c_var_size)
+// helper function
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
+void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var, 
+    size_t c_var_size)
 {
-    std::vector<int> *cxx_var = reinterpret_cast<std::vector<int> *>
-        (cap->addr);
-    std::vector<int>::size_type
-        i = 0,
-        n = c_var_size;
-    n = std::min(cxx_var->size(), n);
-    for(; i < n; ++i) {
-        c_var[i] = (*cxx_var)[i];
-    }
+    const void *cxx_var = data->addr.cvoidp;
+    int n = c_var_size < data->size ? c_var_size : data->size;
+    n *= data->len;
+    std::memcpy(c_var, cxx_var, n);
+    VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 // splicer begin C_definitions
 // splicer end C_definitions
 
 // int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
-// function_index=6
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
 // splicer begin function.vector_sum_bufferify
@@ -94,42 +94,81 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 // splicer end function.vector_sum_bufferify
 }
 
-// void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))
-// function_index=7
-void VEC_vector_iota_bufferify(VEC_SHROUD_capsule_data *Carg,
-    VEC_SHROUD_vector_context *Darg)
+// void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+/**
+ * \brief Copy vector into Fortran input array
+ *
+ */
+void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
-// splicer begin function.vector_iota_bufferify
+// splicer begin function.vector_iota_out_bufferify
     std::vector<int> *SH_arg = new std::vector<int>;
-    Carg->addr = static_cast<void *>(SH_arg);
-    Carg->idtor = 1;  // index of destructor
-    Carg->refcount = 1;     // reference count
-    vector_iota(*SH_arg);
-    Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
+    vector_iota_out(*SH_arg);
+    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    Darg->cxx.idtor = 1;
+    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
     return;
-// splicer end function.vector_iota_bufferify
+// splicer end function.vector_iota_out_bufferify
 }
 
-// void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))
-// function_index=8
+// void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
+/**
+ * \brief Copy vector into Fortran allocatable array
+ *
+ */
+void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
+{
+// splicer begin function.vector_iota_out_alloc_bufferify
+    std::vector<int> *SH_arg = new std::vector<int>;
+    vector_iota_out_alloc(*SH_arg);
+    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    Darg->cxx.idtor = 1;
+    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(int);
+    Darg->size = SH_arg->size();
+    return;
+// splicer end function.vector_iota_out_alloc_bufferify
+}
+
+// void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
+/**
+ * \brief Copy vector into Fortran allocatable array
+ *
+ */
+void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
+    VEC_SHROUD_array *Darg)
+{
+// splicer begin function.vector_iota_inout_alloc_bufferify
+    std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
+    vector_iota_inout_alloc(*SH_arg);
+    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    Darg->cxx.idtor = 1;
+    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(int);
+    Darg->size = SH_arg->size();
+    return;
+// splicer end function.vector_iota_inout_alloc_bufferify
+}
+
+// void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
-    VEC_SHROUD_capsule_data *Carg, VEC_SHROUD_vector_context *Darg)
+    VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_increment_bufferify
     std::vector<int> *SH_arg = new std::vector<int>(arg, arg + Sarg);
-    Carg->addr = static_cast<void *>(SH_arg);
-    Carg->idtor = 0;        // index of destructor
-    Carg->refcount = 1;     // reference count
     vector_increment(*SH_arg);
-    Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->cxx.addr  = static_cast<void *>(SH_arg);
+    Darg->cxx.idtor = 1;
+    Darg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();
+    Darg->len = sizeof(int);
     Darg->size = SH_arg->size();
     return;
 // splicer end function.vector_increment_bufferify
 }
 
 // int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
-// function_index=9
 /**
  * \brief count number of underscore in vector of strings
  *
@@ -155,17 +194,16 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 }
 
 // Release C++ allocated memory.
-void VEC_SHROUD_array_destructor_function
-    (VEC_SHROUD_capsule_data *cap, bool gc)
+void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {
-    case 0:
+    case 0:   // --none--
     {
         // Nothing to delete
         break;
     }
-    case 1:
+    case 1:   // std_vector_int
     {
         std::vector<int> *cxx_ptr = 
             reinterpret_cast<std::vector<int> *>(ptr);
@@ -178,12 +216,8 @@ void VEC_SHROUD_array_destructor_function
         break;
     }
     }
-    if (gc) {
-        free(cap);
-    } else {
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

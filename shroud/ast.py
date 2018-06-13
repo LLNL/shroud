@@ -136,7 +136,7 @@ class NamespaceMixin(object):
             if not isinstance(value, dict):
                 raise TypeError("fields must be a dictionary")
             typedef.update(value)
-        typemap.fill_shadow_typemap_defaults(typedef)
+        typemap.fill_shadow_typemap_defaults(typedef, self.fmtdict)
         typemap.register_type(typedef.name, typedef)
         return typedef
 
@@ -309,6 +309,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         def_options = util.Scope(
             parent=None,
             debug=False,   # print additional debug info
+            debug_index=False,   # print function indexes. debug must also be True.
+                                 # They change when a function is inserted.
             C_line_length=72,
 
             F_line_length=72,
@@ -347,7 +349,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_name_template=(
                 '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
             C_memory_dtor_function_template=(
-                '{C_prefix}SHROUD_array_destructor_function'),
+                '{C_prefix}SHROUD_memory_destructor'),
 
             C_var_capsule_template = 'C{c_var}',     # capsule argument
             C_var_context_template = 'D{c_var}',     # context argument
@@ -453,7 +455,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             class_scope='',
 
             F_C_prefix='c_',
-            F_derived_ptr = 'cxxptr',
             F_derived_member = 'cxxmem',
             F_name_assign = 'assign',
             F_name_associated = 'associated',
@@ -472,8 +473,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_type='SHROUD_capsule',
             F_capsule_final_function='SHROUD_capsule_final',
 
-            C_context_type=C_prefix + 'SHROUD_vector_context',
-            F_context_type='SHROUD_vector_context',
+            C_array_type=C_prefix + 'SHROUD_array',
+            F_array_type='SHROUD_array',
 
             PY_result = 'SHTPy_rv',      # Create PyObject for result
             LUA_result = 'rv',
@@ -807,6 +808,14 @@ class FunctionNode(AstNode):
         'fmtl': Scope(_fmtfunc)
         'fmtpy': Scope(_fmtfunc)
       }
+    }
+
+    statements = {
+      'c': {
+         'result_buf': 
+       },
+       'f': {
+       },
     }
 
     _function_index  - sequence number function,

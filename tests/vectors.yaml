@@ -56,7 +56,23 @@ declarations:
     wrap_python: False
     wrap_lua: False
 
-- decl: void vector_iota(std::vector<int> &arg+intent(out))
+- decl: void vector_iota_out(std::vector<int> &arg+intent(out))
+  doxygen:
+    brief: Copy vector into Fortran input array
+  options:
+    wrap_python: False
+    wrap_lua: False
+
+- decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
+  doxygen:
+    brief: Copy vector into Fortran allocatable array
+  options:
+    wrap_python: False
+    wrap_lua: False
+
+- decl: void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
+  doxygen:
+    brief: Copy vector into Fortran allocatable array
   options:
     wrap_python: False
     wrap_lua: False
@@ -99,3 +115,13 @@ declarations:
     wrap_lua: False
   doxygen:
     brief: append '-like' to names.
+
+
+########################################
+# return vectors
+
+#- decl: std::vector<int> ReturnVectorAlloc(int i)
+#  doxygen:
+#    description: |
+#      Return a vector as an ALLOCATABLE array.
+

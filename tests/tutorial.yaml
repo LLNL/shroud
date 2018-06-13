@@ -104,36 +104,38 @@ declarations:
       wrap_python: False
       wrap_lua: False
 
-  - decl: int * ReturnIntPtr()
-    options:
-      return_scalar_pointer: pointer
-      wrap_lua: False
-
-  - decl: int * ReturnIntPtrScalar()
-    options:
-      return_scalar_pointer: scalar
-      wrap_lua: False
-
-  - decl: int * ReturnIntPtrDim(int *len+intent(out)+hidden) +dimension(len)
-    options:
-      wrap_lua: False
-  
-  - decl: int * ReturnIntPtrDimNew(int *len+intent(out)+hidden) +dimension(len)
-    options:
-      wrap_lua: False
-  
   - decl: const std::string Function4a(
       const std::string& arg1,
       const std::string& arg2 ) +len(30)
-# +pure
 #  attrs:
 #    result:
 #      len: 30
+    doxygen:
+      description: |
+         Since +len(30) is provided, the result of the function
+         will be copied directly into memory provided by Fortran.
+         The function will not be ALLOCATABLE.
+
   - decl: const std::string& Function4b(
       const std::string& arg1,
       const std::string& arg2 )
     format:
       F_string_result_as_arg: output
+
+  - decl: const std::string& Function4c(
+      const std::string& arg1,
+      const std::string& arg2 )
+    doxygen:
+      description: |
+         Note that since a reference is returned, no intermediate string
+         is allocated.  It is assumed +owner(library).
+  
+  - decl: const std::string * Function4d() +owner(caller)
+# XXX - can not deal with non const yet
+    doxygen:
+      description: |
+         A string is allocated by the library is must be deleted
+         by the caller.
   
   - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
     default_arg_suffix:
@@ -302,9 +304,9 @@ declarations:
 #    wrap_python: False
       wrap_lua: False
   
-  - decl: Class1 getClassNew(int flag)
+  - decl: Class1 getClassCopy(int flag)
     doxygen:
-         brief: Return Class1 instance by value
+         brief: Return Class1 instance by value, uses copy constructor
     options:
       wrap_python: False
       wrap_lua: False

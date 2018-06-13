@@ -42,6 +42,7 @@
 // #######################################################################
 #include "wrapdefault_library.h"
 #include "global_header.hpp"
+#include "typesdefault_library.h"
 
 
 extern "C" {
@@ -51,6 +52,13 @@ void DEF_function1()
 {
     one::two::function1();
     return;
+}
+
+// Release C++ allocated memory.
+void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

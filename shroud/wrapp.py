@@ -58,6 +58,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import collections
+import os
 import re
 
 from . import declast
@@ -91,6 +92,9 @@ class Wrapp(util.WrapperMixin):
         self.comment = '//'
         self.cont = ''
         self.linelen = newlibrary.options.C_line_length
+        self.doxygen_begin = '/**'
+        self.doxygen_cont = ' *'
+        self.doxygen_end = ' */'
         self.need_numpy = False
         self.enum_impl = []
         self.arraydescr = []   # Create PyArray_Descr for struct
@@ -671,11 +675,14 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if return_pointer_as == 'pointer':
-            # Create a 1-d array from pointer
+        if return_pointer_as in [ 'pointer', 'allocatable' ] and \
+           typedef.base != 'string':
+            # Create a 1-d array from pointer.
+            # A string is not really an array, so do not deal with it here.
             dim = ast.attrs.get('dimension', None)
             # Create array for shape.
             # Cannot use dimension directly since it may be the wrong type.
+            self.need_numpy = True
             if dim:
                 fmt.npy_ndims = '1'
                 fmt.npy_dims = 'SHD_' + ast.name
@@ -812,7 +819,7 @@ return 1;""", fmt)
 
         CXX_subprogram = node.CXX_subprogram
         result_type = node.CXX_return_type
-        result_typedef = node.CXX_result_typedef
+        result_typemap = node.CXX_result_typemap
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
         is_dtor = ast.attrs.get('_destructor', False)
@@ -820,7 +827,7 @@ return 1;""", fmt)
         ml_flags = []
         is_struct_scalar = False
         need_malloc = False
-        result_return_pointer_as = node.return_pointer_as
+        result_return_pointer_as = ast.return_pointer_as
 
         if cls:
             if 'static' in ast.storage:
@@ -845,7 +852,7 @@ return 1;""", fmt)
         # XXX if a class, then knock off const since the PyObject
         # is not const, otherwise, use const from result.
 # This has been replaced by gen_arg methods, but not sure about const.
-#        if result_typedef.base == 'shadow':
+#        if result_typemap.base == 'shadow':
 #            is_const = False
 #        else:
 #            is_const = None
@@ -854,13 +861,13 @@ return 1;""", fmt)
             fmt_result = fmt_result0.setdefault('fmtpy', util.Scope(fmt)) # fmt_func
 
             CXX_result = ast
-            if result_typedef.base == 'struct' and not CXX_result.is_pointer():
+            if result_typemap.base == 'struct' and not CXX_result.is_pointer():
                 # Allocate variable to the type returned by the function.
                 # No need to convert to C.
                 is_struct_scalar = True
                 result_return_pointer_as = 'pointer'
                 fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
-            elif result_typedef.cxx_to_c is None:
+            elif result_typemap.cxx_to_c is None:
                 fmt_result.cxx_var = wformat('{C_local}{C_result}', fmt_result)
             else:
                 fmt_result.cxx_var = wformat('{CXX_local}{C_result}', fmt_result)
@@ -884,7 +891,7 @@ return 1;""", fmt)
                 fmt_result.cxx_member = '.'
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
-            fmt_result.numpy_type = result_typedef.PYN_typenum
+            fmt_result.numpy_type = result_typemap.PYN_typenum
 #            fmt_pattern = fmt_result
 
         PY_code = []
@@ -1214,7 +1221,7 @@ return 1;""", fmt)
                 # Allocate space for scalar returned by function.
                 # This allows NumPy to pointer to the memory.
                 need_rv = True
-                fmt.cxx_type = result_typedef.cxx_type
+                fmt.cxx_type = result_typemap.cxx_type
                 capsule_type = CXX_result.gen_arg_as_cxx(
                     name=None, force_ptr=True, params=None, continuation=True)
                 if self.language == 'c':
@@ -1270,8 +1277,9 @@ return 1;""", fmt)
         # Compute return value
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
-            result_blk = result_typedef.py_statements.get('intent_out', {})
-            ttt = self.intent_out(result_return_pointer_as, capsule_order, ast, result_typedef,
+            result_blk = result_typemap.py_statements.get('intent_out', {})
+            ttt = self.intent_out(result_return_pointer_as, capsule_order,
+                                  ast, result_typemap,
                                   result_blk, fmt_result, post_call)
             # Add result to front of result tuple
             build_tuples.insert(0, ttt)
@@ -1363,6 +1371,8 @@ return 1;""", fmt)
                 fmt)
 
         body.append('')
+        if node and node.options.doxygen and node.doxygen:
+            self.write_doxygen(body, node.doxygen)
         if is_ctor:
             body.append('static int')
         else:
@@ -1540,6 +1550,8 @@ return 1;""", fmt)
 
         append_format(output, PyTypeObject_template, fmt_type)
 
+        self.config.pyfiles.append(
+            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
     def multi_dispatch(self, methods):
@@ -1674,6 +1686,8 @@ extern PyObject *{PY_prefix}error_obj;
 #endif
 """, fmt)
         output.append('#endif  /* %s */' % guard)
+#        self.config.pyfiles.append(
+#            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_module(self, node):
@@ -1730,6 +1744,8 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer('C_init_body', output)
         append_format(output, module_end, fmt)
 
+        self.config.pyfiles.append(
+            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_helper(self):
@@ -1747,6 +1763,8 @@ extern PyObject *{PY_prefix}error_obj;
         output.extend(self.py_helper_functions)
         if self.capsule_order:
             self.write_capsule_helper(output, fmt)
+        self.config.pyfiles.append(
+            os.path.join(self.config.python_dir, fmt.PY_helper_filename))
         self.write_output_file(
             fmt.PY_helper_filename, self.config.python_dir, output)
 

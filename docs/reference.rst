@@ -238,6 +238,15 @@ debug
   be useful for debugging.
   Defaults to *false*.
 
+debug_index
+  Print index number of function and relationships between 
+  C and Fortran wrappers in the wrappers and json file.
+  The number changes whenever a new function
+  is inserted and introduces lots of meaningless differenences in the test
+  answers. This option is used to avoid the clutter.  If needed for 
+  debugging, then set to *true*.  **debug** must also be *true*.
+  Defaults to *false*.
+
 doxygen
   If True, create doxygen comments.
 
@@ -284,7 +293,7 @@ return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
   (it does not have the *dimension* attribute).
   **scalar** return as a scalar or **pointer** to return as a pointer.
-  This option does not effect the C wrapper.
+  This option does not effect the C or Fortran wrapper.
   For Python, **pointer** will return a NumPy scalar.
   Defaults to *pointer*.
 
@@ -340,7 +349,7 @@ C_impl_filename_library_template
 
 C_memory_dtor_function_template
     Name of function used to delete memory allocated by C or C++.
-    defaults to ``{C_prefix}SHROUD_array_destructor_function``.
+    defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
     ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
@@ -521,10 +530,15 @@ Format Fields
 
 Each scope (library, class, function) has its own format dictionary.
 If a value is not found in the dictionary, then the parent
-scope will be recursively searched.
+scopes will be recursively searched.
 
 Library
 ^^^^^^^
+
+C_array_type
+    Name of structure used to store information about an array
+    such as its address and size.
+    Defaults to *{C_prefix}SHROUD_array*.
 
 C_bufferify_suffix
   Suffix appended to generated routine which pass strings as buffers
@@ -534,10 +548,6 @@ C_bufferify_suffix
 C_capsule_data_type
     Name of struct used to share memory information with Fortran.
     Defaults to *SHROUD_capsule_data*.
-
-C_context_type
-    Name of array context information struct and typedef.
-    Defaults to *SHROUD_vector_context*.
 
 C_header_filename
     Name of generated header file for the library.
@@ -594,6 +604,11 @@ CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
+F_array_type
+    Name of derived type used to store information about an array
+    such as its address and size.
+    Defaults to *SHROUD_array*.
+
 F_C_prefix
     Prefix added to name of generated Fortran interface for C routines.
     Defaults to **c_**.
@@ -612,19 +627,9 @@ F_capsule_type
     Defaults to *SHROUD_capsule*.
     Contains a *F_capsule_data_type*.
 
-F_context_type
-    Name of array context information derived type.
-    Defaults to *SHROUD_vector_context*.
-
 F_derived_member
-    Fortran ``POINTER`` to *F_derived_ptr*.
+    A *F_capsule_data_type* use to reference C++ memory.
     Defaults to *cxxmem*.
-
-F_derived_ptr
-    The name of the ``type(C_PTR)`` member of the Fortran derived type which 
-    points to a *F_capsule_data_type*. 
-    Accessible from Fortran using *F_derived_member*.
-    Defaults ot *cxxpr*.
 
 F_filename_suffix:
    Suffix added to Fortran files.
@@ -1068,80 +1073,6 @@ f_to_c
     If this field is set, it will be used before f_cast.
     Defaults to *None*.
 
-
-Annotations
------------
-
-An annotation can be used to provide semantic information for a function or argument.
-
-.. a.k.a. attributes
-
-allocatable
-   Adds the Fortran ``allocatable`` attribute to an argument and adds an
-   ``allocate`` statement.
-   see :ref:`TypesAnchor_Allocatable_array`.
-
-default
-   Default value for C++ function argument.
-   This value is implied by C++ default argument syntax.
-
-dimension
-   Sets the Fortran DIMENSION attribute.
-   Pointer argument should be passed through since it is an
-   array.  *value* must be *False*
-   If set without a value, it defaults to ``(*)``.
-
-name
-   Name of the method.
-   Useful for constructor and destructor methods which have no names.
-
-hidden
-   The argument will not appear in the Fortran API.
-   But it will be passed to the C wrapper.
-   This allows the value to be used in the C wrapper.
-   For example, setting the shape of a pointer function::
-
-      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
-
-.. assumed intent(out)
-   
-implied
-   Used to compute value of argument to C++ based on argument
-   to Fortran or Python wrapper.  Useful with array sizes::
-
-      int Sum(int * array +intent(in), int len +implied(size(array))
-
-.. assumed intent(in)
-
-intent
-   Valid valid values are ``in``, ``out``, ``inout``.
-   If the argument is ``const``, the default is ``in``.
-
-len
-   For a string argument, pass an additional argument to the
-   C wrapper with the result of the Fortran intrinsic ``len``.
-   If a value for the attribute is provided it will be the name
-   of the extra argument.  If no value is provided then the
-   argument name defaults to option *C_var_len_template*.
-
-   When used with a function, it will be the length of the return
-   value of the function using the declaration::
-
-     character(kind=C_CHAR, len={c_var_len}) :: {F_result}
-
-len_trim
-   For a string argument, pass an additional argument to the
-   C wrapper with the result of the Fortran intrinsic ``len_trim``.
-   If a value for the attribute is provided it will be the name
-   of the extra argument.  If no value is provided then the
-   argument name defaults to option *C_var_trim_template*.
-
-pure
-   Sets the Fortran PURE attribute for the function.
-
-value
-   If true, pass-by-value; else, pass-by-reference.
-   This attribute is implied when the argument is not a pointer or reference.
 
 
 Doxygen

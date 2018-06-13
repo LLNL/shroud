@@ -278,6 +278,28 @@ cxx_header
 A blank delimited list of header files which will be added to the C wrapper implementation.
 These headers may include C++ code.
 
+destructor
+^^^^^^^^^^
+
+A list of lines of code used to delete memory. Usually allocated by a *pre_call*
+statement.  The code is inserted into *C_memory_dtor_function* which will provide
+the address of the memory to destroy in the variable ``void *ptr``.
+For example::
+
+    destructor:
+    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
+    -  delete cxx_ptr;
+
+
+destructor_name
+^^^^^^^^^^^^^^^
+
+A name for the destructor code in *destructor*.
+Must be unique.  May include format strings::
+
+    destructor_name: std_vector_{cxx_T}
+
+
 pre_call
 ^^^^^^^^
 
@@ -339,7 +361,6 @@ to generated *C_memory_dtor_function* used to destroy the memory::
     struct s_{C_capsule_data_type} {
         void *addr;     /* address of C++ memory */
         int idtor;      /* index of destructor */
-        int refcount;   /* reference count */
     };
     typedef struct s_{C_capsule_data_type} {C_capsule_data_type};
 
@@ -350,44 +371,13 @@ to the C wrapper::
     struct s_{C_type_name} {
         void *addr;   /* address of C++ memory */
         int idtor;    /* index of destructor */
-        int refcount; /* reference count */
     };
     typedef struct s_{C_type_name} {C_type_name};
 
 
-The function *C_capsule_data_type* is generated to have a destructor
-for each class.  A single function is created to avoid polluting the
-global namespace with multiple functions.  It is also easier to
-control ownership using *idtor*.  If the wrapped library owns the
-memory (i.e. the C wrapper never needs to release the memory) then
-*idtor* will be 0::
+``idtor`` is the index of the destructor code.  It is used
+with memory managerment and discussed in :ref:`MemoryManagementAnchor`.
 
-    void {C_memory_dtor_function}({C_capsule_data_type} *cap, bool gc)
-    {
-        void *ptr = cap->addr;
-        switch (cap->idtor) {
-        case 0:
-        {
-            // Nothing to delete
-            break;
-        }
-        case 1:
-        {
-            tutorial::Class1 *cxx_ptr = 
-                reinterpret_cast<tutorial::Class1 *>(ptr);
-            delete cxx_ptr;
-            break;
-        }
-        default:
-        {
-            // Unexpected case in destructor
-            break;
-        }
-        }
-        if (gc) {
-            free(cap);
-        } else {
-            cap->addr = NULL;
-            cap->idtor = 0;  // avoid deleting again
-        }
-    }
+The C wrapper for a function which returns a class instance will 
+return a *C_capsule_data_type* by value.  Functions which take 
+a class instance will receive a pointer to a *C_capsule_data_type*.

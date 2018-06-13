@@ -44,8 +44,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "clibrary.h"
+#include "typesClibrary.h"
 
 
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -60,7 +62,6 @@ static void ShroudStrCopy(char *a, int la, const char *s)
 // splicer end C_definitions
 
 // void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-// function_index=10
 void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
@@ -79,13 +80,13 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
     }
-    {
-        // C_finalize
-        // Function4a allocates memory which must be released after it is copied
-        // into the Fortran argument or else it will leak.
-        free(SHC_rv);
-        
-    }
     return;
 // splicer end function.function4a_bufferify
+}
+
+// Release C++ allocated memory.
+void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
 }

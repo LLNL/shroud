@@ -53,15 +53,13 @@ extern "C" {
 // splicer end class.Singleton.C_definitions
 
 // static Singleton & getReference()
-// function_index=12
-TUT_singleton * TUT_singleton_get_reference()
+TUT_singleton TUT_singleton_get_reference()
 {
 // splicer begin class.Singleton.method.get_reference
     Singleton & SHCXX_rv = Singleton::getReference();
-    TUT_singleton *SHC_rv = (TUT_singleton *) malloc(sizeof(TUT_singleton));
-    SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    TUT_singleton SHC_rv;
+    SHC_rv.addr = static_cast<void *>(&SHCXX_rv);
+    SHC_rv.idtor = 0;
     return SHC_rv;
 // splicer end class.Singleton.method.get_reference
 }

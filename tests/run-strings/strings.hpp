@@ -56,7 +56,7 @@ const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
 
-const std::string getString4();
+const std::string getConstStringResult();
 const std::string getConstStringLen();
 const std::string getConstStringAsArg();
 const std::string getConstStringAlloc();
@@ -70,6 +70,7 @@ const std::string& getConstStringRefAlloc();
 const std::string * getConstStringPtrLen();
 const std::string * getConstStringPtrAlloc();
 const std::string * getConstStringPtrOwnsAlloc();
+const std::string * getConstStringPtrOwnsAllocPattern();
 
 void acceptName_instance(std::string arg1);
 

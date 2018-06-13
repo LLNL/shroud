@@ -414,7 +414,7 @@ computed using ``len``::
 
 The contents of the ``std::string`` are copied into the result argument and blank
 filled by ``ShroudStrCopy``.
-Before the C wrapper returns, ``SHT_rv`` will be deleted.
+Before the C wrapper returns, ``SHT_rv`` will be deleted by the compiler.
 
 The Fortran wrapper::
 
@@ -437,6 +437,39 @@ The function is called as::
 
 .. note :: This function is just for demonstration purposes.
            Any reasonable person would just use the concatenation operator in Fortran.
+
+The downside of this approach is that the maximum length of the return argument must be 
+known in advance.  By leaving off the **+len(30)**, Shroud will create an ``ALLOCATABLE``
+function which will allocate a ``CHARACTER`` variable of the correct length::
+
+    function function4c(arg1, arg2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: arg1
+        character(len=*), intent(IN) :: arg2
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
+        call c_function4c_bufferify(arg1, len_trim(arg1, kind=C_INT), &
+            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
+    end function function4c
+
+The type ``SHROUD_array`` contains the address and length of the
+``std::string`` returned by ``Function4c``.  The result ``STF_rv`` is
+allocated and the routine ``SHROUD_copy_string_and_free`` then copies
+the contents into it and deletes the C++ string if necessary.
+The details of ``SHROUD_array`` are described in :ref:`MemoryManagementAnchor`.
+
+This function can be called similar to ``Function4a``::
+
+    character(30) rv4a
+    character(len=:), allocatable :: rv4c
+
+    rv4a = function4c("bird", "dog")
+    rv4c = function4c("one", "two")
+
+ 
 
 Default Value Arguments
 ------------------------

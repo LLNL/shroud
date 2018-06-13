@@ -45,6 +45,7 @@ program tester
   use iso_c_binding
   use clibrary_mod
   implicit none
+  real(C_DOUBLE), parameter :: pi = 3.1415926_C_DOUBLE
   logical ok
 
   logical rv_logical, wrk_logical
@@ -73,6 +74,7 @@ contains
 
   subroutine test_functions
     integer(c_int) iargin, iarginout, iargout
+    real(c_double) :: in_double(5)
     real(c_double), allocatable :: out_double(:)
     integer(c_int), allocatable :: out_int(:)
     integer(c_int) :: incr(4)
@@ -143,9 +145,10 @@ contains
     call assert_true(iargout   == 2)
 
     call assert_false(allocated(out_double))
-    call cos_doubles([1.d0, 2.d0, 3.d0, 4.d0], out_double)
+    in_double = [0.0*pi, 0.5*pi, pi, 1.5*pi, 2.0*pi]
+    call cos_doubles(in_double, out_double)
     call assert_true(allocated(out_double))
-    call assert_true(all(out_double == [2.d0, 4.d0, 6.d0, 8.d0]))
+    call assert_true(all(abs(out_double - cos(in_double)) < 1.e-08 ))
 
     call assert_false(allocated(out_int))
     call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)

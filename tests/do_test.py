@@ -324,7 +324,7 @@ if __name__ == '__main__':
         test_names = args.testname
     else:
         test_names = [ 'none', 'tutorial', 'vectors', 'forward', 'example', 'include',
-                       'names', 'strings', 'clibrary', 'interface' ]
+                       'names', 'strings', 'clibrary', 'interface', 'ownership' ]
 
     logging.info('Tests to run: {}'.format( ' '.join(test_names)))
 
@@ -344,7 +344,7 @@ if __name__ == '__main__':
             print('{} pass'.format(name))
         else:
             fail_names.append(name)
-            print('{} failed'.format(name))
+            print('{} ***FAILED'.format(name))
 
     # summarize results
     if fail_names:

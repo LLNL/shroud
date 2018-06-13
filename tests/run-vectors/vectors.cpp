@@ -61,10 +61,36 @@ int vector_sum(const std::vector<int> &arg)
 // arg+intent(out)
 // Start with empty vector and fill in values
 
-void vector_iota(std::vector<int> &arg)
+void vector_iota_out(std::vector<int> &arg)
 {
   for(unsigned int i=0; i < 5; i++) {
     arg.push_back(i + 1);
+  }
+  return;
+}
+
+//----------------------------------------------------------------------
+// vector reference as argument.
+// arg+intent(out)+deref(allocatable)
+// Start with empty vector and fill in values
+
+void vector_iota_out_alloc(std::vector<int> &arg)
+{
+  for(unsigned int i=0; i < 5; i++) {
+    arg.push_back(i + 1);
+  }
+  return;
+}
+
+//----------------------------------------------------------------------
+// vector reference as argument.
+// arg+intent(out)+deref(allocatable)
+// Start with empty vector and fill in values
+
+void vector_iota_inout_alloc(std::vector<int> &arg)
+{
+  for(unsigned int i=0; i < 5; i++) {
+    arg.push_back(i + 11);
   }
   return;
 }
@@ -119,5 +145,17 @@ void vector_string_append(std::vector< std::string > &arg)
     arg[i] += "-like";
   }
   return;
+}
+
+
+//----------------------------------------------------------------------
+
+std::vector<int> ReturnVectorAlloc(int i)
+{
+  std::vector<int> rv;
+  for (int i=0; i < 5; i++) {
+    rv.push_back(i+1);
+  }
+  return rv;
 }
 

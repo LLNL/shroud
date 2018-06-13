@@ -936,11 +936,11 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
-    def result_as_voidstarstar(self, typ, name, const=False):
-        """Add an 'typ**' argument to return pointer to result.
+    def result_as_voidstar(self, typ, name, const=False):
+        """Add an 'typ*' argument to return pointer to result.
         Change function result to 'void'.
         """
-        newarg = create_voidstarstar(typ, name, const)
+        newarg = create_voidstar(typ, name, const)
         self.params.append(newarg)
         self._set_to_void()
         return newarg
@@ -1185,13 +1185,15 @@ class Declaration(Node):
             decl.append('(*)')
         return ''.join(decl)
 
-    def gen_arg_as_fortran(self, local=False, is_pointer=False,
+    def gen_arg_as_fortran(self, local=False,
+                           is_pointer=False, is_allocatable=False,
                            attributes=[], **kwargs):
         """Geneate declaration for Fortran variable.
 
         If local==True, this is a local variable, skip attributes
           OPTIONAL, VALUE, and INTENT
         is_pointer - True/False - have POINTER attribute
+        is_allocatable - True/False - have ALLOCATABLE attribute
         attributes - list of literal Fortran attributes to add to declaration.
                      i.e. [ 'pointer' ]
         """
@@ -1202,8 +1204,30 @@ class Declaration(Node):
             # If a template, use its type
             typedef = typemap.lookup_type(attrs['template'])
 
+        deref = attrs.get('deref', '')
+        if deref == 'allocatable':
+            is_allocatable = True
+        elif deref == 'pointer':
+            is_pointer = True
+
+        if not is_allocatable:
+            is_allocatable = attrs.get('allocatable', False)
+
         typ = typedef.f_type
-        t.append(typ)
+
+        if typedef.base == 'string':
+            if 'len' in attrs and local:
+                # Also used with function result declaration.
+                t.append('character(len={})'.format(attrs['len']))
+            elif is_allocatable:
+                t.append('character(len=:)')
+            elif not local:
+                t.append('character(len=*)')
+            else:
+                t.append('character')
+        else:
+            t.append(typ)
+
         if not local:  # must be dummy argument
             if attrs.get('value', False):
                 t.append('value')
@@ -1211,8 +1235,7 @@ class Declaration(Node):
             if intent:
                 t.append('intent(%s)' % intent.upper())
 
-        allocatable = attrs.get('allocatable', False)
-        if allocatable:
+        if is_allocatable:
             t.append('allocatable')
         if is_pointer:
             t.append('pointer')
@@ -1229,13 +1252,17 @@ class Declaration(Node):
 
         dimension = attrs.get('dimension', '')
         if dimension:
-            if is_pointer:
+            if is_allocatable:
+                # Assume 1-d.
+                decl.append('(:)')
+            elif is_pointer:
                 decl.append('(:)')  # XXX - 1d only
             else:
                 decl.append('(' + dimension + ')')
-        elif allocatable:
+        elif is_allocatable:
             # Assume 1-d.
-            decl.append('(:)')
+            if typedef.base != 'string':
+                decl.append('(:)')
 
         return ''.join(decl)
 
@@ -1310,14 +1337,14 @@ def create_this_arg(name, typ, const=True):
     arg.attrs['_typename'] = typ
     return arg
 
-def create_voidstarstar(typ, name, const=False):
-    """Create a Declaration for an argument as 'typ **name'.
+def create_voidstar(typ, name, const=False):
+    """Create a Declaration for an argument as 'typ *name'.
     """
     arg = Declaration()
     arg.const = const
     arg.declarator = Declarator()
     arg.declarator.name = name
-    arg.declarator.pointer = [ Ptr('*'), Ptr('*') ]
+    arg.declarator.pointer = [ Ptr('*') ]
     arg.specifier = [ typ ]
     arg.attrs['_typename'] = typ
     return arg

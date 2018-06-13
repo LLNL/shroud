@@ -50,9 +50,9 @@
             "CXX_this": "SH_this", 
             "CXX_this_call": "", 
             "C_argument": "SH_", 
+            "C_array_type": "VEC_SHROUD_array", 
             "C_bufferify_suffix": "_bufferify", 
             "C_capsule_data_type": "VEC_SHROUD_capsule_data", 
-            "C_context_type": "VEC_SHROUD_vector_context", 
             "C_custom_return_type": "", 
             "C_header_filename": "wrapvectors.h", 
             "C_header_filename_suffix": "h", 
@@ -60,7 +60,7 @@
             "C_impl_filename": "wrapvectors.cpp", 
             "C_impl_filename_suffix": "cpp", 
             "C_local": "SHC_", 
-            "C_memory_dtor_function": "VEC_SHROUD_array_destructor_function", 
+            "C_memory_dtor_function": "VEC_SHROUD_memory_destructor", 
             "C_post_call": "", 
             "C_pre_call": "", 
             "C_prefix": "VEC_", 
@@ -70,12 +70,11 @@
             "F_C_prefix": "c_", 
             "F_C_pure_clause": "", 
             "F_C_result_clause": "", 
+            "F_array_type": "SHROUD_array", 
             "F_capsule_data_type": "SHROUD_capsule_data", 
             "F_capsule_final_function": "SHROUD_capsule_final", 
             "F_capsule_type": "SHROUD_capsule", 
-            "F_context_type": "SHROUD_vector_context", 
             "F_derived_member": "cxxmem", 
-            "F_derived_ptr": "cxxptr", 
             "F_filename_suffix": "f", 
             "F_impl_filename": "wrapfvectors.f", 
             "F_module_name": "vectors_mod", 
@@ -117,8 +116,12 @@
         }, 
         "functions": [
             {
-                "_PTR_F_C_index": 6, 
-                "_function_index": 0, 
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv"
+                    }
+                }, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -188,9 +191,12 @@
                             "c_var": "arg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(SH_arg))", 
                             "cxx_member": ".", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -204,11 +210,11 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 6, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -275,15 +281,13 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 7, 
-                "_function_index": 1, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "vector_iota", 
+                        "name": "vector_iota_out", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -315,19 +319,22 @@
                         "void"
                     ]
                 }, 
-                "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-                "declgen": "void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))", 
+                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
+                "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran input array"
+                }, 
                 "format": {
-                    "F_C_call": "c_vector_iota_bufferify", 
-                    "F_arg_c_call": "Carg%mem,\t Darg", 
+                    "F_C_call": "c_vector_iota_out_bufferify", 
+                    "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
-                    "F_call_code": "call c_vector_iota_bufferify(Carg%mem,\t Darg)", 
-                    "F_name_function": "vector_iota", 
-                    "F_name_generic": "vector_iota", 
-                    "F_name_impl": "vector_iota", 
+                    "F_call_code": "call c_vector_iota_out_bufferify(Darg)", 
+                    "F_name_function": "vector_iota_out", 
+                    "F_name_generic": "vector_iota_out", 
+                    "F_name_impl": "vector_iota_out", 
                     "F_subprogram": "subroutine", 
-                    "function_name": "vector_iota", 
-                    "underscore_name": "vector_iota"
+                    "function_name": "vector_iota_out", 
+                    "underscore_name": "vector_iota_out"
                 }, 
                 "options": {
                     "wrap_c": false, 
@@ -336,7 +343,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 1, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -344,9 +350,11 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg", 
-                            "c_var_capsule": "Carg", 
                             "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
                             "cxx_T": "int", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
                             "cxx_var": "SH_arg", 
@@ -354,14 +362,13 @@
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
-                            "c_var_capsule": "Carg", 
                             "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
                             "cxx_T": "int", 
                             "f_var": "arg"
                         }
                     }
                 }, 
-                "_function_index": 7, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -369,7 +376,7 @@
                     }, 
                     "const": false, 
                     "declarator": {
-                        "name": "vector_iota", 
+                        "name": "vector_iota_out", 
                         "pointer": []
                     }, 
                     "func_const": false, 
@@ -378,7 +385,6 @@
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_typename": "std::vector", 
-                                "capsule": "Carg", 
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "out", 
@@ -404,22 +410,25 @@
                         "void"
                     ]
                 }, 
-                "decl": "void vector_iota(std::vector<int> &arg+intent(out))", 
-                "declgen": "void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))", 
+                "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
+                "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran input array"
+                }, 
                 "format": {
-                    "C_call_code": "vector_iota(\t*SH_arg);", 
+                    "C_call_code": "vector_iota_out(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
-                    "C_name": "VEC_vector_iota_bufferify", 
-                    "C_post_call": "Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->size = SH_arg->size();", 
-                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;\nCarg->addr = static_cast<void *>(SH_arg);\nCarg->idtor = 1;  // index of destructor\nCarg->refcount = 1;     // reference count", 
-                    "C_prototype": "VEC_SHROUD_capsule_data *Carg,\t VEC_SHROUD_vector_context *Darg", 
+                    "C_name": "VEC_vector_iota_out_bufferify", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
+                    "C_prototype": "VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
-                    "F_C_name": "c_vector_iota_bufferify", 
+                    "F_C_name": "c_vector_iota_out_bufferify", 
                     "c_const": "", 
-                    "function_name": "vector_iota", 
+                    "function_name": "vector_iota_out", 
                     "function_suffix": "_bufferify", 
-                    "underscore_name": "vector_iota"
+                    "underscore_name": "vector_iota_out"
                 }, 
                 "options": {
                     "wrap_c": true, 
@@ -429,8 +438,326 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 8, 
-                "_function_index": 2, 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "vector_iota_out_alloc", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "std::vector", 
+                                "deref": "allocatable", 
+                                "dimension": ":", 
+                                "intent": "out", 
+                                "template": "int", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::vector"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran allocatable array"
+                }, 
+                "format": {
+                    "F_C_call": "c_vector_iota_out_alloc_bufferify", 
+                    "F_arg_c_call": "Darg", 
+                    "F_arguments": "arg", 
+                    "F_call_code": "call c_vector_iota_out_alloc_bufferify(Darg)", 
+                    "F_name_function": "vector_iota_out_alloc", 
+                    "F_name_generic": "vector_iota_out_alloc", 
+                    "F_name_impl": "vector_iota_out_alloc", 
+                    "F_subprogram": "subroutine", 
+                    "function_name": "vector_iota_out_alloc", 
+                    "underscore_name": "vector_iota_out_alloc"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "arg", 
+                            "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
+                            "cxx_T": "int", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "SH_arg", 
+                            "idtor": "1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
+                            "cxx_T": "int", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_generated": "arg_to_buffer", 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "vector_iota_out_alloc", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf", 
+                                "_typename": "std::vector", 
+                                "context": "Darg", 
+                                "deref": "allocatable", 
+                                "dimension": ":", 
+                                "intent": "out", 
+                                "template": "int", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::vector"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran allocatable array"
+                }, 
+                "format": {
+                    "C_call_code": "vector_iota_out_alloc(\t*SH_arg);", 
+                    "C_call_list": "*SH_arg", 
+                    "C_name": "VEC_vector_iota_out_alloc_bufferify", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_pre_call": "std::vector<int>\t *SH_arg = new std::vector<int>;", 
+                    "C_prototype": "VEC_SHROUD_array *Darg", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_vector_iota_out_alloc_bufferify", 
+                    "c_const": "", 
+                    "function_name": "vector_iota_out_alloc", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_iota_out_alloc"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "vector_iota_inout_alloc", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_typename": "std::vector", 
+                                "deref": "allocatable", 
+                                "dimension": ":", 
+                                "intent": "inout", 
+                                "template": "int", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::vector"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))", 
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran allocatable array"
+                }, 
+                "format": {
+                    "F_C_call": "c_vector_iota_inout_alloc_bufferify", 
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg", 
+                    "F_arguments": "arg", 
+                    "F_call_code": "call c_vector_iota_inout_alloc_bufferify(arg,\t size(arg, kind=C_LONG),\t Darg)", 
+                    "F_name_function": "vector_iota_inout_alloc", 
+                    "F_name_generic": "vector_iota_inout_alloc", 
+                    "F_name_impl": "vector_iota_inout_alloc", 
+                    "F_subprogram": "subroutine", 
+                    "function_name": "vector_iota_inout_alloc", 
+                    "underscore_name": "vector_iota_inout_alloc"
+                }, 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "arg", 
+                            "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
+                            "c_var_size": "Sarg", 
+                            "cxx_T": "int", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
+                            "cxx_member": "->", 
+                            "cxx_type": "int", 
+                            "cxx_var": "SH_arg", 
+                            "idtor": "1"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg", 
+                            "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
+                            "cxx_T": "int", 
+                            "f_var": "arg"
+                        }
+                    }
+                }, 
+                "_generated": "arg_to_buffer", 
+                "ast": {
+                    "attrs": {
+                        "_typename": "void"
+                    }, 
+                    "const": false, 
+                    "declarator": {
+                        "name": "vector_iota_inout_alloc", 
+                        "pointer": []
+                    }, 
+                    "func_const": false, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf", 
+                                "_typename": "std::vector", 
+                                "context": "Darg", 
+                                "deref": "allocatable", 
+                                "dimension": ":", 
+                                "intent": "inout", 
+                                "size": "Sarg", 
+                                "template": "int", 
+                                "value": false
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "arg", 
+                                "pointer": [
+                                    {
+                                        "const": false, 
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "specifier": [
+                                "std::vector"
+                            ]
+                        }
+                    ], 
+                    "specifier": [
+                        "void"
+                    ]
+                }, 
+                "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))", 
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))", 
+                "doxygen": {
+                    "brief": "Copy vector into Fortran allocatable array"
+                }, 
+                "format": {
+                    "C_call_code": "vector_iota_inout_alloc(\t*SH_arg);", 
+                    "C_call_list": "*SH_arg", 
+                    "C_name": "VEC_vector_iota_inout_alloc_bufferify", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);", 
+                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg", 
+                    "C_return_code": "return;", 
+                    "C_return_type": "void", 
+                    "F_C_name": "c_vector_iota_inout_alloc_bufferify", 
+                    "c_const": "", 
+                    "function_name": "vector_iota_inout_alloc", 
+                    "function_suffix": "_bufferify", 
+                    "underscore_name": "vector_iota_inout_alloc"
+                }, 
+                "options": {
+                    "wrap_c": true, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }
+            }, 
+            {
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -473,9 +800,9 @@
                 "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
                 "format": {
                     "F_C_call": "c_vector_increment_bufferify", 
-                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Carg%mem,\t Darg", 
+                    "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg", 
                     "F_arguments": "arg", 
-                    "F_call_code": "call c_vector_increment_bufferify(arg,\t size(arg, kind=C_LONG),\t Carg%mem,\t Darg)", 
+                    "F_call_code": "call c_vector_increment_bufferify(arg,\t size(arg, kind=C_LONG),\t Darg)", 
                     "F_name_function": "vector_increment", 
                     "F_name_generic": "vector_increment", 
                     "F_name_impl": "vector_increment", 
@@ -490,7 +817,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 2, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -498,24 +824,26 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "arg", 
-                            "c_var_capsule": "Carg", 
                             "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "int", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_arg)", 
                             "cxx_member": "->", 
                             "cxx_type": "int", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "1"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
-                            "c_var_capsule": "Carg", 
                             "c_var_context": "Darg", 
+                            "c_var_dimension": ":", 
                             "cxx_T": "int", 
                             "f_var": "arg"
                         }
                     }
                 }, 
-                "_function_index": 8, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -532,7 +860,6 @@
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_typename": "std::vector", 
-                                "capsule": "Carg", 
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "inout", 
@@ -560,14 +887,14 @@
                     ]
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
-                "declgen": "void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))", 
+                "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))", 
                 "format": {
                     "C_call_code": "vector_increment(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_increment_bufferify", 
-                    "C_post_call": "Darg->addr = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->size = SH_arg->size();", 
-                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);\nCarg->addr = static_cast<void *>(SH_arg);\nCarg->idtor = 0;        // index of destructor\nCarg->refcount = 1;     // reference count", 
-                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_capsule_data *Carg,\t VEC_SHROUD_vector_context *Darg", 
+                    "C_post_call": "Darg->cxx.addr  = static_cast<void *>(SH_arg);\nDarg->cxx.idtor = 1;\nDarg->addr.cvoidp = SH_arg->empty() ? NULL : &SH_arg->front();\nDarg->len = sizeof(int);\nDarg->size = SH_arg->size();", 
+                    "C_pre_call": "std::vector<int> *SH_arg = \tnew std::vector<int>\t(\targ, arg + Sarg);", 
+                    "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_vector_increment_bufferify", 
@@ -584,8 +911,12 @@
                 }
             }, 
             {
-                "_PTR_F_C_index": 9, 
-                "_function_index": 3, 
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int", 
+                        "f_var": "SHT_rv"
+                    }
+                }, 
                 "ast": {
                     "attrs": {
                         "_typename": "int"
@@ -650,7 +981,6 @@
                 }
             }, 
             {
-                "_PTR_C_CXX_index": 3, 
                 "_fmtargs": {
                     "arg": {
                         "fmtc": {
@@ -661,9 +991,12 @@
                             "c_var_len": "Narg", 
                             "c_var_size": "Sarg", 
                             "cxx_T": "std::string", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg))", 
                             "cxx_member": ".", 
                             "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg"
+                            "cxx_var": "SH_arg", 
+                            "idtor": "0"
                         }, 
                         "fmtf": {
                             "c_var": "arg", 
@@ -677,11 +1010,11 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
+                        "cxx_type": "int", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }
                 }, 
-                "_function_index": 9, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
@@ -753,7 +1086,6 @@
                 }
             }, 
             {
-                "_function_index": 4, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -811,7 +1143,6 @@
                 }
             }, 
             {
-                "_function_index": 5, 
                 "ast": {
                     "attrs": {
                         "_typename": "void"
@@ -875,7 +1206,7 @@
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}", 
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}", 
             "C_line_length": 72, 
-            "C_memory_dtor_function_template": "{C_prefix}SHROUD_array_destructor_function", 
+            "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor", 
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
             "C_var_capsule_template": "C{c_var}", 
             "C_var_context_template": "D{c_var}", 
@@ -930,6 +1261,7 @@
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
+            "debug_index": false, 
             "doxygen": true, 
             "return_scalar_pointer": "pointer", 
             "show_splicer_comments": true, 
@@ -1148,6 +1480,51 @@
             "f_c_type": "character(kind=C_CHAR)", 
             "f_kind": "C_CHAR", 
             "f_type": "character"
+        }, 
+        "charout": {
+            "base": "string", 
+            "c_statements": {
+                "intent_out_buf": {
+                    "buf_args": [
+                        "arg", 
+                        "lenout"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "cxx_local_var": "scalar", 
+                    "post_call": [
+                        " post_call intent_out_buf"
+                    ], 
+                    "pre_call": [
+                        "std::string * {cxx_var};"
+                    ]
+                }, 
+                "result_buf": {
+                    "buf_args": [
+                        "context"
+                    ], 
+                    "c_helper": "copy_string", 
+                    "post_call": [
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.ccharp = {cxx_var};", 
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});", 
+                        "{c_var_context}->size = 1;"
+                    ]
+                }
+            }, 
+            "c_type": "char", 
+            "cxx_type": "char", 
+            "f_statements": {
+                "result": {
+                    "f_helper": "copy_string", 
+                    "need_wrapper": true, 
+                    "post_call": [
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
+                    ]
+                }
+            }, 
+            "f_type": "type(C_PTR)YY"
         }, 
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})", 
@@ -1394,48 +1771,6 @@
         "std::vector": {
             "base": "vector", 
             "c_statements": {
-                "AAAintent_inout_buf": {
-                    "buf_args": [
-                        "arg", 
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        "{{+", 
-                        "std::vector<{cxx_T}>::size_type+", 
-                        "{c_temp}i = 0,", 
-                        "{c_temp}n = {c_var_size};", 
-                        "-{c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
-                        "{c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "-}}", 
-                        "-}}"
-                    ], 
-                    "pre_call": [
-                        "std::vector<{cxx_T}> {cxx_var}(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                }, 
-                "AAAintent_out_buf": {
-                    "buf_args": [
-                        "arg", 
-                        "size"
-                    ], 
-                    "cxx_local_var": "scalar", 
-                    "post_call": [
-                        "{{", 
-                        "    std::vector<{cxx_T}>::size_type", 
-                        "        {c_temp}i = 0,", 
-                        "        {c_temp}n = {c_var_size};", 
-                        "    {c_temp}n = std::min({cxx_var}.size(), {c_temp}n);", 
-                        "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                        "        {c_var}[{c_temp}i] = {cxx_var}[{c_temp}i];", 
-                        "    }}", 
-                        "}}"
-                    ], 
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t {cxx_var}({c_var_size});"
-                    ]
-                }, 
                 "intent_in_buf": {
                     "buf_args": [
                         "arg", 
@@ -1450,7 +1785,6 @@
                     "buf_args": [
                         "arg", 
                         "size", 
-                        "capsule", 
                         "context"
                     ], 
                     "cxx_local_var": "pointer", 
@@ -1460,22 +1794,21 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
-                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});", 
-                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = 0;        // index of destructor", 
-                        "{c_var_capsule}->refcount = 1;     // reference count"
+                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
                     ]
                 }, 
                 "intent_out_buf": {
                     "buf_args": [
-                        "capsule", 
                         "context"
                     ], 
-                    "c_helper": "capsule_data_helper vector_context vector_copy_{cxx_T}", 
+                    "c_helper": "capsule_data_helper copy_array", 
                     "cxx_local_var": "pointer", 
                     "destructor": [
                         "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);", 
@@ -1483,14 +1816,14 @@
                     ], 
                     "destructor_name": "std_vector_{cxx_T}", 
                     "post_call": [
-                        "{c_var_context}->addr = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();", 
+                        "{c_var_context}->len = sizeof({cxx_T});", 
                         "{c_var_context}->size = {cxx_var}->size();"
                     ], 
                     "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;", 
-                        "{c_var_capsule}->addr = static_cast<void *>({cxx_var});", 
-                        "{c_var_capsule}->idtor = {idtor};  // index of destructor", 
-                        "{c_var_capsule}->refcount = 1;     // reference count"
+                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
                     ]
                 }
             }, 
@@ -1583,25 +1916,50 @@
             "cxx_type": "std::vector<{cxx_T}>", 
             "f_statements": {
                 "intent_inout": {
-                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_inout_allocatable": {
+                    "f_helper": "copy_array_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "if (allocated({f_var})) deallocate({f_var})", 
+                        "allocate({f_var}({c_var_context}%size))", 
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }, 
                 "intent_out": {
-                    "f_helper": "capsule_helper vector_context vector_copy_{cxx_T}", 
+                    "f_helper": "copy_array_{cxx_T}", 
                     "f_module": {
                         "iso_c_binding": [
                             "C_SIZE_T"
                         ]
                     }, 
                     "post_call": [
-                        "call SHROUD_vector_copy_{cxx_T}({c_var_capsule}%mem, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                    ]
+                }, 
+                "intent_out_allocatable": {
+                    "f_helper": "copy_array_{cxx_T}", 
+                    "f_module": {
+                        "iso_c_binding": [
+                            "C_SIZE_T"
+                        ]
+                    }, 
+                    "post_call": [
+                        "allocate({f_var}({c_var_context}%size))", 
+                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
             }
@@ -1625,13 +1983,15 @@
                 }, 
                 "result_buf": {
                     "buf_args": [
-                        "arg", 
-                        "lenout"
+                        "context"
                     ], 
                     "c_helper": "copy_string", 
                     "post_call": [
-                        "*{c_var} = {cxx_addr}{cxx_var};", 
-                        "*{c_var_len} = {cxx_var}{cxx_member}size();"
+                        "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var_context}->cxx.idtor = {idtor};", 
+                        "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
+                        "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "{c_var_context}->size = 1;"
                     ]
                 }
             }, 
@@ -1639,19 +1999,13 @@
             "cxx_header": "<string>", 
             "cxx_to_c": "static_cast<void *>({cxx_var})", 
             "cxx_type": "std::string", 
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_PTR"
-                ]
-            }, 
-            "f_c_type": "type(C_PTR)", 
             "f_statements": {
                 "result": {
                     "f_helper": "copy_string", 
                     "need_wrapper": true, 
                     "post_call": [
-                        "allocate(character(len={f_var_len}, kind=C_CHAR):: {f_var})", 
-                        "call SHROUD_string_copy_and_free({f_cptr}, {f_var})"
+                        "allocate(character(len={c_var_context}%len):: {f_var})", 
+                        "call SHROUD_copy_string_and_free({c_var_context}, {f_var}, {c_var_context}%len)"
                     ]
                 }
             }, 

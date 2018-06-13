@@ -1,17 +1,23 @@
 Read yaml vectors.yaml
 C function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
-C function void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))
-C function void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))
+C function void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+C function void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
+C function void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
+C function void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 C function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
 Close wrapvectors.h
 Close wrapvectors.cpp
 Close typesvectors.h
 Fortran function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
 C-interface function int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
-Fortran function void vector_iota(std::vector<int> & arg +dimension(:)+intent(out))
-C-interface function void vector_iota(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(out))
+Fortran function void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
+C-interface function void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
+Fortran function void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
+C-interface function void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
+Fortran function void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))
+C-interface function void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
 Fortran function void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
-C-interface function void vector_increment(std::vector<int> & arg +capsule(Carg)+context(Darg)+dimension(:)+intent(inout)+size(Sarg))
+C-interface function void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 Fortran function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))
 C-interface function int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))
 Close wrapfvectors.f

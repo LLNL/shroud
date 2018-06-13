@@ -53,32 +53,30 @@ extern "C" {
 // splicer end class.Class2.C_definitions
 
 // Class2()
-// function_index=0
-FOR_class2 * FOR_class2_ctor()
+FOR_class2 FOR_class2_ctor()
 {
 // splicer begin class.Class2.method.ctor
     tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
-    FOR_class2 *SHC_rv = (FOR_class2 *) malloc(sizeof(FOR_class2));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    FOR_class2 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }
 
 // ~Class2()
-// function_index=1
 void FOR_class2_dtor(FOR_class2 * self)
 {
 // splicer begin class.Class2.method.dtor
-    FOR_SHROUD_array_destructor_function
-        (reinterpret_cast<FOR_SHROUD_capsule_data *>(self), true);
+    tutorial::Class2 *SH_this = static_cast<tutorial::
+        Class2 *>(self->addr);
+    delete SH_this;
+    self->addr = NULL;
     return;
 // splicer end class.Class2.method.dtor
 }
 
-// void func1(Class1 * arg +intent(in)+value)
-// function_index=2
+// void func1(Class1 * arg +intent(in))
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {
 // splicer begin class.Class2.method.func1

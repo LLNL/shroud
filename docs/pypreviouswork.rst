@@ -65,7 +65,17 @@ Cython
 SIP
 ---
 
+Sip was developed to create PyQt.
+
 * https://www.riverbankcomputing.com/software/sip/intro
+
+Shiboken
+--------
+
+Shiboken was developed to create PySide.
+
+* https://wiki.qt.io/Qt_for_Python
+
 
 Boost Python
 ------------
@@ -81,4 +91,4 @@ Pybind11
 Links
 -----
 
-  * `Interfacing with C - Scipy lecture notes <https://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html>`_
+* `Interfacing with C - Scipy lecture notes <https://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html>`_

@@ -45,4 +45,12 @@
 #ifndef TYPESINTERFACE_H
 #define TYPESINTERFACE_H
 
+struct s_INT_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_INT_SHROUD_capsule_data INT_SHROUD_capsule_data;
+
+void INT_SHROUD_memory_destructor(INT_SHROUD_capsule_data *cap);
+
 #endif  // TYPESINTERFACE_H

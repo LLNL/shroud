@@ -60,12 +60,11 @@ extern "C" {
 // splicer begin class.ExClass1.C_declarations
 // splicer end class.ExClass1.C_declarations
 
-AA_exclass1 * AA_exclass1_ctor_0();
+AA_exclass1 AA_exclass1_ctor_0();
 
-AA_exclass1 * AA_exclass1_ctor_1(const char * name);
+AA_exclass1 AA_exclass1_ctor_1(const char * name);
 
-AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name,
-    int Lname);
+AA_exclass1 AA_exclass1_ctor_1_bufferify(const char * name, int Lname);
 
 void AA_exclass1_dtor(AA_exclass1 * self);
 
@@ -82,7 +81,7 @@ int AA_exclass1_get_name_length(const AA_exclass1 * self);
 const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self);
 
 void AA_exclass1_get_name_error_check_bufferify(
-    const AA_exclass1 * self, char * SHF_rv, int NSHF_rv);
+    const AA_exclass1 * self, USE_SHROUD_array *DSHF_rv);
 
 const char * AA_exclass1_get_name_arg(const AA_exclass1 * self);
 

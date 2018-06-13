@@ -88,14 +88,6 @@ bool TUT_function3(bool arg);
 
 void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);
 
-int * TUT_return_int_ptr();
-
-int TUT_return_int_ptr_scalar();
-
-int * TUT_return_int_ptr_dim(int * len);
-
-int * TUT_return_int_ptr_dim_new(int * len);
-
 void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
@@ -103,6 +95,15 @@ const char * TUT_function4b(const char * arg1, const char * arg2);
 
 void TUT_function4b_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * output, int Noutput);
+
+const char * TUT_function4c(const char * arg1, const char * arg2);
+
+void TUT_function4c_bufferify(const char * arg1, int Larg1,
+    const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
+
+const char * TUT_function4d();
+
+void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv);
 
 double TUT_function5();
 
@@ -157,11 +158,11 @@ int TUT_direction_func(int arg);
 
 int TUT_useclass(const TUT_class1 * arg1);
 
-TUT_class1 * TUT_getclass2();
+TUT_class1 TUT_getclass2();
 
-TUT_class1 * TUT_getclass3();
+TUT_class1 TUT_getclass3();
 
-TUT_class1 * TUT_get_class_new(int flag);
+TUT_class1 TUT_get_class_copy(int flag);
 
 int TUT_callback1(int in, int ( * incr)(int));
 

@@ -180,6 +180,10 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // splicer end class.ExClass2.type.del
 }
 
+/**
+ * \brief constructor
+ *
+ */
 static int
 PP_ExClass2_tp_init(
   PP_ExClass2 *self,
@@ -215,7 +219,7 @@ PP_exclass2_getName(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // splicer begin class.ExClass2.method.get_name
     const std::string & SHCXX_rv = self->obj->getName();
 
@@ -236,7 +240,7 @@ PP_exclass2_getName2(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const string & getName2()
+// const string & getName2() +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name2
     const std::string & SHCXX_rv = self->obj->getName2();
 
@@ -257,7 +261,7 @@ PP_exclass2_getName3(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// string & getName3() const
+// string & getName3() const +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name3
     std::string & SHCXX_rv = self->obj->getName3();
 
@@ -278,7 +282,7 @@ PP_exclass2_getName4(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// string & getName4()
+// string & getName4() +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name4
     std::string & SHCXX_rv = self->obj->getName4();
 
@@ -293,6 +297,10 @@ static char PP_exclass2_GetNameLength__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief helper function for Fortran
+ *
+ */
 static PyObject *
 PP_exclass2_GetNameLength(
   PP_ExClass2 *self,
@@ -320,7 +328,7 @@ PP_exclass2_get_class1(
   PyObject *args,
   PyObject *kwds)
 {
-// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
+// ExClass1 * get_class1(const ExClass1 * in +intent(in))
 // splicer begin class.ExClass2.method.get_class1
     PP_ExClass1 * SHPy_in;
     const char *SHT_kwlist[] = {

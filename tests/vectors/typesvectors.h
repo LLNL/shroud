@@ -45,6 +45,8 @@
 #ifndef TYPESVECTORS_H
 #define TYPESVECTORS_H
 
+#include <stddef.h>
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,19 +55,21 @@ extern "C" {
 struct s_VEC_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_VEC_SHROUD_capsule_data VEC_SHROUD_capsule_data;
 
-struct s_VEC_SHROUD_vector_context {
-    void *addr;     /* address of data in std::vector */
-    size_t size;    /* size of data in std::vector */
+struct s_VEC_SHROUD_array {
+    VEC_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * cvoidp;
+        const char * ccharp;
+    } addr;
+    size_t len;     /* bytes-per-item or character len of data in cxx */
+    size_t size;    /* size of data in cxx */
 };
-typedef struct s_VEC_SHROUD_vector_context VEC_SHROUD_vector_context;
+typedef struct s_VEC_SHROUD_array VEC_SHROUD_array;
 
-
-void VEC_SHROUD_array_destructor_function
-    (VEC_SHROUD_capsule_data *cap, bool gc);
+void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }

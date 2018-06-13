@@ -41,6 +41,7 @@
 Shroud - generate language bindings
 """
 
+from main import create_wrapper
 from ast import LibraryNode, ClassNode, FunctionNode
 
 def print_as_json(node, fp):

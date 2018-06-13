@@ -56,15 +56,13 @@ module names2_mod
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
     ! splicer begin class.Names2.module_top
     ! splicer end class.Names2.module_top
 
     type names2
-        type(C_PTR), private :: cxxptr = C_NULL_PTR
-        type(SHROUD_capsule_data), pointer :: cxxmem => null()
+        type(SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -91,16 +89,12 @@ module names2_mod
 
 contains
 
-    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    ! Return pointer to C++ memory.
     function names2_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+        use iso_c_binding, only: C_PTR
         class(names2), intent(IN) :: obj
         type(C_PTR) :: cxxptr
-        if (c_associated(obj%cxxptr)) then
-            cxxptr = obj%cxxmem%addr
-        else
-            cxxptr = C_NULL_PTR
-        endif
+        cxxptr = obj%cxxmem%addr
     end function names2_get_instance
 
     subroutine names2_set_instance(obj, cxxmem)

@@ -51,7 +51,6 @@ extern "C" {
 // splicer end class.ExClass3.C_definitions
 
 // void exfunc()
-// function_index=48
 #ifdef USE_CLASS3_A
 void AA_exclass3_exfunc_0(AA_exclass3 * self)
 {
@@ -65,7 +64,6 @@ void AA_exclass3_exfunc_0(AA_exclass3 * self)
 #endif  // ifdef USE_CLASS3_A
 
 // void exfunc(int flag +intent(in)+value)
-// function_index=49
 #ifndef USE_CLASS3_A
 void AA_exclass3_exfunc_1(AA_exclass3 * self, int flag)
 {

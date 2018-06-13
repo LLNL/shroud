@@ -44,6 +44,8 @@
 #ifndef TYPESUSERLIBRARY_H
 #define TYPESUSERLIBRARY_H
 
+#include <stddef.h>
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,33 +54,39 @@ extern "C" {
 struct s_AA_exclass1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_AA_exclass1 AA_exclass1;
 
 struct s_AA_exclass2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_AA_exclass2 AA_exclass2;
 
 struct s_AA_exclass3 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_AA_exclass3 AA_exclass3;
 
 struct s_USE_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_USE_SHROUD_capsule_data USE_SHROUD_capsule_data;
 
-void AA_SHROUD_array_destructor_function
-    (USE_SHROUD_capsule_data *cap, bool gc);
+struct s_USE_SHROUD_array {
+    USE_SHROUD_capsule_data cxx;      /* address of C++ memory */
+    union {
+        const void * cvoidp;
+        const char * ccharp;
+    } addr;
+    size_t len;     /* bytes-per-item or character len of data in cxx */
+    size_t size;    /* size of data in cxx */
+};
+typedef struct s_USE_SHROUD_array USE_SHROUD_array;
+
+void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }

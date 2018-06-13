@@ -153,30 +153,6 @@ the library name.
         declarations:
         -  decl: void method1
 
-Annotations
-^^^^^^^^^^^
-
-Annotations or attributes apply to specific arguments or results.
-They describe semantic behavior for an argument.
-An attribute may be set to true by listing its name or
-it may have a value in parens::
-
-    - decl: Class1()  +name(new)
-    - decl: void Sum(int len, int *values+dimension+intent(in))
-    - decl: const std::string getName() +len(30)
-
-Attributes may also be added external to *decl*::
-
-    - decl: void Sum(int len, int *values)
-      attrs:
-          values:
-              dimension: True
-              intent: in  
-    - decl: const std::string getName()
-      fattrs:
-          len: 30
-  
-
 Options
 ^^^^^^^
 
@@ -214,7 +190,7 @@ For example, setting a format in a class also effects all of the
 functions within the class.
 
 How code is formatted
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Format strings contain “replacement fields” surrounded by curly braces
 ``{}``. Anything that is not contained in braces is considered literal
@@ -223,10 +199,418 @@ a brace character in the literal text, it can be escaped by doubling:
 ``{{`` and ``}}``. [Python_Format]_
 
 
+Attributes
+----------
+
+Annotations or attributes apply to specific arguments or results.
+They describe semantic behavior for an argument.
+An attribute may be set to true by listing its name or
+it may have a value in parens::
+
+    - decl: Class1()  +name(new)
+    - decl: void Sum(int len, int *values+dimension+intent(in))
+    - decl: const std::string getName() +len(30)
+
+Attributes may also be added external to *decl*::
+
+    - decl: void Sum(int len, int *values)
+      attrs:
+          values:
+              dimension: True
+              intent: in  
+    - decl: const std::string getName()
+      fattrs:
+          len: 30
+  
+
+allocatable
+^^^^^^^^^^^
+
+Sometimes it is more convenient to have the wrapper allocate an
+``intent(out)`` array before passing it to the C++ function.  This can
+be accomplished by adding the *allocatable* attribute.  For example the
+C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
+argument and assigns it to an ``intent(out)`` argument::
+
+    void cos_doubles(double *in, double *out, int size)
+    {
+        for(int i = 0; i < size; i++) {
+            out[i] = cos(in[i]);
+        }
+    }
+
+This is wrapped as::
+
+    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
+                           double * out    +intent(out) +allocatable(mold=in),
+                           int      sizein +implied(size(in)))
+
+The *mold* argument is similar to the *mold* argument in the Fortran
+``allocate`` statement, it will allocate ``out`` as the same shape as
+``in``.  Also notice the use of the *implied* attribute on the
+``size`` argument.  This argument is not added to the Fortran API
+since its value is *implied* to be the size of argument ``in``.
+``size`` is the Fortran intrinsic which returns the number of items
+allocated by its argument.
+
+The Fortran wrapper produced is::
+
+    subroutine cos_doubles(in, out)
+        use iso_c_binding, only : C_DOUBLE, C_INT
+        real(C_DOUBLE), intent(IN) :: in(:)
+        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
+        integer(C_INT) :: sizein
+        allocate(out, mold=in)
+        sizein = size(in)
+        call c_cos_doubles(in, out, sizein)
+    end subroutine cos_doubles
+
+The mold argument was added to the Fortran 2008 standard.  If the
+option **F_standard** is not 2008 then the allocate statement will be::
+
+        allocate(out(lbound(in,1):ubound(in,1)))
+
+
+For Python, a similar NumPy array object will be constructed using 
+``PyArray_NewLikeArray``.
+
+
+default
+^^^^^^^
+
+Default value for C++ function argument.
+This value is implied by C++ default argument syntax.
+
+
+deref
+^^^^^
+
+List how to dereference pointer arguments or function results.
+This is used in conjunction with *dimension* to create arrays.
+
+scalar
+
+    Treat the pointee as a scalar.
+    For Python, this will not create a NumPy object.
+
+pointer
+
+    For Fortran, add ``POINTER`` attribute to argument and is associated
+    with the argument using ``c_f_pointer``.
+    If *owner(caller)* is also defined, add an additional argument
+    which is used to release the memory.
+
+    For Python, create a NumPy array.
+
+allocatable
+
+    For Fortran, add ``ALLOCATABLE`` attribute to argument.
+    An ``ALLOCATE`` is added and the contents of the C++ argument
+    is copied.  If *owner(caller)* is also defined, the C++ argument
+    is released.  The caller is responsible to ``DEALLOCATE`` the array.
+
+    For Python, create a NumPy array (same as *pointer*)
+
+raw
+
+    For Fortran, return a ``type(C_PTR)``.
+
+    For Python, return a ``PyCapsule``.
+
+dimension
+^^^^^^^^^
+
+Sets the Fortran DIMENSION attribute.
+Pointer argument should be passed through since it is an array.
+*value* attribute must not be *True*.
+If set without a value, it defaults to ``(*)``::
+
+    double *array +dimension
+    double *array +dimension(len)
+
+free_pattern
+^^^^^^^^^^^^
+
+A name in the **patterns** section which lists code to be used to 
+release memory.  Used with function results.
+It is used in the *C_memory_dtor_function* and will have the 
+variable ``void *ptr`` available as the pointer to the memory
+to be released.
+See :ref:`MemoryManagementAnchor` for details.
+
+..  and *intent(out)* arguments.
+
+
+hidden
+^^^^^^
+
+The argument will not appear in the Fortran API.
+But it will be passed to the C wrapper.
+This allows the value to be used in the C wrapper.
+For example, setting the shape of a pointer function::
+
+      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+
+.. assumed intent(out)
+
+
+implied
+^^^^^^^
+.. assumed intent(in)
+
+The value of an arguments to the C++ function may be implied by other arguments.
+If so the *implied* attribute can be used to assign the value to the argument and 
+it will not be included in the wrapped API.
+
+Used to compute value of argument to C++ based on argument
+to Fortran or Python wrapper.  Useful with array sizes::
+
+      int Sum(int * array +intent(in), int len +implied(size(array))
+
+intent
+^^^^^^
+
+Valid valid values are ``in``, ``out``, ``inout``.
+If the argument is ``const``, the default is ``in``.
+
+
+len
+^^^
+
+For a string argument, pass an additional argument to the
+C wrapper with the result of the Fortran intrinsic ``len``.
+If a value for the attribute is provided it will be the name
+of the extra argument.  If no value is provided then the
+argument name defaults to option *C_var_len_template*.
+
+When used with a function, it will be the length of the return
+value of the function using the declaration::
+
+     character(kind=C_CHAR, len={c_var_len}) :: {F_result}
+
+len_trim
+^^^^^^^^
+
+For a string argument, pass an additional argument to the
+C wrapper with the result of the Fortran intrinsic ``len_trim``.
+If a value for the attribute is provided it will be the name
+of the extra argument.  If no value is provided then the
+argument name defaults to option *C_var_trim_template*.
+
+name
+^^^^
+
+Name of the method.
+Useful for constructor and destructor methods which have no names.
+
+owner
+^^^^^
+
+Specifies who is responsible to release the memory associated with the argument/result.
+
+The terms follow Python's reference counting .  [Python_Refcount]_
+The default is set by option *default_owner* which is initialized to *borrow*.
+
+.. new   The caller is responsible to release the memory.
+
+.. borrow  The memory belongs to the C++ library.  Do not release.
+
+caller
+
+   The memory belongs to the user who is responsible to delete it.
+   A shadow class must have a destructor wrapped in order to delete 
+   the memory.
+
+library
+
+   The memory belongs to the library and should not be deleted by
+   the user.
+   This is the default value.
+
+.. steal  intent(in)
+
+value
+^^^^^
+
+If true, pass-by-value; else, pass-by-reference.
+This attribute is implied when the argument is not a pointer or reference.
+
+
+Patterns
+--------
+
+To address the issue of semantic differences between Fortran and C++,
+*patterns* may be used to insert additional code.  A *pattern* is a 
+code template which is inserted at a specific point in the wrapper.
+They are defined in the input YAML file::
+
+   declarations:
+   - decl: const string& getString2+len=30()
+     C_error_pattern: C_invalid_name
+
+   patterns:
+     C_invalid_name: |
+         if ({cxx_var}.empty()) {{
+             return NULL;
+         }}
+
+The **C_error_pattern** will insert code after the call to the C++
+function in the C wrapper and before any post_call sections from the
+types. The bufferified version of a function will append
+``_buf`` to the **C_error_pattern** value.  The *pattern* is
+formatted using the context of the return argument if present,
+otherwise the context of the function is used.  This means that
+*c_var* and *c_var_len* refer to the argument which is added to
+contain the function result for the ``_buf`` pattern.
+
+The function ``getString2`` is returning a ``std::string`` reference.
+Since C and Fortran cannot deal with this directly, the empty string
+is converted into a ``NULL`` pointer::
+will blank fill the result::
+
+    const char * STR_get_string2()
+    {
+        const std::string & SHCXX_rv = getString2();
+        // C_error_pattern
+        if (SHCXX_rv.empty()) {
+            return NULL;
+        }
+        const char * SHC_rv = SHCXX_rv.c_str();
+        return SHC_rv;
+    }
+
+
+
+Splicers
+--------
+
+No matter how many features are added to Shroud there will always exist
+cases that it does not handle.  One of the weaknesses of generated
+code is that if the generated code is edited it becomes difficult to
+regenerate the code and preserve the edits.  To deal with this
+situation each block of generated code is surrounded by 'splicer'
+comments::
+
+    const char * STR_get_char3()
+    {
+    // splicer begin function.get_char3
+        const char * SH_rv = getChar3();
+        return SH_rv;
+    // splicer end function.get_char3
+    }
+
+These comments delineate a section of code which can be replaced by
+the user.  The splicer's name, ``function.get_char3`` in the example,
+is used to determine where to insert the code.
+
+There are two ways to define splicers in the YAML file. First add 
+a list of files which contain the splicer text::
+
+    splicer:
+      f:
+      -  fsplicer.f
+      c:
+      -  csplicer.c
+
+In the listed file, add the begin and end splicer comments,
+then add the code which should be inserted into the wrapper inbetween the comments.
+Multiple splicer can be added to an input file.  Any text that is not within a
+splicer block is ignored.  Splicers must be sorted by language.  If
+the input file ends with ``.f`` or ``.f90`` it is processed as
+splicers for the generated Fortran code.  Code for the C wrappers must
+end with any of ``.c``, ``.h``, ``.cpp``, ``.hpp``, ``.cxx``,
+``.hxx``, ``.cc``, ``.C``::
+
+    -- Lines outside blocks are ignore
+    // splicer begin function.get_char3
+        const char * SH_rv = getChar3();
+        SH_rv[0] = 'F';    // replace first character for Fortran
+        return SH_rv + 1;
+    // splicer end function.get_char3
+
+This technique is useful when the splicers are very large or are
+generated by some other process.
+
+.. The splicer file may be added to the Shroud command line
+   along with the YAML file.
+
+The second method is to add the splicer code directly into the YAML file.
+Each level of splicer is a mapping and each line of text is an array entry::
+
+    splicer_code:
+      c:
+        function:
+          get_char3:
+          - const char * SH_rv = getChar3();
+          - SH_rv[0] = 'F';    // replace first character for Fortran
+          - return SH_rv + 1;
+
+In addition to replacing code for a function wrapper, there are 
+splicers that are generated which allow a user to insert additional
+code for helper functions or declarations::
+
+    ! file_top
+    module {F_module_name}
+       ! module_use
+       implicit none
+       ! module_top
+
+       type class1
+         ! class.{cxx_class}.component_part
+       contains
+         ! class.{cxx_class}.generic.{F_name_generic}
+         ! class.{cxx_class}.type_bound_procedure_part
+       end type class1
+
+       interface
+          ! additional_interfaces
+       end interface
+
+       contains
+
+       ! function.{F_name_function}
+
+       ! {cxx_class}.method.{F_name_function}
+
+       ! additional_functions
+
+    end module {F_module_name}
+
+.. from _create_splicer
+
+C header::
+
+    // class.{class_name}.CXX_declarations
+
+    extern "C" {
+    // class.{class_name}.C_declarations
+    }
+
+C implementation::
+
+    // class.{class_name}.CXX_definitions
+
+    extern "C" {
+      // class.{class_name}.C_definitions
+
+      // function.{underscore_name}{function_suffix}
+
+      // class.{cxx_class}.method.{underscore_name}{function_suffix}
+
+    }
+
+The splicer comments can be eliminated by setting the option
+**show_splicer_comments** to false. This may be useful to 
+eliminate the clutter of the splicer comments.
+
+
+
 
 
 .. rubric:: Footnotes
 
-.. [Python_Format] https://docs.python.org/2/library/string.html#format-string-syntax
+.. [Python_Format] `<https://docs.python.org/2/library/string.html#format-string-syntax>`_
+
+.. [Python_Refcount] `<https://docs.python.org/3/c-api/intro.html#reference-count-details>`_
 
 .. [yaml] `yaml.org <http://yaml.org/>`_

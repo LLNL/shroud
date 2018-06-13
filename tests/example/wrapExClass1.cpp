@@ -40,6 +40,7 @@
 //
 // #######################################################################
 #include "wrapExClass1.h"
+#include <cstddef>
 #include <cstring>
 #include <stdlib.h>
 #include <string>
@@ -51,6 +52,7 @@
 extern "C" {
 
 
+// helper function
 // Copy s into a, blank fill to la characters
 // Truncate if a is too short.
 static void ShroudStrCopy(char *a, int la, const char *s)
@@ -61,26 +63,35 @@ static void ShroudStrCopy(char *a, int la, const char *s)
    std::memcpy(a,s,nm);
    if(la > nm) std::memset(a+nm,' ',la-nm);
 }
+
+// helper function
+// Copy the char* or std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
+void AA_ShroudCopyStringAndFree(USE_SHROUD_array *data, char *c_var, size_t c_var_len) {
+    const char *cxx_var = data->addr.ccharp;
+    size_t n = c_var_len;
+    if (data->len < n) n = data->len;
+    strncpy(c_var, cxx_var, n);
+    AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+}
+
 // splicer begin class.ExClass1.C_definitions
 // splicer end class.ExClass1.C_definitions
 
 // ExClass1()
-// function_index=0
-AA_exclass1 * AA_exclass1_ctor_0()
+AA_exclass1 AA_exclass1_ctor_0()
 {
 // splicer begin class.ExClass1.method.ctor_0
     example::nested::ExClass1 *SHCXX_rv = new example::nested::
         ExClass1();
-    AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    AA_exclass1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_0
 }
 
 // ExClass1(const string * name +intent(in))
-// function_index=1
 /**
  * \brief constructor
  *
@@ -89,22 +100,20 @@ AA_exclass1 * AA_exclass1_ctor_0()
  *
  * \return return new instance
  */
-AA_exclass1 * AA_exclass1_ctor_1(const char * name)
+AA_exclass1 AA_exclass1_ctor_1(const char * name)
 {
 // splicer begin class.ExClass1.method.ctor_1
     const std::string SH_name(name);
     example::nested::ExClass1 *SHCXX_rv = new example::nested::
         ExClass1(&SH_name);
-    AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    AA_exclass1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1
 }
 
 // ExClass1(const string * name +intent(in)+len_trim(Lname))
-// function_index=14
 /**
  * \brief constructor
  *
@@ -113,22 +122,20 @@ AA_exclass1 * AA_exclass1_ctor_1(const char * name)
  *
  * \return return new instance
  */
-AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
+AA_exclass1 AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
 {
 // splicer begin class.ExClass1.method.ctor_1_bufferify
     const std::string SH_name(name, Lname);
     example::nested::ExClass1 *SHCXX_rv = new example::nested::
         ExClass1(&SH_name);
-    AA_exclass1 *SHC_rv = (AA_exclass1 *) malloc(sizeof(AA_exclass1));
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    SHC_rv->refcount = 1;
+    AA_exclass1 SHC_rv;
+    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv.idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass1.method.ctor_1_bufferify
 }
 
 // ~ExClass1()
-// function_index=2
 /**
  * \brief destructor
  *
@@ -137,14 +144,15 @@ AA_exclass1 * AA_exclass1_ctor_1_bufferify(const char * name, int Lname)
 void AA_exclass1_dtor(AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.dtor
-    AA_SHROUD_array_destructor_function
-        (reinterpret_cast<USE_SHROUD_capsule_data *>(self), true);
+    example::nested::ExClass1 *SH_this = static_cast<example::nested::
+        ExClass1 *>(self->addr);
+    delete SH_this;
+    self->addr = NULL;
     return;
 // splicer end class.ExClass1.method.dtor
 }
 
 // int incrementCount(int incr +intent(in)+value)
-// function_index=3
 int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 {
 // splicer begin class.ExClass1.method.increment_count
@@ -155,8 +163,7 @@ int AA_exclass1_increment_count(AA_exclass1 * self, int incr)
 // splicer end class.ExClass1.method.increment_count
 }
 
-// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-// function_index=4
+// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 const char * AA_exclass1_get_name_error_pattern(
     const AA_exclass1 * self)
 {
@@ -175,7 +182,6 @@ const char * AA_exclass1_get_name_error_pattern(
 }
 
 // void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
-// function_index=15
 void AA_exclass1_get_name_error_pattern_bufferify(
     const AA_exclass1 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -193,7 +199,6 @@ void AA_exclass1_get_name_error_pattern_bufferify(
 }
 
 // int GetNameLength() const
-// function_index=5
 /**
  * \brief helper function for Fortran to get length of name.
  *
@@ -208,8 +213,7 @@ int AA_exclass1_get_name_length(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_length
 }
 
-// const string & getNameErrorCheck() const
-// function_index=6
+// const string & getNameErrorCheck() const +deref(allocatable)
 const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.get_name_error_check
@@ -221,26 +225,25 @@ const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_error_check
 }
 
-// void getNameErrorCheck(string & SHF_rv +intent(out)+len(NSHF_rv)) const
-// function_index=16
+// void getNameErrorCheck(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 void AA_exclass1_get_name_error_check_bufferify(
-    const AA_exclass1 * self, char * SHF_rv, int NSHF_rv)
+    const AA_exclass1 * self, USE_SHROUD_array *DSHF_rv)
 {
 // splicer begin class.ExClass1.method.get_name_error_check_bufferify
     const example::nested::ExClass1 *SH_this = 
         static_cast<const example::nested::ExClass1 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
-    if (SHCXX_rv.empty()) {
-        std::memset(SHF_rv, ' ', NSHF_rv);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
-    }
+    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
+        (&SHCXX_rv));
+    DSHF_rv->cxx.idtor = 0;
+    DSHF_rv->addr.ccharp = SHCXX_rv.data();
+    DSHF_rv->len = SHCXX_rv.size();
+    DSHF_rv->size = 1;
     return;
 // splicer end class.ExClass1.method.get_name_error_check_bufferify
 }
 
-// const string & getNameArg() const
-// function_index=7
+// const string & getNameArg() const +deref(result_as_arg)
 const char * AA_exclass1_get_name_arg(const AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.get_name_arg
@@ -253,7 +256,6 @@ const char * AA_exclass1_get_name_arg(const AA_exclass1 * self)
 }
 
 // void getNameArg(string & name +intent(out)+len(Nname)) const
-// function_index=17
 void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
     char * name, int Nname)
 {
@@ -271,7 +273,6 @@ void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
 }
 
 // void * getRoot()
-// function_index=8
 void * AA_exclass1_get_root(AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.get_root
@@ -283,7 +284,6 @@ void * AA_exclass1_get_root(AA_exclass1 * self)
 }
 
 // int getValue(int value +intent(in)+value)
-// function_index=9
 int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value)
 {
 // splicer begin class.ExClass1.method.get_value_from_int
@@ -295,7 +295,6 @@ int AA_exclass1_get_value_from_int(AA_exclass1 * self, int value)
 }
 
 // long getValue(long value +intent(in)+value)
-// function_index=10
 long AA_exclass1_get_value_1(AA_exclass1 * self, long value)
 {
 // splicer begin class.ExClass1.method.get_value_1
@@ -307,7 +306,6 @@ long AA_exclass1_get_value_1(AA_exclass1 * self, long value)
 }
 
 // void * getAddr()
-// function_index=11
 void * AA_exclass1_get_addr(AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.get_addr
@@ -319,7 +317,6 @@ void * AA_exclass1_get_addr(AA_exclass1 * self)
 }
 
 // bool hasAddr(bool in +intent(in)+value)
-// function_index=12
 bool AA_exclass1_has_addr(AA_exclass1 * self, bool in)
 {
 // splicer begin class.ExClass1.method.has_addr
@@ -331,7 +328,6 @@ bool AA_exclass1_has_addr(AA_exclass1 * self, bool in)
 }
 
 // void SplicerSpecial()
-// function_index=13
 void AA_exclass1_splicer_special(AA_exclass1 * self)
 {
 // splicer begin class.ExClass1.method.splicer_special

@@ -211,12 +211,35 @@ def main():
 #    sys.stderr.write("Some useful message")  # example error message
     sys.exit(0)  # set status for errors
 
+def create_wrapper(input, outdir=''):
+    """Translate function arguments into command line options.
+    Return config instance. It has list of files created.
+    Create a wrapper from a Python program.
+    Useful with setup.py.
+       config = shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
+    """
+    args = argparse.Namespace()
+    args.cmake = ''
+    args.cfiles = ''
+    args.ffiles = ''
+    args.filename = [ input ]
+    args.logdir = ''
+    args.outdir = outdir
+    args.outdir_c_fortran = ''
+    args.outdir_lua = ''
+    args.outdir_python = ''
+    args.outdir_yaml = ''
+    args.path = []
+    args.yaml_types = ''
+
+    config = main_with_args(args)
+
+    return config
 
 def main_with_args(args):
     """Main after args have been parsed.
     Useful for testing.
     """
-
     if args.cmake:
         # Create C make file
         try:
@@ -272,6 +295,7 @@ def main_with_args(args):
     config.log = log
     config.cfiles = []  # list of C/C++ files created
     config.ffiles = []  # list of Fortran files created
+    config.pyfiles = [] # list of Python module files created
 
     # accumulated input
     all = {}
@@ -372,6 +396,7 @@ def main_with_args(args):
 # It doesn't fix the error, but it does report a better error message
 # http://www.thecodingforums.com/threads/help-with-a-piping-error.749747/
     sys.stdout.flush()
+    return config
 
 
 if __name__ == '__main__':

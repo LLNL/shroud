@@ -146,6 +146,11 @@ contains
  
 !--------------------------------------------------
 
+    ! character(:), allocatable function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_result()
+    call assert_true(str == "getConstStringResult", "getConstStringResult")
+
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()
@@ -202,6 +207,11 @@ contains
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_owns_alloc()
     call assert_true( str == "getConstStringPtrOwnsAlloc", "getConstStringPtrOwnsAlloc")
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ptr_owns_alloc_pattern()
+    call assert_true( str == "getConstStringPtrOwnsAllocPatt", &
+         "getConstStringPtrOwnsAllocPattern")
 
 !--------------------------------------------------
 

@@ -86,38 +86,6 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3)
     return;
 }
 
-
-int * ReturnIntPtr()
-{
-  static int buffer = 1;
-  return &buffer;
-}
-
-int * ReturnIntPtrScalar()
-{
-  static int buffer = 10;
-  return &buffer;
-}
-
-// Return a pointer to an existing, static array
-int * ReturnIntPtrDim(int *len)
-{
-  static int buffer[] = { 1, 2, 3, 4, 5, 6, 7 };
-  *len = sizeof buffer / sizeof buffer[1];
-  return buffer;
-}
-
-// Return a pointer to a new array
-int * ReturnIntPtrDimNew(int *len)
-{
-  int *buffer = new int[5];
-  for (int i=0; i < 5; i++) {
-    buffer[i] = i;
-  }
-  *len = 5;
-  return buffer;
-}
-
 const std::string Function4a(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4a";
@@ -129,6 +97,18 @@ const std::string& Function4b(const std::string& arg1, const std::string& arg2)
     last_function_called = "Function4b";
     global_str = arg1 + arg2;
     return global_str;
+}
+
+const std::string Function4c(const std::string& arg1, const std::string& arg2)
+{
+    last_function_called = "Function4c";
+    return arg1 + arg2;
+}
+
+const std::string * Function4d()
+{
+    const std::string * rv = new std::string("Function4d");
+    return rv;
 }
 
 double Function5(double arg1, bool arg2)
@@ -290,10 +270,10 @@ Class1 * getclass3()
 }
 
 /* Return class instance by value */
-Class1 getClassNew(int flag)
+Class1 getClassCopy(int flag)
 {
     Class1 node(flag);
-    last_function_called = "getClassNew";
+    last_function_called = "getClassCopy";
     return node;
 }
 

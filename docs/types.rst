@@ -1096,8 +1096,222 @@ The *name* attribute will change the name of generated functions and
 descriptors.  This is helpful when using a naming convention like
 ``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
+.. _MemoryManagementAnchor:
+
 Memory Management
------------------
+=================
+
+Shroud will maintain ownership of memory via the **owner** attribute.
+It uses the value of the attribute to decided when to release memory.
+
+Use **owner(library)** when the library owns the memory and the user
+should not release it.  For example, this is used when a function
+returns ``const std::string &`` for a reference to a string which is
+maintained by the library.  Fortran and Python will both get the
+reference, copy the contents into their own variable (Fortran
+``CHARACTER`` or Python ``str``), then return without releasing any
+memory.  This is the default behavior.
+
+Use **owner(caller)** when the library allocates new memory which is
+returned to the caller.  The caller is then responsible to release the
+memory.  Fortran and Python can both hold on the to memory and then
+provide ways to release it using a C++ callback when it is no longer
+needed.
+
+For shadow classes with a destructor defined, the destructor will 
+be used to release the memory.
+
+The *c_statements* may also define a way to destroy memory.
+For example, ``std::vector`` provides the lines::
+
+    destructor_name: std_vector_{cxx_T}
+    destructor:
+    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
+    -  delete cxx_ptr;
+
+Patterns can be used to provide code to free memory for a wrapped
+function.  The address of the memory to free will be in the variable
+``void *ptr``, which should be referenced in the pattern::
+
+    declarations:
+    - decl: char * getName() +free_pattern(free_getName)
+
+    patterns:
+       free_getName: |
+          decref(ptr);
+
+Without any explicit *destructor_name* or pattern, ``free`` will be
+used to release POD pointers; otherwise, ``delete`` will be used.
+
+.. When to use ``delete[] ptr``?
+
+C and Fortran
+-------------
+
+Fortran keeps track of C++ objects with the struct
+**C_capsule_data_type** and the ``bind(C)`` equivalent
+**F_capsule_data_type**. Their names default to
+``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_capsule_data``. In the
+Tutorial these types are defined in C as::
+
+    struct s_TUT_class1 {
+        void *addr;     /* address of C++ memory */
+        int idtor;      /* index of destructor */
+    };
+    typedef struct s_TUT_class1 TUT_class1;
+
+And Fortran::
+
+    type, bind(C) :: SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_capsule_data
+
+*addr* is the address of the C or C++ variable, such as a ``char *``
+or ``std::string *``.  *idtor* is a Shroud generated index of the
+destructor code defined by *destructor_name* or the *free_pattern* attribute.
+These code segments are collected and written to function
+*C_memory_dtor_function*.  A value of 0 indicated the memory will not
+be released and is used with the **owner(library)** attribute. A
+typical function would look like::
+
+    // Release C++ allocated memory.
+    void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
+    {
+        void *ptr = cap->addr;
+        switch (cap->idtor) {
+        case 0:   // --none--
+        {
+            // Nothing to delete
+            break;
+        }
+        case 1:   // tutorial::Class1
+        {
+            tutorial::Class1 *cxx_ptr = reinterpret_cast<tutorial::Class1 *>(ptr);
+            delete cxx_ptr;
+            break;
+        }
+        case 2:   // std::string
+        {
+            std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+            delete cxx_ptr;
+            break;
+        }
+        default:
+        {
+            // Unexpected case in destructor
+            break;
+        }
+        }
+        cap->addr = NULL;
+        cap->idtor = 0;  // avoid deleting again
+    }
+
+
+Character and Arrays
+^^^^^^^^^^^^^^^^^^^^
+
+In order to create an allocatable copy of a C++ pointer, an additional structure
+is involved.  For example, ``Function4d`` returns a pointer to a new string::
+
+    declarations:
+    - decl: const std::string * Function4d()
+
+The C wrapper calls the function and saves the result along with
+metadata consisting of the address of the data within the
+``std::string`` and its length.  The Fortran wrappers allocates its
+return value to the proper length, then copies the data from the C++
+variable and deletes it.
+
+The metadata for variables are saved in the C struct **C_array_type**
+and the ``bind(C)`` equivalent **F_array_type**.::
+
+    struct s_TUT_SHROUD_array {
+        TUT_SHROUD_capsule_data cxx;      /* address of C++ memory */
+        union {
+            const void * cvoidp;
+            const char * ccharp;
+        } addr;
+        size_t len;     /* bytes-per-item or character len of data in cxx */
+        size_t size;    /* size of data in cxx */
+    };
+    typedef struct s_TUT_SHROUD_array TUT_SHROUD_array;
+
+The union for ``addr`` makes some assignments easier and also aids debugging.
+The union is replaced with a single ``type(C_PTR)`` for Fortran::
+
+    type, bind(C) :: SHROUD_array
+        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
+        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
+        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
+    end type SHROUD_array
+
+The C wrapper does not return a ``std::string`` pointer.  
+Instead it passes in a **C_array_type** pointer as an argument.
+It calls ``Function4d``, saves the results and metadata into the argument.
+This allows it to be easily accessed from Fortran::
+
+    void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv)
+    {
+        const std::string * SHCXX_rv = tutorial::Function4d();
+        DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>(SHCXX_rv));
+        DSHF_rv->cxx.idtor = 2;
+        DSHF_rv->addr.ccharp = SHCXX_rv->data();
+        DSHF_rv->len = SHCXX_rv->size();
+        DSHF_rv->size = 1;
+        return;
+    }
+
+The Fortran wrapper uses the metadata to allocate the return argument
+to the correct length::
+
+    function function4d() &
+            result(SHT_rv)
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
+        call c_function4d_bufferify(DSHF_rv)
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
+    end function function4d
+
+Finally, the helper function ``SHROUD_copy_string_and_free`` is called
+to set the value of the result and possible free memory for
+**owner(caller)** or intermediate values::
+
+    // Copy the std::string in context into c_var.
+    // Called by Fortran to deal with allocatable character.
+    void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_var_len) {
+        const char *cxx_var = data->addr.ccharp;
+        size_t n = c_var_len;
+        if (data->len < n) n = data->len;
+        strncpy(c_var, cxx_var, n);
+        TUT_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+    }
+
+.. note:: The three steps of call, allocate, copy could be replaced
+          with a single call by using the *futher interoperability
+          with C* features of Fortran 2018 (a.k.a TS 29113).  This
+          feature allows Fortran ``ALLOCATABLE`` variables to be
+          allocated by C. However, not all compilers currently support
+          that feature.  The current Shroud implementation works with
+          Fortran 2003.
+
+
+Python
+------
+
+NumPy arrays control garbage collection of C++ memory by creating 
+a ``PyCapsule`` as the base object of NumPy objects.
+Once the final reference to the NumPy array is removed, the reference
+count on the ``PyCapsule`` is decremented.
+When 0, the *destructor* for the capsule is called and releases the C++ memory.
+This technique is discussed at [blog1]_ and [blog2]_
+
+
+Old
+---
+
 
 Shroud generated C wrappers do not explicitly delete any memory.
 However a destructor may be automatically called for some C++ stl
@@ -1159,61 +1373,10 @@ leak memory when called::
 .. note:: Reference counting and garbage collection are still a work in progress
 
 
-.. _TypesAnchor_Implied_argument:
 
-Implied argument
-----------------
 
-The value of an arguments to the C++ function may be implied by other arguments.
-If so the *implied* attribute can be used to assign the value to the argument and 
-it will not be included in the wrapped API.
-See the example in the next section.
+.. rubric:: Footnotes
 
-.. _TypesAnchor_Allocatable_array:
+.. [blog1] `<http://blog.enthought.com/python/numpy-arrays-with-pre-allocated-memory>`_
 
-Allocatable array
------------------
-
-Sometimes it is more convient to have the wrapper allocate an
-``intent(out)`` array before passing it to the C++ function.  This can
-be accomplished by adding the *allocatable* attribute.  For example the
-C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
-argument and assigns it to an ``intent(out)`` argument::
-
-    void cos_doubles(double *in, double *out, int size)
-    {
-        for(int i = 0; i < size; i++) {
-            out[i] = in[i] * 2.;
-        }
-    }
-
-This is wrapped as::
-
-    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
-                           double * out    +intent(out) +allocatable(mold=in),
-                           int      sizein +implied(size(in)))
-
-The *mold* argument is similar to the *mold* argument in the Fortran
-``allocate`` statement, it will allocate ``out`` as the same shape as
-``in``.  Also notice the use of the *implied* attribute on the
-``size`` argument.  This argument is not added to the Fortran API
-since its value is *implied* to be the size of argument ``in``.
-``size`` is the Fortran intrinsic which returns the number of items
-allocated by its argument.
-
-The Fortran wrapper produced is::
-
-    subroutine cos_doubles(in, out)
-        use iso_c_binding, only : C_DOUBLE, C_INT
-        real(C_DOUBLE), intent(IN) :: in(:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
-        allocate(out, mold=in)
-        sizein = size(in)
-        call c_cos_doubles(in, out, sizein)
-    end subroutine cos_doubles
-
-The mold argument was added to the Fortran 2008 standard.  If the
-option **F_standard** is not 2008 then the allocate statement will be::
-
-        allocate(out(lbound(in,1):ubound(in,1)))
+.. [blog2] `<http://blog.enthought.com/python/numpy/simplified-creation-of-numpy-arrays-from-pre-allocated-memory>`_

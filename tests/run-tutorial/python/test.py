@@ -104,36 +104,6 @@ class Tutorial(unittest.TestCase):
         # if 0:    is legal
         self.assertRaises(TypeError, tutorial.Function3, 0)
 
-    def testReturnIntPtr(self):
-        "Return pointer to int scalar"
-        rv = tutorial.ReturnIntPtr()
-        self.assertIsInstance(rv, np.ndarray)
-        self.assertEqual('int32', rv.dtype.name)
-        self.assertEqual(1, rv.size)
-        self.assertEqual(1, rv)
-
-    def testReturnIntPtrScalr(self):
-        "Return pointer as int scalar"
-        rv = tutorial.ReturnIntPtrScalar()
-        self.assertIsInstance(rv, int)
-        self.assertEqual(10, rv)
-
-    def testReturnIntPtrDim(self):
-        "Return pointer to int array"
-        rv = tutorial.ReturnIntPtrDim()
-        self.assertIsInstance(rv, np.ndarray)
-        self.assertEqual('int32', rv.dtype.name)
-        self.assertEqual(7, rv.size)
-        self.assertTrue(all(np.equal(rv, [1,2,3,4,5,6,7])))
-
-    def testReturnIntPtrDimNew(self):
-        "Return pointer to a new int array"
-        rv = tutorial.ReturnIntPtrDimNew()
-        self.assertIsInstance(rv, np.ndarray)
-        self.assertEqual('int32', rv.dtype.name)
-        self.assertEqual(5, rv.size)
-        self.assertTrue(all(np.equal(rv, [0,1,2,3,4])))
-
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")

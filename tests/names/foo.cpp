@@ -51,7 +51,6 @@ extern "C" {
 // splicer end class.Names.C_definitions
 
 // void method1()
-// function_index=0
 void XXX_TES_names_method1(TES_names * self)
 {
 // splicer begin class.Names.method.method1
@@ -62,7 +61,6 @@ void XXX_TES_names_method1(TES_names * self)
 }
 
 // void method2()
-// function_index=1
 void XXX_TES_names_method2(TES_names * self2)
 {
 // splicer begin class.Names.method.method2

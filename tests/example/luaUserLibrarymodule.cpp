@@ -54,6 +54,14 @@ extern "C" {
 
 // ExClass1()
 // ExClass1(const string * name +intent(in))
+/**
+ * \brief constructor
+ *
+ * longer description
+ * usually multiple lines
+ *
+ * \return return new instance
+ */
 static int l_exclass1_ctor(lua_State *L)
 {
     // splicer begin class.ExClass1.method.ctor
@@ -96,6 +104,11 @@ static int l_exclass1_ctor(lua_State *L)
 }
 
 // ~ExClass1()
+/**
+ * \brief destructor
+ *
+ * longer description joined with previous line
+ */
 static int l_exclass1_dtor(lua_State *L)
 {
     // splicer begin class.ExClass1.method.__gc
@@ -120,7 +133,7 @@ static int l_exclass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getNameErrorPattern() const +len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
+// const string & getNameErrorPattern() const +deref(result_as_arg)+len(aa_exclass1_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass1_get_name_error_pattern(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorPattern
@@ -133,6 +146,10 @@ static int l_exclass1_get_name_error_pattern(lua_State *L)
 }
 
 // int GetNameLength() const
+/**
+ * \brief helper function for Fortran to get length of name.
+ *
+ */
 static int l_exclass1_get_name_length(lua_State *L)
 {
     // splicer begin class.ExClass1.method.GetNameLength
@@ -144,7 +161,7 @@ static int l_exclass1_get_name_length(lua_State *L)
     // splicer end class.ExClass1.method.GetNameLength
 }
 
-// const string & getNameErrorCheck() const
+// const string & getNameErrorCheck() const +deref(allocatable)
 static int l_exclass1_get_name_error_check(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorCheck
@@ -156,7 +173,7 @@ static int l_exclass1_get_name_error_check(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
-// const string & getNameArg() const
+// const string & getNameArg() const +deref(result_as_arg)
 static int l_exclass1_get_name_arg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
@@ -275,6 +292,10 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
 };
 
 // ExClass2(const string * name +intent(in)+len_trim(trim_name))
+/**
+ * \brief constructor
+ *
+ */
 static int l_exclass2_ctor(lua_State *L)
 {
     // splicer begin class.ExClass2.method.ctor
@@ -290,6 +311,10 @@ static int l_exclass2_ctor(lua_State *L)
 }
 
 // ~ExClass2()
+/**
+ * \brief destructor
+ *
+ */
 static int l_exclass2_dtor(lua_State *L)
 {
     // splicer begin class.ExClass2.method.__gc
@@ -301,7 +326,7 @@ static int l_exclass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName() const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 static int l_exclass2_get_name(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
@@ -313,7 +338,7 @@ static int l_exclass2_get_name(lua_State *L)
     // splicer end class.ExClass2.method.getName
 }
 
-// const string & getName2()
+// const string & getName2() +deref(allocatable)
 static int l_exclass2_get_name2(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName2
@@ -325,7 +350,7 @@ static int l_exclass2_get_name2(lua_State *L)
     // splicer end class.ExClass2.method.getName2
 }
 
-// string & getName3() const
+// string & getName3() const +deref(allocatable)
 static int l_exclass2_get_name3(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName3
@@ -337,7 +362,7 @@ static int l_exclass2_get_name3(lua_State *L)
     // splicer end class.ExClass2.method.getName3
 }
 
-// string & getName4()
+// string & getName4() +deref(allocatable)
 static int l_exclass2_get_name4(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName4
@@ -350,6 +375,10 @@ static int l_exclass2_get_name4(lua_State *L)
 }
 
 // int GetNameLength() const
+/**
+ * \brief helper function for Fortran
+ *
+ */
 static int l_exclass2_get_name_length(lua_State *L)
 {
     // splicer begin class.ExClass2.method.GetNameLength
@@ -361,7 +390,7 @@ static int l_exclass2_get_name_length(lua_State *L)
     // splicer end class.ExClass2.method.GetNameLength
 }
 
-// ExClass1 * get_class1(const ExClass1 * in +intent(in)+value)
+// ExClass1 * get_class1(const ExClass1 * in +intent(in))
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
@@ -767,7 +796,7 @@ static int l_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void testgroup1(axom::sidre::Group * grp +intent(in)+value)
+// void testgroup1(axom::sidre::Group * grp +intent(in))
 static int l_testgroup1(lua_State *L)
 {
     // splicer begin function.testgroup1
@@ -779,7 +808,7 @@ static int l_testgroup1(lua_State *L)
     // splicer end function.testgroup1
 }
 
-// void testgroup2(const axom::sidre::Group * grp +intent(in)+value)
+// void testgroup2(const axom::sidre::Group * grp +intent(in))
 static int l_testgroup2(lua_State *L)
 {
     // splicer begin function.testgroup2
@@ -792,6 +821,10 @@ static int l_testgroup2(lua_State *L)
 }
 
 // void FuncPtr1(void ( * get)() +intent(in)+value)
+/**
+ * \brief subroutine
+ *
+ */
 static int l_func_ptr1(lua_State *L)
 {
     // splicer begin function.FuncPtr1
@@ -802,6 +835,10 @@ static int l_func_ptr1(lua_State *L)
 }
 
 // void FuncPtr2(double * ( * get)() +intent(in))
+/**
+ * \brief return a pointer
+ *
+ */
 static int l_func_ptr2(lua_State *L)
 {
     // splicer begin function.FuncPtr2
@@ -812,6 +849,10 @@ static int l_func_ptr2(lua_State *L)
 }
 
 // void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)
+/**
+ * \brief abstract argument
+ *
+ */
 static int l_func_ptr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
@@ -889,6 +930,10 @@ static int l_verylongfunctionname2(lua_State *L)
 }
 
 // void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+/**
+ * \brief Test multidimensional arrays with allocatable
+ *
+ */
 static int l_cos_doubles(lua_State *L)
 {
     // splicer begin function.cos_doubles

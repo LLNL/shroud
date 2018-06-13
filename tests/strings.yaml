@@ -84,7 +84,7 @@ declarations:
 
 ########################################
 
-- decl: const char * getCharPtr1()  +pure
+- decl: const char * getCharPtr1()
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const char *' as character(*)
@@ -94,7 +94,7 @@ declarations:
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
 
-- decl: const char * getCharPtr3() # +pure
+- decl: const char * getCharPtr3()
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return a 'const char *' as argument
@@ -104,33 +104,32 @@ declarations:
 ########################################
 # return std::string
 
-# This tries to call a C wrapper which is not created
-#- decl: const string getString4() # +pure
-#  C_error_pattern: C_invalid_name
-#  doxygen:
-#    brief: return a 'const string' as argument
+- decl: const string getConstStringResult()
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return an ALLOCATABLE CHARACTER from std::string
 
-- decl: const string getConstStringLen() +len=30 # +pure
+- decl: const string getConstStringLen() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
 
-- decl: const string getConstStringAsArg() # +pure
+- decl: const string getConstStringAsArg()
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
   format:
     F_string_result_as_arg: output
 
-- decl: const std::string getConstStringAlloc() +allocatable
+- decl: const std::string getConstStringAlloc()
 
 ########################################
 # return std::string reference
 
-- decl: const string& getConstStringRefPure()  +pure
+- decl: const string& getConstStringRefPure()
 #  C_error_pattern: C_invalid_name
   doxygen:
-    brief: return a 'const string&' as character(*)
+    brief: return a 'const string&' as ALLOCATABLE character
 
 - decl: const string& getConstStringRefLen() +len=30
   C_error_pattern: C_invalid_name
@@ -149,7 +148,7 @@ declarations:
   doxygen:
     brief: Test returning empty string reference
 
-- decl: const std::string& getConstStringRefAlloc() +allocatable
+- decl: const std::string& getConstStringRefAlloc()
 
 ########################################
 # return std::string pointer
@@ -157,16 +156,33 @@ declarations:
 - decl: const string * getConstStringPtrLen() +len=30
 #  C_error_pattern: C_invalid_name
   doxygen:
-    brief: return a 'const string *' as character(*)
-  description: |
+    brief: return a 'const string *' as character(30)
+    description: |
       It is the caller's responsibility to release the string
       created by the C++ library.
+      This is accomplished with C_finalize_buf which is possible
+      because +len(30) so the contents are copied before returning.
   format:
     C_finalize_buf: delete {cxx_var};
 
-- decl: const std::string * getConstStringPtrAlloc() +allocatable
+- decl: const std::string * getConstStringPtrAlloc() +owner(library)
 
-- decl: const std::string * getConstStringPtrOwnsAlloc() +allocatable
+- decl: const std::string * getConstStringPtrOwnsAlloc() +owner(caller)
+  doxygen:
+    description: |
+      It is the caller's responsibility to release the string
+      created by the C++ library.
+      This is accomplished +owner(caller) which sets idtor.
+      The contents are copied by Fortran so they must outlast
+      the return from the C wrapper.
+
+- decl: const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)
+  doxygen:
+    description: |
+      Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+  fattrs:
+    free_pattern: C_string_free
+
 
 ########################################
 
@@ -285,3 +301,9 @@ patterns:
 #            return;
 #        }}
 
+     # This pattern is added to C_memory_dtor_function
+     # XXX - \t is not dealt with properly
+    C_string_free: |
+        // Used with +free_pattern(C_string_free)
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+        delete cxx_ptr;

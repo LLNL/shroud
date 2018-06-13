@@ -53,19 +53,16 @@ extern "C" {
 struct s_FOR_class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_FOR_class2 FOR_class2;
 
 struct s_FOR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
-    int refcount;   /* reference count */
 };
 typedef struct s_FOR_SHROUD_capsule_data FOR_SHROUD_capsule_data;
 
-void FOR_SHROUD_array_destructor_function
-    (FOR_SHROUD_capsule_data *cap, bool gc);
+void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }

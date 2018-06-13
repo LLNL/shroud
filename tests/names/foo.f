@@ -56,15 +56,13 @@ module name_module
     type, bind(C) :: SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-        integer(C_INT) :: refcount = 0    ! reference count
     end type SHROUD_capsule_data
 
     ! splicer begin class.Names.module_top
     ! splicer end class.Names.module_top
 
     type FNames
-        type(C_PTR), private :: cxxptr = C_NULL_PTR
-        type(SHROUD_capsule_data), pointer :: cxxmem => null()
+        type(SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Names.component_part
         ! splicer end class.Names.component_part
     contains
@@ -89,16 +87,16 @@ module name_module
 
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_names_method1")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self
+            type(SHROUD_capsule_data), intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_names_method2")
-            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
             implicit none
-            type(C_PTR), value, intent(IN) :: self2
+            type(SHROUD_capsule_data), intent(IN) :: self2
         end subroutine xxx_tes_names_method2
 
         ! splicer begin class.Names.additional_interfaces
@@ -108,33 +106,27 @@ module name_module
 contains
 
     ! void method1()
-    ! function_index=0
     subroutine names_method1(obj)
         class(FNames) :: obj
         ! splicer begin class.Names.method.type_method1
-        call xxx_tes_names_method1(obj%cxxptr)
+        call xxx_tes_names_method1(obj%cxxmem)
         ! splicer end class.Names.method.type_method1
     end subroutine names_method1
 
     ! void method2()
-    ! function_index=1
     subroutine names_method2(obj2)
         class(FNames) :: obj2
         ! splicer begin class.Names.method.method2
-        call xxx_tes_names_method2(obj2%cxxptr)
+        call xxx_tes_names_method2(obj2%cxxmem)
         ! splicer end class.Names.method.method2
     end subroutine names_method2
 
-    ! Return pointer to C++ memory if allocated, else C_NULL_PTR.
+    ! Return pointer to C++ memory.
     function names_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: c_associated, C_NULL_PTR, C_PTR
+        use iso_c_binding, only: C_PTR
         class(FNames), intent(IN) :: obj
         type(C_PTR) :: cxxptr
-        if (c_associated(obj%cxxptr)) then
-            cxxptr = obj%cxxmem%addr
-        else
-            cxxptr = C_NULL_PTR
-        endif
+        cxxptr = obj%cxxmem%addr
     end function names_get_instance
 
     subroutine names_set_instance(obj, cxxmem)

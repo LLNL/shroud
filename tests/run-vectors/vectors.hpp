@@ -48,11 +48,16 @@
 #include <vector>
 
 int vector_sum(const std::vector<int> &arg);
-void vector_iota(std::vector<int> &arg);
+void vector_iota_out(std::vector<int> &arg);
+void vector_iota_out_alloc(std::vector<int> &arg);
+void vector_iota_inout_alloc(std::vector<int> &arg);
 void vector_increment(std::vector<int> &arg);
 
 int vector_string_count(const std::vector< std::string > &arg);
 void vector_string_fill(std::vector< std::string > &arg);
 void vector_string_append(std::vector< std::string > &arg);
+
+std::vector<int> ReturnVectorAlloc(int i);
+
 
 #endif // VECTORS_HPP

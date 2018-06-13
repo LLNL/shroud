@@ -117,18 +117,26 @@ TESTDIRS = \
     $(tempdir)/run-strings/.. \
     $(tempdir)/run-strings/python/.. \
     $(tempdir)/run-clibrary/.. \
-    $(tempdir)/run-clibrary/python/..
+    $(tempdir)/run-clibrary/python/.. \
+    $(tempdir)/run-ownership/.. \
+    $(tempdir)/run-ownership/python/..
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial vectors strings clibrary
+fortran : tutorial vectors strings clibrary ownership
 
 # Compile the generated Fortran wrapper
-tutorial vectors forward strings clibrary : testdirs
+tutorial vectors forward strings clibrary ownership : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run-$@ \
 	    -f $(top)/tests/run-$@/Makefile \
 	    top=$(top) $@
+
+tutorial-c : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-tutorial \
+	    -f $(top)/tests/run-tutorial/Makefile \
+	    top=$(top) testc
 
 tutorial-cpp : testdirs
 	$(MAKE) \
@@ -136,12 +144,15 @@ tutorial-cpp : testdirs
 	    -f $(top)/tests/run-tutorial/Makefile \
 	    top=$(top) maincpp
 
+test-c : tutorial-c
+
 # Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run-tutorial/tutorial
 	$(tempdir)/run-vectors/vectors
 	$(tempdir)/run-strings/strings
 	$(tempdir)/run-clibrary/clibrary
+	$(tempdir)/run-ownership/ownership
 
 # Compile the generated Python wrapper
 py-tutorial : testdirs
@@ -162,6 +173,12 @@ py-clibrary : testdirs
 	    -f $(top)/tests/run-clibrary/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+py-ownership : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run-ownership/python \
+	    -f $(top)/tests/run-ownership/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
 # Run the Python tests
 test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run-tutorial/python; \
@@ -175,7 +192,11 @@ test-python-clibrary : py-clibrary
 	export PYTHONPATH=$(top)/$(tempdir)/run-clibrary/python; \
 	$(PYTHON_BIN) $(top)/tests/run-clibrary/python/test.py
 
-test-python : test-python-tutorial test-python-strings test-python-clibrary
+test-python-ownership : py-ownership
+	export PYTHONPATH=$(top)/$(tempdir)/run-ownership/python; \
+	$(PYTHON_BIN) $(top)/tests/run-ownership/python/test.py
+
+test-python : test-python-tutorial test-python-strings test-python-clibrary test-python-ownership
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
@@ -190,7 +211,7 @@ test-lua : lua-tutorial
 	cd $(top)/$(tempdir)/run-tutorial/lua; \
 	$(LUA_BIN) $(top)/tests/run-tutorial/lua/test.lua
 
-test-all : test-fortran test-python test-lua
+test-all : test-c test-fortran test-python test-lua
 
 test-clean :
 	rm -rf $(tempdir)/test
@@ -198,6 +219,7 @@ test-clean :
 	rm -rf $(tempdir)/run-vectors
 	rm -rf $(tempdir)/run-strings
 	rm -rf $(tempdir)/run-clibrary
+	rm -rf $(tempdir)/run-ownership
 
 ########################################################################
 #
@@ -234,11 +256,13 @@ distclean:
 #	rm -rf .eggs
 
 .PHONY : virtualenv develop docs test testdirs
-.PHONY : fortran test-fortran tutorial vectors strings clibrary
+.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership
+.PHONY : tutorial-c tutorial-cpp
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings
 .PHONY : py-clibrary test-python-clibrary
+.PHONY : py-ownership test-python-ownership
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all test-clean
 .PHONY : do-test do-test-replace print-debug

@@ -88,6 +88,7 @@ class Tutorial(unittest.TestCase):
 
     def testgetConstString(self):
         """return std::string"""
+        self.assertEqual('getConstStringResult', strings.getConstStringResult())
         self.assertEqual(static_str, strings.getConstStringLen())
         self.assertEqual(static_str, strings.getConstStringAsArg())
         self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
@@ -107,7 +108,10 @@ class Tutorial(unittest.TestCase):
         """return std::string pointer"""
         self.assertEqual('getConstStringPtrLen', strings.getConstStringPtrLen())
         self.assertEqual(static_str, strings.getConstStringPtrAlloc())
-        self.assertEqual('getConstStringPtrOwnsAlloc', strings.getConstStringPtrOwnsAlloc())
+        self.assertEqual('getConstStringPtrOwnsAlloc',
+                         strings.getConstStringPtrOwnsAlloc())
+        self.assertEqual('getConstStringPtrOwnsAllocPattern',
+                         strings.getConstStringPtrOwnsAllocPattern())
 
     def testacceptStringConstReference(self):
         self.assertEqual(None, strings.acceptStringConstReference('cat'))

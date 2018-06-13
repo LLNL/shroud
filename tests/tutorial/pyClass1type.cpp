@@ -108,6 +108,10 @@ static char PY_class1_Method1__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief returns the value of flag member
+ *
+ */
 static PyObject *
 PY_class1_Method1(
   PY_Class1 *self,
@@ -129,13 +133,17 @@ static char PY_class1_equivalent__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Pass in reference to instance
+ *
+ */
 static PyObject *
 PY_class1_equivalent(
   PY_Class1 *self,
   PyObject *args,
   PyObject *kwds)
 {
-// bool equivalent(const Class1 & obj2 +intent(in)+value) const
+// bool equivalent(const Class1 & obj2 +intent(in)) const
 // splicer begin class.Class1.method.equivalent
     PY_Class1 * SHPy_obj2;
     const char *SHT_kwlist[] = {

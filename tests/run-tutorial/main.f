@@ -107,7 +107,7 @@ contains
 
     integer(C_LONG_LONG) :: rv_ll
     integer(C_INT) :: minout, maxout
-    integer(C_INT), pointer :: intp, intp1(:)
+!    character(len=:), allocatable :: rv4c
 
     call set_case_name("test_functions")
 
@@ -132,31 +132,23 @@ contains
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
 
-    nullify(intp)
-    intp => return_int_ptr()
-    call assert_true(associated(intp))
-    call assert_equals(1, intp, "return_int_ptr value")
-
-    rv_int = return_int_ptr_scalar()
-    call assert_equals(10, rv_int, "return_int_ptr_scalar value")
-
-    nullify(intp1)
-    intp1 => return_int_ptr_dim()
-    call assert_true(associated(intp1))
-    call assert_equals(7 , size(intp1))
-    call assert_true( all(intp1 == [1,2,3,4,5,6,7]), "return_int_ptr_dim value")
-
-    ! XXX - how to delete c++ array
-    nullify(intp1)
-    intp1 => return_int_ptr_dim_new()
-    call assert_true(associated(intp1))
-    call assert_equals(5 , size(intp1))
-    call assert_true( all(intp1 == [0,1,2,3,4]), "return_int_ptr_dim_new value")
-
     call assert_true( function4a("dog", "cat") == "dogcat")
 
     call function4b("dog", "cat", rv_char)
     call assert_true( rv_char == "dogcat")
+
+    call assert_true( function4c("dawg", "kat") == "dawgkat")
+
+! warning: ‘.rv4c’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+! gfortran 4.9.3
+!    call assert_false(allocated(rv4c))
+!    rv4c = function4c("one", "two")
+!    call assert_true(allocated(rv4c))
+!    call assert_true(len(rv4c) == 6)
+!    call assert_true(rv4c == "onetwo")
+!    deallocate(rv4c)
+
+    call assert_true( function4d() == "Function4d")
 
     call assert_equals(function5(), 13.1415d0)
     call assert_equals(function5(1.d0), 11.d0)
@@ -300,10 +292,10 @@ contains
 
     call set_case_name("test_class1_new_by_value")
 
-    ! Return a new instance.
+    ! Return a new instance via a copy constructor.
     ! The C wrapper creates an instance then assigns function results into it.
     ! idtor is set to cause it to be released when it goes out of scope.
-    obj0 = get_class_new(5)
+    obj0 = get_class_copy(5)
 
     mflag = obj0%get_m_flag()
     call assert_equals(5, mflag)

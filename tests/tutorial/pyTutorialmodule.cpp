@@ -232,112 +232,22 @@ PY_Function3(
 // splicer end function.function3
 }
 
-static char PY_ReturnIntPtr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_ReturnIntPtr(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// int * ReturnIntPtr()
-// splicer begin function.return_int_ptr
-    int * SHC_rv = tutorial::ReturnIntPtr();
-
-    // post_call
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
-        SHC_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_ptr
-}
-
-static char PY_ReturnIntPtrScalar__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_ReturnIntPtrScalar(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// int * ReturnIntPtrScalar()
-// splicer begin function.return_int_ptr_scalar
-    int * SHC_rv = tutorial::ReturnIntPtrScalar();
-
-    // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(*SHC_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_ptr_scalar
-}
-
-static char PY_ReturnIntPtrDim__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_ReturnIntPtrDim(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// int * ReturnIntPtrDim(int * len +hidden+intent(out)) +dimension(len)
-// splicer begin function.return_int_ptr_dim
-    // pre_call
-    int len;  // intent(out)
-
-    int * SHC_rv = tutorial::ReturnIntPtrDim(&len);
-
-    // post_call
-    npy_intp SHD_ReturnIntPtrDim[1] = { len };
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
-        SHD_ReturnIntPtrDim, NPY_INT, SHC_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_ptr_dim
-}
-
-static char PY_ReturnIntPtrDimNew__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_ReturnIntPtrDimNew(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// int * ReturnIntPtrDimNew(int * len +hidden+intent(out)) +dimension(len)
-// splicer begin function.return_int_ptr_dim_new
-    // pre_call
-    int len;  // intent(out)
-
-    int * SHC_rv = tutorial::ReturnIntPtrDimNew(&len);
-
-    // post_call
-    npy_intp SHD_ReturnIntPtrDimNew[1] = { len };
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
-        SHD_ReturnIntPtrDimNew, NPY_INT, SHC_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_int_ptr_dim_new
-}
-
 static char PY_Function4a__doc__[] =
 "documentation"
 ;
 
+/**
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
+ */
 static PyObject *
 PY_Function4a(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +len(30)
+// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
 // splicer begin function.function4a
     const char * arg1;
     const char * arg2;
@@ -373,7 +283,7 @@ PY_Function4b(
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in))
+// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
 // splicer begin function.function4b
     const char * arg1;
     const char * arg2;
@@ -398,6 +308,72 @@ PY_Function4b(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4b
+}
+
+static char PY_Function4c__doc__[] =
+"documentation"
+;
+
+/**
+ * Note that since a reference is returned, no intermediate string
+ * is allocated.  It is assumed +owner(library).
+ */
+static PyObject *
+PY_Function4c(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// splicer begin function.function4c
+    const char * arg1;
+    const char * arg2;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4c",
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+        return NULL;
+
+    // post_parse
+    const std::string SH_arg1(arg1);
+    const std::string SH_arg2(arg2);
+
+    const std::string & SHCXX_rv = tutorial::Function4c(SH_arg1,
+        SH_arg2);
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.function4c
+}
+
+static char PY_Function4d__doc__[] =
+"documentation"
+;
+
+/**
+ * A string is allocated by the library is must be deleted
+ * by the caller.
+ */
+static PyObject *
+PY_Function4d(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// const std::string * Function4d() +deref(allocatable)+owner(caller)
+// splicer begin function.function4d
+    const std::string * SHCXX_rv = tutorial::Function4d();
+
+    // post_call
+    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.function4d
 }
 
 static char PY_Function5_arg1_arg2__doc__[] =
@@ -796,6 +772,10 @@ static char PY_getMinMax__doc__[] =
 "documentation"
 ;
 
+/**
+ * \brief Pass in reference to scalar
+ *
+ */
 static PyObject *
 PY_getMinMax(
   PyObject *SHROUD_UNUSED(self),
@@ -862,7 +842,7 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
-// int useclass(const Class1 * arg1 +intent(in)+value)
+// int useclass(const Class1 * arg1 +intent(in))
 // splicer begin function.useclass
     PY_Class1 * SHPy_arg1;
     const char *SHT_kwlist[] = {
@@ -991,7 +971,7 @@ PY_LastFunctionCalled(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// const std::string & LastFunctionCalled() +len(30)
+// const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 
@@ -1163,18 +1143,14 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
-{"ReturnIntPtr", (PyCFunction)PY_ReturnIntPtr, METH_NOARGS,
-    PY_ReturnIntPtr__doc__},
-{"ReturnIntPtrScalar", (PyCFunction)PY_ReturnIntPtrScalar, METH_NOARGS,
-    PY_ReturnIntPtrScalar__doc__},
-{"ReturnIntPtrDim", (PyCFunction)PY_ReturnIntPtrDim, METH_NOARGS,
-    PY_ReturnIntPtrDim__doc__},
-{"ReturnIntPtrDimNew", (PyCFunction)PY_ReturnIntPtrDimNew, METH_NOARGS,
-    PY_ReturnIntPtrDimNew__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
 {"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,
     PY_Function4b__doc__},
+{"Function4c", (PyCFunction)PY_Function4c, METH_VARARGS|METH_KEYWORDS,
+    PY_Function4c__doc__},
+{"Function4d", (PyCFunction)PY_Function4d, METH_NOARGS,
+    PY_Function4d__doc__},
 {"Function5", (PyCFunction)PY_Function5_arg1_arg2,
     METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
 {"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,
