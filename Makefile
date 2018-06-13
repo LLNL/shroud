@@ -70,9 +70,6 @@ export LUA
 
 include $(top)/tests/run/Makefile
 
-compiler = gcc
-export compiler
-
 ########################################################################
 # For development:
 # make virtualenv

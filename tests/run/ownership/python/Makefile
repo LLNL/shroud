@@ -38,13 +38,13 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+#  Compile the python ownership module
 #
 ifndef top
 top = ../../..
 endif
 
-include $(top)/tests/defaults.mk
+include $(top)/tests/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/tests/ownership \
