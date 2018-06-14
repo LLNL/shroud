@@ -645,7 +645,8 @@ def initialize():
                 ),
             ),
             PY_format='s',
-            PY_ctor='PyString_FromString({cxx_var}{cxx_member}c_str())',
+            PY_ctor='PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())',
+#            PY_build_arg='{cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size()',
             PY_build_arg='{cxx_var}{cxx_member}c_str()',
 
             LUA_type='LUA_TSTRING',

@@ -249,7 +249,8 @@ PY_getConstStringResult(
     const std::string SHCXX_rv = getConstStringResult();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_result
@@ -274,7 +275,8 @@ PY_getConstStringLen(
     const std::string SHCXX_rv = getConstStringLen();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_len
@@ -299,7 +301,8 @@ PY_getConstStringAsArg(
     const std::string SHCXX_rv = getConstStringAsArg();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_as_arg
@@ -320,7 +323,8 @@ PY_getConstStringAlloc(
     const std::string SHCXX_rv = getConstStringAlloc();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_alloc
@@ -345,7 +349,8 @@ PY_getConstStringRefPure(
     const std::string & SHCXX_rv = getConstStringRefPure();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ref_pure
@@ -370,7 +375,8 @@ PY_getConstStringRefLen(
     const std::string & SHCXX_rv = getConstStringRefLen();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ref_len
@@ -395,7 +401,8 @@ PY_getConstStringRefAsArg(
     const std::string & SHCXX_rv = getConstStringRefAsArg();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ref_as_arg
@@ -420,7 +427,8 @@ PY_getConstStringRefLenEmpty(
     const std::string & SHCXX_rv = getConstStringRefLenEmpty();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ref_len_empty
@@ -441,7 +449,8 @@ PY_getConstStringRefAlloc(
     const std::string & SHCXX_rv = getConstStringRefAlloc();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ref_alloc
@@ -470,7 +479,8 @@ PY_getConstStringPtrLen(
     const std::string * SHCXX_rv = getConstStringPtrLen();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+        SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ptr_len
@@ -491,7 +501,8 @@ PY_getConstStringPtrAlloc(
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+        SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ptr_alloc
@@ -519,7 +530,8 @@ PY_getConstStringPtrOwnsAlloc(
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+        SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ptr_owns_alloc
@@ -543,7 +555,8 @@ PY_getConstStringPtrOwnsAllocPattern(
     const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+        SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_const_string_ptr_owns_alloc_pattern
@@ -611,7 +624,8 @@ PY_acceptStringReferenceOut(
     acceptStringReferenceOut(SH_arg1);
 
     // post_call
-    PyObject * SHPy_arg1 = PyString_FromString(SH_arg1.c_str());
+    PyObject * SHPy_arg1 = PyString_FromStringAndSize(SH_arg1.data(),
+        SH_arg1.size());
 
     return (PyObject *) SHPy_arg1;
 // splicer end function.accept_string_reference_out
@@ -652,7 +666,8 @@ PY_acceptStringReference(
     acceptStringReference(SH_arg1);
 
     // post_call
-    PyObject * SHPy_arg1 = PyString_FromString(SH_arg1.c_str());
+    PyObject * SHPy_arg1 = PyString_FromStringAndSize(SH_arg1.data(),
+        SH_arg1.size());
 
     return (PyObject *) SHPy_arg1;
 // splicer end function.accept_string_reference
@@ -690,7 +705,8 @@ PY_acceptStringPointer(
     acceptStringPointer(&SH_arg1);
 
     // post_call
-    PyObject * SHPy_arg1 = PyString_FromString(SH_arg1.c_str());
+    PyObject * SHPy_arg1 = PyString_FromStringAndSize(SH_arg1.data(),
+        SH_arg1.size());
 
     return (PyObject *) SHPy_arg1;
 // splicer end function.accept_string_pointer

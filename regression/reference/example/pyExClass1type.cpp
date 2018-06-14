@@ -179,7 +179,8 @@ PP_exclass1_getNameErrorPattern(
 
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_name_error_pattern
@@ -225,7 +226,8 @@ PP_exclass1_getNameErrorCheck(
     const std::string & SHCXX_rv = self->obj->getNameErrorCheck();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_name_error_check
@@ -246,7 +248,8 @@ PP_exclass1_getNameArg(
     const std::string & SHCXX_rv = self->obj->getNameArg();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass1.method.get_name_arg
