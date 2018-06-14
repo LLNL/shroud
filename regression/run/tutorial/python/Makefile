@@ -38,35 +38,32 @@
 #
 # #######################################################################
 #
-#  Compile the python ownership module
+#  Compile the python tutorial module
 #
-ifndef top
-top = ../../..
-endif
-
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run/ownership \
+    -I$(top)/regression/reference/tutorial \
+    -I$(top)/regression/run/tutorial \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run/ownership \
-    $(top)/tests/run/ownership/python
+    $(top)/regression/reference/tutorial \
+    $(top)/regression/run/tutorial \
+    $(top)/regression/run/tutorial/python
 
 OBJS = \
-    ownership.o \
+    tutorial.o \
+    pyTutorialmodule.o \
     pyClass1type.o \
-    pyownershipmodule.o \
-    pyownershiphelper.o
+    pySingletontype.o \
+    pyTutorialhelper.o
 
 CXXFLAGS += $(SHARED)
 
-all : ownership.so simple
+all : tutorial.so simple
 
-ownership.so : $(OBJS)
+tutorial.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 simple : testpython.o $(OBJS)
@@ -81,7 +78,4 @@ print-debug:
 	@echo PYTHON=$(PYTHON)
 	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
 	@echo PYTHON_VER=$(PYTHON_VER)
-
-setup:
-	$(PYTHON) setup.py build
 

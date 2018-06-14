@@ -1,4 +1,4 @@
-# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,42 +38,41 @@
 #
 # #######################################################################
 #
-#  Compile the python clibrary module
+#  Compile the lua tutorial
 #
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/clibrary \
-    -I$(top)/tests/run/clibrary \
-    $(PYTHON_INC)
+    -I$(top)/regression/tutorial \
+    -I$(top)/regression/run/tutorial \
+    $(LUA_INC)
 
 VPATH = \
-    $(top)/tests/clibrary \
-    $(top)/tests/run/clibrary \
-    $(top)/tests/run/clibrary/python
+    $(top)/regression/tutorial \
+    $(top)/regression/run/tutorial \
+    $(top)/regression/run/tutorial/lua
 
 OBJS = \
-    clibrary.o \
-    pyClibrarymodule.o \
-    pyClibraryhelper.o
+    tutorial.o \
+    luaTutorialmodule.o
 
-CFLAGS += $(SHARED)
+CXXFLAGS += $(SHARED)
 
-all : clibrary.so simple
+all : tutorial.so # simple
 
-clibrary.so : $(OBJS)
+tutorial.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+# XXX testlua.c has some 5.2 features
+simple : testlua.o $(OBJS)
+	$(CC) -o $@ $^ $(LUA_LIB)
 
 clean :
 	rm -f *.so *.o simple
 .PHONY : clean
 
 print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-
+	@echo LUA=$(LUA)
+	@echo LUA_PREFIX=$(LUA_PREFIX)
+	@echo LUA_INC=$(LUA_INC)
+	@echo LUA_LIB=$(LUA_LIB)

@@ -38,44 +38,31 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial module
+# run/clibrary
 #
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/tutorial \
-    -I$(top)/tests/run/tutorial \
-    $(PYTHON_INC)
+    -I$(top)/regression/reference/clibrary \
+    -I$(top)/regression/run/clibrary \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/tutorial \
-    $(top)/tests/run/tutorial \
-    $(top)/tests/run/tutorial/python
+    $(top)/regression/reference/clibrary \
+    $(top)/regression/run/clibrary \
+    $(top)/regression/run/fruit
 
 OBJS = \
-    tutorial.o \
-    pyTutorialmodule.o \
-    pyClass1type.o \
-    pySingletontype.o \
-    pyTutorialhelper.o
+    clibrary.o \
+    wrapfclibrary.o \
+    wrapClibrary.o \
+    fruit.o \
+    main.o
 
-CXXFLAGS += $(SHARED)
-
-all : tutorial.so simple
-
-tutorial.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+clibrary : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod clibrary
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-
+main.o : wrapfclibrary.o

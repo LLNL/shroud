@@ -1,4 +1,4 @@
-# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,42 +38,37 @@
 #
 # #######################################################################
 #
-#  Compile the python strings module
+# run/vectors
 #
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/strings \
-    -I$(top)/tests/run/strings \
-    $(PYTHON_INC)
+    -I$(top)/regression/reference/vectors \
+    -I$(top)/regression/run/vectors \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/strings \
-    $(top)/tests/run/strings \
-    $(top)/tests/run/strings/python
+    $(top)/regression/reference/vectors \
+    $(top)/regression/run/vectors \
+    $(top)/regression/run/fruit
 
 OBJS = \
-    strings.o \
-    pystringsmodule.o \
-    pystringshelper.o
+    vectors.o \
+    wrapfvectors.o \
+    wrapvectors.o \
+    fruit.o \
+    main.o
 
-CXXFLAGS += $(SHARED)
-
-all : strings.so simple
-
-strings.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+vectors : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod vectors
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
+vectors.o : vectors.hpp
+wrapvectors.o : wrapvectors.h vectors.hpp
+main.o : wrapfvectors.o
 
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapvectors.o vectors.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

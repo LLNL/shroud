@@ -38,31 +38,50 @@
 #
 # #######################################################################
 #
-# run/strings
+#  Compile the python ownership module
 #
-include $(top)/tests/run/defaults.mk
+ifndef top
+top = ../../..
+endif
+
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/strings \
-    -I$(top)/tests/run/strings \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/ownership \
+    -I$(top)/regression/run/ownership \
+    $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/strings \
-    $(top)/tests/run/strings \
-    $(top)/tests/fruit
+    $(top)/regression/reference/ownership \
+    $(top)/regression/run/ownership \
+    $(top)/regression/run/ownership/python
 
 OBJS = \
-    strings.o \
-    wrapfstrings.o \
-    wrapstrings.o \
-    fruit.o \
-    main.o
+    ownership.o \
+    pyClass1type.o \
+    pyownershipmodule.o \
+    pyownershiphelper.o
 
-strings : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+CXXFLAGS += $(SHARED)
+
+all : ownership.so simple
+
+ownership.so : $(OBJS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+simple : testpython.o $(OBJS)
+	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
+#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 clean :
-	rm -f $(OBJS) *.mod strings
+	rm -f *.so *.o simple
+.PHONY : clean
 
-main.o : wrapfstrings.o
+print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
+
+setup:
+	$(PYTHON) setup.py build
+

@@ -43,7 +43,7 @@
 compiler = gcc
 export compiler
 
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 ########################################################################
 #
@@ -73,19 +73,19 @@ fortran : tutorial vectors strings clibrary ownership
 tutorial vectors forward strings clibrary ownership : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/$@ \
-	    -f $(top)/tests/run/$@/Makefile \
+	    -f $(top)/regression/run/$@/Makefile \
 	    top=$(top) $@
 
 tutorial-c : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/tutorial \
-	    -f $(top)/tests/run/tutorial/Makefile \
+	    -f $(top)/regression/run/tutorial/Makefile \
 	    top=$(top) testc
 
 tutorial-cpp : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/tutorial \
-	    -f $(top)/tests/run/tutorial/Makefile \
+	    -f $(top)/regression/run/tutorial/Makefile \
 	    top=$(top) maincpp
 
 test-c : tutorial-c
@@ -102,43 +102,43 @@ test-fortran : fortran
 py-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/tutorial/python \
-	    -f $(top)/tests/run/tutorial/python/Makefile \
+	    -f $(top)/regression/run/tutorial/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 py-strings : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/strings/python \
-	    -f $(top)/tests/run/strings/python/Makefile \
+	    -f $(top)/regression/run/strings/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 py-clibrary : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/clibrary/python \
-	    -f $(top)/tests/run/clibrary/python/Makefile \
+	    -f $(top)/regression/run/clibrary/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 py-ownership : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/ownership/python \
-	    -f $(top)/tests/run/ownership/python/Makefile \
+	    -f $(top)/regression/run/ownership/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
 test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run/tutorial/python; \
-	$(PYTHON_BIN) $(top)/tests/run/tutorial/python/test.py
+	$(PYTHON_BIN) $(top)/regression/run/tutorial/python/test.py
 
 test-python-strings : py-strings
 	export PYTHONPATH=$(top)/$(tempdir)/run/strings/python; \
-	$(PYTHON_BIN) $(top)/tests/run/strings/python/test.py
+	$(PYTHON_BIN) $(top)/regression/run/strings/python/test.py
 
 test-python-clibrary : py-clibrary
 	export PYTHONPATH=$(top)/$(tempdir)/run/clibrary/python; \
-	$(PYTHON_BIN) $(top)/tests/run/clibrary/python/test.py
+	$(PYTHON_BIN) $(top)/regression/run/clibrary/python/test.py
 
 test-python-ownership : py-ownership
 	export PYTHONPATH=$(top)/$(tempdir)/run/ownership/python; \
-	$(PYTHON_BIN) $(top)/tests/run/ownership/python/test.py
+	$(PYTHON_BIN) $(top)/regression/run/ownership/python/test.py
 
 test-python : test-python-tutorial test-python-strings test-python-clibrary test-python-ownership
 
@@ -146,14 +146,14 @@ test-python : test-python-tutorial test-python-strings test-python-clibrary test
 lua-tutorial : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/tutorial/lua \
-	    -f $(top)/tests/run/tutorial/lua/Makefile \
+	    -f $(top)/regression/run/tutorial/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
 # Run the Lua test
 test-lua : lua-tutorial
 #	export LUA_PATH=$(top)/$(tempdir)/run/tutorial/lua;
 	cd $(top)/$(tempdir)/run/tutorial/lua; \
-	$(LUA_BIN) $(top)/tests/run/tutorial/lua/test.lua
+	$(LUA_BIN) $(top)/regression/run/tutorial/lua/test.lua
 
 test-all : test-c test-fortran test-python test-lua
 

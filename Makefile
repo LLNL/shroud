@@ -68,7 +68,7 @@ endif
 export PYTHON PYTHONEXE
 export LUA
 
-include $(top)/tests/run/Makefile
+include $(top)/regression/run/Makefile
 
 ########################################################################
 # For development:
@@ -111,17 +111,17 @@ test-clean :
 # make do-test do-test-args=tutorial
 #
 do-test :
-	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
-	export TEST_INPUT_DIR=$(top)/tests; \
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
 	export EXECUTABLE_DIR=$(python.dir); \
-	$(PYTHON) tests/do_test.py $(do-test-args)
+	$(PYTHON) regression/do-test.py $(do-test-args)
 
 # replace test answers
 do-test-replace :
-	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/test; \
-	export TEST_INPUT_DIR=$(top)/tests; \
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
 	export EXECUTABLE_DIR=$(python.dir); \
-	$(PYTHON) tests/do_test.py -r  $(do-test-args)
+	$(PYTHON) regression/do-test.py -r $(do-test-args)
 
 ########################################################################
 

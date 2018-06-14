@@ -38,42 +38,31 @@
 #
 # #######################################################################
 #
-# run/ownership
+# run/strings
 #
-ifndef top
-top = ../..
-endif
-
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run/ownership \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/strings \
+    -I$(top)/regression/run/strings \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run/ownership \
-    $(top)/tests/fruit
+    $(top)/regression/reference/strings \
+    $(top)/regression/run/strings \
+    $(top)/regression/run/fruit
 
 OBJS = \
-    ownership.o \
-    wrapfownership.o \
-    wrapownership.o \
-    wrapClass1.o \
+    strings.o \
+    wrapfstrings.o \
+    wrapstrings.o \
     fruit.o \
     main.o
 
-ownership : $(OBJS)
+strings : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+	rm -f $(OBJS) *.mod strings
 
-ownership.o : ownership.hpp
-wrapOwnership.o : wrapownership.h ownership.hpp
-main.o : wrapfownership.o
-
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o ownership.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+main.o : wrapfstrings.o

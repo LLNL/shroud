@@ -40,18 +40,18 @@
 #
 # run/forward
 #
-include $(top)/tests/run/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/forward \
-    -I$(top)/tests/run-forward \
-    -I$(top)/tests/run-tutorial \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/forward \
+    -I$(top)/regression/run/forward \
+    -I$(top)/regression/run/tutorial \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/forward \
-    $(top)/tests/run-forward \
-    $(top)/tests/fruit
+    $(top)/regression/reference/forward \
+    $(top)/regression/run/forward \
+    $(top)/regression/run/fruit
 
 OBJS = \
     forward.o \
