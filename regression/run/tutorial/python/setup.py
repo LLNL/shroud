@@ -1,16 +1,17 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+#!/usr/bin/env python
+# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
-#
+# 
 # LLNL-CODE-738041.
 # All rights reserved. 
-#
+#  
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#
+#  
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#
+#  
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
 # 
@@ -18,11 +19,11 @@
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-#
+# 
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-#
+# 
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,53 +36,33 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# #######################################################################
-#
-#  Compile the python tutorial
-#
-ifndef top
-top = ../../..
-endif
+# 
+########################################################################
 
-include $(top)/tests/defaults.mk
+import os
+from distutils.core import setup, Extension
+import shroud
+import numpy
 
-INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run-ownership \
-    $(PYTHON_INC)
+outdir = 'build/source'
+if not os.path.exists(outdir):
+    os.makedirs(outdir)
+config = shroud.create_wrapper('../../../tutorial.yaml',
+                               path=['../../..'],
+                               outdir=outdir)
 
-VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run-ownership \
-    $(top)/tests/run-ownership/python
+tutorial = Extension(
+    'tutorial',
+    sources = config.pyfiles + ['../tutorial.cpp'],
+    include_dirs=[numpy.get_include(), '..']
+)
 
-OBJS = \
-    ownership.o \
-    pyClass1type.o \
-    pyownershipmodule.o \
-    pyownershiphelper.o
-
-CXXFLAGS += $(SHARED)
-
-all : ownership.so simple
-
-ownership.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-
-setup:
-	$(PYTHON) setup.py build
+setup(
+    name='tutorial',
+    version="0.0",
+    description='shroud tutorial',
+    author='xxx',
+    author_email='yyy@zz',
+    ext_modules=[tutorial],
+)
 

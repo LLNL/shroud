@@ -38,23 +38,23 @@
 #
 # #######################################################################
 #
-# run-ownership
+# run/ownership
 #
 ifndef top
 top = ../..
 endif
 
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/ownership \
-    -I$(top)/tests/run-ownership \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/ownership \
+    -I$(top)/regression/run/ownership \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/ownership \
-    $(top)/tests/run-ownership \
-    $(top)/tests/fruit
+    $(top)/regression/reference/ownership \
+    $(top)/regression/run/ownership \
+    $(top)/regression/run/fruit
 
 OBJS = \
     ownership.o \

@@ -38,31 +38,31 @@
 #
 # #######################################################################
 #
-# run-tutorial
+# run/strings
 #
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/clibrary \
-    -I$(top)/tests/run-clibrary \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/strings \
+    -I$(top)/regression/run/strings \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/clibrary \
-    $(top)/tests/run-clibrary \
-    $(top)/tests/fruit
+    $(top)/regression/reference/strings \
+    $(top)/regression/run/strings \
+    $(top)/regression/run/fruit
 
 OBJS = \
-    clibrary.o \
-    wrapfclibrary.o \
-    wrapClibrary.o \
+    strings.o \
+    wrapfstrings.o \
+    wrapstrings.o \
     fruit.o \
     main.o
 
-clibrary : $(OBJS)
+strings : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f $(OBJS) *.mod clibrary
+	rm -f $(OBJS) *.mod strings
 
-main.o : wrapfclibrary.o
+main.o : wrapfstrings.o

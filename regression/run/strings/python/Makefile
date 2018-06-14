@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,45 +38,42 @@
 #
 # #######################################################################
 #
-# run-tutorial
+#  Compile the python strings module
 #
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/tutorial \
-    -I$(top)/tests/run-tutorial \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/strings \
+    -I$(top)/regression/run/strings \
+    $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/tutorial \
-    $(top)/tests/run-tutorial \
-    $(top)/tests/fruit
+    $(top)/regression/reference/strings \
+    $(top)/regression/run/strings \
+    $(top)/regression/run/strings/python
 
 OBJS = \
-    tutorial.o \
-    wrapftutorial.o \
-    wrapTutorial.o \
-    wrapClass1.o \
-    wrapSingleton.o \
-    fruit.o \
-    main.o
+    strings.o \
+    pystringsmodule.o \
+    pystringshelper.o
 
-tutorial : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+CXXFLAGS += $(SHARED)
+
+all : strings.so simple
+
+strings.so : $(OBJS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+simple : testpython.o $(OBJS)
+	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
+#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 clean :
-	rm -f $(OBJS) *.mod tutorial
+	rm -f *.so *.o simple
+.PHONY : clean
 
-tutorial.o : tutorial.hpp
-wrapTutorial.o : wrapTutorial.h tutorial.hpp
-wrapClass1.o : wrapClass1.h tutorial.hpp
-wrapSingleton.o : wrapSingleton.h tutorial.hpp
-main.o : wrapftutorial.o
+print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
 
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
-
-testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
-testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
-	$(CC) $(CFLAGS) $(LIBS) $^ -o $@

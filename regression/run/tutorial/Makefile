@@ -38,44 +38,45 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+# run/tutorial
 #
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/tutorial \
-    -I$(top)/tests/run-tutorial \
-    $(PYTHON_INC)
+    -I$(top)/regression/reference/tutorial \
+    -I$(top)/regression/run/tutorial \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/tutorial \
-    $(top)/tests/run-tutorial \
-    $(top)/tests/run-tutorial/python
+    $(top)/regression/reference/tutorial \
+    $(top)/regression/run/tutorial \
+    $(top)/regression/run/fruit
 
 OBJS = \
     tutorial.o \
-    pyTutorialmodule.o \
-    pyClass1type.o \
-    pySingletontype.o \
-    pyTutorialhelper.o
+    wrapftutorial.o \
+    wrapTutorial.o \
+    wrapClass1.o \
+    wrapSingleton.o \
+    fruit.o \
+    main.o
 
-CXXFLAGS += $(SHARED)
-
-all : tutorial.so simple
-
-tutorial.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+tutorial : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod tutorial
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
+tutorial.o : tutorial.hpp
+wrapTutorial.o : wrapTutorial.h tutorial.hpp
+wrapClass1.o : wrapClass1.h tutorial.hpp
+wrapSingleton.o : wrapSingleton.h tutorial.hpp
+main.o : wrapftutorial.o
 
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+
+testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
+testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
+	$(CC) $(CFLAGS) $(LIBS) $^ -o $@

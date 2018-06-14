@@ -38,42 +38,38 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+# run/forward
 #
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/clibrary \
-    -I$(top)/tests/run-clibrary \
-    $(PYTHON_INC)
+    -I$(top)/regression/reference/forward \
+    -I$(top)/regression/run/forward \
+    -I$(top)/regression/run/tutorial \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/clibrary \
-    $(top)/tests/run-clibrary \
-    $(top)/tests/run-clibrary/python
+    $(top)/regression/reference/forward \
+    $(top)/regression/run/forward \
+    $(top)/regression/run/fruit
 
 OBJS = \
-    clibrary.o \
-    pyClibrarymodule.o \
-    pyClibraryhelper.o
+    forward.o \
+    wrapfforward.o \
+    wrapClass2.o \
+    fruit.o \
+    main.o
 
-CFLAGS += $(SHARED)
-
-all : clibrary.so simple
-
-clibrary.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-simple : testpython.o $(OBJS)
-	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
-#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
+forward : $(OBJS)
+	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f *.so *.o simple
-.PHONY : clean
+	rm -f $(OBJS) *.mod forward
 
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
+forward.o : forward.hpp
+wrapClass1.o : wrapClass2.h forward.hpp
+main.o : wrapfforward.o
 
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapClass2.o forward.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

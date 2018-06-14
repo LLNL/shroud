@@ -38,37 +38,44 @@
 #
 # #######################################################################
 #
-# run-vectors
+#  Compile the python tutorial module
 #
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/vectors \
-    -I$(top)/tests/run-vectors \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/tutorial \
+    -I$(top)/regression/run/tutorial \
+    $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/vectors \
-    $(top)/tests/run-vectors \
-    $(top)/tests/fruit
+    $(top)/regression/reference/tutorial \
+    $(top)/regression/run/tutorial \
+    $(top)/regression/run/tutorial/python
 
 OBJS = \
-    vectors.o \
-    wrapfvectors.o \
-    wrapvectors.o \
-    fruit.o \
-    main.o
+    tutorial.o \
+    pyTutorialmodule.o \
+    pyClass1type.o \
+    pySingletontype.o \
+    pyTutorialhelper.o
 
-vectors : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+CXXFLAGS += $(SHARED)
+
+all : tutorial.so simple
+
+tutorial.so : $(OBJS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+simple : testpython.o $(OBJS)
+	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
+#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 clean :
-	rm -f $(OBJS) *.mod vectors
+	rm -f *.so *.o simple
+.PHONY : clean
 
-vectors.o : vectors.hpp
-wrapvectors.o : wrapvectors.h vectors.hpp
-main.o : wrapfvectors.o
+print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
 
-# useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapvectors.o vectors.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

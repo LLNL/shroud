@@ -38,31 +38,37 @@
 #
 # #######################################################################
 #
-# run-strings
+# run/vectors
 #
-include $(top)/tests/defaults.mk
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/strings \
-    -I$(top)/tests/run-strings \
-    -I$(top)/tests/fruit
+    -I$(top)/regression/reference/vectors \
+    -I$(top)/regression/run/vectors \
+    -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/tests/strings \
-    $(top)/tests/run-strings \
-    $(top)/tests/fruit
+    $(top)/regression/reference/vectors \
+    $(top)/regression/run/vectors \
+    $(top)/regression/run/fruit
 
 OBJS = \
-    strings.o \
-    wrapfstrings.o \
-    wrapstrings.o \
+    vectors.o \
+    wrapfvectors.o \
+    wrapvectors.o \
     fruit.o \
     main.o
 
-strings : $(OBJS)
+vectors : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
 
 clean :
-	rm -f $(OBJS) *.mod strings
+	rm -f $(OBJS) *.mod vectors
 
-main.o : wrapfstrings.o
+vectors.o : vectors.hpp
+wrapvectors.o : wrapvectors.h vectors.hpp
+main.o : wrapfvectors.o
+
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o wrapvectors.o vectors.o
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@

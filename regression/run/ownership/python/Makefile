@@ -1,4 +1,4 @@
-# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,30 +38,35 @@
 #
 # #######################################################################
 #
-#  Compile the python tutorial
+#  Compile the python ownership module
 #
-include $(top)/tests/defaults.mk
+ifndef top
+top = ../../..
+endif
+
+include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/tests/strings \
-    -I$(top)/tests/run-strings \
+    -I$(top)/regression/reference/ownership \
+    -I$(top)/regression/run/ownership \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/tests/strings \
-    $(top)/tests/run-strings \
-    $(top)/tests/run-strings/python
+    $(top)/regression/reference/ownership \
+    $(top)/regression/run/ownership \
+    $(top)/regression/run/ownership/python
 
 OBJS = \
-    strings.o \
-    pystringsmodule.o \
-    pystringshelper.o
+    ownership.o \
+    pyClass1type.o \
+    pyownershipmodule.o \
+    pyownershiphelper.o
 
 CXXFLAGS += $(SHARED)
 
-all : strings.so simple
+all : ownership.so simple
 
-strings.so : $(OBJS)
+ownership.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 simple : testpython.o $(OBJS)
@@ -76,4 +81,7 @@ print-debug:
 	@echo PYTHON=$(PYTHON)
 	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
 	@echo PYTHON_VER=$(PYTHON_VER)
+
+setup:
+	$(PYTHON) setup.py build
 

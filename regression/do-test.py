@@ -130,7 +130,7 @@ class Tester:
             logging.error('Input file does not exist')
             return False
 
-        self.ref_dir = os.path.join(self.test_input_dir, name)
+        self.ref_dir = os.path.join(self.test_input_dir, 'reference', name)
         logging.info('Reference directory: ' + self.ref_dir)
 
         if replace_ref:
