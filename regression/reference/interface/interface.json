@@ -471,7 +471,7 @@
                     "cxx_header": "<stdlib.h> <cstring>", 
                     "cxx_local_var": "pointer", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});", 
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));", 
                         "free({cxx_var});"
                     ], 
                     "pre_call": [
@@ -485,16 +485,16 @@
                         "arg", 
                         "len"
                     ], 
-                    "c_header": "<stdlib.h>", 
+                    "c_header": "<stdlib.h> <string.h>", 
                     "c_helper": "ShroudStrCopy", 
-                    "cxx_header": "<stdlib.h>", 
+                    "cxx_header": "<cstdlib> <cstring>", 
                     "cxx_local_var": "pointer", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});", 
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));", 
                         "free({cxx_var});"
                     ], 
                     "pre_call": [
-                        "char * {cxx_var} = (char *) malloc({c_var_len} + 1);"
+                        "char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);"
                     ]
                 }, 
                 "result_buf": {
@@ -506,11 +506,11 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var} == NULL) {{", 
-                        "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});", 
-                        "}}"
+                        "if ({cxx_var} == NULL) {{+", 
+                        "{stdlib}memset({c_var}, ' ', {c_var_len});", 
+                        "-}} else {{+", 
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));", 
+                        "-}}"
                     ]
                 }
             }, 
@@ -765,7 +765,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var}({c_var}, {c_var_trim});"
@@ -789,7 +789,7 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_local_var": "scalar", 
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
                     ], 
                     "pre_call": [
                         "std::string {cxx_var};"
@@ -803,11 +803,11 @@
                     "c_helper": "ShroudStrCopy", 
                     "cxx_header": "<cstring>", 
                     "post_call": [
-                        "if ({cxx_var}{cxx_member}empty()) {{", 
-                        "    {stdlib}memset({c_var}, ' ', {c_var_len});", 
-                        "}} else {{", 
-                        "    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());", 
-                        "}}"
+                        "if ({cxx_var}{cxx_member}empty()) {{+", 
+                        "{stdlib}memset({c_var}, ' ', {c_var_len});", 
+                        "-}} else {{+", 
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());", 
+                        "-}}"
                     ]
                 }
             }, 
@@ -951,7 +951,7 @@
                             "        {c_temp}n = {c_var_size};", 
                             "    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
                             "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "        ShroudStrCopy(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());", 
+                            "        ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());", 
                             "        BBB += {c_var_len};", 
                             "    }}", 
                             "}}"
@@ -986,7 +986,7 @@
                             "        {c_temp}n = {c_var_size};", 
                             "    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
                             "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "        ShroudStrCopy(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());", 
+                            "        ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());", 
                             "        BBB += {c_var_len};", 
                             "    }}", 
                             "}}"

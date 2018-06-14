@@ -115,6 +115,8 @@ This file is included in the interface header.
 Only used with *language=c*.
 Defaults to *None*.
 
+See also *cxx_header*.
+
 
 c_to_cxx
 ^^^^^^^^
@@ -172,6 +174,15 @@ Name of C++ header file required for implementation.
 For example, if cxx_to_c was a function.
 Only used with *language=c++*.
 Defaults to *None*.
+Note the use of *stdlib* which adds ``std::`` with *language=c++*::
+
+    c_header='<stdlib.h>',
+    cxx_header='<cstdlib>',
+    pre_call=[
+        'char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);',
+    ],
+
+See also *c_header*.
 
 Statements
 ----------

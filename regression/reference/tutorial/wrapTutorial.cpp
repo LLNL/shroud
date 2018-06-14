@@ -61,15 +61,13 @@ typedef union {
 
 
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to la characters
+// Truncate if dest is too short.
+static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
 {
-   int ls,nm;
-   ls = std::strlen(s);
-   nm = ls < la ? ls : la;
-   std::memcpy(a,s,nm);
-   if(la > nm) std::memset(a+nm,' ',la-nm);
+   int nm = ls < la ? ls : la;
+   std::memcpy(dest,src,nm);
+   if(la > nm) std::memset(dest+nm,' ',la-nm);
 }
 
 // helper function
@@ -156,7 +154,8 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1,
     if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+            SHCXX_rv.size());
     }
     return;
 // splicer end function.function4a_bufferify
@@ -187,7 +186,8 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1,
     if (SHCXX_rv.empty()) {
         std::memset(output, ' ', Noutput);
     } else {
-        ShroudStrCopy(output, Noutput, SHCXX_rv.c_str());
+        ShroudStrCopy(output, Noutput, SHCXX_rv.data(),
+            SHCXX_rv.size());
     }
     return;
 // splicer end function.function4b_bufferify
@@ -652,7 +652,8 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
     if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+            SHCXX_rv.size());
     }
     return;
 // splicer end function.last_function_called_bufferify

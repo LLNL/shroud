@@ -354,6 +354,10 @@ class WrapperMixin(object):
         """
         If the line starts with \r, then double the indent.
         Helpful for Fortran declarations.
+
+        A tab is a convenient place to break the line and should
+        be placed before whitespace since leading whitespace is trimmed.
+        i.e.   "arg1,\t arg2"
         """
         linelen = self.linelen
         indent = 1

@@ -48,15 +48,13 @@
 
 
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to la characters
+// Truncate if dest is too short.
+static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
 {
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) memset(a+nm,' ',la-nm);
+   int nm = ls < la ? ls : la;
+   memcpy(dest,src,nm);
+   if(la > nm) memset(dest+nm,' ',la-nm);
 }
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -78,7 +76,7 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     if (SHC_rv == NULL) {
         memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, strlen(SHC_rv));
     }
     return;
 // splicer end function.function4a_bufferify

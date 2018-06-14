@@ -53,15 +53,13 @@ extern "C" {
 
 
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to la characters
+// Truncate if dest is too short.
+static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
 {
-   int ls,nm;
-   ls = std::strlen(s);
-   nm = ls < la ? ls : la;
-   std::memcpy(a,s,nm);
-   if(la > nm) std::memset(a+nm,' ',la-nm);
+   int nm = ls < la ? ls : la;
+   std::memcpy(dest,src,nm);
+   if(la > nm) std::memset(dest+nm,' ',la-nm);
 }
 
 // helper function
@@ -192,7 +190,8 @@ void AA_exclass1_get_name_error_pattern_bufferify(
     if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+            SHCXX_rv.size());
     }
     return;
 // splicer end class.ExClass1.method.get_name_error_pattern_bufferify
@@ -266,7 +265,7 @@ void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
     if (SHCXX_rv.empty()) {
         std::memset(name, ' ', Nname);
     } else {
-        ShroudStrCopy(name, Nname, SHCXX_rv.c_str());
+        ShroudStrCopy(name, Nname, SHCXX_rv.data(), SHCXX_rv.size());
     }
     return;
 // splicer end class.ExClass1.method.get_name_arg_bufferify

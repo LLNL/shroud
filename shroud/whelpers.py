@@ -379,27 +379,23 @@ CHelpers = dict(
         cxx_header='<cstring>',
         c_source="""
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to la characters
+// Truncate if dest is too short.
+static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
 {
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) memset(a+nm,' ',la-nm);
+   int nm = ls < la ? ls : la;
+   memcpy(dest,src,nm);
+   if(la > nm) memset(dest+nm,' ',la-nm);
 }""",
         cxx_source="""
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to la characters
+// Truncate if dest is too short.
+static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
 {
-   int ls,nm;
-   ls = std::strlen(s);
-   nm = ls < la ? ls : la;
-   std::memcpy(a,s,nm);
-   if(la > nm) std::memset(a+nm,' ',la-nm);
+   int nm = ls < la ? ls : la;
+   std::memcpy(dest,src,nm);
+   if(la > nm) std::memset(dest+nm,' ',la-nm);
 }"""
         ),
     ShroudLenTrim=dict(

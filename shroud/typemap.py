@@ -415,14 +415,15 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args=['arg', 'len'],
                     cxx_local_var='pointer',
-                    c_header='<stdlib.h>',
-                    cxx_header='<stdlib.h>',
+                    c_header='<stdlib.h> <string.h>',
+                    cxx_header='<cstdlib> <cstring>',
                     c_helper='ShroudStrCopy',
                     pre_call=[
-                        'char * {cxx_var} = (char *) malloc({c_var_len} + 1);',
+                        'char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);',
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var},\t {stdlib}strlen({cxx_var}));',
                         'free({cxx_var});',
                         ],
                     ),
@@ -438,7 +439,8 @@ def initialize():
                         '{cxx_var}[{c_var_trim}] = \'\\0\';'
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var},\t {stdlib}strlen({cxx_var}));',
                         'free({cxx_var});',
                         ],
                     ),
@@ -448,11 +450,12 @@ def initialize():
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cxx_var} == NULL) {{',
-                        '    {stdlib}memset({c_var}, \' \', {c_var_len});',
-                        '}} else {{',
-                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
-                        '}}',
+                        'if ({cxx_var} == NULL) {{+',
+                        '{stdlib}memset({c_var}, \' \', {c_var_len});',
+                        '-}} else {{+',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var},\t {stdlib}strlen({cxx_var}));',
+                        '-}}',
                         ],
                     ),
                 ),
@@ -572,7 +575,9 @@ def initialize():
                         'std::string {cxx_var};'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());'
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var}{cxx_member}data(),'
+                        '\t {cxx_var}{cxx_member}size());'
                     ],
                 ),
                 intent_inout_buf=dict(
@@ -584,7 +589,8 @@ def initialize():
                     ],
                     post_call=[
                         'ShroudStrCopy({c_var}, {c_var_len},'
-                        '\t {cxx_var}{cxx_member}c_str());'
+                        '\t {cxx_var}{cxx_member}data(),'
+                        '\t {cxx_var}{cxx_member}size());'
                     ],
                 ),
                 result_buf=dict(
@@ -592,11 +598,13 @@ def initialize():
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cxx_var}{cxx_member}empty()) {{',
-                        '    {stdlib}memset({c_var}, \' \', {c_var_len});',
-                        '}} else {{',
-                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
-                        '}}',
+                        'if ({cxx_var}{cxx_member}empty()) {{+',
+                        '{stdlib}memset({c_var}, \' \', {c_var_len});',
+                        '-}} else {{+',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var}{cxx_member}data(),'
+                        '\t {cxx_var}{cxx_member}size());',
+                        '-}}',
                     ],
                 ),
             ),
@@ -844,11 +852,13 @@ def initialize():
 #                    buf_args=['arg', 'size'],
 #                    c_helper='ShroudStrCopy',
 #                    post_call=[
-#                        'if ({cxx_var}.empty()) {{',
-#                        '  std::memset({c_var}, \' \', {c_var_len});',
-#                        '}} else {{',
-#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
-#                        '}}',
+#                        'if ({cxx_var}.empty()) {{+',
+#                        'std::memset({c_var}, \' \', {c_var_len});',
+#                        '-}} else {{+',
+#                        'ShroudStrCopy({c_var}, {c_var_len},'
+#                        '\t {cxx_var}{cxx_member}data(),'
+#                        '\t {cxx_var}{cxx_member}size());',
+#                        '-}}',
 #                    ],
 #                ),
             ),
@@ -933,7 +943,9 @@ def initialize():
                             '    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
                             '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
                             '        ShroudStrCopy('
-                            'BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());',
+                            'BBB, {c_var_len},'
+                            '\t {cxx_var}[{c_temp}i].data(),'
+                            '\t {cxx_var}[{c_temp}i].size());',
                             '        BBB += {c_var_len};',
                             '    }}',
                             '}}'
@@ -964,8 +976,9 @@ def initialize():
                             '        {c_temp}n = {c_var_size};',
                             '    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
                             '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '        ShroudStrCopy'
-                            '(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());',
+                            '        ShroudStrCopy(BBB, {c_var_len},'
+                            '\t {cxx_var}[{c_temp}i].data(),'
+                            '\t {cxx_var}[{c_temp}i].size());',
                             '        BBB += {c_var_len};',
                             '    }}',
                             '}}'
@@ -977,7 +990,9 @@ def initialize():
 #                            'if ({cxx_var}.empty()) {{',
 #                            '  std::memset({c_var}, \' \', {c_var_len});',
 #                            '}} else {{',
-#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
+#                            '  ShroudStrCopy({c_var}, {c_var_len}, '
+#                            '\t {cxx_var}{cxx_member}data(),'
+#                            '\t {cxx_var}{cxx_member}size());',
 #                            '}}',
 #                        ],
 #                    ),

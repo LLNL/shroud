@@ -374,49 +374,59 @@ The type map::
             c_statements:
                 intent_in_buf:
                     buf_args:
+                    - arg
                     - len_trim
                     cxx_local_var: pointer
-                    cxx_header: <cstring>
+                    c_header: <stdlib.h> <string.h>
+                    cxx_header: <stdlib.h> <cstring>
                     pre_call:
-                      - char * {cxx_var} = new char [{c_var_trim} + 1];
-                      - std::strncpy({cxx_var}, {c_var}, {c_var_trim});
-                      - {cxx_var}[{c_var_trim}] = '\0';
-                    post_call:
-                      -  delete [] {cxx_var};
+                    -  char * {cxx_var} = (char *) malloc({c_var_trim} + 1);
+                    -  {stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});
+                    -  {cxx_var}[{c_var_trim}] = \'\\0\'
+                    post_call=[
+                    -  free({cxx_var});
                 intent_out_buf:
                     buf_args:
+                    - arg
                     - len
-                    c_helper: ShroudStrCopy
                     cxx_local_var: pointer
+                    c_header: <stdlib.h> <string.h>
+                    cxx_header: <cstdlib> <cstring>
+                    c_helper: ShroudStrCopy
                     pre_call:
-                      - char * {cxx_var} = new char [{c_var_len} + 1];
+                    -  char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
-                      - delete [] {cxx_var};
+                    -  ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));
+                    -  free({cxx_var});
                 intent_inout_buf:
                     buf_args:
+                    - arg
                     - len_trim
                     - len
-                    c_helper: ShroudStrCopy
                     cxx_local_var: pointer
-                    cxx_header: <cstring>
+                    c_helper: ShroudStrCopy
+                    c_header: <stdlib.h> <string.h>
+                    cxx_header: <stdlib.h> <cstring>
                     pre_call:
-                      - char * {cxx_var} = new char [{c_var_trim} + 1];
-                      - std::strncpy({cxx_var}, {c_var}, {c_var_trim});
-                      - {cxx_var}[{c_var_trim}] = '\0';
+                    -  char * {cxx_var} = (char *) malloc({c_var_len} + 1);
+                    -  {stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});
+                    -  {cxx_var}[{c_var_trim}] = \'\\0\';
                     post_call:
-                      -  delete [] {cxx_var};
+                    -  ShroudStrCopy({c_var}, {c_var_len}, \t {cxx_var},\t {stdlib}strlen({cxx_var}));
+                    -  free({cxx_var});
                 result_buf:
                     buf_args:
+                    - arg
                     - len
-                    c_helper: ShroudStrCopy
+                    c_header: <string.h>
                     cxx_header: <cstring>
+                    c_helper: ShroudStrCopy
                     post_call:
-                      - if ({cxx_var} == NULL) {{
-                      -     std::memset({c_var}, ' ', {c_var_len});
-                      - }} else {{
-                      -     ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});
-                      - }}
+                    - if ({cxx_var} == NULL) {{+
+                    - {stdlib}memset({c_var}, \' \', {c_var_len});
+                    - -}} else {{+
+                    - ShroudStrCopy({c_var}, {c_var_len}, \t {cxx_var},\t {stdlib}strlen({cxx_var}));
+                    - -}}
 
             f_type: character(*)
             f_kind: C_CHAR
@@ -482,12 +492,12 @@ And generates::
     void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
                                      const char * src, int Lsrc)
     {
-        char * SH_dest = (char *) malloc(Ndest + 1);
+        char * SH_dest = (char *) std::malloc(Ndest + 1);
         char * SH_src = (char *) malloc(Lsrc + 1);
         std::memcpy(SH_src, src, Lsrc);
         SH_src[Lsrc] = '\0';
         passCharPtr(SH_dest, SH_src);
-        ShroudStrCopy(dest, Ndest, SH_dest);
+        ShroudStrCopy(dest, Ndest, SH_dest, std::strlen(SH_dest));
         free(SH_dest);
         free(SH_src);
         return;
@@ -570,38 +580,46 @@ additional sections to convert between ``char *`` and ``std::string``::
                     post_call:
                       - strcpy({c_var}, {cxx_val});
 
-                intent_in_buf:
+                intent_in_buf: dict(
                     buf_args:
+                    - arg
                     - len_trim
-                    cxx_local_var: object
+                    cxx_local_var: scalar
                     pre_call:
-                      - {c_const}std::string {cxx_var}({c_var}, {c_var_trim});
+                    -  {c_const}std::string {cxx_var}({c_var}, {c_var_trim});
                 intent_out_buf:
                     buf_args:
+                    - arg
                     - len
+                    c_helper: ShroudStrCopy
+                    cxx_local_var: scalar
                     pre_call:
-                      - {c_const}std::string {cxx_var};
+                    -   std::string {cxx_var};
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
+                    -  ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());
                 intent_inout_buf:
                     buf_args:
+                    - arg
                     - len_trim
                     - len
-                    cxx_local_var: object
+                    c_helper: ShroudStrCopy
+                    cxx_local_var: scalar
                     pre_call:
-                      - std::string {cxx_var}({c_var}, {c_var_trim});
+                    -  std::string {cxx_var}({c_var}, {c_var_trim});
                     post_call:
-                      - ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
+                    -  ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());
                 result_buf:
                     buf_args:
+                    - arg
                     - len
                     cxx_header: <cstring>
+                    c_helper: ShroudStrCopy
                     post_call:
-                       - if ({cxx_var}.empty()) {{
-                       -   std::memset({c_var}, ' ', {c_var_len});
-                       - }} else {{
-                       -   ShroudStrCopy({c_var}, {c_var_len}, {cxx_val});
-                       - }}
+                    -  if ({cxx_var}{cxx_member}empty()) {{+
+                    -  {stdlib}memset({c_var}, \' \', {c_var_len});
+                    -  -}} else {{+
+                    -  ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());
+                    -  -}}
     
             f_type: character(*)
             f_kind: C_CHAR
@@ -647,7 +665,7 @@ short for the new string value::
     {
         std::string SH_arg1(arg1, Larg1);
         acceptStringReference(SH_arg1);
-        ShroudStrCopy(arg1, Narg1, SH_arg1.c_str());
+        ShroudStrCopy(arg1, Narg1, SH_arg1.data(), SH_arg1.size());
         return;
     }
 
@@ -692,14 +710,14 @@ Shroud provides several options to provide a more idiomatic usage.
 Each of these declaration call identical C++ functions but they are
 wrapped differently::
 
-    - decl: const char * getCharPtr1()  +pure
-    - decl: const char * getCharPtr2+len(30)()
+    - decl: const char * getCharPtr1()
+    - decl: const char * getCharPtr2() +len(30)
     - decl: const char * getCharPtr3()
       format:
          F_string_result_as_arg: output
 
-All of the generated C wrappers are very similar.  The buffer version
-copies the result into a buffer of known length::
+All of the generated C wrappers are very similar.
+The first C wrapper will copy the metadata into a ``SHROUD_array`` struct::
 
     const char * STR_get_char_ptr1()
     {
@@ -707,49 +725,37 @@ copies the result into a buffer of known length::
         return SHC_rv;
     }
 
-    void STR_get_char1_bufferify(char * SHF_rv, int NSHF_rv)
+    void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
     {
-        const char * SHC_rv = getChar1();
-        if (SHC_rv == NULL) {
-            std::memset(SHF_rv, ' ', NSHF_rv);
-        } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv);
-        }
+        const char * SHC_rv = getCharPtr1();
+        DSHF_rv->cxx.addr = static_cast<void *>(const_cast<char *>(SHC_rv));
+        DSHF_rv->cxx.idtor = 0;
+        DSHF_rv->addr.ccharp = SHC_rv;
+        DSHF_rv->len = SHC_rv == NULL ? 0 : strlen(SHC_rv);
+        DSHF_rv->size = 1;
         return;
     }
 
-``getCharPtr1`` adds the pure annotation.  This annotation is passed to
-the Fortran interface where it declares the function as ``pure``::
-
-        pure function c_get_char1() &
-                result(SH_rv) &
-                bind(C, name="STR_get_char1")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SH_rv
-        end function c_get_char1
-
-The Fortran wrapper calls the C wrapper twice.  Once in a declaration
-to get the length of the string and once to copy the value.  The
-functions ``strlen_ptr`` and ``fstr`` are provided by Shroud to get
-the length of a ``NULL`` terminated string and to copy and blank fill
-a variable.  This creates a Fortran function which returns a string of
-variable length.  The *pure* annotation tells the compiler there are
-no side effects which is important because it will be called twice.
-You'd also want the C++ function to be fast::
+The Fortran wrapper uses the metadata in ``DSHF_rv`` to allocate
+a ``CHARACTER`` variable of the correct length.
+The helper function ``SHROUD_copy_string_and_free`` will copy 
+the results of the C++ function into the return variable::
 
     function get_char_ptr1() &
             result(SHT_rv)
-        use iso_c_binding, only : C_CHAR
-        character(kind=C_CHAR, len=strlen_ptr(c_get_char_ptr1())) :: SHT_rv
-        SHT_rv = fstr(c_get_char_ptr1())
+        type(SHROUD_array) :: DSHF_rv
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin function.get_char_ptr1
+        call c_get_char_ptr1_bufferify(DSHF_rv)
+        ! splicer end function.get_char_ptr1
+        allocate(character(len=DSHF_rv%len):: SHT_rv)
+        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function get_char_ptr1
 
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
-advantage is that the C function is only called once.  The downside is
-that any result which is longer than the length will be silently
-truncated::
+explicit ``ALLOCATE`` is avoided but any result which is longer than
+the length will be silently truncated::
 
     function get_char_ptr2() &
             result(SHT_rv)
@@ -758,15 +764,15 @@ truncated::
         call c_get_char_ptr2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
     end function get_char_ptr2
 
-The third option gives the best of both worlds.  The C wrapper is only
-called once and any size result can be returned.  The result of the C
-function will be returned in the Fortran argument named by format string
+The third option also avoids the ``ALLOCATE`` but allows any length
+result to be returned.  The result of the C function will be returned
+in the Fortran argument named by format string
 **F_string_result_as_arg**.  The potential downside is that a Fortran
 subroutine is generated instead of a function::
 
     subroutine get_char_ptr3(output)
         use iso_c_binding, only : C_INT
-        character(*), intent(OUT) :: output
+        character(len=*), intent(OUT) :: output
         call c_get_char_ptr3_bufferify(output, len(output, kind=C_INT))
     end subroutine get_char_ptr3
 
@@ -775,39 +781,31 @@ subroutine is generated instead of a function::
 string functions
 ^^^^^^^^^^^^^^^^
 
-Function which return ``std::string`` values are similar but must provide the
+Functions which return ``std::string`` values are similar but must provide the
 extra step of converting the result into a ``char *``::
 
-    - decl: const string& getString1()  +pure
+    - decl: const string& getConstStringRefPure()
 
 The generated wrappers are::
 
-    const char * STR_get_string1()
+    const char * STR_get_const_string_ref_pure()
     {
-        const std::string & SHCXX_rv = getString1();
+        const std::string & SHCXX_rv = getConstStringRefPure();
         const char * SHC_rv = SHCXX_rv.c_str();
         return SHC_rv;
     }
     
-    void STR_get_string1_bufferify(char * SHF_rv, int NSHF_rv)
+    void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
     {
-        const std::string & SHCXX_rv = getString1();
-        if (SHCXX_rv.empty()) {
-            std::memset(SHF_rv, ' ', NSHF_rv);
-        } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
-        }
+        const std::string & SHCXX_rv = getConstStringRefPure();
+        DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
+            (&SHCXX_rv));
+        DSHF_rv->cxx.idtor = 0;
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+        DSHF_rv->size = 1;
         return;
     }
-
-These example assume that a pointer to an existing string is returned.
-If the C++ function allocates a string, the C wrapper should deallocate
-it after copying the contents to avoid leaking memory.
-This can be dealt with by adding the **C_finalize** format string::
-
-    - decl: const string& getString1()  +pure
-      format:
-         C_finalize:  free 
 
 
 std::vector
