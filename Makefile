@@ -94,7 +94,7 @@ setup-sqa :
 
 sqa :
 #	$(python.dir)/pylint shroud/main.py
-	pylint shroud/main.py
+	pylint shroud/*.py > pylint.out
 
 
 # python must have sphinx installed or else it reports

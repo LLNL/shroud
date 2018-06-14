@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Read a file and extract the splicer blocks.
@@ -107,20 +107,20 @@ def get_splicers(fname, out):
 
 
 def get_splicer_based_on_suffix(name, out):
-        fileName, fileExtension = os.path.splitext(name)
-        if fileExtension in ['.f', '.f90']:
-            d = out.setdefault('f', {})
-            get_splicers(name, d)
-        elif fileExtension in [
-                '.c', '.h', '.cpp', '.hpp', '.cxx', '.hxx', '.cc', '.C']:
-            d = out.setdefault('c', {})
-            get_splicers(name, d)
-        elif fileExtension in ['.py']:
-            d = out.setdefault('py', {})
-            get_splicers(config, name, d)
-        elif fileExtension in ['.lua']:
-            d = out.setdefault('lua', {})
-            get_splicers(config, name, d)
+    fileName, fileExtension = os.path.splitext(name)
+    if fileExtension in ['.f', '.f90']:
+        d = out.setdefault('f', {})
+        get_splicers(name, d)
+    elif fileExtension in [
+            '.c', '.h', '.cpp', '.hpp', '.cxx', '.hxx', '.cc', '.C']:
+        d = out.setdefault('c', {})
+        get_splicers(name, d)
+    elif fileExtension in ['.py']:
+        d = out.setdefault('py', {})
+        get_splicers(config, name, d)
+    elif fileExtension in ['.lua']:
+        d = out.setdefault('lua', {})
+        get_splicers(config, name, d)
 
 
 # def print_tree(out):

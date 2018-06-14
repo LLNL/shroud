@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Helper functions for C and Fortran wrappers.
@@ -69,7 +69,7 @@ Helper functions for C and Fortran wrappers.
 
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
- private   = names for PRIVATE statement 
+ private   = names for PRIVATE statement
  interface = code for INTERFACE
  source    = code for CONTAINS
 
@@ -166,9 +166,9 @@ def add_external_helpers(fmt):
     # Only used with std::string and thus C++
     name = 'copy_string'
     CHelpers[name] = dict(
-        dependent_helpers=[ 'array_context' ],
+        dependent_helpers=['array_context'],
         cxx_header='<string> <cstddef>',
-# XXX - mangle name
+        # XXX - mangle name
         source=wformat("""
 // helper function
 // Copy the char* or std::string in context into c_var.
@@ -185,7 +185,7 @@ strncpy(c_var, cxx_var, n);
 
     # Deal with allocatable character
     FHelpers[name] = dict(
-        dependent_helpers=[ 'array_context' ],
+        dependent_helpers=['array_context'],
         interface=wformat("""
 interface+
 ! helper function
@@ -205,9 +205,8 @@ integer(C_SIZE_T), value :: c_var_size
 def add_shadow_helper(node):
     """
     """
-    fmt = node.fmtdict
     cname = node.typemap.c_type
-    
+
     name = 'capsule_{}'.format(cname)
     if name not in CHelpers:
         helper = dict(
@@ -234,8 +233,8 @@ type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
 -end type {F_capsule_data_type}""", fmt),
-            modules = dict(
-                iso_c_binding=[ 'C_PTR', 'C_INT', 'C_NULL_PTR' ],
+            modules=dict(
+                iso_c_binding=['C_PTR', 'C_INT', 'C_NULL_PTR'],
             ),
         )
         FHelpers[name] = helper
@@ -256,7 +255,7 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
     if name not in FHelpers:
 # XXX split helper into to parts, one for each derived type
         helper = dict(
-            dependent_helpers=[ 'capsule_data_helper' ],
+            dependent_helpers=['capsule_data_helper'],
             derived_type=wformat("""
 type {F_capsule_type}+
 private
@@ -264,8 +263,8 @@ type({F_capsule_data_type}) :: mem
 -contains
 +final :: {F_capsule_final_function}
 -end type {F_capsule_type}""", fmt),
-# cannot be declared with both PRIVATE and BIND(C) attributes
-            source = wformat("""
+            # cannot be declared with both PRIVATE and BIND(C) attributes
+            source=wformat("""
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
 use iso_c_binding, only : C_BOOL
@@ -290,8 +289,8 @@ call array_destructor(cap%mem, .false._C_BOOL)
     if name not in CHelpers:
         helper = dict(
             h_shared_include='<stddef.h>',
-# Create a union for addr to avoid some casts.
-# And help with debugging since ccharp will display contents.
+            # Create a union for addr to avoid some casts.
+            # And help with debugging since ccharp will display contents.
             h_shared_code=wformat("""
 struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
@@ -303,14 +302,14 @@ size_t len;     /* bytes-per-item or character len of data in cxx */
 size_t size;    /* size of data in cxx */
 -}};
 typedef struct s_{C_array_type} {C_array_type};""", fmt),
-            dependent_helpers = [ 'capsule_data_helper' ],
+            dependent_helpers=['capsule_data_helper'],
         )
         CHelpers[name] = helper
 
     if name not in FHelpers:
         # Create a derived type used to communicate with C wrapper.
         # Should never be exposed to user.
-        helper=dict(
+        helper = dict(
             derived_type=wformat("""
 type, bind(C) :: {F_array_type}+
 type({F_capsule_data_type}) :: cxx       ! address of C++ memory
@@ -318,10 +317,10 @@ type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
 integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
 integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
 -end type {F_array_type}""", fmt),
-            modules = dict(
-                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T' ],
+            modules=dict(
+                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T'],
             ),
-            dependent_helpers = [ 'capsule_data_helper' ],
+            dependent_helpers=['capsule_data_helper'],
         )
         FHelpers[name] = helper
 
@@ -332,11 +331,11 @@ def add_copy_array_helper_c(fmt):
     name = 'copy_array'
     if name not in CHelpers:
         helper = dict(
-            dependent_helpers=[ 'array_context' ],
+            dependent_helpers=['array_context'],
             c_header='<string.h>',
             cxx_header='<cstring>',
-# Create a single C routine which is called from Fortran via an interface
-# for each cxx_type
+            # Create a single C routine which is called from Fortran via an interface
+            # for each cxx_type
             cxx_source=wformat("""
 0// helper function
 0// Copy std::vector into array c_var(c_var_size).
@@ -355,8 +354,8 @@ def add_copy_array_helper(fmt):
     name = wformat('copy_array_{cxx_type}', fmt)
     if name not in FHelpers:
         helper = dict(
-# XXX when f_kind == C_SIZE_T
-            dependent_helpers=[ 'array_context' ],
+            # XXX when f_kind == C_SIZE_T
+            dependent_helpers=['array_context'],
             interface=wformat("""
 interface+
 ! helper function

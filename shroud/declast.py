@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 A top-down, recursive descent parser for C/C++ expressions with
@@ -53,10 +53,10 @@ from . import typemap
 Token = collections.namedtuple('Token', ['typ', 'value', 'line', 'column'])
 
 # https://docs.python.org/3.2/library/re.html#writing-a-tokenizer
-type_specifier = { 'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
-                   'signed', 'unsigned'}
-type_qualifier = { 'const', 'volatile' }
-storage_class = { 'auto', 'register', 'static', 'extern', 'typedef' }
+type_specifier = {'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'double',
+                  'signed', 'unsigned'}
+type_qualifier = {'const', 'volatile'}
+storage_class = {'auto', 'register', 'static', 'extern', 'typedef'}
 
 
 # Just to avoid passing it into each call to check_decl
@@ -226,8 +226,8 @@ class ExprParser(RecursiveDescent):
 
         while True:
             op = self.token.value
-            if (op not in OPINFO_MAP
-                or OPINFO_MAP[op].prec < min_prec):
+            if op not in OPINFO_MAP \
+               or OPINFO_MAP[op].prec < min_prec:
                 break
 
             # Inside this loop the current token is a binary operator
@@ -352,7 +352,7 @@ class Parser(ExprParser):
         <nested-namespace> ::= { namespace :: }* identifier
         """
         self.enter('nested_namespace')
-        nested = [ self.token.value ]
+        nested = [self.token.value]
         self.next()
         while self.have('NAMESPACE'):
             # make sure nested scope is a namespaceNode
@@ -439,7 +439,7 @@ class Parser(ExprParser):
                 self.info('storage-class-specifier:', self.token.value)
                 self.next()
             else:
-                more= False
+                more = False
         if not node.specifier:
             self.error_msg("Expected TYPE_SPECIFIER, found {} '{}'".format(
                 self.token.typ, self.token.value))
@@ -472,7 +472,7 @@ class Parser(ExprParser):
 
         <declaration> ::= {<declaration-specifier>}+ <declarator>?
                            ( '['  <constant-expression>?  ']'  |
-                             '('  <parameter-list>            ')' [ const ] ) 
+                             '('  <parameter-list>            ')' [ const ] )
                            [ = <initializer> ]
         """
         self.enter('declaration')
@@ -656,7 +656,7 @@ class Parser(ExprParser):
         node = Struct(name.value)
         members = node.members
         while self.token.typ != 'RCURLY':
-            members.append( self.declaration())
+            members.append(self.declaration())
             self.mustbe('SEMICOLON')
         self.mustbe('RCURLY')
         self.exit('struct_statement')
@@ -700,7 +700,7 @@ class Constant(Node):
 class Ptr(Node):
     """ A pointer or reference. """
     def __init__(self, ptr=''):
-        self.ptr   = ptr     # * or &
+        self.ptr = ptr     # * or &
         self.const = False
         self.volatile = False
 
@@ -736,8 +736,8 @@ class Declarator(Node):
     """
     def __init__(self):
         self.pointer = []     # Multiple levels of indirection
-        self.name    = None   #  *name
-        self.func    = None   # (*name)     declarator
+        self.name = None      #  *name
+        self.func = None      # (*name)     declarator
 
     def gen_decl_work(self, decl, **kwargs):
         """Generate string by appending text to decl.
@@ -785,15 +785,15 @@ class Declaration(Node):
     init =         a  *a   a=1
     """
     def __init__(self):
-        self.specifier  = []    # int, long, ...
-        self.storage    = []    # static, tyedef, ...
-        self.const      = False
-        self.volatile   = False
+        self.specifier = []    # int, long, ...
+        self.storage = []      # static, tyedef, ...
+        self.const = False
+        self.volatile = False
         self.declarator = None
-        self.params     = None   # None=No parameters, []=empty parameters list
-        self.array      = None
-        self.init       = None   # initial value
-        self.attrs      = {}     # Declaration attributes
+        self.params = None     # None=No parameters, []=empty parameters list
+        self.array = None
+        self.init = None       # initial value
+        self.attrs = {}        # Declaration attributes
 
         self.func_const = False
 
@@ -814,7 +814,7 @@ class Declaration(Node):
             if self.declarator.func:
                 name = self.declarator.func.name
         return name
- 
+
     def set_name(self, name):
         """Set name in declarator"""
         if self.declarator.name:
@@ -907,17 +907,17 @@ class Declaration(Node):
         This is intended for pointer arguments, char or string.
         """
         new = Declaration()
-        new.specifier  = self.specifier[:]
-        new.storage    = self.storage[:]
-        new.const      = False
-        new.volatile   = False
+        new.specifier = self.specifier[:]
+        new.storage = self.storage[:]
+        new.const = False
+        new.volatile = False
         new.declarator = copy.deepcopy(self.declarator)
         new.declarator.name = name
         if not new.declarator.pointer:
             # make sure the return type is a pointer
-            new.declarator.pointer = [ Ptr('*') ]
-#        new.array      = None
-        new.attrs      = copy.deepcopy(self.attrs)
+            new.declarator.pointer = [Ptr('*')]
+        # new.array = None
+        new.attrs = copy.deepcopy(self.attrs)
         return new
 
     def _set_to_void(self):
@@ -1027,7 +1027,7 @@ class Declaration(Node):
             for arg in params:
                 decl.append(comma)
                 arg.gen_decl_work(decl)
-                comma = ', ' 
+                comma = ', '
             decl.append(')')
             if self.func_const:
                 decl.append(' const')
@@ -1317,10 +1317,10 @@ def check_decl(decl, namespace=None, template_types=[], trace=False):
         old_types = type_specifier
         type_specifier = set(old_types)
         type_specifier.update(template_types)
-        a = Parser(decl,namespace,trace).decl_statement()
+        a = Parser(decl, namespace, trace).decl_statement()
         type_specifier = old_types
     else:
-        a = Parser(decl,namespace,trace).decl_statement()
+        a = Parser(decl, namespace, trace).decl_statement()
     return a
 
 
@@ -1332,8 +1332,8 @@ def create_this_arg(name, typ, const=True):
     arg.const = const
     arg.declarator = Declarator()
     arg.declarator.name = name
-    arg.declarator.pointer = [ Ptr('*') ]
-    arg.specifier = [ typ ]
+    arg.declarator.pointer = [Ptr('*')]
+    arg.specifier = [typ]
     arg.attrs['_typename'] = typ
     return arg
 
@@ -1344,7 +1344,7 @@ def create_voidstar(typ, name, const=False):
     arg.const = const
     arg.declarator = Declarator()
     arg.declarator.name = name
-    arg.declarator.pointer = [ Ptr('*') ]
-    arg.specifier = [ typ ]
+    arg.declarator.pointer = [Ptr('*')]
+    arg.specifier = [typ]
     arg.attrs['_typename'] = typ
     return arg

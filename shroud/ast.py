@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
@@ -55,20 +55,21 @@ class AstNode(object):
     def option_to_fmt(self, fmtdict):
         """Set fmt based on options dictionary.
         """
-        for name in ['C_prefix', 'F_C_prefix',
-                     'C_result', 'F_result', 'F_derived_member',
-                     'PY_result', 'LUA_result',
-                     'C_this', 'CXX_this', 'F_this',
-                     'C_string_result_as_arg', 'F_string_result_as_arg',
-                     'C_header_filename_suffix',
-                     'C_impl_filename_suffix',
-                     'F_filename_suffix',
-                     'PY_prefix',
-                     'PY_header_filename_suffix',
-                     'PY_impl_filename_suffix',
-                     'LUA_prefix',
-                     'LUA_header_filename_suffix',
-                     'LUA_impl_filename_suffix',
+        for name in [
+                'C_prefix', 'F_C_prefix',
+                'C_result', 'F_result', 'F_derived_member',
+                'PY_result', 'LUA_result',
+                'C_this', 'CXX_this', 'F_this',
+                'C_string_result_as_arg', 'F_string_result_as_arg',
+                'C_header_filename_suffix',
+                'C_impl_filename_suffix',
+                'F_filename_suffix',
+                'PY_prefix',
+                'PY_header_filename_suffix',
+                'PY_impl_filename_suffix',
+                'LUA_prefix',
+                'LUA_header_filename_suffix',
+                'LUA_impl_filename_suffix',
         ]:
             if self.options.inlocal(name):
                 raise DeprecationWarning("Setting option {} for {}, change to format group".format(
@@ -102,7 +103,7 @@ class NamespaceMixin(object):
                                  template_types=kwargs.get('cxx_template', {}).keys())
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
-                typedef = self.create_typedef(ast, **kwargs)
+                self.create_typedef(ast, **kwargs)
                 node = self.add_typedef(ast.declarator.name)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
@@ -129,8 +130,8 @@ class NamespaceMixin(object):
         self.add_typedef(key)
         fullname = self.scope + key
         ntypemap = typemap.Typemap(fullname,
-                                  base='shadow',
-                                  cxx_type=fullname)
+                                   base='shadow',
+                                   cxx_type=fullname)
         if 'fields' in kwargs:
             value = kwargs['fields']
             if not isinstance(value, dict):
@@ -351,11 +352,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_memory_dtor_function_template=(
                 '{C_prefix}SHROUD_memory_destructor'),
 
-            C_var_capsule_template = 'C{c_var}',     # capsule argument
-            C_var_context_template = 'D{c_var}',     # context argument
-            C_var_len_template = 'N{c_var}',         # argument for result of len(arg)
-            C_var_trim_template = 'L{c_var}',        # argument for result of len_trim(arg)
-            C_var_size_template = 'S{c_var}',        # argument for result of size(arg)
+            C_var_capsule_template='C{c_var}',     # capsule argument
+            C_var_context_template='D{c_var}',     # context argument
+            C_var_len_template='N{c_var}',         # argument for result of len(arg)
+            C_var_trim_template='L{c_var}',        # argument for result of len_trim(arg)
+            C_var_size_template='S{c_var}',        # argument for result of size(arg)
 
             # Fortran's names for C functions
             F_C_name_template=(
@@ -440,33 +441,33 @@ class LibraryNode(AstNode, NamespaceMixin):
             parent=None,
 
             C_bufferify_suffix='_bufferify',
-            C_prefix = C_prefix,
-            C_result = 'rv',        # return value
-            C_argument = 'SH_',
-            c_temp = 'SHT_',
-            C_local = 'SHC_',
-            C_this = 'self',
+            C_prefix=C_prefix,
+            C_result='rv',        # return value
+            C_argument='SH_',
+            c_temp='SHT_',
+            C_local='SHC_',
+            C_this='self',
 
-            C_custom_return_type = '',  # assume no value
+            C_custom_return_type='',  # assume no value
 
-            CXX_this = 'SH_this',
-            CXX_local = 'SHCXX_',
+            CXX_this='SH_this',
+            CXX_local='SHCXX_',
             cxx_class='',     # Assume no class
             class_scope='',
 
             F_C_prefix='c_',
-            F_derived_member = 'cxxmem',
-            F_name_assign = 'assign',
-            F_name_associated = 'associated',
-            F_name_instance_get = 'get_instance',
-            F_name_instance_set = 'set_instance',
-            F_name_final = 'final',
-            F_result = 'SHT_rv',
-            F_pointer = 'SHT_ptr',
-            F_this = 'obj',
+            F_derived_member='cxxmem',
+            F_name_assign='assign',
+            F_name_associated='associated',
+            F_name_instance_get='get_instance',
+            F_name_instance_set='set_instance',
+            F_name_final='final',
+            F_result='SHT_rv',
+            F_pointer='SHT_ptr',
+            F_this='obj',
 
-            C_string_result_as_arg = 'SHF_rv',
-            F_string_result_as_arg = '',
+            C_string_result_as_arg='SHF_rv',
+            F_string_result_as_arg='',
 
             C_capsule_data_type=C_prefix + 'SHROUD_capsule_data',
             F_capsule_data_type='SHROUD_capsule_data',
@@ -476,31 +477,31 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_array_type=C_prefix + 'SHROUD_array',
             F_array_type='SHROUD_array',
 
-            PY_result = 'SHTPy_rv',      # Create PyObject for result
-            LUA_result = 'rv',
+            PY_result='SHTPy_rv',      # Create PyObject for result
+            LUA_result='rv',
 
-            LUA_prefix = 'l_',
-            LUA_state_var = 'L',
-            LUA_this_call = '',
+            LUA_prefix='l_',
+            LUA_state_var='L',
+            LUA_this_call='',
 
-            PY_prefix = 'PY_',
-            PY_module_name = self.library.lower(),
-            PY_this_call = '',
+            PY_prefix='PY_',
+            PY_module_name=self.library.lower(),
+            PY_this_call='',
 
-            library = self.library,
-            library_lower = self.library.lower(),
-            library_upper = self.library.upper(),
+            library=self.library,
+            library_lower=self.library.lower(),
+            library_upper=self.library.upper(),
 
-        # set default values for fields which may be unset.
-            class_prefix = '',   # expand to blanks for library
-#           c_ptr = '',
-#           c_const = '',
-            CXX_this_call = '',
-            CXX_template = '',
-            C_pre_call = '',
-            C_post_call = '',
-            function_suffix = '',   # assume no suffix
-            namespace_scope = '',
+            # set default values for fields which may be unset.
+            class_prefix='',   # expand to blanks for library
+            # c_ptr='',
+            # c_const='',
+            CXX_this_call='',
+            CXX_template='',
+            C_pre_call='',
+            C_post_call='',
+            function_suffix='',   # assume no suffix
+            namespace_scope='',
         )
 
         fmt_library.F_filename_suffix = 'f'
@@ -512,7 +513,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_header_filename_suffix = 'h'
             fmt_library.LUA_impl_filename_suffix = 'c'
 
-            fmt_library.stdlib  = ''
+            fmt_library.stdlib = ''
         else:
             fmt_library.C_header_filename_suffix = 'h'
             fmt_library.C_impl_filename_suffix = 'cpp'
@@ -520,17 +521,19 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_header_filename_suffix = 'hpp'
             fmt_library.LUA_impl_filename_suffix = 'cpp'
 
-            fmt_library.stdlib  = 'std::'
+            fmt_library.stdlib = 'std::'
 
-        for n in ['C_header_filename', 'C_impl_filename',
-                  'F_module_name', 'F_impl_filename',
-                  'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-                  'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-                  'YAML_type_filename'
+        for n in [
+                'C_header_filename', 'C_impl_filename',
+                'F_module_name', 'F_impl_filename',
+                'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
+                'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
+                'YAML_type_filename'
         ]:
             if n in kwargs:
-                raise DeprecationWarning("Setting field {} in library, change to format group".format(
-                    n))
+                raise DeprecationWarning(
+                    "Setting field {} in library, change to format group"
+                    .format(n))
 
         self.option_to_fmt(fmt_library)
 
@@ -663,7 +666,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         """Set format dictionary."""
 
         self.fmtdict = util.Scope(
-            parent = parent.fmtdict,
+            parent=parent.fmtdict,
         )
 
         fmt_ns = self.fmtdict
@@ -741,20 +744,21 @@ class ClassNode(AstNode, NamespaceMixin):
                   'LUA_metadata', 'LUA_ctor_name',
                   'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
                   'class_prefix'
-        ]:
+                 ]:
             if n in kwargs:
-                raise DeprecationWarning("Setting field {} in class {}, change to format group".format(
-                    n, self.name))
+                raise DeprecationWarning(
+                    "Setting field {} in class {}, change to format group"
+                    .format(n, self.name))
 
         self.fmtdict = util.Scope(
-            parent = parent.fmtdict,
+            parent=parent.fmtdict,
 
-            class_scope = self.name + '::',
-            cxx_class = self.name,
-            class_lower = self.name.lower(),
-            class_upper = self.name.upper(),
+            class_scope=self.name + '::',
+            cxx_class=self.name,
+            class_lower=self.name.lower(),
+            class_upper=self.name.upper(),
 
-            F_derived_name = self.name.lower(),
+            F_derived_name=self.name.lower(),
         )
 
         fmt_class = self.fmtdict
@@ -812,7 +816,7 @@ class FunctionNode(AstNode):
 
     statements = {
       'c': {
-         'result_buf': 
+         'result_buf':
        },
        'f': {
        },
@@ -898,7 +902,7 @@ class FunctionNode(AstNode):
         if 'fattrs' in kwargs:
             ast.attrs.update(kwargs['fattrs'])
         # XXX - waring about unused fields in attrs
-                                    
+
         if ast.params is None:
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments to function:", ast.gen_decl())
@@ -912,21 +916,22 @@ class FunctionNode(AstNode):
         # Move fields from kwargs into instance
         for n in [
                 'C_code',
-#               'C_error_pattern',
-                 'C_name',
+                # 'C_error_pattern',
+                'C_name',
                 'C_post_call', 'C_post_call_buf',
                 'C_return_code', 'C_return_type',
                 'F_C_name',
                 'F_code',
                 'F_name_function', 'F_name_generic', 'F_name_impl',
                 'LUA_name', 'LUA_name_impl',
-#                'PY_error_pattern',
+                # 'PY_error_pattern',
                 'PY_name_impl',
                 'function_suffix'
         ]:
             if n in kwargs:
-                raise DeprecationWarning("Setting field {} in function, change to format group".format(
-                    n))
+                raise DeprecationWarning(
+                    "Setting field {} in function, change to format group"
+                    .format(n))
 
         # Move fields from kwargs into instance
         for n in [
@@ -954,12 +959,12 @@ class FunctionNode(AstNode):
         # new Scope with same inlocal and parent
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
-    
+
         # deep copy dictionaries
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
-    
+
         return new
 
 ######################################################################
@@ -975,7 +980,7 @@ class EnumNode(AstNode):
           options:
              bar: 4
           format:
-             baz: 4  
+             baz: 4
 
     _fmtmembers = {
       'RED': Scope(_fmt_func)
@@ -997,7 +1002,7 @@ class EnumNode(AstNode):
 
 #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(
-            parent = parent.fmtdict,
+            parent=parent.fmtdict,
         )
 
         if not decl:
@@ -1017,7 +1022,7 @@ class EnumNode(AstNode):
         fmt_enum.enum_lower = ast.name.lower()
         fmt_enum.enum_upper = ast.name.upper()
         if fmt_enum.cxx_class:
-            fmt_enum.namespace_scope =  fmt_enum.namespace_scope + fmt_enum.cxx_class + '::'
+            fmt_enum.namespace_scope = fmt_enum.namespace_scope + fmt_enum.cxx_class + '::'
 
         # format for each enum member
         fmtmembers = {}
@@ -1071,7 +1076,7 @@ class VariableNode(AstNode):
           options:
              bar: 4
           format:
-             baz: 4  
+             baz: 4
     """
     def __init__(self, decl, parent,
                  format=None,
@@ -1088,7 +1093,7 @@ class VariableNode(AstNode):
 
 #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(
-            parent = parent.fmtdict,
+            parent=parent.fmtdict,
         )
 
         if not decl:
@@ -1202,7 +1207,9 @@ def add_declarations(parent, node):
             ntypemap.update(value)
         else:
             print(subnode)
-            raise RuntimeError("Expected 'block', 'class', 'decl', 'forward', 'namespace' or 'typedef' found {}".format(sorted(subnode.keys())))
+            raise RuntimeError(
+                "Expected 'block', 'class', 'decl', 'forward', 'namespace' "
+                "or 'typedef' found {}".format(sorted(subnode.keys())))
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.

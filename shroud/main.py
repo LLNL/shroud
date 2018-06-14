@@ -312,7 +312,7 @@ def main_with_args(args):
     splicers = dict(c={}, f={}, py={}, lua={})
 
     for filename in args.filename:
-        root, ext = os.path.splitext(filename)
+        ext = os.path.splitext(filename)[1]
         if ext == '.yaml':
 #            print("Read %s" % os.path.basename(filename))
             log.write("Read yaml %s\n" % os.path.basename(filename))
