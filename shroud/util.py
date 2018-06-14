@@ -1,29 +1,29 @@
 #!/bin/env python
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -36,7 +36,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 from __future__ import print_function
 from __future__ import absolute_import
@@ -86,7 +86,7 @@ def append_format_cmds(lstout, dictin, name, fmt):
     return True
 
 def append_format_indent(lst, template, dct, indent='    '):
-    """Split lines, indent each by 4 blanks, append to out. 
+    """Split lines, indent each by 4 blanks, append to out.
     """
     lines = wformat(template, dct)
     for line in lines.split("\n"):
@@ -160,8 +160,7 @@ def as_yaml(obj, order, indent, output):
         elif isinstance(value, collections.Sequence):
             # Keys which are are an array of string (code templates)
             if key in ('declare', 'pre_call', 'pre_call_trim', 'post_call',
-                       'post_parse', 'ctor',
-                   ):
+                       'post_parse', 'ctor'):
                 output.append('{}{}: |'.format(prefix, key))
                 for i in value:
                     output.append('{}  {}'.format(prefix, i))
@@ -184,16 +183,16 @@ def extern_C(output, position):
     """
     if position == 'begin':
         output.extend([
-                '#ifdef __cplusplus',
-                'extern "C" {',
-                '#endif'
-                ])
+            '#ifdef __cplusplus',
+            'extern "C" {',
+            '#endif'
+        ])
     else:
         output.extend([
-                '#ifdef __cplusplus',
-                '}',
-                '#endif'
-                ])
+            '#ifdef __cplusplus',
+            '}',
+            '#endif'
+        ])
 
 class WrapperMixin(object):
     """Methods common to all wrapping classes.
@@ -385,7 +384,7 @@ class WrapperMixin(object):
 
         for part in parts:
             if not part:
-                # \t\f results in 
+                # \t\f results in
                 continue
             dump = False
             save = True
@@ -455,7 +454,7 @@ class WrapperMixin(object):
                             subline = subline[1:]
                         if subline[-1] == '+':
                             self.write_continue(fp, subline[:-1], spaces)
-                            self.indent += 1 
+                            self.indent += 1
                         else:
                             self.write_continue(fp, subline, spaces)
 

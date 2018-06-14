@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Generate Fortran bindings for C++ code.
@@ -119,7 +119,6 @@ class Wrapf(util.WrapperMixin):
                 continue
             self._begin_class()
 
-            name = node.name
             # how to decide module name, module per class
 #            module_name = node.options.setdefault('module_name', name.lower())
             if node.as_struct:
@@ -181,7 +180,7 @@ class Wrapf(util.WrapperMixin):
         output.append('')
         self._push_splicer(fmt_class.cxx_class)
         append_format(output,
-                '\ntype, bind(C) :: {F_derived_name}+', fmt_class)
+                      '\ntype, bind(C) :: {F_derived_name}+', fmt_class)
         for var in node.variables:
             ast = var.ast
             result_type = ast.typename
@@ -258,7 +257,7 @@ class Wrapf(util.WrapperMixin):
                         if node.cpp_if:
                             f_type_decl.append('#endif')
                 else:
-                    parts = [ 'generic :: ', key, ' => ' ]
+                    parts = ['generic :: ', key, ' => ']
                     for node in methods:
                         parts.append(node.fmtdict.F_name_function)
                         parts.append(', ')
@@ -314,7 +313,7 @@ class Wrapf(util.WrapperMixin):
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
             fmt_id.F_enum_member = wformat(options.F_enum_member_template, fmt_id)
-            append_format(output, 'integer(C_INT), parameter :: {F_enum_member} = {evalue}', 
+            append_format(output, 'integer(C_INT), parameter :: {F_enum_member} = {evalue}',
                           fmt_id)
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_INT')
 
@@ -334,7 +333,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
-                    fmt.F_name_function, fmt.F_name_impl))
+                fmt.F_name_function, fmt.F_name_impl))
 
             append_format(
                 impl, """
@@ -353,7 +352,7 @@ cxxptr = {F_this}%{F_derived_member}%addr
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
-                    fmt.F_name_function, fmt.F_name_impl))
+                fmt.F_name_function, fmt.F_name_impl))
 
             # XXX - release existing pointer?
             append_format(
@@ -373,7 +372,7 @@ type(C_PTR), intent(IN) :: {F_derived_member}
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
             self.type_bound_part.append('procedure :: %s => %s' % (
-                    fmt.F_name_function, fmt.F_name_impl))
+                fmt.F_name_function, fmt.F_name_impl))
 
             append_format(
                 impl, """
@@ -578,7 +577,6 @@ rv = .false.
         Function pointers are converted to abstract interfaces.
         The interface is named after the function and the argument.
         """
-        ast = node.ast
         fmt = util.Scope(node.fmtdict)
         fmt.argname = arg.name
         name = wformat(
@@ -639,12 +637,12 @@ rv = .false.
 
     def build_arg_list_interface(
             self, node, fmt, ast, buf_args,
-            modules, imports,  arg_c_names, arg_c_decl):
+            modules, imports, arg_c_names, arg_c_decl):
         """
         Build the Fortran interface for a c wrapper function.
 
-        node - 
-        fmt - 
+        node -
+        fmt -
         ast - Abstract Syntax Tree from parser
         buf_args - List of arguments/metadata to add.
         modules - Build up USE statement.
@@ -733,7 +731,6 @@ rv = .false.
         generated_suffix = node.generated_suffix
         return_pointer_as = ast.return_pointer_as
         is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         func_is_const = ast.func_const
@@ -843,16 +840,15 @@ rv = .false.
             c_interface.append('#endif')
 
     def build_arg_list_impl(
-            self, node, fmt, c_ast, f_ast, arg_typemap,
+            self, fmt, c_ast, f_ast, arg_typemap,
             buf_args,
-            modules, imports,  arg_f_decl, arg_c_call,
+            modules, imports, arg_f_decl, arg_c_call,
             need_wrapper):
         """
         Build up code to call C wrapper.
         This includes arguments to the function and any
         additional declarations.
 
-        node -
         fmt -
         c_ast - Abstract Syntax Tree from parser
         f_ast - Abstract Syntax Tree from parser
@@ -893,7 +889,7 @@ rv = .false.
                 continue
 
             need_wrapper = True
-            buf_arg_name = c_attrs[buf_arg]
+#            buf_arg_name = c_attrs[buf_arg]
             if buf_arg == 'size':
                 append_format(arg_c_call, 'size({f_var}, kind=C_LONG)', fmt)
                 self.set_f_module(modules, 'iso_c_binding', 'C_LONG')
@@ -1007,8 +1003,6 @@ rv = .false.
         generated_suffix = C_node.generated_suffix
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
-        is_pure = ast.attrs.get('pure', False)
         is_static = False
 
         if fmt_func.C_custom_return_type:
@@ -1057,8 +1051,8 @@ rv = .false.
                 # Add 'this' argument
                 arg_f_names.append(fmt_func.F_this)
                 arg_f_decl.append(wformat(
-                        'class({F_derived_name}) :: {F_this}',
-                        fmt_func))
+                    'class({F_derived_name}) :: {F_this}',
+                    fmt_func))
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(wformat('{F_this}%{F_derived_member}', fmt_func))
 
@@ -1068,7 +1062,7 @@ rv = .false.
                 whelpers.add_copy_array_helper(fmt_result)
                 iblk = C_node.statements['f']['result' + result_generated_suffix]
                 need_wrapper = self.build_arg_list_impl(
-                    node, fmt_result, C_node.ast, ast, result_typemap,
+                    fmt_result, C_node.ast, ast, result_typemap,
                     iblk.get('buf_args', []),
                     modules, imports,
                     arg_f_decl, arg_c_call,
@@ -1092,7 +1086,7 @@ rv = .false.
         for c_arg in C_node.ast.params:
             arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg  = fmt_arg0.setdefault('fmtf', util.Scope(fmt_func))
+            fmt_arg = fmt_arg0.setdefault('fmtf', util.Scope(fmt_func))
             fmt_arg.f_var = arg_name
             fmt_arg.c_var = arg_name
 
@@ -1185,7 +1179,7 @@ rv = .false.
                     arg_typemap.f_c_type or arg_typemap.f_type, fmt_arg.c_var))
 
             need_wrapper = self.build_arg_list_impl(
-                node, fmt_arg, c_arg, f_arg, arg_typemap,
+                fmt_arg, c_arg, f_arg, arg_typemap,
                 c_intent_blk.get('buf_args', self._default_buf_args),
                 modules, imports,
                 arg_f_decl, arg_c_call,
@@ -1276,13 +1270,13 @@ rv = .false.
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == 'function':
                 f_statements = result_typemap.f_statements
-                intent_blk = f_statements.get('result' + result_generated_suffix,{})
+                intent_blk = f_statements.get('result' + result_generated_suffix, {})
                 if 'call' in intent_blk:
                     cmd_list = intent_blk['call']
-                elif return_pointer_as in [ 'pointer', 'allocatable' ]:
-                    cmd_list = [ '{F_pointer} = {F_C_call}({F_arg_c_call})']
+                elif return_pointer_as in ['pointer', 'allocatable']:
+                    cmd_list = ['{F_pointer} = {F_C_call}({F_arg_c_call})']
                 else:
-                    cmd_list = [ '{F_result} = {F_C_call}({F_arg_c_call})']
+                    cmd_list = ['{F_result} = {F_C_call}({F_arg_c_call})']
 #                for cmd in cmd_list:  # only allow a single statment for now
 #                    append_format(pre_call, cmd, fmt_func)
                 fmt_func.F_call_code = wformat(cmd_list[0], fmt_func)
@@ -1341,7 +1335,7 @@ rv = .false.
                 self.write_doxygen(impl, node.doxygen)
             append_format(impl,
                           '\r{F_subprogram} {F_name_impl}(\t'
-                        '{F_arguments}){F_result_clause}',
+                          '{F_arguments}){F_result_clause}',
                           fmt_func)
             impl.append(1)
             impl.extend(arg_f_use)
@@ -1386,7 +1380,7 @@ rv = .false.
 
         mods = helper_info.get('modules', None)
         if mods:
-            self.update_f_module(self.module_use, {},  mods)  # XXX self.module_imports
+            self.update_f_module(self.module_use, {}, mods)  # XXX self.module_imports
 
         if 'private' in helper_info:
             if not self.private_lines:
@@ -1566,6 +1560,5 @@ def attr_allocatable(allocatable, node, arg, pre_call):
             for i in range(1, rank+1):
                 bounds.append('lbound({var},{dim}):ubound({var},{dim})'.
                               format(var=moldvar, dim=i))
-            fmt.mold = ','.join(bounds)  
+            fmt.mold = ','.join(bounds)
             append_format(pre_call, 'allocate({f_var}({mold}))', fmt)
-

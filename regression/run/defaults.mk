@@ -1,4 +1,4 @@
-# shroud/tests/defaults.mk
+# shroud/regression/run/defaults.mk
 
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
@@ -49,6 +49,7 @@ endif
 
 ifeq ($(compiler),gcc)
 CC = gcc
+# -Wextra
 CFLAGS = -g -Wall
 CXX = g++
 CXXFLAGS = -g -Wall

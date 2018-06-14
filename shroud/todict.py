@@ -1,28 +1,28 @@
 # Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 
 """
@@ -50,24 +50,24 @@ class ToDict(visitor.Visitor):
     """
 
     def visit_list(self, node):
-        return [ self.visit(n) for n in node ]
+        return [self.visit(n) for n in node]
 
     def visit_dict(self, node):
-        return {key:self.visit(value) for (key,value) in node.items()}
+        return {key:self.visit(value) for (key, value) in node.items()}
 
 ######################################################################
 
     def visit_Ptr(self, node):
         d = dict(
-            ptr = node.ptr,
-            const = node.const,
-#            volatile = node.volatile,
+            ptr=node.ptr,
+            const=node.const,
+            ##- volatile=node.volatile,
         )
         return d
 
     def visit_Declarator(self, node):
         d = dict(
-            pointer = self.visit(node.pointer)
+            pointer=self.visit(node.pointer)
         )
         if node.name:
             d['name'] = node.name
@@ -77,11 +77,11 @@ class ToDict(visitor.Visitor):
 
     def visit_Declaration(self, node):
         d = dict(
-            specifier = node.specifier,
-            const = node.const,
-#            volatile = node.volatile,
-#            node.array,
-            attrs = node.attrs,
+            specifier=node.specifier,
+            const=node.const,
+            ##- volatile=node.volatile,
+            ##- node.array,
+            attrs=node.attrs,
         )
         if node.declarator:
             # ctor and dtor have no declarator
@@ -101,7 +101,7 @@ class ToDict(visitor.Visitor):
 
     def visit_Identifier(self, node):
         d = dict(
-            name = node.name,
+            name=node.name,
         )
         if node.args != None:
             d['args'] = self.visit(node.args)
@@ -109,28 +109,28 @@ class ToDict(visitor.Visitor):
 
     def visit_BinaryOp(self, node):
         d = dict(
-            left = self.visit(node.left),
-            op = node.op,
-            right = self.visit(node.right)
+            left=self.visit(node.left),
+            op=node.op,
+            right=self.visit(node.right)
         )
         return d
 
     def visit_UnaryOp(self, node):
         d = dict(
-            op = node.op,
-            node = self.visit(node.node)
+            op=node.op,
+            node=self.visit(node.node)
         )
         return d
 
     def visit_ParenExpr(self, node):
         d = dict(
-            node = self.visit(node.node)
+            node=self.visit(node.node)
         )
         return d
 
     def visit_Constant(self, node):
         d = dict(
-            constant = node.value
+            constant=node.value
         )
         return d
 
@@ -160,7 +160,7 @@ class ToDict(visitor.Visitor):
             members=self.visit(node.members)
         )
         return d
-        
+
 
 ######################################################################
 
@@ -191,12 +191,12 @@ class ToDict(visitor.Visitor):
             options=self.visit(node.options),
         )
 
-        for key in [ 'copyright', 'cxx_header',
-                     'language' ]:
+        for key in ['copyright', 'cxx_header',
+                    'language']:
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'classes', 'enums', 'functions', 'variables' ]:
+        for key in ['classes', 'enums', 'functions', 'variables']:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
@@ -205,9 +205,9 @@ class ToDict(visitor.Visitor):
     def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,
-            format = self.visit(node.fmtdict),
+            format=self.visit(node.fmtdict),
             name=node.name,
-#            typename=node.typename,
+            ##- typename=node.typename,
             typemap_name=node.typemap_name,
             options=self.visit(node.options),
         )
@@ -215,7 +215,7 @@ class ToDict(visitor.Visitor):
             value = getattr(node, key)
             if value:
                 d[key] = value
-        for key in [ 'enums', 'functions', 'variables' ]:
+        for key in ['enums', 'functions', 'variables']:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
@@ -228,12 +228,12 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
-        for key in [ '_fmtargs', '_fmtresult' ]:
+        for key in ['_fmtargs', '_fmtresult']:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)
         for key in ['cxx_template', 'default_arg_suffix',
-                    'declgen', 'doxygen', 
+                    'declgen', 'doxygen',
                     'fortran_generic', 'return_this',
                     'C_error_pattern', 'PY_error_pattern',
                     '_CXX_return_templated',
@@ -241,9 +241,9 @@ class ToDict(visitor.Visitor):
                     '_generated', '_has_default_arg',
                     '_nargs', '_overloaded',
                     # generated by Preprocess
-#                    'CXX_subprogram',  'C_subprogram',  'F_subprogram',
-#                    'CXX_return_type', 'C_return_type', 'F_return_type',
-                ]:
+                    ##- 'CXX_subprogram',  'C_subprogram',  'F_subprogram',
+                    ##- 'CXX_return_type', 'C_return_type', 'F_return_type',
+                   ]:
             value = getattr(node, key)
             if value:
                 d[key] = value
@@ -254,10 +254,10 @@ class ToDict(visitor.Visitor):
                 if value is not None:
                     d[key] = value
         for key in [
-#            'return_pointer_as',
-            'statements',
-#            'CXX_subprogram', 'C_subprogram', 'F_subprogram',
-#            'CXX_return_type', 'C_return_type', 'F_return_type',
+                ##- 'return_pointer_as',
+                'statements',
+                ##- 'CXX_subprogram', 'C_subprogram', 'F_subprogram',
+                ##- 'CXX_return_type', 'C_return_type', 'F_return_type',
         ]:
             if hasattr(node, key):
                 value = getattr(node, key)
@@ -274,7 +274,7 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
-        for key in [ '_fmtmembers' ]:
+        for key in ['_fmtmembers']:
             value = getattr(node, key)
             if value:
                 d[key] = self.visit(value)

@@ -1,28 +1,28 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
-# Produced at the Lawrence Livermore National Laboratory 
-# 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+# Produced at the Lawrence Livermore National Laboratory
+#
 # LLNL-CODE-738041.
-# All rights reserved. 
-#  
+# All rights reserved.
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Generate Python module for C++ code.
@@ -120,7 +120,6 @@ class Wrapp(util.WrapperMixin):
 
     def wrap_library(self):
         newlibrary = self.newlibrary
-        options = newlibrary.options
         fmt_library = newlibrary.fmtdict
 
         if self.language == 'c':
@@ -154,7 +153,7 @@ class Wrapp(util.WrapperMixin):
         self.py_helper_prototypes = []
         self.py_helper_functions = []
         # reserved the 0 slot of capsule_order
-        #self.add_capsule_helper('--none--', [ '// not yet implemented' ])
+        #self.add_capsule_helper('--none--', ['// not yet implemented'])
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -228,8 +227,6 @@ class Wrapp(util.WrapperMixin):
         If class, create a descriptor.
         Without a setter, it will be read-only.
         """
-        options = node.options
-        fmt_enum = node.fmtdict
         fmtmembers = node._fmtmembers
 
         ast = node.ast
@@ -263,9 +260,6 @@ class Wrapp(util.WrapperMixin):
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
         name = node.name
-        unname = util.un_camel(name)
-
-        options = node.options
         fmt_class = node.fmtdict
 
         node.eval_template('PY_type_filename')
@@ -456,9 +450,9 @@ return 1;""", fmt)
             'if (ierr == -1) goto fail;',
             'ldescr = NULL;',
 
-#            'Py_INCREF(Py_True);',
-#            'ierr = PyDict_SetItemString(descr, "aligned", Py_True);',
-#            'if (ierr == -1) goto fail;',
+            # 'Py_INCREF(Py_True);',
+            # 'ierr = PyDict_SetItemString(descr, "aligned", Py_True);',
+            # 'if (ierr == -1) goto fail;',
             'ierr = PyArray_DescrAlignConverter(dict, &dtype);',
             'if (ierr == 0) goto fail;',
             'return dtype;',
@@ -514,12 +508,12 @@ return 1;""", fmt)
 
         output = self.PyGetSetBody
         append_format(output,
-            '\nstatic PyObject *{PY_getter}('
-            '{PY_PyObject} *{PY_param_self},'
-            '\t void *SHROUD_UNUSED(closure))\n'
-            '{{+\nPyObject * rv = {ctor};\nreturn rv;'
-            '\n-}}', fmt)
-        
+                      '\nstatic PyObject *{PY_getter}('
+                      '{PY_PyObject} *{PY_param_self},'
+                      '\t void *SHROUD_UNUSED(closure))\n'
+                      '{{+\nPyObject * rv = {ctor};\nreturn rv;'
+                      '\n-}}', fmt)
+
         # setter
         if not ast.attrs.get('readonly', False):
             fmt_var.PY_setter = wformat(options.PY_member_setter_template, fmt_var)
@@ -568,21 +562,21 @@ return 1;""", fmt)
             cast = '{cxx_decl} = PyArray_DATA({py_var});'
 
         blk = dict(
-#             cxx_local_var = 'pointer',
-            goto_fail = True,
-            decl = [
+            # cxx_local_var='pointer',
+            goto_fail=True,
+            decl=[
                 'PyArrayObject * {py_var} = NULL;',
             ],
-            pre_call  = [
+            pre_call=[
                 descr_code + asgn,
                 'if ({py_var} == NULL)', '+goto fail;-',
                 cast,
             ],
-            post_call = None,   # Object already created
-#            cleanup = [
-#                'Py_DECREF({pytmp_var});'
-#            ],
-            fail = [
+            post_call=None,   # Object already created
+            # cleanup = [
+            #    'Py_DECREF({pytmp_var});'
+            # ],
+            fail=[
                 'Py_XDECREF({py_var});'
             ],
         )
@@ -614,12 +608,12 @@ return 1;""", fmt)
 
         blk = dict(
             # Declare variables here that are used by parse or referenced in fail.
-            goto_fail = True,
-            decl = [
+            goto_fail=True,
+            decl=[
                 '{py_type} * {pytmp_var};',
                 'PyArrayObject * {py_var} = NULL;',
             ],
-            post_parse = [
+            post_parse=[
                 asgn,
                 'if ({py_var} == NULL) {{+',
                 'PyErr_SetString(PyExc_ValueError,'
@@ -627,7 +621,7 @@ return 1;""", fmt)
                 'goto fail;',
                 '-}}',
             ],
-            pre_call  = [
+            pre_call=[
                 cast,
             ],
         )
@@ -674,7 +668,7 @@ return 1;""", fmt)
         fmt.PyObject = typedef.PY_PyObject or 'PyObject'
         fmt.PyTypeObject = typedef.PY_PyTypeObject
 
-        if return_pointer_as in [ 'pointer', 'allocatable' ] and \
+        if return_pointer_as in ['pointer', 'allocatable'] and \
            typedef.base != 'string':
             # Create a 1-d array from pointer.
             # A string is not really an array, so do not deal with it here.
@@ -745,7 +739,7 @@ return 1;""", fmt)
 
             if typedef.PY_ctor:
                 ctor = wformat('{PyObject} * {py_var} = ' + typedef.PY_ctor
-                           + ';', fmt)
+                               + ';', fmt)
                 ctorvar = fmt.py_var
             else:
                 fmt.PY_format = format
@@ -754,7 +748,7 @@ return 1;""", fmt)
                     '{PyObject} * {py_var} = '
                     'Py_BuildValue("{PY_format}", {vargs});', fmt)
                 ctorvar = fmt.py_var
-                
+
         return BuildTuple(format, vargs, ctor, ctorvar)
 
     def wrap_functions(self, cls, functions):
@@ -817,7 +811,6 @@ return 1;""", fmt)
         fmt.PY_doc_string = 'documentation'
 
         CXX_subprogram = node.CXX_subprogram
-        result_type = node.CXX_return_type
         result_typemap = node.CXX_result_typemap
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
@@ -919,9 +912,9 @@ return 1;""", fmt)
         if node._has_default_arg:
             PY_decl.append('Py_ssize_t SH_nargs = 0;')
             PY_code.extend([
-                    'if (args != NULL) SH_nargs += PyTuple_Size(args);',
-                    'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
-                    ])
+                'if (args != NULL) SH_nargs += PyTuple_Size(args);',
+                'if (kwds != NULL) SH_nargs += PyDict_Size(args);',
+            ])
 
         goto_fail = False
         args = ast.params
@@ -1197,7 +1190,7 @@ return 1;""", fmt)
                 need_blank = False
             else:
                 fail_scope = False
-            
+
             if len_pre_call:
                 if options.debug:
                     if need_blank:
@@ -1227,7 +1220,7 @@ return 1;""", fmt)
                     append_format(PY_code,
                                   '{C_rv_decl} = malloc(sizeof({cxx_type}));',
                                   fmt)
-                    del_lines = [ 'free(ptr);' ]
+                    del_lines = ['free(ptr);']
                 else:
                     append_format(PY_code,
                                   '{C_rv_decl} = new {cxx_type};',
@@ -1438,13 +1431,13 @@ return 1;""", fmt)
         PyObj = fmt_func.PY_PyObject
         if 'type' in node.python:
             selected = node.python['type'][:]
-            for auto in [ 'del']:
+            for auto in ['del']:
                 # Make some methods are there
                 if auto not in selected:
                     selected.append(auto)
         else:
-            selected = [ 'del' ]
-            
+            selected = ['del']
+
         # Dictionary of methods for bodies
         default_body = dict(
             richcompare=self.not_implemented
@@ -1579,9 +1572,9 @@ return 1;""", fmt)
             body.append(1)
             body.append('Py_ssize_t SHT_nargs = 0;')
             body.extend([
-                    'if (args != NULL) SHT_nargs += PyTuple_Size(args);',
-                    'if (kwds != NULL) SHT_nargs += PyDict_Size(args);',
-                    ])
+                'if (args != NULL) SHT_nargs += PyTuple_Size(args);',
+                'if (kwds != NULL) SHT_nargs += PyDict_Size(args);',
+            ])
             if is_ctor:
                 fmt.PY_type_method = 'tp_init'
                 fmt.PY_name_impl = wformat(
@@ -1639,9 +1632,9 @@ return 1;""", fmt)
         # add guard
         guard = fname.replace(".", "_").upper()
         output.extend([
-                '#ifndef %s' % guard,
-                '#define %s' % guard,
-                ])
+            '#ifndef %s' % guard,
+            '#define %s' % guard,
+        ])
 
         output.append('#include <Python.h>')
 
@@ -1796,9 +1789,9 @@ extern PyObject *{PY_prefix}error_obj;
             '\n// destructor function for PyCapsule\n'
             'void {PY_numpy_array_dtor_function}(PyObject *cap)\n'
             '{{+\n'
-#            'const char* name = PyCapsule_GetName(cap);\n'
+            # 'const char* name = PyCapsule_GetName(cap);\n'
             'void *ptr = PyCapsule_GetPointer(cap, "{PY_numpy_array_capsule_name}");'
-            ,fmt)
+            , fmt)
 
         output.append('const char * context = '
                       + do_cast(self.language, 'static', 'const char *', 'PyCapsule_GetContext(cap)')
@@ -2171,7 +2164,7 @@ def py_implied(expr, func):
     return visitor.visit(node)
 
 def attr_allocatable(language, allocatable, node, arg):
-    """parse allocatable and return tuple of 
+    """parse allocatable and return tuple of
       (prototype, order, descr, subok)
 
     Valid values of allocatable:

@@ -33,7 +33,7 @@ tests.  These tests are in tests/run and contains a small library
 which is wrapped by the corresponding yaml file
 (i.e. tests/tutorial.yaml wraps run/tutorial)
 
-test/default.mk has compiler flags
+regression/run/default.mk has compiler flags
 
 
 file dependency

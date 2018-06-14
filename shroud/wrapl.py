@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Generate Lua module for C++ code.
@@ -70,7 +70,6 @@ class Wrapl(util.WrapperMixin):
 
     def wrap_library(self):
         newlibrary = self.newlibrary
-        options = newlibrary.options
         fmt_library = newlibrary.fmtdict
 
         # Format variables
@@ -113,7 +112,6 @@ class Wrapl(util.WrapperMixin):
 #        self.write_helper()
 
     def wrap_class(self, node):
-        options = node.options
         fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = 'SH_this'
@@ -132,7 +130,7 @@ class Wrapl(util.WrapperMixin):
                       '{namespace_scope}{cxx_class} * {LUA_userdata_member};',
                       fmt_class)
         self._create_splicer('C_object', self.lua_type_structs)
-        append_format(self.lua_type_structs, 
+        append_format(self.lua_type_structs,
                       '-}} {LUA_userdata_type};', fmt_class)
 
         self.luaL_Reg_class = []
@@ -206,7 +204,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         node = overloads[0]
 
         ast = node.ast
-        function_name = ast.name
         fmt_func = node.fmtdict
         fmt = util.Scope(fmt_func)
         node.eval_template('LUA_name')
@@ -241,14 +238,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             nargs = 0
             in_args = []
             out_args = []
-            found_default = False
             for arg in function.ast.params:
                 arg_typemap = typemap.lookup_type(arg.typename)
-                attrs = arg.attrs
                 if arg.init is not None:
                     all_calls.append(LuaFunction(
                         function, CXX_subprogram, in_args[:], out_args))
-                    found_default = True
                 in_args.append(arg)
             # no defaults, use all arguments
             all_calls.append(LuaFunction(
@@ -306,13 +300,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                         # put within a compound statement to
                         # scope local variables
                         lines.extend([
-                                '{',
-                                1])
+                            '{',
+                            1
+                        ])
                         self.do_function(cls, call, fmt)
                         append_format(lines, 'SH_nresult = {nresults};', fmt)
                         lines.extend([
-                                -1,
-                                '}'])
+                            -1,
+                            '}'
+                        ])
                     elif nargs == 1:
                         lines.append('{} ({}) {{+'.format(ifelse, checks[0]))
                         self.do_function(cls, call, fmt)
@@ -369,14 +365,14 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         else:
             append_format(body, 'static int {LUA_name_impl}(lua_State *)', fmt)
         body.extend([
-                '{',
-                1,
-                ])
+            '{',
+            1,
+        ])
         self._create_splicer(fmt.LUA_name, body, self.splicer_lines)
         body.extend([
-                -1,
-                '}'
-                ])
+            -1,
+            '}'
+        ])
 
         # Save pointer to function
         if cls:
@@ -403,7 +399,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt - local format dictionary
         """
         node = luafcn.function
-        options = node.options
 #        if not options.wrap_lua:
 #            return
 
@@ -421,7 +416,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #        node.eval_template('LUA_name_impl')
 
         CXX_subprogram = node.CXX_subprogram
-        result_type = node.CXX_return_type
         result_typemap = node.CXX_result_typemap
         ast = node.ast
         is_ctor = ast.attrs.get('_constructor', False)
@@ -487,7 +481,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # parse arguments
         # call function based on number of default arguments provided
         # XXX default_calls = []   # each possible default call
-        # XXX found_default = False
         # XXX if '_has_default_arg' in node:
         # XXX     append_format(LUA_decl, 'int SH_nargs =
         # XXX          lua_gettop({LUA_state_var});', fmt)
@@ -624,7 +617,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         lines.extend(LUA_push)    # return values
 
     def write_header(self, node):
-        options = node.options
         fmt = node.fmtdict
         fname = fmt.LUA_header_filename
 
@@ -633,9 +625,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # add guard
         guard = fname.replace(".", "_").upper()
         output.extend([
-                '#ifndef %s' % guard,
-                '#define %s' % guard,
-                ])
+            '#ifndef %s' % guard,
+            '#define %s' % guard,
+        ])
         util.extern_C(output, 'begin')
 
         for include in node.cxx_header.split():
@@ -657,21 +649,20 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.append('')
         self._create_splicer('additional_functions', output)
         output.extend([
-                '',
-                'static const struct luaL_Reg {} [] = {{'.format(name),
-                1,
-                ])
+            '',
+            'static const struct luaL_Reg {} [] = {{'.format(name),
+            1,
+        ])
         output.extend(lines)
         self._create_splicer('register', output)
         output.extend([
-                '{NULL, NULL}   /*sentinel */',
-                -1,
-                '};',
-                ])
+            '{NULL, NULL}   /*sentinel */',
+            -1,
+            '};',
+        ])
 
     def write_module(self, node):
         # node is library
-        options = node.options
         fmt = node.fmtdict
         fname = fmt.LUA_module_filename
 

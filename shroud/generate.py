@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Generate additional functions required to create wrappers.
@@ -81,7 +81,7 @@ class VerifyAttrs(object):
             if attr not in [
                     'name',
                     'readonly',
-                    ]:
+            ]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for variable {} in {}"
                     .format(attr, node.ast.name, node.decl))
@@ -106,7 +106,7 @@ class VerifyAttrs(object):
                     'name',
                     'owner',
                     'pure',
-                    ]:
+            ]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for function {} in {}"
                     .format(attr, node.ast.name, node.decl))
@@ -125,7 +125,8 @@ class VerifyAttrs(object):
         if deref is not None:
             if deref not in ['allocatable', 'pointer', 'raw', 'scalar']:
                 raise RuntimeError("Illegal value '{}' for deref attribute. "
-                                   "Must be 'allocatable', 'pointer', 'raw', or 'scalar'.".format(deref))
+                                   "Must be 'allocatable', 'pointer', 'raw', "
+                                   "or 'scalar'.".format(deref))
 # XXX deref only on pointer, vector
 
         owner = attrs.get('owner', None)
@@ -138,7 +139,8 @@ class VerifyAttrs(object):
         if free_pattern is not None:
             if free_pattern not in self.newlibrary.patterns:
                 raise RuntimeError("Illegal value '{}' for free_pattern attribute. "
-                                   "Must be defined in patterns section.".format(free_pattern))
+                                   "Must be defined in patterns section."
+                                   .format(free_pattern))
 
     def check_arg_attrs(self, node, arg):
         """Regularize attributes
@@ -162,7 +164,7 @@ class VerifyAttrs(object):
                     'len', 'len_trim', 'size',
                     'template',
                     'value',
-                    ]:
+            ]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for argument {} in {}"
                     .format(attr, argname, node.decl))
@@ -178,7 +180,7 @@ class VerifyAttrs(object):
             #    - double
             if argtype not in node.cxx_template:
                 raise RuntimeError("check_arg_attrs: No such type %s: %s" % (
-                        argtype, node.decl))
+                    argtype, node.decl))
 
         self.check_shared_attrs(arg)
 
@@ -244,7 +246,7 @@ class VerifyAttrs(object):
                 else:
                     attrs['dimension'] = '*'
         elif arg_typemap and arg_typemap.base == 'vector':
-            # default to 1-d assumed shape 
+            # default to 1-d assumed shape
             attrs['dimension'] = ':'
 
         if node:
@@ -276,14 +278,14 @@ class VerifyAttrs(object):
         if arg_typemap and arg_typemap.base == 'vector':
             if not temp:
                 raise RuntimeError("std::vector must have template argument: %s" % (
-                        arg.gen_decl()))
+                    arg.gen_decl()))
             arg_typemap = typemap.lookup_type(temp)
             if arg_typemap is None:
                 raise RuntimeError("check_arg_attr: No such type %s for template: %s" % (
-                        temp, arg.gen_decl()))
+                    temp, arg.gen_decl()))
         elif temp is not None:
             raise RuntimeError("Type '%s' may not supply template argument: %s" % (
-                    argtype, arg.gen_decl()))
+                argtype, arg.gen_decl()))
 
         if arg.is_function_pointer():
             for arg1 in arg.params:
@@ -343,7 +345,7 @@ class GenFunctions(object):
             fattrs = node.ast.attrs
             found_ctor = found_ctor or fattrs.get('_constructor', False)
             found_dtor = found_dtor or fattrs.get('_destructor', False)
-            
+
         if found_ctor and found_dtor:
             return cls.functions
 
@@ -362,7 +364,7 @@ class GenFunctions(object):
         """Create getter/setter functions for class variables.
         This allows wrappers to access class members.
 
-        Do not wrap for Python since descriptors are created for 
+        Do not wrap for Python since descriptors are created for
         class member variables.
         """
         ast = var.ast
@@ -371,7 +373,7 @@ class GenFunctions(object):
 
         fmt = util.Scope(var.fmtdict)
 
-        options=dict(
+        options = dict(
             wrap_lua=False,
             wrap_python=False,
         )
@@ -388,7 +390,7 @@ class GenFunctions(object):
             val = wformat(arg_typemap.cxx_to_c, fmt)
         return_val = 'return ' + val + ';'
 
-        format=dict(
+        format = dict(
             C_code='{C_pre_call}\n' + return_val,
         )
 
@@ -408,14 +410,14 @@ class GenFunctions(object):
             val = wformat(arg_typemap.c_to_cxx, fmt)
         set_val = '{} = {};'.format(field, val)
 
-        attrs=dict(
+        attrs = dict(
             val=dict(
                 intent='in',
                 value=True,  # XXX - what about pointer variables?
             )
         )
 
-        format=dict(
+        format = dict(
             C_code='{C_pre_call}\n' + set_val + '\nreturn;',
         )
 
@@ -550,7 +552,7 @@ class GenFunctions(object):
         if len(node.fortran_generic) != 1:
             # In the future it may be useful to have multiple generic arguments
             # That the would start creating more permutations
-            raise NotImplemented("Only one generic arg for now")
+            raise NotImplementedError("Only one generic arg for now")
         for argname, types in node.fortran_generic.items():
             for type in types:
                 new = node.clone()
@@ -648,7 +650,7 @@ class GenFunctions(object):
 
         attrs - attributes of the new argument
         old_node - The FunctionNode of the original function.
-        new_node - The FunctionNode of the new function with 
+        new_node - The FunctionNode of the new function with
         """
         c_attrs = new_node.ast.attrs
         f_attrs = old_node.ast.attrs
@@ -722,20 +724,19 @@ class GenFunctions(object):
                 cxx_T = arg.attrs['template']
                 tempate_typemap = typemap.lookup_type(cxx_T)
                 whelpers.add_copy_array_helper(dict(
-                    cxx_type = cxx_T,
-                    f_kind = tempate_typemap.f_kind,
-                    C_prefix = fmt.C_prefix,
-                    C_array_type = fmt.C_array_type,
-                    F_array_type = fmt.F_array_type,
-                    stdlib = fmt.stdlib,
+                    cxx_type=cxx_T,
+                    f_kind=tempate_typemap.f_kind,
+                    C_prefix=fmt.C_prefix,
+                    C_array_type=fmt.C_array_type,
+                    F_array_type=fmt.F_array_type,
+                    stdlib=fmt.stdlib,
                 ))
 
         has_string_result = False
         has_allocatable_result = False
         result_as_arg = ''  # only applies to string functions
-        is_pure = ast.attrs.get('pure', False)
         if result_typemap.base == 'vector':
-            raise NotImplemented("vector result")
+            raise NotImplementedError("vector result")
         elif result_typemap.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
@@ -772,7 +773,6 @@ class GenFunctions(object):
         options.wrap_lua = False
         C_new._PTR_C_CXX_index = node._function_index
 
-        newargs = []
         for arg in C_new.ast.params:
             attrs = arg.attrs
             argtype = arg.typename
@@ -821,7 +821,6 @@ class GenFunctions(object):
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             ast = C_new.ast
-            c_attrs = ast.attrs        # C function attributes
             f_attrs = node.ast.attrs   # Fortran function attributes
 
             if 'len' in ast.attrs or result_as_arg:
@@ -890,7 +889,7 @@ class GenFunctions(object):
             c_step1(context)
             allocate(Fout(len))
             c_step2(context, Fout, size(len))
-       
+
         """
         options = node.options
         fmt_func = node.fmtdict
@@ -904,9 +903,9 @@ class GenFunctions(object):
         node.statements = {}
         node.statements['c'] = dict(
             result_buf=dict(
-                buf_args = [ 'context' ],
-                c_helper = 'array_context copy_array',
-                post_call = [
+                buf_args=['context'],
+                c_helper='array_context copy_array',
+                post_call=[
                     '{c_var_context}->cxx.addr  = {cxx_var};',
                     '{c_var_context}->cxx.idtor = {idtor};',
                     '{c_var_context}->addr.cvoidp = {cxx_var};',
@@ -917,13 +916,13 @@ class GenFunctions(object):
         )
         node.statements['f'] = dict(
             result_allocatable=dict(
-                buf_args = [ 'context' ],
-                f_helper = 'array_context copy_array_{cxx_type}',
-                post_call = [
+                buf_args=['context'],
+                f_helper='array_context copy_array_{cxx_type}',
+                post_call=[
                     # XXX - allocate scalar
                     'allocate({f_var}({c_var_dimension}))',
-                    'call SHROUD_copy_array_{cxx_type}({c_var_context}, {f_var}, '
-                        'size({f_var}, kind=C_SIZE_T))',
+                    'call SHROUD_copy_array_{cxx_type}'
+                    '({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))',
                 ],
             ),
         )
@@ -1015,9 +1014,6 @@ class Namify(object):
             for func in cls.functions:
                 handler(cls, func)
 
-            options = cls.options
-            fmt_class = cls.fmtdict
-
         for func in newlibrary.functions:
             handler(None, func)
 
@@ -1037,7 +1033,6 @@ class Namify(object):
         options = node.options
         if not options.wrap_fortran:
             return
-        fmt_func = node.fmtdict
 
         node.eval_template('F_name_impl')
         node.eval_template('F_name_function')
@@ -1085,7 +1080,6 @@ class Preprocess(object):
 #        Lookup up typemap for result and arguments
         """
 
-        options = node.options
         fmt_func = node.fmtdict
 
         ast = node.ast

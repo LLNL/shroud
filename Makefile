@@ -84,6 +84,19 @@ $(venv.dir) :
 develop :
 	$(PYTHON) setup.py develop
 
+setup-sqa :
+#	$(PYTHON) -m pip install ruamel-yaml
+#	$(PYTHON) -m pip install pyflakes
+#	$(PYTHON) -m pip install mccabe
+#	$(PYTHON) -m pip install flake8
+#	$(PYTHON) -m pip install pylint
+	$(python.dir)/pip install pylint
+
+sqa :
+#	$(python.dir)/pylint shroud/main.py
+	pylint shroud/*.py > pylint.out
+
+
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
