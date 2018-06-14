@@ -47,20 +47,22 @@ import numpy
 outdir = 'build/source'
 if not os.path.exists(outdir):
     os.makedirs(outdir)
-config = shroud.create_wrapper('../../../ownership.yaml', outdir=outdir)
+config = shroud.create_wrapper('../../../tutorial.yaml',
+                               path=['../../..'],
+                               outdir=outdir)
 
-ownership = Extension(
-    'ownership',
-    sources = config.pyfiles + ['../ownership.cpp'],
+tutorial = Extension(
+    'tutorial',
+    sources = config.pyfiles + ['../tutorial.cpp'],
     include_dirs=[numpy.get_include(), '..']
 )
 
 setup(
-    name='ownership',
+    name='tutorial',
     version="0.0",
-    description='shroud ownership',
+    description='shroud tutorial',
     author='xxx',
     author_email='yyy@zz',
-    ext_modules=[ownership],
+    ext_modules=[tutorial],
 )
 

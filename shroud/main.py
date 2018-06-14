@@ -211,7 +211,7 @@ def main():
 #    sys.stderr.write("Some useful message")  # example error message
     sys.exit(0)  # set status for errors
 
-def create_wrapper(input, outdir=''):
+def create_wrapper(input, outdir='', path=[]):
     """Translate function arguments into command line options.
     Return config instance. It has list of files created.
     Create a wrapper from a Python program.
@@ -229,7 +229,7 @@ def create_wrapper(input, outdir=''):
     args.outdir_lua = ''
     args.outdir_python = ''
     args.outdir_yaml = ''
-    args.path = []
+    args.path = path
     args.yaml_types = ''
 
     config = main_with_args(args)

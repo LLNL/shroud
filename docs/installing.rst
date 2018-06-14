@@ -122,7 +122,7 @@ Building Python extensions
 --------------------------
 
 ``setup.py`` can be used to build the extension module from the files created by shroud.
-This example is drawn from the ``run-ownership`` example.  You must provide the paths
+This example is drawn from the ``run/tutorial`` example.  You must provide the paths
 to the input YAML file and the C++ library source files::
 
     import os
@@ -133,36 +133,41 @@ to the input YAML file and the C++ library source files::
     outdir = 'build/source'
     if not os.path.exists(outdir):
         os.makedirs(outdir)
-    config = shroud.create_wrapper('../../ownership.yaml', outdir=outdir)
+    config = shroud.create_wrapper('../../../tutorial.yaml',
+                                   path=['../../..'],
+                                   outdir=outdir)
     
-    ownership = Extension(
-        'ownership',
-        sources = config.pyfiles + ['../ownership.cpp'],
+    tutorial = Extension(
+        'tutorial',
+        sources = config.pyfiles + ['../tutorial.cpp'],
         include_dirs=[numpy.get_include(), '..']
     )
     
     setup(
-        name='ownership',
+        name='tutorial',
         version="0.0",
-        description='shroud ownership',
+        description='shroud tutorial',
         author='xxx',
         author_email='yyy@zz',
-        ext_modules=[ownership],
+        ext_modules=[tutorial],
     )
 
 The directory structure is layed out as::
 
-    ownership.yaml
-    run-ownership
-       ownership.cpp   # C++ library to wrap
-       ownership.hpp
-       python
-         setup.py
-         build
-            source
-              # create by shroud
-              pyownershipmodule.cpp
-              pyownershipmodule.hpp
-              pyownershiphelper.cpp
-            lib
-               ownership.so   # generated module
+     tutorial.yaml
+     run
+       tutorial
+         tutorial.cpp   # C++ library to wrap
+         tutorial.hpp
+         python
+           setup.py     # setup file shown above
+           build
+              source
+                # create by shroud
+                pyClass1type.cpp
+                pySingletontype.cpp
+                pyTutorialmodule.cpp
+                pyTutorialmodule.hpp
+                pyTutorialhelper.cpp
+              lib
+                 tutorial.so   # generated module
