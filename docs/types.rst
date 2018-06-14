@@ -382,7 +382,7 @@ The type map::
                     pre_call:
                     -  char * {cxx_var} = (char *) malloc({c_var_trim} + 1);
                     -  {stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});
-                    -  {cxx_var}[{c_var_trim}] = \'\\0\'
+                    -  {cxx_var}[{c_var_trim}] = '\0'
                     post_call=[
                     -  free({cxx_var});
                 intent_out_buf:
@@ -410,7 +410,7 @@ The type map::
                     pre_call:
                     -  char * {cxx_var} = (char *) malloc({c_var_len} + 1);
                     -  {stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});
-                    -  {cxx_var}[{c_var_trim}] = \'\\0\';
+                    -  {cxx_var}[{c_var_trim}] = '\0';
                     post_call:
                     -  ShroudStrCopy({c_var}, {c_var_len}, \t {cxx_var},\t {stdlib}strlen({cxx_var}));
                     -  free({cxx_var});
@@ -423,7 +423,7 @@ The type map::
                     c_helper: ShroudStrCopy
                     post_call:
                     - if ({cxx_var} == NULL) {{+
-                    - {stdlib}memset({c_var}, \' \', {c_var_len});
+                    - {stdlib}memset({c_var}, ' ', {c_var_len});
                     - -}} else {{+
                     - ShroudStrCopy({c_var}, {c_var_len}, \t {cxx_var},\t {stdlib}strlen({cxx_var}));
                     - -}}
@@ -616,7 +616,7 @@ additional sections to convert between ``char *`` and ``std::string``::
                     c_helper: ShroudStrCopy
                     post_call:
                     -  if ({cxx_var}{cxx_member}empty()) {{+
-                    -  {stdlib}memset({c_var}, \' \', {c_var_len});
+                    -  {stdlib}memset({c_var}, ' ', {c_var_len});
                     -  -}} else {{+
                     -  ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());
                     -  -}}
