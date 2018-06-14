@@ -1,28 +1,28 @@
 # Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
 # Produced at the Lawrence Livermore National Laboratory
-# 
+#
 # LLNL-CODE-738041.
 # All rights reserved.
-#  
+#
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
-#  
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
-#  
+#
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
 #   distribution.
-# 
+#
 # * Neither the name of the LLNS/LLNL nor the names of its contributors
 #   may be used to endorse or promote products derived from this
 #   software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 # "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 # LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -35,7 +35,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# 
+#
 ########################################################################
 """
 Generate C bindings for C++ classes
@@ -98,7 +98,7 @@ class Wrapc(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
         structs = []
         # reserved the 0 slot of capsule_order
-        self.add_capsule_helper('--none--', None, [ '// Nothing to delete' ])
+        self.add_capsule_helper('--none--', None, ['// Nothing to delete'])
         whelpers.add_copy_array_helper_c(fmt_library)
 
         self._push_splicer('class')
@@ -207,7 +207,7 @@ class Wrapc(util.WrapperMixin):
                 self.helper_shared_include[include] = True
         if 'h_shared_code' in helper_info:
             self.helper_shared_code.append(helper_info['h_shared_code'])
- 
+
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested and insert code into output.
 
@@ -227,19 +227,19 @@ class Wrapc(util.WrapperMixin):
         """Write a helper file with type definitions.
         """
         self.gather_helper_code(self.shared_helper)
-        
+
         fmt = self.newlibrary.fmtdict
         fname = fmt.C_header_helper
         output = []
 
         guard = fname.replace(".", "_").upper()
-        
+
         output.extend([
-                '// For C users and %s implementation' % self.language.upper(),
-                '',
-                '#ifndef %s' % guard,
-                '#define %s' % guard,
-                ])
+            '// For C users and %s implementation' % self.language.upper(),
+            '',
+            '#ifndef %s' % guard,
+            '#define %s' % guard,
+        ])
 
         # headers required helpers
         self.write_headers_nodes('c_header', {},
@@ -250,11 +250,11 @@ class Wrapc(util.WrapperMixin):
 #            if self._create_splicer('CXX_declarations', output):
 #                write_file = True
             output.extend([
-                    '',
-                    '#ifdef __cplusplus',
-                    'extern "C" {',
-                    '#endif'
-                    ])
+                '',
+                '#ifdef __cplusplus',
+                'extern "C" {',
+                '#endif'
+            ])
 
         output.extend(self.helper_shared_code)
 
@@ -263,16 +263,16 @@ class Wrapc(util.WrapperMixin):
 
         if self.language == 'c++':
             output.extend([
-                    '',
-                    '#ifdef __cplusplus',
-                    '}',
-                    '#endif'
-                    ])
+                '',
+                '#ifdef __cplusplus',
+                '}',
+                '#endif'
+            ])
 
         output.extend([
-                '',
-                '#endif  // ' + guard
-                ])
+            '',
+            '#endif  // ' + guard
+        ])
 
         self.config.cfiles.append(
             os.path.join(self.config.c_fortran_dir, fname))
@@ -293,11 +293,11 @@ class Wrapc(util.WrapperMixin):
             self.write_doxygen_file(output, fname, library, cls)
 
         output.extend([
-                '// For C users and %s implementation' % self.language.upper(),
-                '',
-                '#ifndef %s' % guard,
-                '#define %s' % guard,
-                ])
+            '// For C users and %s implementation' % self.language.upper(),
+            '',
+            '#ifndef %s' % guard,
+            '#define %s' % guard,
+        ])
         if cls and cls.cpp_if:
             output.append('#' + node.cpp_if)
 
@@ -310,11 +310,11 @@ class Wrapc(util.WrapperMixin):
             if self._create_splicer('CXX_declarations', output):
                 write_file = True
             output.extend([
-                    '',
-                    '#ifdef __cplusplus',
-                    'extern "C" {',
-                    '#endif'
-                    ])
+                '',
+                '#ifdef __cplusplus',
+                'extern "C" {',
+                '#endif'
+            ])
 
         if self.helper_header:
             write_file = True
@@ -351,17 +351,17 @@ class Wrapc(util.WrapperMixin):
             output.extend(self.header_proto_c)
         if self.language == 'c++':
             output.extend([
-                    '',
-                    '#ifdef __cplusplus',
-                    '}',
-                    '#endif'
-                    ])
+                '',
+                '#ifdef __cplusplus',
+                '}',
+                '#endif'
+            ])
         if cls and cls.cpp_if:
             output.append('#endif  // ' + node.cpp_if)
         output.extend([
-                '',
-                '#endif  // ' + guard
-                ])
+            '',
+            '#endif  // ' + guard
+        ])
 
         if write_file:
             self.config.cfiles.append(
@@ -373,7 +373,6 @@ class Wrapc(util.WrapperMixin):
         """Write implementation
         """
         node = cls or library
-        options = node.options
 
         # If no C wrappers are required, do not write the file
         write_file = False
@@ -444,7 +443,6 @@ class Wrapc(util.WrapperMixin):
         ])
         for var in node.variables:
             ast = var.ast
-            result_type = ast.typename
             output.append(ast.gen_arg_as_c() + ';')
         output.extend([
             -1,
@@ -465,7 +463,6 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        cname = node.typemap.c_type
 
         fmt_class = node.fmtdict
         # call method syntax
@@ -501,9 +498,9 @@ class Wrapc(util.WrapperMixin):
         if has_dtor:
             cxx_type = ntypemap.cxx_type
             cxx_type = cxx_type.replace('\t', '')
-            del_lines=[
+            del_lines = [
                 '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
-                    cxx_type=cxx_type) ,
+                    cxx_type=cxx_type),
                 'delete cxx_ptr;',
             ]
             ntypemap.idtor = self.add_capsule_helper(cxx_type, ntypemap, del_lines)
@@ -638,7 +635,7 @@ class Wrapc(util.WrapperMixin):
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
 
-        if self.language == 'c' or options.get('C_extern_C',False):
+        if self.language == 'c' or options.get('C_extern_C', False):
             # Fortran can call C directly and only needs wrappers when code is
             # inserted. For example, precall or postcall.
             need_wrapper = False
@@ -661,7 +658,6 @@ class Wrapc(util.WrapperMixin):
 
         # C return type
         ast = node.ast
-        result_type = node.CXX_return_type
         C_subprogram = node.C_subprogram
         result_typemap = node.CXX_result_typemap
         generated_suffix = node.generated_suffix
@@ -714,7 +710,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
             if result_typemap.base == 'shadow' and not CXX_ast.is_indirect() and not is_ctor:
-                #- decl: Class1 getClassNew() 
+                #- decl: Class1 getClassNew()
                 is_shadow_scalar = True
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True, force_ptr=True)
@@ -741,7 +737,6 @@ class Wrapc(util.WrapperMixin):
         pre_call = []      # list of temporary variable declarations
         call_code = []
         post_call = []
-        return_code = []
 
         if cls:
             # Add 'this' argument
@@ -771,7 +766,7 @@ class Wrapc(util.WrapperMixin):
                         # This should be set in typemap.fill_shadow_typemap_defaults
                         raise RuntimeError("Wappped class does not have c_to_cxx set")
                     append_format(
-                        pre_call, 
+                        pre_call,
                         '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
@@ -867,7 +862,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_addr = '&'
 
                 result_return_pointer_as = c_attrs.get('deref', '')
-                if result_return_pointer_as in [ 'pointer', 'allocatable' ]:
+                if result_return_pointer_as in ['pointer', 'allocatable']:
                     if not CXX_ast.is_indirect():
                         # As std::string is returned.
                         # Must allocate the std::string then assign to it via cxx_rv_decl.
@@ -890,7 +885,7 @@ class Wrapc(util.WrapperMixin):
                     # Argument is passed from Fortran to C by value.
                     # Take address of argument and pass to C++.
                     # It is dereferenced when passed to C++ to pass the value.
-                    #  tutorial::struct1 * SHCXX_arg = 
+                    #  tutorial::struct1 * SHCXX_arg =
                     #    static_cast<tutorial::struct1 *>(static_cast<void *>(&arg));
 
                     tmp = fmt_arg.c_var
@@ -918,8 +913,8 @@ class Wrapc(util.WrapperMixin):
                         # correctly when passed to C++.
                         # base==string will have a pre_call block which sets cxx_local_var
                         cxx_local_var = 'pointer'
-                    
-                stmts = 'intent_' + c_attrs['intent'] + c_attrs.get('_generated_suffix','')
+
+                stmts = 'intent_' + c_attrs['intent'] + c_attrs.get('_generated_suffix', '')
 
             intent_blk = c_statements.get(stmts, {})
 
@@ -1042,7 +1037,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_func.c_rv_decl = result_typemap.c_type + ' *' + fmt_result.c_var
                 fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
             fmt_result.c_type = result_typemap.c_type;
-            fmt_result.idtor  = '0'
+            fmt_result.idtor = '0'
             self.header_impl_include['<stdlib.h>'] = True  # for malloc
             # XXX - similar to c_statements.result
             append_format(post_call,
@@ -1089,7 +1084,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
 
                 c_statements = result_typemap.c_statements
-                generated_suffix = ast.attrs.get('_generated_suffix','')
+                generated_suffix = ast.attrs.get('_generated_suffix', '')
                 intent_blk = c_statements.get('result' + generated_suffix, {})
                 self.add_c_statements_headers(intent_blk)
 
@@ -1104,10 +1099,10 @@ class Wrapc(util.WrapperMixin):
                 if is_union_scalar:
                     # Call function within {}'s to assign to first field of union.
                     append_format(call_code, '{cxx_rv_decl} =\t {{{CXX_this_call}{function_name}'
-                              '{CXX_template}(\t{C_call_list})}};', fmt_func)
+                                  '{CXX_template}(\t{C_call_list})}};', fmt_func)
                 else:
                     append_format(call_code, '{cxx_rv_decl} =\t {CXX_this_call}{function_name}'
-                              '{CXX_template}(\t{C_call_list});', fmt_func)
+                                  '{CXX_template}(\t{C_call_list});', fmt_func)
 
 
             if C_subprogram == 'function':
@@ -1259,7 +1254,7 @@ class Wrapc(util.WrapperMixin):
     capsule_helpers = {}
     capsule_order = []
     capsule_include = {}  # includes needed by C_memory_dtor_function
-    def add_capsule_helper(self, name, typemap, lines):
+    def add_capsule_helper(self, name, var_typemap, lines):
         """Add unique names to capsule_helpers.
         Return index of name.
         """
@@ -1268,8 +1263,8 @@ class Wrapc(util.WrapperMixin):
             self.capsule_order.append(name)
 
             # include files required by the type
-            if typemap and typemap.cxx_header:
-                for include in typemap.cxx_header.split():
+            if var_typemap and var_typemap.cxx_header:
+                for include in var_typemap.cxx_header.split():
                     self.capsule_include[include] = True
 
         return self.capsule_helpers[name][0]
@@ -1320,7 +1315,7 @@ class Wrapc(util.WrapperMixin):
         elif free_pattern is not None:
             # free_pattern attribute.
             fmt.idtor = self.add_destructor(
-                fmt, free_pattern, [ self.patterns[free_pattern] ], None)
+                fmt, free_pattern, [self.patterns[free_pattern]], None)
         elif atypemap.idtor != '0':
             # Return cached value.
             fmt.idtor = atypemap.idtor
