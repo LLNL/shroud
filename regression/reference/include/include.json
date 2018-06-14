@@ -1184,16 +1184,16 @@
                         "cxx_local_var": "scalar", 
                         "pre_call": [
                             "std::vector<{cxx_T}> {cxx_var};", 
-                            "{{", 
-                            "      {c_const}char * BBB = {c_var};", 
-                            "      std::vector<{cxx_T}>::size_type", 
-                            "        {c_temp}i = 0,", 
-                            "        {c_temp}n = {c_var_size};", 
-                            "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "        {cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
-                            "        BBB += {c_var_len};", 
-                            "    }}", 
-                            "}}"
+                            "{{+", 
+                            "{c_const}char * BBB = {c_var};", 
+                            "std::vector<{cxx_T}>::size_type", 
+                            "+{c_temp}i = 0,", 
+                            "{c_temp}n = {c_var_size};", 
+                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "BBB += {c_var_len};", 
+                            "-}}", 
+                            "-}}"
                         ]
                     }, 
                     "intent_inout_buf": {
@@ -1204,30 +1204,30 @@
                         ], 
                         "cxx_local_var": "scalar", 
                         "post_call": [
-                            "{{", 
-                            "    char * BBB = {c_var};", 
-                            "    std::vector<{cxx_T}>::size_type", 
-                            "        {c_temp}i = 0,", 
-                            "        {c_temp}n = {c_var_size};", 
-                            "    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
-                            "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "        ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());", 
-                            "        BBB += {c_var_len};", 
-                            "    }}", 
-                            "}}"
+                            "{{+", 
+                            "char * BBB = {c_var};", 
+                            "std::vector<{cxx_T}>::size_type", 
+                            "+{c_temp}i = 0,", 
+                            "{c_temp}n = {c_var_size};", 
+                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
+                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());", 
+                            "BBB += {c_var_len};", 
+                            "-}}", 
+                            "-}}"
                         ], 
                         "pre_call": [
                             "std::vector<{cxx_T}> {cxx_var};", 
-                            "{{", 
-                            "    {c_const}char * BBB = {c_var};", 
-                            "    std::vector<{cxx_T}>::size_type", 
-                            "        {c_temp}i = 0,", 
-                            "        {c_temp}n = {c_var_size};", 
-                            "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "        {cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
-                            "        BBB += {c_var_len};", 
-                            "    }}", 
-                            "}}"
+                            "{{+", 
+                            "{c_const}char * BBB = {c_var};", 
+                            "std::vector<{cxx_T}>::size_type", 
+                            "+{c_temp}i = 0,", 
+                            "{c_temp}n = {c_var_size};", 
+                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));", 
+                            "BBB += {c_var_len};", 
+                            "-}}", 
+                            "-}}"
                         ]
                     }, 
                     "intent_out_buf": {
@@ -1239,17 +1239,17 @@
                         "c_helper": "ShroudLenTrim", 
                         "cxx_local_var": "scalar", 
                         "post_call": [
-                            "{{", 
-                            "    char * BBB = {c_var};", 
-                            "    std::vector<{cxx_T}>::size_type", 
-                            "        {c_temp}i = 0,", 
-                            "        {c_temp}n = {c_var_size};", 
-                            "    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
-                            "    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{", 
-                            "        ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());", 
-                            "        BBB += {c_var_len};", 
-                            "    }}", 
-                            "}}"
+                            "{{+", 
+                            "char * BBB = {c_var};", 
+                            "std::vector<{cxx_T}>::size_type", 
+                            "+{c_temp}i = 0,", 
+                            "{c_temp}n = {c_var_size};", 
+                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);", 
+                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+", 
+                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());", 
+                            "BBB += {c_var_len};", 
+                            "-}}", 
+                            "-}}"
                         ], 
                         "pre_call": [
                             "{c_const}std::vector<{cxx_T}> {cxx_var};"

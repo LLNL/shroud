@@ -179,8 +179,8 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer begin function.vector_string_count_bufferify
     std::vector<std::string> SH_arg;
     {
-          const char * BBB = arg;
-          std::vector<std::string>::size_type
+        const char * BBB = arg;
+        std::vector<std::string>::size_type
             SHT_i = 0,
             SHT_n = Sarg;
         for(; SHT_i < SHT_n; SHT_i++) {
