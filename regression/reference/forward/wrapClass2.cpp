@@ -68,8 +68,8 @@ FOR_class2 FOR_class2_ctor()
 void FOR_class2_dtor(FOR_class2 * self)
 {
 // splicer begin class.Class2.method.dtor
-    tutorial::Class2 *SH_this = static_cast<tutorial::
-        Class2 *>(self->addr);
+    tutorial::Class2 *SH_this =
+        static_cast<tutorial::Class2 *>(self->addr);
     delete SH_this;
     self->addr = NULL;
     return;
@@ -80,9 +80,9 @@ void FOR_class2_dtor(FOR_class2 * self)
 void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {
 // splicer begin class.Class2.method.func1
-    tutorial::Class2 *SH_this = static_cast<tutorial::
-        Class2 *>(self->addr);
-    tutorial::Class1 * SHCXX_arg = 
+    tutorial::Class2 *SH_this =
+        static_cast<tutorial::Class2 *>(self->addr);
+    tutorial::Class1 * SHCXX_arg =
         static_cast<tutorial::Class1 *>(arg->addr);
     SH_this->func1(SHCXX_arg);
     return;

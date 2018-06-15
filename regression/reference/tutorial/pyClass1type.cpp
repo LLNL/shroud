@@ -188,11 +188,11 @@ PY_class1_directionFunc(
         return NULL;
 
     // post_parse
-    tutorial::Class1::DIRECTION SH_arg = static_cast<tutorial::
-        Class1::DIRECTION>(arg);
+    tutorial::Class1::DIRECTION SH_arg =
+        static_cast<tutorial::Class1::DIRECTION>(arg);
 
-    tutorial::
-        Class1::DIRECTION SHCXX_rv = self->obj->directionFunc(SH_arg);
+    tutorial::Class1::DIRECTION SHCXX_rv =
+        self->obj->directionFunc(SH_arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);

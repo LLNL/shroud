@@ -55,8 +55,8 @@ extern "C" {
 void AA_exclass3_exfunc_0(AA_exclass3 * self)
 {
 // splicer begin class.ExClass3.method.exfunc_0
-    example::nested::ExClass3 *SH_this = static_cast<example::nested::
-        ExClass3 *>(self->addr);
+    example::nested::ExClass3 *SH_this =
+        static_cast<example::nested::ExClass3 *>(self->addr);
     SH_this->exfunc();
     return;
 // splicer end class.ExClass3.method.exfunc_0
@@ -68,8 +68,8 @@ void AA_exclass3_exfunc_0(AA_exclass3 * self)
 void AA_exclass3_exfunc_1(AA_exclass3 * self, int flag)
 {
 // splicer begin class.ExClass3.method.exfunc_1
-    example::nested::ExClass3 *SH_this = static_cast<example::nested::
-        ExClass3 *>(self->addr);
+    example::nested::ExClass3 *SH_this =
+        static_cast<example::nested::ExClass3 *>(self->addr);
     SH_this->exfunc(flag);
     return;
 // splicer end class.ExClass3.method.exfunc_1

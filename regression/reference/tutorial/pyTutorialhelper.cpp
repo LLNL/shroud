@@ -120,8 +120,8 @@ void PY_array_destructor_function(PyObject *cap)
     const char * context = static_cast<const char *>
         (PyCapsule_GetContext(cap));
     if (context == PY_array_destructor_context[0]) {
-        tutorial::struct1 * cxx_ptr = static_cast<tutorial::
-            struct1 *>(ptr);
+        tutorial::struct1 * cxx_ptr =
+            static_cast<tutorial::struct1 *>(ptr);
         delete cxx_ptr;
     } else {
         // no such destructor

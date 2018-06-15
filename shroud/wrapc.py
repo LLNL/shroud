@@ -497,7 +497,6 @@ class Wrapc(util.WrapperMixin):
         ntypemap = node.typemap
         if has_dtor:
             cxx_type = ntypemap.cxx_type
-            cxx_type = cxx_type.replace('\t', '')
             del_lines = [
                 '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
                     cxx_type=cxx_type),
@@ -767,7 +766,7 @@ class Wrapc(util.WrapperMixin):
                         raise RuntimeError("Wappped class does not have c_to_cxx set")
                     append_format(
                         pre_call,
-                        '{c_const}{namespace_scope}{cxx_class} *{CXX_this} = ' +
+                        '{c_const}{namespace_scope}{cxx_class} *{CXX_this} =\t ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
@@ -896,7 +895,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var, params=None,
                         as_ptr=True, force_ptr=True, continuation=True)
-                    append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
+                    append_format(pre_call, '{cxx_decl} =\t {cxx_val};', fmt_arg)
                 elif arg_typemap.c_to_cxx is None:
                     fmt_arg.cxx_var = fmt_arg.c_var      # compatible
                 else:
@@ -905,7 +904,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var, params=None, as_ptr=True, continuation=True)
-                    append_format(pre_call, '{cxx_decl} = {cxx_val};', fmt_arg)
+                    append_format(pre_call, '{cxx_decl} =\t {cxx_val};', fmt_arg)
 
                     if arg.is_indirect():
                         # Only pointers can be passed in and must cast to another pointer.
@@ -1031,7 +1030,7 @@ class Wrapc(util.WrapperMixin):
         if is_ctor:
             # Always create a pointer to the instance.
             fmt_func.cxx_rv_decl = result_typemap.cxx_type + ' *' + fmt_result.cxx_var
-            append_format(call_code, '{cxx_rv_decl} = new {namespace_scope}'
+            append_format(call_code, '{cxx_rv_decl} =\t new {namespace_scope}'
                           '{cxx_class}({C_call_list});', fmt_func)
             if result_typemap.cxx_to_c is not None:
                 fmt_func.c_rv_decl = result_typemap.c_type + ' *' + fmt_result.c_var
@@ -1081,7 +1080,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
                         name=fmt_result.c_var, params=None, continuation=True)
                     fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
-                    append_format(post_call, '{c_rv_decl} = {c_val};', fmt_result)
+                    append_format(post_call, '{c_rv_decl} =\t {c_val};', fmt_result)
 
                 c_statements = result_typemap.c_statements
                 generated_suffix = ast.attrs.get('_generated_suffix', '')
@@ -1323,14 +1322,14 @@ class Wrapc(util.WrapperMixin):
             # A C++ native type (std::string, std::vector)
             # XXX - vector does not assign cxx_to_c
             fmt.idtor = self.add_destructor(fmt, atypemap.cxx_type, [
-                '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                '{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);',
                 'delete cxx_ptr;',
             ], atypemap)
             atypemap.idtor = fmt.idtor
         else:
             # A POD type
             fmt.idtor = self.add_destructor(fmt, atypemap.cxx_type, [
-                '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);',
+                '{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);',
                 'free(cxx_ptr);',
             ], atypemap)
             atypemap.idtor = fmt.idtor

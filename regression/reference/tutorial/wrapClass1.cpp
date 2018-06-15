@@ -81,8 +81,8 @@ TUT_class1 TUT_class1_new_flag(int flag)
 void TUT_class1_delete(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.delete
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     delete SH_this;
     self->addr = NULL;
     return;
@@ -97,8 +97,8 @@ void TUT_class1_delete(TUT_class1 * self)
 int TUT_class1_method1(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.method1
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     int SHC_rv = SH_this->Method1();
     return SHC_rv;
 // splicer end class.Class1.method.method1
@@ -113,10 +113,10 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
     const TUT_class1 * obj2)
 {
 // splicer begin class.Class1.method.equivalent
-    const tutorial::Class1 *SH_this = static_cast<const tutorial::
-        Class1 *>(self->addr);
-    const tutorial::Class1 * SHCXX_obj2 = static_cast<const tutorial::
-        Class1 *>(obj2->addr);
+    const tutorial::Class1 *SH_this =
+        static_cast<const tutorial::Class1 *>(self->addr);
+    const tutorial::Class1 * SHCXX_obj2 =
+        static_cast<const tutorial::Class1 *>(obj2->addr);
     bool SHC_rv = SH_this->equivalent(*SHCXX_obj2);
     return SHC_rv;
 // splicer end class.Class1.method.equivalent
@@ -130,8 +130,8 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 void TUT_class1_return_this(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.return_this
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     SH_this->returnThis();
     return;
 // splicer end class.Class1.method.return_this
@@ -146,8 +146,8 @@ TUT_class1 TUT_class1_return_this_buffer(TUT_class1 * self, char * name,
     bool flag)
 {
 // splicer begin class.Class1.method.return_this_buffer
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     std::string SH_name(name);
     tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name,
         flag);
@@ -167,8 +167,8 @@ TUT_class1 TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
     char * name, int Lname, bool flag)
 {
 // splicer begin class.Class1.method.return_this_buffer_bufferify
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     std::string SH_name(name, Lname);
     tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name,
         flag);
@@ -183,10 +183,10 @@ TUT_class1 TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
 int TUT_class1_direction_func(TUT_class1 * self, int arg)
 {
 // splicer begin class.Class1.method.direction_func
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
-    tutorial::Class1::DIRECTION SHCXX_arg = static_cast<tutorial::
-        Class1::DIRECTION>(arg);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
+    tutorial::Class1::DIRECTION SHCXX_arg =
+        static_cast<tutorial::Class1::DIRECTION>(arg);
     tutorial::Class1::DIRECTION SHCXX_rv = SH_this->directionFunc(
         SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
@@ -198,8 +198,8 @@ int TUT_class1_direction_func(TUT_class1 * self, int arg)
 int TUT_class1_get_m_flag(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.get_m_flag
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     return SH_this->m_flag;
 // splicer end class.Class1.method.get_m_flag
 }
@@ -208,8 +208,8 @@ int TUT_class1_get_m_flag(TUT_class1 * self)
 int TUT_class1_get_test(TUT_class1 * self)
 {
 // splicer begin class.Class1.method.get_test
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     return SH_this->m_test;
 // splicer end class.Class1.method.get_test
 }
@@ -218,8 +218,8 @@ int TUT_class1_get_test(TUT_class1 * self)
 void TUT_class1_set_test(TUT_class1 * self, int val)
 {
 // splicer begin class.Class1.method.set_test
-    tutorial::Class1 *SH_this = static_cast<tutorial::
-        Class1 *>(self->addr);
+    tutorial::Class1 *SH_this =
+        static_cast<tutorial::Class1 *>(self->addr);
     SH_this->m_test = val;
     return;
 // splicer end class.Class1.method.set_test

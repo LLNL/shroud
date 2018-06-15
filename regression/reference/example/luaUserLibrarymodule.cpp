@@ -71,7 +71,8 @@ static int l_exclass1_ctor(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            l_ExClass1_Type * SH_this = (l_ExClass1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+            l_ExClass1_Type * SH_this =
+                (l_ExClass1_Type *) lua_newuserdata(L, sizeof(*SH_this));
             SH_this->self = new example::nested::ExClass1();
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "ExClass1.metatable");
@@ -83,7 +84,8 @@ static int l_exclass1_ctor(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TSTRING) {
             const char * name = lua_tostring(L, 1);
-            l_ExClass1_Type * SH_this = (l_ExClass1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+            l_ExClass1_Type * SH_this =
+                (l_ExClass1_Type *) lua_newuserdata(L, sizeof(*SH_this));
             SH_this->self = new example::nested::ExClass1(name);
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "ExClass1.metatable");
@@ -300,7 +302,8 @@ static int l_exclass2_ctor(lua_State *L)
 {
     // splicer begin class.ExClass2.method.ctor
     const char * name = lua_tostring(L, 1);
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) lua_newuserdata(L, sizeof(*SH_this));
+    l_ExClass2_Type * SH_this =
+        (l_ExClass2_Type *) lua_newuserdata(L, sizeof(*SH_this));
     SH_this->self = new example::nested::ExClass2(name);
     /* Add the metatable to the stack. */
     luaL_getmetatable(L, "ExClass2.metatable");
@@ -394,13 +397,13 @@ static int l_exclass2_get_name_length(lua_State *L)
 static int l_exclass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
-    const example::nested::ExClass1 * in = static_cast<example::nested::
-        ExClass1 *>((l_ExClass2_Type *) luaL_checkudata(
-        L, 1, "ExClass2.metatable")->addr);
+    const example::nested::ExClass1 * in =
+        static_cast<example::nested::ExClass1 *>((l_ExClass2_Type *)
+        luaL_checkudata(L, 1, "ExClass2.metatable")->addr);
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    example::nested::
-        ExClass1 * SHCXX_rv = SH_this->self->get_class1(in);
+    example::nested::ExClass1 * SHCXX_rv =
+        SH_this->self->get_class1(in);
     PUSH;
     return 1;
     // splicer end class.ExClass2.method.get_class1

@@ -151,7 +151,7 @@
                             "enum_lower": "direction", 
                             "enum_name": "DIRECTION", 
                             "enum_upper": "DIRECTION", 
-                            "namespace_scope": "tutorial::\tClass1::"
+                            "namespace_scope": "tutorial::Class1::"
                         }, 
                         "name": "DIRECTION", 
                         "options": {}, 
@@ -193,12 +193,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -237,7 +237,7 @@
                         "decl": "Class1()         +name(new)", 
                         "declgen": "Class1() +name(new)", 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1();", 
+                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1();", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_new_default", 
                             "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -261,7 +261,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "TUT_class1 *SHC_rv", 
-                            "cxx_rv_decl": "tutorial::\tClass1 *SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv", 
                             "function_name": "new", 
                             "function_suffix": "_default", 
                             "underscore_name": "new"
@@ -321,12 +321,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -381,7 +381,7 @@
                         "decl": "Class1(int flag) +name(new)", 
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)", 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1 *SHCXX_rv = new tutorial::\tClass1(flag);", 
+                            "C_call_code": "tutorial::Class1 *SHCXX_rv =\t new tutorial::Class1(flag);", 
                             "C_call_list": "flag", 
                             "C_name": "TUT_class1_new_flag", 
                             "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -403,7 +403,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "TUT_class1 *SHC_rv", 
-                            "cxx_rv_decl": "tutorial::\tClass1 *SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv", 
                             "function_name": "new", 
                             "function_suffix": "_flag", 
                             "underscore_name": "new"
@@ -431,7 +431,7 @@
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_delete", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -511,7 +511,7 @@
                             "C_call_code": "int SHC_rv =\t SH_this->Method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_method1", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -547,11 +547,11 @@
                                     "c_member": "->", 
                                     "c_var": "obj2", 
                                     "cxx_addr": "", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_obj2))", 
-                                    "cxx_decl": "const tutorial::\tClass1 * SHCXX_obj2", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_obj2))", 
+                                    "cxx_decl": "const tutorial::Class1 * SHCXX_obj2", 
                                     "cxx_member": "->", 
-                                    "cxx_type": "tutorial::\tClass1", 
-                                    "cxx_val": "\tstatic_cast<const tutorial::\tClass1 *>(obj2->addr)", 
+                                    "cxx_type": "tutorial::Class1", 
+                                    "cxx_val": "static_cast<const tutorial::Class1 *>(obj2->addr)", 
                                     "cxx_var": "SHCXX_obj2", 
                                     "idtor": "0"
                                 }, 
@@ -566,9 +566,9 @@
                                     "c_type": "TUT_class1", 
                                     "c_var": "obj2", 
                                     "cxx_addr": "&", 
-                                    "cxx_decl": "tutorial::\tClass1 obj2", 
+                                    "cxx_decl": "tutorial::Class1 obj2", 
                                     "cxx_member": "->", 
-                                    "cxx_type": "tutorial::\tClass1", 
+                                    "cxx_type": "tutorial::Class1", 
                                     "cxx_var": "obj2", 
                                     "numpy_type": null, 
                                     "py_type": "PY_Class1", 
@@ -646,7 +646,7 @@
                             "C_call_code": "bool SHC_rv =\t SH_this->equivalent(\t*SHCXX_obj2);", 
                             "C_call_list": "*SHCXX_obj2", 
                             "C_name": "TUT_class1_equivalent", 
-                            "C_pre_call": "const tutorial::\tClass1 *SH_this = \tstatic_cast<const tutorial::\tClass1 *>(self->addr);\nconst tutorial::\tClass1 * SHCXX_obj2 = \tstatic_cast<const tutorial::\tClass1 *>(obj2->addr);", 
+                            "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);\nconst tutorial::Class1 * SHCXX_obj2 =\t static_cast<const tutorial::Class1 *>(obj2->addr);", 
                             "C_prototype": "const TUT_class1 * self,\t const TUT_class1 * obj2", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "bool", 
@@ -703,7 +703,7 @@
                             "C_call_code": "SH_this->returnThis(\t);", 
                             "C_call_list": "", 
                             "C_name": "TUT_class1_return_this", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -766,12 +766,12 @@
                                 "cxx_addr": "", 
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                                 "cxx_member": "->", 
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "f_var": "SHT_rv"
                             }
                         }, 
@@ -837,11 +837,11 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         }, 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
+                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
                             "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer", 
                             "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SH_name(name);", 
                             "C_prototype": "TUT_class1 * self,\t char * name,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1", 
@@ -859,7 +859,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "cxx_rv_decl": "tutorial::\tClass1 * SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::Class1 * SHCXX_rv", 
                             "function_name": "returnThisBuffer", 
                             "underscore_name": "return_this_buffer"
                         }, 
@@ -914,7 +914,7 @@
                                 "cxx_addr": "", 
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                                 "cxx_member": "->", 
-                                "cxx_type": "tutorial::\tClass1", 
+                                "cxx_type": "tutorial::Class1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
@@ -984,11 +984,11 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         }, 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
+                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->returnThisBuffer(\tSH_name,\t flag);", 
                             "C_call_list": "SH_name,\t flag", 
                             "C_name": "TUT_class1_return_this_buffer_bufferify", 
                             "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\nstd::string SH_name(name, Lname);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\nstd::string SH_name(name, Lname);", 
                             "C_prototype": "TUT_class1 * self,\t char * name,\t int Lname,\t bool flag", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TUT_class1", 
@@ -997,7 +997,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "cxx_rv_decl": "tutorial::\tClass1 * SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::Class1 * SHCXX_rv", 
                             "function_name": "returnThisBuffer", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "return_this_buffer"
@@ -1019,10 +1019,10 @@
                                     "c_var": "arg", 
                                     "cxx_addr": "&", 
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg)", 
-                                    "cxx_decl": "tutorial::\tClass1::DIRECTION SHCXX_arg", 
+                                    "cxx_decl": "tutorial::Class1::DIRECTION SHCXX_arg", 
                                     "cxx_member": ".", 
-                                    "cxx_type": "tutorial::\tClass1::DIRECTION", 
-                                    "cxx_val": "static_cast<tutorial::\tClass1::DIRECTION>(arg)", 
+                                    "cxx_type": "tutorial::Class1::DIRECTION", 
+                                    "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)", 
                                     "cxx_var": "SHCXX_arg", 
                                     "idtor": "0"
                                 }, 
@@ -1037,7 +1037,7 @@
                                     "c_var": "lua_tointeger(L, 1)", 
                                     "c_var_len": "Larg", 
                                     "cxx_member": ".", 
-                                    "cxx_type": "tutorial::\tClass1::DIRECTION", 
+                                    "cxx_type": "tutorial::Class1::DIRECTION", 
                                     "cxx_var": "arg", 
                                     "lua_var": "SH_Lua_arg"
                                 }, 
@@ -1048,10 +1048,10 @@
                                     "c_type": "int", 
                                     "c_var": "arg", 
                                     "cxx_addr": "&", 
-                                    "cxx_decl": "tutorial::\tClass1::DIRECTION SH_arg", 
+                                    "cxx_decl": "tutorial::Class1::DIRECTION SH_arg", 
                                     "cxx_member": ".", 
-                                    "cxx_type": "tutorial::\tClass1::DIRECTION", 
-                                    "cxx_val": "static_cast<tutorial::\tClass1::DIRECTION>(arg)", 
+                                    "cxx_type": "tutorial::Class1::DIRECTION", 
+                                    "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)", 
                                     "cxx_var": "SH_arg", 
                                     "numpy_type": "NPY_INT", 
                                     "py_var": "SHPy_arg"
@@ -1065,12 +1065,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "&", 
                                 "cxx_member": ".", 
-                                "cxx_type": "tutorial::\tClass1::DIRECTION", 
+                                "cxx_type": "tutorial::Class1::DIRECTION", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "tutorial::\tClass1::DIRECTION", 
+                                "cxx_type": "tutorial::Class1::DIRECTION", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -1125,11 +1125,11 @@
                         "decl": "DIRECTION directionFunc(DIRECTION arg);", 
                         "declgen": "DIRECTION directionFunc(DIRECTION arg +intent(in)+value)", 
                         "format": {
-                            "C_call_code": "tutorial::\tClass1::DIRECTION SHCXX_rv =\t SH_this->directionFunc(\tSHCXX_arg);", 
+                            "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t SH_this->directionFunc(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "TUT_class1_direction_func", 
-                            "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);\ntutorial::\tClass1::DIRECTION SHCXX_arg = static_cast<tutorial::\tClass1::DIRECTION>(arg);", 
+                            "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);\ntutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);", 
                             "C_prototype": "TUT_class1 * self,\t int arg", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -1150,7 +1150,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "cxx_rv_decl": "tutorial::\tClass1::DIRECTION SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::Class1::DIRECTION SHCXX_rv", 
                             "function_name": "directionFunc", 
                             "underscore_name": "direction_func"
                         }, 
@@ -1193,7 +1193,7 @@
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn SH_this->m_flag;", 
                             "C_name": "TUT_class1_get_m_flag", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -1257,7 +1257,7 @@
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn SH_this->m_test;", 
                             "C_name": "TUT_class1_get_test", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -1343,7 +1343,7 @@
                             "C_call_list": "val", 
                             "C_code": "{C_pre_call}\nSH_this->m_test = val;\nreturn;", 
                             "C_name": "TUT_class1_set_test", 
-                            "C_pre_call": "tutorial::\tClass1 *SH_this = \tstatic_cast<tutorial::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class1 *SH_this =\t static_cast<tutorial::Class1 *>(self->addr);", 
                             "C_prototype": "TUT_class1 * self,\t int val", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1751,7 +1751,7 @@
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction1(\t);", 
+                    "C_call_code": "tutorial::Function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function1", 
                     "C_prototype": "", 
@@ -1944,7 +1944,7 @@
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction2(\targ1,\t arg2);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function2", 
                     "C_prototype": "double arg1,\t int arg2", 
@@ -2152,7 +2152,7 @@
                 "decl": "void Sum(size_t len  +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
                 "declgen": "void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
                 "format": {
-                    "C_call_code": "tutorial::\tSum(\tlen,\t values,\t result);", 
+                    "C_call_code": "tutorial::Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "TUT_sum", 
                     "C_prototype": "size_t len,\t int * values,\t int * result", 
@@ -2274,7 +2274,7 @@
                 "decl": "long long TypeLongLong(long long arg1)", 
                 "declgen": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "long long SHC_rv =\t tutorial::\tTypeLongLong(\targ1);", 
+                    "C_call_code": "long long SHC_rv =\t tutorial::TypeLongLong(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_type_long_long", 
                     "C_prototype": "long long arg1", 
@@ -2412,7 +2412,7 @@
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "bool SHC_rv =\t tutorial::\tFunction3(\targ);", 
+                    "C_call_code": "bool SHC_rv =\t tutorial::Function3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function3", 
                     "C_prototype": "bool arg", 
@@ -2569,7 +2569,7 @@
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction3b(\targ1,\t arg2,\t arg3);", 
+                    "C_call_code": "tutorial::Function3b(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "TUT_function3b", 
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3", 
@@ -2917,7 +2917,7 @@
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string SHCXX_rv =\t tutorial::\tFunction4a(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string SHCXX_rv =\t tutorial::Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4a_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}", 
@@ -3115,10 +3115,10 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4b(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::Function4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b", 
-                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
+                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
                     "C_pre_call": "const std::string SH_arg1(arg1);\nconst std::string SH_arg2(arg2);", 
                     "C_prototype": "const char * arg1,\t const char * arg2", 
                     "C_return_code": "return SHC_rv;", 
@@ -3293,7 +3293,7 @@
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4b(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::Function4b(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4b_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(output, ' ', Noutput);\n-} else {+\nShroudStrCopy(output, Noutput,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}", 
@@ -3606,10 +3606,10 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4c(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::Function4c(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4c", 
-                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
+                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
                     "C_pre_call": "const std::string SH_arg1(arg1);\nconst std::string SH_arg2(arg2);", 
                     "C_prototype": "const char * arg1,\t const char * arg2", 
                     "C_return_code": "return SHC_rv;", 
@@ -3795,7 +3795,7 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tFunction4c(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::Function4c(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4c_bufferify", 
                     "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;", 
@@ -3880,10 +3880,10 @@
                     "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t tutorial::\tFunction4d(\t);", 
+                    "C_call_code": "const std::string * SHCXX_rv =\t tutorial::Function4d(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function4d", 
-                    "C_post_call": "const char * SHC_rv = SHCXX_rv->c_str();", 
+                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv->c_str();", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
@@ -3987,7 +3987,7 @@
                     "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
                 }, 
                 "format": {
-                    "C_call_code": "const std::string * SHCXX_rv =\t tutorial::\tFunction4d(\t);", 
+                    "C_call_code": "const std::string * SHCXX_rv =\t tutorial::Function4d(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function4d_bufferify", 
                     "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;", 
@@ -4048,7 +4048,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction5(\t);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::Function5(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function5", 
                     "C_prototype": "", 
@@ -4154,7 +4154,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction5(\targ1);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::Function5(\targ1);", 
                     "C_call_list": "arg1", 
                     "C_name": "TUT_function5_arg1", 
                     "C_prototype": "double arg1", 
@@ -4370,7 +4370,7 @@
                     "_arg1_arg2"
                 ], 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction5(\targ1,\t arg2);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::Function5(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TUT_function5_arg1_arg2", 
                     "C_prototype": "double arg1,\t bool arg2", 
@@ -4479,7 +4479,7 @@
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction6(\tSH_name);", 
+                    "C_call_code": "tutorial::Function6(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "TUT_function6_from_name", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -4570,7 +4570,7 @@
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction6(\tSH_name);", 
+                    "C_call_code": "tutorial::Function6(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "TUT_function6_from_name_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -4671,7 +4671,7 @@
                 "decl": "void Function6(int indx)", 
                 "declgen": "void Function6(int indx +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction6(\tindx);", 
+                    "C_call_code": "tutorial::Function6(\tindx);", 
                     "C_call_list": "indx", 
                     "C_name": "TUT_function6_from_index", 
                     "C_prototype": "int indx", 
@@ -4829,7 +4829,7 @@
                 "declgen": "void Function7(int arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "tutorial::\tFunction7<int>(\targ);", 
+                    "C_call_code": "tutorial::Function7<int>(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function7_int", 
                     "C_prototype": "int arg", 
@@ -4942,7 +4942,7 @@
                 "declgen": "void Function7(double arg +intent(in)+value)", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "tutorial::\tFunction7<double>(\targ);", 
+                    "C_call_code": "tutorial::Function7<double>(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function7_double", 
                     "C_prototype": "double arg", 
@@ -5043,7 +5043,7 @@
                 "declgen": "int Function8()", 
                 "format": {
                     "CXX_template": "<int>", 
-                    "C_call_code": "int SHC_rv =\t tutorial::\tFunction8<int>(\t);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::Function8<int>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_int", 
                     "C_prototype": "", 
@@ -5109,7 +5109,7 @@
                 "declgen": "double Function8()", 
                 "format": {
                     "CXX_template": "<double>", 
-                    "C_call_code": "double SHC_rv =\t tutorial::\tFunction8<double>(\t);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::Function8<double>(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function8_double", 
                     "C_prototype": "", 
@@ -5219,7 +5219,7 @@
                 "decl": "void Function9(double arg)", 
                 "declgen": "void Function9(double arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction9(\targ);", 
+                    "C_call_code": "tutorial::Function9(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_function9", 
                     "C_prototype": "double arg", 
@@ -5375,7 +5375,7 @@
                 "decl": "void Function10()", 
                 "declgen": "void Function10()", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction10(\t);", 
+                    "C_call_code": "tutorial::Function10(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function10_0", 
                     "C_prototype": "", 
@@ -5536,7 +5536,7 @@
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction10(\tSH_name,\t arg2);", 
+                    "C_call_code": "tutorial::Function10(\tSH_name,\t arg2);", 
                     "C_call_list": "SH_name,\t arg2", 
                     "C_name": "TUT_function10_1", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -5813,7 +5813,7 @@
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tFunction10(\tSH_name,\t arg2);", 
+                    "C_call_code": "tutorial::Function10(\tSH_name,\t arg2);", 
                     "C_call_list": "SH_name,\t arg2", 
                     "C_name": "TUT_function10_1_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -5916,7 +5916,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\tnum);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\tnum);", 
                     "C_call_list": "num", 
                     "C_name": "TUT_overload1_num", 
                     "C_prototype": "int num", 
@@ -6055,7 +6055,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\tnum,\t offset);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\tnum,\t offset);", 
                     "C_call_list": "num,\t offset", 
                     "C_name": "TUT_overload1_num_offset", 
                     "C_prototype": "int num,\t int offset", 
@@ -6328,7 +6328,7 @@
                     "_num_offset_stride"
                 ], 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\tnum,\t offset,\t stride);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\tnum,\t offset,\t stride);", 
                     "C_call_list": "num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_num_offset_stride", 
                     "C_prototype": "int num,\t int offset,\t int stride", 
@@ -6459,7 +6459,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\ttype,\t num);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\ttype,\t num);", 
                     "C_call_list": "type,\t num", 
                     "C_name": "TUT_overload1_3", 
                     "C_prototype": "double type,\t int num", 
@@ -6626,7 +6626,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\ttype,\t num,\t offset);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\ttype,\t num,\t offset);", 
                     "C_call_list": "type,\t num,\t offset", 
                     "C_name": "TUT_overload1_4", 
                     "C_prototype": "double type,\t int num,\t int offset", 
@@ -6952,7 +6952,7 @@
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\toverload1(\ttype,\t num,\t offset,\t stride);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\ttype,\t num,\t offset,\t stride);", 
                     "C_call_list": "type,\t num,\t offset,\t stride", 
                     "C_name": "TUT_overload1_5", 
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride", 
@@ -7088,7 +7088,7 @@
                 "decl": "TypeID typefunc(TypeID arg)", 
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::TypeID SHC_rv =\t tutorial::\ttypefunc(\targ);", 
+                    "C_call_code": "tutorial::TypeID SHC_rv =\t tutorial::typefunc(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "TUT_typefunc", 
                     "C_prototype": "int arg", 
@@ -7230,11 +7230,11 @@
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::EnumTypeID SHCXX_rv =\t tutorial::\tenumfunc(\tSHCXX_arg);", 
+                    "C_call_code": "tutorial::EnumTypeID SHCXX_rv =\t tutorial::enumfunc(\tSHCXX_arg);", 
                     "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_enumfunc", 
-                    "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
-                    "C_pre_call": "tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);", 
+                    "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);", 
+                    "C_pre_call": "tutorial::EnumTypeID SHCXX_arg =\t static_cast<tutorial::EnumTypeID>(arg);", 
                     "C_prototype": "int arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -7268,10 +7268,10 @@
                             "c_var": "arg", 
                             "cxx_addr": "&", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg)", 
-                            "cxx_decl": "tutorial::\tColor SHCXX_arg", 
+                            "cxx_decl": "tutorial::Color SHCXX_arg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tColor", 
-                            "cxx_val": "static_cast<tutorial::\tColor>(arg)", 
+                            "cxx_type": "tutorial::Color", 
+                            "cxx_val": "static_cast<tutorial::Color>(arg)", 
                             "cxx_var": "SHCXX_arg", 
                             "idtor": "0"
                         }, 
@@ -7286,7 +7286,7 @@
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Larg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tColor", 
+                            "cxx_type": "tutorial::Color", 
                             "cxx_var": "arg", 
                             "lua_var": "SH_Lua_arg"
                         }, 
@@ -7297,10 +7297,10 @@
                             "c_type": "int", 
                             "c_var": "arg", 
                             "cxx_addr": "&", 
-                            "cxx_decl": "tutorial::\tColor SH_arg", 
+                            "cxx_decl": "tutorial::Color SH_arg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tColor", 
-                            "cxx_val": "static_cast<tutorial::\tColor>(arg)", 
+                            "cxx_type": "tutorial::Color", 
+                            "cxx_val": "static_cast<tutorial::Color>(arg)", 
                             "cxx_var": "SH_arg", 
                             "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_arg"
@@ -7314,12 +7314,12 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_type": "tutorial::\tColor", 
+                        "cxx_type": "tutorial::Color", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tColor", 
+                        "cxx_type": "tutorial::Color", 
                         "f_var": "SHT_rv"
                     }, 
                     "fmtl": {
@@ -7374,11 +7374,11 @@
                 "decl": "Color colorfunc(Color arg);", 
                 "declgen": "Color colorfunc(Color arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tColor SHCXX_rv =\t tutorial::\tcolorfunc(\tSHCXX_arg);", 
+                    "C_call_code": "tutorial::Color SHCXX_rv =\t tutorial::colorfunc(\tSHCXX_arg);", 
                     "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_colorfunc", 
-                    "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
-                    "C_pre_call": "tutorial::\tColor SHCXX_arg = static_cast<tutorial::\tColor>(arg);", 
+                    "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);", 
+                    "C_pre_call": "tutorial::Color SHCXX_arg =\t static_cast<tutorial::Color>(arg);", 
                     "C_prototype": "int arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -7396,7 +7396,7 @@
                     "LUA_name_impl": "l_colorfunc", 
                     "PY_name_impl": "PY_colorfunc", 
                     "c_const": "", 
-                    "cxx_rv_decl": "tutorial::\tColor SHCXX_rv", 
+                    "cxx_rv_decl": "tutorial::Color SHCXX_rv", 
                     "function_name": "colorfunc", 
                     "underscore_name": "colorfunc"
                 }, 
@@ -7535,7 +7535,7 @@
                     "brief": "Pass in reference to scalar"
                 }, 
                 "format": {
-                    "C_call_code": "tutorial::\tgetMinMax(\t*min,\t *max);", 
+                    "C_call_code": "tutorial::getMinMax(\t*min,\t *max);", 
                     "C_call_list": "*min,\t *max", 
                     "C_name": "TUT_get_min_max", 
                     "C_prototype": "int * min,\t int * max", 
@@ -7569,10 +7569,10 @@
                             "c_var": "arg", 
                             "cxx_addr": "&", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg)", 
-                            "cxx_decl": "tutorial::\tClass1::DIRECTION SHCXX_arg", 
+                            "cxx_decl": "tutorial::Class1::DIRECTION SHCXX_arg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tClass1::DIRECTION", 
-                            "cxx_val": "static_cast<tutorial::\tClass1::DIRECTION>(arg)", 
+                            "cxx_type": "tutorial::Class1::DIRECTION", 
+                            "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)", 
                             "cxx_var": "SHCXX_arg", 
                             "idtor": "0"
                         }, 
@@ -7587,7 +7587,7 @@
                             "c_var": "lua_tointeger(L, 1)", 
                             "c_var_len": "Larg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tClass1::DIRECTION", 
+                            "cxx_type": "tutorial::Class1::DIRECTION", 
                             "cxx_var": "arg", 
                             "lua_var": "SH_Lua_arg"
                         }, 
@@ -7598,10 +7598,10 @@
                             "c_type": "int", 
                             "c_var": "arg", 
                             "cxx_addr": "&", 
-                            "cxx_decl": "tutorial::\tClass1::DIRECTION SH_arg", 
+                            "cxx_decl": "tutorial::Class1::DIRECTION SH_arg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tClass1::DIRECTION", 
-                            "cxx_val": "static_cast<tutorial::\tClass1::DIRECTION>(arg)", 
+                            "cxx_type": "tutorial::Class1::DIRECTION", 
+                            "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)", 
                             "cxx_var": "SH_arg", 
                             "numpy_type": "NPY_INT", 
                             "py_var": "SHPy_arg"
@@ -7615,12 +7615,12 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_type": "tutorial::\tClass1::DIRECTION", 
+                        "cxx_type": "tutorial::Class1::DIRECTION", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tClass1::DIRECTION", 
+                        "cxx_type": "tutorial::Class1::DIRECTION", 
                         "f_var": "SHT_rv"
                     }, 
                     "fmtl": {
@@ -7675,11 +7675,11 @@
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);", 
                 "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tClass1::DIRECTION SHCXX_rv =\t tutorial::\tdirectionFunc(\tSHCXX_arg);", 
+                    "C_call_code": "tutorial::Class1::DIRECTION SHCXX_rv =\t tutorial::directionFunc(\tSHCXX_arg);", 
                     "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_direction_func", 
-                    "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
-                    "C_pre_call": "tutorial::\tClass1::DIRECTION SHCXX_arg = static_cast<tutorial::\tClass1::DIRECTION>(arg);", 
+                    "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);", 
+                    "C_pre_call": "tutorial::Class1::DIRECTION SHCXX_arg =\t static_cast<tutorial::Class1::DIRECTION>(arg);", 
                     "C_prototype": "int arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -7697,7 +7697,7 @@
                     "LUA_name_impl": "l_direction_func", 
                     "PY_name_impl": "PY_directionFunc", 
                     "c_const": "", 
-                    "cxx_rv_decl": "tutorial::\tClass1::DIRECTION SHCXX_rv", 
+                    "cxx_rv_decl": "tutorial::Class1::DIRECTION SHCXX_rv", 
                     "function_name": "directionFunc", 
                     "underscore_name": "direction_func"
                 }, 
@@ -7712,11 +7712,11 @@
                             "c_member": "->", 
                             "c_var": "arg1", 
                             "cxx_addr": "", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_arg1))", 
-                            "cxx_decl": "const tutorial::\tClass1 * SHCXX_arg1", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_arg1))", 
+                            "cxx_decl": "const tutorial::Class1 * SHCXX_arg1", 
                             "cxx_member": "->", 
-                            "cxx_type": "tutorial::\tClass1", 
-                            "cxx_val": "\tstatic_cast<const tutorial::\tClass1 *>(arg1->addr)", 
+                            "cxx_type": "tutorial::Class1", 
+                            "cxx_val": "static_cast<const tutorial::Class1 *>(arg1->addr)", 
                             "cxx_var": "SHCXX_arg1", 
                             "idtor": "0"
                         }, 
@@ -7731,9 +7731,9 @@
                             "c_type": "TUT_class1", 
                             "c_var": "arg1", 
                             "cxx_addr": "", 
-                            "cxx_decl": "tutorial::\tClass1 arg1", 
+                            "cxx_decl": "tutorial::Class1 arg1", 
                             "cxx_member": "->", 
-                            "cxx_type": "tutorial::\tClass1", 
+                            "cxx_type": "tutorial::Class1", 
                             "cxx_var": "arg1", 
                             "numpy_type": null, 
                             "py_type": "PY_Class1", 
@@ -7805,10 +7805,10 @@
                 "decl": "int useclass(const Class1 *arg1)", 
                 "declgen": "int useclass(const Class1 * arg1 +intent(in))", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\tuseclass(\tSHCXX_arg1);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::useclass(\tSHCXX_arg1);", 
                     "C_call_list": "SHCXX_arg1", 
                     "C_name": "TUT_useclass", 
-                    "C_pre_call": "const tutorial::\tClass1 * SHCXX_arg1 = \tstatic_cast<const tutorial::\tClass1 *>(arg1->addr);", 
+                    "C_pre_call": "const tutorial::Class1 * SHCXX_arg1 =\t static_cast<const tutorial::Class1 *>(arg1->addr);", 
                     "C_prototype": "const TUT_class1 * arg1", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "int", 
@@ -7837,14 +7837,14 @@
                     "fmtc": {
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
-                        "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv))", 
+                        "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_rv))", 
                         "cxx_member": "->", 
-                        "cxx_type": "tutorial::\tClass1", 
+                        "cxx_type": "tutorial::Class1", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tClass1", 
+                        "cxx_type": "tutorial::Class1", 
                         "f_var": "SHT_rv"
                     }
                 }, 
@@ -7871,10 +7871,10 @@
                 "decl": "const Class1 *getclass2()", 
                 "declgen": "const Class1 * getclass2()", 
                 "format": {
-                    "C_call_code": "const tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass2(\t);", 
+                    "C_call_code": "const tutorial::Class1 * SHCXX_rv =\t tutorial::getclass2(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass2", 
-                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>\t(const_cast<tutorial::\tClass1 *>\t(SHCXX_rv));\nSHC_rv.idtor = 0;", 
+                    "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>\t(const_cast<tutorial::Class1 *>\t(SHCXX_rv));\nSHC_rv.idtor = 0;", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1", 
@@ -7889,7 +7889,7 @@
                     "F_result_clause": "\fresult(SHT_rv)", 
                     "F_subprogram": "function", 
                     "c_const": "const ", 
-                    "cxx_rv_decl": "const tutorial::\tClass1 * SHCXX_rv", 
+                    "cxx_rv_decl": "const tutorial::Class1 * SHCXX_rv", 
                     "function_name": "getclass2", 
                     "underscore_name": "getclass2"
                 }, 
@@ -7905,12 +7905,12 @@
                         "cxx_addr": "", 
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                         "cxx_member": "->", 
-                        "cxx_type": "tutorial::\tClass1", 
+                        "cxx_type": "tutorial::Class1", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tClass1", 
+                        "cxx_type": "tutorial::Class1", 
                         "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
@@ -7948,7 +7948,7 @@
                 "decl": "Class1 *getclass3()", 
                 "declgen": "Class1 * getclass3()", 
                 "format": {
-                    "C_call_code": "tutorial::\tClass1 * SHCXX_rv =\t tutorial::\tgetclass3(\t);", 
+                    "C_call_code": "tutorial::Class1 * SHCXX_rv =\t tutorial::getclass3(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_getclass3", 
                     "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -7967,7 +7967,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_getclass3", 
                     "c_const": "", 
-                    "cxx_rv_decl": "tutorial::\tClass1 * SHCXX_rv", 
+                    "cxx_rv_decl": "tutorial::Class1 * SHCXX_rv", 
                     "function_name": "getclass3", 
                     "underscore_name": "getclass3"
                 }, 
@@ -8002,12 +8002,12 @@
                         "cxx_addr": "", 
                         "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                         "cxx_member": ".", 
-                        "cxx_type": "tutorial::\tClass1", 
+                        "cxx_type": "tutorial::Class1", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "1"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tClass1", 
+                        "cxx_type": "tutorial::Class1", 
                         "f_var": "SHT_rv"
                     }
                 }, 
@@ -8048,11 +8048,11 @@
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 }, 
                 "format": {
-                    "C_call_code": "*SHCXX_rv =\t tutorial::\tgetClassCopy(\tflag);", 
+                    "C_call_code": "*SHCXX_rv =\t tutorial::getClassCopy(\tflag);", 
                     "C_call_list": "flag", 
                     "C_name": "TUT_get_class_copy", 
                     "C_post_call": "TUT_class1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 1;", 
-                    "C_pre_call": "tutorial::\tClass1 * SHCXX_rv = new tutorial::\tClass1;", 
+                    "C_pre_call": "tutorial::Class1 * SHCXX_rv = new tutorial::Class1;", 
                     "C_prototype": "int flag", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_class1", 
@@ -8199,7 +8199,7 @@
                 "decl": "int callback1(int in, int (*incr)(int));", 
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t tutorial::\tcallback1(\tin,\t incr);", 
+                    "C_call_code": "int SHC_rv =\t tutorial::callback1(\tin,\t incr);", 
                     "C_call_list": "in,\t incr", 
                     "C_name": "TUT_callback1", 
                     "C_prototype": "int in,\t int ( * incr)(\tint)", 
@@ -8297,12 +8297,12 @@
                         "c_var": "SHC_rv", 
                         "cxx_addr": "&", 
                         "cxx_member": ".", 
-                        "cxx_type": "tutorial::\tstruct1", 
+                        "cxx_type": "tutorial::struct1", 
                         "cxx_var": "SHC_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tstruct1", 
+                        "cxx_type": "tutorial::struct1", 
                         "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
@@ -8370,7 +8370,7 @@
                 "decl": "struct1 returnStruct(int i, double d);", 
                 "declgen": "struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "SH_union_0_t SHC_rv =\t {tutorial::\treturnStruct(\ti,\t d)};", 
+                    "C_call_code": "SH_union_0_t SHC_rv =\t {tutorial::returnStruct(\ti,\t d)};", 
                     "C_call_list": "i,\t d", 
                     "C_name": "TUT_return_struct", 
                     "C_prototype": "int i,\t double d", 
@@ -8466,16 +8466,16 @@
                 "_fmtresult": {
                     "fmtc": {
                         "c_rv_decl": "TUT_struct1 * SHC_rv", 
-                        "c_val": "\tstatic_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
+                        "c_val": "static_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))", 
                         "c_var": "SHC_rv", 
                         "cxx_addr": "", 
                         "cxx_member": "->", 
-                        "cxx_type": "tutorial::\tstruct1", 
+                        "cxx_type": "tutorial::struct1", 
                         "cxx_var": "SHCXX_rv", 
                         "idtor": "0"
                     }, 
                     "fmtf": {
-                        "cxx_type": "tutorial::\tstruct1", 
+                        "cxx_type": "tutorial::struct1", 
                         "f_var": "SHT_rv"
                     }, 
                     "fmtpy": {
@@ -8548,10 +8548,10 @@
                 "decl": "struct1 *returnStructPtr(int i, double d);", 
                 "declgen": "struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tstruct1 * SHCXX_rv =\t tutorial::\treturnStructPtr(\ti,\t d);", 
+                    "C_call_code": "tutorial::struct1 * SHCXX_rv =\t tutorial::returnStructPtr(\ti,\t d);", 
                     "C_call_list": "i,\t d", 
                     "C_name": "TUT_return_struct_ptr", 
-                    "C_post_call": "TUT_struct1 * SHC_rv = \tstatic_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
+                    "C_post_call": "TUT_struct1 * SHC_rv =\t static_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));", 
                     "C_prototype": "int i,\t double d", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "TUT_struct1 *", 
@@ -8567,7 +8567,7 @@
                     "F_subprogram": "function", 
                     "PY_name_impl": "PY_returnStructPtr", 
                     "c_const": "", 
-                    "cxx_rv_decl": "tutorial::\tstruct1 * SHCXX_rv", 
+                    "cxx_rv_decl": "tutorial::struct1 * SHCXX_rv", 
                     "function_name": "returnStructPtr", 
                     "underscore_name": "return_struct_ptr"
                 }, 
@@ -8585,10 +8585,10 @@
                             "c_var": "arg", 
                             "cxx_addr": "&", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg)", 
-                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
+                            "cxx_decl": "tutorial::struct1 * SHCXX_arg", 
                             "cxx_member": ".", 
-                            "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\t&arg))", 
+                            "cxx_type": "tutorial::struct1", 
+                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\t&arg))", 
                             "cxx_var": "SHCXX_arg", 
                             "idtor": "0"
                         }, 
@@ -8646,10 +8646,10 @@
                 "decl": "double acceptStructIn(struct1 arg)", 
                 "declgen": "double acceptStructIn(struct1 arg +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructIn(\t*SHCXX_arg);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::acceptStructIn(\t*SHCXX_arg);", 
                     "C_call_list": "*SHCXX_arg", 
                     "C_name": "TUT_accept_struct_in", 
-                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\t&arg));", 
+                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\t&arg));", 
                     "C_prototype": "TUT_struct1 arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "double", 
@@ -8683,10 +8683,10 @@
                             "c_var": "arg", 
                             "cxx_addr": "", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)", 
-                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
+                            "cxx_decl": "tutorial::struct1 * SHCXX_arg", 
                             "cxx_member": "->", 
-                            "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ))", 
+                            "cxx_type": "tutorial::struct1", 
+                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ))", 
                             "cxx_var": "SHCXX_arg", 
                             "idtor": "0"
                         }, 
@@ -8749,10 +8749,10 @@
                 "decl": "double acceptStructInPtr(struct1 *arg+intent(in))", 
                 "declgen": "double acceptStructInPtr(struct1 * arg +intent(in))", 
                 "format": {
-                    "C_call_code": "double SHC_rv =\t tutorial::\tacceptStructInPtr(\tSHCXX_arg);", 
+                    "C_call_code": "double SHC_rv =\t tutorial::acceptStructInPtr(\tSHCXX_arg);", 
                     "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_accept_struct_in_ptr", 
-                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ));", 
+                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ));", 
                     "C_prototype": "TUT_struct1 * arg", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "double", 
@@ -8786,10 +8786,10 @@
                             "c_var": "arg", 
                             "cxx_addr": "", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)", 
-                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
+                            "cxx_decl": "tutorial::struct1 * SHCXX_arg", 
                             "cxx_member": "->", 
-                            "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ))", 
+                            "cxx_type": "tutorial::struct1", 
+                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ))", 
                             "cxx_var": "SHCXX_arg", 
                             "idtor": "0"
                         }, 
@@ -8904,10 +8904,10 @@
                 "decl": "void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)", 
                 "declgen": "void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "tutorial::\tacceptStructOutPtr(\tSHCXX_arg,\t i,\t d);", 
+                    "C_call_code": "tutorial::acceptStructOutPtr(\tSHCXX_arg,\t i,\t d);", 
                     "C_call_list": "SHCXX_arg,\t i,\t d", 
                     "C_name": "TUT_accept_struct_out_ptr", 
-                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ));", 
+                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ));", 
                     "C_prototype": "TUT_struct1 * arg,\t int i,\t double d", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -8939,10 +8939,10 @@
                             "c_var": "arg", 
                             "cxx_addr": "", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)", 
-                            "cxx_decl": "tutorial::\tstruct1 * SHCXX_arg", 
+                            "cxx_decl": "tutorial::struct1 * SHCXX_arg", 
                             "cxx_member": "->", 
-                            "cxx_type": "tutorial::\tstruct1", 
-                            "cxx_val": "\tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ))", 
+                            "cxx_type": "tutorial::struct1", 
+                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ))", 
                             "cxx_var": "SHCXX_arg", 
                             "idtor": "0"
                         }, 
@@ -8991,10 +8991,10 @@
                 "decl": "void acceptStructInOutPtr(struct1 *arg +intent(inout))", 
                 "declgen": "void acceptStructInOutPtr(struct1 * arg +intent(inout))", 
                 "format": {
-                    "C_call_code": "tutorial::\tacceptStructInOutPtr(\tSHCXX_arg);", 
+                    "C_call_code": "tutorial::acceptStructInOutPtr(\tSHCXX_arg);", 
                     "C_call_list": "SHCXX_arg", 
                     "C_name": "TUT_accept_struct_in_out_ptr", 
-                    "C_pre_call": "tutorial::\tstruct1 * SHCXX_arg = \tstatic_cast<tutorial::\tstruct1 *>(\tstatic_cast<void *>(\targ));", 
+                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ));", 
                     "C_prototype": "TUT_struct1 * arg", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -9076,10 +9076,10 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
                 "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tLastFunctionCalled(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called", 
-                    "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
+                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
                     "C_prototype": "", 
                     "C_return_code": "return SHC_rv;", 
                     "C_return_type": "const char *", 
@@ -9178,7 +9178,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
                 "format": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::\tLastFunctionCalled(\t);", 
+                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::LastFunctionCalled(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_last_function_called_bufferify", 
                     "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}", 
@@ -9369,7 +9369,7 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}Singleton *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}Singleton *>({c_var}{c_member}addr)", 
             "c_type": "TUT_singleton", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Singleton", 
@@ -9400,18 +9400,18 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Singleton * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Singleton * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -10173,10 +10173,10 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tClass1 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}tutorial::Class1 *>({c_var}{c_member}addr)", 
             "c_type": "TUT_class1", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "tutorial::\tClass1", 
+            "cxx_type": "tutorial::Class1", 
             "f_c_module": {
                 "--import--": [
                     "SHROUD_capsule_data"
@@ -10199,24 +10199,24 @@
             }, 
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class1)", 
-            "forward": "tutorial::\tClass1", 
+            "forward": "tutorial::Class1", 
             "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -10230,10 +10230,10 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
-            "c_to_cxx": "static_cast<tutorial::\tClass1::DIRECTION>({c_var})", 
+            "c_to_cxx": "static_cast<tutorial::Class1::DIRECTION>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
-            "cxx_type": "tutorial::\tClass1::DIRECTION", 
+            "cxx_type": "tutorial::Class1::DIRECTION", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {
@@ -10251,10 +10251,10 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
-            "c_to_cxx": "static_cast<tutorial::\tColor>({c_var})", 
+            "c_to_cxx": "static_cast<tutorial::Color>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 
-            "cxx_type": "tutorial::\tColor", 
+            "cxx_type": "tutorial::Color", 
             "f_cast": "int({f_var}, C_INT)", 
             "f_kind": "C_INT", 
             "f_module": {
@@ -10320,11 +10320,11 @@
                     "c_helper": "SH_union_0_t"
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tstruct1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
+            "c_to_cxx": "static_cast<{c_const}tutorial::struct1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))", 
             "c_type": "TUT_struct1", 
             "c_union": "SH_union_0_t", 
-            "cxx_to_c": "\tstatic_cast<{c_const}TUT_struct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
-            "cxx_type": "tutorial::\tstruct1", 
+            "cxx_to_c": "static_cast<{c_const}TUT_struct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))", 
+            "cxx_type": "tutorial::struct1", 
             "f_derived_type": "struct1", 
             "f_module": {
                 "tutorial_mod": [
@@ -10336,18 +10336,18 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tstruct1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::struct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tstruct1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::struct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }

@@ -77,7 +77,7 @@
                             "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
-                            "C_pre_call": "three::\tClass1 *SH_this = \tstatic_cast<three::\tClass1 *>(self->addr);", 
+                            "C_pre_call": "three::Class1 *SH_this =\t static_cast<three::Class1 *>(self->addr);", 
                             "C_prototype": "DEF_class1 * self,\t int arg1", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -181,7 +181,7 @@
                             "C_call_code": "SH_this->method1(\tSHCXX_comm);", 
                             "C_call_list": "SHCXX_comm", 
                             "C_name": "DEF_class2_method1", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(self->addr);\nMPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
+                            "C_pre_call": "Class2 *SH_this =\t static_cast<Class2 *>(self->addr);\nMPI_Comm SHCXX_comm =\t MPI_Comm_f2c(comm);", 
                             "C_prototype": "DEF_class2 * self,\t MPI_Fint comm", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -213,10 +213,10 @@
                                     "c_var": "c2", 
                                     "cxx_addr": "", 
                                     "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_c2)", 
-                                    "cxx_decl": "three::\tClass1 * SHCXX_c2", 
+                                    "cxx_decl": "three::Class1 * SHCXX_c2", 
                                     "cxx_member": "->", 
-                                    "cxx_type": "three::\tClass1", 
-                                    "cxx_val": "\tstatic_cast<three::\tClass1 *>(c2->addr)", 
+                                    "cxx_type": "three::Class1", 
+                                    "cxx_val": "static_cast<three::Class1 *>(c2->addr)", 
                                     "cxx_var": "SHCXX_c2", 
                                     "idtor": "0"
                                 }, 
@@ -268,7 +268,7 @@
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
                             "C_name": "DEF_class2_method2", 
-                            "C_pre_call": "Class2 *SH_this = \tstatic_cast<Class2 *>(self->addr);\nthree::\tClass1 * SHCXX_c2 = \tstatic_cast<three::\tClass1 *>(c2->addr);", 
+                            "C_pre_call": "Class2 *SH_this =\t static_cast<Class2 *>(self->addr);\nthree::Class1 * SHCXX_c2 =\t static_cast<three::Class1 *>(c2->addr);", 
                             "C_prototype": "DEF_class2 * self,\t DEF_class1 * c2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -429,7 +429,7 @@
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
                 "format": {
-                    "C_call_code": "one::\ttwo::\tfunction1(\t);", 
+                    "C_call_code": "one::two::function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "DEF_function1", 
                     "C_prototype": "", 
@@ -547,7 +547,7 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}Class2 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}Class2 *>({c_var}{c_member}addr)", 
             "c_type": "DEF_class2", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "Class2", 
@@ -578,18 +578,18 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Class2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}Class2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Class2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -1382,11 +1382,11 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}three::\tClass1 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}three::Class1 *>({c_var}{c_member}addr)", 
             "c_type": "DEF_class1", 
             "cxx_header": "class_header.hpp", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "three::\tClass1", 
+            "cxx_type": "three::Class1", 
             "f_c_module": {
                 "--import--": [
                     "SHROUD_capsule_data"
@@ -1409,23 +1409,23 @@
             }, 
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class1)", 
-            "forward": "three::\tClass1", 
+            "forward": "three::Class1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}three::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}three::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}three::\tClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}three::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }

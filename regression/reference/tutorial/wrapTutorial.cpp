@@ -475,7 +475,8 @@ int TUT_typefunc(int arg)
 int TUT_enumfunc(int arg)
 {
 // splicer begin function.enumfunc
-    tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
+    tutorial::EnumTypeID SHCXX_arg =
+        static_cast<tutorial::EnumTypeID>(arg);
     tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
     return SHC_rv;
@@ -510,8 +511,8 @@ void TUT_get_min_max(int * min, int * max)
 int TUT_direction_func(int arg)
 {
 // splicer begin function.direction_func
-    tutorial::Class1::DIRECTION SHCXX_arg = static_cast<tutorial::
-        Class1::DIRECTION>(arg);
+    tutorial::Class1::DIRECTION SHCXX_arg =
+        static_cast<tutorial::Class1::DIRECTION>(arg);
     tutorial::Class1::DIRECTION SHCXX_rv = tutorial::directionFunc(
         SHCXX_arg);
     int SHC_rv = static_cast<int>(SHCXX_rv);
@@ -523,8 +524,8 @@ int TUT_direction_func(int arg)
 int TUT_useclass(const TUT_class1 * arg1)
 {
 // splicer begin function.useclass
-    const tutorial::Class1 * SHCXX_arg1 = static_cast<const tutorial::
-        Class1 *>(arg1->addr);
+    const tutorial::Class1 * SHCXX_arg1 =
+        static_cast<const tutorial::Class1 *>(arg1->addr);
     int SHC_rv = tutorial::useclass(SHCXX_arg1);
     return SHC_rv;
 // splicer end function.useclass
