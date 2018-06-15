@@ -337,9 +337,9 @@ def add_copy_array_helper_c(fmt):
             # Create a single C routine which is called from Fortran via an interface
             # for each cxx_type
             cxx_source=wformat("""
-0// helper function
-0// Copy std::vector into array c_var(c_var_size).
-0// Then release std::vector.
+// helper function
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.cvoidp;

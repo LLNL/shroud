@@ -239,10 +239,10 @@ There are some metacharacters that are used for formatting the line:
        If the first character is a #, ignore indention and write in column 0.
        Useful for preprocessing directives.
 
-0
+^
 
-       If the first character is 0, ignore indention and write in column 0.
-       Useful for comments.
+       If the first character is ^, ignore indention and write in column 0.
+       Useful for comments or labels.
 
 @
 

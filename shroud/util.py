@@ -418,7 +418,7 @@ class WrapperMixin(object):
 
         #  preprocessor, start in column 1
         @  literal line (ignore leading formating characters
-        0  start line in column 1
+        ^  start line in column 1
         +  indent line
         -  deindent line
         """
@@ -438,7 +438,7 @@ class WrapperMixin(object):
                         # For example, "@-" to avoid treating the "-" as deindent
                         # or "@0" to start line with a "0".
                         self.write_continue(fp, subline[1:], spaces)
-                    elif subline[0] == '0':
+                    elif subline[0] == '^':
                         # line start in column 1 (like labels)
                         fp.write(subline[1:])
                         fp.write('\n')
