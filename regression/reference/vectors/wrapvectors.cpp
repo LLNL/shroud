@@ -54,13 +54,13 @@ extern "C" {
 
 
 // helper function
-// Returns the length of character string a with length ls,
+// Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-int ShroudLenTrim(const char *s, int ls) {
+int ShroudLenTrim(const char *src, int nsrc) {
     int i;
 
-    for (i = ls - 1; i >= 0; i--) {
-        if (s[i] != ' ') {
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
             break;
         }
     }
@@ -179,8 +179,8 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer begin function.vector_string_count_bufferify
     std::vector<std::string> SH_arg;
     {
-          const char * BBB = arg;
-          std::vector<std::string>::size_type
+        const char * BBB = arg;
+        std::vector<std::string>::size_type
             SHT_i = 0,
             SHT_n = Sarg;
         for(; SHT_i < SHT_n; SHT_i++) {

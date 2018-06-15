@@ -224,7 +224,8 @@ PP_exclass2_getName(
     const std::string & SHCXX_rv = self->obj->getName();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name
@@ -245,7 +246,8 @@ PP_exclass2_getName2(
     const std::string & SHCXX_rv = self->obj->getName2();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name2
@@ -266,7 +268,8 @@ PP_exclass2_getName3(
     std::string & SHCXX_rv = self->obj->getName3();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name3
@@ -287,7 +290,8 @@ PP_exclass2_getName4(
     std::string & SHCXX_rv = self->obj->getName4();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name4

@@ -267,7 +267,8 @@ PY_Function4a(
     const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
@@ -304,7 +305,8 @@ PY_Function4b(
         SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4b
@@ -345,7 +347,8 @@ PY_Function4c(
         SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4c
@@ -370,7 +373,8 @@ PY_Function4d(
     const std::string * SHCXX_rv = tutorial::Function4d();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv->c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+        SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4d
@@ -976,7 +980,8 @@ PY_LastFunctionCalled(
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHCXX_rv.c_str());
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.last_function_called

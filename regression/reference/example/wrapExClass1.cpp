@@ -53,15 +53,14 @@ extern "C" {
 
 
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int ls,nm;
-   ls = std::strlen(s);
-   nm = ls < la ? ls : la;
-   std::memcpy(a,s,nm);
-   if(la > nm) std::memset(a+nm,' ',la-nm);
+   int nm = nsrc < ndest ? nsrc : ndest;
+   std::memcpy(dest,src,nm);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }
 
 // helper function
@@ -192,7 +191,8 @@ void AA_exclass1_get_name_error_pattern_bufferify(
     if (SHCXX_rv.empty()) {
         std::memset(SHF_rv, ' ', NSHF_rv);
     } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.c_str());
+        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
+            SHCXX_rv.size());
     }
     return;
 // splicer end class.ExClass1.method.get_name_error_pattern_bufferify
@@ -236,8 +236,13 @@ void AA_exclass1_get_name_error_check_bufferify(
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (&SHCXX_rv));
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    if (SHCXX_rv.empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end class.ExClass1.method.get_name_error_check_bufferify
@@ -266,7 +271,7 @@ void AA_exclass1_get_name_arg_bufferify(const AA_exclass1 * self,
     if (SHCXX_rv.empty()) {
         std::memset(name, ' ', Nname);
     } else {
-        ShroudStrCopy(name, Nname, SHCXX_rv.c_str());
+        ShroudStrCopy(name, Nname, SHCXX_rv.data(), SHCXX_rv.size());
     }
     return;
 // splicer end class.ExClass1.method.get_name_arg_bufferify

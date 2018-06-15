@@ -102,6 +102,7 @@ class Typemap(object):
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
         ('PY_build_arg', None),   # argument for Py_BuildValue
+        ('PY_build_format', None),  # 'format unit' for Py_BuildValue
         ('PYN_typenum', None),    # NumPy typenum enumeration
         ('PYN_descr', None),      # Name of PyArray_Descr variable to describe type (for structs)
         ('py_statements', {}),
@@ -415,14 +416,15 @@ def initialize():
                 intent_out_buf=dict(
                     buf_args=['arg', 'len'],
                     cxx_local_var='pointer',
-                    c_header='<stdlib.h>',
-                    cxx_header='<stdlib.h>',
+                    c_header='<stdlib.h> <string.h>',
+                    cxx_header='<cstdlib> <cstring>',
                     c_helper='ShroudStrCopy',
                     pre_call=[
-                        'char * {cxx_var} = (char *) malloc({c_var_len} + 1);',
+                        'char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);',
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var},\t {stdlib}strlen({cxx_var}));',
                         'free({cxx_var});',
                         ],
                     ),
@@ -438,7 +440,8 @@ def initialize():
                         '{cxx_var}[{c_var_trim}] = \'\\0\';'
                         ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var},\t {stdlib}strlen({cxx_var}));',
                         'free({cxx_var});',
                         ],
                     ),
@@ -448,11 +451,12 @@ def initialize():
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cxx_var} == NULL) {{',
-                        '    {stdlib}memset({c_var}, \' \', {c_var_len});',
-                        '}} else {{',
-                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var});',
-                        '}}',
+                        'if ({cxx_var} == NULL) {{+',
+                        '{stdlib}memset({c_var}, \' \', {c_var_len});',
+                        '-}} else {{+',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var},\t {stdlib}strlen({cxx_var}));',
+                        '-}}',
                         ],
                     ),
                 ),
@@ -572,7 +576,9 @@ def initialize():
                         'std::string {cxx_var};'
                     ],
                     post_call=[
-                        'ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());'
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var}{cxx_member}data(),'
+                        '\t {cxx_var}{cxx_member}size());'
                     ],
                 ),
                 intent_inout_buf=dict(
@@ -584,7 +590,8 @@ def initialize():
                     ],
                     post_call=[
                         'ShroudStrCopy({c_var}, {c_var_len},'
-                        '\t {cxx_var}{cxx_member}c_str());'
+                        '\t {cxx_var}{cxx_member}data(),'
+                        '\t {cxx_var}{cxx_member}size());'
                     ],
                 ),
                 result_buf=dict(
@@ -592,11 +599,13 @@ def initialize():
                     cxx_header='<cstring>',
                     c_helper='ShroudStrCopy',
                     post_call=[
-                        'if ({cxx_var}{cxx_member}empty()) {{',
-                        '    {stdlib}memset({c_var}, \' \', {c_var_len});',
-                        '}} else {{',
-                        '    ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
-                        '}}',
+                        'if ({cxx_var}{cxx_member}empty()) {{+',
+                        '{stdlib}memset({c_var}, \' \', {c_var_len});',
+                        '-}} else {{+',
+                        'ShroudStrCopy({c_var}, {c_var_len},'
+                        '\t {cxx_var}{cxx_member}data(),'
+                        '\t {cxx_var}{cxx_member}size());',
+                        '-}}',
                     ],
                 ),
             ),
@@ -637,8 +646,9 @@ def initialize():
                 ),
             ),
             PY_format='s',
-            PY_ctor='PyString_FromString({cxx_var}{cxx_member}c_str())',
-            PY_build_arg='{cxx_var}{cxx_member}c_str()',
+            PY_ctor='PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())',
+            PY_build_format='s#',
+            PY_build_arg='{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()',
 
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
@@ -685,8 +695,13 @@ def initialize():
                     post_call=[
                         '{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};',
                         '{c_var_context}->cxx.idtor = {idtor};',
+                        'if ({cxx_var}{cxx_member}empty()) {{+',
+                        '{c_var_context}->addr.ccharp = NULL;',
+                        '{c_var_context}->len = 0;',
+                        '-}} else {{+',
                         '{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();',
                         '{c_var_context}->len = {cxx_var}{cxx_member}size();',
+                        '-}}',
                         '{c_var_context}->size = 1;',
                     ],
                 ),
@@ -844,11 +859,13 @@ def initialize():
 #                    buf_args=['arg', 'size'],
 #                    c_helper='ShroudStrCopy',
 #                    post_call=[
-#                        'if ({cxx_var}.empty()) {{',
-#                        '  std::memset({c_var}, \' \', {c_var_len});',
-#                        '}} else {{',
-#                        '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
-#                        '}}',
+#                        'if ({cxx_var}.empty()) {{+',
+#                        'std::memset({c_var}, \' \', {c_var_len});',
+#                        '-}} else {{+',
+#                        'ShroudStrCopy({c_var}, {c_var_len},'
+#                        '\t {cxx_var}{cxx_member}data(),'
+#                        '\t {cxx_var}{cxx_member}size());',
+#                        '-}}',
 #                    ],
 #                ),
             ),
@@ -904,17 +921,17 @@ def initialize():
                         cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
-                            '{{',
-                            '      {c_const}char * BBB = {c_var};',
-                            '      std::vector<{cxx_T}>::size_type',
-                            '        {c_temp}i = 0,',
-                            '        {c_temp}n = {c_var_size};',
-                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '        {cxx_var}.push_back('
+                            '{{+',
+                            '{c_const}char * BBB = {c_var};',
+                            'std::vector<{cxx_T}>::size_type',
+                            '+{c_temp}i = 0,',
+                            '{c_temp}n = {c_var_size};',
+                            '-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
+                            '{cxx_var}.push_back('
                             'std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
-                            '        BBB += {c_var_len};',
-                            '    }}',
-                            '}}'
+                            'BBB += {c_var_len};',
+                            '-}}',
+                            '-}}'
                         ],
                     ),
                     intent_out_buf=dict(
@@ -925,18 +942,20 @@ def initialize():
                             '{c_const}std::vector<{cxx_T}> {cxx_var};'
                         ],
                         post_call=[
-                            '{{',
-                            '    char * BBB = {c_var};',
-                            '    std::vector<{cxx_T}>::size_type',
-                            '        {c_temp}i = 0,',
-                            '        {c_temp}n = {c_var_size};',
-                            '    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
-                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '        ShroudStrCopy('
-                            'BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());',
-                            '        BBB += {c_var_len};',
-                            '    }}',
-                            '}}'
+                            '{{+',
+                            'char * BBB = {c_var};',
+                            'std::vector<{cxx_T}>::size_type',
+                            '+{c_temp}i = 0,',
+                            '{c_temp}n = {c_var_size};',
+                            '{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
+                            '-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
+                            'ShroudStrCopy('
+                            'BBB, {c_var_len},'
+                            '\t {cxx_var}[{c_temp}i].data(),'
+                            '\t {cxx_var}[{c_temp}i].size());',
+                            'BBB += {c_var_len};',
+                            '-}}',
+                            '-}}'
                         ],
                     ),
                     intent_inout_buf=dict(
@@ -944,41 +963,44 @@ def initialize():
                         cxx_local_var='scalar',
                         pre_call=[
                             'std::vector<{cxx_T}> {cxx_var};',
-                            '{{',
-                            '    {c_const}char * BBB = {c_var};',
-                            '    std::vector<{cxx_T}>::size_type',
-                            '        {c_temp}i = 0,',
-                            '        {c_temp}n = {c_var_size};',
-                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '        {cxx_var}.push_back'
+                            '{{+',
+                            '{c_const}char * BBB = {c_var};',
+                            'std::vector<{cxx_T}>::size_type',
+                            '+{c_temp}i = 0,',
+                            '{c_temp}n = {c_var_size};',
+                            '-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
+                            '{cxx_var}.push_back'
                             '(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));',
-                            '        BBB += {c_var_len};',
-                            '    }}',
-                            '}}'
+                            'BBB += {c_var_len};',
+                            '-}}',
+                            '-}}'
                         ],
                         post_call=[
-                            '{{',
-                            '    char * BBB = {c_var};',
-                            '    std::vector<{cxx_T}>::size_type',
-                            '        {c_temp}i = 0,',
-                            '        {c_temp}n = {c_var_size};',
-                            '    {c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
-                            '    for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{',
-                            '        ShroudStrCopy'
-                            '(BBB, {c_var_len}, {cxx_var}[{c_temp}i].c_str());',
-                            '        BBB += {c_var_len};',
-                            '    }}',
-                            '}}'
+                            '{{+',
+                            'char * BBB = {c_var};',
+                            'std::vector<{cxx_T}>::size_type',
+                            '+{c_temp}i = 0,',
+                            '{c_temp}n = {c_var_size};',
+                            '-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);',
+                            'for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+',
+                            'ShroudStrCopy(BBB, {c_var_len},'
+                            '\t {cxx_var}[{c_temp}i].data(),'
+                            '\t {cxx_var}[{c_temp}i].size());',
+                            'BBB += {c_var_len};',
+                            '-}}',
+                            '-}}'
                         ],
                     ),
 #                    result_buf=dict(
 #                        c_helper='ShroudStrCopy',
 #                        post_call=[
-#                            'if ({cxx_var}.empty()) {{',
-#                            '  std::memset({c_var}, \' \', {c_var_len});',
-#                            '}} else {{',
-#                            '  ShroudStrCopy({c_var}, {c_var_len}, {cxx_var}{cxx_member}c_str());',
-#                            '}}',
+#                            'if ({cxx_var}.empty()) {{+',
+#                            'std::memset({c_var}, \' \', {c_var_len});',
+#                            '-}} else {{+',
+#                            'ShroudStrCopy({c_var}, {c_var_len}, '
+#                            '\t {cxx_var}{cxx_member}data(),'
+#                            '\t {cxx_var}{cxx_member}size());',
+#                            '-}}',
 #                        ],
 #                    ),
                 ),

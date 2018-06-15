@@ -60,9 +60,16 @@ PY_build_arg
 Argument for Py_BuildValue.  Defaults to *{cxx_var}*.
 This field can be used to turn the argument into an expression such as
 *(int) {cxx_var}*  or *{cxx_var}{cxx_member}c_str()*
-*PY_format* is used as the format:: 
+*PY_build_format* is used as the format:: 
 
-    Py_BuildValue("{PY_format}", {PY_build_arg});
+    Py_BuildValue("{PY_build_format}", {PY_build_arg});
+
+PY_build_format
+^^^^^^^^^^^^^^^
+
+'format unit' for Py_BuildValue.
+If *None*, use value of *PY_format*.
+Defaults to *None*
 
 PY_format
 ^^^^^^^^^

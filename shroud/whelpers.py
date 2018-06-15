@@ -337,9 +337,9 @@ def add_copy_array_helper_c(fmt):
             # Create a single C routine which is called from Fortran via an interface
             # for each cxx_type
             cxx_source=wformat("""
-0// helper function
-0// Copy std::vector into array c_var(c_var_size).
-0// Then release std::vector.
+// helper function
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
 const void *cxx_var = data->addr.cvoidp;
@@ -379,39 +379,37 @@ CHelpers = dict(
         cxx_header='<cstring>',
         c_source="""
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int ls,nm;
-   ls = strlen(s);
-   nm = ls < la ? ls : la;
-   memcpy(a,s,nm);
-   if(la > nm) memset(a+nm,' ',la-nm);
+   int nm = nsrc < ndest ? nsrc : ndest;
+   memcpy(dest,src,nm);
+   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }""",
         cxx_source="""
 // helper function
-// Copy s into a, blank fill to la characters
-// Truncate if a is too short.
-static void ShroudStrCopy(char *a, int la, const char *s)
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int ls,nm;
-   ls = std::strlen(s);
-   nm = ls < la ? ls : la;
-   std::memcpy(a,s,nm);
-   if(la > nm) std::memset(a+nm,' ',la-nm);
+   int nm = nsrc < ndest ? nsrc : ndest;
+   std::memcpy(dest,src,nm);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }"""
         ),
     ShroudLenTrim=dict(
         source="""
 // helper function
-// Returns the length of character string a with length ls,
+// Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-int ShroudLenTrim(const char *s, int ls) {
+int ShroudLenTrim(const char *src, int nsrc) {
     int i;
 
-    for (i = ls - 1; i >= 0; i--) {
-        if (s[i] != ' ') {
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
             break;
         }
     }

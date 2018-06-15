@@ -458,7 +458,7 @@ return 1;""", fmt)
             'return dtype;',
         ])
         output.extend([
-            '0fail:',
+            '^fail:',
 
             'Py_XDECREF(obj);',
             'if (lnames != NULL) {+',
@@ -654,7 +654,7 @@ return 1;""", fmt)
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
-        return_pointer_as  - None, 'pointer', 'scalar'
+        return_pointer_as  - None, 'allocatable', 'pointer', 'scalar'
         capsule_order - index into capsule_order of code to free memory.
                         None = do not release memory.
         ast - Abstract Syntax Tree of argument or result
@@ -718,20 +718,20 @@ return 1;""", fmt)
                     'PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});',  # 0=ok, -1=error
                     fmt)
 
-            format = 'O'
+            build_format = 'O'
             vargs = fmt.py_var
             ctor = None
             ctorvar = fmt.py_var
         elif 'post_call' in intent_blk:
             # If post_call is None, the Object has already been created
             util.append_format_cmds(post_call, intent_blk, 'post_call', fmt)
-            format = 'O'
+            build_format = 'O'
             vargs = fmt.py_var
             ctor = None
             ctorvar = fmt.py_var
         else:
             # Decide values for Py_BuildValue
-            format = typedef.PY_format
+            build_format = typedef.PY_build_format or typedef.PY_format
             vargs = typedef.PY_build_arg
             if not vargs:
                 vargs = '{cxx_var}'
@@ -742,14 +742,14 @@ return 1;""", fmt)
                                + ';', fmt)
                 ctorvar = fmt.py_var
             else:
-                fmt.PY_format = format
+                fmt.PY_build_format = build_format
                 fmt.vargs = vargs
                 ctor = wformat(
                     '{PyObject} * {py_var} = '
-                    'Py_BuildValue("{PY_format}", {vargs});', fmt)
+                    'Py_BuildValue("{PY_build_format}", {vargs});', fmt)
                 ctorvar = fmt.py_var
 
-        return BuildTuple(format, vargs, ctor, ctorvar)
+        return BuildTuple(build_format, vargs, ctor, ctorvar)
 
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.
@@ -1323,7 +1323,7 @@ return 1;""", fmt)
             PY_code.append(-1)
             PY_code.append('}')
         if goto_fail:
-            PY_code.extend(['', '0fail:'])
+            PY_code.extend(['', '^fail:'])
             PY_code.extend(fail_code)
             append_format(PY_code, 'return {PY_error_return};', fmt)
 
@@ -1508,8 +1508,7 @@ return 1;""", fmt)
             PY_PyObject=fmt.PY_PyObject,
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
-            nullptr='0', #'NULL',   # 0 will confuse formatter (thinks no indent)
-            nullptr0='@0', #'NULL',   # 0 will confuse formatter (thinks no indent)
+            nullptr='0', #'NULL',
             )
         self.write_tp_func(node, fmt_type, output)
 
@@ -1529,7 +1528,7 @@ return 1;""", fmt)
             output.append('{NULL}            /* sentinel */')
             output.append('-};')
         else:
-            fmt_type['tp_getset'] = fmt_type['nullptr0']
+            fmt_type['tp_getset'] = fmt_type['nullptr']
 
         fmt_type['tp_methods'] = wformat('{PY_prefix}{cxx_class}_methods', fmt)
         append_format(output,
@@ -1970,22 +1969,22 @@ PyTypeObject {PY_PyTypeObject} = {{+
 PyVarObject_HEAD_INIT(NULL, 0)
 "{PY_module_name}.{cxx_class}",                       /* tp_name */
 sizeof({PY_PyObject}),         /* tp_basicsize */
-{nullptr0},                              /* tp_itemsize */
+{nullptr},                              /* tp_itemsize */
 /* Methods to implement standard operations */
 (destructor){tp_dealloc},                 /* tp_dealloc */
 (printfunc){tp_print},                   /* tp_print */
 (getattrfunc){tp_getattr},                 /* tp_getattr */
 (setattrfunc){tp_setattr},                 /* tp_setattr */
 #if PY_MAJOR_VERSION >= 3
-{nullptr0},                               /* tp_reserved */
+{nullptr},                               /* tp_reserved */
 #else
 (cmpfunc){tp_compare},                     /* tp_compare */
 #endif
 (reprfunc){tp_repr},                    /* tp_repr */
 /* Method suites for standard classes */
-{nullptr0},                              /* tp_as_number */
-{nullptr0},                              /* tp_as_sequence */
-{nullptr0},                              /* tp_as_mapping */
+{nullptr},                              /* tp_as_number */
+{nullptr},                              /* tp_as_sequence */
+{nullptr},                              /* tp_as_mapping */
 /* More standard operations (here for binary compatibility) */
 (hashfunc){tp_hash},                    /* tp_hash */
 (ternaryfunc){tp_call},                 /* tp_call */
@@ -1993,7 +1992,7 @@ sizeof({PY_PyObject}),         /* tp_basicsize */
 (getattrofunc){tp_getattro},                /* tp_getattro */
 (setattrofunc){tp_setattro},                /* tp_setattro */
 /* Functions to access object as input/output buffer */
-{nullptr0},                              /* tp_as_buffer */
+{nullptr},                              /* tp_as_buffer */
 /* Flags to define presence of optional/expanded features */
 Py_TPFLAGS_DEFAULT,             /* tp_flags */
 {cxx_class}__doc__,         /* tp_doc */
@@ -2006,32 +2005,32 @@ Py_TPFLAGS_DEFAULT,             /* tp_flags */
 /* rich comparisons */
 (richcmpfunc){tp_richcompare},                 /* tp_richcompare */
 /* weak reference enabler */
-{nullptr0},                              /* tp_weaklistoffset */
+{nullptr},                              /* tp_weaklistoffset */
 /* Added in release 2.2 */
 /* Iterators */
 (getiterfunc){nullptr},                 /* tp_iter */
 (iternextfunc){nullptr},                /* tp_iternext */
 /* Attribute descriptor and subclassing stuff */
 {tp_methods},                             /* tp_methods */
-{nullptr0},                              /* tp_members */
+{nullptr},                              /* tp_members */
 {tp_getset},                             /* tp_getset */
-{nullptr0},                              /* tp_base */
-{nullptr0},                              /* tp_dict */
+{nullptr},                              /* tp_base */
+{nullptr},                              /* tp_dict */
 (descrgetfunc){nullptr},                /* tp_descr_get */
 (descrsetfunc){nullptr},                /* tp_descr_set */
-{nullptr0},                              /* tp_dictoffset */
+{nullptr},                              /* tp_dictoffset */
 (initproc){tp_init},                   /* tp_init */
 (allocfunc){tp_alloc},                  /* tp_alloc */
 (newfunc){tp_new},                    /* tp_new */
 (freefunc){tp_free},                   /* tp_free */
 (inquiry){nullptr},                     /* tp_is_gc */
-{nullptr0},                              /* tp_bases */
-{nullptr0},                              /* tp_mro */
-{nullptr0},                              /* tp_cache */
-{nullptr0},                              /* tp_subclasses */
-{nullptr0},                              /* tp_weaklist */
+{nullptr},                              /* tp_bases */
+{nullptr},                              /* tp_mro */
+{nullptr},                              /* tp_cache */
+{nullptr},                              /* tp_subclasses */
+{nullptr},                              /* tp_weaklist */
 (destructor){tp_del},                 /* tp_del */
-{nullptr0},                              /* tp_version_tag */
+{nullptr},                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
 (destructor){nullptr},                  /* tp_finalize */
 #endif
