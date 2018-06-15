@@ -50,6 +50,8 @@ import json
 import os
 import sys
 import yaml
+from yaml.composer import Composer
+from yaml.constructor import Constructor
 
 from . import ast
 from . import generate
@@ -314,10 +316,28 @@ def main_with_args(args):
     for filename in args.filename:
         ext = os.path.splitext(filename)[1]
         if ext == '.yaml':
-#            print("Read %s" % os.path.basename(filename))
+            # print("Read %s" % os.path.basename(filename))
             log.write("Read yaml %s\n" % os.path.basename(filename))
             fp = open(filename, 'r')
-            d = yaml.load(fp.read())
+            # d = yaml.load(fp.read())  # no line numbers
+
+            # https://stackoverflow.com/questions/13319067/
+            # parsing-yaml-return-with-line-number
+            loader = yaml.Loader(fp.read())
+            def compose_node(parent, index):
+                # the line number where the previous token has ended (plus empty lines)
+                line = loader.line
+                node = Composer.compose_node(loader, parent, index)
+                node.__line__ = line + 1
+                return node
+            def construct_mapping(node, deep=False):
+                mapping = Constructor.construct_mapping(loader, node, deep=deep)
+                mapping['__line__'] = node.__line__
+                return mapping
+            loader.compose_node = compose_node
+            loader.construct_mapping = construct_mapping
+            d = loader.get_single_data()
+
             fp.close()
             if d is not None:
                 allinput.update(d)
@@ -349,6 +369,8 @@ def main_with_args(args):
     if 'splicer' in allinput:
         # read splicer files defined in input YAML file
         for suffix, names in allinput['splicer'].items():
+            if suffix == '__line__':
+                continue
             # suffix = 'c', 'f', 'py', 'lua'
             subsplicer = splicers.setdefault(suffix, {})
             for name in names:
