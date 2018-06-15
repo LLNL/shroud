@@ -735,8 +735,8 @@ PY_returnStrings(
     returnStrings(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ss", SH_arg1.c_str(),
-        SH_arg2.c_str());
+    PyObject * SHTPy_rv = Py_BuildValue("s#s#", SH_arg1.data(),
+        SH_arg1.size(), SH_arg2.data(), SH_arg2.size());
 
     return SHTPy_rv;
 // splicer end function.return_strings

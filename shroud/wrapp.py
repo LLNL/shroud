@@ -654,7 +654,7 @@ return 1;""", fmt)
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
-        return_pointer_as  - None, 'pointer', 'scalar'
+        return_pointer_as  - None, 'allocatable', 'pointer', 'scalar'
         capsule_order - index into capsule_order of code to free memory.
                         None = do not release memory.
         ast - Abstract Syntax Tree of argument or result
@@ -718,20 +718,20 @@ return 1;""", fmt)
                     'PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});',  # 0=ok, -1=error
                     fmt)
 
-            format = 'O'
+            build_format = 'O'
             vargs = fmt.py_var
             ctor = None
             ctorvar = fmt.py_var
         elif 'post_call' in intent_blk:
             # If post_call is None, the Object has already been created
             util.append_format_cmds(post_call, intent_blk, 'post_call', fmt)
-            format = 'O'
+            build_format = 'O'
             vargs = fmt.py_var
             ctor = None
             ctorvar = fmt.py_var
         else:
             # Decide values for Py_BuildValue
-            format = typedef.PY_format
+            build_format = typedef.PY_build_format or typedef.PY_format
             vargs = typedef.PY_build_arg
             if not vargs:
                 vargs = '{cxx_var}'
@@ -742,14 +742,14 @@ return 1;""", fmt)
                                + ';', fmt)
                 ctorvar = fmt.py_var
             else:
-                fmt.PY_format = format
+                fmt.PY_build_format = build_format
                 fmt.vargs = vargs
                 ctor = wformat(
                     '{PyObject} * {py_var} = '
-                    'Py_BuildValue("{PY_format}", {vargs});', fmt)
+                    'Py_BuildValue("{PY_build_format}", {vargs});', fmt)
                 ctorvar = fmt.py_var
 
-        return BuildTuple(format, vargs, ctor, ctorvar)
+        return BuildTuple(build_format, vargs, ctor, ctorvar)
 
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.

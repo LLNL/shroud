@@ -102,6 +102,7 @@ class Typemap(object):
         ('PY_to_object', None),   # PyBuild - object'=converter(address)
         ('PY_from_object', None), # PyArg_Parse - status=converter(object, address);
         ('PY_build_arg', None),   # argument for Py_BuildValue
+        ('PY_build_format', None),  # 'format unit' for Py_BuildValue
         ('PYN_typenum', None),    # NumPy typenum enumeration
         ('PYN_descr', None),      # Name of PyArray_Descr variable to describe type (for structs)
         ('py_statements', {}),
@@ -646,8 +647,8 @@ def initialize():
             ),
             PY_format='s',
             PY_ctor='PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())',
-#            PY_build_arg='{cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size()',
-            PY_build_arg='{cxx_var}{cxx_member}c_str()',
+            PY_build_format='s#',
+            PY_build_arg='{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()',
 
             LUA_type='LUA_TSTRING',
             LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
