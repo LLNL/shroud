@@ -323,6 +323,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 68, 
                         "_typename": "int", 
                         "deref": "raw"
                     }, 
@@ -359,6 +360,7 @@
                     "underscore_name": "return_int_ptr_raw"
                 }, 
                 "options": {
+                    "__line__": 71, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
@@ -392,6 +394,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 77, 
                         "_typename": "int", 
                         "deref": "scalar"
                     }, 
@@ -438,6 +441,7 @@
                     "underscore_name": "return_int_ptr_scalar"
                 }, 
                 "options": {
+                    "__line__": 79, 
                     "wrap_lua": false
                 }
             }, 
@@ -471,6 +475,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 84, 
                         "_typename": "int", 
                         "deref": "pointer"
                     }, 
@@ -517,6 +522,7 @@
                     "underscore_name": "return_int_ptr_pointer"
                 }, 
                 "options": {
+                    "__line__": 87, 
                     "wrap_lua": false
                 }
             }, 
@@ -549,6 +555,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 97, 
                         "_typename": "int", 
                         "deref": "raw"
                     }, 
@@ -606,6 +613,7 @@
                     "underscore_name": "return_int_ptr_dim_raw"
                 }, 
                 "options": {
+                    "__line__": 100, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
@@ -677,6 +685,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 106, 
                         "_typename": "int", 
                         "deref": "pointer", 
                         "dimension": "len"
@@ -746,6 +755,7 @@
                     "underscore_name": "return_int_ptr_dim_pointer"
                 }, 
                 "options": {
+                    "__line__": 109, 
                     "wrap_lua": false
                 }
             }, 
@@ -813,6 +823,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 113, 
                         "_typename": "int", 
                         "deref": "allocatable", 
                         "dimension": "len"
@@ -882,6 +893,7 @@
                     "underscore_name": "return_int_ptr_dim_alloc"
                 }, 
                 "options": {
+                    "__line__": 116, 
                     "wrap_lua": false
                 }
             }, 
@@ -921,6 +933,7 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
+                        "__line__": 113, 
                         "_typename": "int", 
                         "context": "DSHC_rv", 
                         "deref": "allocatable", 
@@ -983,6 +996,7 @@
                     "underscore_name": "return_int_ptr_dim_alloc"
                 }, 
                 "options": {
+                    "__line__": 116, 
                     "wrap_c": true, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -1084,6 +1098,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 120, 
                         "_typename": "int", 
                         "dimension": "len"
                     }, 
@@ -1152,6 +1167,7 @@
                     "underscore_name": "return_int_ptr_dim_default"
                 }, 
                 "options": {
+                    "__line__": 122, 
                     "wrap_lua": false
                 }
             }, 
@@ -1184,6 +1200,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 131, 
                         "_typename": "int", 
                         "dimension": "len", 
                         "owner": "caller"
@@ -1243,6 +1260,7 @@
                     "underscore_name": "return_int_ptr_dim_raw_new"
                 }, 
                 "options": {
+                    "__line__": 136, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
                     "wrap_python": false
@@ -1314,6 +1332,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 142, 
                         "_typename": "int", 
                         "deref": "pointer", 
                         "dimension": "len", 
@@ -1384,6 +1403,7 @@
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 }, 
                 "options": {
+                    "__line__": 147, 
                     "wrap_lua": false
                 }
             }, 
@@ -1444,6 +1464,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 151, 
                         "_typename": "int", 
                         "deref": "allocatable", 
                         "dimension": "len", 
@@ -1505,6 +1526,7 @@
                     "underscore_name": "return_int_ptr_dim_alloc_new"
                 }, 
                 "options": {
+                    "__line__": 156, 
                     "wrap_fortran": false, 
                     "wrap_lua": false
                 }
@@ -1575,6 +1597,7 @@
                 }, 
                 "ast": {
                     "attrs": {
+                        "__line__": 161, 
                         "_typename": "int", 
                         "dimension": "len", 
                         "owner": "caller"
@@ -1644,6 +1667,7 @@
                     "underscore_name": "return_int_ptr_dim_default_new"
                 }, 
                 "options": {
+                    "__line__": 165, 
                     "wrap_lua": false
                 }
             }, 
@@ -1661,6 +1685,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 177, 
                                 "_typename": "int", 
                                 "deref": "raw", 
                                 "intent": "out", 
@@ -1715,6 +1740,7 @@
                     "underscore_name": "int_ptr_dim_raw"
                 }, 
                 "options": {
+                    "__line__": 181, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -1735,6 +1761,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 189, 
                                 "_typename": "int", 
                                 "deref": "pointer", 
                                 "dimension": "len", 
@@ -1791,6 +1818,7 @@
                     "underscore_name": "int_ptr_dim_pointer"
                 }, 
                 "options": {
+                    "__line__": 194, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -1811,6 +1839,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 202, 
                                 "_typename": "int", 
                                 "deref": "allocatable", 
                                 "dimension": "len", 
@@ -1867,6 +1896,7 @@
                     "underscore_name": "int_ptr_dim_alloc"
                 }, 
                 "options": {
+                    "__line__": 207, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -1887,6 +1917,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 215, 
                                 "_typename": "int", 
                                 "dimension": "len", 
                                 "intent": "out", 
@@ -1942,6 +1973,7 @@
                     "underscore_name": "int_ptr_dim_default"
                 }, 
                 "options": {
+                    "__line__": 219, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -1962,6 +1994,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 232, 
                                 "_typename": "int", 
                                 "deref": "raw", 
                                 "intent": "out", 
@@ -2017,6 +2050,7 @@
                     "underscore_name": "int_ptr_dim_raw_new"
                 }, 
                 "options": {
+                    "__line__": 237, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -2037,6 +2071,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 245, 
                                 "_typename": "int", 
                                 "deref": "pointer", 
                                 "dimension": "len", 
@@ -2093,6 +2128,7 @@
                     "underscore_name": "int_ptr_dim_pointer_new"
                 }, 
                 "options": {
+                    "__line__": 251, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -2113,6 +2149,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 259, 
                                 "_typename": "int", 
                                 "deref": "allocatable", 
                                 "dimension": "len", 
@@ -2169,6 +2206,7 @@
                     "underscore_name": "int_ptr_dim_alloc_new"
                 }, 
                 "options": {
+                    "__line__": 265, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -2189,6 +2227,7 @@
                     "params": [
                         {
                             "attrs": {
+                                "__line__": 273, 
                                 "_typename": "int", 
                                 "dimension": "len", 
                                 "intent": "out", 
@@ -2244,6 +2283,7 @@
                     "underscore_name": "int_ptr_dim_default_new"
                 }, 
                 "options": {
+                    "__line__": 278, 
                     "wrap_c": false, 
                     "wrap_fortran": false, 
                     "wrap_lua": false, 
@@ -2340,6 +2380,7 @@
                     "underscore_name": "create_class_static"
                 }, 
                 "options": {
+                    "__line__": 288, 
                     "wrap_lua": false
                 }
             }, 
@@ -2418,6 +2459,7 @@
                     "underscore_name": "get_class_static"
                 }, 
                 "options": {
+                    "__line__": 293, 
                     "wrap_lua": false
                 }
             }, 
@@ -2522,6 +2564,7 @@
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)", 
                 "declgen": "Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)", 
                 "doxygen": {
+                    "__line__": 298, 
                     "brief": "Return pointer to new Class1 instance."
                 }, 
                 "format": {
@@ -2549,6 +2592,7 @@
                     "underscore_name": "get_class_new"
                 }, 
                 "options": {
+                    "__line__": 300, 
                     "wrap_lua": false
                 }
             }
@@ -2616,6 +2660,7 @@
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
+            "__line__": 47, 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
             "debug_index": false, 

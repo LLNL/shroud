@@ -509,6 +509,8 @@ rv = .false.
         """
         if f_module is not None:
             for mname, only in f_module.items():
+                if mname == '__line__':
+                    continue
                 if mname == '--import--':
                     for oname in only:
                         imports[oname] = True

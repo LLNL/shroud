@@ -539,6 +539,7 @@
                     "underscore_name": "sum"
                 }, 
                 "options": {
+                    "__line__": 71, 
                     "wrap_lua": false
                 }
             }, 
@@ -1600,6 +1601,7 @@
                 "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
+                    "__line__": 230, 
                     "brief": "compute cos of IN and save in OUT", 
                     "description": "allocate OUT same type as IN implied size of array"
                 }, 
@@ -1811,6 +1813,7 @@
                 "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
+                    "__line__": 239, 
                     "brief": "truncate IN argument and save in OUT", 
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 }, 
@@ -1967,6 +1970,7 @@
                 "decl": "void increment(int * array  +intent(inout)  +dimension(:), int   sizein +implied(size(array)))", 
                 "declgen": "void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)", 
                 "doxygen": {
+                    "__line__": 247, 
                     "brief": null, 
                     "description": "array with intent(INOUT)\n"
                 }, 
@@ -2057,6 +2061,7 @@
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
+            "__line__": 51, 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
             "debug_index": false, 
@@ -2078,6 +2083,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
+            "__line__": 62, 
             "c_to_cxx": "static_cast<EnumTypeID>({c_var})", 
             "c_type": "int", 
             "cxx_to_c": "static_cast<int>({cxx_var})", 

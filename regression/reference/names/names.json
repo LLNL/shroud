@@ -19,6 +19,7 @@
                     "PY_this_call": "self->obj->", 
                     "PY_to_object_func": "PP_Names_to_Object", 
                     "PY_type_filename": "pyNamestype.cpp", 
+                    "__line__": 85, 
                     "class_lower": "names", 
                     "class_prefix": "names_", 
                     "class_scope": "Names::", 
@@ -62,6 +63,7 @@
                             "F_name_impl": "names_method1", 
                             "F_subprogram": "subroutine", 
                             "PY_name_impl": "PY_names_method1", 
+                            "__line__": 94, 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -110,6 +112,7 @@
                             "F_subprogram": "subroutine", 
                             "F_this": "obj2", 
                             "PY_name_impl": "PY_names_method2", 
+                            "__line__": 97, 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -124,6 +127,7 @@
                 "options": {
                     "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
+                    "__line__": 81, 
                     "none": "foo"
                 }, 
                 "typemap_name": "Names"
@@ -249,6 +253,7 @@
                 }, 
                 "name": "Color", 
                 "options": {
+                    "__line__": 73, 
                     "bar": 4
                 }, 
                 "typemap_name": "Color"
@@ -329,6 +334,7 @@
             "PY_used_param_kwds": false, 
             "PY_used_param_self": false, 
             "YAML_type_filename": "testnames_types.yaml", 
+            "__line__": 54, 
             "c_temp": "SHT_", 
             "class_prefix": "", 
             "class_scope": "", 
@@ -417,6 +423,7 @@
                     "F_name_impl": "f_name_special", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PY_function2", 
+                    "__line__": 114, 
                     "c_const": "", 
                     "function_name": "function2", 
                     "underscore_name": "function2"
@@ -509,6 +516,7 @@
                     "F_name_impl": "F_name_function3a_int", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PY_function3a_0", 
+                    "__line__": 121, 
                     "c_const": "", 
                     "function_name": "function3a", 
                     "function_suffix": "_0", 
@@ -602,6 +610,7 @@
                     "F_name_impl": "F_name_function3a_long", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PY_function3a_1", 
+                    "__line__": 125, 
                     "c_const": "", 
                     "function_name": "function3a", 
                     "function_suffix": "_1", 
@@ -971,6 +980,7 @@
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
+            "__line__": 47, 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
             "debug_index": false, 
