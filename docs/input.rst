@@ -198,6 +198,69 @@ text, which is copied unchanged to the output. If you need to include
 a brace character in the literal text, it can be escaped by doubling:
 ``{{`` and ``}}``. [Python_Format]_
 
+There are some metacharacters that are used for formatting the line:
+
+\\n
+
+    Add an explicit newline.
+
+\\t
+
+    A tab is used to suggest a place to break the line for a continuation
+    before it exceeds option *C_line_length* or *F_line_length*.
+    Any whitespace after a tab will be trimmed if the line is actually
+    split at the tab.  If a continuation was not needed (there was enough
+    space on the current line) then the tab has no effect::
+
+        arg1,\t arg2
+
+\+ -
+
+    Increase or decrease indention indention level.
+    Used at the beginning or end of a line::
+
+       if (condition) {{+
+       do_one();
+       -}} else {{+
+       do_two();
+       -}}
+
+    The double curly braces are replace by a single curly.
+    This will be indented as::
+
+       if (condition) {
+           do_one();
+       } else {
+           do_two();
+       }
+
+#
+
+       If the first character is a #, ignore indention and write in column 0.
+       Useful for preprocessing directives.
+
+0
+
+       If the first character is 0, ignore indention and write in column 0.
+       Useful for comments.
+
+@
+
+       If the first character is @, treat the following character literally.
+       Used to ignore a metacharacter::
+
+           struct aa = {{++
+           0// set field to 0
+           @0,
+           -}};
+
+       Formatted as::
+
+           struct aa = {
+           // set field to 0
+               0,
+           };
+
 
 Attributes
 ----------
