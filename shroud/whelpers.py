@@ -379,35 +379,37 @@ CHelpers = dict(
         cxx_header='<cstring>',
         c_source="""
 // helper function
-// Copy src into dest, blank fill to la characters
+// Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
-static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = ls < la ? ls : la;
+   int nm = nsrc < ndest ? nsrc : ndest;
    memcpy(dest,src,nm);
-   if(la > nm) memset(dest+nm,' ',la-nm);
+   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }""",
         cxx_source="""
 // helper function
-// Copy src into dest, blank fill to la characters
+// Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
-static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = ls < la ? ls : la;
+   int nm = nsrc < ndest ? nsrc : ndest;
    std::memcpy(dest,src,nm);
-   if(la > nm) std::memset(dest+nm,' ',la-nm);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }"""
         ),
     ShroudLenTrim=dict(
         source="""
 // helper function
-// Returns the length of character string a with length ls,
+// Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-int ShroudLenTrim(const char *s, int ls) {
+int ShroudLenTrim(const char *src, int nsrc) {
     int i;
 
-    for (i = ls - 1; i >= 0; i--) {
-        if (s[i] != ' ') {
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
             break;
         }
     }

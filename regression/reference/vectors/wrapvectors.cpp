@@ -54,13 +54,13 @@ extern "C" {
 
 
 // helper function
-// Returns the length of character string a with length ls,
+// Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
-int ShroudLenTrim(const char *s, int ls) {
+int ShroudLenTrim(const char *src, int nsrc) {
     int i;
 
-    for (i = ls - 1; i >= 0; i--) {
-        if (s[i] != ' ') {
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
             break;
         }
     }

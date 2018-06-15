@@ -48,13 +48,14 @@
 
 
 // helper function
-// Copy src into dest, blank fill to la characters
+// Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
-static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = ls < la ? ls : la;
+   int nm = nsrc < ndest ? nsrc : ndest;
    memcpy(dest,src,nm);
-   if(la > nm) memset(dest+nm,' ',la-nm);
+   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }
 // splicer begin C_definitions
 // splicer end C_definitions

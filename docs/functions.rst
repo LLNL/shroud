@@ -200,12 +200,13 @@ at the beginning of the wrapped code.
 
 C helper functions
 
-``ShroudStrCopy(char *dest, int la, const char *src, int ls)``
-    Copy *src* into *dest*, blank fill to *la* characters
+``ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)``
+    Copy *src* into *dest*, blank fill to *ndest* characters
     Truncate if *dest* is too short to hold all of *src*.
+    *dest* will not be NULL terminated.
 
-``int ShroudLenTrim(const char *s, int ls)``
-    Returns the length of character string *a* with length *ls*,
+``int ShroudLenTrim(const char *src, int nsrc)``
+    Returns the length of character string *src* with length *nsrc*,
     ignoring any trailing blanks.
 
 

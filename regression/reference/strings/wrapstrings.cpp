@@ -56,13 +56,14 @@ extern "C" {
 
 
 // helper function
-// Copy src into dest, blank fill to la characters
+// Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
-static void ShroudStrCopy(char *dest, int la, const char *src, int ls)
+// dest will not be NULL terminated.
+static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = ls < la ? ls : la;
+   int nm = nsrc < ndest ? nsrc : ndest;
    std::memcpy(dest,src,nm);
-   if(la > nm) std::memset(dest+nm,' ',la-nm);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }
 
 // helper function
