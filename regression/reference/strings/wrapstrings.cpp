@@ -299,8 +299,13 @@ void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 1;
-    DSHF_rv->addr.ccharp = SHCXX_rv->data();
-    DSHF_rv->len = SHCXX_rv->size();
+    if (SHCXX_rv->empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv->data();
+        DSHF_rv->len = SHCXX_rv->size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_result_bufferify
@@ -353,8 +358,13 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 1;
-    DSHF_rv->addr.ccharp = SHCXX_rv->data();
-    DSHF_rv->len = SHCXX_rv->size();
+    if (SHCXX_rv->empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv->data();
+        DSHF_rv->len = SHCXX_rv->size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_alloc_bufferify
@@ -386,8 +396,13 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (&SHCXX_rv));
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    if (SHCXX_rv.empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_ref_pure_bufferify
@@ -527,8 +542,13 @@ void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (&SHCXX_rv));
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    if (SHCXX_rv.empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_ref_alloc_bufferify
@@ -597,8 +617,13 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv->data();
-    DSHF_rv->len = SHCXX_rv->size();
+    if (SHCXX_rv->empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv->data();
+        DSHF_rv->len = SHCXX_rv->size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_ptr_alloc_bufferify
@@ -637,8 +662,13 @@ void STR_get_const_string_ptr_owns_alloc_bufferify(
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 2;
-    DSHF_rv->addr.ccharp = SHCXX_rv->data();
-    DSHF_rv->len = SHCXX_rv->size();
+    if (SHCXX_rv->empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv->data();
+        DSHF_rv->len = SHCXX_rv->size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_ptr_owns_alloc_bufferify
@@ -669,8 +699,13 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 3;
-    DSHF_rv->addr.ccharp = SHCXX_rv->data();
-    DSHF_rv->len = SHCXX_rv->size();
+    if (SHCXX_rv->empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv->data();
+        DSHF_rv->len = SHCXX_rv->size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_const_string_ptr_owns_alloc_pattern_bufferify

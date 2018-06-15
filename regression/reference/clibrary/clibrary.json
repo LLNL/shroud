@@ -2830,8 +2830,13 @@
                     "post_call": [
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var_context}->cxx.idtor = {idtor};", 
+                        "if ({cxx_var}{cxx_member}empty()) {{+", 
+                        "{c_var_context}->addr.ccharp = NULL;", 
+                        "{c_var_context}->len = 0;", 
+                        "-}} else {{+", 
                         "{c_var_context}->addr.ccharp = {cxx_var}{cxx_member}data();", 
                         "{c_var_context}->len = {cxx_var}{cxx_member}size();", 
+                        "-}}", 
                         "{c_var_context}->size = 1;"
                     ]
                 }

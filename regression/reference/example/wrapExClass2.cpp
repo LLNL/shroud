@@ -183,8 +183,13 @@ void AA_exclass2_get_name2_bufferify(AA_exclass2 * self,
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (&SHCXX_rv));
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    if (SHCXX_rv.empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end class.ExClass2.method.get_name2_bufferify
@@ -212,8 +217,13 @@ void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self,
     std::string & SHCXX_rv = SH_this->getName3();
     DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    if (SHCXX_rv.empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end class.ExClass2.method.get_name3_bufferify
@@ -241,8 +251,13 @@ void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
     std::string & SHCXX_rv = SH_this->getName4();
     DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);
     DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHCXX_rv.data();
-    DSHF_rv->len = SHCXX_rv.size();
+    if (SHCXX_rv.empty()) {
+        DSHF_rv->addr.ccharp = NULL;
+        DSHF_rv->len = 0;
+    } else {
+        DSHF_rv->addr.ccharp = SHCXX_rv.data();
+        DSHF_rv->len = SHCXX_rv.size();
+    }
     DSHF_rv->size = 1;
     return;
 // splicer end class.ExClass2.method.get_name4_bufferify

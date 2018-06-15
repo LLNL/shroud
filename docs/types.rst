@@ -801,8 +801,13 @@ The generated wrappers are::
         DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
             (&SHCXX_rv));
         DSHF_rv->cxx.idtor = 0;
-        DSHF_rv->addr.ccharp = SHCXX_rv.data();
-        DSHF_rv->len = SHCXX_rv.size();
+        if (SHCXX_rv.empty()) {
+            DSHF_rv->addr.ccharp = NULL;
+            DSHF_rv->len = 0;
+        } else {
+            DSHF_rv->addr.ccharp = SHCXX_rv.data();
+            DSHF_rv->len = SHCXX_rv.size();
+        }
         DSHF_rv->size = 1;
         return;
     }
@@ -1255,8 +1260,13 @@ This allows it to be easily accessed from Fortran::
         const std::string * SHCXX_rv = tutorial::Function4d();
         DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>(SHCXX_rv));
         DSHF_rv->cxx.idtor = 2;
-        DSHF_rv->addr.ccharp = SHCXX_rv->data();
-        DSHF_rv->len = SHCXX_rv->size();
+        if (SHCXX_rv->empty()) {
+            DSHF_rv->addr.ccharp = NULL;
+            DSHF_rv->len = 0;
+        } else {
+            DSHF_rv->addr.ccharp = SHCXX_rv->data();
+            DSHF_rv->len = SHCXX_rv->size();
+        }
         DSHF_rv->size = 1;
         return;
     }
