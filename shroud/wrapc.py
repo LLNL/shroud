@@ -497,7 +497,6 @@ class Wrapc(util.WrapperMixin):
         ntypemap = node.typemap
         if has_dtor:
             cxx_type = ntypemap.cxx_type
-            cxx_type = cxx_type.replace('\t', '')
             del_lines = [
                 '{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);'.format(
                     cxx_type=cxx_type),

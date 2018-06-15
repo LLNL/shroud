@@ -1817,7 +1817,6 @@ extern PyObject *{PY_prefix}error_obj;
         """Add unique names to capsule_helpers.
         Return index of name.
         """
-        name = name.replace('\t', '')
         if name not in self.capsule_helpers:
             self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
             self.capsule_order.append(name)
