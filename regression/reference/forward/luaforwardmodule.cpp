@@ -58,7 +58,8 @@ extern "C" {
 static int l_class2_ctor(lua_State *L)
 {
     // splicer begin class.Class2.method.ctor
-    l_Class2_Type * SH_this = (l_Class2_Type *) lua_newuserdata(L, sizeof(*SH_this));
+    l_Class2_Type * SH_this =
+        (l_Class2_Type *) lua_newuserdata(L, sizeof(*SH_this));
     SH_this->self = new tutorial::Class2();
     /* Add the metatable to the stack. */
     luaL_getmetatable(L, "Class2.metatable");

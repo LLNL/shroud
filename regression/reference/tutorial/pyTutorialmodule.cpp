@@ -728,7 +728,8 @@ PY_enumfunc(
         return NULL;
 
     // post_parse
-    tutorial::EnumTypeID SH_arg = static_cast<tutorial::EnumTypeID>(arg);
+    tutorial::EnumTypeID SH_arg =
+        static_cast<tutorial::EnumTypeID>(arg);
 
     tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SH_arg);
 
@@ -823,11 +824,11 @@ PY_directionFunc(
         return NULL;
 
     // post_parse
-    tutorial::Class1::DIRECTION SH_arg = static_cast<tutorial::
-        Class1::DIRECTION>(arg);
+    tutorial::Class1::DIRECTION SH_arg =
+        static_cast<tutorial::Class1::DIRECTION>(arg);
 
-    tutorial::Class1::DIRECTION SHCXX_rv = tutorial::
-        directionFunc(SH_arg);
+    tutorial::Class1::DIRECTION SHCXX_rv =
+        tutorial::directionFunc(SH_arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);

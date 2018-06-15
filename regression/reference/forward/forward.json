@@ -39,12 +39,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "tutorial::\tClass2", 
+                                "cxx_type": "tutorial::Class2", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "tutorial::\tClass2", 
+                                "cxx_type": "tutorial::Class2", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -81,7 +81,7 @@
                         "decl": "Class2()", 
                         "declgen": "Class2()", 
                         "format": {
-                            "C_call_code": "tutorial::\tClass2 *SHCXX_rv = new tutorial::\tClass2();", 
+                            "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_ctor", 
                             "C_post_call": "FOR_class2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -105,7 +105,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "FOR_class2 *SHC_rv", 
-                            "cxx_rv_decl": "tutorial::\tClass2 *SHCXX_rv", 
+                            "cxx_rv_decl": "tutorial::Class2 *SHCXX_rv", 
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
@@ -131,7 +131,7 @@
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_dtor", 
-                            "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(self->addr);", 
+                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);", 
                             "C_prototype": "FOR_class2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -168,7 +168,7 @@
                                     "cxx_decl": "tutorial::Class1 * SHCXX_arg", 
                                     "cxx_member": "->", 
                                     "cxx_type": "tutorial::Class1", 
-                                    "cxx_val": "\tstatic_cast<tutorial::Class1 *>(arg->addr)", 
+                                    "cxx_val": "static_cast<tutorial::Class1 *>(arg->addr)", 
                                     "cxx_var": "SHCXX_arg", 
                                     "idtor": "0"
                                 }, 
@@ -245,7 +245,7 @@
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "FOR_class2_func1", 
-                            "C_pre_call": "tutorial::\tClass2 *SH_this = \tstatic_cast<tutorial::\tClass2 *>(self->addr);\ntutorial::Class1 * SHCXX_arg = \tstatic_cast<tutorial::Class1 *>(arg->addr);", 
+                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>(arg->addr);", 
                             "C_prototype": "FOR_class2 * self,\t TUT_class1 * arg", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1252,7 +1252,7 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::Class1 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}tutorial::Class1 *>({c_var}{c_member}addr)", 
             "c_type": "TUT_class1", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "tutorial::Class1", 
@@ -1283,18 +1283,18 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::Class1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -1324,10 +1324,10 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}tutorial::\tClass2 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}tutorial::Class2 *>({c_var}{c_member}addr)", 
             "c_type": "FOR_class2", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "tutorial::\tClass2", 
+            "cxx_type": "tutorial::Class2", 
             "f_c_module": {
                 "--import--": [
                     "SHROUD_capsule_data"
@@ -1350,24 +1350,24 @@
             }, 
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(class2)", 
-            "forward": "tutorial::\tClass2", 
+            "forward": "tutorial::Class2", 
             "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}tutorial::\tClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }

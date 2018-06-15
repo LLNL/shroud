@@ -202,7 +202,7 @@ void AA_testmpi_serial()
 void AA_testgroup1(SIDRE_group * grp)
 {
 // splicer begin function.testgroup1
-    axom::sidre::Group * SHCXX_grp = 
+    axom::sidre::Group * SHCXX_grp =
         static_cast<axom::sidre::Group *>(grp->addr);
     example::nested::testgroup1(SHCXX_grp);
     return;
@@ -213,7 +213,7 @@ void AA_testgroup1(SIDRE_group * grp)
 void AA_testgroup2(const SIDRE_group * grp)
 {
 // splicer begin function.testgroup2
-    const axom::sidre::Group * SHCXX_grp = 
+    const axom::sidre::Group * SHCXX_grp =
         static_cast<const axom::sidre::Group *>(grp->addr);
     example::nested::testgroup2(SHCXX_grp);
     return;

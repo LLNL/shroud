@@ -74,7 +74,8 @@ static int l_class1_new(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+            l_Class1_Type * SH_this =
+                (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
             SH_this->self = new tutorial::Class1();
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "Class1.metatable");
@@ -86,7 +87,8 @@ static int l_class1_new(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             int flag = lua_tointeger(L, 1);
-            l_Class1_Type * SH_this = (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
+            l_Class1_Type * SH_this =
+                (l_Class1_Type *) lua_newuserdata(L, sizeof(*SH_this));
             SH_this->self = new tutorial::Class1(flag);
             /* Add the metatable to the stack. */
             luaL_getmetatable(L, "Class1.metatable");
@@ -138,12 +140,12 @@ static int l_class1_method1(lua_State *L)
 static int l_class1_direction_func(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
-    tutorial::Class1::DIRECTION arg = static_cast<tutorial::
-        Class1::DIRECTION>(lua_tointeger(L, 1));
+    tutorial::Class1::DIRECTION arg =
+        static_cast<tutorial::Class1::DIRECTION>(lua_tointeger(L, 1));
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
         L, 1, "Class1.metatable");
-    tutorial::
-        Class1::DIRECTION SHCXX_rv = SH_this->self->directionFunc(arg);
+    tutorial::Class1::DIRECTION SHCXX_rv =
+        SH_this->self->directionFunc(arg);
     lua_pushinteger(L, static_cast<int>(SHCXX_rv));
     return 1;
     // splicer end class.Class1.method.directionFunc
@@ -520,7 +522,8 @@ static int l_typefunc(lua_State *L)
 static int l_enumfunc(lua_State *L)
 {
     // splicer begin function.enumfunc
-    tutorial::EnumTypeID arg = static_cast<tutorial::EnumTypeID>(lua_tointeger(L, 1));
+    tutorial::EnumTypeID arg =
+        static_cast<tutorial::EnumTypeID>(lua_tointeger(L, 1));
     tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(arg);
     lua_pushinteger(L, static_cast<int>(SHCXX_rv));
     return 1;
@@ -531,8 +534,8 @@ static int l_enumfunc(lua_State *L)
 static int l_colorfunc(lua_State *L)
 {
     // splicer begin function.colorfunc
-    tutorial::Color arg = static_cast<tutorial::
-        Color>(lua_tointeger(L, 1));
+    tutorial::Color arg =
+        static_cast<tutorial::Color>(lua_tointeger(L, 1));
     tutorial::Color SHCXX_rv = tutorial::colorfunc(arg);
     lua_pushinteger(L, static_cast<int>(SHCXX_rv));
     return 1;
@@ -543,8 +546,8 @@ static int l_colorfunc(lua_State *L)
 static int l_direction_func(lua_State *L)
 {
     // splicer begin function.directionFunc
-    tutorial::Class1::DIRECTION arg = static_cast<tutorial::
-        Class1::DIRECTION>(lua_tointeger(L, 1));
+    tutorial::Class1::DIRECTION arg =
+        static_cast<tutorial::Class1::DIRECTION>(lua_tointeger(L, 1));
     tutorial::Class1::DIRECTION SHCXX_rv = tutorial::directionFunc(arg);
     lua_pushinteger(L, static_cast<int>(SHCXX_rv));
     return 1;

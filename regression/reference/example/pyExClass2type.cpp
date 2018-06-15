@@ -344,13 +344,14 @@ PP_exclass2_get_class1(
         return NULL;
 
     // post_parse
-    const example::nested::
-        ExClass1 * in = SHPy_in ? SHPy_in->obj : NULL;
+    const example::nested::ExClass1 * in =
+        SHPy_in ? SHPy_in->obj : NULL;
 
     example::nested::ExClass1 * SHCXX_rv = self->obj->get_class1(in);
 
     // post_call
-    PP_ExClass1 * SHTPy_rv = PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
+    PP_ExClass1 * SHTPy_rv =
+        PyObject_New(PP_ExClass1, &PP_ExClass1_Type);
     SHTPy_rv->obj = SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;

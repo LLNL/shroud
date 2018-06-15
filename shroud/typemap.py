@@ -1112,7 +1112,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.cxx_to_c = 'static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})'
 
     # void pointer in struct -> class instance pointer
-    ntypemap.c_to_cxx = ('\tstatic_cast<{c_const}%s *>({c_var}{c_member}addr)' %
+    ntypemap.c_to_cxx = ('static_cast<{c_const}%s *>({c_var}{c_member}addr)' %
                          ntypemap.cxx_type)
 
     ntypemap.f_type = 'type(%s)' % ntypemap.f_derived_type
@@ -1157,21 +1157,21 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
         intent_in=dict(
             cxx_local_var='pointer',
             post_parse=[
-                '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
+                '{c_const}%s * {cxx_var} ='
+                '\t {py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_inout=dict(
             cxx_local_var='pointer',
             post_parse=[
-                '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
+                '{c_const}%s * {cxx_var} ='
+                '\t {py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_out=dict(
             post_call=[
-                ('{PyObject} * {py_var} = '
-                 'PyObject_New({PyObject}, &{PyTypeObject});'),
+                ('{PyObject} * {py_var} ='
+                 '\t PyObject_New({PyObject}, &{PyTypeObject});'),
                 '{py_var}->{PY_obj} = {cxx_addr}{cxx_var};',
             ]
         ),
@@ -1232,18 +1232,18 @@ def fill_struct_typemap_defaults(ntypemap):
     ntypemap.c_union = helper
 
     # C++ pointer -> void pointer -> C pointer
-    ntypemap.cxx_to_c = ('\tstatic_cast<{c_const}%s *>('
+    ntypemap.cxx_to_c = ('static_cast<{c_const}%s *>('
                          '\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))' %
                          ntypemap.c_type)
 
     # C pointer -> void pointer -> C++ pointer
-    ntypemap.c_to_cxx = ('\tstatic_cast<{c_const}%s *>('
+    ntypemap.c_to_cxx = ('static_cast<{c_const}%s *>('
                          '\tstatic_cast<{c_const}void *>(\t{c_var}))' %
                          ntypemap.cxx_type)
 
     # To convert, extract correct field from union
-    ##-    ntypemap.cxx_to_c = '\t{cxx_addr}{cxx_var}.cxx'
-    ##-    ntypemap.c_to_cxx = '\t{cxx_addr}{cxx_var}.c'
+    ##-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'
+    ##-    ntypemap.c_to_cxx = '{cxx_addr}{cxx_var}.c'
 
     ntypemap.f_type = 'type(%s)' % ntypemap.f_derived_type
 
@@ -1261,21 +1261,21 @@ def fill_struct_typemap_defaults(ntypemap):
         intent_in=dict(
             cxx_local_var='pointer',
             post_parse=[
-                '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
+                '{c_const}%s * {cxx_var} ='
+                '\t {py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_inout=dict(
             cxx_local_var='pointer',
             post_parse=[
-                '{c_const}%s * {cxx_var} = '
-                '{py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
+                '{c_const}%s * {cxx_var} ='
+                '\t {py_var} ? {py_var}->{PY_obj} : NULL;' % ntypemap.cxx_type,
             ],
         ),
         intent_out=dict(
             post_call=[
-                ('{PyObject} * {py_var} = '
-                 'PyObject_New({PyObject}, &{PyTypeObject});'),
+                ('{PyObject} * {py_var} ='
+                 '\t PyObject_New({PyObject}, &{PyTypeObject});'),
                 '{py_var}->{PY_obj} = {cxx_addr}{cxx_var};',
             ]
         ),

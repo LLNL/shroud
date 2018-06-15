@@ -41,12 +41,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -84,7 +84,7 @@
                         "decl": "ExClass1()", 
                         "declgen": "ExClass1()", 
                         "format": {
-                            "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1();", 
+                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
                             "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -108,7 +108,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 *SHC_rv", 
-                            "cxx_rv_decl": "example::\tnested::\tExClass1 *SHCXX_rv", 
+                            "cxx_rv_decl": "example::nested::ExClass1 *SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_0", 
                             "underscore_name": "ctor"
@@ -164,12 +164,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -233,7 +233,7 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
+                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
                             "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -256,7 +256,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 *SHC_rv", 
-                            "cxx_rv_decl": "example::\tnested::\tExClass1 *SHCXX_rv", 
+                            "cxx_rv_decl": "example::nested::ExClass1 *SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_1", 
                             "underscore_name": "ctor"
@@ -292,7 +292,7 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
@@ -343,7 +343,7 @@
                             "return": "return new instance"
                         }, 
                         "format": {
-                            "C_call_code": "example::\tnested::\tExClass1 *SHCXX_rv = new example::\tnested::\tExClass1(&SH_name);", 
+                            "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
                             "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -354,7 +354,7 @@
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 *SHC_rv", 
-                            "cxx_rv_decl": "example::\tnested::\tExClass1 *SHCXX_rv", 
+                            "cxx_rv_decl": "example::nested::ExClass1 *SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_1_bufferify", 
                             "underscore_name": "ctor"
@@ -390,7 +390,7 @@
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_dtor", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -528,7 +528,7 @@
                             "C_call_code": "int SHC_rv =\t SH_this->incrementCount(\tincr);", 
                             "C_call_list": "incr", 
                             "C_name": "AA_exclass1_increment_count", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self,\t int incr", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -620,9 +620,9 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_pattern", 
-                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
+                            "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
                             "C_post_call_pattern": "// C_error_pattern\nif (! isNameValid(SHCXX_rv)) {\n    return NULL;\n}\n", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
@@ -730,7 +730,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_pattern_bufferify", 
                             "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -808,7 +808,7 @@
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass1_get_name_length", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -897,8 +897,8 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorCheck(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check", 
-                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
@@ -1005,7 +1005,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_error_check_bufferify", 
                             "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1084,8 +1084,8 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg", 
-                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
@@ -1184,7 +1184,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_name_arg_bufferify", 
                             "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(name, ' ', Nname);\n-} else {+\nShroudStrCopy(name, Nname,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}", 
-                            "C_pre_call": "const example::\tnested::\tExClass1 *SH_this = \tstatic_cast<const example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "const AA_exclass1 * self,\t char * name,\t int Nname", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -1327,7 +1327,7 @@
                             "C_call_code": "void * SHC_rv =\t SH_this->getRoot(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_root", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "void *", 
@@ -1469,7 +1469,7 @@
                             "C_call_code": "int SHC_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_from_int", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self,\t int value", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -1612,7 +1612,7 @@
                             "C_call_code": "long SHC_rv =\t SH_this->getValue(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass1_get_value_1", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self,\t long value", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "long", 
@@ -1696,7 +1696,7 @@
                             "C_call_code": "void * SHC_rv =\t SH_this->getAddr(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_get_addr", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "void *", 
@@ -1838,7 +1838,7 @@
                             "C_call_code": "bool SHC_rv =\t SH_this->hasAddr(\tin);", 
                             "C_call_list": "in", 
                             "C_name": "AA_exclass1_has_addr", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self,\t bool in", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "bool", 
@@ -1887,7 +1887,7 @@
                             "C_call_code": "SH_this->SplicerSpecial(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_splicer_special", 
-                            "C_pre_call": "example::\tnested::\tExClass1 *SH_this = \tstatic_cast<example::\tnested::\tExClass1 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass1 *SH_this =\t static_cast<example::nested::ExClass1 *>(self->addr);", 
                             "C_prototype": "AA_exclass1 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2003,12 +2003,12 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "example::\tnested::\tExClass2", 
+                                "cxx_type": "example::nested::ExClass2", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "example::\tnested::\tExClass2", 
+                                "cxx_type": "example::nested::ExClass2", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -2070,7 +2070,7 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
+                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
                             "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -2095,7 +2095,7 @@
                             "PY_type_method": "tp_init", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass2 *SHC_rv", 
-                            "cxx_rv_decl": "example::\tnested::\tExClass2 *SHCXX_rv", 
+                            "cxx_rv_decl": "example::nested::ExClass2 *SHCXX_rv", 
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
@@ -2130,7 +2130,7 @@
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "example::\tnested::\tExClass2", 
+                                "cxx_type": "example::nested::ExClass2", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }
@@ -2178,7 +2178,7 @@
                             "brief": "constructor"
                         }, 
                         "format": {
-                            "C_call_code": "example::\tnested::\tExClass2 *SHCXX_rv = new example::\tnested::\tExClass2(&SH_name);", 
+                            "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
                             "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
@@ -2189,7 +2189,7 @@
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass2 *SHC_rv", 
-                            "cxx_rv_decl": "example::\tnested::\tExClass2 *SHCXX_rv", 
+                            "cxx_rv_decl": "example::nested::ExClass2 *SHCXX_rv", 
                             "function_name": "ctor", 
                             "function_suffix": "_bufferify", 
                             "underscore_name": "ctor"
@@ -2224,7 +2224,7 @@
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_dtor", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2311,8 +2311,8 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name", 
-                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
-                            "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
+                            "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
@@ -2418,7 +2418,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name_bufferify", 
                             "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}", 
-                            "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2501,8 +2501,8 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName2(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2", 
-                            "C_post_call": "const char * SHC_rv = SHCXX_rv.c_str();", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "const char *", 
@@ -2609,7 +2609,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name2_bufferify", 
                             "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2692,8 +2692,8 @@
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName3(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3", 
-                            "C_post_call": "char * SHC_rv = SHCXX_rv.c_str();", 
-                            "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_post_call": "char * SHC_rv =\t SHCXX_rv.c_str();", 
+                            "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "char *", 
@@ -2800,7 +2800,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name3_bufferify", 
                             "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;", 
-                            "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "const AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -2883,8 +2883,8 @@
                             "C_call_code": "std::string & SHCXX_rv =\t SH_this->getName4(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4", 
-                            "C_post_call": "char * SHC_rv = SHCXX_rv.c_str();", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_post_call": "char * SHC_rv =\t SHCXX_rv.c_str();", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "char *", 
@@ -2991,7 +2991,7 @@
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_name4_bufferify", 
                             "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>(&SHCXX_rv);\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t USE_SHROUD_array *DSHF_rv", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3069,7 +3069,7 @@
                             "C_call_list": "", 
                             "C_code": "{C_pre_call}\nreturn {CXX_this}->getName().length();\n", 
                             "C_name": "AA_exclass2_get_name_length", 
-                            "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -3105,11 +3105,11 @@
                                     "c_member": "->", 
                                     "c_var": "in", 
                                     "cxx_addr": "", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<example::\tnested::\tExClass1 *>\t(SHCXX_in))", 
-                                    "cxx_decl": "const example::\tnested::\tExClass1 * SHCXX_in", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<example::nested::ExClass1 *>\t(SHCXX_in))", 
+                                    "cxx_decl": "const example::nested::ExClass1 * SHCXX_in", 
                                     "cxx_member": "->", 
-                                    "cxx_type": "example::\tnested::\tExClass1", 
-                                    "cxx_val": "\tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr)", 
+                                    "cxx_type": "example::nested::ExClass1", 
+                                    "cxx_val": "static_cast<const example::nested::ExClass1 *>(in->addr)", 
                                     "cxx_var": "SHCXX_in", 
                                     "idtor": "0"
                                 }, 
@@ -3124,7 +3124,7 @@
                                     "c_var": "\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")", 
                                     "c_var_len": "Lin", 
                                     "cxx_member": "->", 
-                                    "cxx_type": "example::\tnested::\tExClass1", 
+                                    "cxx_type": "example::nested::ExClass1", 
                                     "cxx_var": "in", 
                                     "lua_var": "SH_Lua_in"
                                 }, 
@@ -3135,9 +3135,9 @@
                                     "c_type": "AA_exclass1", 
                                     "c_var": "in", 
                                     "cxx_addr": "", 
-                                    "cxx_decl": "example::\tnested::\tExClass1 in", 
+                                    "cxx_decl": "example::nested::ExClass1 in", 
                                     "cxx_member": "->", 
-                                    "cxx_type": "example::\tnested::\tExClass1", 
+                                    "cxx_type": "example::nested::ExClass1", 
                                     "cxx_var": "in", 
                                     "numpy_type": null, 
                                     "py_type": "PP_ExClass1", 
@@ -3151,12 +3151,12 @@
                                 "cxx_addr": "", 
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
                                 "cxx_member": "->", 
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "example::\tnested::\tExClass1", 
+                                "cxx_type": "example::nested::ExClass1", 
                                 "f_var": "SHT_rv"
                             }, 
                             "fmtl": {
@@ -3221,11 +3221,11 @@
                         "decl": "ExClass1 *get_class1(const ExClass1 *in)", 
                         "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in))", 
                         "format": {
-                            "C_call_code": "example::\tnested::\tExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
+                            "C_call_code": "example::nested::ExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
                             "C_call_list": "SHCXX_in", 
                             "C_name": "AA_exclass2_get_class1", 
                             "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);\nconst example::\tnested::\tExClass1 * SHCXX_in = \tstatic_cast<const example::\tnested::\tExClass1 *>(in->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);\nconst example::nested::ExClass1 * SHCXX_in =\t static_cast<const example::nested::ExClass1 *>(in->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "AA_exclass1", 
@@ -3246,7 +3246,7 @@
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
-                            "cxx_rv_decl": "example::\tnested::\tExClass1 * SHCXX_rv", 
+                            "cxx_rv_decl": "example::nested::ExClass1 * SHCXX_rv", 
                             "function_name": "get_class1", 
                             "underscore_name": "get_class1"
                         }, 
@@ -3319,7 +3319,7 @@
                             "C_call_code": "SH_this->declare(\tSHCXX_type);", 
                             "C_call_list": "SHCXX_type", 
                             "C_name": "AA_exclass2_declare_0", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);\nTypeID SHCXX_type = getTypeID(type);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);\nTypeID SHCXX_type =\t getTypeID(type);", 
                             "C_prototype": "AA_exclass2 * self,\t int type", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3629,7 +3629,7 @@
                             "C_call_code": "SH_this->declare(\tSHCXX_type,\t len);", 
                             "C_call_list": "SHCXX_type,\t len", 
                             "C_name": "AA_exclass2_declare_1", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);\nTypeID SHCXX_type = getTypeID(type);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);\nTypeID SHCXX_type =\t getTypeID(type);", 
                             "C_prototype": "AA_exclass2 * self,\t int type,\t SIDRE_SidreLength len", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3850,7 +3850,7 @@
                             "C_call_code": "SH_this->destroyall(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_destroyall", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -3930,8 +3930,8 @@
                             "C_call_code": "TypeID SHCXX_rv =\t SH_this->getTypeID(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_type_id", 
-                            "C_post_call": "int SHC_rv = static_cast<int>(SHCXX_rv);", 
-                            "C_pre_call": "const example::\tnested::\tExClass2 *SH_this = \tstatic_cast<const example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_post_call": "int SHC_rv =\t static_cast<int>(SHCXX_rv);", 
+                            "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "const AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -4098,7 +4098,7 @@
                             "C_call_code": "SH_this->setValue<int>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_int", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t int value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4215,7 +4215,7 @@
                             "C_call_code": "SH_this->setValue<long>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_long", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t long value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4330,7 +4330,7 @@
                             "C_call_code": "SH_this->setValue<float>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_float", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t float value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4445,7 +4445,7 @@
                             "C_call_code": "SH_this->setValue<double>(\tvalue);", 
                             "C_call_list": "value", 
                             "C_name": "AA_exclass2_set_value_double", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self,\t double value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4567,7 +4567,7 @@
                             "C_call_code": "int SHC_rv =\t SH_this->getValue<int>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_int", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "int", 
@@ -4657,7 +4657,7 @@
                             "C_call_code": "double SHC_rv =\t SH_this->getValue<double>(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass2_get_value_double", 
-                            "C_pre_call": "example::\tnested::\tExClass2 *SH_this = \tstatic_cast<example::\tnested::\tExClass2 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);", 
                             "C_prototype": "AA_exclass2 * self", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "double", 
@@ -4760,7 +4760,7 @@
                             "C_call_code": "SH_this->exfunc(\t);", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass3_exfunc_0", 
-                            "C_pre_call": "example::\tnested::\tExClass3 *SH_this = \tstatic_cast<example::\tnested::\tExClass3 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass3 *SH_this =\t static_cast<example::nested::ExClass3 *>(self->addr);", 
                             "C_prototype": "AA_exclass3 * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -4855,7 +4855,7 @@
                             "C_call_code": "SH_this->exfunc(\tflag);", 
                             "C_call_list": "flag", 
                             "C_name": "AA_exclass3_exfunc_1", 
-                            "C_pre_call": "example::\tnested::\tExClass3 *SH_this = \tstatic_cast<example::\tnested::\tExClass3 *>(self->addr);", 
+                            "C_pre_call": "example::nested::ExClass3 *SH_this =\t static_cast<example::nested::ExClass3 *>(self->addr);", 
                             "C_prototype": "AA_exclass3 * self,\t int flag", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -5039,7 +5039,7 @@
                 "decl": "void local_function1()", 
                 "declgen": "void local_function1()", 
                 "format": {
-                    "C_call_code": "example::\tnested::\tlocal_function1(\t);", 
+                    "C_call_code": "example::nested::local_function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_local_function1", 
                     "C_prototype": "", 
@@ -5175,7 +5175,7 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "bool SHC_rv =\t example::\tnested::\tisNameValid(\tSH_name);", 
+                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid", 
@@ -5277,7 +5277,7 @@
                 "decl": "bool isNameValid(const std::string& name)", 
                 "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "bool SHC_rv =\t example::\tnested::\tisNameValid(\tSH_name);", 
+                    "C_call_code": "bool SHC_rv =\t example::nested::isNameValid(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_code": "return name != NULL;", 
                     "C_name": "AA_is_name_valid_bufferify", 
@@ -5350,7 +5350,7 @@
                 "decl": "bool isInitialized()", 
                 "declgen": "bool isInitialized()", 
                 "format": {
-                    "C_call_code": "bool SHC_rv =\t example::\tnested::\tisInitialized(\t);", 
+                    "C_call_code": "bool SHC_rv =\t example::nested::isInitialized(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_is_initialized", 
                     "C_prototype": "", 
@@ -5588,7 +5588,7 @@
                 "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))", 
                 "declgen": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
                 "format": {
-                    "C_call_code": "example::\tnested::\tcheckBool(\targ1,\t arg2,\t arg3);", 
+                    "C_call_code": "example::nested::checkBool(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "AA_check_bool", 
                     "C_prototype": "bool arg1,\t bool * arg2,\t bool * arg3", 
@@ -5694,7 +5694,7 @@
                 "decl": "void test_names(const std::string &name)", 
                 "declgen": "void test_names(const std::string & name +intent(in))", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttest_names(\tSH_name);", 
+                    "C_call_code": "example::nested::test_names(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "AA_test_names", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -5785,7 +5785,7 @@
                 "decl": "void test_names(const std::string &name)", 
                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname))", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttest_names(\tSH_name);", 
+                    "C_call_code": "example::nested::test_names(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "AA_test_names_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -5941,7 +5941,7 @@
                 "decl": "void test_names(const std::string &name, int flag)", 
                 "declgen": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttest_names(\tSH_name,\t flag);", 
+                    "C_call_code": "example::nested::test_names(\tSH_name,\t flag);", 
                     "C_call_list": "SH_name,\t flag", 
                     "C_name": "AA_test_names_flag", 
                     "C_pre_call": "const std::string SH_name(name);", 
@@ -6063,7 +6063,7 @@
                 "decl": "void test_names(const std::string &name, int flag)", 
                 "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttest_names(\tSH_name,\t flag);", 
+                    "C_call_code": "example::nested::test_names(\tSH_name,\t flag);", 
                     "C_call_list": "SH_name,\t flag", 
                     "C_name": "AA_test_names_flag_bufferify", 
                     "C_pre_call": "const std::string SH_name(name, Lname);", 
@@ -6104,7 +6104,7 @@
                 "decl": "void testoptional(int i = 1, long j=2)", 
                 "declgen": "void testoptional()", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestoptional(\t);", 
+                    "C_call_code": "example::nested::testoptional(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_testoptional_0", 
                     "C_prototype": "", 
@@ -6189,7 +6189,7 @@
                 "decl": "void testoptional(int i = 1, long j=2)", 
                 "declgen": "void testoptional(int i=1 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestoptional(\ti);", 
+                    "C_call_code": "example::nested::testoptional(\ti);", 
                     "C_call_list": "i", 
                     "C_name": "AA_testoptional_1", 
                     "C_prototype": "int i", 
@@ -6366,7 +6366,7 @@
                 "decl": "void testoptional(int i = 1, long j=2)", 
                 "declgen": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestoptional(\ti,\t j);", 
+                    "C_call_code": "example::nested::testoptional(\ti,\t j);", 
                     "C_call_list": "i,\t j", 
                     "C_name": "AA_testoptional_2", 
                     "C_prototype": "int i,\t long j", 
@@ -6441,7 +6441,7 @@
                 "decl": "size_t test_size_t()", 
                 "declgen": "size_t test_size_t()", 
                 "format": {
-                    "C_call_code": "size_t SHC_rv =\t example::\tnested::\ttest_size_t(\t);", 
+                    "C_call_code": "size_t SHC_rv =\t example::nested::test_size_t(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_test_size_t", 
                     "C_prototype": "", 
@@ -6551,10 +6551,10 @@
                 "decl": "void testmpi(MPI_Comm comm)", 
                 "declgen": "void testmpi(MPI_Comm comm +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestmpi(\tSHCXX_comm);", 
+                    "C_call_code": "example::nested::testmpi(\tSHCXX_comm);", 
                     "C_call_list": "SHCXX_comm", 
                     "C_name": "AA_testmpi_mpi", 
-                    "C_pre_call": "MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);", 
+                    "C_pre_call": "MPI_Comm SHCXX_comm =\t MPI_Comm_f2c(comm);", 
                     "C_prototype": "MPI_Fint comm", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -6597,7 +6597,7 @@
                 "decl": "void testmpi()", 
                 "declgen": "void testmpi()", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestmpi(\t);", 
+                    "C_call_code": "example::nested::testmpi(\t);", 
                     "C_call_list": "", 
                     "C_name": "AA_testmpi_serial", 
                     "C_prototype": "", 
@@ -6633,7 +6633,7 @@
                             "cxx_decl": "axom::sidre::Group * SHCXX_grp", 
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
-                            "cxx_val": "\tstatic_cast<axom::sidre::Group *>(grp->addr)", 
+                            "cxx_val": "static_cast<axom::sidre::Group *>(grp->addr)", 
                             "cxx_var": "SHCXX_grp", 
                             "idtor": "0"
                         }, 
@@ -6708,10 +6708,10 @@
                 "decl": "void testgroup1(axom::sidre::Group * grp)", 
                 "declgen": "void testgroup1(axom::sidre::Group * grp +intent(in))", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestgroup1(\tSHCXX_grp);", 
+                    "C_call_code": "example::nested::testgroup1(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
                     "C_name": "AA_testgroup1", 
-                    "C_pre_call": "axom::sidre::Group * SHCXX_grp = \tstatic_cast<axom::sidre::Group *>(grp->addr);", 
+                    "C_pre_call": "axom::sidre::Group * SHCXX_grp =\t static_cast<axom::sidre::Group *>(grp->addr);", 
                     "C_prototype": "SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -6746,7 +6746,7 @@
                             "cxx_decl": "const axom::sidre::Group * SHCXX_grp", 
                             "cxx_member": "->", 
                             "cxx_type": "axom::sidre::Group", 
-                            "cxx_val": "\tstatic_cast<const axom::sidre::Group *>(grp->addr)", 
+                            "cxx_val": "static_cast<const axom::sidre::Group *>(grp->addr)", 
                             "cxx_var": "SHCXX_grp", 
                             "idtor": "0"
                         }, 
@@ -6821,10 +6821,10 @@
                 "decl": "void testgroup2(const axom::sidre::Group * grp)", 
                 "declgen": "void testgroup2(const axom::sidre::Group * grp +intent(in))", 
                 "format": {
-                    "C_call_code": "example::\tnested::\ttestgroup2(\tSHCXX_grp);", 
+                    "C_call_code": "example::nested::testgroup2(\tSHCXX_grp);", 
                     "C_call_list": "SHCXX_grp", 
                     "C_name": "AA_testgroup2", 
-                    "C_pre_call": "const axom::sidre::Group * SHCXX_grp = \tstatic_cast<const axom::sidre::Group *>(grp->addr);", 
+                    "C_pre_call": "const axom::sidre::Group * SHCXX_grp =\t static_cast<const axom::sidre::Group *>(grp->addr);", 
                     "C_prototype": "const SIDRE_group * grp", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -6939,7 +6939,7 @@
                     "brief": "subroutine"
                 }, 
                 "format": {
-                    "C_call_code": "example::\tnested::\tFuncPtr1(\tget);", 
+                    "C_call_code": "example::nested::FuncPtr1(\tget);", 
                     "C_call_list": "get", 
                     "C_name": "AA_func_ptr1", 
                     "C_prototype": "void ( * get)(\t)", 
@@ -7061,7 +7061,7 @@
                     "brief": "return a pointer"
                 }, 
                 "format": {
-                    "C_call_code": "example::\tnested::\tFuncPtr2(\tget);", 
+                    "C_call_code": "example::nested::FuncPtr2(\tget);", 
                     "C_call_list": "get", 
                     "C_name": "AA_func_ptr2", 
                     "C_prototype": "double * ( * get)(\t)", 
@@ -7203,7 +7203,7 @@
                     "brief": "abstract argument"
                 }, 
                 "format": {
-                    "C_call_code": "example::\tnested::\tFuncPtr3(\tget);", 
+                    "C_call_code": "example::nested::FuncPtr3(\tget);", 
                     "C_call_list": "get", 
                     "C_name": "AA_func_ptr3", 
                     "C_prototype": "double ( * get)(\tint i,\t int)", 
@@ -7318,7 +7318,7 @@
                     "brief": "abstract argument"
                 }, 
                 "format": {
-                    "C_call_code": "example::\tnested::\tFuncPtr4(\tget);", 
+                    "C_call_code": "example::nested::FuncPtr4(\tget);", 
                     "C_call_list": "get", 
                     "C_name": "AA_func_ptr4", 
                     "C_prototype": "double ( * get)(\tdouble,\t int)", 
@@ -7576,7 +7576,7 @@
                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))", 
                 "declgen": "void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "example::\tnested::\tFuncPtr5(\tget);", 
+                    "C_call_code": "example::nested::FuncPtr5(\tget);", 
                     "C_call_list": "get", 
                     "C_name": "AA_func_ptr5", 
                     "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)", 
@@ -8272,7 +8272,7 @@
                 "decl": "void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))", 
                 "declgen": "void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))", 
                 "format": {
-                    "C_call_code": "example::\tnested::\tverylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
+                    "C_call_code": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verylongfunctionname1", 
                     "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10", 
@@ -8931,7 +8931,7 @@
                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)", 
                 "declgen": "int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)", 
                 "format": {
-                    "C_call_code": "int SHC_rv =\t example::\tnested::\tverylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
+                    "C_call_code": "int SHC_rv =\t example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10);", 
                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10", 
                     "C_name": "AA_verylongfunctionname2", 
                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10", 
@@ -9183,7 +9183,7 @@
                     "brief": "Test multidimensional arrays with allocatable"
                 }, 
                 "format": {
-                    "C_call_code": "example::\tnested::\tcos_doubles(\tin,\t out,\t sizein);", 
+                    "C_call_code": "example::nested::cos_doubles(\tin,\t out,\t sizein);", 
                     "C_call_list": "in,\t out,\t sizein", 
                     "C_name": "AA_cos_doubles", 
                     "C_prototype": "double * in,\t double * out,\t int sizein", 
@@ -9369,7 +9369,7 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}axom::sidre::Group *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}axom::sidre::Group *>({c_var}{c_member}addr)", 
             "c_type": "SIDRE_group", 
             "cxx_header": "sidre/Group.hpp", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
@@ -9401,18 +9401,18 @@
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}axom::sidre::Group * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}axom::sidre::Group * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}axom::sidre::Group * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -9700,11 +9700,11 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}example::\tnested::\tExClass1 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass1 *>({c_var}{c_member}addr)", 
             "c_type": "AA_exclass1", 
             "cxx_header": "ExClass1.hpp", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "example::\tnested::\tExClass1", 
+            "cxx_type": "example::nested::ExClass1", 
             "f_c_module": {
                 "--import--": [
                     "SHROUD_capsule_data"
@@ -9727,24 +9727,24 @@
             }, 
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass1)", 
-            "forward": "example::\tnested::\tExClass1", 
+            "forward": "example::nested::ExClass1", 
             "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}example::\tnested::\tExClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}example::\tnested::\tExClass1 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -9774,11 +9774,11 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}example::\tnested::\tExClass2 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass2 *>({c_var}{c_member}addr)", 
             "c_type": "AA_exclass2", 
             "cxx_header": "ExClass2.hpp", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "example::\tnested::\tExClass2", 
+            "cxx_type": "example::nested::ExClass2", 
             "f_c_module": {
                 "--import--": [
                     "SHROUD_capsule_data"
@@ -9801,24 +9801,24 @@
             }, 
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass2)", 
-            "forward": "example::\tnested::\tExClass2", 
+            "forward": "example::nested::ExClass2", 
             "idtor": "2", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}example::\tnested::\tExClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}example::\tnested::\tExClass2 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
@@ -9844,10 +9844,10 @@
                     ]
                 }
             }, 
-            "c_to_cxx": "\tstatic_cast<{c_const}example::\tnested::\tExClass3 *>({c_var}{c_member}addr)", 
+            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass3 *>({c_var}{c_member}addr)", 
             "c_type": "AA_exclass3", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "example::\tnested::\tExClass3", 
+            "cxx_type": "example::nested::ExClass3", 
             "f_c_module": {
                 "--import--": [
                     "SHROUD_capsule_data"
@@ -9870,23 +9870,23 @@
             }, 
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(exclass3)", 
-            "forward": "example::\tnested::\tExClass3", 
+            "forward": "example::nested::ExClass3", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}example::\tnested::\tExClass3 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass3 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_inout": {
                     "cxx_local_var": "pointer", 
                     "post_parse": [
-                        "{c_const}example::\tnested::\tExClass3 * {cxx_var} = {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass3 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {
                     "post_call": [
-                        "{PyObject} * {py_var} = PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }

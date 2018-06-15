@@ -458,7 +458,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             fmt.rv_decl = ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None)
-            fmt.rv_asgn = fmt.rv_decl + ' = '
+            fmt.rv_asgn = fmt.rv_decl + ' =\t '
 
         LUA_decl = []  # declare variables and pop values
         LUA_code = []  # call C++ function
@@ -475,7 +475,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
                 append_format(
                     LUA_code,
-                    '{LUA_userdata_type} * {LUA_userdata_var} = {c_var};',
+                    '{LUA_userdata_type} * {LUA_userdata_var} =\t {c_var};',
                     fmt)
 
         # parse arguments
@@ -553,7 +553,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             if lua_pop:
                 fmt.LUA_used_param_state = True
-                decl_suffix = ' = {};'.format(lua_pop)
+                decl_suffix = ' =\t {};'.format(lua_pop)
             else:
                 decl_suffix = ';'
             if arg_typemap.base == 'string':
@@ -571,11 +571,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt.LUA_used_param_state = True
             append_format(
                 LUA_code,
-                '{LUA_userdata_type} * {LUA_userdata_var} = '
-                '({LUA_userdata_type} *) lua_newuserdata'
+                '{LUA_userdata_type} * {LUA_userdata_var} ='
+                '\t ({LUA_userdata_type} *) lua_newuserdata'
                 '({LUA_state_var}, sizeof(*{LUA_userdata_var}));\n'
-                '{LUA_userdata_var}->{LUA_userdata_member} = '
-                'new {namespace_scope}{cxx_class}({cxx_call_list});\n'
+                '{LUA_userdata_var}->{LUA_userdata_member} ='
+                '\t new {namespace_scope}{cxx_class}({cxx_call_list});\n'
                 '/* Add the metatable to the stack. */\n'
                 'luaL_getmetatable(L, "{LUA_metadata}");\n'
                 '/* Set the metatable on the userdata. */\n'

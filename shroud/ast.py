@@ -670,7 +670,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         )
 
         fmt_ns = self.fmtdict
-        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + '::\t'
+        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + '::'
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope

@@ -1088,7 +1088,7 @@ return 1;""", fmt)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True)
                 fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                append_format(post_parse, '{cxx_decl} = {cxx_val};', fmt_arg)
+                append_format(post_parse, '{cxx_decl} =\t {cxx_val};', fmt_arg)
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
@@ -1152,11 +1152,11 @@ return 1;""", fmt)
         # declare return value once; else delare on call line.
         if found_default:
             if CXX_subprogram == 'function':
-                fmt.PY_rv_asgn = fmt_result.cxx_var + ' = '
+                fmt.PY_rv_asgn = fmt_result.cxx_var + ' =\t '
             PY_code.append('switch (SH_nargs) {')
         else:
             if CXX_subprogram == 'function':
-                fmt.PY_rv_asgn = fmt.C_rv_decl + ' = '
+                fmt.PY_rv_asgn = fmt.C_rv_decl + ' =\t '
         need_rv = False
 
         # build up code for a function
@@ -1226,7 +1226,7 @@ return 1;""", fmt)
                                   '{C_rv_decl} = new {cxx_type};',
                                   fmt)
                     del_lines = [
-                        '{} cxx_ptr = static_cast<{}>(ptr);'.format(capsule_type, capsule_type),
+                        '{} cxx_ptr =\t static_cast<{}>(ptr);'.format(capsule_type, capsule_type),
                         'delete cxx_ptr;',
                     ]
                 capsule_order = self.add_capsule_helper(capsule_type, del_lines)

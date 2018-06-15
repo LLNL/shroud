@@ -84,7 +84,8 @@ PY_singleton_getReference(
     Singleton & SHCXX_rv = Singleton::getReference();
 
     // post_call
-    PY_Singleton * SHTPy_rv = PyObject_New(PY_Singleton, &PY_Singleton_Type);
+    PY_Singleton * SHTPy_rv =
+        PyObject_New(PY_Singleton, &PY_Singleton_Type);
     SHTPy_rv->obj = &SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
