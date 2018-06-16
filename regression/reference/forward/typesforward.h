@@ -56,6 +56,12 @@ struct s_FOR_class2 {
 };
 typedef struct s_FOR_class2 FOR_class2;
 
+struct s_FOR_class3 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_FOR_class3 FOR_class3;
+
 struct s_FOR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

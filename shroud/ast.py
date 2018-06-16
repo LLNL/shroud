@@ -126,6 +126,7 @@ class NamespaceMixin(object):
 
     def create_class_typemap(self, key, **kwargs):
         """Add a typemap for a class.
+        The class is being forward declared i.e. no declarations.
         """
         self.add_typedef(key)
         fullname = self.scope + key

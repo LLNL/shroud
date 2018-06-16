@@ -4,25 +4,33 @@ class Class2
 C method Class2()
 C method ~Class2()
 C method void func1(Class1 * arg +intent(in))
+C method void acceptClass3(Class3 * arg +intent(in))
 Close wrapClass2.h
 Close wrapClass2.cpp
+class Class3
 Close wrapforward.cpp
 Close typesforward.h
 class Class2
 C-interface, Fortran method Class2()
 C-interface, Fortran method ~Class2()
 C-interface, Fortran method void func1(Class1 * arg +intent(in))
+C-interface, Fortran method void acceptClass3(Class3 * arg +intent(in))
+class Class3
 Close wrapfforward.f
 class Class2
 Python method Class2()
 Python method ~Class2()
 Python method void func1(Class1 * arg +intent(in))
+Python method void acceptClass3(Class3 * arg +intent(in))
 Close pyClass2type.cpp
+class Class3
+Close pyClass3type.cpp
 Close pyforwardhelper.cpp
 Close pyforwardmodule.hpp
 Close pyforwardmodule.cpp
 Lua method Class2()
 Lua method ~Class2()
 Lua method void func1(Class1 * arg +intent(in))
+Lua method void acceptClass3(Class3 * arg +intent(in))
 Close luaforwardmodule.hpp
 Close luaforwardmodule.cpp

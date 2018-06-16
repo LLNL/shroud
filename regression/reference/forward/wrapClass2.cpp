@@ -89,4 +89,17 @@ void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 // splicer end class.Class2.method.func1
 }
 
+// void acceptClass3(Class3 * arg +intent(in))
+void FOR_class2_accept_class3(FOR_class2 * self, FOR_class3 * arg)
+{
+// splicer begin class.Class2.method.accept_class3
+    tutorial::Class2 *SH_this =
+        static_cast<tutorial::Class2 *>(self->addr);
+    tutorial::Class3 * SHCXX_arg =
+        static_cast<tutorial::Class3 *>(arg->addr);
+    SH_this->acceptClass3(SHCXX_arg);
+    return;
+// splicer end class.Class2.method.accept_class3
+}
+
 }  // extern "C"

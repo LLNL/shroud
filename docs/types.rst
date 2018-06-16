@@ -1063,6 +1063,19 @@ is used by the ``generic`` interface.
 The constructor and destructor will only be wrapped if explicitly added
 to the YAML file to avoid wrapping ``private`` constructors and destructors.
 
+.. note:: A class without a ``declarations`` is considered a forward declaration.
+          To fully define a class, the ``declarations`` is required::
+
+              - decl: class Forward
+
+              - decl: class Full
+                declarations:
+                - decl: void work(Forward *arg)
+
+              - decl: class Forward
+                declarations:
+                - decl: void work(Full *arg)
+
 ..  chained function calls
 
 Member Variables
