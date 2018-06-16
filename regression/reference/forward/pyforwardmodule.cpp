@@ -152,6 +152,15 @@ initforward(void)
     PyModule_AddObject(m, "Class2", (PyObject *)&PY_Class2_Type);
 
 
+    // Class3
+    PY_Class3_Type.tp_new   = PyType_GenericNew;
+    PY_Class3_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Class3_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Class3_Type);
+    PyModule_AddObject(m, "Class3", (PyObject *)&PY_Class3_Type);
+
+
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;

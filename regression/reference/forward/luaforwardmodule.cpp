@@ -95,14 +95,38 @@ static int l_class2_func1(lua_State *L)
     // splicer end class.Class2.method.func1
 }
 
+// void acceptClass3(Class3 * arg +intent(in))
+static int l_class2_accept_class3(lua_State *L)
+{
+    // splicer begin class.Class2.method.acceptClass3
+    tutorial::Class3 * arg = static_cast<tutorial::Class3 *>(
+        (l_Class2_Type *) luaL_checkudata(
+        L, 1, "Class2.metatable")->addr);
+    l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
+        L, 1, "Class2.metatable");
+    SH_this->self->acceptClass3(arg);
+    return 0;
+    // splicer end class.Class2.method.acceptClass3
+}
+
 // splicer begin class.Class2.additional_functions
 // splicer end class.Class2.additional_functions
 
 static const struct luaL_Reg l_Class2_Reg [] = {
     {"__gc", l_class2_dtor},
     {"func1", l_class2_func1},
+    {"acceptClass3", l_class2_accept_class3},
     // splicer begin class.Class2.register
     // splicer end class.Class2.register
+    {NULL, NULL}   /*sentinel */
+};
+
+// splicer begin class.Class3.additional_functions
+// splicer end class.Class3.additional_functions
+
+static const struct luaL_Reg l_Class3_Reg [] = {
+    // splicer begin class.Class3.register
+    // splicer end class.Class3.register
     {NULL, NULL}   /*sentinel */
 };
 
@@ -138,6 +162,26 @@ int luaopen_forward(lua_State *L) {
     luaL_register(L, NULL, l_Class2_Reg);
 #else
     luaL_setfuncs(L, l_Class2_Reg, 0);
+#endif
+
+
+    /* Create the metatable and put it on the stack. */
+    luaL_newmetatable(L, "Class3.metatable");
+    /* Duplicate the metatable on the stack (We now have 2). */
+    lua_pushvalue(L, -1);
+    /* Pop the first metatable off the stack and assign it to __index
+     * of the second one. We set the metatable for the table to itself.
+     * This is equivalent to the following in lua:
+     * metatable = {}
+     * metatable.__index = metatable
+     */
+    lua_setfield(L, -2, "__index");
+
+    /* Set the methods to the metatable that should be accessed via object:func */
+#if LUA_VERSION_NUM < 502
+    luaL_register(L, NULL, l_Class3_Reg);
+#else
+    luaL_setfuncs(L, l_Class3_Reg, 0);
 #endif
 
 

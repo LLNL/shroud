@@ -1,4 +1,4 @@
-// pyClass2type.cpp
+// pyClass3type.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2018, Lawrence Livermore National Security, LLC.
@@ -42,8 +42,8 @@
 // #######################################################################
 #include "pyforwardmodule.hpp"
 #include "tutorial.hpp"
-// splicer begin class.Class2.impl.include
-// splicer end class.Class2.impl.include
+// splicer begin class.Class3.impl.include
+// splicer end class.Class3.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -56,110 +56,35 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.Class2.impl.C_definition
-// splicer end class.Class2.impl.C_definition
-// splicer begin class.Class2.impl.additional_methods
-// splicer end class.Class2.impl.additional_methods
+// splicer begin class.Class3.impl.C_definition
+// splicer end class.Class3.impl.C_definition
+// splicer begin class.Class3.impl.additional_methods
+// splicer end class.Class3.impl.additional_methods
 static void
-PY_Class2_tp_del (PY_Class2 *self)
+PY_Class3_tp_del (PY_Class3 *self)
 {
-// splicer begin class.Class2.type.del
+// splicer begin class.Class3.type.del
     delete self->obj;
     self->obj = NULL;
-// splicer end class.Class2.type.del
+// splicer end class.Class3.type.del
 }
-
-static int
-PY_Class2_tp_init(
-  PY_Class2 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// Class2()
-// splicer begin class.Class2.method.ctor
-    self->obj = new tutorial::Class2();
-    return 0;
-// splicer end class.Class2.method.ctor
-}
-
-static char PY_class2_func1__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_class2_func1(
-  PY_Class2 *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// void func1(Class1 * arg +intent(in))
-// splicer begin class.Class2.method.func1
-    TUT_class1 arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:func1",
-        const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
-
-    // post_parse
-    tutorial::Class1 * SH_arg = SHPy_arg ? SHPy_arg->obj : NULL;
-
-    self->obj->func1(SH_arg);
-    Py_RETURN_NONE;
-// splicer end class.Class2.method.func1
-}
-
-static char PY_class2_acceptClass3__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_class2_acceptClass3(
-  PY_Class2 *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// void acceptClass3(Class3 * arg +intent(in))
-// splicer begin class.Class2.method.accept_class3
-    PY_Class3 * SHPy_arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:acceptClass3",
-        const_cast<char **>(SHT_kwlist), &PY_Class3_Type, &SHPy_arg))
-        return NULL;
-
-    // post_parse
-    tutorial::Class3 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
-
-    self->obj->acceptClass3(arg);
-    Py_RETURN_NONE;
-// splicer end class.Class2.method.accept_class3
-}
-// splicer begin class.Class2.impl.after_methods
-// splicer end class.Class2.impl.after_methods
-static PyMethodDef PY_Class2_methods[] = {
-    {"func1", (PyCFunction)PY_class2_func1, METH_VARARGS|METH_KEYWORDS,
-        PY_class2_func1__doc__},
-    {"acceptClass3", (PyCFunction)PY_class2_acceptClass3,
-        METH_VARARGS|METH_KEYWORDS, PY_class2_acceptClass3__doc__},
-    // splicer begin class.Class2.PyMethodDef
-    // splicer end class.Class2.PyMethodDef
+// splicer begin class.Class3.impl.after_methods
+// splicer end class.Class3.impl.after_methods
+static PyMethodDef PY_Class3_methods[] = {
+    // splicer begin class.Class3.PyMethodDef
+    // splicer end class.Class3.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
-static char Class2__doc__[] =
+static char Class3__doc__[] =
 "virtual class"
 ;
 
 /* static */
-PyTypeObject PY_Class2_Type = {
+PyTypeObject PY_Class3_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "forward.Class2",                       /* tp_name */
-    sizeof(PY_Class2),         /* tp_basicsize */
+    "forward.Class3",                       /* tp_name */
+    sizeof(PY_Class3),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */
     (destructor)0,                 /* tp_dealloc */
@@ -186,7 +111,7 @@ PyTypeObject PY_Class2_Type = {
     0,                              /* tp_as_buffer */
     /* Flags to define presence of optional/expanded features */
     Py_TPFLAGS_DEFAULT,             /* tp_flags */
-    Class2__doc__,         /* tp_doc */
+    Class3__doc__,         /* tp_doc */
     /* Assigned meaning in release 2.0 */
     /* call function for all accessible objects */
     (traverseproc)0,                /* tp_traverse */
@@ -202,7 +127,7 @@ PyTypeObject PY_Class2_Type = {
     (getiterfunc)0,                 /* tp_iter */
     (iternextfunc)0,                /* tp_iternext */
     /* Attribute descriptor and subclassing stuff */
-    PY_Class2_methods,                             /* tp_methods */
+    PY_Class3_methods,                             /* tp_methods */
     0,                              /* tp_members */
     0,                             /* tp_getset */
     0,                              /* tp_base */
@@ -210,7 +135,7 @@ PyTypeObject PY_Class2_Type = {
     (descrgetfunc)0,                /* tp_descr_get */
     (descrsetfunc)0,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)PY_Class2_tp_init,                   /* tp_init */
+    (initproc)0,                   /* tp_init */
     (allocfunc)0,                  /* tp_alloc */
     (newfunc)0,                    /* tp_new */
     (freefunc)0,                   /* tp_free */
@@ -220,7 +145,7 @@ PyTypeObject PY_Class2_Type = {
     0,                              /* tp_cache */
     0,                              /* tp_subclasses */
     0,                              /* tp_weaklist */
-    (destructor)PY_Class2_tp_del,                 /* tp_del */
+    (destructor)PY_Class3_tp_del,                 /* tp_del */
     0,                              /* tp_version_tag */
 #if PY_MAJOR_VERSION >= 3
     (destructor)0,                  /* tp_finalize */

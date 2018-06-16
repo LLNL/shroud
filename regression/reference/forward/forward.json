@@ -109,7 +109,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 69, 
+                        "linenumber": 72, 
                         "options": {}
                     }, 
                     {
@@ -154,7 +154,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 70, 
+                        "linenumber": 73, 
                         "options": {}
                     }, 
                     {
@@ -270,14 +270,164 @@
                             "function_name": "func1", 
                             "underscore_name": "func1"
                         }, 
-                        "linenumber": 71, 
+                        "linenumber": 74, 
+                        "options": {}
+                    }, 
+                    {
+                        "_fmtargs": {
+                            "arg": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_deref": "*", 
+                                    "c_member": "->", 
+                                    "c_var": "arg", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)", 
+                                    "cxx_decl": "tutorial::Class3 * SHCXX_arg", 
+                                    "cxx_member": "->", 
+                                    "cxx_type": "tutorial::Class3", 
+                                    "cxx_val": "static_cast<tutorial::Class3 *>(arg->addr)", 
+                                    "cxx_var": "SHCXX_arg", 
+                                    "idtor": "0"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "arg", 
+                                    "f_var": "arg"
+                                }, 
+                                "fmtl": {
+                                    "LUA_index": 1, 
+                                    "c_deref": " *", 
+                                    "c_member": "->", 
+                                    "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")", 
+                                    "c_var_len": "Larg", 
+                                    "cxx_member": "->", 
+                                    "cxx_type": "tutorial::Class3", 
+                                    "cxx_var": "arg", 
+                                    "lua_var": "SH_Lua_arg"
+                                }, 
+                                "fmtpy": {
+                                    "c_const": "", 
+                                    "c_decl": "FOR_class3 arg", 
+                                    "c_deref": "", 
+                                    "c_type": "FOR_class3", 
+                                    "c_var": "arg", 
+                                    "cxx_addr": "", 
+                                    "cxx_decl": "tutorial::Class3 arg", 
+                                    "cxx_member": "->", 
+                                    "cxx_type": "tutorial::Class3", 
+                                    "cxx_var": "arg", 
+                                    "numpy_type": null, 
+                                    "py_type": "PY_Class3", 
+                                    "py_var": "SHPy_arg"
+                                }
+                            }
+                        }, 
+                        "ast": {
+                            "attrs": {
+                                "_typename": "void"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "acceptClass3", 
+                                "pointer": []
+                            }, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "_typename": "tutorial::Class3", 
+                                        "intent": "in", 
+                                        "value": false
+                                    }, 
+                                    "const": false, 
+                                    "declarator": {
+                                        "name": "arg", 
+                                        "pointer": [
+                                            {
+                                                "const": false, 
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    }, 
+                                    "specifier": [
+                                        "Class3"
+                                    ]
+                                }
+                            ], 
+                            "specifier": [
+                                "void"
+                            ]
+                        }, 
+                        "decl": "void acceptClass3(Class3 *arg)", 
+                        "declgen": "void acceptClass3(Class3 * arg +intent(in))", 
+                        "format": {
+                            "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);", 
+                            "C_call_list": "SHCXX_arg", 
+                            "C_name": "FOR_class2_accept_class3", 
+                            "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class3 * SHCXX_arg =\t static_cast<tutorial::Class3 *>(arg->addr);", 
+                            "C_prototype": "FOR_class2 * self,\t FOR_class3 * arg", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_class2_accept_class3", 
+                            "F_C_name": "c_class2_accept_class3", 
+                            "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem", 
+                            "F_arguments": "obj,\t arg", 
+                            "F_call_code": "call c_class2_accept_class3(obj%cxxmem,\t arg%cxxmem)", 
+                            "F_name_function": "accept_class3", 
+                            "F_name_generic": "accept_class3", 
+                            "F_name_impl": "class2_accept_class3", 
+                            "F_subprogram": "subroutine", 
+                            "LUA_name": "acceptClass3", 
+                            "LUA_name_impl": "l_class2_accept_class3", 
+                            "PY_name_impl": "PY_class2_acceptClass3", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "function_name": "acceptClass3", 
+                            "underscore_name": "accept_class3"
+                        }, 
+                        "linenumber": 75, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 67, 
+                "linenumber": 70, 
                 "name": "Class2", 
                 "options": {}, 
                 "typemap_name": "tutorial::Class2"
+            }, 
+            {
+                "cxx_header": "", 
+                "format": {
+                    "CXX_this_call": "SH_this->", 
+                    "C_header_filename": "wrapClass3.h", 
+                    "C_impl_filename": "wrapClass3.cpp", 
+                    "C_type_name": "FOR_class3", 
+                    "F_derived_name": "class3", 
+                    "LUA_class_reg": "l_Class3_Reg", 
+                    "LUA_ctor_name": "Class3", 
+                    "LUA_metadata": "Class3.metatable", 
+                    "LUA_this_call": "SH_this->self->", 
+                    "LUA_userdata_member": "self", 
+                    "LUA_userdata_type": "l_Class3_Type", 
+                    "LUA_userdata_var": "SH_this", 
+                    "PY_PyObject": "PY_Class3", 
+                    "PY_PyTypeObject": "PY_Class3_Type", 
+                    "PY_capsule_name": "PY_Class3_capsule_name", 
+                    "PY_from_object_func": "PP_Class3_from_Object", 
+                    "PY_this_call": "self->obj->", 
+                    "PY_to_object_func": "PP_Class3_to_Object", 
+                    "PY_type_filename": "pyClass3type.cpp", 
+                    "class_lower": "class3", 
+                    "class_prefix": "class3_", 
+                    "class_scope": "Class3::", 
+                    "class_upper": "CLASS3", 
+                    "cxx_class": "Class3"
+                }, 
+                "linenumber": 77, 
+                "name": "Class3", 
+                "options": {}, 
+                "typemap_name": "tutorial::Class3"
             }
         ], 
         "copyright": [
@@ -1240,7 +1390,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
-            "__line__": 59, 
+            "__line__": 62, 
             "base": "shadow", 
             "c_statements": {
                 "intent_in": {
@@ -1270,7 +1420,7 @@
             "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
-                "__line__": 63, 
+                "__line__": 66, 
                 "tutorial_mod": [
                     "class1"
                 ]
@@ -1370,6 +1520,78 @@
                     "cxx_local_var": "pointer", 
                     "post_parse": [
                         "{c_const}tutorial::Class2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        }, 
+        "tutorial::Class3": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "PY_PyObject": "PY_Class3", 
+            "PY_PyTypeObject": "PY_Class3_Type", 
+            "PY_from_object": "PP_Class3_from_Object", 
+            "PY_to_object": "PP_Class3_to_Object", 
+            "base": "shadow", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "FOR_class3 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "static_cast<{c_const}tutorial::Class3 *>({c_var}{c_member}addr)", 
+            "c_type": "FOR_class3", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "tutorial::Class3", 
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_capsule_data"
+                ]
+            }, 
+            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_derived_type": "class3", 
+            "f_module": {
+                "forward_mod": [
+                    "class3"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%cxxmem", 
+            "f_type": "type(class3)", 
+            "forward": "tutorial::Class3", 
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}tutorial::Class3 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_inout": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}tutorial::Class3 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 }, 
                 "intent_out": {

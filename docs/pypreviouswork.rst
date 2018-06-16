@@ -75,6 +75,7 @@ Shiboken
 Shiboken was developed to create PySide.
 
 * https://wiki.qt.io/Qt_for_Python
+* http://doc.qt.io/qtforpython/shiboken2/contents.html
 
 
 Boost Python

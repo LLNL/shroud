@@ -55,6 +55,9 @@ options:
 namespace: tutorial
 
 declarations:
+# forward declaration
+- decl: class Class3
+
 - decl: class Class1
   fields:
     c_type: TUT_class1
@@ -69,3 +72,8 @@ declarations:
   - decl: Class2()
   - decl: ~Class2()
   - decl: void func1(Class1 *arg)
+  - decl: void acceptClass3(Class3 *arg)
+
+- decl: class Class3
+# need declarations to fully declare the class
+  declarations:

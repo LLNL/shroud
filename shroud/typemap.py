@@ -1067,33 +1067,32 @@ def create_enum_typemap(node):
         register_type(type_name, ntypemap)
     return ntypemap
 
-def create_class_typemap(cls):
-    """Create a typemap for a class.
+def create_class_typemap(node):
+    """Create a typemap from a ClassNode.
 
     The C type is a capsule_data which will contains a pointer to the
     C++ memory and information on how to delete the memory.
     """
-    fmt_class = cls.fmtdict
+    fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
 
     ntypemap = lookup_type(cxx_name)
-    if ntypemap is None:
-        # unname = util.un_camel(name)
-        f_name = cls.name.lower()
-        c_name = fmt_class.C_prefix + f_name
-        ntypemap = Typemap(
-            cxx_name,
-            base='shadow',
-            cxx_type=cxx_name,
-            cxx_header=cls.cxx_header or None,
-            c_type=c_name,
-            f_derived_type=fmt_class.F_derived_name,
-            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
-            ##- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
-            f_to_c='{f_var}%%%s' % fmt_class.F_derived_member,
-            )
-        fill_shadow_typemap_defaults(ntypemap, fmt_class)
-        register_type(cxx_name, ntypemap)
+    # unname = util.un_camel(name)
+    f_name = node.name.lower()
+    c_name = fmt_class.C_prefix + f_name
+    ntypemap = Typemap(
+        cxx_name,
+        base='shadow',
+        cxx_type=cxx_name,
+        cxx_header=node.cxx_header or None,
+        c_type=c_name,
+        f_derived_type=fmt_class.F_derived_name,
+        f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
+        ##- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
+        f_to_c='{f_var}%%%s' % fmt_class.F_derived_member,
+    )
+    fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    register_type(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
@@ -1189,28 +1188,26 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.forward = ntypemap.cxx_type
 
 
-def create_struct_typemap(cls):
-    """Create a typemap for a struct.
+def create_struct_typemap(node):
+    """Create a typemap for a struct from a ClassNode.
     """
-    fmt_class = cls.fmtdict
+    fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
 
-    ntypemap = lookup_type(cxx_name)
-    if ntypemap is None:
-        # unname = util.un_camel(name)
-        f_name = cls.name.lower()
-        c_name = fmt_class.C_prefix + f_name
-        ntypemap = Typemap(
-            cxx_name,
-            base='struct',
-            cxx_type=cxx_name,
-            c_type=c_name,
-            f_derived_type=fmt_class.F_derived_name,
-            f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
-            PYN_descr=fmt_class.PY_struct_array_descr_variable,
-        )
-        fill_struct_typemap_defaults(ntypemap)
-        register_type(cxx_name, ntypemap)
+    # unname = util.un_camel(name)
+    f_name = node.name.lower()
+    c_name = fmt_class.C_prefix + f_name
+    ntypemap = Typemap(
+        cxx_name,
+        base='struct',
+        cxx_type=cxx_name,
+        c_type=c_name,
+        f_derived_type=fmt_class.F_derived_name,
+        f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
+        PYN_descr=fmt_class.PY_struct_array_descr_variable,
+    )
+    fill_struct_typemap_defaults(ntypemap)
+    register_type(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
