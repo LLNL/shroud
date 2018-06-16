@@ -83,8 +83,8 @@ class VerifyAttrs(object):
                     'readonly',
             ]:
                 raise RuntimeError(
-                    "Illegal attribute '{}' for variable {} in {}"
-                    .format(attr, node.ast.name, node.decl))
+                    "Illegal attribute '{}' for variable '{}' at line {}"
+                    .format(attr, node.ast.name, node.linenumber))
 
     def check_fcn_attrs(self, node):
         options = node.options
@@ -108,8 +108,8 @@ class VerifyAttrs(object):
                     'pure',
             ]:
                 raise RuntimeError(
-                    "Illegal attribute '{}' for function {} in {}"
-                    .format(attr, node.ast.name, node.decl))
+                    "Illegal attribute '{}' for function '{}' define at line {}"
+                    .format(attr, node.ast.name, node.linenumber))
         self.check_shared_attrs(node.ast)
 
         for arg in ast.params:
@@ -166,8 +166,8 @@ class VerifyAttrs(object):
                     'value',
             ]:
                 raise RuntimeError(
-                    "Illegal attribute '{}' for argument {} in {}"
-                    .format(attr, argname, node.decl))
+                    "Illegal attribute '{}' for argument '{}' defined at line {}"
+                    .format(attr, argname, node.linenumber))
 
         argtype = arg.typename
         arg_typemap = typemap.lookup_type(argtype)

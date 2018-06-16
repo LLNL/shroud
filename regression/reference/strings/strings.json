@@ -223,6 +223,7 @@
                     "function_name": "passChar", 
                     "underscore_name": "pass_char"
                 }, 
+                "linenumber": 55, 
                 "options": {}
             }, 
             {
@@ -295,6 +296,7 @@
                     "function_name": "returnChar", 
                     "underscore_name": "return_char"
                 }, 
+                "linenumber": 59, 
                 "options": {}
             }, 
             {
@@ -389,6 +391,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "return_char"
                 }, 
+                "linenumber": 59, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -510,6 +513,7 @@
                     "function_name": "passCharPtr", 
                     "underscore_name": "pass_char_ptr"
                 }, 
+                "linenumber": 66, 
                 "options": {
                     "__line__": 72, 
                     "wrap_Lua": false, 
@@ -640,6 +644,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "pass_char_ptr"
                 }, 
+                "linenumber": 66, 
                 "options": {
                     "__line__": 72, 
                     "wrap_Lua": false, 
@@ -746,6 +751,7 @@
                     "function_name": "passCharPtrInOut", 
                     "underscore_name": "pass_char_ptr_in_out"
                 }, 
+                "linenumber": 78, 
                 "options": {}
             }, 
             {
@@ -833,6 +839,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "pass_char_ptr_in_out"
                 }, 
+                "linenumber": 78, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -917,6 +924,7 @@
                     "function_name": "getCharPtr1", 
                     "underscore_name": "get_char_ptr1"
                 }, 
+                "linenumber": 87, 
                 "options": {}
             }, 
             {
@@ -1013,6 +1021,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_char_ptr1"
                 }, 
+                "linenumber": 87, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1098,6 +1107,7 @@
                     "function_name": "getCharPtr2", 
                     "underscore_name": "get_char_ptr2"
                 }, 
+                "linenumber": 92, 
                 "options": {}
             }, 
             {
@@ -1193,6 +1203,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_char_ptr2"
                 }, 
+                "linenumber": 92, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1266,6 +1277,7 @@
                     "function_name": "getCharPtr3", 
                     "underscore_name": "get_char_ptr3"
                 }, 
+                "linenumber": 97, 
                 "options": {
                     "wrap_fortran": false
                 }
@@ -1364,6 +1376,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_char_ptr3"
                 }, 
+                "linenumber": 97, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1432,6 +1445,7 @@
                     "function_suffix": "", 
                     "underscore_name": "get_char_ptr3"
                 }, 
+                "linenumber": 97, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": true, 
@@ -1495,6 +1509,7 @@
                     "function_name": "getConstStringResult", 
                     "underscore_name": "get_const_string_result"
                 }, 
+                "linenumber": 107, 
                 "options": {
                     "wrap_c": false
                 }
@@ -1595,6 +1610,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_result"
                 }, 
+                "linenumber": 107, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1659,6 +1675,7 @@
                     "function_name": "getConstStringLen", 
                     "underscore_name": "get_const_string_len"
                 }, 
+                "linenumber": 112, 
                 "options": {
                     "wrap_c": false
                 }
@@ -1757,6 +1774,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_len"
                 }, 
+                "linenumber": 112, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1809,6 +1827,7 @@
                     "function_name": "getConstStringAsArg", 
                     "underscore_name": "get_const_string_as_arg"
                 }, 
+                "linenumber": 117, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": false
@@ -1909,6 +1928,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_as_arg"
                 }, 
+                "linenumber": 117, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1978,6 +1998,7 @@
                     "function_suffix": "", 
                     "underscore_name": "get_const_string_as_arg"
                 }, 
+                "linenumber": 117, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": true, 
@@ -2036,6 +2057,7 @@
                     "function_name": "getConstStringAlloc", 
                     "underscore_name": "get_const_string_alloc"
                 }, 
+                "linenumber": 124, 
                 "options": {
                     "wrap_c": false
                 }
@@ -2131,6 +2153,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_alloc"
                 }, 
+                "linenumber": 124, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -2218,6 +2241,7 @@
                     "function_name": "getConstStringRefPure", 
                     "underscore_name": "get_const_string_ref_pure"
                 }, 
+                "linenumber": 129, 
                 "options": {}
             }, 
             {
@@ -2314,6 +2338,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ref_pure"
                 }, 
+                "linenumber": 129, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -2404,6 +2429,7 @@
                     "function_name": "getConstStringRefLen", 
                     "underscore_name": "get_const_string_ref_len"
                 }, 
+                "linenumber": 134, 
                 "options": {}
             }, 
             {
@@ -2500,6 +2526,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ref_len"
                 }, 
+                "linenumber": 134, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -2578,6 +2605,7 @@
                     "function_name": "getConstStringRefAsArg", 
                     "underscore_name": "get_const_string_ref_as_arg"
                 }, 
+                "linenumber": 139, 
                 "options": {
                     "wrap_fortran": false
                 }
@@ -2677,6 +2705,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ref_as_arg"
                 }, 
+                "linenumber": 139, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -2746,6 +2775,7 @@
                     "function_suffix": "", 
                     "underscore_name": "get_const_string_ref_as_arg"
                 }, 
+                "linenumber": 139, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": true, 
@@ -2836,6 +2866,7 @@
                     "function_name": "getConstStringRefLenEmpty", 
                     "underscore_name": "get_const_string_ref_len_empty"
                 }, 
+                "linenumber": 146, 
                 "options": {}
             }, 
             {
@@ -2932,6 +2963,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ref_len_empty"
                 }, 
+                "linenumber": 146, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -3015,6 +3047,7 @@
                     "function_name": "getConstStringRefAlloc", 
                     "underscore_name": "get_const_string_ref_alloc"
                 }, 
+                "linenumber": 151, 
                 "options": {}
             }, 
             {
@@ -3107,6 +3140,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ref_alloc"
                 }, 
+                "linenumber": 151, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -3198,6 +3232,7 @@
                     "function_name": "getConstStringPtrLen", 
                     "underscore_name": "get_const_string_ptr_len"
                 }, 
+                "linenumber": 156, 
                 "options": {}
             }, 
             {
@@ -3296,6 +3331,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ptr_len"
                 }, 
+                "linenumber": 156, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -3380,6 +3416,7 @@
                     "function_name": "getConstStringPtrAlloc", 
                     "underscore_name": "get_const_string_ptr_alloc"
                 }, 
+                "linenumber": 168, 
                 "options": {}
             }, 
             {
@@ -3473,6 +3510,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ptr_alloc"
                 }, 
+                "linenumber": 168, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -3561,6 +3599,7 @@
                     "function_name": "getConstStringPtrOwnsAlloc", 
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 }, 
+                "linenumber": 170, 
                 "options": {}
             }, 
             {
@@ -3658,6 +3697,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 }, 
+                "linenumber": 170, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -3748,6 +3788,7 @@
                     "function_name": "getConstStringPtrOwnsAllocPattern", 
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 }, 
+                "linenumber": 179, 
                 "options": {}
             }, 
             {
@@ -3847,6 +3888,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 }, 
+                "linenumber": 179, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -3950,6 +3992,7 @@
                     "function_name": "acceptStringConstReference", 
                     "underscore_name": "accept_string_const_reference"
                 }, 
+                "linenumber": 189, 
                 "options": {}
             }, 
             {
@@ -4034,6 +4077,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "accept_string_const_reference"
                 }, 
+                "linenumber": 189, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -4140,6 +4184,7 @@
                     "function_name": "acceptStringReferenceOut", 
                     "underscore_name": "accept_string_reference_out"
                 }, 
+                "linenumber": 197, 
                 "options": {}
             }, 
             {
@@ -4225,6 +4270,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "accept_string_reference_out"
                 }, 
+                "linenumber": 197, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -4331,6 +4377,7 @@
                     "function_name": "acceptStringReference", 
                     "underscore_name": "accept_string_reference"
                 }, 
+                "linenumber": 205, 
                 "options": {}
             }, 
             {
@@ -4418,6 +4465,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "accept_string_reference"
                 }, 
+                "linenumber": 205, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -4523,6 +4571,7 @@
                     "function_name": "acceptStringPointer", 
                     "underscore_name": "accept_string_pointer"
                 }, 
+                "linenumber": 213, 
                 "options": {}
             }, 
             {
@@ -4609,6 +4658,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "accept_string_pointer"
                 }, 
+                "linenumber": 213, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -4720,6 +4770,7 @@
                     "function_name": "returnStrings", 
                     "underscore_name": "return_strings"
                 }, 
+                "linenumber": 221, 
                 "options": {
                     "__line__": 225, 
                     "wrap_c": false, 
@@ -4773,6 +4824,7 @@
                     "function_name": "returnMany", 
                     "underscore_name": "return_many"
                 }, 
+                "linenumber": 229, 
                 "options": {
                     "__line__": 233, 
                     "wrap_c": false, 
@@ -4873,6 +4925,7 @@
                     "function_name": "explicit1", 
                     "underscore_name": "explicit1"
                 }, 
+                "linenumber": 243, 
                 "options": {}
             }, 
             {
@@ -4955,6 +5008,7 @@
                     "function_suffix": "_BUFFER", 
                     "underscore_name": "explicit1"
                 }, 
+                "linenumber": 243, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -5038,6 +5092,7 @@
                     "function_name": "explicit2", 
                     "underscore_name": "explicit2"
                 }, 
+                "linenumber": 248, 
                 "options": {
                     "__line__": 250, 
                     "wrap_Lua": false, 
@@ -5122,6 +5177,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "explicit2"
                 }, 
+                "linenumber": 248, 
                 "options": {
                     "__line__": 250, 
                     "wrap_Lua": false, 
@@ -5224,6 +5280,7 @@
                     "function_name": "CpassChar", 
                     "underscore_name": "cpass_char"
                 }, 
+                "linenumber": 262, 
                 "options": {
                     "C_extern_C": true, 
                     "__line__": 265
@@ -5299,6 +5356,7 @@
                     "function_name": "CreturnChar", 
                     "underscore_name": "creturn_char"
                 }, 
+                "linenumber": 268, 
                 "options": {
                     "C_extern_C": true, 
                     "__line__": 271
@@ -5396,6 +5454,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "creturn_char"
                 }, 
+                "linenumber": 268, 
                 "options": {
                     "C_extern_C": true, 
                     "__line__": 271, 
@@ -5519,6 +5578,7 @@
                     "function_name": "CpassCharPtr", 
                     "underscore_name": "cpass_char_ptr"
                 }, 
+                "linenumber": 277, 
                 "options": {
                     "C_extern_C": true, 
                     "__line__": 278, 
@@ -5650,6 +5710,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "cpass_char_ptr"
                 }, 
+                "linenumber": 277, 
                 "options": {
                     "C_extern_C": true, 
                     "__line__": 278, 

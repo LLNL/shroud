@@ -211,7 +211,7 @@ class ToDict(visitor.Visitor):
             typemap_name=node.typemap_name,
             options=self.visit(node.options),
         )
-        for key in ['as_struct', 'python']:
+        for key in ['as_struct', 'linenumber', 'python']:
             value = getattr(node, key)
             if value:
                 d[key] = value
@@ -234,7 +234,7 @@ class ToDict(visitor.Visitor):
                 d[key] = self.visit(value)
         for key in ['cxx_template', 'default_arg_suffix',
                     'declgen', 'doxygen',
-                    'fortran_generic', 'return_this',
+                    'fortran_generic', 'linenumber', 'return_this',
                     'C_error_pattern', 'PY_error_pattern',
                     '_CXX_return_templated',
                     '_default_funcs',
@@ -274,6 +274,10 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
+        for key in ['linenumber']:
+            value = getattr(node, key)
+            if value:
+                d[key] = value
         for key in ['_fmtmembers']:
             value = getattr(node, key)
             if value:
@@ -286,6 +290,10 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
+        for key in ['linenumber']:
+            value = getattr(node, key)
+            if value:
+                d[key] = value
         return d
 
     def visit_VariableNode(self, node):
@@ -295,6 +303,10 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
+        for key in ['linenumber']:
+            value = getattr(node, key)
+            if value:
+                d[key] = value
         return d
 
 

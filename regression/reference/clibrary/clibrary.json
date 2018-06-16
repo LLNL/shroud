@@ -169,6 +169,7 @@
                     "function_name": "Function1", 
                     "underscore_name": "function1"
                 }, 
+                "linenumber": 66, 
                 "options": {}
             }, 
             {
@@ -334,6 +335,7 @@
                     "function_name": "Function2", 
                     "underscore_name": "function2"
                 }, 
+                "linenumber": 67, 
                 "options": {}
             }, 
             {
@@ -538,6 +540,7 @@
                     "function_name": "Sum", 
                     "underscore_name": "sum"
                 }, 
+                "linenumber": 68, 
                 "options": {
                     "__line__": 71, 
                     "wrap_lua": false
@@ -660,6 +663,7 @@
                     "function_name": "Function3", 
                     "underscore_name": "function3"
                 }, 
+                "linenumber": 75, 
                 "options": {}
             }, 
             {
@@ -861,6 +865,7 @@
                     "function_name": "Function3b", 
                     "underscore_name": "function3b"
                 }, 
+                "linenumber": 76, 
                 "options": {}
             }, 
             {
@@ -1036,6 +1041,7 @@
                     "function_name": "Function4a", 
                     "underscore_name": "function4a"
                 }, 
+                "linenumber": 78, 
                 "options": {}
             }, 
             {
@@ -1210,6 +1216,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "function4a"
                 }, 
+                "linenumber": 78, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1414,6 +1421,7 @@
                     "function_name": "intargs", 
                     "underscore_name": "intargs"
                 }, 
+                "linenumber": 223, 
                 "options": {}
             }, 
             {
@@ -1626,6 +1634,7 @@
                     "function_name": "cos_doubles", 
                     "underscore_name": "cos_doubles"
                 }, 
+                "linenumber": 227, 
                 "options": {}
             }, 
             {
@@ -1838,6 +1847,7 @@
                     "function_name": "truncate_to_int", 
                     "underscore_name": "truncate_to_int"
                 }, 
+                "linenumber": 236, 
                 "options": {}
             }, 
             {
@@ -1995,6 +2005,7 @@
                     "function_name": "increment", 
                     "underscore_name": "increment"
                 }, 
+                "linenumber": 245, 
                 "options": {}
             }
         ], 

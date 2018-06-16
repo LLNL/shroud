@@ -73,6 +73,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
+                        "linenumber": 57, 
                         "options": {}
                     }, 
                     {
@@ -134,12 +135,14 @@
                             "function_name": "getFlag", 
                             "underscore_name": "get_flag"
                         }, 
+                        "linenumber": "?", 
                         "options": {
                             "wrap_lua": false, 
                             "wrap_python": false
                         }
                     }
                 ], 
+                "linenumber": 54, 
                 "name": "Class1", 
                 "options": {}, 
                 "typemap_name": "Class1", 
@@ -168,6 +171,7 @@
                             "variable_name": "flag", 
                             "variable_upper": "FLAG"
                         }, 
+                        "linenumber": 56, 
                         "name": "flag", 
                         "options": {}
                     }
@@ -359,6 +363,7 @@
                     "function_name": "ReturnIntPtrRaw", 
                     "underscore_name": "return_int_ptr_raw"
                 }, 
+                "linenumber": 67, 
                 "options": {
                     "__line__": 71, 
                     "wrap_fortran": false, 
@@ -440,6 +445,7 @@
                     "function_name": "ReturnIntPtrScalar", 
                     "underscore_name": "return_int_ptr_scalar"
                 }, 
+                "linenumber": 76, 
                 "options": {
                     "__line__": 79, 
                     "wrap_lua": false
@@ -521,6 +527,7 @@
                     "function_name": "ReturnIntPtrPointer", 
                     "underscore_name": "return_int_ptr_pointer"
                 }, 
+                "linenumber": 83, 
                 "options": {
                     "__line__": 87, 
                     "wrap_lua": false
@@ -612,6 +619,7 @@
                     "function_name": "ReturnIntPtrDimRaw", 
                     "underscore_name": "return_int_ptr_dim_raw"
                 }, 
+                "linenumber": 96, 
                 "options": {
                     "__line__": 100, 
                     "wrap_fortran": false, 
@@ -754,6 +762,7 @@
                     "function_name": "ReturnIntPtrDimPointer", 
                     "underscore_name": "return_int_ptr_dim_pointer"
                 }, 
+                "linenumber": 105, 
                 "options": {
                     "__line__": 109, 
                     "wrap_lua": false
@@ -892,6 +901,7 @@
                     "function_name": "ReturnIntPtrDimAlloc", 
                     "underscore_name": "return_int_ptr_dim_alloc"
                 }, 
+                "linenumber": 112, 
                 "options": {
                     "__line__": 116, 
                     "wrap_lua": false
@@ -995,6 +1005,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "return_int_ptr_dim_alloc"
                 }, 
+                "linenumber": 112, 
                 "options": {
                     "__line__": 116, 
                     "wrap_c": true, 
@@ -1166,6 +1177,7 @@
                     "function_name": "ReturnIntPtrDimDefault", 
                     "underscore_name": "return_int_ptr_dim_default"
                 }, 
+                "linenumber": 119, 
                 "options": {
                     "__line__": 122, 
                     "wrap_lua": false
@@ -1259,6 +1271,7 @@
                     "function_name": "ReturnIntPtrDimRawNew", 
                     "underscore_name": "return_int_ptr_dim_raw_new"
                 }, 
+                "linenumber": 130, 
                 "options": {
                     "__line__": 136, 
                     "wrap_fortran": false, 
@@ -1402,6 +1415,7 @@
                     "function_name": "ReturnIntPtrDimPointerNew", 
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 }, 
+                "linenumber": 141, 
                 "options": {
                     "__line__": 147, 
                     "wrap_lua": false
@@ -1525,6 +1539,7 @@
                     "function_name": "ReturnIntPtrDimAllocNew", 
                     "underscore_name": "return_int_ptr_dim_alloc_new"
                 }, 
+                "linenumber": 150, 
                 "options": {
                     "__line__": 156, 
                     "wrap_fortran": false, 
@@ -1666,6 +1681,7 @@
                     "function_name": "ReturnIntPtrDimDefaultNew", 
                     "underscore_name": "return_int_ptr_dim_default_new"
                 }, 
+                "linenumber": 160, 
                 "options": {
                     "__line__": 165, 
                     "wrap_lua": false
@@ -1739,6 +1755,7 @@
                     "function_name": "IntPtrDimRaw", 
                     "underscore_name": "int_ptr_dim_raw"
                 }, 
+                "linenumber": 175, 
                 "options": {
                     "__line__": 181, 
                     "wrap_c": false, 
@@ -1817,6 +1834,7 @@
                     "function_name": "IntPtrDimPointer", 
                     "underscore_name": "int_ptr_dim_pointer"
                 }, 
+                "linenumber": 187, 
                 "options": {
                     "__line__": 194, 
                     "wrap_c": false, 
@@ -1895,6 +1913,7 @@
                     "function_name": "IntPtrDimAlloc", 
                     "underscore_name": "int_ptr_dim_alloc"
                 }, 
+                "linenumber": 200, 
                 "options": {
                     "__line__": 207, 
                     "wrap_c": false, 
@@ -1972,6 +1991,7 @@
                     "function_name": "IntPtrDimDefault", 
                     "underscore_name": "int_ptr_dim_default"
                 }, 
+                "linenumber": 213, 
                 "options": {
                     "__line__": 219, 
                     "wrap_c": false, 
@@ -2049,6 +2069,7 @@
                     "function_name": "IntPtrDimRawNew", 
                     "underscore_name": "int_ptr_dim_raw_new"
                 }, 
+                "linenumber": 230, 
                 "options": {
                     "__line__": 237, 
                     "wrap_c": false, 
@@ -2127,6 +2148,7 @@
                     "function_name": "IntPtrDimPointerNew", 
                     "underscore_name": "int_ptr_dim_pointer_new"
                 }, 
+                "linenumber": 243, 
                 "options": {
                     "__line__": 251, 
                     "wrap_c": false, 
@@ -2205,6 +2227,7 @@
                     "function_name": "IntPtrDimAllocNew", 
                     "underscore_name": "int_ptr_dim_alloc_new"
                 }, 
+                "linenumber": 257, 
                 "options": {
                     "__line__": 265, 
                     "wrap_c": false, 
@@ -2282,6 +2305,7 @@
                     "function_name": "IntPtrDimDefaultNew", 
                     "underscore_name": "int_ptr_dim_default_new"
                 }, 
+                "linenumber": 271, 
                 "options": {
                     "__line__": 278, 
                     "wrap_c": false, 
@@ -2379,6 +2403,7 @@
                     "function_name": "createClassStatic", 
                     "underscore_name": "create_class_static"
                 }, 
+                "linenumber": 287, 
                 "options": {
                     "__line__": 288, 
                     "wrap_lua": false
@@ -2458,6 +2483,7 @@
                     "function_name": "getClassStatic", 
                     "underscore_name": "get_class_static"
                 }, 
+                "linenumber": 292, 
                 "options": {
                     "__line__": 293, 
                     "wrap_lua": false
@@ -2591,6 +2617,7 @@
                     "function_name": "getClassNew", 
                     "underscore_name": "get_class_new"
                 }, 
+                "linenumber": 297, 
                 "options": {
                     "__line__": 300, 
                     "wrap_lua": false

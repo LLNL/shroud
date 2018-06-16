@@ -175,6 +175,7 @@
                     "function_name": "vector_sum", 
                     "underscore_name": "vector_sum"
                 }, 
+                "linenumber": 54, 
                 "options": {
                     "__line__": 55, 
                     "wrap_c": false, 
@@ -274,6 +275,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "vector_sum"
                 }, 
+                "linenumber": 54, 
                 "options": {
                     "__line__": 55, 
                     "wrap_c": true, 
@@ -339,6 +341,7 @@
                     "function_name": "vector_iota_out", 
                     "underscore_name": "vector_iota_out"
                 }, 
+                "linenumber": 59, 
                 "options": {
                     "__line__": 62, 
                     "wrap_c": false, 
@@ -435,6 +438,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "vector_iota_out"
                 }, 
+                "linenumber": 59, 
                 "options": {
                     "__line__": 62, 
                     "wrap_c": true, 
@@ -501,6 +505,7 @@
                     "function_name": "vector_iota_out_alloc", 
                     "underscore_name": "vector_iota_out_alloc"
                 }, 
+                "linenumber": 66, 
                 "options": {
                     "__line__": 69, 
                     "wrap_c": false, 
@@ -598,6 +603,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "vector_iota_out_alloc"
                 }, 
+                "linenumber": 66, 
                 "options": {
                     "__line__": 69, 
                     "wrap_c": true, 
@@ -664,6 +670,7 @@
                     "function_name": "vector_iota_inout_alloc", 
                     "underscore_name": "vector_iota_inout_alloc"
                 }, 
+                "linenumber": 73, 
                 "options": {
                     "__line__": 76, 
                     "wrap_c": false, 
@@ -763,6 +770,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "vector_iota_inout_alloc"
                 }, 
+                "linenumber": 73, 
                 "options": {
                     "__line__": 76, 
                     "wrap_c": true, 
@@ -824,6 +832,7 @@
                     "function_name": "vector_increment", 
                     "underscore_name": "vector_increment"
                 }, 
+                "linenumber": 81, 
                 "options": {
                     "__line__": 82, 
                     "wrap_c": false, 
@@ -918,6 +927,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "vector_increment"
                 }, 
+                "linenumber": 81, 
                 "options": {
                     "__line__": 82, 
                     "wrap_c": true, 
@@ -991,6 +1001,7 @@
                     "function_name": "vector_string_count", 
                     "underscore_name": "vector_string_count"
                 }, 
+                "linenumber": 89, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_lua": false, 
@@ -1096,6 +1107,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "vector_string_count"
                 }, 
+                "linenumber": 89, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -1155,6 +1167,7 @@
                     "function_name": "vector_string_fill", 
                     "underscore_name": "vector_string_fill"
                 }, 
+                "linenumber": 95, 
                 "options": {
                     "__line__": 96, 
                     "wrap_c": false, 
@@ -1210,6 +1223,7 @@
                     "function_name": "vector_string_append", 
                     "underscore_name": "vector_string_append"
                 }, 
+                "linenumber": 110, 
                 "options": {
                     "__line__": 111, 
                     "wrap_c": false, 

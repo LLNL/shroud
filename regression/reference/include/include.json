@@ -97,9 +97,11 @@
                             "function_name": "method1", 
                             "underscore_name": "method1"
                         }, 
+                        "linenumber": 69, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 66, 
                 "name": "Class1", 
                 "options": {}, 
                 "typemap_name": "three::Class1"
@@ -201,6 +203,7 @@
                             "function_name": "method1", 
                             "underscore_name": "method1"
                         }, 
+                        "linenumber": 75, 
                         "options": {}
                     }, 
                     {
@@ -288,9 +291,11 @@
                             "function_name": "method2", 
                             "underscore_name": "method2"
                         }, 
+                        "linenumber": 77, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 71, 
                 "name": "Class2", 
                 "options": {}, 
                 "typemap_name": "Class2"
@@ -448,6 +453,7 @@
                     "function_name": "function1", 
                     "underscore_name": "function1"
                 }, 
+                "linenumber": 63, 
                 "options": {}
             }
         ], 

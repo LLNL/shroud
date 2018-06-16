@@ -109,6 +109,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
+                        "linenumber": 69, 
                         "options": {}
                     }, 
                     {
@@ -153,6 +154,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
+                        "linenumber": 70, 
                         "options": {}
                     }, 
                     {
@@ -268,9 +270,11 @@
                             "function_name": "func1", 
                             "underscore_name": "func1"
                         }, 
+                        "linenumber": 71, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 67, 
                 "name": "Class2", 
                 "options": {}, 
                 "typemap_name": "tutorial::Class2"

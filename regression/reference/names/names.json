@@ -71,6 +71,7 @@
                             "function_name": "method1", 
                             "underscore_name": "method1"
                         }, 
+                        "linenumber": 93, 
                         "options": {}
                     }, 
                     {
@@ -120,9 +121,11 @@
                             "function_name": "method2", 
                             "underscore_name": "method2"
                         }, 
+                        "linenumber": 96, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 80, 
                 "name": "Names", 
                 "options": {
                     "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}", 
@@ -155,6 +158,7 @@
                     "class_upper": "NAMES2", 
                     "cxx_class": "Names2"
                 }, 
+                "linenumber": 103, 
                 "name": "Names2", 
                 "options": {}, 
                 "typemap_name": "Names2"
@@ -251,6 +255,7 @@
                     "enum_name": "Color", 
                     "enum_upper": "COLOR"
                 }, 
+                "linenumber": 67, 
                 "name": "Color", 
                 "options": {
                     "__line__": 73, 
@@ -386,6 +391,7 @@
                     "function_name": "function1", 
                     "underscore_name": "function1"
                 }, 
+                "linenumber": 112, 
                 "options": {}
             }, 
             {
@@ -428,6 +434,7 @@
                     "function_name": "function2", 
                     "underscore_name": "function2"
                 }, 
+                "linenumber": 113, 
                 "options": {}
             }, 
             {
@@ -522,6 +529,7 @@
                     "function_suffix": "_0", 
                     "underscore_name": "function3a"
                 }, 
+                "linenumber": 120, 
                 "options": {}
             }, 
             {
@@ -616,6 +624,7 @@
                     "function_suffix": "_1", 
                     "underscore_name": "function3a"
                 }, 
+                "linenumber": 124, 
                 "options": {}
             }, 
             {
@@ -736,6 +745,7 @@
                     "function_name": "function4", 
                     "underscore_name": "function4"
                 }, 
+                "linenumber": 131, 
                 "options": {}
             }, 
             {
@@ -826,6 +836,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "function4"
                 }, 
+                "linenumber": 131, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -873,6 +884,7 @@
                     "function_name": "fiveplus", 
                     "underscore_name": "fiveplus"
                 }, 
+                "linenumber": 133, 
                 "options": {}
             }, 
             {
@@ -914,6 +926,7 @@
                     "function_name": "init_ns1", 
                     "underscore_name": "init_ns1"
                 }, 
+                "linenumber": 140, 
                 "options": {}
             }
         ], 
