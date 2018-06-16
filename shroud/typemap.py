@@ -112,6 +112,7 @@ class Typemap(object):
         ('LUA_pop', 'POP'),
         ('LUA_push', 'PUSH'),
         ('LUA_statements', {}),
+        ('__line__', None),
     )
 
 
@@ -134,7 +135,7 @@ class Typemap(object):
             if key in self.defaults:
                 setattr(self, key, d[key])
             else:
-                raise RuntimeError("Unknown key for Argument %s", key)
+                raise RuntimeError("Unknown key for Typemap %s", key)
 
     def XXXcopy(self):
         n = Typemap(self.name)

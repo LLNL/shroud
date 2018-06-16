@@ -97,9 +97,11 @@
                             "function_name": "method1", 
                             "underscore_name": "method1"
                         }, 
+                        "linenumber": 69, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 66, 
                 "name": "Class1", 
                 "options": {}, 
                 "typemap_name": "three::Class1"
@@ -201,6 +203,7 @@
                             "function_name": "method1", 
                             "underscore_name": "method1"
                         }, 
+                        "linenumber": 75, 
                         "options": {}
                     }, 
                     {
@@ -288,9 +291,11 @@
                             "function_name": "method2", 
                             "underscore_name": "method2"
                         }, 
+                        "linenumber": 77, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 71, 
                 "name": "Class2", 
                 "options": {}, 
                 "typemap_name": "Class2"
@@ -448,6 +453,7 @@
                     "function_name": "function1", 
                     "underscore_name": "function1"
                 }, 
+                "linenumber": 63, 
                 "options": {}
             }
         ], 
@@ -514,6 +520,7 @@
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
+            "__line__": 50, 
             "class_prefix_template": "{class_lower}_", 
             "debug": false, 
             "debug_index": false, 
@@ -603,6 +610,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
+            "__line__": 55, 
             "c_header": "type_header.h", 
             "c_type": "int", 
             "cxx_header": "type_header.hpp", 

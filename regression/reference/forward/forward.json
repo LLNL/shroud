@@ -109,6 +109,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
+                        "linenumber": 69, 
                         "options": {}
                     }, 
                     {
@@ -153,6 +154,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
+                        "linenumber": 70, 
                         "options": {}
                     }, 
                     {
@@ -268,9 +270,11 @@
                             "function_name": "func1", 
                             "underscore_name": "func1"
                         }, 
+                        "linenumber": 71, 
                         "options": {}
                     }
                 ], 
+                "linenumber": 67, 
                 "name": "Class2", 
                 "options": {}, 
                 "typemap_name": "tutorial::Class2"
@@ -474,6 +478,7 @@
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}", 
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}", 
             "YAML_type_filename_template": "{library_lower}_types.yaml", 
+            "__line__": 49, 
             "class_prefix_template": "{class_lower}_", 
             "debug": true, 
             "debug_index": false, 
@@ -1235,6 +1240,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
+            "__line__": 59, 
             "base": "shadow", 
             "c_statements": {
                 "intent_in": {
@@ -1264,6 +1270,7 @@
             "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
+                "__line__": 63, 
                 "tutorial_mod": [
                     "class1"
                 ]

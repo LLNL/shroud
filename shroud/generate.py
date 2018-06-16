@@ -83,8 +83,8 @@ class VerifyAttrs(object):
                     'readonly',
             ]:
                 raise RuntimeError(
-                    "Illegal attribute '{}' for variable {} in {}"
-                    .format(attr, node.ast.name, node.decl))
+                    "Illegal attribute '{}' for variable '{}' at line {}"
+                    .format(attr, node.ast.name, node.linenumber))
 
     def check_fcn_attrs(self, node):
         options = node.options
@@ -108,8 +108,8 @@ class VerifyAttrs(object):
                     'pure',
             ]:
                 raise RuntimeError(
-                    "Illegal attribute '{}' for function {} in {}"
-                    .format(attr, node.ast.name, node.decl))
+                    "Illegal attribute '{}' for function '{}' define at line {}"
+                    .format(attr, node.ast.name, node.linenumber))
         self.check_shared_attrs(node.ast)
 
         for arg in ast.params:
@@ -166,8 +166,8 @@ class VerifyAttrs(object):
                     'value',
             ]:
                 raise RuntimeError(
-                    "Illegal attribute '{}' for argument {} in {}"
-                    .format(attr, argname, node.decl))
+                    "Illegal attribute '{}' for argument '{}' defined at line {}"
+                    .format(attr, argname, node.linenumber))
 
         argtype = arg.typename
         arg_typemap = typemap.lookup_type(argtype)
@@ -502,13 +502,18 @@ class GenFunctions(object):
             - int
             - double
         """
-        if len(node.cxx_template) != 1:
-            # In the future it may be useful to have multiple templates
-            # That the would start creating more permutations
-            raise NotImplementedError("Only one cxx_templated type for now")
         oldoptions = node.options
 
+        nkeys = 0
         for typename, types in node.cxx_template.items():
+            if typename == '__line__':
+                continue
+            nkeys += 1
+            if nkeys > 1:
+                # In the future it may be useful to have multiple templates
+                # That the would start creating more permutations
+                raise NotImplementedError("Only one cxx_templated type for now",
+                                          node.cxx_template)
             for type in types:
                 new = node.clone()
                 ordered_functions.append(new)
@@ -549,11 +554,15 @@ class GenFunctions(object):
             - float
             - double
         """
-        if len(node.fortran_generic) != 1:
-            # In the future it may be useful to have multiple generic arguments
-            # That the would start creating more permutations
-            raise NotImplementedError("Only one generic arg for now")
+        nkeys = 0
         for argname, types in node.fortran_generic.items():
+            if argname == '__line__':
+                continue
+            nkeys += 1
+            if nkeys > 1:
+                # In the future it may be useful to have multiple generic arguments
+                # That the would start creating more permutations
+                raise NotImplementedError("Only one generic arg for now")
             for type in types:
                 new = node.clone()
                 ordered_functions.append(new)

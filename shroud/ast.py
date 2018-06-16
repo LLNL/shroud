@@ -608,6 +608,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         # From arguments
         self.name = name
         self.parent = parent
+        self.linenumber = kwargs.get('__line__', '?')
 
         # Namespaces do not own enums, functions or classes directly.
         # Find their owner up the parent chain.
@@ -694,6 +695,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.name = name
         self.parent = parent
         self.cxx_header = cxx_header
+        self.linenumber = kwargs.get('__line__', '?')
 
         self.enums = []
         self.functions = []
@@ -836,6 +838,8 @@ class FunctionNode(AstNode):
                  ast=None,
                  options=None,
                  **kwargs):
+        self.linenumber = kwargs.get('__line__', '?')
+
         self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
@@ -995,6 +999,7 @@ class EnumNode(AstNode):
 
         # From arguments
         self.parent = parent
+        self.linenumber = kwargs.get('__line__', '?')
 
         self.options = util.Scope(parent.options)
         if options:
@@ -1086,6 +1091,7 @@ class VariableNode(AstNode):
 
         # From arguments
         self.parent = parent
+        self.linenumber = kwargs.get('__line__', '?')
 
         self.options = util.Scope(parent=parent.options)
         if options:
