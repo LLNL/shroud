@@ -1,0 +1,13 @@
+
+#
+#  Class templates
+#
+
+namespace: std
+
+- decl: template<class T> vector;
+  cxx_template:
+  - T: int
+  - T: double
+  declarations:
+  - decl: void push_back( const T& value );

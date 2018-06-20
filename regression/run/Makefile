@@ -54,6 +54,7 @@ TESTDIRS = \
     $(tempdir)/run/tutorial/..\
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
+    $(tempdir)/run/templates/..\
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors/python/.. \
     $(tempdir)/run/vectors/lua/.. \
@@ -86,6 +87,18 @@ tutorial-cpp : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/tutorial \
 	    -f $(top)/regression/run/tutorial/Makefile \
+	    top=$(top) maincpp
+
+templates-c : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run/templates \
+	    -f $(top)/regression/run/templates/Makefile \
+	    top=$(top) testc
+
+templates-cpp : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run/templates \
+	    -f $(top)/regression/run/templates/Makefile \
 	    top=$(top) maincpp
 
 test-c : tutorial-c
