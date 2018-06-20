@@ -47,6 +47,8 @@
 #include <cassert>
 #include <vector>
 
+// explicitly instantiate template
+//template class std::vector<float>;
 
 void test_vector_int()
 {

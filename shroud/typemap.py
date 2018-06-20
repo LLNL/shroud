@@ -791,6 +791,7 @@ def initialize():
 
         # C++ std::vector
         # No c_type or f_type, use attr[template]
+        # C++03 "The elements of a vector are stored contiguously" (23.2.4/1). 
         vector=Typemap(
             'vector',
             cxx_type='std::vector<{cxx_T}>',

@@ -161,6 +161,18 @@ class ToDict(visitor.Visitor):
         )
         return d
 
+    def visit_Template(self, node):
+        d = dict(
+            parameters=self.visit(node.parameters),
+            decl=self.visit(node.decl)
+        )
+        return d
+
+    def visit_TemplateParam(self, node):
+        d = dict(
+            name=node.name,
+        )
+        return d
 
 ######################################################################
 

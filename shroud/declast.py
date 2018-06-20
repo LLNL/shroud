@@ -58,6 +58,7 @@ type_specifier = {'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'doub
 type_qualifier = {'const', 'volatile'}
 storage_class = {'auto', 'register', 'static', 'extern', 'typedef'}
 
+cxx_keywords = {'class', 'enum', 'namespace', 'struct', 'template', 'typename'}
 
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
@@ -110,7 +111,7 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
-                elif val in ['class', 'enum', 'namespace', 'struct']:
+                elif val in cxx_keywords:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
@@ -460,6 +461,8 @@ class Parser(ExprParser):
             node = self.struct_statement()
         elif self.token.typ == 'NAMESPACE':
             node = self.namespace_statement()
+        elif self.token.typ == 'TEMPLATE':
+            node = self.template_statement()
         else:
             node = self.declaration()
         self.have('SEMICOLON')
@@ -626,6 +629,34 @@ class Parser(ExprParser):
         name = self.mustbe('ID')
         node = Namespace(name.value)
         self.exit('namespace_statement')
+        return node
+
+    def template_statement(self):
+        """  template < template-parameter-list > declaration
+        template-parameter ::= [ class | typename] ID
+        """
+        self.enter('template_statement')
+        self.mustbe('TEMPLATE')
+        node = Template()
+        name = self.mustbe('LT')
+        while self.token.typ != 'GT':
+            if self.have('TYPENAME'):
+                name = self.mustbe('ID').value
+            elif self.have('CLASS'):
+                name = self.mustbe('ID').value
+            else:
+                name = self.mustbe('ID').value
+            node.parameters.append(TemplateParam(name))
+            if not self.have('COMMA'):
+                break
+        self.mustbe('GT')
+
+        if self.token.typ == 'CLASS':
+            node.decl = self.class_statement()
+        else:
+            node.decl = self.declaration()
+
+        self.exit('template_statement')
         return node
 
     def enum_statement(self):
@@ -1267,14 +1298,14 @@ class Declaration(Node):
         return ''.join(decl)
 
 class CXXClass(Node):
-    """An C++ class statement.
+    """A C++ class statement.
     """
     def __init__(self, name):
         self.name = name
 
 
 class Namespace(Node):
-    """An C++ namespace statement.
+    """A C++ namespace statement.
     """
     def __init__(self, name):
         self.name = name
@@ -1296,12 +1327,28 @@ class EnumValue(Node):
 
 
 class Struct(Node):
-    """An struct statement.
+    """A struct statement.
     struct name { int i; double d; };
     """
     def __init__(self, name):
         self.name = name
         self.members = []
+
+
+class Template(Node):
+    """A template statement.
+    """
+    def __init__(self):
+        self.parameters = []
+        self.decl = None
+
+
+class TemplateParam(Node):
+    """A template parameter.
+    template < TemplateParameter >
+    """
+    def __init__(self, name):
+        self.name = name
 
 
 def check_decl(decl, namespace=None, template_types=[], trace=False):

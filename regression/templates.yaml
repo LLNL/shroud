@@ -5,9 +5,17 @@
 
 namespace: std
 
-- decl: template<class T> vector;
+- decl: template<typename T> class vector
   cxx_template:
-  - T: int
-  - T: double
+  - instantiation: <int>
+
+#  - instantiation: 
+#      T: int
+#    format:
+#       blah: one
+#  - instantiation:
+#      T: double
+#    format:
+#       blah: two
   declarations:
   - decl: void push_back( const T& value );

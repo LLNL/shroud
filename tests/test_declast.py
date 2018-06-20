@@ -1007,6 +1007,43 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("long_long", r.params[1].typename)
         self.assertEqual("unsigned_int", r.params[2].typename)
 
+    def test_class_template(self):
+        """Class templates"""
+        r = declast.check_decl("template<typename T> class vector")
+
+#        s = r.gen_decl()
+#        self.assertEqual("template<typename T> vector", s)
+
+        self.assertEqual(todict.to_dict(r),{
+            "decl": {
+                "name": "vector"
+            },
+            "parameters": [
+                {
+                    "name": "T"
+                }
+            ]
+        })
+
+        r = declast.check_decl("template<T1,T2> class vector")
+
+#        s = r.gen_decl()
+#        self.assertEqual("template<typename T> vector", s)
+
+        self.assertEqual(todict.to_dict(r),{
+            "decl": {
+                "name": "vector"
+            },
+            "parameters": [
+                {
+                    "name": "T1",
+                },
+                {
+                    "name": "T2",
+                }
+            ]
+        })
+
     def test_as_arg(self):
         r = declast.check_decl("const std::string& getName() const")
 
