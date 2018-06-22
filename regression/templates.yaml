@@ -1,12 +1,14 @@
 
 #
-#  Class templates
+#  Test templates
 #
 
+library: templates
 namespace: std
 
+declarations:
 - decl: template<typename T> class vector
-  cxx_template:
+  cxx_template2:
   - instantiation: <int>
 
 #  - instantiation: 
@@ -19,3 +21,14 @@ namespace: std
 #       blah: two
   declarations:
   - decl: void push_back( const T& value );
+
+
+
+#- decl: template<ArgType> void Function7(ArgType arg)
+#  cxx_template:
+#    ArgType:
+#    - int
+#    - double
+#  cxx_template2:
+#    - instantiation: <int>
+#    - instantiation: <double>

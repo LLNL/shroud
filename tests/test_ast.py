@@ -315,12 +315,12 @@ class CheckAst(unittest.TestCase):
 
         self.assertEqual(len(library.classes), 2)
         self.assertEqual(len(library.classes[0].functions), 2)
-        self.assertEqual(library.classes[0].functions[0]._ast.name, 'c1func1')
-        self.assertEqual(library.classes[0].functions[1]._ast.name, 'c1func2')
+        self.assertEqual(library.classes[0].functions[0].ast.name, 'c1func1')
+        self.assertEqual(library.classes[0].functions[1].ast.name, 'c1func2')
         self.assertEqual(len(library.classes[1].functions), 1)
-        self.assertEqual(library.classes[1].functions[0]._ast.name, 'c2func1')
+        self.assertEqual(library.classes[1].functions[0].ast.name, 'c2func1')
 
-    def test_c_class2(self):
+    def test_c_class3(self):
         """Test class options"""
         # Simulate YAML
         node = dict(
@@ -364,6 +364,26 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.classes[0].functions[1].options.testa, 'a')
         self.assertEqual(library.classes[0].functions[1].options.testb, 'bb')
         self.assertEqual(library.classes[0].functions[1].options.testc, 'c')
+
+    def test_c_class4a(self):
+        """Test class templates.
+        """
+        library = ast.LibraryNode()
+        cls1 = library.add_class(
+            'vector',
+            template_parameters=['T']
+        )
+        cls1.add_function('void push_back( const T& value );')
+
+    def test_c_class4b(self):
+        """Test class templates.
+        """
+        library = ast.LibraryNode()
+        cls1 = library.add_declaration(
+            'template<typename T> class vector',
+            # XXX - add declarations to avoid forward declaration
+            declarations=[])
+        cls1.add_declaration('void push_back( const T& value );')
 
     def test_d_generate1(self):
         """char bufferify

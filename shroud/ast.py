@@ -86,10 +86,15 @@ class AstNode(object):
 ######################################################################
 
 class NamespaceMixin(object):
-    def add_class(self, name, **kwargs):
+    def add_class(self, name, template_parameters=None, **kwargs):
         """Add a class.
+
+        template_parameters - list names of template parameters.
+             ex. template<typename T>  -> ['T']
         """
-        node = ClassNode(name, self, **kwargs)
+        node = ClassNode(name, self,
+                         template_parameters=template_parameters,
+                         **kwargs)
         self.classes.append(node)
         self.symbols[name] = node
         return node
@@ -97,10 +102,21 @@ class NamespaceMixin(object):
     def add_declaration(self, decl, **kwargs):
         """parse decl and add corresponding node.
         decl - declaration
+
+        kwargs -
+           cxx_template - 
         """
         # parse declaration to find out what it is
         ast = declast.check_decl(decl, namespace=self,
                                  template_types=kwargs.get('cxx_template', {}).keys())
+        template_parameters = []
+        if isinstance(ast, declast.Template):
+            # Create list of template parameter names
+            # template<typename T> class vector -> ['T']
+            for tparam in ast.parameters:
+                template_parameters.append(tparam.name)
+            ast = ast.decl
+
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
                 self.create_typedef(ast, **kwargs)
@@ -111,7 +127,9 @@ class NamespaceMixin(object):
                 node = self.add_function(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
             if 'declarations' in kwargs:
-                node = self.add_class(ast.name, **kwargs)
+                node = self.add_class(ast.name,
+                                      template_parameters=template_parameters,
+                                      **kwargs)
             else:
                 node = self.create_class_typemap(ast.name, **kwargs)
         elif isinstance(ast, declast.Namespace):
@@ -121,7 +139,9 @@ class NamespaceMixin(object):
         elif isinstance(ast, declast.Struct):
             node = self.add_struct(decl, ast=ast, **kwargs)
         else:
-            raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
+            raise RuntimeError(
+                "add_declaration: unknown ast type {} after parsing '{}'"
+                .format(type(ast), decl))
         return node
 
     def create_class_typemap(self, key, **kwargs):
@@ -683,14 +703,24 @@ class NamespaceNode(AstNode, NamespaceMixin):
 ######################################################################
 
 class ClassNode(AstNode, NamespaceMixin):
+    """A C++ class.
+
+    symbols - symbol table of nested symbols.
+    """
     is_class = True
     def __init__(self, name, parent,
                  cxx_header='',
                  format=None,
                  options=None,
                  as_struct=False,
+                 template_parameters=None,
                  **kwargs):
         """Create ClassNode.
+        Used with class or struct if as_struct==True.
+
+        template_parameters - list names of template parameters.
+             ex. template<typename T>  -> ['T']
+        Added to symbol table.
         """
         # From arguments
         self.name = name
@@ -712,7 +742,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.default_format(parent, format, kwargs)
 
-        # add to namespace
+        # Add to namespace.
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
         self.symbols = {}
@@ -722,7 +752,32 @@ class ClassNode(AstNode, NamespaceMixin):
             self.typemap = typemap.create_class_typemap(self)
         self.typemap_name = self.typemap.name   # fully qualified name
 
+        # Add template parameters.
+        if template_parameters is None:
+            self.template_parameters = []
+        else:
+            self.template_parameters = template_parameters
+            for param_name in template_parameters:
+                self.create_template_parameter_typemap(param_name)
+
 ##### namespace behavior
+
+    def create_template_parameter_typemap(self, name):
+        """Create a typemap for a template parameter.
+        Use base='template'.
+
+        The real type will be used during template instantiation.
+        """
+#        self.add_typedef(key)
+        node = TypedefNode(name, parent=self)
+        self.symbols[name] = node
+
+        fullname = self.scope + name
+        ntypemap = typemap.Typemap(fullname, base='template',
+                                   c_type='c_T',
+                                   cxx_type='cxx_T',
+                                   f_type='f_T')
+        typemap.register_type(ntypemap.name, ntypemap)
 
     def qualified_lookup(self, name):
         """Look for symbols within class.

@@ -1337,6 +1337,9 @@ class Struct(Node):
 
 class Template(Node):
     """A template statement.
+
+    parameters - list of TemplateParam instances.
+    decl - Declaration or CXXClass Node.
     """
     def __init__(self):
         self.parameters = []
@@ -1346,6 +1349,8 @@ class Template(Node):
 class TemplateParam(Node):
     """A template parameter.
     template < TemplateParameter >
+
+    XXX - class and typename are discarded while parsing.
     """
     def __init__(self, name):
         self.name = name
