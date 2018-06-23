@@ -270,6 +270,49 @@ class CheckParse(unittest.TestCase):
             ]
         })
 
+    def test_template_argument_list(self):
+        decl = "<int>"
+        parser = declast.Parser(decl, None)
+        r = parser.template_argument_list()
+        self.assertEqual(todict.to_dict(r),
+            [
+                {
+                    "attrs": {
+                        "_typename": "int"
+                    },
+                    "const": False,
+                    "specifier": [
+                        "int"
+                    ]
+                }
+            ])
+
+        # self.library creates a global namespace with std::string
+        decl = "<std::string, int>"
+        parser = declast.Parser(decl, self.library)
+        r = parser.template_argument_list()
+        self.assertEqual(todict.to_dict(r),
+            [
+                {
+                    "attrs": {
+                        "_typename": "std::string"
+                    },
+                    "const": False,
+                    "specifier": [
+                        "std::string"
+                    ]
+                },
+                {
+                    "attrs": {
+                        "_typename": "int"
+                    },
+                    "const": False,
+                    "specifier": [
+                        "int"
+                    ]
+                }
+            ])
+
     def test_declaration_specifier_error(self):
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("none var1")

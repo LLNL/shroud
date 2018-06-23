@@ -659,6 +659,23 @@ class Parser(ExprParser):
         self.exit('template_statement')
         return node
 
+    def template_argument_list(self):
+        """Parse template argument list
+        < template_argument [ , template_argument ]* >
+
+        Return a list of Declaration.
+        """
+        self.mustbe('LT')
+        lst = []
+        while self.token.typ != 'GT':
+            temp = Declaration()
+            self.declaration_specifier(temp)
+            lst.append(temp)
+            if not self.have('COMMA'):
+                break
+        self.mustbe('GT')
+        return lst
+
     def enum_statement(self):
         self.enter('enum_statement')
         self.mustbe('ENUM')
