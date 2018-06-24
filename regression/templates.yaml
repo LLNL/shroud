@@ -10,15 +10,11 @@ declarations:
 - decl: template<typename T> class vector
   cxx_template2:
   - instantiation: <int>
+    format:
+      fmtblah: one
+    options:
+      optsblah: two
 
-#  - instantiation: 
-#      T: int
-#    format:
-#       blah: one
-#  - instantiation:
-#      T: double
-#    format:
-#       blah: two
   declarations:
   - decl: void push_back( const T& value );
 

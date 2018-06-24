@@ -721,6 +721,8 @@ class ClassNode(AstNode, NamespaceMixin):
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
         Added to symbol table.
+
+        cxx_template2 - list of TemplateArgument instances
         """
         # From arguments
         self.name = name
@@ -759,6 +761,14 @@ class ClassNode(AstNode, NamespaceMixin):
             self.template_parameters = template_parameters
             for param_name in template_parameters:
                 self.create_template_parameter_typemap(param_name)
+
+        # Parse the instantiations.
+        # cxx_template2 = [ TemplateArgument('<int>'),
+        #                   TemplateArgument('<double>') ]
+        cxx_template2 = kwargs.get('cxx_template2', [])
+        self.template_arguments = cxx_template2
+        for args in cxx_template2:
+            args.parse_instantiation(namespace=self)
 
 ##### namespace behavior
 
@@ -1190,6 +1200,24 @@ class VariableNode(AstNode):
 
 ######################################################################
 
+class TemplateArgument(object):
+    """Information used to instantiate a template.
+
+    instantiation = "<int,double>"
+    ast = [ Declaration("int"), Declaration("double") ]
+    """
+    def __init__(self, instantiation, fmtargs=None, options=None):
+        self.instantiation = instantiation
+        self.fmtargs = fmtargs
+        self.options = options
+        self.ast = None
+
+    def parse_instantiation(self, namespace):
+        parser = declast.Parser(self.instantiation, namespace)
+        self.ast = parser.template_argument_list()
+
+######################################################################
+
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
     """
@@ -1223,6 +1251,24 @@ def clean_dictionary(dd):
         for key in ['function_suffix']:
             if key in dd0 and dd0[key] is None:
                 dd0[key] = ''
+
+    if 'cxx_template2' in dd:
+        # Convert to list of TemplateArgument instances
+        cxx_template2 = dd['cxx_template2']
+        if not isinstance(cxx_template2, list):
+            raise RuntimeError('cxx_template2 must be a list')
+        newlst = []
+        for dct in cxx_template2:
+            if not isinstance(dct, dict):
+                raise RuntimeError('cxx_template2 must be a list of dictionaries')
+            if 'instantiation' not in dct:
+                raise RuntimeError('instantation must be defined for each dictionary in cxx_template2')
+            newlst.append(TemplateArgument(
+                dct['instantiation'],
+                fmtargs=dct.get('format', None),
+                options=dct.get('options', None),
+            ))
+        dd['cxx_template2'] = newlst
 
 def clean_list(lst):
     """Fix up blank lines in a YAML line

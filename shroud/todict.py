@@ -219,8 +219,11 @@ class ToDict(visitor.Visitor):
             options=self.visit(node.options),
         )
         add_non_none_fields(node, d, ['linenumber'])
-        add_true_fields(node, d, ['as_struct', 'python'])
-        self.add_visit_fields(node, d, ['enums', 'functions', 'variables'])
+        add_true_fields(node, d, ['as_struct', 'python',
+                                  'template_parameters'])
+        self.add_visit_fields(node, d,
+                              ['enums', 'functions', 'variables',
+                               'template_arguments'])
         return d
 
     def visit_FunctionNode(self, node):
@@ -287,6 +290,16 @@ class ToDict(visitor.Visitor):
             options=self.visit(node.options),
         )
         add_non_none_fields(node, d, ['linenumber'])
+        return d
+
+    def visit_TemplateArgument(self, node):
+        d = dict(
+            instantiation=node.instantiation,
+            ast=self.visit(node.ast),
+#            format=self.visit(node.fmtargs),
+#            options=self.visit(node.options),
+        )
+        add_non_none_fields(node, d, ['fmtargs', 'options'])
         return d
 
     def add_visit_fields(self, node, d, fields):
