@@ -573,6 +573,20 @@ class Scope(object):
                 new.__dict__[key] = value
         return new
 
+    def reparent(self, parent):
+        """Change the parent node."""
+        self.__parent = parent
+
+    def trace(self, key, header=True):
+        """Help debug where a symbol is found."""
+        if header:
+            print("XXXXXXXXXX", key)
+        if key in self.__dict__:
+            print("TRACE {}: {}  {}".format(key, id(self), self.__dict__[key]))
+        elif self.__parent:
+            print("TRACE {}: {}".format(key, id(self)))
+            self.__parent.trace(key, header=False)
+
     def _to_dict(self):
         d = {}
         skip = '_' + self.__class__.__name__ + '__'   # __name is skipped

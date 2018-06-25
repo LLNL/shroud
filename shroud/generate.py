@@ -312,6 +312,8 @@ class GenFunctions(object):
 
         self.function_index = newlibrary.function_index
 
+        self.instantiate_classes(newlibrary)
+
         for cls in newlibrary.classes:
 #            added = self.default_ctor_and_dtor(cls)
             if not cls.as_struct:
@@ -422,6 +424,27 @@ class GenFunctions(object):
         )
 
         cls.add_function(decl, attrs=attrs, format=format, options=options)
+
+    def instantiate_classes(self, node):
+        """Instantate any template_arguments.
+        node - LibraryNode or ClassNode.
+
+        Create a new list of classes replacing 
+        any class with template_arguments with instantiated classes.
+        """
+        clslist = []
+        for cls in node.classes:
+            if cls.template_arguments:
+                # Replace class with new class for each template instantiation.
+                for args in cls.template_arguments:
+                    newcls = cls.clone()
+                    # class_lower class_prefix class_upper cxx_class
+#                    newcls.functions = self.define_function_suffix(newcls.functions)
+                    clslist.append(newcls)
+            else:
+#                cls.functions = self.define_function_suffix(cls.functions)
+                clslist.append(cls)
+        node.classes = clslist
 
     def define_function_suffix(self, functions):
         """

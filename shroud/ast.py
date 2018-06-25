@@ -853,6 +853,32 @@ class ClassNode(AstNode, NamespaceMixin):
         """Replace method inherited from NamespaceMixin."""
         raise RuntimeError("Cannot add a namespace to a class")
 
+    def clone(self):
+        """Create a copy of a ClassNode to use with C++ template.
+
+        Create a clone of fmtdict and options allowing them
+        to be modified.
+        Clone all functions and reparent fmtdict and options to 
+        the new class.
+        """
+        # Shallow copy everything.
+        new = copy.copy(self)
+
+        # Add new format and options Scope.
+        new.fmtdict = self.fmtdict.clone()
+        new.options = self.options.clone()
+
+        # Clone all functions.
+        newfcns = []
+        for fcn in self.functions:
+            newfcn = fcn.clone()
+            newfcn.fmtdict.reparent(new.fmtdict)
+            newfcn.options.reparent(new.options)
+            newfcns.append(newfcn)
+        new.functions = newfcns
+
+        return new
+
 ######################################################################
 
 class FunctionNode(AstNode):
@@ -1020,17 +1046,17 @@ class FunctionNode(AstNode):
                 self.fmtdict.C_custom_return_type = format['C_return_type']
 
     def clone(self):
-        """Create a copy of a function node to use with C++ template
+        """Create a copy of a FunctionNode to use with C++ template
         or changing result to argument.
         """
-        # Shallow copy everything
+        # Shallow copy everything.
         new = copy.copy(self)
 
-        # new Scope with same inlocal and parent
+        # new Scope with same inlocal and parent.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
 
-        # deep copy dictionaries
+        # Deep copy dictionaries.
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
