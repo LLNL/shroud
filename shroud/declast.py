@@ -1393,10 +1393,11 @@ def check_decl(decl, namespace=None, template_types=[], trace=False):
     return a
 
 
-def create_this_arg(name, typ, const=True):
+def create_this_arg(name, arg_typemap, const=True):
     """Create a Declaration for an argument for the 'this' argument
     as 'typ *name'
     """
+    typ = arg_typemap.name
     arg = Declaration()
     arg.const = const
     arg.declarator = Declarator()

@@ -215,7 +215,7 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             name=node.name,
             ##- typename=node.typename,
-            typemap_name=node.typemap_name,
+            typemap_name=node.typemap.name,  # print name to avoid too much nesting
             options=self.visit(node.options),
         )
         add_non_none_fields(node, d, ['linenumber'])
@@ -263,7 +263,7 @@ class ToDict(visitor.Visitor):
     def visit_EnumNode(self, node):
         d = dict(
             name=node.name,
-            typemap_name=node.typemap_name,
+            typemap_name=node.typemap.name,  # print name to avoid too much nesting
             ast=self.visit(node.ast),
             decl=node.decl,
             format=self.visit(node.fmtdict),

@@ -752,7 +752,6 @@ class ClassNode(AstNode, NamespaceMixin):
             self.typemap = typemap.create_struct_typemap(self)
         else:
             self.typemap = typemap.create_class_typemap(self)
-        self.typemap_name = self.typemap.name   # fully qualified name
 
         # Add template parameters.
         if template_parameters is None:
@@ -1147,7 +1146,6 @@ class EnumNode(AstNode):
         self.typename = self.parent.scope + self.name
         self.scope = self.typename + '::'
         self.typemap = typemap.create_enum_typemap(self)
-        self.typemap_name = self.typemap.name
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -1225,7 +1223,6 @@ class VariableNode(AstNode):
 #        self.typename = self.parent.scope + self.name
 #        self.scope = self.typename + '::'
 #        self.typemap = typemap.create_struct_typemap(self)
-#        self.typemap_name = self.typemap.name
 
 ######################################################################
 

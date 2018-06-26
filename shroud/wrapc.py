@@ -755,7 +755,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
                 else:
                     # 'this' argument
-                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typemap_name, is_const)
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typemap, is_const)
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 

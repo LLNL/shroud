@@ -1116,13 +1116,15 @@ class CheckParse(unittest.TestCase):
                          
     def test_thisarg01(self):
         """Create an argument for const this"""
-        r = declast.create_this_arg('self', 'Class1', const=True)
+        class_typemap = self.class1.typemap
+        r = declast.create_this_arg('self', class_typemap, const=True)
         s = r.gen_decl()
         self.assertEqual("const Class1 * self", s)
 
     def test_thisarg02(self):
         """Create an argument for this"""
-        r = declast.create_this_arg('self', 'Class1', const=False)
+        class_typemap = self.class1.typemap
+        r = declast.create_this_arg('self', class_typemap, const=False)
         s = r.gen_decl()
         self.assertEqual("Class1 * self", s)
 

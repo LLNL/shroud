@@ -727,7 +727,6 @@ rv = .false.
         fmt = util.Scope(fmt_func)
 
         ast = node.ast
-        result_type = node.C_return_type
         subprogram = node.C_subprogram
         result_typemap = node.C_result_typemap
         generated_suffix = node.generated_suffix
@@ -809,7 +808,7 @@ rv = .false.
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
                 # XXX - make sure ptr is set to avoid VALUE
-                rvast = declast.create_this_arg(fmt.F_result, result_type, False)
+                rvast = declast.create_this_arg(fmt.F_result, result_typemap, False)
                 if return_pointer_as in ['pointer', 'allocatable', 'raw']:
                     arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')

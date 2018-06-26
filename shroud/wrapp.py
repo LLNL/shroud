@@ -1649,9 +1649,9 @@ return 1;""", fmt)
                     output.append('')
                     output.append('// forward declare classes')
                     blank = False
-                self.namespace(self.newlibrary, cls, 'begin', output)
+                self.write_namespace(cls, 'begin', output)
                 output.append('class {};'.format(cls.name))
-                self.namespace(self.newlibrary, cls, 'end', output, comment=False)
+                self.write_namespace(cls, 'end', output, comment=False)
 
         if self.py_type_extern:
             output.append('')

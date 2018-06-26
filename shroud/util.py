@@ -249,9 +249,15 @@ class WrapperMixin(object):
 
 #####
 
-    def namespace(self, library, cls, position, output, comment=True):
+    def write_namespace(self, cls, position, output, comment=True):
+        """Write nested namespace statements.
+        cls - ClassNode to wrap
+        position - 'begin' or 'end'
+        output   - append generated code to list output
+        comment  - True = add comment to ending brace
+        """
         if cls:
-            namespace = cls.typemap_name.split('::')
+            namespace = cls.typemap.name.split('::')
             namespace.pop()  # remove class name
         else:
             namespace = []
