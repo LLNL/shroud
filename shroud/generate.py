@@ -436,8 +436,27 @@ class GenFunctions(object):
         for cls in node.classes:
             if cls.template_arguments:
                 # Replace class with new class for each template instantiation.
-                for args in cls.template_arguments:
+                for i, args in enumerate(cls.template_arguments):
                     newcls = cls.clone()
+
+                    # Update name of class.
+                    #  cxx_class - vector_0      (Fortran and C names)
+                    #  cxx_type  - vector<int>
+                    cxx_class = "{}_{}".format(newcls.fmtdict.cxx_class, i)
+                    cxx_type = "{}{}".format(newcls.fmtdict.cxx_class,
+                                             args.instantiation)
+
+                    newcls.fmtdict.update(dict(
+                        cxx_type=cxx_type,
+                        cxx_class=cxx_class,
+                        class_lower=cxx_class.lower(),
+                        class_upper=cxx_class.upper(),
+                        class_scope=cxx_class + '::',
+                        F_derived_name=cxx_class.lower(),
+                    ))
+
+                    newcls.typemap = typemap.create_class_typemap(newcls)
+
                     # class_lower class_prefix class_upper cxx_class
 #                    newcls.functions = self.define_function_suffix(newcls.functions)
                     clslist.append(newcls)

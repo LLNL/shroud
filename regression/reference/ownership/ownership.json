@@ -28,7 +28,8 @@
                     "class_prefix": "class1_", 
                     "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1"
+                    "cxx_class": "Class1", 
+                    "cxx_type": "Class1"
                 }, 
                 "functions": [
                     {

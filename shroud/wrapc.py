@@ -766,7 +766,7 @@ class Wrapc(util.WrapperMixin):
                         raise RuntimeError("Wappped class does not have c_to_cxx set")
                     append_format(
                         pre_call,
-                        '{c_const}{namespace_scope}{cxx_class} *{CXX_this} =\t ' +
+                        '{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
         self.find_idtor(node.ast, result_typemap, fmt_result, None)

@@ -28,7 +28,8 @@
                     "class_prefix": "class2_", 
                     "class_scope": "Class2::", 
                     "class_upper": "CLASS2", 
-                    "cxx_class": "Class2"
+                    "cxx_class": "Class2", 
+                    "cxx_type": "Class2"
                 }, 
                 "functions": [
                     {
@@ -422,7 +423,8 @@
                     "class_prefix": "class3_", 
                     "class_scope": "Class3::", 
                     "class_upper": "CLASS3", 
-                    "cxx_class": "Class3"
+                    "cxx_class": "Class3", 
+                    "cxx_type": "Class3"
                 }, 
                 "linenumber": 77, 
                 "name": "Class3", 

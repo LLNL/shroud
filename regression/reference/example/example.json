@@ -30,7 +30,8 @@
                     "class_prefix": "exclass1_", 
                     "class_scope": "ExClass1::", 
                     "class_upper": "EXCLASS1", 
-                    "cxx_class": "ExClass1"
+                    "cxx_class": "ExClass1", 
+                    "cxx_type": "ExClass1"
                 }, 
                 "functions": [
                     {
@@ -1985,7 +1986,8 @@
                     "class_prefix": "exclass2_", 
                     "class_scope": "ExClass2::", 
                     "class_upper": "EXCLASS2", 
-                    "cxx_class": "ExClass2"
+                    "cxx_class": "ExClass2", 
+                    "cxx_type": "ExClass2"
                 }, 
                 "functions": [
                     {
@@ -4814,7 +4816,8 @@
                     "class_prefix": "exclass3_", 
                     "class_scope": "ExClass3::", 
                     "class_upper": "EXCLASS3", 
-                    "cxx_class": "ExClass3"
+                    "cxx_class": "ExClass3", 
+                    "cxx_type": "ExClass3"
                 }, 
                 "functions": [
                     {

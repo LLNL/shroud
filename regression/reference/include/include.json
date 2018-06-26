@@ -16,7 +16,8 @@
                     "class_prefix": "class1_", 
                     "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1"
+                    "cxx_class": "Class1", 
+                    "cxx_type": "Class1"
                 }, 
                 "functions": [
                     {
@@ -120,7 +121,8 @@
                     "class_prefix": "class2_", 
                     "class_scope": "Class2::", 
                     "class_upper": "CLASS2", 
-                    "cxx_class": "Class2"
+                    "cxx_class": "Class2", 
+                    "cxx_type": "Class2"
                 }, 
                 "functions": [
                     {

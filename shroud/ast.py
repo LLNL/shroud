@@ -821,10 +821,11 @@ class ClassNode(AstNode, NamespaceMixin):
         self.fmtdict = util.Scope(
             parent=parent.fmtdict,
 
-            class_scope=self.name + '::',
+            cxx_type=self.name,
             cxx_class=self.name,
             class_lower=self.name.lower(),
             class_upper=self.name.upper(),
+            class_scope=self.name + '::',
 
             F_derived_name=self.name.lower(),
         )

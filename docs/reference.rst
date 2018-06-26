@@ -811,6 +811,14 @@ F_name_instance_set
 
 cxx_class
     The name of the C++ class from the YAML input file.
+    ex. ``std::vector``.
+    Used in generating names for C and Fortran and filenames.
+
+cxx_type
+    The name of the C++ class, including information
+    from *template_arguments*, ex. ``std::vector<int>``.
+    Same as *cxx_class* if *template_arguments* is not defined.
+    Used in generating C++ code.
 
 class_lower
     Lowercase version of *cxx_class*.

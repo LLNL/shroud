@@ -28,7 +28,8 @@
                     "class_prefix": "struct1_", 
                     "class_scope": "struct1::", 
                     "class_upper": "STRUCT1", 
-                    "cxx_class": "struct1"
+                    "cxx_class": "struct1", 
+                    "cxx_type": "struct1"
                 }, 
                 "linenumber": 78, 
                 "name": "struct1", 
@@ -186,7 +187,8 @@
                     "class_prefix": "class1_", 
                     "class_scope": "Class1::", 
                     "class_upper": "CLASS1", 
-                    "cxx_class": "Class1"
+                    "cxx_class": "Class1", 
+                    "cxx_type": "Class1"
                 }, 
                 "functions": [
                     {
@@ -1476,7 +1478,8 @@
                     "class_prefix": "singleton_", 
                     "class_scope": "Singleton::", 
                     "class_upper": "SINGLETON", 
-                    "cxx_class": "Singleton"
+                    "cxx_class": "Singleton", 
+                    "cxx_type": "Singleton"
                 }, 
                 "functions": [
                     {

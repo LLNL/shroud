@@ -1076,15 +1076,16 @@ def create_class_typemap(node):
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    cxx_type = util.wformat('{namespace_scope}{cxx_type}', fmt_class)
 
     ntypemap = lookup_type(cxx_name)
     # unname = util.un_camel(name)
-    f_name = node.name.lower()
+    f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + f_name
     ntypemap = Typemap(
         cxx_name,
         base='shadow',
-        cxx_type=cxx_name,
+        cxx_type=cxx_type,
         cxx_header=node.cxx_header or None,
         c_type=c_name,
         f_derived_type=fmt_class.F_derived_name,
@@ -1194,14 +1195,15 @@ def create_struct_typemap(node):
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    cxx_type = util.wformat('{namespace_scope}{cxx_type}', fmt_class)
 
     # unname = util.un_camel(name)
-    f_name = node.name.lower()
+    f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + f_name
     ntypemap = Typemap(
         cxx_name,
         base='struct',
-        cxx_type=cxx_name,
+        cxx_type=cxx_type,
         c_type=c_name,
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
