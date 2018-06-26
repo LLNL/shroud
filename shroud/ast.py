@@ -119,8 +119,7 @@ class NamespaceMixin(object):
 
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
-                self.create_typemap(ast, **kwargs)
-                node = self.add_typedef(ast.declarator.name)
+                node = self.create_typedef_typemap(ast, **kwargs)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
             else:
@@ -148,7 +147,6 @@ class NamespaceMixin(object):
         """Add a typemap for a class.
         The class is being forward declared i.e. no declarations.
         """
-        self.add_typedef(key)
         fullname = self.scope + key
         ntypemap = typemap.Typemap(fullname,
                                    base='shadow',
@@ -160,10 +158,12 @@ class NamespaceMixin(object):
             ntypemap.update(value)
         typemap.fill_shadow_typemap_defaults(ntypemap, self.fmtdict)
         typemap.register_type(ntypemap.name, ntypemap)
+
+        self.add_typedef(key, ntypemap)
         return ntypemap
 
-    def create_typemap(self, ast, **kwargs):
-        """Create a typemap from a Declarator.
+    def create_typedef_typemap(self, ast, **kwargs):
+        """Create a TypedefNode from a Declarator.
         """
         if ast.declarator.pointer:
             raise NotImplementedError("Pointers not supported in typedef")
@@ -185,7 +185,9 @@ class NamespaceMixin(object):
             fields = kwargs['fields']
             ntypemap.update(fields)
         typemap.register_type(ntypemap.name, ntypemap)
-        return ntypemap
+
+        node = self.add_typedef(key, ntypemap)
+        return node
 
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
@@ -225,10 +227,10 @@ class NamespaceMixin(object):
         self.symbols[node.name] = node
         return node
 
-    def add_typedef(self, name):
-        """Add a typedef to the symbol table.
+    def add_typedef(self, name, ntypemap=None):
+        """Add a TypedefNode to the symbol table.
         """
-        node = TypedefNode(name, parent=self)
+        node = TypedefNode(name, parent=self, ntypemap=ntypemap)
         self.symbols[name] = node
         return node
 
@@ -777,16 +779,14 @@ class ClassNode(AstNode, NamespaceMixin):
 
         The real type will be used during template instantiation.
         """
-#        self.add_typedef(key)
-        node = TypedefNode(name, parent=self)
-        self.symbols[name] = node
-
         fullname = self.scope + name
         ntypemap = typemap.Typemap(fullname, base='template',
                                    c_type='c_T',
                                    cxx_type='cxx_T',
                                    f_type='f_T')
         typemap.register_type(ntypemap.name, ntypemap)
+
+        self.add_typedef(name, ntypemap=ntypemap)
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -1153,18 +1153,25 @@ class EnumNode(AstNode):
 class TypedefNode(AstNode):
     """
     Used for namespace resolution
+
+    type name must be in a typemap.
     """
-    def __init__(self, name, parent):
+    def __init__(self, name, parent, ntypemap=None):
 
         # From arguments
         self.name = name
         self.parent = parent
 
         # Add to namespace
-        self.typename = self.parent.scope + self.name
+        if ntypemap is None:
+            self.typename = self.parent.scope + self.name
+            self.typemap = typemap.lookup_type(self.typename)
+        else:
+            self.typename = ntypemap.name
+            self.typemap = ntypemap
 
     def get_typename(self):
-        return self.typename
+        return self.typemap.name
 
 ######################################################################
 

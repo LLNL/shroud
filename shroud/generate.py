@@ -179,8 +179,8 @@ class VerifyAttrs(object):
             #    - int
             #    - double
             if argtype not in node.cxx_template:
-                raise RuntimeError("check_arg_attrs: No such type %s: %s" % (
-                    argtype, node.decl))
+                raise RuntimeError("check_arg_attrs: No such type '%s' on line %d: %s" % (
+                    argtype, node.linenumber, node.decl))
 
         self.check_shared_attrs(arg)
 
