@@ -747,8 +747,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.default_format(parent, format, kwargs)
 
         # Add to namespace.
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
+        self.scope = self.parent.scope + self.name + '::'
         self.symbols = {}
         if as_struct:
             self.typemap = typemap.create_struct_typemap(self)
@@ -1143,8 +1142,7 @@ class EnumNode(AstNode):
         self._fmtmembers = fmtmembers
 
         # Add to namespace
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
+        self.scope = self.parent.scope + self.name + '::'
         self.typemap = typemap.create_enum_typemap(self)
         # also 'enum class foo' will alter scope
 
@@ -1164,10 +1162,9 @@ class TypedefNode(AstNode):
 
         # Add to namespace
         if ntypemap is None:
-            self.typename = self.parent.scope + self.name
-            self.typemap = typemap.lookup_type(self.typename)
+            typename = self.parent.scope + self.name
+            self.typemap = typemap.lookup_type(typename)
         else:
-            self.typename = ntypemap.name
             self.typemap = ntypemap
 
     def get_typename(self):
@@ -1227,8 +1224,7 @@ class VariableNode(AstNode):
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 
         # Add to namespace
-#        self.typename = self.parent.scope + self.name
-#        self.scope = self.typename + '::'
+#        self.scope = self.parent.scope + self.name + '::'
 #        self.typemap = typemap.create_struct_typemap(self)
 
 ######################################################################

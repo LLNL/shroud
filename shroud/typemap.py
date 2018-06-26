@@ -522,7 +522,7 @@ def initialize():
 
         # C++ std::string
         string=Typemap(
-            'string',
+            'std::string',
             cxx_type='std::string',
             cxx_header='<string>',
             cxx_to_c='{cxx_var}{cxx_member}c_str()',  # cxx_member is . or ->
@@ -793,7 +793,7 @@ def initialize():
         # No c_type or f_type, use attr[template]
         # C++03 "The elements of a vector are stored contiguously" (23.2.4/1). 
         vector=Typemap(
-            'vector',
+            'std::vector',
             cxx_type='std::vector<{cxx_T}>',
             cxx_header='<vector>',
             ##- cxx_to_c='{cxx_var}.data()',  # C++11

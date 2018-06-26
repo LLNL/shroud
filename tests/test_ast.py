@@ -52,13 +52,18 @@ class Namespace(unittest.TestCase):
         lib = ast.LibraryNode(None)
         self.assertEqual('', lib.scope)
 
+        # The Typemap must be created before the TypedefNode.
+        ntypemap = typemap.Typemap('foo')
+        typemap.register_type('foo', ntypemap)
+
         # typedef foo;
         # foo var;
         typefoo = lib.add_typedef('foo')
-        self.assertEqual('foo', typefoo.typename)
+        self.assertIsInstance(typefoo, ast.TypedefNode)
+        self.assertEqual('foo', typefoo.typemap.name)
         node = lib.qualified_lookup('foo')
         self.assertEqual(typefoo, node)
-        self.assertEqual('foo', node.typename)
+        self.assertEqual('foo', node.typemap.name)
 
         typ = lib.unqualified_lookup('foo')
         self.assertTrue(typ)
@@ -75,7 +80,7 @@ class Namespace(unittest.TestCase):
         # test class
         lib = ast.LibraryNode(None)
         class1 = lib.add_class('Class1')
-        self.assertEqual('Class1', class1.typename)
+        self.assertEqual('Class1', class1.typemap.name)
         self.assertEqual('Class1::', class1.scope)
 
         node = lib.qualified_lookup('Class1')
@@ -85,7 +90,7 @@ class Namespace(unittest.TestCase):
         self.assertEqual('ns1::', ns.scope)
 
         class2 = ns.add_class('Class2')
-        self.assertEqual('ns1::Class2', class2.typename)
+        self.assertEqual('ns1::Class2', class2.typemap.name)
         self.assertEqual('ns1::Class2::', class2.scope)
 
         node = ns.unqualified_lookup('Class1')
@@ -107,7 +112,7 @@ class Namespace(unittest.TestCase):
         typemap.initialize()
         lib = ast.LibraryNode(None)
         enum1 = lib.add_enum('enum Enum1 {}')
-        self.assertEqual('Enum1', enum1.typename)
+        self.assertEqual('Enum1', enum1.typemap.name)
         self.assertEqual('Enum1::', enum1.scope)
 
         node = lib.qualified_lookup('Enum1')
@@ -115,7 +120,7 @@ class Namespace(unittest.TestCase):
 
         ns = lib.add_namespace('ns1')
         enum2 = ns.add_enum('enum Enum2 {}')
-        self.assertEqual('ns1::Enum2', enum2.typename)
+        self.assertEqual('ns1::Enum2', enum2.typemap.name)
         self.assertEqual('ns1::Enum2::', enum2.scope)
 
         node = ns.unqualified_lookup('Enum1')
@@ -135,7 +140,7 @@ class Namespace(unittest.TestCase):
         # Add enum to class
         class1 = ns.add_class('Class1')
         enum3 = class1.add_enum('enum Enum3 {}')
-        self.assertEqual('ns1::Class1::Enum3', enum3.typename)
+        self.assertEqual('ns1::Class1::Enum3', enum3.typemap.name)
         self.assertEqual('ns1::Class1::Enum3::', enum3.scope)
         node =  class1.qualified_lookup('Enum3')
         self.assertEqual(enum3, node)

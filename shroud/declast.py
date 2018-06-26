@@ -393,10 +393,10 @@ class Parser(ExprParser):
                 raise RuntimeError("Expected class-name after ~")
             node.specifier.append(tok.value)
             #  class Class1 { ~Class1(); }
-            self.info('destructor', self.namespace.typename)
+            self.info('destructor', self.namespace.typemap.name)
             node.attrs['_name'] = 'dtor'
             node.attrs['_destructor'] = True
-            node.attrs['_typename'] = self.namespace.typename
+            node.attrs['_typename'] = self.namespace.typemap.name
             found_type = True
             more = False
 
@@ -422,7 +422,7 @@ class Parser(ExprParser):
                         node.attrs['template'] = str(temp)
                         self.mustbe('GT')
                     # Save fully resolved typename
-                    node.attrs['_typename'] = ns.typename
+                    node.attrs['_typename'] = ns.typemap.name
                     found_type = True
                 else:
                     more = False
