@@ -119,7 +119,7 @@ class NamespaceMixin(object):
 
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
-                self.create_typedef(ast, **kwargs)
+                self.create_typemap(ast, **kwargs)
                 node = self.add_typedef(ast.declarator.name)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
@@ -162,7 +162,7 @@ class NamespaceMixin(object):
         typemap.register_type(ntypemap.name, ntypemap)
         return ntypemap
 
-    def create_typedef(self, ast, **kwargs):
+    def create_typemap(self, ast, **kwargs):
         """Create a typemap from a Declarator.
         """
         if ast.declarator.pointer:

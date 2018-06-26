@@ -19,7 +19,7 @@ declarations:
 #  - instantiation: <double>
 
   declarations:
-  - decl: void push_back( const T& value );
+  - decl: void push_back( const T& value+intent(in) );
 
 
 
