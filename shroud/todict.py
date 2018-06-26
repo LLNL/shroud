@@ -299,7 +299,7 @@ class ToDict(visitor.Visitor):
 #            format=self.visit(node.fmtargs),
 #            options=self.visit(node.options),
         )
-        add_non_none_fields(node, d, ['fmtargs', 'options'])
+        add_non_none_fields(node, d, ['fmtdict', 'options'])
         return d
 
     def add_visit_fields(self, node, d, fields):

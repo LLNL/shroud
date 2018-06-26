@@ -833,7 +833,9 @@ class ClassNode(AstNode, NamespaceMixin):
         fmt_class = self.fmtdict
         if format:
             fmt_class.update(format, replace=True)
+        self.expand_format_templates()
 
+    def expand_format_templates(self):
         self.eval_template('class_prefix')
 
         # Only one file per class for C.
@@ -1233,9 +1235,9 @@ class TemplateArgument(object):
     instantiation = "<int,double>"
     ast = [ Declaration("int"), Declaration("double") ]
     """
-    def __init__(self, instantiation, fmtargs=None, options=None):
+    def __init__(self, instantiation, fmtdict=None, options=None):
         self.instantiation = instantiation
-        self.fmtargs = fmtargs
+        self.fmtdict = fmtdict
         self.options = options
         self.ast = None
 
@@ -1292,7 +1294,7 @@ def clean_dictionary(dd):
                 raise RuntimeError('instantation must be defined for each dictionary in cxx_template2')
             newlst.append(TemplateArgument(
                 dct['instantiation'],
-                fmtargs=dct.get('format', None),
+                fmtdict=dct.get('format', None),
                 options=dct.get('options', None),
             ))
         dd['cxx_template2'] = newlst

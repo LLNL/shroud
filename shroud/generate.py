@@ -454,6 +454,13 @@ class GenFunctions(object):
                         class_scope=cxx_class + '::',
                         F_derived_name=cxx_class.lower(),
                     ))
+                    newcls.expand_format_templates()
+
+                    # Update format and options from template_arguments
+                    if args.fmtdict:
+                        newcls.fmtdict.update(args.fmtdict)
+                    if args.options:
+                        newcls.options.update(args.options)
 
                     newcls.typemap = typemap.create_class_typemap(newcls)
 

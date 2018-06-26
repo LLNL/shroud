@@ -13,6 +13,7 @@ declarations:
   - instantiation: <int>
     format:
       fmtblah: one
+      C_impl_filename: wrapvectorforint.cpp
     options:
       optblah: two
 #  - instantiation: <double>
