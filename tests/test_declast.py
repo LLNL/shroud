@@ -151,7 +151,8 @@ class CheckParse(unittest.TestCase):
             },
             "specifier": [
                 "int"
-            ]
+            ],
+            "typemap_name": "int",
         })
 
     def test_type_string(self):
@@ -231,7 +232,8 @@ class CheckParse(unittest.TestCase):
             },
             "specifier": [
                 "std::vector"
-            ]
+            ],
+            "typemap_name": "std::vector",
         })
 
         r = declast.check_decl("std::vector<long long> var1")
@@ -249,7 +251,8 @@ class CheckParse(unittest.TestCase):
             },
             "specifier": [
                 "std::vector"
-            ]
+            ],
+            "typemap_name": "std::vector",
         })
 
         r = declast.check_decl("std::vector<std::string> var1")
@@ -267,7 +270,8 @@ class CheckParse(unittest.TestCase):
             },
             "specifier": [
                 "std::vector"
-            ]
+            ],
+            "typemap_name": "std::vector",
         })
 
     def test_template_argument_list(self):
@@ -283,7 +287,8 @@ class CheckParse(unittest.TestCase):
                     "const": False,
                     "specifier": [
                         "int"
-                    ]
+                    ],
+                    "typemap_name": "int",
                 }
             ])
 
@@ -300,7 +305,8 @@ class CheckParse(unittest.TestCase):
                     "const": False,
                     "specifier": [
                         "std::string"
-                    ]
+                    ],
+                    "typemap_name": "std::string",
                 },
                 {
                     "attrs": {
@@ -309,7 +315,8 @@ class CheckParse(unittest.TestCase):
                     "const": False,
                     "specifier": [
                         "int"
-                    ]
+                    ],
+                    "typemap_name": "int",
                 }
             ])
 
@@ -417,12 +424,14 @@ class CheckParse(unittest.TestCase):
                     "const": False, 
                     "specifier": [
                         "int"
-                    ]
+                    ],
+                    "typemap_name": "int",
                 }
             ], 
             "specifier": [
                 "int"
-            ]
+            ],
+            "typemap_name": "int",
         })
        
     def test_type_function_pointer2(self):
@@ -470,7 +479,8 @@ class CheckParse(unittest.TestCase):
             }, 
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
 
@@ -494,6 +504,7 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
 
@@ -518,6 +529,7 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "void"
             ], 
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
         self.assertEqual('void', r.typename)
@@ -547,10 +559,11 @@ class CheckParse(unittest.TestCase):
                 ]
             }, 
             "func_const": True, 
-            "params": [], 
+            "params": [],
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
         self.assertEqual('void', r.typename)
@@ -587,11 +600,13 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "int"
                     ], 
+                    "typemap_name": "int",
                 }
             ], 
             "specifier": [
                 "void"
             ], 
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
 
@@ -624,7 +639,8 @@ class CheckParse(unittest.TestCase):
                     }, 
                     "specifier": [
                         "int"
-                    ], 
+                    ],
+                    "typemap_name": "int",
                 }, 
                 {
                     "attrs": {
@@ -638,11 +654,13 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "double"
                     ], 
+                    "typemap_name": "double",
                 }
             ], 
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
 
@@ -679,6 +697,7 @@ class CheckParse(unittest.TestCase):
             "specifier": [
                 "std::string"
             ], 
+            "typemap_name": "std::string",
         })
         self.assertEqual("getName", r.get_name())
 
@@ -720,6 +739,7 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "int"
                     ], 
+                    "typemap_name": "int",
                 }, 
                 {
                     "attrs": {
@@ -734,11 +754,13 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "double"
                     ], 
+                    "typemap_name": "double",
                 }
             ], 
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
 
@@ -761,7 +783,8 @@ class CheckParse(unittest.TestCase):
             "params": [],
             "specifier": [
                 "Class1"
-            ]
+            ],
+            "typemap_name": "Class1",
         })
         self.assertEqual('ctor', r.get_name())
         self.assertFalse(r.is_pointer())
@@ -790,7 +813,8 @@ class CheckParse(unittest.TestCase):
             "params": [],
             "specifier": [
                 "Class1"
-            ]
+            ],
+            "typemap_name": "Class1",
         })
         self.assertEqual('new', r.get_name())
         self.assertFalse(r.is_pointer())
@@ -818,7 +842,8 @@ class CheckParse(unittest.TestCase):
             "params": [],
             "specifier": [
                 "Class1"
-            ]
+            ],
+            "typemap_name": "Class1",
         })
         self.assertEqual('dtor', r.get_name())
         self.assertFalse(r.is_pointer())
@@ -853,7 +878,8 @@ class CheckParse(unittest.TestCase):
             "params": [],
             "specifier": [
                 "Class1"
-            ]
+            ],
+            "typemap_name": "Class1",
         })
         self.assertEqual('make', r.get_name())
 
@@ -894,7 +920,8 @@ class CheckParse(unittest.TestCase):
                     "init": 0,
                     "specifier": [
                         "int"
-                    ], 
+                    ],
+                    "typemap_name": "int",
                 }, 
                 {
                     "attrs": {
@@ -909,6 +936,7 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "double"
                     ], 
+                    "typemap_name": "double",
                 }, 
                 {
                     "attrs": {
@@ -923,6 +951,7 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "std::string"
                     ], 
+                    "typemap_name": "std::string",
                 }, 
                 {
                     "attrs": {
@@ -937,11 +966,13 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "bool"
                     ], 
+                    "typemap_name": "bool",
                 }
             ], 
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("name", r.get_name())
 
@@ -976,11 +1007,13 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "ArgType"
                     ], 
+#XXX -                    "typemap_name": "ArgType",
                 }
             ], 
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("decl11", r.get_name())
                          
@@ -1017,6 +1050,7 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "std::vector"
                     ], 
+                    "typemap_name": "std::vector",
                 }, 
                 {
                     "attrs": {
@@ -1030,11 +1064,13 @@ class CheckParse(unittest.TestCase):
                     "specifier": [
                         "string"
                     ], 
+                    "typemap_name": "std::string",
                 }
             ], 
             "specifier": [
                 "void"
-            ], 
+            ],
+            "typemap_name": "void",
         })
         self.assertEqual("decl12", r.get_name())
 
@@ -1260,7 +1296,8 @@ class CheckTypedef(unittest.TestCase):
             ], 
             "storage": [
                 "typedef"
-            ]
+            ],
+            "typemap_name": "int",
         })
 
     def test_typedef2(self):
@@ -1332,7 +1369,8 @@ class CheckStruct(unittest.TestCase):
                     },
                     "specifier": [
                         "int"
-                    ]
+                    ],
+                    "typemap_name": "int",
                 },
                 {
                     "attrs": {
@@ -1344,8 +1382,9 @@ class CheckStruct(unittest.TestCase):
                         "pointer": []
                     },
                     "specifier": [
-                    "double"
-                    ]
+                        "double"
+                    ],
+                    "typemap_name": "double",
                 }
             ],
             "name": "struct1"

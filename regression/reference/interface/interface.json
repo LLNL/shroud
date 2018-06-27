@@ -129,7 +129,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
@@ -233,7 +234,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
@@ -248,12 +250,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 

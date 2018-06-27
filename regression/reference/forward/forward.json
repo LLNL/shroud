@@ -77,7 +77,8 @@
                             "params": [], 
                             "specifier": [
                                 "Class2"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class2"
                         }, 
                         "decl": "Class2()", 
                         "declgen": "Class2()", 
@@ -125,7 +126,8 @@
                             "params": [], 
                             "specifier": [
                                 "Class2"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class2"
                         }, 
                         "decl": "~Class2()", 
                         "declgen": "~Class2()", 
@@ -235,12 +237,14 @@
                                     }, 
                                     "specifier": [
                                         "Class1"
-                                    ]
+                                    ], 
+                                    "typemap_name": "tutorial::Class1"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void func1(Class1 *arg)", 
                         "declgen": "void func1(Class1 * arg +intent(in))", 
@@ -352,12 +356,14 @@
                                     }, 
                                     "specifier": [
                                         "Class3"
-                                    ]
+                                    ], 
+                                    "typemap_name": "tutorial::Class3"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void acceptClass3(Class3 *arg)", 
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))", 

@@ -42,7 +42,8 @@
                             "params": [], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method1()", 
                         "declgen": "void method1()", 
@@ -89,7 +90,8 @@
                             "params": [], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method2()", 
                         "declgen": "void method2()", 
@@ -368,7 +370,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
@@ -410,7 +413,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function2()", 
                 "declgen": "void function2()", 
@@ -499,12 +503,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function3a(int i)", 
                 "declgen": "void function3a(int i +intent(in)+value)", 
@@ -594,12 +600,14 @@
                             }, 
                             "specifier": [
                                 "long"
-                            ]
+                            ], 
+                            "typemap_name": "long"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function3a(long i)", 
                 "declgen": "void function3a(long i +intent(in)+value)", 
@@ -714,12 +722,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in))", 
@@ -814,12 +824,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
@@ -861,7 +873,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function5() +name(fiveplus)", 
                 "declgen": "void function5() +name(fiveplus)", 
@@ -903,7 +916,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void init_ns1()", 
                 "declgen": "void init_ns1()", 

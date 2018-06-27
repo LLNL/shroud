@@ -189,12 +189,14 @@
                             }, 
                             "specifier": [
                                 "char_scalar"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passChar(char status)", 
                 "declgen": "void passChar(char_scalar status +intent(in)+value)", 
@@ -265,7 +267,8 @@
                     "params": [], 
                     "specifier": [
                         "char_scalar"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "char returnChar()", 
                 "declgen": "char_scalar returnChar()", 
@@ -368,7 +371,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "char returnChar()", 
                 "declgen": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
@@ -459,7 +463,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
@@ -479,12 +484,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
@@ -593,7 +600,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
@@ -615,12 +623,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
@@ -716,12 +726,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
                 "declgen": "void passCharPtrInOut(char * s +intent(inout))", 
@@ -810,12 +822,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
                 "declgen": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
@@ -893,7 +907,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "const char * getCharPtr1()", 
                 "declgen": "const char * getCharPtr1() +deref(allocatable)", 
@@ -993,12 +1008,14 @@
                             }, 
                             "specifier": [
                                 "charout"
-                            ]
+                            ], 
+                            "typemap_name": "charout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr1()", 
                 "declgen": "void getCharPtr1(const charout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
@@ -1076,7 +1093,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "const char * getCharPtr2() +len(30)", 
                 "declgen": "const char * getCharPtr2() +deref(result_as_arg)+len(30)", 
@@ -1180,7 +1198,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr2() +len(30)", 
                 "declgen": "void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -1253,7 +1272,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "const char * getCharPtr3()", 
                 "declgen": "const char * getCharPtr3() +deref(result_as_arg)", 
@@ -1351,7 +1371,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr3()", 
                 "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))", 
@@ -1422,7 +1443,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr3()", 
                 "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))", 
@@ -1487,7 +1509,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string getConstStringResult()", 
                 "declgen": "const string getConstStringResult() +deref(allocatable)", 
@@ -1581,12 +1604,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringResult()", 
                 "declgen": "void getConstStringResult(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
@@ -1653,7 +1678,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string getConstStringLen() +len=30", 
                 "declgen": "const string getConstStringLen() +deref(result_as_arg)+len(30)", 
@@ -1751,7 +1777,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringLen() +len=30", 
                 "declgen": "void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -1812,7 +1839,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string getConstStringAsArg()", 
                 "declgen": "const string getConstStringAsArg() +deref(result_as_arg)", 
@@ -1903,7 +1931,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringAsArg()", 
                 "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))", 
@@ -1975,7 +2004,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringAsArg()", 
                 "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))", 
@@ -2039,7 +2069,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string getConstStringAlloc()", 
                 "declgen": "const std::string getConstStringAlloc() +deref(allocatable)", 
@@ -2128,12 +2159,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string getConstStringAlloc()", 
                 "declgen": "void getConstStringAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
@@ -2209,7 +2242,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefPure()", 
                 "declgen": "const string & getConstStringRefPure() +deref(allocatable)", 
@@ -2310,12 +2344,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefPure()", 
                 "declgen": "void getConstStringRefPure(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
@@ -2396,7 +2432,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefLen() +len=30", 
                 "declgen": "const string & getConstStringRefLen() +deref(result_as_arg)+len(30)", 
@@ -2503,7 +2540,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefLen() +len=30", 
                 "declgen": "void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -2579,7 +2617,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
                 "declgen": "const string & getConstStringRefAsArg() +deref(result_as_arg)", 
@@ -2680,7 +2719,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
                 "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))", 
@@ -2752,7 +2792,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
                 "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))", 
@@ -2833,7 +2874,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefLenEmpty() +len=30", 
                 "declgen": "const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)", 
@@ -2940,7 +2982,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefLenEmpty() +len=30", 
                 "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -3019,7 +3062,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc()", 
                 "declgen": "const std::string & getConstStringRefAlloc() +deref(allocatable)", 
@@ -3116,12 +3160,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc()", 
                 "declgen": "void getConstStringRefAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
@@ -3197,7 +3243,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string * getConstStringPtrLen() +len=30", 
                 "declgen": "const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)", 
@@ -3305,7 +3352,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string * getConstStringPtrLen() +len=30", 
                 "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -3388,7 +3436,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)", 
@@ -3486,12 +3535,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
                 "declgen": "void getConstStringPtrAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))", 
@@ -3567,7 +3618,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
                 "declgen": "const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)", 
@@ -3669,12 +3721,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
                 "declgen": "void getConstStringPtrOwnsAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
@@ -3756,7 +3810,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
                 "declgen": "const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)", 
@@ -3860,12 +3915,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
                 "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))", 
@@ -3956,12 +4013,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringConstReference(const std::string & arg1)", 
                 "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
@@ -4049,12 +4108,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringConstReference(const std::string & arg1)", 
                 "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
@@ -4147,12 +4208,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
                 "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
@@ -4241,12 +4304,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
                 "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
@@ -4340,12 +4405,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReference(std::string & arg1)", 
                 "declgen": "void acceptStringReference(std::string & arg1 +intent(inout))", 
@@ -4436,12 +4503,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReference(std::string & arg1)", 
                 "declgen": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
@@ -4535,12 +4604,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringPointer(std::string * arg1)", 
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout))", 
@@ -4630,12 +4701,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringPointer(std::string * arg1)", 
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
@@ -4733,7 +4806,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -4752,12 +4826,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))", 
                 "declgen": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))", 
@@ -4806,13 +4882,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "char returnMany(int *arg1 +intent(out))", 
                 "declgen": "char returnMany(int * arg1 +intent(out))", 
@@ -4893,12 +4971,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
@@ -4982,12 +5062,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
@@ -5063,12 +5145,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
@@ -5153,12 +5237,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
@@ -5246,12 +5332,14 @@
                             }, 
                             "specifier": [
                                 "char_scalar"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void CpassChar(char status)", 
                 "declgen": "void CpassChar(char_scalar status +intent(in)+value)", 
@@ -5325,7 +5413,8 @@
                     "params": [], 
                     "specifier": [
                         "char_scalar"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "char CreturnChar()", 
                 "declgen": "char_scalar CreturnChar()", 
@@ -5431,7 +5520,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "char CreturnChar()", 
                 "declgen": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
@@ -5524,7 +5614,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
@@ -5544,12 +5635,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
@@ -5659,7 +5752,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
@@ -5681,12 +5775,14 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 

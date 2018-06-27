@@ -48,7 +48,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "format": {
                             "field_name": "ifield", 
@@ -72,7 +73,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         "format": {
                             "field_name": "dfield", 
@@ -238,7 +240,8 @@
                             "params": [], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }, 
                         "decl": "Class1()         +name(new)", 
                         "declgen": "Class1() +name(new)", 
@@ -379,12 +382,14 @@
                                     }, 
                                     "specifier": [
                                         "int"
-                                    ]
+                                    ], 
+                                    "typemap_name": "int"
                                 }
                             ], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }, 
                         "decl": "Class1(int flag) +name(new)", 
                         "declgen": "Class1(int flag +intent(in)+value) +name(new)", 
@@ -433,7 +438,8 @@
                             "params": [], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }, 
                         "decl": "~Class1()        +name(delete)", 
                         "declgen": "~Class1() +name(delete)", 
@@ -511,7 +517,8 @@
                             "params": [], 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "decl": "int Method1()", 
                         "declgen": "int Method1()", 
@@ -643,12 +650,14 @@
                                     }, 
                                     "specifier": [
                                         "Class1"
-                                    ]
+                                    ], 
+                                    "typemap_name": "tutorial::Class1"
                                 }
                             ], 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }, 
                         "decl": "bool equivalent(Class1 const &obj2) const;", 
                         "declgen": "bool equivalent(const Class1 & obj2 +intent(in)) const", 
@@ -708,7 +717,8 @@
                             "params": [], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }, 
                         "decl": "Class1 * returnThis();", 
                         "declgen": "Class1 * returnThis()", 
@@ -828,7 +838,8 @@
                                     }, 
                                     "specifier": [
                                         "std::string"
-                                    ]
+                                    ], 
+                                    "typemap_name": "std::string"
                                 }, 
                                 {
                                     "attrs": {
@@ -843,12 +854,14 @@
                                     }, 
                                     "specifier": [
                                         "bool"
-                                    ]
+                                    ], 
+                                    "typemap_name": "bool"
                                 }
                             ], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }, 
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);", 
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)", 
@@ -978,7 +991,8 @@
                                     }, 
                                     "specifier": [
                                         "std::string"
-                                    ]
+                                    ], 
+                                    "typemap_name": "std::string"
                                 }, 
                                 {
                                     "attrs": {
@@ -993,12 +1007,14 @@
                                     }, 
                                     "specifier": [
                                         "bool"
-                                    ]
+                                    ], 
+                                    "typemap_name": "bool"
                                 }
                             ], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }, 
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);", 
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)", 
@@ -1140,12 +1156,14 @@
                                     }, 
                                     "specifier": [
                                         "DIRECTION"
-                                    ]
+                                    ], 
+                                    "typemap_name": "tutorial::Class1::DIRECTION"
                                 }
                             ], 
                             "specifier": [
                                 "DIRECTION"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1::DIRECTION"
                         }, 
                         "decl": "DIRECTION directionFunc(DIRECTION arg);", 
                         "declgen": "DIRECTION directionFunc(DIRECTION arg +intent(in)+value)", 
@@ -1210,7 +1228,8 @@
                             "params": [], 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "decl": "int getM_flag()", 
                         "declgen": "int getM_flag()", 
@@ -1275,7 +1294,8 @@
                             "params": [], 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "decl": "int getTest()", 
                         "declgen": "int getTest()", 
@@ -1357,12 +1377,14 @@
                                     }, 
                                     "specifier": [
                                         "int"
-                                    ]
+                                    ], 
+                                    "typemap_name": "int"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void setTest(int val)", 
                         "declgen": "void setTest(int val +intent(in)+value)", 
@@ -1416,7 +1438,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "format": {
                             "PY_getter": "PY_Class1_m_flag_getter", 
@@ -1443,7 +1466,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "format": {
                             "PY_getter": "PY_Class1_test_getter", 
@@ -1530,7 +1554,8 @@
                             ], 
                             "storage": [
                                 "static"
-                            ]
+                            ], 
+                            "typemap_name": "Singleton"
                         }, 
                         "decl": "static Singleton& getReference()", 
                         "declgen": "static Singleton & getReference()", 
@@ -1784,7 +1809,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
@@ -1958,7 +1984,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
@@ -1973,12 +2000,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
@@ -2141,7 +2170,8 @@
                             }, 
                             "specifier": [
                                 "size_t"
-                            ]
+                            ], 
+                            "typemap_name": "size_t"
                         }, 
                         {
                             "attrs": {
@@ -2162,7 +2192,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -2182,12 +2213,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Sum(size_t len  +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
                 "declgen": "void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
@@ -2305,13 +2338,15 @@
                             "specifier": [
                                 "long", 
                                 "long"
-                            ]
+                            ], 
+                            "typemap_name": "long_long"
                         }
                     ], 
                     "specifier": [
                         "long", 
                         "long"
-                    ]
+                    ], 
+                    "typemap_name": "long_long"
                 }, 
                 "decl": "long long TypeLongLong(long long arg1)", 
                 "declgen": "long long TypeLongLong(long long arg1 +intent(in)+value)", 
@@ -2446,12 +2481,14 @@
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }
                     ], 
                     "specifier": [
                         "bool"
-                    ]
+                    ], 
+                    "typemap_name": "bool"
                 }, 
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
@@ -2564,7 +2601,8 @@
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }, 
                         {
                             "attrs": {
@@ -2584,7 +2622,8 @@
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }, 
                         {
                             "attrs": {
@@ -2604,12 +2643,14 @@
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
@@ -2751,7 +2792,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -2771,13 +2813,15 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
                 "declgen": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)", 
@@ -2909,7 +2953,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -2931,7 +2976,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -2958,7 +3004,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)", 
                 "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -3135,7 +3182,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3155,13 +3203,15 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)", 
@@ -3292,7 +3342,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3314,7 +3365,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3341,7 +3393,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
@@ -3404,7 +3457,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3426,7 +3480,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3453,7 +3508,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string& Function4b( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))", 
@@ -3629,7 +3685,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3649,13 +3706,15 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)", 
@@ -3796,7 +3855,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3818,7 +3878,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -3841,12 +3902,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
@@ -3933,7 +3996,8 @@
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * Function4d() +owner(caller)", 
                 "declgen": "const std::string * Function4d() +deref(allocatable)+owner(caller)", 
@@ -4037,12 +4101,14 @@
                             }, 
                             "specifier": [
                                 "stringout"
-                            ]
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * Function4d() +owner(caller)", 
                 "declgen": "void Function4d(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
@@ -4103,7 +4169,8 @@
                     "params": [], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
                 "declgen": "double Function5()", 
@@ -4205,12 +4272,14 @@
                             "init": 3.1415, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
                 "declgen": "double Function5(double arg1=3.1415 +intent(in)+value)", 
@@ -4406,7 +4475,8 @@
                             "init": 3.1415, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
@@ -4422,12 +4492,14 @@
                             "init": "true", 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)", 
                 "declgen": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)", 
@@ -4537,12 +4609,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in))", 
@@ -4630,12 +4704,14 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function6(const std::string& name)", 
                 "declgen": "void Function6(const std::string & name +intent(in)+len_trim(Lname))", 
@@ -4733,12 +4809,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function6(int indx)", 
                 "declgen": "void Function6(int indx +intent(in)+value)", 
@@ -4799,7 +4877,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "cxx_template": {
                     "ArgType": [
@@ -4899,7 +4978,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function7(ArgType arg)", 
                 "declgen": "void Function7(int arg +intent(in)+value)", 
@@ -5013,7 +5093,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function7(ArgType arg)", 
                 "declgen": "void Function7(double arg +intent(in)+value)", 
@@ -5294,12 +5375,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function9(double arg)", 
                 "declgen": "void Function9(double arg +intent(in)+value)", 
@@ -5357,12 +5440,14 @@
                             }, 
                             "specifier": [
                                 "float"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function9(double arg)", 
                 "declgen": "void Function9(float arg +intent(in)+value)", 
@@ -5414,12 +5499,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function9(double arg)", 
                 "declgen": "void Function9(double arg +intent(in)+value)", 
@@ -5459,7 +5546,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function10()", 
                 "declgen": "void Function10()", 
@@ -5601,7 +5689,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -5616,12 +5705,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
@@ -5686,7 +5777,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -5701,12 +5793,14 @@
                             }, 
                             "specifier": [
                                 "float"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)", 
@@ -5765,7 +5859,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -5780,12 +5875,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)", 
@@ -5885,7 +5982,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
@@ -5900,12 +5998,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function10(const std::string &name, double arg2)", 
                 "declgen": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)", 
@@ -6001,12 +6101,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(int num +intent(in)+value)", 
@@ -6125,7 +6227,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -6141,12 +6244,14 @@
                             "init": 0, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)", 
@@ -6383,7 +6488,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -6399,7 +6505,8 @@
                             "init": 0, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -6415,12 +6522,14 @@
                             "init": 1, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int overload1(int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
@@ -6537,7 +6646,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
@@ -6552,12 +6662,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)", 
@@ -6689,7 +6801,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
@@ -6704,7 +6817,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -6720,12 +6834,14 @@
                             "init": 0, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)", 
@@ -7000,7 +7116,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
@@ -7015,7 +7132,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -7031,7 +7149,8 @@
                             "init": 0, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -7047,12 +7166,14 @@
                             "init": 1, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)", 
                 "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)", 
@@ -7184,12 +7305,14 @@
                             }, 
                             "specifier": [
                                 "TypeID"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::TypeID"
                         }
                     ], 
                     "specifier": [
                         "TypeID"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::TypeID"
                 }, 
                 "decl": "TypeID typefunc(TypeID arg)", 
                 "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)", 
@@ -7327,12 +7450,14 @@
                             }, 
                             "specifier": [
                                 "EnumTypeID"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::EnumTypeID"
                         }
                     ], 
                     "specifier": [
                         "EnumTypeID"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::EnumTypeID"
                 }, 
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)", 
                 "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)", 
@@ -7472,12 +7597,14 @@
                             }, 
                             "specifier": [
                                 "Color"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Color"
                         }
                     ], 
                     "specifier": [
                         "Color"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::Color"
                 }, 
                 "decl": "Color colorfunc(Color arg);", 
                 "declgen": "Color colorfunc(Color arg +intent(in)+value)", 
@@ -7611,7 +7738,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -7631,12 +7759,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void getMinMax(int &min +intent(out), int &max +intent(out))", 
                 "declgen": "void getMinMax(int & min +intent(out), int & max +intent(out))", 
@@ -7777,12 +7907,14 @@
                             }, 
                             "specifier": [
                                 "Class1::DIRECTION"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1::DIRECTION"
                         }
                     ], 
                     "specifier": [
                         "Class1::DIRECTION"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::Class1::DIRECTION"
                 }, 
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);", 
                 "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)", 
@@ -7908,12 +8040,14 @@
                             }, 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class1"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int useclass(const Class1 *arg1)", 
                 "declgen": "int useclass(const Class1 * arg1 +intent(in))", 
@@ -7981,7 +8115,8 @@
                     "params": [], 
                     "specifier": [
                         "Class1"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::Class1"
                 }, 
                 "decl": "const Class1 *getclass2()", 
                 "declgen": "const Class1 * getclass2()", 
@@ -8060,7 +8195,8 @@
                     "params": [], 
                     "specifier": [
                         "Class1"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::Class1"
                 }, 
                 "decl": "Class1 *getclass3()", 
                 "declgen": "Class1 * getclass3()", 
@@ -8154,12 +8290,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "Class1"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::Class1"
                 }, 
                 "decl": "Class1 getClassCopy(int flag)", 
                 "declgen": "Class1 getClassCopy(int flag +intent(in)+value)", 
@@ -8275,7 +8413,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -8306,17 +8445,20 @@
                                     "const": false, 
                                     "specifier": [
                                         "int"
-                                    ]
+                                    ], 
+                                    "typemap_name": "int"
                                 }
                             ], 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int callback1(int in, int (*incr)(int));", 
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)", 
@@ -8469,7 +8611,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -8484,12 +8627,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "struct1"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::struct1"
                 }, 
                 "decl": "struct1 returnStruct(int i, double d);", 
                 "declgen": "struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)", 
@@ -8648,7 +8793,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -8663,13 +8809,15 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "struct1"
-                    ]
+                    ], 
+                    "typemap_name": "tutorial::struct1"
                 }, 
                 "decl": "struct1 *returnStructPtr(int i, double d);", 
                 "declgen": "struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)", 
@@ -8764,12 +8912,14 @@
                             }, 
                             "specifier": [
                                 "struct1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::struct1"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double acceptStructIn(struct1 arg)", 
                 "declgen": "double acceptStructIn(struct1 arg +intent(in)+value)", 
@@ -8869,12 +9019,14 @@
                             }, 
                             "specifier": [
                                 "struct1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::struct1"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double acceptStructInPtr(struct1 *arg+intent(in))", 
                 "declgen": "double acceptStructInPtr(struct1 * arg +intent(in))", 
@@ -8996,7 +9148,8 @@
                             }, 
                             "specifier": [
                                 "struct1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::struct1"
                         }, 
                         {
                             "attrs": {
@@ -9011,7 +9164,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -9026,12 +9180,14 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)", 
                 "declgen": "void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)", 
@@ -9115,12 +9271,14 @@
                             }, 
                             "specifier": [
                                 "struct1"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::struct1"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStructInOutPtr(struct1 *arg +intent(inout))", 
                 "declgen": "void acceptStructInOutPtr(struct1 * arg +intent(inout))", 
@@ -9207,7 +9365,8 @@
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
                 "declgen": "const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)", 
@@ -9310,7 +9469,8 @@
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string& LastFunctionCalled() +len(30)", 
                 "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -9429,7 +9589,8 @@
                     ], 
                     "storage": [
                         "extern"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "format": {
                     "field_name": "global_flag", 
@@ -9456,7 +9617,8 @@
                     ], 
                     "storage": [
                         "extern"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "format": {
                     "field_name": "tutorial_flag", 

@@ -93,6 +93,9 @@ class ToDict(visitor.Visitor):
             d['func_const'] = node.func_const
         if node.init is not None:
             d['init'] = node.init
+        if node.typemap is not None:
+            # print name to avoid too much nesting
+            d['typemap_name'] = node.typemap.name
 
         if hasattr(node, 'return_pointer_as'):
             if node.return_pointer_as is not None:
@@ -214,7 +217,6 @@ class ToDict(visitor.Visitor):
             cxx_header=node.cxx_header,
             format=self.visit(node.fmtdict),
             name=node.name,
-            ##- typename=node.typename,
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
             options=self.visit(node.options),
         )

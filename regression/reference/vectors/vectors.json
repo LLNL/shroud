@@ -153,12 +153,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
@@ -251,12 +253,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
@@ -316,12 +320,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))", 
@@ -410,12 +416,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))", 
@@ -480,12 +488,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))", 
@@ -575,12 +585,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))", 
@@ -645,12 +657,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))", 
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))", 
@@ -742,12 +756,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))", 
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))", 
@@ -811,12 +827,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
@@ -903,12 +921,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))", 
@@ -974,12 +994,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
@@ -1078,12 +1100,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
@@ -1145,12 +1169,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
                 "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))", 
@@ -1206,12 +1232,14 @@
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
                 "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))", 

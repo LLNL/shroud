@@ -169,8 +169,7 @@ class VerifyAttrs(object):
                     "Illegal attribute '{}' for argument '{}' defined at line {}"
                     .format(attr, argname, node.linenumber))
 
-        argtype = arg.typename
-        arg_typemap = typemap.lookup_type(argtype)
+        arg_typemap = arg.typemap
         if arg_typemap is None:
             # if the type does not exist, make sure it is defined by cxx_template
             #- decl: void Function7(ArgType arg)
@@ -178,6 +177,7 @@ class VerifyAttrs(object):
             #    ArgType:
             #    - int
             #    - double
+            argtype = arg.typename
             if argtype not in node.cxx_template:
                 raise RuntimeError("check_arg_attrs: No such type '%s' on line %d: %s" % (
                     argtype, node.linenumber, node.decl))
@@ -370,7 +370,7 @@ class GenFunctions(object):
         class member variables.
         """
         ast = var.ast
-        arg_typemap = typemap.lookup_type(ast.typename)
+        arg_typemap = ast.typemap
         fieldname = ast.name  # attrs.get('name', ast.name)
 
         fmt = util.Scope(var.fmtdict)
@@ -632,12 +632,11 @@ class GenFunctions(object):
                 for arg in new.ast.params:
                     if arg.name == argname:
                         # Convert any arg_typemap to native type with f_type
-                        argtype = arg.typename
-                        arg_typemap = typemap.lookup_type(argtype)
+                        arg_typemap = arg.typemap
                         if not arg_typemap.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
-                                .format(argtype))
+                                .format(arg_typemap.name))
                         arg.typename = type
 
         # Do not process templated node, instead process

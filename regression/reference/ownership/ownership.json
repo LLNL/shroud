@@ -44,7 +44,8 @@
                             "params": [], 
                             "specifier": [
                                 "Class1"
-                            ]
+                            ], 
+                            "typemap_name": "Class1"
                         }, 
                         "decl": "~Class1()", 
                         "declgen": "~Class1()", 
@@ -105,7 +106,8 @@
                             "params": [], 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "decl": "int getFlag()", 
                         "declgen": "int getFlag()", 
@@ -162,7 +164,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         "format": {
                             "PY_getter": "PY_Class1_flag_getter", 
@@ -347,7 +350,8 @@
                     "return_pointer_as": "raw", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrRaw()", 
                 "declgen": "int * ReturnIntPtrRaw() +deref(raw)", 
@@ -419,7 +423,8 @@
                     "return_pointer_as": "scalar", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrScalar()", 
                 "declgen": "int * ReturnIntPtrScalar() +deref(scalar)", 
@@ -501,7 +506,8 @@
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrPointer()", 
                 "declgen": "int * ReturnIntPtrPointer() +deref(pointer)", 
@@ -597,13 +603,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "raw", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out))", 
                 "declgen": "int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)", 
@@ -730,13 +738,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)", 
@@ -869,13 +879,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)", 
@@ -981,13 +993,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)", 
@@ -1145,13 +1159,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)", 
@@ -1249,13 +1265,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)", 
@@ -1383,13 +1401,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)", 
@@ -1516,13 +1536,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)", 
@@ -1649,13 +1671,15 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "pointer", 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)", 
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)", 
@@ -1724,7 +1748,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -1743,12 +1768,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimRaw(int **array, int *len+intent(out))", 
                 "declgen": "void IntPtrDimRaw(int * * array +deref(raw)+intent(out)+owner(library), int * len +intent(out))", 
@@ -1802,7 +1829,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -1822,12 +1850,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimPointer(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))", 
@@ -1881,7 +1911,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -1901,12 +1932,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimAlloc(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))", 
@@ -1959,7 +1992,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -1979,12 +2013,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))", 
@@ -2037,7 +2073,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -2057,12 +2094,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimRawNew(int * * array +deref(raw)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
@@ -2116,7 +2155,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -2136,12 +2176,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimPointerNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
@@ -2195,7 +2237,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -2215,12 +2258,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimAllocNew(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
@@ -2273,7 +2318,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
@@ -2293,12 +2339,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)", 
                 "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))", 
@@ -2374,12 +2422,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void createClassStatic(int flag)", 
                 "declgen": "void createClassStatic(int flag +intent(in)+value)", 
@@ -2456,7 +2506,8 @@
                     "params": [], 
                     "specifier": [
                         "Class1"
-                    ]
+                    ], 
+                    "typemap_name": "Class1"
                 }, 
                 "decl": "Class1 * getClassStatic() +owner(library)", 
                 "declgen": "Class1 * getClassStatic() +owner(library)", 
@@ -2581,12 +2632,14 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "Class1"
-                    ]
+                    ], 
+                    "typemap_name": "Class1"
                 }, 
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)", 
                 "declgen": "Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)", 

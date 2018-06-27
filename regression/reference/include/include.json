@@ -65,12 +65,14 @@
                                     }, 
                                     "specifier": [
                                         "CustomType"
-                                    ]
+                                    ], 
+                                    "typemap_name": "CustomType"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method1(CustomType arg1)", 
                         "declgen": "void method1(CustomType arg1 +intent(in)+value)", 
@@ -172,12 +174,14 @@
                                     }, 
                                     "specifier": [
                                         "MPI_Comm"
-                                    ]
+                                    ], 
+                                    "typemap_name": "MPI_Comm"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method1(MPI_Comm comm)", 
                         "declgen": "void method1(MPI_Comm comm +intent(in)+value)", 
@@ -260,12 +264,14 @@
                                     }, 
                                     "specifier": [
                                         "three::Class1"
-                                    ]
+                                    ], 
+                                    "typemap_name": "three::Class1"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method2(three::Class1 * c2)", 
                         "declgen": "void method2(three::Class1 * c2 +intent(in))", 
@@ -431,7 +437,8 @@
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function1()", 
                 "declgen": "void function1()", 

@@ -397,6 +397,7 @@ class Parser(ExprParser):
             node.attrs['_name'] = 'dtor'
             node.attrs['_destructor'] = True
             node.attrs['_typename'] = self.namespace.typemap.name
+            node.typemap = self.namespace.typemap
             found_type = True
             more = False
 
@@ -423,6 +424,7 @@ class Parser(ExprParser):
                         self.mustbe('GT')
                     # Save fully resolved typename
                     node.attrs['_typename'] = ns.typemap.name
+                    node.typemap = ns.typemap
                     found_type = True
                 else:
                     more = False
@@ -447,6 +449,7 @@ class Parser(ExprParser):
         if not found_type:
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
             node.attrs['_typename'] = '_'.join(node.specifier)
+            node.typemap = typemap.lookup_type('_'.join(node.specifier))
         self.exit('declaration_specifier')
         return
 
@@ -844,6 +847,7 @@ class Declaration(Node):
         self.attrs = {}        # Declaration attributes
 
         self.func_const = False
+        self.typemap = None
 
     def get_name(self, use_attr=True):
         """Get name from declarator
@@ -972,6 +976,7 @@ class Declaration(Node):
         """Change function to void"""
         self.specifier = ['void']
         self.attrs['_typename'] = 'void'
+        self.typemap = typemap.lookup_type('void')
         self.const = False
         self.declarator.pointer = []
 
@@ -1405,6 +1410,7 @@ def create_this_arg(name, arg_typemap, const=True):
     arg.declarator.pointer = [Ptr('*')]
     arg.specifier = [typ]
     arg.attrs['_typename'] = typ
+    arg.typemap = arg_typemap
     return arg
 
 def create_voidstar(typ, name, const=False):
@@ -1417,4 +1423,5 @@ def create_voidstar(typ, name, const=False):
     arg.declarator.pointer = [Ptr('*')]
     arg.specifier = [typ]
     arg.attrs['_typename'] = typ
+    arg.typemap = typemap.lookup_type(typ)
     return arg
