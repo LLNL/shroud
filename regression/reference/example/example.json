@@ -4131,15 +4131,15 @@
                                 "float", 
                                 "double"
                             ], 
-                            "__line__": 245
+                            "__line__": 244
                         }, 
-                        "decl": "void setValue(ValueType value)", 
+                        "decl": "template<typename ValueType> void setValue(ValueType value)", 
                         "declgen": "void setValue(ValueType value +intent(in)+value)", 
                         "format": {
                             "function_name": "setValue", 
                             "underscore_name": "set_value"
                         }, 
-                        "linenumber": 244, 
+                        "linenumber": 243, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -4227,7 +4227,7 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "void setValue(ValueType value)", 
+                        "decl": "template<typename ValueType> void setValue(ValueType value)", 
                         "declgen": "void setValue(int value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<int>", 
@@ -4258,7 +4258,7 @@
                             "function_suffix": "_int", 
                             "underscore_name": "set_value"
                         }, 
-                        "linenumber": 244, 
+                        "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4346,7 +4346,7 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "void setValue(ValueType value)", 
+                        "decl": "template<typename ValueType> void setValue(ValueType value)", 
                         "declgen": "void setValue(long value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<long>", 
@@ -4375,7 +4375,7 @@
                             "function_suffix": "_long", 
                             "underscore_name": "set_value"
                         }, 
-                        "linenumber": 244, 
+                        "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4463,7 +4463,7 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "void setValue(ValueType value)", 
+                        "decl": "template<typename ValueType> void setValue(ValueType value)", 
                         "declgen": "void setValue(float value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<float>", 
@@ -4492,7 +4492,7 @@
                             "function_suffix": "_float", 
                             "underscore_name": "set_value"
                         }, 
-                        "linenumber": 244, 
+                        "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4580,7 +4580,7 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "void setValue(ValueType value)", 
+                        "decl": "template<typename ValueType> void setValue(ValueType value)", 
                         "declgen": "void setValue(double value +intent(in)+value)", 
                         "format": {
                             "CXX_template": "<double>", 
@@ -4609,7 +4609,7 @@
                             "function_suffix": "_double", 
                             "underscore_name": "set_value"
                         }, 
-                        "linenumber": 244, 
+                        "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4639,15 +4639,15 @@
                                 "int", 
                                 "double"
                             ], 
-                            "__line__": 254
+                            "__line__": 252
                         }, 
-                        "decl": "ValueType getValue()", 
+                        "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "ValueType getValue()", 
                         "format": {
                             "function_name": "getValue", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 253, 
+                        "linenumber": 251, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -4705,7 +4705,7 @@
                                 "int"
                             ]
                         }, 
-                        "decl": "ValueType getValue()", 
+                        "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "int getValue()", 
                         "format": {
                             "CXX_template": "<int>", 
@@ -4738,7 +4738,7 @@
                             "function_suffix": "_int", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 253, 
+                        "linenumber": 251, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4796,7 +4796,7 @@
                                 "double"
                             ]
                         }, 
-                        "decl": "ValueType getValue()", 
+                        "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "double getValue()", 
                         "format": {
                             "CXX_template": "<double>", 
@@ -4827,7 +4827,7 @@
                             "function_suffix": "_double", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 253, 
+                        "linenumber": 251, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4934,7 +4934,7 @@
                             "function_suffix": "_0", 
                             "underscore_name": "exfunc"
                         }, 
-                        "linenumber": 267, 
+                        "linenumber": 265, 
                         "options": {}
                     }, 
                     {
@@ -5030,14 +5030,14 @@
                             "function_suffix": "_1", 
                             "underscore_name": "exfunc"
                         }, 
-                        "linenumber": 269, 
+                        "linenumber": 267, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 261, 
+                "linenumber": 259, 
                 "name": "ExClass3", 
                 "options": {
-                    "__line__": 262, 
+                    "__line__": 260, 
                     "wrap_python": false
                 }, 
                 "typemap_name": "example::nested::ExClass3"
@@ -5220,7 +5220,7 @@
                     "function_name": "local_function1", 
                     "underscore_name": "local_function1"
                 }, 
-                "linenumber": 273, 
+                "linenumber": 271, 
                 "options": {}
             }, 
             {
@@ -5358,13 +5358,13 @@
                     "LUA_name": "isNameValid", 
                     "LUA_name_impl": "l_is_name_valid", 
                     "PY_name_impl": "PP_isNameValid", 
-                    "__line__": 277, 
+                    "__line__": 275, 
                     "c_const": "", 
                     "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "underscore_name": "is_name_valid"
                 }, 
-                "linenumber": 276, 
+                "linenumber": 274, 
                 "options": {}
             }, 
             {
@@ -5453,14 +5453,14 @@
                     "C_return_type": "bool", 
                     "F_C_name": "c_is_name_valid_bufferify", 
                     "F_code": "rv = name .ne. \" \"", 
-                    "__line__": 277, 
+                    "__line__": 275, 
                     "c_const": "", 
                     "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "is_name_valid"
                 }, 
-                "linenumber": 276, 
+                "linenumber": 274, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -5543,7 +5543,7 @@
                     "function_name": "isInitialized", 
                     "underscore_name": "is_initialized"
                 }, 
-                "linenumber": 283, 
+                "linenumber": 281, 
                 "options": {}
             }, 
             {
@@ -5784,7 +5784,7 @@
                     "function_name": "checkBool", 
                     "underscore_name": "check_bool"
                 }, 
-                "linenumber": 286, 
+                "linenumber": 284, 
                 "options": {}
             }, 
             {
@@ -5890,13 +5890,13 @@
                     "LUA_name": "test_names", 
                     "LUA_name_impl": "l_test_names", 
                     "PY_name_impl": "PP_test_names", 
-                    "__line__": 292, 
+                    "__line__": 290, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 290, 
+                "linenumber": 288, 
                 "options": {}
             }, 
             {
@@ -5974,13 +5974,13 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_bufferify", 
-                    "__line__": 292, 
+                    "__line__": 290, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 290, 
+                "linenumber": 288, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -6144,13 +6144,13 @@
                     "F_name_impl": "test_names_flag", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PP_test_names_flag", 
-                    "__line__": 295, 
+                    "__line__": 293, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_flag", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 294, 
+                "linenumber": 292, 
                 "options": {}
             }, 
             {
@@ -6262,13 +6262,13 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_flag_bufferify", 
-                    "__line__": 295, 
+                    "__line__": 293, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_flag_bufferify", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 294, 
+                "linenumber": 292, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -6318,7 +6318,7 @@
                     "function_suffix": "_0", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 298, 
+                "linenumber": 296, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -6406,7 +6406,7 @@
                     "function_suffix": "_1", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 298, 
+                "linenumber": 296, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -6590,7 +6590,7 @@
                     "function_suffix": "_2", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 298, 
+                "linenumber": 296, 
                 "options": {}
             }, 
             {
@@ -6668,7 +6668,7 @@
                     "function_name": "test_size_t", 
                     "underscore_name": "test_size_t"
                 }, 
-                "linenumber": 314, 
+                "linenumber": 312, 
                 "options": {}
             }, 
             {
@@ -6776,13 +6776,13 @@
                     "LUA_name": "testmpi", 
                     "LUA_name_impl": "l_testmpi", 
                     "PY_name_impl": "PP_testmpi_mpi", 
-                    "__line__": 319, 
+                    "__line__": 317, 
                     "c_const": "", 
                     "function_name": "testmpi", 
                     "function_suffix": "_mpi", 
                     "underscore_name": "testmpi"
                 }, 
-                "linenumber": 318, 
+                "linenumber": 316, 
                 "options": {}
             }, 
             {
@@ -6822,13 +6822,13 @@
                     "F_name_impl": "testmpi_serial", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PP_testmpi_serial", 
-                    "__line__": 323, 
+                    "__line__": 321, 
                     "c_const": "", 
                     "function_name": "testmpi", 
                     "function_suffix": "_serial", 
                     "underscore_name": "testmpi"
                 }, 
-                "linenumber": 322, 
+                "linenumber": 320, 
                 "options": {}
             }, 
             {
@@ -6944,7 +6944,7 @@
                     "function_name": "testgroup1", 
                     "underscore_name": "testgroup1"
                 }, 
-                "linenumber": 327, 
+                "linenumber": 325, 
                 "options": {}
             }, 
             {
@@ -7060,7 +7060,7 @@
                     "function_name": "testgroup2", 
                     "underscore_name": "testgroup2"
                 }, 
-                "linenumber": 328, 
+                "linenumber": 326, 
                 "options": {}
             }, 
             {
@@ -7155,7 +7155,7 @@
                 "decl": "void FuncPtr1(void (*get)());", 
                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 332, 
+                    "__line__": 330, 
                     "brief": "subroutine"
                 }, 
                 "format": {
@@ -7181,7 +7181,7 @@
                     "function_name": "FuncPtr1", 
                     "underscore_name": "func_ptr1"
                 }, 
-                "linenumber": 331, 
+                "linenumber": 329, 
                 "options": {}
             }, 
             {
@@ -7281,7 +7281,7 @@
                 "decl": "void FuncPtr2(double * (*get)());", 
                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))", 
                 "doxygen": {
-                    "__line__": 335, 
+                    "__line__": 333, 
                     "brief": "return a pointer"
                 }, 
                 "format": {
@@ -7307,7 +7307,7 @@
                     "function_name": "FuncPtr2", 
                     "underscore_name": "func_ptr2"
                 }, 
-                "linenumber": 334, 
+                "linenumber": 332, 
                 "options": {}
             }, 
             {
@@ -7429,7 +7429,7 @@
                 "decl": "void FuncPtr3(double (*get)(int i, int));", 
                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 338, 
+                    "__line__": 336, 
                     "brief": "abstract argument"
                 }, 
                 "format": {
@@ -7455,10 +7455,10 @@
                     "function_name": "FuncPtr3", 
                     "underscore_name": "func_ptr3"
                 }, 
-                "linenumber": 337, 
+                "linenumber": 335, 
                 "options": {
                     "F_force_wrapper": true, 
-                    "__line__": 340
+                    "__line__": 338
                 }
             }, 
             {
@@ -7551,7 +7551,7 @@
                 "decl": "void FuncPtr4(double (*get)(double, int));", 
                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 343, 
+                    "__line__": 341, 
                     "brief": "abstract argument"
                 }, 
                 "format": {
@@ -7574,12 +7574,12 @@
                     "function_name": "FuncPtr4", 
                     "underscore_name": "func_ptr4"
                 }, 
-                "linenumber": 342, 
+                "linenumber": 340, 
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg", 
                     "F_abstract_interface_subprogram_template": "custom_funptr", 
                     "F_force_wrapper": true, 
-                    "__line__": 345, 
+                    "__line__": 343, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -7849,7 +7849,7 @@
                     "function_name": "FuncPtr5", 
                     "underscore_name": "func_ptr5"
                 }, 
-                "linenumber": 351, 
+                "linenumber": 349, 
                 "options": {}
             }, 
             {
@@ -8557,10 +8557,10 @@
                     "function_name": "verylongfunctionname1", 
                     "underscore_name": "verylongfunctionname1"
                 }, 
-                "linenumber": 362, 
+                "linenumber": 360, 
                 "options": {
                     "F_force_wrapper": true, 
-                    "__line__": 372
+                    "__line__": 370
                 }
             }, 
             {
@@ -9231,12 +9231,12 @@
                     "function_name": "verylongfunctionname2", 
                     "underscore_name": "verylongfunctionname2"
                 }, 
-                "linenumber": 376, 
+                "linenumber": 374, 
                 "options": {
                     "C_line_length": 0, 
                     "F_force_wrapper": true, 
                     "F_line_length": 0, 
-                    "__line__": 386
+                    "__line__": 384
                 }
             }, 
             {
@@ -9462,7 +9462,7 @@
                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 396, 
+                    "__line__": 394, 
                     "brief": "Test multidimensional arrays with allocatable"
                 }, 
                 "format": {
@@ -9488,10 +9488,10 @@
                     "function_name": "cos_doubles", 
                     "underscore_name": "cos_doubles"
                 }, 
-                "linenumber": 392, 
+                "linenumber": 390, 
                 "options": {
                     "F_standard": 2008, 
-                    "__line__": 398
+                    "__line__": 396
                 }
             }
         ], 

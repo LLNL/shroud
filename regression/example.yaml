@@ -240,8 +240,7 @@ declarations:
       # return typedef'd type
       - decl: TypeID getTypeID() const
 
-    #           template<typename ValueType>
-      - decl: void setValue(ValueType value)
+      - decl: template<typename ValueType> void setValue(ValueType value)
         cxx_template:
           ValueType:
           - int
@@ -249,8 +248,7 @@ declarations:
           - float
           - double
 
-    #           template<typename ValueType>
-      - decl: ValueType getValue()
+      - decl: template<typename ValueType> ValueType getValue()
         cxx_template:
           ValueType:
           - int
@@ -299,7 +297,7 @@ declarations:
 
     # test cxx_template, fortran_generic, overload
     #  - decl: void Function10()
-    #  - decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
+    #  - decl: template<typename ArgType> void Function10(ArgType arg1, std::string &name, double arg2 = 0)
     #    options:
     #      F_string_len_trim: True
     #    cxx_template:

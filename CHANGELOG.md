@@ -33,6 +33,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   instead of a void *.  This struct contains the pointer to the shadow class
   and information to deallocate it.
 
+### Changed
+- Change how function templates are specified.
+```
+  - decl: void Function7(ArgType arg)
+    cxx_template:
+      ArgType:
+      - int
+      - double
+```
+new:
+```
+  - decl: |
+        template<typename ArgType>
+        void Function7(ArgType arg)
+    cxx_template:
+      ArgType:
+      - int
+      - double
+```    
+
 ## v0.9.0 - 2018-04-04
 ### Added
 - Support class static methods.

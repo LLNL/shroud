@@ -107,8 +107,7 @@ class NamespaceMixin(object):
            cxx_template - 
         """
         # parse declaration to find out what it is
-        ast = declast.check_decl(decl, namespace=self,
-                                 template_types=kwargs.get('cxx_template', {}).keys())
+        ast = declast.check_decl(decl, namespace=self)
         template_parameters = []
         if isinstance(ast, declast.Template):
             # Create list of template parameter names

@@ -60,6 +60,8 @@ storage_class = {'auto', 'register', 'static', 'extern', 'typedef'}
 
 cxx_keywords = {'class', 'enum', 'namespace', 'struct', 'template', 'typename'}
 
+template_arguments = set()
+
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
 
@@ -111,6 +113,8 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
+                elif val in template_arguments:
+                    typ = 'TYPE_SPECIFIER'
                 elif val in cxx_keywords:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
@@ -638,6 +642,7 @@ class Parser(ExprParser):
         """  template < template-parameter-list > declaration
         template-parameter ::= [ class | typename] ID
         """
+        global template_arguments
         self.enter('template_statement')
         self.mustbe('TEMPLATE')
         node = Template()
@@ -650,6 +655,7 @@ class Parser(ExprParser):
             else:
                 name = self.mustbe('ID').value
             node.parameters.append(TemplateParam(name))
+            template_arguments.add(name)
             if not self.have('COMMA'):
                 break
         self.mustbe('GT')
@@ -658,6 +664,7 @@ class Parser(ExprParser):
             node.decl = self.class_statement()
         else:
             node.decl = self.declaration()
+        template_arguments.clear()
 
         self.exit('template_statement')
         return node
