@@ -112,6 +112,8 @@ class VerifyAttrs(object):
                     .format(attr, node.ast.name, node.linenumber))
         self.check_shared_attrs(node.ast)
 
+        if ast.typemap is None:
+            print("XXXXXX typemap is None")
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 
@@ -143,7 +145,7 @@ class VerifyAttrs(object):
                                    .format(free_pattern))
 
     def check_arg_attrs(self, node, arg):
-        """Regularize attributes
+        """Regularize attributes.
         intent: lower case, no parens, must be in, out, or inout
         value: if pointer, default to False (pass-by-reference;
                else True (pass-by-value).
@@ -171,6 +173,7 @@ class VerifyAttrs(object):
 
         arg_typemap = arg.typemap
         if arg_typemap is None:
+            print("XXXXXX typemap is None for argument {}", ast.name)
             # if the type does not exist, make sure it is defined by cxx_template
             #- decl: void Function7(ArgType arg)
             #  cxx_template:
@@ -502,6 +505,9 @@ class GenFunctions(object):
             if method.cxx_template:
                 method._overloaded = True
                 self.template_function(method, ordered_functions)
+#XXX            if method.cxx_template:
+#                method._overloaded = True
+#                self.template_function2(method, ordered_functions)
 
         # Look for overloaded functions
         overloaded_functions = {}
@@ -543,6 +549,58 @@ class GenFunctions(object):
         return ordered4
 
     def template_function(self, node, ordered_functions):
+        """ Create overloaded functions for each templated argument.
+
+        - decl: void Function7(ArgType arg)
+          cxx_template:
+            ArgType:
+            - int
+            - double
+        """
+        oldoptions = node.options
+
+        nkeys = 0
+        for typename, types in node.cxx_template.items():
+            if typename == '__line__':
+                continue
+            nkeys += 1
+            if nkeys > 1:
+                # In the future it may be useful to have multiple templates
+                # That the would start creating more permutations
+                raise NotImplementedError("Only one cxx_templated type for now",
+                                          node.cxx_template)
+            for type in types:
+                new = node.clone()
+                ordered_functions.append(new)
+                self.append_function_index(new)
+
+                new._generated = 'cxx_template'
+                fmt = new.fmtdict
+                fmt.function_suffix = fmt.function_suffix + '_' + type
+                new.cxx_template = {}
+                options = new.options
+                options.wrap_c = oldoptions.wrap_c
+                options.wrap_fortran = oldoptions.wrap_fortran
+                options.wrap_python = oldoptions.wrap_python
+                options.wrap_lua = oldoptions.wrap_lua
+                # Convert typename to type
+                fmt.CXX_template = '<{}>'.format(type)
+                if new.ast.typename == typename:
+                    new.ast.typename = type
+                    new._CXX_return_templated = True
+                for arg in new.ast.params:
+                    if arg.typename == typename:
+                        arg.typename = type
+
+        # Do not process templated node, instead process
+        # generated functions above.
+        options = node.options
+        options.wrap_c = False
+        options.wrap_fortran = False
+        options.wrap_python = False
+        options.wrap_lua = False
+
+    def template_function2(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
 
         - decl: void Function7(ArgType arg)

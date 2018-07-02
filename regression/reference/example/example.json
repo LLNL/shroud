@@ -4116,7 +4116,8 @@
                                     }, 
                                     "specifier": [
                                         "ValueType"
-                                    ]
+                                    ], 
+                                    "typemap_name": "ValueType"
                                 }
                             ], 
                             "specifier": [
@@ -4219,7 +4220,8 @@
                                     }, 
                                     "specifier": [
                                         "int"
-                                    ]
+                                    ], 
+                                    "typemap_name": "ValueType"
                                 }
                             ], 
                             "specifier": [
@@ -4338,7 +4340,8 @@
                                     }, 
                                     "specifier": [
                                         "long"
-                                    ]
+                                    ], 
+                                    "typemap_name": "ValueType"
                                 }
                             ], 
                             "specifier": [
@@ -4455,7 +4458,8 @@
                                     }, 
                                     "specifier": [
                                         "float"
-                                    ]
+                                    ], 
+                                    "typemap_name": "ValueType"
                                 }
                             ], 
                             "specifier": [
@@ -4572,7 +4576,8 @@
                                     }, 
                                     "specifier": [
                                         "double"
-                                    ]
+                                    ], 
+                                    "typemap_name": "ValueType"
                                 }
                             ], 
                             "specifier": [
@@ -4632,7 +4637,8 @@
                             "params": [], 
                             "specifier": [
                                 "ValueType"
-                            ]
+                            ], 
+                            "typemap_name": "ValueType"
                         }, 
                         "cxx_template": {
                             "ValueType": [
@@ -4703,7 +4709,8 @@
                             "params": [], 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "ValueType"
                         }, 
                         "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "int getValue()", 
@@ -4794,7 +4801,8 @@
                             "params": [], 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "ValueType"
                         }, 
                         "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "double getValue()", 

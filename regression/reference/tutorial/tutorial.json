@@ -4872,7 +4872,8 @@
                             }, 
                             "specifier": [
                                 "ArgType"
-                            ]
+                            ], 
+                            "typemap_name": "ArgType"
                         }
                     ], 
                     "specifier": [
@@ -4973,7 +4974,8 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "ArgType"
                         }
                     ], 
                     "specifier": [
@@ -5088,7 +5090,8 @@
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "ArgType"
                         }
                     ], 
                     "specifier": [
@@ -5144,7 +5147,8 @@
                     "params": [], 
                     "specifier": [
                         "RetType"
-                    ]
+                    ], 
+                    "typemap_name": "RetType"
                 }, 
                 "cxx_template": {
                     "RetType": [
@@ -5199,7 +5203,8 @@
                     "params": [], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "RetType"
                 }, 
                 "decl": "template<typename RetType> RetType Function8()", 
                 "declgen": "int Function8()", 
@@ -5267,7 +5272,8 @@
                     "params": [], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "RetType"
                 }, 
                 "decl": "template<typename RetType> RetType Function8()", 
                 "declgen": "double Function8()", 

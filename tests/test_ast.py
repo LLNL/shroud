@@ -418,6 +418,28 @@ class CheckAst(unittest.TestCase):
 #        from shroud import util
 #        print(json.dumps(library, cls=util.ExpandedEncoder, indent=4, sort_keys=True))
 
+    def XXXtest_d_template1(self):
+        """Test function templates.
+        """
+        library = ast.LibraryNode()
+        fcn1 = library.add_function(
+            'void func1(T arg)',
+            template_parameters=['T'],
+            cxx_template2=[
+                ast.TemplateArgument('<int>'),
+                ast.TemplateArgument('<double>'),
+            ])
+
+    def XXXtest_d_template2(self):
+        """Test function templates.
+        """
+        library = ast.LibraryNode()
+        cls1 = library.add_declaration(
+            'template<typename T> void func1(T arg)',
+            cxx_template2=[
+                ast.TemplateArgument('<int>'),
+                ast.TemplateArgument('<double>'),
+            ])
 
     def test_e_enum1(self):
         """Add an enum to a library"""

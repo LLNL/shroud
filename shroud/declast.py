@@ -60,8 +60,6 @@ storage_class = {'auto', 'register', 'static', 'extern', 'typedef'}
 
 cxx_keywords = {'class', 'enum', 'namespace', 'struct', 'template', 'typename'}
 
-template_arguments = set()
-
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
 
@@ -113,8 +111,6 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
-                elif val in template_arguments:
-                    typ = 'TYPE_SPECIFIER'
                 elif val in cxx_keywords:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
@@ -329,6 +325,16 @@ class Parser(ExprParser):
         self.token = None
         self.tokenizer = tokenize(decl)
         self.next()  # load first token
+
+    def update_namespace(self, node):
+        """Push another level of the namespace.
+        Accept a Template node and save parameters as symbols
+        in a namespace.
+        Used while parsing a template_statement to add TemplateParams to the
+        symbol table.
+        """
+        node.fill_symbols(self.namespace)
+        self.namespace = node
 
     def parameter_list(self):
         # look for ... var arg at end
@@ -642,7 +648,6 @@ class Parser(ExprParser):
         """  template < template-parameter-list > declaration
         template-parameter ::= [ class | typename] ID
         """
-        global template_arguments
         self.enter('template_statement')
         self.mustbe('TEMPLATE')
         node = Template()
@@ -655,7 +660,6 @@ class Parser(ExprParser):
             else:
                 name = self.mustbe('ID').value
             node.parameters.append(TemplateParam(name))
-            template_arguments.add(name)
             if not self.have('COMMA'):
                 break
         self.mustbe('GT')
@@ -663,8 +667,8 @@ class Parser(ExprParser):
         if self.token.typ == 'CLASS':
             node.decl = self.class_statement()
         else:
+            self.update_namespace(node)
             node.decl = self.declaration()
-        template_arguments.clear()
 
         self.exit('template_statement')
         return node
@@ -672,6 +676,10 @@ class Parser(ExprParser):
     def template_argument_list(self):
         """Parse template argument list
         < template_argument [ , template_argument ]* >
+
+        Must be abstract declarations.
+        ex.  <int,double>
+        not <int foo>
 
         Return a list of Declaration.
         """
@@ -1374,15 +1382,35 @@ class Template(Node):
         self.parameters = []
         self.decl = None
 
+        self.parent = None
+        self.symbols = {}
+        self.is_class = False
+
+    def fill_symbols(self, parent):
+        """Add the TemplateParams into the symbol table.
+        This allows them to be looked up via unqualified_lookup.
+        """
+        self.parent = parent
+        for param in self.parameters:
+            self.symbols[param.name] = param
+
+    def unqualified_lookup(self, name):
+        """Lookup template parameter."""
+        if name in self.symbols:
+            return self.symbols[name]
+        return self.parent.unqualified_lookup(name)
+
 
 class TemplateParam(Node):
     """A template parameter.
     template < TemplateParameter >
 
+    Create a Typemap for the TemplateParam.
     XXX - class and typename are discarded while parsing.
     """
     def __init__(self, name):
         self.name = name
+        self.typemap = typemap.Typemap(name, base='template')
 
 
 def check_decl(decl, namespace=None, template_types=[], trace=False):
