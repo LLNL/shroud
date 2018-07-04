@@ -886,11 +886,10 @@ class ClassNode(AstNode, NamespaceMixin):
 class FunctionNode(AstNode):
     """
 
-    - decl:
+    - decl: template<typename T1, typename T2> foo(T1 arg, T2 arg)
       cxx_template:
-        ArgType:
-        - int
-        - double
+      - instantiation: <int, long>
+      - instantiation: <float, double>
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
@@ -925,6 +924,14 @@ class FunctionNode(AstNode):
                        C function to call
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
+
+    Templates
+    ---------
+
+    template_name_to_index - {'T1': 0, 'T2': 1}
+    template_argument - [ TemplateArgument('<int,long>'),
+                          TemplateArgument('<float,double>') ]
+
 
     """
     def __init__(self, decl, parent,
@@ -964,6 +971,7 @@ class FunctionNode(AstNode):
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
         self.cpp_if = kwargs.get('cpp_if', None)
         self.cxx_template = {}
+        self.template_name_to_index = None
         self.template_arguments = kwargs.get('cxx_template2', [])
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
@@ -988,6 +996,11 @@ class FunctionNode(AstNode):
         if ast is None:
             ast = declast.check_decl(decl, namespace=parent)
         if isinstance(ast, declast.Template):
+            # Create map from name to index
+            self.template_name_to_index = {}
+            for iarg, param in enumerate(ast.parameters):
+                self.template_name_to_index[param.name] = iarg
+
             template_parameters = ast
             ast = ast.decl
             for args in self.template_arguments:

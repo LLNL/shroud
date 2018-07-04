@@ -4931,7 +4931,10 @@
                         ], 
                         "instantiation": "<double>"
                     }
-                ]
+                ], 
+                "template_name_to_index": {
+                    "ArgType": 0
+                }
             }, 
             {
                 "_fmtargs": {
@@ -5079,7 +5082,10 @@
                         ], 
                         "instantiation": "<double>"
                     }
-                ]
+                ], 
+                "template_name_to_index": {
+                    "ArgType": 0
+                }
             }, 
             {
                 "_fmtargs": {
@@ -5225,7 +5231,10 @@
                         ], 
                         "instantiation": "<double>"
                     }
-                ]
+                ], 
+                "template_name_to_index": {
+                    "ArgType": 0
+                }
             }, 
             {
                 "_overloaded": true, 
@@ -5296,7 +5305,10 @@
                         ], 
                         "instantiation": "<double>"
                     }
-                ]
+                ], 
+                "template_name_to_index": {
+                    "RetType": 0
+                }
             }, 
             {
                 "_CXX_return_templated": true, 
@@ -5397,7 +5409,10 @@
                         ], 
                         "instantiation": "<double>"
                     }
-                ]
+                ], 
+                "template_name_to_index": {
+                    "RetType": 0
+                }
             }, 
             {
                 "_CXX_return_templated": true, 
@@ -5498,7 +5513,10 @@
                         ], 
                         "instantiation": "<double>"
                     }
-                ]
+                ], 
+                "template_name_to_index": {
+                    "RetType": 0
+                }
             }, 
             {
                 "_fmtargs": {

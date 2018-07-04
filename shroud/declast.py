@@ -1013,6 +1013,21 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
+    def instantiate(self, node):
+        """Instantiate a template argument.
+        Return a new copy of node, which is abstract (no name)
+        and fill in the name from self.
+        If node is 'int *', the pointer is in the declarator.
+        """
+        new = copy.copy(node)
+        new.attrs = copy.copy(self.attrs)
+        if new.declarator is None:
+            new.declarator = Declarator()
+        else:
+            new.declarator = copy.copy(node.declarator)
+        new.declarator.name = self.declarator.name
+        return new
+
     def __str__(self):
         out = []
         if self.const:

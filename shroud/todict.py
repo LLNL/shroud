@@ -236,6 +236,7 @@ class ToDict(visitor.Visitor):
             'cxx_template', 'default_arg_suffix',
             'declgen', 'doxygen',
             'fortran_generic', 'linenumber', 'return_this',
+            'template_name_to_index',
             'C_error_pattern', 'PY_error_pattern',
             '_CXX_return_templated',
             '_default_funcs',
@@ -292,8 +293,8 @@ class ToDict(visitor.Visitor):
             instantiation=node.instantiation,
             asts=self.visit(node.asts),
         )
-        self.add_visit_fields(node, d, ['fmtdict', 'options'])
-#        add_non_none_fields(node, d, ['fmtdict', 'options'])
+#        self.add_visit_fields(node, d, ['fmtdict', 'options'])
+        add_non_none_fields(node, d, ['fmtdict', 'options'])
         return d
 
     def add_visit_fields(self, node, d, fields):
