@@ -4,7 +4,7 @@
         "classes": [
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapClass2.h", 
                     "C_impl_filename": "wrapClass2.cpp", 
@@ -82,7 +82,7 @@
                         }, 
                         "decl": "Class2()", 
                         "declgen": "Class2()", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_ctor", 
@@ -131,7 +131,7 @@
                         }, 
                         "decl": "~Class2()", 
                         "declgen": "~Class2()", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_dtor", 
@@ -248,7 +248,7 @@
                         }, 
                         "decl": "void func1(Class1 *arg)", 
                         "declgen": "void func1(Class1 * arg +intent(in))", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "FOR_class2_func1", 
@@ -367,7 +367,7 @@
                         }, 
                         "decl": "void acceptClass3(Class3 *arg)", 
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "FOR_class2_accept_class3", 
@@ -405,7 +405,7 @@
             }, 
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapClass3.h", 
                     "C_impl_filename": "wrapClass3.cpp", 
@@ -481,7 +481,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "tutorial.hpp", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 

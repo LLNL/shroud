@@ -44,7 +44,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "clibrary.h", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -149,7 +149,7 @@
                 }, 
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "Function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "Function1", 
@@ -316,7 +316,7 @@
                 }, 
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "double SHC_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function2", 
@@ -527,7 +527,7 @@
                 }, 
                 "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
                 "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "Sum", 
@@ -650,7 +650,7 @@
                 }, 
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "bool SHC_rv =\t Function3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "Function3", 
@@ -858,7 +858,7 @@
                 }, 
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "Function3b(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "Function3b", 
@@ -1035,7 +1035,7 @@
                 }, 
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
                 "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function4a", 
@@ -1220,7 +1220,7 @@
                 }, 
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
                 "declgen": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "CLI_function4a_bufferify", 
@@ -1424,7 +1424,7 @@
                 }, 
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))", 
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "intargs(\targin,\t arginout,\t argout);", 
                     "C_call_list": "argin,\t arginout,\t argout", 
                     "C_name": "intargs", 
@@ -1641,7 +1641,7 @@
                     "brief": "compute cos of IN and save in OUT", 
                     "description": "allocate OUT same type as IN implied size of array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "cos_doubles(\tin,\t out,\t sizein);", 
                     "C_call_list": "in,\t out,\t sizein", 
                     "C_name": "cos_doubles", 
@@ -1858,7 +1858,7 @@
                     "brief": "truncate IN argument and save in OUT", 
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);", 
                     "C_call_list": "in,\t out,\t sizein", 
                     "C_name": "truncate_to_int", 
@@ -2019,7 +2019,7 @@
                     "brief": null, 
                     "description": "array with intent(INOUT)\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "increment(\tarray,\t sizein);", 
                     "C_call_list": "array,\t sizein", 
                     "C_name": "increment", 

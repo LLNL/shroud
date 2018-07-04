@@ -4,7 +4,7 @@
         "classes": [
             {
                 "cxx_header": "class_header.hpp", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapClass1.h", 
                     "C_impl_filename": "wrapClass1.cpp", 
@@ -76,7 +76,7 @@
                         }, 
                         "decl": "void method1(CustomType arg1)", 
                         "declgen": "void method1(CustomType arg1 +intent(in)+value)", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->method1(\targ1);", 
                             "C_call_list": "arg1", 
                             "C_name": "DEF_class1_method1", 
@@ -111,7 +111,7 @@
             }, 
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapClass2.h", 
                     "C_impl_filename": "wrapClass2.cpp", 
@@ -185,7 +185,7 @@
                         }, 
                         "decl": "void method1(MPI_Comm comm)", 
                         "declgen": "void method1(MPI_Comm comm +intent(in)+value)", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->method1(\tSHCXX_comm);", 
                             "C_call_list": "SHCXX_comm", 
                             "C_name": "DEF_class2_method1", 
@@ -275,7 +275,7 @@
                         }, 
                         "decl": "void method2(three::Class1 * c2)", 
                         "declgen": "void method2(three::Class1 * c2 +intent(in))", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->method2(\tSHCXX_c2);", 
                             "C_call_list": "SHCXX_c2", 
                             "C_name": "DEF_class2_method2", 
@@ -352,7 +352,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "global_header.hpp", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -442,7 +442,7 @@
                 }, 
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "one::two::function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "DEF_function1", 

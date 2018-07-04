@@ -4,7 +4,7 @@
         "classes": [
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "foo.h", 
                     "C_impl_filename": "foo.cpp", 
@@ -47,7 +47,7 @@
                         }, 
                         "decl": "void method1()", 
                         "declgen": "void method1()", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method1", 
@@ -95,7 +95,7 @@
                         }, 
                         "decl": "void method2()", 
                         "declgen": "void method2()", 
-                        "format": {
+                        "fmtdict": {
                             "CXX_this": "SH_this2", 
                             "C_call_code": "SH_this->method2(\t);", 
                             "C_call_list": "", 
@@ -140,7 +140,7 @@
             }, 
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapNames2.hh", 
                     "C_impl_filename": "wrapNames2.cc", 
@@ -253,7 +253,7 @@
                     "name": "Color"
                 }, 
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n", 
-                "format": {
+                "fmtdict": {
                     "C_enum": "TES_Color", 
                     "enum_lower": "color", 
                     "enum_name": "Color", 
@@ -268,7 +268,7 @@
                 "typemap_name": "Color"
             }
         ], 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -375,7 +375,7 @@
                 }, 
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "YYY_TES_function1", 
@@ -418,7 +418,7 @@
                 }, 
                 "decl": "void function2()", 
                 "declgen": "void function2()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function2(\t);", 
                     "C_call_list": "", 
                     "C_name": "c_name_special", 
@@ -514,7 +514,7 @@
                 }, 
                 "decl": "void function3a(int i)", 
                 "declgen": "void function3a(int i +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function3a(\ti);", 
                     "C_call_list": "i", 
                     "C_name": "YYY_TES_function3a_0", 
@@ -611,7 +611,7 @@
                 }, 
                 "decl": "void function3a(long i)", 
                 "declgen": "void function3a(long i +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function3a(\ti);", 
                     "C_call_list": "i", 
                     "C_name": "YYY_TES_function3a_1", 
@@ -733,7 +733,7 @@
                 }, 
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t function4(\tARG_rv);", 
                     "C_call_list": "ARG_rv", 
                     "C_name": "YYY_TES_function4", 
@@ -835,7 +835,7 @@
                 }, 
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t function4(\tARG_rv);", 
                     "C_call_list": "ARG_rv", 
                     "C_name": "YYY_TES_function4_bufferify", 
@@ -878,7 +878,7 @@
                 }, 
                 "decl": "void function5() +name(fiveplus)", 
                 "declgen": "void function5() +name(fiveplus)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "fiveplus(\t);", 
                     "C_call_list": "", 
                     "C_name": "YYY_TES_fiveplus", 
@@ -921,7 +921,7 @@
                 }, 
                 "decl": "void init_ns1()", 
                 "declgen": "void init_ns1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "ns1::init_ns1(\t);", 
                     "C_call_list": "", 
                     "C_name": "TES_init_ns1", 

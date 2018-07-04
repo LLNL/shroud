@@ -201,30 +201,26 @@ class ToDict(visitor.Visitor):
 ######################################################################
 
     def visit_LibraryNode(self, node):
-        d = dict(
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
-        )
-
+        d = dict()
         add_true_fields(node, d,
                         ['copyright', 'cxx_header', 'language'])
         self.add_visit_fields(node, d,
-                              ['classes', 'enums', 'functions', 'variables'])
+                              ['classes', 'enums', 'functions', 'variables',
+                               'fmtdict', 'options'])
         return d
 
     def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,
-            format=self.visit(node.fmtdict),
             name=node.name,
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
-            options=self.visit(node.options),
         )
         add_non_none_fields(node, d, ['linenumber'])
         add_true_fields(node, d, ['as_struct', 'python',
                                   'template_parameters'])
         self.add_visit_fields(node, d,
                               ['enums', 'functions', 'variables',
+                               'fmtdict', 'options',
                                'template_arguments'])
         return d
 
@@ -232,10 +228,9 @@ class ToDict(visitor.Visitor):
         d = dict(
             ast=self.visit(node.ast),
             decl=node.decl,
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
         self.add_visit_fields(node, d, ['_fmtargs', '_fmtresult',
+                                        'fmtdict', 'options',
                                         'template_arguments'])
         add_true_fields(node, d, [
             'cxx_template', 'default_arg_suffix',
@@ -269,19 +264,17 @@ class ToDict(visitor.Visitor):
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
             ast=self.visit(node.ast),
             decl=node.decl,
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
         add_non_none_fields(node, d, ['linenumber'])
-        self.add_visit_fields(node, d, ['_fmtmembers'])
+        self.add_visit_fields(node, d, ['_fmtmembers',
+                                        'fmtdict', 'options'])
         return d
 
     def visit_NamespaceNode(self, node):
         d = dict(
             name=node.name,
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
+        self.add_visit_fields(node, d, ['fmtdict', 'options'])
         add_non_none_fields(node, d, ['linenumber'])
         return d
 
@@ -289,9 +282,8 @@ class ToDict(visitor.Visitor):
         d = dict(
             name=node.name,
             ast=self.visit(node.ast),
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
+        self.add_visit_fields(node, d, ['fmtdict', 'options'])
         add_non_none_fields(node, d, ['linenumber'])
         return d
 
@@ -299,10 +291,9 @@ class ToDict(visitor.Visitor):
         d = dict(
             instantiation=node.instantiation,
             asts=self.visit(node.asts),
-#            format=self.visit(node.fmtargs),
-#            options=self.visit(node.options),
         )
-        add_non_none_fields(node, d, ['fmtdict', 'options'])
+        self.add_visit_fields(node, d, ['fmtdict', 'options'])
+#        add_non_none_fields(node, d, ['fmtdict', 'options'])
         return d
 
     def add_visit_fields(self, node, d, fields):

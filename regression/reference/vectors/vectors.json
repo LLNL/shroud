@@ -44,7 +44,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "vectors.hpp", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -164,7 +164,7 @@
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_sum_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)", 
                     "F_arguments": "arg", 
@@ -264,7 +264,7 @@
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t vector_sum(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "VEC_vector_sum_bufferify", 
@@ -335,7 +335,7 @@
                     "__line__": 60, 
                     "brief": "Copy vector into Fortran input array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_iota_out_bufferify", 
                     "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
@@ -431,7 +431,7 @@
                     "__line__": 60, 
                     "brief": "Copy vector into Fortran input array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_iota_out(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_out_bufferify", 
@@ -503,7 +503,7 @@
                     "__line__": 67, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_iota_out_alloc_bufferify", 
                     "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
@@ -600,7 +600,7 @@
                     "__line__": 67, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_iota_out_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_out_alloc_bufferify", 
@@ -672,7 +672,7 @@
                     "__line__": 74, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_iota_inout_alloc_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg", 
                     "F_arguments": "arg", 
@@ -771,7 +771,7 @@
                     "__line__": 74, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_iota_inout_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify", 
@@ -838,7 +838,7 @@
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_increment_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg", 
                     "F_arguments": "arg", 
@@ -932,7 +932,7 @@
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_increment(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_increment_bufferify", 
@@ -1010,7 +1010,7 @@
                     "brief": "count number of underscore in vector of strings", 
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_string_count_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT)", 
                     "F_arguments": "arg", 
@@ -1116,7 +1116,7 @@
                     "brief": "count number of underscore in vector of strings", 
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t vector_string_count(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "VEC_vector_string_count_bufferify", 
@@ -1185,7 +1185,7 @@
                     "brief": "Fill in arg with some animal names", 
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_custom_return_type": "int", 
                     "C_return_code": "return SH_arg.size();", 
                     "C_return_type": "int", 
@@ -1247,7 +1247,7 @@
                     "__line__": 116, 
                     "brief": "append '-like' to names."
                 }, 
-                "format": {
+                "fmtdict": {
                     "function_name": "vector_string_append", 
                     "underscore_name": "vector_string_append"
                 }, 
