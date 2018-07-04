@@ -173,14 +173,13 @@ C_prototype
    XXX  override prototype of generated C function
 
 cxx_template
-   A dictionary of lists that define how each templated argument
+   A list that define how each templated argument
    should be instantiated::
 
       decl: void Function7(ArgType arg)
       cxx_template:
-        ArgType:
-        - int
-        - double
+      - instantiation: <int>
+      - instantiation: <double>
 
 decl
    Function declaration.

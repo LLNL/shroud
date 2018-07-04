@@ -48,10 +48,9 @@ new:
         template<typename ArgType>
         void Function7(ArgType arg)
     cxx_template:
-      ArgType:
-      - int
-      - double
-```    
+    - instantiation: <int>
+    - instantiation: <double>
+```
 
 ## v0.9.0 - 2018-04-04
 ### Added
@@ -128,7 +127,7 @@ new:
 ### Added
 - cpp_if will add an #if directive around a class or function.
 - Allow 'functions' to be used in YAML in place of 'methods'.
-  'methods' still works but only one should be provided. 
+  'methods' still works but only one should be provided.
 - Allow format fields to be set by directly in YAML.
 
 ### Fixed

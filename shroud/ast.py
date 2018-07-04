@@ -106,15 +106,17 @@ class NamespaceMixin(object):
         kwargs -
            cxx_template - 
         """
-        # parse declaration to find out what it is
-        ast = declast.check_decl(decl, namespace=self)
+        # parse declaration to find out what it is.
+        fullast = declast.check_decl(decl, namespace=self)
         template_parameters = []
-        if isinstance(ast, declast.Template):
+        if isinstance(fullast, declast.Template):
             # Create list of template parameter names
             # template<typename T> class vector -> ['T']
-            for tparam in ast.parameters:
+            for tparam in fullast.parameters:
                 template_parameters.append(tparam.name)
-            ast = ast.decl
+            ast = fullast.decl
+        else:
+            ast = fullast
 
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
@@ -122,7 +124,7 @@ class NamespaceMixin(object):
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
             else:
-                node = self.add_function(decl, ast=ast, **kwargs)
+                node = self.add_function(decl, ast=fullast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
             if 'declarations' in kwargs:
                 node = self.add_class(ast.name,
@@ -930,6 +932,9 @@ class FunctionNode(AstNode):
                  ast=None,
                  options=None,
                  **kwargs):
+        """
+        ast - None, declast.Declaration, declast.Template
+        """
         self.linenumber = kwargs.get('__line__', '?')
 
         self.options = util.Scope(parent.options)
@@ -958,7 +963,8 @@ class FunctionNode(AstNode):
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
         self.cpp_if = kwargs.get('cpp_if', None)
-        self.cxx_template = kwargs.get('cxx_template', {})
+        self.cxx_template = {}
+        self.template_arguments = kwargs.get('cxx_template2', [])
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
         self.return_this = kwargs.get('return_this', False)
@@ -980,12 +986,23 @@ class FunctionNode(AstNode):
 
         self.decl = decl
         if ast is None:
-            # parse decl and add to dictionary
-            template_types = self.cxx_template.keys()
+            ast = declast.check_decl(decl, namespace=parent)
+        if isinstance(ast, declast.Template):
+            template_parameters = ast
+            ast = ast.decl
+            for args in self.template_arguments:
+                args.parse_instantiation(namespace=self)
 
-            ast = declast.check_decl(decl,
-                                     namespace=parent,
-                                     template_types=template_types)
+            # XXX - convert to cxx_template format  { T=['int', 'double'] }
+            argname = template_parameters.parameters[0].name
+            lst = []
+            for arg in self.template_arguments:
+                lst.append(arg.asts[0].typemap.name)
+            self.cxx_template[argname] = lst
+        elif isinstance(ast, declast.Declaration):
+            pass
+        else:
+            raise RuntimeError("Expected a function declaration");
         self.ast = ast
 
         # add any attributes from YAML files to the ast
@@ -1232,17 +1249,17 @@ class TemplateArgument(object):
     """Information used to instantiate a template.
 
     instantiation = "<int,double>"
-    ast = [ Declaration("int"), Declaration("double") ]
+    asts = [ Declaration("int"), Declaration("double") ]
     """
     def __init__(self, instantiation, fmtdict=None, options=None):
         self.instantiation = instantiation
         self.fmtdict = fmtdict
         self.options = options
-        self.ast = None
+        self.asts = None
 
     def parse_instantiation(self, namespace):
         parser = declast.Parser(self.instantiation, namespace)
-        self.ast = parser.template_argument_list()
+        self.asts = parser.template_argument_list()
 
 ######################################################################
 

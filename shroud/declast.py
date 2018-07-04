@@ -1407,6 +1407,9 @@ class TemplateParam(Node):
 
     Create a Typemap for the TemplateParam.
     XXX - class and typename are discarded while parsing.
+
+    self.typemap = a typemap.Typemap with base='template'.
+                   Used as a place holder for the Template argument.
     """
     def __init__(self, name):
         self.name = name

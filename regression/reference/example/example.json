@@ -4131,8 +4131,7 @@
                                 "long", 
                                 "float", 
                                 "double"
-                            ], 
-                            "__line__": 244
+                            ]
                         }, 
                         "decl": "template<typename ValueType> void setValue(ValueType value)", 
                         "declgen": "void setValue(ValueType value +intent(in)+value)", 
@@ -4146,7 +4145,69 @@
                             "wrap_fortran": false, 
                             "wrap_lua": false, 
                             "wrap_python": false
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "long"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "long"
+                                        ], 
+                                        "typemap_name": "long"
+                                    }
+                                ], 
+                                "instantiation": "<long>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "float"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "float"
+                                        ], 
+                                        "typemap_name": "float"
+                                    }
+                                ], 
+                                "instantiation": "<float>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4266,7 +4327,69 @@
                             "wrap_fortran": true, 
                             "wrap_lua": true, 
                             "wrap_python": true
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "long"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "long"
+                                        ], 
+                                        "typemap_name": "long"
+                                    }
+                                ], 
+                                "instantiation": "<long>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "float"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "float"
+                                        ], 
+                                        "typemap_name": "float"
+                                    }
+                                ], 
+                                "instantiation": "<float>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4384,7 +4507,69 @@
                             "wrap_fortran": true, 
                             "wrap_lua": true, 
                             "wrap_python": true
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "long"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "long"
+                                        ], 
+                                        "typemap_name": "long"
+                                    }
+                                ], 
+                                "instantiation": "<long>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "float"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "float"
+                                        ], 
+                                        "typemap_name": "float"
+                                    }
+                                ], 
+                                "instantiation": "<float>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4502,7 +4687,69 @@
                             "wrap_fortran": true, 
                             "wrap_lua": true, 
                             "wrap_python": true
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "long"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "long"
+                                        ], 
+                                        "typemap_name": "long"
+                                    }
+                                ], 
+                                "instantiation": "<long>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "float"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "float"
+                                        ], 
+                                        "typemap_name": "float"
+                                    }
+                                ], 
+                                "instantiation": "<float>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4620,7 +4867,69 @@
                             "wrap_fortran": true, 
                             "wrap_lua": true, 
                             "wrap_python": true
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "long"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "long"
+                                        ], 
+                                        "typemap_name": "long"
+                                    }
+                                ], 
+                                "instantiation": "<long>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "float"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "float"
+                                        ], 
+                                        "typemap_name": "float"
+                                    }
+                                ], 
+                                "instantiation": "<float>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_overloaded": true, 
@@ -4644,8 +4953,7 @@
                             "ValueType": [
                                 "int", 
                                 "double"
-                            ], 
-                            "__line__": 252
+                            ]
                         }, 
                         "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "ValueType getValue()", 
@@ -4653,13 +4961,45 @@
                             "function_name": "getValue", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 251, 
+                        "linenumber": 250, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
                             "wrap_lua": false, 
                             "wrap_python": false
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_CXX_return_templated": true, 
@@ -4745,13 +5085,45 @@
                             "function_suffix": "_int", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 251, 
+                        "linenumber": 250, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
                             "wrap_lua": true, 
                             "wrap_python": true
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }, 
                     {
                         "_CXX_return_templated": true, 
@@ -4835,13 +5207,45 @@
                             "function_suffix": "_double", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 251, 
+                        "linenumber": 250, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
                             "wrap_lua": true, 
                             "wrap_python": true
-                        }
+                        }, 
+                        "template_arguments": [
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "int"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "int"
+                                        ], 
+                                        "typemap_name": "int"
+                                    }
+                                ], 
+                                "instantiation": "<int>"
+                            }, 
+                            {
+                                "asts": [
+                                    {
+                                        "attrs": {
+                                            "_typename": "double"
+                                        }, 
+                                        "const": false, 
+                                        "specifier": [
+                                            "double"
+                                        ], 
+                                        "typemap_name": "double"
+                                    }
+                                ], 
+                                "instantiation": "<double>"
+                            }
+                        ]
                     }
                 ], 
                 "linenumber": 181, 
@@ -4942,7 +5346,7 @@
                             "function_suffix": "_0", 
                             "underscore_name": "exfunc"
                         }, 
-                        "linenumber": 265, 
+                        "linenumber": 263, 
                         "options": {}
                     }, 
                     {
@@ -5038,14 +5442,14 @@
                             "function_suffix": "_1", 
                             "underscore_name": "exfunc"
                         }, 
-                        "linenumber": 267, 
+                        "linenumber": 265, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 259, 
+                "linenumber": 257, 
                 "name": "ExClass3", 
                 "options": {
-                    "__line__": 260, 
+                    "__line__": 258, 
                     "wrap_python": false
                 }, 
                 "typemap_name": "example::nested::ExClass3"
@@ -5228,7 +5632,7 @@
                     "function_name": "local_function1", 
                     "underscore_name": "local_function1"
                 }, 
-                "linenumber": 271, 
+                "linenumber": 269, 
                 "options": {}
             }, 
             {
@@ -5366,13 +5770,13 @@
                     "LUA_name": "isNameValid", 
                     "LUA_name_impl": "l_is_name_valid", 
                     "PY_name_impl": "PP_isNameValid", 
-                    "__line__": 275, 
+                    "__line__": 273, 
                     "c_const": "", 
                     "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "underscore_name": "is_name_valid"
                 }, 
-                "linenumber": 274, 
+                "linenumber": 272, 
                 "options": {}
             }, 
             {
@@ -5461,14 +5865,14 @@
                     "C_return_type": "bool", 
                     "F_C_name": "c_is_name_valid_bufferify", 
                     "F_code": "rv = name .ne. \" \"", 
-                    "__line__": 275, 
+                    "__line__": 273, 
                     "c_const": "", 
                     "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "is_name_valid"
                 }, 
-                "linenumber": 274, 
+                "linenumber": 272, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -5551,7 +5955,7 @@
                     "function_name": "isInitialized", 
                     "underscore_name": "is_initialized"
                 }, 
-                "linenumber": 281, 
+                "linenumber": 279, 
                 "options": {}
             }, 
             {
@@ -5792,7 +6196,7 @@
                     "function_name": "checkBool", 
                     "underscore_name": "check_bool"
                 }, 
-                "linenumber": 284, 
+                "linenumber": 282, 
                 "options": {}
             }, 
             {
@@ -5898,13 +6302,13 @@
                     "LUA_name": "test_names", 
                     "LUA_name_impl": "l_test_names", 
                     "PY_name_impl": "PP_test_names", 
-                    "__line__": 290, 
+                    "__line__": 288, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 288, 
+                "linenumber": 286, 
                 "options": {}
             }, 
             {
@@ -5982,13 +6386,13 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_bufferify", 
-                    "__line__": 290, 
+                    "__line__": 288, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 288, 
+                "linenumber": 286, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -6152,13 +6556,13 @@
                     "F_name_impl": "test_names_flag", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PP_test_names_flag", 
-                    "__line__": 293, 
+                    "__line__": 291, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_flag", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 292, 
+                "linenumber": 290, 
                 "options": {}
             }, 
             {
@@ -6270,13 +6674,13 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_flag_bufferify", 
-                    "__line__": 293, 
+                    "__line__": 291, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_flag_bufferify", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 292, 
+                "linenumber": 290, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -6326,7 +6730,7 @@
                     "function_suffix": "_0", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 296, 
+                "linenumber": 294, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -6414,7 +6818,7 @@
                     "function_suffix": "_1", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 296, 
+                "linenumber": 294, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -6598,7 +7002,7 @@
                     "function_suffix": "_2", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 296, 
+                "linenumber": 294, 
                 "options": {}
             }, 
             {
@@ -6676,7 +7080,7 @@
                     "function_name": "test_size_t", 
                     "underscore_name": "test_size_t"
                 }, 
-                "linenumber": 312, 
+                "linenumber": 309, 
                 "options": {}
             }, 
             {
@@ -6784,13 +7188,13 @@
                     "LUA_name": "testmpi", 
                     "LUA_name_impl": "l_testmpi", 
                     "PY_name_impl": "PP_testmpi_mpi", 
-                    "__line__": 317, 
+                    "__line__": 314, 
                     "c_const": "", 
                     "function_name": "testmpi", 
                     "function_suffix": "_mpi", 
                     "underscore_name": "testmpi"
                 }, 
-                "linenumber": 316, 
+                "linenumber": 313, 
                 "options": {}
             }, 
             {
@@ -6830,13 +7234,13 @@
                     "F_name_impl": "testmpi_serial", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PP_testmpi_serial", 
-                    "__line__": 321, 
+                    "__line__": 318, 
                     "c_const": "", 
                     "function_name": "testmpi", 
                     "function_suffix": "_serial", 
                     "underscore_name": "testmpi"
                 }, 
-                "linenumber": 320, 
+                "linenumber": 317, 
                 "options": {}
             }, 
             {
@@ -6952,7 +7356,7 @@
                     "function_name": "testgroup1", 
                     "underscore_name": "testgroup1"
                 }, 
-                "linenumber": 325, 
+                "linenumber": 322, 
                 "options": {}
             }, 
             {
@@ -7068,7 +7472,7 @@
                     "function_name": "testgroup2", 
                     "underscore_name": "testgroup2"
                 }, 
-                "linenumber": 326, 
+                "linenumber": 323, 
                 "options": {}
             }, 
             {
@@ -7163,7 +7567,7 @@
                 "decl": "void FuncPtr1(void (*get)());", 
                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 330, 
+                    "__line__": 327, 
                     "brief": "subroutine"
                 }, 
                 "format": {
@@ -7189,7 +7593,7 @@
                     "function_name": "FuncPtr1", 
                     "underscore_name": "func_ptr1"
                 }, 
-                "linenumber": 329, 
+                "linenumber": 326, 
                 "options": {}
             }, 
             {
@@ -7289,7 +7693,7 @@
                 "decl": "void FuncPtr2(double * (*get)());", 
                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))", 
                 "doxygen": {
-                    "__line__": 333, 
+                    "__line__": 330, 
                     "brief": "return a pointer"
                 }, 
                 "format": {
@@ -7315,7 +7719,7 @@
                     "function_name": "FuncPtr2", 
                     "underscore_name": "func_ptr2"
                 }, 
-                "linenumber": 332, 
+                "linenumber": 329, 
                 "options": {}
             }, 
             {
@@ -7437,7 +7841,7 @@
                 "decl": "void FuncPtr3(double (*get)(int i, int));", 
                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 336, 
+                    "__line__": 333, 
                     "brief": "abstract argument"
                 }, 
                 "format": {
@@ -7463,10 +7867,10 @@
                     "function_name": "FuncPtr3", 
                     "underscore_name": "func_ptr3"
                 }, 
-                "linenumber": 335, 
+                "linenumber": 332, 
                 "options": {
                     "F_force_wrapper": true, 
-                    "__line__": 338
+                    "__line__": 335
                 }
             }, 
             {
@@ -7559,7 +7963,7 @@
                 "decl": "void FuncPtr4(double (*get)(double, int));", 
                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 341, 
+                    "__line__": 338, 
                     "brief": "abstract argument"
                 }, 
                 "format": {
@@ -7582,12 +7986,12 @@
                     "function_name": "FuncPtr4", 
                     "underscore_name": "func_ptr4"
                 }, 
-                "linenumber": 340, 
+                "linenumber": 337, 
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg", 
                     "F_abstract_interface_subprogram_template": "custom_funptr", 
                     "F_force_wrapper": true, 
-                    "__line__": 343, 
+                    "__line__": 340, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -7857,7 +8261,7 @@
                     "function_name": "FuncPtr5", 
                     "underscore_name": "func_ptr5"
                 }, 
-                "linenumber": 349, 
+                "linenumber": 346, 
                 "options": {}
             }, 
             {
@@ -8565,10 +8969,10 @@
                     "function_name": "verylongfunctionname1", 
                     "underscore_name": "verylongfunctionname1"
                 }, 
-                "linenumber": 360, 
+                "linenumber": 357, 
                 "options": {
                     "F_force_wrapper": true, 
-                    "__line__": 370
+                    "__line__": 367
                 }
             }, 
             {
@@ -9239,12 +9643,12 @@
                     "function_name": "verylongfunctionname2", 
                     "underscore_name": "verylongfunctionname2"
                 }, 
-                "linenumber": 374, 
+                "linenumber": 371, 
                 "options": {
                     "C_line_length": 0, 
                     "F_force_wrapper": true, 
                     "F_line_length": 0, 
-                    "__line__": 384
+                    "__line__": 381
                 }
             }, 
             {
@@ -9470,7 +9874,7 @@
                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 394, 
+                    "__line__": 391, 
                     "brief": "Test multidimensional arrays with allocatable"
                 }, 
                 "format": {
@@ -9496,10 +9900,10 @@
                     "function_name": "cos_doubles", 
                     "underscore_name": "cos_doubles"
                 }, 
-                "linenumber": 390, 
+                "linenumber": 387, 
                 "options": {
                     "F_standard": 2008, 
-                    "__line__": 396
+                    "__line__": 393
                 }
             }
         ], 

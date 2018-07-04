@@ -154,16 +154,15 @@ declarations:
   - decl: |
         template<typename ArgType>
         void Function7(ArgType arg)
-    cxx_template:
-      ArgType:
-      - int
-      - double
+    cxx_template2:
+    - instantiation: <int>
+    - instantiation: <double>
+
   
   - decl: template<typename RetType> RetType Function8()
-    cxx_template:
-      RetType:
-      - int
-      - double
+    cxx_template2:
+    - instantiation: <int>
+    - instantiation: <double>
     options:
        wrap_lua: False
        wrap_python: False
@@ -179,6 +178,9 @@ declarations:
 #- decl: template<typename ArgType> void Function10(ArgType arg1, std::string &name, double arg2 = 0)
 #  options:
 #    F_string_len_trim: True
+#  cxx_template2:
+#  - instantiation: <int>
+#  - instantiation: <double>
 #  cxx_template:
 #    ArgType:
 #    - int
@@ -194,10 +196,9 @@ declarations:
   - decl: void Function10(const std::string &name, double arg2)
     options:
       F_string_len_trim: True
-#  cxx_template:
-#    ArgType:
-#    - int
-#    - double
+#   cxx_template2:
+#   - instantiation: <int>
+#   - instantiation: <double>
     fortran_generic:
        arg2:
        - float

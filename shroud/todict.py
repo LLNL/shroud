@@ -235,7 +235,8 @@ class ToDict(visitor.Visitor):
             format=self.visit(node.fmtdict),
             options=self.visit(node.options),
         )
-        self.add_visit_fields(node, d, ['_fmtargs', '_fmtresult'])
+        self.add_visit_fields(node, d, ['_fmtargs', '_fmtresult',
+                                        'template_arguments'])
         add_true_fields(node, d, [
             'cxx_template', 'default_arg_suffix',
             'declgen', 'doxygen',
@@ -297,7 +298,7 @@ class ToDict(visitor.Visitor):
     def visit_TemplateArgument(self, node):
         d = dict(
             instantiation=node.instantiation,
-            ast=self.visit(node.ast),
+            asts=self.visit(node.asts),
 #            format=self.visit(node.fmtargs),
 #            options=self.visit(node.options),
         )

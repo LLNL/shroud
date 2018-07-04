@@ -370,7 +370,7 @@ class CheckAst(unittest.TestCase):
         self.assertEqual(library.classes[0].functions[1].options.testb, 'bb')
         self.assertEqual(library.classes[0].functions[1].options.testc, 'c')
 
-    def test_c_class4a(self):
+    def test_class_template1(self):
         """Test class templates.
         """
         library = ast.LibraryNode()
@@ -384,7 +384,7 @@ class CheckAst(unittest.TestCase):
         )
         cls1.add_function('void push_back( const T& value );')
 
-    def test_c_class4b(self):
+    def test_class_template2(self):
         """Test class templates.
         """
         library = ast.LibraryNode()
@@ -418,19 +418,18 @@ class CheckAst(unittest.TestCase):
 #        from shroud import util
 #        print(json.dumps(library, cls=util.ExpandedEncoder, indent=4, sort_keys=True))
 
-    def XXXtest_d_template1(self):
+    def test_function_template1(self):
         """Test function templates.
         """
         library = ast.LibraryNode()
         fcn1 = library.add_function(
-            'void func1(T arg)',
-            template_parameters=['T'],
+            'template<typename T> void func1(T arg)',
             cxx_template2=[
                 ast.TemplateArgument('<int>'),
                 ast.TemplateArgument('<double>'),
             ])
 
-    def XXXtest_d_template2(self):
+    def test_function_template2(self):
         """Test function templates.
         """
         library = ast.LibraryNode()
