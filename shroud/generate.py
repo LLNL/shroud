@@ -548,58 +548,6 @@ class GenFunctions(object):
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
 
-        - decl: void Function7(ArgType arg)
-          cxx_template:
-            ArgType:
-            - int
-            - double
-        """
-        oldoptions = node.options
-
-        nkeys = 0
-        for typename, types in node.cxx_template.items():
-            if typename == '__line__':
-                continue
-            nkeys += 1
-            if nkeys > 1:
-                # In the future it may be useful to have multiple templates
-                # That the would start creating more permutations
-                raise NotImplementedError("Only one cxx_templated type for now",
-                                          node.cxx_template)
-            for type in types:
-                new = node.clone()
-                ordered_functions.append(new)
-                self.append_function_index(new)
-
-                new._generated = 'cxx_template'
-                fmt = new.fmtdict
-                fmt.function_suffix = fmt.function_suffix + '_' + type
-                new.cxx_template = {}
-                options = new.options
-                options.wrap_c = oldoptions.wrap_c
-                options.wrap_fortran = oldoptions.wrap_fortran
-                options.wrap_python = oldoptions.wrap_python
-                options.wrap_lua = oldoptions.wrap_lua
-                # Convert typename to type
-                fmt.CXX_template = '<{}>'.format(type)
-                if new.ast.typename == typename:
-                    new.ast.typename = type
-                    new._CXX_return_templated = True
-                for arg in new.ast.params:
-                    if arg.typename == typename:
-                        arg.typename = type
-
-        # Do not process templated node, instead process
-        # generated functions above.
-        options = node.options
-        options.wrap_c = False
-        options.wrap_fortran = False
-        options.wrap_python = False
-        options.wrap_lua = False
-
-    def template_function2(self, node, ordered_functions):
-        """ Create overloaded functions for each templated argument.
-
         - decl: template<typename ArgType> void Function7(ArgType arg)
           cxx_template:
           - instantiation: <int>
@@ -610,7 +558,6 @@ class GenFunctions(object):
 
         clone entire function then look for template arguments.
         """
-        print("XXXX", node.template_arguments)
         oldoptions = node.options
 
         for iargs, targs in enumerate(node.template_arguments):
@@ -620,33 +567,33 @@ class GenFunctions(object):
 
             new._generated = 'cxx_template'
             fmt = new.fmtdict
-            fmt.function_suffix = fmt.function_suffix + '_' + str(iargs)
+
+            # If single template argument, use its name; else sequence.
+            # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
+            if len(targs.asts) == 1:
+                fmt.function_suffix = fmt.function_suffix + '_' + targs.asts[0].typemap.name
+            else:
+                fmt.function_suffix = fmt.function_suffix + '_' + str(iargs)
+
             new.cxx_template = {}
             options = new.options
             options.wrap_c = oldoptions.wrap_c
             options.wrap_fortran = oldoptions.wrap_fortran
             options.wrap_python = oldoptions.wrap_python
             options.wrap_lua = oldoptions.wrap_lua
+            fmt.CXX_template = targs.instantiation   # ex. <int>
 
-            # Convert typename to type
-            fmt.CXX_template = '<{}>'.format(type)
-
-#            if new.ast.typemap.base == 'template':
-#                new.ast.typename = type
-#                new._CXX_return_templated = True
+            if new.ast.typemap.base == 'template':
+                idx = node.template_name_to_index[new.ast.typemap.name]
+                new.ast = new.ast.instantiate(targs.asts[idx])
+                new._CXX_return_templated = True
 
             # Replace templated arguments.
             newparams = []
             for arg in new.ast.params:
                 if arg.typemap.base == 'template':
-                    print("XXXXXXXXX 4", type(arg), arg.typemap.name)
                     idx = node.template_name_to_index[arg.typemap.name]
-                    print("XXXXXXXXX 5", targs.asts[idx])
-                    #                    arg.typename = type
                     newparams.append(arg.instantiate(targs.asts[idx]))
-                    print("XXXXXXXXX 6", newparams[-1])
-                    print("XXXXXXXXX 6", newparams[-1].attrs)
-#                    print("XXXXXXXXX 7", newparams[-1].typemap)
                 else:
                     newparams.append(arg)
             new.ast.params = newparams
@@ -833,8 +780,6 @@ class GenFunctions(object):
         has_implied_arg = False
         for arg in ast.params:
             argtype = arg.typename
-#            print("AAAAAAAAA", argtype)
-#            arg_typemap = arg.typemap  # typemap.lookup_type(argtype)
             arg_typemap = typemap.lookup_type(argtype)
             if arg_typemap.base == 'string':
                 is_ptr = arg.is_indirect()

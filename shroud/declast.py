@@ -1020,12 +1020,14 @@ class Declaration(Node):
         If node is 'int *', the pointer is in the declarator.
         """
         new = copy.copy(node)
-        new.attrs = copy.copy(self.attrs)
+        new.attrs = copy.copy(self.attrs)  # intent, ...
+        new.attrs['_typename'] = node.attrs['_typename']
         if new.declarator is None:
             new.declarator = Declarator()
         else:
             new.declarator = copy.copy(node.declarator)
         new.declarator.name = self.declarator.name
+        new.params = self.params
         return new
 
     def __str__(self):

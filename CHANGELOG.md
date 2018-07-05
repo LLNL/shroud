@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Change C wrappers of shadow classes to return a capsule_data_type to
   instead of a void *.  This struct contains the pointer to the shadow class
   and information to deallocate it.
+- Support multiple template parameters.
 
 ### Changed
 - Change how function templates are specified.
