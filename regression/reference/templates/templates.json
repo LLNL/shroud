@@ -244,17 +244,12 @@
                                     "attrs": {
                                         "_typename": "std::user::T", 
                                         "intent": "in", 
-                                        "value": false
+                                        "value": true
                                     }, 
-                                    "const": true, 
+                                    "const": false, 
                                     "declarator": {
-                                        "name": "value", 
-                                        "pointer": [
-                                            {
-                                                "const": false, 
-                                                "ptr": "&"
-                                            }
-                                        ]
+                                        "name": "arg1", 
+                                        "pointer": []
                                     }, 
                                     "specifier": [
                                         "T"
@@ -288,8 +283,8 @@
                                 "double"
                             ]
                         }, 
-                        "decl": "template<U> void nested( const T& value+intent(in), U arg2 );", 
-                        "declgen": "void nested(const T & value +intent(in), U arg2 +intent(in)+value)", 
+                        "decl": "template<U> void nested( T arg1, U arg2 );", 
+                        "declgen": "void nested(T arg1 +intent(in)+value, U arg2 +intent(in)+value)", 
                         "fmtdict": {
                             "function_name": "nested", 
                             "underscore_name": "nested"
@@ -328,6 +323,24 @@
                     }, 
                     {
                         "_fmtargs": {
+                            "arg1": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_deref": "", 
+                                    "c_member": ".", 
+                                    "c_var": "arg1", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                                    "cxx_member": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "arg1", 
+                                    "idtor": "0"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "arg1", 
+                                    "f_var": "arg1"
+                                }
+                            }, 
                             "arg2": {
                                 "fmtc": {
                                     "c_const": "", 
@@ -344,24 +357,6 @@
                                 "fmtf": {
                                     "c_var": "arg2", 
                                     "f_var": "arg2"
-                                }
-                            }, 
-                            "value": {
-                                "fmtc": {
-                                    "c_const": "const ", 
-                                    "c_deref": "", 
-                                    "c_member": ".", 
-                                    "c_var": "value", 
-                                    "cxx_addr": "&", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&value))", 
-                                    "cxx_member": ".", 
-                                    "cxx_type": "int", 
-                                    "cxx_var": "value", 
-                                    "idtor": "0"
-                                }, 
-                                "fmtf": {
-                                    "c_var": "value", 
-                                    "f_var": "value"
                                 }
                             }
                         }, 
@@ -382,11 +377,11 @@
                                     "attrs": {
                                         "_typename": "int", 
                                         "intent": "in", 
-                                        "value": false
+                                        "value": true
                                     }, 
-                                    "const": true, 
+                                    "const": false, 
                                     "declarator": {
-                                        "name": "value", 
+                                        "name": "arg1", 
                                         "pointer": []
                                     }, 
                                     "specifier": [
@@ -416,22 +411,22 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "template<U> void nested( const T& value+intent(in), U arg2 );", 
-                        "declgen": "void nested(const int value +intent(in), double arg2 +intent(in)+value)", 
+                        "decl": "template<U> void nested( T arg1, U arg2 );", 
+                        "declgen": "void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)", 
                         "fmtdict": {
                             "CXX_template": "<double>", 
-                            "C_call_code": "SH_this->nested<double>(\tvalue,\t arg2);", 
-                            "C_call_list": "value,\t arg2", 
+                            "C_call_code": "SH_this->nested<double>(\targ1,\t arg2);", 
+                            "C_call_list": "arg1,\t arg2", 
                             "C_name": "TEM_user_nested_double", 
                             "C_pre_call": "std::user<int> *SH_this =\t static_cast<std::user<int> *>(self->addr);", 
-                            "C_prototype": "TEM_user_0 * self,\t const int value,\t double arg2", 
+                            "C_prototype": "TEM_user_0 * self,\t int arg1,\t double arg2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_user_nested_double", 
                             "F_C_name": "c_user_nested_double", 
-                            "F_arg_c_call": "obj%cxxmem,\t value,\t arg2", 
-                            "F_arguments": "obj,\t value,\t arg2", 
-                            "F_call_code": "call c_user_nested_double(obj%cxxmem,\t value,\t arg2)", 
+                            "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2", 
+                            "F_arguments": "obj,\t arg1,\t arg2", 
+                            "F_call_code": "call c_user_nested_double(obj%cxxmem,\t arg1,\t arg2)", 
                             "F_name_function": "nested_double", 
                             "F_name_generic": "nested", 
                             "F_name_impl": "user_nested_double", 

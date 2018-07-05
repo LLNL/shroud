@@ -44,13 +44,13 @@ module user_mod
 
     interface
 
-        subroutine c_user_nested_double(self, value, arg2) &
+        subroutine c_user_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_nested_double")
             use iso_c_binding, only : C_DOUBLE, C_INT
             import :: SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
-            integer(C_INT), intent(IN) :: value
+            integer(C_INT), value, intent(IN) :: arg1
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_user_nested_double
 
@@ -60,13 +60,13 @@ module user_mod
 
 contains
 
-    subroutine user_nested_double(obj, value, arg2)
+    subroutine user_nested_double(obj, arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         class(user_0) :: obj
-        integer(C_INT), intent(IN) :: value
+        integer(C_INT), value, intent(IN) :: arg1
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin class.user_0.method.nested_double
-        call c_user_nested_double(obj%cxxmem, value, arg2)
+        call c_user_nested_double(obj%cxxmem, arg1, arg2)
         ! splicer end class.user_0.method.nested_double
     end subroutine user_nested_double
 

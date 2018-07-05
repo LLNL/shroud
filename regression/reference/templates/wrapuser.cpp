@@ -10,12 +10,11 @@ extern "C" {
 // splicer begin class.user.C_definitions
 // splicer end class.user.C_definitions
 
-void TEM_user_nested_double(TEM_user_0 * self, const int value,
-    double arg2)
+void TEM_user_nested_double(TEM_user_0 * self, int arg1, double arg2)
 {
 // splicer begin class.user.method.nested_double
     std::user<int> *SH_this = static_cast<std::user<int> *>(self->addr);
-    SH_this->nested<double>(value, arg2);
+    SH_this->nested<double>(arg1, arg2);
     return;
 // splicer end class.user.method.nested_double
 }

@@ -28,7 +28,7 @@ declarations:
   cxx_template2:
   - instantiation: <int>
   declarations:
-  - decl: template<U> void nested( const T& value+intent(in), U arg2 );
+  - decl: template<U> void nested( T arg1, U arg2 );
     # XXX - error of cxx_template2 is missing
     cxx_template2:
     - instantiation: <double>
