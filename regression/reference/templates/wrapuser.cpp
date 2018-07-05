@@ -13,7 +13,7 @@ extern "C" {
 void TEM_user_nested_double(TEM_user_0 * self, int arg1, double arg2)
 {
 // splicer begin class.user.method.nested_double
-    std::user<int> *SH_this = static_cast<std::user<int> *>(self->addr);
+    user<int> *SH_this = static_cast<user<int> *>(self->addr);
     SH_this->nested<double>(arg1, arg2);
     return;
 // splicer end class.user.method.nested_double

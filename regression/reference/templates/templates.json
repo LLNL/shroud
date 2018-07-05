@@ -12,7 +12,7 @@
                     "F_derived_name": "vector_0", 
                     "F_impl_filename": "wrapfvector.f", 
                     "F_module_name": "vector_mod", 
-                    "__line__": 15, 
+                    "__line__": 16, 
                     "class_lower": "vector_0", 
                     "class_prefix": "vector_", 
                     "class_scope": "vector_0::", 
@@ -70,7 +70,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 23, 
+                        "linenumber": 24, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -162,7 +162,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 23, 
+                        "linenumber": 24, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -171,10 +171,10 @@
                         }
                     }
                 ], 
-                "linenumber": 10, 
+                "linenumber": 11, 
                 "name": "vector", 
                 "options": {
-                    "__line__": 18, 
+                    "__line__": 19, 
                     "optblah": "two"
                 }, 
                 "scope": "std::vector::", 
@@ -194,12 +194,12 @@
                         ], 
                         "fmtdict": {
                             "C_impl_filename": "wrapvectorforint.cpp", 
-                            "__line__": 15, 
+                            "__line__": 16, 
                             "fmtblah": "one"
                         }, 
                         "instantiation": "<int>", 
                         "options": {
-                            "__line__": 18, 
+                            "__line__": 19, 
                             "optblah": "two"
                         }
                     }
@@ -242,7 +242,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "std::user::T", 
+                                        "_typename": "user::T", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -254,7 +254,7 @@
                                     "specifier": [
                                         "T"
                                     ], 
-                                    "typemap_name": "std::user::T"
+                                    "typemap_name": "user::T"
                                 }, 
                                 {
                                     "attrs": {
@@ -290,7 +290,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 31, 
+                        "linenumber": 33, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -418,7 +418,7 @@
                             "C_call_code": "SH_this->nested<double>(\targ1,\t arg2);", 
                             "C_call_list": "arg1,\t arg2", 
                             "C_name": "TEM_user_nested_double", 
-                            "C_pre_call": "std::user<int> *SH_this =\t static_cast<std::user<int> *>(self->addr);", 
+                            "C_pre_call": "user<int> *SH_this =\t static_cast<user<int> *>(self->addr);", 
                             "C_prototype": "TEM_user_0 * self,\t int arg1,\t double arg2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
@@ -440,7 +440,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 31, 
+                        "linenumber": 33, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -472,10 +472,10 @@
                         ]
                     }
                 ], 
-                "linenumber": 26, 
+                "linenumber": 28, 
                 "name": "user", 
                 "options": {}, 
-                "scope": "std::user::", 
+                "scope": "user::", 
                 "template_arguments": [
                     {
                         "asts": [
@@ -496,7 +496,7 @@
                 "template_parameters": [
                     "T"
                 ], 
-                "typemap_name": "std::user_0"
+                "typemap_name": "user_0"
             }
         ], 
         "fmtdict": {
@@ -634,7 +634,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 51, 
+                "linenumber": 53, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": false, 
@@ -796,7 +796,7 @@
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)", 
                 "fmtdict": {
                     "CXX_template": "<int, long>", 
-                    "C_call_code": "std::FunctionTU<int, long>(\targ1,\t arg2);", 
+                    "C_call_code": "FunctionTU<int, long>(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TEM_function_tu_0", 
                     "C_prototype": "int arg1,\t long arg2", 
@@ -817,7 +817,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 51, 
+                "linenumber": 53, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -979,7 +979,7 @@
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)", 
                 "fmtdict": {
                     "CXX_template": "<float, double>", 
-                    "C_call_code": "std::FunctionTU<float, double>(\targ1,\t arg2);", 
+                    "C_call_code": "FunctionTU<float, double>(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "TEM_function_tu_1", 
                     "C_prototype": "float arg1,\t double arg2", 
@@ -1000,7 +1000,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 51, 
+                "linenumber": 53, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -1642,148 +1642,6 @@
                 }
             }
         }, 
-        "std::user": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
-            "LUA_type": "LUA_TUSERDATA", 
-            "base": "shadow", 
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                }, 
-                "result": {
-                    "c_header": "<stdlib.h>", 
-                    "cxx_header": "<stdlib.h>", 
-                    "post_call": [
-                        "TEM_user {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
-                    ]
-                }
-            }, 
-            "c_to_cxx": "static_cast<{c_const}std::user *>({c_var}{c_member}addr)", 
-            "c_type": "TEM_user", 
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "std::user", 
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_capsule_data"
-                ]
-            }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
-            "f_derived_type": "user", 
-            "f_module": {
-                "user_mod": [
-                    "user"
-                ]
-            }, 
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
-                    ], 
-                    "need_wrapper": true
-                }
-            }, 
-            "f_to_c": "{f_var}%cxxmem", 
-            "f_type": "type(user)", 
-            "forward": "std::user", 
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "post_parse": [
-                        "{c_const}std::user * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                }, 
-                "intent_inout": {
-                    "cxx_local_var": "pointer", 
-                    "post_parse": [
-                        "{c_const}std::user * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                }, 
-                "intent_out": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
-        }, 
-        "std::user::T": {
-            "base": "template", 
-            "c_type": "c_T", 
-            "cxx_type": "cxx_T", 
-            "f_type": "f_T"
-        }, 
-        "std::user_0": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
-            "LUA_type": "LUA_TUSERDATA", 
-            "base": "shadow", 
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                }, 
-                "result": {
-                    "c_header": "<stdlib.h>", 
-                    "cxx_header": "<stdlib.h>", 
-                    "post_call": [
-                        "TEM_user_0 {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
-                    ]
-                }
-            }, 
-            "c_to_cxx": "static_cast<{c_const}std::user<int> *>({c_var}{c_member}addr)", 
-            "c_type": "TEM_user_0", 
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
-            "cxx_type": "std::user<int>", 
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_capsule_data"
-                ]
-            }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
-            "f_derived_type": "user_0", 
-            "f_module": {
-                "user_mod": [
-                    "user_0"
-                ]
-            }, 
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
-                    ], 
-                    "need_wrapper": true
-                }
-            }, 
-            "f_to_c": "{f_var}%cxxmem", 
-            "f_type": "type(user_0)", 
-            "forward": "std::user<int>", 
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer", 
-                    "post_parse": [
-                        "{c_const}std::user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                }, 
-                "intent_inout": {
-                    "cxx_local_var": "pointer", 
-                    "post_parse": [
-                        "{c_const}std::user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                }, 
-                "intent_out": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
-        }, 
         "std::vector": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
@@ -1979,6 +1837,148 @@
                 }
             }, 
             "f_type": "type(C_PTR)YY"
+        }, 
+        "user": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "base": "shadow", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "TEM_user {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "static_cast<{c_const}user *>({c_var}{c_member}addr)", 
+            "c_type": "TEM_user", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "user", 
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_capsule_data"
+                ]
+            }, 
+            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_derived_type": "user", 
+            "f_module": {
+                "user_mod": [
+                    "user"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%cxxmem", 
+            "f_type": "type(user)", 
+            "forward": "user", 
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}user * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_inout": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}user * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        }, 
+        "user::T": {
+            "base": "template", 
+            "c_type": "c_T", 
+            "cxx_type": "cxx_T", 
+            "f_type": "f_T"
+        }, 
+        "user_0": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "base": "shadow", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "TEM_user_0 {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "static_cast<{c_const}user<int> *>({c_var}{c_member}addr)", 
+            "c_type": "TEM_user_0", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "user<int>", 
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_capsule_data"
+                ]
+            }, 
+            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_derived_type": "user_0", 
+            "f_module": {
+                "user_mod": [
+                    "user_0"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%cxxmem", 
+            "f_type": "type(user_0)", 
+            "forward": "user<int>", 
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_inout": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

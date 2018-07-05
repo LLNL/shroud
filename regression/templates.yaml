@@ -4,23 +4,25 @@
 #
 
 library: templates
-namespace: std
 
 declarations:
-- decl: template<typename T> class vector
-  # std::vector class
-  cxx_header: <vector>
-  cxx_template2:
-  - instantiation: <int>
-    format:
-      fmtblah: one
-      C_impl_filename: wrapvectorforint.cpp
-    options:
-      optblah: two
-#  - instantiation: <double>
-
+- decl: namespace std
   declarations:
-  - decl: void push_back( const T& value+intent(in) );
+  - decl: template<typename T> class vector
+    # std::vector class
+    cxx_header: <vector>
+    cxx_template2:
+    - instantiation: <int>
+      format:
+        fmtblah: one
+        C_impl_filename: wrapvectorforint.cpp
+      options:
+        optblah: two
+#    - instantiation: <double>
+
+    declarations:
+    - decl: void push_back( const T& value+intent(in) );
+    # XXX - reference is getting lost
 
 
 - decl: template<typename T> class user

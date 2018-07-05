@@ -4,16 +4,6 @@
 declarations:
   - namespace: std
     declarations: std
-    - type: user_0
-      fields:
-        base: shadow
-        cxx_type: std::user<int>
-        c_type: TEM_user_0
-        f_derived_type: user_0
-        f_to_c: "{f_var}%cxxmem"
-        f_module:
-          user_mod:
-          - user_0
     - type: vector_0
       fields:
         base: shadow
@@ -25,3 +15,13 @@ declarations:
         f_module:
           vector_mod:
           - vector_0
+  - type: user_0
+    fields:
+      base: shadow
+      cxx_type: user<int>
+      c_type: TEM_user_0
+      f_derived_type: user_0
+      f_to_c: "{f_var}%cxxmem"
+      f_module:
+        user_mod:
+        - user_0
