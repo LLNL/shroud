@@ -21,7 +21,8 @@ extern "C" {
 // splicer begin class.user.C_declarations
 // splicer end class.user.C_declarations
 
-void TEM_user_nested_double(TEM_user_0 * self, int value, double arg2);
+void TEM_user_nested_double(TEM_user_0 * self, const int value,
+    double arg2);
 
 #ifdef __cplusplus
 }

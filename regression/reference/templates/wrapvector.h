@@ -21,7 +21,7 @@ extern "C" {
 // splicer begin class.vector.C_declarations
 // splicer end class.vector.C_declarations
 
-void TEM_vector_push_back(TEM_vector_0 * self, const c_T * value);
+void TEM_vector_push_back_XXXX(TEM_vector_0 * self, const int value);
 
 #ifdef __cplusplus
 }

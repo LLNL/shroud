@@ -4896,6 +4896,7 @@
                     "function_name": "Function7", 
                     "underscore_name": "function7"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 154, 
                 "options": {
                     "wrap_c": false, 
@@ -5050,6 +5051,7 @@
                     "function_suffix": "_int", 
                     "underscore_name": "function7"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 154, 
                 "options": {
                     "wrap_c": true, 
@@ -5202,6 +5204,7 @@
                     "function_suffix": "_double", 
                     "underscore_name": "function7"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 154, 
                 "options": {
                     "wrap_c": true, 
@@ -5278,6 +5281,7 @@
                     "function_name": "Function8", 
                     "underscore_name": "function8"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 162, 
                 "options": {
                     "__line__": 166, 
@@ -5385,6 +5389,7 @@
                     "function_suffix": "_int", 
                     "underscore_name": "function8"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 162, 
                 "options": {
                     "__line__": 166, 
@@ -5492,6 +5497,7 @@
                     "function_suffix": "_double", 
                     "underscore_name": "function8"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 162, 
                 "options": {
                     "__line__": 166, 

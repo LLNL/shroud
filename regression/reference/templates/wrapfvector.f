@@ -26,7 +26,7 @@ module vector_mod
         ! splicer begin class.vector_0.component_part
         ! splicer end class.vector_0.component_part
     contains
-        procedure :: push_back => vector_push_back
+        procedure :: push_back_XXXX => vector_push_back_XXXX
         procedure :: get_instance => vector_get_instance
         procedure :: set_instance => vector_set_instance
         procedure :: associated => vector_associated
@@ -44,13 +44,14 @@ module vector_mod
 
     interface
 
-        subroutine c_vector_push_back(self, value) &
-                bind(C, name="TEM_vector_push_back")
+        subroutine c_vector_push_back_xxxx(self, value) &
+                bind(C, name="TEM_vector_push_back_XXXX")
+            use iso_c_binding, only : C_INT
             import :: SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
-            f_T, intent(IN) :: value
-        end subroutine c_vector_push_back
+            integer(C_INT), intent(IN) :: value
+        end subroutine c_vector_push_back_xxxx
 
         ! splicer begin class.vector_0.additional_interfaces
         ! splicer end class.vector_0.additional_interfaces
@@ -58,13 +59,14 @@ module vector_mod
 
 contains
 
-    subroutine vector_push_back(obj, value)
+    subroutine vector_push_back_XXXX(obj, value)
+        use iso_c_binding, only : C_INT
         class(vector_0) :: obj
-        f_T, intent(IN) :: value
-        ! splicer begin class.vector_0.method.push_back
-        call c_vector_push_back(obj%cxxmem, value)
-        ! splicer end class.vector_0.method.push_back
-    end subroutine vector_push_back
+        integer(C_INT), intent(IN) :: value
+        ! splicer begin class.vector_0.method.push_back_XXXX
+        call c_vector_push_back_xxxx(obj%cxxmem, value)
+        ! splicer end class.vector_0.method.push_back_XXXX
+    end subroutine vector_push_back_XXXX
 
     ! Return pointer to C++ memory.
     function vector_get_instance(obj) result (cxxptr)

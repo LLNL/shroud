@@ -1,11 +1,11 @@
 Read yaml templates.yaml
 Close templates_types.yaml
 class vector
-C method void push_back(const T & value +intent(in))
+C method void push_back(const int value +intent(in))
 Close wrapvector.h
 Close wrapvectorforint.cpp
 class user
-C method void nested(int value +intent(in), double arg2 +intent(in)+value)
+C method void nested(const int value +intent(in), double arg2 +intent(in)+value)
 Close wrapuser.h
 Close wrapuser.cpp
 C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
@@ -14,10 +14,10 @@ Close wraptemplates.h
 Close wraptemplates.cpp
 Close typestemplates.h
 class vector
-C-interface, Fortran method void push_back(const T & value +intent(in))
+C-interface, Fortran method void push_back(const int value +intent(in))
 Close wrapfvector.f
 class user
-C-interface, Fortran method void nested(int value +intent(in), double arg2 +intent(in)+value)
+C-interface, Fortran method void nested(const int value +intent(in), double arg2 +intent(in)+value)
 Close wrapfuser.f
 C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)

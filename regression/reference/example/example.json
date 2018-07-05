@@ -4140,6 +4140,7 @@
                             "function_name": "setValue", 
                             "underscore_name": "set_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 243, 
                         "options": {
                             "wrap_c": false, 
@@ -4328,6 +4329,7 @@
                             "function_suffix": "_int", 
                             "underscore_name": "set_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
@@ -4514,6 +4516,7 @@
                             "function_suffix": "_long", 
                             "underscore_name": "set_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
@@ -4700,6 +4703,7 @@
                             "function_suffix": "_float", 
                             "underscore_name": "set_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
@@ -4886,6 +4890,7 @@
                             "function_suffix": "_double", 
                             "underscore_name": "set_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 243, 
                         "options": {
                             "wrap_c": true, 
@@ -4992,6 +4997,7 @@
                             "function_name": "getValue", 
                             "underscore_name": "get_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 250, 
                         "options": {
                             "wrap_c": false, 
@@ -5122,6 +5128,7 @@
                             "function_suffix": "_int", 
                             "underscore_name": "get_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 250, 
                         "options": {
                             "wrap_c": true, 
@@ -5250,6 +5257,7 @@
                             "function_suffix": "_double", 
                             "underscore_name": "get_value"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 250, 
                         "options": {
                             "wrap_c": true, 

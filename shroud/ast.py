@@ -1019,7 +1019,20 @@ class FunctionNode(AstNode):
             pass
         else:
             raise RuntimeError("Expected a function declaration");
+        if ast.params is None:
+            # 'void foo' instead of 'void foo()'
+            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
         self.ast = ast
+
+        # Look for any template (include class template) arguments.
+        self.have_template_args = False
+        if ast.typemap.base == 'template':
+            self.have_template_args = True
+        else:
+            for args in ast.params:
+                if args.typemap.base == 'template':
+                    self.have_template_args = True
+                    break
 
         # add any attributes from YAML files to the ast
         if 'attrs' in kwargs:
@@ -1031,10 +1044,6 @@ class FunctionNode(AstNode):
         if 'fattrs' in kwargs:
             ast.attrs.update(kwargs['fattrs'])
         # XXX - waring about unused fields in attrs
-
-        if ast.params is None:
-            # 'void foo' instead of 'void foo()'
-            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
 
         fmt_func = self.fmtdict
         fmt_func.function_name = ast.name

@@ -23,26 +23,7 @@
                 }, 
                 "functions": [
                     {
-                        "_fmtargs": {
-                            "value": {
-                                "fmtc": {
-                                    "c_const": "const ", 
-                                    "c_deref": "*", 
-                                    "c_member": "->", 
-                                    "c_var": "value", 
-                                    "cxx_addr": "", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<cxx_T *>\t(value))", 
-                                    "cxx_member": "->", 
-                                    "cxx_type": "cxx_T", 
-                                    "cxx_var": "value", 
-                                    "idtor": "0"
-                                }, 
-                                "fmtf": {
-                                    "c_var": "value", 
-                                    "f_var": "value"
-                                }
-                            }
-                        }, 
+                        "_overloaded": true, 
                         "ast": {
                             "attrs": {
                                 "_typename": "void"
@@ -84,31 +65,110 @@
                         "decl": "void push_back( const T& value+intent(in) );", 
                         "declgen": "void push_back(const T & value +intent(in))", 
                         "fmtdict": {
-                            "C_call_code": "SH_this->push_back(\t*value);", 
-                            "C_call_list": "*value", 
-                            "C_name": "TEM_vector_push_back", 
+                            "function_name": "push_back", 
+                            "function_suffix": "_0", 
+                            "underscore_name": "push_back"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 23, 
+                        "options": {
+                            "wrap_c": false, 
+                            "wrap_fortran": false, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }, 
+                    {
+                        "_fmtargs": {
+                            "value": {
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_deref": "", 
+                                    "c_member": ".", 
+                                    "c_var": "value", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&value))", 
+                                    "cxx_member": ".", 
+                                    "cxx_type": "int", 
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }
+                            }
+                        }, 
+                        "_generated": "cxx_template", 
+                        "_overloaded": true, 
+                        "ast": {
+                            "attrs": {
+                                "_typename": "void"
+                            }, 
+                            "const": false, 
+                            "declarator": {
+                                "name": "push_back", 
+                                "pointer": []
+                            }, 
+                            "func_const": false, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int", 
+                                        "intent": "in", 
+                                        "value": false
+                                    }, 
+                                    "const": true, 
+                                    "declarator": {
+                                        "name": "value", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "specifier": [
+                                "void"
+                            ], 
+                            "typemap_name": "void"
+                        }, 
+                        "decl": "void push_back( const T& value+intent(in) );", 
+                        "declgen": "void push_back(const int value +intent(in))", 
+                        "fmtdict": {
+                            "C_call_code": "SH_this->push_back(\tvalue);", 
+                            "C_call_list": "value", 
+                            "C_name": "TEM_vector_push_back_XXXX", 
                             "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
-                            "C_prototype": "TEM_vector_0 * self,\t const c_T * value", 
+                            "C_prototype": "TEM_vector_0 * self,\t const int value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_call": "c_vector_push_back", 
-                            "F_C_name": "c_vector_push_back", 
+                            "F_C_call": "c_vector_push_back_xxxx", 
+                            "F_C_name": "c_vector_push_back_xxxx", 
                             "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_vector_push_back(obj%cxxmem,\t value)", 
-                            "F_name_function": "push_back", 
+                            "F_call_code": "call c_vector_push_back_xxxx(obj%cxxmem,\t value)", 
+                            "F_name_function": "push_back_XXXX", 
                             "F_name_generic": "push_back", 
-                            "F_name_impl": "vector_push_back", 
+                            "F_name_impl": "vector_push_back_XXXX", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "push_back", 
+                            "function_suffix": "_XXXX", 
                             "underscore_name": "push_back"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 23, 
-                        "options": {}
+                        "options": {
+                            "wrap_c": true, 
+                            "wrap_fortran": true, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
                     }
                 ], 
                 "linenumber": 10, 
@@ -234,6 +294,7 @@
                             "function_name": "nested", 
                             "underscore_name": "nested"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 31, 
                         "options": {
                             "wrap_c": false, 
@@ -287,12 +348,12 @@
                             }, 
                             "value": {
                                 "fmtc": {
-                                    "c_const": "", 
+                                    "c_const": "const ", 
                                     "c_deref": "", 
                                     "c_member": ".", 
                                     "c_var": "value", 
                                     "cxx_addr": "&", 
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&value)", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&value))", 
                                     "cxx_member": ".", 
                                     "cxx_type": "int", 
                                     "cxx_var": "value", 
@@ -323,7 +384,7 @@
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
+                                    "const": true, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -356,14 +417,14 @@
                             "typemap_name": "void"
                         }, 
                         "decl": "template<U> void nested( const T& value+intent(in), U arg2 );", 
-                        "declgen": "void nested(int value +intent(in), double arg2 +intent(in)+value)", 
+                        "declgen": "void nested(const int value +intent(in), double arg2 +intent(in)+value)", 
                         "fmtdict": {
                             "CXX_template": "<double>", 
                             "C_call_code": "SH_this->nested<double>(\tvalue,\t arg2);", 
                             "C_call_list": "value,\t arg2", 
                             "C_name": "TEM_user_nested_double", 
                             "C_pre_call": "std::user<int> *SH_this =\t static_cast<std::user<int> *>(self->addr);", 
-                            "C_prototype": "TEM_user_0 * self,\t int value,\t double arg2", 
+                            "C_prototype": "TEM_user_0 * self,\t const int value,\t double arg2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
                             "F_C_call": "c_user_nested_double", 
@@ -383,6 +444,7 @@
                             "function_suffix": "_double", 
                             "underscore_name": "nested"
                         }, 
+                        "have_template_args": true, 
                         "linenumber": 31, 
                         "options": {
                             "wrap_c": true, 
@@ -576,6 +638,7 @@
                     "function_name": "FunctionTU", 
                     "underscore_name": "function_tu"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 51, 
                 "options": {
                     "wrap_c": false, 
@@ -758,6 +821,7 @@
                     "function_suffix": "_0", 
                     "underscore_name": "function_tu"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 51, 
                 "options": {
                     "wrap_c": true, 
@@ -940,6 +1004,7 @@
                     "function_suffix": "_1", 
                     "underscore_name": "function_tu"
                 }, 
+                "have_template_args": true, 
                 "linenumber": 51, 
                 "options": {
                     "wrap_c": true, 

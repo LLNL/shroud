@@ -524,6 +524,10 @@ class GenFunctions(object):
             if method.template_arguments:
                 method._overloaded = True
                 self.template_function(method, ordered_functions)
+            elif method.have_template_args:
+#                method._overloaded = True
+                self.template_function2(method, ordered_functions)
+                pass
 
         # Look for overloaded functions
         overloaded_functions = {}
@@ -619,6 +623,70 @@ class GenFunctions(object):
                     newparams.append(arg)
             new.ast.params = newparams
             self.pop_instantiate_scope()
+
+        # Do not process templated node, instead process
+        # generated functions above.
+        options = node.options
+        options.wrap_c = False
+        options.wrap_fortran = False
+        options.wrap_python = False
+        options.wrap_lua = False
+
+    def template_function2(self, node, ordered_functions):
+        """ Create overloaded functions for each templated argument.
+
+        - decl: template<typename ArgType> void Function7(ArgType arg)
+          cxx_template:
+          - instantiation: <int>
+          - instantiation: <double>
+
+        node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
+                 TemplateArgument.asts[i].typemap
+
+        clone entire function then look for template arguments.
+        """
+        oldoptions = node.options
+
+        new = node.clone()
+        ordered_functions.append(new)
+        self.append_function_index(new)
+
+        new._generated = 'cxx_template'
+        fmt = new.fmtdict
+
+        # If single template argument, use its name; else sequence.
+        # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
+#        if len(targs.asts) == 1:
+#            fmt.function_suffix = fmt.function_suffix + '_' + targs.asts[0].typemap.name
+#        else:
+#            fmt.function_suffix = fmt.function_suffix + '_' + str(iargs)
+        fmt.function_suffix = fmt.function_suffix + '_' + 'XXXX'
+
+        new.cxx_template = {}
+        options = new.options
+        options.wrap_c = oldoptions.wrap_c
+        options.wrap_fortran = oldoptions.wrap_fortran
+        options.wrap_python = oldoptions.wrap_python
+        options.wrap_lua = oldoptions.wrap_lua
+#        fmt.CXX_template = targs.instantiation   # ex. <int>
+
+#        self.push_instantiate_scope(new, targs)
+
+        if new.ast.typemap.base == 'template':
+            idx = node.template_name_to_index[new.ast.typemap.name]
+            new.ast = new.ast.instantiate(targs.asts[idx])
+            new._CXX_return_templated = True
+
+        # Replace templated arguments.
+        newparams = []
+        for arg in new.ast.params:
+            if arg.typemap.base == 'template':
+                iast = getattr(self.instantiate_scope, arg.typemap.name)
+                newparams.append(arg.instantiate(iast))
+            else:
+                newparams.append(arg)
+        new.ast.params = newparams
+#        self.pop_instantiate_scope()
 
         # Do not process templated node, instead process
         # generated functions above.

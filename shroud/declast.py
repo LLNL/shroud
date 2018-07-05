@@ -1015,7 +1015,7 @@ class Declaration(Node):
 
     def instantiate(self, node):
         """Instantiate a template argument.
-        node - Declaration node
+        node - Declaration node.
         Return a new copy of node, which is abstract (no name)
         and fill in the name from self.
         If node is 'int *', the pointer is in the declarator.
@@ -1029,6 +1029,7 @@ class Declaration(Node):
             new.declarator = copy.copy(node.declarator)
         new.declarator.name = self.declarator.name
         new.params = self.params
+        new.const = self.const
         return new
 
     def __str__(self):
