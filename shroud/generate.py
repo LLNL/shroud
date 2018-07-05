@@ -305,6 +305,7 @@ class GenFunctions(object):
     def __init__(self, newlibrary, config):
         self.newlibrary = newlibrary
         self.config = config
+        self.instantiate_scope = None
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -316,18 +317,25 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
 
         self.instantiate_classes(newlibrary)
-
-        for cls in newlibrary.classes:
-#            added = self.default_ctor_and_dtor(cls)
-            if not cls.as_struct:
-                for var in cls.variables:
-                    self.add_var_getter_setter(cls, var)
-            cls.functions = self.define_function_suffix(cls.functions)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
 #        for cls in newlibrary.classes:
 #            self.check_class_dependencies(cls)
+
+    def push_instantiate_scope(self, node, targs):
+        """Add template arguments to scope.
+        node  - ClassNode or FunctionNode
+        targs - list of TemplateArguments
+        """
+        newscope = util.Scope(self.instantiate_scope)
+        for idx, ast in enumerate(targs.asts):
+            setattr(newscope, node.template_parameters[idx], ast)
+        self.instantiate_scope = newscope
+
+    def pop_instantiate_scope(self):
+        """Remove template arguments from scope"""
+        self.instantiate_scope = self.instantiate_scope.get_parent()
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -437,17 +445,20 @@ class GenFunctions(object):
         """
         clslist = []
         for cls in node.classes:
-            if cls.template_arguments:
+            if cls.as_struct:
+                clslist.append(cls)
+            elif cls.template_arguments:
                 # Replace class with new class for each template instantiation.
-                for i, args in enumerate(cls.template_arguments):
+                for i, targs in enumerate(cls.template_arguments):
                     newcls = cls.clone()
+                    clslist.append(newcls)
 
                     # Update name of class.
                     #  cxx_class - vector_0      (Fortran and C names)
                     #  cxx_type  - vector<int>
                     cxx_class = "{}_{}".format(newcls.fmtdict.cxx_class, i)
                     cxx_type = "{}{}".format(newcls.fmtdict.cxx_class,
-                                             args.instantiation)
+                                             targs.instantiation)
 
                     newcls.fmtdict.update(dict(
                         cxx_type=cxx_type,
@@ -460,20 +471,27 @@ class GenFunctions(object):
                     newcls.expand_format_templates()
 
                     # Update format and options from template_arguments
-                    if args.fmtdict:
-                        newcls.fmtdict.update(args.fmtdict)
-                    if args.options:
-                        newcls.options.update(args.options)
+                    if targs.fmtdict:
+                        newcls.fmtdict.update(targs.fmtdict)
+                    if targs.options:
+                        newcls.options.update(targs.options)
 
                     newcls.typemap = typemap.create_class_typemap(newcls)
 
-                    # class_lower class_prefix class_upper cxx_class
-#                    newcls.functions = self.define_function_suffix(newcls.functions)
-                    clslist.append(newcls)
+                    self.push_instantiate_scope(newcls, targs)
+                    self.process_class(newcls)
+                    self.pop_instantiate_scope()
             else:
-#                cls.functions = self.define_function_suffix(cls.functions)
                 clslist.append(cls)
+                self.process_class(cls)
+
         node.classes = clslist
+
+    def process_class(self, cls):
+        """process variables and functions for a class."""
+        for var in cls.variables:
+            self.add_var_getter_setter(cls, var)
+        cls.functions = self.define_function_suffix(cls.functions)
 
     def define_function_suffix(self, functions):
         """
@@ -583,6 +601,8 @@ class GenFunctions(object):
             options.wrap_lua = oldoptions.wrap_lua
             fmt.CXX_template = targs.instantiation   # ex. <int>
 
+            self.push_instantiate_scope(new, targs)
+
             if new.ast.typemap.base == 'template':
                 idx = node.template_name_to_index[new.ast.typemap.name]
                 new.ast = new.ast.instantiate(targs.asts[idx])
@@ -592,11 +612,17 @@ class GenFunctions(object):
             newparams = []
             for arg in new.ast.params:
                 if arg.typemap.base == 'template':
+
+#                    a = None #getattr(self.instantiate_scope, arg.typemap.name)
+#                    b = arg.typename
+#                    print("LLLLLL", a, b)
+
                     idx = node.template_name_to_index[arg.typemap.name]
                     newparams.append(arg.instantiate(targs.asts[idx]))
                 else:
                     newparams.append(arg)
             new.ast.params = newparams
+            self.pop_instantiate_scope()
 
         # Do not process templated node, instead process
         # generated functions above.

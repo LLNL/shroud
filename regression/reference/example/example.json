@@ -4210,7 +4210,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4395,7 +4398,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4578,7 +4584,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4761,7 +4770,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_fmtargs": {
@@ -4944,7 +4956,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_overloaded": true, 
@@ -5017,7 +5032,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_CXX_return_templated": true, 
@@ -5144,7 +5162,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }, 
                     {
                         "_CXX_return_templated": true, 
@@ -5269,7 +5290,10 @@
                         ], 
                         "template_name_to_index": {
                             "ValueType": 0
-                        }
+                        }, 
+                        "template_parameters": [
+                            "ValueType"
+                        ]
                     }
                 ], 
                 "linenumber": 181, 

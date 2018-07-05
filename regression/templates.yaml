@@ -21,6 +21,11 @@ declarations:
   declarations:
   - decl: void push_back( const T& value+intent(in) );
 
+  - decl: template<U> void nested( const T& value+intent(in), U arg2 );
+    # XXX - error of cxx_template2 is missing
+    cxx_template2:
+    - instantiation: <int>
+
 
 
 #- decl: template<ArgType> void Function7(ArgType arg)
@@ -31,3 +36,12 @@ declarations:
 #  cxx_template2:
 #    - instantiation: <int>
 #    - instantiation: <double>
+
+
+# template structs
+# template class variables
+
+#- decl: template<T,U> void FunctionXX(T arg1, U arg2)
+#  cxx_template2:
+#  - instantiation: <int, long>
+#  - instantiation: <float, double>

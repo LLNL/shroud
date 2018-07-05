@@ -583,6 +583,10 @@ class Scope(object):
         """Change the parent node."""
         self.__parent = parent
 
+    def get_parent(self):
+        """Return parent"""
+        return self.__parent
+
     def trace(self, key, header=True):
         """Help debug where a symbol is found."""
         if header:

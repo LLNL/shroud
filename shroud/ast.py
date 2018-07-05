@@ -929,6 +929,7 @@ class FunctionNode(AstNode):
     ---------
 
     template_name_to_index - {'T1': 0, 'T2': 1}
+    template_parameters - [ 'T1', 'T2' ]
     template_argument - [ TemplateArgument('<int,long>'),
                           TemplateArgument('<float,double>') ]
 
@@ -972,6 +973,7 @@ class FunctionNode(AstNode):
         self.cpp_if = kwargs.get('cpp_if', None)
         self.cxx_template = {}
         self.template_name_to_index = None
+        self.template_parameters = []
         self.template_arguments = kwargs.get('cxx_template2', [])
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
@@ -1000,6 +1002,7 @@ class FunctionNode(AstNode):
             self.template_name_to_index = {}
             for iarg, param in enumerate(ast.parameters):
                 self.template_name_to_index[param.name] = iarg
+                self.template_parameters.append(param.name)
 
             template_parameters = ast
             ast = ast.decl
