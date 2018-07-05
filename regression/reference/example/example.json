@@ -1982,6 +1982,7 @@
                         "richcompare"
                     ]
                 }, 
+                "scope": "example::nested::ExClass1::", 
                 "typemap_name": "example::nested::ExClass1"
             }, 
             {
@@ -5320,6 +5321,7 @@
                         "del"
                     ]
                 }, 
+                "scope": "example::nested::ExClass2::", 
                 "typemap_name": "example::nested::ExClass2"
             }, 
             {
@@ -5500,6 +5502,7 @@
                     "__line__": 258, 
                     "wrap_python": false
                 }, 
+                "scope": "example::nested::ExClass3::", 
                 "typemap_name": "example::nested::ExClass3"
             }
         ], 

@@ -330,7 +330,8 @@ class GenFunctions(object):
         """
         newscope = util.Scope(self.instantiate_scope)
         for idx, ast in enumerate(targs.asts):
-            setattr(newscope, node.template_parameters[idx], ast)
+            scope = getattr(node, 'scope', '') # XXX - ClassNode has scope
+            setattr(newscope, scope + node.template_parameters[idx], ast)
         self.instantiate_scope = newscope
 
     def pop_instantiate_scope(self):
@@ -612,13 +613,8 @@ class GenFunctions(object):
             newparams = []
             for arg in new.ast.params:
                 if arg.typemap.base == 'template':
-
-#                    a = None #getattr(self.instantiate_scope, arg.typemap.name)
-#                    b = arg.typename
-#                    print("LLLLLL", a, b)
-
-                    idx = node.template_name_to_index[arg.typemap.name]
-                    newparams.append(arg.instantiate(targs.asts[idx]))
+                    iast = getattr(self.instantiate_scope, arg.typemap.name)
+                    newparams.append(arg.instantiate(iast))
                 else:
                     newparams.append(arg)
             new.ast.params = newparams

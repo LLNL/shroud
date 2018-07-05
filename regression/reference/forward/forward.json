@@ -401,6 +401,7 @@
                 "linenumber": 70, 
                 "name": "Class2", 
                 "options": {}, 
+                "scope": "tutorial::Class2::", 
                 "typemap_name": "tutorial::Class2"
             }, 
             {
@@ -435,6 +436,7 @@
                 "linenumber": 77, 
                 "name": "Class3", 
                 "options": {}, 
+                "scope": "tutorial::Class3::", 
                 "typemap_name": "tutorial::Class3"
             }
         ], 

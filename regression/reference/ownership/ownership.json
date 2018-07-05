@@ -148,6 +148,7 @@
                 "linenumber": 54, 
                 "name": "Class1", 
                 "options": {}, 
+                "scope": "Class1::", 
                 "typemap_name": "Class1", 
                 "variables": [
                     {

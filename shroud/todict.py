@@ -217,7 +217,7 @@ class ToDict(visitor.Visitor):
         )
         add_non_none_fields(node, d, ['linenumber'])
         add_true_fields(node, d, ['as_struct', 'python',
-                                  'template_parameters'])
+                                  'scope', 'template_parameters'])
         self.add_visit_fields(node, d,
                               ['enums', 'functions', 'variables',
                                'fmtdict', 'options',

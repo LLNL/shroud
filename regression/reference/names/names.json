@@ -136,6 +136,7 @@
                     "__line__": 81, 
                     "none": "foo"
                 }, 
+                "scope": "Names::", 
                 "typemap_name": "Names"
             }, 
             {
@@ -165,6 +166,7 @@
                 "linenumber": 103, 
                 "name": "Names2", 
                 "options": {}, 
+                "scope": "Names2::", 
                 "typemap_name": "Names2"
             }
         ], 

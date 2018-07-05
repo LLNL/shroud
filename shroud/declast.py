@@ -1015,6 +1015,7 @@ class Declaration(Node):
 
     def instantiate(self, node):
         """Instantiate a template argument.
+        node - Declaration node
         Return a new copy of node, which is abstract (no name)
         and fill in the name from self.
         If node is 'int *', the pointer is in the declarator.
@@ -1427,6 +1428,7 @@ class TemplateParam(Node):
 
     self.typemap = a typemap.Typemap with base='template'.
                    Used as a place holder for the Template argument.
+                   The typemap is not registered.
     """
     def __init__(self, name):
         self.name = name

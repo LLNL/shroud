@@ -34,6 +34,7 @@
                 "linenumber": 78, 
                 "name": "struct1", 
                 "options": {}, 
+                "scope": "tutorial::struct1::", 
                 "typemap_name": "tutorial::struct1", 
                 "variables": [
                     {
@@ -1423,6 +1424,7 @@
                 "linenumber": 235, 
                 "name": "Class1", 
                 "options": {}, 
+                "scope": "tutorial::Class1::", 
                 "typemap_name": "tutorial::Class1", 
                 "variables": [
                     {
@@ -1598,6 +1600,7 @@
                     "__line__": 366, 
                     "wrap_lua": false
                 }, 
+                "scope": "Singleton::", 
                 "typemap_name": "Singleton"
             }
         ], 

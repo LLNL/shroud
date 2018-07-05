@@ -107,6 +107,7 @@
                 "linenumber": 66, 
                 "name": "Class1", 
                 "options": {}, 
+                "scope": "three::Class1::", 
                 "typemap_name": "three::Class1"
             }, 
             {
@@ -306,6 +307,7 @@
                 "linenumber": 71, 
                 "name": "Class2", 
                 "options": {}, 
+                "scope": "Class2::", 
                 "typemap_name": "Class2"
             }
         ], 
