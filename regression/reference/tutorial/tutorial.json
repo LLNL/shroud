@@ -5009,7 +5009,7 @@
                             "specifier": [
                                 "int"
                             ], 
-                            "typemap_name": "ArgType"
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
@@ -5160,7 +5160,7 @@
                             "specifier": [
                                 "double"
                             ], 
-                            "typemap_name": "ArgType"
+                            "typemap_name": "double"
                         }
                     ], 
                     "specifier": [
@@ -5342,7 +5342,7 @@
                     "specifier": [
                         "int"
                     ], 
-                    "typemap_name": "RetType"
+                    "typemap_name": "int"
                 }, 
                 "decl": "template<typename RetType> RetType Function8()", 
                 "declgen": "int Function8()", 
@@ -5446,7 +5446,7 @@
                     "specifier": [
                         "double"
                     ], 
-                    "typemap_name": "RetType"
+                    "typemap_name": "double"
                 }, 
                 "decl": "template<typename RetType> RetType Function8()", 
                 "declgen": "double Function8()", 

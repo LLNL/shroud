@@ -4285,7 +4285,7 @@
                                     "specifier": [
                                         "int"
                                     ], 
-                                    "typemap_name": "ValueType"
+                                    "typemap_name": "int"
                                 }
                             ], 
                             "specifier": [
@@ -4470,7 +4470,7 @@
                                     "specifier": [
                                         "long"
                                     ], 
-                                    "typemap_name": "ValueType"
+                                    "typemap_name": "long"
                                 }
                             ], 
                             "specifier": [
@@ -4653,7 +4653,7 @@
                                     "specifier": [
                                         "float"
                                     ], 
-                                    "typemap_name": "ValueType"
+                                    "typemap_name": "float"
                                 }
                             ], 
                             "specifier": [
@@ -4836,7 +4836,7 @@
                                     "specifier": [
                                         "double"
                                     ], 
-                                    "typemap_name": "ValueType"
+                                    "typemap_name": "double"
                                 }
                             ], 
                             "specifier": [
@@ -5068,7 +5068,7 @@
                             "specifier": [
                                 "int"
                             ], 
-                            "typemap_name": "ValueType"
+                            "typemap_name": "int"
                         }, 
                         "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "int getValue()", 
@@ -5195,7 +5195,7 @@
                             "specifier": [
                                 "double"
                             ], 
-                            "typemap_name": "ValueType"
+                            "typemap_name": "double"
                         }, 
                         "decl": "template<typename ValueType> ValueType getValue()", 
                         "declgen": "double getValue()", 
