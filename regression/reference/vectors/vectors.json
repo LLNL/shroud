@@ -138,7 +138,6 @@
                                 "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -250,7 +249,6 @@
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "size": "Sarg", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -329,7 +327,6 @@
                                 "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -437,7 +434,6 @@
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -521,7 +517,6 @@
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -630,7 +625,6 @@
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -714,7 +708,6 @@
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "inout", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -825,7 +818,6 @@
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "size": "Sarg", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -908,7 +900,6 @@
                                 "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "inout", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -1014,7 +1005,6 @@
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "size": "Sarg", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": false, 
@@ -1099,7 +1089,6 @@
                                 "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
-                                "template": "std::string", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -1217,7 +1206,6 @@
                                 "intent": "in", 
                                 "len": "Narg", 
                                 "size": "Sarg", 
-                                "template": "std::string", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -1298,8 +1286,7 @@
                         {
                             "attrs": {
                                 "_typename": "std::vector", 
-                                "intent": "out", 
-                                "template": "std::string"
+                                "intent": "out"
                             }, 
                             "const": false, 
                             "declarator": {
@@ -1373,8 +1360,7 @@
                         {
                             "attrs": {
                                 "_typename": "std::vector", 
-                                "intent": "inout", 
-                                "template": "std::string"
+                                "intent": "inout"
                             }, 
                             "const": false, 
                             "declarator": {

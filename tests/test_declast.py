@@ -223,7 +223,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "_typename": "std::vector",
-                "template": "int"
             },
             "const": False,
             "declarator": {
@@ -248,7 +247,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(todict.to_dict(r),{
             "attrs": {
                 "_typename": "std::vector",
-                "template": "long long"
             },
             "const": False,
             "declarator": {
@@ -271,10 +269,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("std::vector<std::string> var1", s)
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "_typename": "std::vector",
-                "template": "std::string"
-            },
+            "attrs": {"_typename": "std::vector"},
             "const": False,
             "declarator": {
                 "name": "var1",
@@ -1058,7 +1053,6 @@ class CheckParse(unittest.TestCase):
                 {
                     "attrs": {
                         "_typename": "std::vector",
-                        "template": "std::string",
                     }, 
                     "const": False, 
                     "declarator": {

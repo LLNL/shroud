@@ -164,7 +164,6 @@ class VerifyAttrs(object):
                     'implied', # omitted in Fortran API, value passed to C++
                     'intent',
                     'len', 'len_trim', 'size',
-                    'template',
                     'value',
             ]:
                 raise RuntimeError(

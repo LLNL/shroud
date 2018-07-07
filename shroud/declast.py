@@ -475,7 +475,6 @@ class Parser(ExprParser):
                 temp = Declaration()
                 self.declaration_specifier(temp)
                 lst.append(temp)
-                node.attrs['template'] = str(temp)
                 if not self.have('COMMA'):
                     break
                 self.error_msg("Only single template argument accepted")
