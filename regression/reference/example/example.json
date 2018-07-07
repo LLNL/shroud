@@ -75,8 +75,6 @@
                                 "_name": "ctor", 
                                 "_typename": "example::nested::ExClass1"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "ExClass1"
@@ -200,8 +198,6 @@
                                 "_name": "ctor", 
                                 "_typename": "example::nested::ExClass1"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -214,7 +210,6 @@
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -312,8 +307,6 @@
                                 "_name": "ctor", 
                                 "_typename": "example::nested::ExClass1"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -328,7 +321,6 @@
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -384,8 +376,6 @@
                                 "_name": "dtor", 
                                 "_typename": "example::nested::ExClass1"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "ExClass1"
@@ -510,12 +500,10 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "incrementCount", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -523,7 +511,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "incr", 
                                         "pointer": []
@@ -621,7 +608,6 @@
                                 "name": "getNameErrorPattern", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -711,7 +697,6 @@
                                 "_typename": "void", 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getNameErrorPattern", 
                                 "pointer": []
@@ -727,12 +712,10 @@
                                         "intent": "out", 
                                         "len": "NSHF_rv"
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -812,7 +795,6 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "GetNameLength", 
                                 "pointer": []
@@ -908,7 +890,6 @@
                                 "name": "getNameErrorCheck", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -994,7 +975,6 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getNameErrorCheck", 
                                 "pointer": []
@@ -1015,7 +995,6 @@
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -1100,7 +1079,6 @@
                                 "name": "getNameArg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -1180,7 +1158,6 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getNameArg", 
                                 "pointer": []
@@ -1195,12 +1172,10 @@
                                         "intent": "out", 
                                         "len": "Nname"
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -1252,7 +1227,6 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getNameArg", 
                                 "pointer": []
@@ -1267,12 +1241,10 @@
                                         "intent": "out", 
                                         "len": "Nname"
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -1348,17 +1320,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getRoot", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
@@ -1481,12 +1450,10 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -1494,7 +1461,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -1628,12 +1594,10 @@
                             "attrs": {
                                 "_typename": "long"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -1641,7 +1605,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -1726,17 +1689,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getAddr", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
@@ -1859,12 +1819,10 @@
                             "attrs": {
                                 "_typename": "bool"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "hasAddr", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -1872,7 +1830,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "in", 
                                         "pointer": []
@@ -1927,12 +1884,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SplicerSpecial", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
@@ -2098,8 +2053,6 @@
                                 "_name": "ctor", 
                                 "_typename": "example::nested::ExClass2"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -2114,7 +2067,6 @@
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -2210,8 +2162,6 @@
                                 "_name": "ctor", 
                                 "_typename": "example::nested::ExClass2"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -2227,7 +2177,6 @@
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -2281,8 +2230,6 @@
                                 "_name": "dtor", 
                                 "_typename": "example::nested::ExClass2"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "ExClass2"
@@ -2371,7 +2318,6 @@
                                 "name": "getName", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2458,7 +2404,6 @@
                                 "_typename": "void", 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getName", 
                                 "pointer": []
@@ -2474,12 +2419,10 @@
                                         "intent": "out", 
                                         "len": "NSHF_rv"
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -2567,12 +2510,10 @@
                                 "name": "getName2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "return_pointer_as": "allocatable", 
                             "specifier": [
@@ -2653,12 +2594,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getName2", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -2674,7 +2613,6 @@
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -2758,12 +2696,10 @@
                                 "_typename": "std::string", 
                                 "deref": "allocatable"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getName3", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2849,7 +2785,6 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getName3", 
                                 "pointer": []
@@ -2865,12 +2800,10 @@
                                         "deref": "allocatable", 
                                         "intent": "out"
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -2954,17 +2887,14 @@
                                 "_typename": "std::string", 
                                 "deref": "allocatable"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getName4", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "return_pointer_as": "allocatable", 
                             "specifier": [
@@ -3045,12 +2975,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getName4", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3061,12 +2989,10 @@
                                         "deref": "allocatable", 
                                         "intent": "out"
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "SHF_rv", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -3147,7 +3073,6 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "GetNameLength", 
                                 "pointer": []
@@ -3284,17 +3209,14 @@
                             "attrs": {
                                 "_typename": "example::nested::ExClass1"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "get_class1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3307,7 +3229,6 @@
                                         "name": "in", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -3387,17 +3308,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3405,7 +3323,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "type", 
                                         "pointer": []
@@ -3463,17 +3380,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3481,7 +3395,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "type", 
                                         "pointer": []
@@ -3528,17 +3441,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3546,7 +3456,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "type", 
                                         "pointer": []
@@ -3691,17 +3600,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3709,7 +3615,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "type", 
                                         "pointer": []
@@ -3725,7 +3630,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "len", 
                                         "pointer": []
@@ -3792,17 +3696,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3810,7 +3711,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "type", 
                                         "pointer": []
@@ -3826,7 +3726,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "len", 
                                         "pointer": []
@@ -3882,17 +3781,14 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -3900,7 +3796,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "type", 
                                         "pointer": []
@@ -3916,7 +3811,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "len", 
                                         "pointer": []
@@ -3962,12 +3856,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "destroyall", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
@@ -4044,7 +3936,6 @@
                             "attrs": {
                                 "_typename": "TypeID"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getTypeID", 
                                 "pointer": []
@@ -4097,12 +3988,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -4110,7 +3999,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -4155,7 +4043,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4170,7 +4057,6 @@
                                         "attrs": {
                                             "_typename": "long"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4185,7 +4071,6 @@
                                         "attrs": {
                                             "_typename": "float"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4200,7 +4085,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4269,12 +4153,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -4282,7 +4164,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -4344,7 +4225,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4359,7 +4239,6 @@
                                         "attrs": {
                                             "_typename": "long"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4374,7 +4253,6 @@
                                         "attrs": {
                                             "_typename": "float"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4389,7 +4267,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4458,12 +4335,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -4471,7 +4346,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -4531,7 +4405,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4546,7 +4419,6 @@
                                         "attrs": {
                                             "_typename": "long"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4561,7 +4433,6 @@
                                         "attrs": {
                                             "_typename": "float"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4576,7 +4447,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4645,12 +4515,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -4658,7 +4526,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -4718,7 +4585,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4733,7 +4599,6 @@
                                         "attrs": {
                                             "_typename": "long"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4748,7 +4613,6 @@
                                         "attrs": {
                                             "_typename": "float"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4763,7 +4627,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4832,12 +4695,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -4845,7 +4706,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "value", 
                                         "pointer": []
@@ -4905,7 +4765,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4920,7 +4779,6 @@
                                         "attrs": {
                                             "_typename": "long"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4935,7 +4793,6 @@
                                         "attrs": {
                                             "_typename": "float"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4950,7 +4807,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4973,12 +4829,10 @@
                             "attrs": {
                                 "_typename": "ValueType"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "ValueType"
@@ -5012,7 +4866,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -5027,7 +4880,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -5083,12 +4935,10 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "int"
@@ -5143,7 +4993,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -5158,7 +5007,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -5214,12 +5062,10 @@
                             "attrs": {
                                 "_typename": "double"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "double"
@@ -5272,7 +5118,6 @@
                                         "attrs": {
                                             "_typename": "int"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -5287,7 +5132,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -5363,12 +5207,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "exfunc", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
@@ -5444,12 +5286,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "exfunc", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -5457,7 +5297,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "flag", 
                                         "pointer": []
@@ -5654,12 +5493,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "local_function1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
@@ -5771,12 +5608,10 @@
                     "attrs": {
                         "_typename": "bool"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "isNameValid", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5789,7 +5624,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -5875,12 +5709,10 @@
                     "attrs": {
                         "_typename": "bool"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "isNameValid", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5895,7 +5727,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -5975,12 +5806,10 @@
                     "attrs": {
                         "_typename": "bool"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "isInitialized", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "bool"
@@ -6159,12 +5988,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "checkBool", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6172,7 +5999,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -6188,12 +6014,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -6209,12 +6033,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg3", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -6305,12 +6127,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6323,7 +6143,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6398,12 +6217,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6418,7 +6235,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6545,12 +6361,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6563,7 +6377,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6579,7 +6392,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "flag", 
                                 "pointer": []
@@ -6670,12 +6482,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6690,7 +6500,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6706,7 +6515,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "flag", 
                                 "pointer": []
@@ -6754,12 +6562,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testoptional", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
@@ -6824,12 +6630,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testoptional", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6837,7 +6641,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
@@ -6988,12 +6791,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testoptional", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7001,7 +6802,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
@@ -7018,7 +6818,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "j", 
                                 "pointer": []
@@ -7100,12 +6899,10 @@
                     "attrs": {
                         "_typename": "size_t"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "test_size_t", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "size_t"
@@ -7196,12 +6993,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testmpi", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7209,7 +7004,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "comm", 
                                 "pointer": []
@@ -7262,12 +7056,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testmpi", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
@@ -7355,12 +7147,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testgroup1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7368,12 +7158,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "grp", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -7471,12 +7259,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "testgroup2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7489,7 +7275,6 @@
                                 "name": "grp", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -7584,12 +7369,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FuncPtr1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7597,20 +7380,17 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "func": {
                                     "name": "get", 
                                     "pointer": [
                                         {
-                                            "const": false, 
                                             "ptr": "*"
                                         }
                                     ]
                                 }, 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
@@ -7705,12 +7485,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FuncPtr2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7718,25 +7496,21 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "func": {
                                     "name": "get", 
                                     "pointer": [
                                         {
-                                            "const": false, 
                                             "ptr": "*"
                                         }
                                     ]
                                 }, 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "double"
@@ -7831,12 +7605,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FuncPtr3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7844,27 +7616,23 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "func": {
                                     "name": "get", 
                                     "pointer": [
                                         {
-                                            "const": false, 
                                             "ptr": "*"
                                         }
                                     ]
                                 }, 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "i", 
                                         "pointer": []
@@ -7879,7 +7647,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -7957,12 +7724,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FuncPtr4", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7970,27 +7735,23 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "func": {
                                     "name": "get", 
                                     "pointer": [
                                         {
-                                            "const": false, 
                                             "ptr": "*"
                                         }
                                     ]
                                 }, 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
                                         "_typename": "double", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "double"
                                     ], 
@@ -8001,7 +7762,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -8105,12 +7865,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FuncPtr5", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8118,27 +7876,23 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "func": {
                                     "name": "get", 
                                     "pointer": [
                                         {
-                                            "const": false, 
                                             "ptr": "*"
                                         }
                                     ]
                                 }, 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname1", 
                                         "pointer": []
@@ -8153,7 +7907,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname2", 
                                         "pointer": []
@@ -8168,7 +7921,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname3", 
                                         "pointer": []
@@ -8183,7 +7935,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname4", 
                                         "pointer": []
@@ -8198,7 +7949,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname5", 
                                         "pointer": []
@@ -8213,7 +7963,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname6", 
                                         "pointer": []
@@ -8228,7 +7977,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname7", 
                                         "pointer": []
@@ -8243,7 +7991,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname8", 
                                         "pointer": []
@@ -8258,7 +8005,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname9", 
                                         "pointer": []
@@ -8273,7 +8019,6 @@
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "verylongname10", 
                                         "pointer": []
@@ -8780,12 +8525,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "verylongfunctionname1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8793,12 +8536,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8814,12 +8555,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8835,12 +8574,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname3", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8856,12 +8593,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname4", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8877,12 +8612,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname5", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8898,12 +8631,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname6", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8919,12 +8650,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname7", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8940,12 +8669,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname8", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8961,12 +8688,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname9", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8982,12 +8707,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname10", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -9502,12 +9225,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "verylongfunctionname2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9515,7 +9236,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname1", 
                                 "pointer": []
@@ -9531,7 +9251,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname2", 
                                 "pointer": []
@@ -9547,7 +9266,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname3", 
                                 "pointer": []
@@ -9563,7 +9281,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname4", 
                                 "pointer": []
@@ -9579,7 +9296,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname5", 
                                 "pointer": []
@@ -9595,7 +9311,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname6", 
                                 "pointer": []
@@ -9611,7 +9326,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname7", 
                                 "pointer": []
@@ -9627,7 +9341,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname8", 
                                 "pointer": []
@@ -9643,7 +9356,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname9", 
                                 "pointer": []
@@ -9659,7 +9371,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "verylongname10", 
                                 "pointer": []
@@ -9855,12 +9566,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "cos_doubles", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9869,12 +9578,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "in", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -9892,12 +9599,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "out", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -9914,7 +9619,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []

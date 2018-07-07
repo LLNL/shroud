@@ -42,7 +42,6 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "ifield", 
                                 "pointer": []
@@ -67,7 +66,6 @@
                             "attrs": {
                                 "_typename": "double"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dfield", 
                                 "pointer": []
@@ -236,8 +234,6 @@
                                 "_typename": "tutorial::Class1", 
                                 "name": "new"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class1"
@@ -367,8 +363,6 @@
                                 "_typename": "tutorial::Class1", 
                                 "name": "new"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -376,7 +370,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "flag", 
                                         "pointer": []
@@ -434,8 +427,6 @@
                                 "_typename": "tutorial::Class1", 
                                 "name": "delete"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class1"
@@ -509,12 +500,10 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "Method1", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "int"
@@ -626,7 +615,6 @@
                             "attrs": {
                                 "_typename": "bool"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "equivalent", 
                                 "pointer": []
@@ -644,7 +632,6 @@
                                         "name": "obj2", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -704,17 +691,14 @@
                             "attrs": {
                                 "_typename": "tutorial::Class1"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "returnThis", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class1"
@@ -809,17 +793,14 @@
                             "attrs": {
                                 "_typename": "tutorial::Class1"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "returnThisBuffer", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -827,12 +808,10 @@
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -848,7 +827,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "flag", 
                                         "pointer": []
@@ -960,17 +938,14 @@
                             "attrs": {
                                 "_typename": "tutorial::Class1"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "returnThisBuffer", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -980,12 +955,10 @@
                                         "len_trim": "Lname", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "name", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -1001,7 +974,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "flag", 
                                         "pointer": []
@@ -1137,12 +1109,10 @@
                             "attrs": {
                                 "_typename": "tutorial::Class1::DIRECTION"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "directionFunc", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -1150,7 +1120,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg", 
                                         "pointer": []
@@ -1220,12 +1189,10 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getM_flag", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "int"
@@ -1286,12 +1253,10 @@
                             "attrs": {
                                 "_typename": "int"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getTest", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "int"
@@ -1358,12 +1323,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "setTest", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -1371,7 +1334,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "val", 
                                         "pointer": []
@@ -1433,7 +1395,6 @@
                                 "_typename": "int", 
                                 "readonly": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "m_flag", 
                                 "pointer": []
@@ -1461,7 +1422,6 @@
                                 "_typename": "int", 
                                 "name": "test"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "m_test", 
                                 "pointer": []
@@ -1539,17 +1499,14 @@
                             "attrs": {
                                 "_typename": "Singleton"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "getReference", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Singleton"
@@ -1803,12 +1760,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
@@ -1967,12 +1922,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1980,7 +1933,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -1996,7 +1948,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -2152,12 +2103,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2166,7 +2115,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "len", 
                                 "pointer": []
@@ -2183,12 +2131,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "values", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2204,12 +2150,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "result", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2320,12 +2264,10 @@
                     "attrs": {
                         "_typename": "long_long"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "TypeLongLong", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2333,7 +2275,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -2464,12 +2405,10 @@
                     "attrs": {
                         "_typename": "bool"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2477,7 +2416,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -2584,12 +2522,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function3b", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2613,12 +2549,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2634,12 +2568,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg3", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2775,7 +2707,6 @@
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2788,7 +2719,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2809,7 +2739,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2929,12 +2858,10 @@
                         "_typename": "void", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2949,7 +2876,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2972,7 +2898,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2990,12 +2915,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3160,12 +3083,10 @@
                         "name": "Function4b", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3178,7 +3099,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3199,7 +3119,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3318,12 +3237,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4b", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3338,7 +3255,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3361,7 +3277,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3379,12 +3294,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3433,12 +3346,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4b", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3453,7 +3364,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3476,7 +3386,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3494,12 +3403,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3663,12 +3570,10 @@
                         "name": "Function4c", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3681,7 +3586,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3702,7 +3606,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3831,12 +3734,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4c", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3851,7 +3752,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3874,7 +3774,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3898,7 +3797,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3989,12 +3887,10 @@
                         "name": "Function4d", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -4075,12 +3971,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4d", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4097,7 +3991,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -4163,12 +4056,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function5", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "double"
@@ -4254,12 +4145,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function5", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4267,7 +4156,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -4457,12 +4345,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function5", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4470,7 +4356,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -4487,7 +4372,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -4587,12 +4471,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function6", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4605,7 +4487,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4680,12 +4561,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function6", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4700,7 +4579,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4792,12 +4670,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function6", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4805,7 +4681,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "indx", 
                                 "pointer": []
@@ -4855,12 +4730,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function7", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4868,7 +4741,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -4911,7 +4783,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -4926,7 +4797,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -4995,12 +4865,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function7", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5008,7 +4876,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -5066,7 +4933,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -5081,7 +4947,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -5150,12 +5015,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function7", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5163,7 +5026,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -5219,7 +5081,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -5234,7 +5095,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -5257,12 +5117,10 @@
                     "attrs": {
                         "_typename": "RetType"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function8", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "RetType"
@@ -5297,7 +5155,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -5312,7 +5169,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -5351,12 +5207,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function8", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "int"
@@ -5405,7 +5259,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -5420,7 +5273,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -5459,12 +5311,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function8", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "double"
@@ -5513,7 +5363,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -5528,7 +5377,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -5596,12 +5444,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function9", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5609,7 +5455,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -5661,12 +5506,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function9", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5674,7 +5517,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -5720,12 +5562,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function9", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5733,7 +5573,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -5778,12 +5617,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
@@ -5905,12 +5742,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5923,7 +5758,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -5939,7 +5773,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -5993,12 +5826,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6011,7 +5842,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6027,7 +5857,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -6075,12 +5904,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6093,7 +5920,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6109,7 +5935,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -6196,12 +6021,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function10", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6216,7 +6039,6 @@
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -6232,7 +6054,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -6322,12 +6143,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6335,7 +6154,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "num", 
                                 "pointer": []
@@ -6448,12 +6266,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6461,7 +6277,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "num", 
                                 "pointer": []
@@ -6477,7 +6292,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "offset", 
                                 "pointer": []
@@ -6709,12 +6523,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6722,7 +6534,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "num", 
                                 "pointer": []
@@ -6738,7 +6549,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "offset", 
                                 "pointer": []
@@ -6755,7 +6565,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "stride", 
                                 "pointer": []
@@ -6867,12 +6676,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -6880,7 +6687,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "type", 
                                 "pointer": []
@@ -6896,7 +6702,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "num", 
                                 "pointer": []
@@ -7022,12 +6827,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7035,7 +6838,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "type", 
                                 "pointer": []
@@ -7051,7 +6853,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "num", 
                                 "pointer": []
@@ -7067,7 +6868,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "offset", 
                                 "pointer": []
@@ -7337,12 +7137,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "overload1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7350,7 +7148,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "type", 
                                 "pointer": []
@@ -7366,7 +7163,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "num", 
                                 "pointer": []
@@ -7382,7 +7178,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "offset", 
                                 "pointer": []
@@ -7399,7 +7194,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "stride", 
                                 "pointer": []
@@ -7526,12 +7320,10 @@
                     "attrs": {
                         "_typename": "tutorial::TypeID"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "typefunc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7539,7 +7331,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -7671,12 +7462,10 @@
                     "attrs": {
                         "_typename": "tutorial::EnumTypeID"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "enumfunc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7684,7 +7473,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -7818,12 +7606,10 @@
                     "attrs": {
                         "_typename": "tutorial::Color"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "colorfunc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7831,7 +7617,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -7954,12 +7739,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getMinMax", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -7967,12 +7750,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "min", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -7988,12 +7769,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "max", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -8128,12 +7907,10 @@
                     "attrs": {
                         "_typename": "tutorial::Class1::DIRECTION"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "directionFunc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8141,7 +7918,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -8256,12 +8032,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "useclass", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8274,7 +8048,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -8347,12 +8120,10 @@
                         "name": "getclass2", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "Class1"
@@ -8422,17 +8193,14 @@
                     "attrs": {
                         "_typename": "tutorial::Class1"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getclass3", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "Class1"
@@ -8511,12 +8279,10 @@
                     "attrs": {
                         "_typename": "tutorial::Class1"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getClassCopy", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8524,7 +8290,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "flag", 
                                 "pointer": []
@@ -8634,12 +8399,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "callback1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8647,7 +8410,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "in", 
                                 "pointer": []
@@ -8663,27 +8425,23 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "func": {
                                     "name": "incr", 
                                     "pointer": [
                                         {
-                                            "const": false, 
                                             "ptr": "*"
                                         }
                                     ]
                                 }, 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
                                         "_typename": "int", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -8832,12 +8590,10 @@
                     "attrs": {
                         "_typename": "tutorial::struct1"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnStruct", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -8845,7 +8601,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
@@ -8861,7 +8616,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "d", 
                                 "pointer": []
@@ -9009,17 +8763,14 @@
                     "attrs": {
                         "_typename": "tutorial::struct1"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnStructPtr", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9027,7 +8778,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
@@ -9043,7 +8793,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "d", 
                                 "pointer": []
@@ -9133,12 +8882,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStructIn", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9146,7 +8893,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -9235,12 +8981,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStructInPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9248,12 +8992,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -9364,12 +9106,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStructOutPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9377,12 +9117,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -9398,7 +9136,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
@@ -9414,7 +9151,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "d", 
                                 "pointer": []
@@ -9487,12 +9223,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStructInOutPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9500,12 +9234,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -9596,12 +9328,10 @@
                         "name": "LastFunctionCalled", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -9678,12 +9408,10 @@
                         "_typename": "void", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "LastFunctionCalled", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -9693,12 +9421,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -9820,7 +9546,6 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "global_flag", 
                         "pointer": []
@@ -9848,7 +9573,6 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "tutorial_flag", 
                         "pointer": []

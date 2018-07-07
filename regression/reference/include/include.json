@@ -45,12 +45,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "method1", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -58,7 +56,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg1", 
                                         "pointer": []
@@ -155,12 +152,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "method1", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -168,7 +163,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "comm", 
                                         "pointer": []
@@ -240,12 +234,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "method2", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -253,12 +245,10 @@
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "c2", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -430,12 +420,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"

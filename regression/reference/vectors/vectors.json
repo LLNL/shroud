@@ -126,12 +126,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -145,7 +143,6 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -158,7 +155,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -235,12 +231,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -256,7 +250,6 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -269,7 +262,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -315,12 +307,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -329,12 +319,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -347,7 +335,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -420,12 +407,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -436,12 +421,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -454,7 +437,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -504,12 +486,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -519,12 +499,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -537,7 +515,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -610,12 +587,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -627,12 +602,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -645,7 +618,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -695,12 +667,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_inout_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -710,12 +680,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -728,7 +696,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -802,12 +769,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_inout_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -820,12 +785,10 @@
                                 "size": "Sarg", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -838,7 +801,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -888,12 +850,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_increment", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -902,12 +862,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -920,7 +878,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -990,12 +947,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_increment", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1007,12 +962,10 @@
                                 "size": "Sarg", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -1025,7 +978,6 @@
                                     "attrs": {
                                         "_typename": "int"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -1077,12 +1029,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_count", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1096,7 +1046,6 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -1109,7 +1058,6 @@
                                     "attrs": {
                                         "_typename": "std::string"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "std::string"
                                     ], 
@@ -1191,12 +1139,10 @@
                     "attrs": {
                         "_typename": "int"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_count", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1213,7 +1159,6 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -1226,7 +1171,6 @@
                                     "attrs": {
                                         "_typename": "std::string"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "std::string"
                                     ], 
@@ -1276,24 +1220,20 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_fill", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_typename": "std::vector", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -1306,7 +1246,6 @@
                                     "attrs": {
                                         "_typename": "std::string"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "std::string"
                                     ], 
@@ -1350,24 +1289,20 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_append", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_typename": "std::vector", 
                                 "intent": "inout"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -1380,7 +1315,6 @@
                                     "attrs": {
                                         "_typename": "std::string"
                                     }, 
-                                    "const": false, 
                                     "specifier": [
                                         "std::string"
                                     ], 

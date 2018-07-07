@@ -72,8 +72,6 @@
                                 "_name": "ctor", 
                                 "_typename": "tutorial::Class2"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class2"
@@ -121,8 +119,6 @@
                                 "_name": "dtor", 
                                 "_typename": "tutorial::Class2"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class2"
@@ -212,12 +208,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "func1", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -225,12 +219,10 @@
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
@@ -331,12 +323,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "acceptClass3", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -344,12 +334,10 @@
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]

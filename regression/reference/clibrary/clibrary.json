@@ -135,12 +135,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
@@ -269,12 +267,10 @@
                     "attrs": {
                         "_typename": "double"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -282,7 +278,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -298,7 +293,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -452,12 +446,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -466,7 +458,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "len", 
                                 "pointer": []
@@ -483,12 +474,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "values", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -504,12 +493,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "result", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -619,12 +606,10 @@
                     "attrs": {
                         "_typename": "bool"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -632,7 +617,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
@@ -785,12 +769,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function3b", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -814,12 +796,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -835,12 +815,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg3", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -972,17 +950,14 @@
                         "deref": "result_as_arg", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -995,7 +970,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1016,7 +990,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1137,12 +1110,10 @@
                         "_typename": "void", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1157,7 +1128,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1180,7 +1150,6 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1198,12 +1167,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1351,12 +1318,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "intargs", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1380,12 +1345,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arginout", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1401,12 +1364,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "argout", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1560,12 +1521,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "cos_doubles", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1574,12 +1533,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "in", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1596,12 +1553,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "out", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1618,7 +1573,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []
@@ -1777,12 +1731,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "truncate_to_int", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1791,12 +1743,10 @@
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "in", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1813,12 +1763,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "out", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1835,7 +1783,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []
@@ -1960,12 +1907,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "increment", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1974,12 +1919,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "array", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1996,7 +1939,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []

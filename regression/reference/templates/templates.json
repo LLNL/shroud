@@ -28,12 +28,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "push_back", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -46,7 +44,6 @@
                                         "name": "value", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "&"
                                             }
                                         ]
@@ -105,12 +102,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "push_back", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -185,7 +180,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -233,12 +227,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "nested", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -246,7 +238,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg1", 
                                         "pointer": []
@@ -262,7 +253,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg2", 
                                         "pointer": []
@@ -304,7 +294,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -366,12 +355,10 @@
                             "attrs": {
                                 "_typename": "void"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "nested", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
@@ -379,7 +366,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg1", 
                                         "pointer": []
@@ -395,7 +381,6 @@
                                         "intent": "in", 
                                         "value": true
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg2", 
                                         "pointer": []
@@ -454,7 +439,6 @@
                                         "attrs": {
                                             "_typename": "double"
                                         }, 
-                                        "const": false, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -483,7 +467,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -576,12 +559,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FunctionTU", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -589,7 +570,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -605,7 +585,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -648,7 +627,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -658,7 +636,6 @@
                                 "attrs": {
                                     "_typename": "long"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "long"
                                 ], 
@@ -673,7 +650,6 @@
                                 "attrs": {
                                     "_typename": "float"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "float"
                                 ], 
@@ -683,7 +659,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -747,12 +722,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FunctionTU", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -760,7 +733,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -776,7 +748,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -831,7 +802,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -841,7 +811,6 @@
                                 "attrs": {
                                     "_typename": "long"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "long"
                                 ], 
@@ -856,7 +825,6 @@
                                 "attrs": {
                                     "_typename": "float"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "float"
                                 ], 
@@ -866,7 +834,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -930,12 +897,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "FunctionTU", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -943,7 +908,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
@@ -959,7 +923,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
@@ -1014,7 +977,6 @@
                                 "attrs": {
                                     "_typename": "int"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -1024,7 +986,6 @@
                                 "attrs": {
                                     "_typename": "long"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "long"
                                 ], 
@@ -1039,7 +1000,6 @@
                                 "attrs": {
                                     "_typename": "float"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "float"
                                 ], 
@@ -1049,7 +1009,6 @@
                                 "attrs": {
                                     "_typename": "double"
                                 }, 
-                                "const": false, 
                                 "specifier": [
                                     "double"
                                 ], 

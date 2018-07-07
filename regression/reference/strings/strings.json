@@ -169,12 +169,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -182,7 +180,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "status", 
                                 "pointer": []
@@ -258,12 +255,10 @@
                     "attrs": {
                         "_typename": "char_scalar"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "char_scalar"
@@ -339,12 +334,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -354,12 +347,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -438,12 +429,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -451,12 +440,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -477,7 +464,6 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -573,12 +559,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -588,12 +572,10 @@
                                 "len": "Ndest", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -616,7 +598,6 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -701,12 +682,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -714,12 +693,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "s", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -794,12 +771,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -810,12 +785,10 @@
                                 "len_trim": "Ls", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "s", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -897,12 +870,10 @@
                         "name": "getCharPtr1", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -980,12 +951,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1001,7 +970,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1083,12 +1051,10 @@
                         "name": "getCharPtr2", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -1166,12 +1132,10 @@
                         "_typename": "void", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1181,12 +1145,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1262,12 +1224,10 @@
                         "name": "getCharPtr3", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -1339,12 +1299,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1354,12 +1312,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1411,12 +1367,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1426,12 +1380,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1504,7 +1456,6 @@
                         "name": "getConstStringResult", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -1576,12 +1527,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringResult", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1597,7 +1546,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1673,7 +1621,6 @@
                         "name": "getConstStringLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -1745,12 +1692,10 @@
                         "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1760,12 +1705,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1834,7 +1777,6 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -1899,12 +1841,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1914,12 +1854,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -1972,12 +1910,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -1987,12 +1923,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2064,7 +1998,6 @@
                         "name": "getConstStringAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -2131,12 +2064,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2152,7 +2083,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2232,12 +2162,10 @@
                         "name": "getConstStringRefPure", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -2316,12 +2244,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefPure", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2337,7 +2263,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -2422,12 +2347,10 @@
                         "name": "getConstStringRefLen", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -2508,12 +2431,10 @@
                         "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2523,12 +2444,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2607,12 +2526,10 @@
                         "name": "getConstStringRefAsArg", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -2687,12 +2604,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2702,12 +2617,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2760,12 +2673,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2775,12 +2686,10 @@
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -2864,12 +2773,10 @@
                         "name": "getConstStringRefLenEmpty", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -2950,12 +2857,10 @@
                         "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLenEmpty", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -2965,12 +2870,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -3052,12 +2955,10 @@
                         "name": "getConstStringRefAlloc", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -3132,12 +3033,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3153,7 +3052,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3233,12 +3131,10 @@
                         "name": "getConstStringPtrLen", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
@@ -3320,12 +3216,10 @@
                         "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3335,12 +3229,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3426,12 +3318,10 @@
                         "name": "getConstStringPtrAlloc", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -3506,12 +3396,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3528,7 +3416,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3608,12 +3495,10 @@
                         "name": "getConstStringPtrOwnsAlloc", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -3692,12 +3577,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3714,7 +3597,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3800,12 +3682,10 @@
                         "name": "getConstStringPtrOwnsAllocPattern", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
@@ -3885,12 +3765,10 @@
                         "__line__": 183, 
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAllocPattern", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -3908,7 +3786,6 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -3988,12 +3865,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4006,7 +3881,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4081,12 +3955,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4101,7 +3973,6 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4183,12 +4054,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4196,12 +4065,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4277,12 +4144,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4292,12 +4157,10 @@
                                 "len": "Narg1", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4380,12 +4243,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4393,12 +4254,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4475,12 +4334,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4491,12 +4348,10 @@
                                 "len_trim": "Larg1", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4579,12 +4434,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4592,12 +4445,10 @@
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -4673,12 +4524,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4689,12 +4538,10 @@
                                 "len_trim": "Larg1", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -4782,24 +4629,20 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnStrings", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_typename": "std::string", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4814,12 +4657,10 @@
                                 "_typename": "std::string", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
@@ -4858,24 +4699,20 @@
                     "attrs": {
                         "_typename": "char"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnMany", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_typename": "int", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -4945,12 +4782,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -4959,12 +4794,10 @@
                                 "len_trim": "AAlen", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5035,12 +4868,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5050,12 +4881,10 @@
                                 "len_trim": "AAlen", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5119,12 +4948,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5133,12 +4960,10 @@
                                 "len": "AAtrim", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5210,12 +5035,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5225,12 +5048,10 @@
                                 "len": "AAtrim", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5312,12 +5133,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CpassChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5325,7 +5144,6 @@
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "status", 
                                 "pointer": []
@@ -5404,12 +5222,10 @@
                     "attrs": {
                         "_typename": "char_scalar"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "char_scalar"
@@ -5488,12 +5304,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5503,12 +5317,10 @@
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5589,12 +5401,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5602,12 +5412,10 @@
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5628,7 +5436,6 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5725,12 +5532,10 @@
                     "attrs": {
                         "_typename": "void"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
@@ -5740,12 +5545,10 @@
                                 "len": "Ndest", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
@@ -5768,7 +5571,6 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]

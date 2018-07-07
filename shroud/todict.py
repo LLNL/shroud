@@ -62,9 +62,8 @@ class ToDict(visitor.Visitor):
     def visit_Ptr(self, node):
         d = dict(
             ptr=node.ptr,
-            const=node.const,
-            ##- volatile=node.volatile,
         )
+        add_true_fields(node, d, ['const', 'volatile'])
         return d
 
     def visit_Declarator(self, node):
@@ -80,11 +79,9 @@ class ToDict(visitor.Visitor):
     def visit_Declaration(self, node):
         d = dict(
             specifier=node.specifier,
-            const=node.const,
-            ##- volatile=node.volatile,
             ##- node.array,
-            attrs=node.attrs,
         )
+        add_true_fields(node, d, ['attrs', 'const', 'func_const', 'volatile'])
         if node.declarator:
             # ctor and dtor have no declarator
             d['declarator'] = self.visit(node.declarator)
@@ -92,7 +89,6 @@ class ToDict(visitor.Visitor):
             d['storage'] = node.storage
         if node.params is not None:
             d['params'] = self.visit(node.params)
-            d['func_const'] = node.func_const
         if node.init is not None:
             d['init'] = node.init
         if node.typemap is not None:

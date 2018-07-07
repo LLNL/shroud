@@ -144,7 +144,6 @@ class CheckParse(unittest.TestCase):
                 "name": "ivar",
                 "readonly": True,
             },
-            "const": False,
             "declarator": {
                 "name": "m_ivar",
                 "pointer": [],
@@ -224,7 +223,6 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "std::vector",
             },
-            "const": False,
             "declarator": {
                 "name": "var1",
                 "pointer": []
@@ -233,7 +231,6 @@ class CheckParse(unittest.TestCase):
             'template_arguments': [
                 {
                     'attrs': {'_typename': 'int'},
-                    'const': False,
                     'specifier': ['int'],
                     'typemap_name': 'int'
                 }
@@ -248,7 +245,6 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "std::vector",
             },
-            "const": False,
             "declarator": {
                 "name": "var1",
                 "pointer": []
@@ -257,7 +253,6 @@ class CheckParse(unittest.TestCase):
             'template_arguments': [
                 {
                     'attrs': {'_typename': 'long_long'},
-                    'const': False,
                     'specifier': ['long', 'long'],
                     'typemap_name': 'long_long'
                 }
@@ -270,7 +265,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::vector<std::string> var1", s)
         self.assertEqual(todict.to_dict(r),{
             "attrs": {"_typename": "std::vector"},
-            "const": False,
             "declarator": {
                 "name": "var1",
                 "pointer": []
@@ -279,7 +273,6 @@ class CheckParse(unittest.TestCase):
             'template_arguments': [
                 {
                     'attrs': {'_typename': 'std::string'},
-                    'const': False,
                     'specifier': ['std::string'],
                     'typemap_name': 'std::string'
                 }
@@ -297,7 +290,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "int"
                     },
-                    "const": False,
                     "specifier": [
                         "int"
                     ],
@@ -315,7 +307,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "std::string"
                     },
-                    "const": False,
                     "specifier": [
                         "std::string"
                     ],
@@ -325,7 +316,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "int"
                     },
-                    "const": False,
                     "specifier": [
                         "int"
                     ],
@@ -415,26 +405,22 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "int",
             },
-            "const": False, 
             "declarator": {
                 "func": {
                     "name": "func", 
                     "pointer": [
                         {
-                            "const": False, 
                             "ptr": "*"
                         }
                     ]
                 }, 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "int",
                     },
-                    "const": False, 
                     "specifier": [
                         "int"
                     ],
@@ -485,7 +471,6 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
@@ -509,7 +494,6 @@ class CheckParse(unittest.TestCase):
                 "_typename": "void",
                 "alias": "junk"
             }, 
-            "const": False, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
@@ -532,12 +516,10 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [], 
             "specifier": [
                 "void"
@@ -561,12 +543,10 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "foo", 
                 "pointer": [ 
                     {
-                        "const": False, 
                         "ptr": "*"
                     }
                 ]
@@ -594,18 +574,15 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "int",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg1", 
                         "pointer": []
@@ -634,18 +611,15 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "foo", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "int",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg1", 
                         "pointer": []
@@ -659,7 +633,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "double",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg2", 
                         "pointer": []
@@ -700,7 +673,6 @@ class CheckParse(unittest.TestCase):
                 "name": "getName", 
                 "pointer": [
                     {
-                        "const": False, 
                         "ptr": "&"
                     }
                 ]
@@ -737,14 +709,12 @@ class CheckParse(unittest.TestCase):
                 "name": "foo", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "int",
                         "in": True
                     }, 
-                    "const": False, 
                     "declarator": {
                         "name": "arg1", 
                         "pointer": []
@@ -759,7 +729,6 @@ class CheckParse(unittest.TestCase):
                         "_typename": "double",
                         "out": True
                     }, 
-                    "const": False, 
                     "declarator": {
                         "name": "arg2", 
                         "pointer": []
@@ -791,8 +760,6 @@ class CheckParse(unittest.TestCase):
                 "_name": "ctor",
                 "_typename": "Class1",
             },
-            "const": False,
-            "func_const": False,
             "params": [],
             "specifier": [
                 "Class1"
@@ -821,8 +788,6 @@ class CheckParse(unittest.TestCase):
                 "_typename": "Class1",
                 "name": "new",
             },
-            "const": False,
-            "func_const": False,
             "params": [],
             "specifier": [
                 "Class1"
@@ -850,8 +815,6 @@ class CheckParse(unittest.TestCase):
                 "_name": "dtor",
                 "_typename": "Class1",
             },
-            "const": False,
-            "func_const": False,
             "params": [],
             "specifier": [
                 "Class1"
@@ -877,17 +840,14 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "Class1",
             },
-            "const": False,
             "declarator": {
                 "name": "make",
                 "pointer": [
                     {
-                        "const": False,
                         "ptr": "*"
                     }
             ]
             },
-            "func_const": False,
             "params": [],
             "specifier": [
                 "Class1"
@@ -914,18 +874,15 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             }, 
-            "const": False, 
             "declarator": {
                 "name": "name", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "int",
                     }, 
-                    "const": False, 
                     "declarator": {
                         "name": "arg1", 
                         "pointer": []
@@ -940,7 +897,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "double",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg2", 
                         "pointer": []
@@ -955,7 +911,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "std::string",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg3", 
                         "pointer": []
@@ -970,7 +925,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "bool",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg4", 
                         "pointer": []
@@ -1001,18 +955,15 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "decl11", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "ArgType",
                     }, 
-                    "const": False, 
                     "declarator": {
                         "name": "arg", 
                         "pointer": []
@@ -1043,18 +994,15 @@ class CheckParse(unittest.TestCase):
             "attrs": {
                 "_typename": "void",
             },
-            "const": False, 
             "declarator": {
                 "name": "decl12", 
                 "pointer": []
             }, 
-            "func_const": False, 
             "params": [
                 {
                     "attrs": {
                         "_typename": "std::vector",
                     }, 
-                    "const": False, 
                     "declarator": {
                         "name": "arg1", 
                         "pointer": []
@@ -1063,7 +1011,6 @@ class CheckParse(unittest.TestCase):
                     "template_arguments": [
                         {
                             'attrs': {'_typename': 'std::string'},
-                            'const': False,
                             'specifier': ['std::string'],
                             'typemap_name': 'std::string'
                         },
@@ -1074,7 +1021,6 @@ class CheckParse(unittest.TestCase):
                     "attrs": {
                         "_typename": "std::string",
                     },
-                    "const": False, 
                     "declarator": {
                         "name": "arg2", 
                         "pointer": []
@@ -1304,7 +1250,6 @@ class CheckTypedef(unittest.TestCase):
             "attrs": {
                 "_typename": "int"
             }, 
-            "const": False, 
             "declarator": {
                 "name": "TypeID", 
                 "pointer": []
@@ -1380,7 +1325,6 @@ class CheckStruct(unittest.TestCase):
                     "attrs": {
                         "_typename": "int"
                     },
-                    "const": False,
                     "declarator": {
                         "name": "i",
                         "pointer": []
@@ -1394,7 +1338,6 @@ class CheckStruct(unittest.TestCase):
                     "attrs": {
                         "_typename": "double"
                     },
-                    "const": False,
                     "declarator": {
                         "name": "d",
                         "pointer": []
