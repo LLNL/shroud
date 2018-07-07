@@ -807,7 +807,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg.update(arg_typemap.format)
 
             if arg_typemap.base == 'vector':
-                fmt_arg.cxx_T = c_attrs['template']
+                fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 

@@ -1296,12 +1296,14 @@ def lookup_c_statements(arg):
     """
     attrs = arg.attrs
     argtype = arg.typename
+#    arg_typemap = arg.typemap  # lookup_type(argtype)
     arg_typemap = lookup_type(argtype)
 
     c_statements = arg_typemap.c_statements
-    if 'template' in attrs:
-        cxx_T = attrs['template']
-        c_statements = arg_typemap.c_templates.get(
+    if arg.template_arguments:
+        base_typemap = arg_typemap
+        arg_typemap = arg.template_arguments[0].typemap
+        cxx_T = arg_typemap.name
+        c_statements = base_typemap.c_templates.get(
             cxx_T, c_statements)
-        arg_typemap = lookup_type(cxx_T)
     return arg_typemap, c_statements

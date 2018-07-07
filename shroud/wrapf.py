@@ -1150,11 +1150,10 @@ rv = .false.
             arg_type = f_arg.typename
             arg_typemap = typemap.lookup_type(arg_type)
             base_typemap = arg_typemap
-            if 'template' in c_attrs:
+            if c_arg.template_arguments:
                 # If a template, use its type
-                cxx_T = c_attrs['template']
-                arg_typemap = typemap.lookup_type(cxx_T)
-                fmt_arg.cxx_T = cxx_T
+                arg_typemap = c_arg.template_arguments[0].typemap
+                fmt_arg.cxx_T = arg_typemap.name
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 

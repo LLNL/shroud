@@ -1206,15 +1206,16 @@ class Declaration(Node):
             const_index = len(decl)
             decl.append('const ')
 
-        if 'template' in self.attrs:
-            typedef = typemap.lookup_type(self.attrs['template'])
+        if self.template_arguments:
+            ntypemap = self.template_arguments[0].typemap
         else:
+#            ntypemap = self.typemap
             typename = self.typename
-            typedef = typemap.lookup_type(typename)
-        if typedef is None:
+            ntypemap = typemap.lookup_type(typename)
+        if ntypemap is None:
             raise RuntimeError("gen_arg_as_lang: No such type: {}".format(typename))
 
-        typ = getattr(typedef, lang)
+        typ = getattr(ntypemap, lang)
         decl.append(typ)
 
         if self.declarator is None:
@@ -1258,14 +1259,15 @@ class Declaration(Node):
         """Generate an argument used with the bind(C) interface from Fortran.
         """
         t = []
-        typedef = typemap.lookup_type(self.typename)
-        basedef = typedef
         attrs = self.attrs
-        if 'template' in attrs:
+        ntypemap = typemap.lookup_type(self.typename)
+#        ntypemap = self.typemap
+        basedef = ntypemap
+        if self.template_arguments:
             # If a template, use its type
-            typedef = typemap.lookup_type(attrs['template'])
+            ntypemap = self.template_arguments[0].typemap
 
-        typ = typedef.f_c_type or typedef.f_type
+        typ = ntypemap.f_c_type or ntypemap.f_type
         if typ is None:
             raise RuntimeError("Type {} has no value for f_c_type".format(self.typename))
         t.append(typ)
@@ -1286,7 +1288,7 @@ class Declaration(Node):
 
         if basedef.base == 'vector':
             decl.append('(*)') # is array
-        elif typedef.base == 'string':
+        elif ntypemap.base == 'string':
             decl.append('(*)')
         elif attrs.get('dimension', False):
             # Any dimension is changed to assumed length.
@@ -1309,11 +1311,12 @@ class Declaration(Node):
                      i.e. [ 'pointer' ]
         """
         t = []
-        typedef = typemap.lookup_type(self.typename)
         attrs = self.attrs
-        if 'template' in attrs:
+#        ntypemap = self.typemap
+        ntypemap = typemap.lookup_type(self.typename)
+        if self.template_arguments:
             # If a template, use its type
-            typedef = typemap.lookup_type(attrs['template'])
+            ntypemap = self.template_arguments[0].typemap
 
         deref = attrs.get('deref', '')
         if deref == 'allocatable':
@@ -1324,9 +1327,9 @@ class Declaration(Node):
         if not is_allocatable:
             is_allocatable = attrs.get('allocatable', False)
 
-        typ = typedef.f_type
+        typ = ntypemap.f_type
 
-        if typedef.base == 'string':
+        if ntypemap.base == 'string':
             if 'len' in attrs and local:
                 # Also used with function result declaration.
                 t.append('character(len={})'.format(attrs['len']))
@@ -1372,7 +1375,7 @@ class Declaration(Node):
                 decl.append('(' + dimension + ')')
         elif is_allocatable:
             # Assume 1-d.
-            if typedef.base != 'string':
+            if ntypemap.base != 'string':
                 decl.append('(:)')
 
         return ''.join(decl)

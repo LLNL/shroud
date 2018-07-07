@@ -277,16 +277,16 @@ class VerifyAttrs(object):
             attrs['size'] = options.C_var_size_template.format(c_var=argname)
 
         # Check template attribute
-        temp = attrs.get('template', None)
+        temp = arg.template_arguments
         if arg_typemap and arg_typemap.base == 'vector':
             if not temp:
-                raise RuntimeError("std::vector must have template argument: %s" % (
-                    arg.gen_decl()))
-            arg_typemap = typemap.lookup_type(temp)
+                raise RuntimeError("line {}: std::vector must have template argument: {}"
+                                   .format(node.linenumber, arg.gen_decl()))
+            arg_typemap = arg.template_arguments[0].typemap
             if arg_typemap is None:
                 raise RuntimeError("check_arg_attr: No such type %s for template: %s" % (
                     temp, arg.gen_decl()))
-        elif temp is not None:
+        elif temp:
             raise RuntimeError("Type '%s' may not supply template argument: %s" % (
                 argtype, arg.gen_decl()))
 
@@ -880,7 +880,7 @@ class GenFunctions(object):
             elif arg_typemap.base == 'vector':
                 has_implied_arg = True
                 # Create helpers for vector template.
-                cxx_T = arg.attrs['template']
+                cxx_T = arg.template_arguments[0].typemap.name
                 tempate_typemap = typemap.lookup_type(cxx_T)
                 whelpers.add_copy_array_helper(dict(
                     cxx_type=cxx_T,
