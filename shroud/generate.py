@@ -172,17 +172,9 @@ class VerifyAttrs(object):
 
         arg_typemap = arg.typemap
         if arg_typemap is None:
-            print("XXXXXX typemap is None for argument {}", ast.name)
-            # if the type does not exist, make sure it is defined by cxx_template
-            #- decl: void Function7(ArgType arg)
-            #  cxx_template:
-            #    ArgType:
-            #    - int
-            #    - double
-            argtype = arg.typename
-            if argtype not in node.cxx_template:
-                raise RuntimeError("check_arg_attrs: No such type '%s' on line %d: %s" % (
-                    argtype, node.linenumber, node.decl))
+            # Sanity check to make sure arg_typemap exists
+            raise RuntimeError("check_arg_attrs: Missing arg.typemap on line {}: {}"
+                               .format(node.linenumber, node.decl))
 
         self.check_shared_attrs(arg)
 
