@@ -98,7 +98,11 @@ class ToDict(visitor.Visitor):
         if node.typemap is not None:
             # print name to avoid too much nesting
             d['typemap_name'] = node.typemap.name
-
+        if node.template_arguments:
+            lst = []
+            for tp in node.template_arguments:
+                lst.append(self.visit(tp))
+            d['template_arguments'] = lst
         if hasattr(node, 'return_pointer_as'):
             if node.return_pointer_as is not None:
                 d['return_pointer_as'] = node.return_pointer_as

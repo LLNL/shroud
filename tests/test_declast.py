@@ -230,8 +230,14 @@ class CheckParse(unittest.TestCase):
                 "name": "var1",
                 "pointer": []
             },
-            "specifier": [
-                "std::vector"
+            "specifier": ["std::vector"],
+            'template_arguments': [
+                {
+                    'attrs': {'_typename': 'int'},
+                    'const': False,
+                    'specifier': ['int'],
+                    'typemap_name': 'int'
+                }
             ],
             "typemap_name": "std::vector",
         })
@@ -249,8 +255,14 @@ class CheckParse(unittest.TestCase):
                 "name": "var1",
                 "pointer": []
             },
-            "specifier": [
-                "std::vector"
+            "specifier": ["std::vector"],
+            'template_arguments': [
+                {
+                    'attrs': {'_typename': 'long_long'},
+                    'const': False,
+                    'specifier': ['long', 'long'],
+                    'typemap_name': 'long_long'
+                }
             ],
             "typemap_name": "std::vector",
         })
@@ -268,8 +280,14 @@ class CheckParse(unittest.TestCase):
                 "name": "var1",
                 "pointer": []
             },
-            "specifier": [
-                "std::vector"
+            "specifier": ["std::vector"],
+            'template_arguments': [
+                {
+                    'attrs': {'_typename': 'std::string'},
+                    'const': False,
+                    'specifier': ['std::string'],
+                    'typemap_name': 'std::string'
+                }
             ],
             "typemap_name": "std::vector",
         })
@@ -1047,9 +1065,15 @@ class CheckParse(unittest.TestCase):
                         "name": "arg1", 
                         "pointer": []
                     }, 
-                    "specifier": [
-                        "std::vector"
-                    ], 
+                    "specifier": ["std::vector"],
+                    "template_arguments": [
+                        {
+                            'attrs': {'_typename': 'std::string'},
+                            'const': False,
+                            'specifier': ['std::string'],
+                            'typemap_name': 'std::string'
+                        },
+                    ],
                     "typemap_name": "std::vector",
                 }, 
                 {

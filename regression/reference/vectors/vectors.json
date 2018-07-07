@@ -154,6 +154,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -254,6 +266,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -320,6 +344,18 @@
                             }, 
                             "specifier": [
                                 "std::vector"
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
                             ], 
                             "typemap_name": "std::vector"
                         }
@@ -417,6 +453,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -488,6 +536,18 @@
                             }, 
                             "specifier": [
                                 "std::vector"
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
                             ], 
                             "typemap_name": "std::vector"
                         }
@@ -586,6 +646,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -657,6 +729,18 @@
                             }, 
                             "specifier": [
                                 "std::vector"
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
                             ], 
                             "typemap_name": "std::vector"
                         }
@@ -757,6 +841,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -827,6 +923,18 @@
                             }, 
                             "specifier": [
                                 "std::vector"
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
                             ], 
                             "typemap_name": "std::vector"
                         }
@@ -922,6 +1030,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "int"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -994,6 +1114,18 @@
                             }, 
                             "specifier": [
                                 "std::vector"
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "std::string"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
                             ], 
                             "typemap_name": "std::vector"
                         }
@@ -1101,6 +1233,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "std::string"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -1170,6 +1314,18 @@
                             "specifier": [
                                 "std::vector"
                             ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "std::string"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
+                            ], 
                             "typemap_name": "std::vector"
                         }
                     ], 
@@ -1232,6 +1388,18 @@
                             }, 
                             "specifier": [
                                 "std::vector"
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "attrs": {
+                                        "_typename": "std::string"
+                                    }, 
+                                    "const": false, 
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
                             ], 
                             "typemap_name": "std::vector"
                         }

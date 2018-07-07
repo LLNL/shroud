@@ -402,7 +402,7 @@ class Parser(ExprParser):
             if tok.value != self.namespace.name:
                 raise RuntimeError("Expected class-name after ~")
             node.specifier.append(tok.value)
-            self.vector_parameters(node)
+            self.parse_template_arguments(node)
             #  class Class1 { ~Class1(); }
             self.info('destructor', self.namespace.typemap.name)
             node.attrs['_name'] = 'dtor'
@@ -420,7 +420,7 @@ class Parser(ExprParser):
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     node.specifier.append(ns_name)
-                    self.vector_parameters(node)
+                    self.parse_template_arguments(node)
                     if self.namespace.is_class and \
                        self.namespace is ns and \
                        self.token.typ == 'LPAREN':
@@ -461,16 +461,24 @@ class Parser(ExprParser):
         self.exit('declaration_specifier')
         return
 
-    def vector_parameters(self, node):
+    def parse_template_arguments(self, node):
         """Parse vector parameters.
         vector<T>
-        XXX - map<Key,T>
+        map<Key,T>
+
+        Used while parsing function arguments.
+        similar to template_argument_list
         """
-        # XXX - parse list of parameters
+        lst = node.template_arguments
         if self.have('LT'):
-            temp = Declaration()
-            self.declaration_specifier(temp)
-            node.attrs['template'] = str(temp)
+            while self.token.typ != 'GT':
+                temp = Declaration()
+                self.declaration_specifier(temp)
+                lst.append(temp)
+                node.attrs['template'] = str(temp)
+                if not self.have('COMMA'):
+                    break
+                self.error_msg("Only single template argument accepted")
             self.mustbe('GT')
 
     def decl_statement(self):
@@ -692,6 +700,9 @@ class Parser(ExprParser):
         not <int foo>
 
         Return a list of Declaration.
+
+        Used while parsing YAML
+        - instantiation: <int>
         """
         self.mustbe('LT')
         lst = []
@@ -869,6 +880,7 @@ class Declaration(Node):
         self.params = None     # None=No parameters, []=empty parameters list
         self.array = None
         self.init = None       # initial value
+        self.template_arguments = []
         self.attrs = {}        # Declaration attributes
 
         self.func_const = False
@@ -1103,10 +1115,12 @@ class Declaration(Node):
             decl.append(' '.join(self.storage))
             decl.append(' ')
         decl.append(' '.join(self.specifier))
-        if 'template' in self.attrs:
+        if self.template_arguments:
             decl.append('<')
-            decl.append(self.attrs['template'])
-            decl.append('>')
+            for targ in self.template_arguments:
+                decl.append(str(targ))
+                decl.append(',')
+            decl[-1] = '>'
 
         if self.declarator:
             self.declarator.gen_decl_work(decl, **kwargs)
