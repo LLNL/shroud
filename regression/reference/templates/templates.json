@@ -70,7 +70,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 24, 
+                        "linenumber": 26, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -162,7 +162,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 24, 
+                        "linenumber": 26, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -290,7 +290,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 33, 
+                        "linenumber": 35, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -440,7 +440,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 33, 
+                        "linenumber": 35, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -472,7 +472,7 @@
                         ]
                     }
                 ], 
-                "linenumber": 28, 
+                "linenumber": 30, 
                 "name": "user", 
                 "options": {}, 
                 "scope": "user::", 
@@ -634,7 +634,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 53, 
+                "linenumber": 55, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": false, 
@@ -817,7 +817,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 53, 
+                "linenumber": 55, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -1000,7 +1000,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 53, 
+                "linenumber": 55, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 

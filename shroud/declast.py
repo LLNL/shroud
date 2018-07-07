@@ -402,6 +402,7 @@ class Parser(ExprParser):
             if tok.value != self.namespace.name:
                 raise RuntimeError("Expected class-name after ~")
             node.specifier.append(tok.value)
+            self.vector_parameters(node)
             #  class Class1 { ~Class1(); }
             self.info('destructor', self.namespace.typemap.name)
             node.attrs['_name'] = 'dtor'
@@ -419,19 +420,16 @@ class Parser(ExprParser):
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     node.specifier.append(ns_name)
+                    self.vector_parameters(node)
                     if self.namespace.is_class and \
                        self.namespace is ns and \
                        self.token.typ == 'LPAREN':
-                        #  class Class1 { Class1(); }
+                        # template<T> vector { vector<T>(); }
+                        # class Class1 { Class1(); }
                         self.info('constructor')
                         node.attrs['_name'] = 'ctor'
                         node.attrs['_constructor'] = True
                         more = False
-                    elif self.have('LT'):
-                        temp = Declaration()
-                        self.declaration_specifier(temp)
-                        node.attrs['template'] = str(temp)
-                        self.mustbe('GT')
                     # Save fully resolved typename
                     node.attrs['_typename'] = ns.typemap.name
                     node.typemap = ns.typemap
@@ -462,6 +460,18 @@ class Parser(ExprParser):
             node.typemap = typemap.lookup_type('_'.join(node.specifier))
         self.exit('declaration_specifier')
         return
+
+    def vector_parameters(self, node):
+        """Parse vector parameters.
+        vector<T>
+        XXX - map<Key,T>
+        """
+        # XXX - parse list of parameters
+        if self.have('LT'):
+            temp = Declaration()
+            self.declaration_specifier(temp)
+            node.attrs['template'] = str(temp)
+            self.mustbe('GT')
 
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.

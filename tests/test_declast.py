@@ -1104,21 +1104,21 @@ class CheckParse(unittest.TestCase):
             ]
         })
 
-        r = declast.check_decl("template<T1,T2> class vector")
+        r = declast.check_decl("template<Key,T> class map")
 
 #        s = r.gen_decl()
-#        self.assertEqual("template<typename T> vector", s)
+#        self.assertEqual("template<typename Key, typename T> map", s)
 
         self.assertEqual(todict.to_dict(r),{
             "decl": {
-                "name": "vector"
+                "name": "map"
             },
             "parameters": [
                 {
-                    "name": "T1",
+                    "name": "Key",
                 },
                 {
-                    "name": "T2",
+                    "name": "T",
                 }
             ]
         })

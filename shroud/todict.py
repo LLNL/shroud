@@ -45,6 +45,8 @@ Useful for debugging and seralizing instances as json.
 
 from . import visitor
 
+import json
+
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
@@ -423,3 +425,10 @@ def print_node(node):
     """
     visitor = PrintNode()
     return visitor.visit(node)
+
+def print_node_as_json(node):
+    """Print a node as json.
+    Useful for debugging.
+    """
+    dd = to_dict(node)
+    print(json.dumps(dd, indent=4, sort_keys=True))

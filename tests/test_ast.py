@@ -382,7 +382,13 @@ class CheckAst(unittest.TestCase):
                 ast.TemplateArgument('<double>'),
             ],
         )
-        cls1.add_function('void push_back( const T& value );')
+        self.assertIsInstance(cls1, ast.ClassNode)
+        f1 = cls1.add_function('void push_back( const T& value );')
+        self.assertIsInstance(f1, ast.FunctionNode)
+        f2 = cls1.add_function('vector<T>()')
+        self.assertIsInstance(f2, ast.FunctionNode)
+        f3 = cls1.add_function('~vector<T>()')
+        self.assertIsInstance(f2, ast.FunctionNode)
 
     def test_class_template2(self):
         """Test class templates.
@@ -396,7 +402,9 @@ class CheckAst(unittest.TestCase):
             ],
             # XXX - add declarations to avoid forward declaration
             declarations=[])
-        cls1.add_declaration('void push_back( const T& value );')
+        self.assertIsInstance(cls1, ast.ClassNode)
+        f1 = cls1.add_declaration('void push_back( const T& value );')
+        self.assertIsInstance(f1, ast.FunctionNode)
 
     def test_d_generate1(self):
         """char bufferify

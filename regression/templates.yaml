@@ -21,6 +21,8 @@ declarations:
 #    - instantiation: <double>
 
     declarations:
+#    - decl: vector<T>()
+#    - decl: ~vector<T>()
     - decl: void push_back( const T& value+intent(in) );
     # XXX - reference is getting lost
 

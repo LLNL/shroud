@@ -795,7 +795,8 @@ class ClassNode(AstNode, NamespaceMixin):
         return self.symbols.get(name, None)
 
     def unqualified_lookup(self, name):
-        """Look for name in class or its parent."""
+        """Look for name in class or its parents.
+        Nested classes, namespaces, or library."""
         if name in self.symbols:
             return self.symbols[name]
         return self.parent.unqualified_lookup(name)

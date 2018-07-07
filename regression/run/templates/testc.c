@@ -37,31 +37,24 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Test C interface for tutorial.yaml
+ * Test C interface for templates.yaml
  */
 
-#include <stdbool.h>  // This should not be necessary
-#include <wrapTutorial.h>
-#include <wrapClass1.h>
+#include <wrapvector.h>
 
 #include <assert.h>
 
-void test_class(void)
+void test_int_vector(void)
 {
-  int flag;
-  TUT_class1 c1;
-
-  c1 = TUT_class1_new_default();
-
-  flag = TUT_class1_method1(&c1);
-  assert(flag == 1 && "TUT_class1_method1");
-
 }
 
 int main(int argc, char *argv[])
 {
-  test_class();
+  test_int_vector();
 
   return 0;
 }
+
+
+
 
