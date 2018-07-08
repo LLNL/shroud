@@ -153,8 +153,17 @@ format
    Creates scope within library.
    Described in `Format Fields`_.
 
-functions
-   A list of functions in the class. Each function is defined by `Function Fields`_
+declarations
+   A list of declarations in the class.
+   Each function is defined by `Function Fields`_
+
+fields:
+   A dictionary of fields used to update the typemap.
+
+imported:
+   If true, this class was imported from another file and should
+   not create any wrapping code.
+   Its type can be used in other declarations.
 
 options
    Options fields for the class.

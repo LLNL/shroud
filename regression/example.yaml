@@ -94,6 +94,7 @@ declarations:
   - decl: namespace sidre
     declarations:
     - decl: class Group
+      imported: True
       fields:
         # This example is pulled from spio
         # DataGroup is a type which is provided by another shroud wrapped library

@@ -126,12 +126,13 @@ class NamespaceMixin(object):
             else:
                 node = self.add_function(decl, ast=fullast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
-            if 'declarations' in kwargs:
+            # A Class may already be forwared defined.
+            # If so, just return it.
+            node = self.symbols.get(ast.name, None)
+            if not node:
                 node = self.add_class(ast.name,
                                       template_parameters=template_parameters,
                                       **kwargs)
-            else:
-                node = self.create_class_typemap(ast.name, **kwargs)
         elif isinstance(ast, declast.Namespace):
             node = self.add_namespace(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
@@ -143,25 +144,6 @@ class NamespaceMixin(object):
                 "add_declaration: unknown ast type {} after parsing '{}'"
                 .format(type(ast), decl))
         return node
-
-    def create_class_typemap(self, key, **kwargs):
-        """Add a typemap for a class.
-        The class is being forward declared i.e. no declarations.
-        """
-        fullname = self.scope + key
-        ntypemap = typemap.Typemap(fullname,
-                                   base='shadow',
-                                   cxx_type=fullname)
-        if 'fields' in kwargs:
-            value = kwargs['fields']
-            if not isinstance(value, dict):
-                raise TypeError("fields must be a dictionary")
-            ntypemap.update(value)
-        typemap.fill_shadow_typemap_defaults(ntypemap, self.fmtdict)
-        typemap.register_type(ntypemap.name, ntypemap)
-
-        self.add_typedef(key, ntypemap)
-        return ntypemap
 
     def create_typedef_typemap(self, ast, **kwargs):
         """Create a TypedefNode from a Declarator.
@@ -738,6 +720,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.variables = []
         self.as_struct = as_struct   # if True, treat as struct, else as shadow class
 
+        self.imported = kwargs.get('imported', False)
         self.python = kwargs.get('python', {})
         self.cpp_if = kwargs.get('cpp_if', None)
 
@@ -745,15 +728,27 @@ class ClassNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
+        if self.imported:
+            # Maybe check for imported in more places.
+            self.options.wrap_c = False
+            self.options.wrap_fortran = False
+            self.options.wrap_lua = False
+            self.options.wrap_python = False
+
         self.default_format(parent, format, kwargs)
 
         # Add to namespace.
         self.scope = self.parent.scope + self.name + '::'
         self.symbols = {}
+
+        fields = kwargs.get('fields', None)
+        if fields is not None:
+            if not isinstance(fields, dict):
+                raise TypeError("fields must be a dictionary")
         if as_struct:
-            self.typemap = typemap.create_struct_typemap(self)
+            self.typemap = typemap.create_struct_typemap(self, fields)
         else:
-            self.typemap = typemap.create_class_typemap(self)
+            self.typemap = typemap.create_class_typemap(self, fields)
 
         # Add template parameters.
         if template_parameters is None:

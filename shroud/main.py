@@ -82,7 +82,8 @@ class Config(object):
 
 
 class TypeOut(util.WrapperMixin):
-    """A class to write out type information.
+    """A class to write out Class type information.
+    It may be 'imported' by another file to share classes across YAML files.
     It subclasses util.WrapperMixin in order to access
     write routines.
     """
@@ -106,6 +107,8 @@ class TypeOut(util.WrapperMixin):
         # split up into namespaces
         top = {}
         for cls in newlibrary.classes:
+            if cls.imported:
+                continue
             fullname = cls.typemap.name
             parts = fullname.split('::')
             ns = top
@@ -127,6 +130,7 @@ class TypeOut(util.WrapperMixin):
                 elif isinstance(nxt, typemap.Typemap):
                     output.append('@- type: ' + name)
                     output.append(1)
+                    output.append('imported: True')
                     output.append('fields:')
                     output.append(1)
                     nxt.__export_yaml__(0, output)

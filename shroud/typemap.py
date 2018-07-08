@@ -1072,8 +1072,9 @@ def create_enum_typemap(node):
         register_type(type_name, ntypemap)
     return ntypemap
 
-def create_class_typemap(node):
+def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
+    Use fields to override defaults.
 
     The C type is a capsule_data which will contains a pointer to the
     C++ memory and information on how to delete the memory.
@@ -1097,6 +1098,8 @@ def create_class_typemap(node):
         ##- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c='{f_var}%%%s' % fmt_class.F_derived_member,
     )
+    if fields is not None:
+        ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     register_type(cxx_name, ntypemap)
 
@@ -1194,8 +1197,9 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.forward = ntypemap.cxx_type
 
 
-def create_struct_typemap(node):
+def create_struct_typemap(node, fields=None):
     """Create a typemap for a struct from a ClassNode.
+    Use fields to override defaults.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
@@ -1213,6 +1217,8 @@ def create_struct_typemap(node):
         f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
     )
+    if fields is not None:
+        ntypemap.update(fields)
     fill_struct_typemap_defaults(ntypemap)
     register_type(cxx_name, ntypemap)
 

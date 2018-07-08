@@ -143,15 +143,6 @@ initforward(void)
     struct module_state *st = GETSTATE(m);
 
 
-    // Class2
-    PY_Class2_Type.tp_new   = PyType_GenericNew;
-    PY_Class2_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Class2_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Class2_Type);
-    PyModule_AddObject(m, "Class2", (PyObject *)&PY_Class2_Type);
-
-
     // Class3
     PY_Class3_Type.tp_new   = PyType_GenericNew;
     PY_Class3_Type.tp_alloc = PyType_GenericAlloc;
@@ -159,6 +150,15 @@ initforward(void)
         return RETVAL;
     Py_INCREF(&PY_Class3_Type);
     PyModule_AddObject(m, "Class3", (PyObject *)&PY_Class3_Type);
+
+
+    // Class2
+    PY_Class2_Type.tp_new   = PyType_GenericNew;
+    PY_Class2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Class2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Class2_Type);
+    PyModule_AddObject(m, "Class2", (PyObject *)&PY_Class2_Type);
 
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);

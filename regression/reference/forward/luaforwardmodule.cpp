@@ -54,6 +54,15 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
+// splicer begin class.Class3.additional_functions
+// splicer end class.Class3.additional_functions
+
+static const struct luaL_Reg l_Class3_Reg [] = {
+    // splicer begin class.Class3.register
+    // splicer end class.Class3.register
+    {NULL, NULL}   /*sentinel */
+};
+
 // Class2()
 static int l_class2_ctor(lua_State *L)
 {
@@ -121,15 +130,6 @@ static const struct luaL_Reg l_Class2_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// splicer begin class.Class3.additional_functions
-// splicer end class.Class3.additional_functions
-
-static const struct luaL_Reg l_Class3_Reg [] = {
-    // splicer begin class.Class3.register
-    // splicer end class.Class3.register
-    {NULL, NULL}   /*sentinel */
-};
-
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -144,26 +144,6 @@ static const struct luaL_Reg l_forward_Reg [] = {
 extern "C" {
 #endif
 int luaopen_forward(lua_State *L) {
-
-    /* Create the metatable and put it on the stack. */
-    luaL_newmetatable(L, "Class2.metatable");
-    /* Duplicate the metatable on the stack (We now have 2). */
-    lua_pushvalue(L, -1);
-    /* Pop the first metatable off the stack and assign it to __index
-     * of the second one. We set the metatable for the table to itself.
-     * This is equivalent to the following in lua:
-     * metatable = {}
-     * metatable.__index = metatable
-     */
-    lua_setfield(L, -2, "__index");
-
-    /* Set the methods to the metatable that should be accessed via object:func */
-#if LUA_VERSION_NUM < 502
-    luaL_register(L, NULL, l_Class2_Reg);
-#else
-    luaL_setfuncs(L, l_Class2_Reg, 0);
-#endif
-
 
     /* Create the metatable and put it on the stack. */
     luaL_newmetatable(L, "Class3.metatable");
@@ -182,6 +162,26 @@ int luaopen_forward(lua_State *L) {
     luaL_register(L, NULL, l_Class3_Reg);
 #else
     luaL_setfuncs(L, l_Class3_Reg, 0);
+#endif
+
+
+    /* Create the metatable and put it on the stack. */
+    luaL_newmetatable(L, "Class2.metatable");
+    /* Duplicate the metatable on the stack (We now have 2). */
+    lua_pushvalue(L, -1);
+    /* Pop the first metatable off the stack and assign it to __index
+     * of the second one. We set the metatable for the table to itself.
+     * This is equivalent to the following in lua:
+     * metatable = {}
+     * metatable.__index = metatable
+     */
+    lua_setfield(L, -2, "__index");
+
+    /* Set the methods to the metatable that should be accessed via object:func */
+#if LUA_VERSION_NUM < 502
+    luaL_register(L, NULL, l_Class2_Reg);
+#else
+    luaL_setfuncs(L, l_Class2_Reg, 0);
 #endif
 
 

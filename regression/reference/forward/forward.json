@@ -6,6 +6,67 @@
                 "cxx_header": "", 
                 "fmtdict": {
                     "CXX_this_call": "SH_this->", 
+                    "C_header_filename": "wrapClass3.h", 
+                    "C_impl_filename": "wrapClass3.cpp", 
+                    "C_type_name": "FOR_class3", 
+                    "F_derived_name": "class3", 
+                    "LUA_class_reg": "l_Class3_Reg", 
+                    "LUA_ctor_name": "Class3", 
+                    "LUA_metadata": "Class3.metatable", 
+                    "LUA_this_call": "SH_this->self->", 
+                    "LUA_userdata_member": "self", 
+                    "LUA_userdata_type": "l_Class3_Type", 
+                    "LUA_userdata_var": "SH_this", 
+                    "PY_PyObject": "PY_Class3", 
+                    "PY_PyTypeObject": "PY_Class3_Type", 
+                    "PY_capsule_name": "PY_Class3_capsule_name", 
+                    "PY_from_object_func": "PP_Class3_from_Object", 
+                    "PY_this_call": "self->obj->", 
+                    "PY_to_object_func": "PP_Class3_to_Object", 
+                    "PY_type_filename": "pyClass3type.cpp", 
+                    "class_lower": "class3", 
+                    "class_prefix": "class3_", 
+                    "class_scope": "Class3::", 
+                    "class_upper": "CLASS3", 
+                    "cxx_class": "Class3", 
+                    "cxx_type": "Class3"
+                }, 
+                "linenumber": 58, 
+                "name": "Class3", 
+                "options": {}, 
+                "scope": "tutorial::Class3::", 
+                "typemap_name": "tutorial::Class3"
+            }, 
+            {
+                "cxx_header": "", 
+                "fmtdict": {
+                    "C_header_filename": "wrapClass1.h", 
+                    "C_impl_filename": "wrapClass1.cpp", 
+                    "C_type_name": "TUT_class1", 
+                    "F_derived_name": "class1", 
+                    "class_lower": "class1", 
+                    "class_prefix": "class1_", 
+                    "class_scope": "Class1::", 
+                    "class_upper": "CLASS1", 
+                    "cxx_class": "Class1", 
+                    "cxx_type": "Class1"
+                }, 
+                "imported": true, 
+                "linenumber": 62, 
+                "name": "Class1", 
+                "options": {
+                    "wrap_c": false, 
+                    "wrap_fortran": false, 
+                    "wrap_lua": false, 
+                    "wrap_python": false
+                }, 
+                "scope": "tutorial::Class1::", 
+                "typemap_name": "tutorial::Class1"
+            }, 
+            {
+                "cxx_header": "", 
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapClass2.h", 
                     "C_impl_filename": "wrapClass2.cpp", 
                     "C_type_name": "FOR_class2", 
@@ -109,7 +170,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 72, 
+                        "linenumber": 77, 
                         "options": {}
                     }, 
                     {
@@ -153,7 +214,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 73, 
+                        "linenumber": 78, 
                         "options": {}
                     }, 
                     {
@@ -267,7 +328,7 @@
                             "function_name": "func1", 
                             "underscore_name": "func1"
                         }, 
-                        "linenumber": 74, 
+                        "linenumber": 79, 
                         "options": {}
                     }, 
                     {
@@ -382,50 +443,15 @@
                             "function_name": "acceptClass3", 
                             "underscore_name": "accept_class3"
                         }, 
-                        "linenumber": 75, 
+                        "linenumber": 80, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 70, 
+                "linenumber": 75, 
                 "name": "Class2", 
                 "options": {}, 
                 "scope": "tutorial::Class2::", 
                 "typemap_name": "tutorial::Class2"
-            }, 
-            {
-                "cxx_header": "", 
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->", 
-                    "C_header_filename": "wrapClass3.h", 
-                    "C_impl_filename": "wrapClass3.cpp", 
-                    "C_type_name": "FOR_class3", 
-                    "F_derived_name": "class3", 
-                    "LUA_class_reg": "l_Class3_Reg", 
-                    "LUA_ctor_name": "Class3", 
-                    "LUA_metadata": "Class3.metatable", 
-                    "LUA_this_call": "SH_this->self->", 
-                    "LUA_userdata_member": "self", 
-                    "LUA_userdata_type": "l_Class3_Type", 
-                    "LUA_userdata_var": "SH_this", 
-                    "PY_PyObject": "PY_Class3", 
-                    "PY_PyTypeObject": "PY_Class3_Type", 
-                    "PY_capsule_name": "PY_Class3_capsule_name", 
-                    "PY_from_object_func": "PP_Class3_from_Object", 
-                    "PY_this_call": "self->obj->", 
-                    "PY_to_object_func": "PP_Class3_to_Object", 
-                    "PY_type_filename": "pyClass3type.cpp", 
-                    "class_lower": "class3", 
-                    "class_prefix": "class3_", 
-                    "class_scope": "Class3::", 
-                    "class_upper": "CLASS3", 
-                    "cxx_class": "Class3", 
-                    "cxx_type": "Class3"
-                }, 
-                "linenumber": 77, 
-                "name": "Class3", 
-                "options": {}, 
-                "scope": "tutorial::Class3::", 
-                "typemap_name": "tutorial::Class3"
             }
         ], 
         "copyright": [
@@ -1407,7 +1433,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
-            "__line__": 62, 
+            "__line__": 67, 
             "base": "shadow", 
             "c_statements": {
                 "intent_in": {
@@ -1437,7 +1463,7 @@
             "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
-                "__line__": 66, 
+                "__line__": 71, 
                 "tutorial_mod": [
                     "class1"
                 ]

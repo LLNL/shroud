@@ -218,7 +218,7 @@ class ToDict(visitor.Visitor):
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
         )
         add_non_none_fields(node, d, ['linenumber'])
-        add_true_fields(node, d, ['as_struct', 'python',
+        add_true_fields(node, d, ['as_struct', 'imported', 'python',
                                   'scope', 'template_parameters'])
         self.add_visit_fields(node, d,
                               ['enums', 'functions', 'variables',

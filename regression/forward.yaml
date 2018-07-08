@@ -55,10 +55,15 @@ options:
 namespace: tutorial
 
 declarations:
-# forward declaration
 - decl: class Class3
+  # forward declaration
+  # Will add declarations later, but need the type defined now.
 
 - decl: class Class1
+  # Class is declared but not defined here.
+  # For example, it is wrapped in another YAML file
+  # and this info is read in from a created type file.
+  imported: True
   fields:
     c_type: TUT_class1
     f_derived_type: class1

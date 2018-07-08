@@ -5,6 +5,7 @@ declarations:
   - namespace: std
     declarations: std
     - type: vector_0
+      imported: True
       fields:
         base: shadow
         cxx_header: <vector>
@@ -16,6 +17,7 @@ declarations:
           vector_mod:
           - vector_0
   - type: user_0
+    imported: True
     fields:
       base: shadow
       cxx_type: user<int>

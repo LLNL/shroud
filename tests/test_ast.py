@@ -399,9 +399,7 @@ class CheckAst(unittest.TestCase):
             cxx_template2=[
                 ast.TemplateArgument('<int>'),
                 ast.TemplateArgument('<double>'),
-            ],
-            # XXX - add declarations to avoid forward declaration
-            declarations=[])
+            ])
         self.assertIsInstance(cls1, ast.ClassNode)
         f1 = cls1.add_declaration('void push_back( const T& value );')
         self.assertIsInstance(f1, ast.FunctionNode)

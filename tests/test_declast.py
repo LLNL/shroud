@@ -1382,7 +1382,7 @@ class CheckClass(unittest.TestCase):
         library = ast.LibraryNode()
         library.add_declaration('class Class1;')
         self.assertIn('Class1', library.symbols)
-        self.assertIsInstance(library.symbols['Class1'], ast.TypedefNode)
+        self.assertIsInstance(library.symbols['Class1'], ast.ClassNode)
 
         typedef = typemap.lookup_type('Class1')
         self.assertIsNotNone(typedef)
@@ -1406,7 +1406,7 @@ class CheckClass(unittest.TestCase):
         ns = library.add_namespace('ns')
         ns.add_declaration('class Class2;')
         self.assertIn('Class2', ns.symbols)
-        self.assertIsInstance(ns.symbols['Class2'], ast.TypedefNode)
+        self.assertIsInstance(ns.symbols['Class2'], ast.ClassNode)
 
         typedef = typemap.lookup_type('ns::Class2')
         self.assertIsNotNone(typedef)
