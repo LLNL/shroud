@@ -658,6 +658,8 @@ class GenFunctions(object):
         Clone entire function then look for template arguments.
         Use when the function itself is not templated, but it has a templated argument
         from a class.
+        function_suffix is not modified for functions in a templated class.
+        Instead class_prefix is used to distinguish the functions.
         """
         oldoptions = node.options
 
@@ -667,14 +669,6 @@ class GenFunctions(object):
 
         new._generated = 'cxx_template'
         fmt = new.fmtdict
-
-        # The function_suffix is not modified for functions in a templated class.
-        # If single template argument, use its name; else sequence.
-        # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
-#        if len(targs.asts) == 1:
-#            fmt.function_suffix = fmt.function_suffix + '_' + targs.asts[0].typemap.name
-#        else:
-#            fmt.function_suffix = fmt.function_suffix + '_' + str(iargs)
 
         new.cxx_template = {}
         options = new.options

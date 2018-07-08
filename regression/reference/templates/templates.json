@@ -53,7 +53,7 @@
                         "decl": "vector()", 
                         "declgen": "vector()", 
                         "fmtdict": {
-                            "C_call_code": "std::vector *SHCXX_rv =\t new std::vector_int();", 
+                            "C_call_code": "std::vector *SHCXX_rv =\t new std::vector<int>();", 
                             "C_call_list": "", 
                             "C_name": "TEM_vector_int_ctor", 
                             "C_post_call": "TEM_vector SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 

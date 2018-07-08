@@ -1031,7 +1031,7 @@ class Wrapc(util.WrapperMixin):
             # Always create a pointer to the instance.
             fmt_func.cxx_rv_decl = result_typemap.cxx_type + ' *' + fmt_result.cxx_var
             append_format(call_code, '{cxx_rv_decl} =\t new {namespace_scope}'
-                          '{cxx_class}({C_call_list});', fmt_func)
+                          '{cxx_type}({C_call_list});', fmt_func)
             if result_typemap.cxx_to_c is not None:
                 fmt_func.c_rv_decl = result_typemap.c_type + ' *' + fmt_result.c_var
                 fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)

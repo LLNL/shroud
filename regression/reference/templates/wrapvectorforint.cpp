@@ -15,7 +15,7 @@ extern "C" {
 TEM_vector TEM_vector_int_ctor()
 {
 // splicer begin class.vector.method.ctor
-    std::vector *SHCXX_rv = new std::vector_int();
+    std::vector *SHCXX_rv = new std::vector<int>();
     TEM_vector SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 0;
