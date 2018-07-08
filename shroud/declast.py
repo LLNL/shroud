@@ -458,6 +458,9 @@ class Parser(ExprParser):
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
             node.attrs['_typename'] = '_'.join(node.specifier)
             node.typemap = typemap.lookup_type('_'.join(node.specifier))
+            if node.typemap is None:
+                self.error_msg("Unknown typemap '{}"
+                               .format('_'.join(node.specifier)))
         self.exit('declaration_specifier')
         return
 
@@ -916,7 +919,7 @@ class Declaration(Node):
         """Return type.
         Multiple specifies are joined by an underscore. i.e. long_long
         """
-        return self.attrs['_typename']
+        return self.typemap.name
 
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""

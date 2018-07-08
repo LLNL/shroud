@@ -944,42 +944,49 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("name", r.get_name())
 
     def test_decl11(self):
-        """Test template_types
-        """
-        r = declast.check_decl("void decl11(ArgType arg)", template_types=['ArgType'])
+        """Test function template"""
+        r = declast.check_decl("template<ArgType> void decl11(ArgType arg)")
 
-        s = r.gen_decl()
+        # XXX - AttributeError: 'Template' object has no attribute 'gen_decl'
+        s = r.decl.gen_decl()
         self.assertEqual("void decl11(ArgType arg)", s)
 
         self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "_typename": "void",
-            },
-            "declarator": {
-                "name": "decl11", 
-                "pointer": []
+            "decl": {
+                "attrs": {
+                    "_typename": "void",
+                },
+                "declarator": {
+                    "name": "decl11", 
+                    "pointer": []
+                }, 
+                "params": [
+                    {
+                        "attrs": {
+                            "_typename": "ArgType",
+                        }, 
+                        "declarator": {
+                            "name": "arg", 
+                            "pointer": []
+                        }, 
+                        "specifier": [
+                            "ArgType"
+                        ], 
+                        "typemap_name": "ArgType",
+                    }
+                ], 
+                "specifier": [
+                    "void"
+                ],
+                "typemap_name": "void",
             }, 
-            "params": [
+            "parameters": [
                 {
-                    "attrs": {
-                        "_typename": "ArgType",
-                    }, 
-                    "declarator": {
-                        "name": "arg", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "ArgType"
-                    ], 
-#XXX -                    "typemap_name": "ArgType",
+                    "name": "ArgType"
                 }
-            ], 
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
+            ]
         })
-        self.assertEqual("decl11", r.get_name())
+        self.assertEqual("decl11", r.decl.get_name())
                          
     def test_decl12(self):
         """Test templates
@@ -1046,9 +1053,14 @@ class CheckParse(unittest.TestCase):
                                "long long arg2,"
                                "unsigned int)")
 
-        self.assertEqual("long_int", r.params[0].typename)
-        self.assertEqual("long_long", r.params[1].typename)
-        self.assertEqual("unsigned_int", r.params[2].typename)
+        self.assertEqual(['long', 'int'], r.params[0].specifier)
+        self.assertEqual('long', r.params[0].typename)
+
+        self.assertEqual(['long', 'long'], r.params[1].specifier)
+        self.assertEqual('long_long', r.params[1].typename)
+
+        self.assertEqual(['unsigned', 'int'], r.params[2].specifier)
+        self.assertEqual('int', r.params[2].typename)
 
     def test_class_template(self):
         """Class templates"""

@@ -1039,12 +1039,16 @@ def initialize():
             ),
         )
 
-    # rename to actual types.
+    # Rename to actual types.
     # It is not possible to do dict(std::string=...)
     def_types['std::string'] = def_types['string']
     del def_types['string']
     def_types['std::vector'] = def_types['vector']
     del def_types['vector']
+
+    # set some alises
+    def_types['long_int'] = def_types['long']
+    def_types['unsigned_int'] = def_types['int']  # XXX - need real unsigned
 
     set_global_types(def_types)
 
