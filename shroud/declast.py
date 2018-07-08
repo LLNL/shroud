@@ -1266,8 +1266,7 @@ class Declaration(Node):
         """
         t = []
         attrs = self.attrs
-        ntypemap = typemap.lookup_type(self.typename)
-#        ntypemap = self.typemap
+        ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
             # If a template, use its type

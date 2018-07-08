@@ -23,6 +23,106 @@
                 }, 
                 "functions": [
                     {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_type": "TEM_vector", 
+                                "c_val": "static_cast<void *>(\tSHCXX_rv)", 
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "", 
+                                "cxx_member": "->", 
+                                "cxx_type": "std::vector", 
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::vector", 
+                                "f_var": "SHT_rv"
+                            }
+                        }, 
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true, 
+                                "_name": "ctor", 
+                                "_typename": "std::vector"
+                            }, 
+                            "params": [], 
+                            "specifier": [
+                                "vector"
+                            ], 
+                            "typemap_name": "std::vector"
+                        }, 
+                        "decl": "vector()", 
+                        "declgen": "vector()", 
+                        "fmtdict": {
+                            "C_call_code": "std::vector *SHCXX_rv =\t new std::vector_0();", 
+                            "C_call_list": "", 
+                            "C_name": "TEM_vector_ctor", 
+                            "C_post_call": "TEM_vector SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_prototype": "", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "TEM_vector", 
+                            "F_C_call": "c_vector_ctor", 
+                            "F_C_name": "c_vector_ctor", 
+                            "F_arg_c_call": "", 
+                            "F_arguments": "", 
+                            "F_call_code": "SHT_rv%cxxmem = c_vector_ctor()", 
+                            "F_name_function": "ctor", 
+                            "F_name_generic": "ctor", 
+                            "F_name_impl": "vector_ctor", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "c_const": "", 
+                            "c_rv_decl": "TEM_vector *SHC_rv", 
+                            "cxx_rv_decl": "std::vector *SHCXX_rv", 
+                            "function_name": "ctor", 
+                            "underscore_name": "ctor"
+                        }, 
+                        "linenumber": 24, 
+                        "options": {}
+                    }, 
+                    {
+                        "ast": {
+                            "attrs": {
+                                "_destructor": true, 
+                                "_name": "dtor", 
+                                "_typename": "std::vector"
+                            }, 
+                            "params": [], 
+                            "specifier": [
+                                "vector"
+                            ], 
+                            "typemap_name": "std::vector"
+                        }, 
+                        "decl": "~vector()", 
+                        "declgen": "~vector()", 
+                        "fmtdict": {
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;", 
+                            "C_call_list": "", 
+                            "C_name": "TEM_vector_dtor", 
+                            "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
+                            "C_prototype": "TEM_vector_0 * self", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_vector_dtor", 
+                            "F_C_name": "c_vector_dtor", 
+                            "F_arg_c_call": "obj%cxxmem", 
+                            "F_arguments": "obj", 
+                            "F_call_code": "call c_vector_dtor(obj%cxxmem)", 
+                            "F_name_function": "dtor", 
+                            "F_name_generic": "dtor", 
+                            "F_name_impl": "vector_dtor", 
+                            "F_subprogram": "subroutine", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "function_name": "dtor", 
+                            "underscore_name": "dtor"
+                        }, 
+                        "linenumber": 25, 
+                        "options": {}
+                    }, 
+                    {
                         "_overloaded": true, 
                         "ast": {
                             "attrs": {
@@ -1743,6 +1843,7 @@
             "f_to_c": "{f_var}%cxxmem", 
             "f_type": "type(vector_0)", 
             "forward": "std::vector<int>", 
+            "idtor": "1", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer", 

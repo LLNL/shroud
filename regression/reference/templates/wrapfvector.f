@@ -26,6 +26,7 @@ module vector_mod
         ! splicer begin class.vector_0.component_part
         ! splicer end class.vector_0.component_part
     contains
+        procedure :: dtor => vector_dtor
         procedure :: push_back_XXXX => vector_push_back_XXXX
         procedure :: get_instance => vector_get_instance
         procedure :: set_instance => vector_set_instance
@@ -44,6 +45,21 @@ module vector_mod
 
     interface
 
+        function c_vector_ctor() &
+                result(SHT_rv) &
+                bind(C, name="TEM_vector_ctor")
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data) :: SHT_rv
+        end function c_vector_ctor
+
+        subroutine c_vector_dtor(self) &
+                bind(C, name="TEM_vector_dtor")
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data), intent(IN) :: self
+        end subroutine c_vector_dtor
+
         subroutine c_vector_push_back_xxxx(self, value) &
                 bind(C, name="TEM_vector_push_back_XXXX")
             use iso_c_binding, only : C_INT
@@ -58,6 +74,21 @@ module vector_mod
     end interface
 
 contains
+
+    function vector_ctor() &
+            result(SHT_rv)
+        type(vector) :: SHT_rv
+        ! splicer begin class.vector_0.method.ctor
+        SHT_rv%cxxmem = c_vector_ctor()
+        ! splicer end class.vector_0.method.ctor
+    end function vector_ctor
+
+    subroutine vector_dtor(obj)
+        class(vector_0) :: obj
+        ! splicer begin class.vector_0.method.dtor
+        call c_vector_dtor(obj%cxxmem)
+        ! splicer end class.vector_0.method.dtor
+    end subroutine vector_dtor
 
     subroutine vector_push_back_XXXX(obj, value)
         use iso_c_binding, only : C_INT

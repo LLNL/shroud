@@ -1,6 +1,8 @@
 Read yaml templates.yaml
 Close templates_types.yaml
 class vector
+C method vector()
+C method ~vector()
 C method void push_back(const int value +intent(in))
 Close wrapvector.h
 Close wrapvectorforint.cpp
@@ -14,6 +16,8 @@ Close wraptemplates.h
 Close wraptemplates.cpp
 Close typestemplates.h
 class vector
+C-interface, Fortran method vector()
+C-interface, Fortran method ~vector()
 C-interface, Fortran method void push_back(const int value +intent(in))
 Close wrapfvector.f
 class user
