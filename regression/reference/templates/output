@@ -1,11 +1,11 @@
 Wrote templates_types.yaml
-Wrote wrapvector.h
+Wrote wrapvector_int.h
 Wrote wrapvectorforint.cpp
-Wrote wrapuser.h
+Wrote wrapuser_int.h
 Wrote wrapuser.cpp
 Wrote wraptemplates.h
 Wrote wraptemplates.cpp
 Wrote typestemplates.h
-Wrote wrapfvector.f
-Wrote wrapfuser.f
+Wrote wrapfvector_int.f
+Wrote wrapfuser_int.f
 Wrote wrapftemplates.f

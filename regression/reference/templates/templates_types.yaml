@@ -4,26 +4,26 @@
 declarations:
   - namespace: std
     declarations: std
-    - type: vector_0
+    - type: vector_int
       imported: True
       fields:
         base: shadow
         cxx_header: <vector>
         cxx_type: std::vector<int>
-        c_type: TEM_vector_0
-        f_derived_type: vector_0
+        c_type: TEM_vector_int
+        f_derived_type: vector_int
         f_to_c: "{f_var}%cxxmem"
         f_module:
-          vector_mod:
-          - vector_0
-  - type: user_0
+          vector_int_mod:
+          - vector_int
+  - type: user_int
     imported: True
     fields:
       base: shadow
       cxx_type: user<int>
-      c_type: TEM_user_0
-      f_derived_type: user_0
+      c_type: TEM_user_int
+      f_derived_type: user_int
       f_to_c: "{f_var}%cxxmem"
       f_module:
-        user_mod:
-        - user_0
+        user_int_mod:
+        - user_int

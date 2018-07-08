@@ -825,6 +825,12 @@ class ClassNode(AstNode, NamespaceMixin):
         self.expand_format_templates()
 
     def expand_format_templates(self):
+        """Expand format templates for a class.
+        Called after other format fields are set.
+        eval_template will only set a value if it has not already been set.
+        Call delete_format_template to remove previous values to 
+        force them to be recomputed.
+        """
         self.eval_template('class_prefix')
 
         # Only one file per class for C.
@@ -840,6 +846,20 @@ class ClassNode(AstNode, NamespaceMixin):
             self.eval_template('PY_struct_array_descr_create')
             self.eval_template('PY_struct_array_descr_variable')
             self.eval_template('PY_struct_array_descr_name')
+
+    def delete_format_templates(self):
+        """Delete some format strings which were defaulted.
+        Used when instantiation a class to remove previous class' values.
+        """
+        self.fmtdict.delattrs([
+            'class_prefix',
+            'C_header_filename',
+            'F_module_name',
+            'F_impl_filename',
+            'PY_struct_array_descr_create',
+            'PY_struct_array_descr_variable',
+            'PY_struct_array_descr_name',
+        ])
 
     def add_namespace(self, **kwargs):
         """Replace method inherited from NamespaceMixin."""

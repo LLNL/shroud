@@ -1,6 +1,6 @@
 // wrapvectorforint.cpp
 // This is generated code, do not edit
-#include "wrapvector.h"
+#include "wrapvector_int.h"
 #include <stdlib.h>
 #include <vector>
 
@@ -12,10 +12,10 @@ extern "C" {
 // splicer begin class.vector.C_definitions
 // splicer end class.vector.C_definitions
 
-TEM_vector TEM_vector_ctor()
+TEM_vector TEM_vector_int_ctor()
 {
 // splicer begin class.vector.method.ctor
-    std::vector *SHCXX_rv = new std::vector_0();
+    std::vector *SHCXX_rv = new std::vector_int();
     TEM_vector SHC_rv;
     SHC_rv.addr = static_cast<void *>(SHCXX_rv);
     SHC_rv.idtor = 0;
@@ -23,7 +23,7 @@ TEM_vector TEM_vector_ctor()
 // splicer end class.vector.method.ctor
 }
 
-void TEM_vector_dtor(TEM_vector_0 * self)
+void TEM_vector_int_dtor(TEM_vector_int * self)
 {
 // splicer begin class.vector.method.dtor
     std::vector<int> *SH_this =
@@ -34,7 +34,8 @@ void TEM_vector_dtor(TEM_vector_0 * self)
 // splicer end class.vector.method.dtor
 }
 
-void TEM_vector_push_back_XXXX(TEM_vector_0 * self, const int value)
+void TEM_vector_int_push_back_XXXX(TEM_vector_int * self,
+    const int value)
 {
 // splicer begin class.vector.method.push_back_XXXX
     std::vector<int> *SH_this =

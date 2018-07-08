@@ -570,6 +570,12 @@ class Scope(object):
         """
         return key in self.__dict__
 
+    def delattrs(self, lst):
+        """Remove a list of attributes from the local dictionary."""
+        for key in lst:
+            if key in self.__dict__:
+                del self.__dict__[key]
+
     def clone(self):
         """return new Scope with same inlocal and parent"""
         new = Scope(self.__parent)

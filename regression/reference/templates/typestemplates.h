@@ -10,17 +10,17 @@
 extern "C" {
 #endif
 
-struct s_TEM_user_0 {
+struct s_TEM_user_int {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TEM_user_0 TEM_user_0;
+typedef struct s_TEM_user_int TEM_user_int;
 
-struct s_TEM_vector_0 {
+struct s_TEM_vector_int {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TEM_vector_0 TEM_vector_0;
+typedef struct s_TEM_vector_int TEM_vector_int;
 
 struct s_TEM_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

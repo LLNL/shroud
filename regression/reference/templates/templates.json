@@ -6,18 +6,18 @@
                 "cxx_header": "<vector>", 
                 "fmtdict": {
                     "CXX_this_call": "SH_this->", 
-                    "C_header_filename": "wrapvector.h", 
+                    "C_header_filename": "wrapvector_int.h", 
                     "C_impl_filename": "wrapvectorforint.cpp", 
-                    "C_type_name": "TEM_vector_0", 
-                    "F_derived_name": "vector_0", 
-                    "F_impl_filename": "wrapfvector.f", 
-                    "F_module_name": "vector_mod", 
+                    "C_type_name": "TEM_vector_int", 
+                    "F_derived_name": "vector_int", 
+                    "F_impl_filename": "wrapfvector_int.f", 
+                    "F_module_name": "vector_int_mod", 
                     "__line__": 16, 
-                    "class_lower": "vector_0", 
-                    "class_prefix": "vector_", 
-                    "class_scope": "vector_0::", 
-                    "class_upper": "VECTOR_0", 
-                    "cxx_class": "vector_0", 
+                    "class_lower": "vector_int", 
+                    "class_prefix": "vector_int_", 
+                    "class_scope": "vector_int::", 
+                    "class_upper": "VECTOR_INT", 
+                    "cxx_class": "vector_int", 
                     "cxx_type": "vector<int>", 
                     "fmtblah": "one"
                 }, 
@@ -53,21 +53,21 @@
                         "decl": "vector()", 
                         "declgen": "vector()", 
                         "fmtdict": {
-                            "C_call_code": "std::vector *SHCXX_rv =\t new std::vector_0();", 
+                            "C_call_code": "std::vector *SHCXX_rv =\t new std::vector_int();", 
                             "C_call_list": "", 
-                            "C_name": "TEM_vector_ctor", 
+                            "C_name": "TEM_vector_int_ctor", 
                             "C_post_call": "TEM_vector SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
                             "C_return_type": "TEM_vector", 
-                            "F_C_call": "c_vector_ctor", 
-                            "F_C_name": "c_vector_ctor", 
+                            "F_C_call": "c_vector_int_ctor", 
+                            "F_C_name": "c_vector_int_ctor", 
                             "F_arg_c_call": "", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxmem = c_vector_ctor()", 
+                            "F_call_code": "SHT_rv%cxxmem = c_vector_int_ctor()", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
-                            "F_name_impl": "vector_ctor", 
+                            "F_name_impl": "vector_int_ctor", 
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
@@ -96,19 +96,19 @@
                         "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
-                            "C_name": "TEM_vector_dtor", 
+                            "C_name": "TEM_vector_int_dtor", 
                             "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
-                            "C_prototype": "TEM_vector_0 * self", 
+                            "C_prototype": "TEM_vector_int * self", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_call": "c_vector_dtor", 
-                            "F_C_name": "c_vector_dtor", 
+                            "F_C_call": "c_vector_int_dtor", 
+                            "F_C_name": "c_vector_int_dtor", 
                             "F_arg_c_call": "obj%cxxmem", 
                             "F_arguments": "obj", 
-                            "F_call_code": "call c_vector_dtor(obj%cxxmem)", 
+                            "F_call_code": "call c_vector_int_dtor(obj%cxxmem)", 
                             "F_name_function": "dtor", 
                             "F_name_generic": "dtor", 
-                            "F_name_impl": "vector_dtor", 
+                            "F_name_impl": "vector_int_dtor", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
@@ -224,19 +224,19 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->push_back(\tvalue);", 
                             "C_call_list": "value", 
-                            "C_name": "TEM_vector_push_back_XXXX", 
+                            "C_name": "TEM_vector_int_push_back_XXXX", 
                             "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
-                            "C_prototype": "TEM_vector_0 * self,\t const int value", 
+                            "C_prototype": "TEM_vector_int * self,\t const int value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_call": "c_vector_push_back_xxxx", 
-                            "F_C_name": "c_vector_push_back_xxxx", 
+                            "F_C_call": "c_vector_int_push_back_xxxx", 
+                            "F_C_name": "c_vector_int_push_back_xxxx", 
                             "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_vector_push_back_xxxx(obj%cxxmem,\t value)", 
+                            "F_call_code": "call c_vector_int_push_back_xxxx(obj%cxxmem,\t value)", 
                             "F_name_function": "push_back_XXXX", 
                             "F_name_generic": "push_back", 
-                            "F_name_impl": "vector_push_back_XXXX", 
+                            "F_name_impl": "vector_int_push_back_XXXX", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
@@ -288,23 +288,23 @@
                 "template_parameters": [
                     "T"
                 ], 
-                "typemap_name": "std::vector_0"
+                "typemap_name": "std::vector_int"
             }, 
             {
                 "cxx_header": "", 
                 "fmtdict": {
                     "CXX_this_call": "SH_this->", 
-                    "C_header_filename": "wrapuser.h", 
+                    "C_header_filename": "wrapuser_int.h", 
                     "C_impl_filename": "wrapuser.cpp", 
-                    "C_type_name": "TEM_user_0", 
-                    "F_derived_name": "user_0", 
-                    "F_impl_filename": "wrapfuser.f", 
-                    "F_module_name": "user_mod", 
-                    "class_lower": "user_0", 
-                    "class_prefix": "user_", 
-                    "class_scope": "user_0::", 
-                    "class_upper": "USER_0", 
-                    "cxx_class": "user_0", 
+                    "C_type_name": "TEM_user_int", 
+                    "F_derived_name": "user_int", 
+                    "F_impl_filename": "wrapfuser_int.f", 
+                    "F_module_name": "user_int_mod", 
+                    "class_lower": "user_int", 
+                    "class_prefix": "user_int_", 
+                    "class_scope": "user_int::", 
+                    "class_upper": "USER_INT", 
+                    "cxx_class": "user_int", 
                     "cxx_type": "user<int>"
                 }, 
                 "functions": [
@@ -476,19 +476,19 @@
                             "CXX_template": "<double>", 
                             "C_call_code": "SH_this->nested<double>(\targ1,\t arg2);", 
                             "C_call_list": "arg1,\t arg2", 
-                            "C_name": "TEM_user_nested_double", 
+                            "C_name": "TEM_user_int_nested_double", 
                             "C_pre_call": "user<int> *SH_this =\t static_cast<user<int> *>(self->addr);", 
-                            "C_prototype": "TEM_user_0 * self,\t int arg1,\t double arg2", 
+                            "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_call": "c_user_nested_double", 
-                            "F_C_name": "c_user_nested_double", 
+                            "F_C_call": "c_user_int_nested_double", 
+                            "F_C_name": "c_user_int_nested_double", 
                             "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2", 
                             "F_arguments": "obj,\t arg1,\t arg2", 
-                            "F_call_code": "call c_user_nested_double(obj%cxxmem,\t arg1,\t arg2)", 
+                            "F_call_code": "call c_user_int_nested_double(obj%cxxmem,\t arg1,\t arg2)", 
                             "F_name_function": "nested_double", 
                             "F_name_generic": "nested", 
-                            "F_name_impl": "user_nested_double", 
+                            "F_name_impl": "user_int_nested_double", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
@@ -547,7 +547,7 @@
                 "template_parameters": [
                     "T"
                 ], 
-                "typemap_name": "user_0"
+                "typemap_name": "user_int"
             }
         ], 
         "fmtdict": {
@@ -1712,7 +1712,7 @@
             "cxx_type": "cxx_T", 
             "f_type": "f_T"
         }, 
-        "std::vector_0": {
+        "std::vector_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
@@ -1726,14 +1726,14 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_vector_0 {c_var};", 
+                        "TEM_vector_int {c_var};", 
                         "{c_var}.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
             "c_to_cxx": "static_cast<{c_const}std::vector<int> *>({c_var}{c_member}addr)", 
-            "c_type": "TEM_vector_0", 
+            "c_type": "TEM_vector_int", 
             "cxx_header": "<vector>", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "std::vector<int>", 
@@ -1743,10 +1743,10 @@
                 ]
             }, 
             "f_c_type": "type(SHROUD_capsule_data)", 
-            "f_derived_type": "vector_0", 
+            "f_derived_type": "vector_int", 
             "f_module": {
-                "vector_mod": [
-                    "vector_0"
+                "vector_int_mod": [
+                    "vector_int"
                 ]
             }, 
             "f_statements": {
@@ -1758,7 +1758,7 @@
                 }
             }, 
             "f_to_c": "{f_var}%cxxmem", 
-            "f_type": "type(vector_0)", 
+            "f_type": "type(vector_int)", 
             "forward": "std::vector<int>", 
             "idtor": "1", 
             "py_statements": {
@@ -1927,7 +1927,7 @@
             "cxx_type": "cxx_T", 
             "f_type": "f_T"
         }, 
-        "user_0": {
+        "user_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "base": "shadow", 
@@ -1941,14 +1941,14 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_user_0 {c_var};", 
+                        "TEM_user_int {c_var};", 
                         "{c_var}.addr = {cxx_cast_to_void_ptr};", 
                         "{c_var}.idtor = {idtor};"
                     ]
                 }
             }, 
             "c_to_cxx": "static_cast<{c_const}user<int> *>({c_var}{c_member}addr)", 
-            "c_type": "TEM_user_0", 
+            "c_type": "TEM_user_int", 
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "user<int>", 
             "f_c_module": {
@@ -1957,10 +1957,10 @@
                 ]
             }, 
             "f_c_type": "type(SHROUD_capsule_data)", 
-            "f_derived_type": "user_0", 
+            "f_derived_type": "user_int", 
             "f_module": {
-                "user_mod": [
-                    "user_0"
+                "user_int_mod": [
+                    "user_int"
                 ]
             }, 
             "f_statements": {
@@ -1972,7 +1972,7 @@
                 }
             }, 
             "f_to_c": "{f_var}%cxxmem", 
-            "f_type": "type(user_0)", 
+            "f_type": "type(user_int)", 
             "forward": "user<int>", 
             "py_statements": {
                 "intent_in": {

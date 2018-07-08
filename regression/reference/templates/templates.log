@@ -4,11 +4,11 @@ class vector
 C method vector()
 C method ~vector()
 C method void push_back(const int value +intent(in))
-Close wrapvector.h
+Close wrapvector_int.h
 Close wrapvectorforint.cpp
 class user
 C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
-Close wrapuser.h
+Close wrapuser_int.h
 Close wrapuser.cpp
 C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
@@ -19,10 +19,10 @@ class vector
 C-interface, Fortran method vector()
 C-interface, Fortran method ~vector()
 C-interface, Fortran method void push_back(const int value +intent(in))
-Close wrapfvector.f
+Close wrapfvector_int.f
 class user
 C-interface, Fortran method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
-Close wrapfuser.f
+Close wrapfuser_int.f
 C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Close wrapftemplates.f

@@ -445,10 +445,17 @@ class GenFunctions(object):
                     newcls = cls.clone()
                     clslist.append(newcls)
 
+                    # If single template argument, use its name; else sequence.
+                    # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
+                    if len(targs.asts) == 1:
+                        class_suffix = targs.asts[0].typemap.name
+                    else:
+                        class_suffix = str(iargs)
+
                     # Update name of class.
-                    #  cxx_class - vector_0      (Fortran and C names)
+                    #  cxx_class - vector_0 or vector_int     (Fortran and C names)
                     #  cxx_type  - vector<int>
-                    cxx_class = "{}_{}".format(newcls.fmtdict.cxx_class, i)
+                    cxx_class = "{}_{}".format(newcls.fmtdict.cxx_class, class_suffix)
                     cxx_type = "{}{}".format(newcls.fmtdict.cxx_class,
                                              targs.instantiation)
 
@@ -460,7 +467,9 @@ class GenFunctions(object):
                         class_scope=cxx_class + '::',
                         F_derived_name=cxx_class.lower(),
                     ))
-                    newcls.expand_format_templates()
+
+                    # Remove defaulted attributes, load files from fmtdict, recompute defaults
+                    newcls.delete_format_templates()
 
                     # Update format and options from template_arguments
                     if targs.fmtdict:
@@ -468,6 +477,7 @@ class GenFunctions(object):
                     if targs.options:
                         newcls.options.update(targs.options)
 
+                    newcls.expand_format_templates()
                     newcls.typemap = typemap.create_class_typemap(newcls)
 
                     self.push_instantiate_scope(newcls, targs)
