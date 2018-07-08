@@ -755,7 +755,7 @@ class GenFunctions(object):
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
                                 .format(arg_typemap.name))
-                        arg.typename = ntypemap
+                        arg.set_type(ntypemap)
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -890,7 +890,7 @@ class GenFunctions(object):
                 if is_ptr:
                     has_implied_arg = True
                 else:
-                    arg.typename = typemap.lookup_type('char_scalar')
+                    arg.set_type(typemap.lookup_type('char_scalar'))
             elif arg_typemap.base == 'vector':
                 has_implied_arg = True
                 # Create helpers for vector template.
@@ -913,7 +913,7 @@ class GenFunctions(object):
         elif result_typemap.base == 'string':
             if result_typemap.name == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
-                ast.typename = typemap.lookup_type('char_scalar')
+                ast.set_type(typemap.lookup_type('char_scalar'))
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
@@ -1137,8 +1137,7 @@ class GenFunctions(object):
             # XXX - process templated types
             return
         ast = node.ast
-        rv_type = ast.typename
-        typedef = typemap.lookup_type(rv_type)
+        typedef = ast.typemap
         if typedef is None:
             raise RuntimeError(
                 "Unknown type {} for function decl: {}"

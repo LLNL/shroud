@@ -918,8 +918,6 @@ class Declaration(Node):
         # 'long long' into ['long', 'long']
         self.specifier = ntypemap.cxx_type.split()
 
-    typename = property(None, set_type, None, "Declaration type")
-
     def is_ctor(self):
         """Return True if self is a constructor."""
         return self.attrs.get('_constructor', False)
@@ -1046,7 +1044,7 @@ class Declaration(Node):
         """
         # XXX - what if T = 'int *' and arg is 'T *arg'?
         new = copy.copy(self)
-        new.typename = node.typemap
+        new.set_type(node.typemap)
         return new
 
     def __str__(self):
