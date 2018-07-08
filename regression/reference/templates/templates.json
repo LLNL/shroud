@@ -42,8 +42,7 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "std::vector"
+                                "_name": "ctor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -84,8 +83,7 @@
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
-                                "_name": "dtor", 
-                                "_typename": "std::vector"
+                                "_name": "dtor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -125,9 +123,6 @@
                     {
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "push_back", 
                                 "pointer": []
@@ -135,7 +130,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "std::vector::T", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
@@ -199,9 +193,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "push_back", 
                                 "pointer": []
@@ -209,7 +200,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
@@ -277,9 +267,6 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "int"
-                                }, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -324,9 +311,6 @@
                     {
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "nested", 
                                 "pointer": []
@@ -334,7 +318,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "user::T", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -349,7 +332,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "U", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -391,9 +373,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -452,9 +431,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "nested", 
                                 "pointer": []
@@ -462,7 +438,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -477,7 +452,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "double", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -536,9 +510,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -564,9 +535,6 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "int"
-                                }, 
                                 "specifier": [
                                     "int"
                                 ], 
@@ -656,9 +624,6 @@
             {
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FunctionTU", 
                         "pointer": []
@@ -666,7 +631,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "T", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -681,7 +645,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "U", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -724,18 +687,12 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "int"
-                                }, 
                                 "specifier": [
                                     "int"
                                 ], 
                                 "typemap_name": "int"
                             }, 
                             {
-                                "attrs": {
-                                    "_typename": "long"
-                                }, 
                                 "specifier": [
                                     "long"
                                 ], 
@@ -747,18 +704,12 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "float"
-                                }, 
                                 "specifier": [
                                     "float"
                                 ], 
                                 "typemap_name": "float"
                             }, 
                             {
-                                "attrs": {
-                                    "_typename": "double"
-                                }, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -819,9 +770,6 @@
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FunctionTU", 
                         "pointer": []
@@ -829,7 +777,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -844,7 +791,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "long", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -899,18 +845,12 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "int"
-                                }, 
                                 "specifier": [
                                     "int"
                                 ], 
                                 "typemap_name": "int"
                             }, 
                             {
-                                "attrs": {
-                                    "_typename": "long"
-                                }, 
                                 "specifier": [
                                     "long"
                                 ], 
@@ -922,18 +862,12 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "float"
-                                }, 
                                 "specifier": [
                                     "float"
                                 ], 
                                 "typemap_name": "float"
                             }, 
                             {
-                                "attrs": {
-                                    "_typename": "double"
-                                }, 
                                 "specifier": [
                                     "double"
                                 ], 
@@ -994,9 +928,6 @@
                 "_generated": "cxx_template", 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FunctionTU", 
                         "pointer": []
@@ -1004,7 +935,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "float", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -1019,7 +949,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -1074,18 +1003,12 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "int"
-                                }, 
                                 "specifier": [
                                     "int"
                                 ], 
                                 "typemap_name": "int"
                             }, 
                             {
-                                "attrs": {
-                                    "_typename": "long"
-                                }, 
                                 "specifier": [
                                     "long"
                                 ], 
@@ -1097,18 +1020,12 @@
                     {
                         "asts": [
                             {
-                                "attrs": {
-                                    "_typename": "float"
-                                }, 
                                 "specifier": [
                                     "float"
                                 ], 
                                 "typemap_name": "float"
                             }, 
                             {
-                                "attrs": {
-                                    "_typename": "double"
-                                }, 
                                 "specifier": [
                                     "double"
                                 ], 

@@ -407,7 +407,6 @@ class Parser(ExprParser):
             self.info('destructor', self.namespace.typemap.name)
             node.attrs['_name'] = 'dtor'
             node.attrs['_destructor'] = True
-            node.attrs['_typename'] = self.namespace.typemap.name
             node.typemap = self.namespace.typemap
             found_type = True
             more = False
@@ -431,7 +430,6 @@ class Parser(ExprParser):
                         node.attrs['_constructor'] = True
                         more = False
                     # Save fully resolved typename
-                    node.attrs['_typename'] = ns.typemap.name
                     node.typemap = ns.typemap
                     found_type = True
                 else:
@@ -456,7 +454,6 @@ class Parser(ExprParser):
                 self.token.typ, self.token.value))
         if not found_type:
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
-            node.attrs['_typename'] = '_'.join(node.specifier)
             node.typemap = typemap.lookup_type('_'.join(node.specifier))
             if node.typemap is None:
                 self.error_msg("Unknown typemap '{}"
@@ -924,7 +921,6 @@ class Declaration(Node):
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""
         self.typemap = ntypemap
-        self.attrs['_typename'] = ntypemap.name
         # 'long long' into ['long', 'long']
         self.specifier = ntypemap.c_type.split()
 
@@ -1018,7 +1014,6 @@ class Declaration(Node):
     def _set_to_void(self):
         """Change function to void"""
         self.specifier = ['void']
-        self.attrs['_typename'] = 'void'
         self.typemap = typemap.lookup_type('void')
         self.const = False
         self.declarator.pointer = []
@@ -1050,7 +1045,6 @@ class Declaration(Node):
         """
         new = copy.copy(node)
         new.attrs = copy.copy(self.attrs)  # intent, ...
-        new.attrs['_typename'] = node.attrs['_typename']
         if new.declarator is None:
             new.declarator = Declarator()
         else:
@@ -1487,14 +1481,12 @@ def create_this_arg(name, arg_typemap, const=True):
     """Create a Declaration for an argument for the 'this' argument
     as 'typ *name'
     """
-    typ = arg_typemap.name
     arg = Declaration()
     arg.const = const
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr('*')]
-    arg.specifier = [typ]
-    arg.attrs['_typename'] = typ
+    arg.specifier = arg_typemap.cxx_type.split()
     arg.typemap = arg_typemap
     return arg
 
@@ -1507,6 +1499,5 @@ def create_voidstar(typ, name, const=False):
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr('*')]
     arg.specifier = [typ]
-    arg.attrs['_typename'] = typ
     arg.typemap = typemap.lookup_type(typ)
     return arg

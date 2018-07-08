@@ -117,9 +117,6 @@
         "functions": [
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "Function1", 
                         "pointer": []
@@ -209,9 +206,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "double"
-                    }, 
                     "declarator": {
                         "name": "Function2", 
                         "pointer": []
@@ -219,7 +213,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -234,7 +227,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 

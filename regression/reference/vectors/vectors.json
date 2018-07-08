@@ -123,9 +123,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "vector_sum", 
                         "pointer": []
@@ -133,7 +130,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
@@ -152,9 +148,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -228,9 +221,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "vector_sum", 
                         "pointer": []
@@ -239,7 +229,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "size": "Sarg", 
@@ -259,9 +248,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -304,9 +290,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_iota_out", 
                         "pointer": []
@@ -314,7 +297,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "out", 
                                 "value": false
@@ -332,9 +314,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -404,9 +383,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_iota_out", 
                         "pointer": []
@@ -415,7 +391,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "out", 
@@ -434,9 +409,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -483,9 +455,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_iota_out_alloc", 
                         "pointer": []
@@ -493,7 +462,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "out", 
@@ -512,9 +480,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -584,9 +549,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_iota_out_alloc", 
                         "pointer": []
@@ -595,7 +557,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
@@ -615,9 +576,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -664,9 +622,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_iota_inout_alloc", 
                         "pointer": []
@@ -674,7 +629,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "inout", 
@@ -693,9 +647,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -766,9 +717,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_iota_inout_alloc", 
                         "pointer": []
@@ -777,7 +725,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
@@ -798,9 +745,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -847,9 +791,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_increment", 
                         "pointer": []
@@ -857,7 +798,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "value": false
@@ -875,9 +815,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -944,9 +881,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_increment", 
                         "pointer": []
@@ -955,7 +889,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "inout", 
@@ -975,9 +908,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "int"
-                                    }, 
                                     "specifier": [
                                         "int"
                                     ], 
@@ -1026,9 +956,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "vector_string_count", 
                         "pointer": []
@@ -1036,7 +963,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
@@ -1055,9 +981,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "std::string"
-                                    }, 
                                     "specifier": [
                                         "std::string"
                                     ], 
@@ -1136,9 +1059,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "vector_string_count", 
                         "pointer": []
@@ -1147,7 +1067,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "len": "Narg", 
@@ -1168,9 +1087,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "std::string"
-                                    }, 
                                     "specifier": [
                                         "std::string"
                                     ], 
@@ -1217,9 +1133,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_string_fill", 
                         "pointer": []
@@ -1227,7 +1140,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "intent": "out"
                             }, 
                             "declarator": {
@@ -1243,9 +1155,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "std::string"
-                                    }, 
                                     "specifier": [
                                         "std::string"
                                     ], 
@@ -1286,9 +1195,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "vector_string_append", 
                         "pointer": []
@@ -1296,7 +1202,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "intent": "inout"
                             }, 
                             "declarator": {
@@ -1312,9 +1217,6 @@
                             ], 
                             "template_arguments": [
                                 {
-                                    "attrs": {
-                                        "_typename": "std::string"
-                                    }, 
                                     "specifier": [
                                         "std::string"
                                     ], 

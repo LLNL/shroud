@@ -30,9 +30,6 @@
                 "functions": [
                     {
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "method1", 
                                 "pointer": []
@@ -76,9 +73,6 @@
                     }, 
                     {
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "method2", 
                                 "pointer": []
@@ -356,9 +350,6 @@
         "functions": [
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "function1", 
                         "pointer": []
@@ -397,9 +388,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "function2", 
                         "pointer": []
@@ -474,9 +462,6 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "function3a", 
                         "pointer": []
@@ -484,7 +469,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -568,9 +552,6 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "function3a", 
                         "pointer": []
@@ -578,7 +559,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "long", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -682,9 +662,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "function4", 
                         "pointer": []
@@ -692,7 +669,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -779,9 +755,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "function4", 
                         "pointer": []
@@ -790,7 +763,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Lrv", 
                                 "value": false
@@ -843,7 +815,6 @@
             {
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "name": "fiveplus"
                     }, 
                     "declarator": {
@@ -884,9 +855,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "init_ns1", 
                         "pointer": []

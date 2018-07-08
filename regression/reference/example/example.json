@@ -100,8 +100,7 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "example::nested::ExClass1"
+                                "_name": "ctor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -223,13 +222,11 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "example::nested::ExClass1"
+                                "_name": "ctor"
                             }, 
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "std::string", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
@@ -332,14 +329,12 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "example::nested::ExClass1"
+                                "_name": "ctor"
                             }, 
                             "params": [
                                 {
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
-                                        "_typename": "std::string", 
                                         "intent": "in", 
                                         "len_trim": "Lname", 
                                         "value": false
@@ -401,8 +396,7 @@
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
-                                "_name": "dtor", 
-                                "_typename": "example::nested::ExClass1"
+                                "_name": "dtor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -525,9 +519,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "int"
-                            }, 
                             "declarator": {
                                 "name": "incrementCount", 
                                 "pointer": []
@@ -535,7 +526,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -627,7 +617,6 @@
                         "ast": {
                             "attrs": {
                                 "__line__": 147, 
-                                "_typename": "std::string", 
                                 "deref": "result_as_arg", 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
@@ -722,7 +711,6 @@
                         "ast": {
                             "attrs": {
                                 "__line__": 147, 
-                                "_typename": "void", 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "declarator": {
@@ -736,7 +724,6 @@
                                         "__line__": 147, 
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
                                         "intent": "out", 
                                         "len": "NSHF_rv"
                                     }, 
@@ -821,9 +808,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "int"
-                            }, 
                             "declarator": {
                                 "name": "GetNameLength", 
                                 "pointer": []
@@ -911,7 +895,6 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "deref": "allocatable"
                             }, 
                             "const": true, 
@@ -1001,9 +984,6 @@
                         }, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getNameErrorCheck", 
                                 "pointer": []
@@ -1014,7 +994,6 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "stringout", 
                                         "context": "DSHF_rv", 
                                         "deref": "allocatable", 
                                         "intent": "out"
@@ -1100,7 +1079,6 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "deref": "result_as_arg"
                             }, 
                             "const": true, 
@@ -1184,9 +1162,6 @@
                         }, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getNameArg", 
                                 "pointer": []
@@ -1197,7 +1172,6 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
                                         "intent": "out", 
                                         "len": "Nname"
                                     }, 
@@ -1254,9 +1228,6 @@
                     {
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getNameArg", 
                                 "pointer": []
@@ -1267,7 +1238,6 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
                                         "intent": "out", 
                                         "len": "Nname"
                                     }, 
@@ -1348,9 +1318,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getRoot", 
                                 "pointer": [
@@ -1478,9 +1445,6 @@
                         }, 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "int"
-                            }, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
@@ -1488,7 +1452,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -1622,9 +1585,6 @@
                         }, 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "long"
-                            }, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
@@ -1632,7 +1592,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "long", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -1717,9 +1676,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getAddr", 
                                 "pointer": [
@@ -1847,9 +1803,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "bool"
-                            }, 
                             "declarator": {
                                 "name": "hasAddr", 
                                 "pointer": []
@@ -1857,7 +1810,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "bool", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -1912,9 +1864,6 @@
                     }, 
                     {
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "SplicerSpecial", 
                                 "pointer": []
@@ -2081,14 +2030,12 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "example::nested::ExClass2"
+                                "_name": "ctor"
                             }, 
                             "params": [
                                 {
                                     "attrs": {
                                         "__line__": 197, 
-                                        "_typename": "std::string", 
                                         "intent": "in", 
                                         "len_trim": "trim_name", 
                                         "value": false
@@ -2190,15 +2137,13 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "example::nested::ExClass2"
+                                "_name": "ctor"
                             }, 
                             "params": [
                                 {
                                     "attrs": {
                                         "__line__": 197, 
                                         "_generated_suffix": "_buf", 
-                                        "_typename": "std::string", 
                                         "intent": "in", 
                                         "len_trim": "trim_name", 
                                         "value": false
@@ -2258,8 +2203,7 @@
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
-                                "_name": "dtor", 
-                                "_typename": "example::nested::ExClass2"
+                                "_name": "dtor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -2340,7 +2284,6 @@
                         "ast": {
                             "attrs": {
                                 "__line__": 208, 
-                                "_typename": "std::string", 
                                 "deref": "result_as_arg", 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
@@ -2432,7 +2375,6 @@
                         "ast": {
                             "attrs": {
                                 "__line__": 208, 
-                                "_typename": "void", 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "declarator": {
@@ -2446,7 +2388,6 @@
                                         "__line__": 208, 
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "std::string", 
                                         "intent": "out", 
                                         "len": "NSHF_rv"
                                     }, 
@@ -2534,7 +2475,6 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "deref": "allocatable"
                             }, 
                             "const": true, 
@@ -2623,9 +2563,6 @@
                         }, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getName2", 
                                 "pointer": []
@@ -2635,7 +2572,6 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "stringout", 
                                         "context": "DSHF_rv", 
                                         "deref": "allocatable", 
                                         "intent": "out"
@@ -2725,7 +2661,6 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "deref": "allocatable"
                             }, 
                             "declarator": {
@@ -2814,9 +2749,6 @@
                         }, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getName3", 
                                 "pointer": []
@@ -2827,7 +2759,6 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "stringout", 
                                         "context": "DSHF_rv", 
                                         "deref": "allocatable", 
                                         "intent": "out"
@@ -2916,7 +2847,6 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "deref": "allocatable"
                             }, 
                             "declarator": {
@@ -3004,9 +2934,6 @@
                         }, 
                         "_generated": "arg_to_buffer", 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "getName4", 
                                 "pointer": []
@@ -3016,7 +2943,6 @@
                                     "attrs": {
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
-                                        "_typename": "stringout", 
                                         "context": "DSHF_rv", 
                                         "deref": "allocatable", 
                                         "intent": "out"
@@ -3102,9 +3028,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "int"
-                            }, 
                             "declarator": {
                                 "name": "GetNameLength", 
                                 "pointer": []
@@ -3238,9 +3161,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "example::nested::ExClass1"
-                            }, 
                             "declarator": {
                                 "name": "get_class1", 
                                 "pointer": [
@@ -3252,7 +3172,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "example::nested::ExClass1", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
@@ -3337,9 +3256,6 @@
                         "_generated": "has_default_arg", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
@@ -3351,7 +3267,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "TypeID", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3409,9 +3324,6 @@
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
@@ -3423,7 +3335,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "TypeID", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3470,9 +3381,6 @@
                         "_generated": "fortran_generic", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
@@ -3484,7 +3392,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "TypeID", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3629,9 +3536,6 @@
                         ], 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
@@ -3643,7 +3547,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "TypeID", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3658,7 +3561,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "SidreLength", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3725,9 +3627,6 @@
                         ], 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
@@ -3739,7 +3638,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "TypeID", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3754,7 +3652,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3810,9 +3707,6 @@
                         ], 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "declare", 
                                 "pointer": [
@@ -3824,7 +3718,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "TypeID", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3839,7 +3732,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "long", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -3885,9 +3777,6 @@
                     }, 
                     {
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "destroyall", 
                                 "pointer": []
@@ -3965,9 +3854,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "TypeID"
-                            }, 
                             "declarator": {
                                 "name": "getTypeID", 
                                 "pointer": []
@@ -4017,9 +3903,6 @@
                     {
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
@@ -4027,7 +3910,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "ValueType", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -4072,9 +3954,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4086,9 +3965,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "long"
-                                        }, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4100,9 +3976,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "float"
-                                        }, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4114,9 +3987,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4182,9 +4052,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
@@ -4192,7 +4059,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -4254,9 +4120,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4268,9 +4131,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "long"
-                                        }, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4282,9 +4142,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "float"
-                                        }, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4296,9 +4153,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4364,9 +4218,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
@@ -4374,7 +4225,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "long", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -4434,9 +4284,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4448,9 +4295,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "long"
-                                        }, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4462,9 +4306,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "float"
-                                        }, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4476,9 +4317,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4544,9 +4382,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
@@ -4554,7 +4389,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "float", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -4614,9 +4448,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4628,9 +4459,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "long"
-                                        }, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4642,9 +4470,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "float"
-                                        }, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4656,9 +4481,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4724,9 +4546,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "setValue", 
                                 "pointer": []
@@ -4734,7 +4553,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "double", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -4794,9 +4612,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4808,9 +4623,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "long"
-                                        }, 
                                         "specifier": [
                                             "long"
                                         ], 
@@ -4822,9 +4634,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "float"
-                                        }, 
                                         "specifier": [
                                             "float"
                                         ], 
@@ -4836,9 +4645,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4858,9 +4664,6 @@
                     {
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "ValueType"
-                            }, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
@@ -4895,9 +4698,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -4909,9 +4709,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -4964,9 +4761,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "int"
-                            }, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
@@ -5022,9 +4816,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -5036,9 +4827,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -5091,9 +4879,6 @@
                         "_generated": "cxx_template", 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "double"
-                            }, 
                             "declarator": {
                                 "name": "getValue", 
                                 "pointer": []
@@ -5147,9 +4932,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "int"
-                                        }, 
                                         "specifier": [
                                             "int"
                                         ], 
@@ -5161,9 +4943,6 @@
                             {
                                 "asts": [
                                     {
-                                        "attrs": {
-                                            "_typename": "double"
-                                        }, 
                                         "specifier": [
                                             "double"
                                         ], 
@@ -5236,9 +5015,6 @@
                     {
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "exfunc", 
                                 "pointer": []
@@ -5315,9 +5091,6 @@
                         }, 
                         "_overloaded": true, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "exfunc", 
                                 "pointer": []
@@ -5325,7 +5098,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "intent": "in", 
                                         "value": true
                                     }, 
@@ -5522,9 +5294,6 @@
         "functions": [
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "local_function1", 
                         "pointer": []
@@ -5637,9 +5406,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "bool"
-                    }, 
                     "declarator": {
                         "name": "isNameValid", 
                         "pointer": []
@@ -5647,7 +5413,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -5738,9 +5503,6 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "bool"
-                    }, 
                     "declarator": {
                         "name": "isNameValid", 
                         "pointer": []
@@ -5749,7 +5511,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Lname", 
                                 "value": false
@@ -5835,9 +5596,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "bool"
-                    }, 
                     "declarator": {
                         "name": "isInitialized", 
                         "pointer": []
@@ -6017,9 +5775,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "checkBool", 
                         "pointer": []
@@ -6027,7 +5782,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6042,7 +5796,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -6061,7 +5814,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -6156,9 +5908,6 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
@@ -6166,7 +5915,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -6246,9 +5994,6 @@
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
@@ -6257,7 +6002,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Lname", 
                                 "value": false
@@ -6390,9 +6134,6 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
@@ -6400,7 +6141,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -6420,7 +6160,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6511,9 +6250,6 @@
                 "_generated": "arg_to_buffer", 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "test_names", 
                         "pointer": []
@@ -6522,7 +6258,6 @@
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Lname", 
                                 "value": false
@@ -6543,7 +6278,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6591,9 +6325,6 @@
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testoptional", 
                         "pointer": []
@@ -6659,9 +6390,6 @@
                 "_generated": "has_default_arg", 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testoptional", 
                         "pointer": []
@@ -6669,7 +6397,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6820,9 +6547,6 @@
                 ], 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testoptional", 
                         "pointer": []
@@ -6830,7 +6554,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6846,7 +6569,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "long", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -6928,9 +6650,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "size_t"
-                    }, 
                     "declarator": {
                         "name": "test_size_t", 
                         "pointer": []
@@ -7022,9 +6741,6 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testmpi", 
                         "pointer": []
@@ -7032,7 +6748,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "MPI_Comm", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -7085,9 +6800,6 @@
             {
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testmpi", 
                         "pointer": []
@@ -7176,9 +6888,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testgroup1", 
                         "pointer": []
@@ -7186,7 +6895,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -7288,9 +6996,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "testgroup2", 
                         "pointer": []
@@ -7298,7 +7003,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "axom::sidre::Group", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -7398,9 +7102,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FuncPtr1", 
                         "pointer": []
@@ -7408,7 +7109,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "void", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -7514,9 +7214,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FuncPtr2", 
                         "pointer": []
@@ -7524,7 +7221,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -7634,9 +7330,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FuncPtr3", 
                         "pointer": []
@@ -7644,7 +7337,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -7662,7 +7354,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -7676,7 +7367,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "specifier": [
@@ -7753,9 +7443,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FuncPtr4", 
                         "pointer": []
@@ -7763,7 +7450,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -7781,7 +7467,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "double", 
                                         "value": true
                                     }, 
                                     "specifier": [
@@ -7791,7 +7476,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "specifier": [
@@ -7894,9 +7578,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "FuncPtr5", 
                         "pointer": []
@@ -7904,7 +7585,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "void", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -7922,7 +7602,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -7936,7 +7615,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -7950,7 +7628,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -7964,7 +7641,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -7978,7 +7654,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -7992,7 +7667,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -8006,7 +7680,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -8020,7 +7693,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -8034,7 +7706,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -8048,7 +7719,6 @@
                                 }, 
                                 {
                                     "attrs": {
-                                        "_typename": "int", 
                                         "value": true
                                     }, 
                                     "declarator": {
@@ -8554,9 +8224,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "verylongfunctionname1", 
                         "pointer": []
@@ -8564,7 +8231,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8583,7 +8249,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8602,7 +8267,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8621,7 +8285,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8640,7 +8303,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8659,7 +8321,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8678,7 +8339,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8697,7 +8357,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8716,7 +8375,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -8735,7 +8393,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
@@ -9254,9 +8911,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
                     "declarator": {
                         "name": "verylongfunctionname2", 
                         "pointer": []
@@ -9264,7 +8918,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9279,7 +8932,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9294,7 +8946,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9309,7 +8960,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9324,7 +8974,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9339,7 +8988,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9354,7 +9002,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9369,7 +9016,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9384,7 +9030,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9399,7 +9044,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -9595,9 +9239,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "cos_doubles", 
                         "pointer": []
@@ -9605,7 +9246,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "dimension": ":,:", 
                                 "intent": "in", 
                                 "value": false
@@ -9625,7 +9265,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "allocatable": "mold=in", 
                                 "dimension": ":,:", 
                                 "intent": "out", 
@@ -9646,7 +9285,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "implied": "size(in)", 
                                 "intent": "in", 
                                 "value": true

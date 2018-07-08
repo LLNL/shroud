@@ -36,8 +36,7 @@
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
-                                "_name": "dtor", 
-                                "_typename": "Class1"
+                                "_name": "dtor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -92,9 +91,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "int"
-                            }, 
                             "declarator": {
                                 "name": "getFlag", 
                                 "pointer": []
@@ -150,7 +146,6 @@
                     {
                         "ast": {
                             "attrs": {
-                                "_typename": "int", 
                                 "name": "flag", 
                                 "readonly": true
                             }, 
@@ -328,7 +323,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 68, 
-                        "_typename": "int", 
                         "deref": "raw"
                     }, 
                     "declarator": {
@@ -398,7 +392,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 77, 
-                        "_typename": "int", 
                         "deref": "scalar"
                     }, 
                     "declarator": {
@@ -478,7 +471,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 84, 
-                        "_typename": "int", 
                         "deref": "pointer"
                     }, 
                     "declarator": {
@@ -557,7 +549,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 97, 
-                        "_typename": "int", 
                         "deref": "raw"
                     }, 
                     "declarator": {
@@ -571,7 +562,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "out", 
                                 "value": false
                             }, 
@@ -685,7 +675,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 106, 
-                        "_typename": "int", 
                         "deref": "pointer", 
                         "dimension": "len"
                     }, 
@@ -700,7 +689,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -821,7 +809,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 113, 
-                        "_typename": "int", 
                         "deref": "allocatable", 
                         "dimension": "len"
                     }, 
@@ -836,7 +823,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -929,7 +915,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 113, 
-                        "_typename": "int", 
                         "context": "DSHC_rv", 
                         "deref": "allocatable", 
                         "dimension": "len"
@@ -945,7 +930,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -1092,7 +1076,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 120, 
-                        "_typename": "int", 
                         "dimension": "len"
                     }, 
                     "declarator": {
@@ -1106,7 +1089,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -1192,7 +1174,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 131, 
-                        "_typename": "int", 
                         "dimension": "len", 
                         "owner": "caller"
                     }, 
@@ -1207,7 +1188,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -1322,7 +1302,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 142, 
-                        "_typename": "int", 
                         "deref": "pointer", 
                         "dimension": "len", 
                         "owner": "caller"
@@ -1338,7 +1317,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -1452,7 +1430,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 151, 
-                        "_typename": "int", 
                         "deref": "allocatable", 
                         "dimension": "len", 
                         "owner": "caller"
@@ -1468,7 +1445,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -1583,7 +1559,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 161, 
-                        "_typename": "int", 
                         "dimension": "len", 
                         "owner": "caller"
                     }, 
@@ -1598,7 +1573,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out", 
                                 "value": false
@@ -1656,9 +1630,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimRaw", 
                         "pointer": []
@@ -1667,7 +1638,6 @@
                         {
                             "attrs": {
                                 "__line__": 177, 
-                                "_typename": "int", 
                                 "deref": "raw", 
                                 "intent": "out", 
                                 "owner": "library"
@@ -1690,7 +1660,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "out"
                             }, 
                             "declarator": {
@@ -1729,9 +1698,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimPointer", 
                         "pointer": []
@@ -1740,7 +1706,6 @@
                         {
                             "attrs": {
                                 "__line__": 189, 
-                                "_typename": "int", 
                                 "deref": "pointer", 
                                 "dimension": "len", 
                                 "intent": "out", 
@@ -1764,7 +1729,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -1804,9 +1768,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimAlloc", 
                         "pointer": []
@@ -1815,7 +1776,6 @@
                         {
                             "attrs": {
                                 "__line__": 202, 
-                                "_typename": "int", 
                                 "deref": "allocatable", 
                                 "dimension": "len", 
                                 "intent": "out", 
@@ -1839,7 +1799,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -1879,9 +1838,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimDefault", 
                         "pointer": []
@@ -1890,7 +1846,6 @@
                         {
                             "attrs": {
                                 "__line__": 215, 
-                                "_typename": "int", 
                                 "dimension": "len", 
                                 "intent": "out", 
                                 "owner": "library"
@@ -1913,7 +1868,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -1953,9 +1907,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimRawNew", 
                         "pointer": []
@@ -1964,7 +1915,6 @@
                         {
                             "attrs": {
                                 "__line__": 232, 
-                                "_typename": "int", 
                                 "deref": "raw", 
                                 "intent": "out", 
                                 "owner": "caller"
@@ -1987,7 +1937,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -2027,9 +1976,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimPointerNew", 
                         "pointer": []
@@ -2038,7 +1984,6 @@
                         {
                             "attrs": {
                                 "__line__": 245, 
-                                "_typename": "int", 
                                 "deref": "pointer", 
                                 "dimension": "len", 
                                 "intent": "out", 
@@ -2062,7 +2007,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -2102,9 +2046,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimAllocNew", 
                         "pointer": []
@@ -2113,7 +2054,6 @@
                         {
                             "attrs": {
                                 "__line__": 259, 
-                                "_typename": "int", 
                                 "deref": "allocatable", 
                                 "dimension": "len", 
                                 "intent": "out", 
@@ -2137,7 +2077,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -2177,9 +2116,6 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "IntPtrDimDefaultNew", 
                         "pointer": []
@@ -2188,7 +2124,6 @@
                         {
                             "attrs": {
                                 "__line__": 273, 
-                                "_typename": "int", 
                                 "dimension": "len", 
                                 "intent": "out", 
                                 "owner": "caller"
@@ -2211,7 +2146,6 @@
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "hidden": true, 
                                 "intent": "out"
                             }, 
@@ -2285,9 +2219,6 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
                     "declarator": {
                         "name": "createClassStatic", 
                         "pointer": []
@@ -2295,7 +2226,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -2372,7 +2302,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1", 
                         "owner": "library"
                     }, 
                     "declarator": {
@@ -2484,7 +2413,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "Class1", 
                         "owner": "caller"
                     }, 
                     "declarator": {
@@ -2498,7 +2426,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 

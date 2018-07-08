@@ -130,8 +130,7 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "tutorial::Class2"
+                                "_name": "ctor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -177,8 +176,7 @@
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
-                                "_name": "dtor", 
-                                "_typename": "tutorial::Class2"
+                                "_name": "dtor"
                             }, 
                             "params": [], 
                             "specifier": [
@@ -266,9 +264,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "func1", 
                                 "pointer": []
@@ -276,7 +271,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "tutorial::Class1", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
@@ -381,9 +375,6 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
                             "declarator": {
                                 "name": "acceptClass3", 
                                 "pointer": []
@@ -391,7 +382,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "tutorial::Class3", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
