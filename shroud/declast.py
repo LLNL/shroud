@@ -922,7 +922,7 @@ class Declaration(Node):
         """Set type specifier from a typemap."""
         self.typemap = ntypemap
         # 'long long' into ['long', 'long']
-        self.specifier = ntypemap.c_type.split()
+        self.specifier = ntypemap.cxx_type.split()
 
     typename = property(get_type, set_type, None, "Declaration type")
 
