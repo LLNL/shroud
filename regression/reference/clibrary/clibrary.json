@@ -1177,7 +1177,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [

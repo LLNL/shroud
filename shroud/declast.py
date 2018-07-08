@@ -918,9 +918,12 @@ class Declaration(Node):
         """
         return self.attrs['_typename']
 
-    def set_type(self, typ):
-        self.specifier = typ.split()
-        self.attrs['_typename'] = typ
+    def set_type(self, ntypemap):
+        """Set type specifier from a typemap."""
+        self.typemap = ntypemap
+        self.attrs['_typename'] = ntypemap.name
+        # 'long long' into ['long', 'long']
+        self.specifier = ntypemap.c_type.split()
 
     typename = property(get_type, set_type, None, "Declaration type")
 
@@ -1006,6 +1009,7 @@ class Declaration(Node):
             new.declarator.pointer = [Ptr('*')]
         # new.array = None
         new.attrs = copy.deepcopy(self.attrs)
+        new.typemap = self.typemap
         return new
 
     def _set_to_void(self):

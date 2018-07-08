@@ -80,7 +80,7 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void passChar(char_scalar status +intent(in)+value)
+// void passChar(char status +intent(in)+value)
 /**
  * \brief pass a single char argument as a scalar.
  *
@@ -93,7 +93,7 @@ void STR_pass_char(char status)
 // splicer end function.pass_char
 }
 
-// char_scalar returnChar()
+// char returnChar()
 /**
  * \brief return a char argument (non-pointer)
  *
@@ -106,7 +106,7 @@ char STR_return_char()
 // splicer end function.return_char
 }
 
-// void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
+// void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 /**
  * \brief return a char argument (non-pointer)
  *
@@ -894,7 +894,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // splicer end function.explicit2_bufferify
 }
 
-// void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
+// void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 /**
  * \brief return a char argument (non-pointer), extern "C"
  *

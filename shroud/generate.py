@@ -697,6 +697,7 @@ class GenFunctions(object):
             - double
         """
         nkeys = 0
+        linenumber = node.fortran_generic.get('__line__', '?')
         for argname, types in node.fortran_generic.items():
             if argname == '__line__':
                 continue
@@ -705,7 +706,11 @@ class GenFunctions(object):
                 # In the future it may be useful to have multiple generic arguments
                 # That the would start creating more permutations
                 raise NotImplementedError("Only one generic arg for now")
-            for type in types:
+            for typ in types:
+                ntypemap = typemap.lookup_type(typ)
+                if ntypemap is None:
+                    raise RuntimeError("Unknown type '{}' for argument '{}' for fortran generic near line {}"
+                                       .format(typ, argname, linenumber))
                 new = node.clone()
                 ordered_functions.append(new)
                 self.append_function_index(new)
@@ -714,7 +719,7 @@ class GenFunctions(object):
                 new._PTR_F_C_index = node._function_index
                 fmt = new.fmtdict
                 # XXX append to existing suffix
-                fmt.function_suffix = fmt.function_suffix + '_' + type
+                fmt.function_suffix = fmt.function_suffix + '_' + typ
                 new.fortran_generic = {}
                 options = new.options
                 options.wrap_c = False
@@ -730,7 +735,7 @@ class GenFunctions(object):
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
                                 .format(arg_typemap.name))
-                        arg.typename = type
+                        arg.typename = ntypemap
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -867,7 +872,7 @@ class GenFunctions(object):
                 if is_ptr:
                     has_implied_arg = True
                 else:
-                    arg.typename = 'char_scalar'
+                    arg.typename = typemap.lookup_type('char_scalar')
             elif arg_typemap.base == 'vector':
                 has_implied_arg = True
                 # Create helpers for vector template.
@@ -890,7 +895,7 @@ class GenFunctions(object):
         elif result_typemap.base == 'string':
             if result_type == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
-                ast.typename = 'char_scalar'
+                ast.typename = typemap.lookup_type('char_scalar')
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg

@@ -172,7 +172,7 @@ class NamespaceMixin(object):
             raise NotImplementedError("Function pointers not supported in typedef")
 
         key = ast.declarator.name
-        copy_type = ast.attrs['_typename']
+        copy_type = ast.typemap.name
         def_types = typemap.get_global_types()
         orig = def_types.get(copy_type, None)
         if not orig:

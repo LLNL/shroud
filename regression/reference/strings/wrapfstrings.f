@@ -499,7 +499,7 @@ module strings_mod
 
 contains
 
-    ! char_scalar returnChar()
+    ! char returnChar()
     ! arg_to_buffer
     !>
     !! \brief return a char argument (non-pointer)
@@ -891,7 +891,7 @@ contains
         ! splicer end function.explicit2
     end subroutine explicit2
 
-    ! char_scalar CreturnChar()
+    ! char CreturnChar()
     ! arg_to_buffer
     !>
     !! \brief return a char argument (non-pointer), extern "C"

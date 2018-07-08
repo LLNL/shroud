@@ -722,7 +722,8 @@
                                     }, 
                                     "specifier": [
                                         "string"
-                                    ]
+                                    ], 
+                                    "typemap_name": "std::string"
                                 }
                             ], 
                             "specifier": [
@@ -1182,7 +1183,8 @@
                                     }, 
                                     "specifier": [
                                         "string"
-                                    ]
+                                    ], 
+                                    "typemap_name": "std::string"
                                 }
                             ], 
                             "specifier": [
@@ -1251,7 +1253,8 @@
                                     }, 
                                     "specifier": [
                                         "string"
-                                    ]
+                                    ], 
+                                    "typemap_name": "std::string"
                                 }
                             ], 
                             "specifier": [
@@ -2429,7 +2432,8 @@
                                     }, 
                                     "specifier": [
                                         "string"
-                                    ]
+                                    ], 
+                                    "typemap_name": "std::string"
                                 }
                             ], 
                             "specifier": [
@@ -3734,7 +3738,7 @@
                                     "specifier": [
                                         "int"
                                     ], 
-                                    "typemap_name": "SidreLength"
+                                    "typemap_name": "int"
                                 }
                             ], 
                             "specifier": [
@@ -3819,7 +3823,7 @@
                                     "specifier": [
                                         "long"
                                     ], 
-                                    "typemap_name": "SidreLength"
+                                    "typemap_name": "long"
                                 }
                             ], 
                             "specifier": [

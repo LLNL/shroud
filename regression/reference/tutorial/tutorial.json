@@ -2925,7 +2925,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -3304,7 +3305,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -3413,7 +3415,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -5524,7 +5527,7 @@
                             "specifier": [
                                 "float"
                             ], 
-                            "typemap_name": "double"
+                            "typemap_name": "float"
                         }
                     ], 
                     "specifier": [
@@ -5864,7 +5867,7 @@
                             "specifier": [
                                 "float"
                             ], 
-                            "typemap_name": "double"
+                            "typemap_name": "float"
                         }
                     ], 
                     "specifier": [
@@ -9431,7 +9434,8 @@
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [

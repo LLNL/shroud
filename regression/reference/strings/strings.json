@@ -185,9 +185,9 @@
                                 "pointer": []
                             }, 
                             "specifier": [
-                                "char_scalar"
+                                "char"
                             ], 
-                            "typemap_name": "char"
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
@@ -196,7 +196,7 @@
                     "typemap_name": "void"
                 }, 
                 "decl": "void passChar(char status)", 
-                "declgen": "void passChar(char_scalar status +intent(in)+value)", 
+                "declgen": "void passChar(char status +intent(in)+value)", 
                 "doxygen": {
                     "__line__": 56, 
                     "brief": "pass a single char argument as a scalar."
@@ -261,12 +261,12 @@
                     }, 
                     "params": [], 
                     "specifier": [
-                        "char_scalar"
+                        "char"
                     ], 
-                    "typemap_name": "char"
+                    "typemap_name": "char_scalar"
                 }, 
                 "decl": "char returnChar()", 
-                "declgen": "char_scalar returnChar()", 
+                "declgen": "char returnChar()", 
                 "doxygen": {
                     "__line__": 60, 
                     "brief": "return a char argument (non-pointer)"
@@ -356,8 +356,9 @@
                                 ]
                             }, 
                             "specifier": [
-                                "char_scalar"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
@@ -366,7 +367,7 @@
                     "typemap_name": "void"
                 }, 
                 "decl": "char returnChar()", 
-                "declgen": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "declgen": "void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "__line__": 60, 
                     "brief": "return a char argument (non-pointer)"
@@ -1155,7 +1156,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
@@ -1322,7 +1324,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
@@ -1390,7 +1393,8 @@
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
@@ -1715,7 +1719,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -1864,7 +1869,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -1933,7 +1939,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -2454,7 +2461,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -2627,7 +2635,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -2696,7 +2705,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -2880,7 +2890,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -3239,7 +3250,8 @@
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
@@ -5149,9 +5161,9 @@
                                 "pointer": []
                             }, 
                             "specifier": [
-                                "char_scalar"
+                                "char"
                             ], 
-                            "typemap_name": "char"
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
@@ -5160,7 +5172,7 @@
                     "typemap_name": "void"
                 }, 
                 "decl": "void CpassChar(char status)", 
-                "declgen": "void CpassChar(char_scalar status +intent(in)+value)", 
+                "declgen": "void CpassChar(char status +intent(in)+value)", 
                 "doxygen": {
                     "__line__": 263, 
                     "brief": "pass a single char argument as a scalar, extern \"C\""
@@ -5228,12 +5240,12 @@
                     }, 
                     "params": [], 
                     "specifier": [
-                        "char_scalar"
+                        "char"
                     ], 
-                    "typemap_name": "char"
+                    "typemap_name": "char_scalar"
                 }, 
                 "decl": "char CreturnChar()", 
-                "declgen": "char_scalar CreturnChar()", 
+                "declgen": "char CreturnChar()", 
                 "doxygen": {
                     "__line__": 269, 
                     "brief": "return a char argument (non-pointer), extern \"C\""
@@ -5326,8 +5338,9 @@
                                 ]
                             }, 
                             "specifier": [
-                                "char_scalar"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
@@ -5336,7 +5349,7 @@
                     "typemap_name": "void"
                 }, 
                 "decl": "char CreturnChar()", 
-                "declgen": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "declgen": "void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "__line__": 269, 
                     "brief": "return a char argument (non-pointer), extern \"C\""
