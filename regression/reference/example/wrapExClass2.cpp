@@ -173,7 +173,7 @@ const char * AA_exclass2_get_name2(AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name2
 }
 
-// void getName2(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getName2(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void AA_exclass2_get_name2_bufferify(AA_exclass2 * self,
     USE_SHROUD_array *DSHF_rv)
 {
@@ -208,7 +208,7 @@ char * AA_exclass2_get_name3(const AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name3
 }
 
-// void getName3(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+// void getName3(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self,
     USE_SHROUD_array *DSHF_rv)
 {
@@ -242,7 +242,7 @@ char * AA_exclass2_get_name4(AA_exclass2 * self)
 // splicer end class.ExClass2.method.get_name4
 }
 
-// void getName4(stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getName4(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
     USE_SHROUD_array *DSHF_rv)
 {

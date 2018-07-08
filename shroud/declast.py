@@ -1027,11 +1027,11 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
-    def result_as_voidstar(self, typ, name, const=False):
+    def result_as_voidstar(self, ntypemap, name, const=False):
         """Add an 'typ*' argument to return pointer to result.
         Change function result to 'void'.
         """
-        newarg = create_voidstar(typ, name, const)
+        newarg = create_voidstar(ntypemap, name, const)
         self.params.append(newarg)
         self._set_to_void()
         return newarg
@@ -1490,7 +1490,7 @@ def create_this_arg(name, arg_typemap, const=True):
     arg.typemap = arg_typemap
     return arg
 
-def create_voidstar(typ, name, const=False):
+def create_voidstar(ntypemap, name, const=False):
     """Create a Declaration for an argument as 'typ *name'.
     """
     arg = Declaration()
@@ -1498,6 +1498,6 @@ def create_voidstar(typ, name, const=False):
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr('*')]
-    arg.specifier = [typ]
-    arg.typemap = typemap.lookup_type(typ)
+    arg.specifier = ntypemap.cxx_type.split()
+    arg.typemap = ntypemap
     return arg

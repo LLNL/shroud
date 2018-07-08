@@ -225,7 +225,7 @@ const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 // splicer end class.ExClass1.method.get_name_error_check
 }
 
-// void getNameErrorCheck(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
+// void getNameErrorCheck(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 void AA_exclass1_get_name_error_check_bufferify(
     const AA_exclass1 * self, USE_SHROUD_array *DSHF_rv)
 {
