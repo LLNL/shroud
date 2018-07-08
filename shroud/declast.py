@@ -1215,11 +1215,7 @@ class Declaration(Node):
         if self.template_arguments:
             ntypemap = self.template_arguments[0].typemap
         else:
-#            ntypemap = self.typemap
-            typename = self.typename
-            ntypemap = typemap.lookup_type(typename)
-        if ntypemap is None:
-            raise RuntimeError("gen_arg_as_lang: No such type: {}".format(typename))
+            ntypemap = self.typemap
 
         typ = getattr(ntypemap, lang)
         decl.append(typ)
@@ -1317,8 +1313,7 @@ class Declaration(Node):
         """
         t = []
         attrs = self.attrs
-#        ntypemap = self.typemap
-        ntypemap = typemap.lookup_type(self.typename)
+        ntypemap = self.typemap
         if self.template_arguments:
             # If a template, use its type
             ntypemap = self.template_arguments[0].typemap
