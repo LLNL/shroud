@@ -25,8 +25,7 @@ TEM_vector TEM_vector_int_ctor();
 
 void TEM_vector_int_dtor(TEM_vector_int * self);
 
-void TEM_vector_int_push_back_XXXX(TEM_vector_int * self,
-    const int value);
+void TEM_vector_int_push_back(TEM_vector_int * self, const int value);
 
 #ifdef __cplusplus
 }

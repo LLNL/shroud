@@ -489,6 +489,11 @@ class GenFunctions(object):
 
         node.classes = clslist
 
+    def update_types_for_class_instantiation(self, clsnode):
+        """Update the types o
+        """
+        pass
+
     def process_class(self, cls):
         """process variables and functions for a class."""
         for var in cls.variables:
@@ -537,6 +542,10 @@ class GenFunctions(object):
             #     continue
             if function.cxx_template:
                 continue
+            if function.have_template_args:
+                # Stuff like push_back which is in a templated class, is not an overload
+                # class_prefix is used to distigunish the functions, not function_suffix.
+                continue
             overloaded_functions.setdefault(
                 function.ast.name, []).append(function)
 
@@ -580,7 +589,7 @@ class GenFunctions(object):
         node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
                  TemplateArgument.asts[i].typemap
 
-        clone entire function then look for template arguments.
+        Clone entire function then look for template arguments.
         """
         oldoptions = node.options
 
@@ -636,15 +645,19 @@ class GenFunctions(object):
     def template_function2(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
 
-        - decl: template<typename ArgType> void Function7(ArgType arg)
+        - decl: template<typename T> class vector
           cxx_template:
           - instantiation: <int>
           - instantiation: <double>
+          declarations:
+          - decl: void push_back( const T& value+intent(in) );
 
         node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
                  TemplateArgument.asts[i].typemap
 
-        clone entire function then look for template arguments.
+        Clone entire function then look for template arguments.
+        Use when the function itself is not templated, but it has a templated argument
+        from a class.
         """
         oldoptions = node.options
 
@@ -655,13 +668,13 @@ class GenFunctions(object):
         new._generated = 'cxx_template'
         fmt = new.fmtdict
 
+        # The function_suffix is not modified for functions in a templated class.
         # If single template argument, use its name; else sequence.
         # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
 #        if len(targs.asts) == 1:
 #            fmt.function_suffix = fmt.function_suffix + '_' + targs.asts[0].typemap.name
 #        else:
 #            fmt.function_suffix = fmt.function_suffix + '_' + str(iargs)
-        fmt.function_suffix = fmt.function_suffix + '_' + 'XXXX'
 
         new.cxx_template = {}
         options = new.options

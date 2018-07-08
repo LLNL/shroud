@@ -53,13 +53,16 @@ VPATH = \
     $(top)/regression/run/fruit
 
 OBJS = \
-    templates.o \
+    wrapvectorforint.o \
+    wraptemplates.o \
+    wrapfvector_int.o \
     wrapftemplates.o \
-    wrapTemplates.o \
-    wrapClass1.o \
-    wrapSingleton.o \
     fruit.o \
     main.o
+
+#    wrapuser.o
+#    wrapfuser_int.o
+
 
 templates : $(OBJS)
 	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
@@ -68,16 +71,16 @@ clean :
 	rm -f $(OBJS) *.mod templates
 
 templates.o : templates.hpp
-wrapTemplates.o : wrapTemplates.h templates.hpp
-wrapClass1.o : wrapClass1.h templates.hpp
-wrapSingleton.o : wrapSingleton.h templates.hpp
-main.o : wrapftemplates.o
+wrapvectorforint.o : wrapvector_int.h
+wrapuser.o : wrapuser_int.h
+wraptemplates.o : wraptemplates.h typestemplates.h
+main.o : wrapfvector_int.o wrapfuser_int.o wrapftemplates.o
 maincpp.o : maincpp.cpp templates.hpp
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
 
-testc.o : testc.c wrapTemplates.h wrapClass1.h templates.hpp
-testc : testc.o wrapTemplates.o wrapClass1.o wrapSingleton.o templates.o
+testc.o : testc.c wrapvector_int.h
+testc : testc.o wrapvectorforint.o
 	$(CC) $(CFLAGS) $(LIBS) $^ -o $@

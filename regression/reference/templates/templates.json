@@ -121,7 +121,6 @@
                         "options": {}
                     }, 
                     {
-                        "_overloaded": true, 
                         "ast": {
                             "declarator": {
                                 "name": "push_back", 
@@ -157,7 +156,6 @@
                         "declgen": "void push_back(const T & value +intent(in))", 
                         "fmtdict": {
                             "function_name": "push_back", 
-                            "function_suffix": "_0", 
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
@@ -191,7 +189,6 @@
                             }
                         }, 
                         "_generated": "cxx_template", 
-                        "_overloaded": true, 
                         "ast": {
                             "declarator": {
                                 "name": "push_back", 
@@ -224,26 +221,25 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->push_back(\tvalue);", 
                             "C_call_list": "value", 
-                            "C_name": "TEM_vector_int_push_back_XXXX", 
+                            "C_name": "TEM_vector_int_push_back", 
                             "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
                             "C_prototype": "TEM_vector_int * self,\t const int value", 
                             "C_return_code": "return;", 
                             "C_return_type": "void", 
-                            "F_C_call": "c_vector_int_push_back_xxxx", 
-                            "F_C_name": "c_vector_int_push_back_xxxx", 
+                            "F_C_call": "c_vector_int_push_back", 
+                            "F_C_name": "c_vector_int_push_back", 
                             "F_arg_c_call": "obj%cxxmem,\t value", 
                             "F_arguments": "obj,\t value", 
-                            "F_call_code": "call c_vector_int_push_back_xxxx(obj%cxxmem,\t value)", 
-                            "F_name_function": "push_back_XXXX", 
+                            "F_call_code": "call c_vector_int_push_back(obj%cxxmem,\t value)", 
+                            "F_name_function": "push_back", 
                             "F_name_generic": "push_back", 
-                            "F_name_impl": "vector_int_push_back_XXXX", 
+                            "F_name_impl": "vector_int_push_back", 
                             "F_subprogram": "subroutine", 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
                             "c_var": "self", 
                             "function_name": "push_back", 
-                            "function_suffix": "_XXXX", 
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 

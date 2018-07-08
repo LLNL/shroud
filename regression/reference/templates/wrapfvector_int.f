@@ -27,7 +27,7 @@ module vector_int_mod
         ! splicer end class.vector_int.component_part
     contains
         procedure :: dtor => vector_int_dtor
-        procedure :: push_back_XXXX => vector_int_push_back_XXXX
+        procedure :: push_back => vector_int_push_back
         procedure :: get_instance => vector_int_get_instance
         procedure :: set_instance => vector_int_set_instance
         procedure :: associated => vector_int_associated
@@ -60,14 +60,14 @@ module vector_int_mod
             type(SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_vector_int_dtor
 
-        subroutine c_vector_int_push_back_xxxx(self, value) &
-                bind(C, name="TEM_vector_int_push_back_XXXX")
+        subroutine c_vector_int_push_back(self, value) &
+                bind(C, name="TEM_vector_int_push_back")
             use iso_c_binding, only : C_INT
             import :: SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), intent(IN) :: value
-        end subroutine c_vector_int_push_back_xxxx
+        end subroutine c_vector_int_push_back
 
         ! splicer begin class.vector_int.additional_interfaces
         ! splicer end class.vector_int.additional_interfaces
@@ -91,14 +91,14 @@ contains
         ! splicer end class.vector_int.method.dtor
     end subroutine vector_int_dtor
 
-    subroutine vector_int_push_back_XXXX(obj, value)
+    subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
         class(vector_int) :: obj
         integer(C_INT), intent(IN) :: value
-        ! splicer begin class.vector_int.method.push_back_XXXX
-        call c_vector_int_push_back_xxxx(obj%cxxmem, value)
-        ! splicer end class.vector_int.method.push_back_XXXX
-    end subroutine vector_int_push_back_XXXX
+        ! splicer begin class.vector_int.method.push_back
+        call c_vector_int_push_back(obj%cxxmem, value)
+        ! splicer end class.vector_int.method.push_back
+    end subroutine vector_int_push_back
 
     ! Return pointer to C++ memory.
     function vector_int_get_instance(obj) result (cxxptr)

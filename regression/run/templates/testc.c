@@ -40,7 +40,7 @@
  * Test C interface for templates.yaml
  */
 
-#include <wrapvector.h>
+#include <wrapvector_int.h>
 
 #include <assert.h>
 
