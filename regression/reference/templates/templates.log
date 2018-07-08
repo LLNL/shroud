@@ -3,7 +3,7 @@ Close templates_types.yaml
 class vector
 C method vector()
 C method ~vector()
-C method void push_back(const int value +intent(in))
+C method void push_back(const int & value +intent(in))
 Close wrapvector_int.h
 Close wrapvectorforint.cpp
 class user
@@ -18,7 +18,7 @@ Close typestemplates.h
 class vector
 C-interface, Fortran method vector()
 C-interface, Fortran method ~vector()
-C-interface, Fortran method void push_back(const int value +intent(in))
+C-interface, Fortran method void push_back(const int & value +intent(in))
 Close wrapfvector_int.f
 class user
 C-interface, Fortran method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)

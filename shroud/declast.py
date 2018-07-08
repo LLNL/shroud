@@ -1046,20 +1046,13 @@ class Declaration(Node):
 
     def instantiate(self, node):
         """Instantiate a template argument.
-        node - Declaration node.
-        Return a new copy of node, which is abstract (no name)
-        and fill in the name from self.
+        node - Declaration node of template argument.
+        Return a new copy of self and fill in type from node.
         If node is 'int *', the pointer is in the declarator.
         """
-        new = copy.copy(node)
-        new.attrs = copy.copy(self.attrs)  # intent, ...
-        if new.declarator is None:
-            new.declarator = Declarator()
-        else:
-            new.declarator = copy.copy(node.declarator)
-        new.declarator.name = self.declarator.name
-        new.params = self.params
-        new.const = self.const
+        # XXX - what if T = 'int *' and arg is 'T *arg'?
+        new = copy.copy(self)
+        new.typename = node.typemap
         return new
 
     def __str__(self):

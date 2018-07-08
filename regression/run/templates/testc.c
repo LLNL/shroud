@@ -46,6 +46,10 @@
 
 void test_int_vector(void)
 {
+  TEM_vector_int v1 = TEM_vector_int_ctor();
+  int value = 1;
+
+  TEM_vector_int_push_back(&v1, &value);
 }
 
 int main(int argc, char *argv[])
