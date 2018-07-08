@@ -479,6 +479,7 @@ class GenFunctions(object):
 
                     newcls.expand_format_templates()
                     newcls.typemap = typemap.create_class_typemap(newcls)
+                    self.update_types_for_class_instantiation(newcls)
 
                     self.push_instantiate_scope(newcls, targs)
                     self.process_class(newcls)
@@ -490,9 +491,11 @@ class GenFunctions(object):
         node.classes = clslist
 
     def update_types_for_class_instantiation(self, clsnode):
-        """Update the types o
+        """Update the references to use instantiated class.
         """
-        pass
+        for function in clsnode.functions:
+            if function.ast.is_ctor():
+                function.ast.typemap = clsnode.typemap
 
     def process_class(self, cls):
         """process variables and functions for a class."""

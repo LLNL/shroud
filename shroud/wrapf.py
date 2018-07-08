@@ -731,7 +731,7 @@ rv = .false.
         result_typemap = node.C_result_typemap
         generated_suffix = node.generated_suffix
         return_pointer_as = ast.return_pointer_as
-        is_ctor = ast.attrs.get('_constructor', False)
+        is_ctor = ast.is_ctor()
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         func_is_const = ast.func_const
@@ -1003,7 +1003,7 @@ rv = .false.
         C_subprogram = C_node.C_subprogram
         generated_suffix = C_node.generated_suffix
         ast = node.ast
-        is_ctor = ast.attrs.get('_constructor', False)
+        is_ctor = ast.is_ctor()
         is_static = False
 
         if fmt_func.C_custom_return_type:

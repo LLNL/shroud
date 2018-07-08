@@ -926,6 +926,14 @@ class Declaration(Node):
 
     typename = property(get_type, set_type, None, "Declaration type")
 
+    def is_ctor(self):
+        """Return True if self is a constructor."""
+        return self.attrs.get('_constructor', False)
+
+    def is_dtor(self):
+        """Return True if self is a constructor."""
+        return self.attrs.get('_destructor', False)
+
     def is_pointer(self):
         """Return number of levels of pointers.
         """

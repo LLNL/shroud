@@ -21,7 +21,7 @@ extern "C" {
 // splicer begin class.vector.C_declarations
 // splicer end class.vector.C_declarations
 
-TEM_vector TEM_vector_int_ctor();
+TEM_vector_int TEM_vector_int_ctor();
 
 void TEM_vector_int_dtor(TEM_vector_int * self);
 

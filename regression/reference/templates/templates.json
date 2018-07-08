@@ -25,17 +25,17 @@
                     {
                         "_fmtresult": {
                             "fmtc": {
-                                "c_type": "TEM_vector", 
+                                "c_type": "TEM_vector_int", 
                                 "c_val": "static_cast<void *>(\tSHCXX_rv)", 
                                 "c_var": "SHC_rv", 
                                 "cxx_addr": "", 
                                 "cxx_member": "->", 
-                                "cxx_type": "std::vector", 
+                                "cxx_type": "std::vector<int>", 
                                 "cxx_var": "SHCXX_rv", 
                                 "idtor": "0"
                             }, 
                             "fmtf": {
-                                "cxx_type": "std::vector", 
+                                "cxx_type": "std::vector<int>", 
                                 "f_var": "SHT_rv"
                             }
                         }, 
@@ -48,18 +48,18 @@
                             "specifier": [
                                 "vector"
                             ], 
-                            "typemap_name": "std::vector"
+                            "typemap_name": "std::vector_int"
                         }, 
                         "decl": "vector()", 
                         "declgen": "vector()", 
                         "fmtdict": {
-                            "C_call_code": "std::vector *SHCXX_rv =\t new std::vector<int>();", 
+                            "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();", 
                             "C_call_list": "", 
                             "C_name": "TEM_vector_int_ctor", 
-                            "C_post_call": "TEM_vector SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_post_call": "TEM_vector_int SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
                             "C_prototype": "", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TEM_vector", 
+                            "C_return_type": "TEM_vector_int", 
                             "F_C_call": "c_vector_int_ctor", 
                             "F_C_name": "c_vector_int_ctor", 
                             "F_arg_c_call": "", 
@@ -71,8 +71,8 @@
                             "F_result_clause": "\fresult(SHT_rv)", 
                             "F_subprogram": "function", 
                             "c_const": "", 
-                            "c_rv_decl": "TEM_vector *SHC_rv", 
-                            "cxx_rv_decl": "std::vector *SHCXX_rv", 
+                            "c_rv_decl": "TEM_vector_int *SHC_rv", 
+                            "cxx_rv_decl": "std::vector<int> *SHCXX_rv", 
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 

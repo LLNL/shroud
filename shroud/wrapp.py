@@ -813,8 +813,8 @@ return 1;""", fmt)
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
         ast = node.ast
-        is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
+        is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
 #        is_const = ast.const
         ml_flags = []
         is_struct_scalar = False
@@ -1565,7 +1565,7 @@ return 1;""", fmt)
             fmt.PY_used_param_args = True
             fmt.PY_used_param_kwds = True
 
-            is_ctor = node.ast.attrs.get('_constructor', False)
+            is_ctor = node.ast.is_ctor()
 
             body = []
             body.append(1)

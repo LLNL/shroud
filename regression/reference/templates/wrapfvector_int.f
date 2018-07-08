@@ -77,8 +77,7 @@ contains
 
     function vector_int_ctor() &
             result(SHT_rv)
-        use vector_mod, only : vector
-        type(vector) :: SHT_rv
+        type(vector_int) :: SHT_rv
         ! splicer begin class.vector_int.method.ctor
         SHT_rv%cxxmem = c_vector_int_ctor()
         ! splicer end class.vector_int.method.ctor

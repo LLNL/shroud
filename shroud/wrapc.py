@@ -662,8 +662,8 @@ class Wrapc(util.WrapperMixin):
         generated_suffix = node.generated_suffix
 
         result_is_const = ast.const
-        is_ctor = CXX_ast.attrs.get('_constructor', False)
-        is_dtor = CXX_ast.attrs.get('_destructor', False)
+        is_ctor = CXX_ast.is_ctor()
+        is_dtor = CXX_ast.is_dtor()
         is_static = False
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const

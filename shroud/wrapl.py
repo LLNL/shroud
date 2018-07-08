@@ -222,8 +222,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             CXX_subprogram = 'subroutine'
 
         # XXX       result_typemap = typemap.lookup_type(result_type)
-        is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
+        is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
         if is_dtor:
             CXX_subprogram = 'subroutine'
             fmt.LUA_name = '__gc'
@@ -418,8 +418,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
         ast = node.ast
-        is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
+        is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
 
 
         #        is_const = ast.const
