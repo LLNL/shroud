@@ -154,15 +154,9 @@ class NamespaceMixin(object):
             raise NotImplementedError("Function pointers not supported in typedef")
 
         key = ast.declarator.name
-        copy_type = ast.typemap.name
-        def_types = typemap.get_global_types()
-        orig = def_types.get(copy_type, None)
-        if not orig:
-            raise RuntimeError(
-                "No type for typedef {} while defining {}".format(copy_type, key))
-        ntypemap = orig.clone_as(copy_type)
-        ntypemap.name = self.scope + key
-        ntypemap.typedef = copy_type
+        orig = ast.typemap
+        ntypemap = orig.clone_as(self.scope + key)
+        ntypemap.typedef = orig.name
         ntypemap.cxx_type = ntypemap.name
         if 'fields' in kwargs:
             fields = kwargs['fields']

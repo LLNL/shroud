@@ -80,6 +80,7 @@ class ToDict(visitor.Visitor):
         d = dict(
             specifier=node.specifier,
             ##- node.array,
+            typemap_name=node.typemap.name,  # print name to avoid too much nesting
         )
         add_true_fields(node, d, ['attrs', 'const', 'func_const', 'volatile'])
         if node.declarator:
@@ -91,9 +92,6 @@ class ToDict(visitor.Visitor):
             d['params'] = self.visit(node.params)
         if node.init is not None:
             d['init'] = node.init
-        if node.typemap is not None:
-            # print name to avoid too much nesting
-            d['typemap_name'] = node.typemap.name
         if node.template_arguments:
             lst = []
             for tp in node.template_arguments:
