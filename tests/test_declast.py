@@ -341,7 +341,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl(name='newname', params=None)
         self.assertEqual("int newname", s)
 
-        self.assertEqual('int', r.typename)
+        self.assertEqual('int', r.typemap.name)
         self.assertFalse(r.is_pointer())
         self.assertEqual('function', r.get_subprogram())
 
@@ -356,7 +356,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int ( * func)(int)", s)
 
-        self.assertEqual("int", r.typename)
+        self.assertEqual("int", r.typemap.name)
         self.assertEqual("func", r.name)
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
@@ -368,7 +368,7 @@ class CheckParse(unittest.TestCase):
         param0 = r.params[0]
         s = param0.gen_decl()
         self.assertEqual("int", s)
-        self.assertEqual("int", param0.typename)
+        self.assertEqual("int", param0.typemap.name)
         self.assertEqual(None, param0.name)
         self.assertFalse(param0.is_pointer())
         self.assertFalse(param0.is_reference())
@@ -415,7 +415,7 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("int * ( * func)(int * arg)", s)
 
-        self.assertEqual("int", r.typename)
+        self.assertEqual("int", r.typemap.name)
         self.assertEqual("func", r.name)
         self.assertTrue(r.is_pointer())
         self.assertFalse(r.is_reference())
@@ -427,7 +427,7 @@ class CheckParse(unittest.TestCase):
         param0 = r.params[0]
         s = param0.gen_decl()
         self.assertEqual("int * arg", s)
-        self.assertEqual("int", param0.typename)
+        self.assertEqual("int", param0.typemap.name)
         self.assertEqual("arg", param0.name)
         self.assertTrue(param0.is_pointer())
         self.assertFalse(param0.is_reference())
@@ -494,7 +494,7 @@ class CheckParse(unittest.TestCase):
             "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
-        self.assertEqual('void', r.typename)
+        self.assertEqual('void', r.typemap.name)
         self.assertFalse(r.is_pointer())
         self.assertEqual('subroutine', r.get_subprogram())
         self.assertIsNone(r.find_arg_by_name('argnone'))
@@ -523,7 +523,7 @@ class CheckParse(unittest.TestCase):
             "typemap_name": "void",
         })
         self.assertEqual("foo", r.get_name())
-        self.assertEqual('void', r.typename)
+        self.assertEqual('void', r.typemap.name)
         self.assertTrue(r.is_pointer())
         self.assertEqual('function', r.get_subprogram())
 
@@ -960,13 +960,13 @@ class CheckParse(unittest.TestCase):
                                "unsigned int)")
 
         self.assertEqual(['long', 'int'], r.params[0].specifier)
-        self.assertEqual('long', r.params[0].typename)
+        self.assertEqual('long', r.params[0].typemap.name)
 
         self.assertEqual(['long', 'long'], r.params[1].specifier)
-        self.assertEqual('long_long', r.params[1].typename)
+        self.assertEqual('long_long', r.params[1].typemap.name)
 
         self.assertEqual(['unsigned', 'int'], r.params[2].specifier)
-        self.assertEqual('int', r.params[2].typename)
+        self.assertEqual('int', r.params[2].typemap.name)
 
     def test_class_template(self):
         """Class templates"""

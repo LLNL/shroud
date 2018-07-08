@@ -803,7 +803,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
 
-            arg_typemap = typemap.lookup_type(arg.typename)  # XXX - look up vector
+            arg_typemap = arg.typemap  # XXX - look up vector
             fmt_arg.update(arg_typemap.format)
 
             if arg_typemap.base == 'vector':

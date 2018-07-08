@@ -183,8 +183,7 @@ class Wrapf(util.WrapperMixin):
                       '\ntype, bind(C) :: {F_derived_name}+', fmt_class)
         for var in node.variables:
             ast = var.ast
-            result_type = ast.typename
-            ntypemap = typemap.lookup_type(result_type)
+            ntypemap = ast.typemap
             output.append(ast.gen_arg_as_fortran())
             self.update_f_module(self.module_use, {}, ntypemap.f_module) # XXX - self.module_imports?
         append_format(output,
@@ -773,7 +772,7 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typemap = typemap.lookup_type(arg.typename)
+            arg_typemap = arg.typemap
             fmt.update(arg_typemap.format)
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
@@ -876,7 +875,8 @@ rv = .false.
                 elif arg_typemap.f_to_c:
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
-                elif f_ast and c_ast.typename != f_ast.typename:
+#XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
+                elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports, arg_typemap.f_module)
@@ -1147,8 +1147,7 @@ rv = .false.
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
 
-            arg_type = f_arg.typename
-            arg_typemap = typemap.lookup_type(arg_type)
+            arg_typemap = f_arg.typemap
             base_typemap = arg_typemap
             if c_arg.template_arguments:
                 # If a template, use its type
@@ -1512,7 +1511,7 @@ class ToImplied(todict.PrintNode):
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
             argname = node.args[0].name
-            arg_typemap = typemap.lookup_type(self.arg.typename)
+            arg_typemap = self.arg.typemap
             return 'size({},kind={})'.format(argname, arg_typemap.f_kind)
         else:
             return self.param_list(node)

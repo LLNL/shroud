@@ -1305,9 +1305,7 @@ def lookup_c_statements(arg):
     template specific c_statements.
     """
     attrs = arg.attrs
-    argtype = arg.typename
-#    arg_typemap = arg.typemap  # lookup_type(argtype)
-    arg_typemap = lookup_type(argtype)
+    arg_typemap = arg.typemap
 
     c_statements = arg_typemap.c_statements
     if arg.template_arguments:

@@ -855,15 +855,14 @@ class GenFunctions(object):
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node.ast
-        result_type = ast.typename
-        result_typemap = typemap.lookup_type(result_type)
+        result_typemap = ast.typemap
         # shadow classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
         if result_typemap and \
            result_typemap.base in ['string', 'vector'] and \
-           result_type != 'char' and \
+           result_typemap.name != 'char' and \
            not result_is_ptr:
             options.wrap_c = False
 #            options.wrap_fortran = False
@@ -885,8 +884,7 @@ class GenFunctions(object):
         # create buffer version of function.
         has_implied_arg = False
         for arg in ast.params:
-            argtype = arg.typename
-            arg_typemap = typemap.lookup_type(argtype)
+            arg_typemap = arg.typemap
             if arg_typemap.base == 'string':
                 is_ptr = arg.is_indirect()
                 if is_ptr:
@@ -913,7 +911,7 @@ class GenFunctions(object):
         if result_typemap.base == 'vector':
             raise NotImplementedError("vector result")
         elif result_typemap.base == 'string':
-            if result_type == 'char' and not result_is_ptr:
+            if result_typemap.name == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
                 ast.typename = typemap.lookup_type('char_scalar')
             has_string_result = True
@@ -950,8 +948,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             attrs = arg.attrs
-            argtype = arg.typename
-            arg_typemap = typemap.lookup_type(argtype)
+            arg_typemap = arg.typemap
             if arg_typemap.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -1150,12 +1147,11 @@ class GenFunctions(object):
         # XXX - make sure it exists
         used_types[rv_type] = result_typedef
         for arg in ast.params:
-            argtype = arg.typename
-            typedef = typemap.lookup_type(argtype)
-            if typedef is None:
+            ntypemap = arg.typemap
+            if ntypemap is None:
                 raise RuntimeError("%s not defined" % argtype)
-            if typedef.base == 'shadow':
-                used_types[argtype] = typedef
+            if ntypemap.base == 'shadow':
+                used_types[ntypemap.name] = ntypemap
 
     def gen_functions_decl(self, functions):
         """ Generate declgen for generated all functions.
@@ -1260,7 +1256,7 @@ class Preprocess(object):
         fmt_func = node.fmtdict
 
         ast = node.ast
-        CXX_result_type = ast.typename
+        CXX_result_type = ast.typemap.name
         C_result_type = CXX_result_type
         F_result_type = CXX_result_type
         subprogram = ast.get_subprogram()

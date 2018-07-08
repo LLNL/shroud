@@ -62,7 +62,6 @@ import os
 import re
 
 from . import declast
-from . import typemap
 from . import util
 from . import todict
 from .util import wformat, append_format
@@ -428,7 +427,7 @@ return 1;""", fmt)
                 'PyList_SET_ITEM(lnames, {}, obj);'.format(i),
             ])
 
-            arg_typemap = typemap.lookup_type(ast.typename)
+            arg_typemap = ast.typemap
             output.extend([
                 'obj = (PyObject *) PyArray_DescrFromType({});'.format(arg_typemap.PYN_typenum),
                 'if (obj == NULL) goto fail;',
@@ -498,7 +497,7 @@ return 1;""", fmt)
         fmt.py_var = 'value'  # Used with PY_get
 
         ast = node.ast
-        arg_typemap = typemap.lookup_type(ast.typename)
+        arg_typemap = ast.typemap
 
         if arg_typemap.PY_ctor:
             fmt.ctor = wformat(arg_typemap.PY_ctor, fmt)
@@ -930,7 +929,7 @@ return 1;""", fmt)
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = 'SHPy_' + arg_name
 
-            arg_typemap = typemap.lookup_type(arg.typename)
+            arg_typemap = arg.typemap
             fmt_arg.numpy_type = arg_typemap.PYN_typenum
             # Add formats used by py_statements
             fmt_arg.c_type = arg_typemap.c_type
@@ -2194,8 +2193,8 @@ def attr_allocatable(language, allocatable, node, arg):
         prototype = fmt.py_var
 
         # Create Descr if types are different
-        if arg.typename != moldarg.typename:
-            arg_typemap = typemap.lookup_type(arg.typename)
+        if arg.typemap.name != moldarg.typemap.name:
+            arg_typemap = arg.typemap
             descr = 'SHDPy_' + arg.name
             descr_code = ('PyArray_Descr * {} = '
                           'PyArray_DescrFromType({});\n'

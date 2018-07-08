@@ -912,19 +912,13 @@ class Declaration(Node):
 
     name = property(get_name, set_name, None, "Declaration name")
 
-    def get_type(self):
-        """Return type.
-        Multiple specifies are joined by an underscore. i.e. long_long
-        """
-        return self.typemap.name
-
     def set_type(self, ntypemap):
         """Set type specifier from a typemap."""
         self.typemap = ntypemap
         # 'long long' into ['long', 'long']
         self.specifier = ntypemap.cxx_type.split()
 
-    typename = property(get_type, set_type, None, "Declaration type")
+    typename = property(None, set_type, None, "Declaration type")
 
     def is_ctor(self):
         """Return True if self is a constructor."""
@@ -985,7 +979,7 @@ class Declaration(Node):
         """
         if self.params is None:
             return None
-        if self.typename != 'void':
+        if self.typemap.name != 'void':
             return 'function'
         if self.is_pointer():
             return 'function'
