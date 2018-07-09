@@ -22,9 +22,12 @@ declarations:
 #    - instantiation: <double>
 
     declarations:
+    - decl: typedef size_t size_type
     - decl: vector()
     - decl: ~vector()
-    - decl: void push_back( const T& value+intent(in) );
+    - decl: void push_back( const T& value+intent(in) )
+    - decl: T & at(size_type n)
+      # const_reference at (size_type n) const;
     # XXX - reference is getting lost
 
 

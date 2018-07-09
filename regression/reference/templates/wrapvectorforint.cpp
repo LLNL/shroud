@@ -44,4 +44,14 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // splicer end class.vector.method.push_back
 }
 
+int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
+{
+// splicer begin class.vector.method.at
+    std::vector<int> *SH_this =
+        static_cast<std::vector<int> *>(self->addr);
+    int & SHC_rv = SH_this->at(n);
+    return &SHC_rv;
+// splicer end class.vector.method.at
+}
+
 }  // extern "C"

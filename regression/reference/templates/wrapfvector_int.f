@@ -28,6 +28,7 @@ module vector_int_mod
     contains
         procedure :: dtor => vector_int_dtor
         procedure :: push_back => vector_int_push_back
+        procedure :: at => vector_int_at
         procedure :: get_instance => vector_int_get_instance
         procedure :: set_instance => vector_int_set_instance
         procedure :: associated => vector_int_associated
@@ -69,6 +70,17 @@ module vector_int_mod
             integer(C_INT), intent(IN) :: value
         end subroutine c_vector_int_push_back
 
+        function c_vector_int_at(self, n) &
+                result(SHT_rv) &
+                bind(C, name="TEM_vector_int_at")
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data), intent(IN) :: self
+            integer(C_SIZE_T), value, intent(IN) :: n
+            type(C_PTR) SHT_rv
+        end function c_vector_int_at
+
         ! splicer begin class.vector_int.additional_interfaces
         ! splicer end class.vector_int.additional_interfaces
     end interface
@@ -98,6 +110,19 @@ contains
         call c_vector_int_push_back(obj%cxxmem, value)
         ! splicer end class.vector_int.method.push_back
     end subroutine vector_int_push_back
+
+    function vector_int_at(obj, n) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T, c_f_pointer
+        class(vector_int) :: obj
+        integer(C_SIZE_T), value, intent(IN) :: n
+        integer(C_INT), pointer :: SHT_rv
+        type(C_PTR) :: SHT_ptr
+        ! splicer begin class.vector_int.method.at
+        SHT_ptr = c_vector_int_at(obj%cxxmem, n)
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end class.vector_int.method.at
+    end function vector_int_at
 
     ! Return pointer to C++ memory.
     function vector_int_get_instance(obj) result (cxxptr)

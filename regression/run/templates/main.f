@@ -64,11 +64,17 @@ contains
   subroutine test_vector_int
 
     type(vector_int) v1
+    integer(C_INT), pointer :: ivalue
 
     v1 = vector_int_ctor()
 
     call v1%push_back(1)
 
+    ivalue => v1%at(0_C_SIZE_T)
+    call assert_equals(1, ivalue)
+
+! XXX - need to catch std::out_of_range
+!    ivalue => v1%at(10_C_SIZE_T)
 
   end subroutine test_vector_int
 

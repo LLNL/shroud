@@ -684,8 +684,8 @@ class GenFunctions(object):
 #        self.push_instantiate_scope(new, targs)
 
         if new.ast.typemap.base == 'template':
-            idx = node.template_name_to_index[new.ast.typemap.name]
-            new.ast = new.ast.instantiate(targs.asts[idx])
+            iast = getattr(self.instantiate_scope, new.ast.typemap.name)
+            new.ast = new.ast.instantiate(node.ast.instantiate(iast))
             new._CXX_return_templated = True
 
         # Replace templated arguments.

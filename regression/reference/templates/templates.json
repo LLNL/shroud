@@ -76,7 +76,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 25, 
+                        "linenumber": 26, 
                         "options": {}
                     }, 
                     {
@@ -117,7 +117,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 26, 
+                        "linenumber": 27, 
                         "options": {}
                     }, 
                     {
@@ -152,14 +152,14 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "void push_back( const T& value+intent(in) );", 
+                        "decl": "void push_back( const T& value+intent(in) )", 
                         "declgen": "void push_back(const T & value +intent(in))", 
                         "fmtdict": {
                             "function_name": "push_back", 
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 27, 
+                        "linenumber": 28, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -220,7 +220,7 @@
                             ], 
                             "typemap_name": "void"
                         }, 
-                        "decl": "void push_back( const T& value+intent(in) );", 
+                        "decl": "void push_back( const T& value+intent(in) )", 
                         "declgen": "void push_back(const int & value +intent(in))", 
                         "fmtdict": {
                             "C_call_code": "SH_this->push_back(\t*value);", 
@@ -247,7 +247,159 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 27, 
+                        "linenumber": 28, 
+                        "options": {
+                            "wrap_c": true, 
+                            "wrap_fortran": true, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }, 
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "at", 
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "declarator": {
+                                        "name": "n", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "size_type"
+                                    ], 
+                                    "typemap_name": "std::vector::size_type"
+                                }
+                            ], 
+                            "return_pointer_as": "pointer", 
+                            "specifier": [
+                                "T"
+                            ], 
+                            "typemap_name": "std::vector::T"
+                        }, 
+                        "decl": "T & at(size_type n)", 
+                        "declgen": "T & at(size_type n +intent(in)+value)", 
+                        "fmtdict": {
+                            "function_name": "at", 
+                            "underscore_name": "at"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 29, 
+                        "options": {
+                            "wrap_c": false, 
+                            "wrap_fortran": false, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }, 
+                    {
+                        "_CXX_return_templated": true, 
+                        "_fmtargs": {
+                            "n": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_deref": "", 
+                                    "c_member": ".", 
+                                    "c_var": "n", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&n)", 
+                                    "cxx_member": ".", 
+                                    "cxx_type": "std::vector::size_type", 
+                                    "cxx_var": "n", 
+                                    "idtor": "0"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "n", 
+                                    "f_var": "n"
+                                }
+                            }
+                        }, 
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_member": ".", 
+                                "cxx_type": "int", 
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "int", 
+                                "f_var": "SHT_rv"
+                            }
+                        }, 
+                        "_generated": "cxx_template", 
+                        "ast": {
+                            "declarator": {
+                                "name": "at", 
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "declarator": {
+                                        "name": "n", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "size_type"
+                                    ], 
+                                    "typemap_name": "std::vector::size_type"
+                                }
+                            ], 
+                            "return_pointer_as": "pointer", 
+                            "specifier": [
+                                "int"
+                            ], 
+                            "typemap_name": "int"
+                        }, 
+                        "decl": "T & at(size_type n)", 
+                        "declgen": "int & at(size_type n +intent(in)+value)", 
+                        "fmtdict": {
+                            "C_call_code": "int & SHC_rv =\t SH_this->at(\tn);", 
+                            "C_call_list": "n", 
+                            "C_name": "TEM_vector_int_at", 
+                            "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
+                            "C_prototype": "TEM_vector_int * self,\t size_t n", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "int *", 
+                            "F_C_call": "c_vector_int_at", 
+                            "F_C_name": "c_vector_int_at", 
+                            "F_arg_c_call": "obj%cxxmem,\t n", 
+                            "F_arguments": "obj,\t n", 
+                            "F_call_code": "SHT_ptr = c_vector_int_at(obj%cxxmem,\t n)", 
+                            "F_name_function": "at", 
+                            "F_name_generic": "at", 
+                            "F_name_impl": "vector_int_at", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "cxx_rv_decl": "int & SHC_rv", 
+                            "function_name": "at", 
+                            "underscore_name": "at"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 29, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -362,7 +514,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 36, 
+                        "linenumber": 39, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -499,7 +651,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 36, 
+                        "linenumber": 39, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -527,7 +679,7 @@
                         ]
                     }
                 ], 
-                "linenumber": 31, 
+                "linenumber": 34, 
                 "name": "user", 
                 "options": {}, 
                 "scope": "user::", 
@@ -673,7 +825,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 57, 
+                    "__line__": 60, 
                     "brief": "Function template with two template parameters."
                 }, 
                 "fmtdict": {
@@ -681,7 +833,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 56, 
+                "linenumber": 59, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": false, 
@@ -817,7 +969,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 57, 
+                    "__line__": 60, 
                     "brief": "Function template with two template parameters."
                 }, 
                 "fmtdict": {
@@ -843,7 +995,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 56, 
+                "linenumber": 59, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -979,7 +1131,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 57, 
+                    "__line__": 60, 
                     "brief": "Function template with two template parameters."
                 }, 
                 "fmtdict": {
@@ -1005,7 +1157,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 56, 
+                "linenumber": 59, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -1724,6 +1876,24 @@
             "c_type": "c_T", 
             "cxx_type": "cxx_T", 
             "f_type": "f_T"
+        }, 
+        "std::vector::size_type": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PY_ctor": "PyInt_FromSize_t({c_deref}{c_var})", 
+            "c_header": "<stddef.h>", 
+            "c_type": "size_t", 
+            "cxx_type": "std::vector::size_type", 
+            "f_cast": "int({f_var}, C_SIZE_T)", 
+            "f_kind": "C_SIZE_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SIZE_T"
+                ]
+            }, 
+            "f_type": "integer(C_SIZE_T)", 
+            "typedef": "size_t"
         }, 
         "std::vector_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 

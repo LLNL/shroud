@@ -720,7 +720,7 @@ class Wrapc(util.WrapperMixin):
                     name=fmt_result.cxx_var, params=None, continuation=True)
 
             if is_ctor or is_pointer:
-                # The C wrapper always creates a pointer to the new in the ctor
+                # The C wrapper always creates a pointer to the new instance in the ctor.
                 fmt_result.cxx_member = '->'
                 fmt_result.cxx_addr = ''
             else:
@@ -1107,7 +1107,14 @@ class Wrapc(util.WrapperMixin):
             if C_subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
-                C_return_code = wformat('return {c_var};', fmt_result)
+                if node.ast.is_reference():
+                    if result_typemap.base in ['shadow', 'string']:
+                        C_return_code = wformat('return {c_var};', fmt_result)
+                    else:
+                        # Return address of reference i.e. a pointer.
+                        C_return_code = wformat('return &{c_var};', fmt_result)
+                else:
+                    C_return_code = wformat('return {c_var};', fmt_result)
 
         if fmt_func.inlocal('C_finalize' + generated_suffix):
             # maybe check C_finalize up chain for accumulative code
