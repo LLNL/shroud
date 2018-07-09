@@ -58,3 +58,9 @@ T mypair<T>::getmax ()
   T retval = values[0] > values[1] ? values[0] : values[1];
   return retval;
 }
+
+// Function template with two template parameters.
+template<typename T, typename U> void FunctionTU(T arg1, U arg2)
+{
+}
+

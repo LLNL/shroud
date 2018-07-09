@@ -3,6 +3,7 @@
 #include "wraptemplates.h"
 #include <stdlib.h>
 #include <vector>
+#include "templates.hpp"
 #include "typestemplates.h"
 
 // splicer begin CXX_definitions
@@ -13,6 +14,10 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
 void TEM_function_tu_0(int arg1, long arg2)
 {
 // splicer begin function.function_tu_0
@@ -21,6 +26,10 @@ void TEM_function_tu_0(int arg1, long arg2)
 // splicer end function.function_tu_0
 }
 
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
 void TEM_function_tu_1(float arg1, double arg2)
 {
 // splicer begin function.function_tu_1

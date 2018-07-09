@@ -43,6 +43,10 @@ module templates_mod
 
 contains
 
+    !>
+    !! \brief Function template with two template parameters.
+    !!
+    !<
     subroutine function_tu_0(arg1, arg2)
         use iso_c_binding, only : C_INT, C_LONG
         integer(C_INT), value, intent(IN) :: arg1
@@ -52,6 +56,10 @@ contains
         ! splicer end function.function_tu_0
     end subroutine function_tu_0
 
+    !>
+    !! \brief Function template with two template parameters.
+    !!
+    !<
     subroutine function_tu_1(arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg1

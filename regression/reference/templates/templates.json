@@ -12,7 +12,7 @@
                     "F_derived_name": "vector_int", 
                     "F_impl_filename": "wrapfvector_int.f", 
                     "F_module_name": "vector_int_mod", 
-                    "__line__": 16, 
+                    "__line__": 17, 
                     "class_lower": "vector_int", 
                     "class_prefix": "vector_int_", 
                     "class_scope": "vector_int::", 
@@ -76,7 +76,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 24, 
+                        "linenumber": 25, 
                         "options": {}
                     }, 
                     {
@@ -117,7 +117,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 25, 
+                        "linenumber": 26, 
                         "options": {}
                     }, 
                     {
@@ -159,7 +159,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 26, 
+                        "linenumber": 27, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -247,7 +247,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 26, 
+                        "linenumber": 27, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -256,10 +256,10 @@
                         }
                     }
                 ], 
-                "linenumber": 11, 
+                "linenumber": 12, 
                 "name": "vector", 
                 "options": {
-                    "__line__": 19, 
+                    "__line__": 20, 
                     "optblah": "two"
                 }, 
                 "scope": "std::vector::", 
@@ -275,12 +275,12 @@
                         ], 
                         "fmtdict": {
                             "C_impl_filename": "wrapvectorforint.cpp", 
-                            "__line__": 16, 
+                            "__line__": 17, 
                             "fmtblah": "one"
                         }, 
                         "instantiation": "<int>", 
                         "options": {
-                            "__line__": 19, 
+                            "__line__": 20, 
                             "optblah": "two"
                         }
                     }
@@ -362,7 +362,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 35, 
+                        "linenumber": 36, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -499,7 +499,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 35, 
+                        "linenumber": 36, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -527,7 +527,7 @@
                         ]
                     }
                 ], 
-                "linenumber": 30, 
+                "linenumber": 31, 
                 "name": "user", 
                 "options": {}, 
                 "scope": "user::", 
@@ -550,6 +550,7 @@
                 "typemap_name": "user_int"
             }
         ], 
+        "cxx_header": "templates.hpp", 
         "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
@@ -671,12 +672,16 @@
                 }, 
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)", 
+                "doxygen": {
+                    "__line__": 57, 
+                    "brief": "Function template with two template parameters."
+                }, 
                 "fmtdict": {
                     "function_name": "FunctionTU", 
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 55, 
+                "linenumber": 56, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": false, 
@@ -811,6 +816,10 @@
                 }, 
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)", 
+                "doxygen": {
+                    "__line__": 57, 
+                    "brief": "Function template with two template parameters."
+                }, 
                 "fmtdict": {
                     "CXX_template": "<int, long>", 
                     "C_call_code": "FunctionTU<int, long>(\targ1,\t arg2);", 
@@ -834,7 +843,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 55, 
+                "linenumber": 56, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -969,6 +978,10 @@
                 }, 
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)", 
+                "doxygen": {
+                    "__line__": 57, 
+                    "brief": "Function template with two template parameters."
+                }, 
                 "fmtdict": {
                     "CXX_template": "<float, double>", 
                     "C_call_code": "FunctionTU<float, double>(\targ1,\t arg2);", 
@@ -992,7 +1005,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 55, 
+                "linenumber": 56, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 

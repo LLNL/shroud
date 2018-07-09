@@ -53,8 +53,8 @@ VPATH = \
     $(top)/regression/run/fruit
 
 OBJS = \
-    wrapvectorforint.o \
     wraptemplates.o \
+    wrapvectorforint.o \
     wrapfvector_int.o \
     wrapftemplates.o \
     fruit.o \

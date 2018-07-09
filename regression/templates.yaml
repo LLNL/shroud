@@ -4,6 +4,7 @@
 #
 
 library: templates
+cxx_header: templates.hpp
 
 declarations:
 - decl: namespace std
@@ -33,7 +34,7 @@ declarations:
   - instantiation: <int>
   declarations:
   - decl: template<U> void nested( T arg1, U arg2 );
-    # XXX - error of cxx_template2 is missing
+    # XXX - error if cxx_template2 is missing
     cxx_template2:
     - instantiation: <double>
 
@@ -53,6 +54,8 @@ declarations:
 # template class variables
 
 - decl: template<T,U> void FunctionTU(T arg1, U arg2)
+  doxygen:
+     brief: Function template with two template parameters.
   cxx_template2:
   - instantiation: <int, long>
   - instantiation: <float, double>

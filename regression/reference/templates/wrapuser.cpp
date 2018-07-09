@@ -1,6 +1,7 @@
 // wrapuser.cpp
 // This is generated code, do not edit
 #include "wrapuser_int.h"
+#include "templates.hpp"
 
 // splicer begin class.user.CXX_definitions
 // splicer end class.user.CXX_definitions

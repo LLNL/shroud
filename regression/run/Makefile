@@ -68,10 +68,10 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial vectors strings clibrary ownership
+fortran : tutorial vectors strings clibrary ownership templates
 
 # Compile the generated Fortran wrapper
-tutorial vectors forward strings clibrary ownership : testdirs
+tutorial vectors forward strings clibrary ownership templates : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/$@ \
 	    -f $(top)/regression/run/$@/Makefile \
@@ -110,6 +110,7 @@ test-fortran : fortran
 	$(tempdir)/run/strings/strings
 	$(tempdir)/run/clibrary/clibrary
 	$(tempdir)/run/ownership/ownership
+	$(tempdir)/run/templates/templates
 
 # Compile the generated Python wrapper
 py-tutorial : testdirs
