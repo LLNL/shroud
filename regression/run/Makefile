@@ -70,7 +70,7 @@ testdirs : $(TESTDIRS)
 
 fortran : tutorial vectors strings clibrary ownership templates
 
-# Compile the generated Fortran wrapper
+# Compile the Fortran tests
 tutorial vectors forward strings clibrary ownership templates : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/$@ \
@@ -101,7 +101,8 @@ templates-cpp : testdirs
 	    -f $(top)/regression/run/templates/Makefile \
 	    top=$(top) maincpp
 
-test-c : tutorial-c
+# Compile C tests
+clang : tutorial-c templates-c
 
 # Run the Fortran tests
 test-fortran : fortran
@@ -111,6 +112,11 @@ test-fortran : fortran
 	$(tempdir)/run/clibrary/clibrary
 	$(tempdir)/run/ownership/ownership
 	$(tempdir)/run/templates/templates
+
+# Run the C tests
+test-c : clang
+	$(tempdir)/run/tutorial/testc
+	$(tempdir)/run/templates/testc
 
 # Compile the generated Python wrapper
 py-tutorial : testdirs
@@ -172,8 +178,10 @@ test-lua : lua-tutorial
 test-all : test-c test-fortran test-python test-lua
 
 
-.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership
+.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership templates
+.PHONY : test-c
 .PHONY : tutorial-c tutorial-cpp
+.PHONY : templates-c
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings

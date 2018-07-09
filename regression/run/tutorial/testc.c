@@ -54,7 +54,7 @@ void test_class(void)
   c1 = TUT_class1_new_default();
 
   flag = TUT_class1_method1(&c1);
-  assert(flag == 1 && "TUT_class1_method1");
+  assert(flag == 0 && "TUT_class1_method1");
 
 }
 
