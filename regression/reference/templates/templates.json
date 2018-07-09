@@ -378,7 +378,7 @@
                             "C_name": "TEM_vector_int_at", 
                             "C_pre_call": "std::vector<int> *SH_this =\t static_cast<std::vector<int> *>(self->addr);", 
                             "C_prototype": "TEM_vector_int * self,\t size_t n", 
-                            "C_return_code": "return SHC_rv;", 
+                            "C_return_code": "return &SHC_rv;", 
                             "C_return_type": "int *", 
                             "F_C_call": "c_vector_int_at", 
                             "F_C_name": "c_vector_int_at", 
@@ -534,9 +534,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "U": 0
-                        }, 
                         "template_parameters": [
                             "U"
                         ]
@@ -671,9 +668,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "U": 0
-                        }, 
                         "template_parameters": [
                             "U"
                         ]
@@ -876,10 +870,6 @@
                         "instantiation": "<float, double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "T": 0, 
-                    "U": 1
-                }, 
                 "template_parameters": [
                     "T", 
                     "U"
@@ -1038,10 +1028,6 @@
                         "instantiation": "<float, double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "T": 0, 
-                    "U": 1
-                }, 
                 "template_parameters": [
                     "T", 
                     "U"
@@ -1200,10 +1186,6 @@
                         "instantiation": "<float, double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "T": 0, 
-                    "U": 1
-                }, 
                 "template_parameters": [
                     "T", 
                     "U"

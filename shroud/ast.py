@@ -938,7 +938,6 @@ class FunctionNode(AstNode):
     Templates
     ---------
 
-    template_name_to_index - {'T1': 0, 'T2': 1}
     template_parameters - [ 'T1', 'T2' ]
     template_argument - [ TemplateArgument('<int,long>'),
                           TemplateArgument('<float,double>') ]
@@ -982,7 +981,6 @@ class FunctionNode(AstNode):
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
         self.cpp_if = kwargs.get('cpp_if', None)
         self.cxx_template = {}
-        self.template_name_to_index = None
         self.template_parameters = []
         self.template_arguments = kwargs.get('cxx_template2', [])
         self.doxygen = kwargs.get('doxygen', {})
@@ -1008,10 +1006,7 @@ class FunctionNode(AstNode):
         if ast is None:
             ast = declast.check_decl(decl, namespace=parent)
         if isinstance(ast, declast.Template):
-            # Create map from name to index
-            self.template_name_to_index = {}
-            for iarg, param in enumerate(ast.parameters):
-                self.template_name_to_index[param.name] = iarg
+            for param in ast.parameters:
                 self.template_parameters.append(param.name)
 
             template_parameters = ast

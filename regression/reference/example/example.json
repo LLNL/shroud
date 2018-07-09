@@ -3996,9 +3996,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4162,9 +4159,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4326,9 +4320,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4490,9 +4481,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4654,9 +4642,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4718,9 +4703,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4836,9 +4818,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]
@@ -4952,9 +4931,6 @@
                                 "instantiation": "<double>"
                             }
                         ], 
-                        "template_name_to_index": {
-                            "ValueType": 0
-                        }, 
                         "template_parameters": [
                             "ValueType"
                         ]

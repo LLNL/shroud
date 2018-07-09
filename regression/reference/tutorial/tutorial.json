@@ -4662,9 +4662,6 @@
                         "instantiation": "<double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "ArgType": 0
-                }, 
                 "template_parameters": [
                     "ArgType"
                 ]
@@ -4802,9 +4799,6 @@
                         "instantiation": "<double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "ArgType": 0
-                }, 
                 "template_parameters": [
                     "ArgType"
                 ]
@@ -4940,9 +4934,6 @@
                         "instantiation": "<double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "ArgType": 0
-                }, 
                 "template_parameters": [
                     "ArgType"
                 ]
@@ -5005,9 +4996,6 @@
                         "instantiation": "<double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "RetType": 0
-                }, 
                 "template_parameters": [
                     "RetType"
                 ]
@@ -5100,9 +5088,6 @@
                         "instantiation": "<double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "RetType": 0
-                }, 
                 "template_parameters": [
                     "RetType"
                 ]
@@ -5195,9 +5180,6 @@
                         "instantiation": "<double>"
                     }
                 ], 
-                "template_name_to_index": {
-                    "RetType": 0
-                }, 
                 "template_parameters": [
                     "RetType"
                 ]

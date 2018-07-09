@@ -236,7 +236,7 @@ class ToDict(visitor.Visitor):
             'cxx_template', 'default_arg_suffix',
             'declgen', 'doxygen',
             'fortran_generic', 'linenumber', 'return_this',
-            'have_template_args', 'template_name_to_index', 'template_parameters',
+            'have_template_args', 'template_parameters',
             'C_error_pattern', 'PY_error_pattern',
             '_CXX_return_templated',
             '_default_funcs',
