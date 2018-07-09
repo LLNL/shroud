@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support multiple template parameters.
 
 ### Changed
-- Change how function templates are specified.
+- Change how function template arguments are specified to reflect C++ syntax.
 ```
   - decl: void Function7(ArgType arg)
     cxx_template:

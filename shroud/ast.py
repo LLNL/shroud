@@ -701,7 +701,7 @@ class ClassNode(AstNode, NamespaceMixin):
              ex. template<typename T>  -> ['T']
         Added to symbol table.
 
-        cxx_template2 - list of TemplateArgument instances
+        cxx_template - list of TemplateArgument instances
         """
         # From arguments
         self.name = name
@@ -753,11 +753,11 @@ class ClassNode(AstNode, NamespaceMixin):
                 self.create_template_parameter_typemap(param_name)
 
         # Parse the instantiations.
-        # cxx_template2 = [ TemplateArgument('<int>'),
-        #                   TemplateArgument('<double>') ]
-        cxx_template2 = kwargs.get('cxx_template2', [])
-        self.template_arguments = cxx_template2
-        for args in cxx_template2:
+        # cxx_template = [ TemplateArgument('<int>'),
+        #                  TemplateArgument('<double>') ]
+        cxx_template = kwargs.get('cxx_template', [])
+        self.template_arguments = cxx_template
+        for args in cxx_template:
             args.parse_instantiation(namespace=self)
 
 ##### namespace behavior
@@ -982,7 +982,7 @@ class FunctionNode(AstNode):
         self.cpp_if = kwargs.get('cpp_if', None)
         self.cxx_template = {}
         self.template_parameters = []
-        self.template_arguments = kwargs.get('cxx_template2', [])
+        self.template_arguments = kwargs.get('cxx_template', [])
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
         self.return_this = kwargs.get('return_this', False)
@@ -1327,23 +1327,23 @@ def clean_dictionary(dd):
             if key in dd0 and dd0[key] is None:
                 dd0[key] = ''
 
-    if 'cxx_template2' in dd:
+    if 'cxx_template' in dd:
         # Convert to list of TemplateArgument instances
-        cxx_template2 = dd['cxx_template2']
-        if not isinstance(cxx_template2, list):
-            raise RuntimeError('cxx_template2 must be a list')
+        cxx_template = dd['cxx_template']
+        if not isinstance(cxx_template, list):
+            raise RuntimeError('cxx_template must be a list')
         newlst = []
-        for dct in cxx_template2:
+        for dct in cxx_template:
             if not isinstance(dct, dict):
-                raise RuntimeError('cxx_template2 must be a list of dictionaries')
+                raise RuntimeError('cxx_template must be a list of dictionaries')
             if 'instantiation' not in dct:
-                raise RuntimeError('instantation must be defined for each dictionary in cxx_template2')
+                raise RuntimeError('instantation must be defined for each dictionary in cxx_template')
             newlst.append(TemplateArgument(
                 dct['instantiation'],
                 fmtdict=dct.get('format', None),
                 options=dct.get('options', None),
             ))
-        dd['cxx_template2'] = newlst
+        dd['cxx_template'] = newlst
 
 def clean_list(lst):
     """Fix up blank lines in a YAML line

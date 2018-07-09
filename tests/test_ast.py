@@ -377,7 +377,7 @@ class CheckAst(unittest.TestCase):
         cls1 = library.add_class(
             'vector',
             template_parameters=['T'],
-            cxx_template2=[
+            cxx_template=[
                 ast.TemplateArgument('<int>'),
                 ast.TemplateArgument('<double>'),
             ],
@@ -396,7 +396,7 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
         cls1 = library.add_declaration(
             'template<typename T> class vector',
-            cxx_template2=[
+            cxx_template=[
                 ast.TemplateArgument('<int>'),
                 ast.TemplateArgument('<double>'),
             ])
@@ -430,7 +430,7 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
         fcn1 = library.add_function(
             'template<typename T> void func1(T arg)',
-            cxx_template2=[
+            cxx_template=[
                 ast.TemplateArgument('<int>'),
                 ast.TemplateArgument('<double>'),
             ])
@@ -441,7 +441,7 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
         cls1 = library.add_declaration(
             'template<typename T> void func1(T arg)',
-            cxx_template2=[
+            cxx_template=[
                 ast.TemplateArgument('<int>'),
                 ast.TemplateArgument('<double>'),
             ])

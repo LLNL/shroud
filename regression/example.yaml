@@ -242,14 +242,14 @@ declarations:
       - decl: TypeID getTypeID() const
 
       - decl: template<typename ValueType> void setValue(ValueType value)
-        cxx_template2:
+        cxx_template:
         - instantiation: <int>
         - instantiation: <long>
         - instantiation: <float>
         - instantiation: <double>
 
       - decl: template<typename ValueType> ValueType getValue()
-        cxx_template2:
+        cxx_template:
         - instantiation: <int>
 #        - instantiation: <long>
 #        - instantiation: <float>
@@ -299,7 +299,7 @@ declarations:
     #  - decl: template<typename ArgType> void Function10(ArgType arg1, std::string &name, double arg2 = 0)
     #    options:
     #      F_string_len_trim: True
-    #    cxx_template2:
+    #    cxx_template:
     #    - instantiation: <int>
     #    - instantiation: <double>
     #    fortran_generic:
