@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
 - Add support for C++ structs.
   Fortran creates a derived type with ``bind(C)``.
   Python uses NumPy to unpack fields of struct.
@@ -23,19 +24,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   allocatable, pointer, raw (type(C_PTR)).
 - Support ALLOCATABLE CHARACTER function as the default for char* and std::string
   functions. Unless +len attribute or F_string_result_as_arg is used.
-- Add owner attribute to define if memory should be released: library or caller.
+- Add owner attribute to define who should release memory: library or caller.
 - Add free_pattern attribute to define custom code to release memory.
   For example, if the variable is reference counted.
-- Remove +pure attribute.
-  Also remove the feature where a string C++ function would be called twice,
-  once to get length and once for values.  Instead use ALLOCATABLE string.
-- Change C wrappers of shadow classes to return a capsule_data_type to
-  instead of a void *.  This struct contains the pointer to the shadow class
-  and information to deallocate it.
 - Support multiple template parameters.
 
 ### Changed
+- Change C wrappers of shadow classes to return a capsule_data_type
+  instead of a `void *`.  This struct contains the pointer to the shadow class
+  and information to deallocate it.
 - Change how function template arguments are specified to reflect C++ syntax.
+  Also allow options and format to be added to an instantiation.
 ```
   - decl: void Function7(ArgType arg)
     cxx_template:
@@ -52,6 +51,11 @@ new:
     - instantiation: <int>
     - instantiation: <double>
 ```
+
+### Removed
+- Remove +pure attribute.
+  Also remove the feature where a string C++ function would be called twice,
+  once to get length and once for values.  Instead use ALLOCATABLE string.
 
 ## v0.9.0 - 2018-04-04
 ### Added

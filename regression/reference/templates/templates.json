@@ -76,7 +76,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 26, 
+                        "linenumber": 29, 
                         "options": {}
                     }, 
                     {
@@ -117,7 +117,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 27, 
+                        "linenumber": 30, 
                         "options": {}
                     }, 
                     {
@@ -159,7 +159,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 28, 
+                        "linenumber": 31, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -247,7 +247,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 28, 
+                        "linenumber": 31, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -294,7 +294,7 @@
                             "underscore_name": "at"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 29, 
+                        "linenumber": 32, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -399,7 +399,7 @@
                             "underscore_name": "at"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 29, 
+                        "linenumber": 32, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -525,7 +525,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 26, 
+                        "linenumber": 29, 
                         "options": {}
                     }, 
                     {
@@ -566,7 +566,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 27, 
+                        "linenumber": 30, 
                         "options": {}
                     }, 
                     {
@@ -608,7 +608,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 28, 
+                        "linenumber": 31, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -696,7 +696,7 @@
                             "underscore_name": "push_back"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 28, 
+                        "linenumber": 31, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -743,7 +743,7 @@
                             "underscore_name": "at"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 29, 
+                        "linenumber": 32, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -848,7 +848,7 @@
                             "underscore_name": "at"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 29, 
+                        "linenumber": 32, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -971,7 +971,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 39, 
+                        "linenumber": 42, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -1105,7 +1105,7 @@
                             "underscore_name": "nested"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 39, 
+                        "linenumber": 42, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -1130,7 +1130,7 @@
                         ]
                     }
                 ], 
-                "linenumber": 34, 
+                "linenumber": 37, 
                 "name": "user", 
                 "options": {}, 
                 "scope": "user::", 
@@ -1276,7 +1276,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 60, 
+                    "__line__": 63, 
                     "brief": "Function template with two template parameters."
                 }, 
                 "fmtdict": {
@@ -1284,7 +1284,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 59, 
+                "linenumber": 62, 
                 "options": {
                     "wrap_c": false, 
                     "wrap_fortran": false, 
@@ -1416,7 +1416,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 60, 
+                    "__line__": 63, 
                     "brief": "Function template with two template parameters."
                 }, 
                 "fmtdict": {
@@ -1442,7 +1442,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 59, 
+                "linenumber": 62, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -1574,7 +1574,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)", 
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 60, 
+                    "__line__": 63, 
                     "brief": "Function template with two template parameters."
                 }, 
                 "fmtdict": {
@@ -1600,7 +1600,7 @@
                     "underscore_name": "function_tu"
                 }, 
                 "have_template_args": true, 
-                "linenumber": 59, 
+                "linenumber": 62, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 

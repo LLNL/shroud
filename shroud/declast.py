@@ -314,12 +314,10 @@ class Parser(ExprParser):
 
     An abstract-declarator is a declarator without an identifier,
     consisting of one or more pointer, array, or function modifiers.
-
-    namespace - An ast.AstNode subclass.
     """
     def __init__(self, decl, namespace, trace=False):
-        self.decl = decl          # declaration to parse
-        self.namespace = namespace
+        self.decl = decl            # declaration to parse
+        self.namespace = namespace  # An ast.AstNode subclass.
         self.trace = trace
         self.indent = 0
         self.token = None

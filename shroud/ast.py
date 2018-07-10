@@ -1289,6 +1289,7 @@ class TemplateArgument(object):
         self.asts = None
 
     def parse_instantiation(self, namespace):
+        """Parse instantiation (ex. <int>) and set list of Declarations."""
         parser = declast.Parser(self.instantiation, namespace)
         self.asts = parser.template_argument_list()
 
@@ -1296,6 +1297,7 @@ class TemplateArgument(object):
 
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
+    (string and vector)
     """
     std = glb.add_namespace('std')
     std.add_typedef('string')

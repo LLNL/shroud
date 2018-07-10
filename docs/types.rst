@@ -1118,6 +1118,41 @@ The *name* attribute will change the name of generated functions and
 descriptors.  This is helpful when using a naming convention like
 ``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
+Templates
+---------
+
+Shroud will wrap templated classes and functions for explicit instantiations.
+The template is given as part of the ``decl`` and the instantations are listed in the
+``cxx_template`` section::
+
+  - decl: |
+        template<typename ArgType>
+        void Function7(ArgType arg)
+    cxx_template:
+    - instantiation: <int>
+    - instantiation: <double>
+
+``options`` and ``format`` may be provide to control the generated code::
+
+  - decl: template<typename T> class vector
+    cxx_header: <vector>
+    cxx_template:
+    - instantiation: <int>
+      format:
+        C_impl_filename: wrapvectorforint.cpp
+      options:
+        optblah: two
+    - instantiation: <double>
+
+.. from templates.yaml
+
+For a class template, the *class_name* is modified to included the
+instantion type.  If only a single template parameter is provided,
+then the template argument is used.  For the above example,
+*C_impl_filename* will default to ``wrapvector_int.cpp`` but has be
+explicitly changed to ``wrapvectorforint.cpp``.
+
+
 .. _MemoryManagementAnchor:
 
 Memory Management

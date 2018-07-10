@@ -21,6 +21,9 @@ declarations:
         optblah: two
     - instantiation: <double>
 
+# This has a problem since we're redefining namespace std
+#    - instantiation: <std::string>
+
     declarations:
     - decl: typedef size_t size_type
     - decl: vector()
