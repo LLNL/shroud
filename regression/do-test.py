@@ -209,9 +209,13 @@ class Tester:
             '--path', self.test_input_dir,
             '--logdir', self.result_dir,
             '--outdir', self.result_dir,
-#            '--yaml-types', 'def_types.yaml',
-            self.testyaml,
             ]
+
+        # test specific flags
+        if self.testname == 'none':
+            cmd += ['--yaml-types', 'def_types.yaml']
+
+        cmd.append(self.testyaml)
         logging.debug(' '.join(cmd))
 
         try:
