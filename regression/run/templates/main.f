@@ -44,12 +44,14 @@ program tester
   use fruit
   use iso_c_binding
   use vector_int_mod
+  use vector_double_mod
   implicit none
   logical ok
 
   call init_fruit
 
   call test_vector_int
+  call test_vector_double
 
   call fruit_summary
   call fruit_finalize
@@ -77,5 +79,22 @@ contains
 !    ivalue => v1%at(10_C_SIZE_T)
 
   end subroutine test_vector_int
+
+  subroutine test_vector_double
+
+    type(vector_double) v1
+    real(C_DOUBLE), pointer :: ivalue
+
+    v1 = vector_double_ctor()
+
+    call v1%push_back(1.5_C_DOUBLE)
+
+    ivalue => v1%at(0_C_SIZE_T)
+    call assert_equals(1.5_C_DOUBLE, ivalue)
+
+! XXX - need to catch std::out_of_range
+!    ivalue => v1%at(10_C_SIZE_T)
+
+  end subroutine test_vector_double
 
 end program tester

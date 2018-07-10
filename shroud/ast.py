@@ -829,7 +829,7 @@ class ClassNode(AstNode, NamespaceMixin):
         Called after other format fields are set.
         eval_template will only set a value if it has not already been set.
         Call delete_format_template to remove previous values to 
-        force them to be recomputed.
+        force them to be recomputed during class template instantiation.
         """
         self.eval_template('class_prefix')
 
@@ -854,6 +854,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.fmtdict.delattrs([
             'class_prefix',
             'C_header_filename',
+            'C_impl_filename',
             'F_module_name',
             'F_impl_filename',
             'PY_struct_array_descr_create',

@@ -4,6 +4,18 @@
 declarations:
   - namespace: std
     declarations: std
+    - type: vector_double
+      imported: True
+      fields:
+        base: shadow
+        cxx_header: <vector>
+        cxx_type: std::vector<double>
+        c_type: TEM_vector_double
+        f_derived_type: vector_double
+        f_to_c: "{f_var}%cxxmem"
+        f_module:
+          vector_double_mod:
+          - vector_double
     - type: vector_int
       imported: True
       fields:

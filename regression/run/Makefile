@@ -113,6 +113,11 @@ test-fortran : fortran
 	$(tempdir)/run/ownership/ownership
 	$(tempdir)/run/templates/templates
 
+# Run a single Fortran test
+# make ftest name=templates
+ftest :
+	$(tempdir)/run/$(name)/$(name)
+
 # Run the C tests
 test-c : clang
 	$(tempdir)/run/tutorial/testc

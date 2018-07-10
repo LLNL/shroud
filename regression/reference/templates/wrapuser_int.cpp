@@ -1,4 +1,4 @@
-// wrapuser.cpp
+// wrapuser_int.cpp
 // This is generated code, do not edit
 #include "wrapuser_int.h"
 #include "templates.hpp"

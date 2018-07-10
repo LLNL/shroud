@@ -435,6 +435,17 @@
                             "__line__": 20, 
                             "optblah": "two"
                         }
+                    }, 
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ], 
+                                "typemap_name": "double"
+                            }
+                        ], 
+                        "instantiation": "<double>"
                     }
                 ], 
                 "template_parameters": [
@@ -443,11 +454,457 @@
                 "typemap_name": "std::vector_int"
             }, 
             {
+                "cxx_header": "<vector>", 
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->", 
+                    "C_header_filename": "wrapvector_double.h", 
+                    "C_impl_filename": "wrapvector_double.cpp", 
+                    "C_type_name": "TEM_vector_double", 
+                    "F_derived_name": "vector_double", 
+                    "F_impl_filename": "wrapfvector_double.f", 
+                    "F_module_name": "vector_double_mod", 
+                    "class_lower": "vector_double", 
+                    "class_prefix": "vector_double_", 
+                    "class_scope": "vector_double::", 
+                    "class_upper": "VECTOR_DOUBLE", 
+                    "cxx_class": "vector_double", 
+                    "cxx_type": "vector<double>"
+                }, 
+                "functions": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_type": "TEM_vector_double", 
+                                "c_val": "static_cast<void *>(\tSHCXX_rv)", 
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "", 
+                                "cxx_member": "->", 
+                                "cxx_type": "std::vector<double>", 
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "std::vector<double>", 
+                                "f_var": "SHT_rv"
+                            }
+                        }, 
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true, 
+                                "_name": "ctor"
+                            }, 
+                            "params": [], 
+                            "specifier": [
+                                "vector"
+                            ], 
+                            "typemap_name": "std::vector_double"
+                        }, 
+                        "decl": "vector()", 
+                        "declgen": "vector()", 
+                        "fmtdict": {
+                            "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();", 
+                            "C_call_list": "", 
+                            "C_name": "TEM_vector_double_ctor", 
+                            "C_post_call": "TEM_vector_double SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_prototype": "", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "TEM_vector_double", 
+                            "F_C_call": "c_vector_double_ctor", 
+                            "F_C_name": "c_vector_double_ctor", 
+                            "F_arg_c_call": "", 
+                            "F_arguments": "", 
+                            "F_call_code": "SHT_rv%cxxmem = c_vector_double_ctor()", 
+                            "F_name_function": "ctor", 
+                            "F_name_generic": "ctor", 
+                            "F_name_impl": "vector_double_ctor", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "c_const": "", 
+                            "c_rv_decl": "TEM_vector_double *SHC_rv", 
+                            "cxx_rv_decl": "std::vector<double> *SHCXX_rv", 
+                            "function_name": "ctor", 
+                            "underscore_name": "ctor"
+                        }, 
+                        "linenumber": 26, 
+                        "options": {}
+                    }, 
+                    {
+                        "ast": {
+                            "attrs": {
+                                "_destructor": true, 
+                                "_name": "dtor"
+                            }, 
+                            "params": [], 
+                            "specifier": [
+                                "vector"
+                            ], 
+                            "typemap_name": "std::vector"
+                        }, 
+                        "decl": "~vector()", 
+                        "declgen": "~vector()", 
+                        "fmtdict": {
+                            "C_call_code": "delete SH_this;\nself->addr = NULL;", 
+                            "C_call_list": "", 
+                            "C_name": "TEM_vector_double_dtor", 
+                            "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);", 
+                            "C_prototype": "TEM_vector_double * self", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_vector_double_dtor", 
+                            "F_C_name": "c_vector_double_dtor", 
+                            "F_arg_c_call": "obj%cxxmem", 
+                            "F_arguments": "obj", 
+                            "F_call_code": "call c_vector_double_dtor(obj%cxxmem)", 
+                            "F_name_function": "dtor", 
+                            "F_name_generic": "dtor", 
+                            "F_name_impl": "vector_double_dtor", 
+                            "F_subprogram": "subroutine", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "function_name": "dtor", 
+                            "underscore_name": "dtor"
+                        }, 
+                        "linenumber": 27, 
+                        "options": {}
+                    }, 
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "push_back", 
+                                "pointer": []
+                            }, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": false
+                                    }, 
+                                    "const": true, 
+                                    "declarator": {
+                                        "name": "value", 
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    }, 
+                                    "specifier": [
+                                        "T"
+                                    ], 
+                                    "typemap_name": "std::vector::T"
+                                }
+                            ], 
+                            "specifier": [
+                                "void"
+                            ], 
+                            "typemap_name": "void"
+                        }, 
+                        "decl": "void push_back( const T& value+intent(in) )", 
+                        "declgen": "void push_back(const T & value +intent(in))", 
+                        "fmtdict": {
+                            "function_name": "push_back", 
+                            "underscore_name": "push_back"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 28, 
+                        "options": {
+                            "wrap_c": false, 
+                            "wrap_fortran": false, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }, 
+                    {
+                        "_fmtargs": {
+                            "value": {
+                                "fmtc": {
+                                    "c_const": "const ", 
+                                    "c_deref": "*", 
+                                    "c_member": "->", 
+                                    "c_var": "value", 
+                                    "cxx_addr": "", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<double *>\t(value))", 
+                                    "cxx_member": "->", 
+                                    "cxx_type": "double", 
+                                    "cxx_var": "value", 
+                                    "idtor": "0"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "value", 
+                                    "f_var": "value"
+                                }
+                            }
+                        }, 
+                        "_generated": "cxx_template", 
+                        "ast": {
+                            "declarator": {
+                                "name": "push_back", 
+                                "pointer": []
+                            }, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": false
+                                    }, 
+                                    "const": true, 
+                                    "declarator": {
+                                        "name": "value", 
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    }, 
+                                    "specifier": [
+                                        "double"
+                                    ], 
+                                    "typemap_name": "double"
+                                }
+                            ], 
+                            "specifier": [
+                                "void"
+                            ], 
+                            "typemap_name": "void"
+                        }, 
+                        "decl": "void push_back( const T& value+intent(in) )", 
+                        "declgen": "void push_back(const double & value +intent(in))", 
+                        "fmtdict": {
+                            "C_call_code": "SH_this->push_back(\t*value);", 
+                            "C_call_list": "*value", 
+                            "C_name": "TEM_vector_double_push_back", 
+                            "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);", 
+                            "C_prototype": "TEM_vector_double * self,\t const double * value", 
+                            "C_return_code": "return;", 
+                            "C_return_type": "void", 
+                            "F_C_call": "c_vector_double_push_back", 
+                            "F_C_name": "c_vector_double_push_back", 
+                            "F_arg_c_call": "obj%cxxmem,\t value", 
+                            "F_arguments": "obj,\t value", 
+                            "F_call_code": "call c_vector_double_push_back(obj%cxxmem,\t value)", 
+                            "F_name_function": "push_back", 
+                            "F_name_generic": "push_back", 
+                            "F_name_impl": "vector_double_push_back", 
+                            "F_subprogram": "subroutine", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "function_name": "push_back", 
+                            "underscore_name": "push_back"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 28, 
+                        "options": {
+                            "wrap_c": true, 
+                            "wrap_fortran": true, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }, 
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "at", 
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "declarator": {
+                                        "name": "n", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "size_type"
+                                    ], 
+                                    "typemap_name": "std::vector::size_type"
+                                }
+                            ], 
+                            "return_pointer_as": "pointer", 
+                            "specifier": [
+                                "T"
+                            ], 
+                            "typemap_name": "std::vector::T"
+                        }, 
+                        "decl": "T & at(size_type n)", 
+                        "declgen": "T & at(size_type n +intent(in)+value)", 
+                        "fmtdict": {
+                            "function_name": "at", 
+                            "underscore_name": "at"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 29, 
+                        "options": {
+                            "wrap_c": false, 
+                            "wrap_fortran": false, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }, 
+                    {
+                        "_CXX_return_templated": true, 
+                        "_fmtargs": {
+                            "n": {
+                                "fmtc": {
+                                    "c_const": "", 
+                                    "c_deref": "", 
+                                    "c_member": ".", 
+                                    "c_var": "n", 
+                                    "cxx_addr": "&", 
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&n)", 
+                                    "cxx_member": ".", 
+                                    "cxx_type": "std::vector::size_type", 
+                                    "cxx_var": "n", 
+                                    "idtor": "0"
+                                }, 
+                                "fmtf": {
+                                    "c_var": "n", 
+                                    "f_var": "n"
+                                }
+                            }
+                        }, 
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "&", 
+                                "cxx_member": ".", 
+                                "cxx_type": "double", 
+                                "cxx_var": "SHC_rv", 
+                                "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "double", 
+                                "f_var": "SHT_rv"
+                            }
+                        }, 
+                        "_generated": "cxx_template", 
+                        "ast": {
+                            "declarator": {
+                                "name": "at", 
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            }, 
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in", 
+                                        "value": true
+                                    }, 
+                                    "declarator": {
+                                        "name": "n", 
+                                        "pointer": []
+                                    }, 
+                                    "specifier": [
+                                        "size_type"
+                                    ], 
+                                    "typemap_name": "std::vector::size_type"
+                                }
+                            ], 
+                            "return_pointer_as": "pointer", 
+                            "specifier": [
+                                "double"
+                            ], 
+                            "typemap_name": "double"
+                        }, 
+                        "decl": "T & at(size_type n)", 
+                        "declgen": "double & at(size_type n +intent(in)+value)", 
+                        "fmtdict": {
+                            "C_call_code": "double & SHC_rv =\t SH_this->at(\tn);", 
+                            "C_call_list": "n", 
+                            "C_name": "TEM_vector_double_at", 
+                            "C_pre_call": "std::vector<double> *SH_this =\t static_cast<std::vector<double> *>(self->addr);", 
+                            "C_prototype": "TEM_vector_double * self,\t size_t n", 
+                            "C_return_code": "return &SHC_rv;", 
+                            "C_return_type": "double *", 
+                            "F_C_call": "c_vector_double_at", 
+                            "F_C_name": "c_vector_double_at", 
+                            "F_arg_c_call": "obj%cxxmem,\t n", 
+                            "F_arguments": "obj,\t n", 
+                            "F_call_code": "SHT_ptr = c_vector_double_at(obj%cxxmem,\t n)", 
+                            "F_name_function": "at", 
+                            "F_name_generic": "at", 
+                            "F_name_impl": "vector_double_at", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "c_const": "", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "cxx_rv_decl": "double & SHC_rv", 
+                            "function_name": "at", 
+                            "underscore_name": "at"
+                        }, 
+                        "have_template_args": true, 
+                        "linenumber": 29, 
+                        "options": {
+                            "wrap_c": true, 
+                            "wrap_fortran": true, 
+                            "wrap_lua": false, 
+                            "wrap_python": false
+                        }
+                    }
+                ], 
+                "linenumber": 12, 
+                "name": "vector", 
+                "options": {}, 
+                "scope": "std::vector::", 
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ], 
+                                "typemap_name": "int"
+                            }
+                        ], 
+                        "fmtdict": {
+                            "C_impl_filename": "wrapvectorforint.cpp", 
+                            "__line__": 17, 
+                            "fmtblah": "one"
+                        }, 
+                        "instantiation": "<int>", 
+                        "options": {
+                            "__line__": 20, 
+                            "optblah": "two"
+                        }
+                    }, 
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ], 
+                                "typemap_name": "double"
+                            }
+                        ], 
+                        "instantiation": "<double>"
+                    }
+                ], 
+                "template_parameters": [
+                    "T"
+                ], 
+                "typemap_name": "std::vector_double"
+            }, 
+            {
                 "cxx_header": "", 
                 "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapuser_int.h", 
-                    "C_impl_filename": "wrapuser.cpp", 
+                    "C_impl_filename": "wrapuser_int.cpp", 
                     "C_type_name": "TEM_user_int", 
                     "F_derived_name": "user_int", 
                     "F_impl_filename": "wrapfuser_int.f", 
@@ -1876,6 +2333,76 @@
             }, 
             "f_type": "integer(C_SIZE_T)", 
             "typedef": "size_t"
+        }, 
+        "std::vector_double": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
+            "LUA_type": "LUA_TUSERDATA", 
+            "base": "shadow", 
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                }, 
+                "result": {
+                    "c_header": "<stdlib.h>", 
+                    "cxx_header": "<stdlib.h>", 
+                    "post_call": [
+                        "TEM_vector_double {c_var};", 
+                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}.idtor = {idtor};"
+                    ]
+                }
+            }, 
+            "c_to_cxx": "static_cast<{c_const}std::vector<double> *>({c_var}{c_member}addr)", 
+            "c_type": "TEM_vector_double", 
+            "cxx_header": "<vector>", 
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
+            "cxx_type": "std::vector<double>", 
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_capsule_data"
+                ]
+            }, 
+            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_derived_type": "vector_double", 
+            "f_module": {
+                "vector_double_mod": [
+                    "vector_double"
+                ]
+            }, 
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                    ], 
+                    "need_wrapper": true
+                }
+            }, 
+            "f_to_c": "{f_var}%cxxmem", 
+            "f_type": "type(vector_double)", 
+            "forward": "std::vector<double>", 
+            "idtor": "2", 
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_inout": {
+                    "cxx_local_var": "pointer", 
+                    "post_parse": [
+                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                }, 
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});", 
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         }, 
         "std::vector_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 

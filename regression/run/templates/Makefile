@@ -55,7 +55,9 @@ VPATH = \
 OBJS = \
     wraptemplates.o \
     wrapvectorforint.o \
+    wrapvector_double.o \
     wrapfvector_int.o \
+    wrapfvector_double.o \
     wrapftemplates.o \
     fruit.o \
     main.o

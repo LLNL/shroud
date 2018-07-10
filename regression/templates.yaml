@@ -19,7 +19,7 @@ declarations:
         C_impl_filename: wrapvectorforint.cpp
       options:
         optblah: two
-#    - instantiation: <double>
+    - instantiation: <double>
 
     declarations:
     - decl: typedef size_t size_type
