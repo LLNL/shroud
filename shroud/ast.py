@@ -52,7 +52,7 @@ from . import typemap
 
 class AstNode(object):
     is_class = False
-    def option_to_fmt(self, fmtdict):
+    def option_to_fmt(self):
         """Set fmt based on options dictionary.
         """
         for name in [
@@ -258,8 +258,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.F_module_dependencies = []     # unused
 
-        self.copyright = kwargs.setdefault('copyright', [])
-        self.patterns = kwargs.setdefault('patterns', [])
+        self.copyright = kwargs.get('copyright', [])
+        self.patterns = kwargs.get('patterns', [])
 
         self.default_format(format, kwargs)
 
@@ -429,7 +429,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         return def_options
 
-    def default_format(self, format, kwargs):
+    def default_format(self, fmtdict, kwargs):
         """Set format dictionary.
 
         Values based off of library variables and
@@ -523,22 +523,22 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             fmt_library.stdlib = 'std::'
 
-        for n in [
+        for name in [
                 'C_header_filename', 'C_impl_filename',
                 'F_module_name', 'F_impl_filename',
                 'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
                 'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
                 'YAML_type_filename'
         ]:
-            if n in kwargs:
+            if name in kwargs:
                 raise DeprecationWarning(
                     "Setting field {} in library, change to format group"
-                    .format(n))
+                    .format(name))
 
-        self.option_to_fmt(fmt_library)
+        self.option_to_fmt()
 
-        if format:
-            fmt_library.update(format, replace=True)
+        if fmtdict:
+            fmt_library.update(fmtdict, replace=True)
 
         self.fmtdict = fmt_library
 
@@ -627,7 +627,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
-        self.default_format(parent, format, kwargs)
+        self.default_format(parent, format)
 
         # add to symbol table
         self.scope = self.parent.scope + self.name + '::'
@@ -663,7 +663,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
 #####
 
-    def default_format(self, parent, format, kwargs):
+    def default_format(self, parent, format):
         """Set format dictionary."""
 
         self.fmtdict = util.Scope(
@@ -795,17 +795,18 @@ class ClassNode(AstNode, NamespaceMixin):
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
 
-        for n in ['C_header_filename', 'C_impl_filename',
-                  'F_derived_name', 'F_impl_filename', 'F_module_name',
-                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
-                  'LUA_metadata', 'LUA_ctor_name',
-                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-                  'class_prefix'
-                 ]:
-            if n in kwargs:
+        for name in [
+                'C_header_filename', 'C_impl_filename',
+                'F_derived_name', 'F_impl_filename', 'F_module_name',
+                'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
+                'LUA_metadata', 'LUA_ctor_name',
+                'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
+                'class_prefix'
+        ]:
+            if name in kwargs:
                 raise DeprecationWarning(
                     "Setting field {} in class {}, change to format group"
-                    .format(n, self.name))
+                    .format(name, self.name))
 
         self.fmtdict = util.Scope(
             parent=parent.fmtdict,
@@ -1055,7 +1056,7 @@ class FunctionNode(AstNode):
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
-    def default_format(self, parent, format, kwargs):
+    def default_format(self, parent, fmtdict, kwargs):
 
         # Move fields from kwargs into instance
         for name in [
@@ -1085,13 +1086,13 @@ class FunctionNode(AstNode):
 
         self.fmtdict = util.Scope(parent.fmtdict)
 
-        self.option_to_fmt(self.fmtdict)
-        if format:
-            self.fmtdict.update(format, replace=True)
-            if 'C_return_type' in format:
+        self.option_to_fmt()
+        if fmtdict:
+            self.fmtdict.update(fmtdict, replace=True)
+            if 'C_return_type' in fmtdict:
                 # wrapc.py will overwrite C_return_type.
                 # keep original value for wrapf.py.
-                self.fmtdict.C_custom_return_type = format['C_return_type']
+                self.fmtdict.C_custom_return_type = fmtdict['C_return_type']
 
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template
@@ -1308,31 +1309,31 @@ def create_std_namespace(glb):
 # Parse yaml file
 ######################################################################
 
-def clean_dictionary(dd):
+def clean_dictionary(ddct):
     """YAML converts some blank fields to None,
     but we want blank.
     """
     for key in ['cxx_header', 'namespace']:
-        if key in dd and dd[key] is None:
-            dd[key] = ''
+        if key in ddct and ddct[key] is None:
+            ddct[key] = ''
 
-    if 'default_arg_suffix' in dd:
-        default_arg_suffix = dd['default_arg_suffix']
+    if 'default_arg_suffix' in ddct:
+        default_arg_suffix = ddct['default_arg_suffix']
         if not isinstance(default_arg_suffix, list):
             raise RuntimeError('default_arg_suffix must be a list')
-        for i, value in enumerate(dd['default_arg_suffix']):
+        for i, value in enumerate(ddct['default_arg_suffix']):
             if value is None:
-                dd['default_arg_suffix'][i] = ''
+                ddct['default_arg_suffix'][i] = ''
 
-    if 'format' in dd:
-        dd0 = dd['format']
+    if 'format' in ddct:
+        fmtdict = ddct['format']
         for key in ['function_suffix']:
-            if key in dd0 and dd0[key] is None:
-                dd0[key] = ''
+            if key in fmtdict and fmtdict[key] is None:
+                fmtdict[key] = ''
 
-    if 'cxx_template' in dd:
+    if 'cxx_template' in ddct:
         # Convert to list of TemplateArgument instances
-        cxx_template = dd['cxx_template']
+        cxx_template = ddct['cxx_template']
         if not isinstance(cxx_template, list):
             raise RuntimeError('cxx_template must be a list')
         newlst = []
@@ -1347,7 +1348,7 @@ def clean_dictionary(dd):
                 fmtdict=dct.get('format', None),
                 options=dct.get('options', None),
             ))
-        dd['cxx_template'] = newlst
+        ddct['cxx_template'] = newlst
 
 def clean_list(lst):
     """Fix up blank lines in a YAML line
