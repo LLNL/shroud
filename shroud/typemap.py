@@ -128,35 +128,35 @@ class Typemap(object):
         self.__dict__.update(self.defaults)  # set all default values
         self.update(kw)
 
-    def update(self, d):
+    def update(self, dct):
         """Add options from dictionary to self.
         """
-        for key in d:
+        for key in dct:
             if key in self.defaults:
-                setattr(self, key, d[key])
+                setattr(self, key, dct[key])
             else:
                 raise RuntimeError("Unknown key for Typemap %s", key)
 
     def XXXcopy(self):
-        n = Typemap(self.name)
-        n.update(self._to_dict())
-        return n
+        ntypemap = Typemap(self.name)
+        ntypemap.update(self._to_dict())
+        return ntypemap
 
     def clone_as(self, name):
-        n = Typemap(name)
-        n.update(self._to_dict())
-        return n
+        ntypemap = Typemap(name)
+        ntypemap.update(self._to_dict())
+        return ntypemap
 
     def _to_dict(self):
         """Convert instance to a dictionary for json.
         """
         # only export non-default values
-        a = {}
+        dct = {}
         for key, defvalue in self.defaults.items():
             value = getattr(self, key)
             if value is not defvalue:
-                a[key] = value
-        return a
+                dct[key] = value
+        return dct
 
     def __repr__(self):
         # only print non-default values
@@ -192,24 +192,22 @@ class Typemap(object):
 
 
 ### Manage collection of typemaps
-_typedict = {}   # dictionary of registered types
+shared_typedict = {}   # dictionary of registered types
 
 def set_global_types(typedict):
-    global _typedict
-    _typedict = typedict
+    global shared_typedict
+    shared_typedict = typedict
 
 def get_global_types():
-    return _typedict
+    return shared_typedict
 
 def register_type(name, intypemap):
     """Register a typemap"""
-    global _typedict
-    _typedict[name] = intypemap
+    shared_typedict[name] = intypemap
 
 def lookup_type(name):
     """Lookup name in registered types taking aliases into account."""
-    global _typedict
-    outtypemap = _typedict.get(name)
+    outtypemap = shared_typedict.get(name)
     return outtypemap
 
 def initialize():
@@ -1300,7 +1298,6 @@ def lookup_c_statements(arg):
     If the argument type is a template, look for
     template specific c_statements.
     """
-    attrs = arg.attrs
     arg_typemap = arg.typemap
 
     c_statements = arg_typemap.c_statements

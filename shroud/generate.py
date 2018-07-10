@@ -150,6 +150,10 @@ class VerifyAttrs(object):
         value: if pointer, default to False (pass-by-reference;
                else True (pass-by-value).
         """
+        if node:
+            options = node.options
+        else:
+            options = dict()
         argname = arg.name
 
         for attr in arg.attrs:
@@ -432,7 +436,7 @@ class GenFunctions(object):
         """Instantate any template_arguments.
         node - LibraryNode or ClassNode.
 
-        Create a new list of classes replacing 
+        Create a new list of classes replacing
         any class with template_arguments with instantiated classes.
         """
         clslist = []
@@ -446,7 +450,8 @@ class GenFunctions(object):
                     clslist.append(newcls)
 
                     # If single template argument, use its name; else sequence.
-                    # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
+                    # XXX - maybe change to names
+                    #   i.e.  _int_double  However <std::string,int> is a problem.
                     if len(targs.asts) == 1:
                         class_suffix = targs.asts[0].typemap.name
                     else:
@@ -519,7 +524,7 @@ class GenFunctions(object):
                 append(function._function_index)
 
         # keep track of which function are overloaded in C++.
-        for key, value in cxx_overload.items():
+        for value in cxx_overload.values():
             if len(value) > 1:
                 for index in value:
                     self.function_index[index]._cxx_overload = value
@@ -553,7 +558,7 @@ class GenFunctions(object):
                 function.ast.name, []).append(function)
 
         # look for function overload and compute function_suffix
-        for mname, overloads in overloaded_functions.items():
+        for overloads in overloaded_functions.values():
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
                     function._overloaded = True
@@ -605,7 +610,8 @@ class GenFunctions(object):
             fmt = new.fmtdict
 
             # If single template argument, use its name; else sequence.
-            # XXX - maybe change to names  i.e.  _int_double  However <std::string,int> is a problem.
+            # XXX - maybe change to names
+            #  i.e.  _int_double  However <std::string,int> is a problem.
             if len(targs.asts) == 1:
                 fmt.function_suffix = fmt.function_suffix + '_' + targs.asts[0].typemap.name
             else:
@@ -729,7 +735,8 @@ class GenFunctions(object):
             for typ in types:
                 ntypemap = typemap.lookup_type(typ)
                 if ntypemap is None:
-                    raise RuntimeError("Unknown type '{}' for argument '{}' for fortran generic near line {}"
+                    raise RuntimeError("Unknown type '{}' for argument '{}' "
+                                       "for fortran generic near line {}"
                                        .format(typ, argname, linenumber))
                 new = node.clone()
                 ordered_functions.append(new)
@@ -1345,7 +1352,7 @@ class CheckImplied(todict.PrintNode):
     def visit_Identifier(self, node):
         """Check arguments to size function.
         """
-        if node.args == None:
+        if node.args is None:
             return node.name
         elif node.name == 'size':
             # size(arg)

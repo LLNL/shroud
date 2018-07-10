@@ -104,7 +104,7 @@ class NamespaceMixin(object):
         decl - declaration
 
         kwargs -
-           cxx_template - 
+           cxx_template -
         """
         # parse declaration to find out what it is.
         fullast = declast.check_decl(decl, namespace=self)
@@ -828,7 +828,7 @@ class ClassNode(AstNode, NamespaceMixin):
         """Expand format templates for a class.
         Called after other format fields are set.
         eval_template will only set a value if it has not already been set.
-        Call delete_format_template to remove previous values to 
+        Call delete_format_template to remove previous values to
         force them to be recomputed during class template instantiation.
         """
         self.eval_template('class_prefix')
@@ -871,7 +871,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
         Create a clone of fmtdict and options allowing them
         to be modified.
-        Clone all functions and reparent fmtdict and options to 
+        Clone all functions and reparent fmtdict and options to
         the new class.
         """
         # Shallow copy everything.
@@ -1024,7 +1024,7 @@ class FunctionNode(AstNode):
         elif isinstance(ast, declast.Declaration):
             pass
         else:
-            raise RuntimeError("Expected a function declaration");
+            raise RuntimeError("Expected a function declaration")
         if ast.params is None:
             # 'void foo' instead of 'void foo()'
             raise RuntimeError("Missing arguments to function:", ast.gen_decl())
@@ -1058,7 +1058,7 @@ class FunctionNode(AstNode):
     def default_format(self, parent, format, kwargs):
 
         # Move fields from kwargs into instance
-        for n in [
+        for name in [
                 'C_code',
                 # 'C_error_pattern',
                 'C_name',
@@ -1072,16 +1072,16 @@ class FunctionNode(AstNode):
                 'PY_name_impl',
                 'function_suffix'
         ]:
-            if n in kwargs:
+            if name in kwargs:
                 raise DeprecationWarning(
                     "Setting field {} in function, change to format group"
-                    .format(n))
+                    .format(name))
 
         # Move fields from kwargs into instance
-        for n in [
+        for name in [
                 'C_error_pattern', 'PY_error_pattern',
         ]:
-            setattr(self, n, kwargs.get(n, None))
+            setattr(self, name, kwargs.get(name, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
 
@@ -1340,7 +1340,8 @@ def clean_dictionary(dd):
             if not isinstance(dct, dict):
                 raise RuntimeError('cxx_template must be a list of dictionaries')
             if 'instantiation' not in dct:
-                raise RuntimeError('instantation must be defined for each dictionary in cxx_template')
+                raise RuntimeError(
+                    'instantation must be defined for each dictionary in cxx_template')
             newlst.append(TemplateArgument(
                 dct['instantiation'],
                 fmtdict=dct.get('format', None),
@@ -1369,17 +1370,17 @@ def add_declarations(parent, node):
 
     for subnode in node['declarations']:
         if 'block' in subnode:
-            d = copy.copy(subnode)
-            clean_dictionary(d)
-            blk = BlockNode(parent, **d)
+            dct = copy.copy(subnode)
+            clean_dictionary(dct)
+            blk = BlockNode(parent, **dct)
             add_declarations(blk, subnode)
         elif 'decl' in subnode:
             # copy before clean to avoid changing input dict
-            d = copy.copy(subnode)
-            clean_dictionary(d)
-            decl = d['decl']
-            del d['decl']
-            declnode = parent.add_declaration(decl, **d)
+            dct = copy.copy(subnode)
+            clean_dictionary(dct)
+            decl = dct['decl']
+            del dct['decl']
+            declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode)
         elif 'type' in subnode:
             # Update fields for a type. For example, set cpp_if
