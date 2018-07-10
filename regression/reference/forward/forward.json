@@ -986,25 +986,6 @@
             }, 
             "f_type": "integer(C_LONG)"
         }, 
-        "long_int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PYN_typenum": "NPY_LONG", 
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
-            "PY_format": "l", 
-            "PY_get": "PyInt_AsLong({py_var})", 
-            "c_type": "long", 
-            "cxx_type": "long", 
-            "f_cast": "int({f_var}, C_LONG)", 
-            "f_kind": "C_LONG", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LONG"
-                ]
-            }, 
-            "f_type": "integer(C_LONG)"
-        }, 
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -1634,25 +1615,6 @@
                     ]
                 }
             }
-        }, 
-        "unsigned_int": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
-            "LUA_type": "LUA_TNUMBER", 
-            "PYN_typenum": "NPY_INT", 
-            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
-            "PY_format": "i", 
-            "PY_get": "PyInt_AsLong({py_var})", 
-            "c_type": "int", 
-            "cxx_type": "int", 
-            "f_cast": "int({f_var}, C_INT)", 
-            "f_kind": "C_INT", 
-            "f_module": {
-                "iso_c_binding": [
-                    "C_INT"
-                ]
-            }, 
-            "f_type": "integer(C_INT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

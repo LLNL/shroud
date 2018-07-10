@@ -452,7 +452,7 @@ class Parser(ExprParser):
                 self.token.typ, self.token.value))
         if not found_type:
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
-            node.typemap = typemap.lookup_type('_'.join(node.specifier))
+            node.typemap = get_canonical_typemap(node.specifier)
             if node.typemap is None:
                 self.error_msg("Unknown typemap '{}"
                                .format('_'.join(node.specifier)))
@@ -1492,3 +1492,20 @@ def create_voidstar(ntypemap, name, const=False):
     arg.specifier = ntypemap.cxx_type.split()
     arg.typemap = ntypemap
     return arg
+
+
+canonical_typemap = dict(
+    long_int='long',
+    unsigned_int='int',
+)
+def get_canonical_typemap(specifier):
+    """Convert specifier to typemap.
+    Map specifier as needed.
+    specifier = ['long', 'int']
+
+    long int -> long
+    """
+    typename = '_'.join(specifier)
+    typename = canonical_typemap.get(typename, typename)
+    ntypemap = typemap.lookup_type(typename)
+    return ntypemap

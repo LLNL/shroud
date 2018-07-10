@@ -1046,10 +1046,6 @@ def initialize():
     def_types['std::vector'] = def_types['vector']
     del def_types['vector']
 
-    # set some alises
-    def_types['long_int'] = def_types['long']
-    def_types['unsigned_int'] = def_types['int']  # XXX - need real unsigned
-
     set_global_types(def_types)
 
     return def_types
