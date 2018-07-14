@@ -64,6 +64,36 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
+static char PY_short_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_short_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// short short_func(short arg1 +intent(in)+value)
+// splicer begin function.short_func
+    short arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:short_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    short SHC_rv = short_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.short_func
+}
+
 static char PY_int_func__doc__[] =
 "documentation"
 ;
@@ -154,6 +184,8 @@ PY_long2_func(
 // splicer end function.long2_func
 }
 static PyMethodDef PY_methods[] = {
+{"short_func", (PyCFunction)PY_short_func, METH_VARARGS|METH_KEYWORDS,
+    PY_short_func__doc__},
 {"int_func", (PyCFunction)PY_int_func, METH_VARARGS|METH_KEYWORDS,
     PY_int_func__doc__},
 {"long_func", (PyCFunction)PY_long_func, METH_VARARGS|METH_KEYWORDS,

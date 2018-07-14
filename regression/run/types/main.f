@@ -63,16 +63,16 @@ contains
 
   subroutine test_types
     ! test values of enumerations
-!    integer(C_SHORT) rv_short
+    integer(C_SHORT) rv_short
     integer(C_INT) rv_int
     integer(C_LONG) rv_long
     integer(C_LONG_LONG) rv_long2
 
     call set_case_name("test_types")
 
-!    rv_short = -1_C_SHORT
-!    rv_short = short_func(1)
-!    call assert_true(rv_short .eq. 1_C_SHORT, "short_func")
+    rv_short = -1_C_SHORT
+    rv_short = short_func(1_C_SHORT)
+    call assert_true(rv_short .eq. 1_C_SHORT, "short_func")
 
     rv_int = -1_C_INT
     rv_int = int_func(1_C_INT)

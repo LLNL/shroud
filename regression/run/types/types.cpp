@@ -41,7 +41,7 @@
 // types.hpp - wrapped routines
 //
 
-short short_func(int arg1)
+short short_func(short arg1)
 {
   return arg1;
 }

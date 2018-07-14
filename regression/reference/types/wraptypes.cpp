@@ -53,6 +53,15 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// short short_func(short arg1 +intent(in)+value)
+short TYP_short_func(short arg1)
+{
+// splicer begin function.short_func
+    short SHC_rv = short_func(arg1);
+    return SHC_rv;
+// splicer end function.short_func
+}
+
 // int int_func(int arg1 +intent(in)+value)
 int TYP_int_func(int arg1)
 {

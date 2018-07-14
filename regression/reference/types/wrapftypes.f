@@ -56,6 +56,15 @@ module types_mod
 
     interface
 
+        function short_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_short_func")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), value, intent(IN) :: arg1
+            integer(C_SHORT) :: SHT_rv
+        end function short_func
+
         function int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int_func")

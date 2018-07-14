@@ -61,6 +61,8 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+short TYP_short_func(short arg1);
+
 int TYP_int_func(int arg1);
 
 long TYP_long_func(long arg1);

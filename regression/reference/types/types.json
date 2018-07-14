@@ -141,6 +141,120 @@
                             "cxx_addr": "&", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
                             "cxx_member": ".", 
+                            "cxx_type": "short", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "short arg1", 
+                            "c_deref": "", 
+                            "c_type": "short", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "short arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "short", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_SHORT", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "short", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "short", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_SHORT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "short_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "short"
+                            ], 
+                            "typemap_name": "short"
+                        }
+                    ], 
+                    "specifier": [
+                        "short"
+                    ], 
+                    "typemap_name": "short"
+                }, 
+                "decl": "short short_func(short arg1)", 
+                "declgen": "short short_func(short arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "short SHC_rv =\t short_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_short_func", 
+                    "C_prototype": "short arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "short", 
+                    "F_C_call": "c_short_func", 
+                    "F_C_name": "short_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_short_func(arg1)", 
+                    "F_name_function": "short_func", 
+                    "F_name_generic": "short_func", 
+                    "F_name_impl": "short_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_short_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "short SHC_rv", 
+                    "function_name": "short_func", 
+                    "underscore_name": "short_func"
+                }, 
+                "linenumber": 58, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
                             "cxx_type": "int", 
                             "cxx_var": "arg1", 
                             "idtor": "0"
@@ -900,6 +1014,25 @@
                 ]
             }, 
             "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "short", 
+            "cxx_type": "short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
