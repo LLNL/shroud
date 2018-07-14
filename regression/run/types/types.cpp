@@ -60,7 +60,22 @@ long long_func(long arg1)
   return arg1;
 }
 
-long long long2_func(long long arg1)
+long long long_long_func(long long arg1)
+{
+  return arg1;
+}
+
+short int short_int_func(short int arg1)
+{
+  return arg1;
+}
+
+long int long_int_func(long int arg1)
+{
+  return arg1;
+}
+
+long long int long_long_int_func(long long int arg1)
 {
   return arg1;
 }

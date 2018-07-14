@@ -83,14 +83,50 @@ module types_mod
             integer(C_LONG) :: SHT_rv
         end function long_func
 
-        function long2_func(arg1) &
+        function long_long_func(arg1) &
                 result(SHT_rv) &
-                bind(C, name="TYP_long2_func")
+                bind(C, name="TYP_long_long_func")
             use iso_c_binding, only : C_LONG_LONG
             implicit none
             integer(C_LONG_LONG), value, intent(IN) :: arg1
             integer(C_LONG_LONG) :: SHT_rv
-        end function long2_func
+        end function long_long_func
+
+        function short_int_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_short_int_func")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), value, intent(IN) :: arg1
+            integer(C_SHORT) :: SHT_rv
+        end function short_int_func
+
+        function long_int_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_long_int_func")
+            use iso_c_binding, only : C_LONG
+            implicit none
+            integer(C_LONG), value, intent(IN) :: arg1
+            integer(C_LONG) :: SHT_rv
+        end function long_int_func
+
+        function long_long_int_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_long_long_int_func")
+            use iso_c_binding, only : C_LONG_LONG
+            implicit none
+            integer(C_LONG_LONG), value, intent(IN) :: arg1
+            integer(C_LONG_LONG) :: SHT_rv
+        end function long_long_int_func
+
+        function unsigned_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_unsigned_func")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_INT) :: SHT_rv
+        end function unsigned_func
 
         function ushort_func(arg1) &
                 result(SHT_rv) &

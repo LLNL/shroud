@@ -80,13 +80,49 @@ long TYP_long_func(long arg1)
 // splicer end function.long_func
 }
 
-// long long long2_func(long long arg1 +intent(in)+value)
-long long TYP_long2_func(long long arg1)
+// long long long_long_func(long long arg1 +intent(in)+value)
+long long TYP_long_long_func(long long arg1)
 {
-// splicer begin function.long2_func
-    long long SHC_rv = long2_func(arg1);
+// splicer begin function.long_long_func
+    long long SHC_rv = long_long_func(arg1);
     return SHC_rv;
-// splicer end function.long2_func
+// splicer end function.long_long_func
+}
+
+// short int short_int_func(short int arg1 +intent(in)+value)
+short TYP_short_int_func(short arg1)
+{
+// splicer begin function.short_int_func
+    short SHC_rv = short_int_func(arg1);
+    return SHC_rv;
+// splicer end function.short_int_func
+}
+
+// long int long_int_func(long int arg1 +intent(in)+value)
+long TYP_long_int_func(long arg1)
+{
+// splicer begin function.long_int_func
+    long SHC_rv = long_int_func(arg1);
+    return SHC_rv;
+// splicer end function.long_int_func
+}
+
+// long long int long_long_int_func(long long int arg1 +intent(in)+value)
+long long TYP_long_long_int_func(long long arg1)
+{
+// splicer begin function.long_long_int_func
+    long long SHC_rv = long_long_int_func(arg1);
+    return SHC_rv;
+// splicer end function.long_long_int_func
+}
+
+// unsigned unsigned_func(unsigned arg1 +intent(in)+value)
+unsigned int TYP_unsigned_func(unsigned int arg1)
+{
+// splicer begin function.unsigned_func
+    unsigned int SHC_rv = unsigned_func(arg1);
+    return SHC_rv;
+// splicer end function.unsigned_func
 }
 
 // unsigned short ushort_func(unsigned short arg1 +intent(in)+value)

@@ -68,7 +68,15 @@ int TYP_int_func(int arg1);
 
 long TYP_long_func(long arg1);
 
-long long TYP_long2_func(long long arg1);
+long long TYP_long_long_func(long long arg1);
+
+short TYP_short_int_func(short arg1);
+
+long TYP_long_int_func(long arg1);
+
+long long TYP_long_long_int_func(long long arg1);
+
+unsigned int TYP_unsigned_func(unsigned int arg1);
 
 unsigned short TYP_ushort_func(unsigned short arg1);
 

@@ -58,7 +58,15 @@ declarations:
 - decl: short short_func(short arg1)
 - decl: int int_func(int arg1)
 - decl: long long_func(long arg1)
-- decl: long long long2_func(long long arg1)
+- decl: long long long_long_func(long long arg1)
+
+# explicit int
+- decl: short int short_int_func(short int arg1)
+- decl: long int long_int_func(long int arg1)
+- decl: long long int long_long_int_func(long long int arg1)
+
+# implied int
+- decl: unsigned unsigned_func(unsigned arg1)
 
 - decl: unsigned short ushort_func(unsigned short arg1)
 - decl: unsigned int uint_func(unsigned int arg1)

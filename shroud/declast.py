@@ -1495,7 +1495,11 @@ def create_voidstar(ntypemap, name, const=False):
 
 
 canonical_typemap = dict(
+    # explict 'int'
+    short_int='short',
     long_int='long',
+    long_long_int='long_long',
+    # implied 'int'
     unsigned='unsigned_int',
 )
 def get_canonical_typemap(specifier):

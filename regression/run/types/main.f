@@ -66,7 +66,7 @@ contains
     integer(C_SHORT) rv_short
     integer(C_INT) rv_int
     integer(C_LONG) rv_long
-    integer(C_LONG_LONG) rv_long2
+    integer(C_LONG_LONG) rv_long_long
 
     call set_case_name("test_native_types")
 
@@ -82,9 +82,22 @@ contains
     rv_long = long_func(1_C_LONG)
     call assert_true(rv_long .eq. 1_C_LONG, "long_func")
 
-    rv_long2 = -1_C_LONG_LONG
-    rv_long2 = long2_func(1_C_LONG_LONG)
-    call assert_true(rv_long2 .eq. 1_C_LONG_LONG, "long2_func")
+    rv_long_long = -1_C_LONG_LONG
+    rv_long_long = long_long_func(1_C_LONG_LONG)
+    call assert_true(rv_long_long .eq. 1_C_LONG_LONG, "long_long_func")
+
+    ! explicit int
+    rv_short = -1_C_SHORT
+    rv_short = short_int_func(1_C_SHORT)
+    call assert_true(rv_short .eq. 1_C_SHORT, "short_int_func")
+
+    rv_long = -1_C_LONG
+    rv_long = long_int_func(1_C_LONG)
+    call assert_true(rv_long .eq. 1_C_LONG, "long_int_func")
+
+    rv_long_long = -1_C_LONG_LONG
+    rv_long_long = long_long_int_func(1_C_LONG_LONG)
+    call assert_true(rv_long_long .eq. 1_C_LONG_LONG, "long_long_int_func")
 
   end subroutine test_native_types
 
@@ -92,25 +105,29 @@ contains
     integer(C_SHORT) rv_short
     integer(C_INT) rv_int
     integer(C_LONG) rv_long
-    integer(C_LONG_LONG) rv_long2
+    integer(C_LONG_LONG) rv_long_long
 
     call set_case_name("test_native_types")
 
+    rv_int = -1_C_INT
+    rv_int = unsigned_func(1_C_INT)
+    call assert_true(rv_int .eq. 1_C_INT, "unsigned_func")
+
     rv_short = -1_C_SHORT
     rv_short = ushort_func(1_C_SHORT)
-    call assert_true(rv_short .eq. 1_C_SHORT, "short_func")
+    call assert_true(rv_short .eq. 1_C_SHORT, "ushort_func")
 
     rv_int = -1_C_INT
     rv_int = uint_func(1_C_INT)
-    call assert_true(rv_int .eq. 1_C_INT, "int_func")
+    call assert_true(rv_int .eq. 1_C_INT, "uint_func")
 
     rv_long = -1_C_LONG
     rv_long = ulong_func(1_C_LONG)
-    call assert_true(rv_long .eq. 1_C_LONG, "long_func")
+    call assert_true(rv_long .eq. 1_C_LONG, "ulong_func")
 
-    rv_long2 = -1_C_LONG_LONG
-    rv_long2 = ulong_long_func(1_C_LONG_LONG)
-    call assert_true(rv_long2 .eq. 1_C_LONG_LONG, "long2_func")
+    rv_long_long = -1_C_LONG_LONG
+    rv_long_long = ulong_long_func(1_C_LONG_LONG)
+    call assert_true(rv_long_long .eq. 1_C_LONG_LONG, "ulong_long_func")
 
   end subroutine test_unsigned_native_types
 

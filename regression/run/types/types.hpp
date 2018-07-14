@@ -45,7 +45,11 @@
 short short_func(short arg1);
 int int_func(int arg1);
 long long_func(long arg1);
-long long long2_func(long long arg1);
+long long long_long_func(long long arg1);
+
+short int short_int_func(short int arg1);
+long int long_int_func(long int arg1);
+long long int long_long_int_func(long long int arg1);
 
 unsigned unsigned_func(unsigned arg1);
 unsigned short ushort_func(unsigned short arg1);
