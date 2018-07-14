@@ -183,6 +183,126 @@ PY_long2_func(
     return (PyObject *) SHTPy_rv;
 // splicer end function.long2_func
 }
+
+static char PY_int8_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_int8_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int8_t int8_func(int8_t arg1 +intent(in)+value)
+// splicer begin function.int8_func
+    int8_t arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int8_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    int8_t SHC_rv = int8_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.int8_func
+}
+
+static char PY_int16_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_int16_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int16_t int16_func(int16_t arg1 +intent(in)+value)
+// splicer begin function.int16_func
+    int16_t arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int16_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    int16_t SHC_rv = int16_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.int16_func
+}
+
+static char PY_int32_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_int32_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int32_t int32_func(int32_t arg1 +intent(in)+value)
+// splicer begin function.int32_func
+    int32_t arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int32_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    int32_t SHC_rv = int32_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.int32_func
+}
+
+static char PY_int64_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_int64_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int64_t int64_func(int64_t arg1 +intent(in)+value)
+// splicer begin function.int64_func
+    int64_t arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:int64_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    int64_t SHC_rv = int64_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.int64_func
+}
 static PyMethodDef PY_methods[] = {
 {"short_func", (PyCFunction)PY_short_func, METH_VARARGS|METH_KEYWORDS,
     PY_short_func__doc__},
@@ -192,6 +312,14 @@ static PyMethodDef PY_methods[] = {
     PY_long_func__doc__},
 {"long2_func", (PyCFunction)PY_long2_func, METH_VARARGS|METH_KEYWORDS,
     PY_long2_func__doc__},
+{"int8_func", (PyCFunction)PY_int8_func, METH_VARARGS|METH_KEYWORDS,
+    PY_int8_func__doc__},
+{"int16_func", (PyCFunction)PY_int16_func, METH_VARARGS|METH_KEYWORDS,
+    PY_int16_func__doc__},
+{"int32_func", (PyCFunction)PY_int32_func, METH_VARARGS|METH_KEYWORDS,
+    PY_int32_func__doc__},
+{"int64_func", (PyCFunction)PY_int64_func, METH_VARARGS|METH_KEYWORDS,
+    PY_int64_func__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

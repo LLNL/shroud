@@ -92,6 +92,42 @@ module types_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function long2_func
 
+        function int8_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_int8_func")
+            use iso_c_binding, only : C_INT8_T
+            implicit none
+            integer(C_INT8_T), value, intent(IN) :: arg1
+            integer(C_INT8_T) :: SHT_rv
+        end function int8_func
+
+        function int16_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_int16_func")
+            use iso_c_binding, only : C_INT16_T
+            implicit none
+            integer(C_INT16_T), value, intent(IN) :: arg1
+            integer(C_INT16_T) :: SHT_rv
+        end function int16_func
+
+        function int32_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_int32_func")
+            use iso_c_binding, only : C_INT32_T
+            implicit none
+            integer(C_INT32_T), value, intent(IN) :: arg1
+            integer(C_INT32_T) :: SHT_rv
+        end function int32_func
+
+        function int64_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_int64_func")
+            use iso_c_binding, only : C_INT64_T
+            implicit none
+            integer(C_INT64_T), value, intent(IN) :: arg1
+            integer(C_INT64_T) :: SHT_rv
+        end function int64_func
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

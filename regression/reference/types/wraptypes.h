@@ -49,6 +49,7 @@
 #ifndef WRAPTYPES_H
 #define WRAPTYPES_H
 
+#include <stdint.h>
 #include "typestypes.h"
 
 // splicer begin CXX_declarations
@@ -68,6 +69,14 @@ int TYP_int_func(int arg1);
 long TYP_long_func(long arg1);
 
 long long TYP_long2_func(long long arg1);
+
+int8_t TYP_int8_func(int8_t arg1);
+
+int16_t TYP_int16_func(int16_t arg1);
+
+int32_t TYP_int32_func(int32_t arg1);
+
+int64_t TYP_int64_func(int64_t arg1);
 
 #ifdef __cplusplus
 }

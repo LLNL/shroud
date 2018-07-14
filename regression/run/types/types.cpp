@@ -41,6 +41,8 @@
 // types.hpp - wrapped routines
 //
 
+#include "types.hpp"
+
 short short_func(short arg1)
 {
   return arg1;
@@ -60,4 +62,25 @@ long long long2_func(long long arg1)
 {
   return arg1;
 }
+
+int8_t int8_func(int8_t arg1)
+{
+  return arg1;
+}
+
+int16_t int16_func(int16_t arg1)
+{
+  return arg1;
+}
+
+int32_t int32_func(int32_t arg1)
+{
+  return arg1;
+}
+
+int64_t int64_func(int64_t arg1)
+{
+  return arg1;
+}
+
 

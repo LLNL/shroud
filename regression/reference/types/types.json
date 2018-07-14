@@ -589,6 +589,462 @@
                 }, 
                 "linenumber": 61, 
                 "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int8_t", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int8_t arg1", 
+                            "c_deref": "", 
+                            "c_type": "int8_t", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "int8_t arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int8_t", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_INT8", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "int8_t", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "int8_t", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_INT8", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "int8_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int8_t"
+                            ], 
+                            "typemap_name": "int8_t"
+                        }
+                    ], 
+                    "specifier": [
+                        "int8_t"
+                    ], 
+                    "typemap_name": "int8_t"
+                }, 
+                "decl": "int8_t  int8_func(int8_t arg1)", 
+                "declgen": "int8_t int8_func(int8_t arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "int8_t SHC_rv =\t int8_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_int8_func", 
+                    "C_prototype": "int8_t arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int8_t", 
+                    "F_C_call": "c_int8_func", 
+                    "F_C_name": "int8_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_int8_func(arg1)", 
+                    "F_name_function": "int8_func", 
+                    "F_name_generic": "int8_func", 
+                    "F_name_impl": "int8_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_int8_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int8_t SHC_rv", 
+                    "function_name": "int8_func", 
+                    "underscore_name": "int8_func"
+                }, 
+                "linenumber": 63, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int16_t", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int16_t arg1", 
+                            "c_deref": "", 
+                            "c_type": "int16_t", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "int16_t arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int16_t", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_INT16", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "int16_t", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "int16_t", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_INT16", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "int16_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int16_t"
+                            ], 
+                            "typemap_name": "int16_t"
+                        }
+                    ], 
+                    "specifier": [
+                        "int16_t"
+                    ], 
+                    "typemap_name": "int16_t"
+                }, 
+                "decl": "int16_t int16_func(int16_t arg1)", 
+                "declgen": "int16_t int16_func(int16_t arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "int16_t SHC_rv =\t int16_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_int16_func", 
+                    "C_prototype": "int16_t arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int16_t", 
+                    "F_C_call": "c_int16_func", 
+                    "F_C_name": "int16_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_int16_func(arg1)", 
+                    "F_name_function": "int16_func", 
+                    "F_name_generic": "int16_func", 
+                    "F_name_impl": "int16_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_int16_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int16_t SHC_rv", 
+                    "function_name": "int16_func", 
+                    "underscore_name": "int16_func"
+                }, 
+                "linenumber": 64, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int32_t", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int32_t arg1", 
+                            "c_deref": "", 
+                            "c_type": "int32_t", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "int32_t arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int32_t", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_INT32", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "int32_t", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "int32_t", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_INT32", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "int32_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int32_t"
+                            ], 
+                            "typemap_name": "int32_t"
+                        }
+                    ], 
+                    "specifier": [
+                        "int32_t"
+                    ], 
+                    "typemap_name": "int32_t"
+                }, 
+                "decl": "int32_t int32_func(int32_t arg1)", 
+                "declgen": "int32_t int32_func(int32_t arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "int32_t SHC_rv =\t int32_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_int32_func", 
+                    "C_prototype": "int32_t arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int32_t", 
+                    "F_C_call": "c_int32_func", 
+                    "F_C_name": "int32_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_int32_func(arg1)", 
+                    "F_name_function": "int32_func", 
+                    "F_name_generic": "int32_func", 
+                    "F_name_impl": "int32_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_int32_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int32_t SHC_rv", 
+                    "function_name": "int32_func", 
+                    "underscore_name": "int32_func"
+                }, 
+                "linenumber": 65, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int64_t", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "int64_t arg1", 
+                            "c_deref": "", 
+                            "c_type": "int64_t", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "int64_t arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "int64_t", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_INT64", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "int64_t", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "int64_t", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_INT64", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "int64_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "int64_t"
+                            ], 
+                            "typemap_name": "int64_t"
+                        }
+                    ], 
+                    "specifier": [
+                        "int64_t"
+                    ], 
+                    "typemap_name": "int64_t"
+                }, 
+                "decl": "int64_t int64_func(int64_t arg1)", 
+                "declgen": "int64_t int64_func(int64_t arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "int64_t SHC_rv =\t int64_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_int64_func", 
+                    "C_prototype": "int64_t arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "int64_t", 
+                    "F_C_call": "c_int64_func", 
+                    "F_C_name": "int64_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_int64_func(arg1)", 
+                    "F_name_function": "int64_func", 
+                    "F_name_generic": "int64_func", 
+                    "F_name_impl": "int64_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_int64_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "int64_t SHC_rv", 
+                    "function_name": "int64_func", 
+                    "underscore_name": "int64_func"
+                }, 
+                "linenumber": 66, 
+                "options": {}
             }
         ], 
         "language": "c++", 
@@ -978,6 +1434,86 @@
                 ]
             }, 
             "f_type": "integer(C_INT)"
+        }, 
+        "int16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int16_t", 
+            "cxx_type": "int16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "int32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int32_t", 
+            "cxx_type": "int32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "int64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int64_t", 
+            "cxx_type": "int64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "int8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int8_t", 
+            "cxx_type": "int8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
         }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 

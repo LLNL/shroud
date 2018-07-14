@@ -49,7 +49,8 @@ program tester
 
   call init_fruit
 
-  call test_types
+  call test_native_types
+  call test_intsize_types
 
   call fruit_summary
   call fruit_finalize
@@ -61,14 +62,13 @@ program tester
 
 contains
 
-  subroutine test_types
-    ! test values of enumerations
+  subroutine test_native_types
     integer(C_SHORT) rv_short
     integer(C_INT) rv_int
     integer(C_LONG) rv_long
     integer(C_LONG_LONG) rv_long2
 
-    call set_case_name("test_types")
+    call set_case_name("test_native_types")
 
     rv_short = -1_C_SHORT
     rv_short = short_func(1_C_SHORT)
@@ -86,6 +86,32 @@ contains
     rv_long2 = long2_func(1_C_LONG_LONG)
     call assert_true(rv_long2 .eq. 1_C_LONG_LONG, "long2_func")
 
-  end subroutine test_types
+  end subroutine test_native_types
+
+  subroutine test_intsize_types
+    integer(C_INT8_T) rv_int8
+    integer(C_INT16_T) rv_int16
+    integer(C_INT32_T) rv_int32
+    integer(C_INT64_T) rv_int64
+
+    call set_case_name("test_intsize_types")
+
+    rv_int8 = -1_C_INT8_T
+    rv_int8 = int8_func(1_C_INT8_T)
+    call assert_true(rv_int8 .eq. 1_C_INT8_T, "int8_func")
+
+    rv_int16 = -1_C_INT16_T
+    rv_int16 = int16_func(1_C_INT16_T)
+    call assert_true(rv_int16 .eq. 1_C_INT16_T, "int16_func")
+
+    rv_int32 = -1_C_INT32_T
+    rv_int32 = int32_func(1_C_INT32_T)
+    call assert_true(rv_int32 .eq. 1_C_INT32_T, "int32_func")
+
+    rv_int64 = -1_C_INT64_T
+    rv_int64 = int64_func(1_C_INT64_T)
+    call assert_true(rv_int64 .eq. 1_C_INT64_T, "int64_func")
+
+  end subroutine test_intsize_types
 
 end program tester

@@ -275,6 +275,10 @@ class LibraryNode(AstNode, NamespaceMixin):
     def create_std_names(self):
         """Add standard types to the Library."""
         self.add_typedef('size_t')
+        self.add_typedef('int8_t')
+        self.add_typedef('int16_t')
+        self.add_typedef('int32_t')
+        self.add_typedef('int64_t')
         self.add_typedef('MPI_Comm')
         create_std_namespace(self)   # add 'std::' to library
         self.using_directive('std')

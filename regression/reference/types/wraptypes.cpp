@@ -89,6 +89,42 @@ long long TYP_long2_func(long long arg1)
 // splicer end function.long2_func
 }
 
+// int8_t int8_func(int8_t arg1 +intent(in)+value)
+int8_t TYP_int8_func(int8_t arg1)
+{
+// splicer begin function.int8_func
+    int8_t SHC_rv = int8_func(arg1);
+    return SHC_rv;
+// splicer end function.int8_func
+}
+
+// int16_t int16_func(int16_t arg1 +intent(in)+value)
+int16_t TYP_int16_func(int16_t arg1)
+{
+// splicer begin function.int16_func
+    int16_t SHC_rv = int16_func(arg1);
+    return SHC_rv;
+// splicer end function.int16_func
+}
+
+// int32_t int32_func(int32_t arg1 +intent(in)+value)
+int32_t TYP_int32_func(int32_t arg1)
+{
+// splicer begin function.int32_func
+    int32_t SHC_rv = int32_func(arg1);
+    return SHC_rv;
+// splicer end function.int32_func
+}
+
+// int64_t int64_func(int64_t arg1 +intent(in)+value)
+int64_t TYP_int64_func(int64_t arg1)
+{
+// splicer begin function.int64_func
+    int64_t SHC_rv = int64_func(arg1);
+    return SHC_rv;
+// splicer end function.int64_func
+}
+
 // Release C++ allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {
