@@ -1,7 +1,4 @@
-// wrapdefault_library.cpp
-// This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
@@ -40,26 +37,9 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapdefault_library.h"
-#include <stdlib.h>
-#include "global_header.hpp"
-#include "typesdefault_library.h"
+//
+// types.hpp - wrapped routines
+//
 
+int int_func(int arg1);
 
-extern "C" {
-
-
-void DEF_function1()
-{
-    one::two::function1();
-    return;
-}
-
-// Release C++ allocated memory.
-void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap)
-{
-    cap->addr = NULL;
-    cap->idtor = 0;  // avoid deleting again
-}
-
-}  // extern "C"

@@ -1,8 +1,8 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
-# Produced at the Lawrence Livermore National Laboratory 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+# Produced at the Lawrence Livermore National Laboratory
 #
 # LLNL-CODE-738041.
-# All rights reserved. 
+# All rights reserved.
 #
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -13,7 +13,7 @@
 #
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
@@ -54,6 +54,7 @@ TESTDIRS = \
     $(tempdir)/run/tutorial/..\
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
+    $(tempdir)/run/types/..\
     $(tempdir)/run/templates/..\
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors/python/.. \
@@ -68,10 +69,10 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial vectors strings clibrary ownership templates
+fortran : tutorial types vectors strings clibrary ownership templates
 
 # Compile the Fortran tests
-tutorial vectors forward strings clibrary ownership templates : testdirs
+tutorial types vectors forward strings clibrary ownership templates : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/$@ \
 	    -f $(top)/regression/run/$@/Makefile \
@@ -107,6 +108,7 @@ clang : tutorial-c templates-c
 # Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run/tutorial/tutorial
+	$(tempdir)/run/tutorial/types
 	$(tempdir)/run/vectors/vectors
 	$(tempdir)/run/strings/strings
 	$(tempdir)/run/clibrary/clibrary

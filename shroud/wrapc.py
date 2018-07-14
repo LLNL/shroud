@@ -1251,6 +1251,8 @@ class Wrapc(util.WrapperMixin):
                 '}'
             )
 
+        # Add header for NULL.
+        self.header_impl_include['<stdlib.h>'] = True
         output.append(
             'cap->addr = NULL;\n'
             'cap->idtor = 0;  // avoid deleting again\n'

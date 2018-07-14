@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "top.h"
+#include <stdlib.h>
 #include <string>
 #include "typestestnames.hh"
 

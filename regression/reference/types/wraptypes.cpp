@@ -1,7 +1,7 @@
-// wrapdefault_library.cpp
+// wraptypes.cpp
 // This is generated code, do not edit
 // #######################################################################
-// Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 // Produced at the Lawrence Livermore National Laboratory
 //
 // LLNL-CODE-738041.
@@ -40,23 +40,30 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
-#include "wrapdefault_library.h"
+#include "wraptypes.h"
 #include <stdlib.h>
-#include "global_header.hpp"
-#include "typesdefault_library.h"
+#include "types.hpp"
+#include "typestypes.h"
 
+// splicer begin CXX_definitions
+// splicer end CXX_definitions
 
 extern "C" {
 
+// splicer begin C_definitions
+// splicer end C_definitions
 
-void DEF_function1()
+// int int_func(int arg1 +intent(in)+value)
+int TYP_int_func(int arg1)
 {
-    one::two::function1();
-    return;
+// splicer begin function.int_func
+    int SHC_rv = int_func(arg1);
+    return SHC_rv;
+// splicer end function.int_func
 }
 
 // Release C++ allocated memory.
-void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap)
+void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again

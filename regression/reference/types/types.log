@@ -1,0 +1,11 @@
+Read yaml types.yaml
+C function int int_func(int arg1 +intent(in)+value)
+Close wraptypes.h
+Close wraptypes.cpp
+Close typestypes.h
+C-interface, Fortran function int int_func(int arg1 +intent(in)+value)
+Close wrapftypes.f
+Python function int int_func(int arg1 +intent(in)+value)
+Close pytypeshelper.cpp
+Close pytypesmodule.hpp
+Close pytypesmodule.cpp
