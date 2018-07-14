@@ -56,6 +56,7 @@ unsigned short ushort_func(unsigned short arg1);
 unsigned int uint_func(unsigned int arg1);
 unsigned long ulong_func(unsigned long arg1);
 unsigned long long ulong_long_func(unsigned long long arg1);
+unsigned long int ulong_int_func(unsigned long int arg1);
 
 int8_t int8_func(int8_t arg1);
 int16_t int16_func(int16_t arg1);

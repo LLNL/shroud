@@ -50,6 +50,7 @@ program tester
   call init_fruit
 
   call test_native_types
+  call test_unsigned_native_types
   call test_intsize_types
 
   call fruit_summary
@@ -128,6 +129,16 @@ contains
     rv_long_long = -1_C_LONG_LONG
     rv_long_long = ulong_long_func(1_C_LONG_LONG)
     call assert_true(rv_long_long .eq. 1_C_LONG_LONG, "ulong_long_func")
+
+    ! implied int
+    rv_long = -1_C_LONG
+    rv_long = ulong_int_func(1_C_LONG)
+    call assert_true(rv_long .eq. 1_C_LONG, "ulong_int_func")
+
+    ! test negative number, C treats as large unsigned number.
+    rv_int = -1_C_INT
+    rv_int = uint_func(rv_int)
+    call assert_true(rv_int .eq. -1_C_INT, "uint_func")
 
   end subroutine test_unsigned_native_types
 

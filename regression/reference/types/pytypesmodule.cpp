@@ -424,6 +424,36 @@ PY_ulong_long_func(
 // splicer end function.ulong_long_func
 }
 
+static char PY_ulong_int_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ulong_int_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
+// splicer begin function.ulong_int_func
+    unsigned long arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:ulong_int_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    unsigned long SHC_rv = ulong_int_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.ulong_int_func
+}
+
 static char PY_int8_func__doc__[] =
 "documentation"
 ;
@@ -568,6 +598,8 @@ static PyMethodDef PY_methods[] = {
     PY_ulong_func__doc__},
 {"ulong_long_func", (PyCFunction)PY_ulong_long_func,
     METH_VARARGS|METH_KEYWORDS, PY_ulong_long_func__doc__},
+{"ulong_int_func", (PyCFunction)PY_ulong_int_func,
+    METH_VARARGS|METH_KEYWORDS, PY_ulong_int_func__doc__},
 {"int8_func", (PyCFunction)PY_int8_func, METH_VARARGS|METH_KEYWORDS,
     PY_int8_func__doc__},
 {"int16_func", (PyCFunction)PY_int16_func, METH_VARARGS|METH_KEYWORDS,

@@ -161,6 +161,15 @@ unsigned long long TYP_ulong_long_func(unsigned long long arg1)
 // splicer end function.ulong_long_func
 }
 
+// unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)
+unsigned long TYP_ulong_int_func(unsigned long arg1)
+{
+// splicer begin function.ulong_int_func
+    unsigned long SHC_rv = ulong_int_func(arg1);
+    return SHC_rv;
+// splicer end function.ulong_int_func
+}
+
 // int8_t int8_func(int8_t arg1 +intent(in)+value)
 int8_t TYP_int8_func(int8_t arg1)
 {

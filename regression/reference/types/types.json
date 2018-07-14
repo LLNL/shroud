@@ -1535,6 +1535,124 @@
                             "cxx_addr": "&", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
                             "cxx_member": ".", 
+                            "cxx_type": "unsigned long", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "unsigned long arg1", 
+                            "c_deref": "", 
+                            "c_type": "unsigned long", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "unsigned long arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned long", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_LONG", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "unsigned long", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "unsigned long", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_LONG", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "ulong_int_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "unsigned", 
+                                "long", 
+                                "int"
+                            ], 
+                            "typemap_name": "unsigned_long"
+                        }
+                    ], 
+                    "specifier": [
+                        "unsigned", 
+                        "long", 
+                        "int"
+                    ], 
+                    "typemap_name": "unsigned_long"
+                }, 
+                "decl": "unsigned long int ulong_int_func(unsigned long int arg1)", 
+                "declgen": "unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "unsigned long SHC_rv =\t ulong_int_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_ulong_int_func", 
+                    "C_prototype": "unsigned long arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "unsigned long", 
+                    "F_C_call": "c_ulong_int_func", 
+                    "F_C_name": "ulong_int_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_ulong_int_func(arg1)", 
+                    "F_name_function": "ulong_int_func", 
+                    "F_name_generic": "ulong_int_func", 
+                    "F_name_impl": "ulong_int_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ulong_int_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "unsigned long SHC_rv", 
+                    "function_name": "ulong_int_func", 
+                    "underscore_name": "ulong_int_func"
+                }, 
+                "linenumber": 75, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
                             "cxx_type": "int8_t", 
                             "cxx_var": "arg1", 
                             "idtor": "0"
@@ -1635,7 +1753,7 @@
                     "function_name": "int8_func", 
                     "underscore_name": "int8_func"
                 }, 
-                "linenumber": 76, 
+                "linenumber": 77, 
                 "options": {}
             }, 
             {
@@ -1749,7 +1867,7 @@
                     "function_name": "int16_func", 
                     "underscore_name": "int16_func"
                 }, 
-                "linenumber": 77, 
+                "linenumber": 78, 
                 "options": {}
             }, 
             {
@@ -1863,7 +1981,7 @@
                     "function_name": "int32_func", 
                     "underscore_name": "int32_func"
                 }, 
-                "linenumber": 78, 
+                "linenumber": 79, 
                 "options": {}
             }, 
             {
@@ -1977,7 +2095,7 @@
                     "function_name": "int64_func", 
                     "underscore_name": "int64_func"
                 }, 
-                "linenumber": 79, 
+                "linenumber": 80, 
                 "options": {}
             }
         ], 

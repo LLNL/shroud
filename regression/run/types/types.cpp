@@ -107,6 +107,11 @@ unsigned long long ulong_long_func(unsigned long long arg1)
   return arg1;
 }
 
+unsigned long int ulong_int_func(unsigned long int arg1)
+{
+  return arg1;
+}
+
 // #######################################################################
 
 int8_t int8_func(int8_t arg1)

@@ -1499,6 +1499,11 @@ canonical_typemap = dict(
     short_int='short',
     long_int='long',
     long_long_int='long_long',
+
+    unsigned_short_int='unsigned_short',
+    unsigned_long_int='unsigned_long',
+    unsigned_long_long_int='unsigned_long_long',
+
     # implied 'int'
     unsigned='unsigned_int',
 )

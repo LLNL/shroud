@@ -164,6 +164,15 @@ module types_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function ulong_long_func
 
+        function ulong_int_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_ulong_int_func")
+            use iso_c_binding, only : C_LONG
+            implicit none
+            integer(C_LONG), value, intent(IN) :: arg1
+            integer(C_LONG) :: SHT_rv
+        end function ulong_int_func
+
         function int8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int8_func")

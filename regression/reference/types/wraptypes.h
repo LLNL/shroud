@@ -86,6 +86,8 @@ unsigned long TYP_ulong_func(unsigned long arg1);
 
 unsigned long long TYP_ulong_long_func(unsigned long long arg1);
 
+unsigned long TYP_ulong_int_func(unsigned long arg1);
+
 int8_t TYP_int8_func(int8_t arg1);
 
 int16_t TYP_int16_func(int16_t arg1);

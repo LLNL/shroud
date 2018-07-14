@@ -966,7 +966,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual('long_long', r.params[1].typemap.name)
 
         self.assertEqual(['unsigned', 'int'], r.params[2].specifier)
-        self.assertEqual('int', r.params[2].typemap.name)
+        self.assertEqual('unsigned_int', r.params[2].typemap.name)
 
     def test_class_template(self):
         """Class templates"""

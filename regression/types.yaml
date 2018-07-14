@@ -72,6 +72,7 @@ declarations:
 - decl: unsigned int uint_func(unsigned int arg1)
 - decl: unsigned long ulong_func(unsigned long arg1)
 - decl: unsigned long long ulong_long_func(unsigned long long arg1)
+- decl: unsigned long int ulong_int_func(unsigned long int arg1)
 
 - decl: int8_t  int8_func(int8_t arg1)
 - decl: int16_t int16_func(int16_t arg1)
