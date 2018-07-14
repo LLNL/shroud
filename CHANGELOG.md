@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Added more support for unsigned types.
+  Note that Fortran does not support unsigned types.
+  ex. 'unsigned int' is mapped to C_INT.
+- Add size based types: int8_t, int16_t, int32_t, int64_t.
 - Add support for C++ structs.
   Fortran creates a derived type with ``bind(C)``.
   Python uses NumPy to unpack fields of struct.
