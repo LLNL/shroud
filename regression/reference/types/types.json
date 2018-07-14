@@ -601,6 +601,474 @@
                             "cxx_addr": "&", 
                             "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
                             "cxx_member": ".", 
+                            "cxx_type": "unsigned short", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "unsigned short arg1", 
+                            "c_deref": "", 
+                            "c_type": "unsigned short", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "unsigned short arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned short", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_SHORT", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "unsigned short", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "unsigned short", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_SHORT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "ushort_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "unsigned", 
+                                "short"
+                            ], 
+                            "typemap_name": "unsigned_short"
+                        }
+                    ], 
+                    "specifier": [
+                        "unsigned", 
+                        "short"
+                    ], 
+                    "typemap_name": "unsigned_short"
+                }, 
+                "decl": "unsigned short ushort_func(unsigned short arg1)", 
+                "declgen": "unsigned short ushort_func(unsigned short arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "unsigned short SHC_rv =\t ushort_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_ushort_func", 
+                    "C_prototype": "unsigned short arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "unsigned short", 
+                    "F_C_call": "c_ushort_func", 
+                    "F_C_name": "ushort_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_ushort_func(arg1)", 
+                    "F_name_function": "ushort_func", 
+                    "F_name_generic": "ushort_func", 
+                    "F_name_impl": "ushort_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ushort_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "unsigned short SHC_rv", 
+                    "function_name": "ushort_func", 
+                    "underscore_name": "ushort_func"
+                }, 
+                "linenumber": 63, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned int", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "unsigned int arg1", 
+                            "c_deref": "", 
+                            "c_type": "unsigned int", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "unsigned int arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned int", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_INT", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "unsigned int", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "unsigned int", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_INT", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "uint_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "unsigned", 
+                                "int"
+                            ], 
+                            "typemap_name": "unsigned_int"
+                        }
+                    ], 
+                    "specifier": [
+                        "unsigned", 
+                        "int"
+                    ], 
+                    "typemap_name": "unsigned_int"
+                }, 
+                "decl": "unsigned int uint_func(unsigned int arg1)", 
+                "declgen": "unsigned int uint_func(unsigned int arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "unsigned int SHC_rv =\t uint_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_uint_func", 
+                    "C_prototype": "unsigned int arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "unsigned int", 
+                    "F_C_call": "c_uint_func", 
+                    "F_C_name": "uint_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_uint_func(arg1)", 
+                    "F_name_function": "uint_func", 
+                    "F_name_generic": "uint_func", 
+                    "F_name_impl": "uint_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_uint_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "unsigned int SHC_rv", 
+                    "function_name": "uint_func", 
+                    "underscore_name": "uint_func"
+                }, 
+                "linenumber": 64, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned long", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "unsigned long arg1", 
+                            "c_deref": "", 
+                            "c_type": "unsigned long", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "unsigned long arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned long", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_LONG", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "unsigned long", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "unsigned long", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_LONG", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "ulong_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "unsigned", 
+                                "long"
+                            ], 
+                            "typemap_name": "unsigned_long"
+                        }
+                    ], 
+                    "specifier": [
+                        "unsigned", 
+                        "long"
+                    ], 
+                    "typemap_name": "unsigned_long"
+                }, 
+                "decl": "unsigned long ulong_func(unsigned long arg1)", 
+                "declgen": "unsigned long ulong_func(unsigned long arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "unsigned long SHC_rv =\t ulong_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_ulong_func", 
+                    "C_prototype": "unsigned long arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "unsigned long", 
+                    "F_C_call": "c_ulong_func", 
+                    "F_C_name": "ulong_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_ulong_func(arg1)", 
+                    "F_name_function": "ulong_func", 
+                    "F_name_generic": "ulong_func", 
+                    "F_name_impl": "ulong_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ulong_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "unsigned long SHC_rv", 
+                    "function_name": "ulong_func", 
+                    "underscore_name": "ulong_func"
+                }, 
+                "linenumber": 65, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned long long", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "unsigned long long arg1", 
+                            "c_deref": "", 
+                            "c_type": "unsigned long long", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "unsigned long long arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "unsigned long long", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_LONGLONG", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "unsigned long long", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "unsigned long long", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PY_build_format": "L", 
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_LONGLONG", 
+                        "py_var": "SHTPy_rv", 
+                        "vargs": "SHC_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "ulong_long_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "unsigned", 
+                                "long", 
+                                "long"
+                            ], 
+                            "typemap_name": "unsigned_long_long"
+                        }
+                    ], 
+                    "specifier": [
+                        "unsigned", 
+                        "long", 
+                        "long"
+                    ], 
+                    "typemap_name": "unsigned_long_long"
+                }, 
+                "decl": "unsigned long long ulong_long_func(unsigned long long arg1)", 
+                "declgen": "unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "unsigned long long SHC_rv =\t ulong_long_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_ulong_long_func", 
+                    "C_prototype": "unsigned long long arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "unsigned long long", 
+                    "F_C_call": "c_ulong_long_func", 
+                    "F_C_name": "ulong_long_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_ulong_long_func(arg1)", 
+                    "F_name_function": "ulong_long_func", 
+                    "F_name_generic": "ulong_long_func", 
+                    "F_name_impl": "ulong_long_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_ulong_long_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "unsigned long long SHC_rv", 
+                    "function_name": "ulong_long_func", 
+                    "underscore_name": "ulong_long_func"
+                }, 
+                "linenumber": 66, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
                             "cxx_type": "int8_t", 
                             "cxx_var": "arg1", 
                             "idtor": "0"
@@ -701,7 +1169,7 @@
                     "function_name": "int8_func", 
                     "underscore_name": "int8_func"
                 }, 
-                "linenumber": 63, 
+                "linenumber": 68, 
                 "options": {}
             }, 
             {
@@ -815,7 +1283,7 @@
                     "function_name": "int16_func", 
                     "underscore_name": "int16_func"
                 }, 
-                "linenumber": 64, 
+                "linenumber": 69, 
                 "options": {}
             }, 
             {
@@ -929,7 +1397,7 @@
                     "function_name": "int32_func", 
                     "underscore_name": "int32_func"
                 }, 
-                "linenumber": 65, 
+                "linenumber": 70, 
                 "options": {}
             }, 
             {
@@ -1043,7 +1511,7 @@
                     "function_name": "int64_func", 
                     "underscore_name": "int64_func"
                 }, 
-                "linenumber": 66, 
+                "linenumber": 71, 
                 "options": {}
             }
         ], 
@@ -1967,6 +2435,80 @@
                 }
             }, 
             "f_type": "type(C_PTR)YY"
+        }, 
+        "unsigned_int": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned int", 
+            "cxx_type": "unsigned int", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "unsigned_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned long", 
+            "cxx_type": "unsigned long", 
+            "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG)"
+        }, 
+        "unsigned_long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
+            "PY_format": "L", 
+            "c_type": "unsigned long long", 
+            "cxx_type": "unsigned long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "unsigned_short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned short", 
+            "cxx_type": "unsigned short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

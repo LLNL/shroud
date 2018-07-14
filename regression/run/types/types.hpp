@@ -47,6 +47,12 @@ int int_func(int arg1);
 long long_func(long arg1);
 long long long2_func(long long arg1);
 
+unsigned unsigned_func(unsigned arg1);
+unsigned short ushort_func(unsigned short arg1);
+unsigned int uint_func(unsigned int arg1);
+unsigned long ulong_func(unsigned long arg1);
+unsigned long long ulong_long_func(unsigned long long arg1);
+
 int8_t int8_func(int8_t arg1);
 int16_t int16_func(int16_t arg1);
 int32_t int32_func(int32_t arg1);

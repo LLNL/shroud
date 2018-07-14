@@ -92,6 +92,42 @@ module types_mod
             integer(C_LONG_LONG) :: SHT_rv
         end function long2_func
 
+        function ushort_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_ushort_func")
+            use iso_c_binding, only : C_SHORT
+            implicit none
+            integer(C_SHORT), value, intent(IN) :: arg1
+            integer(C_SHORT) :: SHT_rv
+        end function ushort_func
+
+        function uint_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_uint_func")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_INT) :: SHT_rv
+        end function uint_func
+
+        function ulong_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_ulong_func")
+            use iso_c_binding, only : C_LONG
+            implicit none
+            integer(C_LONG), value, intent(IN) :: arg1
+            integer(C_LONG) :: SHT_rv
+        end function ulong_func
+
+        function ulong_long_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_ulong_long_func")
+            use iso_c_binding, only : C_LONG_LONG
+            implicit none
+            integer(C_LONG_LONG), value, intent(IN) :: arg1
+            integer(C_LONG_LONG) :: SHT_rv
+        end function ulong_long_func
+
         function int8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int8_func")

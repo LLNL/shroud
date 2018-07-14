@@ -70,6 +70,14 @@ long TYP_long_func(long arg1);
 
 long long TYP_long2_func(long long arg1);
 
+unsigned short TYP_ushort_func(unsigned short arg1);
+
+unsigned int TYP_uint_func(unsigned int arg1);
+
+unsigned long TYP_ulong_func(unsigned long arg1);
+
+unsigned long long TYP_ulong_long_func(unsigned long long arg1);
+
 int8_t TYP_int8_func(int8_t arg1);
 
 int16_t TYP_int16_func(int16_t arg1);

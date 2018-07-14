@@ -1277,6 +1277,198 @@ stringout: !!python/object:shroud.typemap.Typemap
   py_statements: *id005
   result_as_arg: null
   typedef: null
+unsigned_int: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_INT
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: i
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: null
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: unsigned int
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: unsigned int
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_INT)
+  f_derived_type: null
+  f_kind: C_INT
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_INT)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: unsigned_int
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
+unsigned_long: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_LONG
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: l
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: null
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: unsigned long
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: unsigned long
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_LONG)
+  f_derived_type: null
+  f_kind: C_LONG
+  f_module:
+    iso_c_binding:
+    - C_LONG
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_LONG)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: unsigned_long
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
+unsigned_long_long: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_LONGLONG
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: null
+  PY_format: L
+  PY_from_object: null
+  PY_get: null
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: null
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: unsigned long long
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: unsigned long long
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_LONG_LONG)
+  f_derived_type: null
+  f_kind: C_LONG_LONG
+  f_module:
+    iso_c_binding:
+    - C_LONG_LONG
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_LONG_LONG)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: unsigned_long_long
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
+unsigned_short: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_SHORT
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: h
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: null
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: unsigned short
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: unsigned short
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_SHORT)
+  f_derived_type: null
+  f_kind: C_SHORT
+  f_module:
+    iso_c_binding:
+    - C_SHORT
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_SHORT)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: unsigned_short
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
 void: !!python/object:shroud.typemap.Typemap
   LUA_pop: POP
   LUA_push: PUSH

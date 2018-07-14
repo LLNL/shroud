@@ -89,6 +89,42 @@ long long TYP_long2_func(long long arg1)
 // splicer end function.long2_func
 }
 
+// unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
+unsigned short TYP_ushort_func(unsigned short arg1)
+{
+// splicer begin function.ushort_func
+    unsigned short SHC_rv = ushort_func(arg1);
+    return SHC_rv;
+// splicer end function.ushort_func
+}
+
+// unsigned int uint_func(unsigned int arg1 +intent(in)+value)
+unsigned int TYP_uint_func(unsigned int arg1)
+{
+// splicer begin function.uint_func
+    unsigned int SHC_rv = uint_func(arg1);
+    return SHC_rv;
+// splicer end function.uint_func
+}
+
+// unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
+unsigned long TYP_ulong_func(unsigned long arg1)
+{
+// splicer begin function.ulong_func
+    unsigned long SHC_rv = ulong_func(arg1);
+    return SHC_rv;
+// splicer end function.ulong_func
+}
+
+// unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
+unsigned long long TYP_ulong_long_func(unsigned long long arg1)
+{
+// splicer begin function.ulong_long_func
+    unsigned long long SHC_rv = ulong_long_func(arg1);
+    return SHC_rv;
+// splicer end function.ulong_long_func
+}
+
 // int8_t int8_func(int8_t arg1 +intent(in)+value)
 int8_t TYP_int8_func(int8_t arg1)
 {

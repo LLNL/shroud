@@ -184,6 +184,126 @@ PY_long2_func(
 // splicer end function.long2_func
 }
 
+static char PY_ushort_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ushort_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// unsigned short ushort_func(unsigned short arg1 +intent(in)+value)
+// splicer begin function.ushort_func
+    unsigned short arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "h:ushort_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    unsigned short SHC_rv = ushort_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.ushort_func
+}
+
+static char PY_uint_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_uint_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// unsigned int uint_func(unsigned int arg1 +intent(in)+value)
+// splicer begin function.uint_func
+    unsigned int arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:uint_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    unsigned int SHC_rv = uint_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.uint_func
+}
+
+static char PY_ulong_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ulong_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// unsigned long ulong_func(unsigned long arg1 +intent(in)+value)
+// splicer begin function.ulong_func
+    unsigned long arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:ulong_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    unsigned long SHC_rv = ulong_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.ulong_func
+}
+
+static char PY_ulong_long_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_ulong_long_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)
+// splicer begin function.ulong_long_func
+    unsigned long long arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:ulong_long_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    unsigned long long SHC_rv = ulong_long_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("L", SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.ulong_long_func
+}
+
 static char PY_int8_func__doc__[] =
 "documentation"
 ;
@@ -312,6 +432,14 @@ static PyMethodDef PY_methods[] = {
     PY_long_func__doc__},
 {"long2_func", (PyCFunction)PY_long2_func, METH_VARARGS|METH_KEYWORDS,
     PY_long2_func__doc__},
+{"ushort_func", (PyCFunction)PY_ushort_func, METH_VARARGS|METH_KEYWORDS,
+    PY_ushort_func__doc__},
+{"uint_func", (PyCFunction)PY_uint_func, METH_VARARGS|METH_KEYWORDS,
+    PY_uint_func__doc__},
+{"ulong_func", (PyCFunction)PY_ulong_func, METH_VARARGS|METH_KEYWORDS,
+    PY_ulong_func__doc__},
+{"ulong_long_func", (PyCFunction)PY_ulong_long_func,
+    METH_VARARGS|METH_KEYWORDS, PY_ulong_long_func__doc__},
 {"int8_func", (PyCFunction)PY_int8_func, METH_VARARGS|METH_KEYWORDS,
     PY_int8_func__doc__},
 {"int16_func", (PyCFunction)PY_int16_func, METH_VARARGS|METH_KEYWORDS,
