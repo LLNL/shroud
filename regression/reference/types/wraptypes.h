@@ -63,6 +63,10 @@ extern "C" {
 
 int TYP_int_func(int arg1);
 
+long TYP_long_func(long arg1);
+
+long long TYP_long2_func(long long arg1);
+
 #ifdef __cplusplus
 }
 #endif

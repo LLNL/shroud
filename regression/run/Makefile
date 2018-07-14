@@ -108,7 +108,7 @@ clang : tutorial-c templates-c
 # Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run/tutorial/tutorial
-	$(tempdir)/run/tutorial/types
+	$(tempdir)/run/types/types
 	$(tempdir)/run/vectors/vectors
 	$(tempdir)/run/strings/strings
 	$(tempdir)/run/clibrary/clibrary

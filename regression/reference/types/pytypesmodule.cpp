@@ -93,9 +93,73 @@ PY_int_func(
     return (PyObject *) SHTPy_rv;
 // splicer end function.int_func
 }
+
+static char PY_long_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_long_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// long long_func(long arg1 +intent(in)+value)
+// splicer begin function.long_func
+    long arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "l:long_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    long SHC_rv = long_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.long_func
+}
+
+static char PY_long2_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_long2_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// long long long2_func(long long arg1 +intent(in)+value)
+// splicer begin function.long2_func
+    long long arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:long2_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    long long SHC_rv = long2_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("L", SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.long2_func
+}
 static PyMethodDef PY_methods[] = {
 {"int_func", (PyCFunction)PY_int_func, METH_VARARGS|METH_KEYWORDS,
     PY_int_func__doc__},
+{"long_func", (PyCFunction)PY_long_func, METH_VARARGS|METH_KEYWORDS,
+    PY_long_func__doc__},
+{"long2_func", (PyCFunction)PY_long2_func, METH_VARARGS|METH_KEYWORDS,
+    PY_long2_func__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

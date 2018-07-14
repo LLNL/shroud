@@ -55,6 +55,9 @@ options:
 declarations:
 #- decl: extern int int_global;
 
+#- decl: short short_func(short arg1)
 - decl: int int_func(int arg1)
+- decl: long long_func(long arg1)
+- decl: long long long2_func(long long arg1)
 
 

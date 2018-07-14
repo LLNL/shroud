@@ -62,6 +62,24 @@ int TYP_int_func(int arg1)
 // splicer end function.int_func
 }
 
+// long long_func(long arg1 +intent(in)+value)
+long TYP_long_func(long arg1)
+{
+// splicer begin function.long_func
+    long SHC_rv = long_func(arg1);
+    return SHC_rv;
+// splicer end function.long_func
+}
+
+// long long long2_func(long long arg1 +intent(in)+value)
+long long TYP_long2_func(long long arg1)
+{
+// splicer begin function.long2_func
+    long long SHC_rv = long2_func(arg1);
+    return SHC_rv;
+// splicer end function.long2_func
+}
+
 // Release C++ allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {

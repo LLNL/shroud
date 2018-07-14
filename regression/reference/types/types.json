@@ -241,7 +241,239 @@
                     "function_name": "int_func", 
                     "underscore_name": "int_func"
                 }, 
-                "linenumber": 58, 
+                "linenumber": 59, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "long", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "long arg1", 
+                            "c_deref": "", 
+                            "c_type": "long", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "long arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "long", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_LONG", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "long", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "long", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_LONG", 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "long_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "long"
+                            ], 
+                            "typemap_name": "long"
+                        }
+                    ], 
+                    "specifier": [
+                        "long"
+                    ], 
+                    "typemap_name": "long"
+                }, 
+                "decl": "long long_func(long arg1)", 
+                "declgen": "long long_func(long arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "long SHC_rv =\t long_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_long_func", 
+                    "C_prototype": "long arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "long", 
+                    "F_C_call": "c_long_func", 
+                    "F_C_name": "long_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_long_func(arg1)", 
+                    "F_name_function": "long_func", 
+                    "F_name_generic": "long_func", 
+                    "F_name_impl": "long_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_long_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "long SHC_rv", 
+                    "function_name": "long_func", 
+                    "underscore_name": "long_func"
+                }, 
+                "linenumber": 60, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "long long", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "long long arg1", 
+                            "c_deref": "", 
+                            "c_type": "long long", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "long long arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "long long", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": "NPY_LONGLONG", 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "long long", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "long long", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PY_build_format": "L", 
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": "NPY_LONGLONG", 
+                        "py_var": "SHTPy_rv", 
+                        "vargs": "SHC_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "long2_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "long", 
+                                "long"
+                            ], 
+                            "typemap_name": "long_long"
+                        }
+                    ], 
+                    "specifier": [
+                        "long", 
+                        "long"
+                    ], 
+                    "typemap_name": "long_long"
+                }, 
+                "decl": "long long long2_func(long long arg1)", 
+                "declgen": "long long long2_func(long long arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "long long SHC_rv =\t long2_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_long2_func", 
+                    "C_prototype": "long long arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "long long", 
+                    "F_C_call": "c_long2_func", 
+                    "F_C_name": "long2_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_long2_func(arg1)", 
+                    "F_name_function": "long2_func", 
+                    "F_name_generic": "long2_func", 
+                    "F_name_impl": "long2_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_long2_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "long long SHC_rv", 
+                    "function_name": "long2_func", 
+                    "underscore_name": "long2_func"
+                }, 
+                "linenumber": 61, 
                 "options": {}
             }
         ], 

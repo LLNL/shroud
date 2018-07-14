@@ -41,7 +41,22 @@
 // types.hpp - wrapped routines
 //
 
+short short_func(int arg1)
+{
+  return arg1;
+}
+
 int int_func(int arg1)
+{
+  return arg1;
+}
+
+long long_func(long arg1)
+{
+  return arg1;
+}
+
+long long long2_func(long long arg1)
 {
   return arg1;
 }
