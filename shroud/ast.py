@@ -279,6 +279,10 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.add_typedef('int16_t')
         self.add_typedef('int32_t')
         self.add_typedef('int64_t')
+        self.add_typedef('uint8_t')
+        self.add_typedef('uint16_t')
+        self.add_typedef('uint32_t')
+        self.add_typedef('uint64_t')
         self.add_typedef('MPI_Comm')
         create_std_namespace(self)   # add 'std::' to library
         self.using_directive('std')

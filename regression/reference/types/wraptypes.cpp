@@ -206,6 +206,42 @@ int64_t TYP_int64_func(int64_t arg1)
 // splicer end function.int64_func
 }
 
+// uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
+uint8_t TYP_uint8_func(uint8_t arg1)
+{
+// splicer begin function.uint8_func
+    uint8_t SHC_rv = uint8_func(arg1);
+    return SHC_rv;
+// splicer end function.uint8_func
+}
+
+// uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
+uint16_t TYP_uint16_func(uint16_t arg1)
+{
+// splicer begin function.uint16_func
+    uint16_t SHC_rv = uint16_func(arg1);
+    return SHC_rv;
+// splicer end function.uint16_func
+}
+
+// uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
+uint32_t TYP_uint32_func(uint32_t arg1)
+{
+// splicer begin function.uint32_func
+    uint32_t SHC_rv = uint32_func(arg1);
+    return SHC_rv;
+// splicer end function.uint32_func
+}
+
+// uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
+uint64_t TYP_uint64_func(uint64_t arg1)
+{
+// splicer begin function.uint64_func
+    uint64_t SHC_rv = uint64_func(arg1);
+    return SHC_rv;
+// splicer end function.uint64_func
+}
+
 // Release C++ allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {

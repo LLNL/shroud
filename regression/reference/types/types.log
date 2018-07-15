@@ -16,6 +16,10 @@ C function int8_t int8_func(int8_t arg1 +intent(in)+value)
 C function int16_t int16_func(int16_t arg1 +intent(in)+value)
 C function int32_t int32_func(int32_t arg1 +intent(in)+value)
 C function int64_t int64_func(int64_t arg1 +intent(in)+value)
+C function uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
+C function uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
+C function uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
+C function uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 Close wraptypes.h
 Close wraptypes.cpp
 Close typestypes.h
@@ -36,6 +40,10 @@ C-interface, Fortran function int8_t int8_func(int8_t arg1 +intent(in)+value)
 C-interface, Fortran function int16_t int16_func(int16_t arg1 +intent(in)+value)
 C-interface, Fortran function int32_t int32_func(int32_t arg1 +intent(in)+value)
 C-interface, Fortran function int64_t int64_func(int64_t arg1 +intent(in)+value)
+C-interface, Fortran function uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
+C-interface, Fortran function uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
+C-interface, Fortran function uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
+C-interface, Fortran function uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 Close wrapftypes.f
 Python function short short_func(short arg1 +intent(in)+value)
 Python function int int_func(int arg1 +intent(in)+value)
@@ -54,6 +62,10 @@ Python function int8_t int8_func(int8_t arg1 +intent(in)+value)
 Python function int16_t int16_func(int16_t arg1 +intent(in)+value)
 Python function int32_t int32_func(int32_t arg1 +intent(in)+value)
 Python function int64_t int64_func(int64_t arg1 +intent(in)+value)
+Python function uint8_t uint8_func(uint8_t arg1 +intent(in)+value)
+Python function uint16_t uint16_func(uint16_t arg1 +intent(in)+value)
+Python function uint32_t uint32_func(uint32_t arg1 +intent(in)+value)
+Python function uint64_t uint64_func(uint64_t arg1 +intent(in)+value)
 Close pytypeshelper.cpp
 Close pytypesmodule.hpp
 Close pytypesmodule.cpp

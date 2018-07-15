@@ -166,6 +166,23 @@ contains
     rv_int64 = int64_func(1_C_INT64_T)
     call assert_true(rv_int64 .eq. 1_C_INT64_T, "int64_func")
 
+    ! unsigned
+    rv_int8 = -1_C_INT8_T
+    rv_int8 = uint8_func(1_C_INT8_T)
+    call assert_true(rv_int8 .eq. 1_C_INT8_T, "int8_func")
+
+    rv_int16 = -1_C_INT16_T
+    rv_int16 = uint16_func(1_C_INT16_T)
+    call assert_true(rv_int16 .eq. 1_C_INT16_T, "int16_func")
+
+    rv_int32 = -1_C_INT32_T
+    rv_int32 = uint32_func(1_C_INT32_T)
+    call assert_true(rv_int32 .eq. 1_C_INT32_T, "int32_func")
+
+    rv_int64 = -1_C_INT64_T
+    rv_int64 = uint64_func(1_C_INT64_T)
+    call assert_true(rv_int64 .eq. 1_C_INT64_T, "int64_func")
+
   end subroutine test_intsize_types
 
 end program tester

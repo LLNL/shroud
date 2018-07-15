@@ -1277,6 +1277,198 @@ stringout: !!python/object:shroud.typemap.Typemap
   py_statements: *id005
   result_as_arg: null
   typedef: null
+uint16_t: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_UINT16
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: i
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: <stdint.h>
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: uint16_t
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: uint16_t
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_INT16_t)
+  f_derived_type: null
+  f_kind: C_INT16_T
+  f_module:
+    iso_c_binding:
+    - C_INT16_T
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_INT16_T)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: uint16_t
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
+uint32_t: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_UINT32
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: i
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: <stdint.h>
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: uint32_t
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: uint32_t
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_INT32_t)
+  f_derived_type: null
+  f_kind: C_INT32_T
+  f_module:
+    iso_c_binding:
+    - C_INT32_T
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_INT32_T)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: uint32_t
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
+uint64_t: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_UINT64
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: i
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: <stdint.h>
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: uint64_t
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: uint64_t
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_INT64_t)
+  f_derived_type: null
+  f_kind: C_INT64_T
+  f_module:
+    iso_c_binding:
+    - C_INT64_T
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_INT64_T)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: uint64_t
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
+uint8_t: !!python/object:shroud.typemap.Typemap
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+  LUA_statements: *id001
+  LUA_type: LUA_TNUMBER
+  PYN_descr: null
+  PYN_typenum: NPY_UINT8
+  PY_PyObject: null
+  PY_PyTypeObject: null
+  PY_build_arg: null
+  PY_build_format: null
+  PY_ctor: PyInt_FromLong({c_deref}{c_var})
+  PY_format: i
+  PY_from_object: null
+  PY_get: PyInt_AsLong({py_var})
+  PY_to_object: null
+  __line__: null
+  base: unknown
+  c_header: <stdint.h>
+  c_return_code: null
+  c_statements: *id002
+  c_templates: *id003
+  c_to_cxx: null
+  c_type: uint8_t
+  c_union: null
+  cpp_if: null
+  cxx_header: null
+  cxx_to_c: null
+  cxx_type: uint8_t
+  f_args: null
+  f_c_module: null
+  f_c_type: null
+  f_cast: int({f_var}, C_INT8_t)
+  f_derived_type: null
+  f_kind: C_INT8_T
+  f_module:
+    iso_c_binding:
+    - C_INT8_T
+  f_statements: *id006
+  f_to_c: null
+  f_type: integer(C_INT8_T)
+  format: *id004
+  forward: null
+  idtor: '0'
+  name: uint8_t
+  py_statements: *id005
+  result_as_arg: null
+  typedef: null
 unsigned_int: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
   LUA_push: lua_pushinteger({LUA_state_var}, {c_var})

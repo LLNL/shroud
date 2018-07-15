@@ -96,6 +96,14 @@ int32_t TYP_int32_func(int32_t arg1);
 
 int64_t TYP_int64_func(int64_t arg1);
 
+uint8_t TYP_uint8_func(uint8_t arg1);
+
+uint16_t TYP_uint16_func(uint16_t arg1);
+
+uint32_t TYP_uint32_func(uint32_t arg1);
+
+uint64_t TYP_uint64_func(uint64_t arg1);
+
 #ifdef __cplusplus
 }
 #endif
