@@ -1391,16 +1391,6 @@ def add_declarations(parent, node):
             del dct['decl']
             declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode)
-        elif 'type' in subnode:
-            # Update fields for a type. For example, set cpp_if
-            key = subnode['type']
-            value = subnode['fields']
-            def_types = typemap.get_global_types()
-            ntypemap = def_types.get(key, None)
-            if not ntypemap:
-                raise RuntimeError(
-                    "No type {}".format(key))
-            ntypemap.update(value)
         else:
             print(subnode)
             raise RuntimeError(
@@ -1432,6 +1422,19 @@ def create_library_from_dictionary(node):
     if 'namespace' in node:
         for name in node['namespace'].split():
             ns = ns.add_namespace(name)
+
+    if 'typemap' in node:
+        # list of dictionaries
+        for subnode in node['typemap']:
+            # Update fields for a type. For example, set cpp_if
+            key = subnode['type']
+            value = subnode['fields']
+            def_types = typemap.get_global_types()
+            ntypemap = def_types.get(key, None)
+            if not ntypemap:
+                raise RuntimeError(
+                    "No type {}".format(key))
+            ntypemap.update(value)
 
     add_declarations(ns, node)
 

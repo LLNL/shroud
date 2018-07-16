@@ -64,12 +64,12 @@ options:
   wrap_python: True
   wrap_lua: True
 
+typemap:
+  - type: MPI_Comm
+    fields:
+      cpp_if: ifdef USE_MPI
+
 declarations:
-
-- type: MPI_Comm
-  fields:
-    cpp_if: ifdef USE_MPI
-
 - decl: typedef long SidreLength
   fields:
 # defined in SidreTypes.hpp
