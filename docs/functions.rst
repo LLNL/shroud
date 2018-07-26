@@ -383,6 +383,7 @@ Finally, ``cpp_if`` can be used with types. This would be required in
 the first example since ``mpi.h`` should only be included when
 ``USE_MPI`` is defined::
 
+    typemaps:
     - type: MPI_Comm
       fields:
         cpp_if: ifdef USE_MPI
@@ -391,6 +392,9 @@ the first example since ``mpi.h`` should only be included when
 When using ``cpp_if``, it is useful to set the option
 ``F_filename_suffix`` to ``F``. This will cause most compilers to
 process the Fortran souce with ``cpp`` before compilation.
+
+The ``typemaps`` field can only appear at the outermost layer
+and is used to augment existing typemaps.
 
 
 Debugging

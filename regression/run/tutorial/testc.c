@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
- * Produced at the Lawrence Livermore National Laboratory 
+ * Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+ * Produced at the Lawrence Livermore National Laboratory
  *
  * LLNL-CODE-738041.
- * All rights reserved. 
+ * All rights reserved.
  *
  * This file is part of Shroud.  For details, see
  * https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -14,7 +14,7 @@
  *
  * * Redistributions of source code must retain the above copyright
  *   notice, this list of conditions and the disclaimer below.
- * 
+ *
  * * Redistributions in binary form must reproduce the above copyright
  *   notice, this list of conditions and the disclaimer (as noted below)
  *   in the documentation and/or other materials provided with the
@@ -37,7 +37,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Test C interface for Tutorial
+ * Test C interface for tutorial.yaml
  */
 
 #include <stdbool.h>  // This should not be necessary
@@ -54,7 +54,7 @@ void test_class(void)
   c1 = TUT_class1_new_default();
 
   flag = TUT_class1_method1(&c1);
-  assert(flag == 1 && "TUT_class1_method1");
+  assert(flag == 0 && "TUT_class1_method1");
 
 }
 

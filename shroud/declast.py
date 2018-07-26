@@ -58,6 +58,7 @@ type_specifier = {'void', 'bool', 'char', 'short', 'int', 'long', 'float', 'doub
 type_qualifier = {'const', 'volatile'}
 storage_class = {'auto', 'register', 'static', 'extern', 'typedef'}
 
+cxx_keywords = {'class', 'enum', 'namespace', 'struct', 'template', 'typename'}
 
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
@@ -110,7 +111,7 @@ def tokenize(s):
                     typ = 'TYPE_QUALIFIER'
                 elif val in storage_class:
                     typ = 'STORAGE_CLASS'
-                elif val in ['class', 'enum', 'namespace', 'struct']:
+                elif val in cxx_keywords:
                     typ = val.upper()
             yield Token(typ, val, line, mo.start()-line_start)
         pos = mo.end()
@@ -313,17 +314,25 @@ class Parser(ExprParser):
 
     An abstract-declarator is a declarator without an identifier,
     consisting of one or more pointer, array, or function modifiers.
-
-    namespace - An ast.AstNode subclass.
     """
     def __init__(self, decl, namespace, trace=False):
-        self.decl = decl          # declaration to parse
-        self.namespace = namespace
+        self.decl = decl            # declaration to parse
+        self.namespace = namespace  # An ast.AstNode subclass.
         self.trace = trace
         self.indent = 0
         self.token = None
         self.tokenizer = tokenize(decl)
         self.next()  # load first token
+
+    def update_namespace(self, node):
+        """Push another level of the namespace.
+        Accept a Template node and save parameters as symbols
+        in a namespace.
+        Used while parsing a template_statement to add TemplateParams to the
+        symbol table.
+        """
+        node.fill_symbols(self.namespace)
+        self.namespace = node
 
     def parameter_list(self):
         # look for ... var arg at end
@@ -391,11 +400,12 @@ class Parser(ExprParser):
             if tok.value != self.namespace.name:
                 raise RuntimeError("Expected class-name after ~")
             node.specifier.append(tok.value)
+            self.parse_template_arguments(node)
             #  class Class1 { ~Class1(); }
-            self.info('destructor', self.namespace.typename)
+            self.info('destructor', self.namespace.typemap.name)
             node.attrs['_name'] = 'dtor'
             node.attrs['_destructor'] = True
-            node.attrs['_typename'] = self.namespace.typename
+            node.typemap = self.namespace.typemap
             found_type = True
             more = False
 
@@ -407,21 +417,18 @@ class Parser(ExprParser):
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
                     node.specifier.append(ns_name)
+                    self.parse_template_arguments(node)
                     if self.namespace.is_class and \
                        self.namespace is ns and \
                        self.token.typ == 'LPAREN':
-                        #  class Class1 { Class1(); }
+                        # template<T> vector { vector<T>(); }
+                        # class Class1 { Class1(); }
                         self.info('constructor')
                         node.attrs['_name'] = 'ctor'
                         node.attrs['_constructor'] = True
                         more = False
-                    elif self.have('LT'):
-                        temp = Declaration()
-                        self.declaration_specifier(temp)
-                        node.attrs['template'] = str(temp)
-                        self.mustbe('GT')
                     # Save fully resolved typename
-                    node.attrs['_typename'] = ns.typename
+                    node.typemap = ns.typemap
                     found_type = True
                 else:
                     more = False
@@ -445,9 +452,31 @@ class Parser(ExprParser):
                 self.token.typ, self.token.value))
         if not found_type:
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
-            node.attrs['_typename'] = '_'.join(node.specifier)
+            node.typemap = get_canonical_typemap(node.specifier)
+            if node.typemap is None:
+                self.error_msg("Unknown typemap '{}"
+                               .format('_'.join(node.specifier)))
         self.exit('declaration_specifier')
         return
+
+    def parse_template_arguments(self, node):
+        """Parse vector parameters.
+        vector<T>
+        map<Key,T>
+
+        Used while parsing function arguments.
+        similar to template_argument_list
+        """
+        lst = node.template_arguments
+        if self.have('LT'):
+            while self.token.typ != 'GT':
+                temp = Declaration()
+                self.declaration_specifier(temp)
+                lst.append(temp)
+                if not self.have('COMMA'):
+                    break
+                self.error_msg("Only single template argument accepted")
+            self.mustbe('GT')
 
     def decl_statement(self):
         """Check for optional semicolon and stray stuff at the end of line.
@@ -460,6 +489,8 @@ class Parser(ExprParser):
             node = self.struct_statement()
         elif self.token.typ == 'NAMESPACE':
             node = self.namespace_statement()
+        elif self.token.typ == 'TEMPLATE':
+            node = self.template_statement()
         else:
             node = self.declaration()
         self.have('SEMICOLON')
@@ -628,6 +659,59 @@ class Parser(ExprParser):
         self.exit('namespace_statement')
         return node
 
+    def template_statement(self):
+        """  template < template-parameter-list > declaration
+        template-parameter ::= [ class | typename] ID
+        """
+        self.enter('template_statement')
+        self.mustbe('TEMPLATE')
+        node = Template()
+        name = self.mustbe('LT')
+        while self.token.typ != 'GT':
+            if self.have('TYPENAME'):
+                name = self.mustbe('ID').value
+            elif self.have('CLASS'):
+                name = self.mustbe('ID').value
+            else:
+                name = self.mustbe('ID').value
+            node.parameters.append(TemplateParam(name))
+            if not self.have('COMMA'):
+                break
+        self.mustbe('GT')
+
+        if self.token.typ == 'CLASS':
+            node.decl = self.class_statement()
+        else:
+            self.update_namespace(node)
+            node.decl = self.declaration()
+
+        self.exit('template_statement')
+        return node
+
+    def template_argument_list(self):
+        """Parse template argument list
+        < template_argument [ , template_argument ]* >
+
+        Must be abstract declarations.
+        ex.  <int,double>
+        not <int foo>
+
+        Return a list of Declaration.
+
+        Used while parsing YAML
+        - instantiation: <int>
+        """
+        self.mustbe('LT')
+        lst = []
+        while self.token.typ != 'GT':
+            temp = Declaration()
+            self.declaration_specifier(temp)
+            lst.append(temp)
+            if not self.have('COMMA'):
+                break
+        self.mustbe('GT')
+        return lst
+
     def enum_statement(self):
         self.enter('enum_statement')
         self.mustbe('ENUM')
@@ -793,9 +877,11 @@ class Declaration(Node):
         self.params = None     # None=No parameters, []=empty parameters list
         self.array = None
         self.init = None       # initial value
+        self.template_arguments = []
         self.attrs = {}        # Declaration attributes
 
         self.func_const = False
+        self.typemap = None
 
     def get_name(self, use_attr=True):
         """Get name from declarator
@@ -824,17 +910,19 @@ class Declaration(Node):
 
     name = property(get_name, set_name, None, "Declaration name")
 
-    def get_type(self):
-        """Return type.
-        Multiple specifies are joined by an underscore. i.e. long_long
-        """
-        return self.attrs['_typename']
+    def set_type(self, ntypemap):
+        """Set type specifier from a typemap."""
+        self.typemap = ntypemap
+        # 'long long' into ['long', 'long']
+        self.specifier = ntypemap.cxx_type.split()
 
-    def set_type(self, typ):
-        self.specifier = typ.split()
-        self.attrs['_typename'] = typ
+    def is_ctor(self):
+        """Return True if self is a constructor."""
+        return self.attrs.get('_constructor', False)
 
-    typename = property(get_type, set_type, None, "Declaration type")
+    def is_dtor(self):
+        """Return True if self is a constructor."""
+        return self.attrs.get('_destructor', False)
 
     def is_pointer(self):
         """Return number of levels of pointers.
@@ -887,7 +975,7 @@ class Declaration(Node):
         """
         if self.params is None:
             return None
-        if self.typename != 'void':
+        if self.typemap.name != 'void':
             return 'function'
         if self.is_pointer():
             return 'function'
@@ -918,12 +1006,13 @@ class Declaration(Node):
             new.declarator.pointer = [Ptr('*')]
         # new.array = None
         new.attrs = copy.deepcopy(self.attrs)
+        new.typemap = self.typemap
         return new
 
     def _set_to_void(self):
         """Change function to void"""
         self.specifier = ['void']
-        self.attrs['_typename'] = 'void'
+        self.typemap = typemap.lookup_type('void')
         self.const = False
         self.declarator.pointer = []
 
@@ -936,14 +1025,25 @@ class Declaration(Node):
         self._set_to_void()
         return newarg
 
-    def result_as_voidstar(self, typ, name, const=False):
+    def result_as_voidstar(self, ntypemap, name, const=False):
         """Add an 'typ*' argument to return pointer to result.
         Change function result to 'void'.
         """
-        newarg = create_voidstar(typ, name, const)
+        newarg = create_voidstar(ntypemap, name, const)
         self.params.append(newarg)
         self._set_to_void()
         return newarg
+
+    def instantiate(self, node):
+        """Instantiate a template argument.
+        node - Declaration node of template argument.
+        Return a new copy of self and fill in type from node.
+        If node is 'int *', the pointer is in the declarator.
+        """
+        # XXX - what if T = 'int *' and arg is 'T *arg'?
+        new = copy.copy(self)
+        new.set_type(node.typemap)
+        return new
 
     def __str__(self):
         out = []
@@ -1006,10 +1106,12 @@ class Declaration(Node):
             decl.append(' '.join(self.storage))
             decl.append(' ')
         decl.append(' '.join(self.specifier))
-        if 'template' in self.attrs:
+        if self.template_arguments:
             decl.append('<')
-            decl.append(self.attrs['template'])
-            decl.append('>')
+            for targ in self.template_arguments:
+                decl.append(str(targ))
+                decl.append(',')
+            decl[-1] = '>'
 
         if self.declarator:
             self.declarator.gen_decl_work(decl, **kwargs)
@@ -1095,15 +1197,12 @@ class Declaration(Node):
             const_index = len(decl)
             decl.append('const ')
 
-        if 'template' in self.attrs:
-            typedef = typemap.lookup_type(self.attrs['template'])
+        if self.template_arguments:
+            ntypemap = self.template_arguments[0].typemap
         else:
-            typename = self.typename
-            typedef = typemap.lookup_type(typename)
-        if typedef is None:
-            raise RuntimeError("gen_arg_as_lang: No such type: {}".format(typename))
+            ntypemap = self.typemap
 
-        typ = getattr(typedef, lang)
+        typ = getattr(ntypemap, lang)
         decl.append(typ)
 
         if self.declarator is None:
@@ -1147,14 +1246,14 @@ class Declaration(Node):
         """Generate an argument used with the bind(C) interface from Fortran.
         """
         t = []
-        typedef = typemap.lookup_type(self.typename)
-        basedef = typedef
         attrs = self.attrs
-        if 'template' in attrs:
+        ntypemap = self.typemap
+        basedef = ntypemap
+        if self.template_arguments:
             # If a template, use its type
-            typedef = typemap.lookup_type(attrs['template'])
+            ntypemap = self.template_arguments[0].typemap
 
-        typ = typedef.f_c_type or typedef.f_type
+        typ = ntypemap.f_c_type or ntypemap.f_type
         if typ is None:
             raise RuntimeError("Type {} has no value for f_c_type".format(self.typename))
         t.append(typ)
@@ -1175,7 +1274,7 @@ class Declaration(Node):
 
         if basedef.base == 'vector':
             decl.append('(*)') # is array
-        elif typedef.base == 'string':
+        elif ntypemap.base == 'string':
             decl.append('(*)')
         elif attrs.get('dimension', False):
             # Any dimension is changed to assumed length.
@@ -1198,11 +1297,11 @@ class Declaration(Node):
                      i.e. [ 'pointer' ]
         """
         t = []
-        typedef = typemap.lookup_type(self.typename)
         attrs = self.attrs
-        if 'template' in attrs:
+        ntypemap = self.typemap
+        if self.template_arguments:
             # If a template, use its type
-            typedef = typemap.lookup_type(attrs['template'])
+            ntypemap = self.template_arguments[0].typemap
 
         deref = attrs.get('deref', '')
         if deref == 'allocatable':
@@ -1213,9 +1312,9 @@ class Declaration(Node):
         if not is_allocatable:
             is_allocatable = attrs.get('allocatable', False)
 
-        typ = typedef.f_type
+        typ = ntypemap.f_type
 
-        if typedef.base == 'string':
+        if ntypemap.base == 'string':
             if 'len' in attrs and local:
                 # Also used with function result declaration.
                 t.append('character(len={})'.format(attrs['len']))
@@ -1261,20 +1360,20 @@ class Declaration(Node):
                 decl.append('(' + dimension + ')')
         elif is_allocatable:
             # Assume 1-d.
-            if typedef.base != 'string':
+            if ntypemap.base != 'string':
                 decl.append('(:)')
 
         return ''.join(decl)
 
 class CXXClass(Node):
-    """An C++ class statement.
+    """A C++ class statement.
     """
     def __init__(self, name):
         self.name = name
 
 
 class Namespace(Node):
-    """An C++ namespace statement.
+    """A C++ namespace statement.
     """
     def __init__(self, name):
         self.name = name
@@ -1296,12 +1395,57 @@ class EnumValue(Node):
 
 
 class Struct(Node):
-    """An struct statement.
+    """A struct statement.
     struct name { int i; double d; };
     """
     def __init__(self, name):
         self.name = name
         self.members = []
+
+
+class Template(Node):
+    """A template statement.
+
+    parameters - list of TemplateParam instances.
+    decl - Declaration or CXXClass Node.
+    """
+    def __init__(self):
+        self.parameters = []
+        self.decl = None
+
+        self.parent = None
+        self.symbols = {}
+        self.is_class = False
+
+    def fill_symbols(self, parent):
+        """Add the TemplateParams into the symbol table.
+        This allows them to be looked up via unqualified_lookup.
+        """
+        self.parent = parent
+        for param in self.parameters:
+            self.symbols[param.name] = param
+
+    def unqualified_lookup(self, name):
+        """Lookup template parameter."""
+        if name in self.symbols:
+            return self.symbols[name]
+        return self.parent.unqualified_lookup(name)
+
+
+class TemplateParam(Node):
+    """A template parameter.
+    template < TemplateParameter >
+
+    Create a Typemap for the TemplateParam.
+    XXX - class and typename are discarded while parsing.
+
+    self.typemap = a typemap.Typemap with base='template'.
+                   Used as a place holder for the Template argument.
+                   The typemap is not registered.
+    """
+    def __init__(self, name):
+        self.name = name
+        self.typemap = typemap.Typemap(name, base='template')
 
 
 def check_decl(decl, namespace=None, template_types=[], trace=False):
@@ -1324,7 +1468,7 @@ def check_decl(decl, namespace=None, template_types=[], trace=False):
     return a
 
 
-def create_this_arg(name, typ, const=True):
+def create_this_arg(name, arg_typemap, const=True):
     """Create a Declaration for an argument for the 'this' argument
     as 'typ *name'
     """
@@ -1333,11 +1477,11 @@ def create_this_arg(name, typ, const=True):
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr('*')]
-    arg.specifier = [typ]
-    arg.attrs['_typename'] = typ
+    arg.specifier = arg_typemap.cxx_type.split()
+    arg.typemap = arg_typemap
     return arg
 
-def create_voidstar(typ, name, const=False):
+def create_voidstar(ntypemap, name, const=False):
     """Create a Declaration for an argument as 'typ *name'.
     """
     arg = Declaration()
@@ -1345,6 +1489,32 @@ def create_voidstar(typ, name, const=False):
     arg.declarator = Declarator()
     arg.declarator.name = name
     arg.declarator.pointer = [Ptr('*')]
-    arg.specifier = [typ]
-    arg.attrs['_typename'] = typ
+    arg.specifier = ntypemap.cxx_type.split()
+    arg.typemap = ntypemap
     return arg
+
+
+canonical_typemap = dict(
+    # explict 'int'
+    short_int='short',
+    long_int='long',
+    long_long_int='long_long',
+
+    unsigned_short_int='unsigned_short',
+    unsigned_long_int='unsigned_long',
+    unsigned_long_long_int='unsigned_long_long',
+
+    # implied 'int'
+    unsigned='unsigned_int',
+)
+def get_canonical_typemap(specifier):
+    """Convert specifier to typemap.
+    Map specifier as needed.
+    specifier = ['long', 'int']
+
+    long int -> long
+    """
+    typename = '_'.join(specifier)
+    typename = canonical_typemap.get(typename, typename)
+    ntypemap = typemap.lookup_type(typename)
+    return ntypemap

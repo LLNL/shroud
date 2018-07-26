@@ -52,7 +52,7 @@ CC = gcc
 # -Wextra
 CFLAGS = -g -Wall
 CXX = g++
-CXXFLAGS = -g -Wall
+CXXFLAGS = -g -Wall -std=c++11
 FC = gfortran
 FFLAGS = -g -Wall -ffree-form
 LIBS = -lstdc++

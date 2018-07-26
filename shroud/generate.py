@@ -112,6 +112,8 @@ class VerifyAttrs(object):
                     .format(attr, node.ast.name, node.linenumber))
         self.check_shared_attrs(node.ast)
 
+        if ast.typemap is None:
+            print("XXXXXX typemap is None")
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 
@@ -143,11 +145,15 @@ class VerifyAttrs(object):
                                    .format(free_pattern))
 
     def check_arg_attrs(self, node, arg):
-        """Regularize attributes
+        """Regularize attributes.
         intent: lower case, no parens, must be in, out, or inout
         value: if pointer, default to False (pass-by-reference;
                else True (pass-by-value).
         """
+        if node:
+            options = node.options
+        else:
+            options = dict()
         argname = arg.name
 
         for attr in arg.attrs:
@@ -162,25 +168,17 @@ class VerifyAttrs(object):
                     'implied', # omitted in Fortran API, value passed to C++
                     'intent',
                     'len', 'len_trim', 'size',
-                    'template',
                     'value',
             ]:
                 raise RuntimeError(
                     "Illegal attribute '{}' for argument '{}' defined at line {}"
                     .format(attr, argname, node.linenumber))
 
-        argtype = arg.typename
-        arg_typemap = typemap.lookup_type(argtype)
+        arg_typemap = arg.typemap
         if arg_typemap is None:
-            # if the type does not exist, make sure it is defined by cxx_template
-            #- decl: void Function7(ArgType arg)
-            #  cxx_template:
-            #    ArgType:
-            #    - int
-            #    - double
-            if argtype not in node.cxx_template:
-                raise RuntimeError("check_arg_attrs: No such type %s: %s" % (
-                    argtype, node.decl))
+            # Sanity check to make sure arg_typemap exists
+            raise RuntimeError("check_arg_attrs: Missing arg.typemap on line {}: {}"
+                               .format(node.linenumber, node.decl))
 
         self.check_shared_attrs(arg)
 
@@ -274,16 +272,16 @@ class VerifyAttrs(object):
             attrs['size'] = options.C_var_size_template.format(c_var=argname)
 
         # Check template attribute
-        temp = attrs.get('template', None)
+        temp = arg.template_arguments
         if arg_typemap and arg_typemap.base == 'vector':
             if not temp:
-                raise RuntimeError("std::vector must have template argument: %s" % (
-                    arg.gen_decl()))
-            arg_typemap = typemap.lookup_type(temp)
+                raise RuntimeError("line {}: std::vector must have template argument: {}"
+                                   .format(node.linenumber, arg.gen_decl()))
+            arg_typemap = arg.template_arguments[0].typemap
             if arg_typemap is None:
                 raise RuntimeError("check_arg_attr: No such type %s for template: %s" % (
                     temp, arg.gen_decl()))
-        elif temp is not None:
+        elif temp:
             raise RuntimeError("Type '%s' may not supply template argument: %s" % (
                 argtype, arg.gen_decl()))
 
@@ -302,6 +300,7 @@ class GenFunctions(object):
     def __init__(self, newlibrary, config):
         self.newlibrary = newlibrary
         self.config = config
+        self.instantiate_scope = None
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -312,17 +311,27 @@ class GenFunctions(object):
 
         self.function_index = newlibrary.function_index
 
-        for cls in newlibrary.classes:
-#            added = self.default_ctor_and_dtor(cls)
-            if not cls.as_struct:
-                for var in cls.variables:
-                    self.add_var_getter_setter(cls, var)
-            cls.functions = self.define_function_suffix(cls.functions)
+        self.instantiate_classes(newlibrary)
         newlibrary.functions = self.define_function_suffix(newlibrary.functions)
 
 # No longer need this, but keep code for now in case some other dependency checking is needed
 #        for cls in newlibrary.classes:
 #            self.check_class_dependencies(cls)
+
+    def push_instantiate_scope(self, node, targs):
+        """Add template arguments to scope.
+        node  - ClassNode or FunctionNode
+        targs - list of TemplateArguments
+        """
+        newscope = util.Scope(self.instantiate_scope)
+        for idx, ast in enumerate(targs.asts):
+            scope = getattr(node, 'scope', '') # XXX - ClassNode has scope
+            setattr(newscope, scope + node.template_parameters[idx], ast)
+        self.instantiate_scope = newscope
+
+    def pop_instantiate_scope(self):
+        """Remove template arguments from scope"""
+        self.instantiate_scope = self.instantiate_scope.get_parent()
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -368,7 +377,7 @@ class GenFunctions(object):
         class member variables.
         """
         ast = var.ast
-        arg_typemap = typemap.lookup_type(ast.typename)
+        arg_typemap = ast.typemap
         fieldname = ast.name  # attrs.get('name', ast.name)
 
         fmt = util.Scope(var.fmtdict)
@@ -423,11 +432,87 @@ class GenFunctions(object):
 
         cls.add_function(decl, attrs=attrs, format=format, options=options)
 
+    def instantiate_classes(self, node):
+        """Instantate any template_arguments.
+        node - LibraryNode or ClassNode.
+
+        Create a new list of classes replacing
+        any class with template_arguments with instantiated classes.
+        """
+        clslist = []
+        for cls in node.classes:
+            if cls.as_struct:
+                clslist.append(cls)
+            elif cls.template_arguments:
+                # Replace class with new class for each template instantiation.
+                for i, targs in enumerate(cls.template_arguments):
+                    newcls = cls.clone()
+                    clslist.append(newcls)
+
+                    # If single template argument, use its name; else sequence.
+                    # XXX - maybe change to names
+                    #   i.e.  _int_double  However <std::string,int> is a problem.
+                    if len(targs.asts) == 1:
+                        class_suffix = targs.asts[0].typemap.name
+                    else:
+                        class_suffix = str(iargs)
+
+                    # Update name of class.
+                    #  cxx_class - vector_0 or vector_int     (Fortran and C names)
+                    #  cxx_type  - vector<int>
+                    cxx_class = "{}_{}".format(newcls.fmtdict.cxx_class, class_suffix)
+                    cxx_type = "{}{}".format(newcls.fmtdict.cxx_class,
+                                             targs.instantiation)
+
+                    newcls.fmtdict.update(dict(
+                        cxx_type=cxx_type,
+                        cxx_class=cxx_class,
+                        class_lower=cxx_class.lower(),
+                        class_upper=cxx_class.upper(),
+                        class_scope=cxx_class + '::',
+                        F_derived_name=cxx_class.lower(),
+                    ))
+
+                    # Remove defaulted attributes, load files from fmtdict, recompute defaults
+                    newcls.delete_format_templates()
+
+                    # Update format and options from template_arguments
+                    if targs.fmtdict:
+                        newcls.fmtdict.update(targs.fmtdict)
+                    if targs.options:
+                        newcls.options.update(targs.options)
+
+                    newcls.expand_format_templates()
+                    newcls.typemap = typemap.create_class_typemap(newcls)
+                    self.update_types_for_class_instantiation(newcls)
+
+                    self.push_instantiate_scope(newcls, targs)
+                    self.process_class(newcls)
+                    self.pop_instantiate_scope()
+            else:
+                clslist.append(cls)
+                self.process_class(cls)
+
+        node.classes = clslist
+
+    def update_types_for_class_instantiation(self, clsnode):
+        """Update the references to use instantiated class.
+        """
+        for function in clsnode.functions:
+            if function.ast.is_ctor():
+                function.ast.typemap = clsnode.typemap
+
+    def process_class(self, cls):
+        """process variables and functions for a class."""
+        for var in cls.variables:
+            self.add_var_getter_setter(cls, var)
+        cls.functions = self.define_function_suffix(cls.functions)
+
     def define_function_suffix(self, functions):
         """
         Return a new list with generated function inserted.
 
-        functions - list of functions
+        functions - list of ast.FunctionNode
         """
 
         # Look for overloaded functions
@@ -439,7 +524,7 @@ class GenFunctions(object):
                 append(function._function_index)
 
         # keep track of which function are overloaded in C++.
-        for key, value in cxx_overload.items():
+        for value in cxx_overload.values():
             if len(value) > 1:
                 for index in value:
                     self.function_index[index]._cxx_overload = value
@@ -450,9 +535,13 @@ class GenFunctions(object):
             if method._has_default_arg:
                 self.has_default_args(method, ordered_functions)
             ordered_functions.append(method)
-            if method.cxx_template:
+            if method.template_arguments:
                 method._overloaded = True
                 self.template_function(method, ordered_functions)
+            elif method.have_template_args:
+#                method._overloaded = True
+                self.template_function2(method, ordered_functions)
+                pass
 
         # Look for overloaded functions
         overloaded_functions = {}
@@ -461,11 +550,15 @@ class GenFunctions(object):
             #     continue
             if function.cxx_template:
                 continue
+            if function.have_template_args:
+                # Stuff like push_back which is in a templated class, is not an overload
+                # class_prefix is used to distigunish the functions, not function_suffix.
+                continue
             overloaded_functions.setdefault(
                 function.ast.name, []).append(function)
 
         # look for function overload and compute function_suffix
-        for mname, overloads in overloaded_functions.items():
+        for overloads in overloaded_functions.values():
             if len(overloads) > 1:
                 for i, function in enumerate(overloads):
                     function._overloaded = True
@@ -496,46 +589,121 @@ class GenFunctions(object):
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
 
-        - decl: void Function7(ArgType arg)
+        - decl: template<typename ArgType> void Function7(ArgType arg)
           cxx_template:
-            ArgType:
-            - int
-            - double
+          - instantiation: <int>
+          - instantiation: <double>
+
+        node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
+                 TemplateArgument.asts[i].typemap
+
+        Clone entire function then look for template arguments.
         """
         oldoptions = node.options
 
-        nkeys = 0
-        for typename, types in node.cxx_template.items():
-            if typename == '__line__':
-                continue
-            nkeys += 1
-            if nkeys > 1:
-                # In the future it may be useful to have multiple templates
-                # That the would start creating more permutations
-                raise NotImplementedError("Only one cxx_templated type for now",
-                                          node.cxx_template)
-            for type in types:
-                new = node.clone()
-                ordered_functions.append(new)
-                self.append_function_index(new)
+        for iargs, targs in enumerate(node.template_arguments):
+            new = node.clone()
+            ordered_functions.append(new)
+            self.append_function_index(new)
 
-                new._generated = 'cxx_template'
-                fmt = new.fmtdict
-                fmt.function_suffix = fmt.function_suffix + '_' + type
-                new.cxx_template = {}
-                options = new.options
-                options.wrap_c = oldoptions.wrap_c
-                options.wrap_fortran = oldoptions.wrap_fortran
-                options.wrap_python = oldoptions.wrap_python
-                options.wrap_lua = oldoptions.wrap_lua
-                # Convert typename to type
-                fmt.CXX_template = '<{}>'.format(type)
-                if new.ast.typename == typename:
-                    new.ast.typename = type
-                    new._CXX_return_templated = True
-                for arg in new.ast.params:
-                    if arg.typename == typename:
-                        arg.typename = type
+            new._generated = 'cxx_template'
+            fmt = new.fmtdict
+
+            # If single template argument, use its name; else sequence.
+            # XXX - maybe change to names
+            #  i.e.  _int_double  However <std::string,int> is a problem.
+            if len(targs.asts) == 1:
+                fmt.function_suffix = fmt.function_suffix + '_' + targs.asts[0].typemap.name
+            else:
+                fmt.function_suffix = fmt.function_suffix + '_' + str(iargs)
+
+            new.cxx_template = {}
+            options = new.options
+            options.wrap_c = oldoptions.wrap_c
+            options.wrap_fortran = oldoptions.wrap_fortran
+            options.wrap_python = oldoptions.wrap_python
+            options.wrap_lua = oldoptions.wrap_lua
+            fmt.CXX_template = targs.instantiation   # ex. <int>
+
+            self.push_instantiate_scope(new, targs)
+
+            if new.ast.typemap.base == 'template':
+                iast = getattr(self.instantiate_scope, new.ast.typemap.name)
+                new.ast = new.ast.instantiate(node.ast.instantiate(iast))
+                new._CXX_return_templated = True
+
+            # Replace templated arguments.
+            newparams = []
+            for arg in new.ast.params:
+                if arg.typemap.base == 'template':
+                    iast = getattr(self.instantiate_scope, arg.typemap.name)
+                    newparams.append(arg.instantiate(iast))
+                else:
+                    newparams.append(arg)
+            new.ast.params = newparams
+            self.pop_instantiate_scope()
+
+        # Do not process templated node, instead process
+        # generated functions above.
+        options = node.options
+        options.wrap_c = False
+        options.wrap_fortran = False
+        options.wrap_python = False
+        options.wrap_lua = False
+
+    def template_function2(self, node, ordered_functions):
+        """ Create overloaded functions for each templated argument.
+
+        - decl: template<typename T> class vector
+          cxx_template:
+          - instantiation: <int>
+          - instantiation: <double>
+          declarations:
+          - decl: void push_back( const T& value+intent(in) );
+
+        node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
+                 TemplateArgument.asts[i].typemap
+
+        Clone entire function then look for template arguments.
+        Use when the function itself is not templated, but it has a templated argument
+        from a class.
+        function_suffix is not modified for functions in a templated class.
+        Instead class_prefix is used to distinguish the functions.
+        """
+        oldoptions = node.options
+
+        new = node.clone()
+        ordered_functions.append(new)
+        self.append_function_index(new)
+
+        new._generated = 'cxx_template'
+        fmt = new.fmtdict
+
+        new.cxx_template = {}
+        options = new.options
+        options.wrap_c = oldoptions.wrap_c
+        options.wrap_fortran = oldoptions.wrap_fortran
+        options.wrap_python = oldoptions.wrap_python
+        options.wrap_lua = oldoptions.wrap_lua
+#        fmt.CXX_template = targs.instantiation   # ex. <int>
+
+#        self.push_instantiate_scope(new, targs)
+
+        if new.ast.typemap.base == 'template':
+            iast = getattr(self.instantiate_scope, new.ast.typemap.name)
+            new.ast = new.ast.instantiate(node.ast.instantiate(iast))
+            new._CXX_return_templated = True
+
+        # Replace templated arguments.
+        newparams = []
+        for arg in new.ast.params:
+            if arg.typemap.base == 'template':
+                iast = getattr(self.instantiate_scope, arg.typemap.name)
+                newparams.append(arg.instantiate(iast))
+            else:
+                newparams.append(arg)
+        new.ast.params = newparams
+#        self.pop_instantiate_scope()
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -555,6 +723,7 @@ class GenFunctions(object):
             - double
         """
         nkeys = 0
+        linenumber = node.fortran_generic.get('__line__', '?')
         for argname, types in node.fortran_generic.items():
             if argname == '__line__':
                 continue
@@ -563,7 +732,12 @@ class GenFunctions(object):
                 # In the future it may be useful to have multiple generic arguments
                 # That the would start creating more permutations
                 raise NotImplementedError("Only one generic arg for now")
-            for type in types:
+            for typ in types:
+                ntypemap = typemap.lookup_type(typ)
+                if ntypemap is None:
+                    raise RuntimeError("Unknown type '{}' for argument '{}' "
+                                       "for fortran generic near line {}"
+                                       .format(typ, argname, linenumber))
                 new = node.clone()
                 ordered_functions.append(new)
                 self.append_function_index(new)
@@ -572,7 +746,7 @@ class GenFunctions(object):
                 new._PTR_F_C_index = node._function_index
                 fmt = new.fmtdict
                 # XXX append to existing suffix
-                fmt.function_suffix = fmt.function_suffix + '_' + type
+                fmt.function_suffix = fmt.function_suffix + '_' + typ
                 new.fortran_generic = {}
                 options = new.options
                 options.wrap_c = False
@@ -583,13 +757,12 @@ class GenFunctions(object):
                 for arg in new.ast.params:
                     if arg.name == argname:
                         # Convert any arg_typemap to native type with f_type
-                        argtype = arg.typename
-                        arg_typemap = typemap.lookup_type(argtype)
+                        arg_typemap = arg.typemap
                         if not arg_typemap.f_cast:
                             raise RuntimeError(
                                 "unable to cast type {} in fortran_generic"
-                                .format(argtype))
-                        arg.typename = type
+                                .format(arg_typemap.name))
+                        arg.set_type(ntypemap)
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -689,15 +862,14 @@ class GenFunctions(object):
         # will be declared as char. It will also want to return the
         # c_str of a stack variable. Warn and turn off the wrapper.
         ast = node.ast
-        result_type = ast.typename
-        result_typemap = typemap.lookup_type(result_type)
+        result_typemap = ast.typemap
         # shadow classes have not been added yet.
         # Only care about string here.
         attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
         if result_typemap and \
            result_typemap.base in ['string', 'vector'] and \
-           result_type != 'char' and \
+           result_typemap.name != 'char' and \
            not result_is_ptr:
             options.wrap_c = False
 #            options.wrap_fortran = False
@@ -719,18 +891,17 @@ class GenFunctions(object):
         # create buffer version of function.
         has_implied_arg = False
         for arg in ast.params:
-            argtype = arg.typename
-            arg_typemap = typemap.lookup_type(argtype)
+            arg_typemap = arg.typemap
             if arg_typemap.base == 'string':
                 is_ptr = arg.is_indirect()
                 if is_ptr:
                     has_implied_arg = True
                 else:
-                    arg.typename = 'char_scalar'
+                    arg.set_type(typemap.lookup_type('char_scalar'))
             elif arg_typemap.base == 'vector':
                 has_implied_arg = True
                 # Create helpers for vector template.
-                cxx_T = arg.attrs['template']
+                cxx_T = arg.template_arguments[0].typemap.name
                 tempate_typemap = typemap.lookup_type(cxx_T)
                 whelpers.add_copy_array_helper(dict(
                     cxx_type=cxx_T,
@@ -747,9 +918,9 @@ class GenFunctions(object):
         if result_typemap.base == 'vector':
             raise NotImplementedError("vector result")
         elif result_typemap.base == 'string':
-            if result_type == 'char' and not result_is_ptr:
+            if result_typemap.name == 'char' and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
-                ast.typename = 'char_scalar'
+                ast.set_type(typemap.lookup_type('char_scalar'))
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
@@ -784,8 +955,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             attrs = arg.attrs
-            argtype = arg.typename
-            arg_typemap = typemap.lookup_type(argtype)
+            arg_typemap = arg.typemap
             if arg_typemap.base == 'vector':
                 # Do not wrap the orignal C function with vector argument.
                 # Meaningless to call without the size argument.
@@ -841,13 +1011,15 @@ class GenFunctions(object):
                 f_attrs['deref'] = 'result_as_arg'
             elif result_typemap.cxx_type == 'std::string':
                 result_as_string = ast.result_as_voidstar(
-                    'stringout', result_name, const=ast.const)
+                    typemap.lookup_type('stringout'),
+                    result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['context'] = options.C_var_context_template.format(c_var=result_name)
                 self.move_arg_attributes(attrs, node, C_new)
             elif result_is_ptr:  # 'char *'
                 result_as_string = ast.result_as_voidstar(
-                    'charout', result_name, const=ast.const)
+                    typemap.lookup_type('charout'),
+                    result_name, const=ast.const)
                 attrs = result_as_string.attrs
                 attrs['context'] = options.C_var_context_template.format(c_var=result_name)
                 self.move_arg_attributes(attrs, node, C_new)
@@ -972,8 +1144,7 @@ class GenFunctions(object):
             # XXX - process templated types
             return
         ast = node.ast
-        rv_type = ast.typename
-        typedef = typemap.lookup_type(rv_type)
+        typedef = ast.typemap
         if typedef is None:
             raise RuntimeError(
                 "Unknown type {} for function decl: {}"
@@ -982,12 +1153,11 @@ class GenFunctions(object):
         # XXX - make sure it exists
         used_types[rv_type] = result_typedef
         for arg in ast.params:
-            argtype = arg.typename
-            typedef = typemap.lookup_type(argtype)
-            if typedef is None:
+            ntypemap = arg.typemap
+            if ntypemap is None:
                 raise RuntimeError("%s not defined" % argtype)
-            if typedef.base == 'shadow':
-                used_types[argtype] = typedef
+            if ntypemap.base == 'shadow':
+                used_types[ntypemap.name] = ntypemap
 
     def gen_functions_decl(self, functions):
         """ Generate declgen for generated all functions.
@@ -1092,7 +1262,7 @@ class Preprocess(object):
         fmt_func = node.fmtdict
 
         ast = node.ast
-        CXX_result_type = ast.typename
+        CXX_result_type = ast.typemap.name
         C_result_type = CXX_result_type
         F_result_type = CXX_result_type
         subprogram = ast.get_subprogram()
@@ -1182,7 +1352,7 @@ class CheckImplied(todict.PrintNode):
     def visit_Identifier(self, node):
         """Check arguments to size function.
         """
-        if node.args == None:
+        if node.args is None:
             return node.name
         elif node.name == 'size':
             # size(arg)

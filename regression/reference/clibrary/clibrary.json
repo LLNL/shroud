@@ -44,7 +44,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "clibrary.h", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -132,23 +132,19 @@
         "functions": [
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function1()", 
                 "declgen": "void Function1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "Function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "Function1", 
@@ -265,54 +261,48 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "double"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "double"
-                    ]
+                    ], 
+                    "typemap_name": "double"
                 }, 
                 "decl": "double Function2(double arg1, int arg2)", 
                 "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "double SHC_rv =\t Function2(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function2", 
@@ -445,81 +435,72 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "implied": "size(values)", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "len", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "values", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "result", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))", 
                 "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "Sum(\tlen,\t values,\t result);", 
                     "C_call_list": "len,\t values,\t result", 
                     "C_name": "Sum", 
@@ -608,39 +589,34 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "bool"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }
                     ], 
                     "specifier": [
                         "bool"
-                    ]
+                    ], 
+                    "typemap_name": "bool"
                 }, 
                 "decl": "bool Function3(bool arg)", 
                 "declgen": "bool Function3(bool arg +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "bool SHC_rv =\t Function3(\targ);", 
                     "C_call_list": "arg", 
                     "C_name": "Function3", 
@@ -772,19 +748,13 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function3b", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -795,56 +765,54 @@
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "bool", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg3", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "bool"
-                            ]
+                            ], 
+                            "typemap_name": "bool"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))", 
                 "declgen": "void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "Function3b(\targ1,\t arg2,\t arg3);", 
                     "C_call_list": "arg1,\t arg2,\t arg3", 
                     "C_name": "Function3b", 
@@ -954,25 +922,20 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char", 
                         "deref": "result_as_arg", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -981,18 +944,17 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -1001,24 +963,25 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
                 "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);", 
                     "C_call_list": "arg1,\t arg2", 
                     "C_name": "Function4a", 
@@ -1117,20 +1080,16 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "Function4a", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Larg1", 
                                 "value": false
@@ -1140,19 +1099,18 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Larg2", 
                                 "value": false
@@ -1162,45 +1120,44 @@
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)", 
                 "declgen": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char * SHC_rv =\t Function4a(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "CLI_function4a_bufferify", 
@@ -1328,19 +1285,13 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "intargs", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
@@ -1351,56 +1302,54 @@
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arginout", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "argout", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))", 
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "intargs(\targin,\t arginout,\t argout);", 
                     "C_call_list": "argin,\t arginout,\t argout", 
                     "C_name": "intargs", 
@@ -1533,78 +1482,69 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "cos_doubles", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "in", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "allocatable": "mold=in", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "out", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "implied": "size(in)", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void cos_doubles(double * in     +intent(in)  +dimension(:), double * out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
@@ -1613,7 +1553,7 @@
                     "brief": "compute cos of IN and save in OUT", 
                     "description": "allocate OUT same type as IN implied size of array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "cos_doubles(\tin,\t out,\t sizein);", 
                     "C_call_list": "in,\t out,\t sizein", 
                     "C_name": "cos_doubles", 
@@ -1746,78 +1686,69 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "truncate_to_int", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "double", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "in", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "double"
-                            ]
+                            ], 
+                            "typemap_name": "double"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "allocatable": "mold=in", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "out", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "implied": "size(in)", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
@@ -1826,7 +1757,7 @@
                     "brief": "truncate IN argument and save in OUT", 
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);", 
                     "C_call_list": "in,\t out,\t sizein", 
                     "C_name": "truncate_to_int", 
@@ -1925,57 +1856,50 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "increment", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "array", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "implied": "size(array)", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "sizein", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void increment(int * array  +intent(inout)  +dimension(:), int   sizein +implied(size(array)))", 
                 "declgen": "void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)", 
@@ -1984,7 +1908,7 @@
                     "brief": null, 
                     "description": "array with intent(INOUT)\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "increment(\tarray,\t sizein);", 
                     "C_call_list": "array,\t sizein", 
                     "C_name": "increment", 
@@ -2440,6 +2364,86 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
+        "int16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int16_t", 
+            "cxx_type": "int16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "int32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int32_t", 
+            "cxx_type": "int32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "int64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int64_t", 
+            "cxx_type": "int64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "int8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int8_t", 
+            "cxx_type": "int8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -2475,6 +2479,25 @@
                 ]
             }, 
             "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "short", 
+            "cxx_type": "short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -2873,6 +2896,160 @@
                 }
             }, 
             "f_type": "type(C_PTR)YY"
+        }, 
+        "uint16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint16_t", 
+            "cxx_type": "uint16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "uint32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint32_t", 
+            "cxx_type": "uint32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "uint64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint64_t", 
+            "cxx_type": "uint64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "uint8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint8_t", 
+            "cxx_type": "uint8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
+        "unsigned_int": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned int", 
+            "cxx_type": "unsigned int", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "unsigned_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned long", 
+            "cxx_type": "unsigned long", 
+            "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG)"
+        }, 
+        "unsigned_long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
+            "PY_format": "L", 
+            "c_type": "unsigned long long", 
+            "cxx_type": "unsigned long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "unsigned_short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned short", 
+            "cxx_type": "unsigned short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

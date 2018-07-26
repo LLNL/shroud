@@ -151,17 +151,18 @@ declarations:
     format:
       function_suffix: _from_index
   
-  - decl: void Function7(ArgType arg)
+  - decl: |
+        template<typename ArgType>
+        void Function7(ArgType arg)
     cxx_template:
-      ArgType:
-      - int
-      - double
+    - instantiation: <int>
+    - instantiation: <double>
+
   
-  - decl: RetType Function8()
+  - decl: template<typename RetType> RetType Function8()
     cxx_template:
-      RetType:
-      - int
-      - double
+    - instantiation: <int>
+    - instantiation: <double>
     options:
        wrap_lua: False
        wrap_python: False
@@ -174,9 +175,12 @@ declarations:
   
 # test cxx_template, fortran_generic, overload
 #- decl: void Function10()
-#- decl: void Function10(ArgType arg1, std::string &name, double arg2 = 0)
+#- decl: template<typename ArgType> void Function10(ArgType arg1, std::string &name, double arg2 = 0)
 #  options:
 #    F_string_len_trim: True
+#  cxx_template:
+#  - instantiation: <int>
+#  - instantiation: <double>
 #  cxx_template:
 #    ArgType:
 #    - int
@@ -192,10 +196,9 @@ declarations:
   - decl: void Function10(const std::string &name, double arg2)
     options:
       F_string_len_trim: True
-#  cxx_template:
-#    ArgType:
-#    - int
-#    - double
+#   cxx_template:
+#   - instantiation: <int>
+#   - instantiation: <double>
     fortran_generic:
        arg2:
        - float

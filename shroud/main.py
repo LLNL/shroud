@@ -82,7 +82,8 @@ class Config(object):
 
 
 class TypeOut(util.WrapperMixin):
-    """A class to write out type information.
+    """A class to write out Class type information.
+    It may be 'imported' by another file to share classes across YAML files.
     It subclasses util.WrapperMixin in order to access
     write routines.
     """

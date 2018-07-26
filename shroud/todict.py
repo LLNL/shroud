@@ -45,6 +45,8 @@ Useful for debugging and seralizing instances as json.
 
 from . import visitor
 
+import json
+
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
@@ -60,9 +62,8 @@ class ToDict(visitor.Visitor):
     def visit_Ptr(self, node):
         d = dict(
             ptr=node.ptr,
-            const=node.const,
-            ##- volatile=node.volatile,
         )
+        add_true_fields(node, d, ['const', 'volatile'])
         return d
 
     def visit_Declarator(self, node):
@@ -78,11 +79,10 @@ class ToDict(visitor.Visitor):
     def visit_Declaration(self, node):
         d = dict(
             specifier=node.specifier,
-            const=node.const,
-            ##- volatile=node.volatile,
             ##- node.array,
-            attrs=node.attrs,
+            typemap_name=node.typemap.name,  # print name to avoid too much nesting
         )
+        add_true_fields(node, d, ['attrs', 'const', 'func_const', 'volatile'])
         if node.declarator:
             # ctor and dtor have no declarator
             d['declarator'] = self.visit(node.declarator)
@@ -90,10 +90,13 @@ class ToDict(visitor.Visitor):
             d['storage'] = node.storage
         if node.params is not None:
             d['params'] = self.visit(node.params)
-            d['func_const'] = node.func_const
         if node.init is not None:
             d['init'] = node.init
-
+        if node.template_arguments:
+            lst = []
+            for tp in node.template_arguments:
+                lst.append(self.visit(tp))
+            d['template_arguments'] = lst
         if hasattr(node, 'return_pointer_as'):
             if node.return_pointer_as is not None:
                 d['return_pointer_as'] = node.return_pointer_as
@@ -161,6 +164,18 @@ class ToDict(visitor.Visitor):
         )
         return d
 
+    def visit_Template(self, node):
+        d = dict(
+            parameters=self.visit(node.parameters),
+            decl=self.visit(node.decl)
+        )
+        return d
+
+    def visit_TemplateParam(self, node):
+        d = dict(
+            name=node.name,
+        )
+        return d
 
 ######################################################################
 
@@ -186,43 +201,42 @@ class ToDict(visitor.Visitor):
 ######################################################################
 
     def visit_LibraryNode(self, node):
-        d = dict(
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
-        )
-
+        d = dict()
         add_true_fields(node, d,
                         ['copyright', 'cxx_header', 'language'])
         self.add_visit_fields(node, d,
-                              ['classes', 'enums', 'functions', 'variables'])
+                              ['classes', 'enums', 'functions', 'variables',
+                               'fmtdict', 'options'])
         return d
 
     def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,
-            format=self.visit(node.fmtdict),
             name=node.name,
-            ##- typename=node.typename,
-            typemap_name=node.typemap_name,
-            options=self.visit(node.options),
+            typemap_name=node.typemap.name,  # print name to avoid too much nesting
         )
         add_non_none_fields(node, d, ['linenumber'])
-        add_true_fields(node, d, ['as_struct', 'python'])
-        self.add_visit_fields(node, d, ['enums', 'functions', 'variables'])
+        add_true_fields(node, d, ['as_struct', 'python',
+                                  'scope', 'template_parameters'])
+        self.add_visit_fields(node, d,
+                              ['enums', 'functions', 'variables',
+                               'fmtdict', 'options',
+                               'template_arguments'])
         return d
 
     def visit_FunctionNode(self, node):
         d = dict(
             ast=self.visit(node.ast),
             decl=node.decl,
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
-        self.add_visit_fields(node, d, ['_fmtargs', '_fmtresult'])
+        self.add_visit_fields(node, d, ['_fmtargs', '_fmtresult',
+                                        'fmtdict', 'options',
+                                        'template_arguments'])
         add_true_fields(node, d, [
             'cxx_template', 'default_arg_suffix',
             'declgen', 'doxygen',
             'fortran_generic', 'linenumber', 'return_this',
+            'have_template_args', 'template_parameters',
             'C_error_pattern', 'PY_error_pattern',
             '_CXX_return_templated',
             '_default_funcs',
@@ -248,22 +262,20 @@ class ToDict(visitor.Visitor):
     def visit_EnumNode(self, node):
         d = dict(
             name=node.name,
-            typemap_name=node.typemap_name,
+            typemap_name=node.typemap.name,  # print name to avoid too much nesting
             ast=self.visit(node.ast),
             decl=node.decl,
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
         add_non_none_fields(node, d, ['linenumber'])
-        self.add_visit_fields(node, d, ['_fmtmembers'])
+        self.add_visit_fields(node, d, ['_fmtmembers',
+                                        'fmtdict', 'options'])
         return d
 
     def visit_NamespaceNode(self, node):
         d = dict(
             name=node.name,
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
+        self.add_visit_fields(node, d, ['fmtdict', 'options'])
         add_non_none_fields(node, d, ['linenumber'])
         return d
 
@@ -271,10 +283,18 @@ class ToDict(visitor.Visitor):
         d = dict(
             name=node.name,
             ast=self.visit(node.ast),
-            format=self.visit(node.fmtdict),
-            options=self.visit(node.options),
         )
+        self.add_visit_fields(node, d, ['fmtdict', 'options'])
         add_non_none_fields(node, d, ['linenumber'])
+        return d
+
+    def visit_TemplateArgument(self, node):
+        d = dict(
+            instantiation=node.instantiation,
+            asts=self.visit(node.asts),
+        )
+#        self.add_visit_fields(node, d, ['fmtdict', 'options'])
+        add_non_none_fields(node, d, ['fmtdict', 'options'])
         return d
 
     def add_visit_fields(self, node, d, fields):
@@ -403,3 +423,10 @@ def print_node(node):
     """
     visitor = PrintNode()
     return visitor.visit(node)
+
+def print_node_as_json(node):
+    """Print a node as json.
+    Useful for debugging.
+    """
+    dd = to_dict(node)
+    print(json.dumps(dd, indent=4, sort_keys=True))

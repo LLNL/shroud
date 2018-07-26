@@ -249,9 +249,15 @@ class WrapperMixin(object):
 
 #####
 
-    def namespace(self, library, cls, position, output, comment=True):
+    def write_namespace(self, cls, position, output, comment=True):
+        """Write nested namespace statements.
+        cls - ClassNode to wrap
+        position - 'begin' or 'end'
+        output   - append generated code to list output
+        comment  - True = add comment to ending brace
+        """
         if cls:
-            namespace = cls.typemap_name.split('::')
+            namespace = cls.typemap.name.split('::')
             namespace.pop()  # remove class name
         else:
             namespace = []
@@ -564,6 +570,12 @@ class Scope(object):
         """
         return key in self.__dict__
 
+    def delattrs(self, lst):
+        """Remove a list of attributes from the local dictionary."""
+        for key in lst:
+            if key in self.__dict__:
+                del self.__dict__[key]
+
     def clone(self):
         """return new Scope with same inlocal and parent"""
         new = Scope(self.__parent)
@@ -572,6 +584,24 @@ class Scope(object):
             if not key.startswith(skip):
                 new.__dict__[key] = value
         return new
+
+    def reparent(self, parent):
+        """Change the parent node."""
+        self.__parent = parent
+
+    def get_parent(self):
+        """Return parent"""
+        return self.__parent
+
+    def trace(self, key, header=True):
+        """Help debug where a symbol is found."""
+        if header:
+            print("XXXXXXXXXX", key)
+        if key in self.__dict__:
+            print("TRACE {}: {}  {}".format(key, id(self), self.__dict__[key]))
+        elif self.__parent:
+            print("TRACE {}: {}".format(key, id(self)))
+            self.__parent.trace(key, header=False)
 
     def _to_dict(self):
         d = {}

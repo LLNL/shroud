@@ -41,6 +41,7 @@
 //
 // #######################################################################
 #include "wrapdefault_library.h"
+#include <stdlib.h>
 #include "global_header.hpp"
 #include "typesdefault_library.h"
 

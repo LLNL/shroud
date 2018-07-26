@@ -1,8 +1,8 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
-# Produced at the Lawrence Livermore National Laboratory 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+# Produced at the Lawrence Livermore National Laboratory
 #
 # LLNL-CODE-738041.
-# All rights reserved. 
+# All rights reserved.
 #
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -13,7 +13,7 @@
 #
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
@@ -54,6 +54,8 @@ TESTDIRS = \
     $(tempdir)/run/tutorial/..\
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
+    $(tempdir)/run/types/..\
+    $(tempdir)/run/templates/..\
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors/python/.. \
     $(tempdir)/run/vectors/lua/.. \
@@ -67,10 +69,10 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial vectors strings clibrary ownership
+fortran : tutorial types vectors strings clibrary ownership templates
 
-# Compile the generated Fortran wrapper
-tutorial vectors forward strings clibrary ownership : testdirs
+# Compile the Fortran tests
+tutorial types vectors forward strings clibrary ownership templates : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/$@ \
 	    -f $(top)/regression/run/$@/Makefile \
@@ -88,15 +90,40 @@ tutorial-cpp : testdirs
 	    -f $(top)/regression/run/tutorial/Makefile \
 	    top=$(top) maincpp
 
-test-c : tutorial-c
+templates-c : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run/templates \
+	    -f $(top)/regression/run/templates/Makefile \
+	    top=$(top) testc
+
+templates-cpp : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run/templates \
+	    -f $(top)/regression/run/templates/Makefile \
+	    top=$(top) maincpp
+
+# Compile C tests
+clang : tutorial-c templates-c
 
 # Run the Fortran tests
 test-fortran : fortran
 	$(tempdir)/run/tutorial/tutorial
+	$(tempdir)/run/types/types
 	$(tempdir)/run/vectors/vectors
 	$(tempdir)/run/strings/strings
 	$(tempdir)/run/clibrary/clibrary
 	$(tempdir)/run/ownership/ownership
+	$(tempdir)/run/templates/templates
+
+# Run a single Fortran test
+# make ftest name=templates
+ftest :
+	$(tempdir)/run/$(name)/$(name)
+
+# Run the C tests
+test-c : clang
+	$(tempdir)/run/tutorial/testc
+	$(tempdir)/run/templates/testc
 
 # Compile the generated Python wrapper
 py-tutorial : testdirs
@@ -158,8 +185,10 @@ test-lua : lua-tutorial
 test-all : test-c test-fortran test-python test-lua
 
 
-.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership
+.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership templates
+.PHONY : test-c
 .PHONY : tutorial-c tutorial-cpp
+.PHONY : templates-c
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings

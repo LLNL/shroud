@@ -637,11 +637,12 @@ C++::
 
 YAML::
 
-  - decl: void Function7(ArgType arg)
+  - decl: |
+       template<typename ArgType>
+       void Function7(ArgType arg)
     cxx_template:
-      ArgType:
-        - int
-        - double
+    - instantiation: <int>
+    - instantiation: <double>
 
 This will create a Python wrapper for each value of *ArgType*, ``int``
 and ``double`` and then a single which will call the other two in
@@ -665,11 +666,10 @@ C++::
 
 YAML::
 
-  - decl: RetType Function8()
+  - decl: template<typename RetType> RetType Function8()
     cxx_template:
-      RetType:
-        - int
-        - double
+    - instantiation: <int>
+    - instantiation: <double>
 
 C wrapper::
 

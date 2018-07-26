@@ -78,7 +78,7 @@ PY_passChar(
   PyObject *args,
   PyObject *kwds)
 {
-// void passChar(char_scalar status +intent(in)+value)
+// void passChar(char status +intent(in)+value)
 // splicer begin function.pass_char
     char status;
     const char *SHT_kwlist[] = {
@@ -108,7 +108,7 @@ PY_returnChar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// char_scalar returnChar()
+// char returnChar()
 // splicer begin function.return_char
     char SHC_rv = returnChar();
 
@@ -782,7 +782,7 @@ PY_CpassChar(
   PyObject *args,
   PyObject *kwds)
 {
-// void CpassChar(char_scalar status +intent(in)+value)
+// void CpassChar(char status +intent(in)+value)
 // splicer begin function.cpass_char
     char status;
     const char *SHT_kwlist[] = {
@@ -812,7 +812,7 @@ PY_CreturnChar(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// char_scalar CreturnChar()
+// char CreturnChar()
 // splicer begin function.creturn_char
     char SHC_rv = CreturnChar();
 

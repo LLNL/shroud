@@ -47,14 +47,6 @@ extern "C" {
 #endif
 #include "tutorial.hpp"
 #include "lua.h"
-// splicer begin class.Class2.C_declaration
-// splicer end class.Class2.C_declaration
-
-typedef struct {
-    tutorial::Class2 * self;
-    // splicer begin class.Class2.C_object
-    // splicer end class.Class2.C_object
-} l_Class2_Type;
 // splicer begin class.Class3.C_declaration
 // splicer end class.Class3.C_declaration
 
@@ -63,6 +55,14 @@ typedef struct {
     // splicer begin class.Class3.C_object
     // splicer end class.Class3.C_object
 } l_Class3_Type;
+// splicer begin class.Class2.C_declaration
+// splicer end class.Class2.C_declaration
+
+typedef struct {
+    tutorial::Class2 * self;
+    // splicer begin class.Class2.C_object
+    // splicer end class.Class2.C_object
+} l_Class2_Type;
 
 int luaopen_forward(lua_State *L);
 

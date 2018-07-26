@@ -183,8 +183,7 @@ class Wrapf(util.WrapperMixin):
                       '\ntype, bind(C) :: {F_derived_name}+', fmt_class)
         for var in node.variables:
             ast = var.ast
-            result_type = ast.typename
-            ntypemap = typemap.lookup_type(result_type)
+            ntypemap = ast.typemap
             output.append(ast.gen_arg_as_fortran())
             self.update_f_module(self.module_use, {}, ntypemap.f_module) # XXX - self.module_imports?
         append_format(output,
@@ -727,12 +726,11 @@ rv = .false.
         fmt = util.Scope(fmt_func)
 
         ast = node.ast
-        result_type = node.C_return_type
         subprogram = node.C_subprogram
         result_typemap = node.C_result_typemap
         generated_suffix = node.generated_suffix
         return_pointer_as = ast.return_pointer_as
-        is_ctor = ast.attrs.get('_constructor', False)
+        is_ctor = ast.is_ctor()
         is_pure = ast.attrs.get('pure', False)
         is_static = False
         func_is_const = ast.func_const
@@ -774,7 +772,7 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
-            arg_typemap = typemap.lookup_type(arg.typename)
+            arg_typemap = arg.typemap
             fmt.update(arg_typemap.format)
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
             fmt.c_var = arg.name
@@ -809,7 +807,7 @@ rv = .false.
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
                 # XXX - make sure ptr is set to avoid VALUE
-                rvast = declast.create_this_arg(fmt.F_result, result_type, False)
+                rvast = declast.create_this_arg(fmt.F_result, result_typemap, False)
                 if return_pointer_as in ['pointer', 'allocatable', 'raw']:
                     arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
                     self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
@@ -877,7 +875,8 @@ rv = .false.
                 elif arg_typemap.f_to_c:
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
-                elif f_ast and c_ast.typename != f_ast.typename:
+#XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
+                elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports, arg_typemap.f_module)
@@ -1004,7 +1003,7 @@ rv = .false.
         C_subprogram = C_node.C_subprogram
         generated_suffix = C_node.generated_suffix
         ast = node.ast
-        is_ctor = ast.attrs.get('_constructor', False)
+        is_ctor = ast.is_ctor()
         is_static = False
 
         if fmt_func.C_custom_return_type:
@@ -1148,14 +1147,12 @@ rv = .false.
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
 
-            arg_type = f_arg.typename
-            arg_typemap = typemap.lookup_type(arg_type)
+            arg_typemap = f_arg.typemap
             base_typemap = arg_typemap
-            if 'template' in c_attrs:
+            if c_arg.template_arguments:
                 # If a template, use its type
-                cxx_T = c_attrs['template']
-                arg_typemap = typemap.lookup_type(cxx_T)
-                fmt_arg.cxx_T = cxx_T
+                arg_typemap = c_arg.template_arguments[0].typemap
+                fmt_arg.cxx_T = arg_typemap.name
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
@@ -1514,7 +1511,7 @@ class ToImplied(todict.PrintNode):
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
             argname = node.args[0].name
-            arg_typemap = typemap.lookup_type(self.arg.typename)
+            arg_typemap = self.arg.typemap
             return 'size({},kind={})'.format(argname, arg_typemap.f_kind)
         else:
             return self.param_list(node)

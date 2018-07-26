@@ -44,7 +44,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "strings.hpp", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -166,43 +166,38 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char_scalar", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "status", 
                                 "pointer": []
                             }, 
                             "specifier": [
-                                "char_scalar"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passChar(char status)", 
-                "declgen": "void passChar(char_scalar status +intent(in)+value)", 
+                "declgen": "void passChar(char status +intent(in)+value)", 
                 "doxygen": {
                     "__line__": 56, 
                     "brief": "pass a single char argument as a scalar."
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "passChar(\tstatus);", 
                     "C_call_list": "status", 
                     "C_name": "STR_pass_char", 
@@ -253,27 +248,23 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "char_scalar"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
-                        "char_scalar"
-                    ]
+                        "char"
+                    ], 
+                    "typemap_name": "char_scalar"
                 }, 
                 "decl": "char returnChar()", 
-                "declgen": "char_scalar returnChar()", 
+                "declgen": "char returnChar()", 
                 "doxygen": {
                     "__line__": 60, 
                     "brief": "return a char argument (non-pointer)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char SHC_rv =\t returnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_return_char", 
@@ -333,50 +324,44 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char_scalar", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "char_scalar"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "char returnChar()", 
-                "declgen": "void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "declgen": "void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "__line__": 60, 
                     "brief": "return a char argument (non-pointer)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char SHC_rv =\t returnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_return_char_bufferify", 
@@ -431,39 +416,31 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -472,19 +449,20 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void passCharPtr(char * dest +intent(out), const char * src +intent(in))", 
@@ -493,7 +471,7 @@
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "passCharPtr(\tdest,\t src);", 
                     "C_call_list": "dest,\t src", 
                     "C_name": "STR_pass_char_ptr", 
@@ -563,42 +541,34 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Ndest", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Lsrc", 
                                 "value": false
@@ -608,19 +578,20 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
@@ -629,7 +600,7 @@
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "passCharPtr(\tSH_dest,\t SH_src);", 
                     "C_call_list": "SH_dest,\t SH_src", 
                     "C_name": "STR_pass_char_ptr_bufferify", 
@@ -688,40 +659,34 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "s", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
                 "declgen": "void passCharPtrInOut(char * s +intent(inout))", 
@@ -730,7 +695,7 @@
                     "brief": "toupper", 
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "passCharPtrInOut(\ts);", 
                     "C_call_list": "s", 
                     "C_name": "STR_pass_char_ptr_in_out", 
@@ -779,43 +744,37 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "passCharPtrInOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "inout", 
                                 "len": "Ns", 
                                 "len_trim": "Ls", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "s", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void passCharPtrInOut(char * s+intent(inout))", 
                 "declgen": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))", 
@@ -824,7 +783,7 @@
                     "brief": "toupper", 
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "passCharPtrInOut(\tSH_s);", 
                     "C_call_list": "SH_s", 
                     "C_name": "STR_pass_char_ptr_in_out_bufferify", 
@@ -875,7 +834,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char", 
                         "deref": "allocatable"
                     }, 
                     "const": true, 
@@ -883,17 +841,16 @@
                         "name": "getCharPtr1", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "const char * getCharPtr1()", 
                 "declgen": "const char * getCharPtr1() +deref(allocatable)", 
@@ -901,7 +858,7 @@
                     "__line__": 89, 
                     "brief": "return a 'const char *' as character(*)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr1", 
@@ -962,21 +919,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "charout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out"
@@ -986,27 +937,28 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "charout"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "charout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr1()", 
-                "declgen": "void getCharPtr1(const charout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getCharPtr1(const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "__line__": 89, 
                     "brief": "return a 'const char *' as character(*)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const char * SHC_rv =\t getCharPtr1(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr1_bufferify", 
@@ -1057,7 +1009,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char", 
                         "deref": "result_as_arg", 
                         "len": "30"
                     }, 
@@ -1066,17 +1017,16 @@
                         "name": "getCharPtr2", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "const char * getCharPtr2() +len(30)", 
                 "declgen": "const char * getCharPtr2() +deref(result_as_arg)+len(30)", 
@@ -1084,7 +1034,7 @@
                     "__line__": 94, 
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const char * SHC_rv =\t getCharPtr2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr2", 
@@ -1145,42 +1095,38 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "len": "30"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr2() +len(30)", 
                 "declgen": "void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -1188,7 +1134,7 @@
                     "__line__": 94, 
                     "brief": "return 'const char *' with fixed size (len=30)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const char * SHC_rv =\t getCharPtr2(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr2_bufferify", 
@@ -1235,7 +1181,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "char", 
                         "deref": "result_as_arg"
                     }, 
                     "const": true, 
@@ -1243,17 +1188,16 @@
                         "name": "getCharPtr3", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "const char * getCharPtr3()", 
                 "declgen": "const char * getCharPtr3() +deref(result_as_arg)", 
@@ -1261,7 +1205,7 @@
                     "__line__": 99, 
                     "brief": "return a 'const char *' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const char * SHC_rv =\t getCharPtr3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr3", 
@@ -1316,42 +1260,36 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr3()", 
                 "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))", 
@@ -1359,7 +1297,7 @@
                     "__line__": 99, 
                     "brief": "return a 'const char *' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const char * SHC_rv =\t getCharPtr3(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_char_ptr3_bufferify", 
@@ -1387,42 +1325,36 @@
             {
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getCharPtr3", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const char * getCharPtr3()", 
                 "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))", 
@@ -1430,7 +1362,7 @@
                     "__line__": 99, 
                     "brief": "return a 'const char *' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_get_char_ptr3_bufferify", 
                     "F_arg_c_call": "output,\t len(output, kind=C_INT)", 
                     "F_arguments": "output", 
@@ -1474,7 +1406,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "allocatable"
                     }, 
                     "const": true, 
@@ -1482,12 +1413,12 @@
                         "name": "getConstStringResult", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string getConstStringResult()", 
                 "declgen": "const string getConstStringResult() +deref(allocatable)", 
@@ -1495,7 +1426,7 @@
                     "__line__": 109, 
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_get_const_string_result_bufferify", 
                     "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
@@ -1550,21 +1481,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringResult", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out"
@@ -1574,27 +1499,28 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringResult()", 
-                "declgen": "void getConstStringResult(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getConstStringResult(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "__line__": 109, 
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "*SHCXX_rv =\t getConstStringResult(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_result_bufferify", 
@@ -1639,7 +1565,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "result_as_arg", 
                         "len": 30
                     }, 
@@ -1648,12 +1573,12 @@
                         "name": "getConstStringLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string getConstStringLen() +len=30", 
                 "declgen": "const string getConstStringLen() +deref(result_as_arg)+len(30)", 
@@ -1661,7 +1586,7 @@
                     "__line__": 114, 
                     "brief": "return a 'const string' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_get_const_string_len_bufferify", 
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)", 
                     "F_arguments": "", 
@@ -1716,42 +1641,38 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringLen() +len=30", 
                 "declgen": "void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -1759,7 +1680,7 @@
                     "__line__": 114, 
                     "brief": "return a 'const string' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string SHCXX_rv =\t getConstStringLen(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_len_bufferify", 
@@ -1799,7 +1720,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "result_as_arg"
                     }, 
                     "const": true, 
@@ -1807,12 +1727,12 @@
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string getConstStringAsArg()", 
                 "declgen": "const string getConstStringAsArg() +deref(result_as_arg)", 
@@ -1820,7 +1740,7 @@
                     "__line__": 119, 
                     "brief": "return a 'const string' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_string_result_as_arg": "output", 
                     "PY_name_impl": "PY_getConstStringAsArg", 
                     "__line__": 121, 
@@ -1868,42 +1788,36 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringAsArg()", 
                 "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))", 
@@ -1911,7 +1825,7 @@
                     "__line__": 119, 
                     "brief": "return a 'const string' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string SHCXX_rv =\t getConstStringAsArg(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_as_arg_bufferify", 
@@ -1940,42 +1854,36 @@
                 "C_error_pattern": "C_invalid_name", 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string getConstStringAsArg()", 
                 "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))", 
@@ -1983,7 +1891,7 @@
                     "__line__": 119, 
                     "brief": "return a 'const string' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_get_const_string_as_arg_bufferify", 
                     "F_arg_c_call": "output,\t len(output, kind=C_INT)", 
                     "F_arguments": "output", 
@@ -2026,7 +1934,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "allocatable"
                     }, 
                     "const": true, 
@@ -2034,16 +1941,16 @@
                         "name": "getConstStringAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string getConstStringAlloc()", 
                 "declgen": "const std::string getConstStringAlloc() +deref(allocatable)", 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_get_const_string_alloc_bufferify", 
                     "F_arg_c_call": "DSHF_rv", 
                     "F_arguments": "", 
@@ -2097,21 +2004,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out"
@@ -2121,23 +2022,24 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string getConstStringAlloc()", 
-                "declgen": "void getConstStringAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
-                "format": {
+                "declgen": "void getConstStringAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "fmtdict": {
                     "C_call_code": "*SHCXX_rv =\t getConstStringAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_alloc_bufferify", 
@@ -2191,7 +2093,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "allocatable"
                     }, 
                     "const": true, 
@@ -2199,17 +2100,16 @@
                         "name": "getConstStringRefPure", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefPure()", 
                 "declgen": "const string & getConstStringRefPure() +deref(allocatable)", 
@@ -2217,7 +2117,7 @@
                     "__line__": 131, 
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_pure", 
@@ -2279,21 +2179,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefPure", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out"
@@ -2303,27 +2197,28 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefPure()", 
-                "declgen": "void getConstStringRefPure(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "declgen": "void getConstStringRefPure(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "__line__": 131, 
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefPure(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_pure_bufferify", 
@@ -2377,7 +2272,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "result_as_arg", 
                         "len": 30
                     }, 
@@ -2386,17 +2280,16 @@
                         "name": "getConstStringRefLen", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefLen() +len=30", 
                 "declgen": "const string & getConstStringRefLen() +deref(result_as_arg)+len(30)", 
@@ -2404,7 +2297,7 @@
                     "__line__": 136, 
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_len", 
@@ -2468,42 +2361,38 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefLen() +len=30", 
                 "declgen": "void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -2511,7 +2400,7 @@
                     "__line__": 136, 
                     "brief": "return 'const string&' with fixed size (len=30)"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_len_bufferify", 
@@ -2561,7 +2450,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "result_as_arg"
                     }, 
                     "const": true, 
@@ -2569,17 +2457,16 @@
                         "name": "getConstStringRefAsArg", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
                 "declgen": "const string & getConstStringRefAsArg() +deref(result_as_arg)", 
@@ -2587,7 +2474,7 @@
                     "__line__": 141, 
                     "brief": "return a 'const string&' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_as_arg", 
@@ -2645,42 +2532,36 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
                 "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))", 
@@ -2688,7 +2569,7 @@
                     "__line__": 141, 
                     "brief": "return a 'const string&' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_as_arg_bufferify", 
@@ -2717,42 +2598,36 @@
                 "C_error_pattern": "C_invalid_name", 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAsArg", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Noutput"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "output", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefAsArg()", 
                 "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))", 
@@ -2760,7 +2635,7 @@
                     "__line__": 141, 
                     "brief": "return a 'const string&' as argument"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_get_const_string_ref_as_arg_bufferify", 
                     "F_arg_c_call": "output,\t len(output, kind=C_INT)", 
                     "F_arguments": "output", 
@@ -2814,7 +2689,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "result_as_arg", 
                         "len": 30
                     }, 
@@ -2823,17 +2697,16 @@
                         "name": "getConstStringRefLenEmpty", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string& getConstStringRefLenEmpty() +len=30", 
                 "declgen": "const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)", 
@@ -2841,7 +2714,7 @@
                     "__line__": 148, 
                     "brief": "Test returning empty string reference"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_len_empty", 
@@ -2905,42 +2778,38 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefLenEmpty", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string& getConstStringRefLenEmpty() +len=30", 
                 "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -2948,7 +2817,7 @@
                     "__line__": 148, 
                     "brief": "Test returning empty string reference"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLenEmpty(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_len_empty_bufferify", 
@@ -3001,7 +2870,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "allocatable"
                     }, 
                     "const": true, 
@@ -3009,21 +2877,20 @@
                         "name": "getConstStringRefAlloc", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "&"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc()", 
                 "declgen": "const std::string & getConstStringRefAlloc() +deref(allocatable)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc", 
@@ -3085,21 +2952,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringRefAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out"
@@ -3109,23 +2970,24 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string& getConstStringRefAlloc()", 
-                "declgen": "void getConstStringRefAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
-                "format": {
+                "declgen": "void getConstStringRefAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
+                "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ref_alloc_bufferify", 
@@ -3178,7 +3040,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "result_as_arg", 
                         "len": 30
                     }, 
@@ -3187,17 +3048,16 @@
                         "name": "getConstStringPtrLen", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "result_as_arg", 
                     "specifier": [
                         "string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const string * getConstStringPtrLen() +len=30", 
                 "declgen": "const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)", 
@@ -3206,7 +3066,7 @@
                     "brief": "return a 'const string *' as character(30)", 
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrLen(\t);", 
                     "C_call_list": "", 
                     "C_finalize_buf": "delete {cxx_var};", 
@@ -3270,42 +3130,38 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "len": 30
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrLen", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const string * getConstStringPtrLen() +len=30", 
                 "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)", 
@@ -3314,7 +3170,7 @@
                     "brief": "return a 'const string *' as character(30)", 
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrLen(\t);", 
                     "C_call_list": "", 
                     "C_finalize_buf": "delete {cxx_var};", 
@@ -3369,7 +3225,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "allocatable", 
                         "owner": "library"
                     }, 
@@ -3378,21 +3233,20 @@
                         "name": "getConstStringPtrAlloc", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc", 
@@ -3454,21 +3308,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out", 
@@ -3479,23 +3327,24 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)", 
-                "declgen": "void getConstStringPtrAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))", 
-                "format": {
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))", 
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify", 
@@ -3548,7 +3397,6 @@
                 }, 
                 "ast": {
                     "attrs": {
-                        "_typename": "std::string", 
                         "deref": "allocatable", 
                         "owner": "caller"
                     }, 
@@ -3557,17 +3405,16 @@
                         "name": "getConstStringPtrOwnsAlloc", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
                 "declgen": "const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)", 
@@ -3575,7 +3422,7 @@
                     "__line__": 171, 
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc", 
@@ -3637,21 +3484,15 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "intent": "out", 
@@ -3662,27 +3503,28 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)", 
-                "declgen": "void getConstStringPtrOwnsAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
+                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "__line__": 171, 
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAlloc(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify", 
@@ -3736,7 +3578,6 @@
                 "ast": {
                     "attrs": {
                         "__line__": 183, 
-                        "_typename": "std::string", 
                         "deref": "allocatable", 
                         "free_pattern": "C_string_free", 
                         "owner": "caller"
@@ -3746,17 +3587,16 @@
                         "name": "getConstStringPtrOwnsAllocPattern", 
                         "pointer": [
                             {
-                                "const": false, 
                                 "ptr": "*"
                             }
                         ]
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "std::string"
-                    ]
+                    ], 
+                    "typemap_name": "std::string"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
                 "declgen": "const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)", 
@@ -3764,7 +3604,7 @@
                     "__line__": 180, 
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern", 
@@ -3827,21 +3667,17 @@
                 "_generated": "arg_to_buffer", 
                 "ast": {
                     "attrs": {
-                        "__line__": 183, 
-                        "_typename": "void"
+                        "__line__": 183
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "getConstStringPtrOwnsAllocPattern", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "stringout", 
                                 "context": "DSHF_rv", 
                                 "deref": "allocatable", 
                                 "free_pattern": "C_string_free", 
@@ -3853,27 +3689,28 @@
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "stringout"
-                            ]
+                                "std::string"
+                            ], 
+                            "typemap_name": "stringout"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)", 
-                "declgen": "void getConstStringPtrOwnsAllocPattern(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))", 
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))", 
                 "doxygen": {
                     "__line__": 180, 
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "const std::string * SHCXX_rv =\t getConstStringPtrOwnsAllocPattern(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify", 
@@ -3928,19 +3765,13 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -3949,19 +3780,20 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringConstReference(const std::string & arg1)", 
                 "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in))", 
@@ -3970,7 +3802,7 @@
                     "brief": "Accept a const string reference", 
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringConstReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_const_reference", 
@@ -4019,20 +3851,14 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringConstReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Larg1", 
                                 "value": false
@@ -4042,19 +3868,20 @@
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringConstReference(const std::string & arg1)", 
                 "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))", 
@@ -4063,7 +3890,7 @@
                     "brief": "Accept a const string reference", 
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringConstReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_const_reference_bufferify", 
@@ -4119,40 +3946,34 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
                 "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out))", 
@@ -4161,7 +3982,7 @@
                     "brief": "Accept a string reference", 
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringReferenceOut(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_out", 
@@ -4211,42 +4032,36 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReferenceOut", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "out", 
                                 "len": "Narg1", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))", 
                 "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))", 
@@ -4255,7 +4070,7 @@
                     "brief": "Accept a string reference", 
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringReferenceOut(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_out_bufferify", 
@@ -4312,40 +4127,34 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReference(std::string & arg1)", 
                 "declgen": "void acceptStringReference(std::string & arg1 +intent(inout))", 
@@ -4354,7 +4163,7 @@
                     "brief": "Accept a string reference", 
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference", 
@@ -4405,43 +4214,37 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringReference", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "len": "Narg1", 
                                 "len_trim": "Larg1", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringReference(std::string & arg1)", 
                 "declgen": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
@@ -4450,7 +4253,7 @@
                     "brief": "Accept a string reference", 
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringReference(\tSH_arg1);", 
                     "C_call_list": "SH_arg1", 
                     "C_name": "STR_accept_string_reference_bufferify", 
@@ -4507,40 +4310,34 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringPointer(std::string * arg1)", 
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout))", 
@@ -4548,7 +4345,7 @@
                     "__line__": 214, 
                     "brief": "Accept a string pointer"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringPointer(\t&SH_arg1);", 
                     "C_call_list": "&SH_arg1", 
                     "C_name": "STR_accept_string_pointer", 
@@ -4599,43 +4396,37 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "acceptStringPointer", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "inout", 
                                 "len": "Narg1", 
                                 "len_trim": "Larg1", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void acceptStringPointer(std::string * arg1)", 
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))", 
@@ -4643,7 +4434,7 @@
                     "__line__": 214, 
                     "brief": "Accept a string pointer"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "acceptStringPointer(\t&SH_arg1);", 
                     "C_call_list": "&SH_arg1", 
                     "C_name": "STR_accept_string_pointer_bufferify", 
@@ -4706,58 +4497,50 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnStrings", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg2", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))", 
                 "declgen": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))", 
@@ -4765,7 +4548,7 @@
                     "__line__": 223, 
                     "brief": "Test Python returning multiple std::string arguments."
                 }, 
-                "format": {
+                "fmtdict": {
                     "PY_name_impl": "PY_returnStrings", 
                     "function_name": "returnStrings", 
                     "underscore_name": "return_strings"
@@ -4779,40 +4562,34 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "char"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "returnMany", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg1", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "return_pointer_as": "allocatable", 
                     "specifier": [
                         "char"
-                    ]
+                    ], 
+                    "typemap_name": "char"
                 }, 
                 "decl": "char returnMany(int *arg1 +intent(out))", 
                 "declgen": "char returnMany(int * arg1 +intent(out))", 
@@ -4820,7 +4597,7 @@
                     "__line__": 230, 
                     "description": "Test Py_BuildValue with multiple values.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "function_name": "returnMany", 
                     "underscore_name": "return_many"
                 }, 
@@ -4864,45 +4641,39 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "AAlen", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
-                "format": {
+                "fmtdict": {
                     "C_bufferify_suffix": "_BUFFER", 
                     "C_call_code": "explicit1(\tname);", 
                     "C_call_list": "name", 
@@ -4952,46 +4723,40 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "AAlen", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))", 
                 "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))", 
-                "format": {
+                "fmtdict": {
                     "C_bufferify_suffix": "_BUFFER", 
                     "C_call_code": "explicit1(\tSH_name);", 
                     "C_call_list": "SH_name", 
@@ -5034,45 +4799,39 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "AAtrim", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "explicit2(\tname);", 
                     "C_call_list": "name", 
                     "C_name": "STR_explicit2", 
@@ -5123,46 +4882,40 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "explicit2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "AAtrim", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "name", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))", 
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "explicit2(\tSH_name);", 
                     "C_call_list": "SH_name", 
                     "C_name": "STR_explicit2_bufferify", 
@@ -5223,43 +4976,38 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CpassChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char_scalar", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "status", 
                                 "pointer": []
                             }, 
                             "specifier": [
-                                "char_scalar"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void CpassChar(char status)", 
-                "declgen": "void CpassChar(char_scalar status +intent(in)+value)", 
+                "declgen": "void CpassChar(char status +intent(in)+value)", 
                 "doxygen": {
                     "__line__": 263, 
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "CpassChar(\tstatus);", 
                     "C_call_list": "status", 
                     "C_name": "CpassChar", 
@@ -5313,27 +5061,23 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "char_scalar"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
-                        "char_scalar"
-                    ]
+                        "char"
+                    ], 
+                    "typemap_name": "char_scalar"
                 }, 
                 "decl": "char CreturnChar()", 
-                "declgen": "char_scalar CreturnChar()", 
+                "declgen": "char CreturnChar()", 
                 "doxygen": {
                     "__line__": 269, 
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char SHC_rv =\t CreturnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "CreturnChar", 
@@ -5396,50 +5140,44 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CreturnChar", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
                                 "_is_result": true, 
-                                "_typename": "char_scalar", 
                                 "intent": "out", 
                                 "len": "NSHF_rv"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "SHF_rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
-                                "char_scalar"
-                            ]
+                                "char"
+                            ], 
+                            "typemap_name": "char_scalar"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "char CreturnChar()", 
-                "declgen": "void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))", 
+                "declgen": "void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))", 
                 "doxygen": {
                     "__line__": 269, 
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "char SHC_rv =\t CreturnChar(\t);", 
                     "C_call_list": "", 
                     "C_name": "STR_creturn_char_bufferify", 
@@ -5496,39 +5234,31 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -5537,19 +5267,20 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))", 
@@ -5558,7 +5289,7 @@
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "CpassCharPtr(\tdest,\t src);", 
                     "C_call_list": "dest,\t src", 
                     "C_name": "CpassCharPtr", 
@@ -5629,42 +5360,34 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "CpassCharPtr", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "out", 
                                 "len": "Ndest", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "dest", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }, 
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "char", 
                                 "intent": "in", 
                                 "len_trim": "Lsrc", 
                                 "value": false
@@ -5674,19 +5397,20 @@
                                 "name": "src", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "*"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "char"
-                            ]
+                            ], 
+                            "typemap_name": "char"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)", 
                 "declgen": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))", 
@@ -5695,7 +5419,7 @@
                     "brief": "strcpy like behavior", 
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "CpassCharPtr(\tSH_dest,\t SH_src);", 
                     "C_call_list": "SH_dest,\t SH_src", 
                     "C_name": "STR_cpass_char_ptr_bufferify", 
@@ -6110,6 +5834,86 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
+        "int16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int16_t", 
+            "cxx_type": "int16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "int32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int32_t", 
+            "cxx_type": "int32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "int64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int64_t", 
+            "cxx_type": "int64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "int8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int8_t", 
+            "cxx_type": "int8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -6145,6 +5949,25 @@
                 ]
             }, 
             "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "short", 
+            "cxx_type": "short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -6545,6 +6368,160 @@
             }, 
             "f_type": "type(C_PTR)YY", 
             "idtor": "2"
+        }, 
+        "uint16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint16_t", 
+            "cxx_type": "uint16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "uint32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint32_t", 
+            "cxx_type": "uint32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "uint64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint64_t", 
+            "cxx_type": "uint64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "uint8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint8_t", 
+            "cxx_type": "uint8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
+        "unsigned_int": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned int", 
+            "cxx_type": "unsigned int", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "unsigned_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned long", 
+            "cxx_type": "unsigned long", 
+            "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG)"
+        }, 
+        "unsigned_long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
+            "PY_format": "L", 
+            "c_type": "unsigned long long", 
+            "cxx_type": "unsigned long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "unsigned_short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned short", 
+            "cxx_type": "unsigned short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

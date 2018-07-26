@@ -4,7 +4,7 @@
         "classes": [
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "foo.h", 
                     "C_impl_filename": "foo.cpp", 
@@ -24,28 +24,25 @@
                     "class_prefix": "names_", 
                     "class_scope": "Names::", 
                     "class_upper": "NAMES", 
-                    "cxx_class": "Names"
+                    "cxx_class": "Names", 
+                    "cxx_type": "Names"
                 }, 
                 "functions": [
                     {
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "method1", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method1()", 
                         "declgen": "void method1()", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->method1(\t);", 
                             "C_call_list": "", 
                             "C_name": "XXX_TES_names_method1", 
@@ -76,23 +73,19 @@
                     }, 
                     {
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "method2", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void method2()", 
                         "declgen": "void method2()", 
-                        "format": {
+                        "fmtdict": {
                             "CXX_this": "SH_this2", 
                             "C_call_code": "SH_this->method2(\t);", 
                             "C_call_list": "", 
@@ -133,11 +126,12 @@
                     "__line__": 81, 
                     "none": "foo"
                 }, 
+                "scope": "Names::", 
                 "typemap_name": "Names"
             }, 
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapNames2.hh", 
                     "C_impl_filename": "wrapNames2.cc", 
@@ -156,11 +150,13 @@
                     "class_prefix": "names2_", 
                     "class_scope": "Names2::", 
                     "class_upper": "NAMES2", 
-                    "cxx_class": "Names2"
+                    "cxx_class": "Names2", 
+                    "cxx_type": "Names2"
                 }, 
                 "linenumber": 103, 
                 "name": "Names2", 
                 "options": {}, 
+                "scope": "Names2::", 
                 "typemap_name": "Names2"
             }
         ], 
@@ -249,7 +245,7 @@
                     "name": "Color"
                 }, 
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n", 
-                "format": {
+                "fmtdict": {
                     "C_enum": "TES_Color", 
                     "enum_lower": "color", 
                     "enum_name": "Color", 
@@ -264,7 +260,7 @@
                 "typemap_name": "Color"
             }
         ], 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -354,23 +350,19 @@
         "functions": [
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function1()", 
                 "declgen": "void function1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function1(\t);", 
                     "C_call_list": "", 
                     "C_name": "YYY_TES_function1", 
@@ -396,23 +388,19 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function2", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function2()", 
                 "declgen": "void function2()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function2(\t);", 
                     "C_call_list": "", 
                     "C_name": "c_name_special", 
@@ -474,39 +462,34 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function3a", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "int", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "int"
-                            ]
+                            ], 
+                            "typemap_name": "int"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function3a(int i)", 
                 "declgen": "void function3a(int i +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function3a(\ti);", 
                     "C_call_list": "i", 
                     "C_name": "YYY_TES_function3a_0", 
@@ -569,39 +552,34 @@
                 }, 
                 "_overloaded": true, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function3a", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "long", 
                                 "intent": "in", 
                                 "value": true
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "i", 
                                 "pointer": []
                             }, 
                             "specifier": [
                                 "long"
-                            ]
+                            ], 
+                            "typemap_name": "long"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function3a(long i)", 
                 "declgen": "void function3a(long i +intent(in)+value)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "function3a(\ti);", 
                     "C_call_list": "i", 
                     "C_name": "YYY_TES_function3a_1", 
@@ -684,19 +662,13 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function4", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "value": false
                             }, 
@@ -705,23 +677,24 @@
                                 "name": "rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t function4(\tARG_rv);", 
                     "C_call_list": "ARG_rv", 
                     "C_name": "YYY_TES_function4", 
@@ -782,20 +755,14 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function4", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::string", 
                                 "intent": "in", 
                                 "len_trim": "Lrv", 
                                 "value": false
@@ -805,23 +772,24 @@
                                 "name": "rv", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::string"
-                            ]
+                            ], 
+                            "typemap_name": "std::string"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int function4(const std::string &rv)", 
                 "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t function4(\tARG_rv);", 
                     "C_call_list": "ARG_rv", 
                     "C_name": "YYY_TES_function4_bufferify", 
@@ -847,23 +815,21 @@
             {
                 "ast": {
                     "attrs": {
-                        "_typename": "void", 
                         "name": "fiveplus"
                     }, 
-                    "const": false, 
                     "declarator": {
                         "name": "function5", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void function5() +name(fiveplus)", 
                 "declgen": "void function5() +name(fiveplus)", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "fiveplus(\t);", 
                     "C_call_list": "", 
                     "C_name": "YYY_TES_fiveplus", 
@@ -889,23 +855,19 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "init_ns1", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void init_ns1()", 
                 "declgen": "void init_ns1()", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "ns1::init_ns1(\t);", 
                     "C_call_list": "", 
                     "C_name": "TES_init_ns1", 
@@ -1483,6 +1445,86 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
+        "int16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int16_t", 
+            "cxx_type": "int16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "int32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int32_t", 
+            "cxx_type": "int32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "int64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int64_t", 
+            "cxx_type": "int64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "int8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int8_t", 
+            "cxx_type": "int8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -1518,6 +1560,25 @@
                 ]
             }, 
             "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "short", 
+            "cxx_type": "short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -1916,6 +1977,160 @@
                 }
             }, 
             "f_type": "type(C_PTR)YY"
+        }, 
+        "uint16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint16_t", 
+            "cxx_type": "uint16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "uint32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint32_t", 
+            "cxx_type": "uint32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "uint64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint64_t", 
+            "cxx_type": "uint64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "uint8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint8_t", 
+            "cxx_type": "uint8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
+        "unsigned_int": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned int", 
+            "cxx_type": "unsigned int", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "unsigned_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned long", 
+            "cxx_type": "unsigned long", 
+            "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG)"
+        }, 
+        "unsigned_long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
+            "PY_format": "L", 
+            "c_type": "unsigned long long", 
+            "cxx_type": "unsigned long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "unsigned_short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned short", 
+            "cxx_type": "unsigned short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

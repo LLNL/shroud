@@ -43,7 +43,6 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
-from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -221,9 +220,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             # XXX           result_is_ptr = False
             CXX_subprogram = 'subroutine'
 
-        # XXX       result_typemap = typemap.lookup_type(result_type)
-        is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
+        is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
         if is_dtor:
             CXX_subprogram = 'subroutine'
             fmt.LUA_name = '__gc'
@@ -239,7 +237,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             in_args = []
             out_args = []
             for arg in function.ast.params:
-                arg_typemap = typemap.lookup_type(arg.typename)
+                arg_typemap = arg.typemap
                 if arg.init is not None:
                     all_calls.append(LuaFunction(
                         function, CXX_subprogram, in_args[:], out_args))
@@ -290,7 +288,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     fmt.nresults = call.nresults
                     checks = []
                     for iarg, arg in enumerate(call.inargs):
-                        arg_typemap = typemap.lookup_type(arg.typename)
+                        arg_typemap = arg.typemap
                         fmt.itype_var = itype_vars[iarg]
                         fmt.itype = arg_typemap.LUA_type
                         append_format(checks, '{itype_var} == {itype}', fmt)
@@ -418,8 +416,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         CXX_subprogram = node.CXX_subprogram
         result_typemap = node.CXX_result_typemap
         ast = node.ast
-        is_ctor = ast.attrs.get('_constructor', False)
-        is_dtor = ast.attrs.get('_destructor', False)
+        is_ctor = ast.is_ctor()
+        is_dtor = ast.is_dtor()
 
 
         #        is_const = ast.const
@@ -511,7 +509,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             lua_pop = None
 
-            arg_typemap = typemap.lookup_type(arg.typename)
+            arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
             LUA_statements = arg_typemap.LUA_statements
             if attrs['intent'] in ['inout', 'in']:

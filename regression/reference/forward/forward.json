@@ -4,7 +4,42 @@
         "classes": [
             {
                 "cxx_header": "", 
-                "format": {
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->", 
+                    "C_header_filename": "wrapClass3.h", 
+                    "C_impl_filename": "wrapClass3.cpp", 
+                    "C_type_name": "FOR_class3", 
+                    "F_derived_name": "class3", 
+                    "LUA_class_reg": "l_Class3_Reg", 
+                    "LUA_ctor_name": "Class3", 
+                    "LUA_metadata": "Class3.metatable", 
+                    "LUA_this_call": "SH_this->self->", 
+                    "LUA_userdata_member": "self", 
+                    "LUA_userdata_type": "l_Class3_Type", 
+                    "LUA_userdata_var": "SH_this", 
+                    "PY_PyObject": "PY_Class3", 
+                    "PY_PyTypeObject": "PY_Class3_Type", 
+                    "PY_capsule_name": "PY_Class3_capsule_name", 
+                    "PY_from_object_func": "PP_Class3_from_Object", 
+                    "PY_this_call": "self->obj->", 
+                    "PY_to_object_func": "PP_Class3_to_Object", 
+                    "PY_type_filename": "pyClass3type.cpp", 
+                    "class_lower": "class3", 
+                    "class_prefix": "class3_", 
+                    "class_scope": "Class3::", 
+                    "class_upper": "CLASS3", 
+                    "cxx_class": "Class3", 
+                    "cxx_type": "Class3"
+                }, 
+                "linenumber": 71, 
+                "name": "Class3", 
+                "options": {}, 
+                "scope": "tutorial::Class3::", 
+                "typemap_name": "tutorial::Class3"
+            }, 
+            {
+                "cxx_header": "", 
+                "fmtdict": {
                     "CXX_this_call": "SH_this->", 
                     "C_header_filename": "wrapClass2.h", 
                     "C_impl_filename": "wrapClass2.cpp", 
@@ -28,7 +63,8 @@
                     "class_prefix": "class2_", 
                     "class_scope": "Class2::", 
                     "class_upper": "CLASS2", 
-                    "cxx_class": "Class2"
+                    "cxx_class": "Class2", 
+                    "cxx_type": "Class2"
                 }, 
                 "functions": [
                     {
@@ -68,19 +104,17 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true, 
-                                "_name": "ctor", 
-                                "_typename": "tutorial::Class2"
+                                "_name": "ctor"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class2"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class2"
                         }, 
                         "decl": "Class2()", 
                         "declgen": "Class2()", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_ctor", 
@@ -109,26 +143,24 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 72, 
+                        "linenumber": 77, 
                         "options": {}
                     }, 
                     {
                         "ast": {
                             "attrs": {
                                 "_destructor": true, 
-                                "_name": "dtor", 
-                                "_typename": "tutorial::Class2"
+                                "_name": "dtor"
                             }, 
-                            "const": false, 
-                            "func_const": false, 
                             "params": [], 
                             "specifier": [
                                 "Class2"
-                            ]
+                            ], 
+                            "typemap_name": "tutorial::Class2"
                         }, 
                         "decl": "~Class2()", 
                         "declgen": "~Class2()", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;", 
                             "C_call_list": "", 
                             "C_name": "FOR_class2_dtor", 
@@ -154,7 +186,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 73, 
+                        "linenumber": 78, 
                         "options": {}
                     }, 
                     {
@@ -206,44 +238,38 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "func1", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "tutorial::Class1", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
                                         "Class1"
-                                    ]
+                                    ], 
+                                    "typemap_name": "tutorial::Class1"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void func1(Class1 *arg)", 
                         "declgen": "void func1(Class1 * arg +intent(in))", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "FOR_class2_func1", 
@@ -270,7 +296,7 @@
                             "function_name": "func1", 
                             "underscore_name": "func1"
                         }, 
-                        "linenumber": 74, 
+                        "linenumber": 79, 
                         "options": {}
                     }, 
                     {
@@ -323,44 +349,38 @@
                             }
                         }, 
                         "ast": {
-                            "attrs": {
-                                "_typename": "void"
-                            }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "acceptClass3", 
                                 "pointer": []
                             }, 
-                            "func_const": false, 
                             "params": [
                                 {
                                     "attrs": {
-                                        "_typename": "tutorial::Class3", 
                                         "intent": "in", 
                                         "value": false
                                     }, 
-                                    "const": false, 
                                     "declarator": {
                                         "name": "arg", 
                                         "pointer": [
                                             {
-                                                "const": false, 
                                                 "ptr": "*"
                                             }
                                         ]
                                     }, 
                                     "specifier": [
                                         "Class3"
-                                    ]
+                                    ], 
+                                    "typemap_name": "tutorial::Class3"
                                 }
                             ], 
                             "specifier": [
                                 "void"
-                            ]
+                            ], 
+                            "typemap_name": "void"
                         }, 
                         "decl": "void acceptClass3(Class3 *arg)", 
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))", 
-                        "format": {
+                        "fmtdict": {
                             "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);", 
                             "C_call_list": "SHCXX_arg", 
                             "C_name": "FOR_class2_accept_class3", 
@@ -387,47 +407,15 @@
                             "function_name": "acceptClass3", 
                             "underscore_name": "accept_class3"
                         }, 
-                        "linenumber": 75, 
+                        "linenumber": 80, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 70, 
+                "linenumber": 75, 
                 "name": "Class2", 
                 "options": {}, 
+                "scope": "tutorial::Class2::", 
                 "typemap_name": "tutorial::Class2"
-            }, 
-            {
-                "cxx_header": "", 
-                "format": {
-                    "CXX_this_call": "SH_this->", 
-                    "C_header_filename": "wrapClass3.h", 
-                    "C_impl_filename": "wrapClass3.cpp", 
-                    "C_type_name": "FOR_class3", 
-                    "F_derived_name": "class3", 
-                    "LUA_class_reg": "l_Class3_Reg", 
-                    "LUA_ctor_name": "Class3", 
-                    "LUA_metadata": "Class3.metatable", 
-                    "LUA_this_call": "SH_this->self->", 
-                    "LUA_userdata_member": "self", 
-                    "LUA_userdata_type": "l_Class3_Type", 
-                    "LUA_userdata_var": "SH_this", 
-                    "PY_PyObject": "PY_Class3", 
-                    "PY_PyTypeObject": "PY_Class3_Type", 
-                    "PY_capsule_name": "PY_Class3_capsule_name", 
-                    "PY_from_object_func": "PP_Class3_from_Object", 
-                    "PY_this_call": "self->obj->", 
-                    "PY_to_object_func": "PP_Class3_to_Object", 
-                    "PY_type_filename": "pyClass3type.cpp", 
-                    "class_lower": "class3", 
-                    "class_prefix": "class3_", 
-                    "class_scope": "Class3::", 
-                    "class_upper": "CLASS3", 
-                    "cxx_class": "Class3"
-                }, 
-                "linenumber": 77, 
-                "name": "Class3", 
-                "options": {}, 
-                "typemap_name": "tutorial::Class3"
             }
         ], 
         "copyright": [
@@ -473,7 +461,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "tutorial.hpp", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -953,6 +941,86 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
+        "int16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int16_t", 
+            "cxx_type": "int16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "int32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int32_t", 
+            "cxx_type": "int32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "int64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int64_t", 
+            "cxx_type": "int64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "int8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int8_t", 
+            "cxx_type": "int8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -988,6 +1056,25 @@
                 ]
             }, 
             "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "short", 
+            "cxx_type": "short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -1390,7 +1477,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
-            "__line__": 62, 
+            "__line__": 60, 
             "base": "shadow", 
             "c_statements": {
                 "intent_in": {
@@ -1601,6 +1688,160 @@
                     ]
                 }
             }
+        }, 
+        "uint16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint16_t", 
+            "cxx_type": "uint16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "uint32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint32_t", 
+            "cxx_type": "uint32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "uint64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint64_t", 
+            "cxx_type": "uint64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "uint8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint8_t", 
+            "cxx_type": "uint8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
+        "unsigned_int": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned int", 
+            "cxx_type": "unsigned int", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "unsigned_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned long", 
+            "cxx_type": "unsigned long", 
+            "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG)"
+        }, 
+        "unsigned_long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
+            "PY_format": "L", 
+            "c_type": "unsigned long long", 
+            "cxx_type": "unsigned long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "unsigned_short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned short", 
+            "cxx_type": "unsigned short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

@@ -60,6 +60,21 @@ module forward_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! splicer begin class.Class3.module_top
+    ! splicer end class.Class3.module_top
+
+    type class3
+        type(SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Class3.component_part
+        ! splicer end class.Class3.component_part
+    contains
+        procedure :: get_instance => class3_get_instance
+        procedure :: set_instance => class3_set_instance
+        procedure :: associated => class3_associated
+        ! splicer begin class.Class3.type_bound_procedure_part
+        ! splicer end class.Class3.type_bound_procedure_part
+    end type class3
+
     ! splicer begin class.Class2.module_top
     ! splicer end class.Class2.module_top
 
@@ -78,32 +93,20 @@ module forward_mod
         ! splicer end class.Class2.type_bound_procedure_part
     end type class2
 
-    ! splicer begin class.Class3.module_top
-    ! splicer end class.Class3.module_top
-
-    type class3
-        type(SHROUD_capsule_data) :: cxxmem
-        ! splicer begin class.Class3.component_part
-        ! splicer end class.Class3.component_part
-    contains
-        procedure :: get_instance => class3_get_instance
-        procedure :: set_instance => class3_set_instance
-        procedure :: associated => class3_associated
-        ! splicer begin class.Class3.type_bound_procedure_part
-        ! splicer end class.Class3.type_bound_procedure_part
-    end type class3
-
     interface operator (.eq.)
-        module procedure class2_eq
         module procedure class3_eq
+        module procedure class2_eq
     end interface
 
     interface operator (.ne.)
-        module procedure class2_ne
         module procedure class3_ne
+        module procedure class2_ne
     end interface
 
     interface
+
+        ! splicer begin class.Class3.additional_interfaces
+        ! splicer end class.Class3.additional_interfaces
 
         function c_class2_ctor() &
                 result(SHT_rv) &
@@ -138,12 +141,35 @@ module forward_mod
 
         ! splicer begin class.Class2.additional_interfaces
         ! splicer end class.Class2.additional_interfaces
-
-        ! splicer begin class.Class3.additional_interfaces
-        ! splicer end class.Class3.additional_interfaces
     end interface
 
 contains
+
+    ! Return pointer to C++ memory.
+    function class3_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(class3), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function class3_get_instance
+
+    subroutine class3_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(class3), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine class3_set_instance
+
+    function class3_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(class3), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function class3_associated
+
+    ! splicer begin class.Class3.additional_functions
+    ! splicer end class.Class3.additional_functions
 
     ! Class2()
     function class2_ctor() &
@@ -207,31 +233,27 @@ contains
     ! splicer begin class.Class2.additional_functions
     ! splicer end class.Class2.additional_functions
 
-    ! Return pointer to C++ memory.
-    function class3_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: C_PTR
-        class(class3), intent(IN) :: obj
-        type(C_PTR) :: cxxptr
-        cxxptr = obj%cxxmem%addr
-    end function class3_get_instance
-
-    subroutine class3_set_instance(obj, cxxmem)
-        use iso_c_binding, only: C_PTR
-        class(class3), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: cxxmem
-        obj%cxxmem%addr = cxxmem
-        obj%cxxmem%idtor = 0
-    end subroutine class3_set_instance
-
-    function class3_associated(obj) result (rv)
+    function class3_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        class(class3), intent(IN) :: obj
-        logical rv
-        rv = c_associated(obj%cxxmem%addr)
-    end function class3_associated
+        type(class3), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class3_eq
 
-    ! splicer begin class.Class3.additional_functions
-    ! splicer end class.Class3.additional_functions
+    function class3_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(class3), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function class3_ne
 
     function class2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
@@ -254,27 +276,5 @@ contains
             rv = .false.
         endif
     end function class2_ne
-
-    function class3_eq(a,b) result (rv)
-        use iso_c_binding, only: c_associated
-        type(class3), intent(IN) ::a,b
-        logical :: rv
-        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
-            rv = .true.
-        else
-            rv = .false.
-        endif
-    end function class3_eq
-
-    function class3_ne(a,b) result (rv)
-        use iso_c_binding, only: c_associated
-        type(class3), intent(IN) ::a,b
-        logical :: rv
-        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
-            rv = .true.
-        else
-            rv = .false.
-        endif
-    end function class3_ne
 
 end module forward_mod

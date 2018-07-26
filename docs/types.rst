@@ -1033,19 +1033,39 @@ corresponds to the C++ code::
        void func();
     }
 
-A class will be forward declared when the ``declarations`` field is
-not provided.  When the class is not defined later in the file, it may
-be necessary to provide the conversion fields to complete the type::
+A class may be forward declared by omitting ``declarations``.
+All other fields, such as ``format`` and ``options`` must be provided
+on the initial ``decl`` of a Class.
+This will define the type and allow it to be used in following declarations.
+The class's declarations can be added later::
 
-    declarations:
-    - decl: class Class1
-      fields:
-        c_type: TUT_class1
-        f_derived_type: class1
-        f_to_c: "{f_var}%get_instance()"
-        f_module:
-          tutorial_mod:
-          - class1
+   declarations:
+   - decl: class Class1
+     options:
+        foo: True
+
+   - decl: class Class2
+     declarations:
+     - decl: void accept1(Class1 & arg1)
+
+   - decl: class Class1
+     declarations:
+     - decl: void accept2(Class2 & arg2)
+
+.. A class will be forward declared when the ``declarations`` field is
+   not provided.  When the class is not defined later in the file, it may
+   be necessary to provide the conversion fields to complete the type::
+   XXX - define conversion fields
+
+..     declarations:
+       - decl: class Class1
+         fields:
+           c_type: TUT_class1
+           f_derived_type: class1
+           f_to_c: "{f_var}%get_instance()"
+           f_module:
+             tutorial_mod:
+             - class1
 
 
 The type map will be written to a file to allow its used by other
@@ -1062,19 +1082,6 @@ is used by the ``generic`` interface.
 
 The constructor and destructor will only be wrapped if explicitly added
 to the YAML file to avoid wrapping ``private`` constructors and destructors.
-
-.. note:: A class without a ``declarations`` is considered a forward declaration.
-          To fully define a class, the ``declarations`` is required::
-
-              - decl: class Forward
-
-              - decl: class Full
-                declarations:
-                - decl: void work(Forward *arg)
-
-              - decl: class Forward
-                declarations:
-                - decl: void work(Full *arg)
 
 ..  chained function calls
 
@@ -1111,6 +1118,41 @@ Python will report::
 The *name* attribute will change the name of generated functions and
 descriptors.  This is helpful when using a naming convention like
 ``m_test`` and you do not want ``m_`` to be used in the wrappers.
+
+Templates
+---------
+
+Shroud will wrap templated classes and functions for explicit instantiations.
+The template is given as part of the ``decl`` and the instantations are listed in the
+``cxx_template`` section::
+
+  - decl: |
+        template<typename ArgType>
+        void Function7(ArgType arg)
+    cxx_template:
+    - instantiation: <int>
+    - instantiation: <double>
+
+``options`` and ``format`` may be provide to control the generated code::
+
+  - decl: template<typename T> class vector
+    cxx_header: <vector>
+    cxx_template:
+    - instantiation: <int>
+      format:
+        C_impl_filename: wrapvectorforint.cpp
+      options:
+        optblah: two
+    - instantiation: <double>
+
+.. from templates.yaml
+
+For a class template, the *class_name* is modified to included the
+instantion type.  If only a single template parameter is provided,
+then the template argument is used.  For the above example,
+*C_impl_filename* will default to ``wrapvector_int.cpp`` but has been
+explicitly changed to ``wrapvectorforint.cpp``.
+
 
 .. _MemoryManagementAnchor:
 

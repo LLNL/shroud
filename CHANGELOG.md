@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added more support for unsigned types.
+  Note that Fortran does not support unsigned types.
+  ex. 'unsigned int' is mapped to C_INT.
+- Add size based types: int8_t, int16_t, int32_t, int64_t.
 - Add support for C++ structs.
   Fortran creates a derived type with ``bind(C)``.
   Python uses NumPy to unpack fields of struct.
@@ -23,15 +28,39 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   allocatable, pointer, raw (type(C_PTR)).
 - Support ALLOCATABLE CHARACTER function as the default for char* and std::string
   functions. Unless +len attribute or F_string_result_as_arg is used.
-- Add owner attribute to define if memory should be released: library or caller.
+- Add owner attribute to define who should release memory: library or caller.
 - Add free_pattern attribute to define custom code to release memory.
   For example, if the variable is reference counted.
+- Support multiple template parameters.
+
+### Changed
+- Change C wrappers of shadow classes to return a capsule_data_type
+  instead of a `void *`.  This struct contains the pointer to the shadow class
+  and information to deallocate it.
+- Change how function template arguments are specified to reflect C++ syntax.
+  Also allow options and format to be added to an instantiation.
+previous format:
+```
+  - decl: void Function7(ArgType arg)
+    cxx_template:
+      ArgType:
+      - int
+      - double
+```
+new format:
+```
+  - decl: |
+        template<typename ArgType>
+        void Function7(ArgType arg)
+    cxx_template:
+    - instantiation: <int>
+    - instantiation: <double>
+```
+
+### Removed
 - Remove +pure attribute.
   Also remove the feature where a string C++ function would be called twice,
   once to get length and once for values.  Instead use ALLOCATABLE string.
-- Change C wrappers of shadow classes to return a capsule_data_type to
-  instead of a void *.  This struct contains the pointer to the shadow class
-  and information to deallocate it.
 
 ## v0.9.0 - 2018-04-04
 ### Added
@@ -108,7 +137,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - cpp_if will add an #if directive around a class or function.
 - Allow 'functions' to be used in YAML in place of 'methods'.
-  'methods' still works but only one should be provided. 
+  'methods' still works but only one should be provided.
 - Allow format fields to be set by directly in YAML.
 
 ### Fixed

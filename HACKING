@@ -47,3 +47,21 @@ typemap.py
 todict.py
 whelpers.py
 util.py visitor.py  # no dependencies
+
+
+
+
+Error with template: 'call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))'
+can be debugged by changing util.wformat to remove comment to provide a backtrace.
+
+
+adding a type
+-------------
+
+typemap.py
+
+ast.py LibraryNode.create_std_names()
+  add to namespace
+
+declast.py  get_canonical_typemap()
+  Convert 'long int' into 'long'

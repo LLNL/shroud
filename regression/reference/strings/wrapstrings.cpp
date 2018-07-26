@@ -80,7 +80,7 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void passChar(char_scalar status +intent(in)+value)
+// void passChar(char status +intent(in)+value)
 /**
  * \brief pass a single char argument as a scalar.
  *
@@ -93,7 +93,7 @@ void STR_pass_char(char status)
 // splicer end function.pass_char
 }
 
-// char_scalar returnChar()
+// char returnChar()
 /**
  * \brief return a char argument (non-pointer)
  *
@@ -106,7 +106,7 @@ char STR_return_char()
 // splicer end function.return_char
 }
 
-// void returnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
+// void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 /**
  * \brief return a char argument (non-pointer)
  *
@@ -207,7 +207,7 @@ const char * STR_get_char_ptr1()
 // splicer end function.get_char_ptr1
 }
 
-// void getCharPtr1(const charout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getCharPtr1(const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return a 'const char *' as character(*)
  *
@@ -287,7 +287,7 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput)
 // splicer end function.get_char_ptr3_bufferify
 }
 
-// void getConstStringResult(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getConstStringResult(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
@@ -350,7 +350,7 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 // splicer end function.get_const_string_as_arg_bufferify
 }
 
-// void getConstStringAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getConstStringAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_alloc_bufferify
@@ -385,7 +385,7 @@ const char * STR_get_const_string_ref_pure()
 // splicer end function.get_const_string_ref_pure
 }
 
-// void getConstStringRefPure(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getConstStringRefPure(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return a 'const string&' as ALLOCATABLE character
  *
@@ -535,7 +535,7 @@ const char * STR_get_const_string_ref_alloc()
 // splicer end function.get_const_string_ref_alloc
 }
 
-// void getConstStringRefAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void getConstStringRefAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ref_alloc_bufferify
@@ -610,7 +610,7 @@ const char * STR_get_const_string_ptr_alloc()
 // splicer end function.get_const_string_ptr_alloc
 }
 
-// void getConstStringPtrAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
+// void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ptr_alloc_bufferify
@@ -647,7 +647,7 @@ const char * STR_get_const_string_ptr_owns_alloc()
 // splicer end function.get_const_string_ptr_owns_alloc
 }
 
-// void getConstStringPtrOwnsAlloc(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
+// void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
 /**
  * It is the caller's responsibility to release the string
  * created by the C++ library.
@@ -688,7 +688,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern()
 // splicer end function.get_const_string_ptr_owns_alloc_pattern
 }
 
-// void getConstStringPtrOwnsAllocPattern(const stringout * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))
+// void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))
 /**
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
@@ -894,7 +894,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // splicer end function.explicit2_bufferify
 }
 
-// void CreturnChar(char_scalar * SHF_rv +intent(out)+len(NSHF_rv))
+// void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 /**
  * \brief return a char argument (non-pointer), extern "C"
  *

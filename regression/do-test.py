@@ -209,9 +209,13 @@ class Tester:
             '--path', self.test_input_dir,
             '--logdir', self.result_dir,
             '--outdir', self.result_dir,
-#            '--yaml-types', 'def_types.yaml',
-            self.testyaml,
             ]
+
+        # test specific flags
+        if self.testname == 'none':
+            cmd += ['--yaml-types', 'def_types.yaml']
+
+        cmd.append(self.testyaml)
         logging.debug(' '.join(cmd))
 
         try:
@@ -323,8 +327,8 @@ if __name__ == '__main__':
     if args.testname:
         test_names = args.testname
     else:
-        test_names = [ 'none', 'tutorial', 'vectors', 'forward', 'example', 'include',
-                       'names', 'strings', 'clibrary', 'interface', 'ownership' ]
+        test_names = [ 'none', 'tutorial', 'types', 'vectors', 'forward', 'example', 'include',
+                       'names', 'strings', 'clibrary', 'interface', 'templates', 'ownership' ]
 
     logging.info('Tests to run: {}'.format( ' '.join(test_names)))
 

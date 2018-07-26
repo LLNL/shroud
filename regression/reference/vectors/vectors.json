@@ -44,7 +44,7 @@
             "#######################################################################"
         ], 
         "cxx_header": "vectors.hpp", 
-        "format": {
+        "fmtdict": {
             "CXX_local": "SHCXX_", 
             "CXX_template": "", 
             "CXX_this": "SH_this", 
@@ -123,22 +123,15 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -146,23 +139,32 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))", 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_sum_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)", 
                     "F_arguments": "arg", 
@@ -219,24 +221,17 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_sum", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "size": "Sarg", 
-                                "template": "int", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -244,23 +239,32 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_sum(const std::vector<int> &arg)", 
                 "declgen": "int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t vector_sum(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "VEC_vector_sum_bufferify", 
@@ -286,42 +290,43 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))", 
@@ -329,7 +334,7 @@
                     "__line__": 60, 
                     "brief": "Copy vector into Fortran input array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_iota_out_bufferify", 
                     "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
@@ -378,44 +383,45 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))", 
                 "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))", 
@@ -423,7 +429,7 @@
                     "__line__": 60, 
                     "brief": "Copy vector into Fortran input array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_iota_out(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_out_bufferify", 
@@ -449,43 +455,44 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))", 
@@ -493,7 +500,7 @@
                     "__line__": 67, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_iota_out_alloc_bufferify", 
                     "F_arg_c_call": "Darg", 
                     "F_arguments": "arg", 
@@ -542,45 +549,46 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_out_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "out", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))", 
                 "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))", 
@@ -588,7 +596,7 @@
                     "__line__": 67, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_iota_out_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_out_alloc_bufferify", 
@@ -614,43 +622,44 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_inout_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "inout", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))", 
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))", 
@@ -658,7 +667,7 @@
                     "__line__": 74, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_iota_inout_alloc_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg", 
                     "F_arguments": "arg", 
@@ -708,46 +717,47 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_iota_inout_alloc", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "deref": "allocatable", 
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "size": "Sarg", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))", 
                 "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))", 
@@ -755,7 +765,7 @@
                     "__line__": 74, 
                     "brief": "Copy vector into Fortran allocatable array"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_iota_inout_alloc(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify", 
@@ -781,46 +791,47 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_increment", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "inout", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))", 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_increment_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg", 
                     "F_arguments": "arg", 
@@ -870,49 +881,50 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_increment", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "context": "Darg", 
                                 "dimension": ":", 
                                 "intent": "inout", 
                                 "size": "Sarg", 
-                                "template": "int", 
                                 "value": false
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ], 
+                                    "typemap_name": "int"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_increment(std::vector<int> &arg)", 
                 "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))", 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "vector_increment(\t*SH_arg);", 
                     "C_call_list": "*SH_arg", 
                     "C_name": "VEC_vector_increment_bufferify", 
@@ -944,22 +956,15 @@
                     }
                 }, 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_count", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
-                                "template": "std::string", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -967,19 +972,28 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in))", 
@@ -988,7 +1002,7 @@
                     "brief": "count number of underscore in vector of strings", 
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "F_C_call": "c_vector_string_count_bufferify", 
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT)", 
                     "F_arguments": "arg", 
@@ -1045,25 +1059,18 @@
                 }, 
                 "_generated": "arg_to_buffer", 
                 "ast": {
-                    "attrs": {
-                        "_typename": "int"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_count", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
                                 "_generated_suffix": "_buf", 
-                                "_typename": "std::vector", 
                                 "dimension": ":", 
                                 "intent": "in", 
                                 "len": "Narg", 
                                 "size": "Sarg", 
-                                "template": "std::string", 
                                 "value": false
                             }, 
                             "const": true, 
@@ -1071,19 +1078,28 @@
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "int"
-                    ]
+                    ], 
+                    "typemap_name": "int"
                 }, 
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)", 
                 "declgen": "int vector_string_count(const std::vector<std::string> & arg +dimension(:)+intent(in)+len(Narg)+size(Sarg))", 
@@ -1092,7 +1108,7 @@
                     "brief": "count number of underscore in vector of strings", 
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_call_code": "int SHC_rv =\t vector_string_count(\tSH_arg);", 
                     "C_call_list": "SH_arg", 
                     "C_name": "VEC_vector_string_count_bufferify", 
@@ -1117,40 +1133,41 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_fill", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
-                                "intent": "out", 
-                                "template": "std::string"
+                                "intent": "out"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))", 
                 "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))", 
@@ -1159,7 +1176,7 @@
                     "brief": "Fill in arg with some animal names", 
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 }, 
-                "format": {
+                "fmtdict": {
                     "C_custom_return_type": "int", 
                     "C_return_code": "return SH_arg.size();", 
                     "C_return_type": "int", 
@@ -1178,40 +1195,41 @@
             }, 
             {
                 "ast": {
-                    "attrs": {
-                        "_typename": "void"
-                    }, 
-                    "const": false, 
                     "declarator": {
                         "name": "vector_string_append", 
                         "pointer": []
                     }, 
-                    "func_const": false, 
                     "params": [
                         {
                             "attrs": {
-                                "_typename": "std::vector", 
-                                "intent": "inout", 
-                                "template": "std::string"
+                                "intent": "inout"
                             }, 
-                            "const": false, 
                             "declarator": {
                                 "name": "arg", 
                                 "pointer": [
                                     {
-                                        "const": false, 
                                         "ptr": "&"
                                     }
                                 ]
                             }, 
                             "specifier": [
                                 "std::vector"
-                            ]
+                            ], 
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "std::string"
+                                    ], 
+                                    "typemap_name": "std::string"
+                                }
+                            ], 
+                            "typemap_name": "std::vector"
                         }
                     ], 
                     "specifier": [
                         "void"
-                    ]
+                    ], 
+                    "typemap_name": "void"
                 }, 
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))", 
                 "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))", 
@@ -1219,7 +1237,7 @@
                     "__line__": 116, 
                     "brief": "append '-like' to names."
                 }, 
-                "format": {
+                "fmtdict": {
                     "function_name": "vector_string_append", 
                     "underscore_name": "vector_string_append"
                 }, 
@@ -1621,6 +1639,86 @@
             }, 
             "f_type": "integer(C_INT)"
         }, 
+        "int16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int16_t", 
+            "cxx_type": "int16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "int32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int32_t", 
+            "cxx_type": "int32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "int64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int64_t", 
+            "cxx_type": "int64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "int8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "int8_t", 
+            "cxx_type": "int8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
@@ -1656,6 +1754,25 @@
                 ]
             }, 
             "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "short", 
+            "cxx_type": "short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
@@ -2054,6 +2171,160 @@
                 }
             }, 
             "f_type": "type(C_PTR)YY"
+        }, 
+        "uint16_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT16", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint16_t", 
+            "cxx_type": "uint16_t", 
+            "f_cast": "int({f_var}, C_INT16_t)", 
+            "f_kind": "C_INT16_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT16_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT16_T)"
+        }, 
+        "uint32_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT32", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint32_t", 
+            "cxx_type": "uint32_t", 
+            "f_cast": "int({f_var}, C_INT32_t)", 
+            "f_kind": "C_INT32_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT32_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT32_T)"
+        }, 
+        "uint64_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT64", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint64_t", 
+            "cxx_type": "uint64_t", 
+            "f_cast": "int({f_var}, C_INT64_t)", 
+            "f_kind": "C_INT64_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT64_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT64_T)"
+        }, 
+        "uint8_t": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_UINT8", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_header": "<stdint.h>", 
+            "c_type": "uint8_t", 
+            "cxx_type": "uint8_t", 
+            "f_cast": "int({f_var}, C_INT8_t)", 
+            "f_kind": "C_INT8_T", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT8_T"
+                ]
+            }, 
+            "f_type": "integer(C_INT8_T)"
+        }, 
+        "unsigned_int": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_INT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "i", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned int", 
+            "cxx_type": "unsigned int", 
+            "f_cast": "int({f_var}, C_INT)", 
+            "f_kind": "C_INT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            }, 
+            "f_type": "integer(C_INT)"
+        }, 
+        "unsigned_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONG", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "l", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned long", 
+            "cxx_type": "unsigned long", 
+            "f_cast": "int({f_var}, C_LONG)", 
+            "f_kind": "C_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG)"
+        }, 
+        "unsigned_long_long": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_LONGLONG", 
+            "PY_format": "L", 
+            "c_type": "unsigned long long", 
+            "cxx_type": "unsigned long long", 
+            "f_cast": "int({f_var}, C_LONG_LONG)", 
+            "f_kind": "C_LONG_LONG", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_LONG_LONG"
+                ]
+            }, 
+            "f_type": "integer(C_LONG_LONG)"
+        }, 
+        "unsigned_short": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})", 
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})", 
+            "LUA_type": "LUA_TNUMBER", 
+            "PYN_typenum": "NPY_SHORT", 
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
+            "PY_format": "h", 
+            "PY_get": "PyInt_AsLong({py_var})", 
+            "c_type": "unsigned short", 
+            "cxx_type": "unsigned short", 
+            "f_cast": "int({f_var}, C_SHORT)", 
+            "f_kind": "C_SHORT", 
+            "f_module": {
+                "iso_c_binding": [
+                    "C_SHORT"
+                ]
+            }, 
+            "f_type": "integer(C_SHORT)"
         }, 
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)", 

@@ -662,8 +662,8 @@ class Wrapc(util.WrapperMixin):
         generated_suffix = node.generated_suffix
 
         result_is_const = ast.const
-        is_ctor = CXX_ast.attrs.get('_constructor', False)
-        is_dtor = CXX_ast.attrs.get('_destructor', False)
+        is_ctor = CXX_ast.is_ctor()
+        is_dtor = CXX_ast.is_dtor()
         is_static = False
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
@@ -720,7 +720,7 @@ class Wrapc(util.WrapperMixin):
                     name=fmt_result.cxx_var, params=None, continuation=True)
 
             if is_ctor or is_pointer:
-                # The C wrapper always creates a pointer to the new in the ctor
+                # The C wrapper always creates a pointer to the new instance in the ctor.
                 fmt_result.cxx_member = '->'
                 fmt_result.cxx_addr = ''
             else:
@@ -755,7 +755,7 @@ class Wrapc(util.WrapperMixin):
                     fmt_func.CXX_this_call = fmt_func.namespace_scope + fmt_func.class_scope
                 else:
                     # 'this' argument
-                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typemap_name, is_const)
+                    rvast = declast.create_this_arg(fmt_func.C_this, cls.typemap, is_const)
                     arg = rvast.gen_arg_as_c(continuation=True)
                     proto_list.append(arg)
 
@@ -766,7 +766,7 @@ class Wrapc(util.WrapperMixin):
                         raise RuntimeError("Wappped class does not have c_to_cxx set")
                     append_format(
                         pre_call,
-                        '{c_const}{namespace_scope}{cxx_class} *{CXX_this} =\t ' +
+                        '{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t ' +
                         cls_typemap.c_to_cxx + ';', fmt_func)
 
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
@@ -803,11 +803,11 @@ class Wrapc(util.WrapperMixin):
             fmt_arg = fmt_arg0.setdefault('fmtc', util.Scope(fmt_func))
             c_attrs = arg.attrs
 
-            arg_typemap = typemap.lookup_type(arg.typename)  # XXX - look up vector
+            arg_typemap = arg.typemap  # XXX - look up vector
             fmt_arg.update(arg_typemap.format)
 
             if arg_typemap.base == 'vector':
-                fmt_arg.cxx_T = c_attrs['template']
+                fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
             arg_typemap, c_statements = typemap.lookup_c_statements(arg)
 
@@ -1031,7 +1031,7 @@ class Wrapc(util.WrapperMixin):
             # Always create a pointer to the instance.
             fmt_func.cxx_rv_decl = result_typemap.cxx_type + ' *' + fmt_result.cxx_var
             append_format(call_code, '{cxx_rv_decl} =\t new {namespace_scope}'
-                          '{cxx_class}({C_call_list});', fmt_func)
+                          '{cxx_type}({C_call_list});', fmt_func)
             if result_typemap.cxx_to_c is not None:
                 fmt_func.c_rv_decl = result_typemap.c_type + ' *' + fmt_result.c_var
                 fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
@@ -1107,7 +1107,14 @@ class Wrapc(util.WrapperMixin):
             if C_subprogram == 'function':
                 # Note: A C function may be converted into a Fortran subroutine
                 # subprogram when the result is returned in an argument.
-                C_return_code = wformat('return {c_var};', fmt_result)
+                if node.ast.is_reference():
+                    if result_typemap.base in ['shadow', 'string']:
+                        C_return_code = wformat('return {c_var};', fmt_result)
+                    else:
+                        # Return address of reference i.e. a pointer.
+                        C_return_code = wformat('return &{c_var};', fmt_result)
+                else:
+                    C_return_code = wformat('return {c_var};', fmt_result)
 
         if fmt_func.inlocal('C_finalize' + generated_suffix):
             # maybe check C_finalize up chain for accumulative code
@@ -1244,6 +1251,8 @@ class Wrapc(util.WrapperMixin):
                 '}'
             )
 
+        # Add header for NULL.
+        self.header_impl_include['<stdlib.h>'] = True
         output.append(
             'cap->addr = NULL;\n'
             'cap->idtor = 0;  // avoid deleting again\n'

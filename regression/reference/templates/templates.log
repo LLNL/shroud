@@ -1,0 +1,43 @@
+Read yaml templates.yaml
+Close templates_types.yaml
+class vector
+C method vector()
+C method ~vector()
+C method void push_back(const int & value +intent(in))
+C method int & at(size_type n +intent(in)+value)
+Close wrapvector_int.h
+Close wrapvectorforint.cpp
+class vector
+C method vector()
+C method ~vector()
+C method void push_back(const double & value +intent(in))
+C method double & at(size_type n +intent(in)+value)
+Close wrapvector_double.h
+Close wrapvector_double.cpp
+class user
+C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Close wrapuser_int.h
+Close wrapuser_int.cpp
+C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Close wraptemplates.h
+Close wraptemplates.cpp
+Close typestemplates.h
+class vector
+C-interface, Fortran method vector()
+C-interface, Fortran method ~vector()
+C-interface, Fortran method void push_back(const int & value +intent(in))
+C-interface, Fortran method int & at(size_type n +intent(in)+value)
+Close wrapfvector_int.f
+class vector
+C-interface, Fortran method vector()
+C-interface, Fortran method ~vector()
+C-interface, Fortran method void push_back(const double & value +intent(in))
+C-interface, Fortran method double & at(size_type n +intent(in)+value)
+Close wrapfvector_double.f
+class user
+C-interface, Fortran method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Close wrapfuser_int.f
+C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Close wrapftemplates.f

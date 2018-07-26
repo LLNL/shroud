@@ -128,35 +128,35 @@ class Typemap(object):
         self.__dict__.update(self.defaults)  # set all default values
         self.update(kw)
 
-    def update(self, d):
+    def update(self, dct):
         """Add options from dictionary to self.
         """
-        for key in d:
+        for key in dct:
             if key in self.defaults:
-                setattr(self, key, d[key])
+                setattr(self, key, dct[key])
             else:
                 raise RuntimeError("Unknown key for Typemap %s", key)
 
     def XXXcopy(self):
-        n = Typemap(self.name)
-        n.update(self._to_dict())
-        return n
+        ntypemap = Typemap(self.name)
+        ntypemap.update(self._to_dict())
+        return ntypemap
 
     def clone_as(self, name):
-        n = Typemap(name)
-        n.update(self._to_dict())
-        return n
+        ntypemap = Typemap(name)
+        ntypemap.update(self._to_dict())
+        return ntypemap
 
     def _to_dict(self):
         """Convert instance to a dictionary for json.
         """
         # only export non-default values
-        a = {}
+        dct = {}
         for key, defvalue in self.defaults.items():
             value = getattr(self, key)
             if value is not defvalue:
-                a[key] = value
-        return a
+                dct[key] = value
+        return dct
 
     def __repr__(self):
         # only print non-default values
@@ -192,24 +192,22 @@ class Typemap(object):
 
 
 ### Manage collection of typemaps
-_typedict = {}   # dictionary of registered types
+shared_typedict = {}   # dictionary of registered types
 
 def set_global_types(typedict):
-    global _typedict
-    _typedict = typedict
+    global shared_typedict
+    shared_typedict = typedict
 
 def get_global_types():
-    return _typedict
+    return shared_typedict
 
 def register_type(name, intypemap):
     """Register a typemap"""
-    global _typedict
-    _typedict[name] = intypemap
+    shared_typedict[name] = intypemap
 
 def lookup_type(name):
     """Lookup name in registered types taking aliases into account."""
-    global _typedict
-    outtypemap = _typedict.get(name)
+    outtypemap = shared_typedict.get(name)
     return outtypemap
 
 def initialize():
@@ -223,6 +221,23 @@ def initialize():
             f_type='type(C_PTR)',
             f_module=dict(iso_c_binding=['C_PTR']),
             PY_ctor='PyCapsule_New({cxx_var}, NULL, NULL)',
+            ),
+
+        short=Typemap(
+            'short',
+            c_type='short',
+            cxx_type='short',
+            f_cast='int({f_var}, C_SHORT)',
+            f_type='integer(C_SHORT)',
+            f_kind='C_SHORT',
+            f_module=dict(iso_c_binding=['C_SHORT']),
+            PY_format='h',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_SHORT',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
         int=Typemap(
             'int',
@@ -271,6 +286,71 @@ def initialize():
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
             ),
+
+        unsigned_short=Typemap(
+            'unsigned_short',
+            c_type='unsigned short',
+            cxx_type='unsigned short',
+            f_cast='int({f_var}, C_SHORT)',
+            f_type='integer(C_SHORT)',
+            f_kind='C_SHORT',
+            f_module=dict(iso_c_binding=['C_SHORT']),
+            PY_format='h',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_SHORT',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        unsigned_int=Typemap(
+            'unsigned_int',
+            c_type='unsigned int',
+            cxx_type='unsigned int',
+            f_cast='int({f_var}, C_INT)',
+            f_type='integer(C_INT)',
+            f_kind='C_INT',
+            f_module=dict(iso_c_binding=['C_INT']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_INT',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        unsigned_long=Typemap(
+            'unsigned_long',
+            c_type='unsigned long',
+            cxx_type='unsigned long',
+            f_cast='int({f_var}, C_LONG)',
+            f_type='integer(C_LONG)',
+            f_kind='C_LONG',
+            f_module=dict(iso_c_binding=['C_LONG']),
+            PY_format='l',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_LONG',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        unsigned_long_long=Typemap(
+            'unsigned_long_long',
+            c_type='unsigned long long',
+            cxx_type='unsigned long long',
+            f_cast='int({f_var}, C_LONG_LONG)',
+            f_type='integer(C_LONG_LONG)',
+            f_kind='C_LONG_LONG',
+            f_module=dict(iso_c_binding=['C_LONG_LONG']),
+            PY_format='L',
+            ##- PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PYN_typenum='NPY_LONGLONG',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+
         size_t=Typemap(
             'size_t',
             c_type='size_t',
@@ -281,6 +361,154 @@ def initialize():
             f_kind='C_SIZE_T',
             f_module=dict(iso_c_binding=['C_SIZE_T']),
             PY_ctor='PyInt_FromSize_t({c_deref}{c_var})',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+
+        # XXX- sized based types for Python
+        int8_t=Typemap(
+            'int8_t',
+            c_type='int8_t',
+            cxx_type='int8_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT8_t)',
+            f_type='integer(C_INT8_T)',
+            f_kind='C_INT8_T',
+            f_module=dict(iso_c_binding=['C_INT8_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_INT8',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        int16_t=Typemap(
+            'int16_t',
+            c_type='int16_t',
+            cxx_type='int16_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT16_t)',
+            f_type='integer(C_INT16_T)',
+            f_kind='C_INT16_T',
+            f_module=dict(iso_c_binding=['C_INT16_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_INT16',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        int32_t=Typemap(
+            'int32_t',
+            c_type='int32_t',
+            cxx_type='int32_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT32_t)',
+            f_type='integer(C_INT32_T)',
+            f_kind='C_INT32_T',
+            f_module=dict(iso_c_binding=['C_INT32_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_INT32',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        int64_t=Typemap(
+            'int64_t',
+            c_type='int64_t',
+            cxx_type='int64_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT64_t)',
+            f_type='integer(C_INT64_T)',
+            f_kind='C_INT64_T',
+            f_module=dict(iso_c_binding=['C_INT64_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_INT64',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+
+        # XXX- sized based types for Python
+        uint8_t=Typemap(
+            'uint8_t',
+            c_type='uint8_t',
+            cxx_type='uint8_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT8_t)',
+            f_type='integer(C_INT8_T)',
+            f_kind='C_INT8_T',
+            f_module=dict(iso_c_binding=['C_INT8_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_UINT8',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        uint16_t=Typemap(
+            'uint16_t',
+            c_type='uint16_t',
+            cxx_type='uint16_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT16_t)',
+            f_type='integer(C_INT16_T)',
+            f_kind='C_INT16_T',
+            f_module=dict(iso_c_binding=['C_INT16_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_UINT16',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        uint32_t=Typemap(
+            'uint32_t',
+            c_type='uint32_t',
+            cxx_type='uint32_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT32_t)',
+            f_type='integer(C_INT32_T)',
+            f_kind='C_INT32_T',
+            f_module=dict(iso_c_binding=['C_INT32_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_UINT32',
+            LUA_type='LUA_TNUMBER',
+            LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
+            LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
+            ),
+        uint64_t=Typemap(
+            'uint64_t',
+            c_type='uint64_t',
+            cxx_type='uint64_t',
+            c_header='<stdint.h>',
+#            cxx_header='<cstdint>',
+            f_cast='int({f_var}, C_INT64_t)',
+            f_type='integer(C_INT64_T)',
+            f_kind='C_INT64_T',
+            f_module=dict(iso_c_binding=['C_INT64_T']),
+            PY_format='i',
+            PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            PY_get='PyInt_AsLong({py_var})',
+            PYN_typenum='NPY_UINT64',
             LUA_type='LUA_TNUMBER',
             LUA_pop='lua_tointeger({LUA_state_var}, {LUA_index})',
             LUA_push='lua_pushinteger({LUA_state_var}, {c_var})',
@@ -522,7 +750,7 @@ def initialize():
 
         # C++ std::string
         string=Typemap(
-            'string',
+            'std::string',
             cxx_type='std::string',
             cxx_header='<string>',
             cxx_to_c='{cxx_var}{cxx_member}c_str()',  # cxx_member is . or ->
@@ -791,11 +1019,13 @@ def initialize():
 
         # C++ std::vector
         # No c_type or f_type, use attr[template]
+        # C++03 "The elements of a vector are stored contiguously" (23.2.4/1). 
         vector=Typemap(
-            'vector',
+            'std::vector',
             cxx_type='std::vector<{cxx_T}>',
             cxx_header='<vector>',
             ##- cxx_to_c='{cxx_var}.data()',  # C++11
+            ##- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
 
             c_statements=dict(
                 intent_in_buf=dict(
@@ -1038,7 +1268,7 @@ def initialize():
             ),
         )
 
-    # rename to actual types.
+    # Rename to actual types.
     # It is not possible to do dict(std::string=...)
     def_types['std::string'] = def_types['string']
     del def_types['string']
@@ -1067,23 +1297,45 @@ def create_enum_typemap(node):
         register_type(type_name, ntypemap)
     return ntypemap
 
-def create_class_typemap(node):
+def create_class_typemap_from_fields(cxx_name, fields, library):
+    """Create a typemap from fields.
+    Used when creating typemap from YAML. (from regression/forward.yaml)
+    typemap:
+    - type: tutorial::Class1
+      fields:
+        base: shadow
+    """
+    fmt_class = library.fmtdict
+    ntypemap = Typemap(
+        cxx_name,
+        base='shadow',
+        cxx_type=cxx_name,
+    )
+    ntypemap.update(fields)
+    fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    register_type(cxx_name, ntypemap)
+    library.add_shadow_typemap(ntypemap)
+    return ntypemap
+
+def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
+    Use fields to override defaults.
 
     The C type is a capsule_data which will contains a pointer to the
     C++ memory and information on how to delete the memory.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    cxx_type = util.wformat('{namespace_scope}{cxx_type}', fmt_class)
 
     ntypemap = lookup_type(cxx_name)
     # unname = util.un_camel(name)
-    f_name = node.name.lower()
+    f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + f_name
     ntypemap = Typemap(
         cxx_name,
         base='shadow',
-        cxx_type=cxx_name,
+        cxx_type=cxx_type,
         cxx_header=node.cxx_header or None,
         c_type=c_name,
         f_derived_type=fmt_class.F_derived_name,
@@ -1091,6 +1343,8 @@ def create_class_typemap(node):
         ##- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c='{f_var}%%%s' % fmt_class.F_derived_member,
     )
+    if fields is not None:
+        ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     register_type(cxx_name, ntypemap)
 
@@ -1188,24 +1442,28 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.forward = ntypemap.cxx_type
 
 
-def create_struct_typemap(node):
+def create_struct_typemap(node, fields=None):
     """Create a typemap for a struct from a ClassNode.
+    Use fields to override defaults.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
+    cxx_type = util.wformat('{namespace_scope}{cxx_type}', fmt_class)
 
     # unname = util.un_camel(name)
-    f_name = node.name.lower()
+    f_name = fmt_class.cxx_class.lower()
     c_name = fmt_class.C_prefix + f_name
     ntypemap = Typemap(
         cxx_name,
         base='struct',
-        cxx_type=cxx_name,
+        cxx_type=cxx_type,
         c_type=c_name,
         f_derived_type=fmt_class.F_derived_name,
         f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
         PYN_descr=fmt_class.PY_struct_array_descr_variable,
     )
+    if fields is not None:
+        ntypemap.update(fields)
     fill_struct_typemap_defaults(ntypemap)
     register_type(cxx_name, ntypemap)
 
@@ -1291,14 +1549,13 @@ def lookup_c_statements(arg):
     If the argument type is a template, look for
     template specific c_statements.
     """
-    attrs = arg.attrs
-    argtype = arg.typename
-    arg_typemap = lookup_type(argtype)
+    arg_typemap = arg.typemap
 
     c_statements = arg_typemap.c_statements
-    if 'template' in attrs:
-        cxx_T = attrs['template']
-        c_statements = arg_typemap.c_templates.get(
+    if arg.template_arguments:
+        base_typemap = arg_typemap
+        arg_typemap = arg.template_arguments[0].typemap
+        cxx_T = arg_typemap.name
+        c_statements = base_typemap.c_templates.get(
             cxx_T, c_statements)
-        arg_typemap = lookup_type(cxx_T)
     return arg_typemap, c_statements

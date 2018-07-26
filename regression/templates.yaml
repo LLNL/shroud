@@ -1,0 +1,67 @@
+
+#
+#  Test templates
+#
+
+library: templates
+cxx_header: templates.hpp
+
+declarations:
+- decl: namespace std
+  declarations:
+  - decl: template<typename T> class vector
+    # std::vector class
+    cxx_header: <vector>
+    cxx_template:
+    - instantiation: <int>
+      format:
+        fmtsample: one
+        C_impl_filename: wrapvectorforint.cpp
+      options:
+        optsample: two
+    - instantiation: <double>
+
+# This has a problem since we're redefining namespace std
+#    - instantiation: <std::string>
+
+    declarations:
+    - decl: typedef size_t size_type
+    - decl: vector()
+    - decl: ~vector()
+    - decl: void push_back( const T& value+intent(in) )
+    - decl: T & at(size_type n)
+      # const_reference at (size_type n) const;
+    # XXX - reference is getting lost
+
+
+- decl: template<typename T> class user
+  # XXX - error if cxx_template is missing
+  cxx_template:
+  - instantiation: <int>
+  declarations:
+  - decl: template<U> void nested( T arg1, U arg2 );
+    # XXX - error if cxx_template is missing
+    cxx_template:
+    - instantiation: <double>
+
+
+
+#- decl: template<ArgType> void Function7(ArgType arg)
+#  cxx_template:
+#    ArgType:
+#    - int
+#    - double
+#  cxx_template:
+#    - instantiation: <int>
+#    - instantiation: <double>
+
+
+# template structs
+# template class variables
+
+- decl: template<T,U> void FunctionTU(T arg1, U arg2)
+  doxygen:
+     brief: Function template with two template parameters.
+  cxx_template:
+  - instantiation: <int, long>
+  - instantiation: <float, double>

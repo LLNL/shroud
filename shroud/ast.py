@@ -52,7 +52,7 @@ from . import typemap
 
 class AstNode(object):
     is_class = False
-    def option_to_fmt(self, fmtdict):
+    def option_to_fmt(self):
         """Set fmt based on options dictionary.
         """
         for name in [
@@ -86,10 +86,15 @@ class AstNode(object):
 ######################################################################
 
 class NamespaceMixin(object):
-    def add_class(self, name, **kwargs):
+    def add_class(self, name, template_parameters=None, **kwargs):
         """Add a class.
+
+        template_parameters - list names of template parameters.
+             ex. template<typename T>  -> ['T']
         """
-        node = ClassNode(name, self, **kwargs)
+        node = ClassNode(name, self,
+                         template_parameters=template_parameters,
+                         **kwargs)
         self.classes.append(node)
         self.symbols[name] = node
         return node
@@ -97,23 +102,37 @@ class NamespaceMixin(object):
     def add_declaration(self, decl, **kwargs):
         """parse decl and add corresponding node.
         decl - declaration
+
+        kwargs -
+           cxx_template -
         """
-        # parse declaration to find out what it is
-        ast = declast.check_decl(decl, namespace=self,
-                                 template_types=kwargs.get('cxx_template', {}).keys())
+        # parse declaration to find out what it is.
+        fullast = declast.check_decl(decl, namespace=self)
+        template_parameters = []
+        if isinstance(fullast, declast.Template):
+            # Create list of template parameter names
+            # template<typename T> class vector -> ['T']
+            for tparam in fullast.parameters:
+                template_parameters.append(tparam.name)
+            ast = fullast.decl
+        else:
+            ast = fullast
+
         if isinstance(ast, declast.Declaration):
             if 'typedef' in ast.storage:
-                self.create_typedef(ast, **kwargs)
-                node = self.add_typedef(ast.declarator.name)
+                node = self.create_typedef_typemap(ast, **kwargs)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
             else:
-                node = self.add_function(decl, ast=ast, **kwargs)
+                node = self.add_function(decl, ast=fullast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
-            if 'declarations' in kwargs:
-                node = self.add_class(ast.name, **kwargs)
-            else:
-                node = self.create_class_typemap(ast.name, **kwargs)
+            # A Class may already be forwared defined.
+            # If so, just return it.
+            node = self.symbols.get(ast.name, None)
+            if not node:
+                node = self.add_class(ast.name,
+                                      template_parameters=template_parameters,
+                                      **kwargs)
         elif isinstance(ast, declast.Namespace):
             node = self.add_namespace(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
@@ -121,29 +140,13 @@ class NamespaceMixin(object):
         elif isinstance(ast, declast.Struct):
             node = self.add_struct(decl, ast=ast, **kwargs)
         else:
-            raise RuntimeError("add_declaration: Error parsing '{}'".format(decl))
+            raise RuntimeError(
+                "add_declaration: unknown ast type {} after parsing '{}'"
+                .format(type(ast), decl))
         return node
 
-    def create_class_typemap(self, key, **kwargs):
-        """Add a typemap for a class.
-        The class is being forward declared i.e. no declarations.
-        """
-        self.add_typedef(key)
-        fullname = self.scope + key
-        ntypemap = typemap.Typemap(fullname,
-                                   base='shadow',
-                                   cxx_type=fullname)
-        if 'fields' in kwargs:
-            value = kwargs['fields']
-            if not isinstance(value, dict):
-                raise TypeError("fields must be a dictionary")
-            ntypemap.update(value)
-        typemap.fill_shadow_typemap_defaults(ntypemap, self.fmtdict)
-        typemap.register_type(ntypemap.name, ntypemap)
-        return ntypemap
-
-    def create_typedef(self, ast, **kwargs):
-        """Create a typemap from a Declarator.
+    def create_typedef_typemap(self, ast, **kwargs):
+        """Create a TypedefNode from a Declarator.
         """
         if ast.declarator.pointer:
             raise NotImplementedError("Pointers not supported in typedef")
@@ -151,21 +154,17 @@ class NamespaceMixin(object):
             raise NotImplementedError("Function pointers not supported in typedef")
 
         key = ast.declarator.name
-        copy_type = ast.attrs['_typename']
-        def_types = typemap.get_global_types()
-        orig = def_types.get(copy_type, None)
-        if not orig:
-            raise RuntimeError(
-                "No type for typedef {} while defining {}".format(copy_type, key))
-        ntypemap = orig.clone_as(copy_type)
-        ntypemap.name = self.scope + key
-        ntypemap.typedef = copy_type
+        orig = ast.typemap
+        ntypemap = orig.clone_as(self.scope + key)
+        ntypemap.typedef = orig.name
         ntypemap.cxx_type = ntypemap.name
         if 'fields' in kwargs:
             fields = kwargs['fields']
             ntypemap.update(fields)
         typemap.register_type(ntypemap.name, ntypemap)
-        return ntypemap
+
+        node = self.add_typedef(key, ntypemap)
+        return node
 
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
@@ -192,6 +191,17 @@ class NamespaceMixin(object):
         self.symbols[name] = node
         return node
 
+    def add_namespaces(self, names):
+        """Create nested namespaces from list of names.
+        """
+        ns = self
+        for name in names:
+            if name in ns.symbols:
+                ns = ns.symbols[name]
+            else:
+                ns = ns.add_namespace(name)
+        return ns
+
     def add_struct(self, decl, ast=None, **kwargs):
         """Add a struct.
         A struct is exactly like a class to the C++ compiler.
@@ -205,10 +215,10 @@ class NamespaceMixin(object):
         self.symbols[node.name] = node
         return node
 
-    def add_typedef(self, name):
-        """Add a typedef to the symbol table.
+    def add_typedef(self, name, ntypemap=None):
+        """Add a TypedefNode to the symbol table.
         """
-        node = TypedefNode(name, parent=self)
+        node = TypedefNode(name, parent=self, ntypemap=ntypemap)
         self.symbols[name] = node
         return node
 
@@ -259,8 +269,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.F_module_dependencies = []     # unused
 
-        self.copyright = kwargs.setdefault('copyright', [])
-        self.patterns = kwargs.setdefault('patterns', [])
+        self.copyright = kwargs.get('copyright', [])
+        self.patterns = kwargs.get('patterns', [])
 
         self.default_format(format, kwargs)
 
@@ -276,6 +286,14 @@ class LibraryNode(AstNode, NamespaceMixin):
     def create_std_names(self):
         """Add standard types to the Library."""
         self.add_typedef('size_t')
+        self.add_typedef('int8_t')
+        self.add_typedef('int16_t')
+        self.add_typedef('int32_t')
+        self.add_typedef('int64_t')
+        self.add_typedef('uint8_t')
+        self.add_typedef('uint16_t')
+        self.add_typedef('uint32_t')
+        self.add_typedef('uint64_t')
         self.add_typedef('MPI_Comm')
         create_std_namespace(self)   # add 'std::' to library
         self.using_directive('std')
@@ -303,6 +321,22 @@ class LibraryNode(AstNode, NamespaceMixin):
             raise RuntimeError("{} not found in namespace".format(name))
         if ns not in self.using:
             self.using.append(ns)
+
+    def add_shadow_typemap(self, ntypemap):
+        """Add a shadow typemap into the symbol table.
+        ntypemap is created by create_class_typemap_from_fields
+        using data from the YAML file.
+        Adding to the symbol table allows it to be parsed.
+
+        cxx_name is always fully qualified (namespace1::namespace2::class)
+        """
+        names = ntypemap.name.split('::')
+        cxx_name = names.pop()
+        ns = self.add_namespaces(names)
+
+        node = ClassNode(cxx_name, ns, ntypemap=ntypemap)
+        # node is not added to self.classes
+        ns.symbols[cxx_name] = node
 
 #####
 
@@ -430,7 +464,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         return def_options
 
-    def default_format(self, format, kwargs):
+    def default_format(self, fmtdict, kwargs):
         """Set format dictionary.
 
         Values based off of library variables and
@@ -524,22 +558,22 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             fmt_library.stdlib = 'std::'
 
-        for n in [
+        for name in [
                 'C_header_filename', 'C_impl_filename',
                 'F_module_name', 'F_impl_filename',
                 'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
                 'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
                 'YAML_type_filename'
         ]:
-            if n in kwargs:
+            if name in kwargs:
                 raise DeprecationWarning(
                     "Setting field {} in library, change to format group"
-                    .format(n))
+                    .format(name))
 
-        self.option_to_fmt(fmt_library)
+        self.option_to_fmt()
 
-        if format:
-            fmt_library.update(format, replace=True)
+        if fmtdict:
+            fmt_library.update(fmtdict, replace=True)
 
         self.fmtdict = fmt_library
 
@@ -628,7 +662,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
-        self.default_format(parent, format, kwargs)
+        self.default_format(parent, format)
 
         # add to symbol table
         self.scope = self.parent.scope + self.name + '::'
@@ -664,7 +698,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
 #####
 
-    def default_format(self, parent, format, kwargs):
+    def default_format(self, parent, format):
         """Set format dictionary."""
 
         self.fmtdict = util.Scope(
@@ -683,14 +717,27 @@ class NamespaceNode(AstNode, NamespaceMixin):
 ######################################################################
 
 class ClassNode(AstNode, NamespaceMixin):
+    """A C++ class.
+
+    symbols - symbol table of nested symbols.
+    """
     is_class = True
     def __init__(self, name, parent,
                  cxx_header='',
                  format=None,
                  options=None,
                  as_struct=False,
+                 template_parameters=None,
+                 ntypemap=None,
                  **kwargs):
         """Create ClassNode.
+        Used with class or struct if as_struct==True.
+
+        template_parameters - list names of template parameters.
+             ex. template<typename T>  -> ['T']
+        Added to symbol table.
+
+        cxx_template - list of TemplateArgument instances
         """
         # From arguments
         self.name = name
@@ -712,17 +759,54 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.default_format(parent, format, kwargs)
 
-        # add to namespace
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
+        # Add to namespace.
+        self.scope = self.parent.scope + self.name + '::'
         self.symbols = {}
-        if as_struct:
-            self.typemap = typemap.create_struct_typemap(self)
+
+        fields = kwargs.get('fields', None)
+        if fields is not None:
+            if not isinstance(fields, dict):
+                raise TypeError("fields must be a dictionary")
+        if ntypemap is not None:
+            # From YAML typemap
+            self.typemap = ntypemap
+        elif as_struct:
+            self.typemap = typemap.create_struct_typemap(self, fields)
         else:
-            self.typemap = typemap.create_class_typemap(self)
-        self.typemap_name = self.typemap.name   # fully qualified name
+            self.typemap = typemap.create_class_typemap(self, fields)
+
+        # Add template parameters.
+        if template_parameters is None:
+            self.template_parameters = []
+        else:
+            self.template_parameters = template_parameters
+            for param_name in template_parameters:
+                self.create_template_parameter_typemap(param_name)
+
+        # Parse the instantiations.
+        # cxx_template = [ TemplateArgument('<int>'),
+        #                  TemplateArgument('<double>') ]
+        cxx_template = kwargs.get('cxx_template', [])
+        self.template_arguments = cxx_template
+        for args in cxx_template:
+            args.parse_instantiation(namespace=self)
 
 ##### namespace behavior
+
+    def create_template_parameter_typemap(self, name):
+        """Create a typemap for a template parameter.
+        Use base='template'.
+
+        The real type will be used during template instantiation.
+        """
+        fullname = self.scope + name
+        ntypemap = typemap.Typemap(fullname, base='template',
+                                   c_type='c_T',
+                                   cxx_type='cxx_T',
+                                   f_type='f_T')
+        typemap.register_type(ntypemap.name, ntypemap)
+
+        self.add_typedef(name, ntypemap=ntypemap)
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -731,7 +815,8 @@ class ClassNode(AstNode, NamespaceMixin):
         return self.symbols.get(name, None)
 
     def unqualified_lookup(self, name):
-        """Look for name in class or its parent."""
+        """Look for name in class or its parents.
+        Nested classes, namespaces, or library."""
         if name in self.symbols:
             return self.symbols[name]
         return self.parent.unqualified_lookup(name)
@@ -741,25 +826,27 @@ class ClassNode(AstNode, NamespaceMixin):
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
 
-        for n in ['C_header_filename', 'C_impl_filename',
-                  'F_derived_name', 'F_impl_filename', 'F_module_name',
-                  'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
-                  'LUA_metadata', 'LUA_ctor_name',
-                  'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-                  'class_prefix'
-                 ]:
-            if n in kwargs:
+        for name in [
+                'C_header_filename', 'C_impl_filename',
+                'F_derived_name', 'F_impl_filename', 'F_module_name',
+                'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
+                'LUA_metadata', 'LUA_ctor_name',
+                'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
+                'class_prefix'
+        ]:
+            if name in kwargs:
                 raise DeprecationWarning(
                     "Setting field {} in class {}, change to format group"
-                    .format(n, self.name))
+                    .format(name, self.name))
 
         self.fmtdict = util.Scope(
             parent=parent.fmtdict,
 
-            class_scope=self.name + '::',
+            cxx_type=self.name,
             cxx_class=self.name,
             class_lower=self.name.lower(),
             class_upper=self.name.upper(),
+            class_scope=self.name + '::',
 
             F_derived_name=self.name.lower(),
         )
@@ -767,7 +854,15 @@ class ClassNode(AstNode, NamespaceMixin):
         fmt_class = self.fmtdict
         if format:
             fmt_class.update(format, replace=True)
+        self.expand_format_templates()
 
+    def expand_format_templates(self):
+        """Expand format templates for a class.
+        Called after other format fields are set.
+        eval_template will only set a value if it has not already been set.
+        Call delete_format_template to remove previous values to
+        force them to be recomputed during class template instantiation.
+        """
         self.eval_template('class_prefix')
 
         # Only one file per class for C.
@@ -784,20 +879,60 @@ class ClassNode(AstNode, NamespaceMixin):
             self.eval_template('PY_struct_array_descr_variable')
             self.eval_template('PY_struct_array_descr_name')
 
+    def delete_format_templates(self):
+        """Delete some format strings which were defaulted.
+        Used when instantiation a class to remove previous class' values.
+        """
+        self.fmtdict.delattrs([
+            'class_prefix',
+            'C_header_filename',
+            'C_impl_filename',
+            'F_module_name',
+            'F_impl_filename',
+            'PY_struct_array_descr_create',
+            'PY_struct_array_descr_variable',
+            'PY_struct_array_descr_name',
+        ])
+
     def add_namespace(self, **kwargs):
         """Replace method inherited from NamespaceMixin."""
         raise RuntimeError("Cannot add a namespace to a class")
+
+    def clone(self):
+        """Create a copy of a ClassNode to use with C++ template.
+
+        Create a clone of fmtdict and options allowing them
+        to be modified.
+        Clone all functions and reparent fmtdict and options to
+        the new class.
+        """
+        # Shallow copy everything.
+        new = copy.copy(self)
+
+        # Add new format and options Scope.
+        new.fmtdict = self.fmtdict.clone()
+        new.options = self.options.clone()
+
+        # Clone all functions.
+        newfcns = []
+        for fcn in self.functions:
+            newfcn = fcn.clone()
+            newfcn.fmtdict.reparent(new.fmtdict)
+            newfcn.options.reparent(new.options)
+            newfcns.append(newfcn)
+        new.functions = newfcns
+
+        return new
 
 ######################################################################
 
 class FunctionNode(AstNode):
     """
 
-    - decl:
+    - decl: template<typename T1, typename T2> foo(T1 arg, T2 arg)
       cxx_template:
-        ArgType:
-        - int
-        - double
+      - instantiation: <int, long>
+      - instantiation: <float, double>
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes
@@ -833,12 +968,23 @@ class FunctionNode(AstNode):
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
 
+    Templates
+    ---------
+
+    template_parameters - [ 'T1', 'T2' ]
+    template_argument - [ TemplateArgument('<int,long>'),
+                          TemplateArgument('<float,double>') ]
+
+
     """
     def __init__(self, decl, parent,
                  format=None,
                  ast=None,
                  options=None,
                  **kwargs):
+        """
+        ast - None, declast.Declaration, declast.Template
+        """
         self.linenumber = kwargs.get('__line__', '?')
 
         self.options = util.Scope(parent.options)
@@ -867,7 +1013,9 @@ class FunctionNode(AstNode):
 
         self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
         self.cpp_if = kwargs.get('cpp_if', None)
-        self.cxx_template = kwargs.get('cxx_template', {})
+        self.cxx_template = {}
+        self.template_parameters = []
+        self.template_arguments = kwargs.get('cxx_template', [])
         self.doxygen = kwargs.get('doxygen', {})
         self.fortran_generic = kwargs.get('fortran_generic', {})
         self.return_this = kwargs.get('return_this', False)
@@ -889,13 +1037,40 @@ class FunctionNode(AstNode):
 
         self.decl = decl
         if ast is None:
-            # parse decl and add to dictionary
-            template_types = self.cxx_template.keys()
+            ast = declast.check_decl(decl, namespace=parent)
+        if isinstance(ast, declast.Template):
+            for param in ast.parameters:
+                self.template_parameters.append(param.name)
 
-            ast = declast.check_decl(decl,
-                                     namespace=parent,
-                                     template_types=template_types)
+            template_parameters = ast
+            ast = ast.decl
+            for args in self.template_arguments:
+                args.parse_instantiation(namespace=self)
+
+            # XXX - convert to cxx_template format  { T=['int', 'double'] }
+            argname = template_parameters.parameters[0].name
+            lst = []
+            for arg in self.template_arguments:
+                lst.append(arg.asts[0].typemap.name)
+            self.cxx_template[argname] = lst
+        elif isinstance(ast, declast.Declaration):
+            pass
+        else:
+            raise RuntimeError("Expected a function declaration")
+        if ast.params is None:
+            # 'void foo' instead of 'void foo()'
+            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
         self.ast = ast
+
+        # Look for any template (include class template) arguments.
+        self.have_template_args = False
+        if ast.typemap.base == 'template':
+            self.have_template_args = True
+        else:
+            for args in ast.params:
+                if args.typemap.base == 'template':
+                    self.have_template_args = True
+                    break
 
         # add any attributes from YAML files to the ast
         if 'attrs' in kwargs:
@@ -908,18 +1083,14 @@ class FunctionNode(AstNode):
             ast.attrs.update(kwargs['fattrs'])
         # XXX - waring about unused fields in attrs
 
-        if ast.params is None:
-            # 'void foo' instead of 'void foo()'
-            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
-
         fmt_func = self.fmtdict
         fmt_func.function_name = ast.name
         fmt_func.underscore_name = util.un_camel(fmt_func.function_name)
 
-    def default_format(self, parent, format, kwargs):
+    def default_format(self, parent, fmtdict, kwargs):
 
         # Move fields from kwargs into instance
-        for n in [
+        for name in [
                 'C_code',
                 # 'C_error_pattern',
                 'C_name',
@@ -933,39 +1104,39 @@ class FunctionNode(AstNode):
                 'PY_name_impl',
                 'function_suffix'
         ]:
-            if n in kwargs:
+            if name in kwargs:
                 raise DeprecationWarning(
                     "Setting field {} in function, change to format group"
-                    .format(n))
+                    .format(name))
 
         # Move fields from kwargs into instance
-        for n in [
+        for name in [
                 'C_error_pattern', 'PY_error_pattern',
         ]:
-            setattr(self, n, kwargs.get(n, None))
+            setattr(self, name, kwargs.get(name, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
 
-        self.option_to_fmt(self.fmtdict)
-        if format:
-            self.fmtdict.update(format, replace=True)
-            if 'C_return_type' in format:
+        self.option_to_fmt()
+        if fmtdict:
+            self.fmtdict.update(fmtdict, replace=True)
+            if 'C_return_type' in fmtdict:
                 # wrapc.py will overwrite C_return_type.
                 # keep original value for wrapf.py.
-                self.fmtdict.C_custom_return_type = format['C_return_type']
+                self.fmtdict.C_custom_return_type = fmtdict['C_return_type']
 
     def clone(self):
-        """Create a copy of a function node to use with C++ template
+        """Create a copy of a FunctionNode to use with C++ template
         or changing result to argument.
         """
-        # Shallow copy everything
+        # Shallow copy everything.
         new = copy.copy(self)
 
-        # new Scope with same inlocal and parent
+        # new Scope with same inlocal and parent.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
 
-        # deep copy dictionaries
+        # Deep copy dictionaries.
         new.ast = copy.deepcopy(self.ast)
         new._fmtargs = copy.deepcopy(self._fmtargs)
         new._fmtresult = copy.deepcopy(self._fmtresult)
@@ -1050,10 +1221,8 @@ class EnumNode(AstNode):
         self._fmtmembers = fmtmembers
 
         # Add to namespace
-        self.typename = self.parent.scope + self.name
-        self.scope = self.typename + '::'
+        self.scope = self.parent.scope + self.name + '::'
         self.typemap = typemap.create_enum_typemap(self)
-        self.typemap_name = self.typemap.name
         # also 'enum class foo' will alter scope
 
 ######################################################################
@@ -1061,18 +1230,24 @@ class EnumNode(AstNode):
 class TypedefNode(AstNode):
     """
     Used for namespace resolution
+
+    type name must be in a typemap.
     """
-    def __init__(self, name, parent):
+    def __init__(self, name, parent, ntypemap=None):
 
         # From arguments
         self.name = name
         self.parent = parent
 
         # Add to namespace
-        self.typename = self.parent.scope + self.name
+        if ntypemap is None:
+            typename = self.parent.scope + self.name
+            self.typemap = typemap.lookup_type(typename)
+        else:
+            self.typemap = ntypemap
 
     def get_typename(self):
-        return self.typename
+        return self.typemap.name
 
 ######################################################################
 
@@ -1128,15 +1303,33 @@ class VariableNode(AstNode):
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 
         # Add to namespace
-#        self.typename = self.parent.scope + self.name
-#        self.scope = self.typename + '::'
+#        self.scope = self.parent.scope + self.name + '::'
 #        self.typemap = typemap.create_struct_typemap(self)
-#        self.typemap_name = self.typemap.name
+
+######################################################################
+
+class TemplateArgument(object):
+    """Information used to instantiate a template.
+
+    instantiation = "<int,double>"
+    asts = [ Declaration("int"), Declaration("double") ]
+    """
+    def __init__(self, instantiation, fmtdict=None, options=None):
+        self.instantiation = instantiation
+        self.fmtdict = fmtdict
+        self.options = options
+        self.asts = None
+
+    def parse_instantiation(self, namespace):
+        """Parse instantiation (ex. <int>) and set list of Declarations."""
+        parser = declast.Parser(self.instantiation, namespace)
+        self.asts = parser.template_argument_list()
 
 ######################################################################
 
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
+    (string and vector)
     """
     std = glb.add_namespace('std')
     std.add_typedef('string')
@@ -1147,27 +1340,46 @@ def create_std_namespace(glb):
 # Parse yaml file
 ######################################################################
 
-def clean_dictionary(dd):
+def clean_dictionary(ddct):
     """YAML converts some blank fields to None,
     but we want blank.
     """
     for key in ['cxx_header', 'namespace']:
-        if key in dd and dd[key] is None:
-            dd[key] = ''
+        if key in ddct and ddct[key] is None:
+            ddct[key] = ''
 
-    if 'default_arg_suffix' in dd:
-        default_arg_suffix = dd['default_arg_suffix']
+    if 'default_arg_suffix' in ddct:
+        default_arg_suffix = ddct['default_arg_suffix']
         if not isinstance(default_arg_suffix, list):
             raise RuntimeError('default_arg_suffix must be a list')
-        for i, value in enumerate(dd['default_arg_suffix']):
+        for i, value in enumerate(ddct['default_arg_suffix']):
             if value is None:
-                dd['default_arg_suffix'][i] = ''
+                ddct['default_arg_suffix'][i] = ''
 
-    if 'format' in dd:
-        dd0 = dd['format']
+    if 'format' in ddct:
+        fmtdict = ddct['format']
         for key in ['function_suffix']:
-            if key in dd0 and dd0[key] is None:
-                dd0[key] = ''
+            if key in fmtdict and fmtdict[key] is None:
+                fmtdict[key] = ''
+
+    if 'cxx_template' in ddct:
+        # Convert to list of TemplateArgument instances
+        cxx_template = ddct['cxx_template']
+        if not isinstance(cxx_template, list):
+            raise RuntimeError('cxx_template must be a list')
+        newlst = []
+        for dct in cxx_template:
+            if not isinstance(dct, dict):
+                raise RuntimeError('cxx_template must be a list of dictionaries')
+            if 'instantiation' not in dct:
+                raise RuntimeError(
+                    'instantation must be defined for each dictionary in cxx_template')
+            newlst.append(TemplateArgument(
+                dct['instantiation'],
+                fmtdict=dct.get('format', None),
+                options=dct.get('options', None),
+            ))
+        ddct['cxx_template'] = newlst
 
 def clean_list(lst):
     """Fix up blank lines in a YAML line
@@ -1190,28 +1402,18 @@ def add_declarations(parent, node):
 
     for subnode in node['declarations']:
         if 'block' in subnode:
-            d = copy.copy(subnode)
-            clean_dictionary(d)
-            blk = BlockNode(parent, **d)
+            dct = copy.copy(subnode)
+            clean_dictionary(dct)
+            blk = BlockNode(parent, **dct)
             add_declarations(blk, subnode)
         elif 'decl' in subnode:
             # copy before clean to avoid changing input dict
-            d = copy.copy(subnode)
-            clean_dictionary(d)
-            decl = d['decl']
-            del d['decl']
-            declnode = parent.add_declaration(decl, **d)
+            dct = copy.copy(subnode)
+            clean_dictionary(dct)
+            decl = dct['decl']
+            del dct['decl']
+            declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode)
-        elif 'type' in subnode:
-            # Update fields for a type. For example, set cpp_if
-            key = subnode['type']
-            value = subnode['fields']
-            def_types = typemap.get_global_types()
-            ntypemap = def_types.get(key, None)
-            if not ntypemap:
-                raise RuntimeError(
-                    "No type {}".format(key))
-            ntypemap.update(value)
         else:
             print(subnode)
             raise RuntimeError(
@@ -1243,6 +1445,24 @@ def create_library_from_dictionary(node):
     if 'namespace' in node:
         for name in node['namespace'].split():
             ns = ns.add_namespace(name)
+
+    if 'typemap' in node:
+        # list of dictionaries
+        for subnode in node['typemap']:
+            # Update fields for a type. For example, set cpp_if
+            key = subnode['type']
+            fields = subnode['fields']
+            def_types = typemap.get_global_types()
+            ntypemap = def_types.get(key, None)
+            if ntypemap:
+                ntypemap.update(fields)
+            else:
+                # Create new typemap
+                base = fields.get('base', '')
+                if base == 'shadow':
+                    typemap.create_class_typemap_from_fields(key, fields, library)
+                else:
+                    raise RuntimeError("base must be 'shadow'")
 
     add_declarations(ns, node)
 

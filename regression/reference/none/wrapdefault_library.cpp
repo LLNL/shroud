@@ -40,6 +40,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // #######################################################################
+#include <stdlib.h>
 #include "typesdefault_library.h"
 
 // splicer begin CXX_definitions
