@@ -15,10 +15,10 @@ declarations:
     cxx_template:
     - instantiation: <int>
       format:
-        fmtblah: one
+        fmtsample: one
         C_impl_filename: wrapvectorforint.cpp
       options:
-        optblah: two
+        optsample: two
     - instantiation: <double>
 
 # This has a problem since we're redefining namespace std

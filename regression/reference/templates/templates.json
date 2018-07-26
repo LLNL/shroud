@@ -19,7 +19,7 @@
                     "class_upper": "VECTOR_INT", 
                     "cxx_class": "vector_int", 
                     "cxx_type": "vector<int>", 
-                    "fmtblah": "one"
+                    "fmtsample": "one"
                 }, 
                 "functions": [
                     {
@@ -412,7 +412,7 @@
                 "name": "vector", 
                 "options": {
                     "__line__": 20, 
-                    "optblah": "two"
+                    "optsample": "two"
                 }, 
                 "scope": "std::vector::", 
                 "template_arguments": [
@@ -428,12 +428,12 @@
                         "fmtdict": {
                             "C_impl_filename": "wrapvectorforint.cpp", 
                             "__line__": 17, 
-                            "fmtblah": "one"
+                            "fmtsample": "one"
                         }, 
                         "instantiation": "<int>", 
                         "options": {
                             "__line__": 20, 
-                            "optblah": "two"
+                            "optsample": "two"
                         }
                     }, 
                     {
@@ -874,12 +874,12 @@
                         "fmtdict": {
                             "C_impl_filename": "wrapvectorforint.cpp", 
                             "__line__": 17, 
-                            "fmtblah": "one"
+                            "fmtsample": "one"
                         }, 
                         "instantiation": "<int>", 
                         "options": {
                             "__line__": 20, 
-                            "optblah": "two"
+                            "optsample": "two"
                         }
                     }, 
                     {

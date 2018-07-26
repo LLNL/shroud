@@ -1055,6 +1055,7 @@ The class's declarations can be added later::
 .. A class will be forward declared when the ``declarations`` field is
    not provided.  When the class is not defined later in the file, it may
    be necessary to provide the conversion fields to complete the type::
+   XXX - define conversion fields
 
 ..     declarations:
        - decl: class Class1
@@ -1149,7 +1150,7 @@ The template is given as part of the ``decl`` and the instantations are listed i
 For a class template, the *class_name* is modified to included the
 instantion type.  If only a single template parameter is provided,
 then the template argument is used.  For the above example,
-*C_impl_filename* will default to ``wrapvector_int.cpp`` but has be
+*C_impl_filename* will default to ``wrapvector_int.cpp`` but has been
 explicitly changed to ``wrapvectorforint.cpp``.
 
 

@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   and information to deallocate it.
 - Change how function template arguments are specified to reflect C++ syntax.
   Also allow options and format to be added to an instantiation.
+previous format:
 ```
   - decl: void Function7(ArgType arg)
     cxx_template:
@@ -46,7 +47,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
       - int
       - double
 ```
-new:
+new format:
 ```
   - decl: |
         template<typename ArgType>

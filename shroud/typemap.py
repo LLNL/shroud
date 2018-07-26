@@ -1025,6 +1025,7 @@ def initialize():
             cxx_type='std::vector<{cxx_T}>',
             cxx_header='<vector>',
             ##- cxx_to_c='{cxx_var}.data()',  # C++11
+            ##- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
 
             c_statements=dict(
                 intent_in_buf=dict(
