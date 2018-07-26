@@ -750,20 +750,12 @@ class ClassNode(AstNode, NamespaceMixin):
         self.variables = []
         self.as_struct = as_struct   # if True, treat as struct, else as shadow class
 
-        self.imported = kwargs.get('imported', False)
         self.python = kwargs.get('python', {})
         self.cpp_if = kwargs.get('cpp_if', None)
 
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
-
-        if self.imported:
-            # Maybe check for imported in more places.
-            self.options.wrap_c = False
-            self.options.wrap_fortran = False
-            self.options.wrap_lua = False
-            self.options.wrap_python = False
 
         self.default_format(parent, format, kwargs)
 

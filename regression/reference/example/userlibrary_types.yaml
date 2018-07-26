@@ -46,7 +46,6 @@ declarations:
     - namespace: nested
       declarations: nested
       - type: ExClass1
-        imported: True
         fields:
           base: shadow
           cxx_header: ExClass1.hpp
@@ -58,7 +57,6 @@ declarations:
             exclass1_mod:
             - exclass1
       - type: ExClass2
-        imported: True
         fields:
           base: shadow
           cxx_header: ExClass2.hpp
@@ -70,7 +68,6 @@ declarations:
             exclass2_mod:
             - exclass2
       - type: ExClass3
-        imported: True
         fields:
           base: shadow
           cxx_type: example::nested::ExClass3

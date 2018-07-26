@@ -5,7 +5,6 @@ declarations:
   - namespace: std
     declarations: std
     - type: vector_double
-      imported: True
       fields:
         base: shadow
         cxx_header: <vector>
@@ -17,7 +16,6 @@ declarations:
           vector_double_mod:
           - vector_double
     - type: vector_int
-      imported: True
       fields:
         base: shadow
         cxx_header: <vector>
@@ -29,7 +27,6 @@ declarations:
           vector_int_mod:
           - vector_int
   - type: user_int
-    imported: True
     fields:
       base: shadow
       cxx_type: user<int>

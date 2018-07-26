@@ -160,11 +160,6 @@ declarations
 fields:
    A dictionary of fields used to update the typemap.
 
-imported:
-   If true, this class was imported from another file and should
-   not create any wrapping code.
-   Its type can be used in other declarations.
-
 options
    Options fields for the class.
    Creates scope within library.

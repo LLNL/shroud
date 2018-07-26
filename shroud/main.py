@@ -107,8 +107,6 @@ class TypeOut(util.WrapperMixin):
         # split up into namespaces
         top = {}
         for cls in newlibrary.classes:
-            if cls.imported:
-                continue
             fullname = cls.typemap.name
             parts = fullname.split('::')
             ns = top
@@ -130,7 +128,6 @@ class TypeOut(util.WrapperMixin):
                 elif isinstance(nxt, typemap.Typemap):
                     output.append('@- type: ' + name)
                     output.append(1)
-                    output.append('imported: True')
                     output.append('fields:')
                     output.append(1)
                     nxt.__export_yaml__(0, output)

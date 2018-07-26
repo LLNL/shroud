@@ -3,34 +3,6 @@
     "library": {
         "classes": [
             {
-                "cxx_header": "", 
-                "fmtdict": {
-                    "C_header_filename": "wrapGroup.h", 
-                    "C_impl_filename": "wrapGroup.cpp", 
-                    "C_type_name": "SIDRE_group", 
-                    "F_derived_name": "group", 
-                    "F_impl_filename": "wrapfGroup.f", 
-                    "F_module_name": "group_mod", 
-                    "class_lower": "group", 
-                    "class_prefix": "group_", 
-                    "class_scope": "Group::", 
-                    "class_upper": "GROUP", 
-                    "cxx_class": "Group", 
-                    "cxx_type": "Group"
-                }, 
-                "imported": true, 
-                "linenumber": 96, 
-                "name": "Group", 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }, 
-                "scope": "axom::sidre::Group::", 
-                "typemap_name": "axom::sidre::Group"
-            }, 
-            {
                 "cxx_header": "ExClass1.hpp", 
                 "fmtdict": {
                     "CXX_this_call": "SH_this->", 
@@ -140,7 +112,7 @@
                             "function_suffix": "_0", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 126, 
+                        "linenumber": 120, 
                         "options": {}
                     }, 
                     {
@@ -253,7 +225,7 @@
                         "decl": "ExClass1( const string *name )", 
                         "declgen": "ExClass1(const string * name +intent(in))", 
                         "doxygen": {
-                            "__line__": 128, 
+                            "__line__": 122, 
                             "brief": "constructor", 
                             "description": "longer description\nusually multiple lines\n", 
                             "return": "return new instance"
@@ -287,7 +259,7 @@
                             "function_suffix": "_1", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 127, 
+                        "linenumber": 121, 
                         "options": {}
                     }, 
                     {
@@ -362,7 +334,7 @@
                         "decl": "ExClass1( const string *name )", 
                         "declgen": "ExClass1(const string * name +intent(in)+len_trim(Lname))", 
                         "doxygen": {
-                            "__line__": 128, 
+                            "__line__": 122, 
                             "brief": "constructor", 
                             "description": "longer description\nusually multiple lines\n", 
                             "return": "return new instance"
@@ -384,7 +356,7 @@
                             "function_suffix": "_1_bufferify", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 127, 
+                        "linenumber": 121, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -407,7 +379,7 @@
                         "decl": "~ExClass1()", 
                         "declgen": "~ExClass1()", 
                         "doxygen": {
-                            "__line__": 138, 
+                            "__line__": 132, 
                             "brief": "destructor", 
                             "description": "longer description joined with previous line"
                         }, 
@@ -430,7 +402,7 @@
                             "F_subprogram": "subroutine", 
                             "LUA_name": "dtor", 
                             "LUA_name_impl": "l_exclass1_dtor", 
-                            "__line__": 136, 
+                            "__line__": 130, 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -438,7 +410,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 135, 
+                        "linenumber": 129, 
                         "options": {}
                     }, 
                     {
@@ -575,7 +547,7 @@
                             "function_name": "incrementCount", 
                             "underscore_name": "increment_count"
                         }, 
-                        "linenumber": 144, 
+                        "linenumber": 138, 
                         "options": {}
                     }, 
                     {
@@ -616,7 +588,7 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "__line__": 147, 
+                                "__line__": 141, 
                                 "deref": "result_as_arg", 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
@@ -670,7 +642,7 @@
                             "function_name": "getNameErrorPattern", 
                             "underscore_name": "get_name_error_pattern"
                         }, 
-                        "linenumber": 146, 
+                        "linenumber": 140, 
                         "options": {}
                     }, 
                     {
@@ -710,7 +682,7 @@
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
-                                "__line__": 147, 
+                                "__line__": 141, 
                                 "len": "aa_exclass1_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "declarator": {
@@ -721,7 +693,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "__line__": 147, 
+                                        "__line__": 141, 
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
                                         "intent": "out", 
@@ -767,7 +739,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name_error_pattern"
                         }, 
-                        "linenumber": 146, 
+                        "linenumber": 140, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -822,7 +794,7 @@
                         "decl": "int GetNameLength() const", 
                         "declgen": "int GetNameLength() const", 
                         "doxygen": {
-                            "__line__": 153, 
+                            "__line__": 147, 
                             "brief": "helper function for Fortran to get length of name."
                         }, 
                         "fmtdict": {
@@ -847,7 +819,7 @@
                             "LUA_name": "GetNameLength", 
                             "LUA_name_impl": "l_exclass1_get_name_length", 
                             "PY_name_impl": "PP_exclass1_GetNameLength", 
-                            "__line__": 155, 
+                            "__line__": 149, 
                             "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -856,7 +828,7 @@
                             "function_name": "GetNameLength", 
                             "underscore_name": "get_name_length"
                         }, 
-                        "linenumber": 152, 
+                        "linenumber": 146, 
                         "options": {}
                     }, 
                     {
@@ -946,7 +918,7 @@
                             "function_name": "getNameErrorCheck", 
                             "underscore_name": "get_name_error_check"
                         }, 
-                        "linenumber": 160, 
+                        "linenumber": 154, 
                         "options": {}
                     }, 
                     {
@@ -1039,7 +1011,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name_error_check"
                         }, 
-                        "linenumber": 160, 
+                        "linenumber": 154, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -1114,7 +1086,7 @@
                             "LUA_name": "getNameArg", 
                             "LUA_name_impl": "l_exclass1_get_name_arg", 
                             "PY_name_impl": "PP_exclass1_getNameArg", 
-                            "__line__": 164, 
+                            "__line__": 158, 
                             "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -1123,7 +1095,7 @@
                             "function_name": "getNameArg", 
                             "underscore_name": "get_name_arg"
                         }, 
-                        "linenumber": 162, 
+                        "linenumber": 156, 
                         "options": {
                             "wrap_fortran": false
                         }
@@ -1207,7 +1179,7 @@
                             "C_return_type": "void", 
                             "F_C_name": "c_exclass1_get_name_arg_bufferify", 
                             "F_string_result_as_arg": "name", 
-                            "__line__": 164, 
+                            "__line__": 158, 
                             "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -1217,7 +1189,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name_arg"
                         }, 
-                        "linenumber": 162, 
+                        "linenumber": 156, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -1272,12 +1244,12 @@
                             "F_name_impl": "exclass1_get_name_arg", 
                             "F_string_result_as_arg": "name", 
                             "F_subprogram": "subroutine", 
-                            "__line__": 164, 
+                            "__line__": 158, 
                             "function_name": "getNameArg", 
                             "function_suffix": "", 
                             "underscore_name": "get_name_arg"
                         }, 
-                        "linenumber": 162, 
+                        "linenumber": 156, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": true, 
@@ -1363,7 +1335,7 @@
                             "function_name": "getRoot", 
                             "underscore_name": "get_root"
                         }, 
-                        "linenumber": 169, 
+                        "linenumber": 163, 
                         "options": {}
                     }, 
                     {
@@ -1493,7 +1465,7 @@
                             "LUA_name": "getValue", 
                             "LUA_name_impl": "l_exclass1_get_value", 
                             "PY_name_impl": "PP_exclass1_getValue_from_int", 
-                            "__line__": 172, 
+                            "__line__": 166, 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -1503,7 +1475,7 @@
                             "function_suffix": "_from_int", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 171, 
+                        "linenumber": 165, 
                         "options": {}
                     }, 
                     {
@@ -1640,7 +1612,7 @@
                             "function_suffix": "_1", 
                             "underscore_name": "get_value"
                         }, 
-                        "linenumber": 174, 
+                        "linenumber": 168, 
                         "options": {}
                     }, 
                     {
@@ -1721,7 +1693,7 @@
                             "function_name": "getAddr", 
                             "underscore_name": "get_addr"
                         }, 
-                        "linenumber": 176, 
+                        "linenumber": 170, 
                         "options": {}
                     }, 
                     {
@@ -1859,7 +1831,7 @@
                             "function_name": "hasAddr", 
                             "underscore_name": "has_addr"
                         }, 
-                        "linenumber": 177, 
+                        "linenumber": 171, 
                         "options": {}
                     }, 
                     {
@@ -1902,15 +1874,15 @@
                             "function_name": "SplicerSpecial", 
                             "underscore_name": "splicer_special"
                         }, 
-                        "linenumber": 179, 
+                        "linenumber": 173, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 117, 
+                "linenumber": 111, 
                 "name": "ExClass1", 
                 "options": {}, 
                 "python": {
-                    "__line__": 121, 
+                    "__line__": 115, 
                     "type": [
                         "init", 
                         "repr", 
@@ -2035,7 +2007,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "__line__": 197, 
+                                        "__line__": 191, 
                                         "intent": "in", 
                                         "len_trim": "trim_name", 
                                         "value": false
@@ -2063,7 +2035,7 @@
                         "decl": "ExClass2(const string *name)", 
                         "declgen": "ExClass2(const string * name +intent(in)+len_trim(trim_name))", 
                         "doxygen": {
-                            "__line__": 192, 
+                            "__line__": 186, 
                             "brief": "constructor"
                         }, 
                         "fmtdict": {
@@ -2096,7 +2068,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 191, 
+                        "linenumber": 185, 
                         "options": {}
                     }, 
                     {
@@ -2142,7 +2114,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "__line__": 197, 
+                                        "__line__": 191, 
                                         "_generated_suffix": "_buf", 
                                         "intent": "in", 
                                         "len_trim": "trim_name", 
@@ -2171,7 +2143,7 @@
                         "decl": "ExClass2(const string *name)", 
                         "declgen": "ExClass2(const string * name +intent(in)+len_trim(trim_name))", 
                         "doxygen": {
-                            "__line__": 192, 
+                            "__line__": 186, 
                             "brief": "constructor"
                         }, 
                         "fmtdict": {
@@ -2191,7 +2163,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 191, 
+                        "linenumber": 185, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -2214,7 +2186,7 @@
                         "decl": "~ExClass2()", 
                         "declgen": "~ExClass2()", 
                         "doxygen": {
-                            "__line__": 203, 
+                            "__line__": 197, 
                             "brief": "destructor"
                         }, 
                         "fmtdict": {
@@ -2236,7 +2208,7 @@
                             "F_subprogram": "subroutine", 
                             "LUA_name": "dtor", 
                             "LUA_name_impl": "l_exclass2_dtor", 
-                            "__line__": 201, 
+                            "__line__": 195, 
                             "c_const": "", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -2244,7 +2216,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 200, 
+                        "linenumber": 194, 
                         "options": {}
                     }, 
                     {
@@ -2283,7 +2255,7 @@
                         }, 
                         "ast": {
                             "attrs": {
-                                "__line__": 208, 
+                                "__line__": 202, 
                                 "deref": "result_as_arg", 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
@@ -2336,7 +2308,7 @@
                             "function_name": "getName", 
                             "underscore_name": "get_name"
                         }, 
-                        "linenumber": 206, 
+                        "linenumber": 200, 
                         "options": {}
                     }, 
                     {
@@ -2374,7 +2346,7 @@
                         "_generated": "arg_to_buffer", 
                         "ast": {
                             "attrs": {
-                                "__line__": 208, 
+                                "__line__": 202, 
                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                             }, 
                             "declarator": {
@@ -2385,7 +2357,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "__line__": 208, 
+                                        "__line__": 202, 
                                         "_generated_suffix": "_buf", 
                                         "_is_result": true, 
                                         "intent": "out", 
@@ -2431,7 +2403,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name"
                         }, 
-                        "linenumber": 206, 
+                        "linenumber": 200, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -2525,7 +2497,7 @@
                             "function_name": "getName2", 
                             "underscore_name": "get_name2"
                         }, 
-                        "linenumber": 212, 
+                        "linenumber": 206, 
                         "options": {}
                     }, 
                     {
@@ -2617,7 +2589,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name2"
                         }, 
-                        "linenumber": 212, 
+                        "linenumber": 206, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -2711,7 +2683,7 @@
                             "function_name": "getName3", 
                             "underscore_name": "get_name3"
                         }, 
-                        "linenumber": 213, 
+                        "linenumber": 207, 
                         "options": {}
                     }, 
                     {
@@ -2803,7 +2775,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name3"
                         }, 
-                        "linenumber": 213, 
+                        "linenumber": 207, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -2896,7 +2868,7 @@
                             "function_name": "getName4", 
                             "underscore_name": "get_name4"
                         }, 
-                        "linenumber": 214, 
+                        "linenumber": 208, 
                         "options": {}
                     }, 
                     {
@@ -2987,7 +2959,7 @@
                             "function_suffix": "_bufferify", 
                             "underscore_name": "get_name4"
                         }, 
-                        "linenumber": 214, 
+                        "linenumber": 208, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -3042,7 +3014,7 @@
                         "decl": "int GetNameLength() const", 
                         "declgen": "int GetNameLength() const", 
                         "doxygen": {
-                            "__line__": 218, 
+                            "__line__": 212, 
                             "brief": "helper function for Fortran"
                         }, 
                         "fmtdict": {
@@ -3067,7 +3039,7 @@
                             "LUA_name": "GetNameLength", 
                             "LUA_name_impl": "l_exclass2_get_name_length", 
                             "PY_name_impl": "PP_exclass2_GetNameLength", 
-                            "__line__": 220, 
+                            "__line__": 214, 
                             "c_const": "const ", 
                             "c_deref": "*", 
                             "c_member": "->", 
@@ -3076,7 +3048,7 @@
                             "function_name": "GetNameLength", 
                             "underscore_name": "get_name_length"
                         }, 
-                        "linenumber": 217, 
+                        "linenumber": 211, 
                         "options": {}
                     }, 
                     {
@@ -3227,7 +3199,7 @@
                             "function_name": "get_class1", 
                             "underscore_name": "get_class1"
                         }, 
-                        "linenumber": 226, 
+                        "linenumber": 220, 
                         "options": {}
                     }, 
                     {
@@ -3305,13 +3277,13 @@
                             "underscore_name": "declare"
                         }, 
                         "fortran_generic": {
-                            "__line__": 233, 
+                            "__line__": 227, 
                             "len": [
                                 "int", 
                                 "long"
                             ]
                         }, 
-                        "linenumber": 229, 
+                        "linenumber": 223, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": false, 
@@ -3368,7 +3340,7 @@
                             "function_suffix": "_0_int", 
                             "underscore_name": "declare"
                         }, 
-                        "linenumber": 229, 
+                        "linenumber": 223, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": true, 
@@ -3425,7 +3397,7 @@
                             "function_suffix": "_0_long", 
                             "underscore_name": "declare"
                         }, 
-                        "linenumber": 229, 
+                        "linenumber": 223, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": true, 
@@ -3603,13 +3575,13 @@
                             "underscore_name": "declare"
                         }, 
                         "fortran_generic": {
-                            "__line__": 233, 
+                            "__line__": 227, 
                             "len": [
                                 "int", 
                                 "long"
                             ]
                         }, 
-                        "linenumber": 229, 
+                        "linenumber": 223, 
                         "options": {
                             "wrap_fortran": false
                         }, 
@@ -3686,7 +3658,7 @@
                             "function_suffix": "_1_int", 
                             "underscore_name": "declare"
                         }, 
-                        "linenumber": 229, 
+                        "linenumber": 223, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": true, 
@@ -3766,7 +3738,7 @@
                             "function_suffix": "_1_long", 
                             "underscore_name": "declare"
                         }, 
-                        "linenumber": 229, 
+                        "linenumber": 223, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": true, 
@@ -3816,7 +3788,7 @@
                             "function_name": "destroyall", 
                             "underscore_name": "destroyall"
                         }, 
-                        "linenumber": 239, 
+                        "linenumber": 233, 
                         "options": {}
                     }, 
                     {
@@ -3897,7 +3869,7 @@
                             "function_name": "getTypeID", 
                             "underscore_name": "get_type_id"
                         }, 
-                        "linenumber": 242, 
+                        "linenumber": 236, 
                         "options": {}
                     }, 
                     {
@@ -3943,7 +3915,7 @@
                             "underscore_name": "set_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 244, 
+                        "linenumber": 238, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -4106,7 +4078,7 @@
                             "underscore_name": "set_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 244, 
+                        "linenumber": 238, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4267,7 +4239,7 @@
                             "underscore_name": "set_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 244, 
+                        "linenumber": 238, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4428,7 +4400,7 @@
                             "underscore_name": "set_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 244, 
+                        "linenumber": 238, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4589,7 +4561,7 @@
                             "underscore_name": "set_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 244, 
+                        "linenumber": 238, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4672,7 +4644,7 @@
                             "underscore_name": "get_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 251, 
+                        "linenumber": 245, 
                         "options": {
                             "wrap_c": false, 
                             "wrap_fortran": false, 
@@ -4787,7 +4759,7 @@
                             "underscore_name": "get_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 251, 
+                        "linenumber": 245, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4900,7 +4872,7 @@
                             "underscore_name": "get_value"
                         }, 
                         "have_template_args": true, 
-                        "linenumber": 251, 
+                        "linenumber": 245, 
                         "options": {
                             "wrap_c": true, 
                             "wrap_fortran": true, 
@@ -4936,11 +4908,11 @@
                         ]
                     }
                 ], 
-                "linenumber": 182, 
+                "linenumber": 176, 
                 "name": "ExClass2", 
                 "options": {}, 
                 "python": {
-                    "__line__": 184, 
+                    "__line__": 178, 
                     "type": [
                         "dealloc", 
                         "print", 
@@ -5030,7 +5002,7 @@
                             "function_suffix": "_0", 
                             "underscore_name": "exfunc"
                         }, 
-                        "linenumber": 264, 
+                        "linenumber": 258, 
                         "options": {}
                     }, 
                     {
@@ -5119,14 +5091,14 @@
                             "function_suffix": "_1", 
                             "underscore_name": "exfunc"
                         }, 
-                        "linenumber": 266, 
+                        "linenumber": 260, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 258, 
+                "linenumber": 252, 
                 "name": "ExClass3", 
                 "options": {
-                    "__line__": 259, 
+                    "__line__": 253, 
                     "wrap_python": false
                 }, 
                 "scope": "example::nested::ExClass3::", 
@@ -5305,7 +5277,7 @@
                     "function_name": "local_function1", 
                     "underscore_name": "local_function1"
                 }, 
-                "linenumber": 270, 
+                "linenumber": 264, 
                 "options": {}
             }, 
             {
@@ -5436,13 +5408,13 @@
                     "LUA_name": "isNameValid", 
                     "LUA_name_impl": "l_is_name_valid", 
                     "PY_name_impl": "PP_isNameValid", 
-                    "__line__": 274, 
+                    "__line__": 268, 
                     "c_const": "", 
                     "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "underscore_name": "is_name_valid"
                 }, 
-                "linenumber": 273, 
+                "linenumber": 267, 
                 "options": {}
             }, 
             {
@@ -5524,14 +5496,14 @@
                     "C_return_type": "bool", 
                     "F_C_name": "c_is_name_valid_bufferify", 
                     "F_code": "rv = name .ne. \" \"", 
-                    "__line__": 274, 
+                    "__line__": 268, 
                     "c_const": "", 
                     "cxx_rv_decl": "bool SHC_rv", 
                     "function_name": "isNameValid", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "is_name_valid"
                 }, 
-                "linenumber": 273, 
+                "linenumber": 267, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -5609,7 +5581,7 @@
                     "function_name": "isInitialized", 
                     "underscore_name": "is_initialized"
                 }, 
-                "linenumber": 280, 
+                "linenumber": 274, 
                 "options": {}
             }, 
             {
@@ -5837,7 +5809,7 @@
                     "function_name": "checkBool", 
                     "underscore_name": "check_bool"
                 }, 
-                "linenumber": 283, 
+                "linenumber": 277, 
                 "options": {}
             }, 
             {
@@ -5936,13 +5908,13 @@
                     "LUA_name": "test_names", 
                     "LUA_name_impl": "l_test_names", 
                     "PY_name_impl": "PP_test_names", 
-                    "__line__": 289, 
+                    "__line__": 283, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 287, 
+                "linenumber": 281, 
                 "options": {}
             }, 
             {
@@ -6013,13 +5985,13 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_bufferify", 
-                    "__line__": 289, 
+                    "__line__": 283, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 287, 
+                "linenumber": 281, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -6174,13 +6146,13 @@
                     "F_name_impl": "test_names_flag", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PP_test_names_flag", 
-                    "__line__": 292, 
+                    "__line__": 286, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_flag", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 291, 
+                "linenumber": 285, 
                 "options": {}
             }, 
             {
@@ -6283,13 +6255,13 @@
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_test_names_flag_bufferify", 
-                    "__line__": 292, 
+                    "__line__": 286, 
                     "c_const": "", 
                     "function_name": "test_names", 
                     "function_suffix": "_flag_bufferify", 
                     "underscore_name": "test_names"
                 }, 
-                "linenumber": 291, 
+                "linenumber": 285, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 
@@ -6334,7 +6306,7 @@
                     "function_suffix": "_0", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 295, 
+                "linenumber": 289, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -6415,7 +6387,7 @@
                     "function_suffix": "_1", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 295, 
+                "linenumber": 289, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": true, 
@@ -6590,7 +6562,7 @@
                     "function_suffix": "_2", 
                     "underscore_name": "testoptional"
                 }, 
-                "linenumber": 295, 
+                "linenumber": 289, 
                 "options": {}
             }, 
             {
@@ -6663,7 +6635,7 @@
                     "function_name": "test_size_t", 
                     "underscore_name": "test_size_t"
                 }, 
-                "linenumber": 310, 
+                "linenumber": 304, 
                 "options": {}
             }, 
             {
@@ -6764,13 +6736,13 @@
                     "LUA_name": "testmpi", 
                     "LUA_name_impl": "l_testmpi", 
                     "PY_name_impl": "PP_testmpi_mpi", 
-                    "__line__": 315, 
+                    "__line__": 309, 
                     "c_const": "", 
                     "function_name": "testmpi", 
                     "function_suffix": "_mpi", 
                     "underscore_name": "testmpi"
                 }, 
-                "linenumber": 314, 
+                "linenumber": 308, 
                 "options": {}
             }, 
             {
@@ -6805,13 +6777,13 @@
                     "F_name_impl": "testmpi_serial", 
                     "F_subprogram": "subroutine", 
                     "PY_name_impl": "PP_testmpi_serial", 
-                    "__line__": 319, 
+                    "__line__": 313, 
                     "c_const": "", 
                     "function_name": "testmpi", 
                     "function_suffix": "_serial", 
                     "underscore_name": "testmpi"
                 }, 
-                "linenumber": 318, 
+                "linenumber": 312, 
                 "options": {}
             }, 
             {
@@ -6919,7 +6891,7 @@
                     "function_name": "testgroup1", 
                     "underscore_name": "testgroup1"
                 }, 
-                "linenumber": 323, 
+                "linenumber": 317, 
                 "options": {}
             }, 
             {
@@ -7028,7 +7000,7 @@
                     "function_name": "testgroup2", 
                     "underscore_name": "testgroup2"
                 }, 
-                "linenumber": 324, 
+                "linenumber": 318, 
                 "options": {}
             }, 
             {
@@ -7114,7 +7086,7 @@
                 "decl": "void FuncPtr1(void (*get)());", 
                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 328, 
+                    "__line__": 322, 
                     "brief": "subroutine"
                 }, 
                 "fmtdict": {
@@ -7140,7 +7112,7 @@
                     "function_name": "FuncPtr1", 
                     "underscore_name": "func_ptr1"
                 }, 
-                "linenumber": 327, 
+                "linenumber": 321, 
                 "options": {}
             }, 
             {
@@ -7230,7 +7202,7 @@
                 "decl": "void FuncPtr2(double * (*get)());", 
                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))", 
                 "doxygen": {
-                    "__line__": 331, 
+                    "__line__": 325, 
                     "brief": "return a pointer"
                 }, 
                 "fmtdict": {
@@ -7256,7 +7228,7 @@
                     "function_name": "FuncPtr2", 
                     "underscore_name": "func_ptr2"
                 }, 
-                "linenumber": 330, 
+                "linenumber": 324, 
                 "options": {}
             }, 
             {
@@ -7365,7 +7337,7 @@
                 "decl": "void FuncPtr3(double (*get)(int i, int));", 
                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 334, 
+                    "__line__": 328, 
                     "brief": "abstract argument"
                 }, 
                 "fmtdict": {
@@ -7391,10 +7363,10 @@
                     "function_name": "FuncPtr3", 
                     "underscore_name": "func_ptr3"
                 }, 
-                "linenumber": 333, 
+                "linenumber": 327, 
                 "options": {
                     "F_force_wrapper": true, 
-                    "__line__": 336
+                    "__line__": 330
                 }
             }, 
             {
@@ -7474,7 +7446,7 @@
                 "decl": "void FuncPtr4(double (*get)(double, int));", 
                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 339, 
+                    "__line__": 333, 
                     "brief": "abstract argument"
                 }, 
                 "fmtdict": {
@@ -7497,12 +7469,12 @@
                     "function_name": "FuncPtr4", 
                     "underscore_name": "func_ptr4"
                 }, 
-                "linenumber": 338, 
+                "linenumber": 332, 
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg", 
                     "F_abstract_interface_subprogram_template": "custom_funptr", 
                     "F_force_wrapper": true, 
-                    "__line__": 341, 
+                    "__line__": 335, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -7743,7 +7715,7 @@
                     "function_name": "FuncPtr5", 
                     "underscore_name": "func_ptr5"
                 }, 
-                "linenumber": 347, 
+                "linenumber": 341, 
                 "options": {}
             }, 
             {
@@ -8416,10 +8388,10 @@
                     "function_name": "verylongfunctionname1", 
                     "underscore_name": "verylongfunctionname1"
                 }, 
-                "linenumber": 358, 
+                "linenumber": 352, 
                 "options": {
                     "F_force_wrapper": true, 
-                    "__line__": 368
+                    "__line__": 362
                 }
             }, 
             {
@@ -9065,12 +9037,12 @@
                     "function_name": "verylongfunctionname2", 
                     "underscore_name": "verylongfunctionname2"
                 }, 
-                "linenumber": 372, 
+                "linenumber": 366, 
                 "options": {
                     "C_line_length": 0, 
                     "F_force_wrapper": true, 
                     "F_line_length": 0, 
-                    "__line__": 382
+                    "__line__": 376
                 }
             }, 
             {
@@ -9283,7 +9255,7 @@
                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))", 
                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 392, 
+                    "__line__": 386, 
                     "brief": "Test multidimensional arrays with allocatable"
                 }, 
                 "fmtdict": {
@@ -9309,10 +9281,10 @@
                     "function_name": "cos_doubles", 
                     "underscore_name": "cos_doubles"
                 }, 
-                "linenumber": 388, 
+                "linenumber": 382, 
                 "options": {
                     "F_standard": 2008, 
-                    "__line__": 394
+                    "__line__": 388
                 }
             }
         ], 
@@ -9418,7 +9390,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "l", 
             "PY_get": "PyInt_AsLong({py_var})", 
-            "__line__": 74, 
+            "__line__": 88, 
             "c_header": "sidre/SidreTypes.h", 
             "c_type": "SIDRE_SidreLength", 
             "cxx_type": "SidreLength", 
@@ -9440,7 +9412,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})", 
             "PY_format": "i", 
             "PY_get": "PyInt_AsLong({py_var})", 
-            "__line__": 85, 
+            "__line__": 99, 
             "c_header": "sidre/SidreTypes.h", 
             "c_to_cxx": "getTypeID({c_var})", 
             "c_type": "int", 
@@ -9461,7 +9433,7 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
             "PY_PyTypeObject": "FillInTypeForGroup", 
-            "__line__": 98, 
+            "__line__": 73, 
             "base": "shadow", 
             "c_header": "sidre/wrapGroup.h", 
             "c_statements": {
@@ -9493,7 +9465,7 @@
             "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "datagroup", 
             "f_module": {
-                "__line__": 107, 
+                "__line__": 82, 
                 "sidre_mod": [
                     "group"
                 ]

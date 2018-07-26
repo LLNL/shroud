@@ -45,7 +45,6 @@ declarations:
   - namespace: tutorial
     declarations: tutorial
     - type: Class2
-      imported: True
       fields:
         base: shadow
         cxx_type: tutorial::Class2
@@ -56,7 +55,6 @@ declarations:
           forward_mod:
           - class2
     - type: Class3
-      imported: True
       fields:
         base: shadow
         cxx_type: tutorial::Class3
