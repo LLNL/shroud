@@ -191,6 +191,17 @@ class NamespaceMixin(object):
         self.symbols[name] = node
         return node
 
+    def add_namespaces(self, names):
+        """Create nested namespaces from list of names.
+        """
+        ns = self
+        for name in names:
+            if name in ns.symbols:
+                ns = ns.symbols[name]
+            else:
+                ns = ns.add_namespace(name)
+        return ns
+
     def add_struct(self, decl, ast=None, **kwargs):
         """Add a struct.
         A struct is exactly like a class to the C++ compiler.
@@ -310,6 +321,22 @@ class LibraryNode(AstNode, NamespaceMixin):
             raise RuntimeError("{} not found in namespace".format(name))
         if ns not in self.using:
             self.using.append(ns)
+
+    def add_shadow_typemap(self, ntypemap):
+        """Add a shadow typemap into the symbol table.
+        ntypemap is created by create_class_typemap_from_fields
+        using data from the YAML file.
+        Adding to the symbol table allows it to be parsed.
+
+        cxx_name is always fully qualified (namespace1::namespace2::class)
+        """
+        names = ntypemap.name.split('::')
+        cxx_name = names.pop()
+        ns = self.add_namespaces(names)
+
+        node = ClassNode(cxx_name, ns, ntypemap=ntypemap)
+        # node is not added to self.classes
+        ns.symbols[cxx_name] = node
 
 #####
 
@@ -701,6 +728,7 @@ class ClassNode(AstNode, NamespaceMixin):
                  options=None,
                  as_struct=False,
                  template_parameters=None,
+                 ntypemap=None,
                  **kwargs):
         """Create ClassNode.
         Used with class or struct if as_struct==True.
@@ -747,7 +775,10 @@ class ClassNode(AstNode, NamespaceMixin):
         if fields is not None:
             if not isinstance(fields, dict):
                 raise TypeError("fields must be a dictionary")
-        if as_struct:
+        if ntypemap is not None:
+            # From YAML typemap
+            self.typemap = ntypemap
+        elif as_struct:
             self.typemap = typemap.create_struct_typemap(self, fields)
         else:
             self.typemap = typemap.create_class_typemap(self, fields)
@@ -1428,13 +1459,18 @@ def create_library_from_dictionary(node):
         for subnode in node['typemap']:
             # Update fields for a type. For example, set cpp_if
             key = subnode['type']
-            value = subnode['fields']
+            fields = subnode['fields']
             def_types = typemap.get_global_types()
             ntypemap = def_types.get(key, None)
-            if not ntypemap:
-                raise RuntimeError(
-                    "No type {}".format(key))
-            ntypemap.update(value)
+            if ntypemap:
+                ntypemap.update(fields)
+            else:
+                # Create new typemap
+                base = fields.get('base', '')
+                if base == 'shadow':
+                    typemap.create_class_typemap_from_fields(key, fields, library)
+                else:
+                    raise RuntimeError("base must be 'shadow'")
 
     add_declarations(ns, node)
 

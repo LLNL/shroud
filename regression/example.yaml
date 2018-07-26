@@ -65,9 +65,9 @@ options:
   wrap_lua: True
 
 typemap:
-  - type: MPI_Comm
-    fields:
-      cpp_if: ifdef USE_MPI
+- type: MPI_Comm
+  fields:
+    cpp_if: ifdef USE_MPI
 
 declarations:
 - decl: typedef long SidreLength

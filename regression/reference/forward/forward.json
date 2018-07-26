@@ -31,37 +31,11 @@
                     "cxx_class": "Class3", 
                     "cxx_type": "Class3"
                 }, 
-                "linenumber": 58, 
+                "linenumber": 71, 
                 "name": "Class3", 
                 "options": {}, 
                 "scope": "tutorial::Class3::", 
                 "typemap_name": "tutorial::Class3"
-            }, 
-            {
-                "cxx_header": "", 
-                "fmtdict": {
-                    "C_header_filename": "wrapClass1.h", 
-                    "C_impl_filename": "wrapClass1.cpp", 
-                    "C_type_name": "TUT_class1", 
-                    "F_derived_name": "class1", 
-                    "class_lower": "class1", 
-                    "class_prefix": "class1_", 
-                    "class_scope": "Class1::", 
-                    "class_upper": "CLASS1", 
-                    "cxx_class": "Class1", 
-                    "cxx_type": "Class1"
-                }, 
-                "imported": true, 
-                "linenumber": 62, 
-                "name": "Class1", 
-                "options": {
-                    "wrap_c": false, 
-                    "wrap_fortran": false, 
-                    "wrap_lua": false, 
-                    "wrap_python": false
-                }, 
-                "scope": "tutorial::Class1::", 
-                "typemap_name": "tutorial::Class1"
             }, 
             {
                 "cxx_header": "", 
@@ -1503,7 +1477,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 
             "LUA_type": "LUA_TUSERDATA", 
-            "__line__": 67, 
+            "__line__": 60, 
             "base": "shadow", 
             "c_statements": {
                 "intent_in": {
@@ -1533,7 +1507,7 @@
             "f_c_type": "type(SHROUD_capsule_data)", 
             "f_derived_type": "class1", 
             "f_module": {
-                "__line__": 71, 
+                "__line__": 66, 
                 "tutorial_mod": [
                     "class1"
                 ]

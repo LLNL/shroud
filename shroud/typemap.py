@@ -1296,6 +1296,26 @@ def create_enum_typemap(node):
         register_type(type_name, ntypemap)
     return ntypemap
 
+def create_class_typemap_from_fields(cxx_name, fields, library):
+    """Create a typemap from fields.
+    Used when creating typemap from YAML. (from regression/forward.yaml)
+    typemap:
+    - type: tutorial::Class1
+      fields:
+        base: shadow
+    """
+    fmt_class = library.fmtdict
+    ntypemap = Typemap(
+        cxx_name,
+        base='shadow',
+        cxx_type=cxx_name,
+    )
+    ntypemap.update(fields)
+    fill_shadow_typemap_defaults(ntypemap, fmt_class)
+    register_type(cxx_name, ntypemap)
+    library.add_shadow_typemap(ntypemap)
+    return ntypemap
+
 def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
     Use fields to override defaults.
