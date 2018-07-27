@@ -191,13 +191,12 @@ void OWN_create_class_static(int flag)
 }
 
 // Class1 * getClassStatic() +owner(library)
-OWN_class1 OWN_get_class_static()
+OWN_class1 * OWN_get_class_static(OWN_class1 * SHC_rv)
 {
 // splicer begin function.get_class_static
     Class1 * SHCXX_rv = getClassStatic();
-    OWN_class1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end function.get_class_static
 }
@@ -207,13 +206,12 @@ OWN_class1 OWN_get_class_static()
  * \brief Return pointer to new Class1 instance.
  *
  */
-OWN_class1 OWN_get_class_new(int flag)
+OWN_class1 * OWN_get_class_new(int flag, OWN_class1 * SHC_rv)
 {
 // splicer begin function.get_class_new
     Class1 * SHCXX_rv = getClassNew(flag);
-    OWN_class1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 1;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
     return SHC_rv;
 // splicer end function.get_class_new
 }

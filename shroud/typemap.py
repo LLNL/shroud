@@ -1383,9 +1383,8 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
             c_header='<stdlib.h>',
             cxx_header='<stdlib.h>',
             post_call=[
-                '%s {c_var};' % (ntypemap.c_type),
-                '{c_var}.addr = {cxx_cast_to_void_ptr};',
-                '{c_var}.idtor = {idtor};',
+                '{c_var}->addr = {cxx_cast_to_void_ptr};',
+                '{c_var}->idtor = {idtor};',
             ]
         ),
     )
@@ -1396,8 +1395,9 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
         result=dict(
             need_wrapper=True,
             call=[
-                ('{F_result}%{F_derived_member} = '
-                 '{F_C_call}({F_arg_c_call})'),
+                # The c Function returns a pointer.
+                # Save in a type(C_PTR) variable.
+                '{F_result_ptr} = {F_C_call}({F_arg_c_call})',
                 ],
             )
         )

@@ -374,7 +374,9 @@
             "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
+            "F_result_capsule": "SHT_crv", 
             "F_result_clause": "", 
+            "F_result_ptr": "SHT_prv", 
             "F_string_result_as_arg": "", 
             "F_this": "obj", 
             "LUA_header_filename_suffix": "hpp", 
@@ -532,9 +534,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "DEF_class2 {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -557,7 +558,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -1467,9 +1468,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "DEF_class1 {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -1493,7 +1493,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }

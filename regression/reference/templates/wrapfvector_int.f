@@ -46,12 +46,14 @@ module vector_int_mod
 
     interface
 
-        function c_vector_int_ctor() &
+        function c_vector_int_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_vector_int_ctor
 
         subroutine c_vector_int_dtor(self) &
@@ -89,9 +91,11 @@ contains
 
     function vector_int_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(vector_int) :: SHT_rv
         ! splicer begin class.vector_int.method.ctor
-        SHT_rv%cxxmem = c_vector_int_ctor()
+        SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
         ! splicer end class.vector_int.method.ctor
     end function vector_int_ctor
 

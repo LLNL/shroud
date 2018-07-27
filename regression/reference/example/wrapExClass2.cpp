@@ -84,15 +84,14 @@ void AA_ShroudCopyStringAndFree(USE_SHROUD_array *data, char *c_var, size_t c_va
  * \brief constructor
  *
  */
-AA_exclass2 AA_exclass2_ctor(const char * name)
+AA_exclass2 * AA_exclass2_ctor(const char * name, AA_exclass2 * SHC_rv)
 {
 // splicer begin class.ExClass2.method.ctor
     const std::string SH_name(name);
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SH_name);
-    AA_exclass2 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass2.method.ctor
 }
@@ -102,15 +101,15 @@ AA_exclass2 AA_exclass2_ctor(const char * name)
  * \brief constructor
  *
  */
-AA_exclass2 AA_exclass2_ctor_bufferify(const char * name, int trim_name)
+AA_exclass2 * AA_exclass2_ctor_bufferify(const char * name,
+    int trim_name, AA_exclass2 * SHC_rv)
 {
 // splicer begin class.ExClass2.method.ctor_bufferify
     const std::string SH_name(name, trim_name);
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SH_name);
-    AA_exclass2 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass2.method.ctor_bufferify
 }
@@ -280,8 +279,8 @@ int AA_exclass2_get_name_length(const AA_exclass2 * self)
 }
 
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
-AA_exclass1 AA_exclass2_get_class1(AA_exclass2 * self,
-    const AA_exclass1 * in)
+AA_exclass1 * AA_exclass2_get_class1(AA_exclass2 * self,
+    const AA_exclass1 * in, AA_exclass1 * SHC_rv)
 {
 // splicer begin class.ExClass2.method.get_class1
     example::nested::ExClass2 *SH_this =
@@ -290,9 +289,8 @@ AA_exclass1 AA_exclass2_get_class1(AA_exclass2 * self,
         static_cast<const example::nested::ExClass1 *>(in->addr);
     example::nested::ExClass1 * SHCXX_rv = SH_this->get_class1(
         SHCXX_in);
-    AA_exclass1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.ExClass2.method.get_class1
 }

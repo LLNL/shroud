@@ -22,7 +22,7 @@ extern "C" {
 // splicer begin class.vector.C_declarations
 // splicer end class.vector.C_declarations
 
-TEM_vector_double TEM_vector_double_ctor();
+TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv);
 
 void TEM_vector_double_dtor(TEM_vector_double * self);
 

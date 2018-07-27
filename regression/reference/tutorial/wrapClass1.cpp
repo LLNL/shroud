@@ -54,25 +54,23 @@ extern "C" {
 // splicer end class.Class1.C_definitions
 
 // Class1() +name(new)
-TUT_class1 TUT_class1_new_default()
+TUT_class1 * TUT_class1_new_default(TUT_class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.new_default
     tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
-    TUT_class1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class1.method.new_default
 }
 
 // Class1(int flag +intent(in)+value) +name(new)
-TUT_class1 TUT_class1_new_flag(int flag)
+TUT_class1 * TUT_class1_new_flag(int flag, TUT_class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.new_flag
     tutorial::Class1 *SHCXX_rv = new tutorial::Class1(flag);
-    TUT_class1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class1.method.new_flag
 }
@@ -142,8 +140,8 @@ void TUT_class1_return_this(TUT_class1 * self)
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
-TUT_class1 TUT_class1_return_this_buffer(TUT_class1 * self, char * name,
-    bool flag)
+TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
+    char * name, bool flag, TUT_class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.return_this_buffer
     tutorial::Class1 *SH_this =
@@ -151,9 +149,8 @@ TUT_class1 TUT_class1_return_this_buffer(TUT_class1 * self, char * name,
     std::string SH_name(name);
     tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name,
         flag);
-    TUT_class1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class1.method.return_this_buffer
 }
@@ -163,8 +160,8 @@ TUT_class1 TUT_class1_return_this_buffer(TUT_class1 * self, char * name,
  * \brief Return pointer to 'this' to allow chaining calls
  *
  */
-TUT_class1 TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
-    char * name, int Lname, bool flag)
+TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
+    char * name, int Lname, bool flag, TUT_class1 * SHC_rv)
 {
 // splicer begin class.Class1.method.return_this_buffer_bufferify
     tutorial::Class1 *SH_this =
@@ -172,9 +169,8 @@ TUT_class1 TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
     std::string SH_name(name, Lname);
     tutorial::Class1 * SHCXX_rv = SH_this->returnThisBuffer(SH_name,
         flag);
-    TUT_class1 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class1.method.return_this_buffer_bufferify
 }

@@ -147,22 +147,25 @@ module tutorial_mod
 
     interface
 
-        function c_class1_new_default() &
+        function c_class1_new_default(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_default")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_class1_new_default
 
-        function c_class1_new_flag(flag) &
+        function c_class1_new_flag(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_flag")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_class1_new_flag
 
         subroutine c_class1_delete(self) &
@@ -200,30 +203,32 @@ module tutorial_mod
             type(SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class1_return_this
 
-        function c_class1_return_this_buffer(self, name, flag) &
+        function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer")
-            use iso_c_binding, only : C_BOOL, C_CHAR
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             logical(C_BOOL), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer
 
         function c_class1_return_this_buffer_bufferify(self, name, &
-                Lname, flag) &
+                Lname, flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer_bufferify")
-            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             logical(C_BOOL), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer_bufferify
 
         function c_class1_direction_func(self, arg) &
@@ -269,12 +274,14 @@ module tutorial_mod
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
 
-        function c_singleton_get_reference() &
+        function c_singleton_get_reference(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_singleton_get_reference")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_singleton_get_reference
 
         ! splicer begin class.Singleton.additional_interfaces
@@ -630,30 +637,35 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function c_useclass
 
-        function c_getclass2() &
+        function c_getclass2(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass2")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_getclass2
 
-        function c_getclass3() &
+        function c_getclass3(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass3")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_getclass3
 
-        function c_get_class_copy(flag) &
+        function c_get_class_copy(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_class_copy")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_get_class_copy
 
         function callback1(in, incr) &
@@ -809,20 +821,23 @@ contains
     ! Class1() +name(new)
     function class1_new_default() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new_default
-        SHT_rv%cxxmem = c_class1_new_default()
+        SHT_prv = c_class1_new_default(SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_default
     end function class1_new_default
 
     ! Class1(int flag +intent(in)+value) +name(new)
     function class1_new_flag(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.new_flag
-        SHT_rv%cxxmem = c_class1_new_flag(flag)
+        SHT_prv = c_class1_new_flag(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_flag
     end function class1_new_flag
 
@@ -885,16 +900,17 @@ contains
     !<
     function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_BOOL, C_INT, C_PTR
         class(class1) :: obj
         character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
         logical(C_BOOL) SH_flag
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         SH_flag = flag  ! coerce to C_BOOL
         ! splicer begin class.Class1.method.return_this_buffer
-        SHT_rv%cxxmem = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
-            name, len_trim(name, kind=C_INT), SH_flag)
+        SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
+            name, len_trim(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
 
@@ -971,9 +987,11 @@ contains
     ! static Singleton & getReference()
     function singleton_get_reference() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(singleton) :: SHT_rv
         ! splicer begin class.Singleton.method.get_reference
-        SHT_rv%cxxmem = c_singleton_get_reference()
+        SHT_prv = c_singleton_get_reference(SHT_rv%cxxmem)
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
 
@@ -1361,18 +1379,22 @@ contains
     ! const Class1 * getclass2()
     function getclass2() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin function.getclass2
-        SHT_rv%cxxmem = c_getclass2()
+        SHT_prv = c_getclass2(SHT_rv%cxxmem)
         ! splicer end function.getclass2
     end function getclass2
 
     ! Class1 * getclass3()
     function getclass3() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin function.getclass3
-        SHT_rv%cxxmem = c_getclass3()
+        SHT_prv = c_getclass3(SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
 
@@ -1383,11 +1405,12 @@ contains
     !<
     function get_class_copy(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_copy
-        SHT_rv%cxxmem = c_get_class_copy(flag)
+        SHT_prv = c_get_class_copy(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
 

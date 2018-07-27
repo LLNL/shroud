@@ -639,17 +639,17 @@ rv = .false.
     def build_arg_list_interface(
             self, node, fmt, ast, buf_args,
             modules, imports, arg_c_names, arg_c_decl):
-        """
-        Build the Fortran interface for a c wrapper function.
+        """Build the Fortran interface for a c wrapper function.
 
-        node -
-        fmt -
-        ast - Abstract Syntax Tree from parser
-        buf_args - List of arguments/metadata to add.
-        modules - Build up USE statement.
-        imports - Build up IMPORT statement.
-        arg_c_names - Names of arguments to subprogram.
-        arg_c_decl  - Declaration for arguments.
+        Args:
+            node -
+            fmt -
+            ast - Abstract Syntax Tree from parser
+            buf_args - List of arguments/metadata to add.
+            modules - Build up USE statement.
+            imports - Build up IMPORT statement.
+            arg_c_names - Names of arguments to subprogram.
+            arg_c_decl  - Declaration for arguments.
         """
         attrs = ast.attrs
 
@@ -708,14 +708,15 @@ rv = .false.
                     'integer(C_INT), value, intent(IN) :: %s' % buf_arg_name)
                 self.set_f_module(modules, 'iso_c_binding', 'C_INT')
             else:
-                raise RuntimeError("wrap_function_interface: unhandled case {}"
+                raise RuntimeError("build_arg_list_interface: unhandled case {}"
                                    .format(buf_arg))
 
     def wrap_function_interface(self, cls, node):
-        """
-        Write Fortran interface for C function
-        cls  - class node or None for functions
-        node - function/method node
+        """Write Fortran interface for C function.
+
+        Args:
+            cls  - class node or None for functions
+            node - function/method node
 
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
@@ -794,6 +795,11 @@ rv = .false.
                 c_intent_blk.get('buf_args', self._default_buf_args),
                 modules, imports, arg_c_names, arg_c_decl)
 
+        if result_typemap.base == 'shadow':
+            arg_c_names.append(fmt_func.F_result_capsule)
+            arg_c_decl.append(ast.bind_c(name=fmt_func.F_result_capsule))
+            imports[fmt.F_capsule_data_type] = True
+
         if (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
             fmt.F_C_pure_clause = 'pure '
@@ -802,7 +808,7 @@ rv = .false.
             'F_C_arguments', ',\t '.join(arg_c_names))
 
         if fmt.F_C_subprogram == 'function':
-            if result_typemap.base == 'string':
+            if result_typemap.base in ['shadow', 'string']:
                 arg_c_decl.append('type(C_PTR) %s' % fmt.F_result)
                 self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
             else:
@@ -915,7 +921,7 @@ rv = .false.
                 append_format(arg_c_call, 'len({f_var}, kind=C_INT)', fmt)
                 self.set_f_module(modules, 'iso_c_binding', 'C_INT')
             else:
-                raise RuntimeError("wrap_function_impl: unhandled case {}"
+                raise RuntimeError("build_arg_list_impl: unhandled case {}"
                                    .format(buf_arg))
         return need_wrapper
 
@@ -966,8 +972,11 @@ rv = .false.
         return blk
 
     def wrap_function_impl(self, cls, node):
-        """
-        Wrap implementation of Fortran function
+        """Wrap implementation of Fortran function.
+
+        Args:
+            cls -
+            node -
         """
         options = node.options
         fmt_func = node.fmtdict
@@ -1193,6 +1202,15 @@ rv = .false.
             if allocatable:
                 attr_allocatable(allocatable, C_node, f_arg, pre_call)
 
+        if result_typemap.base == 'shadow':
+            # Function which return a shadow type will pass in
+            # the capsule_data_type and return a type(C_PTR).
+            arg_f_decl.append(wformat(
+                'type(C_PTR) :: {F_result_ptr}',
+                fmt_func))
+            self.set_f_module(modules, 'iso_c_binding', 'C_PTR')
+            arg_c_call.append(wformat('{F_result}%{F_derived_member}', fmt_func))
+
         # use tabs to insert continuations
         fmt_func.F_arg_c_call = ',\t '.join(arg_c_call)
         fmt_func.F_arguments = options.get('F_arguments', ',\t '.join(arg_f_names))
@@ -1264,8 +1282,7 @@ rv = .false.
             F_code = []
             if is_ctor:
                 fmt_func.F_call_code = wformat(
-                    '{F_result}%{F_derived_member} = '
-                    '{F_C_call}({F_arg_c_call})', fmt_func)
+                    '{F_result_ptr} = {F_C_call}({F_arg_c_call})', fmt_func)
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == 'function':
                 f_statements = result_typemap.f_statements

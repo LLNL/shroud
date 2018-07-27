@@ -158,11 +158,11 @@ int TUT_direction_func(int arg);
 
 int TUT_useclass(const TUT_class1 * arg1);
 
-TUT_class1 TUT_getclass2();
+TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv);
 
-TUT_class1 TUT_getclass3();
+TUT_class1 * TUT_getclass3(TUT_class1 * SHC_rv);
 
-TUT_class1 TUT_get_class_copy(int flag);
+TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv);
 
 int TUT_callback1(int in, int ( * incr)(int));
 

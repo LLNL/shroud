@@ -1173,18 +1173,22 @@ class Declaration(Node):
 
     def gen_arg_as_lang(self, decl, lang,
                         continuation=False,
-                        asgn_value=False,
+                        asgn_value=False, remove_const=False,
                         **kwargs):
         """Generate an argument for the C wrapper.
         C++ types are converted to C types using typemap.
 
-        lang = c_type or cxx_type
-        continuation = True - insert tabs to aid continuations
-        asgn_value = If True, make sure the value can be assigned
-                     by removing const.
-        as_ptr - Change reference to pointer
-        force_ptr - Change a scalar into a pointer
-        as_scalar - Do not print Ptr
+        Args:
+            lang = c_type or cxx_type
+            continuation - True - insert tabs to aid continuations.
+                           Defaults to False.
+            asgn_value - If True, make sure the value can be assigned
+                         by removing const. Defaults to False.
+            remove_const - Defaults to False.
+            as_ptr - Change reference to pointer
+            force_ptr - Change a scalar into a pointer
+            as_scalar - Do not print Ptr
+            params - if None, do not print function parameters.
 
         If a templated type, assume std::vector.
         The C argument will be a pointer to the template type.
@@ -1215,6 +1219,8 @@ class Declaration(Node):
 
         if asgn_value and const_index is not None and not self.is_indirect():
             # Remove 'const' so the variable can be assigned to.
+            decl[const_index] = ''
+        elif remove_const and const_index is not None:
             decl[const_index] = ''
 
         if lang == 'c_type':

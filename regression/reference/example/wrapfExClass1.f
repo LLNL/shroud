@@ -105,33 +105,37 @@ module exclass1_mod
 
     interface
 
-        function c_exclass1_ctor_0() &
+        function c_exclass1_ctor_0(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_0")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_exclass1_ctor_0
 
-        function c_exclass1_ctor_1(name) &
+        function c_exclass1_ctor_1(name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_1")
-            use iso_c_binding, only : C_CHAR
+            use iso_c_binding, only : C_CHAR, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1
 
-        function c_exclass1_ctor_1_bufferify(name, Lname) &
+        function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_1_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1_bufferify
 
         subroutine c_exclass1_dtor(self) &
@@ -309,9 +313,11 @@ contains
     ! ExClass1()
     function exclass1_ctor_0() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_0
-        SHT_rv%cxxmem = c_exclass1_ctor_0()
+        SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)
         ! splicer end class.ExClass1.method.ctor_0
     end function exclass1_ctor_0
 
@@ -327,12 +333,13 @@ contains
     !<
     function exclass1_ctor_1(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
+        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass1.method.ctor_1
-        SHT_rv%cxxmem = c_exclass1_ctor_1_bufferify(name, &
-            len_trim(name, kind=C_INT))
+        SHT_prv = c_exclass1_ctor_1_bufferify(name, &
+            len_trim(name, kind=C_INT), SHT_rv%cxxmem)
         ! splicer end class.ExClass1.method.ctor_1
     end function exclass1_ctor_1
 

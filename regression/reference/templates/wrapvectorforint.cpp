@@ -12,13 +12,12 @@ extern "C" {
 // splicer begin class.vector.C_definitions
 // splicer end class.vector.C_definitions
 
-TEM_vector_int TEM_vector_int_ctor()
+TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 {
 // splicer begin class.vector.method.ctor
     std::vector<int> *SHCXX_rv = new std::vector<int>();
-    TEM_vector_int SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.vector.method.ctor
 }

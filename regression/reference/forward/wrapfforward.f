@@ -108,12 +108,14 @@ module forward_mod
         ! splicer begin class.Class3.additional_interfaces
         ! splicer end class.Class3.additional_interfaces
 
-        function c_class2_ctor() &
+        function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="FOR_class2_ctor")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_class2_ctor
 
         subroutine c_class2_dtor(self) &
@@ -174,9 +176,11 @@ contains
     ! Class2()
     function class2_ctor() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(class2) :: SHT_rv
         ! splicer begin class.Class2.method.ctor
-        SHT_rv%cxxmem = c_class2_ctor()
+        SHT_prv = c_class2_ctor(SHT_rv%cxxmem)
         ! splicer end class.Class2.method.ctor
     end function class2_ctor
 

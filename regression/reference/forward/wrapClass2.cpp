@@ -53,13 +53,12 @@ extern "C" {
 // splicer end class.Class2.C_definitions
 
 // Class2()
-FOR_class2 FOR_class2_ctor()
+FOR_class2 * FOR_class2_ctor(FOR_class2 * SHC_rv)
 {
 // splicer begin class.Class2.method.ctor
     tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
-    FOR_class2 SHC_rv;
-    SHC_rv.addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv.idtor = 0;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
     return SHC_rv;
 // splicer end class.Class2.method.ctor
 }

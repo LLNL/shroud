@@ -49,11 +49,12 @@
 void test_class(void)
 {
   int flag;
-  TUT_class1 c1;
+  TUT_class1 c1_buf, *c1;
 
-  c1 = TUT_class1_new_default();
+  c1 = TUT_class1_new_default(&c1_buf);
+  assert(c1 == &c1_buf && "TUT_class1_new_default");
 
-  flag = TUT_class1_method1(&c1);
+  flag = TUT_class1_method1(c1);
   assert(flag == 0 && "TUT_class1_method1");
 
 }
