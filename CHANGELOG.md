@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## v0.10.0 - 2018-08-01
 ### Added
 - Added more support for unsigned types.
   Note that Fortran does not support unsigned types.
@@ -20,10 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Allow C++ functions which return pointer to
   create a wrapper with the POINTER attribute.
   See option **return_scalar_pointer**.
-
 - Support returning a class instance with C and Fortran wrapper.
   Allocate and release a wrapper controlled copy of instance.
-
 - Added deref attribute to control how a pointer is returned to Fortran:
   allocatable, pointer, raw (type(C_PTR)).
 - Support ALLOCATABLE CHARACTER function as the default for char* and std::string
@@ -32,11 +31,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add free_pattern attribute to define custom code to release memory.
   For example, if the variable is reference counted.
 - Support multiple template parameters.
+- Support class templates.
 
 ### Changed
-- Change C wrappers of shadow classes to return a capsule_data_type
+- Change C wrappers of shadow classes to return a pointer to a capsule_data_type
   instead of a `void *`.  This struct contains the pointer to the shadow class
-  and information to deallocate it.
+  and information to deallocate it.  A pointer to the struct must also be
+  passed in as the final argument to the wrapper.
 - Change how function template arguments are specified to reflect C++ syntax.
   Also allow options and format to be added to an instantiation.
 previous format:
