@@ -49,6 +49,7 @@
 #ifndef WRAPTYPES_H
 #define WRAPTYPES_H
 
+#include <stddef.h>
 #include <stdint.h>
 #include "typestypes.h"
 
@@ -103,6 +104,8 @@ uint16_t TYP_uint16_func(uint16_t arg1);
 uint32_t TYP_uint32_func(uint32_t arg1);
 
 uint64_t TYP_uint64_func(uint64_t arg1);
+
+size_t TYP_size_func(size_t arg1);
 
 #ifdef __cplusplus
 }

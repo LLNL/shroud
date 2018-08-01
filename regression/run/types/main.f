@@ -52,6 +52,7 @@ program tester
   call test_native_types
   call test_unsigned_native_types
   call test_intsize_types
+  call test_stddef
 
   call fruit_summary
   call fruit_finalize
@@ -184,5 +185,18 @@ contains
     call assert_true(rv_int64 .eq. 1_C_INT64_T, "int64_func")
 
   end subroutine test_intsize_types
+
+  subroutine test_stddef
+    integer(C_SIZE_T) rv_size
+
+    call set_case_name("test_stddef")
+
+    rv_size = size_func(-1_C_SIZE_T)
+    call assert_true(rv_size .eq. -1_C_SIZE_T, "neg_size_func")
+
+    rv_size = size_func(1_C_SIZE_T)
+    call assert_true(rv_size .eq. 1_C_SIZE_T, "size_func")
+
+  end subroutine test_stddef
 
 end program tester
