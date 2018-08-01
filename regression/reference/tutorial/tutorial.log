@@ -1,5 +1,6 @@
 Read yaml tutorial.yaml
-Skipping std::string, unable to create C wrapper for function returning Function4a instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning Function4a instance (must return a pointer or reference). Bufferify version will still be created.
+Skipping std::string, unable to create C wrapper for function returning Function4c instance (must return a pointer or reference). Bufferify version will still be created.
 Read splicer ftutorialsplicer.f
 Close tutorial_types.yaml
 class Class1
@@ -11,6 +12,7 @@ C method bool equivalent(const Class1 & obj2 +intent(in)) const
 C method Class1 * returnThis()
 C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C method Class1 * getclass3() const
 C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 C method int getM_flag()
 C method int getTest()
@@ -31,7 +33,6 @@ C function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +inten
 C function void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
 C function void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-C function const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 C function void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C function const std::string * Function4d() +deref(allocatable)+owner(caller)
 C function void Function4d(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
@@ -86,6 +87,7 @@ C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)) con
 C-interface, Fortran method Class1 * returnThis()
 C-interface, Fortran method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 C-interface method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C-interface, Fortran method Class1 * getclass3() const
 C-interface, Fortran method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 C-interface, Fortran method int getM_flag()
 C-interface, Fortran method int getTest()
@@ -103,7 +105,7 @@ C-interface function void Function4a(const std::string & arg1 +intent(in)+len_tr
 C-interface function const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
 C-interface function void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
 Fortran function void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-C-interface, Fortran function const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+Fortran function const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 C-interface function void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C-interface, Fortran function const std::string * Function4d() +deref(allocatable)+owner(caller)
 C-interface function void Function4d(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
@@ -156,6 +158,7 @@ Python method Class1(int flag +intent(in)+value) +name(new)
 Python method ~Class1() +name(delete)
 Python method int Method1()
 Python method bool equivalent(const Class1 & obj2 +intent(in)) const
+Python method Class1 * getclass3() const
 Python method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 Close pyClass1type.cpp
 class Singleton
@@ -168,7 +171,7 @@ Python function long long TypeLongLong(long long arg1 +intent(in)+value)
 Python function bool Function3(bool arg +intent(in)+value)
 Python function const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
 Python function const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-Python function const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+Python function const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 Python function const std::string * Function4d() +deref(allocatable)+owner(caller)
 Python function double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
 Python function void Function6(const std::string & name +intent(in))
@@ -203,7 +206,7 @@ Lua function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in
 Lua function bool Function3(bool arg +intent(in)+value)
 Lua function const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
 Lua function const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-Lua function const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+Lua function const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 Lua function const std::string * Function4d() +deref(allocatable)+owner(caller)
 Lua function double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
 Lua function double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)

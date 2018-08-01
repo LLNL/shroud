@@ -56,15 +56,15 @@
                             "C_call_code": "std::vector<int> *SHCXX_rv =\t new std::vector<int>();", 
                             "C_call_list": "", 
                             "C_name": "TEM_vector_int_ctor", 
-                            "C_post_call": "TEM_vector_int SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
-                            "C_prototype": "", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_prototype": "TEM_vector_int * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TEM_vector_int", 
+                            "C_return_type": "TEM_vector_int *", 
                             "F_C_call": "c_vector_int_ctor", 
                             "F_C_name": "c_vector_int_ctor", 
-                            "F_arg_c_call": "", 
+                            "F_arg_c_call": "SHT_rv%cxxmem", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxmem = c_vector_int_ctor()", 
+                            "F_call_code": "SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "vector_int_ctor", 
@@ -505,15 +505,15 @@
                             "C_call_code": "std::vector<double> *SHCXX_rv =\t new std::vector<double>();", 
                             "C_call_list": "", 
                             "C_name": "TEM_vector_double_ctor", 
-                            "C_post_call": "TEM_vector_double SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
-                            "C_prototype": "", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_prototype": "TEM_vector_double * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "TEM_vector_double", 
+                            "C_return_type": "TEM_vector_double *", 
                             "F_C_call": "c_vector_double_ctor", 
                             "F_C_name": "c_vector_double_ctor", 
-                            "F_arg_c_call": "", 
+                            "F_arg_c_call": "SHT_rv%cxxmem", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxmem = c_vector_double_ctor()", 
+                            "F_call_code": "SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "vector_double_ctor", 
@@ -1196,7 +1196,9 @@
             "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
+            "F_result_capsule": "SHT_crv", 
             "F_result_clause": "", 
+            "F_result_ptr": "SHT_prv", 
             "F_string_result_as_arg": "", 
             "F_this": "obj", 
             "LUA_header_filename_suffix": "hpp", 
@@ -2335,9 +2337,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_vector {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -2361,7 +2362,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -2428,9 +2429,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_vector_double {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -2454,7 +2454,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -2498,9 +2498,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_vector_int {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -2524,7 +2523,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -2774,9 +2773,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_user {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -2799,7 +2797,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -2848,9 +2846,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "TEM_user_int {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -2873,7 +2870,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }

@@ -69,9 +69,9 @@ enum TUT_class1_DIRECTION {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-TUT_class1 TUT_class1_new_default();
+TUT_class1 * TUT_class1_new_default(TUT_class1 * SHC_rv);
 
-TUT_class1 TUT_class1_new_flag(int flag);
+TUT_class1 * TUT_class1_new_flag(int flag, TUT_class1 * SHC_rv);
 
 void TUT_class1_delete(TUT_class1 * self);
 
@@ -82,11 +82,14 @@ bool TUT_class1_equivalent(const TUT_class1 * self,
 
 void TUT_class1_return_this(TUT_class1 * self);
 
-TUT_class1 TUT_class1_return_this_buffer(TUT_class1 * self, char * name,
-    bool flag);
+TUT_class1 * TUT_class1_return_this_buffer(TUT_class1 * self,
+    char * name, bool flag, TUT_class1 * SHC_rv);
 
-TUT_class1 TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
-    char * name, int Lname, bool flag);
+TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
+    char * name, int Lname, bool flag, TUT_class1 * SHC_rv);
+
+TUT_class1 * TUT_class1_getclass3(const TUT_class1 * self,
+    TUT_class1 * SHC_rv);
 
 int TUT_class1_direction_func(TUT_class1 * self, int arg);
 

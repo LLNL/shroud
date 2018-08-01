@@ -309,23 +309,21 @@ If you want methods on a struct, then use the class keyword.
 Class Types
 -----------
 
-Fortran can access a C struct created by the C wrapper for each class.
-Fortran accesses the {C_capsule_data_type} struct with the ``BIND(C)``
-derived type {F_capsule_data_type}.  The C struct is allocated by the
-C wrapper and stored as a ``type(C_PTR)`` member.  The Fortran
-``POINTER`` {F_derived_member} is associated with this pointer via
-``c_f_pointer`` making the the contents directly accessible from
-Fortran::
+Fortran uses the derived type *F_capsule_data_type* to save pointers
+to C++ classes. The derived type also contains information about how
+to delete the class.  The derived type corresponds to
+*C_capsule_data_type* in the C wrapper.  A derived type is created for
+each class which contains a *F_capsule_data_type*
+member. *F_capsule_data_type* is ``BIND(C)`` which allows it to be
+passed to the C wrapper::
 
     type, bind(C) :: {F_capsule_data_type}
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-        integer(C_INT) :: refcount = 0    ! reference count
     end type {F_capsule_data_type}
 
     type {F_derived_name}
-        type(C_PTR), private :: {F_derived_ptr} = C_NULL_PTR
-        type({F_capsule_data_type}), pointer :: {F_derived_member} => null()
+        type({F_capsule_data_type}) :: {F_derived_member}
     contains
         procedure :: {F_name_function} => {F_name_impl}
         generic :: {F_name_generic} => {F_name_function}, ...
@@ -334,6 +332,55 @@ Fortran::
         procedure :: [F_name_function_template] => [F_name_impl_template]
 
     end type {F_derived_name}
+
+The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
+
+A function which returns a class, including constructors, is passed a
+*F_capsule_data_type* argument as the last argument.  The argument's
+members are filled in by the function.  The function will return a
+``type(C_PTR)`` which contains the address of the
+*F_capsule_data_type* argument.  The interface/prototype for the C
+wrapper function allows it to be used in expressions similar to the
+way that ``strcpy`` returns its destination argument.
+
+For example, the YAML file::
+
+  - decl: const Class1 *getclass2() 
+
+produces the code::
+
+    interface
+        function c_getclass2({F_result_capsule}) &
+                result({F_result}) &
+                bind(C, name="TUT_getclass2")
+            use iso_c_binding, only : C_PTR
+            import :: {F_capsule_data_type}
+            implicit none
+            type({F_capsule_data_type}) :: {F_result_capsule}
+            type(C_PTR) {F_result}
+        end function c_getclass2
+    end interface
+
+    function getclass2() &
+            result({F_result})
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: {F_result_ptr}
+        type(class1) :: {F_result}
+        {F_result_ptr} = c_getclass2({F_result}%{F_derived_member})
+    end function getclass2
+
+The C wrappers appears as::
+
+    TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv)
+    {
+        const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
+        SHC_rv->addr = static_cast<void *>(const_cast<tutorial::Class1 *>(SHCXX_rv));
+        SHC_rv->idtor = 0;
+        return SHC_rv;
+    }
+
+
+Some actual variable names have been replace with their format names.
 
 ..        final! :: {F_name_final}
 

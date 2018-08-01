@@ -1037,10 +1037,11 @@ pointers for every instance::
     typedef struct s_TUT_class1 TUT_class1;
 
 
-    TUT_class1 TUT_class1_new_default()
+    TUT_class1 * TUT_class1_new_default(TUT_class1 * SHC_rv)
     {
         tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
-        TUT_class1 SHC_rv = { static_cast<void *>(SHCXX_rv), 0 };
+        SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+        SHC_rv->idtor = 0;
         return SHC_rv;
     }
 
@@ -1075,9 +1076,11 @@ And the subroutines::
 
     function class1_new_default() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
-        SHT_rv%cxxmem = c_class1_new_default()
-    end function class1_new
+        SHT_prv = c_class1_new_default(SHT_rv%cxxmem)
+    end function class1_new_default
     
     subroutine class1_delete(obj)
         use iso_c_binding, only : C_NULL_PTR

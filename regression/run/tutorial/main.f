@@ -89,17 +89,17 @@ contains
 
     call set_case_name("test_enums")
 
-    call assert_equals(0, color_red)
-    call assert_equals(1, color_blue)
-    call assert_equals(2, color_white)
+    call assert_equals(0, color_red, "color_red")
+    call assert_equals(1, color_blue, "color_blue")
+    call assert_equals(2, color_white, "color_white")
 
-    call assert_equals(2, class1_direction_up)
-    call assert_equals(3, class1_direction_down)
-    call assert_equals(100, class1_direction_left)
-    call assert_equals(101, class1_direction_right)
+    call assert_equals(2, class1_direction_up, "class1_direction_up")
+    call assert_equals(3, class1_direction_down, "class1_direction_down")
+    call assert_equals(100, class1_direction_left, "class1_direction_left")
+    call assert_equals(101, class1_direction_right, "class1_direction_right")
 
     rv_int = colorfunc(color_BLUE)
-    call assert_true(rv_int .eq. color_RED)
+    call assert_true(rv_int .eq. color_RED, "color_RED")
 
   end subroutine test_enums
 
@@ -115,31 +115,31 @@ contains
     call assert_true(.true.)
 
     rv_double = function2(1.d0, 4)
-    call assert_true(rv_double == 5.d0)
+    call assert_true(rv_double == 5.d0, "function2")
 
     rv_logical = function3(.false.)
-    call assert_true(rv_logical)
+    call assert_true(rv_logical, "function3")
 
     rv_logical = .true.
     wrk_logical = .true.
     call function3b(.true., rv_logical, wrk_logical)
-    call assert_false(rv_logical)
-    call assert_false(wrk_logical)
+    call assert_false(rv_logical, "function3b 1")
+    call assert_false(wrk_logical, "function2b 2")
 
     rv_logical = .false.
     wrk_logical = .false.
     call function3b(.false., rv_logical, wrk_logical)
-    call assert_true(rv_logical)
-    call assert_true(wrk_logical)
+    call assert_true(rv_logical, "function3b 1")
+    call assert_true(wrk_logical, "function3b 2")
 
-    call assert_true( function4a("dog", "cat") == "dogcat")
+    call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
 
     call function4b("dog", "cat", rv_char)
-    call assert_true( rv_char == "dogcat")
+    call assert_true( rv_char == "dogcat", "function4b")
 
-    call assert_true( function4c("dawg", "kat") == "dawgkat")
+    call assert_equals( "dawgkat", function4c("dawg", "kat"), "function4c")
 
-! warning: ‘.rv4c’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+! warning: '.rv4c' may be used uninitialized in this function [-Wmaybe-uninitialized]
 ! gfortran 4.9.3
 !    call assert_false(allocated(rv4c))
 !    rv4c = function4c("one", "two")
@@ -148,65 +148,69 @@ contains
 !    call assert_true(rv4c == "onetwo")
 !    deallocate(rv4c)
 
-    call assert_true( function4d() == "Function4d")
+    call assert_true( function4d() == "Function4d", "function4d")
 
-    call assert_equals(function5(), 13.1415d0)
-    call assert_equals(function5(1.d0), 11.d0)
-    call assert_equals(function5(1.d0, .false.), 1.d0)
+    call assert_equals(13.1415d0, function5(), "function5 1")
+    call assert_equals(11.d0, function5(1.d0), "function5 2")
+    call assert_equals(1.d0, function5(1.d0, .false.), "function5 3")
 
     call function6("name")
-    call assert_true(last_function_called() == "Function6(string)")
+    call assert_true(last_function_called() == "Function6(string)", &
+         "function6 1")
     call function6(1)
-    call assert_true(last_function_called() == "Function6(int)")
+    call assert_true(last_function_called() == "Function6(int)", &
+         "function6 2")
 
     call function7(1)
-    call assert_true(last_function_called() == "Function7<int>")
+    call assert_true(last_function_called() == "Function7<int>",  &
+         "function7 1")
     call function7(10.d0)
-    call assert_true(last_function_called() == "Function7<double>")
+    call assert_true(last_function_called() == "Function7<double>", &
+         "function7 2")
 
     ! return values set by calls to function7
     rv_integer = function8_int()
-    call assert_true(rv_integer == 1)
+    call assert_true(rv_integer == 1, "function8_int")
     rv_double = function8_double()
-    call assert_true(rv_double == 10.d0)
+    call assert_true(rv_double == 10.d0, "function8_double")
 
     call function9(1.0)
-    call assert_true(.true.)
+    call assert_true(.true., "function9 1")
     call function9(1.d0)
-    call assert_true(.true.)
+    call assert_true(.true., "function9 2")
 
     call function10()
-    call assert_true(.true.)
+    call assert_true(.true., "function10 1")
     call function10("foo", 1.0e0)
-    call assert_true(.true.)
+    call assert_true(.true., "function10 2")
     call function10("bar", 2.0d0)
-    call assert_true(.true.)
+    call assert_true(.true., "function10 3")
 
     call sum([1,2,3,4,5], rv_int)
-    call assert_true(rv_int .eq. 15)
+    call assert_true(rv_int .eq. 15, "function")
 
     rv_ll = type_long_long( 2_c_long_long)
-    call assert_true(rv_ll .eq. 4)
+    call assert_true(rv_ll .eq. 4, "type_long_long")
 
     rv_int = overload1(10)
-    call assert_true(rv_int .eq. 10)
+    call assert_true(rv_int .eq. 10, "overload1 1")
     rv_int = overload1(1.0d0, 10)
-    call assert_true(rv_int .eq. 10)
+    call assert_true(rv_int .eq. 10, "overload1 2")
 
     rv_int = overload1(10, 11, 12)
-    call assert_true(rv_int .eq. 142)
+    call assert_true(rv_int .eq. 142, "overload1 3")
     rv_int = overload1(1.0d0, 10, 11, 12)
-    call assert_true(rv_int .eq. 142)
+    call assert_true(rv_int .eq. 142, "overload1 4")
 
     rv_int = typefunc(2)
-    call assert_true(rv_int .eq. 2)
+    call assert_true(rv_int .eq. 2, "typefunc")
 
     rv_int = enumfunc(1)
-    call assert_true(rv_int .eq. 2)
+    call assert_true(rv_int .eq. 2, "enumfunc")
 
     call get_min_max(minout, maxout)
-    call assert_equals(-1, minout)
-    call assert_equals(100, maxout)
+    call assert_equals(-1, minout, "get_min_max minout")
+    call assert_equals(100, maxout, "get_min_max maxout")
 
   end subroutine test_functions
 
@@ -321,11 +325,11 @@ contains
     call assert_true(c_associated(ptr), "class1_new obj0")
 
     mtest = obj0%get_test()
-    call assert_equals(0, mtest)
+    call assert_equals(0, mtest, "get_test 1")
 
     call obj0%set_test(4)
     mtest = obj0%get_test()
-    call assert_equals(4, mtest)
+    call assert_equals(4, mtest, "get_test 2")
 
     obj1 = class1_new(1)
     ptr = obj1%get_instance()
@@ -340,8 +344,8 @@ contains
     call assert_true(obj0 .eq. obj0, "obj0 .eq obj0")
     call assert_true(obj0 .ne. obj1, "obj0 .ne. obj1")
 
-    call assert_true(obj0%equivalent(obj0))
-    call assert_false(obj0%equivalent(obj1))
+    call assert_true(obj0%equivalent(obj0), "equivalent 1")
+    call assert_false(obj0%equivalent(obj1), "equivalent 2")
 
     ! This function has return_this=True, so it returns nothing
     call obj0%return_this()

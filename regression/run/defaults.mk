@@ -54,7 +54,8 @@ CFLAGS = -g -Wall
 CXX = g++
 CXXFLAGS = -g -Wall -std=c++11
 FC = gfortran
-FFLAGS = -g -Wall -ffree-form
+FFLAGS = -g -Wall -ffree-form -fbounds-check
+#FFLAGS += -std=f2003
 LIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared

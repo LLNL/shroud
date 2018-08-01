@@ -112,25 +112,27 @@ module exclass2_mod
 
     interface
 
-        function c_exclass2_ctor(name) &
+        function c_exclass2_ctor(name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass2_ctor")
-            use iso_c_binding, only : C_CHAR
+            use iso_c_binding, only : C_CHAR, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_exclass2_ctor
 
-        function c_exclass2_ctor_bufferify(name, trim_name) &
+        function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass2_ctor_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: trim_name
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_exclass2_ctor_bufferify
 
         subroutine c_exclass2_dtor(self) &
@@ -224,14 +226,16 @@ module exclass2_mod
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_name_length
 
-        function c_exclass2_get_class1(self, in) &
+        function c_exclass2_get_class1(self, in, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass2_get_class1")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
             type(SHROUD_capsule_data), intent(IN) :: in
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_exclass2_get_class1
 
         subroutine c_exclass2_declare_0(self, type) &
@@ -353,12 +357,13 @@ contains
     !<
     function exclass2_ctor(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         character(len=*), intent(IN) :: name
+        type(C_PTR) :: SHT_prv
         type(exclass2) :: SHT_rv
         ! splicer begin class.ExClass2.method.ctor
-        SHT_rv%cxxmem = c_exclass2_ctor_bufferify(name, &
-            len_trim(name, kind=C_INT))
+        SHT_prv = c_exclass2_ctor_bufferify(name, &
+            len_trim(name, kind=C_INT), SHT_rv%cxxmem)
         ! splicer end class.ExClass2.method.ctor
     end function exclass2_ctor
 
@@ -448,11 +453,14 @@ contains
     function exclass2_get_class1(obj, in) &
             result(SHT_rv)
         use exclass1_mod, only : exclass1
+        use iso_c_binding, only : C_PTR
         class(exclass2) :: obj
         type(exclass1), intent(IN) :: in
+        type(C_PTR) :: SHT_prv
         type(exclass1) :: SHT_rv
         ! splicer begin class.ExClass2.method.get_class1
-        SHT_rv%cxxmem = c_exclass2_get_class1(obj%cxxmem, in%cxxmem)
+        SHT_prv = c_exclass2_get_class1(obj%cxxmem, in%cxxmem, &
+            SHT_rv%cxxmem)
         ! splicer end class.ExClass2.method.get_class1
     end function exclass2_get_class1
 

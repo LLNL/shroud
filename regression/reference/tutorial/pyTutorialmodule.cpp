@@ -326,7 +326,7 @@ PY_Function4c(
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 // splicer begin function.function4c
     const char * arg1;
     const char * arg2;
@@ -343,8 +343,7 @@ PY_Function4c(
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
-    const std::string & SHCXX_rv = tutorial::Function4c(SH_arg1,
-        SH_arg2);
+    const std::string SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
 
     // post_call
     PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

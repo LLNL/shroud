@@ -86,7 +86,9 @@
             "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
+            "F_result_capsule": "SHT_crv", 
             "F_result_clause": "", 
+            "F_result_ptr": "SHT_prv", 
             "F_string_result_as_arg": "", 
             "F_this": "obj", 
             "LUA_header_filename_suffix": "hpp", 
@@ -2552,6 +2554,120 @@
                     "underscore_name": "uint64_func"
                 }, 
                 "linenumber": 85, 
+                "options": {}
+            }, 
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "", 
+                            "c_deref": "", 
+                            "c_member": ".", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)", 
+                            "cxx_member": ".", 
+                            "cxx_type": "size_t", 
+                            "cxx_var": "arg1", 
+                            "idtor": "0"
+                        }, 
+                        "fmtf": {
+                            "c_var": "arg1", 
+                            "f_var": "arg1"
+                        }, 
+                        "fmtpy": {
+                            "c_const": "", 
+                            "c_decl": "size_t arg1", 
+                            "c_deref": "", 
+                            "c_type": "size_t", 
+                            "c_var": "arg1", 
+                            "cxx_addr": "&", 
+                            "cxx_decl": "size_t arg1", 
+                            "cxx_member": ".", 
+                            "cxx_type": "size_t", 
+                            "cxx_var": "arg1", 
+                            "numpy_type": null, 
+                            "py_var": "SHPy_arg1"
+                        }
+                    }
+                }, 
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_type": "size_t", 
+                        "cxx_var": "SHC_rv", 
+                        "idtor": "0"
+                    }, 
+                    "fmtf": {
+                        "cxx_type": "size_t", 
+                        "f_var": "SHT_rv"
+                    }, 
+                    "fmtpy": {
+                        "PyObject": "PyObject", 
+                        "PyTypeObject": null, 
+                        "c_deref": "", 
+                        "c_var": "SHC_rv", 
+                        "cxx_addr": "&", 
+                        "cxx_member": ".", 
+                        "cxx_var": "SHC_rv", 
+                        "numpy_type": null, 
+                        "py_var": "SHTPy_rv"
+                    }
+                }, 
+                "ast": {
+                    "declarator": {
+                        "name": "size_func", 
+                        "pointer": []
+                    }, 
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in", 
+                                "value": true
+                            }, 
+                            "declarator": {
+                                "name": "arg1", 
+                                "pointer": []
+                            }, 
+                            "specifier": [
+                                "size_t"
+                            ], 
+                            "typemap_name": "size_t"
+                        }
+                    ], 
+                    "specifier": [
+                        "size_t"
+                    ], 
+                    "typemap_name": "size_t"
+                }, 
+                "decl": "size_t size_func(size_t arg1)", 
+                "declgen": "size_t size_func(size_t arg1 +intent(in)+value)", 
+                "fmtdict": {
+                    "C_call_code": "size_t SHC_rv =\t size_func(\targ1);", 
+                    "C_call_list": "arg1", 
+                    "C_name": "TYP_size_func", 
+                    "C_prototype": "size_t arg1", 
+                    "C_return_code": "return SHC_rv;", 
+                    "C_return_type": "size_t", 
+                    "F_C_call": "c_size_func", 
+                    "F_C_name": "size_func", 
+                    "F_arg_c_call": "arg1", 
+                    "F_arguments": "arg1", 
+                    "F_call_code": "SHT_rv = c_size_func(arg1)", 
+                    "F_name_function": "size_func", 
+                    "F_name_generic": "size_func", 
+                    "F_name_impl": "size_func", 
+                    "F_result_clause": "\fresult(SHT_rv)", 
+                    "F_subprogram": "function", 
+                    "PY_name_impl": "PY_size_func", 
+                    "c_const": "", 
+                    "cxx_rv_decl": "size_t SHC_rv", 
+                    "function_name": "size_func", 
+                    "underscore_name": "size_func"
+                }, 
+                "linenumber": 87, 
                 "options": {}
             }
         ], 

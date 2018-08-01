@@ -498,6 +498,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_set='set_instance',
             F_name_final='final',
             F_result='SHT_rv',
+            F_result_ptr='SHT_prv',
+            F_result_capsule='SHT_crv',
             F_pointer='SHT_ptr',
             F_this='obj',
 

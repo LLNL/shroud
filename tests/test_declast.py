@@ -79,6 +79,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", s)
         s = r.bind_c()
         self.assertEqual("integer(C_INT) :: var1", s)
+        s = r.bind_c(intent='out')
+        self.assertEqual("integer(C_INT), intent(OUT) :: var1", s)
         s = r.gen_arg_as_fortran()
         self.assertEqual("integer(C_INT) :: var1", s)
 

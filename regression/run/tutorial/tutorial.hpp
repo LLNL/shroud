@@ -128,6 +128,7 @@ public:
     bool equivalent(Class1 const &obj2) const;
     Class1 * returnThis();
     Class1 * returnThisBuffer(std::string & name, bool flag);
+    Class1 * getclass3() const;
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 

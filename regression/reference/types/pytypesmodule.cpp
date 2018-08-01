@@ -693,6 +693,36 @@ PY_uint64_func(
     return (PyObject *) SHTPy_rv;
 // splicer end function.uint64_func
 }
+
+static char PY_size_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_size_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// size_t size_func(size_t arg1 +intent(in)+value)
+// splicer begin function.size_func
+    size_t arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:size_func",
+        const_cast<char **>(SHT_kwlist), &arg1))
+        return NULL;
+
+    size_t SHC_rv = size_func(arg1);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromSize_t(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.size_func
+}
 static PyMethodDef PY_methods[] = {
 {"short_func", (PyCFunction)PY_short_func, METH_VARARGS|METH_KEYWORDS,
     PY_short_func__doc__},
@@ -736,6 +766,8 @@ static PyMethodDef PY_methods[] = {
     PY_uint32_func__doc__},
 {"uint64_func", (PyCFunction)PY_uint64_func, METH_VARARGS|METH_KEYWORDS,
     PY_uint64_func__doc__},
+{"size_func", (PyCFunction)PY_size_func, METH_VARARGS|METH_KEYWORDS,
+    PY_size_func__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

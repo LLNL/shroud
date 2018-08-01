@@ -228,22 +228,25 @@ module ownership_mod
             integer(C_INT), value, intent(IN) :: flag
         end subroutine create_class_static
 
-        function c_get_class_static() &
+        function c_get_class_static(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
+            use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_get_class_static
 
-        function c_get_class_new(flag) &
+        function c_get_class_new(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_new")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_INT, C_PTR
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_rv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
         end function c_get_class_new
 
         ! splicer begin additional_interfaces
@@ -393,9 +396,11 @@ contains
     ! Class1 * getClassStatic() +owner(library)
     function get_class_static() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_static
-        SHT_rv%cxxmem = c_get_class_static()
+        SHT_prv = c_get_class_static(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
     end function get_class_static
 
@@ -406,11 +411,12 @@ contains
     !<
     function get_class_new(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
+        type(C_PTR) :: SHT_prv
         type(class1) :: SHT_rv
         ! splicer begin function.get_class_new
-        SHT_rv%cxxmem = c_get_class_new(flag)
+        SHT_prv = c_get_class_new(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new
 

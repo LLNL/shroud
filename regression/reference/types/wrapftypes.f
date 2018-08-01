@@ -245,6 +245,15 @@ module types_mod
             integer(C_INT64_T) :: SHT_rv
         end function uint64_func
 
+        function size_func(arg1) &
+                result(SHT_rv) &
+                bind(C, name="TYP_size_func")
+            use iso_c_binding, only : C_SIZE_T
+            implicit none
+            integer(C_SIZE_T), value, intent(IN) :: arg1
+            integer(C_SIZE_T) :: SHT_rv
+        end function size_func
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

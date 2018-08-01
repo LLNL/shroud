@@ -242,6 +242,15 @@ uint64_t TYP_uint64_func(uint64_t arg1)
 // splicer end function.uint64_func
 }
 
+// size_t size_func(size_t arg1 +intent(in)+value)
+size_t TYP_size_func(size_t arg1)
+{
+// splicer begin function.size_func
+    size_t SHC_rv = size_func(arg1);
+    return SHC_rv;
+// splicer end function.size_func
+}
+
 // Release C++ allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {

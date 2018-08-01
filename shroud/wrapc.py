@@ -616,10 +616,11 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
 
     def wrap_function(self, cls, node):
-        """
-        Wrap a C++ function with C
-        cls  - class node or None for functions
-        node - function/method node
+        """Wrap a C++ function with C.
+
+        Args:
+            cls  - class node or None for functions.
+            node - function/method node.
         """
         options = node.options
         if not options.wrap_c:
@@ -669,6 +670,7 @@ class Wrapc(util.WrapperMixin):
         is_const = ast.func_const
         is_shadow_scalar = False
         is_union_scalar = False
+        shadow_arg_decl = None
 
         if result_typemap.c_header:
             # include any dependent header in generated header
@@ -708,8 +710,9 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
 
-            if result_typemap.base == 'shadow' and not CXX_ast.is_indirect() and not is_ctor:
-                #- decl: Class1 getClassNew()
+            if result_typemap.base == 'shadow' and \
+               not CXX_ast.is_indirect() and not is_ctor:
+                # decl: Class1 getClassNew()
                 is_shadow_scalar = True
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True, force_ptr=True)
@@ -718,6 +721,12 @@ class Wrapc(util.WrapperMixin):
             else:
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True)
+
+            if result_typemap.base == 'shadow':
+                # Add an extra argument if function returns a shadow class
+                shadow_arg_decl = ast.gen_arg_as_c(
+                    name=fmt_result.c_var, continuation=True,
+                    params=None, force_ptr=True, remove_const=True)
 
             if is_ctor or is_pointer:
                 # The C wrapper always creates a pointer to the new instance in the ctor.
@@ -772,6 +781,7 @@ class Wrapc(util.WrapperMixin):
         self.find_idtor(node.ast, result_typemap, fmt_result, None)
 
         if hasattr(node, 'statements'):
+            # Statements added to node in setup_allocatable_result.
             if 'c' in node.statements:
                 iblk = node.statements['c']['result_buf']
                 need_wrapper = self.build_proto_list(
@@ -994,6 +1004,11 @@ class Wrapc(util.WrapperMixin):
 #                # create forward references for other types being wrapped
 #                # i.e. This argument is another wrapped type
 #                self.header_forward[arg_typemap.c_type] = True
+
+        if shadow_arg_decl:
+            # Add argument for shadow result.
+            proto_list.append(shadow_arg_decl)
+
         fmt_func.C_call_list = ',\t '.join(call_list)
 
         fmt_func.C_prototype = options.get('C_prototype', ',\t '.join(proto_list))
@@ -1004,7 +1019,7 @@ class Wrapc(util.WrapperMixin):
             fmt_func.C_return_type = 'void'
         elif result_typemap.base == 'shadow':
             # Return pointer to capsule_data. It contains pointer to results.
-            fmt_func.C_return_type = result_typemap.c_type
+            fmt_func.C_return_type = result_typemap.c_type + ' *'
         elif fmt_func.C_custom_return_type:
             pass # fmt_func.C_return_type = fmt_func.C_return_type
         elif ast.return_pointer_as == 'scalar':
@@ -1040,9 +1055,8 @@ class Wrapc(util.WrapperMixin):
             self.header_impl_include['<stdlib.h>'] = True  # for malloc
             # XXX - similar to c_statements.result
             append_format(post_call,
-                          '{c_type} {c_var};\n'
-                          '{c_var}.addr = {c_val};\n'
-                          '{c_var}.idtor = {idtor};',
+                          '{c_var}->addr = {c_val};\n'
+                          '{c_var}->idtor = {idtor};',
                           fmt_result)
             C_return_code = wformat('return {c_var};', fmt_result)
         elif is_dtor:

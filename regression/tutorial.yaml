@@ -122,7 +122,7 @@ declarations:
     format:
       F_string_result_as_arg: output
 
-  - decl: const std::string& Function4c(
+  - decl: const std::string Function4c(
       const std::string& arg1,
       const std::string& arg2 )
     doxygen:
@@ -278,6 +278,14 @@ declarations:
          wrap_python: False
          wrap_lua: False
   
+    - decl: Class1 *getclass3() const
+      doxygen:
+         brief: Test const method
+# This test is compile only to make sure it is not PURE
+      options:
+#      wrap_python: False
+        wrap_lua: False
+
     - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
   
     - decl: DIRECTION directionFunc(DIRECTION arg);

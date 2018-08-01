@@ -86,15 +86,15 @@
                             "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1();", 
                             "C_call_list": "", 
                             "C_name": "AA_exclass1_ctor_0", 
-                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
-                            "C_prototype": "", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_prototype": "AA_exclass1 * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1", 
+                            "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_0", 
                             "F_C_name": "c_exclass1_ctor_0", 
-                            "F_arg_c_call": "", 
+                            "F_arg_c_call": "SHT_rv%cxxmem", 
                             "F_arguments": "", 
-                            "F_call_code": "SHT_rv%cxxmem = c_exclass1_ctor_0()", 
+                            "F_call_code": "SHT_prv = c_exclass1_ctor_0(SHT_rv%cxxmem)", 
                             "F_name_function": "ctor_0", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_0", 
@@ -234,16 +234,16 @@
                             "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1", 
-                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name);", 
-                            "C_prototype": "const char * name", 
+                            "C_prototype": "const char * name,\t AA_exclass1 * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1", 
+                            "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass1_ctor_1_bufferify", 
                             "F_C_name": "c_exclass1_ctor_1", 
-                            "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)", 
+                            "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem", 
                             "F_arguments": "name", 
-                            "F_call_code": "SHT_rv%cxxmem = c_exclass1_ctor_1_bufferify(name,\t len_trim(name, kind=C_INT))", 
+                            "F_call_code": "SHT_prv = c_exclass1_ctor_1_bufferify(name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem)", 
                             "F_name_function": "ctor_1", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass1_ctor_1", 
@@ -343,11 +343,11 @@
                             "C_call_code": "example::nested::ExClass1 *SHCXX_rv =\t new example::nested::ExClass1(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass1_ctor_1_bufferify", 
-                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name, Lname);", 
-                            "C_prototype": "const char * name,\t int Lname", 
+                            "C_prototype": "const char * name,\t int Lname,\t AA_exclass1 * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1", 
+                            "C_return_type": "AA_exclass1 *", 
                             "F_C_name": "c_exclass1_ctor_1_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass1 *SHC_rv", 
@@ -2042,16 +2042,16 @@
                             "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor", 
-                            "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name);", 
-                            "C_prototype": "const char * name", 
+                            "C_prototype": "const char * name,\t AA_exclass2 * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2", 
+                            "C_return_type": "AA_exclass2 *", 
                             "F_C_call": "c_exclass2_ctor_bufferify", 
                             "F_C_name": "c_exclass2_ctor", 
-                            "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)", 
+                            "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem", 
                             "F_arguments": "name", 
-                            "F_call_code": "SHT_rv%cxxmem = c_exclass2_ctor_bufferify(name,\t len_trim(name, kind=C_INT))", 
+                            "F_call_code": "SHT_prv = c_exclass2_ctor_bufferify(name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem)", 
                             "F_name_function": "ctor", 
                             "F_name_generic": "ctor", 
                             "F_name_impl": "exclass2_ctor", 
@@ -2150,11 +2150,11 @@
                             "C_call_code": "example::nested::ExClass2 *SHCXX_rv =\t new example::nested::ExClass2(&SH_name);", 
                             "C_call_list": "&SH_name", 
                             "C_name": "AA_exclass2_ctor_bufferify", 
-                            "C_post_call": "AA_exclass2 SHC_rv;\nSHC_rv.addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;", 
                             "C_pre_call": "const std::string SH_name(name, trim_name);", 
-                            "C_prototype": "const char * name,\t int trim_name", 
+                            "C_prototype": "const char * name,\t int trim_name,\t AA_exclass2 * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass2", 
+                            "C_return_type": "AA_exclass2 *", 
                             "F_C_name": "c_exclass2_ctor_bufferify", 
                             "c_const": "", 
                             "c_rv_decl": "AA_exclass2 *SHC_rv", 
@@ -3173,16 +3173,16 @@
                             "C_call_code": "example::nested::ExClass1 * SHCXX_rv =\t SH_this->get_class1(\tSHCXX_in);", 
                             "C_call_list": "SHCXX_in", 
                             "C_name": "AA_exclass2_get_class1", 
-                            "C_post_call": "AA_exclass1 SHC_rv;\nSHC_rv.addr = static_cast<void *>(SHCXX_rv);\nSHC_rv.idtor = 0;", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;", 
                             "C_pre_call": "example::nested::ExClass2 *SH_this =\t static_cast<example::nested::ExClass2 *>(self->addr);\nconst example::nested::ExClass1 * SHCXX_in =\t static_cast<const example::nested::ExClass1 *>(in->addr);", 
-                            "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in", 
+                            "C_prototype": "AA_exclass2 * self,\t const AA_exclass1 * in,\t AA_exclass1 * SHC_rv", 
                             "C_return_code": "return SHC_rv;", 
-                            "C_return_type": "AA_exclass1", 
+                            "C_return_type": "AA_exclass1 *", 
                             "F_C_call": "c_exclass2_get_class1", 
                             "F_C_name": "c_exclass2_get_class1", 
-                            "F_arg_c_call": "obj%cxxmem,\t in%cxxmem", 
+                            "F_arg_c_call": "obj%cxxmem,\t in%cxxmem,\t SHT_rv%cxxmem", 
                             "F_arguments": "obj,\t in", 
-                            "F_call_code": "SHT_rv%cxxmem = c_exclass2_get_class1(obj%cxxmem,\t in%cxxmem)", 
+                            "F_call_code": "SHT_prv = c_exclass2_get_class1(obj%cxxmem,\t in%cxxmem,\t SHT_rv%cxxmem)", 
                             "F_name_function": "get_class1", 
                             "F_name_generic": "get_class1", 
                             "F_name_impl": "exclass2_get_class1", 
@@ -5188,7 +5188,9 @@
             "F_pointer": "SHT_ptr", 
             "F_pure_clause": "", 
             "F_result": "SHT_rv", 
+            "F_result_capsule": "SHT_crv", 
             "F_result_clause": "", 
+            "F_result_ptr": "SHT_prv", 
             "F_string_result_as_arg": "", 
             "F_this": "obj", 
             "LUA_header_filename": "luaUserLibrarymodule.hpp", 
@@ -9446,9 +9448,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "SIDRE_group {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9473,7 +9474,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -9778,9 +9779,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass1 {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9804,7 +9804,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -9852,9 +9852,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass2 {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9878,7 +9877,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }
@@ -9922,9 +9921,8 @@
                     "c_header": "<stdlib.h>", 
                     "cxx_header": "<stdlib.h>", 
                     "post_call": [
-                        "AA_exclass3 {c_var};", 
-                        "{c_var}.addr = {cxx_cast_to_void_ptr};", 
-                        "{c_var}.idtor = {idtor};"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};", 
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             }, 
@@ -9947,7 +9945,7 @@
             "f_statements": {
                 "result": {
                     "call": [
-                        "{F_result}%{F_derived_member} = {F_C_call}({F_arg_c_call})"
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
                     ], 
                     "need_wrapper": true
                 }

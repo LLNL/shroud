@@ -852,7 +852,6 @@ class GenFunctions(object):
 
         String arguments add deref(allocatable) by default so that
         char * will create an allocatable string in Fortran.
-
         """
         options = node.options
         fmt = node.fmtdict
@@ -875,7 +874,8 @@ class GenFunctions(object):
 #            options.wrap_fortran = False
             self.config.log.write("Skipping {}, unable to create C wrapper "
                                   "for function returning {} instance"
-                                  " (must return a pointer or reference).\n"
+                                  " (must return a pointer or reference)."
+                                  " Bufferify version will still be created.\n"
                                   .format(result_typemap.cxx_type,
                                           ast.name))
 
