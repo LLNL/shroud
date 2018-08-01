@@ -3355,18 +3355,6 @@
             {
                 "_fmtargs": {
                     "arg1": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_deref": "*", 
-                            "c_member": "->", 
-                            "c_var": "arg1", 
-                            "cxx_addr": "", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg1))", 
-                            "cxx_member": ".", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg1", 
-                            "idtor": "0"
-                        }, 
                         "fmtl": {
                             "LUA_index": 1, 
                             "c_deref": "", 
@@ -3394,18 +3382,6 @@
                         }
                     }, 
                     "arg2": {
-                        "fmtc": {
-                            "c_const": "const ", 
-                            "c_deref": "*", 
-                            "c_member": "->", 
-                            "c_var": "arg2", 
-                            "cxx_addr": "", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SH_arg2))", 
-                            "cxx_member": ".", 
-                            "cxx_type": "std::string", 
-                            "cxx_var": "SH_arg2", 
-                            "idtor": "0"
-                        }, 
                         "fmtl": {
                             "LUA_index": 2, 
                             "c_deref": "", 
@@ -3434,16 +3410,6 @@
                     }
                 }, 
                 "_fmtresult": {
-                    "fmtc": {
-                        "c_rv_decl": "const char * SHC_rv", 
-                        "c_val": "SHCXX_rv.c_str()", 
-                        "c_var": "SHC_rv", 
-                        "cxx_addr": "&", 
-                        "cxx_member": ".", 
-                        "cxx_type": "std::string", 
-                        "cxx_var": "SHCXX_rv", 
-                        "idtor": "0"
-                    }, 
                     "fmtf": {
                         "cxx_type": "std::string", 
                         "f_var": "SHT_rv"
@@ -3473,11 +3439,7 @@
                     "const": true, 
                     "declarator": {
                         "name": "Function4c", 
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ]
+                        "pointer": []
                     }, 
                     "params": [
                         {
@@ -3525,23 +3487,14 @@
                     ], 
                     "typemap_name": "std::string"
                 }, 
-                "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
-                "declgen": "const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)", 
+                "decl": "const std::string Function4c( const std::string& arg1, const std::string& arg2 )", 
+                "declgen": "const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)", 
                 "doxygen": {
                     "__line__": 128, 
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 }, 
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::Function4c(\tSH_arg1,\t SH_arg2);", 
-                    "C_call_list": "SH_arg1,\t SH_arg2", 
-                    "C_name": "TUT_function4c", 
-                    "C_post_call": "const char * SHC_rv =\t SHCXX_rv.c_str();", 
-                    "C_pre_call": "const std::string SH_arg1(arg1);\nconst std::string SH_arg2(arg2);", 
-                    "C_prototype": "const char * arg1,\t const char * arg2", 
-                    "C_return_code": "return SHC_rv;", 
-                    "C_return_type": "const char *", 
                     "F_C_call": "c_function4c_bufferify", 
-                    "F_C_name": "c_function4c", 
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv", 
                     "F_arguments": "arg1,\t arg2", 
                     "F_call_code": "call c_function4c_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv)", 
@@ -3553,13 +3506,13 @@
                     "LUA_name": "Function4c", 
                     "LUA_name_impl": "l_function4c", 
                     "PY_name_impl": "PY_Function4c", 
-                    "c_const": "const ", 
-                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
                     "function_name": "Function4c", 
                     "underscore_name": "function4c"
                 }, 
                 "linenumber": 125, 
-                "options": {}
+                "options": {
+                    "wrap_c": false
+                }
             }, 
             {
                 "_fmtargs": {
@@ -3570,12 +3523,12 @@
                             "c_member": "->", 
                             "c_var": "SHF_rv", 
                             "c_var_context": "DSHF_rv", 
-                            "cxx_addr": "&", 
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv))", 
-                            "cxx_member": ".", 
+                            "cxx_addr": "", 
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv))", 
+                            "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv", 
-                            "idtor": "0"
+                            "idtor": "2"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3709,24 +3662,24 @@
                     ], 
                     "typemap_name": "void"
                 }, 
-                "decl": "const std::string& Function4c( const std::string& arg1, const std::string& arg2 )", 
+                "decl": "const std::string Function4c( const std::string& arg1, const std::string& arg2 )", 
                 "declgen": "void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))", 
                 "doxygen": {
                     "__line__": 128, 
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 }, 
                 "fmtdict": {
-                    "C_call_code": "const std::string & SHCXX_rv =\t tutorial::Function4c(\tSH_arg1,\t SH_arg2);", 
+                    "C_call_code": "*SHCXX_rv =\t tutorial::Function4c(\tSH_arg1,\t SH_arg2);", 
                     "C_call_list": "SH_arg1,\t SH_arg2", 
                     "C_name": "TUT_function4c_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(&SHCXX_rv));\nDSHF_rv->cxx.idtor = 0;\nif (SHCXX_rv.empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv.data();\nDSHF_rv->len = SHCXX_rv.size();\n-}\nDSHF_rv->size = 1;", 
-                    "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;", 
+                    "C_pre_call": "const std::string SH_arg1(arg1, Larg1);\nconst std::string SH_arg2(arg2, Larg2);\nstd::string * SHCXX_rv = new std::string;", 
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
                     "F_C_name": "c_function4c_bufferify", 
                     "c_const": "", 
-                    "cxx_rv_decl": "const std::string & SHCXX_rv", 
+                    "cxx_rv_decl": "*SHCXX_rv", 
                     "function_name": "Function4c", 
                     "function_suffix": "_bufferify", 
                     "underscore_name": "function4c"
@@ -3749,7 +3702,7 @@
                         "cxx_member": "->", 
                         "cxx_type": "std::string", 
                         "cxx_var": "SHCXX_rv", 
-                        "idtor": "2"
+                        "idtor": "3"
                     }, 
                     "fmtf": {
                         "cxx_type": "std::string", 
@@ -3843,7 +3796,7 @@
                             "cxx_member": "->", 
                             "cxx_type": "std::string", 
                             "cxx_var": "SHCXX_rv", 
-                            "idtor": "2"
+                            "idtor": "3"
                         }, 
                         "fmtf": {
                             "c_var": "SHT_rv", 
@@ -3908,7 +3861,7 @@
                     "C_call_code": "const std::string * SHCXX_rv =\t tutorial::Function4d(\t);", 
                     "C_call_list": "", 
                     "C_name": "TUT_function4d_bufferify", 
-                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 2;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;", 
+                    "C_post_call": "DSHF_rv->cxx.addr = static_cast<void *>\t(const_cast<std::string *>\t(SHCXX_rv));\nDSHF_rv->cxx.idtor = 3;\nif (SHCXX_rv->empty()) {+\nDSHF_rv->addr.ccharp = NULL;\nDSHF_rv->len = 0;\n-} else {+\nDSHF_rv->addr.ccharp = SHCXX_rv->data();\nDSHF_rv->len = SHCXX_rv->size();\n-}\nDSHF_rv->size = 1;", 
                     "C_prototype": "TUT_SHROUD_array *DSHF_rv", 
                     "C_return_code": "return;", 
                     "C_return_type": "void", 
@@ -9892,7 +9845,7 @@
                 }
             }, 
             "f_type": "character(*)", 
-            "idtor": "2", 
+            "idtor": "3", 
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar", 
@@ -10161,7 +10114,7 @@
                 }
             }, 
             "f_type": "type(C_PTR)YY", 
-            "idtor": "2"
+            "idtor": "3"
         }, 
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")", 

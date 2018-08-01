@@ -374,16 +374,6 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Noutput
         end subroutine c_function4b_bufferify
 
-        function c_function4c(arg1, arg2) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function4c")
-            use iso_c_binding, only : C_CHAR, C_PTR
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            type(C_PTR) SHT_rv
-        end function c_function4c
-
         subroutine c_function4c_bufferify(arg1, Larg1, arg2, Larg2, &
                 DSHF_rv) &
                 bind(C, name="TUT_function4c_bufferify")
@@ -1098,7 +1088,7 @@ contains
         ! splicer end function.function4b
     end subroutine function4b
 
-    ! const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+    ! const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
     ! arg_to_buffer
     !>
     !! Note that since a reference is returned, no intermediate string

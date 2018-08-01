@@ -224,7 +224,7 @@ static int l_function4b(lua_State *L)
     // splicer end function.Function4b
 }
 
-// const std::string & Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
@@ -234,7 +234,7 @@ static int l_function4c(lua_State *L)
     // splicer begin function.Function4c
     const char * arg1 = lua_tostring(L, 1);
     const char * arg2 = lua_tostring(L, 2);
-    const std::string & SHCXX_rv = tutorial::Function4c(arg1, arg2);
+    const std::string SHCXX_rv = tutorial::Function4c(arg1, arg2);
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.Function4c

@@ -1,8 +1,8 @@
 Read yaml strings.yaml
-Skipping std::string, unable to create C wrapper for function returning getConstStringResult instance (must return a pointer or reference).
-Skipping std::string, unable to create C wrapper for function returning getConstStringLen instance (must return a pointer or reference).
-Skipping std::string, unable to create C wrapper for function returning getConstStringAsArg instance (must return a pointer or reference).
-Skipping std::string, unable to create C wrapper for function returning getConstStringAlloc instance (must return a pointer or reference).
+Skipping std::string, unable to create C wrapper for function returning getConstStringResult instance (must return a pointer or reference). Bufferify version will still be created.
+Skipping std::string, unable to create C wrapper for function returning getConstStringLen instance (must return a pointer or reference). Bufferify version will still be created.
+Skipping std::string, unable to create C wrapper for function returning getConstStringAsArg instance (must return a pointer or reference). Bufferify version will still be created.
+Skipping std::string, unable to create C wrapper for function returning getConstStringAlloc instance (must return a pointer or reference). Bufferify version will still be created.
 C function void passChar(char status +intent(in)+value)
 C function char returnChar()
 C function void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))

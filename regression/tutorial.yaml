@@ -122,7 +122,7 @@ declarations:
     format:
       F_string_result_as_arg: output
 
-  - decl: const std::string& Function4c(
+  - decl: const std::string Function4c(
       const std::string& arg1,
       const std::string& arg2 )
     doxygen:
