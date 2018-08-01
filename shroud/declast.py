@@ -1248,8 +1248,12 @@ class Declaration(Node):
 
 ##############
 
-    def bind_c(self, **kwargs):
+    def bind_c(self, intent=None, **kwargs):
         """Generate an argument used with the bind(C) interface from Fortran.
+
+        Args:
+            intent - Explicit intent 'in', 'inout', 'out'.
+                     Defaults to None to use intent from attrs.
         """
         t = []
         attrs = self.attrs
@@ -1265,7 +1269,7 @@ class Declaration(Node):
         t.append(typ)
         if attrs.get('value', False):
             t.append('value')
-        intent = attrs.get('intent', None)
+        intent = intent or attrs.get('intent', None)
         if intent:
             t.append('intent(%s)' % intent.upper())
 

@@ -52,7 +52,7 @@ module vector_double_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_vector_double_ctor
 

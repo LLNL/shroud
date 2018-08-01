@@ -119,7 +119,7 @@ module exclass2_mod
             import :: SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor
 
@@ -131,7 +131,7 @@ module exclass2_mod
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: trim_name
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor_bufferify
 
@@ -234,7 +234,7 @@ module exclass2_mod
             implicit none
             type(SHROUD_capsule_data), intent(IN) :: self
             type(SHROUD_capsule_data), intent(IN) :: in
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_get_class1
 

@@ -12,6 +12,7 @@ C method bool equivalent(const Class1 & obj2 +intent(in)) const
 C method Class1 * returnThis()
 C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C method Class1 * getclass3() const
 C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 C method int getM_flag()
 C method int getTest()
@@ -86,6 +87,7 @@ C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)) con
 C-interface, Fortran method Class1 * returnThis()
 C-interface, Fortran method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 C-interface method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C-interface, Fortran method Class1 * getclass3() const
 C-interface, Fortran method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 C-interface, Fortran method int getM_flag()
 C-interface, Fortran method int getTest()
@@ -156,6 +158,7 @@ Python method Class1(int flag +intent(in)+value) +name(new)
 Python method ~Class1() +name(delete)
 Python method int Method1()
 Python method bool equivalent(const Class1 & obj2 +intent(in)) const
+Python method Class1 * getclass3() const
 Python method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 Close pyClass1type.cpp
 class Singleton

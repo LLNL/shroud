@@ -305,6 +305,12 @@ Class1 *Class1::returnThisBuffer(std::string & name, bool flag)
     return this;
 }
 
+Class1 * Class1::getclass3() const
+{
+    last_function_called = "Class1::getclass3";
+    return const_cast<Class1 *>(global_class1);
+}
+
 Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
 {
     last_function_called = "Class1::directionFunc";

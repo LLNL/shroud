@@ -97,6 +97,7 @@ module tutorial_mod
         procedure :: equivalent => class1_equivalent
         procedure :: return_this => class1_return_this
         procedure :: return_this_buffer => class1_return_this_buffer
+        procedure :: getclass3 => class1_getclass3
         procedure :: direction_func => class1_direction_func
         procedure :: get_m_flag => class1_get_m_flag
         procedure :: get_test => class1_get_test
@@ -153,7 +154,7 @@ module tutorial_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_default
 
@@ -164,7 +165,7 @@ module tutorial_mod
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_flag
 
@@ -212,7 +213,7 @@ module tutorial_mod
             type(SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             logical(C_BOOL), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer
 
@@ -227,9 +228,20 @@ module tutorial_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             logical(C_BOOL), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer_bufferify
+
+        function c_class1_getclass3(self, SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="TUT_class1_getclass3")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_capsule_data
+            implicit none
+            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_class1_getclass3
 
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
@@ -280,7 +292,7 @@ module tutorial_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_singleton_get_reference
 
@@ -633,7 +645,7 @@ module tutorial_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass2
 
@@ -643,7 +655,7 @@ module tutorial_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass3
 
@@ -654,7 +666,7 @@ module tutorial_mod
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_copy
 
@@ -903,6 +915,22 @@ contains
             name, len_trim(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
+
+    ! Class1 * getclass3() const
+    !>
+    !! \brief Test const method
+    !!
+    !<
+    function class1_getclass3(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        class(class1) :: obj
+        type(C_PTR) :: SHT_prv
+        type(class1) :: SHT_rv
+        ! splicer begin class.Class1.method.getclass3
+        SHT_prv = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
+        ! splicer end class.Class1.method.getclass3
+    end function class1_getclass3
 
     ! DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
     function class1_direction_func(obj, arg) &

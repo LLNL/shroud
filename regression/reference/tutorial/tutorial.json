@@ -152,7 +152,7 @@
                             "enum_upper": "DIRECTION", 
                             "namespace_scope": "tutorial::Class1::"
                         }, 
-                        "linenumber": 281, 
+                        "linenumber": 289, 
                         "name": "DIRECTION", 
                         "options": {}, 
                         "typemap_name": "tutorial::Class1::DIRECTION"
@@ -994,6 +994,89 @@
                         }
                     }, 
                     {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_var": "SHC_rv", 
+                                "cxx_addr": "", 
+                                "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_rv)", 
+                                "cxx_member": "->", 
+                                "cxx_type": "tutorial::Class1", 
+                                "cxx_var": "SHCXX_rv", 
+                                "idtor": "0"
+                            }, 
+                            "fmtf": {
+                                "cxx_type": "tutorial::Class1", 
+                                "f_var": "SHT_rv"
+                            }, 
+                            "fmtpy": {
+                                "PyObject": "PY_Class1", 
+                                "PyTypeObject": "PY_Class1_Type", 
+                                "c_deref": "*", 
+                                "c_var": "SHCXX_rv", 
+                                "cxx_addr": "", 
+                                "cxx_member": "->", 
+                                "cxx_var": "SHCXX_rv", 
+                                "numpy_type": null, 
+                                "py_var": "SHTPy_rv"
+                            }
+                        }, 
+                        "ast": {
+                            "declarator": {
+                                "name": "getclass3", 
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            }, 
+                            "func_const": true, 
+                            "params": [], 
+                            "specifier": [
+                                "Class1"
+                            ], 
+                            "typemap_name": "tutorial::Class1"
+                        }, 
+                        "decl": "Class1 *getclass3() const", 
+                        "declgen": "Class1 * getclass3() const", 
+                        "doxygen": {
+                            "__line__": 282, 
+                            "brief": "Test const method"
+                        }, 
+                        "fmtdict": {
+                            "C_call_code": "tutorial::Class1 * SHCXX_rv =\t SH_this->getclass3(\t);", 
+                            "C_call_list": "", 
+                            "C_name": "TUT_class1_getclass3", 
+                            "C_post_call": "SHC_rv->addr = static_cast<void *>(SHCXX_rv);\nSHC_rv->idtor = 0;", 
+                            "C_pre_call": "const tutorial::Class1 *SH_this =\t static_cast<const tutorial::Class1 *>(self->addr);", 
+                            "C_prototype": "const TUT_class1 * self,\t TUT_class1 * SHC_rv", 
+                            "C_return_code": "return SHC_rv;", 
+                            "C_return_type": "TUT_class1 *", 
+                            "F_C_call": "c_class1_getclass3", 
+                            "F_C_name": "c_class1_getclass3", 
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem", 
+                            "F_arguments": "obj", 
+                            "F_call_code": "SHT_prv = c_class1_getclass3(obj%cxxmem,\t SHT_rv%cxxmem)", 
+                            "F_name_function": "getclass3", 
+                            "F_name_generic": "getclass3", 
+                            "F_name_impl": "class1_getclass3", 
+                            "F_result_clause": "\fresult(SHT_rv)", 
+                            "F_subprogram": "function", 
+                            "PY_name_impl": "PY_class1_getclass3", 
+                            "c_const": "const ", 
+                            "c_deref": "*", 
+                            "c_member": "->", 
+                            "c_var": "self", 
+                            "cxx_rv_decl": "tutorial::Class1 * SHCXX_rv", 
+                            "function_name": "getclass3", 
+                            "underscore_name": "getclass3"
+                        }, 
+                        "linenumber": 281, 
+                        "options": {
+                            "__line__": 285, 
+                            "wrap_lua": false
+                        }
+                    }, 
+                    {
                         "_fmtargs": {
                             "arg": {
                                 "fmtc": {
@@ -1133,7 +1216,7 @@
                             "function_name": "directionFunc", 
                             "underscore_name": "direction_func"
                         }, 
-                        "linenumber": 283, 
+                        "linenumber": 291, 
                         "options": {}
                     }, 
                     {
@@ -1498,14 +1581,14 @@
                             "function_name": "getReference", 
                             "underscore_name": "get_reference"
                         }, 
-                        "linenumber": 370, 
+                        "linenumber": 378, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 365, 
+                "linenumber": 373, 
                 "name": "Singleton", 
                 "options": {
-                    "__line__": 366, 
+                    "__line__": 374, 
                     "wrap_lua": false
                 }, 
                 "scope": "Singleton::", 
@@ -4050,8 +4133,8 @@
             }, 
             {
                 "_default_funcs": [
-                    50, 
-                    51
+                    51, 
+                    52
                 ], 
                 "_fmtargs": {
                     "arg1": {
@@ -6050,8 +6133,8 @@
             }, 
             {
                 "_default_funcs": [
-                    56, 
-                    57
+                    57, 
+                    58
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -6604,8 +6687,8 @@
             }, 
             {
                 "_default_funcs": [
-                    58, 
-                    59
+                    59, 
+                    60
                 ], 
                 "_fmtargs": {
                     "num": {
@@ -7619,7 +7702,7 @@
                     "function_name": "directionFunc", 
                     "underscore_name": "direction_func"
                 }, 
-                "linenumber": 287, 
+                "linenumber": 295, 
                 "options": {}
             }, 
             {
@@ -7742,9 +7825,9 @@
                     "function_name": "useclass", 
                     "underscore_name": "useclass"
                 }, 
-                "linenumber": 289, 
+                "linenumber": 297, 
                 "options": {
-                    "__line__": 290, 
+                    "__line__": 298, 
                     "wrap_lua": false
                 }
             }, 
@@ -7805,9 +7888,9 @@
                     "function_name": "getclass2", 
                     "underscore_name": "getclass2"
                 }, 
-                "linenumber": 299, 
+                "linenumber": 307, 
                 "options": {
-                    "__line__": 300, 
+                    "__line__": 308, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -7880,9 +7963,9 @@
                     "function_name": "getclass3", 
                     "underscore_name": "getclass3"
                 }, 
-                "linenumber": 305, 
+                "linenumber": 313, 
                 "options": {
-                    "__line__": 306, 
+                    "__line__": 314, 
                     "wrap_lua": false
                 }
             }, 
@@ -7951,7 +8034,7 @@
                 "decl": "Class1 getClassCopy(int flag)", 
                 "declgen": "Class1 getClassCopy(int flag +intent(in)+value)", 
                 "doxygen": {
-                    "__line__": 311, 
+                    "__line__": 319, 
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 }, 
                 "fmtdict": {
@@ -7978,9 +8061,9 @@
                     "function_name": "getClassCopy", 
                     "underscore_name": "get_class_copy"
                 }, 
-                "linenumber": 310, 
+                "linenumber": 318, 
                 "options": {
-                    "__line__": 313, 
+                    "__line__": 321, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -8120,9 +8203,9 @@
                     "function_name": "callback1", 
                     "underscore_name": "callback1"
                 }, 
-                "linenumber": 320, 
+                "linenumber": 328, 
                 "options": {
-                    "__line__": 321, 
+                    "__line__": 329, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -8288,9 +8371,9 @@
                     "function_name": "returnStruct", 
                     "underscore_name": "return_struct"
                 }, 
-                "linenumber": 327, 
+                "linenumber": 335, 
                 "options": {
-                    "__line__": 328, 
+                    "__line__": 336, 
                     "wrap_lua": false
                 }
             }, 
@@ -8462,9 +8545,9 @@
                     "function_name": "returnStructPtr", 
                     "underscore_name": "return_struct_ptr"
                 }, 
-                "linenumber": 330, 
+                "linenumber": 338, 
                 "options": {
-                    "__line__": 331, 
+                    "__line__": 339, 
                     "wrap_lua": false
                 }
             }, 
@@ -8556,9 +8639,9 @@
                     "function_name": "acceptStructIn", 
                     "underscore_name": "accept_struct_in"
                 }, 
-                "linenumber": 342, 
+                "linenumber": 350, 
                 "options": {
-                    "__line__": 343, 
+                    "__line__": 351, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -8655,9 +8738,9 @@
                     "function_name": "acceptStructInPtr", 
                     "underscore_name": "accept_struct_in_ptr"
                 }, 
-                "linenumber": 346, 
+                "linenumber": 354, 
                 "options": {
-                    "__line__": 347, 
+                    "__line__": 355, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -8802,9 +8885,9 @@
                     "function_name": "acceptStructOutPtr", 
                     "underscore_name": "accept_struct_out_ptr"
                 }, 
-                "linenumber": 350, 
+                "linenumber": 358, 
                 "options": {
-                    "__line__": 351, 
+                    "__line__": 359, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -8885,9 +8968,9 @@
                     "function_name": "acceptStructInOutPtr", 
                     "underscore_name": "accept_struct_in_out_ptr"
                 }, 
-                "linenumber": 354, 
+                "linenumber": 362, 
                 "options": {
-                    "__line__": 355, 
+                    "__line__": 363, 
                     "wrap_lua": false, 
                     "wrap_python": false
                 }
@@ -8975,7 +9058,7 @@
                     "function_name": "LastFunctionCalled", 
                     "underscore_name": "last_function_called"
                 }, 
-                "linenumber": 361, 
+                "linenumber": 369, 
                 "options": {}
             }, 
             {
@@ -9063,7 +9146,7 @@
                     "function_suffix": "_bufferify", 
                     "underscore_name": "last_function_called"
                 }, 
-                "linenumber": 361, 
+                "linenumber": 369, 
                 "options": {
                     "wrap_c": true, 
                     "wrap_fortran": false, 

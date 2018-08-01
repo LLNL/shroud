@@ -234,7 +234,7 @@ module ownership_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_static
 
@@ -245,7 +245,7 @@ module ownership_mod
             import :: SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_new
 

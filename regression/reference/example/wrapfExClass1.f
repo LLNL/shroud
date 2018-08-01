@@ -111,7 +111,7 @@ module exclass1_mod
             use iso_c_binding, only : C_PTR
             import :: SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_0
 
@@ -122,7 +122,7 @@ module exclass1_mod
             import :: SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1
 
@@ -134,7 +134,7 @@ module exclass1_mod
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-            type(SHROUD_capsule_data) :: SHT_crv
+            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1_bufferify
 

@@ -175,6 +175,24 @@ TUT_class1 * TUT_class1_return_this_buffer_bufferify(TUT_class1 * self,
 // splicer end class.Class1.method.return_this_buffer_bufferify
 }
 
+// Class1 * getclass3() const
+/**
+ * \brief Test const method
+ *
+ */
+TUT_class1 * TUT_class1_getclass3(const TUT_class1 * self,
+    TUT_class1 * SHC_rv)
+{
+// splicer begin class.Class1.method.getclass3
+    const tutorial::Class1 *SH_this =
+        static_cast<const tutorial::Class1 *>(self->addr);
+    tutorial::Class1 * SHCXX_rv = SH_this->getclass3();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+// splicer end class.Class1.method.getclass3
+}
+
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 int TUT_class1_direction_func(TUT_class1 * self, int arg)
 {

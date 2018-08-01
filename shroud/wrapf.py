@@ -797,10 +797,12 @@ rv = .false.
 
         if result_typemap.base == 'shadow':
             arg_c_names.append(fmt_func.F_result_capsule)
-            arg_c_decl.append(ast.bind_c(name=fmt_func.F_result_capsule))
+            arg_c_decl.append(ast.bind_c(name=fmt_func.F_result_capsule,
+                                         intent='out'))
             imports[fmt.F_capsule_data_type] = True
-
-        if (subprogram == 'function' and
+            # Functions which return shadow classes are not pure
+            # since the result argument will be assigned to.
+        elif (subprogram == 'function' and
                 (is_pure or (func_is_const and args_all_in))):
             fmt.F_C_pure_clause = 'pure '
 

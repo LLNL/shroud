@@ -166,6 +166,32 @@ PY_class1_equivalent(
 // splicer end class.Class1.method.equivalent
 }
 
+static char PY_class1_getclass3__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Test const method
+ *
+ */
+static PyObject *
+PY_class1_getclass3(
+  PY_Class1 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// Class1 * getclass3() const
+// splicer begin class.Class1.method.getclass3
+    tutorial::Class1 * SHCXX_rv = self->obj->getclass3();
+
+    // post_call
+    PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
+    SHTPy_rv->obj = SHCXX_rv;
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.Class1.method.getclass3
+}
+
 static char PY_class1_directionFunc__doc__[] =
 "documentation"
 ;
@@ -276,6 +302,8 @@ static PyMethodDef PY_Class1_methods[] = {
         PY_class1_Method1__doc__},
     {"equivalent", (PyCFunction)PY_class1_equivalent,
         METH_VARARGS|METH_KEYWORDS, PY_class1_equivalent__doc__},
+    {"getclass3", (PyCFunction)PY_class1_getclass3, METH_NOARGS,
+        PY_class1_getclass3__doc__},
     {"directionFunc", (PyCFunction)PY_class1_directionFunc,
         METH_VARARGS|METH_KEYWORDS, PY_class1_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef
