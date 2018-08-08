@@ -9,6 +9,7 @@
                     "C_header_filename": "wrapClass3.h", 
                     "C_impl_filename": "wrapClass3.cpp", 
                     "C_type_name": "FOR_class3", 
+                    "F_capsule_data_type": "SHROUD_class3_capsule", 
                     "F_derived_name": "class3", 
                     "LUA_class_reg": "l_Class3_Reg", 
                     "LUA_ctor_name": "Class3", 
@@ -31,7 +32,7 @@
                     "cxx_class": "Class3", 
                     "cxx_type": "Class3"
                 }, 
-                "linenumber": 71, 
+                "linenumber": 70, 
                 "name": "Class3", 
                 "options": {}, 
                 "scope": "tutorial::Class3::", 
@@ -44,6 +45,7 @@
                     "C_header_filename": "wrapClass2.h", 
                     "C_impl_filename": "wrapClass2.cpp", 
                     "C_type_name": "FOR_class2", 
+                    "F_capsule_data_type": "SHROUD_class2_capsule", 
                     "F_derived_name": "class2", 
                     "LUA_class_reg": "l_Class2_Reg", 
                     "LUA_ctor_name": "Class2", 
@@ -143,7 +145,7 @@
                             "function_name": "ctor", 
                             "underscore_name": "ctor"
                         }, 
-                        "linenumber": 77, 
+                        "linenumber": 76, 
                         "options": {}
                     }, 
                     {
@@ -186,7 +188,7 @@
                             "function_name": "dtor", 
                             "underscore_name": "dtor"
                         }, 
-                        "linenumber": 78, 
+                        "linenumber": 77, 
                         "options": {}
                     }, 
                     {
@@ -296,7 +298,7 @@
                             "function_name": "func1", 
                             "underscore_name": "func1"
                         }, 
-                        "linenumber": 79, 
+                        "linenumber": 78, 
                         "options": {}
                     }, 
                     {
@@ -407,11 +409,11 @@
                             "function_name": "acceptClass3", 
                             "underscore_name": "accept_class3"
                         }, 
-                        "linenumber": 80, 
+                        "linenumber": 79, 
                         "options": {}
                     }
                 ], 
-                "linenumber": 75, 
+                "linenumber": 74, 
                 "name": "Class2", 
                 "options": {}, 
                 "scope": "tutorial::Class2::", 
@@ -576,6 +578,7 @@
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_auto_reference_count": false, 
+            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule", 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -1501,18 +1504,19 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "tutorial::Class1", 
             "f_c_module": {
-                "--import--": [
-                    "SHROUD_capsule_data"
+                "tutorial_mod": [
+                    "custom_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(custom_capsule)", 
+            "f_capsule_data_type": "custom_capsule", 
             "f_derived_type": "class1", 
             "f_module": {
-                "__line__": 66, 
                 "tutorial_mod": [
                     "class1"
                 ]
             }, 
+            "f_module_name": "tutorial_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -1574,16 +1578,18 @@
             "cxx_type": "tutorial::Class2", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_class2_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_class2_capsule)", 
+            "f_capsule_data_type": "SHROUD_class2_capsule", 
             "f_derived_type": "class2", 
             "f_module": {
                 "forward_mod": [
                     "class2"
                 ]
             }, 
+            "f_module_name": "forward_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -1646,16 +1652,18 @@
             "cxx_type": "tutorial::Class3", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_class3_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_class3_capsule)", 
+            "f_capsule_data_type": "SHROUD_class3_capsule", 
             "f_derived_type": "class3", 
             "f_module": {
                 "forward_mod": [
                     "class3"
                 ]
             }, 
+            "f_module_name": "forward_mod", 
             "f_statements": {
                 "result": {
                     "call": [

@@ -47,18 +47,16 @@ declarations:
       base: shadow
       cxx_type: Names
       c_type: TES_names
+      f_module_name: name_module
       f_derived_type: FNames
+      f_capsule_data_type: SHROUD_names_capsule
       f_to_c: "{f_var}%cxxmem"
-      f_module:
-        name_module:
-        - FNames
   - type: Names2
     fields:
       base: shadow
       cxx_type: Names2
       c_type: TES_names2
+      f_module_name: names2_mod
       f_derived_type: names2
+      f_capsule_data_type: SHROUD_names2_capsule
       f_to_c: "{f_var}%cxxmem"
-      f_module:
-        names2_mod:
-        - names2

@@ -1206,11 +1206,14 @@ used to release POD pointers; otherwise, ``delete`` will be used.
 C and Fortran
 -------------
 
+.. XXX They can be set from the template *F_capsule_data_type_class_template*.
+   Need C template too.
+
 Fortran keeps track of C++ objects with the struct
 **C_capsule_data_type** and the ``bind(C)`` equivalent
 **F_capsule_data_type**. Their names default to
-``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_capsule_data``. In the
-Tutorial these types are defined in C as::
+``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{class_lower}_capsule``.
+In the Tutorial these types are defined in C as::
 
     struct s_TUT_class1 {
         void *addr;     /* address of C++ memory */
@@ -1220,10 +1223,10 @@ Tutorial these types are defined in C as::
 
 And Fortran::
 
-    type, bind(C) :: SHROUD_capsule_data
+    type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
+    end type SHROUD_class1_capsule
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
 or ``std::string *``.  *idtor* is a Shroud generated index of the

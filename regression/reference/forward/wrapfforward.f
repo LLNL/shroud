@@ -55,16 +55,16 @@ module forward_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
     ! splicer begin class.Class3.module_top
     ! splicer end class.Class3.module_top
 
+    type, bind(C) :: SHROUD_class3_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_class3_capsule
+
     type class3
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_class3_capsule) :: cxxmem
         ! splicer begin class.Class3.component_part
         ! splicer end class.Class3.component_part
     contains
@@ -78,8 +78,13 @@ module forward_mod
     ! splicer begin class.Class2.module_top
     ! splicer end class.Class2.module_top
 
+    type, bind(C) :: SHROUD_class2_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_class2_capsule
+
     type class2
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_class2_capsule) :: cxxmem
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -112,33 +117,34 @@ module forward_mod
                 result(SHT_rv) &
                 bind(C, name="FOR_class2_ctor")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class2_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_class2_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class2_ctor
 
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_class2_dtor")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class2_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_class2_capsule), intent(IN) :: self
         end subroutine c_class2_dtor
 
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_class2_func1")
-            import :: SHROUD_capsule_data
+            use tutorial_mod, only : custom_capsule
+            import :: SHROUD_class2_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
-            type(SHROUD_capsule_data), intent(IN) :: arg
+            type(SHROUD_class2_capsule), intent(IN) :: self
+            type(custom_capsule), intent(IN) :: arg
         end subroutine c_class2_func1
 
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_class2_accept_class3")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class2_capsule, SHROUD_class3_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
-            type(SHROUD_capsule_data), intent(IN) :: arg
+            type(SHROUD_class2_capsule), intent(IN) :: self
+            type(SHROUD_class3_capsule), intent(IN) :: arg
         end subroutine c_class2_accept_class3
 
         ! splicer begin class.Class2.additional_interfaces

@@ -53,16 +53,16 @@ module name_module
     implicit none
 
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
     ! splicer begin class.Names.module_top
     ! splicer end class.Names.module_top
 
+    type, bind(C) :: SHROUD_names_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_names_capsule
+
     type FNames
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_names_capsule) :: cxxmem
         ! splicer begin class.Names.component_part
         ! splicer end class.Names.component_part
     contains
@@ -87,16 +87,16 @@ module name_module
 
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_names_method1")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_names_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_names_capsule), intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_names_method2")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_names_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self2
+            type(SHROUD_names_capsule), intent(IN) :: self2
         end subroutine xxx_tes_names_method2
 
         ! splicer begin class.Names.additional_interfaces

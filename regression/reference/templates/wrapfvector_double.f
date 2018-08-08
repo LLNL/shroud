@@ -13,16 +13,16 @@ module vector_double_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
     ! splicer begin class.vector_double.module_top
     ! splicer end class.vector_double.module_top
 
+    type, bind(C) :: SHROUD_vector_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_vector_capsule
+
     type vector_double
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_vector_capsule) :: cxxmem
         ! splicer begin class.vector_double.component_part
         ! splicer end class.vector_double.component_part
     contains
@@ -50,25 +50,25 @@ module vector_double_mod
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_vector_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_vector_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_vector_double_ctor
 
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_vector_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_vector_capsule), intent(IN) :: self
         end subroutine c_vector_double_dtor
 
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
             use iso_c_binding, only : C_DOUBLE
-            import :: SHROUD_capsule_data
+            import :: SHROUD_vector_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_vector_capsule), intent(IN) :: self
             real(C_DOUBLE), intent(IN) :: value
         end subroutine c_vector_double_push_back
 
@@ -76,9 +76,9 @@ module vector_double_mod
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
             use iso_c_binding, only : C_DOUBLE, C_PTR, C_SIZE_T
-            import :: SHROUD_capsule_data
+            import :: SHROUD_vector_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_vector_capsule), intent(IN) :: self
             integer(C_SIZE_T), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_double_at

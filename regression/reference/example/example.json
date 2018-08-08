@@ -9,6 +9,7 @@
                     "C_header_filename": "wrapExClass1.h", 
                     "C_impl_filename": "wrapExClass1.cpp", 
                     "C_type_name": "AA_exclass1", 
+                    "F_capsule_data_type": "SHROUD_exclass1_capsule", 
                     "F_derived_name": "exclass1", 
                     "F_impl_filename": "wrapfExClass1.f", 
                     "F_module_name": "exclass1_mod", 
@@ -1899,6 +1900,7 @@
                     "C_header_filename": "wrapExClass2.h", 
                     "C_impl_filename": "wrapExClass2.cpp", 
                     "C_type_name": "AA_exclass2", 
+                    "F_capsule_data_type": "SHROUD_exclass2_capsule", 
                     "F_derived_name": "exclass2", 
                     "F_impl_filename": "wrapfExClass2.f", 
                     "F_module_name": "exclass2_mod", 
@@ -4942,6 +4944,7 @@
                     "C_header_filename": "wrapExClass3.h", 
                     "C_impl_filename": "wrapExClass3.cpp", 
                     "C_type_name": "AA_exclass3", 
+                    "F_capsule_data_type": "SHROUD_exclass3_capsule", 
                     "F_derived_name": "exclass3", 
                     "F_impl_filename": "wrapfExClass3.f", 
                     "F_module_name": "exclass3_mod", 
@@ -9311,6 +9314,7 @@
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_auto_reference_count": false, 
+            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule", 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -9459,18 +9463,19 @@
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})", 
             "cxx_type": "axom::sidre::Group", 
             "f_c_module": {
-                "--import--": [
-                    "SHROUD_capsule_data"
+                "sidre_mod": [
+                    "SHROUD_group_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_group_capsule)", 
+            "f_capsule_data_type": "SHROUD_group_capsule", 
             "f_derived_type": "datagroup", 
             "f_module": {
-                "__line__": 82, 
                 "sidre_mod": [
-                    "group"
+                    "datagroup"
                 ]
             }, 
+            "f_module_name": "sidre_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -9791,16 +9796,18 @@
             "cxx_type": "example::nested::ExClass1", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_exclass1_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_exclass1_capsule)", 
+            "f_capsule_data_type": "SHROUD_exclass1_capsule", 
             "f_derived_type": "exclass1", 
             "f_module": {
                 "exclass1_mod": [
                     "exclass1"
                 ]
             }, 
+            "f_module_name": "exclass1_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -9864,16 +9871,18 @@
             "cxx_type": "example::nested::ExClass2", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_exclass2_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_exclass2_capsule)", 
+            "f_capsule_data_type": "SHROUD_exclass2_capsule", 
             "f_derived_type": "exclass2", 
             "f_module": {
                 "exclass2_mod": [
                     "exclass2"
                 ]
             }, 
+            "f_module_name": "exclass2_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -9932,16 +9941,18 @@
             "cxx_type": "example::nested::ExClass3", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_exclass3_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_exclass3_capsule)", 
+            "f_capsule_data_type": "SHROUD_exclass3_capsule", 
             "f_derived_type": "exclass3", 
             "f_module": {
                 "exclass3_mod": [
                     "exclass3"
                 ]
             }, 
+            "f_module_name": "exclass3_mod", 
             "f_statements": {
                 "result": {
                     "call": [

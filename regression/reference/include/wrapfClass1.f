@@ -49,14 +49,14 @@ module class1_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_capsule_data
+
+    type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
+    end type SHROUD_class1_capsule
 
     type class1
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_class1_capsule) :: cxxmem
     contains
         procedure :: method1 => class1_method1
         procedure :: get_instance => class1_get_instance
@@ -77,9 +77,9 @@ module class1_mod
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="DEF_class1_method1")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 

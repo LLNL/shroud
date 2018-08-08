@@ -214,11 +214,22 @@ class Wrapf(util.WrapperMixin):
         self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
-        self.f_helper['capsule_data_helper'] = True
         self.f_type_decl.append('')
         self._push_splicer(fmt_class.cxx_class)
         self._create_splicer('module_top', self.f_type_decl)
         # XXX - make members private later, but not now for debugging.
+
+        # One capsule type per class.
+        # Necessary since a type in one module may be used by another module.
+        append_format(self.f_type_decl,
+                      '\n'
+                      'type, bind(C) :: {F_capsule_data_type}\n+'
+                      'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory\n'
+                      'integer(C_INT) :: idtor = 0       ! index of destructor\n'
+                      '-end type {F_capsule_data_type}',
+                      fmt_class)
+        self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_INT', 'C_NULL_PTR')
+       
         append_format(
             self.f_type_decl,
             '\n'
@@ -670,7 +681,6 @@ rv = .false.
             elif buf_arg == 'shadow':
                 arg_c_names.append(ast.name)
                 arg_c_decl.append(ast.bind_c())
-                imports[fmt.F_capsule_data_type] = True
                 continue
 
             if buf_arg not in attrs:
@@ -799,7 +809,8 @@ rv = .false.
             arg_c_names.append(fmt_func.F_result_capsule)
             arg_c_decl.append(ast.bind_c(name=fmt_func.F_result_capsule,
                                          intent='out'))
-            imports[fmt.F_capsule_data_type] = True
+            self.update_f_module(modules, imports,
+                                 result_typemap.f_c_module or result_typemap.f_module)
             # Functions which return shadow classes are not pure
             # since the result argument will be assigned to.
         elif (subprogram == 'function' and

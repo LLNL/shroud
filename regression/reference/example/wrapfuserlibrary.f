@@ -221,16 +221,16 @@ module userlibrary_mod
 
         subroutine c_testgroup1(grp) &
                 bind(C, name="AA_testgroup1")
-            import :: SHROUD_capsule_data
+            use sidre_mod, only : SHROUD_group_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: grp
+            type(SHROUD_group_capsule), intent(IN) :: grp
         end subroutine c_testgroup1
 
         subroutine c_testgroup2(grp) &
                 bind(C, name="AA_testgroup2")
-            import :: SHROUD_capsule_data
+            use sidre_mod, only : SHROUD_group_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: grp
+            type(SHROUD_group_capsule), intent(IN) :: grp
         end subroutine c_testgroup2
 
         subroutine func_ptr1(get) &
@@ -459,7 +459,7 @@ contains
 
     ! void testgroup1(axom::sidre::Group * grp +intent(in))
     subroutine testgroup1(grp)
-        use sidre_mod, only : group
+        use sidre_mod, only : datagroup
         type(datagroup), intent(IN) :: grp
         ! splicer begin function.testgroup1
         call c_testgroup1(grp%cxxmem)
@@ -468,7 +468,7 @@ contains
 
     ! void testgroup2(const axom::sidre::Group * grp +intent(in))
     subroutine testgroup2(grp)
-        use sidre_mod, only : group
+        use sidre_mod, only : datagroup
         type(datagroup), intent(IN) :: grp
         ! splicer begin function.testgroup2
         call c_testgroup2(grp%cxxmem)

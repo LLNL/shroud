@@ -83,7 +83,9 @@ class Typemap(object):
         ('f_kind', None),         # Fortran kind            -- C_INT
         ('f_c_type', None),       # Type for C interface    -- int
         ('f_to_c', None),         # Expression to convert from Fortran to C
+        ('f_module_name', None),  # Name of module which contains f_derived_type and f_capsule_data_type
         ('f_derived_type', None), # Fortran derived type name
+        ('f_capsule_data_type', None), # Fortran derived type to match C struct
         ('f_args', None),         # Argument in Fortran wrapper to call C.
         ('f_module', None),       # Fortran modules needed for type  (dictionary)
         ('f_cast', '{f_var}'),    # Expression to convert to type
@@ -185,9 +187,10 @@ class Typemap(object):
             'cxx_type',
             'c_type',
             'c_header',
+            'f_module_name',
             'f_derived_type',
+            'f_capsule_data_type',
             'f_to_c',
-            'f_module',
         ], indent, output)
 
 
@@ -1312,6 +1315,10 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         cxx_type=cxx_name,
     )
     ntypemap.update(fields)
+    if ntypemap.f_module_name is None:
+        raise RuntimeError("typemap {} requires field f_module_name".format(cxx_name))
+    ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+    ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     register_type(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
@@ -1321,8 +1328,8 @@ def create_class_typemap(node, fields=None):
     """Create a typemap from a ClassNode.
     Use fields to override defaults.
 
-    The C type is a capsule_data which will contains a pointer to the
-    C++ memory and information on how to delete the memory.
+    The c_type and f_capsule_data_type are a struct which contains
+    a pointer to the C++ memory and information on how to delete the memory.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat('{namespace_scope}{cxx_class}', fmt_class)
@@ -1338,11 +1345,16 @@ def create_class_typemap(node, fields=None):
         cxx_type=cxx_type,
         cxx_header=node.cxx_header or None,
         c_type=c_name,
+        f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
+        f_capsule_data_type=fmt_class.F_capsule_data_type,
         f_module={fmt_class.F_module_name:[fmt_class.F_derived_name]},
         ##- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c='{f_var}%%%s' % fmt_class.F_derived_member,
     )
+    # import classes which are wrapped by this module
+    # XXX - deal with namespaces vs modules
+    ntypemap.f_c_module = {'--import--': [ntypemap.f_capsule_data_type]}
     if fields is not None:
         ntypemap.update(fields)
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
@@ -1367,9 +1379,9 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.c_to_cxx = ('static_cast<{c_const}%s *>({c_var}{c_member}addr)' %
                          ntypemap.cxx_type)
 
+    # some default for ntypemap.f_capsule_data_type
     ntypemap.f_type = 'type(%s)' % ntypemap.f_derived_type
-    ntypemap.f_c_type = 'type(%s)' % fmt.F_capsule_data_type
-    ntypemap.f_c_module = {'--import--': [fmt.F_capsule_data_type]}
+    ntypemap.f_c_type = 'type(%s)' % ntypemap.f_capsule_data_type
 
     # XXX module name may not conflict with type name
 #    ntypemap.f_module={fmt_class.F_module_name:[unname]}

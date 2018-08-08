@@ -9,6 +9,7 @@
                     "C_header_filename": "wrapvector_int.h", 
                     "C_impl_filename": "wrapvectorforint.cpp", 
                     "C_type_name": "TEM_vector_int", 
+                    "F_capsule_data_type": "SHROUD_vector_capsule", 
                     "F_derived_name": "vector_int", 
                     "F_impl_filename": "wrapfvector_int.f", 
                     "F_module_name": "vector_int_mod", 
@@ -460,6 +461,7 @@
                     "C_header_filename": "wrapvector_double.h", 
                     "C_impl_filename": "wrapvector_double.cpp", 
                     "C_type_name": "TEM_vector_double", 
+                    "F_capsule_data_type": "SHROUD_vector_capsule", 
                     "F_derived_name": "vector_double", 
                     "F_impl_filename": "wrapfvector_double.f", 
                     "F_module_name": "vector_double_mod", 
@@ -906,6 +908,7 @@
                     "C_header_filename": "wrapuser_int.h", 
                     "C_impl_filename": "wrapuser_int.cpp", 
                     "C_type_name": "TEM_user_int", 
+                    "F_capsule_data_type": "SHROUD_user_capsule", 
                     "F_derived_name": "user_int", 
                     "F_impl_filename": "wrapfuser_int.f", 
                     "F_module_name": "user_int_mod", 
@@ -1672,6 +1675,7 @@
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_auto_reference_count": false, 
+            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule", 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -2349,16 +2353,18 @@
             "cxx_type": "std::vector", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_vector_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_vector_capsule)", 
+            "f_capsule_data_type": "SHROUD_vector_capsule", 
             "f_derived_type": "vector", 
             "f_module": {
                 "vector_mod": [
                     "vector"
                 ]
             }, 
+            "f_module_name": "vector_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -2441,16 +2447,18 @@
             "cxx_type": "std::vector<double>", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_vector_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_vector_capsule)", 
+            "f_capsule_data_type": "SHROUD_vector_capsule", 
             "f_derived_type": "vector_double", 
             "f_module": {
                 "vector_double_mod": [
                     "vector_double"
                 ]
             }, 
+            "f_module_name": "vector_double_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -2510,16 +2518,18 @@
             "cxx_type": "std::vector<int>", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_vector_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_vector_capsule)", 
+            "f_capsule_data_type": "SHROUD_vector_capsule", 
             "f_derived_type": "vector_int", 
             "f_module": {
                 "vector_int_mod": [
                     "vector_int"
                 ]
             }, 
+            "f_module_name": "vector_int_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -2784,16 +2794,18 @@
             "cxx_type": "user", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_user_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_user_capsule)", 
+            "f_capsule_data_type": "SHROUD_user_capsule", 
             "f_derived_type": "user", 
             "f_module": {
                 "user_mod": [
                     "user"
                 ]
             }, 
+            "f_module_name": "user_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -2857,16 +2869,18 @@
             "cxx_type": "user<int>", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_user_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_user_capsule)", 
+            "f_capsule_data_type": "SHROUD_user_capsule", 
             "f_derived_type": "user_int", 
             "f_module": {
                 "user_int_mod": [
                     "user_int"
                 ]
             }, 
+            "f_module_name": "user_int_mod", 
             "f_statements": {
                 "result": {
                     "call": [

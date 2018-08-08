@@ -389,6 +389,12 @@ F_abstract_interface_subprogram_template
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
    see :ref:`TypesAnchor_Function_Pointers`.
 
+F_capsule_data_type_class_template
+    Name of the derived type which is the ``BIND(C)`` equivalent of the
+    struct used to implement a shadow class.
+    Each class must have a unique name.
+    Defaults to ``SHROUD_{class_lower}_capsule``.
+
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
     ``{class_prefix}{enum_lower}_{enum_member_lower}``

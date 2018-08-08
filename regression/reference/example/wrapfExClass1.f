@@ -68,8 +68,13 @@ module exclass1_mod
     top of module splicer  1
     ! splicer end class.ExClass1.module_top
 
+    type, bind(C) :: SHROUD_exclass1_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_exclass1_capsule
+
     type exclass1
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_exclass1_capsule) :: cxxmem
         ! splicer begin class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -109,9 +114,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_0")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_0
 
@@ -119,10 +124,10 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_1")
             use iso_c_binding, only : C_CHAR, C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1
 
@@ -130,28 +135,28 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_ctor_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1_bufferify
 
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_exclass1_dtor")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
         end subroutine c_exclass1_dtor
 
         function c_exclass1_increment_count(self, incr) &
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_increment_count")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: incr
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
@@ -160,9 +165,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_error_pattern")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_pattern
 
@@ -170,9 +175,9 @@ module exclass1_mod
                 SHF_rv, NSHF_rv) &
                 bind(C, name="AA_exclass1_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass1_get_name_error_pattern_bufferify
@@ -181,9 +186,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_length")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_exclass1_get_name_length
 
@@ -191,18 +196,18 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_error_check")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_check
 
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
                 bind(C, name="AA_exclass1_get_name_error_check_bufferify")
-            import :: SHROUD_array, SHROUD_capsule_data
+            import :: SHROUD_array, SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
@@ -210,18 +215,18 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_name_arg")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_arg
 
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_exclass1_get_name_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: name(*)
             integer(C_INT), value, intent(IN) :: Nname
         end subroutine c_exclass1_get_name_arg_bufferify
@@ -230,9 +235,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_root")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) :: SHT_rv
         end function c_exclass1_get_root
 
@@ -240,9 +245,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_value_from_int")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: value
             integer(C_INT) :: SHT_rv
         end function c_exclass1_get_value_from_int
@@ -251,9 +256,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_value_1")
             use iso_c_binding, only : C_LONG
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_LONG), value, intent(IN) :: value
             integer(C_LONG) :: SHT_rv
         end function c_exclass1_get_value_1
@@ -262,9 +267,9 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_get_addr")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) :: SHT_rv
         end function c_exclass1_get_addr
 
@@ -272,18 +277,18 @@ module exclass1_mod
                 result(SHT_rv) &
                 bind(C, name="AA_exclass1_has_addr")
             use iso_c_binding, only : C_BOOL
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
             logical(C_BOOL), value, intent(IN) :: in
             logical(C_BOOL) :: SHT_rv
         end function c_exclass1_has_addr
 
         subroutine c_exclass1_splicer_special(self) &
                 bind(C, name="AA_exclass1_splicer_special")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass1_capsule), intent(IN) :: self
         end subroutine c_exclass1_splicer_special
 
         ! splicer begin class.ExClass1.additional_interfaces
