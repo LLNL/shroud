@@ -32,10 +32,12 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_INT
   f_c_type: integer(C_INT)
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: C_INT
   f_module: null
+  f_module_name: null
   f_statements: &id006 {}
   f_to_c: null
   f_type: integer
@@ -78,12 +80,14 @@ bool: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: logical(C_BOOL)
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: C_BOOL
   f_module:
     iso_c_binding:
     - C_BOOL
+  f_module_name: null
   f_statements:
     intent_in:
       c_local_var: true
@@ -210,10 +214,12 @@ char: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_CHAR
   f_c_type: character(kind=C_CHAR)
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: C_CHAR
   f_module: null
+  f_module_name: null
   f_statements:
     result_pure:
       call:
@@ -272,10 +278,12 @@ char_scalar: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_CHAR
   f_c_type: character(kind=C_CHAR)
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: C_CHAR
   f_module: null
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: character
@@ -338,10 +346,12 @@ charout: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: null
   f_module: null
+  f_module_name: null
   f_statements:
     result:
       f_helper: copy_string
@@ -390,12 +400,14 @@ double: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: real({f_var}, C_DOUBLE)
   f_derived_type: null
   f_kind: C_DOUBLE
   f_module:
     iso_c_binding:
     - C_DOUBLE
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: real(C_DOUBLE)
@@ -438,12 +450,14 @@ float: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: real({f_var}, C_FLOAT)
   f_derived_type: null
   f_kind: C_FLOAT
   f_module:
     iso_c_binding:
     - C_FLOAT
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: real(C_FLOAT)
@@ -486,12 +500,14 @@ int: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT)
   f_derived_type: null
   f_kind: C_INT
   f_module:
     iso_c_binding:
     - C_INT
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT)
@@ -534,12 +550,14 @@ int16_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT16_t)
   f_derived_type: null
   f_kind: C_INT16_T
   f_module:
     iso_c_binding:
     - C_INT16_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT16_T)
@@ -582,12 +600,14 @@ int32_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT32_t)
   f_derived_type: null
   f_kind: C_INT32_T
   f_module:
     iso_c_binding:
     - C_INT32_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT32_T)
@@ -630,12 +650,14 @@ int64_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT64_t)
   f_derived_type: null
   f_kind: C_INT64_T
   f_module:
     iso_c_binding:
     - C_INT64_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT64_T)
@@ -678,12 +700,14 @@ int8_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT8_t)
   f_derived_type: null
   f_kind: C_INT8_T
   f_module:
     iso_c_binding:
     - C_INT8_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT8_T)
@@ -726,12 +750,14 @@ long: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_LONG)
   f_derived_type: null
   f_kind: C_LONG
   f_module:
     iso_c_binding:
     - C_LONG
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG)
@@ -774,12 +800,14 @@ long_long: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_LONG_LONG)
   f_derived_type: null
   f_kind: C_LONG_LONG
   f_module:
     iso_c_binding:
     - C_LONG_LONG
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG_LONG)
@@ -822,12 +850,14 @@ short: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_SHORT)
   f_derived_type: null
   f_kind: C_SHORT
   f_module:
     iso_c_binding:
     - C_SHORT
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_SHORT)
@@ -870,12 +900,14 @@ size_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_SIZE_T)
   f_derived_type: null
   f_kind: C_SIZE_T
   f_module:
     iso_c_binding:
     - C_SIZE_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_SIZE_T)
@@ -978,10 +1010,12 @@ std::string: !!python/object:shroud.typemap.Typemap
     iso_c_binding:
     - C_CHAR
   f_c_type: character(kind=C_CHAR)
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: C_CHAR
   f_module: null
+  f_module_name: null
   f_statements:
     result_pure:
       call:
@@ -1155,10 +1189,12 @@ std::vector: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: null
   f_module: null
+  f_module_name: null
   f_statements:
     intent_inout:
       f_helper: copy_array_{cxx_T}
@@ -1257,10 +1293,12 @@ stringout: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: null
   f_module: null
+  f_module_name: null
   f_statements:
     result:
       f_helper: copy_string
@@ -1309,12 +1347,14 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT16_t)
   f_derived_type: null
   f_kind: C_INT16_T
   f_module:
     iso_c_binding:
     - C_INT16_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT16_T)
@@ -1357,12 +1397,14 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT32_t)
   f_derived_type: null
   f_kind: C_INT32_T
   f_module:
     iso_c_binding:
     - C_INT32_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT32_T)
@@ -1405,12 +1447,14 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT64_t)
   f_derived_type: null
   f_kind: C_INT64_T
   f_module:
     iso_c_binding:
     - C_INT64_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT64_T)
@@ -1453,12 +1497,14 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT8_t)
   f_derived_type: null
   f_kind: C_INT8_T
   f_module:
     iso_c_binding:
     - C_INT8_T
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT8_T)
@@ -1501,12 +1547,14 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_INT)
   f_derived_type: null
   f_kind: C_INT
   f_module:
     iso_c_binding:
     - C_INT
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_INT)
@@ -1549,12 +1597,14 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_LONG)
   f_derived_type: null
   f_kind: C_LONG
   f_module:
     iso_c_binding:
     - C_LONG
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG)
@@ -1597,12 +1647,14 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_LONG_LONG)
   f_derived_type: null
   f_kind: C_LONG_LONG
   f_module:
     iso_c_binding:
     - C_LONG_LONG
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_LONG_LONG)
@@ -1645,12 +1697,14 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: int({f_var}, C_SHORT)
   f_derived_type: null
   f_kind: C_SHORT
   f_module:
     iso_c_binding:
     - C_SHORT
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: integer(C_SHORT)
@@ -1693,12 +1747,14 @@ void: !!python/object:shroud.typemap.Typemap
   f_args: null
   f_c_module: null
   f_c_type: null
+  f_capsule_data_type: null
   f_cast: '{f_var}'
   f_derived_type: null
   f_kind: null
   f_module:
     iso_c_binding:
     - C_PTR
+  f_module_name: null
   f_statements: *id006
   f_to_c: null
   f_type: type(C_PTR)

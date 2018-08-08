@@ -53,16 +53,16 @@ module names2_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
     ! splicer begin class.Names2.module_top
     ! splicer end class.Names2.module_top
 
+    type, bind(C) :: SHROUD_names2_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_names2_capsule
+
     type names2
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_names2_capsule) :: cxxmem
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains

@@ -13,16 +13,16 @@ module user_int_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
     ! splicer begin class.user_int.module_top
     ! splicer end class.user_int.module_top
 
+    type, bind(C) :: SHROUD_user_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_user_capsule
+
     type user_int
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_user_capsule) :: cxxmem
         ! splicer begin class.user_int.component_part
         ! splicer end class.user_int.component_part
     contains
@@ -47,9 +47,9 @@ module user_int_mod
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
             use iso_c_binding, only : C_DOUBLE, C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_user_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_user_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg1
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_user_int_nested_double

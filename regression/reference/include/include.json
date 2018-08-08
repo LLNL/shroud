@@ -9,6 +9,7 @@
                     "C_header_filename": "wrapClass1.h", 
                     "C_impl_filename": "wrapClass1.cpp", 
                     "C_type_name": "DEF_class1", 
+                    "F_capsule_data_type": "SHROUD_class1_capsule", 
                     "F_derived_name": "class1", 
                     "F_impl_filename": "wrapfClass1.f", 
                     "F_module_name": "class1_mod", 
@@ -110,6 +111,7 @@
                     "C_header_filename": "wrapClass2.h", 
                     "C_impl_filename": "wrapClass2.cpp", 
                     "C_type_name": "DEF_class2", 
+                    "F_capsule_data_type": "SHROUD_class2_capsule", 
                     "F_derived_name": "class2", 
                     "F_impl_filename": "wrapfClass2.f", 
                     "F_module_name": "class2_mod", 
@@ -464,6 +466,7 @@
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_auto_reference_count": false, 
+            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule", 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -545,16 +548,18 @@
             "cxx_type": "Class2", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_class2_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_class2_capsule)", 
+            "f_capsule_data_type": "SHROUD_class2_capsule", 
             "f_derived_type": "class2", 
             "f_module": {
                 "class2_mod": [
                     "class2"
                 ]
             }, 
+            "f_module_name": "class2_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -1480,16 +1485,18 @@
             "cxx_type": "three::Class1", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_class1_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_class1_capsule)", 
+            "f_capsule_data_type": "SHROUD_class1_capsule", 
             "f_derived_type": "class1", 
             "f_module": {
                 "class1_mod": [
                     "class1"
                 ]
             }, 
+            "f_module_name": "class1_mod", 
             "f_statements": {
                 "result": {
                     "call": [

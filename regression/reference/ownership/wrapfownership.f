@@ -70,8 +70,13 @@ module ownership_mod
     ! splicer begin class.Class1.module_top
     ! splicer end class.Class1.module_top
 
+    type, bind(C) :: SHROUD_class1_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_class1_capsule
+
     type class1
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_class1_capsule) :: cxxmem
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -96,18 +101,18 @@ module ownership_mod
 
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_class1_dtor")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_dtor
 
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="OWN_class1_get_flag")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_flag
 
@@ -232,9 +237,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class1_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_static
 
@@ -242,10 +247,10 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_new")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_capsule_data
+            import :: SHROUD_class1_capsule
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_new
 

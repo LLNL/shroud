@@ -9,6 +9,7 @@
                     "C_header_filename": "wrapstruct1.h", 
                     "C_impl_filename": "wrapstruct1.cpp", 
                     "C_type_name": "TUT_struct1", 
+                    "F_capsule_data_type": "SHROUD_struct1_capsule", 
                     "F_derived_name": "struct1", 
                     "LUA_class_reg": "l_struct1_Reg", 
                     "LUA_ctor_name": "struct1", 
@@ -163,6 +164,7 @@
                     "C_header_filename": "wrapClass1.h", 
                     "C_impl_filename": "wrapClass1.cpp", 
                     "C_type_name": "TUT_class1", 
+                    "F_capsule_data_type": "SHROUD_class1_capsule", 
                     "F_derived_name": "class1", 
                     "LUA_class_reg": "l_Class1_Reg", 
                     "LUA_ctor_name": "Class1", 
@@ -1489,6 +1491,7 @@
                     "C_header_filename": "wrapSingleton.h", 
                     "C_impl_filename": "wrapSingleton.cpp", 
                     "C_type_name": "TUT_singleton", 
+                    "F_capsule_data_type": "SHROUD_singleton_capsule", 
                     "F_derived_name": "singleton", 
                     "PY_PyObject": "PY_Singleton", 
                     "PY_PyTypeObject": "PY_Singleton_Type", 
@@ -9176,6 +9179,7 @@
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_auto_reference_count": false, 
+            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule", 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": false, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -9326,16 +9330,18 @@
             "cxx_type": "Singleton", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_singleton_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_singleton_capsule)", 
+            "f_capsule_data_type": "SHROUD_singleton_capsule", 
             "f_derived_type": "singleton", 
             "f_module": {
                 "tutorial_mod": [
                     "singleton"
                 ]
             }, 
+            "f_module_name": "tutorial_mod", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -10228,16 +10234,18 @@
             "cxx_type": "tutorial::Class1", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_class1_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_class1_capsule)", 
+            "f_capsule_data_type": "SHROUD_class1_capsule", 
             "f_derived_type": "class1", 
             "f_module": {
                 "tutorial_mod": [
                     "class1"
                 ]
             }, 
+            "f_module_name": "tutorial_mod", 
             "f_statements": {
                 "result": {
                     "call": [

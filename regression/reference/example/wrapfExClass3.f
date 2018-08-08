@@ -52,16 +52,16 @@ module exclass3_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_capsule_data
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
     ! splicer begin class.ExClass3.module_top
     ! splicer end class.ExClass3.module_top
 
+    type, bind(C) :: SHROUD_exclass3_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_exclass3_capsule
+
     type exclass3
-        type(SHROUD_capsule_data) :: cxxmem
+        type(SHROUD_exclass3_capsule) :: cxxmem
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
@@ -92,9 +92,9 @@ module exclass3_mod
 #ifdef USE_CLASS3_A
         subroutine c_exclass3_exfunc_0(self) &
                 bind(C, name="AA_exclass3_exfunc_0")
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass3_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass3_capsule), intent(IN) :: self
         end subroutine c_exclass3_exfunc_0
 #endif
 
@@ -102,9 +102,9 @@ module exclass3_mod
         subroutine c_exclass3_exfunc_1(self, flag) &
                 bind(C, name="AA_exclass3_exfunc_1")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_capsule_data
+            import :: SHROUD_exclass3_capsule
             implicit none
-            type(SHROUD_capsule_data), intent(IN) :: self
+            type(SHROUD_exclass3_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_exclass3_exfunc_1
 #endif

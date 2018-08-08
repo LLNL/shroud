@@ -9,6 +9,7 @@
                     "C_header_filename": "foo.h", 
                     "C_impl_filename": "foo.cpp", 
                     "C_type_name": "TES_names", 
+                    "F_capsule_data_type": "SHROUD_names_capsule", 
                     "F_derived_name": "FNames", 
                     "F_impl_filename": "foo.f", 
                     "F_module_name": "name_module", 
@@ -136,6 +137,7 @@
                     "C_header_filename": "wrapNames2.hh", 
                     "C_impl_filename": "wrapNames2.cc", 
                     "C_type_name": "TES_names2", 
+                    "F_capsule_data_type": "SHROUD_names2_capsule", 
                     "F_derived_name": "names2", 
                     "F_impl_filename": "wrapfNames2.F", 
                     "F_module_name": "names2_mod", 
@@ -915,6 +917,7 @@
             "F_abstract_interface_argument_template": "arg{index}", 
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}", 
             "F_auto_reference_count": false, 
+            "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule", 
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}", 
             "F_force_wrapper": true, 
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}", 
@@ -1036,16 +1039,18 @@
             "cxx_type": "Names", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_names_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_names_capsule)", 
+            "f_capsule_data_type": "SHROUD_names_capsule", 
             "f_derived_type": "FNames", 
             "f_module": {
                 "name_module": [
                     "FNames"
                 ]
             }, 
+            "f_module_name": "name_module", 
             "f_statements": {
                 "result": {
                     "call": [
@@ -1107,16 +1112,18 @@
             "cxx_type": "Names2", 
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_capsule_data"
+                    "SHROUD_names2_capsule"
                 ]
             }, 
-            "f_c_type": "type(SHROUD_capsule_data)", 
+            "f_c_type": "type(SHROUD_names2_capsule)", 
+            "f_capsule_data_type": "SHROUD_names2_capsule", 
             "f_derived_type": "names2", 
             "f_module": {
                 "names2_mod": [
                     "names2"
                 ]
             }, 
+            "f_module_name": "names2_mod", 
             "f_statements": {
                 "result": {
                     "call": [

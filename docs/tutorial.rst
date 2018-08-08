@@ -1061,13 +1061,13 @@ pointers for every instance::
 
 For Fortran a derived type is created::
 
-    type, bind(C) :: SHROUD_capsule_data
+    type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
     type class1
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(SHROUD_class1_capsule), private :: cxxmem
     contains
         procedure :: method1 => class1_method1
     end type class1
@@ -1140,7 +1140,7 @@ This produces the C code::
 The derived type has a function with the ``NOPASS`` keyword::
 
     type singleton
-        type(SHROUD_capsule_data), private :: cxxmem
+        type(SHROUD_singleton_capsule), private :: cxxmem
     contains
         procedure, nopass :: get_reference => singleton_get_reference
     end type singleton
