@@ -148,7 +148,7 @@ def as_yaml(obj, order, indent, output):
         if not value:
             # skip empty values such as None or {}
             pass
-        elif isinstance(value, basestring):
+        elif isinstance(value, str):
             # avoid treating strings as a sequence
             # quote strings which start with { to avoid treating them
             # as a dictionary.

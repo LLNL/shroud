@@ -1543,13 +1543,20 @@ return 1;""", fmt)
             os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def multi_dispatch(self, methods):
+    def multi_dispatch(self, functions):
         """Look for overloaded methods.
         When found, create a method which will call each of the
         overloaded methods looking for the one which will accept
         the given arguments.
         """
-        for methods in self.overloaded_methods.values():
+        mdone = {}
+        for function in functions:
+            # preserve order of multi-dispatch functions
+            mname = function.ast.name
+            if mname in mdone:
+                continue
+            mdone[mname] = True
+            methods = self.overloaded_methods[mname]
             if len(methods) < 2:
                 continue  # not overloaded
 

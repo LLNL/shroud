@@ -399,6 +399,40 @@ PP_exclass1_SplicerSpecial(
 // splicer end class.ExClass1.method.splicer_special
 }
 
+static int
+PP_ExClass1_tp_init(
+  PP_ExClass1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ExClass1.method.ctor
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    int rv;
+    if (SHT_nargs == 0) {
+        rv = PP_ExClass1_tp_init_0(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 1) {
+        rv = PP_ExClass1_tp_init_1(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rv;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rv;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return -1;
+// splicer end class.ExClass1.method.ctor
+}
+
 static char PP_exclass1_getValue__doc__[] =
 "documentation"
 ;
@@ -435,40 +469,6 @@ PP_exclass1_getValue(
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
 // splicer end class.ExClass1.method.get_value
-}
-
-static int
-PP_ExClass1_tp_init(
-  PP_ExClass1 *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin class.ExClass1.method.ctor
-    Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
-    int rv;
-    if (SHT_nargs == 0) {
-        rv = PP_ExClass1_tp_init_0(self, args, kwds);
-        if (!PyErr_Occurred()) {
-            return rv;
-        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
-            return rv;
-        }
-        PyErr_Clear();
-    }
-    if (SHT_nargs == 1) {
-        rv = PP_ExClass1_tp_init_1(self, args, kwds);
-        if (!PyErr_Occurred()) {
-            return rv;
-        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
-            return rv;
-        }
-        PyErr_Clear();
-    }
-    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return -1;
-// splicer end class.ExClass1.method.ctor
 }
 // splicer begin class.ExClass1.impl.after_methods
 // splicer end class.ExClass1.impl.after_methods
