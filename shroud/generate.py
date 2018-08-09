@@ -283,7 +283,7 @@ class VerifyAttrs(object):
                     temp, arg.gen_decl()))
         elif temp:
             raise RuntimeError("Type '%s' may not supply template argument: %s" % (
-                argtype, arg.gen_decl()))
+                arg_typemap.name, arg.gen_decl()))
 
         if arg.is_function_pointer():
             for arg1 in arg.params:
@@ -324,9 +324,9 @@ class GenFunctions(object):
         targs - list of TemplateArguments
         """
         newscope = util.Scope(self.instantiate_scope)
-        for idx, ast in enumerate(targs.asts):
+        for idx, argast in enumerate(targs.asts):
             scope = getattr(node, 'scope', '') # XXX - ClassNode has scope
-            setattr(newscope, scope + node.template_parameters[idx], ast)
+            setattr(newscope, scope + node.template_parameters[idx], argast)
         self.instantiate_scope = newscope
 
     def pop_instantiate_scope(self):
@@ -455,7 +455,7 @@ class GenFunctions(object):
                     if len(targs.asts) == 1:
                         class_suffix = targs.asts[0].typemap.name
                     else:
-                        class_suffix = str(iargs)
+                        class_suffix = str(i)
 
                     # Update name of class.
                     #  cxx_class - vector_0 or vector_int     (Fortran and C names)
@@ -677,7 +677,6 @@ class GenFunctions(object):
         self.append_function_index(new)
 
         new._generated = 'cxx_template'
-        fmt = new.fmtdict
 
         new.cxx_template = {}
         options = new.options
@@ -1144,18 +1143,11 @@ class GenFunctions(object):
             # XXX - process templated types
             return
         ast = node.ast
-        typedef = ast.typemap
-        if typedef is None:
-            raise RuntimeError(
-                "Unknown type {} for function decl: {}"
-                .format(rv_type, node['decl']))
-        result_typedef = typemap.lookup_type(rv_type)
+        result_typemap = ast.typemap
         # XXX - make sure it exists
-        used_types[rv_type] = result_typedef
+        used_types[result_typemap.name] = result_typemap
         for arg in ast.params:
             ntypemap = arg.typemap
-            if ntypemap is None:
-                raise RuntimeError("%s not defined" % argtype)
             if ntypemap.base == 'shadow':
                 used_types[ntypemap.name] = ntypemap
 
@@ -1235,8 +1227,6 @@ class Preprocess(object):
             self.process_function(None, func)
 
     def process_function(self, cls, node):
-        options = node.options
-
         # Any nodes with cxx_template have been replaced with nodes
         # that have the template expanded.
         if not node.cxx_template:

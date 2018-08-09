@@ -511,7 +511,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
-            LUA_statements = arg_typemap.LUA_statements
             if attrs['intent'] in ['inout', 'in']:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression

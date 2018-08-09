@@ -258,7 +258,6 @@ class Wrapp(util.WrapperMixin):
 
     def wrap_class(self, node):
         self.log.write("class {1.name}\n".format(self, node))
-        name = node.name
         fmt_class = node.fmtdict
 
         node.eval_template('PY_type_filename')
@@ -1269,11 +1268,11 @@ return 1;""", fmt)
         if CXX_subprogram == 'function':
             # XXX - wrapc uses result instead of intent_out
             result_blk = result_typemap.py_statements.get('intent_out', {})
-            ttt = self.intent_out(result_return_pointer_as, capsule_order,
+            ttt0 = self.intent_out(result_return_pointer_as, capsule_order,
                                   ast, result_typemap,
                                   result_blk, fmt_result, post_call)
             # Add result to front of result tuple
-            build_tuples.insert(0, ttt)
+            build_tuples.insert(0, ttt0)
 
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
@@ -1550,7 +1549,7 @@ return 1;""", fmt)
         overloaded methods looking for the one which will accept
         the given arguments.
         """
-        for method, methods in self.overloaded_methods.items():
+        for methods in self.overloaded_methods.values():
             if len(methods) < 2:
                 continue  # not overloaded
 
@@ -1621,7 +1620,6 @@ return 1;""", fmt)
 
     def write_header(self, node):
         # node is library
-        options = node.options
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
 
@@ -1682,7 +1680,6 @@ extern PyObject *{PY_prefix}error_obj;
 
     def write_module(self, node):
         # node is library.
-        options = node.options
         fmt = node.fmtdict
         fname = fmt.PY_module_filename
 
@@ -2147,7 +2144,7 @@ class ToImplied(todict.PrintNode):
         elif node.name == 'size':
             # size(arg)
             argname = node.args[0].name
-            arg = self.func.ast.find_arg_by_name(argname)
+#            arg = self.func.ast.find_arg_by_name(argname)
             fmt = self.func._fmtargs[argname]['fmtpy']
             return wformat('PyArray_SIZE({py_var})', fmt)
         else:

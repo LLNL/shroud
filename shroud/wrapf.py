@@ -168,7 +168,7 @@ class Wrapf(util.WrapperMixin):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
         """
-        self.log.write("class {1.name}\n".format(self, node))
+        self.log.write("class {0.name}\n".format(node))
         ntypemap = node.typemap
 
         fmt_class = node.fmtdict
@@ -229,7 +229,7 @@ class Wrapf(util.WrapperMixin):
                       '-end type {F_capsule_data_type}',
                       fmt_class)
         self.set_f_module(self.module_use, 'iso_c_binding', 'C_PTR', 'C_INT', 'C_NULL_PTR')
-       
+
         append_format(
             self.f_type_decl,
             '\n'
@@ -684,10 +684,8 @@ rv = .false.
                 continue
 
             if buf_arg not in attrs:
-                raise RuntimeError("{} is missing from {} for {}"
-                                   .format(buf_arg,
-                                           str(c_intent_blk['buf_args']),
-                                           node.declgen))
+                raise RuntimeError("attr {} is missing from attrs for {}"
+                                   .format(buf_arg, node.declgen))
             buf_arg_name = attrs[buf_arg]
             if buf_arg == 'size':
                 arg_c_names.append(buf_arg_name)
@@ -1565,7 +1563,7 @@ def attr_allocatable(allocatable, node, arg, pre_call):
     if allocatable is True:
         # Only do regex on strings
         return
-    p = re.compile('mold\s*=\s*(\w+)')
+    p = re.compile(r'mold\s*=\s*(\w+)')
     m = p.match(allocatable)
     if m is not None:
         moldvar = m.group(1)

@@ -56,8 +56,6 @@ def get_splicers(fname, out):
     """
     str_begin = 'splicer begin'
     str_end = 'splicer end'
-    str_push = 'splicer push'
-    str_pop = 'splicer pop'
 
     state_look = 1
     state_collect = 2
@@ -117,10 +115,10 @@ def get_splicer_based_on_suffix(name, out):
         get_splicers(name, d)
     elif fileExtension in ['.py']:
         d = out.setdefault('py', {})
-        get_splicers(config, name, d)
+        get_splicers(name, d)
     elif fileExtension in ['.lua']:
         d = out.setdefault('lua', {})
-        get_splicers(config, name, d)
+        get_splicers(name, d)
 
 
 # def print_tree(out):

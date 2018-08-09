@@ -50,9 +50,7 @@ from . import declast
 from . import typemap
 from . import whelpers
 from . import util
-from .util import append_format
-
-wformat = util.wformat
+from .util import (append_format, wformat)
 
 default_owner = 'library'
 

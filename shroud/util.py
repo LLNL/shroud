@@ -43,7 +43,6 @@ from __future__ import absolute_import
 
 import collections
 import string
-import json
 import os
 
 fmt = string.Formatter()
@@ -52,7 +51,7 @@ def wformat(template, dct):
     # shorthand, wrap fmt.vformat
     try:
         return fmt.vformat(template, None, dct)
-    except AttributeError as e:
+    except AttributeError:
 #        raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
         raise SystemExit('Error with template: ' + '%r'%template)
@@ -619,15 +618,3 @@ class Scope(object):
         if self.__parent:
             self.__parent._to_full_dict(d)
         return d
-
-
-if __name__ == '__main__':
-    # Argument
-    print("Test Typedef")
-    a = Typedef('top', base='new_base')  # , bird='abcd')
-    print(json.dumps(a, cls=ExpandedEncoder, sort_keys=True))
-
-    print("FORMAT:", wformat("{a} {z} {c2} {z2}", lev1))
-
-    print(json.dumps(lev0, cls=ExpandedEncoder, sort_keys=True))
-    print(json.dumps(lev1, cls=ExpandedEncoder, sort_keys=True))

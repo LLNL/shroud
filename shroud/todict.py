@@ -247,7 +247,7 @@ class ToDict(visitor.Visitor):
             ##- 'CXX_return_type', 'C_return_type', 'F_return_type',
         ])
         if node.options.debug_index:
-            add_non_none_keys(node, d, [
+            add_non_none_fields(node, d, [
                 '_cxx_overload', '_function_index',
                 '_PTR_C_CXX_index', '_PTR_F_C_index',
         ])

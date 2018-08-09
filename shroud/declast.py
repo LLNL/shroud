@@ -960,7 +960,6 @@ class Declaration(Node):
     def is_function_pointer(self):
         """Return number of levels of pointers.
         """
-        nlevels = 0
         if self.declarator is None:
             return False
         if self.declarator.func is None:
@@ -1458,7 +1457,7 @@ class TemplateParam(Node):
         self.typemap = typemap.Typemap(name, base='template')
 
 
-def check_decl(decl, namespace=None, template_types=[], trace=False):
+def check_decl(decl, namespace=None, template_types=None, trace=False):
     """ parse expr as a declaration, return list/dict result.
 
     namespace - An ast.AstNode subclass.
