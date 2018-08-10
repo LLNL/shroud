@@ -1513,7 +1513,7 @@ rv = .false.
             #                                          fmt_result))
             #                else:
             #                    F_code.append(wformat('allocate({F_result})', fmt_result))
-            ##                fmt_result.c_var_context = 'aaaa'
+            # #               fmt_result.c_var_context = 'aaaa'
             #                F_code.append(wformat(
             #                    'call copy_array({c_var_context}, {F_pointer}, '
             #                    'int({pointer_shape}, kind=C_SIZE_T))', fmt_result))
@@ -1739,7 +1739,7 @@ class ToImplied(todict.PrintNode):
 
     def visit_Identifier(self, node):
         # Look for functions
-        if node.args == None:
+        if node.args is None:
             return node.name
         elif node.name == "size":
             # size(arg)

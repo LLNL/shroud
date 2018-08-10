@@ -81,6 +81,12 @@ class Wrapp(util.WrapperMixin):
     """
 
     def __init__(self, newlibrary, config, splicers):
+        """
+        Args:
+            newlibrary - ast.LibraryNode.
+            config -
+            splicers -
+        """
         self.newlibrary = newlibrary
         self.language = newlibrary.language
         self.patterns = self.newlibrary.patterns
@@ -1539,7 +1545,7 @@ return 1;""",
         """Create functions for tp_init et.al.
 
         Args:
-            node - 
+            node -
             fmt_type - dictionary used with PyTypeObject_template
                        to fill in type function names.
             output - list for generated functions.
@@ -2087,7 +2093,7 @@ typefuncs = {
     "richcompare": ("PyObject *", "({object} *self, PyObject *other, int opid)", ""),
 }
 
-### Note that these strings have some format character to control indenting
+# Note: that these strings have some format character to control indenting
 #  + indent
 #  - deindent
 #  0 noindention
@@ -2278,7 +2284,7 @@ class ToImplied(todict.PrintNode):
 
     def visit_Identifier(self, node):
         # Look for functions
-        if node.args == None:
+        if node.args is None:
             return node.name
         elif node.name == "size":
             # size(arg)

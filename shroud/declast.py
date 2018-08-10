@@ -850,7 +850,7 @@ class Declarator(Node):
 
     def __init__(self):
         self.pointer = []  # Multiple levels of indirection
-        self.name = None  #  *name
+        self.name = None  # *name
         self.func = None  # (*name)     declarator
 
     def gen_decl_work(self, decl, **kwargs):

@@ -107,6 +107,9 @@ black :
 #	LC_ALL=en_US.utf8 $(python.dir)/black regression/do-test.py
 #	LC_ALL=en_US.utf8 $(python.dir)/black tests/*.py
 
+flake8 :
+	flake8 shroud/*.py
+
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :

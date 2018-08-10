@@ -299,7 +299,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         declast.global_namespace = self
         self.create_std_names()
 
-    ##### namespace behavior
+    # # # # # namespace behavior
 
     def create_std_names(self):
         """Add standard types to the Library."""
@@ -664,7 +664,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.symbols = {}
         self.using = []
 
-    ##### namespace behavior
+    # # # # # namespace behavior
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -792,7 +792,7 @@ class ClassNode(AstNode, NamespaceMixin):
         for args in cxx_template:
             args.parse_instantiation(namespace=self)
 
-    ##### namespace behavior
+    # # # # # namespace behavior
 
     def create_template_parameter_typemap(self, name):
         """Create a typemap for a template parameter.
@@ -1008,8 +1008,8 @@ class FunctionNode(AstNode):
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
         self._cxx_overload = None
-        self.declgen = None  #  generated declaration.
-        self._default_funcs = []  #  generated default value functions  (unused?)
+        self.declgen = None  # generated declaration.
+        self._default_funcs = []  # generated default value functions  (unused?)
         self._function_index = None
         self._fmtargs = {}
         self._fmtresult = {}
@@ -1019,7 +1019,7 @@ class FunctionNode(AstNode):
         self._nargs = None
         self._overloaded = False
 
-        #        self.function_index = []
+        # self.function_index = []
 
         self.default_arg_suffix = kwargs.get("default_arg_suffix", [])
         self.cpp_if = kwargs.get("cpp_if", None)

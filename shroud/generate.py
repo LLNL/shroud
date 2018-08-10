@@ -1089,7 +1089,7 @@ class GenFunctions(object):
                 elif buf_arg == "len":
                     attrs["len"] = options.C_var_len_template.format(c_var=arg.name)
 
-                ## base typemap
+                # base typemap
 
         if has_string_result:
             # Add additional argument to hold result.

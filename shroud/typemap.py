@@ -218,7 +218,7 @@ class Typemap(object):
         )
 
 
-### Manage collection of typemaps
+# Manage collection of typemaps
 shared_typedict = {}  # dictionary of registered types
 
 
@@ -311,7 +311,7 @@ def initialize():
             f_kind="C_LONG_LONG",
             f_module=dict(iso_c_binding=["C_LONG_LONG"]),
             PY_format="L",
-            ##- PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            # #- PY_ctor='PyInt_FromLong({c_deref}{c_var})',
             PYN_typenum="NPY_LONGLONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -374,7 +374,7 @@ def initialize():
             f_kind="C_LONG_LONG",
             f_module=dict(iso_c_binding=["C_LONG_LONG"]),
             PY_format="L",
-            ##- PY_ctor='PyInt_FromLong({c_deref}{c_var})',
+            # #- PY_ctor='PyInt_FromLong({c_deref}{c_var})',
             PYN_typenum="NPY_LONGLONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -615,7 +615,7 @@ def initialize():
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
             # added.  Older version of Python can not create a bool directly from
             # from Py_BuildValue.
-            ##- PY_ctor='PyBool_FromLong({c_var})',
+            # #- PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject="PyBool_Type",
             PYN_typenum="NPY_BOOL",
             LUA_type="LUA_TBOOLEAN",
@@ -726,9 +726,9 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="c",
-            ##-  PY_ctor='Py_BuildValue("c", (int) {c_var})',
+            # #-  PY_ctor='Py_BuildValue("c", (int) {c_var})',
             PY_ctor="PyString_FromStringAndSize(&{c_var}, 1)",
-            ##- PY_build_format='c',
+            # #- PY_build_format='c',
             PY_build_arg="(int) {cxx_var}",
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
@@ -749,9 +749,9 @@ def initialize():
                 ),
                 intent_out=dict(
                     cxx_header="<cstring>",
-                    ##- pre_call=[
-                    ##-     'int {c_var_trim} = strlen({c_var});',
-                    ##-     ],
+                    # #- pre_call=[
+                    # #-     'int {c_var_trim} = strlen({c_var});',
+                    # #-     ],
                     cxx_local_var="scalar",
                     pre_call=["{c_const}std::string {cxx_var};"],
                     post_call=[
@@ -890,7 +890,7 @@ def initialize():
                 ),
             ),
             f_type="type(C_PTR)YY",
-            ##- f_kind='C_CHAR',
+            # #- f_kind='C_CHAR',
             f_statements=dict(
                 result=dict(
                     need_wrapper=True,
@@ -910,8 +910,8 @@ def initialize():
         charout=Typemap(
             "charout",
             cxx_type="char",
-            ##- cxx_header='<string>',
-            ##- cxx_to_c='static_cast<void *>({cxx_var})',
+            # #- cxx_header='<string>',
+            # #- cxx_to_c='static_cast<void *>({cxx_var})',
             c_type="char",
             c_statements=dict(
                 intent_out_buf=dict(
@@ -939,7 +939,7 @@ def initialize():
                 ),
             ),
             f_type="type(C_PTR)YY",
-            ##- f_kind='C_CHAR',
+            # #- f_kind='C_CHAR',
             f_statements=dict(
                 result=dict(
                     need_wrapper=True,
@@ -962,8 +962,8 @@ def initialize():
             "std::vector",
             cxx_type="std::vector<{cxx_T}>",
             cxx_header="<vector>",
-            ##- cxx_to_c='{cxx_var}.data()',  # C++11
-            ##- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
+            # #- cxx_to_c='{cxx_var}.data()',  # C++11
+            # #- cxx_to_c='{cxx_var}{cxx_member}empty() ? NULL : &{cxx_var}[0]', # C++03)
             c_statements=dict(
                 intent_in_buf=dict(
                     buf_args=["arg", "size"],
@@ -1286,7 +1286,7 @@ def create_class_typemap(node, fields=None):
         f_derived_type=fmt_class.F_derived_name,
         f_capsule_data_type=fmt_class.F_capsule_data_type,
         f_module={fmt_class.F_module_name: [fmt_class.F_derived_name]},
-        ##- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
+        # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         f_to_c="{f_var}%%%s" % fmt_class.F_derived_member,
     )
     # import classes which are wrapped by this module
@@ -1383,8 +1383,8 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
             ]
         ),
     )
-    ##-    if not ntypemap.PY_PyTypeObject:
-    ##-        ntypemap.PY_PyTypeObject = 'UUU'
+    # #-    if not ntypemap.PY_PyTypeObject:
+    # #-        ntypemap.PY_PyTypeObject = 'UUU'
     # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
 
     ntypemap.LUA_type = "LUA_TUSERDATA"
@@ -1461,17 +1461,17 @@ def fill_struct_typemap_defaults(ntypemap):
     )
 
     # To convert, extract correct field from union
-    ##-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'
-    ##-    ntypemap.c_to_cxx = '{cxx_addr}{cxx_var}.c'
+    # #-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'
+    # #-    ntypemap.c_to_cxx = '{cxx_addr}{cxx_var}.c'
 
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
 
     # XXX module name may not conflict with type name
-    ##-    ntypemap.f_module = {fmt_class.F_module_name:[unname]}
+    # #-    ntypemap.f_module = {fmt_class.F_module_name:[unname]}
 
     ntypemap.c_statements = dict(result=dict(c_helper=helper))
 
-    ##-    ntypemap.PYN_typenum = 'NPY_VOID'
+    # #-    ntypemap.PYN_typenum = 'NPY_VOID'
     ntypemap.py_statements = dict(
         intent_in=dict(
             cxx_local_var="pointer",
@@ -1497,8 +1497,8 @@ def fill_struct_typemap_defaults(ntypemap):
             ]
         ),
     )
-    ##-    if not ntypemap.PY_PyTypeObject:
-    ##-        ntypemap.PY_PyTypeObject = 'UUU'
+    # #-    if not ntypemap.PY_PyTypeObject:
+    # #-        ntypemap.PY_PyTypeObject = 'UUU'
     # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
 
     ntypemap.LUA_type = "LUA_TUSERDATA"
