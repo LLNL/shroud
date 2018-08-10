@@ -60,6 +60,11 @@ class VerifyAttrs(object):
     """
 
     def __init__(self, newlibrary, config):
+        """
+        Args:
+            newlibrary - ast.LibraryNode
+            config -
+        """
         self.newlibrary = newlibrary
         self.config = config
 
@@ -77,6 +82,11 @@ class VerifyAttrs(object):
             self.check_fcn_attrs(func)
 
     def check_var_attrs(self, cls, node):
+        """
+        Args:
+            cls -
+            node -
+        """
         for attr in node.ast.attrs:
             if attr[0] == "_":  # internal attribute
                 continue
@@ -88,6 +98,10 @@ class VerifyAttrs(object):
                 )
 
     def check_fcn_attrs(self, node):
+        """
+        Args:
+            node -
+        """
         options = node.options
         if not options.wrap_fortran and not options.wrap_c:
             return
@@ -123,6 +137,9 @@ class VerifyAttrs(object):
     def check_shared_attrs(self, node):
         """Check attributes which may be assigned to function or argument:
         deref, free_pattern, owner
+
+        Args:
+            node -
         """
         attrs = node.attrs
 
@@ -157,6 +174,10 @@ class VerifyAttrs(object):
         intent: lower case, no parens, must be in, out, or inout
         value: if pointer, default to False (pass-by-reference;
                else True (pass-by-value).
+
+        Args:
+            node -
+            arg -
         """
         if node:
             options = node.options
@@ -324,6 +345,11 @@ class GenFunctions(object):
     """
 
     def __init__(self, newlibrary, config):
+        """
+        Args:
+            newlibrary - ast.LibraryNode
+            config -
+        """
         self.newlibrary = newlibrary
         self.config = config
         self.instantiate_scope = None
@@ -346,8 +372,10 @@ class GenFunctions(object):
 
     def push_instantiate_scope(self, node, targs):
         """Add template arguments to scope.
-        node  - ClassNode or FunctionNode
-        targs - list of TemplateArguments
+
+        Args:
+            node  - ClassNode or FunctionNode
+            targs - list of TemplateArguments
         """
         newscope = util.Scope(self.instantiate_scope)
         for idx, argast in enumerate(targs.asts):
@@ -361,6 +389,9 @@ class GenFunctions(object):
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
+
+        Args:
+            node -
         """
         ilist = self.function_index
         node._function_index = len(ilist)
@@ -399,6 +430,10 @@ class GenFunctions(object):
 
         Do not wrap for Python since descriptors are created for
         class member variables.
+
+        Args:
+            cls -
+            var -
         """
         ast = var.ast
         arg_typemap = ast.typemap
@@ -452,6 +487,9 @@ class GenFunctions(object):
 
         Create a new list of classes replacing
         any class with template_arguments with instantiated classes.
+
+        Args:
+            node -
         """
         clslist = []
         for cls in node.classes:
@@ -514,13 +552,20 @@ class GenFunctions(object):
 
     def update_types_for_class_instantiation(self, clsnode):
         """Update the references to use instantiated class.
+
+        Args:
+            clsnode -
         """
         for function in clsnode.functions:
             if function.ast.is_ctor():
                 function.ast.typemap = clsnode.typemap
 
     def process_class(self, cls):
-        """process variables and functions for a class."""
+        """process variables and functions for a class.
+
+        Args:
+            cls -
+        """
         for var in cls.variables:
             self.add_var_getter_setter(cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
@@ -529,7 +574,8 @@ class GenFunctions(object):
         """
         Return a new list with generated function inserted.
 
-        functions - list of ast.FunctionNode
+        Args:
+            functions - list of ast.FunctionNode
         """
 
         # Look for overloaded functions
@@ -614,6 +660,10 @@ class GenFunctions(object):
                  TemplateArgument.asts[i].typemap
 
         Clone entire function then look for template arguments.
+
+        Args:
+            node -
+            ordered_functions -
         """
         oldoptions = node.options
 
@@ -687,6 +737,10 @@ class GenFunctions(object):
         from a class.
         function_suffix is not modified for functions in a templated class.
         Instead class_prefix is used to distinguish the functions.
+
+        Args:
+            node -
+            ordered_functions -
         """
         oldoptions = node.options
 
@@ -738,6 +792,10 @@ class GenFunctions(object):
             arg:
             - float
             - double
+
+        Args:
+            node -
+            ordered_functions -
         """
         nkeys = 0
         linenumber = node.fortran_generic.get("__line__", "?")
@@ -803,6 +861,10 @@ class GenFunctions(object):
           void func()
           void func(int i)
           void func(int i, int j)
+
+        Args:
+            node -
+            ordered_functions -
         """
         default_funcs = []
 
@@ -853,9 +915,10 @@ class GenFunctions(object):
 
         If deref is not set, then default to allocatable.
 
-        attrs - attributes of the new argument
-        old_node - The FunctionNode of the original function.
-        new_node - The FunctionNode of the new function with
+        Args:
+            attrs - attributes of the new argument
+            old_node - The FunctionNode of the original function.
+            new_node - The FunctionNode of the new function with
         """
         c_attrs = new_node.ast.attrs
         f_attrs = old_node.ast.attrs
@@ -875,6 +938,10 @@ class GenFunctions(object):
 
         String arguments add deref(allocatable) by default so that
         char * will create an allocatable string in Fortran.
+
+        Args:
+            node -
+            ordered_functions -
         """
         options = node.options
         fmt = node.fmtdict
@@ -1105,6 +1172,8 @@ class GenFunctions(object):
             allocate(Fout(len))
             c_step2(context, Fout, size(len))
 
+        Args:
+            node -
         """
         options = node.options
         fmt_func = node.fmtdict
@@ -1187,6 +1256,9 @@ class GenFunctions(object):
 
     def gen_functions_decl(self, functions):
         """ Generate declgen for generated all functions.
+
+        Args:
+            functions - list of ast.FunctionNode.
         """
         for node in functions:
             node.declgen = node.ast.gen_decl()
@@ -1206,6 +1278,11 @@ class Namify(object):
     """
 
     def __init__(self, newlibrary, config):
+        """
+        Args:
+            newlibrary - ast.LibraryNode
+            config -
+        """
         self.newlibrary = newlibrary
         self.config = config
 
@@ -1215,6 +1292,10 @@ class Namify(object):
         self.name_language(self.name_function_fortran)
 
     def name_language(self, handler):
+        """
+        Args:
+            handler - function.
+        """
         newlibrary = self.newlibrary
         for cls in newlibrary.classes:
             for func in cls.functions:
@@ -1224,6 +1305,11 @@ class Namify(object):
             handler(None, func)
 
     def name_function_c(self, cls, node):
+        """
+        Args:
+            cls -
+            node -
+        """
         options = node.options
         if not options.wrap_c:
             return
@@ -1235,6 +1321,10 @@ class Namify(object):
 
     def name_function_fortran(self, cls, node):
         """ Must process C functions to generate their names.
+
+        Args:
+            cls -
+            node -
         """
         options = node.options
         if not options.wrap_fortran:
@@ -1249,6 +1339,11 @@ class Preprocess(object):
     """Compute some state for functions."""
 
     def __init__(self, newlibrary, config):
+        """
+        Args:
+            newlibrary - ast.LibraryNode
+            config -
+        """
         self.newlibrary = newlibrary
         self.config = config
 
@@ -1263,6 +1358,11 @@ class Preprocess(object):
             self.process_function(None, func)
 
     def process_function(self, cls, node):
+        """
+         Args:
+            cls -
+            node -
+        """
         # Any nodes with cxx_template have been replaced with nodes
         # that have the template expanded.
         if not node.cxx_template:
@@ -1283,6 +1383,10 @@ class Preprocess(object):
         There is no way to chain in Fortran:  obj->doA()->doB();
 
 #        Lookup up typemap for result and arguments
+
+        Args:
+            cls -
+            node -
         """
 
         fmt_func = node.fmtdict
@@ -1323,6 +1427,10 @@ class Preprocess(object):
 
     def check_pointer(self, node, ast):
         """Compute how to deal with a pointer function result.
+
+        Args:
+            node -
+            ast -
         """
         options = node.options
         attrs = ast.attrs
@@ -1384,6 +1492,9 @@ class CheckImplied(todict.PrintNode):
 
     def visit_Identifier(self, node):
         """Check arguments to size function.
+
+        Args:
+            node -
         """
         if node.args is None:
             return node.name
@@ -1414,6 +1525,10 @@ class CheckImplied(todict.PrintNode):
 
 def check_implied(expr, func):
     """Check implied attribute expression for errors.
+
+    Args:
+        expr -
+        func -
     """
     node = declast.ExprParser(expr).expression()
     visitor = CheckImplied(expr, func)

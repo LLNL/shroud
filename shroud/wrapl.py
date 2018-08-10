@@ -52,6 +52,12 @@ class Wrapl(util.WrapperMixin):
     """
 
     def __init__(self, newlibrary, config, splicers):
+        """
+        Args:
+            newlibrary - ast.LibraryNode.
+            config -
+            splicers -
+        """
         self.newlibrary = newlibrary
         self.patterns = newlibrary.patterns
         self.config = config
@@ -112,6 +118,10 @@ class Wrapl(util.WrapperMixin):
     #        self.write_helper()
 
     def wrap_class(self, node):
+        """
+        Args:
+            node -
+        """
         fmt_class = node.fmtdict
 
         fmt_class.LUA_userdata_var = "SH_this"
@@ -174,6 +184,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         """Wrap functions for a library or class.
         Create one wrapper for overloaded functions and the
         different variations of default-arguments
+
+        Args:
+            cls - ast.ClassNode.
+            functions - list of ast.FunctionNode.
         """
 
         # Find overloaded functions.
@@ -200,8 +214,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
     def wrap_function(self, cls, overloads):
         """Write a Lua wrapper for a C++ function.
 
-        cls  - class node or None for functions
-        overloads - a list of functions to wrap.
+        Args:
+            cls  - ast.ClassNode or None for functions
+            overloads - a list of ast.FunctionNode to wrap.
 
         fmt.c_var   - name of variable from lua stack.
         fmt.cxx_var - name of variable in c++ call.
@@ -392,7 +407,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         Wrap a single function/overload/default-argument
         variation of a function.
 
-        fmt - local format dictionary
+        Args:
+            cls -
+            luafcn -
+            fmt - local format dictionary
         """
         node = luafcn.function
         #        if not options.wrap_lua:
@@ -619,6 +637,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         lines.extend(LUA_push)  # return values
 
     def write_header(self, node):
+        """
+        Args:
+            node -
+        """
         fmt = node.fmtdict
         fname = fmt.LUA_header_filename
 
@@ -644,7 +666,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.write_output_file(fname, self.config.python_dir, output)
 
     def append_luaL_Reg(self, output, name, lines):
-        """Create luaL_Reg struct"""
+        """Create luaL_Reg struct
+
+        Args:
+            output -
+            name -
+            lines -
+        """
         output.append("")
         self._create_splicer("additional_functions", output)
         output.extend(["", "static const struct luaL_Reg {} [] = {{".format(name), 1])
@@ -653,7 +681,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.extend(["{NULL, NULL}   /*sentinel */", -1, "};"])
 
     def write_module(self, node):
-        # node is library
+        """
+        Args:
+            node - ast.LibraryNode.
+        """
         fmt = node.fmtdict
         fname = fmt.LUA_module_filename
 
@@ -706,6 +737,13 @@ class LuaFunction(object):
     """
 
     def __init__(self, function, subprogram, inargs, outargs):
+        """
+        Args:
+            function -
+            subprogram -
+            inargs -
+            outargs -
+        """
         self.function = function
         self.subprogram = subprogram  # 'function' or 'subroutine'
         self.nargs = len(inargs)

@@ -61,6 +61,12 @@ class Wrapc(util.WrapperMixin):
     """
 
     def __init__(self, newlibrary, config, splicers):
+        """
+        Args:
+            newlibrary - ast.LibraryNode
+            config -
+            splicers -
+        """
         self.newlibrary = newlibrary
         self.patterns = newlibrary.patterns
         self.language = newlibrary.language
@@ -119,6 +125,11 @@ class Wrapc(util.WrapperMixin):
 
     def write_file(self, library, cls, structs):
         """Write a file for the library or class.
+
+        Args:
+            library - ast.LibraryNode
+            cls - ast.ClassNode
+            structs -
         """
         node = cls or library
         fmt = node.fmtdict
@@ -150,13 +161,21 @@ class Wrapc(util.WrapperMixin):
         self.write_impl(library, cls, c_header, c_impl)
 
     def wrap_enums(self, node):
-        """Wrap all enums in a splicer block"""
+        """Wrap all enums in a splicer block
+
+        Args:
+            node - ast.ClassNode.
+        """
         self._push_splicer("enum")
         for node in node.enums:
             self.wrap_enum(None, node)
         self._pop_splicer("enum")
 
     def wrap_functions(self, library):
+        """
+        Args:
+            library - ast.LibraryNode
+        """
         # worker function for write_file
         self._push_splicer("function")
         for node in library.functions:
@@ -168,6 +187,10 @@ class Wrapc(util.WrapperMixin):
 
         First recursively process dependent_helpers
         to add code in order.
+
+        Args:
+            name -
+            done -
         """
         if name in done:
             return  # avoid recursion
@@ -212,6 +235,9 @@ class Wrapc(util.WrapperMixin):
         """Gather up all helpers requested and insert code into output.
 
         helpers should be self.c_helper or self.shared_helper
+
+        Args:
+            helpers -
         """
         # per class
         self.helper_source = []
@@ -269,6 +295,11 @@ class Wrapc(util.WrapperMixin):
 
     def write_header(self, library, cls, fname):
         """ Write header file for a library node or a class node.
+
+        Args:
+            library - ast.LibraryNode.
+            cls - ast.ClassNode.
+            fname -
         """
         guard = fname.replace(".", "_").upper()
         node = cls or library
@@ -349,6 +380,12 @@ class Wrapc(util.WrapperMixin):
 
     def write_impl(self, library, cls, hname, fname):
         """Write implementation
+
+        Args:
+            library - ast.LibraryNode.
+            cls - ast.ClassNode.
+            hname -
+            fname -
         """
         node = cls or library
 
@@ -407,6 +444,9 @@ class Wrapc(util.WrapperMixin):
         A C++ struct must all POD.
         XXX - Only need to wrap if in a namespace.
         XXX - no need to wrap C structs
+
+        Args:
+            node - ast.ClasNode.
         """
         self.log.write("class {1.name}\n".format(self, node))
         cname = node.typemap.c_type
@@ -445,6 +485,10 @@ class Wrapc(util.WrapperMixin):
             )
 
     def wrap_class(self, node):
+        """
+        Args:
+            node - ast.ClassNode.
+        """
         self.log.write("class {1.name}\n".format(self, node))
 
         fmt_class = node.fmtdict
@@ -470,6 +514,9 @@ class Wrapc(util.WrapperMixin):
         Only call add_capsule_helper if the destructor is wrapped.
         Otherwise, there is no way to delete the object.
         i.e. the class has a private destructor.
+
+        Args:
+            node - ast.ClassNode.
         """
         has_dtor = False
         for method in node.functions:
@@ -494,6 +541,10 @@ class Wrapc(util.WrapperMixin):
         """Wrap an enumeration.
         This largly echo the C++ code
         For classes, it adds prefixes.
+
+        Args:
+            cls - ast.ClassNode.
+            node - ast.EnumNode.
         """
         options = node.options
         ast = node.ast
@@ -518,6 +569,9 @@ class Wrapc(util.WrapperMixin):
 
     def add_c_statements_headers(self, intent_blk):
         """Add headers required by intent_blk.
+
+        Args:
+            intent_blk -
         """
         # include any dependent header in generated source
         if self.language == "c":
@@ -531,10 +585,12 @@ class Wrapc(util.WrapperMixin):
     def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
         """Find prototype based on buf_args in c_statements.
 
-        fmt - Format dictionary (fmt_arg or fmt_result).
-        ast - Abstract Syntax Tree from parser.
-        buf_args - List of arguments/metadata to add.
-        proto_list - Prototypes are appended to list.
+        Args:
+            fmt - Format dictionary (fmt_arg or fmt_result).
+            ast - Abstract Syntax Tree from parser.
+            buf_args - List of arguments/metadata to add.
+            proto_list - Prototypes are appended to list.
+            need_wrapper -
 
         return need_wrapper
         A wrapper will be needed if there is meta data.
@@ -580,6 +636,13 @@ class Wrapc(util.WrapperMixin):
         """Add pre_call and post_call code blocks.
         Also record the helper functions they need.
 
+        Args:
+            fmt -
+            intent_blk -
+            pre_call -
+            post_call -
+            need_wrapper -
+
         return need_wrapper
         A wrapper is needed if code is added.
         """
@@ -604,8 +667,8 @@ class Wrapc(util.WrapperMixin):
         """Wrap a C++ function with C.
 
         Args:
-            cls  - class node or None for functions.
-            node - function/method node.
+            cls  - ast.ClassNode or None for functions.
+            node - ast.FunctionNode.
         """
         options = node.options
         if not options.wrap_c:
@@ -1261,6 +1324,9 @@ class Wrapc(util.WrapperMixin):
     def write_capsule_helper(self, library):
         """Write a function used to delete memory when C/C++
         memory is deleted.
+
+        Args:
+            library = ast.LibraryNode.
         """
         options = library.options
 
@@ -1327,6 +1393,11 @@ class Wrapc(util.WrapperMixin):
     def add_capsule_helper(self, name, var_typemap, lines):
         """Add unique names to capsule_helpers.
         Return index of name.
+
+        Args:
+            name -
+            var_typemap - typemap.Typemap.
+            lines -
         """
         if name not in self.capsule_helpers:
             self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
@@ -1340,7 +1411,14 @@ class Wrapc(util.WrapperMixin):
         return self.capsule_helpers[name][0]
 
     def add_destructor(self, fmt, name, cmd_list, arg_typemap):
-        """Add a capsule destructor with name and commands."""
+        """Add a capsule destructor with name and commands.
+
+        Args:
+            fmt -
+            name -
+            cmd_list -
+            arg_typemap - typemap.Typemap.
+        """
         if name not in self.capsule_helpers:
             del_lines = []
             for cmd in cmd_list:
@@ -1358,6 +1436,12 @@ class Wrapc(util.WrapperMixin):
             int * foo() +owner(caller)
         will convert to
             void foo(context+owner(caller) )
+
+        Args:
+            ast -
+            atypemap - typemap.Typemap
+            fmt -
+            intent_blk -
         """
 
         if intent_blk:

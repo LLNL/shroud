@@ -205,6 +205,9 @@ class Wrapp(util.WrapperMixin):
 
     def wrap_enums(self, cls):
         """Wrap enums for library or cls
+
+        Args:
+            cls - ast.ClassNode.
         """
         if cls is None:
             enums = self.newlibrary.enums
@@ -222,6 +225,10 @@ class Wrapp(util.WrapperMixin):
         If module, use PyModule_AddIntConstant.
         If class, create a descriptor.
         Without a setter, it will be read-only.
+
+        Args:
+            node -
+            cls -
         """
         fmtmembers = node._fmtmembers
 
@@ -259,6 +266,10 @@ class Wrapp(util.WrapperMixin):
             output.append("-}")
 
     def wrap_class(self, node):
+        """
+        Args:
+            node - ast.ClassNode.
+        """
         self.log.write("class {1.name}\n".format(self, node))
         fmt_class = node.fmtdict
 
@@ -395,6 +406,9 @@ return 1;""",
            'offsets':[0,8],
            'itemsize':12},
           align=True)
+
+        Args:
+            node -
         """
         fmt = node.fmtdict
 
@@ -514,6 +528,9 @@ return 1;""",
 
     def wrap_class_variable(self, node):
         """Wrap a VariableNode in a class with descriptors.
+
+        Args:
+            node - ast.VariableNode.
         """
         options = node.options
         fmt_var = node.fmtdict
@@ -582,6 +599,12 @@ return 1;""",
     def allocatable_blk(self, allocatable, node, arg, fmt_arg):
         """Allocate NumPy Array.
         Assumes intent(out)
+
+        Args:
+            allocatable -
+            node -
+            arg -
+            fmt_arg -
         """
         self.need_numpy = True
         fmt_arg.py_type = "PyObject"
@@ -618,6 +641,10 @@ return 1;""",
     def dimension_blk(self, arg, fmt_arg):
         """Create code needed for a dimensioned array.
         Convert it to use Numpy.
+
+        Args:
+            arg -
+            fmt_arg -
         """
         self.need_numpy = True
         fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
@@ -674,6 +701,11 @@ return 1;""",
         Added into wrapper after post_parse code is inserted --
         i.e. all intent in,inout arguments have been evaluated
         and PyArrayObjects created.
+
+        Args:
+            node -
+            arg -
+            pre_call -
         """
         implied = arg.attrs.get("implied", None)
         if implied:
@@ -687,13 +719,14 @@ return 1;""",
         """Add code for post-call.
         Create PyObject from C++ value to return.
 
-        return_pointer_as  - None, 'allocatable', 'pointer', 'scalar'
-        capsule_order - index into capsule_order of code to free memory.
-                        None = do not release memory.
-        ast - Abstract Syntax Tree of argument or result
-        typedef - typedef of C++ variable.
-        fmt - format dictionary
-        post_call   - always called to construct objects
+        Args:
+            return_pointer_as  - None, 'allocatable', 'pointer', 'scalar'
+            capsule_order - index into capsule_order of code to free memory.
+                            None = do not release memory.
+            ast - Abstract Syntax Tree of argument or result
+            typedef - typedef of C++ variable.
+            fmt - format dictionary
+            post_call   - always called to construct objects
 
         Return a BuildTuple instance.
         """
@@ -794,7 +827,10 @@ return 1;""",
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.
         Compute overloading map.
-        cls - C++ class
+
+        Args:
+            cls - ast.ClassNode
+            functions -
         """
         overloaded_methods = {}
         for function in functions:
@@ -812,8 +848,9 @@ return 1;""",
     def wrap_function(self, cls, node):
         """Write a Python wrapper for a C++ function.
 
-        cls  - class node or None for functions
-        node - function/method node
+        Args:
+            cls  - ast.ClassNodee or None for functions
+            node - ast.FunctionNode.
 
         fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
         fmt.cxx_var - name of variable in c++ call.
@@ -1428,11 +1465,13 @@ return 1;""",
 
     def create_method(self, node, expose, is_ctor, fmt, PY_impl):
         """Format the function.
-        node    = function node to wrap
-        expose  = True if expose to user
-        is_ctor = True if this is a constructor
-        fmt     = dictionary of format values
-        PY_impl = list of implementation lines
+
+        Args:
+            node    - function node to wrap
+            expose  - True if expose to user
+            is_ctor - True if this is a constructor
+            fmt     - dictionary of format values
+            PY_impl - list of implementation lines
         """
         body = self.PyMethodBody
         if expose:
@@ -1499,9 +1538,11 @@ return 1;""",
     def write_tp_func(self, node, fmt_type, output):
         """Create functions for tp_init et.al.
 
-        fmt_type - dictionary used with PyTypeObject_template
-                   to fill in type function names.
-        output - list for generated functions.
+        Args:
+            node - 
+            fmt_type - dictionary used with PyTypeObject_template
+                       to fill in type function names.
+            output - list for generated functions.
 
         python:
           type: [ repr, str ]
@@ -1562,6 +1603,11 @@ return 1;""",
         self._pop_splicer("type")
 
     def write_extension_type(self, library, node):
+        """
+        Args:
+            library - ast.LibraryNode.
+            node -
+        """
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
@@ -1634,6 +1680,9 @@ return 1;""",
         When found, create a method which will call each of the
         overloaded methods looking for the one which will accept
         the given arguments.
+
+        Args:
+            functions -
         """
         mdone = {}
         for function in functions:
@@ -1716,7 +1765,10 @@ return 1;""",
             self.create_method(None, expose, is_ctor, fmt, body)
 
     def write_header(self, node):
-        # node is library
+        """
+        Args:
+            node - ast.LibraryNode.
+        """
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
 
@@ -1777,7 +1829,10 @@ extern PyObject *{PY_prefix}error_obj;
         self.write_output_file(fname, self.config.python_dir, output)
 
     def write_module(self, node):
-        # node is library.
+        """
+        Args:
+            node - ast.LibraryNode.
+        """
         fmt = node.fmtdict
         fname = fmt.PY_module_filename
 
@@ -1854,6 +1909,10 @@ extern PyObject *{PY_prefix}error_obj;
 
         Create a global variable of of context pointer used
         to switch to case used to release memory.
+
+        Args:
+            output -
+            fmt -
         """
 
         append_format(
@@ -1920,6 +1979,10 @@ extern PyObject *{PY_prefix}error_obj;
     def add_capsule_helper(self, name, lines):
         """Add unique names to capsule_helpers.
         Return index of name.
+
+        Args:
+            name -
+            lines -
         """
         if name not in self.capsule_helpers:
             self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
@@ -1929,6 +1992,10 @@ extern PyObject *{PY_prefix}error_obj;
     def not_implemented_error(self, msg, ret):
         """A standard splicer for unimplemented code
         ret is the return value (NULL or -1 or '')
+
+        Args:
+            msg -
+            ret -
         """
         lines = ['PyErr_SetString(PyExc_NotImplementedError, "%s");' % msg]
         if ret:
@@ -1939,13 +2006,19 @@ extern PyObject *{PY_prefix}error_obj;
 
     def not_implemented(self, msg, ret):
         """A standard splicer for rich comparison
+
+        Args:
+            msg -
+            ret -
         """
         return ["Py_INCREF(Py_NotImplemented);", "return Py_NotImplemented;"]
 
     def tp_del(self, msg, ret):
         """default method for tp_del.
-          msg = 'del'
-          ret = ''
+
+        Args:
+            msg = 'del'
+            ret = ''
         """
         return ["delete self->{PY_obj};", "self->{PY_obj} = NULL;"]
 
@@ -2219,6 +2292,10 @@ class ToImplied(todict.PrintNode):
 
 def py_implied(expr, func):
     """Convert string to Python code.
+
+    Args:
+        expr -
+        func -
     """
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func)
@@ -2231,6 +2308,12 @@ def attr_allocatable(language, allocatable, node, arg):
 
     Valid values of allocatable:
        mold=name
+
+    Args:
+        language -
+        allocatable -
+        node -
+        arg -
     """
     fmtargs = node._fmtargs
 
@@ -2272,8 +2355,12 @@ def attr_allocatable(language, allocatable, node, arg):
 
 def do_cast(lang, kind, typ, var):
     """Do cast based on language.
-    kind = reinterpret, static
-    reinterpret_cast or static_cast
+
+    Args:
+        lang - c, c++
+        kind - reinterpret, static
+        typ -
+        var -
     """
     if lang == "c":
         return "(%s) %s" % (typ, var)

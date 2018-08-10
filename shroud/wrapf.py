@@ -167,6 +167,9 @@ class Wrapf(util.WrapperMixin):
     def wrap_struct(self, node):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
+
+        Args:
+            node - ast.ClassNode
         """
         self.log.write("class {0.name}\n".format(node))
         ntypemap = node.typemap
@@ -191,6 +194,12 @@ class Wrapf(util.WrapperMixin):
         self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node):
+        """Wrap a class for Fortran.
+
+        Args:
+            node - ast.ClassNode.
+        """
+
         self.log.write("class {1.name}\n".format(self, node))
 
         fmt_class = node.fmtdict
@@ -208,7 +217,7 @@ class Wrapf(util.WrapperMixin):
             self.wrap_function(node, method)
         self._pop_splicer("method")
 
-        self.write_object_get_set(node, fmt_class)
+        self.write_object_get_set(node)
         self.impl.append("")
         self._create_splicer("additional_functions", self.impl)
         self._pop_splicer(fmt_class.cxx_class)
@@ -317,7 +326,11 @@ class Wrapf(util.WrapperMixin):
     #        self.overload_compare(fmt_class, '/=', fmt_class.class_lower + '_ne', None)
 
     def wrap_enums(self, node):
-        """Wrap all enums in a splicer block"""
+        """Wrap all enums in a splicer block
+
+        Args:
+            node - ast.EnumNode
+        """
         self._push_splicer("enum")
         for node in node.enums:
             self.wrap_enum(None, node)
@@ -326,6 +339,10 @@ class Wrapf(util.WrapperMixin):
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
         Create an integer parameter for each member.
+
+        Args:
+            cls - ast.ClassNode
+            node - ast.EnumNode
         """
         options = node.options
         ast = node.ast
@@ -346,12 +363,14 @@ class Wrapf(util.WrapperMixin):
             )
         self.set_f_module(self.module_use, "iso_c_binding", "C_INT")
 
-    def write_object_get_set(self, node, fmt_class):
+    def write_object_get_set(self, node):
         """Write get and set methods for instance pointer.
 
-        node = class dictionary
+        Args:
+            node - ast.ClassNode.
         """
         options = node.options
+        fmt_class = node.fmtdict
         impl = self.impl
         fmt = util.Scope(fmt_class)
 
@@ -487,6 +506,12 @@ nullify({F_this}%{F_derived_member})
 
     def overload_compare(self, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
+
+        Args:
+            fmt_class -
+            operator - ".eq.", ".ne."
+            procedure -
+            predicate -
         """
         fmt = util.Scope(fmt_class)
         fmt.procedure = procedure
@@ -518,13 +543,13 @@ rv = .false.
 
     def wrap_function(self, cls, node):
         """
-        cls  - class node or None for functions
-        node - function/method node
-
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
         multiple Fortran wrappers.
 
+        Args:
+            cls  - ast.ClassNode or None for functions
+            node - ast.FunctionNode
         """
         if cls:
             cls_function = "method"
@@ -559,6 +584,11 @@ rv = .false.
 
         If the module name is '--import--', add to imports.
         Useful for interfaces.
+
+        Args:
+            modules -
+            imports -
+            f_module -
         """
         if f_module is not None:
             for mname, only in f_module.items():
@@ -575,6 +605,11 @@ rv = .false.
 
     def set_f_module(self, modules, mname, *only):
         """Add a module to modules.
+
+        Args:
+            modules -
+            mname -
+            only -
         """
         module = modules.setdefault(mname, {})
         if only:  # Empty list means no ONLY clause
@@ -585,6 +620,11 @@ rv = .false.
         """Return USE statements based on modules.
         Save any names which must be imported in imports to be used with
         interface blocks.
+
+        Args:
+            modules -
+            module_name -
+            imports -
         """
         arg_f_use = []
         for mname in sorted(modules):
@@ -630,6 +670,10 @@ rv = .false.
 
         Function pointers are converted to abstract interfaces.
         The interface is named after the function and the argument.
+
+        Args:
+            node -
+            arg -
         """
         fmt = util.Scope(node.fmtdict)
         fmt.argname = arg.name
@@ -769,8 +813,8 @@ rv = .false.
         """Write Fortran interface for C function.
 
         Args:
-            cls  - class node or None for functions
-            node - function/method node
+            cls  - ast.ClassNode or None for functions
+            node - ast.FunctionNode
 
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
@@ -939,15 +983,16 @@ rv = .false.
         This includes arguments to the function and any
         additional declarations.
 
-        fmt -
-        c_ast - Abstract Syntax Tree from parser
-        f_ast - Abstract Syntax Tree from parser
-        arg_typemap - typemap of resolved argument  i.e. int from vector<int>
-        buf_args - List of arguments/metadata to add.
-        modules - Build up USE statement.
-        imports - Build up IMPORT statement.
-        arg_f_decl - Additional Fortran declarations.
-        arg_c_call - Arguments to C wrapper.
+        Args:
+            fmt -
+            c_ast - Abstract Syntax Tree from parser
+            f_ast - Abstract Syntax Tree from parser
+            arg_typemap - typemap of resolved argument  i.e. int from vector<int>
+            buf_args - List of arguments/metadata to add.
+            modules - Build up USE statement.
+            imports - Build up IMPORT statement.
+            arg_f_decl - Additional Fortran declarations.
+            arg_c_call - Arguments to C wrapper.
 
         return need_wrapper
         A wrapper will be needed if there is meta data.
@@ -1027,6 +1072,16 @@ rv = .false.
         Also record the helper functions they need.
         Look for blocks 'declare', 'pre_call', 'post_call'.
 
+        Args:
+            need_wrapper -
+            fmt -
+            intent_blk -
+            modules -
+            imports -
+            arg_f_decl -
+            pre_call -
+            post_call -
+
         return need_wrapper
         A wrapper is needed if code is added.
         """
@@ -1056,6 +1111,11 @@ rv = .false.
 
     def attr_implied(self, node, arg, fmt):
         """Add the implied attribute to the pre_call block.
+
+        Args:
+            node - ast.FunctionNode.
+            arg -
+            fmt -
         """
         init = arg.attrs.get("implied", None)
         blk = {}
@@ -1068,8 +1128,8 @@ rv = .false.
         """Wrap implementation of Fortran function.
 
         Args:
-            cls -
-            node -
+            cls - ast.ClassNode.
+            node - ast.FunctionNode.
         """
         options = node.options
         fmt_func = node.fmtdict
@@ -1514,6 +1574,10 @@ rv = .false.
 
         First recursively process dependent_helpers
         to add code in order.
+
+        Args:
+            name -
+            done -
         """
         if name in done:
             return  # avoid recursion
@@ -1564,6 +1628,10 @@ rv = .false.
 
     def write_module(self, library, cls):
         """ Write Fortran wrapper module.
+
+        Args:
+            library - ast.LibraryNode.
+            cls - ast.ClassNode.
         """
         node = cls or library
         options = node.options
@@ -1658,6 +1726,12 @@ class ToImplied(todict.PrintNode):
     """
 
     def __init__(self, expr, func, arg):
+        """
+        Args:
+            expr -
+            func -
+            arg -
+        """
         super(ToImplied, self).__init__()
         self.expr = expr
         self.func = func
@@ -1680,6 +1754,11 @@ class ToImplied(todict.PrintNode):
 
 def ftn_implied(expr, func, arg):
     """Convert string to Fortran code.
+
+    Args:
+        expr -
+        func -
+        arg -
     """
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func, arg)
@@ -1691,6 +1770,12 @@ def attr_allocatable(allocatable, node, arg, pre_call):
 
     Valid values of allocatable:
        mold=name
+
+    Args:
+        allocatable -
+        node -
+        arg -
+        pre_call -
     """
     fmtargs = node._fmtargs
 

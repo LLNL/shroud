@@ -144,6 +144,11 @@ def add_union_helper(cxx, c, num=0):
     Assigns to var.cxx.
 
     The struct are named sequentially to generate unique names.
+
+    Args:
+        cxx -
+        c -
+        num -
     """
     global num_union_helpers
     name = "SH_union_{}_t".format(num_union_helpers)
@@ -168,6 +173,9 @@ def add_external_helpers(fmt):
     """Create helper which have generated names.
     Since the names are external, mangle with C_prefix to avoid
     confict with other shroud wrapped libraries.
+
+    Args:
+        fmt -
     """
 
     # Only used with std::string and thus C++
@@ -218,6 +226,8 @@ integer(C_SIZE_T), value :: c_var_size
 
 def add_shadow_helper(node):
     """
+    Args:
+        node -
     """
     cname = node.typemap.c_type
 
@@ -241,6 +251,9 @@ def add_capsule_helper(fmt):
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
+
+    Args:
+        fmt -
     """
     name = "capsule_data_helper"
     if name not in FHelpers:
@@ -358,6 +371,9 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
 
 def add_copy_array_helper_c(fmt):
     """Create function to copy contents of a vector.
+
+    Args:
+        fmt -
     """
     name = "copy_array"
     if name not in CHelpers:
@@ -387,6 +403,10 @@ n *= data->len;
 
 
 def add_copy_array_helper(fmt):
+    """
+    Args:
+        fmt -
+    """
     name = wformat("copy_array_{cxx_type}", fmt)
     if name not in FHelpers:
         helper = dict(

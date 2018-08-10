@@ -124,6 +124,10 @@ class Typemap(object):
     defaults = dict(_order)
 
     def __init__(self, name, **kw):
+        """
+        Args:
+            name - name of typemap.
+        """
         self.name = name
         #        for key, defvalue in self.defaults.items():
         #            setattr(self, key, defvalue)
@@ -132,6 +136,9 @@ class Typemap(object):
 
     def update(self, dct):
         """Add options from dictionary to self.
+
+        Args:
+            dct - dictionary-like object.
         """
         for key in dct:
             if key in self.defaults:
@@ -145,6 +152,10 @@ class Typemap(object):
         return ntypemap
 
     def clone_as(self, name):
+        """
+        Args:
+            name - name of new instance.
+        """
         ntypemap = Typemap(name)
         ntypemap.update(self._to_dict())
         return ntypemap
@@ -174,12 +185,20 @@ class Typemap(object):
 
     def __as_yaml__(self, indent, output):
         """Write out entire typemap as YAML.
+
+        Args:
+            indent -
+            output -
         """
         util.as_yaml(self, self._keyorder, indent, output)
 
     def __export_yaml__(self, indent, output):
         """Write out a subset of a wrapped type.
         Other fields are set with fill_shadow_typemap_defaults.
+
+        Args:
+            indent -
+            output -
         """
         util.as_yaml(
             self,
@@ -1192,6 +1211,9 @@ def initialize():
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
+
+    Args:
+        node -
     """
     fmt_enum = node.fmtdict
     type_name = util.wformat("{namespace_scope}{enum_name}", fmt_enum)
@@ -1216,6 +1238,11 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     - type: tutorial::Class1
       fields:
         base: shadow
+
+    Args:
+        cxx_name -
+        fields - dictionary object.
+        library - ast.LibraryNode.
     """
     fmt_class = library.fmtdict
     ntypemap = Typemap(cxx_name, base="shadow", cxx_type=cxx_name)
@@ -1236,6 +1263,10 @@ def create_class_typemap(node, fields=None):
 
     The c_type and f_capsule_data_type are a struct which contains
     a pointer to the C++ memory and information on how to delete the memory.
+
+    Args:
+        node - ast.ClassNode.
+        fields - dictionary-like object.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
@@ -1275,6 +1306,10 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
+
+    Args:
+        ntypemap - typemap.Typemap.
+        fmt -
     """
     if ntypemap.base != "shadow":
         return
@@ -1367,6 +1402,10 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
 def create_struct_typemap(node, fields=None):
     """Create a typemap for a struct from a ClassNode.
     Use fields to override defaults.
+
+    Args:
+        node -
+        fields - dictionary-like object.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
@@ -1398,6 +1437,9 @@ def fill_struct_typemap_defaults(ntypemap):
     When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
+
+    Args:
+        ntypemap - typemap.Typemap.
     """
     if ntypemap.base != "struct":
         return
@@ -1472,6 +1514,9 @@ def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
     template specific c_statements.
+
+    Args:
+        arg -
     """
     arg_typemap = arg.typemap
 
