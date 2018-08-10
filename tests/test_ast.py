@@ -373,7 +373,8 @@ class CheckAst(unittest.TestCase):
         generate.generate_functions(library, None)
         self.assertEqual(len(library.functions), 2)
         self.assertEqual(
-            library.functions[0].declgen, "void func1(char * arg +intent(inout))"
+            library.functions[0].declgen,
+            "void func1(char * arg +intent(inout))",
         )
         self.assertEqual(
             library.functions[1].declgen,
@@ -440,16 +441,22 @@ class CheckAst(unittest.TestCase):
         cls.add_function("DIRECTION directionFunc(DIRECTION arg);")
 
         # parse functions which use the enum
-        library.add_function("Class1::DIRECTION directionFunc(Class1::DIRECTION arg);")
+        library.add_function(
+            "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);"
+        )
 
     def test_e_enum4(self):
         """enum errors"""
         library = ast.LibraryNode()
         with self.assertRaises(RuntimeError) as context:
             library.add_enum("void func1()")
-        self.assertTrue("Declaration is not an enumeration" in str(context.exception))
+        self.assertTrue(
+            "Declaration is not an enumeration" in str(context.exception)
+        )
 
         cls = library.add_class("Class1")
         with self.assertRaises(RuntimeError) as context:
             cls.add_enum("void func()")
-        self.assertTrue("Declaration is not an enumeration" in str(context.exception))
+        self.assertTrue(
+            "Declaration is not an enumeration" in str(context.exception)
+        )

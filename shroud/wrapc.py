@@ -290,7 +290,9 @@ class Wrapc(util.WrapperMixin):
 
         output.extend(["", "#endif  // " + guard])
 
-        self.config.cfiles.append(os.path.join(self.config.c_fortran_dir, fname))
+        self.config.cfiles.append(
+            os.path.join(self.config.c_fortran_dir, fname)
+        )
         self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_header(self, library, cls, fname):
@@ -325,7 +327,10 @@ class Wrapc(util.WrapperMixin):
 
         # headers required by typedefs and helpers
         self.write_headers_nodes(
-            "c_header", self.header_typedef_nodes, self.c_helper_include.keys(), output
+            "c_header",
+            self.header_typedef_nodes,
+            self.c_helper_include.keys(),
+            output,
         )
 
         if self.language == "c++":
@@ -374,7 +379,9 @@ class Wrapc(util.WrapperMixin):
         output.extend(["", "#endif  // " + guard])
 
         if write_file:
-            self.config.cfiles.append(os.path.join(self.config.c_fortran_dir, fname))
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname)
+            )
             self.write_output_file(fname, self.config.c_fortran_dir, output)
         return write_file
 
@@ -436,7 +443,9 @@ class Wrapc(util.WrapperMixin):
             output.append("#endif  // " + node.cpp_if)
 
         if write_file:
-            self.config.cfiles.append(os.path.join(self.config.c_fortran_dir, fname))
+            self.config.cfiles.append(
+                os.path.join(self.config.c_fortran_dir, fname)
+            )
             self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def wrap_struct(self, node):
@@ -453,7 +462,9 @@ class Wrapc(util.WrapperMixin):
 
         output = self.struct_impl
         output.append("")
-        output.extend(["", "struct s_{C_type_name} {{".format(C_type_name=cname), 1])
+        output.extend(
+            ["", "struct s_{C_type_name} {{".format(C_type_name=cname), 1]
+        )
         for var in node.variables:
             ast = var.ast
             output.append(ast.gen_arg_as_c() + ";")
@@ -533,7 +544,9 @@ class Wrapc(util.WrapperMixin):
                 ),
                 "delete cxx_ptr;",
             ]
-            ntypemap.idtor = self.add_capsule_helper(cxx_type, ntypemap, del_lines)
+            ntypemap.idtor = self.add_capsule_helper(
+                cxx_type, ntypemap, del_lines
+            )
         else:
             ntypemap.idtor = "0"
 
@@ -559,7 +572,9 @@ class Wrapc(util.WrapperMixin):
         append_format(output, "enum {C_enum} {{+", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
-            fmt_id.C_enum_member = wformat(options.C_enum_member_template, fmt_id)
+            fmt_id.C_enum_member = wformat(
+                options.C_enum_member_template, fmt_id
+            )
             if member.value is not None:
                 append_format(output, "{C_enum_member} = {cxx_value},", fmt_id)
             else:
@@ -613,10 +628,14 @@ class Wrapc(util.WrapperMixin):
                 append_format(proto_list, "long {c_var_size}", fmt)
             elif buf_arg == "capsule":
                 fmt.c_var_capsule = attrs["capsule"]
-                append_format(proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt)
+                append_format(
+                    proto_list, "{C_capsule_data_type} *{c_var_capsule}", fmt
+                )
             elif buf_arg == "context":
                 fmt.c_var_context = attrs["context"]
-                append_format(proto_list, "{C_array_type} *{c_var_context}", fmt)
+                append_format(
+                    proto_list, "{C_array_type} *{c_var_context}", fmt
+                )
                 if "dimension" in attrs:
                     # XXX - assumes dimension is a single variable.
                     fmt.c_var_dimension = attrs["dimension"]
@@ -627,7 +646,9 @@ class Wrapc(util.WrapperMixin):
                 fmt.c_var_len = attrs["len"]
                 append_format(proto_list, "int {c_var_len}", fmt)
             else:
-                raise RuntimeError("wrap_function: unhandled case {}".format(buf_arg))
+                raise RuntimeError(
+                    "wrap_function: unhandled case {}".format(buf_arg)
+                )
         return need_wrapper
 
     def add_code_from_statements(
@@ -772,7 +793,9 @@ class Wrapc(util.WrapperMixin):
                     force_ptr=True,
                 )
             elif is_union_scalar:
-                fmt_func.cxx_rv_decl = result_typemap.c_union + " " + fmt_result.cxx_var
+                fmt_func.cxx_rv_decl = (
+                    result_typemap.c_union + " " + fmt_result.cxx_var
+                )
             else:
                 fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                     name=fmt_result.cxx_var, params=None, continuation=True
@@ -836,7 +859,9 @@ class Wrapc(util.WrapperMixin):
                     cls_typemap = cls.typemap
                     if cls_typemap.c_to_cxx is None:
                         # This should be set in typemap.fill_shadow_typemap_defaults
-                        raise RuntimeError("Wappped class does not have c_to_cxx set")
+                        raise RuntimeError(
+                            "Wappped class does not have c_to_cxx set"
+                        )
                     append_format(
                         pre_call,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
@@ -852,7 +877,11 @@ class Wrapc(util.WrapperMixin):
             if "c" in node.statements:
                 iblk = node.statements["c"]["result_buf"]
                 need_wrapper = self.build_proto_list(
-                    fmt_result, ast, iblk.get("buf_args", []), proto_list, need_wrapper
+                    fmt_result,
+                    ast,
+                    iblk.get("buf_args", []),
+                    proto_list,
+                    need_wrapper,
                 )
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, iblk, pre_call, post_call, need_wrapper
@@ -861,7 +890,9 @@ class Wrapc(util.WrapperMixin):
         if is_shadow_scalar:
             # Allocate a new instance, then assign pointer to dereferenced cxx_var.
             append_format(
-                pre_call, "{cxx_rv_decl} = new %s;" % result_typemap.cxx_type, fmt_func
+                pre_call,
+                "{cxx_rv_decl} = new %s;" % result_typemap.cxx_type,
+                fmt_func,
             )
             fmt_result.cxx_addr = ""
             fmt_result.idtor = result_typemap.idtor
@@ -985,7 +1016,9 @@ class Wrapc(util.WrapperMixin):
                         force_ptr=True,
                         continuation=True,
                     )
-                    append_format(pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg)
+                    append_format(
+                        pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
+                    )
                 elif arg_typemap.c_to_cxx is None:
                     fmt_arg.cxx_var = fmt_arg.c_var  # compatible
                 else:
@@ -998,7 +1031,9 @@ class Wrapc(util.WrapperMixin):
                         as_ptr=True,
                         continuation=True,
                     )
-                    append_format(pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg)
+                    append_format(
+                        pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
+                    )
 
                     if arg.is_indirect():
                         # Only pointers can be passed in and must cast to another pointer.
@@ -1008,7 +1043,9 @@ class Wrapc(util.WrapperMixin):
                         cxx_local_var = "pointer"
 
                 stmts = (
-                    "intent_" + c_attrs["intent"] + c_attrs.get("_generated_suffix", "")
+                    "intent_"
+                    + c_attrs["intent"]
+                    + c_attrs.get("_generated_suffix", "")
                 )
 
             intent_blk = c_statements.get(stmts, {})
@@ -1042,7 +1079,9 @@ class Wrapc(util.WrapperMixin):
                 fmt_arg.cxx_member = "->"
 
             if self.language == "c":
-                fmt_arg.cxx_cast_to_void_ptr = wformat("{cxx_addr}{cxx_var}", fmt_arg)
+                fmt_arg.cxx_cast_to_void_ptr = wformat(
+                    "{cxx_addr}{cxx_var}", fmt_arg
+                )
             elif arg.const:
                 # cast away constness
                 fmt_arg.cxx_type = arg_typemap.cxx_type
@@ -1103,7 +1142,9 @@ class Wrapc(util.WrapperMixin):
 
         fmt_func.C_call_list = ",\t ".join(call_list)
 
-        fmt_func.C_prototype = options.get("C_prototype", ",\t ".join(proto_list))
+        fmt_func.C_prototype = options.get(
+            "C_prototype", ",\t ".join(proto_list)
+        )
 
         if node.return_this:
             fmt_func.C_return_type = "void"
@@ -1129,7 +1170,9 @@ class Wrapc(util.WrapperMixin):
             if C_error_pattern in self.patterns:
                 post_call_pattern.append("// C_error_pattern")
                 append_format(
-                    post_call_pattern, self.patterns[C_error_pattern], fmt_pattern
+                    post_call_pattern,
+                    self.patterns[C_error_pattern],
+                    fmt_pattern,
                 )
         if post_call_pattern:
             need_wrapper = True
@@ -1139,14 +1182,19 @@ class Wrapc(util.WrapperMixin):
         C_return_code = "return;"
         if is_ctor:
             # Always create a pointer to the instance.
-            fmt_func.cxx_rv_decl = result_typemap.cxx_type + " *" + fmt_result.cxx_var
+            fmt_func.cxx_rv_decl = (
+                result_typemap.cxx_type + " *" + fmt_result.cxx_var
+            )
             append_format(
                 call_code,
-                "{cxx_rv_decl} =\t new {namespace_scope}" "{cxx_type}({C_call_list});",
+                "{cxx_rv_decl} =\t new {namespace_scope}"
+                "{cxx_type}({C_call_list});",
                 fmt_func,
             )
             if result_typemap.cxx_to_c is not None:
-                fmt_func.c_rv_decl = result_typemap.c_type + " *" + fmt_result.c_var
+                fmt_func.c_rv_decl = (
+                    result_typemap.c_type + " *" + fmt_result.c_var
+                )
                 fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
             fmt_result.c_type = result_typemap.c_type
             fmt_result.idtor = "0"
@@ -1160,12 +1208,15 @@ class Wrapc(util.WrapperMixin):
             C_return_code = wformat("return {c_var};", fmt_result)
         elif is_dtor:
             append_format(
-                call_code, "delete {CXX_this};\n" "{C_this}->addr = NULL;", fmt_func
+                call_code,
+                "delete {CXX_this};\n" "{C_this}->addr = NULL;",
+                fmt_func,
             )
         elif CXX_subprogram == "subroutine":
             append_format(
                 call_code,
-                "{CXX_this_call}{function_name}" "{CXX_template}(\t{C_call_list});",
+                "{CXX_this_call}{function_name}"
+                "{CXX_template}(\t{C_call_list});",
                 fmt_func,
             )
         else:
@@ -1188,7 +1239,8 @@ class Wrapc(util.WrapperMixin):
                         )
                     else:
                         fmt_result.cxx_cast_to_void_ptr = wformat(
-                            "static_cast<void *>({cxx_addr}{cxx_var})", fmt_result
+                            "static_cast<void *>({cxx_addr}{cxx_var})",
+                            fmt_result,
                         )
                 elif is_union_scalar:
                     pass
@@ -1198,8 +1250,12 @@ class Wrapc(util.WrapperMixin):
                     fmt_result.c_rv_decl = CXX_ast.gen_arg_as_c(
                         name=fmt_result.c_var, params=None, continuation=True
                     )
-                    fmt_result.c_val = wformat(result_typemap.cxx_to_c, fmt_result)
-                    append_format(post_call, "{c_rv_decl} =\t {c_val};", fmt_result)
+                    fmt_result.c_val = wformat(
+                        result_typemap.cxx_to_c, fmt_result
+                    )
+                    append_format(
+                        post_call, "{c_rv_decl} =\t {c_val};", fmt_result
+                    )
 
                 c_statements = result_typemap.c_statements
                 generated_suffix = ast.attrs.get("_generated_suffix", "")
@@ -1209,7 +1265,9 @@ class Wrapc(util.WrapperMixin):
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, intent_blk, pre_call, post_call, need_wrapper
                 )
-                if util.append_format_cmds(call_code, intent_blk, "call", fmt_result):
+                if util.append_format_cmds(
+                    call_code, intent_blk, "call", fmt_result
+                ):
                     need_wrapper = True
                     added_call_code = True
                 # XXX release rv if necessary
@@ -1309,10 +1367,14 @@ class Wrapc(util.WrapperMixin):
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
                 self.impl.append("#" + node.cpp_if)
-            append_format(impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func)
+            append_format(
+                impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
+            )
             impl.append("{")
             self._create_splicer(
-                fmt_func.underscore_name + fmt_func.function_suffix, impl, C_code
+                fmt_func.underscore_name + fmt_func.function_suffix,
+                impl,
+                C_code,
             )
             impl.append("}")
             if node.cpp_if:
@@ -1356,7 +1418,10 @@ class Wrapc(util.WrapperMixin):
             # check refererence before deleting
             append_format(
                 output,
-                "@--cap->refcount;\n" "if (cap->refcount > 0) {{+\n" "return;\n" "-}}",
+                "@--cap->refcount;\n"
+                "if (cap->refcount > 0) {{+\n"
+                "return;\n"
+                "-}}",
                 fmt,
             )
 
@@ -1383,7 +1448,9 @@ class Wrapc(util.WrapperMixin):
         # Add header for NULL.
         self.header_impl_include["<stdlib.h>"] = True
         output.append(
-            "cap->addr = NULL;\n" "cap->idtor = 0;  // avoid deleting again\n" "-}"
+            "cap->addr = NULL;\n"
+            "cap->idtor = 0;  // avoid deleting again\n"
+            "-}"
         )
 
     capsule_helpers = {}
@@ -1452,7 +1519,9 @@ class Wrapc(util.WrapperMixin):
                 destructor_name = wformat(destructor_name, fmt)
                 if destructor_name not in self.capsule_helpers:
                     del_lines = []
-                    util.append_format_cmds(del_lines, intent_blk, "destructor", fmt)
+                    util.append_format_cmds(
+                        del_lines, intent_blk, "destructor", fmt
+                    )
                     fmt.idtor = self.add_capsule_helper(
                         destructor_name, atypemap, del_lines
                     )

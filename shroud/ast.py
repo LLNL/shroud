@@ -106,7 +106,9 @@ class NamespaceMixin(object):
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
         """
-        node = ClassNode(name, self, template_parameters=template_parameters, **kwargs)
+        node = ClassNode(
+            name, self, template_parameters=template_parameters, **kwargs
+        )
         self.classes.append(node)
         self.symbols[name] = node
         return node
@@ -165,7 +167,9 @@ class NamespaceMixin(object):
         if ast.declarator.pointer:
             raise NotImplementedError("Pointers not supported in typedef")
         if ast.declarator.func:
-            raise NotImplementedError("Function pointers not supported in typedef")
+            raise NotImplementedError(
+                "Function pointers not supported in typedef"
+            )
 
         key = ast.declarator.name
         orig = ast.typemap
@@ -393,7 +397,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_name_template=(
                 "{C_prefix}{class_prefix}{underscore_name}{function_suffix}"
             ),
-            C_memory_dtor_function_template=("{C_prefix}SHROUD_memory_destructor"),
+            C_memory_dtor_function_template=(
+                "{C_prefix}SHROUD_memory_destructor"
+            ),
             C_var_capsule_template="C{c_var}",  # capsule argument
             C_var_context_template="D{c_var}",  # context argument
             C_var_len_template="N{c_var}",  # argument for result of len(arg)
@@ -403,8 +409,12 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_C_name_template=(
                 "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}"
             ),
-            F_enum_member_template=("{class_prefix}{enum_lower}_{enum_member_lower}"),
-            F_name_impl_template=("{class_prefix}{underscore_name}{function_suffix}"),
+            F_enum_member_template=(
+                "{class_prefix}{enum_lower}_{enum_member_lower}"
+            ),
+            F_name_impl_template=(
+                "{class_prefix}{underscore_name}{function_suffix}"
+            ),
             F_name_function_template="{underscore_name}{function_suffix}",
             F_name_generic_template="{underscore_name}",
             F_module_name_library_template="{library_lower}_mod",
@@ -429,14 +439,20 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
             LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
-            PY_module_filename_template=("py{library}module.{PY_impl_filename_suffix}"),
+            PY_module_filename_template=(
+                "py{library}module.{PY_impl_filename_suffix}"
+            ),
             PY_header_filename_template=(
                 "py{library}module.{PY_header_filename_suffix}"
             ),
-            PY_helper_filename_template=("py{library}helper.{PY_impl_filename_suffix}"),
+            PY_helper_filename_template=(
+                "py{library}helper.{PY_impl_filename_suffix}"
+            ),
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
-            PY_type_filename_template=("py{cxx_class}type.{PY_impl_filename_suffix}"),
+            PY_type_filename_template=(
+                "py{cxx_class}type.{PY_impl_filename_suffix}"
+            ),
             PY_name_impl_template=(
                 "{PY_prefix}{class_prefix}{function_name}{function_suffix}"
             ),
@@ -444,8 +460,12 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_type_impl_template=(
                 "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}"
             ),
-            PY_member_getter_template=("{PY_prefix}{cxx_class}_{variable_name}_getter"),
-            PY_member_setter_template=("{PY_prefix}{cxx_class}_{variable_name}_setter"),
+            PY_member_getter_template=(
+                "{PY_prefix}{cxx_class}_{variable_name}_getter"
+            ),
+            PY_member_setter_template=(
+                "{PY_prefix}{cxx_class}_{variable_name}_setter"
+            ),
             PY_struct_array_descr_create_template=(
                 "{PY_prefix}{cxx_class}_create_array_descr"
             ),
@@ -564,7 +584,9 @@ class LibraryNode(AstNode, NamespaceMixin):
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in library, change to format group".format(name)
+                    "Setting field {} in library, change to format group".format(
+                        name
+                    )
                 )
 
         self.option_to_fmt()
@@ -699,7 +721,9 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         fmt_ns = self.fmtdict
-        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + "::"
+        fmt_ns.namespace_scope = (
+            parent.fmtdict.namespace_scope + self.name + "::"
+        )
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
@@ -749,7 +773,9 @@ class ClassNode(AstNode, NamespaceMixin):
         self.enums = []
         self.functions = []
         self.variables = []
-        self.as_struct = as_struct  # if True, treat as struct, else as shadow class
+        self.as_struct = (
+            as_struct
+        )  # if True, treat as struct, else as shadow class
 
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
@@ -802,7 +828,11 @@ class ClassNode(AstNode, NamespaceMixin):
         """
         fullname = self.scope + name
         ntypemap = typemap.Typemap(
-            fullname, base="template", c_type="c_T", cxx_type="cxx_T", f_type="f_T"
+            fullname,
+            base="template",
+            c_type="c_T",
+            cxx_type="cxx_T",
+            f_type="f_T",
         )
         typemap.register_type(ntypemap.name, ntypemap)
 
@@ -991,7 +1021,9 @@ class FunctionNode(AstNode):
 
     """
 
-    def __init__(self, decl, parent, format=None, ast=None, options=None, **kwargs):
+    def __init__(
+        self, decl, parent, format=None, ast=None, options=None, **kwargs
+    ):
         """
         ast - None, declast.Declaration, declast.Template
         """
@@ -1121,7 +1153,9 @@ class FunctionNode(AstNode):
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in function, change to format group".format(name)
+                    "Setting field {} in function, change to format group".format(
+                        name
+                    )
                 )
 
         # Move fields from kwargs into instance
@@ -1179,7 +1213,9 @@ class EnumNode(AstNode):
     }
     """
 
-    def __init__(self, decl, parent, format=None, ast=None, options=None, **kwargs):
+    def __init__(
+        self, decl, parent, format=None, ast=None, options=None, **kwargs
+    ):
 
         # From arguments
         self.parent = parent
@@ -1277,7 +1313,9 @@ class VariableNode(AstNode):
              baz: 4
     """
 
-    def __init__(self, decl, parent, format=None, ast=None, options=None, **kwargs):
+    def __init__(
+        self, decl, parent, format=None, ast=None, options=None, **kwargs
+    ):
 
         # From arguments
         self.parent = parent
@@ -1390,7 +1428,9 @@ def clean_dictionary(ddct):
         newlst = []
         for dct in cxx_template:
             if not isinstance(dct, dict):
-                raise RuntimeError("cxx_template must be a list of dictionaries")
+                raise RuntimeError(
+                    "cxx_template must be a list of dictionaries"
+                )
             if "instantiation" not in dct:
                 raise RuntimeError(
                     "instantation must be defined for each dictionary in cxx_template"
@@ -1487,7 +1527,9 @@ def create_library_from_dictionary(node):
                 # Create new typemap
                 base = fields.get("base", "")
                 if base == "shadow":
-                    typemap.create_class_typemap_from_fields(key, fields, library)
+                    typemap.create_class_typemap_from_fields(
+                        key, fields, library
+                    )
                 else:
                     raise RuntimeError("base must be 'shadow'")
 

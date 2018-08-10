@@ -250,7 +250,9 @@ class Wrapf(util.WrapperMixin):
             "type({F_capsule_data_type}) :: {F_derived_member}",
             fmt_class,
         )
-        self.set_f_module(self.module_use, "iso_c_binding", "C_PTR", "C_NULL_PTR")
+        self.set_f_module(
+            self.module_use, "iso_c_binding", "C_PTR", "C_NULL_PTR"
+        )
         self._create_splicer("component_part", self.f_type_decl)
         self.f_type_decl.append("-contains+")
         self.f_type_decl.extend(self.type_bound_part)
@@ -307,7 +309,8 @@ class Wrapf(util.WrapperMixin):
             ".eq.",
             fmt_class.class_lower + "_eq",
             wformat(
-                "c_associated" "(a%{F_derived_member}%addr, b%{F_derived_member}%addr)",
+                "c_associated"
+                "(a%{F_derived_member}%addr, b%{F_derived_member}%addr)",
                 fmt_class,
             ),
         )
@@ -355,7 +358,9 @@ class Wrapf(util.WrapperMixin):
         append_format(output, "!  {enum_name}", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
-            fmt_id.F_enum_member = wformat(options.F_enum_member_template, fmt_id)
+            fmt_id.F_enum_member = wformat(
+                options.F_enum_member_template, fmt_id
+            )
             append_format(
                 output,
                 "integer(C_INT), parameter :: {F_enum_member} = {evalue}",
@@ -635,7 +640,9 @@ rv = .false.
             else:
                 if only:
                     snames = sorted(only.keys())
-                    arg_f_use.append("use %s, only : %s" % (mname, ", ".join(snames)))
+                    arg_f_use.append(
+                        "use %s, only : %s" % (mname, ", ".join(snames))
+                    )
                 else:
                     arg_f_use.append("use %s" % mname)
         return arg_f_use
@@ -677,7 +684,9 @@ rv = .false.
         """
         fmt = util.Scope(node.fmtdict)
         fmt.argname = arg.name
-        name = wformat(node.options.F_abstract_interface_subprogram_template, fmt)
+        name = wformat(
+            node.options.F_abstract_interface_subprogram_template, fmt
+        )
         entry = self.f_abstract_interface.get(name)
         if entry is None:
             self.f_abstract_interface[name] = (node, fmt, arg)
@@ -707,20 +716,27 @@ rv = .false.
                     if name is None:
                         fmt.index = str(i)
                         name = wformat(
-                            node.options.F_abstract_interface_argument_template, fmt
+                            node.options.F_abstract_interface_argument_template,
+                            fmt,
                         )
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typemap, c_statements = typemap.lookup_c_statements(param)
+                    arg_typemap, c_statements = typemap.lookup_c_statements(
+                        param
+                    )
                     self.update_f_module(
-                        modules, imports, arg_typemap.f_c_module or arg_typemap.f_module
+                        modules,
+                        imports,
+                        arg_typemap.f_c_module or arg_typemap.f_module,
                     )
 
                 if subprogram == "function":
                     arg_c_decl.append(ast.bind_c(name=key, params=None))
                 arguments = ",\t ".join(arg_f_names)
-                iface.append("{} {}({}) bind(C)".format(subprogram, key, arguments))
+                iface.append(
+                    "{} {}({}) bind(C)".format(subprogram, key, arguments)
+                )
                 iface.append(1)
                 arg_f_use = self.sort_module_info(modules, None)
                 iface.extend(arg_f_use)
@@ -734,7 +750,15 @@ rv = .false.
         self._pop_splicer("abstract")
 
     def build_arg_list_interface(
-        self, node, fmt, ast, buf_args, modules, imports, arg_c_names, arg_c_decl
+        self,
+        node,
+        fmt,
+        ast,
+        buf_args,
+        modules,
+        imports,
+        arg_c_names,
+        arg_c_decl,
     ):
         """Build the Fortran interface for a c wrapper function.
 
@@ -757,7 +781,9 @@ rv = .false.
                 # argument declarations
                 if ast.is_function_pointer():
                     absiface = self.add_abstract_interface(node, ast)
-                    arg_c_decl.append("procedure({}) :: {}".format(absiface, ast.name))
+                    arg_c_decl.append(
+                        "procedure({}) :: {}".format(absiface, ast.name)
+                    )
                     imports[absiface] = True
                 else:
                     arg_c_decl.append(ast.bind_c())
@@ -769,7 +795,9 @@ rv = .false.
 
             if buf_arg not in attrs:
                 raise RuntimeError(
-                    "attr {} is missing from attrs for {}".format(buf_arg, node.declgen)
+                    "attr {} is missing from attrs for {}".format(
+                        buf_arg, node.declgen
+                    )
                 )
             buf_arg_name = attrs[buf_arg]
             if buf_arg == "size":
@@ -788,7 +816,8 @@ rv = .false.
             elif buf_arg == "context":
                 arg_c_names.append(buf_arg_name)
                 arg_c_decl.append(
-                    "type(%s), intent(INOUT) :: %s" % (fmt.F_array_type, buf_arg_name)
+                    "type(%s), intent(INOUT) :: %s"
+                    % (fmt.F_array_type, buf_arg_name)
                 )
                 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
@@ -806,7 +835,9 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_INT")
             else:
                 raise RuntimeError(
-                    "build_arg_list_interface: unhandled case {}".format(buf_arg)
+                    "build_arg_list_interface: unhandled case {}".format(
+                        buf_arg
+                    )
                 )
 
     def wrap_function_interface(self, cls, node):
@@ -910,16 +941,24 @@ rv = .false.
 
         if result_typemap.base == "shadow":
             arg_c_names.append(fmt_func.F_result_capsule)
-            arg_c_decl.append(ast.bind_c(name=fmt_func.F_result_capsule, intent="out"))
+            arg_c_decl.append(
+                ast.bind_c(name=fmt_func.F_result_capsule, intent="out")
+            )
             self.update_f_module(
-                modules, imports, result_typemap.f_c_module or result_typemap.f_module
+                modules,
+                imports,
+                result_typemap.f_c_module or result_typemap.f_module,
             )
             # Functions which return shadow classes are not pure
             # since the result argument will be assigned to.
-        elif subprogram == "function" and (is_pure or (func_is_const and args_all_in)):
+        elif subprogram == "function" and (
+            is_pure or (func_is_const and args_all_in)
+        ):
             fmt.F_C_pure_clause = "pure "
 
-        fmt.F_C_arguments = options.get("F_C_arguments", ",\t ".join(arg_c_names))
+        fmt.F_C_arguments = options.get(
+            "F_C_arguments", ",\t ".join(arg_c_names)
+        )
 
         if fmt.F_C_subprogram == "function":
             if result_typemap.base in ["shadow", "string"]:
@@ -927,7 +966,9 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
                 # XXX - make sure ptr is set to avoid VALUE
-                rvast = declast.create_this_arg(fmt.F_result, result_typemap, False)
+                rvast = declast.create_this_arg(
+                    fmt.F_result, result_typemap, False
+                )
                 if return_pointer_as in ["pointer", "allocatable", "raw"]:
                     arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                     self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -939,7 +980,9 @@ rv = .false.
                     result_typemap.f_c_module or result_typemap.f_module,
                 )
 
-        arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name, imports)
+        arg_f_use = self.sort_module_info(
+            modules, fmt_func.F_module_name, imports
+        )
 
         c_interface = self.c_interface
         c_interface.append("")
@@ -1183,9 +1226,9 @@ rv = .false.
 
         # this catches stuff like a bool to logical conversion which
         # requires the wrapper
-        if result_typemap.f_statements.get("result" + result_generated_suffix, {}).get(
-            "need_wrapper", False
-        ):
+        if result_typemap.f_statements.get(
+            "result" + result_generated_suffix, {}
+        ).get("need_wrapper", False):
             need_wrapper = True
 
         arg_c_call = []  # arguments to C function
@@ -1218,13 +1261,17 @@ rv = .false.
                     wformat("class({F_derived_name}) :: {F_this}", fmt_func)
                 )
                 # could use {f_to_c} but I'd rather not hide the shadow class
-                arg_c_call.append(wformat("{F_this}%{F_derived_member}", fmt_func))
+                arg_c_call.append(
+                    wformat("{F_this}%{F_derived_member}", fmt_func)
+                )
 
         if hasattr(C_node, "statements"):
             if "f" in C_node.statements:
                 fmt_result.f_kind = result_typemap.f_kind
                 whelpers.add_copy_array_helper(fmt_result)
-                iblk = C_node.statements["f"]["result" + result_generated_suffix]
+                iblk = C_node.statements["f"][
+                    "result" + result_generated_suffix
+                ]
                 need_wrapper = self.build_arg_list_impl(
                     fmt_result,
                     C_node.ast,
@@ -1350,7 +1397,8 @@ rv = .false.
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
                 arg_f_decl.append(
                     "{} {}".format(
-                        arg_typemap.f_c_type or arg_typemap.f_type, fmt_arg.c_var
+                        arg_typemap.f_c_type or arg_typemap.f_type,
+                        fmt_arg.c_var,
                     )
                 )
 
@@ -1384,13 +1432,19 @@ rv = .false.
         if result_typemap.base == "shadow":
             # Function which return a shadow type will pass in
             # the capsule_data_type and return a type(C_PTR).
-            arg_f_decl.append(wformat("type(C_PTR) :: {F_result_ptr}", fmt_func))
+            arg_f_decl.append(
+                wformat("type(C_PTR) :: {F_result_ptr}", fmt_func)
+            )
             self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            arg_c_call.append(wformat("{F_result}%{F_derived_member}", fmt_func))
+            arg_c_call.append(
+                wformat("{F_result}%{F_derived_member}", fmt_func)
+            )
 
         # use tabs to insert continuations
         fmt_func.F_arg_c_call = ",\t ".join(arg_c_call)
-        fmt_func.F_arguments = options.get("F_arguments", ",\t ".join(arg_f_names))
+        fmt_func.F_arguments = options.get(
+            "F_arguments", ",\t ".join(arg_f_names)
+        )
 
         # declare function return value after arguments
         # since arguments may be used to compute return value
@@ -1401,14 +1455,18 @@ rv = .false.
             #     fmt_func.F_pure_clause = 'pure '
             if return_pointer_as == "raw":
                 arg_f_decl.append(
-                    ast.gen_arg_as_fortran(name=fmt_result.F_result, is_pointer=True)
+                    ast.gen_arg_as_fortran(
+                        name=fmt_result.F_result, is_pointer=True
+                    )
                 )
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif return_pointer_as == "pointer":
                 need_wrapper = True
                 arg_f_decl.append(
-                    ast.gen_arg_as_fortran(name=fmt_result.F_result, is_pointer=True)
+                    ast.gen_arg_as_fortran(
+                        name=fmt_result.F_result, is_pointer=True
+                    )
                 )
                 arg_f_decl.append("type(C_PTR) :: " + fmt_result.F_pointer)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1438,7 +1496,9 @@ rv = .false.
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())
             if cls and not is_ctor:
-                self.f_type_generic.setdefault(fmt_func.F_name_generic, []).append(node)
+                self.f_type_generic.setdefault(
+                    fmt_func.F_name_generic, []
+                ).append(node)
             else:
                 self.f_function_generic.setdefault(
                     fmt_func.class_prefix + fmt_func.F_name_generic, []
@@ -1475,7 +1535,9 @@ rv = .false.
                 F_code.append(fmt_func.F_call_code)
             elif C_subprogram == "function":
                 f_statements = result_typemap.f_statements
-                intent_blk = f_statements.get("result" + result_generated_suffix, {})
+                intent_blk = f_statements.get(
+                    "result" + result_generated_suffix, {}
+                )
                 if "call" in intent_blk:
                     cmd_list = intent_blk["call"]
                 elif return_pointer_as in ["pointer", "allocatable"]:
@@ -1532,7 +1594,10 @@ rv = .false.
                     )
                 else:
                     F_code.append(
-                        wformat("call c_f_pointer({F_pointer}, {F_result})", fmt_result)
+                        wformat(
+                            "call c_f_pointer({F_pointer}, {F_result})",
+                            fmt_result,
+                        )
                     )
                 self.set_f_module(modules, "iso_c_binding", "c_f_pointer")
 
@@ -1553,7 +1618,8 @@ rv = .false.
                 self.write_doxygen(impl, node.doxygen)
             append_format(
                 impl,
-                "\r{F_subprogram} {F_name_impl}(\t" "{F_arguments}){F_result_clause}",
+                "\r{F_subprogram} {F_name_impl}(\t"
+                "{F_arguments}){F_result_clause}",
                 fmt_func,
             )
             impl.append(1)
@@ -1603,12 +1669,16 @@ rv = .false.
 
         mods = helper_info.get("modules", None)
         if mods:
-            self.update_f_module(self.module_use, {}, mods)  # XXX self.module_imports
+            self.update_f_module(
+                self.module_use, {}, mods
+            )  # XXX self.module_imports
 
         if "private" in helper_info:
             if not self.private_lines:
                 self.private_lines.append("")
-            self.private_lines.append("private " + ", ".join(helper_info["private"]))
+            self.private_lines.append(
+                "private " + ", ".join(helper_info["private"])
+            )
 
     def gather_helper_code(self):
         """Gather up all helpers requested and insert code into output.
@@ -1708,7 +1778,9 @@ rv = .false.
         output.append("")
         output.append("end module %s" % module_name)
 
-        self.config.ffiles.append(os.path.join(self.config.c_fortran_dir, fname))
+        self.config.ffiles.append(
+            os.path.join(self.config.c_fortran_dir, fname)
+        )
         self.write_output_file(fname, self.config.c_fortran_dir, output)
 
     def write_c_helper(self):
@@ -1789,7 +1861,9 @@ def attr_allocatable(allocatable, node, arg, pre_call):
         moldarg = node.ast.find_arg_by_name(moldvar)
         if moldarg is None:
             raise RuntimeError(
-                "Mold argument '{}' does not exist: {}".format(moldvar, allocatable)
+                "Mold argument '{}' does not exist: {}".format(
+                    moldvar, allocatable
+                )
             )
         if "dimension" not in moldarg.attrs:
             raise RuntimeError(
@@ -1807,7 +1881,9 @@ def attr_allocatable(allocatable, node, arg, pre_call):
             bounds = []
             for i in range(1, rank + 1):
                 bounds.append(
-                    "lbound({var},{dim}):ubound({var},{dim})".format(var=moldvar, dim=i)
+                    "lbound({var},{dim}):ubound({var},{dim})".format(
+                        var=moldvar, dim=i
+                    )
                 )
             fmt.mold = ",".join(bounds)
             append_format(pre_call, "allocate({f_var}({mold}))", fmt)

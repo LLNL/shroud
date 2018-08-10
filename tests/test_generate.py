@@ -34,7 +34,9 @@ class CheckImplied(unittest.TestCase):
 
         with self.assertRaises(RuntimeError) as context:
             generate.check_implied("size(scalar)", self.func1)
-        self.assertTrue("must have dimension attribute" in str(context.exception))
+        self.assertTrue(
+            "must have dimension attribute" in str(context.exception)
+        )
 
 
 if __name__ == "__main__":

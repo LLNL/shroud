@@ -106,7 +106,9 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_BinaryOp(self, node):
-        d = dict(left=self.visit(node.left), op=node.op, right=self.visit(node.right))
+        d = dict(
+            left=self.visit(node.left), op=node.op, right=self.visit(node.right)
+        )
         return d
 
     def visit_UnaryOp(self, node):
@@ -143,7 +145,9 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_Template(self, node):
-        d = dict(parameters=self.visit(node.parameters), decl=self.visit(node.decl))
+        d = dict(
+            parameters=self.visit(node.parameters), decl=self.visit(node.decl)
+        )
         return d
 
     def visit_TemplateParam(self, node):
@@ -179,7 +183,14 @@ class ToDict(visitor.Visitor):
         self.add_visit_fields(
             node,
             d,
-            ["classes", "enums", "functions", "variables", "fmtdict", "options"],
+            [
+                "classes",
+                "enums",
+                "functions",
+                "variables",
+                "fmtdict",
+                "options",
+            ],
         )
         return d
 
@@ -212,7 +223,13 @@ class ToDict(visitor.Visitor):
         self.add_visit_fields(
             node,
             d,
-            ["_fmtargs", "_fmtresult", "fmtdict", "options", "template_arguments"],
+            [
+                "_fmtargs",
+                "_fmtresult",
+                "fmtdict",
+                "options",
+                "template_arguments",
+            ],
         )
         add_true_fields(
             node,
@@ -410,10 +427,14 @@ class PrintNode(visitor.Visitor):
             return "{} = {}".format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        return "enum {} {{ {} }};".format(node.name, self.comma_list(node.members))
+        return "enum {} {{ {} }};".format(
+            node.name, self.comma_list(node.members)
+        )
 
     def visit_Struct(self, node):
-        return "struct {} {{ {} }};".format(node.name, self.stmt_list(node.members))
+        return "struct {} {{ {} }};".format(
+            node.name, self.stmt_list(node.members)
+        )
 
     # XXX - Add Declaration nodes, similar to gen_decl
 

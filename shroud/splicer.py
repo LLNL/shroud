@@ -95,7 +95,9 @@ def get_splicers(fname, out):
                             "Mismatched tags  '%s' '%s'", (begin_tag, end_tag)
                         )
                     if end_tag in top:
-                        raise RuntimeError("Tag already exists - '%s'" % begin_tag)
+                        raise RuntimeError(
+                            "Tag already exists - '%s'" % begin_tag
+                        )
                     top[begin_subtag] = save
                     top = out
                     stack = [top]
@@ -109,7 +111,16 @@ def get_splicer_based_on_suffix(name, out):
     if fileExtension in [".f", ".f90"]:
         d = out.setdefault("f", {})
         get_splicers(name, d)
-    elif fileExtension in [".c", ".h", ".cpp", ".hpp", ".cxx", ".hxx", ".cc", ".C"]:
+    elif fileExtension in [
+        ".c",
+        ".h",
+        ".cpp",
+        ".hpp",
+        ".cxx",
+        ".hxx",
+        ".cc",
+        ".C",
+    ]:
         d = out.setdefault("c", {})
         get_splicers(name, d)
     elif fileExtension in [".py"]:

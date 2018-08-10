@@ -91,7 +91,9 @@ class Tester:
     def open_log(self, logname):
         filename = os.path.join(self.test_output_dir, logname)
         print("Log file: {}".format(filename))
-        logging.basicConfig(filename=filename, filemode="w", level=logging.DEBUG)
+        logging.basicConfig(
+            filename=filename, filemode="w", level=logging.DEBUG
+        )
 
     def close_log(self):
         logging.shutdown()

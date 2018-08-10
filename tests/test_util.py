@@ -51,7 +51,9 @@ class UtilCase(unittest.TestCase):
     def test_un_camel(self):
         self.assertEqual(util.un_camel("incrementCount"), "increment_count")
         self.assertEqual(util.un_camel("local_function1"), "local_function1")
-        self.assertEqual(util.un_camel("getHTTPResponseCode"), "get_http_response_code")
+        self.assertEqual(
+            util.un_camel("getHTTPResponseCode"), "get_http_response_code"
+        )
 
 
 class ScopeCase(unittest.TestCase):

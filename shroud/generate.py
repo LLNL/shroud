@@ -256,7 +256,9 @@ class VerifyAttrs(object):
         value = attrs.get("value", None)
         if value is None:
             if is_ptr:
-                if (arg_typemap.f_c_type or arg_typemap.f_type) == "type(C_PTR)":
+                if (
+                    arg_typemap.f_c_type or arg_typemap.f_type
+                ) == "type(C_PTR)":
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
                     attrs["value"] = True
@@ -275,7 +277,8 @@ class VerifyAttrs(object):
                 )
             if not is_ptr:
                 raise RuntimeError(
-                    "dimension attribute can only be " "used on pointer and references"
+                    "dimension attribute can only be "
+                    "used on pointer and references"
                 )
             if dimension is True:
                 # No value was provided, provide default
@@ -300,13 +303,17 @@ class VerifyAttrs(object):
         # XXX make sure they don't conflict with other names
         capsule_name = attrs.get("capsule", False)
         if capsule_name is True:
-            attrs["capsule"] = options.C_var_capsule_template.format(c_var=argname)
+            attrs["capsule"] = options.C_var_capsule_template.format(
+                c_var=argname
+            )
         len_name = attrs.get("len", False)
         if len_name is True:
             attrs["len"] = options.C_var_len_template.format(c_var=argname)
         len_name = attrs.get("len_trim", False)
         if len_name is True:
-            attrs["len_trim"] = options.C_var_trim_template.format(c_var=argname)
+            attrs["len_trim"] = options.C_var_trim_template.format(
+                c_var=argname
+            )
         size_name = attrs.get("size", False)
         if size_name is True:
             attrs["size"] = options.C_var_size_template.format(c_var=argname)
@@ -474,7 +481,9 @@ class GenFunctions(object):
         set_val = "{} = {};".format(field, val)
 
         attrs = dict(
-            val=dict(intent="in", value=True)  # XXX - what about pointer variables?
+            val=dict(
+                intent="in", value=True
+            )  # XXX - what about pointer variables?
         )
 
         format = dict(C_code="{C_pre_call}\n" + set_val + "\nreturn;")
@@ -512,7 +521,9 @@ class GenFunctions(object):
                     # Update name of class.
                     #  cxx_class - vector_0 or vector_int     (Fortran and C names)
                     #  cxx_type  - vector<int>
-                    cxx_class = "{}_{}".format(newcls.fmtdict.cxx_class, class_suffix)
+                    cxx_class = "{}_{}".format(
+                        newcls.fmtdict.cxx_class, class_suffix
+                    )
                     cxx_type = "{}{}".format(
                         newcls.fmtdict.cxx_class, targs.instantiation
                     )
@@ -617,7 +628,9 @@ class GenFunctions(object):
                 # Stuff like push_back which is in a templated class, is not an overload
                 # class_prefix is used to distigunish the functions, not function_suffix.
                 continue
-            overloaded_functions.setdefault(function.ast.name, []).append(function)
+            overloaded_functions.setdefault(function.ast.name, []).append(
+                function
+            )
 
         # look for function overload and compute function_suffix
         for overloads in overloaded_functions.values():
@@ -1073,7 +1086,9 @@ class GenFunctions(object):
                     # do not override user specified variable name
                     continue
                 if buf_arg == "size":
-                    attrs["size"] = options.C_var_size_template.format(c_var=arg.name)
+                    attrs["size"] = options.C_var_size_template.format(
+                        c_var=arg.name
+                    )
                 elif buf_arg == "capsule":
                     attrs["capsule"] = options.C_var_capsule_template.format(
                         c_var=arg.name
@@ -1087,7 +1102,9 @@ class GenFunctions(object):
                         c_var=arg.name
                     )
                 elif buf_arg == "len":
-                    attrs["len"] = options.C_var_len_template.format(c_var=arg.name)
+                    attrs["len"] = options.C_var_len_template.format(
+                        c_var=arg.name
+                    )
 
                 # base typemap
 
@@ -1103,12 +1120,16 @@ class GenFunctions(object):
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
-                attrs["len"] = options.C_var_len_template.format(c_var=result_name)
+                attrs["len"] = options.C_var_len_template.format(
+                    c_var=result_name
+                )
                 # Special case for wrapf.py
                 f_attrs["deref"] = "result_as_arg"
             elif result_typemap.cxx_type == "std::string":
                 result_as_string = ast.result_as_voidstar(
-                    typemap.lookup_type("stringout"), result_name, const=ast.const
+                    typemap.lookup_type("stringout"),
+                    result_name,
+                    const=ast.const,
                 )
                 attrs = result_as_string.attrs
                 attrs["context"] = options.C_var_context_template.format(
@@ -1127,7 +1148,9 @@ class GenFunctions(object):
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
-                attrs["len"] = options.C_var_len_template.format(c_var=result_name)
+                attrs["len"] = options.C_var_len_template.format(
+                    c_var=result_name
+                )
             attrs["intent"] = "out"
             attrs["_is_result"] = True
             attrs["_generated_suffix"] = "_buf"
@@ -1501,7 +1524,9 @@ class CheckImplied(todict.PrintNode):
         elif node.name == "size":
             # size(arg)
             if len(node.args) != 1:
-                raise RuntimeError("Too many arguments to 'size': ".format(self.expr))
+                raise RuntimeError(
+                    "Too many arguments to 'size': ".format(self.expr)
+                )
             argname = node.args[0].name
             arg = self.func.ast.find_arg_by_name(argname)
             if arg is None:

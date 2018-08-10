@@ -243,7 +243,8 @@ class WrapperMixin(object):
         show_splicer_comments = self.newlibrary.options.show_splicer_comments
         if show_splicer_comments:
             out.append(
-                "%s splicer begin %s%s" % (self.comment, self.splicer_path, name)
+                "%s splicer begin %s%s"
+                % (self.comment, self.splicer_path, name)
             )
         code = self.splicer_stack[-1].get(name, default)
         if code:
@@ -252,7 +253,9 @@ class WrapperMixin(object):
         else:
             added_code = False
         if show_splicer_comments:
-            out.append("%s splicer end %s%s" % (self.comment, self.splicer_path, name))
+            out.append(
+                "%s splicer end %s%s" % (self.comment, self.splicer_path, name)
+            )
         return added_code
 
     #####
@@ -485,7 +488,9 @@ class WrapperMixin(object):
         if cls:
             output.append(
                 self.doxygen_cont
-                + " \\brief Shroud generated wrapper for {} class".format(node.name)
+                + " \\brief Shroud generated wrapper for {} class".format(
+                    node.name
+                )
             )
         else:
             output.append(
@@ -540,7 +545,8 @@ class Scope(object):
             return getattr(self.__parent, name)
         else:
             raise AttributeError(
-                "%r object has no attribute %r" % (self.__class__.__name__, name)
+                "%r object has no attribute %r"
+                % (self.__class__.__name__, name)
             )
 
     def __getitem__(self, key):

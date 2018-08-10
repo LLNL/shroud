@@ -63,7 +63,10 @@ class Typemap(object):
         ("cxx_type", None),  # Name of type in C++
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
-        ("cxx_header", None),  # Name of C++ header file required for implementation
+        (
+            "cxx_header",
+            None,
+        ),  # Name of C++ header file required for implementation
         # For example, if cxx_to_c was a function
         ("c_type", None),  # Name of type in C
         ("c_header", None),  # Name of C header file required for type
@@ -72,8 +75,14 @@ class Typemap(object):
         ("c_statements", {}),
         ("c_templates", {}),  # c_statements for cxx_T
         ("c_return_code", None),
-        ("c_union", None),  # Union of C++ and C type (used with structs and complex)
-        ("f_c_module", None),  # Fortran modules needed for interface  (dictionary)
+        (
+            "c_union",
+            None,
+        ),  # Union of C++ and C type (used with structs and complex)
+        (
+            "f_c_module",
+            None,
+        ),  # Fortran modules needed for interface  (dictionary)
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_c_type", None),  # Type for C interface    -- int
@@ -101,7 +110,10 @@ class Typemap(object):
         # ex. PyBool_FromLong({rv})
         ("PY_get", None),  # expression to create type from PyObject.
         ("PY_to_object", None),  # PyBuild - object'=converter(address)
-        ("PY_from_object", None),  # PyArg_Parse - status=converter(object, address);
+        (
+            "PY_from_object",
+            None,
+        ),  # PyArg_Parse - status=converter(object, address);
         ("PY_build_arg", None),  # argument for Py_BuildValue
         ("PY_build_format", None),  # 'format unit' for Py_BuildValue
         ("PYN_typenum", None),  # NumPy typenum enumeration
@@ -582,7 +594,8 @@ def initialize():
             f_module=dict(iso_c_binding=["C_BOOL"]),
             f_statements=dict(
                 intent_in=dict(
-                    c_local_var=True, pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"]
+                    c_local_var=True,
+                    pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
                 ),
                 intent_out=dict(
                     c_local_var=True,
@@ -608,7 +621,9 @@ def initialize():
                     post_call=["{py_var} = PyBool_FromLong({c_deref}{c_var});"],
                 ),
                 intent_out=dict(
-                    post_call=["{PyObject} * {py_var} = PyBool_FromLong({c_var});"]
+                    post_call=[
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ]
                 ),
             ),
             # XXX PY_format='p',  # Python 3.3 or greater
@@ -772,7 +787,10 @@ def initialize():
                     buf_args=["arg", "len_trim"],
                     cxx_local_var="scalar",
                     pre_call=[
-                        ("{c_const}std::string " "{cxx_var}({c_var}, {c_var_trim});")
+                        (
+                            "{c_const}std::string "
+                            "{cxx_var}({c_var}, {c_var_trim});"
+                        )
                     ],
                 ),
                 intent_out_buf=dict(
@@ -1222,7 +1240,9 @@ def create_enum_typemap(node):
     if ntypemap is None:
         inttypemap = lookup_type("int")
         ntypemap = inttypemap.clone_as(type_name)
-        ntypemap.cxx_type = util.wformat("{namespace_scope}{enum_name}", fmt_enum)
+        ntypemap.cxx_type = util.wformat(
+            "{namespace_scope}{enum_name}", fmt_enum
+        )
         ntypemap.c_to_cxx = util.wformat(
             "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
         )
@@ -1248,9 +1268,13 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
     ntypemap = Typemap(cxx_name, base="shadow", cxx_type=cxx_name)
     ntypemap.update(fields)
     if ntypemap.f_module_name is None:
-        raise RuntimeError("typemap {} requires field f_module_name".format(cxx_name))
+        raise RuntimeError(
+            "typemap {} requires field f_module_name".format(cxx_name)
+        )
     ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+    ntypemap.f_c_module = {
+        ntypemap.f_module_name: [ntypemap.f_capsule_data_type]
+    }
     fill_shadow_typemap_defaults(ntypemap, fmt_class)
     register_type(cxx_name, ntypemap)
     library.add_shadow_typemap(ntypemap)
@@ -1451,7 +1475,8 @@ def fill_struct_typemap_defaults(ntypemap):
     # C++ pointer -> void pointer -> C pointer
     ntypemap.cxx_to_c = (
         "static_cast<{c_const}%s *>("
-        "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))" % ntypemap.c_type
+        "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
+        % ntypemap.c_type
     )
 
     # C pointer -> void pointer -> C++ pointer

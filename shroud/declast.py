@@ -128,7 +128,9 @@ def tokenize(s):
         pos = mo.end()
         mo = get_token(s, pos)
     if pos != len(s):
-        raise RuntimeError("Unexpected character %r on line %d" % (s[pos], line))
+        raise RuntimeError(
+            "Unexpected character %r on line %d" % (s[pos], line)
+        )
 
 
 # indent = 0
@@ -388,7 +390,9 @@ class Parser(ExprParser):
             ns = namespace.qualified_lookup(name)
             if not ns:
                 self.error_msg(
-                    "Symbol '{}' is not in namespace '{}'".format(name, nested[-1])
+                    "Symbol '{}' is not in namespace '{}'".format(
+                        name, nested[-1]
+                    )
                 )
             nested.append(name)
             namespace = ns
@@ -478,7 +482,9 @@ class Parser(ExprParser):
             # XXX - standardize types like 'unsigned' as 'unsigned_int'
             node.typemap = get_canonical_typemap(node.specifier)
             if node.typemap is None:
-                self.error_msg("Unknown typemap '{}".format("_".join(node.specifier)))
+                self.error_msg(
+                    "Unknown typemap '{}".format("_".join(node.specifier))
+                )
         self.exit("declaration_specifier")
         return
 

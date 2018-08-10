@@ -116,7 +116,8 @@ class CheckParse(unittest.TestCase):
             r.gen_arg_as_fortran(attributes=["pointer"]),
         )
         self.assertEqual(
-            "integer(C_INT), pointer :: var1(:)", r.gen_arg_as_fortran(is_pointer=True)
+            "integer(C_INT), pointer :: var1(:)",
+            r.gen_arg_as_fortran(is_pointer=True),
         )
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
@@ -226,7 +227,9 @@ class CheckParse(unittest.TestCase):
             {
                 "declarator": {"name": "var1", "pointer": []},
                 "specifier": ["std::vector"],
-                "template_arguments": [{"specifier": ["int"], "typemap_name": "int"}],
+                "template_arguments": [
+                    {"specifier": ["int"], "typemap_name": "int"}
+                ],
                 "typemap_name": "std::vector",
             },
         )
@@ -255,7 +258,10 @@ class CheckParse(unittest.TestCase):
                 "declarator": {"name": "var1", "pointer": []},
                 "specifier": ["std::vector"],
                 "template_arguments": [
-                    {"specifier": ["std::string"], "typemap_name": "std::string"}
+                    {
+                        "specifier": ["std::string"],
+                        "typemap_name": "std::string",
+                    }
                 ],
                 "typemap_name": "std::vector",
             },
@@ -290,7 +296,9 @@ class CheckParse(unittest.TestCase):
 
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("std::int var1")
-        self.assertTrue("Expected ID, found TYPE_SPECIFIER" in str(context.exception))
+        self.assertTrue(
+            "Expected ID, found TYPE_SPECIFIER" in str(context.exception)
+        )
 
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("std::none var1")
@@ -566,12 +574,16 @@ class CheckParse(unittest.TestCase):
         """Test attributes.
         """
         r = declast.check_decl(
-            "const void foo(" "int arg1+in, double arg2+out)" "+len=30 +attr2(True)"
+            "const void foo("
+            "int arg1+in, double arg2+out)"
+            "+len=30 +attr2(True)"
         )
 
         s = r.gen_decl()
         self.assertEqual(
-            "const void foo(" "int arg1 +in, double arg2 +out)" " +attr2(True)+len(30)",
+            "const void foo("
+            "int arg1 +in, double arg2 +out)"
+            " +attr2(True)+len(30)",
             s,
         )
 
@@ -784,7 +796,9 @@ class CheckParse(unittest.TestCase):
         )
 
         s = r.gen_decl()
-        self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
+        self.assertEqual(
+            "void decl12(std::vector<std::string> arg1, string arg2)", s
+        )
 
         self.assertEqual(
             todict.to_dict(r),
@@ -849,7 +863,10 @@ class CheckParse(unittest.TestCase):
 
         self.assertEqual(
             todict.to_dict(r),
-            {"decl": {"name": "map"}, "parameters": [{"name": "Key"}, {"name": "T"}]},
+            {
+                "decl": {"name": "map"},
+                "parameters": [{"name": "Key"}, {"name": "T"}],
+            },
         )
 
     def test_as_arg(self):
@@ -928,14 +945,20 @@ class CheckExpr(unittest.TestCase):
     def test_identifier_with_args(self):
         r = declast.check_expr("id(arg1)")
         self.assertEqual("id(arg1)", todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {"name": "id", "args": [{"name": "arg1"}]})
+        self.assertEqual(
+            todict.to_dict(r), {"name": "id", "args": [{"name": "arg1"}]}
+        )
 
     def test_constant(self):
         r = declast.check_expr("1 + 2.345")
         self.assertEqual("1+2.345", todict.print_node(r))
         self.assertEqual(
             todict.to_dict(r),
-            {"left": {"constant": "1"}, "op": "+", "right": {"constant": "2.345"}},
+            {
+                "left": {"constant": "1"},
+                "op": "+",
+                "right": {"constant": "2.345"},
+            },
         )
 
     def test_binary(self):
@@ -946,7 +969,11 @@ class CheckExpr(unittest.TestCase):
             {
                 "left": {"name": "a"},
                 "op": "+",
-                "right": {"left": {"name": "b"}, "op": "*", "right": {"name": "c"}},
+                "right": {
+                    "left": {"name": "b"},
+                    "op": "*",
+                    "right": {"name": "c"},
+                },
             },
         )
 
@@ -956,7 +983,11 @@ class CheckExpr(unittest.TestCase):
             todict.to_dict(r),
             {
                 "left": {
-                    "node": {"left": {"name": "a"}, "op": "+", "right": {"name": "b"}}
+                    "node": {
+                        "left": {"name": "a"},
+                        "op": "+",
+                        "right": {"name": "b"},
+                    }
                 },
                 "op": "*",
                 "right": {"name": "c"},
@@ -1015,12 +1046,15 @@ class CheckTypedef(unittest.TestCase):
         library = ast.LibraryNode()
         with self.assertRaises(NotImplementedError) as context:
             library.add_declaration("typedef int * TD2;")
-        self.assertTrue("Pointers not supported in typedef" in str(context.exception))
+        self.assertTrue(
+            "Pointers not supported in typedef" in str(context.exception)
+        )
 
         with self.assertRaises(NotImplementedError) as context:
             library.add_declaration("typedef int(*func)();")
         self.assertTrue(
-            "Function pointers not supported in typedef" in str(context.exception)
+            "Function pointers not supported in typedef"
+            in str(context.exception)
         )
 
 
@@ -1030,7 +1064,9 @@ class CheckEnum(unittest.TestCase):
 
     def test_enum1(self):
         r = declast.check_decl("enum Color{RED=1,BLUE,WHITE}")
-        self.assertEqual("enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r))
+        self.assertEqual(
+            "enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r)
+        )
         self.assertEqual(
             todict.to_dict(r),
             {
@@ -1046,13 +1082,17 @@ class CheckEnum(unittest.TestCase):
     def test_enum2(self):
         # enum trailing comma
         r = declast.check_decl("enum Color{RED=1,BLUE,WHITE,}")
-        self.assertEqual("enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r))
+        self.assertEqual(
+            "enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r)
+        )
 
 
 class CheckStruct(unittest.TestCase):
     def test_struct1(self):
         r = declast.check_decl("struct struct1 { int i; double d; };")
-        self.assertEqual("struct struct1 { int i;double d; };", todict.print_node(r))
+        self.assertEqual(
+            "struct struct1 { int i;double d; };", todict.print_node(r)
+        )
         self.assertEqual(
             todict.to_dict(r),
             {

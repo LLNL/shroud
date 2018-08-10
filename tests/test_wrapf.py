@@ -82,7 +82,9 @@ class CheckAllocatable(unittest.TestCase):
             wrapf.attr_allocatable(
                 "mold=flag", self.func1, self.func1.ast.params[2], pre_call
             )
-        self.assertTrue("must have dimension attribute" in str(context.exception))
+        self.assertTrue(
+            "must have dimension attribute" in str(context.exception)
+        )
 
     def test_allocatable1d(self):
         self.library.options.F_standard = 2003
@@ -90,7 +92,9 @@ class CheckAllocatable(unittest.TestCase):
         wrapf.attr_allocatable(
             "mold=in1", self.func1, self.func1.ast.params[2], pre_call
         )
-        self.assertEqual("allocate(out(lbound(in1,1):ubound(in1,1)))", pre_call[0])
+        self.assertEqual(
+            "allocate(out(lbound(in1,1):ubound(in1,1)))", pre_call[0]
+        )
 
         self.library.options.F_standard = 2008
         pre_call = []
@@ -106,7 +110,8 @@ class CheckAllocatable(unittest.TestCase):
             "mold=in2", self.func1, self.func1.ast.params[2], pre_call
         )
         self.assertEqual(
-            "allocate(out(lbound(in2,1):ubound(in2,1)," "lbound(in2,2):ubound(in2,2)))",
+            "allocate(out(lbound(in2,1):ubound(in2,1),"
+            "lbound(in2,2):ubound(in2,2)))",
             pre_call[0],
         )
 

@@ -98,14 +98,16 @@ sqa :
 	pylint shroud/*.py > pylint.out
 
 
+# NOTE: black and flake8 set line length to 80
 # Format code using black
 # black requires Python3.6+
 install-black :
 	$(python.dir)/pip install black
+black.opt = --line-length=80
 black :
-	LC_ALL=en_US.utf8 $(python.dir)/black shroud/*.py
-#	LC_ALL=en_US.utf8 $(python.dir)/black regression/do-test.py
-#	LC_ALL=en_US.utf8 $(python.dir)/black tests/*.py
+	LC_ALL=en_US.utf8 $(python.dir)/black $(black.opt) shroud/*.py
+	LC_ALL=en_US.utf8 $(python.dir)/black $(black.opt) regression/do-test.py
+	LC_ALL=en_US.utf8 $(python.dir)/black $(black.opt) tests/*.py
 
 flake8 :
 	flake8 shroud/*.py

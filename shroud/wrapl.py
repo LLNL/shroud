@@ -143,7 +143,9 @@ class Wrapl(util.WrapperMixin):
             fmt_class,
         )
         self._create_splicer("C_object", self.lua_type_structs)
-        append_format(self.lua_type_structs, "-}} {LUA_userdata_type};", fmt_class)
+        append_format(
+            self.lua_type_structs, "-}} {LUA_userdata_type};", fmt_class
+        )
 
         self.luaL_Reg_class = []
 
@@ -263,7 +265,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 arg_typemap = arg.typemap
                 if arg.init is not None:
                     all_calls.append(
-                        LuaFunction(function, CXX_subprogram, in_args[:], out_args)
+                        LuaFunction(
+                            function, CXX_subprogram, in_args[:], out_args
+                        )
                     )
                 in_args.append(arg)
             # no defaults, use all arguments
@@ -288,7 +292,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         else:
             lines.append("int SH_nresult = 0;")
             fmt.LUA_used_param_state = True
-            append_format(lines, "int SH_nargs = lua_gettop({LUA_state_var});", fmt)
+            append_format(
+                lines, "int SH_nargs = lua_gettop({LUA_state_var});", fmt
+            )
 
             # Find type of each argument
             itype_vars = []
@@ -330,19 +336,25 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     elif nargs == 1:
                         lines.append("{} ({}) {{+".format(ifelse, checks[0]))
                         self.do_function(cls, call, fmt)
-                        append_format(lines, "SH_nresult = {nresults};\n" "-}}", fmt)
+                        append_format(
+                            lines, "SH_nresult = {nresults};\n" "-}}", fmt
+                        )
                     elif nargs == 2:
                         lines.append("{} ({} &&+".format(ifelse, checks[0]))
                         lines.append("{}) {{".format(checks[1]))
                         self.do_function(cls, call, fmt)
-                        append_format(lines, "SH_nresult = {nresults};\n" "-}}", fmt)
+                        append_format(
+                            lines, "SH_nresult = {nresults};\n" "-}}", fmt
+                        )
                     else:
                         lines.append("{} ({} &&+".format(ifelse, checks[0]))
                         for check in checks[1:-1]:
                             lines.append("{} &&".format(check))
                         lines.append("{}) {{".format(checks[-1]))
                         self.do_function(cls, call, fmt)
-                        append_format(lines, "SH_nresult = {nresults};\n" "-}}", fmt)
+                        append_format(
+                            lines, "SH_nresult = {nresults};\n" "-}}", fmt
+                        )
                     ifelse = "else if"
                 if nargs > 0:
                     # Trap errors when the argument types do not match
@@ -376,7 +388,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     self.write_doxygen(body, node.doxygen)
         if fmt.LUA_used_param_state:
             append_format(
-                body, "static int {LUA_name_impl}" "(lua_State *{LUA_state_var})", fmt
+                body,
+                "static int {LUA_name_impl}" "(lua_State *{LUA_state_var})",
+                fmt,
             )
         else:
             append_format(body, "static int {LUA_name_impl}(lua_State *)", fmt)
@@ -394,7 +408,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 )
             else:
                 append_format(
-                    self.luaL_Reg_class, '{{"{LUA_name}", {LUA_name_impl}}},', fmt
+                    self.luaL_Reg_class,
+                    '{{"{LUA_name}", {LUA_name_impl}}},',
+                    fmt,
                 )
 
         else:
@@ -471,7 +487,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 fmt_result.c_var = fmt_result.cxx_var
 
-            fmt.rv_decl = ast.gen_arg_as_cxx(name=fmt_result.cxx_var, params=None)
+            fmt.rv_decl = ast.gen_arg_as_cxx(
+                name=fmt_result.cxx_var, params=None
+            )
             fmt.rv_asgn = fmt.rv_decl + " =\t "
 
         LUA_decl = []  # declare variables and pop values
@@ -571,10 +589,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 decl_suffix = ";"
             if arg_typemap.base == "string":
-                LUA_decl.append(arg.gen_arg_as_c(continuation=True) + decl_suffix)
+                LUA_decl.append(
+                    arg.gen_arg_as_c(continuation=True) + decl_suffix
+                )
             else:
                 LUA_decl.append(
-                    arg.gen_arg_as_cxx(as_ptr=True, continuation=True) + decl_suffix
+                    arg.gen_arg_as_cxx(as_ptr=True, continuation=True)
+                    + decl_suffix
                 )
 
             cxx_call_list.append(fmt_arg.cxx_var)
@@ -608,7 +629,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             )
         elif CXX_subprogram == "subroutine":
             append_format(
-                LUA_code, "{LUA_this_call}{function_name}({cxx_call_list});", fmt
+                LUA_code,
+                "{LUA_this_call}{function_name}({cxx_call_list});",
+                fmt,
             )
         else:
             append_format(
@@ -675,7 +698,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         """
         output.append("")
         self._create_splicer("additional_functions", output)
-        output.extend(["", "static const struct luaL_Reg {} [] = {{".format(name), 1])
+        output.extend(
+            ["", "static const struct luaL_Reg {} [] = {{".format(name), 1]
+        )
         output.extend(lines)
         self._create_splicer("register", output)
         output.extend(["{NULL, NULL}   /*sentinel */", -1, "};"])

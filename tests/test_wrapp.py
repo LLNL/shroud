@@ -67,7 +67,8 @@ class CheckImplied(unittest.TestCase):
 
     def test_implied1(self):
         self.assertEqual(
-            "PyArray_SIZE(SHPy_array)", wrapp.py_implied("size(array)", self.func1)
+            "PyArray_SIZE(SHPy_array)",
+            wrapp.py_implied("size(array)", self.func1),
         )
         self.assertEqual(
             "PyArray_SIZE(SHPy_array)+2",
