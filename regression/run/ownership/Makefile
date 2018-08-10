@@ -65,7 +65,7 @@ OBJS = \
     main.o
 
 ownership : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
@@ -76,4 +76,4 @@ main.o : wrapfownership.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o ownership.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)

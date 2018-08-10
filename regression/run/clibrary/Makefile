@@ -60,7 +60,7 @@ OBJS = \
     main.o
 
 clibrary : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod clibrary

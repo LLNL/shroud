@@ -61,7 +61,7 @@ OBJS = \
     main.o
 
 forward : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod forward
@@ -72,4 +72,4 @@ main.o : wrapfforward.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapClass2.o forward.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)

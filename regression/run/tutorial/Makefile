@@ -62,7 +62,7 @@ OBJS = \
     main.o
 
 tutorial : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod tutorial
@@ -75,8 +75,8 @@ main.o : wrapftutorial.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapTutorial.h wrapClass1.h tutorial.hpp
 testc : testc.o wrapTutorial.o wrapClass1.o wrapSingleton.o tutorial.o
-	$(CC) $(CFLAGS) $(LIBS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

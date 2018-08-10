@@ -60,7 +60,7 @@ OBJS = \
     main.o
 
 strings : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod strings

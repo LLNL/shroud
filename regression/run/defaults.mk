@@ -51,12 +51,13 @@ ifeq ($(compiler),gcc)
 CC = gcc
 # -Wextra
 CFLAGS = -g -Wall
+CLIBS = -lstdc++
 CXX = g++
 CXXFLAGS = -g -Wall -std=c++11
 FC = gfortran
 FFLAGS = -g -Wall -ffree-form -fbounds-check
 #FFLAGS += -std=f2003
-LIBS = -lstdc++
+FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
@@ -64,11 +65,12 @@ endif
 ifeq ($(compiler),intel)
 CC = icc
 CFLAGS = -g
+CLIBS = -lstdc++
 CXX = icpc
-CXXFLAGS = -g 
+CXXFLAGS = -g -std=c++11
 FC = ifort
 FFLAGS = -g -free -check all
-LIBS = -lstdc++
+FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
@@ -76,11 +78,12 @@ endif
 ifeq ($(compiler),pgi)
 CC = pgcc
 CFLAGS = -g
+CLIBS = -lstdc++
 CXX = pgc++
-CXXFLAGS = -g 
+CXXFLAGS = -g -std=c++11
 FC = pgf90
 FFLAGS = -g -Mfree -Mstandard
-LIBS = -lstdc++
+FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
@@ -89,7 +92,7 @@ ifeq ($(compiler),ibm)
 CC = xlc
 CFLAGS = -g
 CXX = xlc
-CXXFLAGS = -g 
+CXXFLAGS = -g -std=c++0x 
 FC = xlf2003
 FFLAGS = -g -qfree=f90
 #LIBS = -lstdc++ -L/opt/ibmcmp/lib64/bg -libmc++
@@ -97,6 +100,24 @@ LIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
+
+# BG/Q with clang and xlf
+ifeq ($(compiler),bgq)
+CC = /collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/r284961-stable/llnl/bin/mpiclang
+CFLAGS = -g
+CXX = /collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/r284961-stable/llnl/bin/mpiclang++
+CXXFLAGS = -g -std=c++0x 
+FC = /opt/ibmcmp/xlf/bg/14.1/bin/bgxlf2003
+FFLAGS = -g -qfree=f90
+FLIBS = \
+  -L/usr/apps/gnu/bgclang/r284961-stable/libc++/lib \
+  -L/collab/usr/gapps/opnsrc/gnu/dev/lnx-2.12-ppc/bgclang/toolchain-4.7.2-fixup/lib \
+  -L/usr/local/tools/toolchain-4.7.2/V1R2M2_4.7.2-efix014/gnu-linux-4.7.2-efix014/powerpc64-bgq-linux/lib \
+  -lc++ -lstdc++
+SHARED = -fPIC
+LD_SHARED = -shared
+endif
+
 
 # 2.7
 ifdef PYTHON
