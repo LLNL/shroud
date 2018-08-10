@@ -112,6 +112,13 @@ black :
 flake8 :
 	flake8 shroud/*.py
 
+# Sort import statements
+install-isort :
+	$(python.dir)/pip install isort
+isort:
+	isort shroud/*.py
+
+
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :

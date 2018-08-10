@@ -43,9 +43,9 @@ Convert some data structures into a dictionary.
 Useful for debugging and seralizing instances as json.
 """
 
-from . import visitor
-
 import json
+
+from . import visitor
 
 
 class ToDict(visitor.Visitor):
