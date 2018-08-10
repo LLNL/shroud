@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
-# Produced at the Lawrence Livermore National Laboratory 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+# Produced at the Lawrence Livermore National Laboratory
 #
 # LLNL-CODE-738041.
-# All rights reserved. 
+# All rights reserved.
 #
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -14,7 +14,7 @@
 #
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
@@ -65,36 +65,33 @@ import os
 import subprocess
 import sys
 
-#from io import StringIO
+# from io import StringIO
 from io import BytesIO as StringIO
 
 import shroud.main
 
-#subprocess.call("ls -l", shell=True)
+# subprocess.call("ls -l", shell=True)
 
-#proc = subprocess.Popen(['tail', '-500', 'mylogfile.log'], stdout=subprocess.PIPE)
-#for line in proc.stdout.readlines():
+# proc = subprocess.Popen(['tail', '-500', 'mylogfile.log'], stdout=subprocess.PIPE)
+# for line in proc.stdout.readlines():
 #    print line.rstrip()
 
 
 class Tester:
     def __init__(self):
-        self.test_input_dir = ''
-        self.test_output_dir = ''
+        self.test_input_dir = ""
+        self.test_output_dir = ""
 
-        self.code_path = ''
+        self.code_path = ""
 
-        self.testyaml = ''   # input file
-        self.ref_dir = ''    # reference directory
-        self.result_dir = ''
+        self.testyaml = ""  # input file
+        self.ref_dir = ""  # reference directory
+        self.result_dir = ""
 
     def open_log(self, logname):
-        filename=os.path.join(self.test_output_dir, logname)
+        filename = os.path.join(self.test_output_dir, logname)
         print("Log file: {}".format(filename))
-        logging.basicConfig(filename=filename,
-                            filemode='w',
-                            level=logging.DEBUG,
-                        )
+        logging.basicConfig(filename=filename, filemode="w", level=logging.DEBUG)
 
     def close_log(self):
         logging.shutdown()
@@ -108,12 +105,12 @@ class Tester:
         status = True
         if not os.path.isdir(input):
             status = False
-            print('Missing source directory:', input)
+            print("Missing source directory:", input)
         if executable:
             if not os.path.isdir(executable):
                 status = False
-                print('Missing executable directory:', executable)
-            self.code_path = os.path.join(executable, 'shroud')
+                print("Missing executable directory:", executable)
+            self.code_path = os.path.join(executable, "shroud")
         makedirs(output)
         return status
 
@@ -121,24 +118,24 @@ class Tester:
         """Setup for a single test.     
         """
         self.testname = name
-        logging.info('--------------------------------------------------')
-        logging.info('Testing ' + name)
+        logging.info("--------------------------------------------------")
+        logging.info("Testing " + name)
 
-        self.testyaml = os.path.join(self.test_input_dir, name + '.yaml')
-        logging.info('Input file: ' + self.testyaml)
+        self.testyaml = os.path.join(self.test_input_dir, name + ".yaml")
+        logging.info("Input file: " + self.testyaml)
         if not os.path.isfile(self.testyaml):
-            logging.error('Input file does not exist')
+            logging.error("Input file does not exist")
             return False
 
-        self.ref_dir = os.path.join(self.test_input_dir, 'reference', name)
-        logging.info('Reference directory: ' + self.ref_dir)
+        self.ref_dir = os.path.join(self.test_input_dir, "reference", name)
+        logging.info("Reference directory: " + self.ref_dir)
 
         if replace_ref:
             # replacing reference, just create directly in ref directory
             self.result_dir = self.ref_dir
         else:
             self.result_dir = os.path.join(self.test_output_dir, name)
-            logging.info('Result directory: ' + self.result_dir)
+            logging.info("Result directory: " + self.result_dir)
             makedirs(self.result_dir)
             clear_files(self.result_dir)
 
@@ -167,29 +164,29 @@ class Tester:
         """Run Shroud via a method."""
         args = argparse.Namespace(
             outdir=self.result_dir,
-            outdir_c_fortran='',
-            outdir_python='',
-            outdir_lua='',
+            outdir_c_fortran="",
+            outdir_python="",
+            outdir_lua="",
             logdir=self.result_dir,
-            cfiles='',
-            ffiles='',
+            cfiles="",
+            ffiles="",
             path=[self.test_input_dir],
-            filename=[self.testyaml]
+            filename=[self.testyaml],
         )
-        logging.info('Arguments: ' + str(args))
+        logging.info("Arguments: " + str(args))
 
         status = True
         self.push_stdout()
         try:
             shroud.main.main_with_args(args)
         except:
-            logging.error('Shroud failed')
+            logging.error("Shroud failed")
             status = False
         self.pop_stdout()
 
         # write output to a file
-        output_file = os.path.join(self.result_dir, 'output')
-        fp = open(output_file, 'w')
+        output_file = os.path.join(self.result_dir, "output")
+        fp = open(output_file, "w")
         fp.write(self.stdout_lines)
         fp.close()
 
@@ -202,34 +199,36 @@ class Tester:
         """ Run test, return True/False for pass/fail.
         Files must compare, with no extra or missing files.
         """
-        logging.info('Code to test: ' + self.code_path)
+        logging.info("Code to test: " + self.code_path)
 
         cmd = [
             self.code_path,
-            '--path', self.test_input_dir,
-            '--logdir', self.result_dir,
-            '--outdir', self.result_dir,
-            ]
+            "--path",
+            self.test_input_dir,
+            "--logdir",
+            self.result_dir,
+            "--outdir",
+            self.result_dir,
+        ]
 
         # test specific flags
-        if self.testname == 'none':
-            cmd += ['--yaml-types', 'def_types.yaml']
+        if self.testname == "none":
+            cmd += ["--yaml-types", "def_types.yaml"]
 
         cmd.append(self.testyaml)
-        logging.debug(' '.join(cmd))
+        logging.debug(" ".join(cmd))
 
         try:
             output = subprocess.check_output(
-                cmd,
-                stderr=subprocess.STDOUT,
-                universal_newlines=True)
+                cmd, stderr=subprocess.STDOUT, universal_newlines=True
+            )
         except subprocess.CalledProcessError as exc:
-            logging.error('Exit status: %d' % exc.returncode)
+            logging.error("Exit status: %d" % exc.returncode)
             logging.error(exc.output)
             return False
 
-        output_file = os.path.join(self.result_dir, 'output')
-        fp = open(output_file, 'w')
+        output_file = os.path.join(self.result_dir, "output")
+        fp = open(output_file, "w")
         fp.write(output)
         fp.close()
 
@@ -238,38 +237,43 @@ class Tester:
     def do_compare(self):
         status = True  # assume it passes
 
-        cmp = filecmp.dircmp(self.ref_dir, self.result_dir,
-                             # ignore directories with code for other wrappers
-                             ignore=['pybindgen', 'cython', 'swig'])
+        cmp = filecmp.dircmp(
+            self.ref_dir,
+            self.result_dir,
+            # ignore directories with code for other wrappers
+            ignore=["pybindgen", "cython", "swig"],
+        )
         if not os.path.exists(self.ref_dir):
-            logging.info('Reference directory does not exist: ' + self.ref_dir)
+            logging.info("Reference directory does not exist: " + self.ref_dir)
             return False
 
-        match, mismatch, errors = filecmp.cmpfiles(self.ref_dir, self.result_dir, cmp.common)
+        match, mismatch, errors = filecmp.cmpfiles(
+            self.ref_dir, self.result_dir, cmp.common
+        )
         for file in cmp.common:
-            logging.info('Compare: ' + file)
+            logging.info("Compare: " + file)
         if mismatch:
             status = False
             for file in mismatch:
-                logging.warn('Does not compare: '+ file)
+                logging.warn("Does not compare: " + file)
         if errors:
             status = False
             for file in errors:
-                logging.warn('Unable to compare: ' + file)
+                logging.warn("Unable to compare: " + file)
 
         if cmp.left_only:
             status = False
             for file in cmp.left_only:
-                logging.warn('Only in reference: ' + file)
+                logging.warn("Only in reference: " + file)
         if cmp.right_only:
             status = False
             for file in cmp.right_only:
-                logging.warn('Only in result: ' + file)
+                logging.warn("Only in result: " + file)
 
         if status:
-            logging.info('Test {} pass'.format(self.testname))
+            logging.info("Test {} pass".format(self.testname))
         else:
-            logging.info('Test {} fail'.format(self.testname))
+            logging.info("Test {} fail".format(self.testname))
         return status
 
 
@@ -296,18 +300,16 @@ def clear_files(path):
             if os.path.isfile(full_path):
                 os.unlink(full_path)
         except Exception as e:
-            logging.warning('Unable to remove file: ' + full_path)
+            logging.warning("Unable to remove file: " + full_path)
             logging.warning(e)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # XXX raise KeyError(key)
 
-    parser = argparse.ArgumentParser(prog='do-test')
-    parser.add_argument('-r', action='store_true',
-                        help='Replace test results')
-    parser.add_argument('testname', nargs='*',
-                        help='test to run')
+    parser = argparse.ArgumentParser(prog="do-test")
+    parser.add_argument("-r", action="store_true", help="Replace test results")
+    parser.add_argument("testname", nargs="*", help="test to run")
     args = parser.parse_args()
 
     replace_ref = args.r
@@ -317,20 +319,34 @@ if __name__ == '__main__':
     tester = Tester()
 
     status = tester.set_environment(
-        os.environ['TEST_INPUT_DIR'], 
-        os.environ['TEST_OUTPUT_DIR'],
-        os.environ['EXECUTABLE_DIR'])
+        os.environ["TEST_INPUT_DIR"],
+        os.environ["TEST_OUTPUT_DIR"],
+        os.environ["EXECUTABLE_DIR"],
+    )
     if not status:
-        raise SystemExit('Error in environment')
-    tester.open_log('test.log')
+        raise SystemExit("Error in environment")
+    tester.open_log("test.log")
 
     if args.testname:
         test_names = args.testname
     else:
-        test_names = [ 'none', 'tutorial', 'types', 'vectors', 'forward', 'example', 'include',
-                       'names', 'strings', 'clibrary', 'interface', 'templates', 'ownership' ]
+        test_names = [
+            "none",
+            "tutorial",
+            "types",
+            "vectors",
+            "forward",
+            "example",
+            "include",
+            "names",
+            "strings",
+            "clibrary",
+            "interface",
+            "templates",
+            "ownership",
+        ]
 
-    logging.info('Tests to run: {}'.format( ' '.join(test_names)))
+    logging.info("Tests to run: {}".format(" ".join(test_names)))
 
     pass_names = []
     fail_names = []
@@ -345,10 +361,10 @@ if __name__ == '__main__':
 
         if status:
             pass_names.append(name)
-            print('{} pass'.format(name))
+            print("{} pass".format(name))
         else:
             fail_names.append(name)
-            print('{} ***FAILED'.format(name))
+            print("{} ***FAILED".format(name))
 
     # summarize results
     if fail_names:

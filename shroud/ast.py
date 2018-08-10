@@ -50,40 +50,54 @@ from . import declast
 from . import todict
 from . import typemap
 
+
 class AstNode(object):
     is_class = False
+
     def option_to_fmt(self):
         """Set fmt based on options dictionary.
         """
         for name in [
-                'C_prefix', 'F_C_prefix',
-                'C_result', 'F_result', 'F_derived_member',
-                'PY_result', 'LUA_result',
-                'C_this', 'CXX_this', 'F_this',
-                'C_string_result_as_arg', 'F_string_result_as_arg',
-                'C_header_filename_suffix',
-                'C_impl_filename_suffix',
-                'F_filename_suffix',
-                'PY_prefix',
-                'PY_header_filename_suffix',
-                'PY_impl_filename_suffix',
-                'LUA_prefix',
-                'LUA_header_filename_suffix',
-                'LUA_impl_filename_suffix',
+            "C_prefix",
+            "F_C_prefix",
+            "C_result",
+            "F_result",
+            "F_derived_member",
+            "PY_result",
+            "LUA_result",
+            "C_this",
+            "CXX_this",
+            "F_this",
+            "C_string_result_as_arg",
+            "F_string_result_as_arg",
+            "C_header_filename_suffix",
+            "C_impl_filename_suffix",
+            "F_filename_suffix",
+            "PY_prefix",
+            "PY_header_filename_suffix",
+            "PY_impl_filename_suffix",
+            "LUA_prefix",
+            "LUA_header_filename_suffix",
+            "LUA_impl_filename_suffix",
         ]:
             if self.options.inlocal(name):
-                raise DeprecationWarning("Setting option {} for {}, change to format group".format(
-                    name, self.__class__.__name__))
+                raise DeprecationWarning(
+                    "Setting option {} for {}, change to format group".format(
+                        name, self.__class__.__name__
+                    )
+                )
 
-    def eval_template(self, name, tname='', fmt=None):
+    def eval_template(self, name, tname="", fmt=None):
         """If a format has not been explicitly set, set from template."""
         if fmt is None:
             fmt = self.fmtdict
         if not fmt.inlocal(name):
-            tname = name + tname + '_template'
+            tname = name + tname + "_template"
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
+
 ######################################################################
+
 
 class NamespaceMixin(object):
     def add_class(self, name, template_parameters=None, **kwargs):
@@ -92,9 +106,7 @@ class NamespaceMixin(object):
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
         """
-        node = ClassNode(name, self,
-                         template_parameters=template_parameters,
-                         **kwargs)
+        node = ClassNode(name, self, template_parameters=template_parameters, **kwargs)
         self.classes.append(node)
         self.symbols[name] = node
         return node
@@ -119,7 +131,7 @@ class NamespaceMixin(object):
             ast = fullast
 
         if isinstance(ast, declast.Declaration):
-            if 'typedef' in ast.storage:
+            if "typedef" in ast.storage:
                 node = self.create_typedef_typemap(ast, **kwargs)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
@@ -130,9 +142,9 @@ class NamespaceMixin(object):
             # If so, just return it.
             node = self.symbols.get(ast.name, None)
             if not node:
-                node = self.add_class(ast.name,
-                                      template_parameters=template_parameters,
-                                      **kwargs)
+                node = self.add_class(
+                    ast.name, template_parameters=template_parameters, **kwargs
+                )
         elif isinstance(ast, declast.Namespace):
             node = self.add_namespace(ast.name, **kwargs)
         elif isinstance(ast, declast.Enum):
@@ -141,8 +153,10 @@ class NamespaceMixin(object):
             node = self.add_struct(decl, ast=ast, **kwargs)
         else:
             raise RuntimeError(
-                "add_declaration: unknown ast type {} after parsing '{}'"
-                .format(type(ast), decl))
+                "add_declaration: unknown ast type {} after parsing '{}'".format(
+                    type(ast), decl
+                )
+            )
         return node
 
     def create_typedef_typemap(self, ast, **kwargs):
@@ -158,8 +172,8 @@ class NamespaceMixin(object):
         ntypemap = orig.clone_as(self.scope + key)
         ntypemap.typedef = orig.name
         ntypemap.cxx_type = ntypemap.name
-        if 'fields' in kwargs:
-            fields = kwargs['fields']
+        if "fields" in kwargs:
+            fields = kwargs["fields"]
             ntypemap.update(fields)
         typemap.register_type(ntypemap.name, ntypemap)
 
@@ -232,16 +246,20 @@ class NamespaceMixin(object):
         self.variables.append(node)
         return node
 
+
 ######################################################################
 
+
 class LibraryNode(AstNode, NamespaceMixin):
-    def __init__(self,
-                 cxx_header='',
-                 format=None,
-                 language='c++',
-                 library='default_library',
-                 options=None,
-                 **kwargs):
+    def __init__(
+        self,
+        cxx_header="",
+        format=None,
+        language="c++",
+        library="default_library",
+        options=None,
+        **kwargs
+    ):
         """Create LibraryNode.
 
         fields = value
@@ -253,7 +271,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         # From arguments
         self.cxx_header = cxx_header
         self.language = language.lower()
-        if self.language not in ['c', 'c++']:
+        if self.language not in ["c", "c++"]:
             raise RuntimeError("language must be 'c' or 'c++'")
         self.library = library
 
@@ -267,36 +285,36 @@ class LibraryNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
-        self.F_module_dependencies = []     # unused
+        self.F_module_dependencies = []  # unused
 
-        self.copyright = kwargs.get('copyright', [])
-        self.patterns = kwargs.get('patterns', [])
+        self.copyright = kwargs.get("copyright", [])
+        self.patterns = kwargs.get("patterns", [])
 
         self.default_format(format, kwargs)
 
         # namespace
-        self.scope = ''
+        self.scope = ""
         self.symbols = {}
         self.using = []
         declast.global_namespace = self
         self.create_std_names()
 
-##### namespace behavior
+    ##### namespace behavior
 
     def create_std_names(self):
         """Add standard types to the Library."""
-        self.add_typedef('size_t')
-        self.add_typedef('int8_t')
-        self.add_typedef('int16_t')
-        self.add_typedef('int32_t')
-        self.add_typedef('int64_t')
-        self.add_typedef('uint8_t')
-        self.add_typedef('uint16_t')
-        self.add_typedef('uint32_t')
-        self.add_typedef('uint64_t')
-        self.add_typedef('MPI_Comm')
-        create_std_namespace(self)   # add 'std::' to library
-        self.using_directive('std')
+        self.add_typedef("size_t")
+        self.add_typedef("int8_t")
+        self.add_typedef("int16_t")
+        self.add_typedef("int32_t")
+        self.add_typedef("int64_t")
+        self.add_typedef("uint8_t")
+        self.add_typedef("uint16_t")
+        self.add_typedef("uint32_t")
+        self.add_typedef("uint64_t")
+        self.add_typedef("MPI_Comm")
+        create_std_namespace(self)  # add 'std::' to library
+        self.using_directive("std")
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -330,7 +348,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         cxx_name is always fully qualified (namespace1::namespace2::class)
         """
-        names = ntypemap.name.split('::')
+        names = ntypemap.name.split("::")
         cxx_name = names.pop()
         ns = self.add_namespaces(names)
 
@@ -338,17 +356,16 @@ class LibraryNode(AstNode, NamespaceMixin):
         # node is not added to self.classes
         ns.symbols[cxx_name] = node
 
-#####
+    #####
 
     def default_options(self):
         """default options."""
         def_options = util.Scope(
             parent=None,
-            debug=False,   # print additional debug info
-            debug_index=False,   # print function indexes. debug must also be True.
-                                 # They change when a function is inserted.
+            debug=False,  # print additional debug info
+            debug_index=False,  # print function indexes. debug must also be True.
+            # They change when a function is inserted.
             C_line_length=72,
-
             F_line_length=72,
             F_module_per_class=True,
             F_string_len_trim=True,
@@ -356,112 +373,94 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_return_fortran_pointer=True,
             F_standard=2003,
             F_auto_reference_count=False,
-
             wrap_c=True,
             wrap_fortran=True,
             wrap_python=False,
             wrap_lua=False,
-
-            doxygen=True,       # create doxygen comments
-            return_scalar_pointer='pointer',
+            doxygen=True,  # create doxygen comments
+            return_scalar_pointer="pointer",
             show_splicer_comments=True,
-
             # blank for functions, set in classes.
-            class_prefix_template='{class_lower}_',
-
-            YAML_type_filename_template='{library_lower}_types.yaml',
-
-            C_header_filename_library_template='wrap{library}.{C_header_filename_suffix}',
-            C_impl_filename_library_template='wrap{library}.{C_impl_filename_suffix}',
-
-            C_header_filename_class_template='wrap{cxx_class}.{C_header_filename_suffix}',
-            C_impl_filename_class_template='wrap{cxx_class}.{C_impl_filename_suffix}',
-
-            C_header_helper_template='types{library}.{C_header_filename_suffix}',
-
-            C_enum_template='{C_prefix}{class_prefix}{enum_name}',
-            C_enum_member_template='{enum_member_name}',
-
+            class_prefix_template="{class_lower}_",
+            YAML_type_filename_template="{library_lower}_types.yaml",
+            C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
+            C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
+            C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
+            C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
+            C_header_helper_template="types{library}.{C_header_filename_suffix}",
+            C_enum_template="{C_prefix}{class_prefix}{enum_name}",
+            C_enum_member_template="{enum_member_name}",
             C_name_template=(
-                '{C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-            C_memory_dtor_function_template=(
-                '{C_prefix}SHROUD_memory_destructor'),
-
-            C_var_capsule_template='C{c_var}',     # capsule argument
-            C_var_context_template='D{c_var}',     # context argument
-            C_var_len_template='N{c_var}',         # argument for result of len(arg)
-            C_var_trim_template='L{c_var}',        # argument for result of len_trim(arg)
-            C_var_size_template='S{c_var}',        # argument for result of size(arg)
-
+                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}"
+            ),
+            C_memory_dtor_function_template=("{C_prefix}SHROUD_memory_destructor"),
+            C_var_capsule_template="C{c_var}",  # capsule argument
+            C_var_context_template="D{c_var}",  # context argument
+            C_var_len_template="N{c_var}",  # argument for result of len(arg)
+            C_var_trim_template="L{c_var}",  # argument for result of len_trim(arg)
+            C_var_size_template="S{c_var}",  # argument for result of size(arg)
             # Fortran's names for C functions
             F_C_name_template=(
-                '{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}'),
-
-            F_enum_member_template=(
-                '{class_prefix}{enum_lower}_{enum_member_lower}'),
-
-            F_name_impl_template=(
-                '{class_prefix}{underscore_name}{function_suffix}'),
-
-            F_name_function_template='{underscore_name}{function_suffix}',
-            F_name_generic_template='{underscore_name}',
-
-            F_module_name_library_template='{library_lower}_mod',
-            F_impl_filename_library_template='wrapf{library_lower}.{F_filename_suffix}',
-
-            F_capsule_data_type_class_template='SHROUD_{class_lower}_capsule',
-            F_module_name_class_template='{class_lower}_mod',
-            F_impl_filename_class_template='wrapf{cxx_class}.{F_filename_suffix}',
-            F_abstract_interface_subprogram_template='{underscore_name}_{argname}',
-            F_abstract_interface_argument_template='arg{index}',
-
-            LUA_module_name_template='{library_lower}',
+                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}"
+            ),
+            F_enum_member_template=("{class_prefix}{enum_lower}_{enum_member_lower}"),
+            F_name_impl_template=("{class_prefix}{underscore_name}{function_suffix}"),
+            F_name_function_template="{underscore_name}{function_suffix}",
+            F_name_generic_template="{underscore_name}",
+            F_module_name_library_template="{library_lower}_mod",
+            F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
+            F_capsule_data_type_class_template="SHROUD_{class_lower}_capsule",
+            F_module_name_class_template="{class_lower}_mod",
+            F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
+            F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
+            F_abstract_interface_argument_template="arg{index}",
+            LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
-                'lua{library}module.{LUA_impl_filename_suffix}'),
+                "lua{library}module.{LUA_impl_filename_suffix}"
+            ),
             LUA_header_filename_template=(
-                'lua{library}module.{LUA_header_filename_suffix}'),
-            LUA_userdata_type_template='{LUA_prefix}{cxx_class}_Type',
-            LUA_userdata_member_template='self',
-            LUA_module_reg_template='{LUA_prefix}{library}_Reg',
-            LUA_class_reg_template='{LUA_prefix}{cxx_class}_Reg',
-            LUA_metadata_template='{cxx_class}.metatable',
-            LUA_ctor_name_template='{cxx_class}',
-            LUA_name_template='{function_name}',
-            LUA_name_impl_template='{LUA_prefix}{class_prefix}{underscore_name}',
-
-            PY_module_filename_template=(
-                'py{library}module.{PY_impl_filename_suffix}'),
+                "lua{library}module.{LUA_header_filename_suffix}"
+            ),
+            LUA_userdata_type_template="{LUA_prefix}{cxx_class}_Type",
+            LUA_userdata_member_template="self",
+            LUA_module_reg_template="{LUA_prefix}{library}_Reg",
+            LUA_class_reg_template="{LUA_prefix}{cxx_class}_Reg",
+            LUA_metadata_template="{cxx_class}.metatable",
+            LUA_ctor_name_template="{cxx_class}",
+            LUA_name_template="{function_name}",
+            LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
+            PY_module_filename_template=("py{library}module.{PY_impl_filename_suffix}"),
             PY_header_filename_template=(
-                'py{library}module.{PY_header_filename_suffix}'),
-            PY_helper_filename_template=(
-                'py{library}helper.{PY_impl_filename_suffix}'),
-            PY_PyTypeObject_template='{PY_prefix}{cxx_class}_Type',
-            PY_PyObject_template='{PY_prefix}{cxx_class}',
-            PY_type_filename_template=(
-                'py{cxx_class}type.{PY_impl_filename_suffix}'),
+                "py{library}module.{PY_header_filename_suffix}"
+            ),
+            PY_helper_filename_template=("py{library}helper.{PY_impl_filename_suffix}"),
+            PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
+            PY_PyObject_template="{PY_prefix}{cxx_class}",
+            PY_type_filename_template=("py{cxx_class}type.{PY_impl_filename_suffix}"),
             PY_name_impl_template=(
-                '{PY_prefix}{class_prefix}{function_name}{function_suffix}'),
+                "{PY_prefix}{class_prefix}{function_name}{function_suffix}"
+            ),
             # names for type methods (tp_init)
             PY_type_impl_template=(
-                '{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}'),
-            PY_member_getter_template=(
-                '{PY_prefix}{cxx_class}_{variable_name}_getter'),
-            PY_member_setter_template=(
-                '{PY_prefix}{cxx_class}_{variable_name}_setter'),
+                "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}"
+            ),
+            PY_member_getter_template=("{PY_prefix}{cxx_class}_{variable_name}_getter"),
+            PY_member_setter_template=("{PY_prefix}{cxx_class}_{variable_name}_setter"),
             PY_struct_array_descr_create_template=(
-                '{PY_prefix}{cxx_class}_create_array_descr'),
+                "{PY_prefix}{cxx_class}_create_array_descr"
+            ),
             PY_struct_array_descr_variable_template=(
-                '{PY_prefix}{cxx_class}_array_descr'),
-            PY_struct_array_descr_name_template=(
-                '{cxx_class}_dtype'),
-            PY_numpy_array_capsule_name_template=(
-                '{PY_prefix}array_dtor'),
+                "{PY_prefix}{cxx_class}_array_descr"
+            ),
+            PY_struct_array_descr_name_template=("{cxx_class}_dtype"),
+            PY_numpy_array_capsule_name_template=("{PY_prefix}array_dtor"),
             PY_numpy_array_dtor_context_template=(
-                '{PY_prefix}array_destructor_context'),
+                "{PY_prefix}array_destructor_context"
+            ),
             PY_numpy_array_dtor_function_template=(
-                '{PY_prefix}array_destructor_function'),
-
-            )
+                "{PY_prefix}array_destructor_function"
+            ),
+        )
 
         return def_options
 
@@ -472,106 +471,101 @@ class LibraryNode(AstNode, NamespaceMixin):
         format templates in options.
         """
 
-        C_prefix = self.library.upper()[:3] + '_'  # function prefix
+        C_prefix = self.library.upper()[:3] + "_"  # function prefix
         fmt_library = util.Scope(
             parent=None,
-
-            C_bufferify_suffix='_bufferify',
+            C_bufferify_suffix="_bufferify",
             C_prefix=C_prefix,
-            C_result='rv',        # return value
-            C_argument='SH_',
-            c_temp='SHT_',
-            C_local='SHC_',
-            C_this='self',
-
-            C_custom_return_type='',  # assume no value
-
-            CXX_this='SH_this',
-            CXX_local='SHCXX_',
-            cxx_class='',     # Assume no class
-            class_scope='',
-
-            F_C_prefix='c_',
-            F_derived_member='cxxmem',
-            F_name_assign='assign',
-            F_name_associated='associated',
-            F_name_instance_get='get_instance',
-            F_name_instance_set='set_instance',
-            F_name_final='final',
-            F_result='SHT_rv',
-            F_result_ptr='SHT_prv',
-            F_result_capsule='SHT_crv',
-            F_pointer='SHT_ptr',
-            F_this='obj',
-
-            C_string_result_as_arg='SHF_rv',
-            F_string_result_as_arg='',
-
-            C_capsule_data_type=C_prefix + 'SHROUD_capsule_data',
-            F_capsule_data_type='SHROUD_capsule_data',
-            F_capsule_type='SHROUD_capsule',
-            F_capsule_final_function='SHROUD_capsule_final',
-
-            C_array_type=C_prefix + 'SHROUD_array',
-            F_array_type='SHROUD_array',
-
-            PY_result='SHTPy_rv',      # Create PyObject for result
-            LUA_result='rv',
-
-            LUA_prefix='l_',
-            LUA_state_var='L',
-            LUA_this_call='',
-
-            PY_prefix='PY_',
+            C_result="rv",  # return value
+            C_argument="SH_",
+            c_temp="SHT_",
+            C_local="SHC_",
+            C_this="self",
+            C_custom_return_type="",  # assume no value
+            CXX_this="SH_this",
+            CXX_local="SHCXX_",
+            cxx_class="",  # Assume no class
+            class_scope="",
+            F_C_prefix="c_",
+            F_derived_member="cxxmem",
+            F_name_assign="assign",
+            F_name_associated="associated",
+            F_name_instance_get="get_instance",
+            F_name_instance_set="set_instance",
+            F_name_final="final",
+            F_result="SHT_rv",
+            F_result_ptr="SHT_prv",
+            F_result_capsule="SHT_crv",
+            F_pointer="SHT_ptr",
+            F_this="obj",
+            C_string_result_as_arg="SHF_rv",
+            F_string_result_as_arg="",
+            C_capsule_data_type=C_prefix + "SHROUD_capsule_data",
+            F_capsule_data_type="SHROUD_capsule_data",
+            F_capsule_type="SHROUD_capsule",
+            F_capsule_final_function="SHROUD_capsule_final",
+            C_array_type=C_prefix + "SHROUD_array",
+            F_array_type="SHROUD_array",
+            PY_result="SHTPy_rv",  # Create PyObject for result
+            LUA_result="rv",
+            LUA_prefix="l_",
+            LUA_state_var="L",
+            LUA_this_call="",
+            PY_prefix="PY_",
             PY_module_name=self.library.lower(),
-            PY_this_call='',
-
+            PY_this_call="",
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
-
             # set default values for fields which may be unset.
-            class_prefix='',   # expand to blanks for library
+            class_prefix="",  # expand to blanks for library
             # c_ptr='',
             # c_const='',
-            CXX_this_call='',
-            CXX_template='',
-            C_pre_call='',
-            C_post_call='',
-            function_suffix='',   # assume no suffix
-            namespace_scope='',
+            CXX_this_call="",
+            CXX_template="",
+            C_pre_call="",
+            C_post_call="",
+            function_suffix="",  # assume no suffix
+            namespace_scope="",
         )
 
-        fmt_library.F_filename_suffix = 'f'
+        fmt_library.F_filename_suffix = "f"
 
-        if self.language == 'c':
-            fmt_library.C_header_filename_suffix = 'h'
-            fmt_library.C_impl_filename_suffix = 'c'
+        if self.language == "c":
+            fmt_library.C_header_filename_suffix = "h"
+            fmt_library.C_impl_filename_suffix = "c"
 
-            fmt_library.LUA_header_filename_suffix = 'h'
-            fmt_library.LUA_impl_filename_suffix = 'c'
+            fmt_library.LUA_header_filename_suffix = "h"
+            fmt_library.LUA_impl_filename_suffix = "c"
 
-            fmt_library.stdlib = ''
+            fmt_library.stdlib = ""
         else:
-            fmt_library.C_header_filename_suffix = 'h'
-            fmt_library.C_impl_filename_suffix = 'cpp'
+            fmt_library.C_header_filename_suffix = "h"
+            fmt_library.C_impl_filename_suffix = "cpp"
 
-            fmt_library.LUA_header_filename_suffix = 'hpp'
-            fmt_library.LUA_impl_filename_suffix = 'cpp'
+            fmt_library.LUA_header_filename_suffix = "hpp"
+            fmt_library.LUA_impl_filename_suffix = "cpp"
 
-            fmt_library.stdlib = 'std::'
+            fmt_library.stdlib = "std::"
 
         for name in [
-                'C_header_filename', 'C_impl_filename',
-                'F_module_name', 'F_impl_filename',
-                'LUA_module_name', 'LUA_module_reg', 'LUA_module_filename', 'LUA_header_filename',
-                'PY_module_filename', 'PY_header_filename', 'PY_helper_filename',
-                'YAML_type_filename'
+            "C_header_filename",
+            "C_impl_filename",
+            "F_module_name",
+            "F_impl_filename",
+            "LUA_module_name",
+            "LUA_module_reg",
+            "LUA_module_filename",
+            "LUA_header_filename",
+            "PY_module_filename",
+            "PY_header_filename",
+            "PY_helper_filename",
+            "YAML_type_filename",
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in library, change to format group"
-                    .format(name))
+                    "Setting field {} in library, change to format group".format(name)
+                )
 
         self.option_to_fmt()
 
@@ -581,23 +575,24 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.fmtdict = fmt_library
 
         # default some format strings based on other format strings
-        self.eval_template('C_header_filename', '_library')
-        self.eval_template('C_impl_filename', '_library')
-        self.eval_template('C_header_helper')
+        self.eval_template("C_header_filename", "_library")
+        self.eval_template("C_impl_filename", "_library")
+        self.eval_template("C_header_helper")
 
-        self.eval_template('C_memory_dtor_function')
+        self.eval_template("C_memory_dtor_function")
 
         # All class/methods and functions may go into this file or
         # just functions.
-        self.eval_template('F_module_name', '_library')
-        self.eval_template('F_impl_filename', '_library')
+        self.eval_template("F_module_name", "_library")
+        self.eval_template("F_impl_filename", "_library")
 
-        self.eval_template('PY_numpy_array_capsule_name')
-        self.eval_template('PY_numpy_array_dtor_context')
-        self.eval_template('PY_numpy_array_dtor_function')
+        self.eval_template("PY_numpy_array_capsule_name")
+        self.eval_template("PY_numpy_array_dtor_context")
+        self.eval_template("PY_numpy_array_dtor_function")
 
 
 ######################################################################
+
 
 class BlockNode(AstNode, NamespaceMixin):
     """Create a Node to simulate a curly block.
@@ -608,10 +603,8 @@ class BlockNode(AstNode, NamespaceMixin):
 
     Blocks can be added to a LibraryNode, NamespaceNode or ClassNode.
     """
-    def __init__(self, parent,
-                 format=None,
-                 options=None,
-                 **kwargs):
+
+    def __init__(self, parent, format=None, options=None, **kwargs):
         # From arguments
         self.parent = parent
 
@@ -632,13 +625,12 @@ class BlockNode(AstNode, NamespaceMixin):
         """Look for symbols within library (global namespace). """
         return self.parent.unqualified_lookup(name)
 
+
 ######################################################################
 
+
 class NamespaceNode(AstNode, NamespaceMixin):
-    def __init__(self, name, parent,
-                 format=None,
-                 options=None,
-                 **kwargs):
+    def __init__(self, name, parent, format=None, options=None, **kwargs):
         """Create NamespaceNode.
 
         parent may be LibraryNode or NamespaceNode.
@@ -646,7 +638,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         # From arguments
         self.name = name
         self.parent = parent
-        self.linenumber = kwargs.get('__line__', '?')
+        self.linenumber = kwargs.get("__line__", "?")
 
         # Namespaces do not own enums, functions or classes directly.
         # Find their owner up the parent chain.
@@ -668,11 +660,11 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.default_format(parent, format)
 
         # add to symbol table
-        self.scope = self.parent.scope + self.name + '::'
+        self.scope = self.parent.scope + self.name + "::"
         self.symbols = {}
         self.using = []
 
-##### namespace behavior
+    ##### namespace behavior
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -699,17 +691,15 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if ns not in self.using:
             self.using.append(ns)
 
-#####
+    #####
 
     def default_format(self, parent, format):
         """Set format dictionary."""
 
-        self.fmtdict = util.Scope(
-            parent=parent.fmtdict,
-        )
+        self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         fmt_ns = self.fmtdict
-        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + '::'
+        fmt_ns.namespace_scope = parent.fmtdict.namespace_scope + self.name + "::"
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
@@ -717,22 +707,30 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if format:
             fmt_ns.update(format, replace=True)
 
+
 ######################################################################
+
 
 class ClassNode(AstNode, NamespaceMixin):
     """A C++ class.
 
     symbols - symbol table of nested symbols.
     """
+
     is_class = True
-    def __init__(self, name, parent,
-                 cxx_header='',
-                 format=None,
-                 options=None,
-                 as_struct=False,
-                 template_parameters=None,
-                 ntypemap=None,
-                 **kwargs):
+
+    def __init__(
+        self,
+        name,
+        parent,
+        cxx_header="",
+        format=None,
+        options=None,
+        as_struct=False,
+        template_parameters=None,
+        ntypemap=None,
+        **kwargs
+    ):
         """Create ClassNode.
         Used with class or struct if as_struct==True.
 
@@ -746,15 +744,15 @@ class ClassNode(AstNode, NamespaceMixin):
         self.name = name
         self.parent = parent
         self.cxx_header = cxx_header
-        self.linenumber = kwargs.get('__line__', '?')
+        self.linenumber = kwargs.get("__line__", "?")
 
         self.enums = []
         self.functions = []
         self.variables = []
-        self.as_struct = as_struct   # if True, treat as struct, else as shadow class
+        self.as_struct = as_struct  # if True, treat as struct, else as shadow class
 
-        self.python = kwargs.get('python', {})
-        self.cpp_if = kwargs.get('cpp_if', None)
+        self.python = kwargs.get("python", {})
+        self.cpp_if = kwargs.get("cpp_if", None)
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -763,10 +761,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.default_format(parent, format, kwargs)
 
         # Add to namespace.
-        self.scope = self.parent.scope + self.name + '::'
+        self.scope = self.parent.scope + self.name + "::"
         self.symbols = {}
 
-        fields = kwargs.get('fields', None)
+        fields = kwargs.get("fields", None)
         if fields is not None:
             if not isinstance(fields, dict):
                 raise TypeError("fields must be a dictionary")
@@ -789,12 +787,12 @@ class ClassNode(AstNode, NamespaceMixin):
         # Parse the instantiations.
         # cxx_template = [ TemplateArgument('<int>'),
         #                  TemplateArgument('<double>') ]
-        cxx_template = kwargs.get('cxx_template', [])
+        cxx_template = kwargs.get("cxx_template", [])
         self.template_arguments = cxx_template
         for args in cxx_template:
             args.parse_instantiation(namespace=self)
 
-##### namespace behavior
+    ##### namespace behavior
 
     def create_template_parameter_typemap(self, name):
         """Create a typemap for a template parameter.
@@ -803,10 +801,9 @@ class ClassNode(AstNode, NamespaceMixin):
         The real type will be used during template instantiation.
         """
         fullname = self.scope + name
-        ntypemap = typemap.Typemap(fullname, base='template',
-                                   c_type='c_T',
-                                   cxx_type='cxx_T',
-                                   f_type='f_T')
+        ntypemap = typemap.Typemap(
+            fullname, base="template", c_type="c_T", cxx_type="cxx_T", f_type="f_T"
+        )
         typemap.register_type(ntypemap.name, ntypemap)
 
         self.add_typedef(name, ntypemap=ntypemap)
@@ -824,33 +821,41 @@ class ClassNode(AstNode, NamespaceMixin):
             return self.symbols[name]
         return self.parent.unqualified_lookup(name)
 
-#####
+    #####
 
     def default_format(self, parent, format, kwargs):
         """Set format dictionary."""
 
         for name in [
-                'C_header_filename', 'C_impl_filename',
-                'F_derived_name', 'F_impl_filename', 'F_module_name',
-                'LUA_userdata_type', 'LUA_userdata_member', 'LUA_class_reg',
-                'LUA_metadata', 'LUA_ctor_name',
-                'PY_PyTypeObject', 'PY_PyObject', 'PY_type_filename',
-                'class_prefix'
+            "C_header_filename",
+            "C_impl_filename",
+            "F_derived_name",
+            "F_impl_filename",
+            "F_module_name",
+            "LUA_userdata_type",
+            "LUA_userdata_member",
+            "LUA_class_reg",
+            "LUA_metadata",
+            "LUA_ctor_name",
+            "PY_PyTypeObject",
+            "PY_PyObject",
+            "PY_type_filename",
+            "class_prefix",
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in class {}, change to format group"
-                    .format(name, self.name))
+                    "Setting field {} in class {}, change to format group".format(
+                        name, self.name
+                    )
+                )
 
         self.fmtdict = util.Scope(
             parent=parent.fmtdict,
-
             cxx_type=self.name,
             cxx_class=self.name,
             class_lower=self.name.lower(),
             class_upper=self.name.upper(),
-            class_scope=self.name + '::',
-
+            class_scope=self.name + "::",
             F_derived_name=self.name.lower(),
         )
 
@@ -866,37 +871,39 @@ class ClassNode(AstNode, NamespaceMixin):
         Call delete_format_template to remove previous values to
         force them to be recomputed during class template instantiation.
         """
-        self.eval_template('class_prefix')
+        self.eval_template("class_prefix")
 
         # Only one file per class for C.
-        self.eval_template('C_header_filename', '_class')
-        self.eval_template('C_impl_filename', '_class')
+        self.eval_template("C_header_filename", "_class")
+        self.eval_template("C_impl_filename", "_class")
 
-        self.eval_template('F_capsule_data_type', '_class')
+        self.eval_template("F_capsule_data_type", "_class")
         if self.options.F_module_per_class:
-            self.eval_template('F_module_name', '_class')
-            self.eval_template('F_impl_filename', '_class')
+            self.eval_template("F_module_name", "_class")
+            self.eval_template("F_impl_filename", "_class")
 
         # As PyArray_Descr
         if self.as_struct:
-            self.eval_template('PY_struct_array_descr_create')
-            self.eval_template('PY_struct_array_descr_variable')
-            self.eval_template('PY_struct_array_descr_name')
+            self.eval_template("PY_struct_array_descr_create")
+            self.eval_template("PY_struct_array_descr_variable")
+            self.eval_template("PY_struct_array_descr_name")
 
     def delete_format_templates(self):
         """Delete some format strings which were defaulted.
         Used when instantiation a class to remove previous class' values.
         """
-        self.fmtdict.delattrs([
-            'class_prefix',
-            'C_header_filename',
-            'C_impl_filename',
-            'F_module_name',
-            'F_impl_filename',
-            'PY_struct_array_descr_create',
-            'PY_struct_array_descr_variable',
-            'PY_struct_array_descr_name',
-        ])
+        self.fmtdict.delattrs(
+            [
+                "class_prefix",
+                "C_header_filename",
+                "C_impl_filename",
+                "F_module_name",
+                "F_impl_filename",
+                "PY_struct_array_descr_create",
+                "PY_struct_array_descr_variable",
+                "PY_struct_array_descr_name",
+            ]
+        )
 
     def add_namespace(self, **kwargs):
         """Replace method inherited from NamespaceMixin."""
@@ -928,7 +935,9 @@ class ClassNode(AstNode, NamespaceMixin):
 
         return new
 
+
 ######################################################################
+
 
 class FunctionNode(AstNode):
     """
@@ -981,15 +990,12 @@ class FunctionNode(AstNode):
 
 
     """
-    def __init__(self, decl, parent,
-                 format=None,
-                 ast=None,
-                 options=None,
-                 **kwargs):
+
+    def __init__(self, decl, parent, format=None, ast=None, options=None, **kwargs):
         """
         ast - None, declast.Declaration, declast.Template
         """
-        self.linenumber = kwargs.get('__line__', '?')
+        self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent.options)
         if options:
@@ -1002,8 +1008,8 @@ class FunctionNode(AstNode):
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
         self._cxx_overload = None
-        self.declgen = None              #  generated declaration.
-        self._default_funcs = []         #  generated default value functions  (unused?)
+        self.declgen = None  #  generated declaration.
+        self._default_funcs = []  #  generated default value functions  (unused?)
         self._function_index = None
         self._fmtargs = {}
         self._fmtresult = {}
@@ -1013,28 +1019,28 @@ class FunctionNode(AstNode):
         self._nargs = None
         self._overloaded = False
 
-#        self.function_index = []
+        #        self.function_index = []
 
-        self.default_arg_suffix = kwargs.get('default_arg_suffix', [])
-        self.cpp_if = kwargs.get('cpp_if', None)
+        self.default_arg_suffix = kwargs.get("default_arg_suffix", [])
+        self.cpp_if = kwargs.get("cpp_if", None)
         self.cxx_template = {}
         self.template_parameters = []
-        self.template_arguments = kwargs.get('cxx_template', [])
-        self.doxygen = kwargs.get('doxygen', {})
-        self.fortran_generic = kwargs.get('fortran_generic', {})
-        self.return_this = kwargs.get('return_this', False)
+        self.template_arguments = kwargs.get("cxx_template", [])
+        self.doxygen = kwargs.get("doxygen", {})
+        self.fortran_generic = kwargs.get("fortran_generic", {})
+        self.return_this = kwargs.get("return_this", False)
 
         # Generated by Preprocess
-        self.CXX_subprogram = '--none--'
-        self.C_subprogram = '--none--'
-        self.F_subprogram = '--none--'
-        self.CXX_return_type = '--none--'
-        self.C_return_type = '--none--'
-        self.F_return_type = '--none--'
+        self.CXX_subprogram = "--none--"
+        self.C_subprogram = "--none--"
+        self.F_subprogram = "--none--"
+        self.CXX_return_type = "--none--"
+        self.C_return_type = "--none--"
+        self.F_return_type = "--none--"
 
         # Used with c_statements to find correct intent block
         # possible values are '', '_buf'
-        self.generated_suffix = ''
+        self.generated_suffix = ""
 
         if not decl:
             raise RuntimeError("FunctionNode missing decl")
@@ -1068,23 +1074,23 @@ class FunctionNode(AstNode):
 
         # Look for any template (include class template) arguments.
         self.have_template_args = False
-        if ast.typemap.base == 'template':
+        if ast.typemap.base == "template":
             self.have_template_args = True
         else:
             for args in ast.params:
-                if args.typemap.base == 'template':
+                if args.typemap.base == "template":
                     self.have_template_args = True
                     break
 
         # add any attributes from YAML files to the ast
-        if 'attrs' in kwargs:
-            attrs = kwargs['attrs']
+        if "attrs" in kwargs:
+            attrs = kwargs["attrs"]
             for arg in ast.params:
                 name = arg.name
                 if name in attrs:
                     arg.attrs.update(attrs[name])
-        if 'fattrs' in kwargs:
-            ast.attrs.update(kwargs['fattrs'])
+        if "fattrs" in kwargs:
+            ast.attrs.update(kwargs["fattrs"])
         # XXX - waring about unused fields in attrs
 
         fmt_func = self.fmtdict
@@ -1095,28 +1101,31 @@ class FunctionNode(AstNode):
 
         # Move fields from kwargs into instance
         for name in [
-                'C_code',
-                # 'C_error_pattern',
-                'C_name',
-                'C_post_call', 'C_post_call_buf',
-                'C_return_code', 'C_return_type',
-                'F_C_name',
-                'F_code',
-                'F_name_function', 'F_name_generic', 'F_name_impl',
-                'LUA_name', 'LUA_name_impl',
-                # 'PY_error_pattern',
-                'PY_name_impl',
-                'function_suffix'
+            "C_code",
+            # 'C_error_pattern',
+            "C_name",
+            "C_post_call",
+            "C_post_call_buf",
+            "C_return_code",
+            "C_return_type",
+            "F_C_name",
+            "F_code",
+            "F_name_function",
+            "F_name_generic",
+            "F_name_impl",
+            "LUA_name",
+            "LUA_name_impl",
+            # 'PY_error_pattern',
+            "PY_name_impl",
+            "function_suffix",
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in function, change to format group"
-                    .format(name))
+                    "Setting field {} in function, change to format group".format(name)
+                )
 
         # Move fields from kwargs into instance
-        for name in [
-                'C_error_pattern', 'PY_error_pattern',
-        ]:
+        for name in ["C_error_pattern", "PY_error_pattern"]:
             setattr(self, name, kwargs.get(name, None))
 
         self.fmtdict = util.Scope(parent.fmtdict)
@@ -1124,10 +1133,10 @@ class FunctionNode(AstNode):
         self.option_to_fmt()
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
-            if 'C_return_type' in fmtdict:
+            if "C_return_type" in fmtdict:
                 # wrapc.py will overwrite C_return_type.
                 # keep original value for wrapf.py.
-                self.fmtdict.C_custom_return_type = fmtdict['C_return_type']
+                self.fmtdict.C_custom_return_type = fmtdict["C_return_type"]
 
     def clone(self):
         """Create a copy of a FunctionNode to use with C++ template
@@ -1147,7 +1156,9 @@ class FunctionNode(AstNode):
 
         return new
 
+
 ######################################################################
+
 
 class EnumNode(AstNode):
     """
@@ -1167,24 +1178,19 @@ class EnumNode(AstNode):
 
     }
     """
-    def __init__(self, decl, parent,
-                 format=None,
-                 ast=None,
-                 options=None,
-                 **kwargs):
+
+    def __init__(self, decl, parent, format=None, ast=None, options=None, **kwargs):
 
         # From arguments
         self.parent = parent
-        self.linenumber = kwargs.get('__line__', '?')
+        self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
 
-#        self.default_format(parent, format, kwargs)
-        self.fmtdict = util.Scope(
-            parent=parent.fmtdict,
-        )
+        #        self.default_format(parent, format, kwargs)
+        self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         if not decl:
             raise RuntimeError("EnumNode missing decl")
@@ -1203,7 +1209,9 @@ class EnumNode(AstNode):
         fmt_enum.enum_lower = ast.name.lower()
         fmt_enum.enum_upper = ast.name.upper()
         if fmt_enum.cxx_class:
-            fmt_enum.namespace_scope = fmt_enum.namespace_scope + fmt_enum.cxx_class + '::'
+            fmt_enum.namespace_scope = (
+                fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
+            )
 
         # format for each enum member
         fmtmembers = {}
@@ -1225,11 +1233,13 @@ class EnumNode(AstNode):
         self._fmtmembers = fmtmembers
 
         # Add to namespace
-        self.scope = self.parent.scope + self.name + '::'
+        self.scope = self.parent.scope + self.name + "::"
         self.typemap = typemap.create_enum_typemap(self)
         # also 'enum class foo' will alter scope
 
+
 ######################################################################
+
 
 class TypedefNode(AstNode):
     """
@@ -1237,6 +1247,7 @@ class TypedefNode(AstNode):
 
     type name must be in a typemap.
     """
+
     def __init__(self, name, parent, ntypemap=None):
 
         # From arguments
@@ -1253,7 +1264,9 @@ class TypedefNode(AstNode):
     def get_typename(self):
         return self.typemap.name
 
+
 ######################################################################
+
 
 class VariableNode(AstNode):
     """
@@ -1263,24 +1276,19 @@ class VariableNode(AstNode):
           format:
              baz: 4
     """
-    def __init__(self, decl, parent,
-                 format=None,
-                 ast=None,
-                 options=None,
-                 **kwargs):
+
+    def __init__(self, decl, parent, format=None, ast=None, options=None, **kwargs):
 
         # From arguments
         self.parent = parent
-        self.linenumber = kwargs.get('__line__', '?')
+        self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
 
-#        self.default_format(parent, format, kwargs)
-        self.fmtdict = util.Scope(
-            parent=parent.fmtdict,
-        )
+        #        self.default_format(parent, format, kwargs)
+        self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         if not decl:
             raise RuntimeError("VariableNode missing decl")
@@ -1300,17 +1308,20 @@ class VariableNode(AstNode):
         fmt_var = self.fmtdict
 
         # Treat similar to class
-#        fmt_struct.class_scope = self.name + '::'
+        #        fmt_struct.class_scope = self.name + '::'
         fmt_var.field_name = ast.get_name(use_attr=False)
         fmt_var.variable_name = ast.name
         fmt_var.variable_lower = fmt_var.variable_name.lower()
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 
         # Add to namespace
+
+
 #        self.scope = self.parent.scope + self.name + '::'
 #        self.typemap = typemap.create_struct_typemap(self)
 
 ######################################################################
+
 
 class TemplateArgument(object):
     """Information used to instantiate a template.
@@ -1318,6 +1329,7 @@ class TemplateArgument(object):
     instantiation = "<int,double>"
     asts = [ Declaration("int"), Declaration("double") ]
     """
+
     def __init__(self, instantiation, fmtdict=None, options=None):
         self.instantiation = instantiation
         self.fmtdict = fmtdict
@@ -1329,61 +1341,69 @@ class TemplateArgument(object):
         parser = declast.Parser(self.instantiation, namespace)
         self.asts = parser.template_argument_list()
 
+
 ######################################################################
+
 
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
     (string and vector)
     """
-    std = glb.add_namespace('std')
-    std.add_typedef('string')
-    std.add_typedef('vector')
+    std = glb.add_namespace("std")
+    std.add_typedef("string")
+    std.add_typedef("vector")
     return std
+
 
 ######################################################################
 # Parse yaml file
 ######################################################################
 
+
 def clean_dictionary(ddct):
     """YAML converts some blank fields to None,
     but we want blank.
     """
-    for key in ['cxx_header', 'namespace']:
+    for key in ["cxx_header", "namespace"]:
         if key in ddct and ddct[key] is None:
-            ddct[key] = ''
+            ddct[key] = ""
 
-    if 'default_arg_suffix' in ddct:
-        default_arg_suffix = ddct['default_arg_suffix']
+    if "default_arg_suffix" in ddct:
+        default_arg_suffix = ddct["default_arg_suffix"]
         if not isinstance(default_arg_suffix, list):
-            raise RuntimeError('default_arg_suffix must be a list')
-        for i, value in enumerate(ddct['default_arg_suffix']):
+            raise RuntimeError("default_arg_suffix must be a list")
+        for i, value in enumerate(ddct["default_arg_suffix"]):
             if value is None:
-                ddct['default_arg_suffix'][i] = ''
+                ddct["default_arg_suffix"][i] = ""
 
-    if 'format' in ddct:
-        fmtdict = ddct['format']
-        for key in ['function_suffix']:
+    if "format" in ddct:
+        fmtdict = ddct["format"]
+        for key in ["function_suffix"]:
             if key in fmtdict and fmtdict[key] is None:
-                fmtdict[key] = ''
+                fmtdict[key] = ""
 
-    if 'cxx_template' in ddct:
+    if "cxx_template" in ddct:
         # Convert to list of TemplateArgument instances
-        cxx_template = ddct['cxx_template']
+        cxx_template = ddct["cxx_template"]
         if not isinstance(cxx_template, list):
-            raise RuntimeError('cxx_template must be a list')
+            raise RuntimeError("cxx_template must be a list")
         newlst = []
         for dct in cxx_template:
             if not isinstance(dct, dict):
-                raise RuntimeError('cxx_template must be a list of dictionaries')
-            if 'instantiation' not in dct:
+                raise RuntimeError("cxx_template must be a list of dictionaries")
+            if "instantiation" not in dct:
                 raise RuntimeError(
-                    'instantation must be defined for each dictionary in cxx_template')
-            newlst.append(TemplateArgument(
-                dct['instantiation'],
-                fmtdict=dct.get('format', None),
-                options=dct.get('options', None),
-            ))
-        ddct['cxx_template'] = newlst
+                    "instantation must be defined for each dictionary in cxx_template"
+                )
+            newlst.append(
+                TemplateArgument(
+                    dct["instantiation"],
+                    fmtdict=dct.get("format", None),
+                    options=dct.get("options", None),
+                )
+            )
+        ddct["cxx_template"] = newlst
+
 
 def clean_list(lst):
     """Fix up blank lines in a YAML line
@@ -1396,33 +1416,36 @@ def clean_list(lst):
     """
     for i, line in enumerate(lst):
         if line is None:
-            lst[i] = ''
+            lst[i] = ""
+
 
 def add_declarations(parent, node):
-    if 'declarations' not in node:
+    if "declarations" not in node:
         return
-    if not node['declarations']:
+    if not node["declarations"]:
         return
 
-    for subnode in node['declarations']:
-        if 'block' in subnode:
+    for subnode in node["declarations"]:
+        if "block" in subnode:
             dct = copy.copy(subnode)
             clean_dictionary(dct)
             blk = BlockNode(parent, **dct)
             add_declarations(blk, subnode)
-        elif 'decl' in subnode:
+        elif "decl" in subnode:
             # copy before clean to avoid changing input dict
             dct = copy.copy(subnode)
             clean_dictionary(dct)
-            decl = dct['decl']
-            del dct['decl']
+            decl = dct["decl"]
+            del dct["decl"]
             declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode)
         else:
             print(subnode)
             raise RuntimeError(
                 "Expected 'block', 'class', 'decl', 'forward', 'namespace' "
-                "or 'typedef' found {}".format(sorted(subnode.keys())))
+                "or 'typedef' found {}".format(sorted(subnode.keys()))
+            )
+
 
 def create_library_from_dictionary(node):
     """Create a library and add classes and functions from node.
@@ -1438,32 +1461,32 @@ def create_library_from_dictionary(node):
     Every class must have a name.
     """
 
-    if 'copyright' in node:
-        clean_list(node['copyright'])
+    if "copyright" in node:
+        clean_list(node["copyright"])
 
     clean_dictionary(node)
     library = LibraryNode(**node)
     ns = library
 
     # Create default namespace
-    if 'namespace' in node:
-        for name in node['namespace'].split():
+    if "namespace" in node:
+        for name in node["namespace"].split():
             ns = ns.add_namespace(name)
 
-    if 'typemap' in node:
+    if "typemap" in node:
         # list of dictionaries
-        for subnode in node['typemap']:
+        for subnode in node["typemap"]:
             # Update fields for a type. For example, set cpp_if
-            key = subnode['type']
-            fields = subnode['fields']
+            key = subnode["type"]
+            fields = subnode["fields"]
             def_types = typemap.get_global_types()
             ntypemap = def_types.get(key, None)
             if ntypemap:
                 ntypemap.update(fields)
             else:
                 # Create new typemap
-                base = fields.get('base', '')
-                if base == 'shadow':
+                base = fields.get("base", "")
+                if base == "shadow":
                     typemap.create_class_typemap_from_fields(key, fields, library)
                 else:
                     raise RuntimeError("base must be 'shadow'")

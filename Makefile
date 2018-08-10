@@ -98,6 +98,14 @@ sqa :
 	pylint shroud/*.py > pylint.out
 
 
+# Format code using black
+# black requires Python3.6+
+install-black :
+	$(python.dir)/pip install black
+black :
+	LC_ALL=en_US.utf8 $(python.dir)/black regression/do-test.py
+#	LC_ALL=en_US.utf8 $(python.dir)/black tests/*.py
+
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :

@@ -51,15 +51,16 @@ from shroud import util
 import unittest
 import copy
 
+
 class CheckParse(unittest.TestCase):
     maxDiff = None
 
     def setUp(self):
         typemap.initialize()
-#        declast.create_global_namespace()  # also done in LibraryNode
+        #        declast.create_global_namespace()  # also done in LibraryNode
 
-        self.library = ast.LibraryNode(library='cc')
-        self.class1 = self.library.add_class('Class1')
+        self.library = ast.LibraryNode(library="cc")
+        self.class1 = self.library.add_class("Class1")
 
     # types
     def test_type_int(self):
@@ -79,7 +80,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", s)
         s = r.bind_c()
         self.assertEqual("integer(C_INT) :: var1", s)
-        s = r.bind_c(intent='out')
+        s = r.bind_c(intent="out")
         self.assertEqual("integer(C_INT), intent(OUT) :: var1", s)
         s = r.gen_arg_as_fortran()
         self.assertEqual("integer(C_INT) :: var1", s)
@@ -90,10 +91,12 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
         self.assertEqual("const int var1", r.gen_arg_as_c())
-        self.assertEqual(      "int var1", r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("int var1", r.gen_arg_as_c(asgn_value=True))
         self.assertEqual("const int var1", r.gen_arg_as_cxx())
-        self.assertEqual(      "int var1", r.gen_arg_as_cxx(asgn_value=True))
-        self.assertEqual(    "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True))
+        self.assertEqual("int var1", r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual(
+            "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True)
+        )
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
@@ -108,10 +111,13 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
-        self.assertEqual("integer(C_INT), pointer :: var1(:)",
-                         r.gen_arg_as_fortran(attributes=['pointer']))
-        self.assertEqual("integer(C_INT), pointer :: var1(:)",
-                         r.gen_arg_as_fortran(is_pointer=True))
+        self.assertEqual(
+            "integer(C_INT), pointer :: var1(:)",
+            r.gen_arg_as_fortran(attributes=["pointer"]),
+        )
+        self.assertEqual(
+            "integer(C_INT), pointer :: var1(:)", r.gen_arg_as_fortran(is_pointer=True)
+        )
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
         r = declast.check_decl("const int * var1")
@@ -140,20 +146,15 @@ class CheckParse(unittest.TestCase):
 
         # test attributes
         r = declast.check_decl("int m_ivar +readonly +name(ivar)")
-        self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "name": "ivar",
-                "readonly": True,
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "attrs": {"name": "ivar", "readonly": True},
+                "declarator": {"name": "m_ivar", "pointer": []},
+                "specifier": ["int"],
+                "typemap_name": "int",
             },
-            "declarator": {
-                "name": "m_ivar",
-                "pointer": [],
-            },
-            "specifier": [
-                "int"
-            ],
-            "typemap_name": "int",
-        })
+        )
 
     def test_type_string(self):
         """Test string declarations
@@ -220,103 +221,82 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("std::vector<int> var1")
         s = r.gen_decl()
         self.assertEqual("std::vector<int> var1", s)
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "var1",
-                "pointer": []
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "var1", "pointer": []},
+                "specifier": ["std::vector"],
+                "template_arguments": [{"specifier": ["int"], "typemap_name": "int"}],
+                "typemap_name": "std::vector",
             },
-            "specifier": ["std::vector"],
-            'template_arguments': [
-                {
-                    'specifier': ['int'],
-                    'typemap_name': 'int'
-                }
-            ],
-            "typemap_name": "std::vector",
-        })
+        )
 
         r = declast.check_decl("std::vector<long long> var1")
         s = r.gen_decl()
         self.assertEqual("std::vector<long long> var1", s)
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "var1",
-                "pointer": []
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "var1", "pointer": []},
+                "specifier": ["std::vector"],
+                "template_arguments": [
+                    {"specifier": ["long", "long"], "typemap_name": "long_long"}
+                ],
+                "typemap_name": "std::vector",
             },
-            "specifier": ["std::vector"],
-            'template_arguments': [
-                {
-                    'specifier': ['long', 'long'],
-                    'typemap_name': 'long_long'
-                }
-            ],
-            "typemap_name": "std::vector",
-        })
+        )
 
         r = declast.check_decl("std::vector<std::string> var1")
         s = r.gen_decl()
         self.assertEqual("std::vector<std::string> var1", s)
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "var1",
-                "pointer": []
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "var1", "pointer": []},
+                "specifier": ["std::vector"],
+                "template_arguments": [
+                    {"specifier": ["std::string"], "typemap_name": "std::string"}
+                ],
+                "typemap_name": "std::vector",
             },
-            "specifier": ["std::vector"],
-            'template_arguments': [
-                {
-                    'specifier': ['std::string'],
-                    'typemap_name': 'std::string'
-                }
-            ],
-            "typemap_name": "std::vector",
-        })
+        )
 
     def test_template_argument_list(self):
         decl = "<int>"
         parser = declast.Parser(decl, None)
         r = parser.template_argument_list()
-        self.assertEqual(todict.to_dict(r),
-            [
-                {
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int",
-                }
-            ])
+        self.assertEqual(
+            todict.to_dict(r), [{"specifier": ["int"], "typemap_name": "int"}]
+        )
 
         # self.library creates a global namespace with std::string
         decl = "<std::string, int>"
         parser = declast.Parser(decl, self.library)
         r = parser.template_argument_list()
-        self.assertEqual(todict.to_dict(r),
+        self.assertEqual(
+            todict.to_dict(r),
             [
-                {
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string",
-                },
-                {
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int",
-                }
-            ])
+                {"specifier": ["std::string"], "typemap_name": "std::string"},
+                {"specifier": ["int"], "typemap_name": "int"},
+            ],
+        )
 
     def test_declaration_specifier_error(self):
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("none var1")
-        self.assertTrue("Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception))
+        self.assertTrue(
+            "Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception)
+        )
 
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("std::int var1")
-        self.assertTrue('Expected ID, found TYPE_SPECIFIER' in str(context.exception))
+        self.assertTrue("Expected ID, found TYPE_SPECIFIER" in str(context.exception))
 
         with self.assertRaises(RuntimeError) as context:
             declast.check_decl("std::none var1")
-        self.assertTrue("Symbol 'none' is not in namespace 'std'" in str(context.exception))
+        self.assertTrue(
+            "Symbol 'none' is not in namespace 'std'" in str(context.exception)
+        )
 
     def test_type_other(self):
         """Test size_t declarations
@@ -340,15 +320,15 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl(params=None)
         self.assertEqual("int var1", s)
 
-        s = r.gen_decl(name='newname', params=None)
+        s = r.gen_decl(name="newname", params=None)
         self.assertEqual("int newname", s)
 
-        self.assertEqual('int', r.typemap.name)
+        self.assertEqual("int", r.typemap.name)
         self.assertFalse(r.is_pointer())
-        self.assertEqual('function', r.get_subprogram())
+        self.assertEqual("function", r.get_subprogram())
 
-        self.assertIsNotNone(r.find_arg_by_name('arg1'))
-        self.assertIsNone(r.find_arg_by_name('argnone'))
+        self.assertIsNotNone(r.find_arg_by_name("arg1"))
+        self.assertIsNone(r.find_arg_by_name("argnone"))
 
     def test_type_function_pointer1(self):
         """Function pointer
@@ -383,32 +363,19 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_cxx()
         self.assertEqual("int ( * func)(int)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "func": {
-                    "name": "func", 
-                    "pointer": [
-                        {
-                            "ptr": "*"
-                        }
-                    ]
-                }, 
-                "pointer": []
-            }, 
-            "params": [
-                {
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int",
-                }
-            ], 
-            "specifier": [
-                "int"
-            ],
-            "typemap_name": "int",
-        })
-       
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {
+                    "func": {"name": "func", "pointer": [{"ptr": "*"}]},
+                    "pointer": [],
+                },
+                "params": [{"specifier": ["int"], "typemap_name": "int"}],
+                "specifier": ["int"],
+                "typemap_name": "int",
+            },
+        )
+
     def test_type_function_pointer2(self):
         """Function pointer
         """
@@ -443,16 +410,14 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "foo", "pointer": []},
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("foo", r.get_name())
 
     def test_decl02(self):
@@ -462,19 +427,15 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo +alias(junk)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "alias": "junk"
-            }, 
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "specifier": [
-                "void"
-            ], 
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "attrs": {"alias": "junk"},
+                "declarator": {"name": "foo", "pointer": []},
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("foo", r.get_name())
 
     def test_decl03(self):
@@ -484,22 +445,20 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo()", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "params": [], 
-            "specifier": [
-                "void"
-            ], 
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "foo", "pointer": []},
+                "params": [],
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("foo", r.get_name())
-        self.assertEqual('void', r.typemap.name)
+        self.assertEqual("void", r.typemap.name)
         self.assertFalse(r.is_pointer())
-        self.assertEqual('subroutine', r.get_subprogram())
-        self.assertIsNone(r.find_arg_by_name('argnone'))
+        self.assertEqual("subroutine", r.get_subprogram())
+        self.assertIsNone(r.find_arg_by_name("argnone"))
 
     def test_decl04(self):
         """const method"""
@@ -508,26 +467,20 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void * foo() const", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "foo", 
-                "pointer": [ 
-                    {
-                        "ptr": "*"
-                    }
-                ]
-            }, 
-            "func_const": True, 
-            "params": [],
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "foo", "pointer": [{"ptr": "*"}]},
+                "func_const": True,
+                "params": [],
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("foo", r.get_name())
-        self.assertEqual('void', r.typemap.name)
+        self.assertEqual("void", r.typemap.name)
         self.assertTrue(r.is_pointer())
-        self.assertEqual('function', r.get_subprogram())
+        self.assertEqual("function", r.get_subprogram())
 
     def test_decl05(self):
         """Single argument"""
@@ -536,28 +489,21 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "params": [
-                {
-                    "declarator": {
-                        "name": "arg1", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "int"
-                    ], 
-                    "typemap_name": "int",
-                }
-            ], 
-            "specifier": [
-                "void"
-            ], 
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "foo", "pointer": []},
+                "params": [
+                    {
+                        "declarator": {"name": "arg1", "pointer": []},
+                        "specifier": ["int"],
+                        "typemap_name": "int",
+                    }
+                ],
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("foo", r.get_name())
 
     def test_decl06(self):
@@ -567,43 +513,31 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("void foo(int arg1, double arg2)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "params": [
-                {
-                    "declarator": {
-                        "name": "arg1", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int",
-                }, 
-                {
-                    "declarator": {
-                        "name": "arg2", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "double"
-                    ], 
-                    "typemap_name": "double",
-                }
-            ], 
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "foo", "pointer": []},
+                "params": [
+                    {
+                        "declarator": {"name": "arg1", "pointer": []},
+                        "specifier": ["int"],
+                        "typemap_name": "int",
+                    },
+                    {
+                        "declarator": {"name": "arg2", "pointer": []},
+                        "specifier": ["double"],
+                        "typemap_name": "double",
+                    },
+                ],
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("foo", r.get_name())
 
-        self.assertIsNotNone(r.find_arg_by_name('arg1'))
-        self.assertIsNotNone(r.find_arg_by_name('arg2'))
-        self.assertIsNone(r.find_arg_by_name('argnone'))
+        self.assertIsNotNone(r.find_arg_by_name("arg1"))
+        self.assertIsNotNone(r.find_arg_by_name("arg2"))
+        self.assertIsNone(r.find_arg_by_name("argnone"))
 
     def test_decl07(self):
         """Return string"""
@@ -615,256 +549,202 @@ class CheckParse(unittest.TestCase):
         self.assertTrue(r.is_reference())
         self.assertTrue(r.is_indirect())
 
-        self.assertEqual(todict.to_dict(r),{
-            "const": True, 
-            "declarator": {
-                "name": "getName", 
-                "pointer": [
-                    {
-                        "ptr": "&"
-                    }
-                ]
-            }, 
-            "func_const": True, 
-            "params": [], 
-            "specifier": [
-                "std::string"
-            ], 
-            "typemap_name": "std::string",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "const": True,
+                "declarator": {"name": "getName", "pointer": [{"ptr": "&"}]},
+                "func_const": True,
+                "params": [],
+                "specifier": ["std::string"],
+                "typemap_name": "std::string",
+            },
+        )
         self.assertEqual("getName", r.get_name())
 
     def test_decl08(self):
         """Test attributes.
         """
-        r = declast.check_decl("const void foo("
-                               "int arg1+in, double arg2+out)"
-                               "+len=30 +attr2(True)" )
+        r = declast.check_decl(
+            "const void foo(" "int arg1+in, double arg2+out)" "+len=30 +attr2(True)"
+        )
 
         s = r.gen_decl()
-        self.assertEqual("const void foo("
-                         "int arg1 +in, double arg2 +out)"
-                         " +attr2(True)+len(30)", s)
+        self.assertEqual(
+            "const void foo(" "int arg1 +in, double arg2 +out)" " +attr2(True)+len(30)",
+            s,
+        )
 
-        self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "attr2": "True",
-                "len": 30
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "attrs": {"attr2": "True", "len": 30},
+                "const": True,
+                "declarator": {"name": "foo", "pointer": []},
+                "params": [
+                    {
+                        "attrs": {"in": True},
+                        "declarator": {"name": "arg1", "pointer": []},
+                        "specifier": ["int"],
+                        "typemap_name": "int",
+                    },
+                    {
+                        "attrs": {"out": True},
+                        "declarator": {"name": "arg2", "pointer": []},
+                        "specifier": ["double"],
+                        "typemap_name": "double",
+                    },
+                ],
+                "specifier": ["void"],
+                "typemap_name": "void",
             },
-            "const": True, 
-            "declarator": {
-                "name": "foo", 
-                "pointer": []
-            }, 
-            "params": [
-                {
-                    "attrs": {
-                        "in": True
-                    }, 
-                    "declarator": {
-                        "name": "arg1", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "int"
-                    ], 
-                    "typemap_name": "int",
-                }, 
-                {
-                    "attrs": {
-                        "out": True
-                    }, 
-                    "declarator": {
-                        "name": "arg2", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "double"
-                    ], 
-                    "typemap_name": "double",
-                }
-            ], 
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
-        })
+        )
         self.assertEqual("foo", r.get_name())
 
     def test_decl09a(self):
         """Test constructor
         """
-        r = declast.check_decl("Class1()",namespace=self.class1)
+        r = declast.check_decl("Class1()", namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1()", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "_constructor": True,
-                "_name": "ctor",
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "attrs": {"_constructor": True, "_name": "ctor"},
+                "params": [],
+                "specifier": ["Class1"],
+                "typemap_name": "Class1",
             },
-            "params": [],
-            "specifier": [
-                "Class1"
-            ],
-            "typemap_name": "Class1",
-        })
-        self.assertEqual('ctor', r.get_name())
+        )
+        self.assertEqual("ctor", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         # must provide the name since the ctor has no name
-        self.assertEqual('Class1 ctor()', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 ctor', r.gen_arg_as_c(params=None))
+        self.assertEqual("Class1 ctor()", r.gen_arg_as_cxx())
+        self.assertEqual("CC_class1 ctor", r.gen_arg_as_c(params=None))
 
     def test_decl09b(self):
         """Test constructor +name
         """
-        r = declast.check_decl("Class1() +name(new)",namespace=self.class1)
+        r = declast.check_decl("Class1() +name(new)", namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1() +name(new)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "_constructor": True,
-                "_name": "ctor",
-                "name": "new",
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "attrs": {"_constructor": True, "_name": "ctor", "name": "new"},
+                "params": [],
+                "specifier": ["Class1"],
+                "typemap_name": "Class1",
             },
-            "params": [],
-            "specifier": [
-                "Class1"
-            ],
-            "typemap_name": "Class1",
-        })
-        self.assertEqual('new', r.get_name())
+        )
+        self.assertEqual("new", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 new', r.gen_arg_as_cxx(params=None))
-        self.assertEqual('CC_class1 new()', r.gen_arg_as_c())
+        self.assertEqual("Class1 new", r.gen_arg_as_cxx(params=None))
+        self.assertEqual("CC_class1 new()", r.gen_arg_as_c())
 
     def test_decl09c(self):
         """Test destructor
         """
-        r = declast.check_decl("~Class1()",namespace=self.class1)
+        r = declast.check_decl("~Class1()", namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("~Class1()", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "attrs": {
-                "_destructor": True,
-                "_name": "dtor",
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "attrs": {"_destructor": True, "_name": "dtor"},
+                "params": [],
+                "specifier": ["Class1"],
+                "typemap_name": "Class1",
             },
-            "params": [],
-            "specifier": [
-                "Class1"
-            ],
-            "typemap_name": "Class1",
-        })
-        self.assertEqual('dtor', r.get_name())
+        )
+        self.assertEqual("dtor", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertFalse(r.is_indirect())
-        self.assertEqual('Class1 dtor()', r.gen_arg_as_cxx())
-        self.assertEqual('CC_class1 dtor()', r.gen_arg_as_c())
+        self.assertEqual("Class1 dtor()", r.gen_arg_as_cxx())
+        self.assertEqual("CC_class1 dtor()", r.gen_arg_as_c())
 
     def test_decl09d(self):
         """Return pointer to Class instance
         """
-        r = declast.check_decl("Class1 * make()",namespace=self.class1)
+        r = declast.check_decl("Class1 * make()", namespace=self.class1)
 
         s = r.gen_decl()
         self.assertEqual("Class1 * make()", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "make",
-                "pointer": [
-                    {
-                        "ptr": "*"
-                    }
-            ]
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "make", "pointer": [{"ptr": "*"}]},
+                "params": [],
+                "specifier": ["Class1"],
+                "typemap_name": "Class1",
             },
-            "params": [],
-            "specifier": [
-                "Class1"
-            ],
-            "typemap_name": "Class1",
-        })
-        self.assertEqual('make', r.get_name())
+        )
+        self.assertEqual("make", r.get_name())
 
     def test_decl10(self):
         """Test default arguments
         """
-        r = declast.check_decl("void name(int arg1 = 0, "
-                               "double arg2 = 0.0,"
-                               "std::string arg3 = \"name\","
-                               "bool arg4 = true)")
+        r = declast.check_decl(
+            "void name(int arg1 = 0, "
+            "double arg2 = 0.0,"
+            'std::string arg3 = "name",'
+            "bool arg4 = true)"
+        )
 
         s = r.gen_decl()
-        self.assertEqual("void name(int arg1=0, "
-                         "double arg2=0.0, "
-                         "std::string arg3=\"name\", "
-                         "bool arg4=true)", s)
+        self.assertEqual(
+            "void name(int arg1=0, "
+            "double arg2=0.0, "
+            'std::string arg3="name", '
+            "bool arg4=true)",
+            s,
+        )
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "name", 
-                "pointer": []
-            }, 
-            "params": [
-                {
-                    "declarator": {
-                        "name": "arg1", 
-                        "pointer": []
-                    }, 
-                    "init": 0,
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int",
-                }, 
-                {
-                    "declarator": {
-                        "name": "arg2", 
-                        "pointer": []
-                    }, 
-                    "init": 0.0,
-                    "specifier": [
-                        "double"
-                    ], 
-                    "typemap_name": "double",
-                }, 
-                {
-                    "declarator": {
-                        "name": "arg3", 
-                        "pointer": []
-                    }, 
-                    "init": '"name"',
-                    "specifier": [
-                        "std::string"
-                    ], 
-                    "typemap_name": "std::string",
-                }, 
-                {
-                    "declarator": {
-                        "name": "arg4", 
-                        "pointer": []
-                    }, 
-                    "init": "true",
-                    "specifier": [
-                        "bool"
-                    ], 
-                    "typemap_name": "bool",
-                }
-            ], 
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "name", "pointer": []},
+                "params": [
+                    {
+                        "declarator": {"name": "arg1", "pointer": []},
+                        "init": 0,
+                        "specifier": ["int"],
+                        "typemap_name": "int",
+                    },
+                    {
+                        "declarator": {"name": "arg2", "pointer": []},
+                        "init": 0.0,
+                        "specifier": ["double"],
+                        "typemap_name": "double",
+                    },
+                    {
+                        "declarator": {"name": "arg3", "pointer": []},
+                        "init": '"name"',
+                        "specifier": ["std::string"],
+                        "typemap_name": "std::string",
+                    },
+                    {
+                        "declarator": {"name": "arg4", "pointer": []},
+                        "init": "true",
+                        "specifier": ["bool"],
+                        "typemap_name": "bool",
+                    },
+                ],
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("name", r.get_name())
 
     def test_decl11(self):
@@ -875,137 +755,102 @@ class CheckParse(unittest.TestCase):
         s = r.decl.gen_decl()
         self.assertEqual("void decl11(ArgType arg)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "decl": {
-                "declarator": {
-                    "name": "decl11", 
-                    "pointer": []
-                }, 
-                "params": [
-                    {
-                        "declarator": {
-                            "name": "arg", 
-                            "pointer": []
-                        }, 
-                        "specifier": [
-                            "ArgType"
-                        ], 
-                        "typemap_name": "ArgType",
-                    }
-                ], 
-                "specifier": [
-                    "void"
-                ],
-                "typemap_name": "void",
-            }, 
-            "parameters": [
-                {
-                    "name": "ArgType"
-                }
-            ]
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "decl": {
+                    "declarator": {"name": "decl11", "pointer": []},
+                    "params": [
+                        {
+                            "declarator": {"name": "arg", "pointer": []},
+                            "specifier": ["ArgType"],
+                            "typemap_name": "ArgType",
+                        }
+                    ],
+                    "specifier": ["void"],
+                    "typemap_name": "void",
+                },
+                "parameters": [{"name": "ArgType"}],
+            },
+        )
         self.assertEqual("decl11", r.decl.get_name())
-                         
+
     def test_decl12(self):
         """Test templates
         Test std::string and string types.
         """
-        r = declast.check_decl("void decl12(std::vector<std::string> arg1, string arg2)")
+        r = declast.check_decl(
+            "void decl12(std::vector<std::string> arg1, string arg2)"
+        )
 
         s = r.gen_decl()
         self.assertEqual("void decl12(std::vector<std::string> arg1, string arg2)", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "decl12", 
-                "pointer": []
-            }, 
-            "params": [
-                {
-                    "declarator": {
-                        "name": "arg1", 
-                        "pointer": []
-                    }, 
-                    "specifier": ["std::vector"],
-                    "template_arguments": [
-                        {
-                            'specifier': ['std::string'],
-                            'typemap_name': 'std::string'
-                        },
-                    ],
-                    "typemap_name": "std::vector",
-                }, 
-                {
-                    "declarator": {
-                        "name": "arg2", 
-                        "pointer": []
-                    }, 
-                    "specifier": [
-                        "string"
-                    ], 
-                    "typemap_name": "std::string",
-                }
-            ], 
-            "specifier": [
-                "void"
-            ],
-            "typemap_name": "void",
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "decl12", "pointer": []},
+                "params": [
+                    {
+                        "declarator": {"name": "arg1", "pointer": []},
+                        "specifier": ["std::vector"],
+                        "template_arguments": [
+                            {
+                                "specifier": ["std::string"],
+                                "typemap_name": "std::string",
+                            }
+                        ],
+                        "typemap_name": "std::vector",
+                    },
+                    {
+                        "declarator": {"name": "arg2", "pointer": []},
+                        "specifier": ["string"],
+                        "typemap_name": "std::string",
+                    },
+                ],
+                "specifier": ["void"],
+                "typemap_name": "void",
+            },
+        )
         self.assertEqual("decl12", r.get_name())
 
     def test_decl13(self):
         """Test multi-specifier
         """
-        r = declast.check_decl("void decl13("
-                               "long int arg1,"
-                               "long long arg2,"
-                               "unsigned int)")
+        r = declast.check_decl(
+            "void decl13(" "long int arg1," "long long arg2," "unsigned int)"
+        )
 
-        self.assertEqual(['long', 'int'], r.params[0].specifier)
-        self.assertEqual('long', r.params[0].typemap.name)
+        self.assertEqual(["long", "int"], r.params[0].specifier)
+        self.assertEqual("long", r.params[0].typemap.name)
 
-        self.assertEqual(['long', 'long'], r.params[1].specifier)
-        self.assertEqual('long_long', r.params[1].typemap.name)
+        self.assertEqual(["long", "long"], r.params[1].specifier)
+        self.assertEqual("long_long", r.params[1].typemap.name)
 
-        self.assertEqual(['unsigned', 'int'], r.params[2].specifier)
-        self.assertEqual('unsigned_int', r.params[2].typemap.name)
+        self.assertEqual(["unsigned", "int"], r.params[2].specifier)
+        self.assertEqual("unsigned_int", r.params[2].typemap.name)
 
     def test_class_template(self):
         """Class templates"""
         r = declast.check_decl("template<typename T> class vector")
 
-#        s = r.gen_decl()
-#        self.assertEqual("template<typename T> vector", s)
+        #        s = r.gen_decl()
+        #        self.assertEqual("template<typename T> vector", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "decl": {
-                "name": "vector"
-            },
-            "parameters": [
-                {
-                    "name": "T"
-                }
-            ]
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {"decl": {"name": "vector"}, "parameters": [{"name": "T"}]},
+        )
 
         r = declast.check_decl("template<Key,T> class map")
 
-#        s = r.gen_decl()
-#        self.assertEqual("template<typename Key, typename T> map", s)
+        #        s = r.gen_decl()
+        #        self.assertEqual("template<typename Key, typename T> map", s)
 
-        self.assertEqual(todict.to_dict(r),{
-            "decl": {
-                "name": "map"
-            },
-            "parameters": [
-                {
-                    "name": "Key",
-                },
-                {
-                    "name": "T",
-                }
-            ]
-        })
+        self.assertEqual(
+            todict.to_dict(r),
+            {"decl": {"name": "map"}, "parameters": [{"name": "Key"}, {"name": "T"}]},
+        )
 
     def test_as_arg(self):
         r = declast.check_decl("const std::string& getName() const")
@@ -1013,139 +858,113 @@ class CheckParse(unittest.TestCase):
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
 
-        r.result_as_arg('output')
+        r.result_as_arg("output")
         s = r.gen_decl()
         self.assertEqual("void getName(std::string & output) const", s)
 
     def test_as_voidstar(self):
         # Change function return to an argument
-        vtypemap = typemap.lookup_type('void')
+        vtypemap = typemap.lookup_type("void")
 
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
         self.assertEqual("const std::string & getName() const", s)
 
-        r.result_as_voidstar(vtypemap, 'output', const=r.const)
+        r.result_as_voidstar(vtypemap, "output", const=r.const)
         s = r.gen_decl()
         self.assertEqual("void getName(const void * output) const", s)
 
         # Now without const
         r = declast.check_decl("std::string& getName() const")
-        r.result_as_voidstar(vtypemap, 'output', const=r.const)
+        r.result_as_voidstar(vtypemap, "output", const=r.const)
         s = r.gen_decl()
         self.assertEqual("void getName(void * output) const", s)
-                         
+
     def test_thisarg01(self):
         """Create an argument for const this"""
         class_typemap = self.class1.typemap
-        r = declast.create_this_arg('self', class_typemap, const=True)
+        r = declast.create_this_arg("self", class_typemap, const=True)
         s = r.gen_decl()
         self.assertEqual("const Class1 * self", s)
 
     def test_thisarg02(self):
         """Create an argument for this"""
         class_typemap = self.class1.typemap
-        r = declast.create_this_arg('self', class_typemap, const=False)
+        r = declast.create_this_arg("self", class_typemap, const=False)
         s = r.gen_decl()
         self.assertEqual("Class1 * self", s)
 
     def test_copy01(self):
         """Test copy"""
-        r = declast.check_decl("const std::string& Function4b("
-                               "const std::string& arg1,"
-                               "const std::string& arg2 )")
+        r = declast.check_decl(
+            "const std::string& Function4b("
+            "const std::string& arg1,"
+            "const std::string& arg2 )"
+        )
         self.assertTrue(r.is_reference())
         self.assertEqual(r.name, "Function4b")
 
         r2 = copy.deepcopy(r)
 
-        r2.name = 'newname'
-        self.assertEqual(r.name, 'Function4b')  # first is unchanged
-        self.assertEqual(r2.name, 'newname')
+        r2.name = "newname"
+        self.assertEqual(r.name, "Function4b")  # first is unchanged
+        self.assertEqual(r2.name, "newname")
 
 
 class CheckExpr(unittest.TestCase):
     # No need for namespace
 
     def test_identifier1(self):
-        r = declast.check_expr('id')
-        self.assertEqual('id', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            'name' : 'id',
-        })
+        r = declast.check_expr("id")
+        self.assertEqual("id", todict.print_node(r))
+        self.assertEqual(todict.to_dict(r), {"name": "id"})
 
     def test_identifier_no_args(self):
-        r = declast.check_expr('id()')
-        self.assertEqual('id()', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            'name' : 'id',
-            'args': [],
-        })
+        r = declast.check_expr("id()")
+        self.assertEqual("id()", todict.print_node(r))
+        self.assertEqual(todict.to_dict(r), {"name": "id", "args": []})
 
     def test_identifier_with_args(self):
-        r = declast.check_expr('id(arg1)')
-        self.assertEqual('id(arg1)', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {
-            'name' : 'id',
-            'args' : [ { 'name' : 'arg1' } ]
-        })
+        r = declast.check_expr("id(arg1)")
+        self.assertEqual("id(arg1)", todict.print_node(r))
+        self.assertEqual(todict.to_dict(r), {"name": "id", "args": [{"name": "arg1"}]})
 
     def test_constant(self):
-        r = declast.check_expr('1 + 2.345')
-        self.assertEqual('1+2.345', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            "left": {
-                "constant": "1"
-            }, 
-            "op": "+", 
-            "right": {
-                "constant": "2.345"
-            }
-        })
+        r = declast.check_expr("1 + 2.345")
+        self.assertEqual("1+2.345", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r),
+            {"left": {"constant": "1"}, "op": "+", "right": {"constant": "2.345"}},
+        )
 
     def test_binary(self):
-        r = declast.check_expr('a + b * c')
-        self.assertEqual('a+b*c', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            "left": {
-                "name": "a"
-            }, 
-            "op": "+", 
-            "right": {
+        r = declast.check_expr("a + b * c")
+        self.assertEqual("a+b*c", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "left": {"name": "a"},
+                "op": "+",
+                "right": {"left": {"name": "b"}, "op": "*", "right": {"name": "c"}},
+            },
+        )
+
+        r = declast.check_expr("(a + b) * c")
+        self.assertEqual("(a+b)*c", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r),
+            {
                 "left": {
-                    "name": "b"
-                }, 
-                "op": "*", 
-                "right": {
-                    "name": "c"
-                }
-            }
-        })
-
-        r = declast.check_expr('(a + b) * c')
-        self.assertEqual('(a+b)*c', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            "left": {
-                "node": {
-                    "left": {
-                        "name": "a"
-                    }, 
-                    "op": "+", 
-                    "right": {
-                        "name": "b"
-                    }
-                }
-            }, 
-            "op": "*", 
-            "right": {
-                "name": "c"
-            }
-        })
-
+                    "node": {"left": {"name": "a"}, "op": "+", "right": {"name": "b"}}
+                },
+                "op": "*",
+                "right": {"name": "c"},
+            },
+        )
 
     def test_others(self):
-        e = 'size+2'
+        e = "size+2"
         r = declast.check_expr(e)
         self.assertEqual(e, todict.print_node(r))
 
@@ -1153,167 +972,154 @@ class CheckExpr(unittest.TestCase):
 class CheckNamespace(unittest.TestCase):
     def test_decl_namespace(self):
         """Parse a namespace"""
-        r = declast.check_decl('namespace ns1')
-        self.assertEqual('namespace ns1', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            'name': 'ns1',
-        })
+        r = declast.check_decl("namespace ns1")
+        self.assertEqual("namespace ns1", todict.print_node(r))
+        self.assertEqual(todict.to_dict(r), {"name": "ns1"})
 
 
 class CheckTypedef(unittest.TestCase):
-
     def XXXsetUp(self):
         library = ast.LibraryNode()
 
     def test_typedef1(self):
-        r = declast.check_decl('typedef int TypeID;')
-        self.assertEqual('typedef int TypeID', r.gen_decl())
-        self.assertDictEqual(todict.to_dict(r),{
-            "declarator": {
-                "name": "TypeID", 
-                "pointer": []
-            }, 
-            "specifier": [
-                "int"
-            ], 
-            "storage": [
-                "typedef"
-            ],
-            "typemap_name": "int",
-        })
+        r = declast.check_decl("typedef int TypeID;")
+        self.assertEqual("typedef int TypeID", r.gen_decl())
+        self.assertDictEqual(
+            todict.to_dict(r),
+            {
+                "declarator": {"name": "TypeID", "pointer": []},
+                "specifier": ["int"],
+                "storage": ["typedef"],
+                "typemap_name": "int",
+            },
+        )
 
     def test_typedef2(self):
         library = ast.LibraryNode()
-        library.add_declaration('typedef int TD2;')
-        self.assertIn('TD2', library.symbols)
+        library.add_declaration("typedef int TD2;")
+        self.assertIn("TD2", library.symbols)
 
-        typedef = typemap.lookup_type('TD2')
+        typedef = typemap.lookup_type("TD2")
         self.assertIsNotNone(typedef)
-        self.assertEqual('TD2', typedef.name)
-        self.assertEqual('TD2', typedef.cxx_type)
-        self.assertEqual('int', typedef.typedef)
+        self.assertEqual("TD2", typedef.name)
+        self.assertEqual("TD2", typedef.cxx_type)
+        self.assertEqual("int", typedef.typedef)
 
     def test_typedef_errors(self):
         with self.assertRaises(RuntimeError) as context:
-            r = declast.check_decl('typedef none TypeID;')
-        self.assertTrue("Expected TYPE_SPECIFIER, found ID 'none'"
-                        in str(context.exception))
+            r = declast.check_decl("typedef none TypeID;")
+        self.assertTrue(
+            "Expected TYPE_SPECIFIER, found ID 'none'" in str(context.exception)
+        )
 
         library = ast.LibraryNode()
         with self.assertRaises(NotImplementedError) as context:
-            library.add_declaration('typedef int * TD2;')
-        self.assertTrue("Pointers not supported in typedef"
-                        in str(context.exception))
+            library.add_declaration("typedef int * TD2;")
+        self.assertTrue("Pointers not supported in typedef" in str(context.exception))
 
         with self.assertRaises(NotImplementedError) as context:
-            library.add_declaration('typedef int(*func)();')
-        self.assertTrue("Function pointers not supported in typedef"
-                        in str(context.exception))
+            library.add_declaration("typedef int(*func)();")
+        self.assertTrue(
+            "Function pointers not supported in typedef" in str(context.exception)
+        )
 
 
 class CheckEnum(unittest.TestCase):
-
     def XXXsetUp(self):
         library = ast.LibraryNode()
 
     def test_enum1(self):
-        r = declast.check_decl('enum Color{RED=1,BLUE,WHITE}')
-        self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            'name': 'Color',
-            'members': [
-                {'name': 'RED', 'value': { 'constant': '1' }},
-                {'name': 'BLUE'},
-                {'name': 'WHITE'}
-            ]
-        })
-                         
+        r = declast.check_decl("enum Color{RED=1,BLUE,WHITE}")
+        self.assertEqual("enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "name": "Color",
+                "members": [
+                    {"name": "RED", "value": {"constant": "1"}},
+                    {"name": "BLUE"},
+                    {"name": "WHITE"},
+                ],
+            },
+        )
+
     def test_enum2(self):
         # enum trailing comma
-        r = declast.check_decl('enum Color{RED=1,BLUE,WHITE,}')
-        self.assertEqual('enum Color { RED = 1, BLUE, WHITE };', todict.print_node(r))
+        r = declast.check_decl("enum Color{RED=1,BLUE,WHITE,}")
+        self.assertEqual("enum Color { RED = 1, BLUE, WHITE };", todict.print_node(r))
 
 
 class CheckStruct(unittest.TestCase):
     def test_struct1(self):
-        r = declast.check_decl('struct struct1 { int i; double d; };')
-        self.assertEqual('struct struct1 { int i;double d; };', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            "members": [
-                {
-                    "declarator": {
-                        "name": "i",
-                        "pointer": []
+        r = declast.check_decl("struct struct1 { int i; double d; };")
+        self.assertEqual("struct struct1 { int i;double d; };", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r),
+            {
+                "members": [
+                    {
+                        "declarator": {"name": "i", "pointer": []},
+                        "specifier": ["int"],
+                        "typemap_name": "int",
                     },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int",
-                },
-                {
-                    "declarator": {
-                        "name": "d",
-                        "pointer": []
+                    {
+                        "declarator": {"name": "d", "pointer": []},
+                        "specifier": ["double"],
+                        "typemap_name": "double",
                     },
-                    "specifier": [
-                        "double"
-                    ],
-                    "typemap_name": "double",
-                }
-            ],
-            "name": "struct1"
-        })
+                ],
+                "name": "struct1",
+            },
+        )
 
 
 class CheckClass(unittest.TestCase):
-
     def XXXsetUp(self):
         library = ast.LibraryNode()
 
     def test_class1(self):
-        r = declast.check_decl('class Class1')
+        r = declast.check_decl("class Class1")
         self.assertIsInstance(r, declast.CXXClass)
-        self.assertEqual('class Class1;', todict.print_node(r))
-        self.assertEqual(todict.to_dict(r),{
-            'name': 'Class1',
-        })
-                         
+        self.assertEqual("class Class1;", todict.print_node(r))
+        self.assertEqual(todict.to_dict(r), {"name": "Class1"})
+
     def test_class2(self):
         """Forward declare class in a library"""
         library = ast.LibraryNode()
-        library.add_declaration('class Class1;')
-        self.assertIn('Class1', library.symbols)
-        self.assertIsInstance(library.symbols['Class1'], ast.ClassNode)
+        library.add_declaration("class Class1;")
+        self.assertIn("Class1", library.symbols)
+        self.assertIsInstance(library.symbols["Class1"], ast.ClassNode)
 
-        typedef = typemap.lookup_type('Class1')
+        typedef = typemap.lookup_type("Class1")
         self.assertIsNotNone(typedef)
-        self.assertEqual('Class1', typedef.name)
-        self.assertEqual('Class1', typedef.cxx_type)
-        self.assertEqual('shadow', typedef.base)
-                         
+        self.assertEqual("Class1", typedef.name)
+        self.assertEqual("Class1", typedef.cxx_type)
+        self.assertEqual("shadow", typedef.base)
+
     def test_class2_node(self):
         """Add a class with declarations to a library"""
         library = ast.LibraryNode()
-        library.add_declaration('class Class1;',
-                                declarations=[ dict(decl='void func1()')])
-        self.assertIn('Class1', library.symbols)
-        sym = library.symbols['Class1']
+        library.add_declaration(
+            "class Class1;", declarations=[dict(decl="void func1()")]
+        )
+        self.assertIn("Class1", library.symbols)
+        sym = library.symbols["Class1"]
         self.assertIsInstance(sym, ast.ClassNode)
         self.assertIs(sym, library.classes[0])
 
     def test_class_in_namespace(self):
         """Forward declare a class in a namespace"""
         library = ast.LibraryNode()
-        ns = library.add_namespace('ns')
-        ns.add_declaration('class Class2;')
-        self.assertIn('Class2', ns.symbols)
-        self.assertIsInstance(ns.symbols['Class2'], ast.ClassNode)
+        ns = library.add_namespace("ns")
+        ns.add_declaration("class Class2;")
+        self.assertIn("Class2", ns.symbols)
+        self.assertIsInstance(ns.symbols["Class2"], ast.ClassNode)
 
-        typedef = typemap.lookup_type('ns::Class2')
+        typedef = typemap.lookup_type("ns::Class2")
         self.assertIsNotNone(typedef)
-        self.assertEqual('ns::Class2', typedef.name)
-        self.assertEqual('ns::Class2', typedef.cxx_type)
+        self.assertEqual("ns::Class2", typedef.name)
+        self.assertEqual("ns::Class2", typedef.cxx_type)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

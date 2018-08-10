@@ -1,8 +1,8 @@
-# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
-# Produced at the Lawrence Livermore National Laboratory 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+# Produced at the Lawrence Livermore National Laboratory
 #
 # LLNL-CODE-738041.
-# All rights reserved. 
+# All rights reserved.
 #
 # This file is part of Shroud.  For details, see
 # https://github.com/LLNL/shroud. Please also read shroud/LICENSE.
@@ -13,7 +13,7 @@
 #
 # * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the disclaimer below.
-# 
+#
 # * Redistributions in binary form must reproduce the above copyright
 #   notice, this list of conditions and the disclaimer (as noted below)
 #   in the documentation and/or other materials provided with the
@@ -49,11 +49,13 @@ import unittest
 from . import test_ast
 from . import test_declast
 from . import test_generate
-#from . import test_typemap
+
+# from . import test_typemap
 from . import test_util
 from . import test_wrapf
 from . import test_wrapp
-#from . import test_shroud
+
+# from . import test_shroud
 
 
 test_cases = (
@@ -71,7 +73,7 @@ test_cases = (
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,
     test_wrapp.CheckImplied,
-#    test_shroud.MainCase,
+    #    test_shroud.MainCase,
 )
 
 
@@ -88,4 +90,3 @@ def load_tests2():
     # used from 'setup.py test'
     loader = unittest.TestLoader()
     return load_tests(loader, None, None)
-

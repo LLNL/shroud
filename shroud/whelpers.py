@@ -81,18 +81,18 @@ from . import util
 
 wformat = util.wformat
 
+
 def XXXwrite_helper_files(self, directory):
     """This library file is no longer needed.
 
     Should be writtento config.c_fortran_dir
     """
     output = [FccHeaders]
-    self.write_output_file('shroudrt.hpp',
-                           directory, output)
+    self.write_output_file("shroudrt.hpp", directory, output)
 
     output = [FccCSource]
-    self.write_output_file('shroudrt.cpp',
-                           directory, output)
+    self.write_output_file("shroudrt.cpp", directory, output)
+
 
 FccHeaders = """
 #ifndef SHROUDRT_HPP_
@@ -132,6 +132,8 @@ extern "C" {
 /* *INDENT-ON* */"""
 
 num_union_helpers = 0
+
+
 def add_union_helper(cxx, c, num=0):
     """A union helper is used to convert between a struct in C and C++.
     The structs are identical but the names are different. For example,
@@ -144,18 +146,23 @@ def add_union_helper(cxx, c, num=0):
     The struct are named sequentially to generate unique names.
     """
     global num_union_helpers
-    name = 'SH_union_{}_t'.format(num_union_helpers)
+    name = "SH_union_{}_t".format(num_union_helpers)
     num_union_helpers += 1
     if name in CHelpers:
         raise RuntimeError("{} already exists in CHelpers".format(name))
-    helper = dict(cxx_source="""
+    helper = dict(
+        cxx_source="""
 typedef union {{
   {cxx} cxx;
   {c} c;
 }} {name};
-""".format(name=name, cxx=cxx, c=c))
+""".format(
+            name=name, cxx=cxx, c=c
+        )
+    )
     CHelpers[name] = helper
     return name
+
 
 def add_external_helpers(fmt):
     """Create helper which have generated names.
@@ -164,12 +171,13 @@ def add_external_helpers(fmt):
     """
 
     # Only used with std::string and thus C++
-    name = 'copy_string'
+    name = "copy_string"
     CHelpers[name] = dict(
-        dependent_helpers=['array_context'],
-        cxx_header='<string> <cstddef>',
+        dependent_helpers=["array_context"],
+        cxx_header="<string> <cstddef>",
         # XXX - mangle name
-        source=wformat("""
+        source=wformat(
+            """
 // helper function
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
@@ -180,13 +188,16 @@ if (data->len < n) n = data->len;
 strncpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
 -}}
-""", fmt)
+""",
+            fmt,
+        ),
     )
 
     # Deal with allocatable character
     FHelpers[name] = dict(
-        dependent_helpers=['array_context'],
-        interface=wformat("""
+        dependent_helpers=["array_context"],
+        interface=wformat(
+            """
 interface+
 ! helper function
 ! Copy the char* or std::string in context into c_var.
@@ -198,16 +209,19 @@ type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_copy_string_and_free
--end interface""", fmt)
-        )
+-end interface""",
+            fmt,
+        ),
+    )
     ##########
+
 
 def add_shadow_helper(node):
     """
     """
     cname = node.typemap.c_type
 
-    name = 'capsule_{}'.format(cname)
+    name = "capsule_{}".format(cname)
     if name not in CHelpers:
         helper = dict(
             h_shared_code="""
@@ -215,56 +229,67 @@ struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
-typedef struct s_{C_type_name} {C_type_name};""".format(C_type_name=cname),
+typedef struct s_{C_type_name} {C_type_name};""".format(
+                C_type_name=cname
+            )
         )
         CHelpers[name] = helper
     return name
+
 
 def add_capsule_helper(fmt):
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
     """
-    name = 'capsule_data_helper'
+    name = "capsule_data_helper"
     if name not in FHelpers:
         helper = dict(
-            derived_type=wformat("""
+            derived_type=wformat(
+                """
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
--end type {F_capsule_data_type}""", fmt),
-            modules=dict(
-                iso_c_binding=['C_PTR', 'C_INT', 'C_NULL_PTR'],
+-end type {F_capsule_data_type}""",
+                fmt,
             ),
+            modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
         )
         FHelpers[name] = helper
 
     if name not in CHelpers:
         helper = dict(
-            h_shared_code=wformat("""
+            h_shared_code=wformat(
+                """
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
-typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""", fmt),
+typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
+                fmt,
+            )
         )
         CHelpers[name] = helper
 
     ########################################
-    name = 'capsule_helper'
+    name = "capsule_helper"
     if name not in FHelpers:
-# XXX split helper into to parts, one for each derived type
+        # XXX split helper into to parts, one for each derived type
         helper = dict(
-            dependent_helpers=['capsule_data_helper'],
-            derived_type=wformat("""
+            dependent_helpers=["capsule_data_helper"],
+            derived_type=wformat(
+                """
 type {F_capsule_type}+
 private
 type({F_capsule_data_type}) :: mem
 -contains
 +final :: {F_capsule_final_function}
--end type {F_capsule_type}""", fmt),
+-end type {F_capsule_type}""",
+                fmt,
+            ),
             # cannot be declared with both PRIVATE and BIND(C) attributes
-            source=wformat("""
+            source=wformat(
+                """
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
 use iso_c_binding, only : C_BOOL
@@ -280,18 +305,21 @@ logical(C_BOOL), value, intent(IN) :: gc
 -end interface
 call array_destructor(cap%mem, .false._C_BOOL)
 -end subroutine {F_capsule_final_function}
-            """, fmt),
+            """,
+                fmt,
+            ),
         )
         FHelpers[name] = helper
 
     ########################################
-    name = 'array_context'
+    name = "array_context"
     if name not in CHelpers:
         helper = dict(
-            h_shared_include='<stddef.h>',
+            h_shared_include="<stddef.h>",
             # Create a union for addr to avoid some casts.
             # And help with debugging since ccharp will display contents.
-            h_shared_code=wformat("""
+            h_shared_code=wformat(
+                """
 struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
@@ -301,8 +329,10 @@ const char * ccharp;
 size_t len;     /* bytes-per-item or character len of data in cxx */
 size_t size;    /* size of data in cxx */
 -}};
-typedef struct s_{C_array_type} {C_array_type};""", fmt),
-            dependent_helpers=['capsule_data_helper'],
+typedef struct s_{C_array_type} {C_array_type};""",
+                fmt,
+            ),
+            dependent_helpers=["capsule_data_helper"],
         )
         CHelpers[name] = helper
 
@@ -310,17 +340,18 @@ typedef struct s_{C_array_type} {C_array_type};""", fmt),
         # Create a derived type used to communicate with C wrapper.
         # Should never be exposed to user.
         helper = dict(
-            derived_type=wformat("""
+            derived_type=wformat(
+                """
 type, bind(C) :: {F_array_type}+
 type({F_capsule_data_type}) :: cxx       ! address of C++ memory
 type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
 integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
 integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
--end type {F_array_type}""", fmt),
-            modules=dict(
-                iso_c_binding=['C_NULL_PTR', 'C_PTR', 'C_SIZE_T'],
+-end type {F_array_type}""",
+                fmt,
             ),
-            dependent_helpers=['capsule_data_helper'],
+            modules=dict(iso_c_binding=["C_NULL_PTR", "C_PTR", "C_SIZE_T"]),
+            dependent_helpers=["capsule_data_helper"],
         )
         FHelpers[name] = helper
 
@@ -328,15 +359,16 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
 def add_copy_array_helper_c(fmt):
     """Create function to copy contents of a vector.
     """
-    name = 'copy_array'
+    name = "copy_array"
     if name not in CHelpers:
         helper = dict(
-            dependent_helpers=['array_context'],
-            c_header='<string.h>',
-            cxx_header='<cstring>',
+            dependent_helpers=["array_context"],
+            c_header="<string.h>",
+            cxx_header="<cstring>",
             # Create a single C routine which is called from Fortran via an interface
             # for each cxx_type
-            cxx_source=wformat("""
+            cxx_source=wformat(
+                """
 // helper function
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
@@ -347,16 +379,21 @@ int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->len;
 {stdlib}memcpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}""", fmt))
+-}}""",
+                fmt,
+            ),
+        )
         CHelpers[name] = helper
 
+
 def add_copy_array_helper(fmt):
-    name = wformat('copy_array_{cxx_type}', fmt)
+    name = wformat("copy_array_{cxx_type}", fmt)
     if name not in FHelpers:
         helper = dict(
             # XXX when f_kind == C_SIZE_T
-            dependent_helpers=['array_context'],
-            interface=wformat("""
+            dependent_helpers=["array_context"],
+            interface=wformat(
+                """
 interface+
 ! helper function
 ! Copy contents of context into c_var.
@@ -368,15 +405,18 @@ type({F_array_type}), intent(IN) :: context
 integer({f_kind}), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
 -end subroutine SHROUD_copy_array_{cxx_type}
--end interface""", fmt),
+-end interface""",
+                fmt,
+            ),
         )
         FHelpers[name] = helper
     return name
 
+
 CHelpers = dict(
     ShroudStrCopy=dict(
-        c_header='<string.h>',
-        cxx_header='<cstring>',
+        c_header="<string.h>",
+        cxx_header="<cstring>",
         c_source="""
 // helper function
 // Copy src into dest, blank fill to ndest characters
@@ -398,8 +438,8 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    int nm = nsrc < ndest ? nsrc : ndest;
    std::memcpy(dest,src,nm);
    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
-}"""
-        ),
+}""",
+    ),
     ShroudLenTrim=dict(
         source="""
 // helper function
@@ -418,12 +458,10 @@ int ShroudLenTrim(const char *src, int nsrc) {
 }
 """
     ),
+)  # end CHelpers
 
-    ) # end CHelpers
 
-
-FHelpers = dict(
-    ) # end FHelpers
+FHelpers = dict()  # end FHelpers
 
 
 cmake = """

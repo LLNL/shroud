@@ -46,19 +46,15 @@ from shroud import util
 
 import unittest
 
-class UtilCase(unittest.TestCase):
 
+class UtilCase(unittest.TestCase):
     def test_un_camel(self):
-        self.assertEqual(util.un_camel('incrementCount'),
-                         'increment_count')
-        self.assertEqual(util.un_camel('local_function1'),
-                         'local_function1')
-        self.assertEqual(util.un_camel('getHTTPResponseCode'),
-                         'get_http_response_code')
+        self.assertEqual(util.un_camel("incrementCount"), "increment_count")
+        self.assertEqual(util.un_camel("local_function1"), "local_function1")
+        self.assertEqual(util.un_camel("getHTTPResponseCode"), "get_http_response_code")
 
 
 class ScopeCase(unittest.TestCase):
-
     def setUp(self):
         self.lev0 = util.Scope(None, a=1, b=2, c=3)
         self.lev1 = util.Scope(self.lev0, x=100, y=1, z=102)
@@ -79,32 +75,31 @@ class ScopeCase(unittest.TestCase):
         self.assertEqual(self.lev0.c2, 32)
 
     def test_get01(self):
-        self.assertEqual(self.lev1.get('a', 'notfound'), 1)
-        self.assertEqual(self.lev1.get('nosuch', 'notfound'), 'notfound')
+        self.assertEqual(self.lev1.get("a", "notfound"), 1)
+        self.assertEqual(self.lev1.get("nosuch", "notfound"), "notfound")
 
     def test_in(self):
-         self.assertIn('a', self.lev0)
-         self.assertIn('a', self.lev1)
+        self.assertIn("a", self.lev0)
+        self.assertIn("a", self.lev1)
 
-         self.assertNotIn('z', self.lev0)
-         self.assertIn('z', self.lev1)
+        self.assertNotIn("z", self.lev0)
+        self.assertIn("z", self.lev1)
 
-         self.assertNotIn('nosuch', self.lev1)
+        self.assertNotIn("nosuch", self.lev1)
 
     def test_setdefault(self):
         lev1 = self.lev1
-        self.assertNotIn('yyy', lev1)
-        lev1.setdefault('yyy', 'yyyvalue')
-        self.assertIn('yyy', lev1)
-        self.assertEqual(lev1.yyy, 'yyyvalue')
+        self.assertNotIn("yyy", lev1)
+        lev1.setdefault("yyy", "yyyvalue")
+        self.assertIn("yyy", lev1)
+        self.assertEqual(lev1.yyy, "yyyvalue")
 
     def test_update(self):
         self.assertEqual(self.lev0.a, 1)
 
         self.lev0.update(dict(a=100), replace=True)
         self.assertEqual(self.lev0.a, 100)
-        
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
