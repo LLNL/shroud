@@ -451,4 +451,4 @@ def print_node_as_json(node):
     Useful for debugging.
     """
     dd = to_dict(node)
-    print(json.dumps(dd, indent=4, sort_keys=True))
+    print(json.dumps(dd, indent=4, sort_keys=True, separators=(',', ': ')))

@@ -170,7 +170,7 @@ def dump_jsonfile(logdir, basename, newlibrary):
         # yaml=all,
     )
 
-    json.dump(out, fp, sort_keys=True, indent=4)
+    json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
     fp.close()
 
 
