@@ -405,9 +405,10 @@ def main_with_args(args):
 
     if "splicer" in allinput:
         # read splicer files defined in input YAML file
-        for suffix, names in allinput["splicer"].items():
+        for suffix in sorted(allinput["splicer"].keys()):
             if suffix == "__line__":
                 continue
+            names = allinput["splicer"][suffix]
             # suffix = 'c', 'f', 'py', 'lua'
             subsplicer = splicers.setdefault(suffix, {})
             for name in names:
