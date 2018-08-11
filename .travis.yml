@@ -58,6 +58,7 @@ script:
   # echo make version
   - make --version
   - make PYTHONEXE=python test
+  - make PYTHONEXE=python do-test
 
 notifications:
   email:
