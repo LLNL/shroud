@@ -565,44 +565,6 @@ PP_exclass2_getValue_double(
 // splicer end class.ExClass2.method.get_value_double
 }
 
-static char PP_exclass2_getValue__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_exclass2_getValue(
-  PP_ExClass2 *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin class.ExClass2.method.get_value
-    Py_ssize_t SHT_nargs = 0;
-    if (args != NULL) SHT_nargs += PyTuple_Size(args);
-    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
-    PyObject *rvobj;
-    if (SHT_nargs == 0) {
-        rvobj = PP_exclass2_getValue_int(self, args, kwds);
-        if (!PyErr_Occurred()) {
-            return rvobj;
-        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
-            return rvobj;
-        }
-        PyErr_Clear();
-    }
-    if (SHT_nargs == 0) {
-        rvobj = PP_exclass2_getValue_double(self, args, kwds);
-        if (!PyErr_Occurred()) {
-            return rvobj;
-        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
-            return rvobj;
-        }
-        PyErr_Clear();
-    }
-    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
-    return NULL;
-// splicer end class.ExClass2.method.get_value
-}
-
 static char PP_exclass2_setValue__doc__[] =
 "documentation"
 ;
@@ -658,6 +620,44 @@ PP_exclass2_setValue(
     return NULL;
 // splicer end class.ExClass2.method.set_value
 }
+
+static char PP_exclass2_getValue__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PP_exclass2_getValue(
+  PP_ExClass2 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ExClass2.method.get_value
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 0) {
+        rvobj = PP_exclass2_getValue_int(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 0) {
+        rvobj = PP_exclass2_getValue_double(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end class.ExClass2.method.get_value
+}
 // splicer begin class.ExClass2.impl.after_methods
 // splicer end class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
@@ -679,10 +679,10 @@ static PyMethodDef PP_ExClass2_methods[] = {
         PP_exclass2_destroyall__doc__},
     {"getTypeID", (PyCFunction)PP_exclass2_getTypeID, METH_NOARGS,
         PP_exclass2_getTypeID__doc__},
-    {"getValue", (PyCFunction)PP_exclass2_getValue,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass2_getValue__doc__},
     {"setValue", (PyCFunction)PP_exclass2_setValue,
         METH_VARARGS|METH_KEYWORDS, PP_exclass2_setValue__doc__},
+    {"getValue", (PyCFunction)PP_exclass2_getValue,
+        METH_VARARGS|METH_KEYWORDS, PP_exclass2_getValue__doc__},
     // splicer begin class.ExClass2.PyMethodDef
     // splicer end class.ExClass2.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

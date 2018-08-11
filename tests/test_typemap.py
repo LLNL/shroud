@@ -45,4 +45,3 @@ from __future__ import print_function
 from shroud import typemap
 
 import unittest
-

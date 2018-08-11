@@ -60,7 +60,7 @@ OBJS = \
     main.o
 
 types : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod types
@@ -71,8 +71,8 @@ main.o : wrapftypes.o types.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wraptypes.o types.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wraptypes.h types.hpp
 testc : testc.o wraptypes.o types.o
-	$(CC) $(CFLAGS) $(LIBS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

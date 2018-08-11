@@ -60,7 +60,7 @@ OBJS = \
     main.o
 
 vectors : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS)  $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod vectors
@@ -71,4 +71,4 @@ main.o : wrapfvectors.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wrapvectors.o vectors.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(CLIBS)

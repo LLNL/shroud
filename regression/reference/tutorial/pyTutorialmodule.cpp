@@ -987,23 +987,23 @@ PY_LastFunctionCalled(
 // splicer end function.last_function_called
 }
 
-static char PY_Function10__doc__[] =
+static char PY_Function6__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function10(
+PY_Function6(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function10
+// splicer begin function.function6
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SHT_nargs == 0) {
-        rvobj = PY_Function10_0(self, args, kwds);
+    if (SHT_nargs == 1) {
+        rvobj = PY_Function6_from_name(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1011,8 +1011,8 @@ PY_Function10(
         }
         PyErr_Clear();
     }
-    if (SHT_nargs == 2) {
-        rvobj = PY_Function10_1(self, args, kwds);
+    if (SHT_nargs == 1) {
+        rvobj = PY_Function6_from_index(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1022,7 +1022,7 @@ PY_Function10(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function10
+// splicer end function.function6
 }
 
 static char PY_Function7__doc__[] =
@@ -1063,23 +1063,23 @@ PY_Function7(
 // splicer end function.function7
 }
 
-static char PY_Function6__doc__[] =
+static char PY_Function10__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function6(
+PY_Function10(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function6
+// splicer begin function.function10
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SHT_nargs == 1) {
-        rvobj = PY_Function6_from_name(self, args, kwds);
+    if (SHT_nargs == 0) {
+        rvobj = PY_Function10_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1087,8 +1087,8 @@ PY_Function6(
         }
         PyErr_Clear();
     }
-    if (SHT_nargs == 1) {
-        rvobj = PY_Function6_from_index(self, args, kwds);
+    if (SHT_nargs == 2) {
+        rvobj = PY_Function10_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1098,7 +1098,7 @@ PY_Function6(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function6
+// splicer end function.function10
 }
 
 static char PY_overload1__doc__[] =
@@ -1180,12 +1180,12 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
-{"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
-    PY_Function10__doc__},
-{"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
-    PY_Function7__doc__},
 {"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
     PY_Function6__doc__},
+{"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
+    PY_Function7__doc__},
+{"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
+    PY_Function10__doc__},
 {"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

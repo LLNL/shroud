@@ -67,7 +67,7 @@ OBJS = \
 
 
 templates : $(OBJS)
-	$(FC) $(FFLAGS) $(LIBS) $^ -o $@
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod templates
@@ -81,8 +81,8 @@ maincpp.o : maincpp.cpp templates.hpp
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o
-	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapvector_int.h
 testc : testc.o wrapvectorforint.o
-	$(CC) $(CFLAGS) $(LIBS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

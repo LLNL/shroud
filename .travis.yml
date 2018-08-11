@@ -37,23 +37,28 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 ########################################################################
+dist: trusty
 sudo: false
 
 language: python
 python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-# command to install dependencies
+- "2.7"
+- "3.4"
+- "3.5"
+- "3.6"
+
+# Command to install dependencies.
+# This installs Shroud into the virtualenv.
 install:
    - python setup.py install
 #  - pip install -r requirements.txt
-# command to run tests
+
+# Command to run tests.
 script:
   # echo make version
   - make --version
-  - make test
+  - make PYTHONEXE=python test
+  - make PYTHONEXE=python do-test
 
 notifications:
   email:

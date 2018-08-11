@@ -42,19 +42,20 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import collections
-import string
 import os
+import string
 
 fmt = string.Formatter()
+
 
 def wformat(template, dct):
     # shorthand, wrap fmt.vformat
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError:
-#        raise        # uncomment for detailed backtrace
+        #        raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
-        raise SystemExit('Error with template: ' + '%r'%template)
+        raise SystemExit("Error with template: " + "%r" % template)
 
 
 def append_format(lstout, template, fmt):
@@ -63,11 +64,13 @@ def append_format(lstout, template, fmt):
     # shorthand, wrap fmt.vformat
     lstout.append(wformat(template, fmt))
 
+
 def append_format_lst(lstout, lstin, fmt):
     """Format entries in lstin and append to lstout.
     """
     for template in lstin:
         lstout.append(wformat(template, fmt))
+
 
 def append_format_cmds(lstout, dictin, name, fmt):
     """Format entries in dictin[name] and append to lstout.
@@ -84,12 +87,14 @@ def append_format_cmds(lstout, dictin, name, fmt):
         lstout.append(wformat(cmd, fmt))
     return True
 
-def append_format_indent(lst, template, dct, indent='    '):
+
+def append_format_indent(lst, template, dct, indent="    "):
     """Split lines, indent each by 4 blanks, append to out.
     """
     lines = wformat(template, dct)
     for line in lines.split("\n"):
         lst.append(indent + line)
+
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(text):
@@ -104,8 +109,13 @@ def un_camel(text):
     pos = 0
     while pos < len(text):
         if text[pos].isupper():
-            if pos-1 > 0 and text[pos-1].islower() or pos-1 > 0 and \
-               pos+1 < len(text) and text[pos+1].islower():
+            if (
+                pos - 1 > 0
+                and text[pos - 1].islower()
+                or pos - 1 > 0
+                and pos + 1 < len(text)
+                and text[pos + 1].islower()
+            ):
                 result.append("_%s" % text[pos].lower())
             else:
                 result.append(text[pos].lower())
@@ -148,77 +158,76 @@ def as_yaml(obj, order, indent, output):
         if not value:
             # skip empty values such as None or {}
             pass
-        elif isinstance(value, basestring):
+        elif isinstance(value, str):
             # avoid treating strings as a sequence
             # quote strings which start with { to avoid treating them
             # as a dictionary.
-            if value.startswith('{'):
+            if value.startswith("{"):
                 output.append('{}{}: "{}"'.format(prefix, key, value))
             else:
-                output.append('{}{}: {}'.format(prefix, key, value))
+                output.append("{}{}: {}".format(prefix, key, value))
         elif isinstance(value, collections.Sequence):
             # Keys which are are an array of string (code templates)
-            if key in ('declare', 'pre_call', 'pre_call_trim', 'post_call',
-                       'post_parse', 'ctor'):
-                output.append('{}{}: |'.format(prefix, key))
+            if key in (
+                "declare",
+                "pre_call",
+                "pre_call_trim",
+                "post_call",
+                "post_parse",
+                "ctor",
+            ):
+                output.append("{}{}: |".format(prefix, key))
                 for i in value:
-                    output.append('{}  {}'.format(prefix, i))
+                    output.append("{}  {}".format(prefix, i))
             else:
-                output.append('{}{}:'.format(prefix, key))
+                output.append("{}{}:".format(prefix, key))
                 for i in value:
-                    output.append('{}- {}'.format(prefix, i))
+                    output.append("{}- {}".format(prefix, i))
         elif isinstance(value, collections.Mapping):
-            output.append('{}{}:'.format(prefix, key))
+            output.append("{}{}:".format(prefix, key))
             order0 = value.keys()
             order0.sort()
             as_yaml(value, order0, indent + 1, output)
         else:
             # numbers or booleans
-            output.append('{}{}: {}'.format(prefix, key, value))
+            output.append("{}{}: {}".format(prefix, key, value))
 
 
 def extern_C(output, position):
     """Create extern "C" guards for C++
     """
-    if position == 'begin':
-        output.extend([
-            '#ifdef __cplusplus',
-            'extern "C" {',
-            '#endif'
-        ])
+    if position == "begin":
+        output.extend(["#ifdef __cplusplus", 'extern "C" {', "#endif"])
     else:
-        output.extend([
-            '#ifdef __cplusplus',
-            '}',
-            '#endif'
-        ])
+        output.extend(["#ifdef __cplusplus", "}", "#endif"])
+
 
 class WrapperMixin(object):
     """Methods common to all wrapping classes.
     """
 
-#####
+    #####
 
     def _init_splicer(self, splicers):
         self.splicers = splicers
         self.splicer_stack = [splicers]
         self.splicer_names = []
-        self.splicer_path = ''
+        self.splicer_path = ""
 
     def _push_splicer(self, name):
         level = self.splicer_stack[-1].setdefault(name, {})
         self.splicer_stack.append(level)
         self.splicer_names.append(name)
-        self.splicer_path = '.'.join(self.splicer_names) + '.'
+        self.splicer_path = ".".join(self.splicer_names) + "."
 
     def _pop_splicer(self, name):
         # XXX maybe use name for error checking, must pop in reverse order
         self.splicer_stack.pop()
         self.splicer_names.pop()
         if self.splicer_names:
-            self.splicer_path = '.'.join(self.splicer_names) + '.'
+            self.splicer_path = ".".join(self.splicer_names) + "."
         else:
-            self.splicer_path = ''
+            self.splicer_path = ""
 
     def _create_splicer(self, name, out, default=[]):
         """Insert a splicer with *name* into list *out*.
@@ -233,8 +242,10 @@ class WrapperMixin(object):
         # Creating methods and derived types together.
         show_splicer_comments = self.newlibrary.options.show_splicer_comments
         if show_splicer_comments:
-            out.append('%s splicer begin %s%s' % (
-                self.comment, self.splicer_path, name))
+            out.append(
+                "%s splicer begin %s%s"
+                % (self.comment, self.splicer_path, name)
+            )
         code = self.splicer_stack[-1].get(name, default)
         if code:
             added_code = True
@@ -242,11 +253,12 @@ class WrapperMixin(object):
         else:
             added_code = False
         if show_splicer_comments:
-            out.append('%s splicer end %s%s' % (
-                self.comment, self.splicer_path, name))
+            out.append(
+                "%s splicer end %s%s" % (self.comment, self.splicer_path, name)
+            )
         return added_code
 
-#####
+    #####
 
     def write_namespace(self, cls, position, output, comment=True):
         """Write nested namespace statements.
@@ -256,15 +268,15 @@ class WrapperMixin(object):
         comment  - True = add comment to ending brace
         """
         if cls:
-            namespace = cls.typemap.name.split('::')
+            namespace = cls.typemap.name.split("::")
             namespace.pop()  # remove class name
         else:
             namespace = []
         if not namespace:
             return
-        if position == 'begin':
+        if position == "begin":
             for name in namespace:
-                output.append('namespace %s {' % name)
+                output.append("namespace %s {" % name)
                 output.append(1)
         else:
             lst = namespace
@@ -272,14 +284,14 @@ class WrapperMixin(object):
             for name in lst:
                 output.append(-1)
                 if comment:
-                    output.append('}  // namespace %s' % name)
+                    output.append("}  // namespace %s" % name)
                 else:
-                    output.append('}')
+                    output.append("}")
 
     def write_headers(self, headers, output):
         for header in sorted(headers):
-            if header[0] == '<':
-                output.append('#include %s' % header)
+            if header[0] == "<":
+                output.append("#include %s" % header)
             else:
                 output.append('#include "%s"' % header)
 
@@ -304,39 +316,39 @@ class WrapperMixin(object):
                 headers.setdefault(hdr, []).append(typedef)
 
         if headers:
-            output.append('')
+            output.append("")
         for hdr in sorted(headers):
             if len(headers[hdr]) == 1:
                 # Only one type uses the include, check for if_cpp
                 # For example, add conditional around mpi.h
                 typedef = headers[hdr][0]
                 if typedef and typedef.cpp_if:
-                    output.append('#' + typedef.cpp_if)
-                if hdr[0] == '<':
-                    output.append('#include %s' % hdr)
+                    output.append("#" + typedef.cpp_if)
+                if hdr[0] == "<":
+                    output.append("#include %s" % hdr)
                 else:
                     output.append('#include "%s"' % hdr)
                 if typedef and typedef.cpp_if:
-                    output.append('#endif')
+                    output.append("#endif")
             else:
                 # XXX - unclear how to mix header and cpp_if
                 # so always include the file
-                if hdr[0] == '<':
-                    output.append('#include %s' % hdr)
+                if hdr[0] == "<":
+                    output.append("#include %s" % hdr)
                 else:
                     output.append('#include "%s"' % hdr)
 
-#####
+    #####
 
-    def write_output_file(self, fname, directory, output, spaces='    '):
+    def write_output_file(self, fname, directory, output, spaces="    "):
         """
         fname  - file name
         directory - output directory
         output - list of lines to write
         """
-        fp = open(os.path.join(directory, fname), 'w')
-        fp.write('%s %s\n' % (self.comment, fname))
-        fp.write(self.comment + ' This is generated code, do not edit\n')
+        fp = open(os.path.join(directory, fname), "w")
+        fp.write("%s %s\n" % (self.comment, fname))
+        fp.write(self.comment + " This is generated code, do not edit\n")
         self.write_copyright(fp)
         self.indent = 0
         self.write_lines(fp, output, spaces)
@@ -350,12 +362,12 @@ class WrapperMixin(object):
         """
         for line in self.newlibrary.copyright:
             if line:
-                fp.write(self.comment + ' ' + line + '\n')
+                fp.write(self.comment + " " + line + "\n")
             else:
                 # convert None to blank line
-                fp.write(self.comment + '\n')
+                fp.write(self.comment + "\n")
 
-    def write_continue(self, fp, line, spaces='    '):
+    def write_continue(self, fp, line, spaces="    "):
         """
         If the line starts with \r, then double the indent.
         Helpful for Fortran declarations.
@@ -369,23 +381,23 @@ class WrapperMixin(object):
         subline = spaces * self.indent
         nparts = 0
 
-        if line[0] == '\r':
+        if line[0] == "\r":
             indent = 2
             line = line[1:]
 
         # Find tabs and formfeeds
         parts = []
-        part = ''
+        part = ""
         for ch in line:
-            if ch == '\t':
+            if ch == "\t":
                 if part:
                     parts.append(part)
-                    part = ''
-            elif ch == '\f':
+                    part = ""
+            elif ch == "\f":
                 if part:
                     parts.append(part)
-                    part = ''
-                parts.append('\f')
+                    part = ""
+                parts.append("\f")
             else:
                 part += ch
         if part:
@@ -397,17 +409,17 @@ class WrapperMixin(object):
                 continue
             dump = False
             save = True
-            if part == '\f':  # formfeed
+            if part == "\f":  # formfeed
                 # write out line now, this must not be the last part
                 dump = True
-                save = False   # don't save newline
+                save = False  # don't save newline
             elif len(subline) + len(part) > linelen:
                 # Next line will be too long, dump line now
                 # unless part by itself is exceeds linelen
                 if nparts > 0:
                     dump = True
             if dump:
-                fp.write(subline + self.cont + '\n')
+                fp.write(subline + self.cont + "\n")
                 subline = spaces * (self.indent + indent)
                 nparts = 0
                 part = part.lstrip()
@@ -416,9 +428,9 @@ class WrapperMixin(object):
             if save:
                 subline += part
                 nparts += 1
-        fp.write(subline + '\n')
+        fp.write(subline + "\n")
 
-    def write_lines(self, fp, lines, spaces='    '):
+    def write_lines(self, fp, lines, spaces="    "):
         """ Write lines with indention and newlines.
 
         #  preprocessor, start in column 1
@@ -433,24 +445,24 @@ class WrapperMixin(object):
             else:
                 for subline in line.split("\n"):
                     if len(subline) == 0:
-                        fp.write('\n')
-                    elif subline[0] == '#':
+                        fp.write("\n")
+                    elif subline[0] == "#":
                         # preprocessing directives work better in column 1
                         fp.write(subline)
-                        fp.write('\n')
-                    elif subline[0] == '@':
+                        fp.write("\n")
+                    elif subline[0] == "@":
                         # literal line with indent
                         # For example, "@-" to avoid treating the "-" as deindent
                         # or "@0" to start line with a "0".
                         self.write_continue(fp, subline[1:], spaces)
-                    elif subline[0] == '^':
+                    elif subline[0] == "^":
                         # line start in column 1 (like labels)
                         fp.write(subline[1:])
-                        fp.write('\n')
-                    elif subline[0] == '+':
+                        fp.write("\n")
+                    elif subline[0] == "+":
                         #   +text[-]
                         self.indent += 1
-                        if subline[-1] == '-':
+                        if subline[-1] == "-":
                             # indent a single line
                             self.write_continue(fp, subline[1:-1], spaces)
                             self.indent -= 1
@@ -458,10 +470,10 @@ class WrapperMixin(object):
                             self.write_continue(fp, subline[1:], spaces)
                     else:
                         # [-]*text[+]
-                        while subline[0] == '-':
+                        while subline[0] == "-":
                             self.indent -= 1
                             subline = subline[1:]
-                        if subline[-1] == '+':
+                        if subline[-1] == "+":
                             self.write_continue(fp, subline[:-1], spaces)
                             self.indent += 1
                         else:
@@ -472,15 +484,21 @@ class WrapperMixin(object):
         """
         node = cls or library
         output.append(self.doxygen_begin)
-        output.append(self.doxygen_cont + ' \\file %s' % fname)
+        output.append(self.doxygen_cont + " \\file %s" % fname)
         if cls:
-            output.append(self.doxygen_cont +
-                          ' \\brief Shroud generated wrapper for {} class'
-                          .format(node.name))
+            output.append(
+                self.doxygen_cont
+                + " \\brief Shroud generated wrapper for {} class".format(
+                    node.name
+                )
+            )
         else:
-            output.append(self.doxygen_cont +
-                          ' \\brief Shroud generated wrapper for {} library'
-                          .format(node.library))
+            output.append(
+                self.doxygen_cont
+                + " \\brief Shroud generated wrapper for {} library".format(
+                    node.library
+                )
+            )
         output.append(self.doxygen_end)
 
     def write_doxygen(self, output, docs):
@@ -488,21 +506,21 @@ class WrapperMixin(object):
         Uses brief, description, and return from docs.
         """
         output.append(self.doxygen_begin)
-        if 'brief' in docs:
-            output.append(self.doxygen_cont + ' \\brief %s' % docs['brief'])
+        if "brief" in docs:
+            output.append(self.doxygen_cont + " \\brief %s" % docs["brief"])
             output.append(self.doxygen_cont)
-        if 'description' in docs:
-            desc = docs['description']
-            if desc.endswith('\n'):
-                lines = docs['description'].split('\n')
+        if "description" in docs:
+            desc = docs["description"]
+            if desc.endswith("\n"):
+                lines = docs["description"].split("\n")
                 lines.pop()  # remove trailing newline
             else:
                 lines = [desc]
             for line in lines:
-                output.append(self.doxygen_cont + ' ' + line)
-        if 'return' in docs:
+                output.append(self.doxygen_cont + " " + line)
+        if "return" in docs:
             output.append(self.doxygen_cont)
-            output.append(self.doxygen_cont + ' \\return %s' % docs['return'])
+            output.append(self.doxygen_cont + " \\return %s" % docs["return"])
         output.append(self.doxygen_end)
 
 
@@ -515,6 +533,7 @@ class Scope(object):
     A nesting of options.
     Use __attr to avoid xporting to json
     """
+
     def __init__(self, parent, **kw):
         self.__parent = parent
         self.__hidden = 43
@@ -525,8 +544,10 @@ class Scope(object):
         if self.__parent:
             return getattr(self.__parent, name)
         else:
-            raise AttributeError("%r object has no attribute %r" %
-                                 (self.__class__.__name__, name))
+            raise AttributeError(
+                "%r object has no attribute %r"
+                % (self.__class__.__name__, name)
+            )
 
     def __getitem__(self, key):
         """ Treat as dictionary for format command.
@@ -578,7 +599,7 @@ class Scope(object):
     def clone(self):
         """return new Scope with same inlocal and parent"""
         new = Scope(self.__parent)
-        skip = '_' + self.__class__.__name__ + '__'   # __name is skipped
+        skip = "_" + self.__class__.__name__ + "__"  # __name is skipped
         for key, value in self.__dict__.items():
             if not key.startswith(skip):
                 new.__dict__[key] = value
@@ -604,7 +625,7 @@ class Scope(object):
 
     def _to_dict(self):
         d = {}
-        skip = '_' + self.__class__.__name__ + '__'   # __name is skipped
+        skip = "_" + self.__class__.__name__ + "__"  # __name is skipped
         for key, value in self.__dict__.items():
             if not key.startswith(skip):
                 d[key] = value

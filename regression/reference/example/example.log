@@ -1,7 +1,7 @@
 Read yaml example.yaml
 Read splicer csplicer.c
-Read splicer pysplicer.c
 Read splicer fsplicer.f
+Read splicer pysplicer.c
 Close userlibrary_types.yaml
 class ExClass1
 C method ExClass1()
