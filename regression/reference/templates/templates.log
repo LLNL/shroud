@@ -14,6 +14,7 @@ C method void push_back(const double & value +intent(in))
 C method double & at(size_type n +intent(in)+value)
 Close wrapvector_double.h
 Close wrapvector_double.cpp
+class Worker
 class user
 C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Close wrapuser_int.h
@@ -35,6 +36,8 @@ C-interface, Fortran method ~vector()
 C-interface, Fortran method void push_back(const double & value +intent(in))
 C-interface, Fortran method double & at(size_type n +intent(in)+value)
 Close wrapfvector_double.f
+class Worker
+Close wrapfWorker.f
 class user
 C-interface, Fortran method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Close wrapfuser_int.f

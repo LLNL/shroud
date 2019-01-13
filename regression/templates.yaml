@@ -34,6 +34,9 @@ declarations:
     # XXX - reference is getting lost
 
 
+# A class used with templates
+- decl: class Worker
+
 - decl: template<typename T> class user
   # XXX - error if cxx_template is missing
   cxx_template:
@@ -65,3 +68,4 @@ declarations:
   cxx_template:
   - instantiation: <int, long>
   - instantiation: <float, double>
+#  - instantiation: <Worker, Worker>

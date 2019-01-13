@@ -905,6 +905,30 @@
                 "cxx_header": "",
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapWorker.h",
+                    "C_impl_filename": "wrapWorker.cpp",
+                    "C_type_name": "TEM_worker",
+                    "F_capsule_data_type": "SHROUD_worker_capsule",
+                    "F_derived_name": "worker",
+                    "F_impl_filename": "wrapfWorker.f",
+                    "F_module_name": "worker_mod",
+                    "class_lower": "worker",
+                    "class_prefix": "worker_",
+                    "class_scope": "Worker::",
+                    "class_upper": "WORKER",
+                    "cxx_class": "Worker",
+                    "cxx_type": "Worker"
+                },
+                "linenumber": 38,
+                "name": "Worker",
+                "options": {},
+                "scope": "Worker::",
+                "typemap_name": "Worker"
+            },
+            {
+                "cxx_header": "",
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapuser_int.h",
                     "C_impl_filename": "wrapuser_int.cpp",
                     "C_type_name": "TEM_user_int",
@@ -974,7 +998,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 42,
+                        "linenumber": 45,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -1108,7 +1132,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 42,
+                        "linenumber": 45,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -1133,7 +1157,7 @@
                         ]
                     }
                 ],
-                "linenumber": 37,
+                "linenumber": 40,
                 "name": "user",
                 "options": {},
                 "scope": "user::",
@@ -1281,7 +1305,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 63,
+                    "__line__": 66,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1289,7 +1313,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 62,
+                "linenumber": 65,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1421,7 +1445,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 63,
+                    "__line__": 66,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1447,7 +1471,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 62,
+                "linenumber": 65,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1579,7 +1603,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 63,
+                    "__line__": 66,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1605,7 +1629,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 62,
+                "linenumber": 65,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1745,6 +1769,75 @@
             "f_c_type": "integer(C_INT)",
             "f_kind": "C_INT",
             "f_type": "integer"
+        },
+        "Worker": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}Worker *>({c_var}{c_member}addr)",
+            "c_type": "TEM_worker",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "Worker",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_worker_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_worker_capsule)",
+            "f_capsule_data_type": "SHROUD_worker_capsule",
+            "f_derived_type": "worker",
+            "f_module": {
+                "worker_mod": [
+                    "worker"
+                ]
+            },
+            "f_module_name": "worker_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(worker)",
+            "forward": "Worker",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}Worker * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}Worker * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",

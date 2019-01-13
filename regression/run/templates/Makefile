@@ -59,6 +59,7 @@ OBJS = \
     wrapfvector_int.o \
     wrapfvector_double.o \
     wrapftemplates.o \
+    wrapfWorker.o \
     fruit.o \
     main.o
 
