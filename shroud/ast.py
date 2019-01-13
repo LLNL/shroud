@@ -255,6 +255,9 @@ class NamespaceMixin(object):
 
 
 class LibraryNode(AstNode, NamespaceMixin):
+    """There is one library per wrapping.
+    It represents the global namespace.
+    """
     def __init__(
         self,
         cxx_header="",
@@ -644,7 +647,7 @@ class BlockNode(AstNode, NamespaceMixin):
             self.fmtdict.update(format, replace=True)
 
     def unqualified_lookup(self, name):
-        """Look for symbols within library (global namespace). """
+        """Look for symbols within parent. """
         return self.parent.unqualified_lookup(name)
 
 
@@ -1027,6 +1030,7 @@ class FunctionNode(AstNode):
         """
         ast - None, declast.Declaration, declast.Template
         """
+        self.parent = parent
         self.linenumber = kwargs.get("__line__", "?")
 
         self.options = util.Scope(parent.options)
@@ -1189,6 +1193,10 @@ class FunctionNode(AstNode):
         new._fmtresult = copy.deepcopy(self._fmtresult)
 
         return new
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within parent. """
+        return self.parent.unqualified_lookup(name)
 
 
 ######################################################################

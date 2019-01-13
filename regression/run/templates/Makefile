@@ -77,7 +77,7 @@ templates.o : templates.hpp
 wrapvectorforint.o : wrapvector_int.h
 wrapuser.o : wrapuser_int.h
 wraptemplates.o : wraptemplates.h typestemplates.h
-main.o : wrapfvector_int.o wrapfuser_int.o wrapftemplates.o
+main.o : wrapfvector_int.o wrapfuser_int.o wrapftemplates.o wrapfWorker.o
 maincpp.o : maincpp.cpp templates.hpp
 
 # useful to isolate load error with just C++ code

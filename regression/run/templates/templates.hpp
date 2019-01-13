@@ -59,6 +59,10 @@ T mypair<T>::getmax ()
   return retval;
 }
 
+class Worker
+{
+};
+
 // Function template with two template parameters.
 template<typename T, typename U> void FunctionTU(T arg1, U arg2)
 {
