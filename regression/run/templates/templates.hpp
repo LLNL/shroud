@@ -68,3 +68,11 @@ template<typename T, typename U> void FunctionTU(T arg1, U arg2)
 {
 }
 
+template<typename T>
+T ReturnT()
+{
+  T arg;
+  return arg;
+}
+
+

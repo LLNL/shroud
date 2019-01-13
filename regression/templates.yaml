@@ -69,3 +69,9 @@ declarations:
   - instantiation: <int, long>
   - instantiation: <float, double>
 #  - instantiation: <Worker, Worker>
+
+#- decl: template<typename T> T ReturnT()
+#  doxygen:
+#     brief: Function which returns a templated type
+#  cxx_template:
+#  - instantiation: <Worker>
