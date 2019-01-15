@@ -249,6 +249,16 @@ declarations:
     description: |
       array with intent(INOUT)
 
+- decl: int get_values(int *values +intent(out)+dimension)
+  options:
+    wrap_python: False
+  doxygen:
+    brief: fill values into array
+    description: |
+       The function knows how long the array must be
+       However, then length is not passed in.
+       It is assumed to be long enough.
+
  
 ##-##################################################
 ##-

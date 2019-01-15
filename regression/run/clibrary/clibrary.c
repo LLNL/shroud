@@ -287,6 +287,7 @@ void truncate_to_int(double *in, int *out, int size)
 }
 
 //----------------------------------------------------------------------
+// array +intent(inout)
 
 void increment(int *array, int size)
 {
@@ -294,6 +295,22 @@ void increment(int *array, int size)
     for(i = 0; i < size; i++) {
        array[i] += 1;
     }
+}
+
+//----------------------------------------------------------------------
+// values +intent(out)
+// Note that we must assume that values is long enough.
+// Otherwise, memory will be overwritten.
+
+const int num_fill_values = 3;
+
+int get_values(int *values)
+{
+    int i;
+    for(i = 0; i < num_fill_values; i++) {
+       values[i] = i + 1;
+    }
+    return num_fill_values;
 }
 
 //----------------------------------------------------------------------

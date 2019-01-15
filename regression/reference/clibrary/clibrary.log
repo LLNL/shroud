@@ -10,6 +10,7 @@ C function void intargs(const int argin +intent(in)+value, int * arginout +inten
 C function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 C function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 C function void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+C function int get_values(int * values +dimension(*)+intent(out))
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
@@ -24,6 +25,7 @@ C-interface, Fortran function void intargs(const int argin +intent(in)+value, in
 C-interface, Fortran function void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 C-interface, Fortran function void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 C-interface, Fortran function void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+C-interface, Fortran function int get_values(int * values +dimension(*)+intent(out))
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
