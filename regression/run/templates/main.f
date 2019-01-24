@@ -106,6 +106,7 @@ contains
 
   subroutine function_templates
 
+    integer(C_INT) rv_int
 !    type(worker) w1, w2
 
     call set_case_name("function_templates")
@@ -113,6 +114,9 @@ contains
     call function_tu(1_C_INT, 2_C_LONG)
     call function_tu(1.2_C_FLOAT, 2.2_C_DOUBLE)
 !    call function_tu(w1, w2)
+
+    rv_int = use_impl_worker_implworker1()
+    call assert_equals(1, rv_int)
 
   end subroutine function_templates
 

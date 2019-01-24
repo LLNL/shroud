@@ -10,6 +10,12 @@
 extern "C" {
 #endif
 
+struct s_TEM_implworker1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_implworker1 TEM_implworker1;
+
 struct s_TEM_user_int {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

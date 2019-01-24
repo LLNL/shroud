@@ -63,6 +63,14 @@ class Worker
 {
 };
 
+class ImplWorker1
+{
+  public:
+  static int getValue() {
+    return 1;
+  }
+};
+
 // Function template with two template parameters.
 template<typename T, typename U> void FunctionTU(T arg1, U arg2)
 {
@@ -76,3 +84,9 @@ T ReturnT()
 }
 
 
+// Function which uses a templated T in the implemetation.
+template<typename T>
+int UseImplWorker()
+{
+  return T::getValue();
+}
