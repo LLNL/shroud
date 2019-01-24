@@ -42,12 +42,12 @@ void TEM_function_tu_1(float arg1, double arg2)
  * \brief Function which uses a templated T in the implemetation.
  *
  */
-int TEM_use_impl_worker_ImplWorker1()
+int TEM_use_impl_worker_internal_ImplWorker1()
 {
-// splicer begin function.use_impl_worker_ImplWorker1
-    int SHC_rv = UseImplWorker<ImplWorker1>();
+// splicer begin function.use_impl_worker_internal_ImplWorker1
+    int SHC_rv = UseImplWorker<internal::ImplWorker1>();
     return SHC_rv;
-// splicer end function.use_impl_worker_ImplWorker1
+// splicer end function.use_impl_worker_internal_ImplWorker1
 }
 
 // Release C++ allocated memory.

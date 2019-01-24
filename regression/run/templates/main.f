@@ -115,7 +115,7 @@ contains
     call function_tu(1.2_C_FLOAT, 2.2_C_DOUBLE)
 !    call function_tu(w1, w2)
 
-    rv_int = use_impl_worker_implworker1()
+    rv_int = use_impl_worker_internal_implworker1()
     call assert_equals(1, rv_int)
 
   end subroutine function_templates

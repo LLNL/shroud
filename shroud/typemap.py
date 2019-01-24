@@ -41,9 +41,15 @@
 Create and manage typemaps used to convert between languages.
 """
 
+from string import maketrans
+
 from . import util
 from . import whelpers
 
+# translation table to convert type name to flat name
+# unsigned int -> unsigned_int
+# vector<int>  -> vector_int
+flat_trantab = maketrans("< ", "__")
 
 class Typemap(object):
     """ Collect fields for an argument.
@@ -54,6 +60,7 @@ class Typemap(object):
 
     # Array of known keys with default values
     _order = (
+        ("flat_name", None),  # Name when used by wrapper identifiers
         ("base", "unknown"),  # Base type: 'string'
         ("forward", None),  # Forward declaration
         ("format", {}),  # Applied to Scope for variable.
@@ -145,6 +152,9 @@ class Typemap(object):
         #            setattr(self, key, defvalue)
         self.__dict__.update(self.defaults)  # set all default values
         self.update(kw)
+        if not self.flat_name:
+            aaa = self.cxx_type or "JJJTypemap"
+            self.flat_name = aaa.replace("::","_").translate(flat_trantab, ">")
 
     def update(self, dct):
         """Add options from dictionary to self.

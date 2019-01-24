@@ -693,7 +693,7 @@ class GenFunctions(object):
             #  i.e.  _int_double  However <std::string,int> is a problem.
             if len(targs.asts) == 1:
                 fmt.function_suffix = (
-                    fmt.function_suffix + "_" + targs.asts[0].typemap.name
+                    fmt.function_suffix + "_" + targs.asts[0].typemap.flat_name
                 )
             else:
                 fmt.function_suffix = fmt.function_suffix + "_" + str(iargs)

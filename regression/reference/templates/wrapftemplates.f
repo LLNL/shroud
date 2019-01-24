@@ -32,13 +32,13 @@ module templates_mod
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_function_tu_1
 
-        function c_use_impl_worker_implworker1() &
+        function c_use_impl_worker_internal_implworker1() &
                 result(SHT_rv) &
-                bind(C, name="TEM_use_impl_worker_ImplWorker1")
+                bind(C, name="TEM_use_impl_worker_internal_ImplWorker1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_use_impl_worker_implworker1
+        end function c_use_impl_worker_internal_implworker1
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -81,14 +81,14 @@ contains
     !! \brief Function which uses a templated T in the implemetation.
     !!
     !<
-    function use_impl_worker_ImplWorker1() &
+    function use_impl_worker_internal_ImplWorker1() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.use_impl_worker_ImplWorker1
-        SHT_rv = c_use_impl_worker_implworker1()
-        ! splicer end function.use_impl_worker_ImplWorker1
-    end function use_impl_worker_ImplWorker1
+        ! splicer begin function.use_impl_worker_internal_ImplWorker1
+        SHT_rv = c_use_impl_worker_internal_implworker1()
+        ! splicer end function.use_impl_worker_internal_ImplWorker1
+    end function use_impl_worker_internal_ImplWorker1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -366,7 +366,8 @@
             },
             "f_c_type": "integer(C_INT)",
             "f_kind": "C_INT",
-            "f_type": "integer"
+            "f_type": "integer",
+            "flat_name": "MPI_Comm"
         },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
@@ -410,6 +411,7 @@
                 }
             },
             "f_type": "logical",
+            "flat_name": "bool",
             "py_statements": {
                 "intent_in": {
                     "pre_call": [
@@ -528,7 +530,8 @@
                     "need_wrapper": true
                 }
             },
-            "f_type": "character(*)"
+            "f_type": "character(*)",
+            "flat_name": "char"
         },
         "char_scalar": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -560,7 +563,8 @@
             },
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
-            "f_type": "character"
+            "f_type": "character",
+            "flat_name": "char"
         },
         "charout": {
             "base": "string",
@@ -605,7 +609,8 @@
                     ]
                 }
             },
-            "f_type": "type(C_PTR)YY"
+            "f_type": "type(C_PTR)YY",
+            "flat_name": "char"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -624,7 +629,8 @@
                     "C_DOUBLE"
                 ]
             },
-            "f_type": "real(C_DOUBLE)"
+            "f_type": "real(C_DOUBLE)",
+            "flat_name": "double"
         },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -643,7 +649,8 @@
                     "C_FLOAT"
                 ]
             },
-            "f_type": "real(C_FLOAT)"
+            "f_type": "real(C_FLOAT)",
+            "flat_name": "float"
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -662,7 +669,8 @@
                     "C_INT"
                 ]
             },
-            "f_type": "integer(C_INT)"
+            "f_type": "integer(C_INT)",
+            "flat_name": "int"
         },
         "int16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -682,7 +690,8 @@
                     "C_INT16_T"
                 ]
             },
-            "f_type": "integer(C_INT16_T)"
+            "f_type": "integer(C_INT16_T)",
+            "flat_name": "int16_t"
         },
         "int32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -702,7 +711,8 @@
                     "C_INT32_T"
                 ]
             },
-            "f_type": "integer(C_INT32_T)"
+            "f_type": "integer(C_INT32_T)",
+            "flat_name": "int32_t"
         },
         "int64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -722,7 +732,8 @@
                     "C_INT64_T"
                 ]
             },
-            "f_type": "integer(C_INT64_T)"
+            "f_type": "integer(C_INT64_T)",
+            "flat_name": "int64_t"
         },
         "int8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -742,7 +753,8 @@
                     "C_INT8_T"
                 ]
             },
-            "f_type": "integer(C_INT8_T)"
+            "f_type": "integer(C_INT8_T)",
+            "flat_name": "int8_t"
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -761,7 +773,8 @@
                     "C_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG)"
+            "f_type": "integer(C_LONG)",
+            "flat_name": "long"
         },
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -778,7 +791,8 @@
                     "C_LONG_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG_LONG)"
+            "f_type": "integer(C_LONG_LONG)",
+            "flat_name": "long_long"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -797,7 +811,8 @@
                     "C_SHORT"
                 ]
             },
-            "f_type": "integer(C_SHORT)"
+            "f_type": "integer(C_SHORT)",
+            "flat_name": "short"
         },
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -814,7 +829,8 @@
                     "C_SIZE_T"
                 ]
             },
-            "f_type": "integer(C_SIZE_T)"
+            "f_type": "integer(C_SIZE_T)",
+            "flat_name": "size_t"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -928,6 +944,7 @@
                 }
             },
             "f_type": "character(*)",
+            "flat_name": "std_string",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -1143,7 +1160,8 @@
                         "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
                     ]
                 }
-            }
+            },
+            "flat_name": "std_vector_{cxx_T}"
         },
         "stringout": {
             "base": "string",
@@ -1195,7 +1213,8 @@
                     ]
                 }
             },
-            "f_type": "type(C_PTR)YY"
+            "f_type": "type(C_PTR)YY",
+            "flat_name": "std_string"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1215,7 +1234,8 @@
                     "C_INT16_T"
                 ]
             },
-            "f_type": "integer(C_INT16_T)"
+            "f_type": "integer(C_INT16_T)",
+            "flat_name": "uint16_t"
         },
         "uint32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1235,7 +1255,8 @@
                     "C_INT32_T"
                 ]
             },
-            "f_type": "integer(C_INT32_T)"
+            "f_type": "integer(C_INT32_T)",
+            "flat_name": "uint32_t"
         },
         "uint64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1255,7 +1276,8 @@
                     "C_INT64_T"
                 ]
             },
-            "f_type": "integer(C_INT64_T)"
+            "f_type": "integer(C_INT64_T)",
+            "flat_name": "uint64_t"
         },
         "uint8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1275,7 +1297,8 @@
                     "C_INT8_T"
                 ]
             },
-            "f_type": "integer(C_INT8_T)"
+            "f_type": "integer(C_INT8_T)",
+            "flat_name": "uint8_t"
         },
         "unsigned_int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1294,7 +1317,8 @@
                     "C_INT"
                 ]
             },
-            "f_type": "integer(C_INT)"
+            "f_type": "integer(C_INT)",
+            "flat_name": "unsigned_int"
         },
         "unsigned_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1313,7 +1337,8 @@
                     "C_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG)"
+            "f_type": "integer(C_LONG)",
+            "flat_name": "unsigned_long"
         },
         "unsigned_long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1330,7 +1355,8 @@
                     "C_LONG_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG_LONG)"
+            "f_type": "integer(C_LONG_LONG)",
+            "flat_name": "unsigned_long_long"
         },
         "unsigned_short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -1349,7 +1375,8 @@
                     "C_SHORT"
                 ]
             },
-            "f_type": "integer(C_SHORT)"
+            "f_type": "integer(C_SHORT)",
+            "flat_name": "unsigned_short"
         },
         "void": {
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
@@ -1360,7 +1387,8 @@
                     "C_PTR"
                 ]
             },
-            "f_type": "type(C_PTR)"
+            "f_type": "type(C_PTR)",
+            "flat_name": "void"
         }
     }
 }

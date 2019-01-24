@@ -943,14 +943,14 @@
                     "cxx_class": "ImplWorker1",
                     "cxx_type": "ImplWorker1"
                 },
-                "linenumber": 41,
+                "linenumber": 44,
                 "name": "ImplWorker1",
                 "options": {
-                    "__line__": 42,
+                    "__line__": 45,
                     "wrap_fortran": false
                 },
-                "scope": "ImplWorker1::",
-                "typemap_name": "ImplWorker1"
+                "scope": "internal::ImplWorker1::",
+                "typemap_name": "internal::ImplWorker1"
             },
             {
                 "cxx_header": "",
@@ -1025,7 +1025,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 50,
+                        "linenumber": 53,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -1159,7 +1159,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 50,
+                        "linenumber": 53,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -1184,7 +1184,7 @@
                         ]
                     }
                 ],
-                "linenumber": 45,
+                "linenumber": 48,
                 "name": "user",
                 "options": {},
                 "scope": "user::",
@@ -1332,7 +1332,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 71,
+                    "__line__": 74,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1340,7 +1340,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 70,
+                "linenumber": 73,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1472,7 +1472,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 71,
+                    "__line__": 74,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1498,7 +1498,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 70,
+                "linenumber": 73,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1630,7 +1630,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 71,
+                    "__line__": 74,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1656,7 +1656,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 70,
+                "linenumber": 73,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1719,20 +1719,20 @@
                 },
                 "cxx_template": {
                     "T": [
-                        "ImplWorker1"
+                        "internal::ImplWorker1"
                     ]
                 },
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 85,
+                    "__line__": 88,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 84,
+                "linenumber": 87,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1744,12 +1744,12 @@
                         "asts": [
                             {
                                 "specifier": [
-                                    "ImplWorker1"
+                                    "internal::ImplWorker1"
                                 ],
-                                "typemap_name": "ImplWorker1"
+                                "typemap_name": "internal::ImplWorker1"
                             }
                         ],
-                        "instantiation": "<ImplWorker1>"
+                        "instantiation": "<internal::ImplWorker1>"
                     }
                 ],
                 "template_parameters": [
@@ -1787,34 +1787,34 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 85,
+                    "__line__": 88,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
-                    "CXX_template": "<ImplWorker1>",
-                    "C_call_code": "int SHC_rv =\t UseImplWorker<ImplWorker1>(\t);",
+                    "CXX_template": "<internal::ImplWorker1>",
+                    "C_call_code": "int SHC_rv =\t UseImplWorker<internal::ImplWorker1>(\t);",
                     "C_call_list": "",
-                    "C_name": "TEM_use_impl_worker_ImplWorker1",
+                    "C_name": "TEM_use_impl_worker_internal_ImplWorker1",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_use_impl_worker_implworker1",
-                    "F_C_name": "c_use_impl_worker_implworker1",
+                    "F_C_call": "c_use_impl_worker_internal_implworker1",
+                    "F_C_name": "c_use_impl_worker_internal_implworker1",
                     "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_use_impl_worker_implworker1()",
-                    "F_name_function": "use_impl_worker_ImplWorker1",
+                    "F_call_code": "SHT_rv = c_use_impl_worker_internal_implworker1()",
+                    "F_name_function": "use_impl_worker_internal_ImplWorker1",
                     "F_name_generic": "use_impl_worker",
-                    "F_name_impl": "use_impl_worker_ImplWorker1",
+                    "F_name_impl": "use_impl_worker_internal_ImplWorker1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "UseImplWorker",
-                    "function_suffix": "_ImplWorker1",
+                    "function_suffix": "_internal_ImplWorker1",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 84,
+                "linenumber": 87,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1826,12 +1826,12 @@
                         "asts": [
                             {
                                 "specifier": [
-                                    "ImplWorker1"
+                                    "internal::ImplWorker1"
                                 ],
-                                "typemap_name": "ImplWorker1"
+                                "typemap_name": "internal::ImplWorker1"
                             }
                         ],
-                        "instantiation": "<ImplWorker1>"
+                        "instantiation": "<internal::ImplWorker1>"
                     }
                 ],
                 "template_parameters": [
@@ -1916,75 +1916,6 @@
         }
     },
     "types": {
-        "ImplWorker1": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
-            "LUA_type": "LUA_TUSERDATA",
-            "base": "shadow",
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                },
-                "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
-                    "post_call": [
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
-                        "{c_var}->idtor = {idtor};"
-                    ]
-                }
-            },
-            "c_to_cxx": "static_cast<{c_const}ImplWorker1 *>({c_var}{c_member}addr)",
-            "c_type": "TEM_implworker1",
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "ImplWorker1",
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_implworker1_capsule"
-                ]
-            },
-            "f_c_type": "type(SHROUD_implworker1_capsule)",
-            "f_capsule_data_type": "SHROUD_implworker1_capsule",
-            "f_derived_type": "implworker1",
-            "f_module": {
-                "implworker1_mod": [
-                    "implworker1"
-                ]
-            },
-            "f_module_name": "implworker1_mod",
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-                    ],
-                    "need_wrapper": true
-                }
-            },
-            "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(implworker1)",
-            "forward": "ImplWorker1",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                },
-                "intent_out": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
-        },
         "MPI_Comm": {
             "c_header": "mpi.h",
             "c_to_cxx": "MPI_Comm_f2c({c_var})",
@@ -1998,7 +1929,8 @@
             },
             "f_c_type": "integer(C_INT)",
             "f_kind": "C_INT",
-            "f_type": "integer"
+            "f_type": "integer",
+            "flat_name": "MPI_Comm"
         },
         "Worker": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -2047,6 +1979,7 @@
             },
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(worker)",
+            "flat_name": "Worker",
             "forward": "Worker",
             "py_statements": {
                 "intent_in": {
@@ -2111,6 +2044,7 @@
                 }
             },
             "f_type": "logical",
+            "flat_name": "bool",
             "py_statements": {
                 "intent_in": {
                     "pre_call": [
@@ -2229,7 +2163,8 @@
                     "need_wrapper": true
                 }
             },
-            "f_type": "character(*)"
+            "f_type": "character(*)",
+            "flat_name": "char"
         },
         "char_scalar": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -2261,7 +2196,8 @@
             },
             "f_c_type": "character(kind=C_CHAR)",
             "f_kind": "C_CHAR",
-            "f_type": "character"
+            "f_type": "character",
+            "flat_name": "char"
         },
         "charout": {
             "base": "string",
@@ -2306,7 +2242,8 @@
                     ]
                 }
             },
-            "f_type": "type(C_PTR)YY"
+            "f_type": "type(C_PTR)YY",
+            "flat_name": "char"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -2325,7 +2262,8 @@
                     "C_DOUBLE"
                 ]
             },
-            "f_type": "real(C_DOUBLE)"
+            "f_type": "real(C_DOUBLE)",
+            "flat_name": "double"
         },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -2344,7 +2282,8 @@
                     "C_FLOAT"
                 ]
             },
-            "f_type": "real(C_FLOAT)"
+            "f_type": "real(C_FLOAT)",
+            "flat_name": "float"
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2363,7 +2302,8 @@
                     "C_INT"
                 ]
             },
-            "f_type": "integer(C_INT)"
+            "f_type": "integer(C_INT)",
+            "flat_name": "int"
         },
         "int16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2383,7 +2323,8 @@
                     "C_INT16_T"
                 ]
             },
-            "f_type": "integer(C_INT16_T)"
+            "f_type": "integer(C_INT16_T)",
+            "flat_name": "int16_t"
         },
         "int32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2403,7 +2344,8 @@
                     "C_INT32_T"
                 ]
             },
-            "f_type": "integer(C_INT32_T)"
+            "f_type": "integer(C_INT32_T)",
+            "flat_name": "int32_t"
         },
         "int64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2423,7 +2365,8 @@
                     "C_INT64_T"
                 ]
             },
-            "f_type": "integer(C_INT64_T)"
+            "f_type": "integer(C_INT64_T)",
+            "flat_name": "int64_t"
         },
         "int8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2443,7 +2386,78 @@
                     "C_INT8_T"
                 ]
             },
-            "f_type": "integer(C_INT8_T)"
+            "f_type": "integer(C_INT8_T)",
+            "flat_name": "int8_t"
+        },
+        "internal::ImplWorker1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
+            "c_type": "TEM_implworker1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "internal::ImplWorker1",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_implworker1_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_implworker1_capsule)",
+            "f_capsule_data_type": "SHROUD_implworker1_capsule",
+            "f_derived_type": "implworker1",
+            "f_module": {
+                "implworker1_mod": [
+                    "implworker1"
+                ]
+            },
+            "f_module_name": "implworker1_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(implworker1)",
+            "flat_name": "internal_ImplWorker1",
+            "forward": "internal::ImplWorker1",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2462,7 +2476,8 @@
                     "C_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG)"
+            "f_type": "integer(C_LONG)",
+            "flat_name": "long"
         },
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2479,7 +2494,8 @@
                     "C_LONG_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG_LONG)"
+            "f_type": "integer(C_LONG_LONG)",
+            "flat_name": "long_long"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2498,7 +2514,8 @@
                     "C_SHORT"
                 ]
             },
-            "f_type": "integer(C_SHORT)"
+            "f_type": "integer(C_SHORT)",
+            "flat_name": "short"
         },
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2515,7 +2532,8 @@
                     "C_SIZE_T"
                 ]
             },
-            "f_type": "integer(C_SIZE_T)"
+            "f_type": "integer(C_SIZE_T)",
+            "flat_name": "size_t"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -2629,6 +2647,7 @@
                 }
             },
             "f_type": "character(*)",
+            "flat_name": "std_string",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "scalar",
@@ -2698,6 +2717,7 @@
             },
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector)",
+            "flat_name": "std_vector",
             "forward": "std::vector",
             "py_statements": {
                 "intent_in": {
@@ -2724,7 +2744,8 @@
             "base": "template",
             "c_type": "c_T",
             "cxx_type": "cxx_T",
-            "f_type": "f_T"
+            "f_type": "f_T",
+            "flat_name": "cxx_T"
         },
         "std::vector::size_type": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2742,6 +2763,7 @@
                 ]
             },
             "f_type": "integer(C_SIZE_T)",
+            "flat_name": "size_t",
             "typedef": "size_t"
         },
         "std::vector_double": {
@@ -2792,6 +2814,7 @@
             },
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_double)",
+            "flat_name": "std_vector_double",
             "forward": "std::vector<double>",
             "idtor": "2",
             "py_statements": {
@@ -2863,6 +2886,7 @@
             },
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(vector_int)",
+            "flat_name": "std_vector_int",
             "forward": "std::vector<int>",
             "idtor": "1",
             "py_statements": {
@@ -2936,7 +2960,8 @@
                     ]
                 }
             },
-            "f_type": "type(C_PTR)YY"
+            "f_type": "type(C_PTR)YY",
+            "flat_name": "std_string"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2956,7 +2981,8 @@
                     "C_INT16_T"
                 ]
             },
-            "f_type": "integer(C_INT16_T)"
+            "f_type": "integer(C_INT16_T)",
+            "flat_name": "uint16_t"
         },
         "uint32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2976,7 +3002,8 @@
                     "C_INT32_T"
                 ]
             },
-            "f_type": "integer(C_INT32_T)"
+            "f_type": "integer(C_INT32_T)",
+            "flat_name": "uint32_t"
         },
         "uint64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -2996,7 +3023,8 @@
                     "C_INT64_T"
                 ]
             },
-            "f_type": "integer(C_INT64_T)"
+            "f_type": "integer(C_INT64_T)",
+            "flat_name": "uint64_t"
         },
         "uint8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -3016,7 +3044,8 @@
                     "C_INT8_T"
                 ]
             },
-            "f_type": "integer(C_INT8_T)"
+            "f_type": "integer(C_INT8_T)",
+            "flat_name": "uint8_t"
         },
         "unsigned_int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -3035,7 +3064,8 @@
                     "C_INT"
                 ]
             },
-            "f_type": "integer(C_INT)"
+            "f_type": "integer(C_INT)",
+            "flat_name": "unsigned_int"
         },
         "unsigned_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -3054,7 +3084,8 @@
                     "C_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG)"
+            "f_type": "integer(C_LONG)",
+            "flat_name": "unsigned_long"
         },
         "unsigned_long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -3071,7 +3102,8 @@
                     "C_LONG_LONG"
                 ]
             },
-            "f_type": "integer(C_LONG_LONG)"
+            "f_type": "integer(C_LONG_LONG)",
+            "flat_name": "unsigned_long_long"
         },
         "unsigned_short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -3090,7 +3122,8 @@
                     "C_SHORT"
                 ]
             },
-            "f_type": "integer(C_SHORT)"
+            "f_type": "integer(C_SHORT)",
+            "flat_name": "unsigned_short"
         },
         "user": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -3139,6 +3172,7 @@
             },
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user)",
+            "flat_name": "user",
             "forward": "user",
             "py_statements": {
                 "intent_in": {
@@ -3165,7 +3199,8 @@
             "base": "template",
             "c_type": "c_T",
             "cxx_type": "cxx_T",
-            "f_type": "f_T"
+            "f_type": "f_T",
+            "flat_name": "cxx_T"
         },
         "user_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -3214,6 +3249,7 @@
             },
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(user_int)",
+            "flat_name": "user_int",
             "forward": "user<int>",
             "py_statements": {
                 "intent_in": {
@@ -3245,7 +3281,8 @@
                     "C_PTR"
                 ]
             },
-            "f_type": "type(C_PTR)"
+            "f_type": "type(C_PTR)",
+            "flat_name": "void"
         }
     }
 }

@@ -63,6 +63,8 @@ class Worker
 {
 };
 
+namespace internal
+{
 class ImplWorker1
 {
   public:
@@ -70,6 +72,7 @@ class ImplWorker1
     return 1;
   }
 };
+}  // namespace internal
 
 // Function template with two template parameters.
 template<typename T, typename U> void FunctionTU(T arg1, U arg2)
