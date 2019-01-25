@@ -622,19 +622,29 @@ return 1;""",
             node -
             arg -
             fmt_arg -
+
+        Examples:
+        (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
+
+        // pre_call
+        SHPy_arg2 = (PyArrayObject *) PyArray_NewLikeArray(
+            SHPy_arg1, NPY_CORDER, NULL, 0);
+        if (SHPy_arg2 == NULL)
+        goto fail;
+        int * arg2 = PyArray_DATA(SHPy_arg2);
+
         """
         self.need_numpy = True
         fmt_arg.py_type = "PyObject"
 
-        allocargs, descr_code = attr_allocatable(
-            self.language, allocatable, node, arg
-        )
+        allocargs = attr_allocatable(self.language, allocatable, node, arg)
 
         asgn = "{py_var} = %s;" % do_cast(
             self.language,
             "reinterpret",
             "PyArrayObject *",
-            "PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)" % allocargs,
+            wformat("PyArray_NewLikeArray"
+                    "(\t{prototype},\t {order},\t {descr},\t {subok})", allocargs),
         )
         if self.language == "c++":
             cast = "{cxx_decl} = %s;" % do_cast(
@@ -652,7 +662,7 @@ return 1;""",
             goto_fail=True,
             decl=["PyArrayObject * {py_var} = NULL;"],
             pre_call=[
-                descr_code + asgn,
+                allocargs["descr_code"] + asgn,
                 "if ({py_var} == NULL)",
                 "+goto fail;-",
                 cast,
@@ -682,12 +692,14 @@ return 1;""",
         if intent == "out":
             # UUU
             # Create a new array
+            # The dimension attribute must be set
             allocargs = ("--NONE--", "NPY_CORDER", "NULL", "0")
             asgn = "{py_var} = %s;" % do_cast(
                 self.language,
                 "reinterpret",
                 "PyArrayObject *",
-                "PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)" % allocargs,
+                "PyArray_SimpleNew(int nd, npy_intp* dims, int typenum)",
+#                "PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)" % allocargs,
             )
         else:
             if intent == "in":
@@ -772,6 +784,7 @@ return 1;""",
     ):
         """Add code for post-call.
         Create PyObject from C++ value to return.
+        Used with function results and intent(OUT) arguments.
 
         Args:
             return_pointer_as  - None, 'allocatable', 'pointer', 'scalar'
@@ -2441,8 +2454,11 @@ def py_implied(expr, func):
 
 
 def attr_allocatable(language, allocatable, node, arg):
-    """parse allocatable and return tuple of
+    """parse allocatable and return dictionary of values.
+
+    arguments to PyArray_NewLikeArray
       (prototype, order, descr, subok)
+    descr_args - code to create PyArray_Descr.
 
     Valid values of allocatable:
        mold=name
@@ -2493,7 +2509,12 @@ def attr_allocatable(language, allocatable, node, arg):
                 )
             )
 
-    return (prototype, order, descr, subok), descr_code
+    return dict(
+        prototype=prototype,
+        order=order,
+        descr=descr,
+        subok=subok,
+        descr_code=descr_code)
 
 
 def do_cast(lang, kind, typ, var):
