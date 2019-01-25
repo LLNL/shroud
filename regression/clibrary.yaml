@@ -249,15 +249,14 @@ declarations:
     description: |
       array with intent(INOUT)
 
-- decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension)
-  options:
-    wrap_python: false
+- decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
   doxygen:
     brief: fill values into array
     description: |
-       The function knows how long the array must be
-       However, then length is not passed in.
-       It is assumed to be long enough.
+       The function knows how long the array must be.
+       Fortran will treat the dimension as assumed-length.
+       The Python wrapper will create a NumPy array so it must
+       have an explicit dimension (not assumed-length).
 
  
 ##-##################################################
@@ -272,3 +271,6 @@ declarations:
 ##-  - decl: Class1()  +name(new)
 ##-  - decl: ~Class1() +name(delete)
 ##-  - decl: void Method1()
+
+## test +allocatable(3)
+## test +allocatable(nvar)

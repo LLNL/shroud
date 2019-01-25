@@ -475,6 +475,54 @@ fail:
     return NULL;
 // splicer end function.increment
 }
+
+static char PY_get_values__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief fill values into array
+ *
+ * The function knows how long the array must be.
+ * Fortran will treat the dimension as assumed-length.
+ * The Python wrapper will create a NumPy array so it must
+ * have an explicit dimension (not assumed-length).
+ */
+static PyObject *
+PY_get_values(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
+// splicer begin function.get_values
+    PyObject * SHTPy_values;
+    PyArrayObject * SHPy_values = NULL;
+
+    // post_parse
+    npy_intp SHD_values[1] = { 3 };
+    SHPy_values = (PyArrayObject *) PyArray_SimpleNew(1, SHD_values, NPY_INT);
+    if (SHPy_values == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "values must be a 1-D array of int");
+        goto fail;
+    }
+
+    // pre_call
+    int nvalues;  // intent(out)
+    int * values = PyArray_DATA(SHPy_values);
+
+    get_values(&nvalues, values);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+
+    return SHTPy_rv;
+
+fail:
+    return NULL;
+// splicer end function.get_values
+}
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
     PY_Function1__doc__},
@@ -495,6 +543,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_truncate_to_int__doc__},
 {"increment", (PyCFunction)PY_increment, METH_VARARGS|METH_KEYWORDS,
     PY_increment__doc__},
+{"get_values", (PyCFunction)PY_get_values, METH_NOARGS,
+    PY_get_values__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

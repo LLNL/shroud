@@ -680,26 +680,59 @@ return 1;""",
         Convert it to use Numpy.
 
         Args:
-            arg -
+            arg - argument node.
             fmt_arg -
 
-        Return a dictionary used to create wrapper.
+        Return a dictionary which defines fields
+        of code to insert into the wrapper.
+
+        Examples:
+        ----------------------------------------
+        (int * arg1 +intent(in) +dimension(:))
+
+        // post_parse
+        SHPy_arg1 = (PyArrayObject *) PyArray_FROM_OTF(
+            SHTPy_arg1, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY);
+        if (SHPy_arg1 == NULL) {
+            PyErr_SetString(PyExc_ValueError,
+                "in must be a 1-D array of double");
+            goto fail;
+        }
+
+        // pre_call
+        double * in = PyArray_DATA(SHPy_arg1);
+        ----------------------------------------
+        (int * arg1 +intent(out) + dimension(3))
+
+        // post_parse
+        npy_intp SHD_arg1[1] = { 3 };
+        SHPy_arg1 = (PyArrayObject *) PyArray_SimpleNew(1, SHD_arg1, NPY_INT);
+        if (SHPy_arg1 == NULL) {
+            PyErr_SetString(PyExc_ValueError,
+                "arg1 must be a 1-D array of int");
+            goto fail;
+        }
+
+        // pre_call
+        int * arg1 = PyArray_DATA(SHPy_arg1);
         """
         self.need_numpy = True
         fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
         fmt_arg.py_type = "PyObject"
         intent = arg.attrs["intent"]
         if intent == "out":
-            # UUU
-            # Create a new array
-            # The dimension attribute must be set
-            allocargs = ("--NONE--", "NPY_CORDER", "NULL", "0")
+            # Create a new array.
+            # The dimension attribute must be set to an explicit length.
+            if "dimension" not in arg.attrs:
+                raise RuntimeError(
+                    "Argument must have dimension attribute")
+            dictvars = attr_dimension_out(arg, fmt_arg)
+            dim_code = [ dictvars["dim_code"] ]
             asgn = "{py_var} = %s;" % do_cast(
                 self.language,
                 "reinterpret",
                 "PyArrayObject *",
-                "PyArray_SimpleNew(int nd, npy_intp* dims, int typenum)",
-#                "PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)" % allocargs,
+                wformat("PyArray_SimpleNew({nd}, {dims}, {typenum})", dictvars)
             )
         else:
             if intent == "in":
@@ -707,6 +740,7 @@ return 1;""",
             else:
                 fmt_arg.numpy_intent = "NPY_ARRAY_INOUT_ARRAY"
 
+            dim_code = [ ]
             asgn = "{py_var} = %s;" % do_cast(
                 self.language,
                 "reinterpret",
@@ -733,7 +767,7 @@ return 1;""",
                 "{py_type} * {pytmp_var};",
                 "PyArrayObject * {py_var} = NULL;",
             ],
-            post_parse=[
+            post_parse=dim_code + [
                 asgn,
                 "if ({py_var} == NULL) {{+",
                 "PyErr_SetString(PyExc_ValueError,"
@@ -926,7 +960,7 @@ return 1;""",
         """Write a Python wrapper for a C++ function.
 
         Args:
-            cls  - ast.ClassNodee or None for functions
+            cls  - ast.ClassNode or None for functions
             node - ast.FunctionNode.
 
         fmt.c_var   - name of variable in PyArg_ParseTupleAndKeywords
@@ -1233,7 +1267,8 @@ return 1;""",
 
             if intent in ["inout", "out"]:
                 if intent == "out":
-                    if allocatable:
+                    if allocatable or dimension:
+                        # If an array, a local NumPy array has already been defined.
                         pass
                     elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
@@ -2451,6 +2486,36 @@ def py_implied(expr, func):
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func)
     return visitor.visit(node)
+
+
+def attr_dimension_out(arg, fmt):
+    """
+    Create code to deal with an 
+      +intent(out)+dimension(3)
+
+    Args:
+        arg - argument node.
+        fmt - format dictionary.
+    """
+    dimension = arg.attrs.get("dimension", None)
+    if dimension is None:
+        raise RuntimeError(
+            "Argument must have non-default dimension attribute")
+    if dimension == "*":
+        raise RuntimeError(
+            "Argument dimension must not be assumed-length")
+
+    fmt.npy_ndims = "1"
+    fmt.npy_dims = "SHD_" +  fmt.cxx_var # ast.name
+    fmt.pointer_shape = dimension
+    dim_code = "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
+
+    return dict(
+        nd="1",
+        dims=fmt.npy_dims,
+        typenum=arg.typemap.PYN_typenum,
+        dim_code=dim_code,
+    )
 
 
 def attr_allocatable(language, allocatable, node, arg):
