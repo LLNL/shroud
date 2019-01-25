@@ -304,13 +304,14 @@ void increment(int *array, int size)
 
 const int num_fill_values = 3;
 
-int get_values(int *values)
+void get_values(int *nvalues, int *values)
 {
     int i;
     for(i = 0; i < num_fill_values; i++) {
        values[i] = i + 1;
     }
-    return num_fill_values;
+    *nvalues = num_fill_values;
+    return;
 }
 
 //----------------------------------------------------------------------

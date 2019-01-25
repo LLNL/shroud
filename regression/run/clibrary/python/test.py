@@ -110,10 +110,24 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('int32', out.dtype.name)
         self.assertTrue(np.equal(out, [3,5,7,9]).all())
 
+        # Call with incorrect argument type
         with self.assertRaises(ValueError) as context:
             array = np.array([2,4,6,8], dtype=np.float)
             out = clibrary.increment(array)
         self.assertTrue('array must be' in str(context.exception))
+
+    def XXXtest_get_values(self):
+        # the argument is return as the result because intent(INOUT)
+        nout, out = clibrary.get_values()
+        self.assertIs(array, out)
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertEqual('int32', out.dtype.name)
+        self.assertTrue(np.equal(out, [1,2,3]).all())
+
+#        with self.assertRaises(ValueError) as context:
+#            array = np.array([2,4,6,8], dtype=np.float)
+#            out = clibrary.increment(array)
+#        self.assertTrue('array must be' in str(context.exception))
 
 
 # creating a new test suite

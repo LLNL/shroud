@@ -160,7 +160,7 @@ contains
     call increment(incr)
     call assert_true(all(incr == [3, 5, 7, 9]))
 
-    nvalues = get_values(values)
+    call get_values(nvalues, values)
     call assert_equals(3, nvalues)
     call assert_true(all(values(1:3) == [1, 2, 3]))
 

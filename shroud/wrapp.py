@@ -672,23 +672,36 @@ return 1;""",
         Args:
             arg -
             fmt_arg -
+
+        Return a dictionary used to create wrapper.
         """
         self.need_numpy = True
         fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
         fmt_arg.py_type = "PyObject"
         intent = arg.attrs["intent"]
-        if intent == "in":
-            fmt_arg.numpy_intent = "NPY_ARRAY_IN_ARRAY"
+        if intent == "out":
+            # UUU
+            # Create a new array
+            allocargs = ("--NONE--", "NPY_CORDER", "NULL", "0")
+            asgn = "{py_var} = %s;" % do_cast(
+                self.language,
+                "reinterpret",
+                "PyArrayObject *",
+                "PyArray_NewLikeArray(\t%s,\t %s,\t %s,\t %s)" % allocargs,
+            )
         else:
-            fmt_arg.numpy_intent = "NPY_ARRAY_INOUT_ARRAY"
+            if intent == "in":
+                fmt_arg.numpy_intent = "NPY_ARRAY_IN_ARRAY"
+            else:
+                fmt_arg.numpy_intent = "NPY_ARRAY_INOUT_ARRAY"
 
-        asgn = "{py_var} = %s;" % do_cast(
-            self.language,
-            "reinterpret",
-            "PyArrayObject *",
-            "PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t {numpy_intent})",
-        )
+            asgn = "{py_var} = %s;" % do_cast(
+                self.language,
+                "reinterpret",
+                "PyArrayObject *",
+                "PyArray_FROM_OTF("
+                "\t{pytmp_var},\t {numpy_type},\t {numpy_intent})",
+            )
 
         if self.language == "c++":
             cast = "{cxx_decl} = %s;" % do_cast(
@@ -769,6 +782,7 @@ return 1;""",
             fmt - format dictionary
             post_call   - always called to construct objects
 
+        NumPy intent(OUT) arguments will create a Python object as part of pre-call.
         Return a BuildTuple instance.
         """
 

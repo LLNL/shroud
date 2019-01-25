@@ -102,6 +102,6 @@ void truncate_to_int(double *in, int *out, int size);
 
 void increment(int *array, int size);
 
-int get_values(int *values);
+void get_values(int *nvalues, int *values);
 
 #endif // CLIBRARY_HPP

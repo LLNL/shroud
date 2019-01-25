@@ -156,14 +156,13 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_increment
 
-        function get_values(values) &
-                result(SHT_rv) &
+        subroutine get_values(nvalues, values) &
                 bind(C, name="get_values")
             use iso_c_binding, only : C_INT
             implicit none
+            integer(C_INT), intent(OUT) :: nvalues
             integer(C_INT), intent(OUT) :: values(*)
-            integer(C_INT) :: SHT_rv
-        end function get_values
+        end subroutine get_values
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

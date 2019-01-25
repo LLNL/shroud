@@ -1936,6 +1936,24 @@
             },
             {
                 "_fmtargs": {
+                    "nvalues": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nvalues",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "nvalues",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "nvalues",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "nvalues",
+                            "f_var": "nvalues"
+                        }
+                    },
                     "values": {
                         "fmtc": {
                             "c_const": "",
@@ -1955,26 +1973,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_var": "SHT_rv"
-                    }
-                },
                 "ast": {
                     "declarator": {
                         "name": "get_values",
                         "pointer": []
                     },
                     "params": [
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "nvalues",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
                         {
                             "attrs": {
                                 "dimension": "*",
@@ -1996,36 +2018,34 @@
                         }
                     ],
                     "specifier": [
-                        "int"
+                        "void"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "void"
                 },
-                "decl": "int get_values(int *values +intent(out)+dimension)",
-                "declgen": "int get_values(int * values +dimension(*)+intent(out))",
+                "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension)",
+                "declgen": "void get_values(int * nvalues +intent(out), int * values +dimension(*)+intent(out))",
                 "doxygen": {
                     "__line__": 255,
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be\nHowever, then length is not passed in.\nIt is assumed to be long enough.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t get_values(\tvalues);",
-                    "C_call_list": "values",
+                    "C_call_code": "get_values(\tnvalues,\t values);",
+                    "C_call_list": "nvalues,\t values",
                     "C_name": "get_values",
-                    "C_prototype": "int * values",
-                    "C_return_code": "return SHC_rv;",
-                    "C_return_type": "int",
+                    "C_prototype": "int * nvalues,\t int * values",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
                     "F_C_call": "c_get_values",
                     "F_C_name": "get_values",
-                    "F_arg_c_call": "values",
-                    "F_arguments": "values",
-                    "F_call_code": "SHT_rv = c_get_values(values)",
+                    "F_arg_c_call": "nvalues,\t values",
+                    "F_arguments": "nvalues,\t values",
+                    "F_call_code": "call c_get_values(nvalues,\t values)",
                     "F_name_function": "get_values",
                     "F_name_generic": "get_values",
                     "F_name_impl": "get_values",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
+                    "F_subprogram": "subroutine",
                     "c_const": "",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "get_values",
                     "underscore_name": "get_values"
                 },

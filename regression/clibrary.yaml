@@ -249,9 +249,9 @@ declarations:
     description: |
       array with intent(INOUT)
 
-- decl: int get_values(int *values +intent(out)+dimension)
+- decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension)
   options:
-    wrap_python: False
+    wrap_python: false
   doxygen:
     brief: fill values into array
     description: |
