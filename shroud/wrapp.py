@@ -786,7 +786,7 @@ return 1;""",
 
         return blk
 
-    def array_result(self, capsule_order, ast, typedef, fmt):
+    def array_result(self, capsule_order, ast, typemap, fmt):
         """
         Deal with function result which is a NumPy array.
 
@@ -799,13 +799,13 @@ return 1;""",
             capsule_order - index into capsule_order of code to free memory.
                             None = do not release memory.
             ast - Abstract Syntax Tree of argument or result
-            typedef - typedef of C++ variable.
+            typemap - typemap of C++ variable.
             fmt - format dictionary
         """
         post_call = []
 
-        fmt.PyObject = typedef.PY_PyObject or "PyObject"
-        fmt.PyTypeObject = typedef.PY_PyTypeObject
+        fmt.PyObject = typemap.PY_PyObject or "PyObject"
+        fmt.PyTypeObject = typemap.PY_PyTypeObject
 
         # Create a 1-d array from pointer.
         # A string is not really an array, so do not deal with it here.
@@ -824,8 +824,8 @@ return 1;""",
         else:
             fmt.npy_ndims = "0"
             fmt.npy_dims = "NULL"
-        if typedef.PYN_descr:
-            fmt.PYN_descr = typedef.PYN_descr
+        if typemap.PYN_descr:
+            fmt.PYN_descr = typemap.PYN_descr
             append_format(
                 post_call,
                 "Py_INCREF({PYN_descr});\n"
@@ -891,13 +891,13 @@ return 1;""",
             append_format(pre_call, "{cxx_decl} = {pre_call_intent};", fmt)
 
 # XXX - typemap
-    def intent_out(self, typedef, intent_blk, fmt, post_call):
+    def intent_out(self, typemap, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
         Used with function results and intent(OUT) arguments.
 
         Args:
-            typedef - typedef of C++ variable.
+            typemap - typemap of C++ variable.
             intent_blk -
             fmt - format dictionary
             post_call   - list of post_call code for function.
@@ -906,8 +906,8 @@ return 1;""",
         Return a BuildTuple instance.
         """
 
-        fmt.PyObject = typedef.PY_PyObject or "PyObject"
-        fmt.PyTypeObject = typedef.PY_PyTypeObject
+        fmt.PyObject = typemap.PY_PyObject or "PyObject"
+        fmt.PyTypeObject = typemap.PY_PyTypeObject
 
         if "post_call" in intent_blk:
             # Explicit code exists to create object.
@@ -919,15 +919,15 @@ return 1;""",
             ctorvar = fmt.py_var
         else:
             # Decide values for Py_BuildValue
-            build_format = typedef.PY_build_format or typedef.PY_format
-            vargs = typedef.PY_build_arg
+            build_format = typemap.PY_build_format or typemap.PY_format
+            vargs = typemap.PY_build_arg
             if not vargs:
                 vargs = "{cxx_var}"
             vargs = wformat(vargs, fmt)
 
-            if typedef.PY_ctor:
+            if typemap.PY_ctor:
                 ctor = wformat(
-                    "{PyObject} * {py_var} = " + typedef.PY_ctor + ";", fmt
+                    "{PyObject} * {py_var} = " + typemap.PY_ctor + ";", fmt
                 )
                 ctorvar = fmt.py_var
             else:
@@ -1212,7 +1212,7 @@ return 1;""",
                     fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
                 local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
-                # cxx_member used with typedef fields like PY_ctor.
+                # cxx_member used with typemap fields like PY_ctor.
                 if cxx_local_var == "scalar":
                     fmt_arg.cxx_member = "."
                 elif cxx_local_var == "pointer":
