@@ -890,7 +890,6 @@ return 1;""",
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, "{cxx_decl} = {pre_call_intent};", fmt)
 
-# XXX - typemap
     def intent_out(self, typemap, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
@@ -905,7 +904,6 @@ return 1;""",
         NumPy intent(OUT) arguments will create a Python object as part of pre-call.
         Return a BuildTuple instance.
         """
-
         fmt.PyObject = typemap.PY_PyObject or "PyObject"
         fmt.PyTypeObject = typemap.PY_PyTypeObject
 
