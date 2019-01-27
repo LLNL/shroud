@@ -496,7 +496,6 @@ PY_get_values(
 {
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
-    PyObject * SHTPy_values;
     PyArrayObject * SHPy_values = NULL;
 
     // post_parse
@@ -520,6 +519,7 @@ PY_get_values(
     return SHTPy_rv;
 
 fail:
+    Py_XDECREF(SHPy_values);
     return NULL;
 // splicer end function.get_values
 }

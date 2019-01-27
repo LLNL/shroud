@@ -717,8 +717,6 @@ return 1;""",
         int * arg1 = PyArray_DATA(SHPy_arg1);
         """
         self.need_numpy = True
-        fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
-        fmt_arg.py_type = "PyObject"
         intent = arg.attrs["intent"]
         if intent == "out":
             # Create a new array.
@@ -727,6 +725,9 @@ return 1;""",
                 raise RuntimeError(
                     "Argument must have dimension attribute")
             dictvars = attr_dimension_out(arg, fmt_arg)
+            decl = [
+                "PyArrayObject * {py_var} = NULL;",
+            ]
             dim_code = [ dictvars["dim_code"] ]
             asgn = "{py_var} = %s;" % do_cast(
                 self.language,
@@ -739,6 +740,13 @@ return 1;""",
                 fmt_arg.numpy_intent = "NPY_ARRAY_IN_ARRAY"
             else:
                 fmt_arg.numpy_intent = "NPY_ARRAY_INOUT_ARRAY"
+
+            fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
+            fmt_arg.py_type = "PyObject"
+            decl = [
+                "{py_type} * {pytmp_var};",
+                "PyArrayObject * {py_var} = NULL;",
+            ]
 
             dim_code = [ ]
             asgn = "{py_var} = %s;" % do_cast(
@@ -763,10 +771,7 @@ return 1;""",
         blk = dict(
             # Declare variables here that are used by parse or referenced in fail.
             goto_fail=True,
-            decl=[
-                "{py_type} * {pytmp_var};",
-                "PyArrayObject * {py_var} = NULL;",
-            ],
+            decl=decl,
             post_parse=dim_code + [
                 asgn,
                 "if ({py_var} == NULL) {{+",
@@ -781,6 +786,9 @@ return 1;""",
         if intent == "in":
             blk["cleanup"] = ["Py_DECREF({py_var});"]
             blk["fail"] = ["Py_XDECREF({py_var});"]
+        elif intent == "out":
+            blk["fail"] = ["Py_XDECREF({py_var});"]
+            blk["post_call"] = None  # Object already created
         else:
             blk["post_call"] = None  # Object already created
 

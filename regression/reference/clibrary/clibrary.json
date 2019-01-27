@@ -2004,9 +2004,7 @@
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
-                            "py_type": "PyObject",
-                            "py_var": "SHPy_values",
-                            "pytmp_var": "SHTPy_values"
+                            "py_var": "SHPy_values"
                         }
                     }
                 },
