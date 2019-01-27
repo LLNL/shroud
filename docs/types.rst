@@ -83,6 +83,20 @@ other fields of the type such as *c_header* and *cxx_header*::
     fields:
       cpp_if: ifdef USE_MPI
 
+flat_name
+^^^^^^^^^
+
+A flattened version of **cxx_type** which allows the name to be 
+used as a legal identifier in C, Fortran and Python.
+By default any scope separators are converted to underscores
+i.e. ``internal::Worker`` becomes ``internal_Worker``.
+Imbedded blanks are converted to underscores
+i.e. ``unsigned int`` becomes ``unsigned_int``.
+And template arguments are converted to underscores with the trailing
+``>`` being replaced
+i.e. ``std::vector<int>`` becomes ``std_vector_int``.
+
+One use of this name is as the **function_suffix** for templated functions.
 
 idtor
 ^^^^^

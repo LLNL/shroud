@@ -1510,8 +1510,11 @@ class TemplateParam(Node):
     """
 
     def __init__(self, name):
+        # Set cxx_type so flat_name will be set.
+        # But use an illegal identifer name since it should never be used.
         self.name = name
-        self.typemap = typemap.Typemap(name, base="template")
+        self.typemap = typemap.Typemap(
+            name, base="template", cxx_type="-TemplateParam-")
 
 
 def check_decl(decl, namespace=None, template_types=None, trace=False):

@@ -10,5 +10,6 @@ Wrote wraptemplates.cpp
 Wrote typestemplates.h
 Wrote wrapfvector_int.f
 Wrote wrapfvector_double.f
+Wrote wrapfWorker.f
 Wrote wrapfuser_int.f
 Wrote wrapftemplates.f
