@@ -157,7 +157,7 @@ class Typemap(object):
         #            setattr(self, key, defvalue)
         self.__dict__.update(self.defaults)  # set all default values
         self.update(kw)
-        if not self.flat_name:
+        if self.cxx_type and not self.flat_name:
             # Do not override an explicitly set value.
             self.compute_flat_name()
 
