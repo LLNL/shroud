@@ -59,6 +59,7 @@ OBJS = \
     wrapfvector_int.o \
     wrapfvector_double.o \
     wrapftemplates.o \
+    wrapfWorker.o \
     fruit.o \
     main.o
 
@@ -72,11 +73,11 @@ templates : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod templates
 
-templates.o : templates.hpp
-wrapvectorforint.o : wrapvector_int.h
-wrapuser.o : wrapuser_int.h
-wraptemplates.o : wraptemplates.h typestemplates.h
-main.o : wrapfvector_int.o wrapfuser_int.o wrapftemplates.o
+#templates.o : templates.cpp templates.hpp
+wrapvectorforint.o : wrapvectorforint.cpp wrapvector_int.h
+wrapuser_int.o : wrapuser_int.cpp wrapuser_int.h typestemplates.h templates.hpp
+wraptemplates.o : wraptemplates.cpp wraptemplates.h typestemplates.h templates.hpp
+main.o : main.f wrapfvector_int.o wrapfuser_int.o wrapftemplates.o wrapfWorker.o
 maincpp.o : maincpp.cpp templates.hpp
 
 # useful to isolate load error with just C++ code
