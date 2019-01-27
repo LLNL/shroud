@@ -158,7 +158,8 @@ class Typemap(object):
         self.__dict__.update(self.defaults)  # set all default values
         self.update(kw)
         if not self.flat_name:
-            self.flat_name = flatten_name(self.cxx_type or "JJJTypemap")
+            # Do not override an explicitly set value.
+            self.compute_flat_name()
 
     def update(self, dct):
         """Add options from dictionary to self.
@@ -182,9 +183,17 @@ class Typemap(object):
         Args:
             name - name of new instance.
         """
-        ntypemap = Typemap(name)
-        ntypemap.update(self._to_dict())
+        ntypemap = Typemap(name, **self._to_dict())
         return ntypemap
+
+    def compute_flat_name(self):
+        """Compute the flat_name.
+        Can be called after cxx_type is set
+        such as after clone_as.
+
+        cxx_type will not be set for template arguments.
+        """
+        self.flat_name = flatten_name(self.cxx_type)
 
     def _to_dict(self):
         """Convert instance to a dictionary for json.
@@ -263,7 +272,7 @@ def register_type(name, intypemap):
 
 
 def lookup_type(name):
-    """Lookup name in registered types taking aliases into account."""
+    """Lookup name in registered types."""
     outtypemap = shared_typedict.get(name)
     return outtypemap
 
@@ -1243,9 +1252,10 @@ def initialize():
 
 def create_enum_typemap(node):
     """Create a typemap similar to an int.
+    C++ enums are converted to a C int.
 
     Args:
-        node -
+        node - EnumNode instance.
     """
     fmt_enum = node.fmtdict
     type_name = util.wformat("{namespace_scope}{enum_name}", fmt_enum)
@@ -1261,6 +1271,7 @@ def create_enum_typemap(node):
             "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
         )
         ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
+        ntypemap.compute_flat_name()
         register_type(type_name, ntypemap)
     return ntypemap
 

@@ -994,7 +994,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int"
+            "flat_name": "Color"
         },
         "MPI_Comm": {
             "c_header": "mpi.h",

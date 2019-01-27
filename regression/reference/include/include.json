@@ -614,7 +614,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int",
+            "flat_name": "CustomType",
             "typedef": "int"
         },
         "MPI_Comm": {

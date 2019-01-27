@@ -2763,7 +2763,7 @@
                 ]
             },
             "f_type": "integer(C_SIZE_T)",
-            "flat_name": "size_t",
+            "flat_name": "std_vector_size_type",
             "typedef": "size_t"
         },
         "std::vector_double": {

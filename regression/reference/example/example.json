@@ -9409,7 +9409,7 @@
                 ]
             },
             "f_type": "integer(C_LONG)",
-            "flat_name": "long",
+            "flat_name": "SidreLength",
             "typedef": "long"
         },
         "TypeID": {
@@ -9435,7 +9435,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int",
+            "flat_name": "TypeID",
             "typedef": "int"
         },
         "axom::sidre::Group": {

@@ -176,9 +176,9 @@ class NamespaceMixin(object):
         ntypemap = orig.clone_as(self.scope + key)
         ntypemap.typedef = orig.name
         ntypemap.cxx_type = ntypemap.name
+        ntypemap.compute_flat_name()
         if "fields" in kwargs:
-            fields = kwargs["fields"]
-            ntypemap.update(fields)
+            ntypemap.update(kwargs["fields"])
         typemap.register_type(ntypemap.name, ntypemap)
 
         node = self.add_typedef(key, ntypemap)

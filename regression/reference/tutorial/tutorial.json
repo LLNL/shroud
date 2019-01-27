@@ -10320,7 +10320,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int"
+            "flat_name": "tutorial_Class1_DIRECTION"
         },
         "tutorial::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -10342,7 +10342,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int"
+            "flat_name": "tutorial_Color"
         },
         "tutorial::EnumTypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
@@ -10365,7 +10365,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int",
+            "flat_name": "tutorial_EnumTypeID",
             "typedef": "int"
         },
         "tutorial::TypeID": {
@@ -10386,7 +10386,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "int",
+            "flat_name": "tutorial_TypeID",
             "typedef": "int"
         },
         "tutorial::struct1": {
