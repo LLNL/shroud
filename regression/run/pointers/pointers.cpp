@@ -38,70 +38,87 @@
  *
  * #######################################################################
  *
- * clibrary.hpp - wrapped routines
+ * tutorial.hpp - wrapped routines
  */
 
-#ifndef CLIBRARY_HPP
-#define CLIBRARY_HPP
+#include "pointers.hpp"
 
-#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 
-enum EnumTypeID {
-    ENUM0,
-    ENUM1,
-    ENUM2
-};
+#define MAXLAST 50
+static char last_function_called[MAXLAST];
 
-typedef int TypeID;
+// These variables exist to avoid warning errors
+//static std::string global_str;
+//static int global_int;
+//static double global_double;
 
-void Function1(void);
+//----------------------------------------------------------------------
 
-double Function2(double arg1, int arg2);
+void intargs(const int argin, int * arginout, int * argout)
+{
+  *argout = *arginout;
+  *arginout = argin;
+}
 
-bool Function3(bool arg);
-void Function3b(const bool arg1, bool *arg2, bool *arg3);
+//----------------------------------------------------------------------
 
-char *Function4a(const char *arg1, const char *arg2);
-#if 0
-const std::string& Function4b(const std::string& arg1, const std::string& arg2);
+//#include <math.h>
+/*  Compute the cosine of each element in in_array, storing the result in
+ *  out_array. */
+// replace cos with simpler function
+void cos_doubles(double *in, double *out, int size)
+{
+    int i;
+    for(i = 0; i < size; i++) {
+      out[i] = cos(in[i]);
+    }
+}
 
-double Function5(double arg1 = 3.1415, bool arg2 = true);
+//----------------------------------------------------------------------
+// convert from double to int.
 
-void Function6(const std::string& name);
-void Function6(int indx);
+void truncate_to_int(double *in, int *out, int size)
+{
+    int i;
+    for(i = 0; i < size; i++) {
+        out[i] = in[i];
+    }
+}
 
-void Function9(double arg);
+//----------------------------------------------------------------------
+// array +intent(inout)
 
-void Function10(void);
-void Function10(const std::string &name, double arg2);
-#endif
+void increment(int *array, int size)
+{
+    int i;
+    for(i = 0; i < size; i++) {
+       array[i] += 1;
+    }
+}
 
-void Sum(int len, int * values, int *result);
+//----------------------------------------------------------------------
+// values +intent(out)
+// Note that we must assume that values is long enough.
+// Otherwise, memory will be overwritten.
 
-#if 0
-TypeID typefunc(TypeID arg);
+const int num_fill_values = 3;
 
-EnumTypeID enumfunc(EnumTypeID arg);
+void get_values(int *nvalues, int *values)
+{
+    int i;
+    for(i = 0; i < num_fill_values; i++) {
+       values[i] = i + 1;
+    }
+    *nvalues = num_fill_values;
+    return;
+}
 
-const char *LastFunctionCalled(void);
-
-int vector_sum(const std::vector<int> &arg);
-void vector_iota(std::vector<int> &arg);
-void vector_increment(std::vector<int> &arg);
-
-int vector_string_count(const std::vector< std::string > &arg);
-void vector_string_fill(std::vector< std::string > &arg);
-void vector_string_append(std::vector< std::string > &arg);
-#endif
-
-void intargs(const int argin, int * argout, int * arginout);
-
-void cos_doubles(double * in, double * out, int sizein);
-
-void truncate_to_int(double *in, int *out, int size);
-
-void increment(int *array, int size);
-
-void get_values(int *nvalues, int *values);
-
-#endif // CLIBRARY_HPP
+//----------------------------------------------------------------------
+const char *LastFunctionCalled(void)
+{
+    return last_function_called;
+}

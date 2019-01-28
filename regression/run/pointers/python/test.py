@@ -38,13 +38,14 @@
 #
 # #######################################################################
 #
-# test the clibrary module
+# test the pointers module
 #
 from __future__ import print_function
 
 import math
+import numpy as np
 import unittest
-import clibrary
+import pointers
 
 
 class NotTrue:
@@ -67,21 +68,45 @@ class Tutorial(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testfunction2(self):
-        self.assertEqual(5.0, clibrary.Function2(1.0, 4))
+    def testintargs(self):
+        self.assertEqual((1, 2), pointers.intargs(1, 2))
 
-    def testfunction3(self):
-        self.assertEqual(True, clibrary.Function3(False))
+    def testcos_doubles(self):
+        # x = np.arange(0, 2 * np.pi, 0.1)
+        inarray = [ 0.0, 0.5*np.pi, np.pi, 1.5*np.pi, 2.0*np.pi ]
+        outarray = [ math.cos(v) for v in inarray]
+        rv = pointers.cos_doubles(inarray)
+        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertEqual('float64', rv.dtype.name)
+        self.assertTrue(np.allclose(rv, outarray))
 
-    def testfunction3b(self):
-        self.assertEqual((False, False), clibrary.Function3b(True, True))
+    def test_truncate(self):
+        rv = pointers.truncate_to_int([1.2, 2.3, 3.4, 4.5])
+        self.assertTrue(isinstance(rv, np.ndarray))
+        self.assertEqual('int32', rv.dtype.name)
+        self.assertTrue(np.equal(rv, [1, 2, 3, 4]).all())
 
-    def testfunction4a(self):
-        self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))
+    def test_increment(self):
+        # the argument is return as the result because intent(INOUT)
+        array = np.array([2,4,6,8], dtype=np.intc)  # int32
+        out = pointers.increment(array)
+        self.assertIs(array, out)
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertEqual('int32', out.dtype.name)
+        self.assertTrue(np.equal(out, [3,5,7,9]).all())
 
-    def testsum(self):
-        self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
+        # Call with incorrect argument type
+        with self.assertRaises(ValueError) as context:
+            array = np.array([2,4,6,8], dtype=np.float)
+            out = pointers.increment(array)
+        self.assertTrue('array must be' in str(context.exception))
 
+    def test_get_values(self):
+        # out - created NumPy array.
+        nout, out = pointers.get_values()
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertEqual('int32', out.dtype.name)
+        self.assertTrue(np.equal(out, [1,2,3]).all())
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

@@ -220,44 +220,6 @@ declarations:
 ##-     brief: append '-like' to names.
 ##-
 
-- decl: void  intargs(const int argin      +intent(in),
-                            int * arginout +intent(inout),
-                            int * argout   +intent(out))
-
-- decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
-                         double * out    +intent(out) +allocatable(mold=in),
-                         int      sizein +implied(size(in)))
-  doxygen:
-    brief: compute cos of IN and save in OUT
-    description:
-      allocate OUT same type as IN
-      implied size of array
-
-- decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
-                             int *    out    +intent(out) +allocatable(mold=in),
-                             int      sizein +implied(size(in)))
-  doxygen:
-    brief: truncate IN argument and save in OUT
-    description: |
-      allocate OUT different type as IN
-      implied size of array
-
-- decl: void increment(int * array  +intent(inout)  +dimension(:),
-                       int   sizein +implied(size(array)))
-  doxygen:
-    brief: 
-    description: |
-      array with intent(INOUT)
-
-- decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
-  doxygen:
-    brief: fill values into array
-    description: |
-       The function knows how long the array must be.
-       Fortran will treat the dimension as assumed-length.
-       The Python wrapper will create a NumPy array so it must
-       have an explicit dimension (not assumed-length).
-
  
 ##-##################################################
 ##-
@@ -271,6 +233,3 @@ declarations:
 ##-  - decl: Class1()  +name(new)
 ##-  - decl: ~Class1() +name(delete)
 ##-  - decl: void Method1()
-
-## test +allocatable(3)
-## test +allocatable(nvar)

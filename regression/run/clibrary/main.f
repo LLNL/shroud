@@ -73,12 +73,6 @@ program tester
 contains
 
   subroutine test_functions
-    integer(c_int) iargin, iarginout, iargout
-    real(c_double) :: in_double(5)
-    real(c_double), allocatable :: out_double(:)
-    integer(c_int), allocatable :: out_int(:)
-    integer(c_int) :: incr(4)
-    integer(c_int) :: nvalues, values(4)
 
     call set_case_name("test_functions")
 
@@ -137,32 +131,6 @@ contains
 !
 !    rv_int = enumfunc(1)
 !    call assert_true(rv_int .eq. 2)
-
-    iargin    = 1
-    iarginout = 2
-    iargout   = -1
-    call intargs(iargin, iarginout, iargout)
-    call assert_true(iarginout == 1)
-    call assert_true(iargout   == 2)
-
-    call assert_false(allocated(out_double))
-    in_double = [0.0*pi, 0.5*pi, pi, 1.5*pi, 2.0*pi]
-    call cos_doubles(in_double, out_double)
-    call assert_true(allocated(out_double))
-    call assert_true(all(abs(out_double - cos(in_double)) < 1.e-08 ))
-
-    call assert_false(allocated(out_int))
-    call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
-    call assert_true(allocated(out_int))
-    call assert_true(all(out_int == [1, 2, 3, 4]))
-
-    incr = [2, 4, 6, 8]
-    call increment(incr)
-    call assert_true(all(incr == [3, 5, 7, 9]))
-
-    call get_values(nvalues, values)
-    call assert_equals(3, nvalues)
-    call assert_true(all(values(1:3) == [1, 2, 3]))
 
   end subroutine test_functions
 

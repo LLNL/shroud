@@ -1,4 +1,4 @@
-# Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
 # Produced at the Lawrence Livermore National Laboratory 
 #
 # LLNL-CODE-738041.
@@ -38,56 +38,31 @@
 #
 # #######################################################################
 #
-# test the clibrary module
+# run/pointers
 #
-from __future__ import print_function
+include $(top)/regression/run/defaults.mk
 
-import math
-import unittest
-import clibrary
+INCLUDE = \
+    -I$(top)/regression/reference/pointers \
+    -I$(top)/regression/run/pointers \
+    -I$(top)/regression/run/fruit
 
+VPATH = \
+    $(top)/regression/reference/pointers \
+    $(top)/regression/run/pointers \
+    $(top)/regression/run/fruit
 
-class NotTrue:
-    """Test bool arguments errors"""
-    def __bool__(self):
-        raise NotImplementedError
- 
-class Tutorial(unittest.TestCase):
-    """Test tutorial problem"""
-     
-    def XXsetUp(self):
-        """ Setting up for the test """
-        print("FooTest:setUp_:begin")
-        ## do something...
-        print("FooTest:setUp_:end")
-     
-    def XXtearDown(self):
-        """Cleaning up after the test"""
-        print("FooTest:tearDown_:begin")
-        ## do something...
-        print("FooTest:tearDown_:end")
-     
-    def testfunction2(self):
-        self.assertEqual(5.0, clibrary.Function2(1.0, 4))
+OBJS = \
+    pointers.o \
+    wrapfpointers.o \
+    wrappointers.o \
+    fruit.o \
+    main.o
 
-    def testfunction3(self):
-        self.assertEqual(True, clibrary.Function3(False))
+pointers : $(OBJS)
+	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
-    def testfunction3b(self):
-        self.assertEqual((False, False), clibrary.Function3b(True, True))
+clean :
+	rm -f $(OBJS) *.mod pointers
 
-    def testfunction4a(self):
-        self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))
-
-    def testsum(self):
-        self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
-
-
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
-
-if __name__ == "__main__":
-    unittest.main()
+main.o : wrapfpointers.o

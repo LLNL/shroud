@@ -56,6 +56,8 @@ TESTDIRS = \
     $(tempdir)/run/tutorial/lua/.. \
     $(tempdir)/run/types/..\
     $(tempdir)/run/templates/..\
+    $(tempdir)/run/pointers/..\
+    $(tempdir)/run/pointers/python/.. \
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors/python/.. \
     $(tempdir)/run/vectors/lua/.. \
@@ -69,10 +71,10 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial types vectors strings clibrary ownership templates
+fortran : tutorial types pointers vectors strings clibrary ownership templates
 
 # Compile the Fortran tests
-tutorial types vectors forward strings clibrary ownership templates : testdirs
+tutorial types pointers vectors forward strings clibrary ownership templates : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/$@ \
 	    -f $(top)/regression/run/$@/Makefile \
@@ -109,6 +111,7 @@ clang : tutorial-c templates-c
 test-fortran : fortran
 	$(tempdir)/run/tutorial/tutorial
 	$(tempdir)/run/types/types
+	$(tempdir)/run/pointers/pointers
 	$(tempdir)/run/vectors/vectors
 	$(tempdir)/run/strings/strings
 	$(tempdir)/run/clibrary/clibrary
@@ -138,6 +141,12 @@ py-strings : testdirs
 	    -f $(top)/regression/run/strings/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
+py-pointers : testdirs
+	$(MAKE) \
+	    -C $(tempdir)/run/pointers/python \
+	    -f $(top)/regression/run/pointers/python/Makefile \
+	    PYTHON=$(PYTHON) top=$(top) all
+
 py-clibrary : testdirs
 	$(MAKE) \
 	    -C $(tempdir)/run/clibrary/python \
@@ -159,6 +168,10 @@ test-python-strings : py-strings
 	export PYTHONPATH=$(top)/$(tempdir)/run/strings/python; \
 	$(PYTHON_BIN) $(top)/regression/run/strings/python/test.py
 
+test-python-pointers : py-pointers
+	export PYTHONPATH=$(top)/$(tempdir)/run/pointers/python; \
+	$(PYTHON_BIN) $(top)/regression/run/pointers/python/test.py
+
 test-python-clibrary : py-clibrary
 	export PYTHONPATH=$(top)/$(tempdir)/run/clibrary/python; \
 	$(PYTHON_BIN) $(top)/regression/run/clibrary/python/test.py
@@ -167,7 +180,7 @@ test-python-ownership : py-ownership
 	export PYTHONPATH=$(top)/$(tempdir)/run/ownership/python; \
 	$(PYTHON_BIN) $(top)/regression/run/ownership/python/test.py
 
-test-python : test-python-tutorial test-python-strings test-python-clibrary test-python-ownership
+test-python : test-python-tutorial test-python-strings test-python-pointers test-python-clibrary test-python-ownership
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
@@ -185,13 +198,14 @@ test-lua : lua-tutorial
 test-all : test-c test-fortran test-python test-lua
 
 
-.PHONY : fortran test-fortran tutorial vectors strings clibrary ownership templates
+.PHONY : fortran test-fortran tutorial pointers vectors strings clibrary ownership templates
 .PHONY : test-c
 .PHONY : tutorial-c tutorial-cpp
 .PHONY : templates-c
 .PHONY : test-python
 .PHONY : py-tutorial test-python-tutorial
 .PHONY : py-strings  test-python-strings
+.PHONY : py-pointers  test-python-pointers
 .PHONY : py-clibrary test-python-clibrary
 .PHONY : py-ownership test-python-ownership
 .PHONY : test-lua lua-tutorial

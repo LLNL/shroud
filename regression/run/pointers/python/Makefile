@@ -38,56 +38,42 @@
 #
 # #######################################################################
 #
-# test the clibrary module
+#  Compile the python pointers module
 #
-from __future__ import print_function
+include $(top)/regression/run/defaults.mk
 
-import math
-import unittest
-import clibrary
+INCLUDE = \
+    -I$(top)/regression/reference/pointers \
+    -I$(top)/regression/run/pointers \
+    $(PYTHON_INC)
 
+VPATH = \
+    $(top)/regression/reference/pointers \
+    $(top)/regression/run/pointers \
+    $(top)/regression/run/pointers/python
 
-class NotTrue:
-    """Test bool arguments errors"""
-    def __bool__(self):
-        raise NotImplementedError
- 
-class Tutorial(unittest.TestCase):
-    """Test tutorial problem"""
-     
-    def XXsetUp(self):
-        """ Setting up for the test """
-        print("FooTest:setUp_:begin")
-        ## do something...
-        print("FooTest:setUp_:end")
-     
-    def XXtearDown(self):
-        """Cleaning up after the test"""
-        print("FooTest:tearDown_:begin")
-        ## do something...
-        print("FooTest:tearDown_:end")
-     
-    def testfunction2(self):
-        self.assertEqual(5.0, clibrary.Function2(1.0, 4))
+OBJS = \
+    pointers.o \
+    pypointersmodule.o \
+    pypointershelper.o
 
-    def testfunction3(self):
-        self.assertEqual(True, clibrary.Function3(False))
+CXXFLAGS += $(SHARED)
 
-    def testfunction3b(self):
-        self.assertEqual((False, False), clibrary.Function3b(True, True))
+all : pointers.so simple
 
-    def testfunction4a(self):
-        self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))
+pointers.so : $(OBJS)
+	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
-    def testsum(self):
-        self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
+simple : testpython.o $(OBJS)
+	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
+#	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
+clean :
+	rm -f *.so *.o simple
+.PHONY : clean
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
+print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
 
-if __name__ == "__main__":
-    unittest.main()
