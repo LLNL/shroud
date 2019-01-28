@@ -421,6 +421,9 @@ PY_Function5_arg1_arg2(
             SHC_rv = tutorial::Function5(arg1, arg2);
             break;
         }
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return NULL;
     }
 
     // post_call
@@ -621,6 +624,9 @@ PY_overload1_num_offset_stride(
     case 3:
         SHC_rv = tutorial::overload1(num, offset, stride);
         break;
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return NULL;
     }
 
     // post_call
@@ -666,6 +672,9 @@ PY_overload1_5(
     case 4:
         SHC_rv = tutorial::overload1(type, num, offset, stride);
         break;
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return NULL;
     }
 
     // post_call

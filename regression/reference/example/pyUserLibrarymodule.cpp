@@ -262,6 +262,9 @@ PP_testoptional_2(
     case 2:
         example::nested::testoptional(i, j);
         break;
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return NULL;
     }
     Py_RETURN_NONE;
 // splicer end function.testoptional

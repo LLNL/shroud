@@ -58,7 +58,7 @@ static char last_function_called[MAXLAST];
 
 
 
-void Function1()
+void Function1(void)
 {
     strncpy(last_function_called, "Function1", MAXLAST);
     return;
@@ -133,7 +133,7 @@ void Function9(double arg)
     return;
 }
 
-void Function10()
+void Function10(void)
 {
     strncpy(last_function_called, "Function10_0", MAXLAST);
 }
@@ -315,7 +315,7 @@ void get_values(int *nvalues, int *values)
 }
 
 //----------------------------------------------------------------------
-const char *LastFunctionCalled()
+const char *LastFunctionCalled(void)
 {
     return last_function_called;
 }

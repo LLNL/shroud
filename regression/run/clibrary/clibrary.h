@@ -54,7 +54,7 @@ enum EnumTypeID {
 
 typedef int TypeID;
 
-void Function1();
+void Function1(void);
 
 double Function2(double arg1, int arg2);
 
@@ -72,7 +72,7 @@ void Function6(int indx);
 
 void Function9(double arg);
 
-void Function10();
+void Function10(void);
 void Function10(const std::string &name, double arg2);
 #endif
 
@@ -83,7 +83,7 @@ TypeID typefunc(TypeID arg);
 
 EnumTypeID enumfunc(EnumTypeID arg);
 
-const char *LastFunctionCalled();
+const char *LastFunctionCalled(void);
 
 int vector_sum(const std::vector<int> &arg);
 void vector_iota(std::vector<int> &arg);

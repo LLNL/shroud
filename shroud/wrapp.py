@@ -1506,12 +1506,17 @@ return 1;""",
                     PY_code.append("}")
                     PY_code.append(-1)
                     need_blank = False
+        # End of loop over default arguments.
         if found_default:
-            # PY_code.append('default:')
-            # PY_code.append(1)
-            # PY_code.append('continue;')  # XXX raise internal error
-            # PY_code.append(-1)
-            PY_code.append("}")
+            PY_code.append(
+                "default:+\n"
+                "PyErr_SetString(PyExc_ValueError,"
+                "\t \"Wrong number of arguments\");\n"
+                "return NULL;\n"
+#                "goto fail;\n"
+                "-}")
+# XXX - need to add a extra scope to deal with goto in C++
+#            goto_fail = True;
         else:
             need_rv = False
 
@@ -2589,7 +2594,6 @@ def attr_allocatable(language, allocatable, node, arg):
         descr=descr,
         subok=subok,
         descr_code=descr_code)
-
 
 
 def do_cast(lang, kind, typ, var):
