@@ -727,8 +727,8 @@ return 1;""",
             dictvars = attr_dimension_out(arg, fmt_arg)
             decl = [
                 "PyArrayObject * {py_var} = NULL;",
+                dictvars["dim_code"],
             ]
-            dim_code = [ dictvars["dim_code"] ]
             asgn = "{py_var} = %s;" % do_cast(
                 self.language,
                 "reinterpret",
@@ -748,7 +748,6 @@ return 1;""",
                 "PyArrayObject * {py_var} = NULL;",
             ]
 
-            dim_code = [ ]
             asgn = "{py_var} = %s;" % do_cast(
                 self.language,
                 "reinterpret",
@@ -772,7 +771,7 @@ return 1;""",
             # Declare variables here that are used by parse or referenced in fail.
             goto_fail=True,
             decl=decl,
-            post_parse=dim_code + [
+            post_parse=[
                 asgn,
                 "if ({py_var} == NULL) {{+",
                 "PyErr_SetString(PyExc_ValueError,"

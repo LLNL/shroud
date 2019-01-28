@@ -108,6 +108,18 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('int32', out.dtype.name)
         self.assertTrue(np.equal(out, [1,2,3]).all())
 
+    def test_get_values2(self):
+        # out - created NumPy array.
+        arg1, arg2 = pointers.get_values2()
+
+        self.assertTrue(isinstance(arg1, np.ndarray))
+        self.assertEqual('int32', arg1.dtype.name)
+        self.assertTrue(np.equal(arg1, [1,2,3]).all())
+
+        self.assertTrue(isinstance(arg2, np.ndarray))
+        self.assertEqual('int32', arg2.dtype.name)
+        self.assertTrue(np.equal(arg2, [11,12,13]).all())
+
 # creating a new test suite
 newSuite = unittest.TestSuite()
  

@@ -118,6 +118,11 @@ test-fortran : fortran
 	$(tempdir)/run/ownership/ownership
 	$(tempdir)/run/templates/templates
 
+# run a Fortran test
+test-fortran-% : %
+	$(tempdir)/run/$(subst test-fortran-,,$@)/$(subst test-fortran-,,$@)
+#	$(tempdir)/run/$(patsubst fortran-%,%,$@)/$(patsubst fortran-%,%,$@)
+
 # Run a single Fortran test
 # make ftest name=templates
 ftest :

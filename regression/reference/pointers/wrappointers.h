@@ -71,6 +71,8 @@ void POI_increment(int * array, int sizein);
 
 void POI_get_values(int * nvalues, int * values);
 
+void POI_get_values2(int * arg1, int * arg2);
+
 #ifdef __cplusplus
 }
 #endif

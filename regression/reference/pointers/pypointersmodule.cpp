@@ -295,9 +295,9 @@ PY_get_values(
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
     PyArrayObject * SHPy_values = NULL;
+    npy_intp SHD_values[1] = { 3 };
 
     // post_parse
-    npy_intp SHD_values[1] = { 3 };
     SHPy_values = reinterpret_cast<PyArrayObject *>
         (PyArray_SimpleNew(1, SHD_values, NPY_INT));
     if (SHPy_values == NULL) {
@@ -323,6 +323,64 @@ fail:
     return NULL;
 // splicer end function.get_values
 }
+
+static char PY_get_values2__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief fill values into two arrays
+ *
+ * Test two intent(out) arguments.
+ * Make sure error handling works with C++.
+ */
+static PyObject *
+PY_get_values2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
+// splicer begin function.get_values2
+    PyArrayObject * SHPy_arg1 = NULL;
+    npy_intp SHD_arg1[1] = { 3 };
+    PyArrayObject * SHPy_arg2 = NULL;
+    npy_intp SHD_arg2[1] = { 3 };
+
+    // post_parse
+    SHPy_arg1 = reinterpret_cast<PyArrayObject *>
+        (PyArray_SimpleNew(1, SHD_arg1, NPY_INT));
+    if (SHPy_arg1 == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg1 must be a 1-D array of int");
+        goto fail;
+    }
+    SHPy_arg2 = reinterpret_cast<PyArrayObject *>
+        (PyArray_SimpleNew(1, SHD_arg2, NPY_INT));
+    if (SHPy_arg2 == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg2 must be a 1-D array of int");
+        goto fail;
+    }
+    {
+        // pre_call
+        int * arg1 = static_cast<int *>(PyArray_DATA(SHPy_arg1));
+        int * arg2 = static_cast<int *>(PyArray_DATA(SHPy_arg2));
+
+        get_values2(arg1, arg2);
+
+        // post_call
+        PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+
+        return SHTPy_rv;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg1);
+    Py_XDECREF(SHPy_arg2);
+    return NULL;
+// splicer end function.get_values2
+}
 static PyMethodDef PY_methods[] = {
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
@@ -334,6 +392,8 @@ static PyMethodDef PY_methods[] = {
     PY_increment__doc__},
 {"get_values", (PyCFunction)PY_get_values, METH_NOARGS,
     PY_get_values__doc__},
+{"get_values2", (PyCFunction)PY_get_values2, METH_NOARGS,
+    PY_get_values2__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

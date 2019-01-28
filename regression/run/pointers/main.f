@@ -68,7 +68,7 @@ contains
     real(c_double), allocatable :: out_double(:)
     integer(c_int), allocatable :: out_int(:)
     integer(c_int) :: incr(4)
-    integer(c_int) :: nvalues, values(4)
+    integer(c_int) :: nvalues, values1(3), values2(3)
 
     call set_case_name("test_functions")
 
@@ -94,9 +94,16 @@ contains
     call increment(incr)
     call assert_true(all(incr == [3, 5, 7, 9]))
 
-    call get_values(nvalues, values)
+    values1 = 0
+    call get_values(nvalues, values1)
     call assert_equals(3, nvalues)
-    call assert_true(all(values(1:3) == [1, 2, 3]))
+    call assert_true(all(values1(1:3) == [1, 2, 3]))
+
+    values1 = 0
+    values2 = 0
+    call get_values2(values1, values2)
+    call assert_true(all(values1(1:3) == [1, 2, 3]))
+    call assert_true(all(values2(1:3) == [11, 12, 13]))
 
   end subroutine test_functions
 

@@ -117,6 +117,16 @@ void get_values(int *nvalues, int *values)
     return;
 }
 
+void get_values2(int *arg1, int *arg2)
+{
+    int i;
+    for(i = 0; i < num_fill_values; i++) {
+       arg1[i] = i + 1;
+       arg2[i] = i + 11;
+    }
+    return;
+}
+
 //----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {

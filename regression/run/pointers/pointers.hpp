@@ -54,4 +54,6 @@ void increment(int *array, int size);
 
 void get_values(int *nvalues, int *values);
 
+void get_values2(int *arg1, int *arg2);
+
 #endif // POINTERS_HPP

@@ -99,6 +99,14 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: values(*)
         end subroutine get_values
 
+        subroutine get_values2(arg1, arg2) &
+                bind(C, name="POI_get_values2")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(OUT) :: arg1(*)
+            integer(C_INT), intent(OUT) :: arg2(*)
+        end subroutine get_values2
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

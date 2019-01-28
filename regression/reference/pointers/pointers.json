@@ -1036,6 +1036,164 @@
                 },
                 "linenumber": 86,
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg1)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg1",
+                            "f_var": "arg1"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "int * arg1",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg1",
+                            "cxx_addr": "",
+                            "cxx_decl": "int * arg1",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "npy_dims": "SHD_arg1",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "pointer_shape": "3",
+                            "py_var": "SHPy_arg1"
+                        }
+                    },
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg2",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg2)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "arg2",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg2",
+                            "f_var": "arg2"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "int * arg2",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg2",
+                            "cxx_addr": "",
+                            "cxx_decl": "int * arg2",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "arg2",
+                            "npy_dims": "SHD_arg2",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "pointer_shape": "3",
+                            "py_var": "SHPy_arg2"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "get_values2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "3",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "dimension": "3",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void get_values2(int *arg1 +intent(out)+dimension(3), int *arg2 +intent(out)+dimension(3))",
+                "declgen": "void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))",
+                "doxygen": {
+                    "__line__": 97,
+                    "brief": "fill values into two arrays",
+                    "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "get_values2(\targ1,\t arg2);",
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "POI_get_values2",
+                    "C_prototype": "int * arg1,\t int * arg2",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_values2",
+                    "F_C_name": "get_values2",
+                    "F_arg_c_call": "arg1,\t arg2",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_call_code": "call c_get_values2(arg1,\t arg2)",
+                    "F_name_function": "get_values2",
+                    "F_name_generic": "get_values2",
+                    "F_name_impl": "get_values2",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_get_values2",
+                    "c_const": "",
+                    "function_name": "get_values2",
+                    "underscore_name": "get_values2"
+                },
+                "linenumber": 95,
+                "options": {}
             }
         ],
         "language": "c++",

@@ -122,6 +122,21 @@ void POI_get_values(int * nvalues, int * values)
 // splicer end function.get_values
 }
 
+// void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
+/**
+ * \brief fill values into two arrays
+ *
+ * Test two intent(out) arguments.
+ * Make sure error handling works with C++.
+ */
+void POI_get_values2(int * arg1, int * arg2)
+{
+// splicer begin function.get_values2
+    get_values2(arg1, arg2);
+    return;
+// splicer end function.get_values2
+}
+
 // Release C++ allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {
