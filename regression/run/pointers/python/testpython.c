@@ -1,4 +1,5 @@
-/* Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC. 
+/*
+ * Copyright (c) 2018, Lawrence Livermore National Security, LLC. 
  * Produced at the Lawrence Livermore National Laboratory 
  *
  * LLNL-CODE-738041.
@@ -37,71 +38,29 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * #######################################################################
- *
- * clibrary.hpp - wrapped routines
  */
+#include "Python.h"
+//#include <pypointersmodule.hpp>
+#include <stdio.h>
 
-#ifndef CLIBRARY_HPP
-#define CLIBRARY_HPP
-
-#include <stdbool.h>
-
-enum EnumTypeID {
-    ENUM0,
-    ENUM1,
-    ENUM2
-};
-
-typedef int TypeID;
-
-void Function1(void);
-
-double Function2(double arg1, int arg2);
-
-bool Function3(bool arg);
-void Function3b(const bool arg1, bool *arg2, bool *arg3);
-
-char *Function4a(const char *arg1, const char *arg2);
-#if 0
-const std::string& Function4b(const std::string& arg1, const std::string& arg2);
-
-double Function5(double arg1 = 3.1415, bool arg2 = true);
-
-void Function6(const std::string& name);
-void Function6(int indx);
-
-void Function9(double arg);
-
-void Function10(void);
-void Function10(const std::string &name, double arg2);
+#if PY_MAJOR_VERSION >= 3
+#define MODINIT  PyInit_pointers
+#else
+#define MODINIT  initpointers
 #endif
+PyMODINIT_FUNC MODINIT(void);
 
-void Sum(int len, int * values, int *result);
+int main(int argc, char** argv)  
+{
+    char filename[] = "test.py";
+    FILE* fp;
 
-#if 0
-TypeID typefunc(TypeID arg);
-
-EnumTypeID enumfunc(EnumTypeID arg);
-
-const char *LastFunctionCalled(void);
-
-int vector_sum(const std::vector<int> &arg);
-void vector_iota(std::vector<int> &arg);
-void vector_increment(std::vector<int> &arg);
-
-int vector_string_count(const std::vector< std::string > &arg);
-void vector_string_fill(std::vector< std::string > &arg);
-void vector_string_append(std::vector< std::string > &arg);
-#endif
-
-void intargs(const int argin, int * argout, int * arginout);
-
-void cos_doubles(double * in, double * out, int sizein);
-
-void truncate_to_int(double *in, int *out, int size);
-
-void increment(int *array, int size);
-
-void get_values(int *nvalues, int *values);
-
-#endif // CLIBRARY_HPP
+    Py_Initialize();
+    MODINIT();
+    
+    fp = fopen(filename, "r");
+    PyRun_SimpleFile(fp, filename);
+    fclose(fp);
+    Py_Exit(0);  
+    return 0;
+}

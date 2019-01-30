@@ -48,12 +48,19 @@ compiler = gcc
 endif
 
 ifeq ($(compiler),gcc)
+# -fno-strict-aliasing
+#python2.7/object.h:769:22: warning:
+# dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+#     ((PyObject*)(op))->ob_refcnt++)
+
 CC = gcc
 # -Wextra
-CFLAGS = -g -Wall
+# -O3 generates additional warnings
+CXXWARNINGS = -O3
+CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing
 CLIBS = -lstdc++
 CXX = g++
-CXXFLAGS = -g -Wall -std=c++11
+CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
 FC = gfortran
 FFLAGS = -g -Wall -ffree-form -fbounds-check
 #FFLAGS += -std=f2003

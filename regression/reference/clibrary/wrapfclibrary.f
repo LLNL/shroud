@@ -121,41 +121,6 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
-        subroutine intargs(argin, arginout, argout) &
-                bind(C, name="intargs")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), value, intent(IN) :: argin
-            integer(C_INT), intent(INOUT) :: arginout
-            integer(C_INT), intent(OUT) :: argout
-        end subroutine intargs
-
-        subroutine c_cos_doubles(in, out, sizein) &
-                bind(C, name="cos_doubles")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            implicit none
-            real(C_DOUBLE), intent(IN) :: in(*)
-            real(C_DOUBLE), intent(OUT) :: out(*)
-            integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_cos_doubles
-
-        subroutine c_truncate_to_int(in, out, sizein) &
-                bind(C, name="truncate_to_int")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            implicit none
-            real(C_DOUBLE), intent(IN) :: in(*)
-            integer(C_INT), intent(OUT) :: out(*)
-            integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_truncate_to_int
-
-        subroutine c_increment(array, sizein) &
-                bind(C, name="increment")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), intent(INOUT) :: array(*)
-            integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_increment
-
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -219,59 +184,6 @@ contains
             len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
-
-    ! void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-    !>
-    !! \brief compute cos of IN and save in OUT
-    !!
-    !! allocate OUT same type as IN implied size of array
-    !<
-    subroutine cos_doubles(in, out)
-        use iso_c_binding, only : C_DOUBLE, C_INT
-        real(C_DOUBLE), intent(IN) :: in(:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
-        allocate(out(lbound(in,1):ubound(in,1)))
-        sizein = size(in,kind=C_INT)
-        ! splicer begin function.cos_doubles
-        call c_cos_doubles(in, out, sizein)
-        ! splicer end function.cos_doubles
-    end subroutine cos_doubles
-
-    ! void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
-    !>
-    !! \brief truncate IN argument and save in OUT
-    !!
-    !! allocate OUT different type as IN
-    !! implied size of array
-    !<
-    subroutine truncate_to_int(in, out)
-        use iso_c_binding, only : C_DOUBLE, C_INT
-        real(C_DOUBLE), intent(IN) :: in(:)
-        integer(C_INT), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
-        allocate(out(lbound(in,1):ubound(in,1)))
-        sizein = size(in,kind=C_INT)
-        ! splicer begin function.truncate_to_int
-        call c_truncate_to_int(in, out, sizein)
-        ! splicer end function.truncate_to_int
-    end subroutine truncate_to_int
-
-    ! void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
-    !>
-    !! \brief None
-    !!
-    !! array with intent(INOUT)
-    !<
-    subroutine increment(array)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), intent(INOUT) :: array(:)
-        integer(C_INT) :: sizein
-        sizein = size(array,kind=C_INT)
-        ! splicer begin function.increment
-        call c_increment(array, sizein)
-        ! splicer end function.increment
-    end subroutine increment
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

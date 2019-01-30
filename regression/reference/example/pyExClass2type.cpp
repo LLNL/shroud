@@ -400,6 +400,9 @@ PP_exclass2_declare_1(
             self->obj->declare(SH_type, len);
             break;
         }
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return NULL;
     }
     Py_RETURN_NONE;
 // splicer end class.ExClass2.method.declare

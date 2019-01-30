@@ -1186,7 +1186,7 @@ memory.  This is the default behavior.
 
 Use **owner(caller)** when the library allocates new memory which is
 returned to the caller.  The caller is then responsible to release the
-memory.  Fortran and Python can both hold on the to memory and then
+memory.  Fortran and Python can both hold on to the memory and then
 provide ways to release it using a C++ callback when it is no longer
 needed.
 

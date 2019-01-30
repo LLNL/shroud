@@ -38,61 +38,11 @@
  *
  * #######################################################################
  *
- * clibrary.hpp - wrapped routines
+ * pointers.hpp - wrapped routines
  */
 
-#ifndef CLIBRARY_HPP
-#define CLIBRARY_HPP
-
-#include <stdbool.h>
-
-enum EnumTypeID {
-    ENUM0,
-    ENUM1,
-    ENUM2
-};
-
-typedef int TypeID;
-
-void Function1(void);
-
-double Function2(double arg1, int arg2);
-
-bool Function3(bool arg);
-void Function3b(const bool arg1, bool *arg2, bool *arg3);
-
-char *Function4a(const char *arg1, const char *arg2);
-#if 0
-const std::string& Function4b(const std::string& arg1, const std::string& arg2);
-
-double Function5(double arg1 = 3.1415, bool arg2 = true);
-
-void Function6(const std::string& name);
-void Function6(int indx);
-
-void Function9(double arg);
-
-void Function10(void);
-void Function10(const std::string &name, double arg2);
-#endif
-
-void Sum(int len, int * values, int *result);
-
-#if 0
-TypeID typefunc(TypeID arg);
-
-EnumTypeID enumfunc(EnumTypeID arg);
-
-const char *LastFunctionCalled(void);
-
-int vector_sum(const std::vector<int> &arg);
-void vector_iota(std::vector<int> &arg);
-void vector_increment(std::vector<int> &arg);
-
-int vector_string_count(const std::vector< std::string > &arg);
-void vector_string_fill(std::vector< std::string > &arg);
-void vector_string_append(std::vector< std::string > &arg);
-#endif
+#ifndef POINTERS_HPP
+#define POINTERS_HPP
 
 void intargs(const int argin, int * argout, int * arginout);
 
@@ -104,4 +54,6 @@ void increment(int *array, int size);
 
 void get_values(int *nvalues, int *values);
 
-#endif // CLIBRARY_HPP
+void get_values2(int *arg1, int *arg2);
+
+#endif // POINTERS_HPP

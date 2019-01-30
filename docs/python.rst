@@ -230,6 +230,11 @@ If *owner(library)* is set, the memory will never be released.
 If *owner(caller)* is set, the the memory will be released when the
 object is deleted.
 
+The argument ``int *result+intent(OUT)+dimension(3)`` will create a
+NumPy array, then pass the pointer to the data to the C function which
+will presumably fill the contents.  The NumPy array will be returned
+as part of the function result.  The dimension attribute must specify
+a length.
 
 Struct Types
 ------------

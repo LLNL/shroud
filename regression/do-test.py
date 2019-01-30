@@ -336,6 +336,7 @@ if __name__ == "__main__":
             "none",
             "tutorial",
             "types",
+            "pointers",
             "vectors",
             "forward",
             "example",

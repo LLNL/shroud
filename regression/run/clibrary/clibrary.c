@@ -58,7 +58,7 @@ static char last_function_called[MAXLAST];
 
 
 
-void Function1()
+void Function1(void)
 {
     strncpy(last_function_called, "Function1", MAXLAST);
     return;
@@ -133,7 +133,7 @@ void Function9(double arg)
     return;
 }
 
-void Function10()
+void Function10(void)
 {
     strncpy(last_function_called, "Function10_0", MAXLAST);
 }
@@ -287,6 +287,7 @@ void truncate_to_int(double *in, int *out, int size)
 }
 
 //----------------------------------------------------------------------
+// array +intent(inout)
 
 void increment(int *array, int size)
 {
@@ -297,7 +298,24 @@ void increment(int *array, int size)
 }
 
 //----------------------------------------------------------------------
-const char *LastFunctionCalled()
+// values +intent(out)
+// Note that we must assume that values is long enough.
+// Otherwise, memory will be overwritten.
+
+const int num_fill_values = 3;
+
+void get_values(int *nvalues, int *values)
+{
+    int i;
+    for(i = 0; i < num_fill_values; i++) {
+       values[i] = i + 1;
+    }
+    *nvalues = num_fill_values;
+    return;
+}
+
+//----------------------------------------------------------------------
+const char *LastFunctionCalled(void)
 {
     return last_function_called;
 }
