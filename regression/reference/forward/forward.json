@@ -32,7 +32,7 @@
                     "cxx_class": "Class3",
                     "cxx_type": "Class3"
                 },
-                "linenumber": 70,
+                "linenumber": 44,
                 "name": "Class3",
                 "options": {},
                 "scope": "tutorial::Class3::",
@@ -145,7 +145,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 76,
+                        "linenumber": 50,
                         "options": {}
                     },
                     {
@@ -188,7 +188,7 @@
                             "function_name": "dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 77,
+                        "linenumber": 51,
                         "options": {}
                     },
                     {
@@ -298,7 +298,7 @@
                             "function_name": "func1",
                             "underscore_name": "func1"
                         },
-                        "linenumber": 78,
+                        "linenumber": 52,
                         "options": {}
                     },
                     {
@@ -409,11 +409,11 @@
                             "function_name": "acceptClass3",
                             "underscore_name": "accept_class3"
                         },
-                        "linenumber": 79,
+                        "linenumber": 53,
                         "options": {}
                     }
                 ],
-                "linenumber": 74,
+                "linenumber": 48,
                 "name": "Class2",
                 "options": {},
                 "scope": "tutorial::Class2::",
@@ -422,43 +422,17 @@
         ],
         "copyright": [
             "#######################################################################",
-            "Copyright (c) 2018, Lawrence Livermore National Security, LLC.",
+            "Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC.",
+            "",
             "Produced at the Lawrence Livermore National Laboratory",
             "",
             "LLNL-CODE-738041.",
+            "",
             "All rights reserved.",
             "",
-            "This file is part of Shroud.  For details, see",
-            "https://github.com/LLNL/shroud. Please also read shroud/LICENSE.",
+            "This file is part of Shroud.",
             "",
-            "Redistribution and use in source and binary forms, with or without",
-            "modification, are permitted provided that the following conditions are",
-            "met:",
-            "",
-            "* Redistributions of source code must retain the above copyright",
-            "  notice, this list of conditions and the disclaimer below.",
-            "",
-            "* Redistributions in binary form must reproduce the above copyright",
-            "  notice, this list of conditions and the disclaimer (as noted below)",
-            "  in the documentation and/or other materials provided with the",
-            "  distribution.",
-            "",
-            "* Neither the name of the LLNS/LLNL nor the names of its contributors",
-            "  may be used to endorse or promote products derived from this",
-            "  software without specific prior written permission.",
-            "",
-            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS",
-            "\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT",
-            "LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR",
-            "A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL LAWRENCE",
-            "LIVERMORE NATIONAL SECURITY, LLC, THE U.S. DEPARTMENT OF ENERGY OR",
-            "CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,",
-            "EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,",
-            "PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR",
-            "PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF",
-            "LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING",
-            "NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS",
-            "SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+            "For details about use and distribution, please read LICENSE.",
             "",
             "#######################################################################"
         ],
@@ -621,7 +595,7 @@
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}",
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 49,
+            "__line__": 23,
             "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
@@ -1501,7 +1475,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
-            "__line__": 60,
+            "__line__": 34,
             "base": "shadow",
             "c_statements": {
                 "intent_in": {

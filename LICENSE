@@ -1,12 +1,11 @@
-Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 Produced at the Lawrence Livermore National Laboratory
 Written by Lee Taylor (taylor16@llnl.gov).
 
 LLNL-CODE-738041.
 All rights reserved.
 
-This file is part of Shroud.  For details, see
-https://github.com/LLNL/shroud.
+This file is part of Shroud.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
