@@ -477,13 +477,13 @@ int TUT_direction_func(int arg)
 // splicer end function.direction_func
 }
 
-// int useclass(const Class1 * arg1 +intent(in))
-int TUT_useclass(const TUT_class1 * arg1)
+// int useclass(const Class1 * arg +intent(in))
+int TUT_useclass(const TUT_class1 * arg)
 {
 // splicer begin function.useclass
-    const tutorial::Class1 * SHCXX_arg1 =
-        static_cast<const tutorial::Class1 *>(arg1->addr);
-    int SHC_rv = tutorial::useclass(SHCXX_arg1);
+    const tutorial::Class1 * SHCXX_arg =
+        static_cast<const tutorial::Class1 *>(arg->addr);
+    int SHC_rv = tutorial::useclass(SHCXX_arg);
     return SHC_rv;
 // splicer end function.useclass
 }

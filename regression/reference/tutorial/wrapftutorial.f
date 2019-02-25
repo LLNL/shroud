@@ -613,13 +613,13 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function direction_func
 
-        function c_useclass(arg1) &
+        function c_useclass(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_useclass")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none
-            type(SHROUD_class1_capsule), intent(IN) :: arg1
+            type(SHROUD_class1_capsule), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_useclass
 
@@ -1367,14 +1367,14 @@ contains
         ! splicer end function.overload1_5
     end function overload1_5
 
-    ! int useclass(const Class1 * arg1 +intent(in))
-    function useclass(arg1) &
+    ! int useclass(const Class1 * arg +intent(in))
+    function useclass(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        type(class1), intent(IN) :: arg1
+        type(class1), intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.useclass
-        SHT_rv = c_useclass(arg1%cxxmem)
+        SHT_rv = c_useclass(arg%cxxmem)
         ! splicer end function.useclass
     end function useclass
 

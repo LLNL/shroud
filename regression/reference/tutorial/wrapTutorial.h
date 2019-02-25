@@ -128,7 +128,7 @@ void TUT_get_min_max(int * min, int * max);
 
 int TUT_direction_func(int arg);
 
-int TUT_useclass(const TUT_class1 * arg1);
+int TUT_useclass(const TUT_class1 * arg);
 
 TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv);
 

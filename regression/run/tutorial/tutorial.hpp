@@ -112,6 +112,7 @@ public:
 // Note that this function has the same name as a function in Class1
 Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
 
+void passClassByValue(Class1 arg);
 int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();

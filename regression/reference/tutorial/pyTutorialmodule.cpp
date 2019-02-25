@@ -829,21 +829,21 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
-// int useclass(const Class1 * arg1 +intent(in))
+// int useclass(const Class1 * arg +intent(in))
 // splicer begin function.useclass
-    PY_Class1 * SHPy_arg1;
+    PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
-        "arg1",
+        "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
-        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg1))
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    const tutorial::Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;
+    const tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int SHC_rv = tutorial::useclass(arg1);
+    int SHC_rv = tutorial::useclass(arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);

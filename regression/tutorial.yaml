@@ -268,7 +268,14 @@ declarations:
 
   - decl: Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
   
-  - decl: int useclass(const Class1 *arg1) 
+#  - decl: void passClassByValue(Class1 arg)
+#    doxygen:
+#         brief: Pass arguments to a function.
+#    options:
+#      wrap_python: False
+#      wrap_lua: False
+  
+  - decl: int useclass(const Class1 *arg)
     options:
       wrap_lua: False
   
@@ -295,8 +302,7 @@ declarations:
     options:
       wrap_python: False
       wrap_lua: False
-  
-  
+
 ##################################################
   
   - decl: int callback1(int in, int (*incr)(int));

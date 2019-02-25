@@ -218,6 +218,12 @@ void getMinMax(int &min, int &max)
   max = 100;
 }
 
+void passClassByValue(Class1 arg)
+{
+    last_function_called = "passClassByValue";
+    return;
+}
+
 int useclass(const Class1 *arg)
 {
     last_function_called = "useclass";
