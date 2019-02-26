@@ -130,6 +130,8 @@ double acceptStructInPtr(struct1 *arg);
 void acceptStructOutPtr(struct1 *arg, int i, double d);
 void acceptStructInOutPtr(struct1 *arg);
 
+void set_global_flag(int arg);
+int get_global_flag();
 const std::string& LastFunctionCalled();
 
 } /* end namespace tutorial */

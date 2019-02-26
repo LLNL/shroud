@@ -477,6 +477,21 @@ int TUT_direction_func(int arg)
 // splicer end function.direction_func
 }
 
+// void passClassByValue(Class1 arg +intent(in)+value)
+/**
+ * \brief Pass arguments to a function.
+ *
+ */
+void TUT_pass_class_by_value(TUT_class1 arg)
+{
+// splicer begin function.pass_class_by_value
+    tutorial::Class1 * SHCXX_arg =
+        static_cast<tutorial::Class1 *>(arg.addr);
+    tutorial::passClassByValue(*SHCXX_arg);
+    return;
+// splicer end function.pass_class_by_value
+}
+
 // int useclass(const Class1 * arg +intent(in))
 int TUT_useclass(const TUT_class1 * arg)
 {
@@ -598,6 +613,24 @@ void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg)
     tutorial::acceptStructInOutPtr(SHCXX_arg);
     return;
 // splicer end function.accept_struct_in_out_ptr
+}
+
+// void set_global_flag(int arg +intent(in)+value)
+void TUT_set_global_flag(int arg)
+{
+// splicer begin function.set_global_flag
+    tutorial::set_global_flag(arg);
+    return;
+// splicer end function.set_global_flag
+}
+
+// int get_global_flag()
+int TUT_get_global_flag()
+{
+// splicer begin function.get_global_flag
+    int SHC_rv = tutorial::get_global_flag();
+    return SHC_rv;
+// splicer end function.get_global_flag
 }
 
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)

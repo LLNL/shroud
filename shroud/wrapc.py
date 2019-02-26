@@ -879,6 +879,7 @@ class Wrapc(util.WrapperMixin):
         #                 Usually same as c_var but may be a new local variable
         #                 or the function result variable.
 
+        # --- Loop over function parameters
         for arg in ast.params:
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -976,8 +977,8 @@ class Wrapc(util.WrapperMixin):
                     # Take address of argument and pass to C++.
                     # It is dereferenced when passed to C++ to pass the value.
                     #  tutorial::struct1 * SHCXX_arg =
-                    #    static_cast<tutorial::struct1 *>(static_cast<void *>(&arg));
-
+                    #    static_cast<tutorial::struct1 *>
+                    #      (static_cast<void *>(&arg));
                     tmp = fmt_arg.c_var
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.c_var = "&" + tmp
@@ -997,12 +998,25 @@ class Wrapc(util.WrapperMixin):
                     fmt_arg.cxx_var = fmt_arg.c_var  # compatible
                 else:
                     # convert C argument to C++
+                    if arg_typemap.base == 'shadow':
+                        # When a shadow class is passed by value, the shadow
+                        # class is passed by value and it contains a pointer
+                        # to the actual class. Set force_ptr to get a pointer
+                        # in the declaration.
+                        # In addition, set cxx_local_var = "pointer" below
+                        # in order to pass the value of the class, and not the
+                        # pointer.
+                        # See tutorial passClassByValue.
+                        force_ptr = True
+                    else:
+                        force_ptr = False
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
                     fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                         name=fmt_arg.cxx_var,
                         params=None,
                         as_ptr=True,
+                        force_ptr=force_ptr,
                         continuation=True,
                     )
                     append_format(
@@ -1014,6 +1028,8 @@ class Wrapc(util.WrapperMixin):
                         # By setting cxx_local_var=pointer, it will be dereferenced
                         # correctly when passed to C++.
                         # base==string will have a pre_call block which sets cxx_local_var
+                        cxx_local_var = "pointer"
+                    elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
                 stmts = (

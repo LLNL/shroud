@@ -613,6 +613,14 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function direction_func
 
+        subroutine c_pass_class_by_value(arg) &
+                bind(C, name="TUT_pass_class_by_value")
+            import :: SHROUD_class1_capsule
+            implicit none
+!            type(SHROUD_class1_capsule), intent(IN) :: arg
+            type(SHROUD_class1_capsule), value, intent(IN) :: arg
+        end subroutine c_pass_class_by_value
+
         function c_useclass(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_useclass")
@@ -723,6 +731,21 @@ module tutorial_mod
             implicit none
             type(struct1), intent(INOUT) :: arg
         end subroutine accept_struct_in_out_ptr
+
+        subroutine set_global_flag(arg) &
+                bind(C, name="TUT_set_global_flag")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg
+        end subroutine set_global_flag
+
+        function get_global_flag() &
+                result(SHT_rv) &
+                bind(C, name="TUT_get_global_flag")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function get_global_flag
 
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -1366,6 +1389,18 @@ contains
         SHT_rv = c_overload1_5(type, num, offset, stride)
         ! splicer end function.overload1_5
     end function overload1_5
+
+    ! void passClassByValue(Class1 arg +intent(in)+value)
+    !>
+    !! \brief Pass arguments to a function.
+    !!
+    !<
+    subroutine pass_class_by_value(arg)
+        type(class1), value, intent(IN) :: arg
+        ! splicer begin function.pass_class_by_value
+        call c_pass_class_by_value(arg%cxxmem)
+        ! splicer end function.pass_class_by_value
+    end subroutine pass_class_by_value
 
     ! int useclass(const Class1 * arg +intent(in))
     function useclass(arg) &

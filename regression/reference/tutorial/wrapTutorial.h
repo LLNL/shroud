@@ -128,6 +128,8 @@ void TUT_get_min_max(int * min, int * max);
 
 int TUT_direction_func(int arg);
 
+void TUT_pass_class_by_value(TUT_class1 arg);
+
 int TUT_useclass(const TUT_class1 * arg);
 
 TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv);
@@ -149,6 +151,10 @@ double TUT_accept_struct_in_ptr(TUT_struct1 * arg);
 void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d);
 
 void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg);
+
+void TUT_set_global_flag(int arg);
+
+int TUT_get_global_flag();
 
 const char * TUT_last_function_called();
 

@@ -948,6 +948,53 @@ PY_returnStructPtr(
 // splicer end function.return_struct_ptr
 }
 
+static char PY_set_global_flag__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_set_global_flag(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void set_global_flag(int arg +intent(in)+value)
+// splicer begin function.set_global_flag
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:set_global_flag",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    tutorial::set_global_flag(arg);
+    Py_RETURN_NONE;
+// splicer end function.set_global_flag
+}
+
+static char PY_get_global_flag__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_get_global_flag(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int get_global_flag()
+// splicer begin function.get_global_flag
+    int SHC_rv = tutorial::get_global_flag();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_global_flag
+}
+
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;
@@ -1161,6 +1208,10 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStruct__doc__},
 {"returnStructPtr", (PyCFunction)PY_returnStructPtr,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
+{"set_global_flag", (PyCFunction)PY_set_global_flag,
+    METH_VARARGS|METH_KEYWORDS, PY_set_global_flag__doc__},
+{"get_global_flag", (PyCFunction)PY_get_global_flag, METH_NOARGS,
+    PY_get_global_flag__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
 {"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
