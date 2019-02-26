@@ -98,6 +98,24 @@ SHARED = -fPIC
 LD_SHARED = -shared
 endif
 
+# Simple string functions, to reduce the clutter below.
+sf_01 = "from sysconfig import get_config_var; print(get_config_var('$1'))"
+sf_02 = "import sys; print(getattr(sys,'$1',''))"
+
+python.exe = $(PYTHONEXE)
+python.libdir   = $(eval python.libdir := $$(call shell,$(python.exe) \
+  -c $(call sf_01,LIBDIR) 2>&1))$(python.libdir)
+#python.configversion  = $(eval python.configversion := $$(call shell,$(python.exe) \
+#  -c $(call sf_01,VERSION) 2>&1))$(python.configversion)
+#python.abiflags = $(eval python.abiflags := $$(call shell,$(python.exe) \
+#  -c $(call sf_02,abiflags) 2>&1))$(python.abiflags)
+python.incdir   = $(eval python.incdir := $$(call shell,$(python.exe) \
+  -c $(call sf_01,INCLUDEPY) 2>&1))$(python.incdir)
+
+$(info  exe = $(python.exe))
+$(info  libdir = $(python.libdir))
+$(info  incdir = $(python.incdir))
+#$(error done)
 
 # 2.7
 ifdef PYTHON
@@ -110,8 +128,8 @@ ifeq ($(PYTHONEXE),python2)
 PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER) -I$(PYTHON_NUMPY)
 PYTHON_LIB := -L$(PYTHON_PREFIX)/lib/python$(PYTHON_VER)/config -lpython$(PYTHON_VER) -ldl -lutil
 else
-PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER)m -I$(PYTHON_NUMPY)
-PYTHON_LIB := -L$(PYTHON_PREFIX)/lib -lpython$(PYTHON_VER)m -ldl -lutil
+PYTHON_INC := -I$(python.incdir) -I$(PYTHON_NUMPY)
+PYTHON_LIB := -L$(python.libdir) -lpython$(PYTHON_VER)m -ldl -lutil
 endif
 endif
 
