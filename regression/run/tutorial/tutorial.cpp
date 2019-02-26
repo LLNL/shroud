@@ -223,7 +223,7 @@ void getMinMax(int &min, int &max)
 void passClassByValue(Class1 arg)
 {
     last_function_called = "passClassByValue";
-    global_flag = arg.m_flag;
+    global_flag = arg.m_test;
     return;
 }
 
