@@ -424,6 +424,24 @@ inittestnames(void)
     PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
 
 
+    // Vvv1
+    PY_Vvv1_Type.tp_new   = PyType_GenericNew;
+    PY_Vvv1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Vvv1_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Vvv1_Type);
+    PyModule_AddObject(m, "Vvv1", (PyObject *)&PY_Vvv1_Type);
+
+
+    // Vvv2
+    PY_Vvv2_Type.tp_new   = PyType_GenericNew;
+    PY_Vvv2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Vvv2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Vvv2_Type);
+    PyModule_AddObject(m, "Vvv2", (PyObject *)&PY_Vvv2_Type);
+
+
     // enumeration Color
     PyModule_AddIntConstant(m, "RED", RED);
     PyModule_AddIntConstant(m, "BLUE", BLUE);

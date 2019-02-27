@@ -7,6 +7,8 @@ Close foo.h
 Close foo.cpp
 class Names2
 Close wrapNames2.cc
+class vector
+class vector
 C function void function1()
 C function void function2()
 C function void function3a(int i +intent(in)+value)
@@ -26,6 +28,10 @@ C-interface, Fortran method void method2()
 Close foo.f
 class Names2
 Close wrapfNames2.F
+class vector
+Close wrapfVvv1.F
+class vector
+Close wrapfVvv2.F
 C-interface, Fortran function void function1()
 C-interface, Fortran function void function2()
 C-interface, Fortran function void function3a(int i +intent(in)+value)
@@ -43,6 +49,10 @@ Python method void method2()
 Close pyNamestype.cpp
 class Names2
 Close pyNames2type.cpp
+class vector
+Close pyVvv1type.cpp
+class vector
+Close pyVvv2type.cpp
 Python function void function1()
 Python function void function2()
 Python function void function3a(int i +intent(in)+value)

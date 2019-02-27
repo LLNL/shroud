@@ -160,6 +160,156 @@
                 "options": {},
                 "scope": "Names2::",
                 "typemap_name": "Names2"
+            },
+            {
+                "cxx_header": "<vector>",
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapVvv1.hh",
+                    "C_impl_filename": "wrapVvv1.cc",
+                    "C_type_name": "TES_vvv1",
+                    "F_capsule_data_type": "SHROUD_vector_capsule",
+                    "F_derived_name": "FFvvv1",
+                    "F_impl_filename": "wrapfVvv1.F",
+                    "F_module_name": "vvv1_mod",
+                    "PY_PyObject": "PY_Vvv1",
+                    "PY_PyTypeObject": "PY_Vvv1_Type",
+                    "PY_capsule_name": "PY_Vvv1_capsule_name",
+                    "PY_from_object_func": "PP_Vvv1_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Vvv1_to_Object",
+                    "PY_type_filename": "pyVvv1type.cpp",
+                    "__line__": 142,
+                    "class_lower": "vvv1",
+                    "class_prefix": "vvv1_",
+                    "class_scope": "VvV1::",
+                    "class_upper": "VVV1",
+                    "cxx_class": "Vvv1",
+                    "cxx_type": "vector<int>"
+                },
+                "linenumber": 137,
+                "name": "vector",
+                "options": {},
+                "scope": "std::vector::",
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "fmtdict": {
+                            "F_derived_name": "FFvvv1",
+                            "__line__": 142,
+                            "class_lower": "vvv1",
+                            "class_scope": "VvV1::",
+                            "class_upper": "VVV1",
+                            "cxx_class": "Vvv1"
+                        },
+                        "instantiation": "<int>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "fmtdict": {
+                            "F_derived_name": "FFvvv2",
+                            "__line__": 150,
+                            "class_lower": "vvv2",
+                            "class_scope": "VvV2::",
+                            "class_upper": "VVV2",
+                            "cxx_class": "Vvv2"
+                        },
+                        "instantiation": "<double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ],
+                "typemap_name": "std::Vvv1"
+            },
+            {
+                "cxx_header": "<vector>",
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapVvv2.hh",
+                    "C_impl_filename": "wrapVvv2.cc",
+                    "C_type_name": "TES_vvv2",
+                    "F_capsule_data_type": "SHROUD_vector_capsule",
+                    "F_derived_name": "FFvvv2",
+                    "F_impl_filename": "wrapfVvv2.F",
+                    "F_module_name": "vvv2_mod",
+                    "PY_PyObject": "PY_Vvv2",
+                    "PY_PyTypeObject": "PY_Vvv2_Type",
+                    "PY_capsule_name": "PY_Vvv2_capsule_name",
+                    "PY_from_object_func": "PP_Vvv2_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Vvv2_to_Object",
+                    "PY_type_filename": "pyVvv2type.cpp",
+                    "__line__": 150,
+                    "class_lower": "vvv2",
+                    "class_prefix": "vvv2_",
+                    "class_scope": "VvV2::",
+                    "class_upper": "VVV2",
+                    "cxx_class": "Vvv2",
+                    "cxx_type": "vector<double>"
+                },
+                "linenumber": 137,
+                "name": "vector",
+                "options": {},
+                "scope": "std::vector::",
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "fmtdict": {
+                            "F_derived_name": "FFvvv1",
+                            "__line__": 142,
+                            "class_lower": "vvv1",
+                            "class_scope": "VvV1::",
+                            "class_upper": "VVV1",
+                            "cxx_class": "Vvv1"
+                        },
+                        "instantiation": "<int>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "fmtdict": {
+                            "F_derived_name": "FFvvv2",
+                            "__line__": 150,
+                            "class_lower": "vvv2",
+                            "class_scope": "VvV2::",
+                            "class_upper": "VVV2",
+                            "cxx_class": "Vvv2"
+                        },
+                        "instantiation": "<double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ],
+                "typemap_name": "std::Vvv2"
             }
         ],
         "copyright": [
@@ -2122,6 +2272,156 @@
             "f_type": "integer(C_SIZE_T)",
             "flat_name": "size_t"
         },
+        "std::Vvv1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Vvv1",
+            "PY_PyTypeObject": "PY_Vvv1_Type",
+            "PY_from_object": "PP_Vvv1_from_Object",
+            "PY_to_object": "PP_Vvv1_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}std::vector<int> *>({c_var}{c_member}addr)",
+            "c_type": "TES_vvv1",
+            "cxx_header": "<vector>",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::vector<int>",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_vector_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_vector_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_derived_type": "FFvvv1",
+            "f_module": {
+                "vvv1_mod": [
+                    "FFvvv1"
+                ]
+            },
+            "f_module_name": "vvv1_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(FFvvv1)",
+            "flat_name": "std_vector_int",
+            "forward": "std::vector<int>",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}std::vector<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}std::vector<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
+        "std::Vvv2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Vvv2",
+            "PY_PyTypeObject": "PY_Vvv2_Type",
+            "PY_from_object": "PP_Vvv2_from_Object",
+            "PY_to_object": "PP_Vvv2_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}std::vector<double> *>({c_var}{c_member}addr)",
+            "c_type": "TES_vvv2",
+            "cxx_header": "<vector>",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::vector<double>",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_vector_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_vector_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_derived_type": "FFvvv2",
+            "f_module": {
+                "vvv2_mod": [
+                    "FFvvv2"
+                ]
+            },
+            "f_module_name": "vvv2_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(FFvvv2)",
+            "flat_name": "std_vector_double",
+            "forward": "std::vector<double>",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
@@ -2257,201 +2557,82 @@
             }
         },
         "std::vector": {
-            "base": "vector",
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
             "c_statements": {
-                "intent_in_buf": {
+                "intent_in": {
                     "buf_args": [
-                        "arg",
-                        "size"
-                    ],
-                    "cxx_local_var": "scalar",
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});"
+                        "shadow"
                     ]
                 },
-                "intent_inout_buf": {
-                    "buf_args": [
-                        "arg",
-                        "size",
-                        "context"
-                    ],
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
                     "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
-                    ]
-                },
-                "intent_out_buf": {
-                    "buf_args": [
-                        "context"
-                    ],
-                    "c_helper": "capsule_data_helper copy_array",
-                    "cxx_local_var": "pointer",
-                    "destructor": [
-                        "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);",
-                        "delete cxx_ptr;"
-                    ],
-                    "destructor_name": "std_vector_{cxx_T}",
-                    "post_call": [
-                        "{c_var_context}->cxx.addr  = static_cast<void *>({cxx_var});",
-                        "{c_var_context}->cxx.idtor = {idtor};",
-                        "{c_var_context}->addr.cvoidp = {cxx_var}->empty() ? NULL : &{cxx_var}->front();",
-                        "{c_var_context}->len = sizeof({cxx_T});",
-                        "{c_var_context}->size = {cxx_var}->size();"
-                    ],
-                    "pre_call": [
-                        "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
                     ]
                 }
             },
-            "c_templates": {
-                "std::string": {
-                    "intent_in_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_inout_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "std::vector<{cxx_T}> {cxx_var};",
-                            "{{+",
-                            "{c_const}char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "{cxx_var}.push_back(std::string(BBB,ShroudLenTrim(BBB, {c_var_len})));",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ]
-                    },
-                    "intent_out_buf": {
-                        "buf_args": [
-                            "arg",
-                            "size",
-                            "len"
-                        ],
-                        "c_helper": "ShroudLenTrim",
-                        "cxx_local_var": "scalar",
-                        "post_call": [
-                            "{{+",
-                            "char * BBB = {c_var};",
-                            "std::vector<{cxx_T}>::size_type",
-                            "+{c_temp}i = 0,",
-                            "{c_temp}n = {c_var_size};",
-                            "{c_temp}n = std::min({cxx_var}.size(),{c_temp}n);",
-                            "-for(; {c_temp}i < {c_temp}n; {c_temp}i++) {{+",
-                            "ShroudStrCopy(BBB, {c_var_len},\t {cxx_var}[{c_temp}i].data(),\t {cxx_var}[{c_temp}i].size());",
-                            "BBB += {c_var_len};",
-                            "-}}",
-                            "-}}"
-                        ],
-                        "pre_call": [
-                            "{c_const}std::vector<{cxx_T}> {cxx_var};"
-                        ]
-                    }
-                }
-            },
+            "c_to_cxx": "static_cast<{c_const}std::vector *>({c_var}{c_member}addr)",
+            "c_type": "TES_vector",
             "cxx_header": "<vector>",
-            "cxx_type": "std::vector<{cxx_T}>",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::vector",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_vector_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_vector_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_derived_type": "vector",
+            "f_module": {
+                "vector_mod": [
+                    "vector"
+                ]
+            },
+            "f_module_name": "vector_mod",
             "f_statements": {
-                "intent_inout": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(vector)",
+            "flat_name": "std_vector",
+            "forward": "std::vector",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}std::vector * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
-                "intent_inout_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "if (allocated({f_var})) deallocate({f_var})",
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}std::vector * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
                     "post_call": [
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
-                    ]
-                },
-                "intent_out_allocatable": {
-                    "f_helper": "copy_array_{cxx_T}",
-                    "f_module": {
-                        "iso_c_binding": [
-                            "C_SIZE_T"
-                        ]
-                    },
-                    "post_call": [
-                        "allocate({f_var}({c_var_context}%size))",
-                        "call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))"
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
-            },
-            "flat_name": "std_vector_{cxx_T}"
+            }
+        },
+        "std::vector::T": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T"
         },
         "stringout": {
             "base": "string",

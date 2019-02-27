@@ -36,6 +36,18 @@ struct s_TES_names2 {
 };
 typedef struct s_TES_names2 TES_names2;
 
+struct s_TES_vvv1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_vvv1 TES_vvv1;
+
+struct s_TES_vvv2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_vvv2 TES_vvv2;
+
 struct s_TES_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

@@ -17,6 +17,8 @@
 #include "pytestnamesmodule.hpp"
 const char *PY_Names_capsule_name = "Names";
 const char *PY_Names2_capsule_name = "Names2";
+const char *PY_Vvv1_capsule_name = "Vvv1";
+const char *PY_Vvv2_capsule_name = "Vvv2";
 
 
 PyObject *PP_Names_to_Object(Names *addr)
@@ -75,4 +77,62 @@ int PP_Names2_from_Object(PyObject *obj, void **addr)
     *addr = self->obj;
     return 1;
     // splicer end class.Names2.helper.from_object
+}
+
+PyObject *PP_Vvv1_to_Object(std::Vvv1 *addr)
+{
+    // splicer begin class.vector.helper.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Vvv1_capsule_name, NULL);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Vvv1_Type, args, NULL);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.vector.helper.to_object
+}
+
+int PP_Vvv1_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.vector.helper.from_object
+    if (obj->ob_type != &PY_Vvv1_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Vvv1 * self = (PY_Vvv1 *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end class.vector.helper.from_object
+}
+
+PyObject *PP_Vvv2_to_Object(std::Vvv2 *addr)
+{
+    // splicer begin class.vector.helper.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Vvv2_capsule_name, NULL);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Vvv2_Type, args, NULL);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.vector.helper.to_object
+}
+
+int PP_Vvv2_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.vector.helper.from_object
+    if (obj->ob_type != &PY_Vvv2_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Vvv2 * self = (PY_Vvv2 *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end class.vector.helper.from_object
 }

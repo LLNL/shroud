@@ -34,3 +34,25 @@ declarations:
       f_derived_type: names2
       f_capsule_data_type: SHROUD_names2_capsule
       f_to_c: "{f_var}%cxxmem"
+  - namespace: std
+    declarations: std
+    - type: Vvv1
+      fields:
+        base: shadow
+        cxx_header: <vector>
+        cxx_type: std::vector<int>
+        c_type: TES_vvv1
+        f_module_name: vvv1_mod
+        f_derived_type: FFvvv1
+        f_capsule_data_type: SHROUD_vector_capsule
+        f_to_c: "{f_var}%cxxmem"
+    - type: Vvv2
+      fields:
+        base: shadow
+        cxx_header: <vector>
+        cxx_type: std::vector<double>
+        c_type: TES_vvv2
+        f_module_name: vvv2_mod
+        f_derived_type: FFvvv2
+        f_capsule_data_type: SHROUD_vector_capsule
+        f_to_c: "{f_var}%cxxmem"

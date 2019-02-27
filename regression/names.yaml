@@ -131,6 +131,28 @@ declarations:
       F_name_impl: f_name_instantiation2
       PY_name_impl: PY_name_instantiation2
 
+# copied from templates.
+- decl: namespace std
+  declarations:
+  - decl: template<typename T> class vector
+    # std::vector class
+    cxx_header: <vector>
+    cxx_template:
+    - instantiation: <int>
+      format:
+        # XXX - Necessary to specify lower and upper.
+        cxx_class: Vvv1
+        class_lower: vvv1
+        class_upper: VVV1
+        class_scope: 'VvV1::'
+        F_derived_name: FFvvv1
+    - instantiation: <double>
+      format:
+        cxx_class: Vvv2
+        class_lower: vvv2
+        class_upper: VVV2
+        class_scope: 'VvV2::'
+        F_derived_name: FFvvv2
 
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.

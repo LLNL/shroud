@@ -7,9 +7,13 @@ Wrote top.cpp
 Wrote typestestnames.hh
 Wrote foo.f
 Wrote wrapfNames2.F
+Wrote wrapfVvv1.F
+Wrote wrapfVvv2.F
 Wrote top.f
 Wrote pyNamestype.cpp
 Wrote pyNames2type.cpp
+Wrote pyVvv1type.cpp
+Wrote pyVvv2type.cpp
 Wrote pytestnameshelper.cpp
 Wrote pytestnamesmodule.hpp
 Wrote pytestnamesmodule.cpp

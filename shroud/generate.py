@@ -502,6 +502,7 @@ class GenFunctions(object):
                         newcls.fmtdict.cxx_class, targs.instantiation
                     )
 
+                    # Add default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(
                             cxx_type=cxx_type,
@@ -512,6 +513,9 @@ class GenFunctions(object):
                             F_derived_name=cxx_class.lower(),
                         )
                     )
+                    # Add user specified values to format dictionary.
+                    if targs.fmtdict:
+                        newcls.fmtdict.update(targs.fmtdict)
 
                     # Remove defaulted attributes, load files from fmtdict, recompute defaults
                     newcls.delete_format_templates()
