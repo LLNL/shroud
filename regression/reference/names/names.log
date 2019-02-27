@@ -15,6 +15,8 @@ C function int function4(const std::string & rv +intent(in))
 C function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
 C function void function5() +name(fiveplus)
 C function void init_ns1()
+C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Close top.h
 Close top.cpp
 Close typestestnames.hh
@@ -32,6 +34,8 @@ C-interface, Fortran function int function4(const std::string & rv +intent(in))
 C-interface function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
 C-interface, Fortran function void function5() +name(fiveplus)
 C-interface, Fortran function void init_ns1()
+C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Close top.f
 class Names
 Python method void method1()
@@ -46,6 +50,8 @@ Python function void function3a(long i +intent(in)+value)
 Python function int function4(const std::string & rv +intent(in))
 Python function void function5() +name(fiveplus)
 Python function void init_ns1()
+Python function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+Python function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Close pytestnameshelper.cpp
 Close pytestnamesmodule.hpp
 Close pytestnamesmodule.cpp

@@ -868,6 +868,531 @@
                 },
                 "linenumber": 114,
                 "options": {}
+            },
+            {
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "FunctionTU",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "T"
+                            ],
+                            "typemap_name": "T"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "U"
+                            ],
+                            "typemap_name": "U"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "cxx_template": {
+                    "T": [
+                        "int",
+                        "float"
+                    ]
+                },
+                "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
+                "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 118,
+                    "brief": "Function template with two template parameters."
+                },
+                "fmtdict": {
+                    "function_name": "FunctionTU",
+                    "underscore_name": "function_tu"
+                },
+                "have_template_args": true,
+                "linenumber": 117,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "fmtdict": {
+                            "C_name": "c_name_instantiation1",
+                            "F_C_name": "f_c_name_instantiation1",
+                            "F_name_impl": "f_name_instantiation1",
+                            "PY_name_impl": "PY_name_instantiation1",
+                            "__line__": 122
+                        },
+                        "instantiation": "<int, long>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "fmtdict": {
+                            "C_name": "c_name_instantiation2",
+                            "F_C_name": "f_c_name_instantiation2",
+                            "F_name_impl": "f_name_instantiation2",
+                            "PY_name_impl": "PY_name_instantiation2",
+                            "__line__": 128
+                        },
+                        "instantiation": "<float, double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T",
+                    "U"
+                ]
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg1",
+                            "f_var": "arg1"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int arg1",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int arg1",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "arg1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg1"
+                        }
+                    },
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg2",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg2)",
+                            "cxx_member": ".",
+                            "cxx_type": "long",
+                            "cxx_var": "arg2",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg2",
+                            "f_var": "arg2"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "long arg2",
+                            "c_deref": "",
+                            "c_type": "long",
+                            "c_var": "arg2",
+                            "cxx_addr": "&",
+                            "cxx_decl": "long arg2",
+                            "cxx_member": ".",
+                            "cxx_type": "long",
+                            "cxx_var": "arg2",
+                            "numpy_type": "NPY_LONG",
+                            "py_var": "SHPy_arg2"
+                        }
+                    }
+                },
+                "_generated": "cxx_template",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "FunctionTU",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
+                "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 118,
+                    "brief": "Function template with two template parameters."
+                },
+                "fmtdict": {
+                    "CXX_template": "<int, long>",
+                    "C_call_code": "FunctionTU<int, long>(\targ1,\t arg2);",
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "c_name_instantiation1",
+                    "C_prototype": "int arg1,\t long arg2",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "f_c_name_instantiation1",
+                    "F_C_name": "f_c_name_instantiation1",
+                    "F_arg_c_call": "arg1,\t arg2",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_call_code": "call f_c_name_instantiation1(arg1,\t arg2)",
+                    "F_name_function": "function_tu_0",
+                    "F_name_generic": "function_tu",
+                    "F_name_impl": "f_name_instantiation1",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_name_instantiation1",
+                    "__line__": 122,
+                    "c_const": "",
+                    "function_name": "FunctionTU",
+                    "function_suffix": "_0",
+                    "underscore_name": "function_tu"
+                },
+                "have_template_args": true,
+                "linenumber": 117,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": true
+                },
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "fmtdict": {
+                            "C_name": "c_name_instantiation1",
+                            "F_C_name": "f_c_name_instantiation1",
+                            "F_name_impl": "f_name_instantiation1",
+                            "PY_name_impl": "PY_name_instantiation1",
+                            "__line__": 122
+                        },
+                        "instantiation": "<int, long>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "fmtdict": {
+                            "C_name": "c_name_instantiation2",
+                            "F_C_name": "f_c_name_instantiation2",
+                            "F_name_impl": "f_name_instantiation2",
+                            "PY_name_impl": "PY_name_instantiation2",
+                            "__line__": 128
+                        },
+                        "instantiation": "<float, double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T",
+                    "U"
+                ]
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
+                            "cxx_member": ".",
+                            "cxx_type": "float",
+                            "cxx_var": "arg1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg1",
+                            "f_var": "arg1"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "float arg1",
+                            "c_deref": "",
+                            "c_type": "float",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_decl": "float arg1",
+                            "cxx_member": ".",
+                            "cxx_type": "float",
+                            "cxx_var": "arg1",
+                            "numpy_type": "NPY_FLOAT",
+                            "py_var": "SHPy_arg1"
+                        }
+                    },
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg2",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg2)",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "arg2",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg2",
+                            "f_var": "arg2"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "double arg2",
+                            "c_deref": "",
+                            "c_type": "double",
+                            "c_var": "arg2",
+                            "cxx_addr": "&",
+                            "cxx_decl": "double arg2",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "arg2",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_arg2"
+                        }
+                    }
+                },
+                "_generated": "cxx_template",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "FunctionTU",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
+                "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 118,
+                    "brief": "Function template with two template parameters."
+                },
+                "fmtdict": {
+                    "CXX_template": "<float, double>",
+                    "C_call_code": "FunctionTU<float, double>(\targ1,\t arg2);",
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "c_name_instantiation2",
+                    "C_prototype": "float arg1,\t double arg2",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "f_c_name_instantiation2",
+                    "F_C_name": "f_c_name_instantiation2",
+                    "F_arg_c_call": "arg1,\t arg2",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_call_code": "call f_c_name_instantiation2(arg1,\t arg2)",
+                    "F_name_function": "function_tu_1",
+                    "F_name_generic": "function_tu",
+                    "F_name_impl": "f_name_instantiation2",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_name_instantiation2",
+                    "__line__": 128,
+                    "c_const": "",
+                    "function_name": "FunctionTU",
+                    "function_suffix": "_1",
+                    "underscore_name": "function_tu"
+                },
+                "have_template_args": true,
+                "linenumber": 117,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": true
+                },
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "fmtdict": {
+                            "C_name": "c_name_instantiation1",
+                            "F_C_name": "f_c_name_instantiation1",
+                            "F_name_impl": "f_name_instantiation1",
+                            "PY_name_impl": "PY_name_instantiation1",
+                            "__line__": 122
+                        },
+                        "instantiation": "<int, long>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "fmtdict": {
+                            "C_name": "c_name_instantiation2",
+                            "F_C_name": "f_c_name_instantiation2",
+                            "F_name_impl": "f_name_instantiation2",
+                            "PY_name_impl": "PY_name_instantiation2",
+                            "__line__": 128
+                        },
+                        "instantiation": "<float, double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T",
+                    "U"
+                ]
             }
         ],
         "language": "c++",

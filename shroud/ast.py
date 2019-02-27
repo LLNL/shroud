@@ -1068,6 +1068,7 @@ class FunctionNode(AstNode):
                 args.parse_instantiation(namespace=self)
 
             # XXX - convert to cxx_template format  { T=['int', 'double'] }
+            # XXX - only deals with single template argument  [0]?
             argname = template_parameters.parameters[0].name
             lst = []
             for arg in self.template_arguments:
@@ -1465,7 +1466,7 @@ def add_declarations(parent, node):
             print(subnode)
             raise RuntimeError(
                 "Expected 'block', 'class', 'decl', 'forward', 'namespace' "
-                "or 'typedef' found {}".format(sorted(subnode.keys()))
+                "or 'typedef' found '{}'".format(sorted(subnode.keys()))
             )
 
 

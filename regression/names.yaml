@@ -113,6 +113,25 @@ declarations:
   declarations:
   - decl: void init_ns1()
 
+# copied from templates, test replacing generated names
+- decl: template<T,U> void FunctionTU(T arg1, U arg2)
+  doxygen:
+     brief: Function template with two template parameters.
+  cxx_template:
+  - instantiation: <int, long>
+    format:
+      C_name: c_name_instantiation1
+      F_C_name: f_c_name_instantiation1
+      F_name_impl: f_name_instantiation1
+      PY_name_impl: PY_name_instantiation1
+  - instantiation: <float, double>
+    format:
+      C_name: c_name_instantiation2
+      F_C_name: f_c_name_instantiation2
+      F_name_impl: f_name_instantiation2
+      PY_name_impl: PY_name_instantiation2
+
+
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.
 splicer_code:

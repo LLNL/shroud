@@ -183,6 +183,62 @@ PY_init_ns1(
 // splicer end function.init_ns1
 }
 
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
+static PyObject *
+PY_name_instantiation1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+// splicer begin function.function_tu_0
+    int arg1;
+    long arg2;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "il:FunctionTU",
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+        return NULL;
+
+    FunctionTU(arg1, arg2);
+    Py_RETURN_NONE;
+// splicer end function.function_tu_0
+}
+
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
+static PyObject *
+PY_name_instantiation2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+// splicer begin function.function_tu_1
+    float arg1;
+    double arg2;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "fd:FunctionTU",
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+        return NULL;
+
+    FunctionTU(arg1, arg2);
+    Py_RETURN_NONE;
+// splicer end function.function_tu_1
+}
+
 static char PY_function3a__doc__[] =
 "documentation"
 ;
@@ -220,6 +276,44 @@ PY_function3a(
     return NULL;
 // splicer end function.function3a
 }
+
+static char PY_FunctionTU__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_FunctionTU(
+  PyObject *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.function_tu
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 2) {
+        rvobj = PY_name_instantiation1(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 2) {
+        rvobj = PY_name_instantiation2(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end function.function_tu
+}
 static PyMethodDef PY_methods[] = {
 {"function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
@@ -231,6 +325,8 @@ static PyMethodDef PY_methods[] = {
 {"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
     PY_function3a__doc__},
+{"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
+    PY_FunctionTU__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

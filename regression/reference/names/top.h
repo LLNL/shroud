@@ -58,6 +58,10 @@ void YYY_TES_fiveplus();
 
 void TES_init_ns1();
 
+void c_name_instantiation1(int arg1, long arg2);
+
+void c_name_instantiation2(float arg1, double arg2);
+
 #ifdef __cplusplus
 }
 #endif

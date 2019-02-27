@@ -660,7 +660,10 @@ class GenFunctions(object):
             self.append_function_index(new)
 
             new._generated = "cxx_template"
+
             fmt = new.fmtdict
+            if targs.fmtdict:
+                fmt.update(targs.fmtdict)
 
             # If single template argument, use its name; else sequence.
             # XXX - maybe change to names
