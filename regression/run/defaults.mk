@@ -98,39 +98,38 @@ SHARED = -fPIC
 LD_SHARED = -shared
 endif
 
+ifdef PYTHON
 # Simple string functions, to reduce the clutter below.
 sf_01 = "from sysconfig import get_config_var; print(get_config_var('$1'))"
 sf_02 = "import sys; print(getattr(sys,'$1',''))"
 
-python.exe = $(PYTHONEXE)
-python.libdir   = $(eval python.libdir := $$(call shell,$(python.exe) \
-  -c $(call sf_01,LIBDIR) 2>&1))$(python.libdir)
-#python.configversion  = $(eval python.configversion := $$(call shell,$(python.exe) \
-#  -c $(call sf_01,VERSION) 2>&1))$(python.configversion)
-#python.abiflags = $(eval python.abiflags := $$(call shell,$(python.exe) \
-#  -c $(call sf_02,abiflags) 2>&1))$(python.abiflags)
+python.exe = $(PYTHON)
+python.libpl   = $(eval python.libpl := $$(call shell,$(python.exe) \
+  -c $(call sf_01,LIBPL) 2>&1))$(python.libpl)
+python.libs    = $(eval python.libs := $$(call shell,$(python.exe) \
+  -c $(call sf_01,LIBS) 2>&1))$(python.libs)
+python.bldlibrary  = $(eval python.bldlibrary := $$(call shell,$(python.exe) \
+  -c $(call sf_01,BLDLIBRARY) 2>&1))$(python.bldlibrary)
 python.incdir   = $(eval python.incdir := $$(call shell,$(python.exe) \
   -c $(call sf_01,INCLUDEPY) 2>&1))$(python.incdir)
 
-$(info  exe = $(python.exe))
-$(info  libdir = $(python.libdir))
-$(info  incdir = $(python.incdir))
-#$(error done)
+# python 2.7
+# libpl      - .../lib/python2.7/config
+# libs       - -lpthreads -ldl -lutil
+# bldlibrary - -L. -lpython2.7
+#
+# python 3.6
+# libpl      -  .../lib/python3.6/config-3.6m-x86_64-linux-gnu
+# libs       -  -lpthreads -ldl -lutil
+# bldlibrary - -L. -lpython3.6m
 
-# 2.7
-ifdef PYTHON
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
 PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")
 PYTHON_PREFIX := $(shell $(PYTHON) -c "import sys;sys.stdout.write(sys.exec_prefix)")
 PYTHON_NUMPY := $(shell $(PYTHON) -c "import sys, numpy;sys.stdout.write(numpy.get_include())")
-PYTHON_BIN := $(PYTHON)
-ifeq ($(PYTHONEXE),python2)
-PYTHON_INC := -I$(PYTHON_PREFIX)/include/python$(PYTHON_VER) -I$(PYTHON_NUMPY)
-PYTHON_LIB := -L$(PYTHON_PREFIX)/lib/python$(PYTHON_VER)/config -lpython$(PYTHON_VER) -ldl -lutil
-else
+
 PYTHON_INC := -I$(python.incdir) -I$(PYTHON_NUMPY)
-PYTHON_LIB := -L$(python.libdir) -lpython$(PYTHON_VER)m -ldl -lutil
-endif
+PYTHON_LIB := -L$(python.libpl) $(python.bldlibrary) $(python.libs)
 endif
 
 ifdef LUA

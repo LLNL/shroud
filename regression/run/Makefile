@@ -141,23 +141,23 @@ py-ownership : testdirs
 # Run the Python tests
 test-python-tutorial : py-tutorial
 	export PYTHONPATH=$(top)/$(tempdir)/run/tutorial/python; \
-	$(PYTHON_BIN) $(top)/regression/run/tutorial/python/test.py
+	$(python.exe) $(top)/regression/run/tutorial/python/test.py
 
 test-python-strings : py-strings
 	export PYTHONPATH=$(top)/$(tempdir)/run/strings/python; \
-	$(PYTHON_BIN) $(top)/regression/run/strings/python/test.py
+	$(python.exe) $(top)/regression/run/strings/python/test.py
 
 test-python-pointers : py-pointers
 	export PYTHONPATH=$(top)/$(tempdir)/run/pointers/python; \
-	$(PYTHON_BIN) $(top)/regression/run/pointers/python/test.py
+	$(python.exe) $(top)/regression/run/pointers/python/test.py
 
 test-python-clibrary : py-clibrary
 	export PYTHONPATH=$(top)/$(tempdir)/run/clibrary/python; \
-	$(PYTHON_BIN) $(top)/regression/run/clibrary/python/test.py
+	$(python.exe) $(top)/regression/run/clibrary/python/test.py
 
 test-python-ownership : py-ownership
 	export PYTHONPATH=$(top)/$(tempdir)/run/ownership/python; \
-	$(PYTHON_BIN) $(top)/regression/run/ownership/python/test.py
+	$(python.exe) $(top)/regression/run/ownership/python/test.py
 
 test-python : test-python-tutorial test-python-strings test-python-pointers test-python-clibrary test-python-ownership
 
