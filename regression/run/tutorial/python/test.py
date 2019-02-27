@@ -191,6 +191,14 @@ class Tutorial(unittest.TestCase):
         self.assertTrue(obj0.equivalent(obj0))
         self.assertFalse(obj0.equivalent(obj1))
 
+    def test_class1_PassClassByValue(self):
+        # passClassByValue sets the global retrived by get_global_flag()
+        tutorial.set_global_flag(0)
+        obj0 = tutorial.Class1()
+        obj0.test = 13
+        tutorial.passClassByValue(obj0)
+        self.assertEqual(13, tutorial.get_global_flag())
+
     def test_class1_useclass(self):
         obj0 = tutorial.Class1()
         self.assertEqual(0, tutorial.useclass(obj0))

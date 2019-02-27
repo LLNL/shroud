@@ -820,6 +820,39 @@ PY_directionFunc(
 // splicer end function.direction_func
 }
 
+static char PY_passClassByValue__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Pass arguments to a function.
+ *
+ */
+static PyObject *
+PY_passClassByValue(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void passClassByValue(Class1 arg +intent(in)+value)
+// splicer begin function.pass_class_by_value
+    PY_Class1 * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passClassByValue",
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
+        return NULL;
+
+    // post_parse
+    tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+
+    tutorial::passClassByValue(*arg);
+    Py_RETURN_NONE;
+// splicer end function.pass_class_by_value
+}
+
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -1201,6 +1234,8 @@ static PyMethodDef PY_methods[] = {
     PY_getMinMax__doc__},
 {"directionFunc", (PyCFunction)PY_directionFunc,
     METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
+{"passClassByValue", (PyCFunction)PY_passClassByValue,
+    METH_VARARGS|METH_KEYWORDS, PY_passClassByValue__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
