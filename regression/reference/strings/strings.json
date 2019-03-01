@@ -103,7 +103,8 @@
             "library_lower": "strings",
             "library_upper": "STRINGS",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

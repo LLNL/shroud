@@ -60,7 +60,9 @@ void TES_init_ns1();
 
 void c_name_instantiation1(int arg1, long arg2);
 
-void c_name_instantiation2(float arg1, double arg2);
+void TES_function_tu_instantiation2(float arg1, double arg2);
+
+int TES_use_impl_worker_instantiation3();
 
 #ifdef __cplusplus
 }

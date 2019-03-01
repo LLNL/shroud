@@ -34,6 +34,17 @@ declarations:
       f_derived_type: names2
       f_capsule_data_type: SHROUD_names2_capsule
       f_to_c: "{f_var}%cxxmem"
+  - namespace: internal
+    declarations: internal
+    - type: ImplWorker1
+      fields:
+        base: shadow
+        cxx_type: internal::ImplWorker1
+        c_type: TES_implworker1
+        f_module_name: implworker1_mod
+        f_derived_type: implworker1
+        f_capsule_data_type: SHROUD_implworker1_capsule
+        f_to_c: "{f_var}%cxxmem"
   - namespace: std
     declarations: std
     - type: Vvv1

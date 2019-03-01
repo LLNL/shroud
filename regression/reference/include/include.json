@@ -378,7 +378,8 @@
             "library_lower": "default_library",
             "library_upper": "DEFAULT_LIBRARY",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

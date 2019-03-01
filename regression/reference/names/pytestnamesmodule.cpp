@@ -216,13 +216,13 @@ PY_name_instantiation1(
  *
  */
 static PyObject *
-PY_name_instantiation2(
+PY_FunctionTU_instantiation2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
 // void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-// splicer begin function.function_tu_1
+// splicer begin function.function_tu_instantiation2
     float arg1;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -236,7 +236,32 @@ PY_name_instantiation2(
 
     FunctionTU(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.function_tu_1
+// splicer end function.function_tu_instantiation2
+}
+
+static char PY_UseImplWorker_instantiation3__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Function which uses a templated T in the implemetation.
+ *
+ */
+static PyObject *
+PY_UseImplWorker_instantiation3(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int UseImplWorker()
+// splicer begin function.use_impl_worker_instantiation3
+    int SHC_rv = UseImplWorker();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.use_impl_worker_instantiation3
 }
 
 static char PY_function3a__doc__[] =
@@ -302,7 +327,7 @@ PY_FunctionTU(
         PyErr_Clear();
     }
     if (SHT_nargs == 2) {
-        rvobj = PY_name_instantiation2(self, args, kwds);
+        rvobj = PY_FunctionTU_instantiation2(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -323,6 +348,9 @@ static PyMethodDef PY_methods[] = {
     PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
 {"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},
+{"UseImplWorker_instantiation3",
+    (PyCFunction)PY_UseImplWorker_instantiation3, METH_NOARGS,
+    PY_UseImplWorker_instantiation3__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
     PY_function3a__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,

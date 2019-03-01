@@ -283,7 +283,8 @@
             "library_lower": "ownership",
             "library_upper": "OWNERSHIP",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

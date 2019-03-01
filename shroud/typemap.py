@@ -40,6 +40,8 @@ class Typemap(object):
     # Array of known keys with default values
     _order = (
         ("flat_name", None),  # Name when used by wrapper identifiers
+        ("template_suffix", None),  # Name when used by wrapper identifiers
+                                    # when added to class/struct format.
         ("base", "unknown"),  # Base type: 'string'
         ("forward", None),  # Forward declaration
         ("format", {}),  # Applied to Scope for variable.

@@ -103,7 +103,8 @@
             "library_lower": "types",
             "library_upper": "TYPES",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

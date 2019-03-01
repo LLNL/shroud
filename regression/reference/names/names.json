@@ -179,7 +179,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Vvv1_to_Object",
                     "PY_type_filename": "pyVvv1type.cpp",
-                    "__line__": 142,
+                    "__line__": 139,
                     "class_lower": "vvv1",
                     "class_prefix": "vvv1_",
                     "class_scope": "VvV1::",
@@ -187,7 +187,7 @@
                     "cxx_class": "Vvv1",
                     "cxx_type": "vector<int>"
                 },
-                "linenumber": 137,
+                "linenumber": 134,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -203,7 +203,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv1",
-                            "__line__": 142,
+                            "__line__": 139,
                             "class_lower": "vvv1",
                             "class_scope": "VvV1::",
                             "class_upper": "VVV1",
@@ -222,7 +222,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv2",
-                            "__line__": 150,
+                            "__line__": 147,
                             "class_lower": "vvv2",
                             "class_scope": "VvV2::",
                             "class_upper": "VVV2",
@@ -254,7 +254,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_Vvv2_to_Object",
                     "PY_type_filename": "pyVvv2type.cpp",
-                    "__line__": 150,
+                    "__line__": 147,
                     "class_lower": "vvv2",
                     "class_prefix": "vvv2_",
                     "class_scope": "VvV2::",
@@ -262,7 +262,7 @@
                     "cxx_class": "Vvv2",
                     "cxx_type": "vector<double>"
                 },
-                "linenumber": 137,
+                "linenumber": 134,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -278,7 +278,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv1",
-                            "__line__": 142,
+                            "__line__": 139,
                             "class_lower": "vvv1",
                             "class_scope": "VvV1::",
                             "class_upper": "VVV1",
@@ -297,7 +297,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv2",
-                            "__line__": 150,
+                            "__line__": 147,
                             "class_lower": "vvv2",
                             "class_scope": "VvV2::",
                             "class_upper": "VVV2",
@@ -310,6 +310,36 @@
                     "T"
                 ],
                 "typemap_name": "std::Vvv2"
+            },
+            {
+                "cxx_header": "",
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapImplWorker1.hh",
+                    "C_impl_filename": "wrapImplWorker1.cc",
+                    "C_type_name": "TES_implworker1",
+                    "F_capsule_data_type": "SHROUD_implworker1_capsule",
+                    "F_derived_name": "implworker1",
+                    "F_impl_filename": "wrapfImplWorker1.F",
+                    "F_module_name": "implworker1_mod",
+                    "__line__": 162,
+                    "class_lower": "implworker1",
+                    "class_prefix": "implworker1_",
+                    "class_scope": "ImplWorker1::",
+                    "class_upper": "IMPLWORKER1",
+                    "cxx_class": "ImplWorker1",
+                    "cxx_type": "ImplWorker1",
+                    "template_suffix": "instantiation3"
+                },
+                "linenumber": 161,
+                "name": "ImplWorker1",
+                "options": {
+                    "__line__": 164,
+                    "wrap_fortran": false,
+                    "wrap_python": false
+                },
+                "scope": "internal::ImplWorker1::",
+                "typemap_name": "internal::ImplWorker1"
             }
         ],
         "copyright": [
@@ -473,7 +503,8 @@
             "library_lower": "testnames",
             "library_upper": "TESTNAMES",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {
@@ -1126,11 +1157,8 @@
                             }
                         ],
                         "fmtdict": {
-                            "C_name": "c_name_instantiation2",
-                            "F_C_name": "f_c_name_instantiation2",
-                            "F_name_impl": "f_name_instantiation2",
-                            "PY_name_impl": "PY_name_instantiation2",
-                            "__line__": 128
+                            "__line__": 128,
+                            "template_suffix": "instantiation2"
                         },
                         "instantiation": "<float, double>"
                     }
@@ -1328,11 +1356,8 @@
                             }
                         ],
                         "fmtdict": {
-                            "C_name": "c_name_instantiation2",
-                            "F_C_name": "f_c_name_instantiation2",
-                            "F_name_impl": "f_name_instantiation2",
-                            "PY_name_impl": "PY_name_instantiation2",
-                            "__line__": 128
+                            "__line__": 128,
+                            "template_suffix": "instantiation2"
                         },
                         "instantiation": "<float, double>"
                     }
@@ -1461,24 +1486,25 @@
                     "CXX_template": "<float, double>",
                     "C_call_code": "FunctionTU<float, double>(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "c_name_instantiation2",
+                    "C_name": "TES_function_tu_instantiation2",
                     "C_prototype": "float arg1,\t double arg2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_call": "f_c_name_instantiation2",
-                    "F_C_name": "f_c_name_instantiation2",
+                    "F_C_call": "c_function_tu_instantiation2",
+                    "F_C_name": "c_function_tu_instantiation2",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "call f_c_name_instantiation2(arg1,\t arg2)",
-                    "F_name_function": "function_tu_1",
+                    "F_call_code": "call c_function_tu_instantiation2(arg1,\t arg2)",
+                    "F_name_function": "function_tu_instantiation2",
                     "F_name_generic": "function_tu",
-                    "F_name_impl": "f_name_instantiation2",
+                    "F_name_impl": "function_tu_instantiation2",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_name_instantiation2",
+                    "PY_name_impl": "PY_FunctionTU_instantiation2",
                     "__line__": 128,
                     "c_const": "",
                     "function_name": "FunctionTU",
-                    "function_suffix": "_1",
+                    "function_suffix": "_instantiation2",
+                    "template_suffix": "instantiation2",
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
@@ -1530,11 +1556,8 @@
                             }
                         ],
                         "fmtdict": {
-                            "C_name": "c_name_instantiation2",
-                            "F_C_name": "f_c_name_instantiation2",
-                            "F_name_impl": "f_name_instantiation2",
-                            "PY_name_impl": "PY_name_instantiation2",
-                            "__line__": 128
+                            "__line__": 128,
+                            "template_suffix": "instantiation2"
                         },
                         "instantiation": "<float, double>"
                     }
@@ -1542,6 +1565,152 @@
                 "template_parameters": [
                     "T",
                     "U"
+                ]
+            },
+            {
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "UseImplWorker",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "cxx_template": {
+                    "T": [
+                        "internal::ImplWorker1"
+                    ]
+                },
+                "decl": "template<typename T> int UseImplWorker()",
+                "declgen": "int UseImplWorker()",
+                "doxygen": {
+                    "__line__": 169,
+                    "brief": "Function which uses a templated T in the implemetation."
+                },
+                "fmtdict": {
+                    "function_name": "UseImplWorker",
+                    "underscore_name": "use_impl_worker"
+                },
+                "linenumber": 168,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "internal::ImplWorker1"
+                                ],
+                                "typemap_name": "internal::ImplWorker1"
+                            }
+                        ],
+                        "instantiation": "<internal::ImplWorker1>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ]
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": null,
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv"
+                    }
+                },
+                "_generated": "cxx_template",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "UseImplWorker",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "template<typename T> int UseImplWorker()",
+                "declgen": "int UseImplWorker()",
+                "doxygen": {
+                    "__line__": 169,
+                    "brief": "Function which uses a templated T in the implemetation."
+                },
+                "fmtdict": {
+                    "CXX_template": "<internal::ImplWorker1>",
+                    "C_call_code": "int SHC_rv =\t UseImplWorker<internal::ImplWorker1>(\t);",
+                    "C_call_list": "",
+                    "C_name": "TES_use_impl_worker_instantiation3",
+                    "C_prototype": "",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_call": "c_use_impl_worker_instantiation3",
+                    "F_C_name": "c_use_impl_worker_instantiation3",
+                    "F_arg_c_call": "",
+                    "F_arguments": "",
+                    "F_call_code": "SHT_rv = c_use_impl_worker_instantiation3()",
+                    "F_name_function": "use_impl_worker_instantiation3",
+                    "F_name_generic": "use_impl_worker",
+                    "F_name_impl": "use_impl_worker_instantiation3",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_UseImplWorker_instantiation3",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "UseImplWorker",
+                    "function_suffix": "_instantiation3",
+                    "underscore_name": "use_impl_worker"
+                },
+                "linenumber": 168,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": true
+                },
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "internal::ImplWorker1"
+                                ],
+                                "typemap_name": "internal::ImplWorker1"
+                            }
+                        ],
+                        "instantiation": "<internal::ImplWorker1>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
                 ]
             }
         ],
@@ -2195,6 +2364,77 @@
             },
             "f_type": "integer(C_INT8_T)",
             "flat_name": "int8_t"
+        },
+        "internal::ImplWorker1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
+            "c_type": "TES_implworker1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "internal::ImplWorker1",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_implworker1_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_implworker1_capsule)",
+            "f_capsule_data_type": "SHROUD_implworker1_capsule",
+            "f_derived_type": "implworker1",
+            "f_module": {
+                "implworker1_mod": [
+                    "implworker1"
+                ]
+            },
+            "f_module_name": "implworker1_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(implworker1)",
+            "flat_name": "internal_ImplWorker1",
+            "forward": "internal::ImplWorker1",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            },
+            "template_suffix": "instantiation3"
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

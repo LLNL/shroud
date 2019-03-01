@@ -113,7 +113,7 @@ declarations:
   declarations:
   - decl: void init_ns1()
 
-# copied from templates, test replacing generated names
+# Copied from templates.yaml, test replacing generated names
 - decl: template<T,U> void FunctionTU(T arg1, U arg2)
   doxygen:
      brief: Function template with two template parameters.
@@ -126,12 +126,9 @@ declarations:
       PY_name_impl: PY_name_instantiation1
   - instantiation: <float, double>
     format:
-      C_name: c_name_instantiation2
-      F_C_name: f_c_name_instantiation2
-      F_name_impl: f_name_instantiation2
-      PY_name_impl: PY_name_instantiation2
+      template_suffix: instantiation2
 
-# copied from templates.
+# Copied from templates.yaml.
 - decl: namespace std
   declarations:
   - decl: template<typename T> class vector
@@ -154,6 +151,27 @@ declarations:
         class_scope: 'VvV2::'
         F_derived_name: FFvvv2
 
+########################################
+# Copied from templates.yaml
+# Test class.format.template_suffix
+- decl: namespace internal
+  declarations:
+# Class which is used to instantiate the C++ template.
+# It is not part of the Fortran API.
+  - decl: class ImplWorker1
+    format:
+      template_suffix: instantiation3
+    options:
+      wrap_fortran: false
+      wrap_python: false
+
+- decl: template<typename T> int UseImplWorker()
+  doxygen:
+     brief: Function which uses a templated T in the implemetation.
+  cxx_template:
+  - instantiation: <internal::ImplWorker1>
+
+########################################
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.
 splicer_code:

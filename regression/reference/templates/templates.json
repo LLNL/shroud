@@ -1278,7 +1278,8 @@
             "library_lower": "templates",
             "library_upper": "TEMPLATES",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

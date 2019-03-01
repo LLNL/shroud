@@ -1765,7 +1765,8 @@
             "library_lower": "tutorial",
             "library_upper": "TUTORIAL",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

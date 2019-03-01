@@ -97,13 +97,21 @@ module top_module
             integer(C_LONG), value, intent(IN) :: arg2
         end subroutine f_c_name_instantiation1
 
-        subroutine f_c_name_instantiation2(arg1, arg2) &
-                bind(C, name="c_name_instantiation2")
+        subroutine c_function_tu_instantiation2(arg1, arg2) &
+                bind(C, name="TES_function_tu_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
             implicit none
             real(C_FLOAT), value, intent(IN) :: arg1
             real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine f_c_name_instantiation2
+        end subroutine c_function_tu_instantiation2
+
+        function c_use_impl_worker_instantiation3() &
+                result(SHT_rv) &
+                bind(C, name="TES_use_impl_worker_instantiation3")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function c_use_impl_worker_instantiation3
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -111,7 +119,7 @@ module top_module
 
     interface function_tu
         module procedure f_name_instantiation1
-        module procedure f_name_instantiation2
+        module procedure function_tu_instantiation2
     end interface function_tu
 
     interface generic3
@@ -201,14 +209,29 @@ contains
     !! \brief Function template with two template parameters.
     !!
     !<
-    subroutine f_name_instantiation2(arg1, arg2)
+    subroutine function_tu_instantiation2(arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg1
         real(C_DOUBLE), value, intent(IN) :: arg2
-        ! splicer begin function.function_tu_1
-        call f_c_name_instantiation2(arg1, arg2)
-        ! splicer end function.function_tu_1
-    end subroutine f_name_instantiation2
+        ! splicer begin function.function_tu_instantiation2
+        call c_function_tu_instantiation2(arg1, arg2)
+        ! splicer end function.function_tu_instantiation2
+    end subroutine function_tu_instantiation2
+
+    ! int UseImplWorker()
+    ! cxx_template
+    !>
+    !! \brief Function which uses a templated T in the implemetation.
+    !!
+    !<
+    function use_impl_worker_instantiation3() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.use_impl_worker_instantiation3
+        SHT_rv = c_use_impl_worker_instantiation3()
+        ! splicer end function.use_impl_worker_instantiation3
+    end function use_impl_worker_instantiation3
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

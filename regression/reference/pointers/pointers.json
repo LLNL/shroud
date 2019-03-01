@@ -103,7 +103,8 @@
             "library_lower": "pointers",
             "library_upper": "POINTERS",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "functions": [
             {

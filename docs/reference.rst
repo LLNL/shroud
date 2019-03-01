@@ -966,20 +966,22 @@ function_name
     Name of function in the YAML file.
 
 function_suffix
-   Suffix to append to the end of generated name.
+    String append to a generated function name.
+    Useful to distinguish overloaded function and functions with default arguments.
+    Defaults to a sequence number (e.g. `_0`, `_1`, ...) but can be set
+    by using the function field *function_suffix*.
+    Multiple suffixes may be applied.
 
 LUA_name
     Name of function as known by LUA.
     Defaults to evaluation of option *LUA_name_template*.
 
+template_suffix
+   String which is append to the end of a generated function names
+   to distinguish template instatiations.
+
 underscore_name
     *function_name* converted from CamelCase to snake_case.
-
-function_suffix
-    Suffix append to name.  Used to differentiate overloaded functions.
-    Defaults to a sequence number (e.g. `_0`, `_1`, ...) but can be set
-    by using the function field *function_suffix*.
-    Multiple suffixes may be applied.
 
 Argument
 ^^^^^^^^

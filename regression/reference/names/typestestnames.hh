@@ -24,6 +24,12 @@
 extern "C" {
 #endif
 
+struct s_TES_implworker1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_implworker1 TES_implworker1;
+
 struct s_TES_names {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

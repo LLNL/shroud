@@ -523,6 +523,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_pre_call="",
             C_post_call="",
             function_suffix="",  # assume no suffix
+            template_suffix="",  # assume no suffix
             namespace_scope="",
         )
 
@@ -713,9 +714,8 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
 
 class ClassNode(AstNode, NamespaceMixin):
-    """A C++ class.
+    """A C++ class or struct.
 
-    symbols - symbol table of nested symbols.
     """
 
     is_class = True
@@ -778,6 +778,10 @@ class ClassNode(AstNode, NamespaceMixin):
             self.typemap = typemap.create_struct_typemap(self, fields)
         else:
             self.typemap = typemap.create_class_typemap(self, fields)
+        if format and 'template_suffix' in format:
+            # Do not use scope from self.fmtdict, instead only copy value
+            # when in the format dictionary is passed in.
+            self.typemap.template_suffix = format['template_suffix']
 
         # Add template parameters.
         if template_parameters is None:

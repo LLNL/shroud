@@ -646,6 +646,8 @@ class GenFunctions(object):
           cxx_template:
           - instantiation: <int>
           - instantiation: <double>
+            format:
+              template_suffix: dbl
 
         node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
                  TemplateArgument.asts[i].typemap
@@ -672,12 +674,14 @@ class GenFunctions(object):
             # If single template argument, use its name; else sequence.
             # XXX - maybe change to names
             #  i.e.  _int_double  However <std::string,int> is a problem.
-            if len(targs.asts) == 1:
-                fmt.function_suffix = (
-                    fmt.function_suffix + "_" + targs.asts[0].typemap.flat_name
-                )
+            if fmt.template_suffix:
+                template_suffix = fmt.template_suffix
+            elif len(targs.asts) == 1:
+                ntypemap = targs.asts[0].typemap
+                template_suffix = ntypemap.template_suffix or ntypemap.flat_name
             else:
-                fmt.function_suffix = fmt.function_suffix + "_" + str(iargs)
+                template_suffix = str(iargs)
+            fmt.function_suffix = fmt.function_suffix + "_" + template_suffix
 
             new.cxx_template = {}
             options = new.options

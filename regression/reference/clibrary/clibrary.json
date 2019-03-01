@@ -103,7 +103,8 @@
             "library_lower": "clibrary",
             "library_upper": "CLIBRARY",
             "namespace_scope": "",
-            "stdlib": ""
+            "stdlib": "",
+            "template_suffix": ""
         },
         "functions": [
             {

@@ -529,7 +529,8 @@
             "library_lower": "forward",
             "library_upper": "FORWARD",
             "namespace_scope": "",
-            "stdlib": "std::"
+            "stdlib": "std::",
+            "template_suffix": ""
         },
         "language": "c++",
         "options": {

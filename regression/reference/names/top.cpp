@@ -121,12 +121,25 @@ void c_name_instantiation1(int arg1, long arg2)
  * \brief Function template with two template parameters.
  *
  */
-void c_name_instantiation2(float arg1, double arg2)
+void TES_function_tu_instantiation2(float arg1, double arg2)
 {
-// splicer begin function.function_tu_1
+// splicer begin function.function_tu_instantiation2
     FunctionTU<float, double>(arg1, arg2);
     return;
-// splicer end function.function_tu_1
+// splicer end function.function_tu_instantiation2
+}
+
+// int UseImplWorker()
+/**
+ * \brief Function which uses a templated T in the implemetation.
+ *
+ */
+int TES_use_impl_worker_instantiation3()
+{
+// splicer begin function.use_impl_worker_instantiation3
+    int SHC_rv = UseImplWorker<internal::ImplWorker1>();
+    return SHC_rv;
+// splicer end function.use_impl_worker_instantiation3
 }
 
 // Release C++ allocated memory.
