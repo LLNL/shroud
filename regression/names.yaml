@@ -126,7 +126,7 @@ declarations:
       PY_name_impl: PY_name_instantiation1
   - instantiation: <float, double>
     format:
-      template_suffix: instantiation2
+      template_suffix: _instantiation2
 
 # Copied from templates.yaml.
 - decl: namespace std
@@ -160,7 +160,7 @@ declarations:
 # It is not part of the Fortran API.
   - decl: class ImplWorker1
     format:
-      template_suffix: instantiation3
+      template_suffix: _instantiation3
     options:
       wrap_fortran: false
       wrap_python: false

@@ -329,7 +329,7 @@
                     "class_upper": "IMPLWORKER1",
                     "cxx_class": "ImplWorker1",
                     "cxx_type": "ImplWorker1",
-                    "template_suffix": "instantiation3"
+                    "template_suffix": "_instantiation3"
                 },
                 "linenumber": 161,
                 "name": "ImplWorker1",
@@ -1158,7 +1158,7 @@
                         ],
                         "fmtdict": {
                             "__line__": 128,
-                            "template_suffix": "instantiation2"
+                            "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
                     }
@@ -1357,7 +1357,7 @@
                         ],
                         "fmtdict": {
                             "__line__": 128,
-                            "template_suffix": "instantiation2"
+                            "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
                     }
@@ -1556,7 +1556,7 @@
                         ],
                         "fmtdict": {
                             "__line__": 128,
-                            "template_suffix": "instantiation2"
+                            "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
                     }
@@ -2433,7 +2433,7 @@
                     ]
                 }
             },
-            "template_suffix": "instantiation3"
+            "template_suffix": "_instantiation3"
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

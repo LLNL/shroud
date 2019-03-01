@@ -671,17 +671,20 @@ class GenFunctions(object):
             if targs.fmtdict:
                 fmt.update(targs.fmtdict)
 
-            # If single template argument, use its name; else sequence.
-            # XXX - maybe change to names
-            #  i.e.  _int_double  However <std::string,int> is a problem.
+            # Use explicit template_suffix if provide.
+            # If single template argument, use type's explicit_suffix
+            # or the unqualified flat_name.
+            # Multiple template arguments, use sequence number.
             if fmt.template_suffix:
-                template_suffix = fmt.template_suffix
+                pass
             elif len(targs.asts) == 1:
                 ntypemap = targs.asts[0].typemap
-                template_suffix = ntypemap.template_suffix or ntypemap.flat_name
+                if ntypemap.template_suffix:
+                    fmt.template_suffix = ntypemap.template_suffix
+                else:
+                    fmt.template_suffix = "_" + ntypemap.flat_name
             else:
-                template_suffix = str(iargs)
-            fmt.template_suffix = "_" + template_suffix
+                fmt.template_suffix = "_" + str(iargs)
 
             new.cxx_template = {}
             options = new.options
