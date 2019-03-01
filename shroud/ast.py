@@ -372,7 +372,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{class_prefix}{enum_name}",
             C_enum_member_template="{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}"
+                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -384,15 +384,15 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_var_size_template="S{c_var}",  # argument for result of size(arg)
             # Fortran's names for C functions
             F_C_name_template=(
-                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}"
+                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template=(
                 "{class_prefix}{enum_lower}_{enum_member_lower}"
             ),
             F_name_impl_template=(
-                "{class_prefix}{underscore_name}{function_suffix}"
+                "{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
-            F_name_function_template="{underscore_name}{function_suffix}",
+            F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
             F_name_generic_template="{underscore_name}",
             F_module_name_library_template="{library_lower}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
@@ -431,11 +431,11 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "py{cxx_class}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
-                "{PY_prefix}{class_prefix}{function_name}{function_suffix}"
+                "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}"
             ),
             # names for type methods (tp_init)
             PY_type_impl_template=(
-                "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}"
+                "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}"
             ),
             PY_member_getter_template=(
                 "{PY_prefix}{cxx_class}_{variable_name}_getter"

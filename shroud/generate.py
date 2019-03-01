@@ -681,7 +681,7 @@ class GenFunctions(object):
                 template_suffix = ntypemap.template_suffix or ntypemap.flat_name
             else:
                 template_suffix = str(iargs)
-            fmt.function_suffix = fmt.function_suffix + "_" + template_suffix
+            fmt.template_suffix = "_" + template_suffix
 
             new.cxx_template = {}
             options = new.options

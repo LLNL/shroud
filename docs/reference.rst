@@ -329,7 +329,7 @@ C_memory_dtor_function_template
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}``
+    ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
 
 C_var_len_template
     Format for variable created with *len* annotation.
@@ -349,7 +349,7 @@ class_prefix_template
     ``{class_lower}_``
 
 F_C_name_template
-    ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}``
+    ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
 
 F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
@@ -385,7 +385,7 @@ F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
-    ``{class_prefix}{underscore_name}{function_suffix}``
+    ``{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
 
 F_module_name_class_template
     ``{class_lower}_mod``
@@ -394,7 +394,7 @@ F_module_name_library_template
     ``{library_lower}_mod``
 
 F_name_function_template
-    ``{underscore_name}{function_suffix}``
+    ``{underscore_name}{function_suffix}{template_suffix}{template_suffix}``
 
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
@@ -463,7 +463,7 @@ PY_member_setter_template
     ``{PY_prefix}{cxx_class}_{variable_name}_setter``
 
 PY_name_impl_template
-    ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``
+    ``{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}``
 
 PY_numpy_array_capsule_name_template
     Name of ``PyCapsule object`` used as base object of NumPy arrays.
@@ -500,7 +500,7 @@ PY_type_filename_template
 
 PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.
-    ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}``
+    ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}``
 
 
 YAML_type_filename_template

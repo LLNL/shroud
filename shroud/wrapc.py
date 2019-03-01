@@ -1362,7 +1362,9 @@ class Wrapc(util.WrapperMixin):
             )
             impl.append("{")
             self._create_splicer(
-                fmt_func.underscore_name + fmt_func.function_suffix,
+                fmt_func.underscore_name +
+                fmt_func.function_suffix +
+                fmt_func.template_suffix,
                 impl,
                 C_code,
             )
