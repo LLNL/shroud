@@ -6,6 +6,9 @@
 library: templates
 cxx_header: templates.hpp
 
+options:
+  wrap_python: True
+
 declarations:
 - decl: namespace std
   declarations:
