@@ -45,7 +45,15 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : tutorial types pointers vectors strings clibrary ownership templates
+fortran : \
+  tutorial \
+  types \
+  pointers \
+  vectors \
+  strings \
+  clibrary \
+  ownership \
+  templates
 
 # Compile the Fortran tests
 tutorial types pointers vectors forward strings clibrary ownership templates : testdirs
@@ -108,58 +116,23 @@ test-c : clang
 	$(tempdir)/run/templates/testc
 
 # Compile the generated Python wrapper
-py-tutorial : testdirs
+py-% : $(tempdir)/run/%/python/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/tutorial/python \
-	    -f $(top)/regression/run/tutorial/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
-
-py-strings : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/strings/python \
-	    -f $(top)/regression/run/strings/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
-
-py-pointers : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/pointers/python \
-	    -f $(top)/regression/run/pointers/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
-
-py-clibrary : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/clibrary/python \
-	    -f $(top)/regression/run/clibrary/python/Makefile \
-	    PYTHON=$(PYTHON) top=$(top) all
-
-py-ownership : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/ownership/python \
-	    -f $(top)/regression/run/ownership/python/Makefile \
+	    -C $(tempdir)/run/$(subst py-,,$@)/python \
+	    -f $(top)/regression/run/$(subst py-,,$@)/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
-test-python-tutorial : py-tutorial
-	export PYTHONPATH=$(top)/$(tempdir)/run/tutorial/python; \
-	$(python.exe) $(top)/regression/run/tutorial/python/test.py
+test-python-% : py-%
+	export PYTHONPATH=$(top)/$(tempdir)/run/$*/python; \
+	$(python.exe) $(top)/regression/run/$*/python/test.py
 
-test-python-strings : py-strings
-	export PYTHONPATH=$(top)/$(tempdir)/run/strings/python; \
-	$(python.exe) $(top)/regression/run/strings/python/test.py
-
-test-python-pointers : py-pointers
-	export PYTHONPATH=$(top)/$(tempdir)/run/pointers/python; \
-	$(python.exe) $(top)/regression/run/pointers/python/test.py
-
-test-python-clibrary : py-clibrary
-	export PYTHONPATH=$(top)/$(tempdir)/run/clibrary/python; \
-	$(python.exe) $(top)/regression/run/clibrary/python/test.py
-
-test-python-ownership : py-ownership
-	export PYTHONPATH=$(top)/$(tempdir)/run/ownership/python; \
-	$(python.exe) $(top)/regression/run/ownership/python/test.py
-
-test-python : test-python-tutorial test-python-strings test-python-pointers test-python-clibrary test-python-ownership
+test-python : \
+  test-python-tutorial \
+  test-python-strings \
+  test-python-pointers \
+  test-python-clibrary \
+  test-python-ownership
 
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
@@ -182,10 +155,8 @@ test-all : test-c test-fortran test-python test-lua
 .PHONY : tutorial-c tutorial-cpp
 .PHONY : templates-c
 .PHONY : test-python
-.PHONY : py-tutorial test-python-tutorial
-.PHONY : py-strings  test-python-strings
-.PHONY : py-pointers  test-python-pointers
-.PHONY : py-clibrary test-python-clibrary
-.PHONY : py-ownership test-python-ownership
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all
+
+.PHONY: phony_explicit
+phony_explicit: 
