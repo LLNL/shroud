@@ -45,76 +45,60 @@ TESTDIRS = \
 
 testdirs : $(TESTDIRS)
 
-fortran : \
-  tutorial \
-  types \
-  pointers \
-  vectors \
-  strings \
-  clibrary \
-  ownership \
-  templates
-
-# Compile the Fortran tests
-tutorial types pointers vectors forward strings clibrary ownership templates : testdirs
+######################################################################
+# Compile a Fortran test
+fortran-% : $(tempdir)/run/%/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$@ \
-	    -f $(top)/regression/run/$@/Makefile \
-	    top=$(top) $@
-
-tutorial-c : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/tutorial \
-	    -f $(top)/regression/run/tutorial/Makefile \
-	    top=$(top) testc
-
-tutorial-cpp : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/tutorial \
-	    -f $(top)/regression/run/tutorial/Makefile \
-	    top=$(top) maincpp
-
-templates-c : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/templates \
-	    -f $(top)/regression/run/templates/Makefile \
-	    top=$(top) testc
-
-templates-cpp : testdirs
-	$(MAKE) \
-	    -C $(tempdir)/run/templates \
-	    -f $(top)/regression/run/templates/Makefile \
-	    top=$(top) maincpp
-
-# Compile C tests
-clang : tutorial-c templates-c
-
-# Run the Fortran tests
-test-fortran : fortran
-	$(tempdir)/run/tutorial/tutorial
-	$(tempdir)/run/types/types
-	$(tempdir)/run/pointers/pointers
-	$(tempdir)/run/vectors/vectors
-	$(tempdir)/run/strings/strings
-	$(tempdir)/run/clibrary/clibrary
-	$(tempdir)/run/ownership/ownership
-	$(tempdir)/run/templates/templates
+	    -C $(tempdir)/run/$* \
+	    -f $(top)/regression/run/$*/Makefile \
+	    top=$(top) $*
 
 # run a Fortran test
-test-fortran-% : %
-	$(tempdir)/run/$(subst test-fortran-,,$@)/$(subst test-fortran-,,$@)
-#	$(tempdir)/run/$(patsubst fortran-%,%,$@)/$(patsubst fortran-%,%,$@)
+test-fortran-% : fortran-%
+	$(tempdir)/run/$*/$*
 
-# Run a single Fortran test
-# make ftest name=templates
-ftest :
-	$(tempdir)/run/$(name)/$(name)
+# Run the Fortran tests
+test-fortran : \
+  test-fortran-tutorial \
+  test-fortran-types \
+  test-fortran-pointers \
+  test-fortran-vectors \
+  test-fortran-strings \
+  test-fortran-clibrary \
+  test-fortran-ownership \
+  test-fortran-templates
+
+######################################################################
+# Compile a C test
+c-% : $(tempdir)/run/%/.. phony_explicit
+	$(MAKE) \
+	    -C $(tempdir)/run/$* \
+	    -f $(top)/regression/run/$*/Makefile \
+	    top=$(top) testc
+
 
 # Run the C tests
-test-c : clang
-	$(tempdir)/run/tutorial/testc
-	$(tempdir)/run/templates/testc
+test-c-% : c-%
+	$(tempdir)/run/$*/testc
 
+# Compile C tests
+test-c : \
+  test-c-tutorial \
+  test-c-templates
+
+######################################################################
+# Compile a C++ test
+cpp-% : $(tempdir)/run/%/.. phony_explicit
+	$(MAKE) \
+	    -C $(tempdir)/run/$* \
+	    -f $(top)/regression/run/$*/Makefile \
+	    top=$(top) maincpp
+
+test-cpp : \
+  cpp-tutorial \
+  cpp-templates
+
+######################################################################
 # Compile the generated Python wrapper
 py-% : $(tempdir)/run/%/python/.. phony_explicit
 	$(MAKE) \
@@ -134,6 +118,7 @@ test-python : \
   test-python-clibrary \
   test-python-ownership
 
+######################################################################
 # Compile the geneated Lua wrapper
 lua-tutorial : testdirs
 	$(MAKE) \
@@ -147,13 +132,11 @@ test-lua : lua-tutorial
 	cd $(top)/$(tempdir)/run/tutorial/lua; \
 	$(LUA_BIN) $(top)/regression/run/tutorial/lua/test.lua
 
+######################################################################
 test-all : test-c test-fortran test-python test-lua
 
 
-.PHONY : fortran test-fortran tutorial pointers vectors strings clibrary ownership templates
 .PHONY : test-c
-.PHONY : tutorial-c tutorial-cpp
-.PHONY : templates-c
 .PHONY : test-python
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all
