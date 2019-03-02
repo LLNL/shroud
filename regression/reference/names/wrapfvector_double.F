@@ -1,4 +1,4 @@
-! wrapfVvv2.F
+! wrapfvector_double.F
 ! This is generated code, do not edit
 ! #######################################################################
 ! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,100 +15,100 @@
 !
 ! #######################################################################
 !>
-!! \file wrapfVvv2.F
+!! \file wrapfvector_double.F
 !! \brief Shroud generated wrapper for vector class
 !<
 ! splicer begin file_top
 ! splicer end file_top
-module vvv2_mod
+module vector_double_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
-    ! splicer begin class.Vvv2.module_use
-    ! splicer end class.Vvv2.module_use
+    ! splicer begin class.vector_double.module_use
+    ! splicer end class.vector_double.module_use
     implicit none
 
 
-    ! splicer begin class.Vvv2.module_top
-    ! splicer end class.Vvv2.module_top
+    ! splicer begin class.vector_double.module_top
+    ! splicer end class.vector_double.module_top
 
     type, bind(C) :: SHROUD_vector_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_vector_capsule
 
-    type FFvvv2
+    type vector_double
         type(SHROUD_vector_capsule) :: cxxmem
-        ! splicer begin class.Vvv2.component_part
-        ! splicer end class.Vvv2.component_part
+        ! splicer begin class.vector_double.component_part
+        ! splicer end class.vector_double.component_part
     contains
-        procedure :: get_instance => vvv2_get_instance
-        procedure :: set_instance => vvv2_set_instance
-        procedure :: associated => vvv2_associated
-        ! splicer begin class.Vvv2.type_bound_procedure_part
-        ! splicer end class.Vvv2.type_bound_procedure_part
-    end type FFvvv2
+        procedure :: get_instance => vector_double_get_instance
+        procedure :: set_instance => vector_double_set_instance
+        procedure :: associated => vector_double_associated
+        ! splicer begin class.vector_double.type_bound_procedure_part
+        ! splicer end class.vector_double.type_bound_procedure_part
+    end type vector_double
 
     interface operator (.eq.)
-        module procedure vvv2_eq
+        module procedure vector_double_eq
     end interface
 
     interface operator (.ne.)
-        module procedure vvv2_ne
+        module procedure vector_double_ne
     end interface
 
     interface
 
-        ! splicer begin class.Vvv2.additional_interfaces
-        ! splicer end class.Vvv2.additional_interfaces
+        ! splicer begin class.vector_double.additional_interfaces
+        ! splicer end class.vector_double.additional_interfaces
     end interface
 
 contains
 
     ! Return pointer to C++ memory.
-    function vvv2_get_instance(obj) result (cxxptr)
+    function vector_double_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(FFvvv2), intent(IN) :: obj
+        class(vector_double), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function vvv2_get_instance
+    end function vector_double_get_instance
 
-    subroutine vvv2_set_instance(obj, cxxmem)
+    subroutine vector_double_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(FFvvv2), intent(INOUT) :: obj
+        class(vector_double), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine vvv2_set_instance
+    end subroutine vector_double_set_instance
 
-    function vvv2_associated(obj) result (rv)
+    function vector_double_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(FFvvv2), intent(IN) :: obj
+        class(vector_double), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function vvv2_associated
+    end function vector_double_associated
 
-    ! splicer begin class.Vvv2.additional_functions
-    ! splicer end class.Vvv2.additional_functions
+    ! splicer begin class.vector_double.additional_functions
+    ! splicer end class.vector_double.additional_functions
 
-    function vvv2_eq(a,b) result (rv)
+    function vector_double_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(FFvvv2), intent(IN) ::a,b
+        type(vector_double), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function vvv2_eq
+    end function vector_double_eq
 
-    function vvv2_ne(a,b) result (rv)
+    function vector_double_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(FFvvv2), intent(IN) ::a,b
+        type(vector_double), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function vvv2_ne
+    end function vector_double_ne
 
-end module vvv2_mod
+end module vector_double_mod

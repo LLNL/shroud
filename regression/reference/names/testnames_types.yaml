@@ -57,13 +57,51 @@ declarations:
         f_derived_type: FFvvv1
         f_capsule_data_type: SHROUD_vector_capsule
         f_to_c: "{f_var}%cxxmem"
-    - type: Vvv2
+    - type: vector_double
       fields:
         base: shadow
         cxx_header: <vector>
         cxx_type: std::vector<double>
-        c_type: TES_vvv2
-        f_module_name: vvv2_mod
-        f_derived_type: FFvvv2
+        c_type: TES_vector_double
+        f_module_name: vector_double_mod
+        f_derived_type: vector_double
         f_capsule_data_type: SHROUD_vector_capsule
         f_to_c: "{f_var}%cxxmem"
+    - type: vector_instantiation3
+      fields:
+        base: shadow
+        cxx_header: <vector>
+        cxx_type: std::vector<internal::ImplWorker1>
+        c_type: TES_vector_instantiation3
+        f_module_name: vector_instantiation3_mod
+        f_derived_type: vector_instantiation3
+        f_capsule_data_type: SHROUD_vector_capsule
+        f_to_c: "{f_var}%cxxmem"
+    - type: vector_instantiation5
+      fields:
+        base: shadow
+        cxx_header: <vector>
+        cxx_type: std::vector<long>
+        c_type: TES_vector_instantiation5
+        f_module_name: vector_instantiation5_mod
+        f_derived_type: vector_instantiation5
+        f_capsule_data_type: SHROUD_vector_capsule
+        f_to_c: "{f_var}%cxxmem"
+  - type: twoTs_0
+    fields:
+      base: shadow
+      cxx_type: twoTs<int, long>
+      c_type: TES_twots_0
+      f_module_name: twots_0_mod
+      f_derived_type: twots_0
+      f_capsule_data_type: SHROUD_twots_capsule
+      f_to_c: "{f_var}%cxxmem"
+  - type: twoTs_instantiation4
+    fields:
+      base: shadow
+      cxx_type: twoTs<float, double>
+      c_type: TES_twots_instantiation4
+      f_module_name: twots_instantiation4_mod
+      f_derived_type: twots_instantiation4
+      f_capsule_data_type: SHROUD_twots_capsule
+      f_to_c: "{f_var}%cxxmem"

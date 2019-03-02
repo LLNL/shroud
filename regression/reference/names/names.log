@@ -7,9 +7,13 @@ Close foo.h
 Close foo.cpp
 class Names2
 Close wrapNames2.cc
-class vector
-class vector
 class ImplWorker1
+class vector
+class vector
+class vector
+class vector
+class twoTs
+class twoTs
 C function void function1()
 C function void function2()
 C function void function3a(int i +intent(in)+value)
@@ -33,7 +37,15 @@ Close wrapfNames2.F
 class vector
 Close wrapfVvv1.F
 class vector
-Close wrapfVvv2.F
+Close wrapfvector_double.F
+class vector
+Close wrapfvector_instantiation5.F
+class vector
+Close wrapfvector_instantiation3.F
+class twoTs
+Close wrapftwoTs_0.F
+class twoTs
+Close wrapftwoTs_instantiation4.F
 C-interface, Fortran function void function1()
 C-interface, Fortran function void function2()
 C-interface, Fortran function void function3a(int i +intent(in)+value)
@@ -55,7 +67,15 @@ Close pyNames2type.cpp
 class vector
 Close pyVvv1type.cpp
 class vector
-Close pyVvv2type.cpp
+Close pyvector_doubletype.cpp
+class vector
+Close pyvector_instantiation5type.cpp
+class vector
+Close pyvector_instantiation3type.cpp
+class twoTs
+Close pytwoTs_0type.cpp
+class twoTs
+Close pytwoTs_instantiation4type.cpp
 Python function void function1()
 Python function void function2()
 Python function void function3a(int i +intent(in)+value)

@@ -461,13 +461,49 @@ inittestnames(void)
     PyModule_AddObject(m, "Vvv1", (PyObject *)&PY_Vvv1_Type);
 
 
-    // Vvv2
-    PY_Vvv2_Type.tp_new   = PyType_GenericNew;
-    PY_Vvv2_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Vvv2_Type) < 0)
+    // vector_double
+    PY_vector_double_Type.tp_new   = PyType_GenericNew;
+    PY_vector_double_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_vector_double_Type) < 0)
         return RETVAL;
-    Py_INCREF(&PY_Vvv2_Type);
-    PyModule_AddObject(m, "Vvv2", (PyObject *)&PY_Vvv2_Type);
+    Py_INCREF(&PY_vector_double_Type);
+    PyModule_AddObject(m, "vector_double", (PyObject *)&PY_vector_double_Type);
+
+
+    // vector_instantiation5
+    PY_vector_instantiation5_Type.tp_new   = PyType_GenericNew;
+    PY_vector_instantiation5_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_vector_instantiation5_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_vector_instantiation5_Type);
+    PyModule_AddObject(m, "vector_instantiation5", (PyObject *)&PY_vector_instantiation5_Type);
+
+
+    // vector_instantiation3
+    PY_vector_instantiation3_Type.tp_new   = PyType_GenericNew;
+    PY_vector_instantiation3_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_vector_instantiation3_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_vector_instantiation3_Type);
+    PyModule_AddObject(m, "vector_instantiation3", (PyObject *)&PY_vector_instantiation3_Type);
+
+
+    // twoTs_0
+    PY_twoTs_0_Type.tp_new   = PyType_GenericNew;
+    PY_twoTs_0_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_twoTs_0_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_twoTs_0_Type);
+    PyModule_AddObject(m, "twoTs_0", (PyObject *)&PY_twoTs_0_Type);
+
+
+    // twoTs_instantiation4
+    PY_twoTs_instantiation4_Type.tp_new   = PyType_GenericNew;
+    PY_twoTs_instantiation4_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_twoTs_instantiation4_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_twoTs_instantiation4_Type);
+    PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
 
 
     // enumeration Color

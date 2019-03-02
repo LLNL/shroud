@@ -487,15 +487,21 @@ class GenFunctions(object):
                     # If single template argument, use its name; else sequence.
                     # XXX - maybe change to names
                     #   i.e.  _int_double  However <std::string,int> is a problem.
-                    if len(targs.asts) == 1:
-                        class_suffix = targs.asts[0].typemap.name
+                    if targs.fmtdict and 'template_suffix' in targs.fmtdict:
+                        class_suffix = targs.fmtdict['template_suffix']
+                    elif len(targs.asts) == 1:
+                        ntypemap = targs.asts[0].typemap
+                        if ntypemap.template_suffix:
+                            class_suffix = ntypemap.template_suffix
+                        else:
+                            class_suffix = "_" + ntypemap.flat_name
                     else:
-                        class_suffix = str(i)
+                        class_suffix = "_" + str(i)
 
                     # Update name of class.
                     #  cxx_class - vector_0 or vector_int     (Fortran and C names)
                     #  cxx_type  - vector<int>
-                    cxx_class = "{}_{}".format(
+                    cxx_class = "{}{}".format(
                         newcls.fmtdict.cxx_class, class_suffix
                     )
                     cxx_type = "{}{}".format(
