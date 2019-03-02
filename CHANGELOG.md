@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Added format dictionary field template_suffix.
+
 ## v0.10.1 - 2018-08-07
 ### Fixed
 - Add a capsule derived type for each class to match the C struct.
