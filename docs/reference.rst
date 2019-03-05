@@ -394,7 +394,7 @@ F_module_name_library_template
     ``{library_lower}_mod``
 
 F_name_function_template
-    ``{underscore_name}{function_suffix}{template_suffix}{template_suffix}``
+    ``{underscore_name}{function_suffix}{template_suffix}``
 
 LUA_class_reg_template
     Name of `luaL_Reg` array of function names for a class.
