@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added format dictionary field template_suffix.
 
 ### Fixed
-- C++ function arguments which passing a class by value.
+- C++ function arguments which pass a class by value.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed
