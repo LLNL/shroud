@@ -1644,7 +1644,9 @@ return 1;""",
         if node and node.options.debug:
             self.PyMethodBody.append("// " + node.declgen)
         self._create_splicer(
-            fmt.underscore_name + fmt.function_suffix,
+            fmt.underscore_name +
+            fmt.function_suffix +
+            fmt.template_suffix,
             self.PyMethodBody,
             PY_impl,
         )
@@ -1654,7 +1656,7 @@ return 1;""",
             # default name
             append_format(
                 self.PyMethodDef,
-                '{{"{function_name}{function_suffix}",\t '
+                '{{"{function_name}{function_suffix}{template_suffix}",\t '
                 "(PyCFunction){PY_name_impl},\t "
                 "{PY_ml_flags},\t "
                 "{PY_name_impl}__doc__}},",
@@ -1837,6 +1839,7 @@ return 1;""",
             fmt_func = node.fmtdict
             fmt = util.Scope(fmt_func)
             fmt.function_suffix = ""
+            fmt.template_suffix = ""
             fmt.PY_doc_string = "documentation"
             fmt.PY_ml_flags = "METH_VARARGS|METH_KEYWORDS"
             fmt.PY_used_param_self = True
@@ -2196,6 +2199,7 @@ cpp_boilerplate = """
 #endif
 
 #if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
 #define PyInt_FromLong PyLong_FromLong
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize

@@ -1,4 +1,6 @@
-# test template options
+# test names options
+# These tests are not compiled.
+# Various format combinations are tested.
 
 copyright:
 - '#######################################################################'
@@ -113,6 +115,82 @@ declarations:
   declarations:
   - decl: void init_ns1()
 
+########################################
+# Copied from templates.yaml
+# Test class.format.template_suffix
+- decl: namespace internal
+  declarations:
+# Class which is used to instantiate the C++ template.
+# It is not part of the Fortran API.
+  - decl: class ImplWorker1
+    format:
+      template_suffix: _instantiation3
+    options:
+      wrap_fortran: false
+      wrap_python: false
+
+
+
+# Function with multiple template arguments.
+# Copied from templates.yaml, test replacing generated names
+- decl: template<T,U> void FunctionTU(T arg1, U arg2)
+  doxygen:
+     brief: Function template with two template parameters.
+  cxx_template:
+  - instantiation: <int, long>
+    format:
+      C_name: c_name_instantiation1
+      F_C_name: f_c_name_instantiation1
+      F_name_impl: f_name_instantiation1
+      PY_name_impl: PY_name_instantiation1
+  - instantiation: <float, double>
+    format:
+      template_suffix: _instantiation2
+
+# Class with single template argument.
+# Copied from templates.yaml.
+- decl: namespace std
+  declarations:
+  - decl: template<typename T> class vector
+    # std::vector class
+    cxx_header: <vector>
+    cxx_template:
+    - instantiation: <int>
+      format:
+        # Explicit class name.
+        # XXX - Necessary to specify lower and upper.
+        cxx_class: Vvv1
+        class_lower: vvv1
+        class_upper: VVV1
+        class_scope: 'VvV1::'
+        F_derived_name: FFvvv1
+    - instantiation: <double>
+      # Based on template typename.   vector_double
+    - instantiation: <long>
+      # Explicit template_suffix.     vector_instantiation5
+      format:
+        template_suffix: _instantiation5
+    - instantiation: <internal::ImplWorker1>
+      # Use template_suffix from internal::ImplWorker.  vector_instantiation3
+
+# Class with multiple template arguments.
+- decl: template<typename T1, typename T2> class twoTs
+  cxx_template:
+  - instantiation: <int, long>
+    # template_suffix will be sequence number
+  - instantiation: <float, double>
+    format:
+      template_suffix: _instantiation4
+
+########################################
+# Copied from templates.yaml
+- decl: template<typename T> int UseImplWorker()
+  doxygen:
+     brief: Function which uses a templated T in the implemetation.
+  cxx_template:
+  - instantiation: <internal::ImplWorker1>
+
+########################################
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.
 splicer_code:

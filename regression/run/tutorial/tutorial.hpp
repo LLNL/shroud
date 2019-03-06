@@ -112,6 +112,7 @@ public:
 // Note that this function has the same name as a function in Class1
 Class1::DIRECTION directionFunc(Class1::DIRECTION arg);
 
+void passClassByValue(Class1 arg);
 int useclass(const Class1 *arg);
 void getclass(const Class1 **arg);
 const Class1 * getclass2();
@@ -129,6 +130,8 @@ double acceptStructInPtr(struct1 *arg);
 void acceptStructOutPtr(struct1 *arg, int i, double d);
 void acceptStructInOutPtr(struct1 *arg);
 
+void set_global_flag(int arg);
+int get_global_flag();
 const std::string& LastFunctionCalled();
 
 } /* end namespace tutorial */

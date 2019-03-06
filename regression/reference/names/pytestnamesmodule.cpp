@@ -26,6 +26,7 @@
 #endif
 
 #if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
 #define PyInt_FromLong PyLong_FromLong
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
@@ -182,6 +183,87 @@ PY_init_ns1(
 // splicer end function.init_ns1
 }
 
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
+static PyObject *
+PY_name_instantiation1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+// splicer begin function.function_tu_0
+    int arg1;
+    long arg2;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "il:FunctionTU",
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+        return NULL;
+
+    FunctionTU(arg1, arg2);
+    Py_RETURN_NONE;
+// splicer end function.function_tu_0
+}
+
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
+static PyObject *
+PY_FunctionTU_instantiation2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+// splicer begin function.function_tu_instantiation2
+    float arg1;
+    double arg2;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        "arg2",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "fd:FunctionTU",
+        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+        return NULL;
+
+    FunctionTU(arg1, arg2);
+    Py_RETURN_NONE;
+// splicer end function.function_tu_instantiation2
+}
+
+static char PY_UseImplWorker_instantiation3__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Function which uses a templated T in the implemetation.
+ *
+ */
+static PyObject *
+PY_UseImplWorker_instantiation3(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int UseImplWorker()
+// splicer begin function.use_impl_worker_instantiation3
+    int SHC_rv = UseImplWorker();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.use_impl_worker_instantiation3
+}
+
 static char PY_function3a__doc__[] =
 "documentation"
 ;
@@ -219,6 +301,44 @@ PY_function3a(
     return NULL;
 // splicer end function.function3a
 }
+
+static char PY_FunctionTU__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_FunctionTU(
+  PyObject *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.function_tu
+    Py_ssize_t SHT_nargs = 0;
+    if (args != NULL) SHT_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SHT_nargs += PyDict_Size(args);
+    PyObject *rvobj;
+    if (SHT_nargs == 2) {
+        rvobj = PY_name_instantiation1(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    if (SHT_nargs == 2) {
+        rvobj = PY_FunctionTU_instantiation2(self, args, kwds);
+        if (!PyErr_Occurred()) {
+            return rvobj;
+        } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
+            return rvobj;
+        }
+        PyErr_Clear();
+    }
+    PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
+    return NULL;
+// splicer end function.function_tu
+}
 static PyMethodDef PY_methods[] = {
 {"function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
@@ -228,8 +348,13 @@ static PyMethodDef PY_methods[] = {
     PY_function4__doc__},
 {"fiveplus", (PyCFunction)PY_fiveplus, METH_NOARGS, PY_fiveplus__doc__},
 {"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},
+{"UseImplWorker_instantiation3",
+    (PyCFunction)PY_UseImplWorker_instantiation3, METH_NOARGS,
+    PY_UseImplWorker_instantiation3__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
     PY_function3a__doc__},
+{"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
+    PY_FunctionTU__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
@@ -325,6 +450,60 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_Names2_Type);
     PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
+
+
+    // Vvv1
+    PY_Vvv1_Type.tp_new   = PyType_GenericNew;
+    PY_Vvv1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Vvv1_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Vvv1_Type);
+    PyModule_AddObject(m, "Vvv1", (PyObject *)&PY_Vvv1_Type);
+
+
+    // vector_double
+    PY_vector_double_Type.tp_new   = PyType_GenericNew;
+    PY_vector_double_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_vector_double_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_vector_double_Type);
+    PyModule_AddObject(m, "vector_double", (PyObject *)&PY_vector_double_Type);
+
+
+    // vector_instantiation5
+    PY_vector_instantiation5_Type.tp_new   = PyType_GenericNew;
+    PY_vector_instantiation5_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_vector_instantiation5_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_vector_instantiation5_Type);
+    PyModule_AddObject(m, "vector_instantiation5", (PyObject *)&PY_vector_instantiation5_Type);
+
+
+    // vector_instantiation3
+    PY_vector_instantiation3_Type.tp_new   = PyType_GenericNew;
+    PY_vector_instantiation3_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_vector_instantiation3_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_vector_instantiation3_Type);
+    PyModule_AddObject(m, "vector_instantiation3", (PyObject *)&PY_vector_instantiation3_Type);
+
+
+    // twoTs_0
+    PY_twoTs_0_Type.tp_new   = PyType_GenericNew;
+    PY_twoTs_0_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_twoTs_0_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_twoTs_0_Type);
+    PyModule_AddObject(m, "twoTs_0", (PyObject *)&PY_twoTs_0_Type);
+
+
+    // twoTs_instantiation4
+    PY_twoTs_instantiation4_Type.tp_new   = PyType_GenericNew;
+    PY_twoTs_instantiation4_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_twoTs_instantiation4_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_twoTs_instantiation4_Type);
+    PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
 
 
     // enumeration Color

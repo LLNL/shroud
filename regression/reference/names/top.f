@@ -89,9 +89,38 @@ module top_module
             implicit none
         end subroutine c_init_ns1
 
+        subroutine f_c_name_instantiation1(arg1, arg2) &
+                bind(C, name="c_name_instantiation1")
+            use iso_c_binding, only : C_INT, C_LONG
+            implicit none
+            integer(C_INT), value, intent(IN) :: arg1
+            integer(C_LONG), value, intent(IN) :: arg2
+        end subroutine f_c_name_instantiation1
+
+        subroutine c_function_tu_instantiation2(arg1, arg2) &
+                bind(C, name="TES_function_tu_instantiation2")
+            use iso_c_binding, only : C_DOUBLE, C_FLOAT
+            implicit none
+            real(C_FLOAT), value, intent(IN) :: arg1
+            real(C_DOUBLE), value, intent(IN) :: arg2
+        end subroutine c_function_tu_instantiation2
+
+        function c_use_impl_worker_instantiation3() &
+                result(SHT_rv) &
+                bind(C, name="TES_use_impl_worker_instantiation3")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: SHT_rv
+        end function c_use_impl_worker_instantiation3
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
+
+    interface function_tu
+        module procedure f_name_instantiation1
+        module procedure function_tu_instantiation2
+    end interface function_tu
 
     interface generic3
         module procedure F_name_function3a_int
@@ -158,6 +187,51 @@ contains
         call c_init_ns1()
         ! splicer end function.init_ns1
     end subroutine testnames_init_ns1
+
+    ! void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+    ! cxx_template
+    !>
+    !! \brief Function template with two template parameters.
+    !!
+    !<
+    subroutine f_name_instantiation1(arg1, arg2)
+        use iso_c_binding, only : C_INT, C_LONG
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_LONG), value, intent(IN) :: arg2
+        ! splicer begin function.function_tu_0
+        call f_c_name_instantiation1(arg1, arg2)
+        ! splicer end function.function_tu_0
+    end subroutine f_name_instantiation1
+
+    ! void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+    ! cxx_template
+    !>
+    !! \brief Function template with two template parameters.
+    !!
+    !<
+    subroutine function_tu_instantiation2(arg1, arg2)
+        use iso_c_binding, only : C_DOUBLE, C_FLOAT
+        real(C_FLOAT), value, intent(IN) :: arg1
+        real(C_DOUBLE), value, intent(IN) :: arg2
+        ! splicer begin function.function_tu_instantiation2
+        call c_function_tu_instantiation2(arg1, arg2)
+        ! splicer end function.function_tu_instantiation2
+    end subroutine function_tu_instantiation2
+
+    ! int UseImplWorker()
+    ! cxx_template
+    !>
+    !! \brief Function which uses a templated T in the implemetation.
+    !!
+    !<
+    function use_impl_worker_instantiation3() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.use_impl_worker_instantiation3
+        SHT_rv = c_use_impl_worker_instantiation3()
+        ! splicer end function.use_impl_worker_instantiation3
+    end function use_impl_worker_instantiation3
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

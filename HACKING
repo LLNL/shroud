@@ -65,3 +65,13 @@ ast.py LibraryNode.create_std_names()
 
 declast.py  get_canonical_typemap()
   Convert 'long int' into 'long'
+
+
+debugging
+---------
+
+```
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint( dict or tuple )
+```

@@ -528,6 +528,26 @@ static int l_direction_func(lua_State *L)
     // splicer end function.directionFunc
 }
 
+// void set_global_flag(int arg +intent(in)+value)
+static int l_set_global_flag(lua_State *L)
+{
+    // splicer begin function.set_global_flag
+    int arg = lua_tointeger(L, 1);
+    tutorial::set_global_flag(arg);
+    return 0;
+    // splicer end function.set_global_flag
+}
+
+// int get_global_flag()
+static int l_get_global_flag(lua_State *L)
+{
+    // splicer begin function.get_global_flag
+    int SHCXX_rv = tutorial::get_global_flag();
+    lua_pushinteger(L, SHCXX_rv);
+    return 1;
+    // splicer end function.get_global_flag
+}
+
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 static int l_last_function_called(lua_State *L)
 {
@@ -560,6 +580,8 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"enumfunc", l_enumfunc},
     {"colorfunc", l_colorfunc},
     {"directionFunc", l_direction_func},
+    {"set_global_flag", l_set_global_flag},
+    {"get_global_flag", l_get_global_flag},
     {"LastFunctionCalled", l_last_function_called},
     // splicer begin register
     // splicer end register

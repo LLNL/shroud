@@ -48,6 +48,7 @@ MPI_Comm: !!python/object:shroud.typemap.Typemap
   name: MPI_Comm
   py_statements: &id005 {}
   result_as_arg: null
+  template_suffix: null
   typedef: null
 bool: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_toboolean({LUA_state_var}, {LUA_index})
@@ -126,6 +127,7 @@ bool: !!python/object:shroud.typemap.Typemap
       post_call:
       - '{PyObject} * {py_var} = PyBool_FromLong({c_var});'
   result_as_arg: null
+  template_suffix: null
   typedef: null
 char: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
@@ -237,6 +239,7 @@ char: !!python/object:shroud.typemap.Typemap
   name: char
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 char_scalar: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
@@ -297,6 +300,7 @@ char_scalar: !!python/object:shroud.typemap.Typemap
   name: char_scalar
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 charout: !!python/object:shroud.typemap.Typemap
   LUA_pop: POP
@@ -372,6 +376,7 @@ charout: !!python/object:shroud.typemap.Typemap
   name: charout
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 double: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
@@ -423,6 +428,7 @@ double: !!python/object:shroud.typemap.Typemap
   name: double
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 float: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
@@ -474,6 +480,7 @@ float: !!python/object:shroud.typemap.Typemap
   name: float
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 int: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -525,6 +532,7 @@ int: !!python/object:shroud.typemap.Typemap
   name: int
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 int16_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -576,6 +584,7 @@ int16_t: !!python/object:shroud.typemap.Typemap
   name: int16_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 int32_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -627,6 +636,7 @@ int32_t: !!python/object:shroud.typemap.Typemap
   name: int32_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 int64_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -678,6 +688,7 @@ int64_t: !!python/object:shroud.typemap.Typemap
   name: int64_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 int8_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -729,6 +740,7 @@ int8_t: !!python/object:shroud.typemap.Typemap
   name: int8_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 long: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -780,6 +792,7 @@ long: !!python/object:shroud.typemap.Typemap
   name: long
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 long_long: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -831,6 +844,7 @@ long_long: !!python/object:shroud.typemap.Typemap
   name: long_long
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 short: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -882,6 +896,7 @@ short: !!python/object:shroud.typemap.Typemap
   name: short
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 size_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -933,6 +948,7 @@ size_t: !!python/object:shroud.typemap.Typemap
   name: size_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 std::string: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
@@ -1059,6 +1075,7 @@ std::string: !!python/object:shroud.typemap.Typemap
       post_parse:
       - '{c_const}std::string {cxx_var};'
   result_as_arg: null
+  template_suffix: null
   typedef: null
 std::vector: !!python/object:shroud.typemap.Typemap
   LUA_pop: POP
@@ -1253,6 +1270,7 @@ std::vector: !!python/object:shroud.typemap.Typemap
   name: std::vector
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 stringout: !!python/object:shroud.typemap.Typemap
   LUA_pop: POP
@@ -1333,6 +1351,7 @@ stringout: !!python/object:shroud.typemap.Typemap
   name: stringout
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 uint16_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1384,6 +1403,7 @@ uint16_t: !!python/object:shroud.typemap.Typemap
   name: uint16_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 uint32_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1435,6 +1455,7 @@ uint32_t: !!python/object:shroud.typemap.Typemap
   name: uint32_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 uint64_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1486,6 +1507,7 @@ uint64_t: !!python/object:shroud.typemap.Typemap
   name: uint64_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 uint8_t: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1537,6 +1559,7 @@ uint8_t: !!python/object:shroud.typemap.Typemap
   name: uint8_t
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 unsigned_int: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1588,6 +1611,7 @@ unsigned_int: !!python/object:shroud.typemap.Typemap
   name: unsigned_int
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 unsigned_long: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1639,6 +1663,7 @@ unsigned_long: !!python/object:shroud.typemap.Typemap
   name: unsigned_long
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 unsigned_long_long: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1690,6 +1715,7 @@ unsigned_long_long: !!python/object:shroud.typemap.Typemap
   name: unsigned_long_long
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 unsigned_short: !!python/object:shroud.typemap.Typemap
   LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
@@ -1741,6 +1767,7 @@ unsigned_short: !!python/object:shroud.typemap.Typemap
   name: unsigned_short
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null
 void: !!python/object:shroud.typemap.Typemap
   LUA_pop: POP
@@ -1792,4 +1819,5 @@ void: !!python/object:shroud.typemap.Typemap
   name: void
   py_statements: *id005
   result_as_arg: null
+  template_suffix: null
   typedef: null

@@ -7,6 +7,13 @@ Close foo.h
 Close foo.cpp
 class Names2
 Close wrapNames2.cc
+class ImplWorker1
+class vector
+class vector
+class vector
+class vector
+class twoTs
+class twoTs
 C function void function1()
 C function void function2()
 C function void function3a(int i +intent(in)+value)
@@ -15,6 +22,9 @@ C function int function4(const std::string & rv +intent(in))
 C function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
 C function void function5() +name(fiveplus)
 C function void init_ns1()
+C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C function int UseImplWorker()
 Close top.h
 Close top.cpp
 Close typestestnames.hh
@@ -24,6 +34,18 @@ C-interface, Fortran method void method2()
 Close foo.f
 class Names2
 Close wrapfNames2.F
+class vector
+Close wrapfVvv1.F
+class vector
+Close wrapfvector_double.F
+class vector
+Close wrapfvector_instantiation5.F
+class vector
+Close wrapfvector_instantiation3.F
+class twoTs
+Close wrapftwoTs_0.F
+class twoTs
+Close wrapftwoTs_instantiation4.F
 C-interface, Fortran function void function1()
 C-interface, Fortran function void function2()
 C-interface, Fortran function void function3a(int i +intent(in)+value)
@@ -32,6 +54,9 @@ C-interface, Fortran function int function4(const std::string & rv +intent(in))
 C-interface function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
 C-interface, Fortran function void function5() +name(fiveplus)
 C-interface, Fortran function void init_ns1()
+C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C-interface, Fortran function int UseImplWorker()
 Close top.f
 class Names
 Python method void method1()
@@ -39,6 +64,18 @@ Python method void method2()
 Close pyNamestype.cpp
 class Names2
 Close pyNames2type.cpp
+class vector
+Close pyVvv1type.cpp
+class vector
+Close pyvector_doubletype.cpp
+class vector
+Close pyvector_instantiation5type.cpp
+class vector
+Close pyvector_instantiation3type.cpp
+class twoTs
+Close pytwoTs_0type.cpp
+class twoTs
+Close pytwoTs_instantiation4type.cpp
 Python function void function1()
 Python function void function2()
 Python function void function3a(int i +intent(in)+value)
@@ -46,6 +83,9 @@ Python function void function3a(long i +intent(in)+value)
 Python function int function4(const std::string & rv +intent(in))
 Python function void function5() +name(fiveplus)
 Python function void init_ns1()
+Python function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+Python function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Python function int UseImplWorker()
 Close pytestnameshelper.cpp
 Close pytestnamesmodule.hpp
 Close pytestnamesmodule.cpp

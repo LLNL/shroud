@@ -6,6 +6,9 @@
 library: templates
 cxx_header: templates.hpp
 
+options:
+  wrap_python: True
+
 declarations:
 - decl: namespace std
   declarations:
@@ -39,7 +42,7 @@ declarations:
 
 - decl: namespace internal
   declarations:
-# Class which is used to instantiate the C++ template
+# Class which is used to instantiate the C++ template.
 # It is not part of the Fortran API.
   - decl: class ImplWorker1
     options:

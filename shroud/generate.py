@@ -487,21 +487,28 @@ class GenFunctions(object):
                     # If single template argument, use its name; else sequence.
                     # XXX - maybe change to names
                     #   i.e.  _int_double  However <std::string,int> is a problem.
-                    if len(targs.asts) == 1:
-                        class_suffix = targs.asts[0].typemap.name
+                    if targs.fmtdict and 'template_suffix' in targs.fmtdict:
+                        class_suffix = targs.fmtdict['template_suffix']
+                    elif len(targs.asts) == 1:
+                        ntypemap = targs.asts[0].typemap
+                        if ntypemap.template_suffix:
+                            class_suffix = ntypemap.template_suffix
+                        else:
+                            class_suffix = "_" + ntypemap.flat_name
                     else:
-                        class_suffix = str(i)
+                        class_suffix = "_" + str(i)
 
                     # Update name of class.
                     #  cxx_class - vector_0 or vector_int     (Fortran and C names)
                     #  cxx_type  - vector<int>
-                    cxx_class = "{}_{}".format(
+                    cxx_class = "{}{}".format(
                         newcls.fmtdict.cxx_class, class_suffix
                     )
                     cxx_type = "{}{}".format(
                         newcls.fmtdict.cxx_class, targs.instantiation
                     )
 
+                    # Add default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(
                             cxx_type=cxx_type,
@@ -512,6 +519,9 @@ class GenFunctions(object):
                             F_derived_name=cxx_class.lower(),
                         )
                     )
+                    # Add user specified values to format dictionary.
+                    if targs.fmtdict:
+                        newcls.fmtdict.update(targs.fmtdict)
 
                     # Remove defaulted attributes, load files from fmtdict, recompute defaults
                     newcls.delete_format_templates()
@@ -642,6 +652,8 @@ class GenFunctions(object):
           cxx_template:
           - instantiation: <int>
           - instantiation: <double>
+            format:
+              template_suffix: dbl
 
         node.template_arguments = [ TemplateArgument('<int>'), TemplateArgument('<double>')]
                  TemplateArgument.asts[i].typemap
@@ -660,17 +672,25 @@ class GenFunctions(object):
             self.append_function_index(new)
 
             new._generated = "cxx_template"
-            fmt = new.fmtdict
 
-            # If single template argument, use its name; else sequence.
-            # XXX - maybe change to names
-            #  i.e.  _int_double  However <std::string,int> is a problem.
-            if len(targs.asts) == 1:
-                fmt.function_suffix = (
-                    fmt.function_suffix + "_" + targs.asts[0].typemap.flat_name
-                )
+            fmt = new.fmtdict
+            if targs.fmtdict:
+                fmt.update(targs.fmtdict)
+
+            # Use explicit template_suffix if provide.
+            # If single template argument, use type's explicit_suffix
+            # or the unqualified flat_name.
+            # Multiple template arguments, use sequence number.
+            if fmt.template_suffix:
+                pass
+            elif len(targs.asts) == 1:
+                ntypemap = targs.asts[0].typemap
+                if ntypemap.template_suffix:
+                    fmt.template_suffix = ntypemap.template_suffix
+                else:
+                    fmt.template_suffix = "_" + ntypemap.flat_name
             else:
-                fmt.function_suffix = fmt.function_suffix + "_" + str(iargs)
+                fmt.template_suffix = "_" + str(iargs)
 
             new.cxx_template = {}
             options = new.options

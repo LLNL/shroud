@@ -218,6 +218,15 @@ void getMinMax(int &min, int &max)
   max = 100;
 }
 
+// Save arg flag value in global flag.
+// Used by test drive to make sure arg was passed correctly.
+void passClassByValue(Class1 arg)
+{
+    last_function_called = "passClassByValue";
+    global_flag = arg.m_test;
+    return;
+}
+
 int useclass(const Class1 *arg)
 {
     last_function_called = "useclass";
@@ -360,6 +369,16 @@ void acceptStructInOutPtr(struct1 *arg)
 }
 
 //----------------------------------------------------------------------
+
+void set_global_flag(int arg)
+{
+  global_flag = arg;
+}
+
+int get_global_flag()
+{
+  return global_flag;
+}
 
 const std::string& LastFunctionCalled()
 {

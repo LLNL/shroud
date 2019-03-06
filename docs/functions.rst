@@ -31,12 +31,16 @@ into a single file using the *F_module_per_class* option
 since Fortran does not support the idea of forward reference.
 
 Each Fortran file will only contain one module to make it easier to
-create makefile dependencies using pattern rules::
+create makefile dependencies using pattern rules:
+
+.. code-block:: makefile
 
     %.o %.mod : %.f
 
 File names for the header and implementation files can be set
-explicitly by setting variables in the format of the global or class scope::
+explicitly by setting variables in the format of the global or class scope:
+
+.. code-block:: yaml
 
     format:
       C_header_filename: top.h
@@ -54,7 +58,9 @@ explicitly by setting variables in the format of the global or class scope::
 The default file names are controlled by global options.
 The option values can be changed to avoid setting the name for 
 each class file explicitly.
-It's also possible to change just the suffix of files::
+It's also possible to change just the suffix of files:
+
+.. code-block:: yaml
 
     options:
         YAML_type_filename_template: {library_lower}_types.yaml
@@ -83,14 +89,18 @@ to control how the names are generated on a global scale.  Many names
 may also be explicitly specified by a field.
 
 For example, a library has an ``initialize`` function which is
-in a namespace.  In C++ it is called as::
+in a namespace.  In C++ it is called as:
+
+.. code-block:: c++
 
   #include "library.hpp"
 
   library::initialize()
 
 By default this will be a function in a Fortran module and 
-can be called as::
+can be called as:
+
+.. code-block:: fortran
 
   use library
 
@@ -99,7 +109,9 @@ can be called as::
 Since ``initialize`` is a rather common name for a function, it may 
 be desirable to rename the Fortran wrapper to something more specific.
 The name of the Fortran implementation wrapper can be changed
-by setting *F_name_impl*::
+by setting *F_name_impl*:
+
+.. code-block:: yaml
 
     library: library
 
@@ -110,7 +122,9 @@ by setting *F_name_impl*::
         format:
           F_name_impl: library_initialize
 
-To rename all functions, set the template in the toplevel *options*::     
+To rename all functions, set the template in the toplevel *options*:
+
+.. code-block:: yaml
 
     library: library
 
@@ -122,6 +136,85 @@ To rename all functions, set the template in the toplevel *options*::
       declarations:
       - decl: void initialize
 
+C++ allows allows overloaded functions and will mangle the names
+behind the scenes.  With Fortran, the mangling must be explicit. To
+accomplish this Shroud uses the *function_suffix* format string.  By
+default, Shroud will use a sequence number.  By explicitly setting
+*function_suffix*, a more meaningful name can be provided:
+
+.. example from tutorial.yaml
+.. code-block:: yaml
+
+  - decl: void Function6(const std::string& name)
+    format:
+      function_suffix: _from_name
+  - decl: void Function6(int indx)
+    format:
+      function_suffix: _from_index
+
+This will create the Fortran functions ``function6_from_name`` and
+``function6_from_index``.  A generic interface named ``function6``
+will also be created which will include the two generated functions.
+
+Likewise, default arguments will produce several Fortran wrappers and
+a generic interface for a single C++ function. The format dictionary
+only allows for a single *function_default* per function.  Instead the
+field *default_arg_suffix* can be set.  It contains a list of
+*function_suffix* values which will be applied from the minimum to the
+maximum number of arguments:
+
+.. example from tutorial.yaml
+.. code-block:: yaml
+
+  - decl: int overload1(int num,
+            int offset = 0, int stride = 1)
+    default_arg_suffix:
+    - _num
+    - _num_offset
+    - _num_offset_stride
+
+Finally, multiple Fortran wrappers can be generated from a single
+templated function. Each instantiation will generate an additional
+Fortran Wrapper and can be distinguished by the *template_suffix*
+entry of the format dictionary.
+
+If there is a single template argument, then *template_suffix* will be
+set to the *flat_name* field of the instantiated argument.  For
+example, ``<int>`` defaults to ``_int``.  This works well for POD types.
+The entire qualified name is used.  For ``<std::string>`` this would be
+``std_string``.  Classes which are deeply nested can produce very long
+values for *template_suffix*. To deal with this, the
+*function_template* field can be set on Class declarations:
+
+.. code-block:: yaml
+
+    - decl: namespace internal
+      declarations:
+      - decl: class ImplWorker1
+        format:
+          template_suffix: instantiation3
+
+By default ``internal_implworker1`` would be used for the
+*template_suffix*.  But in this case ``instantiation3`` will be used.
+
+For multiple template arguments, *template_suffix* defaults to a
+sequence number to avoid long function names.  In this case,
+specifying an explicit *template_suffix* can produce a more user
+friendly name:
+
+.. code-block:: yaml
+
+    - decl: template<T,U> void FunctionTU(T arg1, U arg2)
+      cxx_template:
+      - instantiation: <int, long>
+        format:
+          template_suffix: instantiation1
+      - instantiation: <float, double>
+        format:
+          template_suffix: instantiation2
+
+The Fortran functions will be named ``function_tu_instantiation1`` and
+ ``function_tu_instantiation2``.
 
 Additional Wrapper Functions
 ----------------------------

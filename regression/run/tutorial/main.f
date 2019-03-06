@@ -336,7 +336,16 @@ contains
     direction = direction_func(class1_direction_left)
     call assert_equals(class1_direction_right, direction, "directionFunc")
 
+    ! Since obj0 is passed by value, save flag in global_flag
+    
+    call set_global_flag(0)
+    call obj0%set_test(13)
+    call pass_class_by_value(obj0)
+    iflag = get_global_flag()
+    call assert_equals(iflag, 13, "passClassByValue")
+
     ! use class assigns global_class1 returned by getclass
+    call obj0%set_test(0)
     iflag = useclass(obj0)
     call assert_equals(iflag, 0, "useclass")
 

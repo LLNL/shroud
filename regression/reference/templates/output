@@ -13,3 +13,11 @@ Wrote wrapfvector_double.f
 Wrote wrapfWorker.f
 Wrote wrapfuser_int.f
 Wrote wrapftemplates.f
+Wrote pyvector_inttype.cpp
+Wrote pyvector_doubletype.cpp
+Wrote pyWorkertype.cpp
+Wrote pyImplWorker1type.cpp
+Wrote pyuser_inttype.cpp
+Wrote pytemplateshelper.cpp
+Wrote pytemplatesmodule.hpp
+Wrote pytemplatesmodule.cpp

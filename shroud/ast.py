@@ -372,7 +372,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{class_prefix}{enum_name}",
             C_enum_member_template="{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}"
+                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -384,15 +384,15 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_var_size_template="S{c_var}",  # argument for result of size(arg)
             # Fortran's names for C functions
             F_C_name_template=(
-                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}"
+                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template=(
                 "{class_prefix}{enum_lower}_{enum_member_lower}"
             ),
             F_name_impl_template=(
-                "{class_prefix}{underscore_name}{function_suffix}"
+                "{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
-            F_name_function_template="{underscore_name}{function_suffix}",
+            F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
             F_name_generic_template="{underscore_name}",
             F_module_name_library_template="{library_lower}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
@@ -431,11 +431,11 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "py{cxx_class}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
-                "{PY_prefix}{class_prefix}{function_name}{function_suffix}"
+                "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}"
             ),
             # names for type methods (tp_init)
             PY_type_impl_template=(
-                "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}"
+                "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}"
             ),
             PY_member_getter_template=(
                 "{PY_prefix}{cxx_class}_{variable_name}_getter"
@@ -523,6 +523,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_pre_call="",
             C_post_call="",
             function_suffix="",  # assume no suffix
+            template_suffix="",  # assume no suffix
             namespace_scope="",
         )
 
@@ -713,9 +714,8 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
 
 class ClassNode(AstNode, NamespaceMixin):
-    """A C++ class.
+    """A C++ class or struct.
 
-    symbols - symbol table of nested symbols.
     """
 
     is_class = True
@@ -778,6 +778,10 @@ class ClassNode(AstNode, NamespaceMixin):
             self.typemap = typemap.create_struct_typemap(self, fields)
         else:
             self.typemap = typemap.create_class_typemap(self, fields)
+        if format and 'template_suffix' in format:
+            # Do not use scope from self.fmtdict, instead only copy value
+            # when in the format dictionary is passed in.
+            self.typemap.template_suffix = format['template_suffix']
 
         # Add template parameters.
         if template_parameters is None:
@@ -1068,6 +1072,7 @@ class FunctionNode(AstNode):
                 args.parse_instantiation(namespace=self)
 
             # XXX - convert to cxx_template format  { T=['int', 'double'] }
+            # XXX - only deals with single template argument  [0]?
             argname = template_parameters.parameters[0].name
             lst = []
             for arg in self.template_arguments:
@@ -1465,7 +1470,7 @@ def add_declarations(parent, node):
             print(subnode)
             raise RuntimeError(
                 "Expected 'block', 'class', 'decl', 'forward', 'namespace' "
-                "or 'typedef' found {}".format(sorted(subnode.keys()))
+                "or 'typedef' found '{}'".format(sorted(subnode.keys()))
             )
 
 

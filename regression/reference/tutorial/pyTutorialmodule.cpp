@@ -29,6 +29,7 @@
 #endif
 
 #if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
 #define PyInt_FromLong PyLong_FromLong
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
@@ -819,6 +820,39 @@ PY_directionFunc(
 // splicer end function.direction_func
 }
 
+static char PY_passClassByValue__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Pass arguments to a function.
+ *
+ */
+static PyObject *
+PY_passClassByValue(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void passClassByValue(Class1 arg +intent(in)+value)
+// splicer begin function.pass_class_by_value
+    PY_Class1 * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passClassByValue",
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
+        return NULL;
+
+    // post_parse
+    tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+
+    tutorial::passClassByValue(*arg);
+    Py_RETURN_NONE;
+// splicer end function.pass_class_by_value
+}
+
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -829,21 +863,21 @@ PY_useclass(
   PyObject *args,
   PyObject *kwds)
 {
-// int useclass(const Class1 * arg1 +intent(in))
+// int useclass(const Class1 * arg +intent(in))
 // splicer begin function.useclass
-    PY_Class1 * SHPy_arg1;
+    PY_Class1 * SHPy_arg;
     const char *SHT_kwlist[] = {
-        "arg1",
+        "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
-        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg1))
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    const tutorial::Class1 * arg1 = SHPy_arg1 ? SHPy_arg1->obj : NULL;
+    const tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int SHC_rv = tutorial::useclass(arg1);
+    int SHC_rv = tutorial::useclass(arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
@@ -946,6 +980,53 @@ PY_returnStructPtr(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_ptr
+}
+
+static char PY_set_global_flag__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_set_global_flag(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void set_global_flag(int arg +intent(in)+value)
+// splicer begin function.set_global_flag
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:set_global_flag",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return NULL;
+
+    tutorial::set_global_flag(arg);
+    Py_RETURN_NONE;
+// splicer end function.set_global_flag
+}
+
+static char PY_get_global_flag__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_get_global_flag(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// int get_global_flag()
+// splicer begin function.get_global_flag
+    int SHC_rv = tutorial::get_global_flag();
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.get_global_flag
 }
 
 static char PY_LastFunctionCalled__doc__[] =
@@ -1153,6 +1234,8 @@ static PyMethodDef PY_methods[] = {
     PY_getMinMax__doc__},
 {"directionFunc", (PyCFunction)PY_directionFunc,
     METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
+{"passClassByValue", (PyCFunction)PY_passClassByValue,
+    METH_VARARGS|METH_KEYWORDS, PY_passClassByValue__doc__},
 {"useclass", (PyCFunction)PY_useclass, METH_VARARGS|METH_KEYWORDS,
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
@@ -1161,6 +1244,10 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStruct__doc__},
 {"returnStructPtr", (PyCFunction)PY_returnStructPtr,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
+{"set_global_flag", (PyCFunction)PY_set_global_flag,
+    METH_VARARGS|METH_KEYWORDS, PY_set_global_flag__doc__},
+{"get_global_flag", (PyCFunction)PY_get_global_flag, METH_NOARGS,
+    PY_get_global_flag__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
 {"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,

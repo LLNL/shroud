@@ -103,6 +103,45 @@ void TES_init_ns1()
 // splicer end function.init_ns1
 }
 
+// void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
+void c_name_instantiation1(int arg1, long arg2)
+{
+// splicer begin function.function_tu_0
+    FunctionTU<int, long>(arg1, arg2);
+    return;
+// splicer end function.function_tu_0
+}
+
+// void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+/**
+ * \brief Function template with two template parameters.
+ *
+ */
+void TES_function_tu_instantiation2(float arg1, double arg2)
+{
+// splicer begin function.function_tu_instantiation2
+    FunctionTU<float, double>(arg1, arg2);
+    return;
+// splicer end function.function_tu_instantiation2
+}
+
+// int UseImplWorker()
+/**
+ * \brief Function which uses a templated T in the implemetation.
+ *
+ */
+int TES_use_impl_worker_instantiation3()
+{
+// splicer begin function.use_impl_worker_instantiation3
+    int SHC_rv = UseImplWorker<internal::ImplWorker1>();
+    return SHC_rv;
+// splicer end function.use_impl_worker_instantiation3
+}
+
 // Release C++ allocated memory.
 void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap)
 {
