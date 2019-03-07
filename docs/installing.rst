@@ -23,14 +23,18 @@ It requires the module:
   * PyYAML https://pypi.python.org/pypi/PyYAML/3.11
 
 
-After downloading the source::
+After downloading the source:
+
+.. code-block:: sh
 
     python setup.py install
 
 This will create the script *shroud* in the same directory as Python.
 
 Since shroud installs into Python's bin directory, it may be desirable to setup
-a virtual environment to try it out::
+a virtual environment to try it out:
+
+.. code-block:: sh
 
    $ cd my_project_folder
    $ virtualenv my_project
@@ -43,7 +47,9 @@ This version requires the virtual environment to run and
 may be difficult to share with others.
 
 It's possible to create a standalone executable with
-`pex <https://github.com/pantsbuild/pex>`_::
+`pex <https://github.com/pantsbuild/pex>`_:
+
+.. code-block:: sh
 
 	$(pex.root)/bin/pex -f $(dist)
 	  --python-shebang=$(python.root)/bin/python
@@ -63,7 +69,9 @@ Building wrappers with CMake
 ----------------------------
 
 Shroud can produce a CMake macro file with the option ``-cmake``. 
-This option can be incorporated into a CMakefile as::
+This option can be incorporated into a CMakefile as:
+
+.. code-block:: cmake
 
     if(EXISTS ${SHROUD_EXECUTABLE})
         execute_process(COMMAND ${SHROUD_EXECUTABLE}
@@ -76,18 +84,24 @@ This option can be incorporated into a CMakefile as::
         include(${CMAKE_CURRENT_BINARY_DIR}/SetupShroud.cmake)
     endif()
 
-The path to Shroud must be defined to CMake.  It can be defined on the command line as::
+The path to Shroud must be defined to CMake.  It can be defined on the command line as:
+
+.. code-block:: sh
 
     cmake -DSHROUD_EXECUTABLE=/full/path/bin/shroud
 
-The ``add_shroud`` macro can then be used in other ``CMakeLists.txt`` files as::
+The ``add_shroud`` macro can then be used in other ``CMakeLists.txt`` files as:
+
+.. code-block:: cmake
 
     add_shroud(
         YAML_INPUT_FILE      ${YAML_INPUT_FILE}
         C_FORTRAN_OUTPUT_DIR c_fortran
     )
 
-``CMake`` will treat all Fortran files as free format with the command::
+``CMake`` will treat all Fortran files as free format with the command:
+
+.. code-block:: cmake
 
     set(CMAKE_Fortran_FORMAT FREE)
 
@@ -97,7 +111,9 @@ Building Python extensions
 
 ``setup.py`` can be used to build the extension module from the files created by shroud.
 This example is drawn from the ``run/tutorial`` example.  You must provide the paths
-to the input YAML file and the C++ library source files::
+to the input YAML file and the C++ library source files:
+
+.. code-block:: python
 
     import os
     from distutils.core import setup, Extension
@@ -126,7 +142,9 @@ to the input YAML file and the C++ library source files::
         ext_modules=[tutorial],
     )
 
-The directory structure is layed out as::
+The directory structure is layed out as:
+
+.. code-block:: text
 
      tutorial.yaml
      run

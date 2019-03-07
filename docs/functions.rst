@@ -224,7 +224,9 @@ corresponding function in the C++ library.  This may be necessary to
 add functionality which may unnecessary in C++.  For example, a
 library provides a function which returns a string reference to a
 name.  If only the length is desired no extra function is required in
-C++ since the length is extracted used a ``std::string`` method::
+C++ since the length is extracted used a ``std::string`` method:
+
+.. code-block:: c++
 
     ExClass1 obj("name")
     int len = obj.getName().length();
@@ -232,7 +234,9 @@ C++ since the length is extracted used a ``std::string`` method::
 Calling the Fortran ``getName`` wrapper will copy the string into a
 Fortran array but you need the length first to make sure there is
 enough room.  You can create a Fortran wrapper to get the length
-without adding to the C++ library::
+without adding to the C++ library:
+
+.. code-block:: yaml
 
     declarations:
     - decl: class ExClass1
@@ -243,7 +247,9 @@ without adding to the C++ library::
             {C_pre_call}
             return {CXX_this}->getName().length();
 
-The generated C wrapper will use the *C_code* provided for the body::
+The generated C wrapper will use the *C_code* provided for the body:
+
+.. code-block:: c++
 
     int AA_exclass1_get_name_length(const AA_exclass1 * self)
     {
@@ -286,7 +292,9 @@ The library source file will include the global *cxx_header* field.
 Each class source file will include the class *cxx_header* field unless it is blank.
 In that case the global *cxx_header* field will be used.
 
-To include a file in the implementation list it in the global or class options::
+To include a file in the implementation list it in the global or class options:
+
+.. code-block:: yaml
 
     cxx_header: global_header.hpp
 
@@ -309,7 +317,9 @@ which helps map C++ constants to C constants
 Namespace
 ---------
 
-Each library or class can be associated with a namespace::
+Each library or class can be associated with a namespace:
+
+.. code-block:: c++
 
     namespace one {
       namespace two {
@@ -328,7 +338,9 @@ Each library or class can be associated with a namespace::
     class Class3 {
     };
 
-The YAML file would look like::
+The YAML file would look like:
+
+.. code-block:: yaml
 
     declarations:
     - decl: namespace one
@@ -345,7 +357,9 @@ The YAML file would look like::
 If only one set of namespaces are used in a file, the ``namespace``
 field can be used at the global level to avoid excessive indenting.
 For example, if *Class3* was not wrapped then the file could be
-written as::
+written as:
+
+.. code-block:: yaml
 
     namespace: one two
     declarations:
@@ -393,7 +407,9 @@ C Preprocessor
 It is possible to add C preprocessor conditional compilation
 directives to the generated source.  For example, if a function should
 only be wrapped if ``USE_MPI`` is defined the ``cpp_if`` field can be
-used::
+used:
+
+.. code-block:: yaml
 
     - decl: void testmpi(MPI_Comm comm)
       format:
@@ -406,7 +422,9 @@ used::
 
 The function wrappers will be created within ``#ifdef``/``#endif``
 directives.  This includes the C wrapper, the Fortran interface and
-the Fortran wrapper.  The generated Fortran interface will be::
+the Fortran wrapper.  The generated Fortran interface will be:
+
+.. code-block:: fortran
 
         interface testmpi
     #ifdef HAVE_MPI
@@ -418,7 +436,9 @@ the Fortran wrapper.  The generated Fortran interface will be::
         end interface testmpi
 
 Class generic type-bound function will also insert conditional
-compilation directives::
+compilation directives:
+
+.. code-block:: yaml
 
     - decl: class ExClass3
       cpp_if: ifdef USE_CLASS3
@@ -428,7 +448,9 @@ compilation directives::
       - decl: void exfunc(int flag)
         cpp_if: ifndef USE_CLASS3_A
 
-The generated type will be::
+The generated type will be:
+
+.. code-block:: fortran
 
         type exclass3
             type(SHROUD_capsule_data), private :: cxxmem
@@ -448,7 +470,9 @@ the entire class.
 
 Finally, ``cpp_if`` can be used with types. This would be required in
 the first example since ``mpi.h`` should only be included when
-``USE_MPI`` is defined::
+``USE_MPI`` is defined:
+
+.. code-block:: yaml
 
     typemaps:
     - type: MPI_Comm

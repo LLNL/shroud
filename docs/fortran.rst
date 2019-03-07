@@ -29,7 +29,9 @@ with fields to describe the function and its arguments.
 The fields are then expanded into the function wrapper.
 
 The template for Fortran code showing names which may 
-be controlled directly by the input YAML file::
+be controlled directly by the input YAML file:
+
+.. code-block:: text
 
     module {F_module_name}
 
@@ -124,7 +126,9 @@ f_module
 Fortran modules needed for type in the implementation wrapper.  A
 dictionary keyed on the module name with the value being a list of
 symbols.
-Defaults to *None*.::
+Defaults to *None*.:
+
+.. code-block:: yaml
 
     f_module:
        iso_c_binding:
@@ -154,7 +158,9 @@ Argument in Fortran wrapper to call C.
 statements
 ----------
 
-Statements are used to add additional lines of code for each argument::
+Statements are used to add additional lines of code for each argument:
+
+.. code-block:: text
 
       {F_subprogram} {F_name_impl}
         ! arg_f_use
@@ -190,7 +196,9 @@ f_module
 ^^^^^^^^
 
 ``USE`` statements to add to Fortran wrapper.
-A dictionary of list of ``ONLY`` names::
+A dictionary of list of ``ONLY`` names:
+
+.. code-block:: yaml
 
         f_module=dict(iso_c_binding=['C_SIZE_T']),
 
@@ -232,7 +240,9 @@ Predefined Types
 Int
 ^^^
 
-An ``int`` argument is converted to Fortran with the typemap::
+An ``int`` argument is converted to Fortran with the typemap:
+
+.. code-block:: yaml
 
     type: int
     fields:
@@ -289,7 +299,9 @@ to delete the class.  The derived type corresponds to
 *C_capsule_data_type* in the C wrapper.  A derived type is created for
 each class which contains a *F_capsule_data_type*
 member. *F_capsule_data_type* is ``BIND(C)`` which allows it to be
-passed to the C wrapper::
+passed to the C wrapper:
+
+.. code-block:: text
 
     type, bind(C) :: {F_capsule_data_type}
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -317,11 +329,15 @@ members are filled in by the function.  The function will return a
 wrapper function allows it to be used in expressions similar to the
 way that ``strcpy`` returns its destination argument.
 
-For example, the YAML file::
+For example, the YAML file:
+
+.. code-block:: yaml
 
   - decl: const Class1 *getclass2() 
 
-produces the code::
+produces the code:
+
+.. code-block:: text
 
     interface
         function c_getclass2({F_result_capsule}) &
@@ -343,7 +359,9 @@ produces the code::
         {F_result_ptr} = c_getclass2({F_result}%{F_derived_member})
     end function getclass2
 
-The C wrappers appears as::
+The C wrappers appears as:
+
+.. code-block:: c++
 
     TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv)
     {
@@ -372,7 +390,9 @@ the pointer directly.
 
 .. Add methods to *F_capsule_data_type* directly?
 
-Two predicate function are generated to compare derived types::
+Two predicate function are generated to compare derived types:
+
+.. code-block:: text
 
         interface operator (.eq.)
             module procedure class1_eq

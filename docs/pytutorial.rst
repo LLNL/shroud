@@ -26,13 +26,17 @@ required to write if they used the Python C API directly.
 Functions
 ---------
 
-The simplest item to wrap is a function in the file ``tutorial.hpp``::
+The simplest item to wrap is a function in the file ``tutorial.hpp``:
+
+.. code-block:: c++
 
    namespace tutorial {
      void Function1(void);
    }
 
-This is wrapped using a YAML input file ``tutorial.yaml``::
+This is wrapped using a YAML input file ``tutorial.yaml``:
+
+.. code-block:: yaml
 
   library: Tutorial
   cxx_header: tutorial.hpp
@@ -62,7 +66,9 @@ are set to False and **wrap_python** is set to True.  In addition, the **debug**
 option inserts some additional comments into the code that make it clearer 
 where blocks of code are inserted.
 
-Process the file with *Shroud*::
+Process the file with *Shroud*:
+
+.. code-block:: sh
 
     % shroud tutorial.yaml
     Wrote pyClass1type.cpp
@@ -70,7 +76,9 @@ Process the file with *Shroud*::
     Wrote pyTutorialmodule.cpp
     Wrote pyTutorialhelper.cpp
 
-The generated C function in file ``pyTutorialmodule.cpp`` is::
+The generated C function in file ``pyTutorialmodule.cpp`` is:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Function1(
@@ -84,7 +92,9 @@ The generated C function in file ``pyTutorialmodule.cpp`` is::
 
 The wrapper implementation function is named using the format **PY_name_impl**
 which defaults to ``{PY_prefix}{class_prefix}{function_name}{function_suffix}``.
-This can be changed on a global level by resetting the template option::
+This can be changed on a global level by resetting the template option:
+
+.. code-block:: yaml
 
     options:
       PY_name_impl_template: {PY_prefix}{class_prefix}{function_name}{function_suffix}_extra
@@ -92,7 +102,9 @@ This can be changed on a global level by resetting the template option::
 All of the functions in the wrapper are file static exception for the module 
 initialization function. To give them a unique name from the function which
 is being wrapped the prefix **PY_format** is used.  It defaults to ``PY_``
-but can be set to another value::
+but can be set to another value:
+
+.. code-block:: yaml
 
     format:
       PY_prefix: NEW_
@@ -104,7 +116,9 @@ about unused arguments.
 The function uses the macro ``Py_RETURN_NONE`` from the Python API
 to indicate a successful executation that returns no values.
 
-Some additional boiler plate is created for the function::
+Some additional boiler plate is created for the function:
+
+.. code-block:: c++
 
     static PyMethodDef PY_methods[] = {
         {"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
@@ -112,7 +126,9 @@ Some additional boiler plate is created for the function::
         {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
     };
 
-Finally the module creation function is added at the end of the file::
+Finally the module creation function is added at the end of the file:
+
+.. code-block:: c++
 
     extern "C" PyMODINIT_FUNC
     #ifdef PY_MAJOR_VERSION >= 3
@@ -157,21 +173,27 @@ Integer and Real
 ^^^^^^^^^^^^^^^^
 
 Arguments are parsed using ``PyArg_ParseTupleAndKeywords``
-To wrap ``Function2``::
+To wrap ``Function2``:
+
+.. code-block:: c++
 
     double Function2(double arg1, int arg2)
     {
         return arg1 + arg2;
     }
 
-Add the declaration to the YAML file::
+Add the declaration to the YAML file:
+
+.. code-block:: yaml
 
     declarations:
     - decl: double Function2(double arg1, int arg2)
 
 Local variables are created for the argument values.
 There values are filled in by ``PyArg_ParseTupleAndKeywords``.
-The generated function is::
+The generated function is:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Function2(
@@ -210,19 +232,25 @@ until version 3.3. To deal with older versions of Python a ``PyObject``
 is taken from the arguments then converted into a bool 
 with ``PyObject_IsTrue`` during the *pre_call* phase.
 
-A simple C++ function which accepts and returns a ``bool`` argument::
+A simple C++ function which accepts and returns a ``bool`` argument:
+
+.. code-block:: c++
 
     bool Function3(bool arg)
     {
         return ! arg;
     }
 
-Added to the YAML file as before::
+Added to the YAML file as before:
+
+.. code-block:: yaml
 
     declarations:
     - decl: bool Function3(bool arg)
 
-This will produce the wrapper::
+This will produce the wrapper:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Function3(
@@ -262,7 +290,9 @@ several things
  * pass-by-reference for a struct or class.
 
 In this example, ``len`` and ``values`` are an input array and
-``result`` is an output scalar::
+``result`` is an output scalar:
+
+.. code-block:: c++
 
     void Sum(int len, int *values, int *result)
     {
@@ -276,7 +306,9 @@ In this example, ``len`` and ``values`` are an input array and
 
 When this function is wrapped it is necessary to give some annotations
 in the YAML file to describe how the variables should be mapped to
-Fortran::
+Python:
+
+.. code-block:: c++
 
   - decl: void Sum(int  len,   +implied(size(values)),
                    int *values +dimension(:)+intent(in),
@@ -292,7 +324,9 @@ The *len* argument defines the ``implied`` attribute.  This argument
 is not part of the Python API since its presence is *implied* from the
 expression ``size(values)``. This uses NumPy
 to compute the total number of elements in the array.  It then passes
-this value to the C wrapper::
+this value to the C wrapper:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Sum(
@@ -348,7 +382,9 @@ A Python ``str`` type is similar to a C++ ``std::string``.
 A C++ ``std::string`` variable is created from the NULL-terminated
 string returned by ``PyArg_ParseTupleAndKeywords``.
 
-C++ routine::
+C++ routine:
+
+.. code-block:: c++
 
     const std::string Function4a(
         const std::string& arg1,
@@ -357,7 +393,9 @@ C++ routine::
         return arg1 + arg2;
     }
 
-YAML input::
+YAML input:
+
+.. code-block:: yaml
 
     declarations:
     - decl: const std::string Function4a+len(30)(
@@ -371,7 +409,9 @@ are copied into a Python object and returned to the user.
 
 .. talk about memory leak
 
-Attributes may also be added by assign new fields in **attrs**::
+Attributes may also be added by assign new fields in **attrs**:
+
+.. code-block:: yaml
 
     - decl: const std::string Function4a(
         const std::string& arg1,
@@ -380,7 +420,9 @@ Attributes may also be added by assign new fields in **attrs**::
         result:
           len: 30
 
-The wrapped function is::
+The wrapped function is:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Function4a(
@@ -411,7 +453,9 @@ The wrapped function is::
         return (PyObject *) SHTPy_rv;
     }
 
-The function is called as::
+The function is called as:
+
+.. code-block:: python
 
      >>> tutorial.Function4a("dog", "cat")
      'dogcat'
@@ -424,11 +468,15 @@ Default Value Arguments
 
 Each function with default value arguments will create a wrapper which
 checks the number of arguments, then calls the function appropriately.
-A header file contains::
+A header file contains:
+
+.. code-block:: c++
 
     double Function5(double arg1 = 3.1415, bool arg2 = true)
 
-and the function is defined as::
+and the function is defined as:
+
+.. code-block:: c++
 
     double Function5(double arg1, bool arg2)
     {
@@ -439,7 +487,9 @@ and the function is defined as::
         }
      }
 
-Describe the function in YAML::
+Describe the function in YAML:
+
+.. code-block:: yaml
 
     declarations:
     - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
@@ -453,7 +503,9 @@ The *default_arg_suffix* provides a list of values of
 In this case 0, 1, or 2 arguments. For Python, *default_arg_suffix* is ignored
 since only one function is created.
 
-C wrappers::
+C wrappers:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Function5_arg1_arg2(
@@ -499,7 +551,9 @@ C wrappers::
         return (PyObject *) SHTPy_rv;
     }
 
-Python usage::
+Python usage:
+
+.. code-block:: python
 
         >>> tutorial.Function5()
         13.1415
@@ -521,13 +575,17 @@ C++ allows function names to be overloaded.  Python supports this
 directly since it is not strongly typed.  The Python wrapper will attempt to 
 call each overload until it finds one which matches the arguments.
 
-C++::
+C++:
+
+.. code-block:: c++
 
     void Function6(const std::string &name);
     void Function6(int indx);
 
 By default the names are mangled by adding an index to the end. This
-can be controlled by setting **function_suffix** in the YAML file::
+can be controlled by setting **function_suffix** in the YAML file:
+
+.. code-block:: yaml
 
   declarations:
   - decl: void Function6(const std::string& name)
@@ -536,7 +594,9 @@ can be controlled by setting **function_suffix** in the YAML file::
     function_suffix: _from_index
 
 Each overloaded function is wrapped as usual but are not added to the Python module.
-Instead, an additional function is created::
+Instead, an additional function is created:
+
+.. code-block:: c++
 
     static PyObject *
     PY_Function6(
@@ -570,7 +630,9 @@ Instead, an additional function is created::
         return NULL;
     }
 
-They can be used as::
+They can be used as:
+
+.. code-block:: python
 
         import tutorial
         tutorial.Function6("name")
@@ -580,14 +642,18 @@ They can be used as::
 Optional arguments and overloaded functions
 -------------------------------------------
 
-Overloaded function that have optional arguments can also be wrapped::
+Overloaded function that have optional arguments can also be wrapped:
+
+.. code-block:: yaml
 
   - decl: int overload1(int num,
             int offset = 0, int stride = 1)
   - decl: int overload1(double type, int num,
             int offset = 0, int stride = 1)
 
-These routines can then be called as::
+These routines can then be called as:
+
+.. code-block:: python
 
     rv = tutorial.overload1(10)
     rv = tutorial.overload1(1., 10)
@@ -601,7 +667,9 @@ Templates
 C++ template are handled by creating a wrapper for each instantiation 
 of the function defined by the **cxx_template** field.
 
-C++::
+C++:
+
+.. code-block:: c++
 
   template<typename ArgType>
   void Function7(ArgType arg)
@@ -609,7 +677,9 @@ C++::
       return;
   }
 
-YAML::
+YAML:
+
+.. code-block:: yaml
 
   - decl: |
        template<typename ArgType>
@@ -629,8 +699,9 @@ Likewise, the return type can be templated but in this case no
 interface block will be generated since generic function cannot vary
 only by return type.
 
+C++:
 
-C++::
+.. code-block:: c++
 
   template<typename RetType>
   RetType Function8()
@@ -638,14 +709,18 @@ C++::
       return 0;
   }
 
-YAML::
+YAML:
+
+.. code-block:: yaml
 
   - decl: template<typename RetType> RetType Function8()
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
 
-C wrapper::
+C wrapper:
+
+.. code-block:: c++
 
     int TUT_function8_int()
     {
@@ -670,7 +745,9 @@ Typedef
 ^^^^^^^
 
 Sometimes a library will use a ``typedef`` to identify a specific
-use of a type::
+use of a type:
+
+.. code-block:: c++
 
     typedef int TypeID;
 
@@ -678,11 +755,15 @@ use of a type::
 
 Shroud must be told about user defined types in the YAML file::
 
+.. code-block:: yaml
+
     declarations:
     - decl: typedef int TypeID;
 
 This will map the C++ type ``TypeID`` to the predefined type ``int``.
-The C wrapper will use ``int``::
+The C wrapper will use ``int``:
+
+.. code-block:: c++
 
     int TUT_typefunc(int arg)
     {
@@ -695,7 +776,9 @@ Enumerations
 
 Enumeration types can also be supported by describing the type to
 shroud.
-For example::
+For example:
+
+.. code-block:: c++
 
   namespace tutorial
   {
@@ -710,7 +793,9 @@ For example::
 
   } /* end namespace tutorial */
 
-The enum is defined in the YAML as::
+The enum is defined in the YAML as:
+
+.. code-block:: yaml
 
     declarations:
     - decl: |
@@ -720,7 +805,9 @@ The enum is defined in the YAML as::
             WHITE
           };
 
-Integer parameters are created for each value::
+Integer parameters are created for each value:
+
+.. code-block:: python
 
     >>> tutorial.RED
     0
@@ -735,14 +822,18 @@ Structure
 ^^^^^^^^^
 
 Structures in C++ are accessed using Numpy.
-For example, the C++ code::
+For example, the C++ code:
+
+.. code-block:: c++
 
     struct struct1 {
       int ifield;
       double dfield;
     };
 
-can be defined to Shroud with the YAML input::
+can be defined to Shroud with the YAML input:
+
+.. code-block:: yaml
 
     - decl: |
         struct struct1 {
@@ -751,7 +842,9 @@ can be defined to Shroud with the YAML input::
         };
 
 This will add a varible to the module which can be used to create
-instances of the struct::
+instances of the struct:
+
+.. code-block:: python
 
     >>> import tutorial
     >>> type(tutorial.struct1_dtype)
@@ -770,11 +863,15 @@ instances of the struct::
 
 
 A function which returns a struct value will create a NumPy scalar using the dtype.
-A C++ function which initialized a struct can be written as:: 
+A C++ function which initialized a struct can be written as:
+
+.. code-block:: yaml
 
     - decl: struct1 returnStruct(int i, double d);
 
-To use the function::
+To use the function:
+
+.. code-block:: python
 
     >>> val = tutorial.returnStruct(1, 2.5)
     >>> val
@@ -792,7 +889,9 @@ Classes
 Each class is wrapped in an extension type which holds a
 pointer to an C++ instance of the class.
 
-Now we'll add a simple class to the library::
+Now we'll add a simple class to the library:
+
+.. code-block:: c++
 
     class Class1
     {
@@ -800,7 +899,9 @@ Now we'll add a simple class to the library::
         void Method1() {};
     };
 
-To wrap the class add the lines to the YAML file::
+To wrap the class add the lines to the YAML file:
+
+.. code-block:: yaml
 
     declarations:
     - decl: class Class1
@@ -813,14 +914,18 @@ The constructor and destructor have no method name associated with
 them. The constructor is called by the ``tp_init`` method of the type
 and the destructor is called by ``tp_del``.
 
-The file ``pyTutorialmodule.hpp`` will have a struct for the class::
+The file ``pyTutorialmodule.hpp`` will have a struct for the class:
+
+.. code-block:: c++
 
     typedef struct {
     PyObject_HEAD
         Class1 * obj;
     } PY_Class1;
 
-And the class is defined in the module initialization function::
+And the class is defined in the module initialization function:
+
+.. code-block:: c++
 
     PY_Class1_Type.tp_new   = PyType_GenericNew;
     PY_Class1_Type.tp_alloc = PyType_GenericAlloc;
@@ -830,13 +935,17 @@ And the class is defined in the module initialization function::
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
 
-The C++ code to call the function::
+The C++ code to call the function:
+
+.. code-block:: c++
 
     #include <tutorial.hpp>
     tutorial::Class1 *cptr = new tutorial::Class1();
     cptr->Method1();
 
 And the Python version::
+
+.. code-block:: python
 
     import tutorial
     cptr = tutoral.Class1()
@@ -846,20 +955,26 @@ Class static methods
 ^^^^^^^^^^^^^^^^^^^^
 
 C++ class static methods are supported as Python class static method.
-To wrap the method::
+To wrap the method:
+
+.. code-block:: c++
 
     class Singleton {
         static Singleton& getReference();
     }
 
-Use the YAML input::
+Use the YAML input:
+
+.. code-block:: yaml
 
     - decl: class Singleton
       declarations:
       - decl: static Singleton& getReference()
 
 This adds the ``METH_STATIC`` flags into the PyMethodsDef description
-of the function.  It can then be called from Python as a method on the class::
+of the function.  It can then be called from Python as a method on the class:
+
+.. code-block:: python
 
         obj0 = tutorial.Singleton.getReference()
 

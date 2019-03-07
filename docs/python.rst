@@ -107,8 +107,9 @@ Defaults to *None*.
 Statements
 ----------
 
-The template for a function is::
+The template for a function is:
 
+.. code-block:: text
 
     static char {PY_name_impl}__doc__[] = "{PY_doc_string}";
 
@@ -157,7 +158,9 @@ post_call
 ^^^^^^^^^
 
 Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.
-Used to convert C values into C++ values::
+Used to convert C values into C++ values:
+
+.. code-block:: text
 
     {var} = PyObject_IsTrue({var_obj});
 
@@ -177,7 +180,9 @@ Predefined Types
 
 Int
 ^^^
-An ``int`` argument is converted to Python with the typemap::
+An ``int`` argument is converted to Python with the typemap:
+
+.. code-block:: yaml
 
     type: int
     fields:
@@ -225,7 +230,9 @@ No memory is copied.
 Class Types
 -----------
 
-An extension type is created for each C++ class::
+An extension type is created for each C++ class:
+
+.. code-block:: c++
 
     typedef struct {
     PyObject_HEAD
@@ -237,7 +244,9 @@ Extension types
 ^^^^^^^^^^^^^^^
 
 Additional type information can be provided in the YAML file to generate place
-holders for extension type methods::
+holders for extension type methods:
+
+.. code-block:: yaml
 
   - name: ExClass2
     cxx_header: ExClass2.hpp

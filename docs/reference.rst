@@ -100,7 +100,9 @@ patterns
 
 splicer
    A dictionary mapping file suffix to a list of splicer files
-   to read::
+   to read:
+
+.. code-block:: yaml
 
       splicer:
         c:
@@ -152,7 +154,9 @@ C_prototype
 
 cxx_template
    A list that define how each templated argument
-   should be instantiated::
+   should be instantiated:
+
+.. code-block:: yaml
 
       decl: void Function7(ArgType arg)
       cxx_template:
@@ -177,7 +181,9 @@ format
 fortran_generic
     A dictionary of lists that define generic functions which will be
     created.  This allows different types to be passed to the function.
-    This feature is provided by C which will promote arguments::
+    This feature is provided by C which will promote arguments:
+
+.. code-block:: yaml
 
       decl: void Function9(double arg)
       fortran_generic:

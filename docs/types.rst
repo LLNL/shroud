@@ -22,7 +22,9 @@ convert a type between languages for each wrapper.  Native types are
 predefined and a Shroud typemap is created for each ``struct`` and
 ``class`` declarations.
 
-The general form is::
+The general form is:
+
+.. code-block:: yaml
 
     declarations:
     - type: type-name
@@ -51,7 +53,9 @@ cpp_if
 ^^^^^^
 
 A c preprocessor test which is used to conditionally use
-other fields of the type such as *c_header* and *cxx_header*::
+other fields of the type such as *c_header* and *cxx_header*:
+
+.. code-block:: yaml
 
   - type: MPI_Comm
     fields:
@@ -135,7 +139,9 @@ cxx_var
 f_var
     Fortran variable name for argument.
 
-For example::
+For example:
+
+.. code-block:: yaml
 
     f_statements:
       intent_in:
@@ -176,7 +182,9 @@ Integer and Real
 
 The numeric types usually require no conversion.
 In this case the type map is mainly used to generate declaration code 
-for wrappers::
+for wrappers:
+
+.. code-block:: yaml
 
     type: int
     fields:
@@ -206,7 +214,9 @@ idiomatic interface.  Converting the types in the wrapper avoids the
 awkwardness of requiring the Fortran user to passing in
 ``.true._c_bool`` instead of just ``.true.``.
 
-The type map is defined as::
+The type map is defined as:
+
+.. code-block:: yaml
 
     type: bool
     fields:
@@ -252,11 +262,15 @@ There is no Fortran intrinsic function to convert between default
 **post_call** sections will insert an assignment statement to allow
 the compiler to do the conversion.
 
-Example of using intent with ``bool`` arguments::
+Example of using intent with ``bool`` arguments:
+
+.. code-block:: yaml
 
     decl: void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))
 
-The resulting wrappers are::
+The resulting wrappers are:
+
+.. code-block:: fortran
 
     module userlibrary_mod
         interface
@@ -352,7 +366,9 @@ C wrapper.
 Char
 ^^^^
 
-The type map::
+The type map:
+
+.. code-block:: yaml
 
         type: char
         fields:
@@ -432,7 +448,9 @@ The type map::
 
 
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
-statement ``dest = src``::
+statement ``dest = src``:
+
+.. code-block:: yaml
 
     - decl: void passCharPtr(char *dest+intent(out), const char *src)
 
@@ -444,7 +462,9 @@ since it is a pointer.
 
 This single line will create five different wrappers.  The first is the 
 pure C version.  The only feature this provides to Fortran is the ability
-to call a C++ function by wrapping it in an ``extern "C"`` function::
+to call a C++ function by wrapping it in an ``extern "C"`` function:
+
+.. code-block:: c++
 
     void STR_pass_char_ptr(char * dest, const char * src)
     {
@@ -453,7 +473,9 @@ to call a C++ function by wrapping it in an ``extern "C"`` function::
     }
 
 A Fortran interface for the routine is generated which will allow the
-function to be called directly::
+function to be called directly:
+
+.. code-block:: fortran
 
         subroutine c_pass_char_ptr(dest, src) &
                 bind(C, name="STR_pass_char_ptr")
@@ -465,17 +487,23 @@ function to be called directly::
 
 The user is responsible for providing the ``NULL`` termination.
 The result in ``str`` will also be ``NULL`` terminated instead of 
-blank filled.::
+blank filled.:
+
+.. code-block:: fortran
 
     character(30) str
     call c_pass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
 
-An additional C function is automatically declared which is summarized as::
+An additional C function is automatically declared which is summarized as:
+
+.. code-block:: yaml
 
     - decl: void passCharPtr(char * dest+intent(out)+len(Ndest),
                              const char * src+intent(in)+len_trim(Lsrc))
 
-And generates::
+And generates:
+
+.. code-block:: c++
 
     void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
                                      const char * src, int Lsrc)
@@ -510,7 +538,9 @@ space.  ``ShroudStrCopy`` is a function provided by Shroud which
 copies character into the destination up to ``Ndest`` characters, then
 blank fills any remaining space.
 
-The Fortran interface is generated::
+The Fortran interface is generated:
+
+.. code-block:: fortran
 
         subroutine c_pass_char_ptr_bufferify(dest, Ndest, src, Lsrc) &
                 bind(C, name="STR_pass_char_ptr_bufferify")
@@ -522,7 +552,9 @@ The Fortran interface is generated::
             integer(C_INT), value, intent(IN) :: Lsrc
         end subroutine c_pass_char_ptr_bufferify
 
-And finally, the Fortran wrapper with calls to ``len`` and ``len_trim``::
+And finally, the Fortran wrapper with calls to ``len`` and ``len_trim``:
+
+.. code-block:: fortran
 
     subroutine pass_char_ptr(dest, src)
         use iso_c_binding, only : C_INT
@@ -532,7 +564,9 @@ And finally, the Fortran wrapper with calls to ``len`` and ``len_trim``::
             len_trim(src, kind=C_INT))
     end subroutine pass_char_ptr
 
-Now the function can be called without the user aware that it is written in C++::
+Now the function can be called without the user aware that it is written in C++:
+
+.. code-block:: fortran
 
     character(30) str
     call pass_char_ptr(dest=str, src="mouse")
@@ -542,7 +576,9 @@ std::string
 ^^^^^^^^^^^
 
 The ``std::string`` type map is very similar to ``char`` but provides some
-additional sections to convert between ``char *`` and ``std::string``::
+additional sections to convert between ``char *`` and ``std::string``:
+
+.. code-block:: yaml
 
         type: string
         fields:
@@ -625,7 +661,9 @@ additional sections to convert between ``char *`` and ``std::string``::
 
 
 To demonstrate this type map, ``acceptStringReference`` is a function which
-will accept and modify a string reference::
+will accept and modify a string reference:
+
+.. code-block:: yaml
 
     - decl: void acceptStringReference(std::string & arg1)
 
@@ -638,7 +676,9 @@ important thing to notice is that the pure C version could do very bad
 things since it does not know how much space it has to copy into.  The
 bufferify version knows the allocated length of the argument.
 However, since the input argument is a fixed length it may be too
-short for the new string value::
+short for the new string value:
+
+.. code-block:: c++
 
     void STR_accept_string_reference(char * arg1)
     {
@@ -657,7 +697,9 @@ short for the new string value::
         return;
     }
 
-Each interface matches the C wrapper::
+Each interface matches the C wrapper:
+
+.. code-block:: fortran
 
         subroutine c_accept_string_reference(arg1) &
                 bind(C, name="STR_accept_string_reference")
@@ -676,7 +718,9 @@ Each interface matches the C wrapper::
         end subroutine c_accept_string_reference_bufferify
 
 And the Fortran wrapper provides the correct values for the *len* and
-*len_trim* arguments::
+*len_trim* arguments:
+
+.. code-block:: fortran
 
     subroutine accept_string_reference(arg1)
         use iso_c_binding, only : C_INT
@@ -696,7 +740,9 @@ the function via the interface, that's what you get.  However,
 Shroud provides several options to provide a more idiomatic usage.
 
 Each of these declaration call identical C++ functions but they are
-wrapped differently::
+wrapped differently:
+
+.. code-block:: yaml
 
     - decl: const char * getCharPtr1()
     - decl: const char * getCharPtr2() +len(30)
@@ -705,7 +751,9 @@ wrapped differently::
          F_string_result_as_arg: output
 
 All of the generated C wrappers are very similar.
-The first C wrapper will copy the metadata into a ``SHROUD_array`` struct::
+The first C wrapper will copy the metadata into a ``SHROUD_array`` struct:
+
+.. code-block:: c++
 
     const char * STR_get_char_ptr1()
     {
@@ -727,7 +775,9 @@ The first C wrapper will copy the metadata into a ``SHROUD_array`` struct::
 The Fortran wrapper uses the metadata in ``DSHF_rv`` to allocate
 a ``CHARACTER`` variable of the correct length.
 The helper function ``SHROUD_copy_string_and_free`` will copy 
-the results of the C++ function into the return variable::
+the results of the C++ function into the return variable:
+
+.. code-block:: fortran
 
     function get_char_ptr1() &
             result(SHT_rv)
@@ -743,7 +793,9 @@ the results of the C++ function into the return variable::
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
 explicit ``ALLOCATE`` is avoided but any result which is longer than
-the length will be silently truncated::
+the length will be silently truncated:
+
+.. code-block:: fortran
 
     function get_char_ptr2() &
             result(SHT_rv)
@@ -756,7 +808,9 @@ The third option also avoids the ``ALLOCATE`` but allows any length
 result to be returned.  The result of the C function will be returned
 in the Fortran argument named by format string
 **F_string_result_as_arg**.  The potential downside is that a Fortran
-subroutine is generated instead of a function::
+subroutine is generated instead of a function:
+
+.. code-block:: fortran
 
     subroutine get_char_ptr3(output)
         use iso_c_binding, only : C_INT
@@ -770,11 +824,15 @@ string functions
 ^^^^^^^^^^^^^^^^
 
 Functions which return ``std::string`` values are similar but must provide the
-extra step of converting the result into a ``char *``::
+extra step of converting the result into a ``char *``:
+
+.. code-block:: yaml
 
     - decl: const string& getConstStringRefPure()
 
-The generated wrappers are::
+The generated wrappers are:
+
+.. code-block:: c++
 
     const char * STR_get_const_string_ref_pure()
     {
@@ -806,18 +864,24 @@ std::vector
 
 A ``std::vector`` argument for a C++ function can be created from a Fortran array.
 The address and size of the array is extracted and passed to the C wrapper to create
-the ``std::vector``::
+the ``std::vector``:
+
+.. code-block:: c++
 
     int vector_sum(const std::vector<int> &arg);
     void vector_iota(std::vector<int> &arg);
 
-Are wrapped with the YAML input::
+Are wrapped with the YAML input:
+
+.. code-block:: yaml
 
     - decl: int vector_sum(const std::vector<int> &arg)
     - decl: void vector_iota(std::vector<int> &arg+intent(out))
 
 ``intent(in)`` is implied for the *vector_sum* argument since it is ``const``.
-The Fortran wrapper passes the array and the size to C::
+The Fortran wrapper passes the array and the size to C:
+
+.. code-block:: fortran
 
     function vector_sum(arg) &
             result(SHT_rv)
@@ -833,7 +897,9 @@ The Fortran wrapper passes the array and the size to C::
         call c_vector_iota_bufferify(arg, size(arg, kind=C_LONG))
     end subroutine vector_iota
 
-The C wrapper then creates a ``std::vector``::
+The C wrapper then creates a ``std::vector``:
+
+.. code-block:: c++
 
     int TUT_vector_sum_bufferify(const int * arg, long Sarg)
     {
@@ -871,7 +937,9 @@ MPI_Comm
 MPI_Comm is provided by Shroud and serves as an example of how to wrap
 a non-native type.  MPI provides a Fortran interface and the ability
 to convert MPI_comm between Fortran and C. The type map tells Shroud
-how to use these routines::
+how to use these routines:
+
+.. code-block:: yaml
 
         type: MPI_Comm
         fields:
@@ -910,12 +978,16 @@ Only C compatible arguments in the function pointer are supported since
 no wrapper for the function pointer is created.  It must be callable 
 directly from Fortran.
 
-The function is wrapped as usual::
+The function is wrapped as usual:
+
+.. code-block:: yaml
 
     declarations:
     - decl: int callback1(int in, int (*incr)(int));
 
-The main addition is the creation of an abstract interface in Fortran::
+The main addition is the creation of an abstract interface in Fortran:
+
+.. code-block:: fortran
 
     abstract interface
         function callback1_incr(arg0) bind(C)
@@ -954,7 +1026,9 @@ it is always used in the ``abstract interface``.
 To change the name of the subprogram or argument, change the option.
 There are no format fields **F_abstract_interface_subprogram** or
 **F_abstract_interface_argument** since they vary by argument (or
-argument to an argument)::
+argument to an argument):
+
+.. code-block:: yaml
 
     options:
       F_abstract_interface_subprogram_template: custom_funptr
@@ -979,12 +1053,16 @@ In C an opaque typedef for a struct is created as the type for the C++
 instance pointer.  The *c_to_cxx* and *cxx_to_c* fields casts this
 pointer to C++ and back to C.
 
-The class example from the tutorial is::
+The class example from the tutorial is:
+
+.. code-block:: yaml
 
     declarations:
     - decl: class Class1
 
-Shroud will generate a type map for this class as::
+Shroud will generate a type map for this class as:
+
+.. code-block:: text
 
     type: Class1
     fields:
@@ -1007,14 +1085,18 @@ Shroud will generate a type map for this class as::
         f_to_c: {f_var}%get_instance()
         forward: Class1
 
-Methods are added to a class with a ``declarations`` field::
+Methods are added to a class with a ``declarations`` field:
+
+.. code-block:: yaml
 
     declarations:
     - decl: class Class1
       declarations:
       - decl: void func()
 
-corresponds to the C++ code::
+corresponds to the C++ code:
+
+.. code-block:: c++
 
     class Class1
     {
@@ -1025,7 +1107,9 @@ A class may be forward declared by omitting ``declarations``.
 All other fields, such as ``format`` and ``options`` must be provided
 on the initial ``decl`` of a Class.
 This will define the type and allow it to be used in following declarations.
-The class's declarations can be added later::
+The class's declarations can be added later:
+
+.. code-block:: yaml
 
    declarations:
    - decl: class Class1
@@ -1078,7 +1162,9 @@ Member Variables
 
 For each member variable of a C++ class a C and Fortran wrapper
 function will be created to get or set the value.  The Python wrapper
-will create a descriptor::
+will create a descriptor:
+
+.. code-block:: c++
 
     class Class1
     {
@@ -1087,7 +1173,9 @@ will create a descriptor::
        int m_test;
     }
 
-It is added to the YAML file as::
+It is added to the YAML file as:
+
+.. code-block:: yaml
 
     - decl: class Class1
       declarations:
@@ -1095,7 +1183,9 @@ It is added to the YAML file as::
       - decl: int m_test +name(test);
 
 The *readonly* attribute will not write the setter function or descriptor.
-Python will report::
+Python will report:
+
+.. code-block:: python
 
     >>> obj = tutorial.Class1()
     >>> obj.m_flag =1
@@ -1112,7 +1202,9 @@ Templates
 
 Shroud will wrap templated classes and functions for explicit instantiations.
 The template is given as part of the ``decl`` and the instantations are listed in the
-``cxx_template`` section::
+``cxx_template`` section:
+
+.. code-block:: yaml
 
   - decl: |
         template<typename ArgType>
@@ -1121,7 +1213,9 @@ The template is given as part of the ``decl`` and the instantations are listed i
     - instantiation: <int>
     - instantiation: <double>
 
-``options`` and ``format`` may be provide to control the generated code::
+``options`` and ``format`` may be provide to control the generated code:
+
+.. code-block:: yaml
 
   - decl: template<typename T> class vector
     cxx_header: <vector>
@@ -1168,7 +1262,9 @@ For shadow classes with a destructor defined, the destructor will
 be used to release the memory.
 
 The *c_statements* may also define a way to destroy memory.
-For example, ``std::vector`` provides the lines::
+For example, ``std::vector`` provides the lines:
+
+.. code-block:: yaml
 
     destructor_name: std_vector_{cxx_T}
     destructor:
@@ -1177,7 +1273,9 @@ For example, ``std::vector`` provides the lines::
 
 Patterns can be used to provide code to free memory for a wrapped
 function.  The address of the memory to free will be in the variable
-``void *ptr``, which should be referenced in the pattern::
+``void *ptr``, which should be referenced in the pattern:
+
+.. code-block:: yaml
 
     declarations:
     - decl: char * getName() +free_pattern(free_getName)
@@ -1201,7 +1299,9 @@ Fortran keeps track of C++ objects with the struct
 **C_capsule_data_type** and the ``bind(C)`` equivalent
 **F_capsule_data_type**. Their names default to
 ``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{class_lower}_capsule``.
-In the Tutorial these types are defined in C as::
+In the Tutorial these types are defined in C as:
+
+.. code-block:: c++
 
     struct s_TUT_class1 {
         void *addr;     /* address of C++ memory */
@@ -1209,7 +1309,9 @@ In the Tutorial these types are defined in C as::
     };
     typedef struct s_TUT_class1 TUT_class1;
 
-And Fortran::
+And Fortran:
+
+.. code-block:: fortran
 
     type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -1222,7 +1324,9 @@ destructor code defined by *destructor_name* or the *free_pattern* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
 be released and is used with the **owner(library)** attribute. A
-typical function would look like::
+typical function would look like:
+
+.. code-block:: c++
 
     // Release C++ allocated memory.
     void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
@@ -1261,7 +1365,9 @@ Character and Arrays
 ^^^^^^^^^^^^^^^^^^^^
 
 In order to create an allocatable copy of a C++ pointer, an additional structure
-is involved.  For example, ``Function4d`` returns a pointer to a new string::
+is involved.  For example, ``Function4d`` returns a pointer to a new string:
+
+.. code-block:: yaml
 
     declarations:
     - decl: const std::string * Function4d()
@@ -1273,7 +1379,9 @@ return value to the proper length, then copies the data from the C++
 variable and deletes it.
 
 The metadata for variables are saved in the C struct **C_array_type**
-and the ``bind(C)`` equivalent **F_array_type**.::
+and the ``bind(C)`` equivalent **F_array_type**.:
+
+.. code-block:: c++
 
     struct s_TUT_SHROUD_array {
         TUT_SHROUD_capsule_data cxx;      /* address of C++ memory */
@@ -1287,7 +1395,9 @@ and the ``bind(C)`` equivalent **F_array_type**.::
     typedef struct s_TUT_SHROUD_array TUT_SHROUD_array;
 
 The union for ``addr`` makes some assignments easier and also aids debugging.
-The union is replaced with a single ``type(C_PTR)`` for Fortran::
+The union is replaced with a single ``type(C_PTR)`` for Fortran:
+
+.. code-block:: fortran
 
     type, bind(C) :: SHROUD_array
         type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
@@ -1299,7 +1409,9 @@ The union is replaced with a single ``type(C_PTR)`` for Fortran::
 The C wrapper does not return a ``std::string`` pointer.  
 Instead it passes in a **C_array_type** pointer as an argument.
 It calls ``Function4d``, saves the results and metadata into the argument.
-This allows it to be easily accessed from Fortran::
+This allows it to be easily accessed from Fortran:
+
+.. code-block:: c++
 
     void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv)
     {
@@ -1318,7 +1430,9 @@ This allows it to be easily accessed from Fortran::
     }
 
 The Fortran wrapper uses the metadata to allocate the return argument
-to the correct length::
+to the correct length:
+
+.. code-block:: fortran
 
     function function4d() &
             result(SHT_rv)
@@ -1331,7 +1445,9 @@ to the correct length::
 
 Finally, the helper function ``SHROUD_copy_string_and_free`` is called
 to set the value of the result and possible free memory for
-**owner(caller)** or intermediate values::
+**owner(caller)** or intermediate values:
+
+.. code-block:: c++
 
     // Copy the std::string in context into c_var.
     // Called by Fortran to deal with allocatable character.
@@ -1382,7 +1498,9 @@ returning from the wrapper.  Use **C_finalize_buf** for the buffer
 version of wrapped functions.
 
 For example, a function which returns a new string will have to 
-``delete`` it before the C wrapper returns::
+``delete`` it before the C wrapper returns:
+
+.. code-block:: c++
 
     std::string * getConstStringPtrLen()
     {
@@ -1390,13 +1508,17 @@ For example, a function which returns a new string will have to
         return rv;
     }
 
-Wrapped as::
+Wrapped as:
+
+.. code-block:: yaml
 
     - decl: const string * getConstStringPtrLen+len=30()
       format:
         C_finalize_buf: delete {cxx_var};
 
-The C buffer version of the wrapper is::
+The C buffer version of the wrapper is:
+
+.. code-block:: c++
 
     void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
     {
@@ -1415,7 +1537,9 @@ The C buffer version of the wrapper is::
 
 The unbuffer version of the function cannot ``destroy`` the string since
 only a pointer to the contents of the string is returned.  It would
-leak memory when called::
+leak memory when called:
+
+.. code-block:: c++
 
     const char * STR_get_const_string_ptr_len()
     {

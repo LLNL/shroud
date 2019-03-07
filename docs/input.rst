@@ -19,7 +19,9 @@ The input to Shroud is a YAML formatted file.
 YAML is a human friendly data serialization standard. [yaml]_
 Structure is shown through indentation (one or more spaces).  Sequence
 items are denoted by a dash, and key value pairs within a map are
-separated by a colon::
+separated by a colon:
+
+.. code-block:: yaml
 
     library: Tutorial
 
@@ -35,7 +37,9 @@ separated by a colon::
 Each ``decl`` entry corresponds to a line of C or C++ code.  The top
 level ``declarations`` field represents the source file while nested
 ``declarations`` fields corresponds to curly brace blocks.
-The above YAML file represent the source file::
+The above YAML file represent the source file:
+
+.. code-block:: c++
 
     typedef int TypeID;
 
@@ -48,7 +52,9 @@ The above YAML file represent the source file::
 
 A ``block`` can be used to group a collection of ``decl`` entires.
 Any ``option`` or ``format`` fields will apply to all declarations in
-the group::
+the group:
+
+.. code-block:: yaml
 
     declarations:
     - block: True
@@ -64,17 +70,23 @@ Shroud use curly braces for format strings.
 If a string starts with a curly brace YAML
 will interpret it as a map/dictionary instead of as part of the
 string. To avoid this behavior, strings which start with a curly brace
-should be quoted::
+should be quoted:
+
+.. code-block:: yaml
 
     name : "{fmt}"
 
-Strings may be split across several lines by indenting the continued line::
+Strings may be split across several lines by indenting the continued line:
+
+.. code-block:: yaml
 
     - decl: void Sum(int len, int *values+dimension+intent(in),
                      int *result+intent(out))
 
 Some values consist of blocks of code.  The pipe, ``|``, is used to indicate that
-the string will span several lines and that newlines should be preserved::
+the string will span several lines and that newlines should be preserved:
+
+.. code-block:: yaml
 
     C_invalid_name: |
         if (! isNameValid({cxx_var})) {{
@@ -92,7 +104,9 @@ continuation.  Lines which start with ``0`` are not indented.  This
 can be used with labels.  A trailing ``+`` will indent then next line
 a level and a leading ``-`` will deindent. Line lengths are controlled
 by the options *C_line_length* and *F_line_length* and default to
-72.::
+72.:
+
+.. code-block:: yaml
 
     C_invalid_name: |
         if (! isNameValid({cxx_var})) {{+
@@ -119,6 +133,8 @@ For example, *cxx_header* is a field which is used to define the header file
 for class *Names*.  Likewise, setting *library* within a class does not change
 the library name.
 
+.. code-block:: yaml
+
     library: testnames
 
     declarations:
@@ -134,7 +150,9 @@ Options are used to customize the behavior of Shroud.
 They are defined in the YAML files as a dictionary.
 Options can be defined at the global, class, or function level.
 Each level creates a new scope which can access all upper level options.
-This allows the user to modify behavior for all functions or just a single one::
+This allows the user to modify behavior for all functions or just a single one:
+
+.. code-block:: yaml
 
     options:
       option_a = false
@@ -242,13 +260,17 @@ Attributes
 Annotations or attributes apply to specific arguments or results.
 They describe semantic behavior for an argument.
 An attribute may be set to true by listing its name or
-it may have a value in parens::
+it may have a value in parens:
+
+.. code-block:: yaml
 
     - decl: Class1()  +name(new)
     - decl: void Sum(int len, int *values+dimension+intent(in))
     - decl: const std::string getName() +len(30)
 
-Attributes may also be added external to *decl*::
+Attributes may also be added external to *decl*:
+
+.. code-block:: yaml
 
     - decl: void Sum(int len, int *values)
       attrs:
@@ -267,7 +289,9 @@ Sometimes it is more convenient to have the wrapper allocate an
 ``intent(out)`` array before passing it to the C++ function.  This can
 be accomplished by adding the *allocatable* attribute.  For example the
 C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
-argument and assigns it to an ``intent(out)`` argument::
+argument and assigns it to an ``intent(out)`` argument:
+
+.. code-block:: c++
 
     void cos_doubles(double *in, double *out, int size)
     {
@@ -276,7 +300,9 @@ argument and assigns it to an ``intent(out)`` argument::
         }
     }
 
-This is wrapped as::
+This is wrapped as:
+
+.. code-block:: yaml
 
     decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
                            double * out    +intent(out) +allocatable(mold=in),
@@ -290,7 +316,9 @@ since its value is *implied* to be the size of argument ``in``.
 ``size`` is the Fortran intrinsic which returns the number of items
 allocated by its argument.
 
-The Fortran wrapper produced is::
+The Fortran wrapper produced is:
+
+.. code-block:: fortran
 
     subroutine cos_doubles(in, out)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -303,7 +331,9 @@ The Fortran wrapper produced is::
     end subroutine cos_doubles
 
 The mold argument was added to the Fortran 2008 standard.  If the
-option **F_standard** is not 2008 then the allocate statement will be::
+option **F_standard** is not 2008 then the allocate statement will be:
+
+.. code-block:: fortran
 
         allocate(out(lbound(in,1):ubound(in,1)))
 
@@ -360,7 +390,9 @@ dimension
 Sets the Fortran DIMENSION attribute.
 Pointer argument should be passed through since it is an array.
 *value* attribute must not be *True*.
-If set without a value, it defaults to ``(*)``::
+If set without a value, it defaults to ``(*)``:
+
+.. code-block:: text
 
     double *array +dimension
     double *array +dimension(len)
@@ -384,7 +416,9 @@ hidden
 The argument will not appear in the Fortran API.
 But it will be passed to the C wrapper.
 This allows the value to be used in the C wrapper.
-For example, setting the shape of a pointer function::
+For example, setting the shape of a pointer function:
+
+.. code-block:: text
 
       int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
 
@@ -400,7 +434,9 @@ If so the *implied* attribute can be used to assign the value to the argument an
 it will not be included in the wrapped API.
 
 Used to compute value of argument to C++ based on argument
-to Fortran or Python wrapper.  Useful with array sizes::
+to Fortran or Python wrapper.  Useful with array sizes:
+
+.. code-block:: text
 
       int Sum(int * array +intent(in), int len +implied(size(array))
 
@@ -421,7 +457,9 @@ of the extra argument.  If no value is provided then the
 argument name defaults to option *C_var_len_template*.
 
 When used with a function, it will be the length of the return
-value of the function using the declaration::
+value of the function using the declaration:
+
+.. code-block:: text
 
      character(kind=C_CHAR, len={c_var_len}) :: {F_result}
 
@@ -479,7 +517,9 @@ Patterns
 To address the issue of semantic differences between Fortran and C++,
 *patterns* may be used to insert additional code.  A *pattern* is a 
 code template which is inserted at a specific point in the wrapper.
-They are defined in the input YAML file::
+They are defined in the input YAML file:
+
+.. code-block:: yaml
 
    declarations:
    - decl: const string& getString2+len=30()
@@ -503,7 +543,9 @@ contain the function result for the ``_buf`` pattern.
 The function ``getString2`` is returning a ``std::string`` reference.
 Since C and Fortran cannot deal with this directly, the empty string
 is converted into a ``NULL`` pointer::
-will blank fill the result::
+will blank fill the result:
+
+.. code-block:: c++
 
     const char * STR_get_string2()
     {
@@ -526,7 +568,9 @@ cases that it does not handle.  One of the weaknesses of generated
 code is that if the generated code is edited it becomes difficult to
 regenerate the code and preserve the edits.  To deal with this
 situation each block of generated code is surrounded by 'splicer'
-comments::
+comments:
+
+.. code-block:: c++
 
     const char * STR_get_char3()
     {
@@ -541,7 +585,9 @@ the user.  The splicer's name, ``function.get_char3`` in the example,
 is used to determine where to insert the code.
 
 There are two ways to define splicers in the YAML file. First add 
-a list of files which contain the splicer text::
+a list of files which contain the splicer text:
+
+.. code-block:: yaml
 
     splicer:
       f:
@@ -556,7 +602,9 @@ splicer block is ignored.  Splicers must be sorted by language.  If
 the input file ends with ``.f`` or ``.f90`` it is processed as
 splicers for the generated Fortran code.  Code for the C wrappers must
 end with any of ``.c``, ``.h``, ``.cpp``, ``.hpp``, ``.cxx``,
-``.hxx``, ``.cc``, ``.C``::
+``.hxx``, ``.cc``, ``.C``:
+
+.. code-block:: c++
 
     -- Lines outside blocks are ignore
     // splicer begin function.get_char3
@@ -572,7 +620,9 @@ generated by some other process.
    along with the YAML file.
 
 The second method is to add the splicer code directly into the YAML file.
-Each level of splicer is a mapping and each line of text is an array entry::
+Each level of splicer is a mapping and each line of text is an array entry:
+
+.. code-block:: yaml
 
     splicer_code:
       c:
@@ -584,7 +634,9 @@ Each level of splicer is a mapping and each line of text is an array entry::
 
 In addition to replacing code for a function wrapper, there are 
 splicers that are generated which allow a user to insert additional
-code for helper functions or declarations::
+code for helper functions or declarations:
+
+.. code-block:: yaml
 
     ! file_top
     module {F_module_name}
@@ -615,7 +667,9 @@ code for helper functions or declarations::
 
 .. from _create_splicer
 
-C header::
+C header:
+
+.. code-block:: c++
 
     // class.{class_name}.CXX_declarations
 
@@ -623,7 +677,9 @@ C header::
     // class.{class_name}.C_declarations
     }
 
-C implementation::
+C implementation:
+
+.. code-block:: c++
 
     // class.{class_name}.CXX_definitions
 

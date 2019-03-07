@@ -60,12 +60,16 @@ Fortran cannot interoperate with C++ directly and uses C as the lingua franca.
 C++ can communicate with C via a common heritage and the ``extern "C"`` keyword.
 A C API for the C++ API is produced as a byproduct of the Fortran wrapping.
 
-Using a C++ API to create an object and call a method::
+Using a C++ API to create an object and call a method:
+
+.. code-block:: c++
 
     Instance * inst = new Instance;
     inst->method(1);
 
-In Fortran this becomes::
+In Fortran this becomes:
+
+.. code-block:: fortran
 
     type(instance) inst
     inst = instance_new()

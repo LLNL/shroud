@@ -51,7 +51,9 @@ C wrapper::
 The wrapper is within an ``extern "C"`` block so that **C_name** will
 not be mangled by the C++ compiler.
 
-**C_return_code** can be set from the YAML file to override the return value::
+**C_return_code** can be set from the YAML file to override the return value:
+
+.. code-block:: yaml
 
     -  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
        format:
@@ -148,7 +150,9 @@ Name of C++ header file required for implementation.
 For example, if cxx_to_c was a function.
 Only used with *language=c++*.
 Defaults to *None*.
-Note the use of *stdlib* which adds ``std::`` with *language=c++*::
+Note the use of *stdlib* which adds ``std::`` with *language=c++*:
+
+.. code-block:: yaml
 
     c_header='<stdlib.h>',
     cxx_header='<cstdlib>',
@@ -237,7 +241,9 @@ c_header
 
 List of blank delimited header files which will be included by the generated header
 for the C wrapper.  These headers must be C only.
-For example, ``size_t`` requires stddef.h::
+For example, ``size_t`` requires stddef.h:
+
+.. code-block:: yaml
 
     type: size_t
     fields:
@@ -269,7 +275,9 @@ destructor
 A list of lines of code used to delete memory. Usually allocated by a *pre_call*
 statement.  The code is inserted into *C_memory_dtor_function* which will provide
 the address of the memory to destroy in the variable ``void *ptr``.
-For example::
+For example:
+
+.. code-block:: yaml
 
     destructor:
     -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
@@ -280,7 +288,9 @@ destructor_name
 ^^^^^^^^^^^^^^^
 
 A name for the destructor code in *destructor*.
-Must be unique.  May include format strings::
+Must be unique.  May include format strings:
+
+.. code-block:: yaml
 
     destructor_name: std_vector_{cxx_T}
 
@@ -314,7 +324,9 @@ Predefined types
 Int
 ^^^
 
-A C ``int`` is represented as::
+A C ``int`` is represented as:
+
+.. code-block:: yaml
 
     type: int
     fields:
@@ -341,7 +353,9 @@ Class Types
 
 A C++ class is represented by the *C_capsule_data_type*.  This struct
 contains a pointer to the C++ instance allocated and an index passed
-to generated *C_memory_dtor_function* used to destroy the memory::
+to generated *C_memory_dtor_function* used to destroy the memory:
+
+.. code-block:: c++
 
     struct s_{C_capsule_data_type} {
         void *addr;     /* address of C++ memory */
@@ -351,7 +365,9 @@ to generated *C_memory_dtor_function* used to destroy the memory::
 
 In addition, an identical struct is created for each class.  Having a
 unique struct and typedef for each class add a measure of type safety
-to the C wrapper::
+to the C wrapper:
+
+.. code-block:: c++
 
     struct s_{C_type_name} {
         void *addr;   /* address of C++ memory */
