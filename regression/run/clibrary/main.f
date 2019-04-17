@@ -26,7 +26,7 @@ program tester
 !  integer rv_integer
   integer(C_INT) rv_int
   real(C_DOUBLE) rv_double
-!  character(30) rv_char
+  character(30) rv_char
 
   call init_fruit
 
@@ -71,7 +71,19 @@ contains
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
 
-    call assert_true( function4a("dog", "cat") == "dogcat")
+    call assert_true(function4a("dog", "cat") == "dogcat")
+
+    rv_int = implied_len("bird")
+    call assert_true(rv_int == 4)
+    rv_int = implied_len_trim("bird")
+    call assert_true(rv_int == 4)
+
+    rv_char = "bird"
+    rv_int = implied_len(rv_char)
+    call assert_true(rv_int == len(rv_char))
+    rv_int = implied_len_trim(rv_char)
+    call assert_true(rv_int == len_trim(rv_char))
+
 
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")

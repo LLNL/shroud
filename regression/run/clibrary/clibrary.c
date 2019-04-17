@@ -69,6 +69,18 @@ char *Function4a(const char *arg1, const char *arg2)
     return out;
 }
 
+int ImpliedLen(const char *text, int ltext)
+{
+    strncpy(last_function_called, "ImpliedLen", MAXLAST);
+    return ltext;
+}
+
+int ImpliedLenTrim(const char *text, int ltext)
+{
+    strncpy(last_function_called, "ImpliedLenTrim", MAXLAST);
+    return ltext;
+}
+
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)
 {

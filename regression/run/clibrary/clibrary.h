@@ -36,6 +36,10 @@ bool Function3(bool arg);
 void Function3b(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
+
+int ImpliedLen(const char *text, int ltext);
+int ImpliedLenTrim(const char *text, int ltext);
+
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
 

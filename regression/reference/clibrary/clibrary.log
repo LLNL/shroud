@@ -6,6 +6,8 @@ C function bool Function3(bool arg +intent(in)+value)
 C function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 C function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
 C function void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
+C function int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
@@ -16,6 +18,8 @@ C-interface, Fortran function bool Function3(bool arg +intent(in)+value)
 C-interface, Fortran function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 C-interface, Fortran function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
 C-interface function void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface, Fortran function int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
+C-interface, Fortran function int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
@@ -23,6 +27,8 @@ Python function void Sum(int len +implied(size(values))+intent(in)+value, int * 
 Python function bool Function3(bool arg +intent(in)+value)
 Python function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 Python function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
+Python function int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
+Python function int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
 Close pyClibraryhelper.c
 Close pyClibrarymodule.h
 Close pyClibrarymodule.c

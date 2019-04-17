@@ -1157,6 +1157,358 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 }
+            },
+            {
+                "_fmtargs": {
+                    "ltext": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "ltext",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&ltext",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ltext",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "ltext",
+                            "f_var": "ltext",
+                            "pre_call_intent": "len(text)"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int ltext",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "ltext",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int ltext",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ltext",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "strlen(text)",
+                            "py_var": "SHPy_ltext"
+                        }
+                    },
+                    "text": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "text",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "text",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "text",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "text",
+                            "f_var": "text"
+                        },
+                        "fmtpy": {
+                            "c_const": "const ",
+                            "c_decl": "const char * text",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "text",
+                            "cxx_addr": "",
+                            "cxx_decl": "const char * text",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "text",
+                            "numpy_type": null,
+                            "py_var": "SHPy_text"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": null,
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "ImpliedLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "text",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "len(text)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ltext",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)))",
+                "declgen": "int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)",
+                "doxygen": {
+                    "__line__": 59,
+                    "brief": "Return the implied argument - text length",
+                    "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "int SHC_rv =\t ImpliedLen(\ttext,\t ltext);",
+                    "C_call_list": "text,\t ltext",
+                    "C_name": "ImpliedLen",
+                    "C_prototype": "const char * text,\t int ltext",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_call": "c_implied_len",
+                    "F_C_name": "c_implied_len",
+                    "F_arg_c_call": "text,\t ltext",
+                    "F_arguments": "text",
+                    "F_call_code": "SHT_rv = c_implied_len(text,\t ltext)",
+                    "F_name_function": "implied_len",
+                    "F_name_generic": "implied_len",
+                    "F_name_impl": "implied_len",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedLen",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "ImpliedLen",
+                    "underscore_name": "implied_len"
+                },
+                "linenumber": 56,
+                "options": {
+                    "F_create_bufferify_function": false,
+                    "__line__": 57
+                }
+            },
+            {
+                "_fmtargs": {
+                    "ltext": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "ltext",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&ltext",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ltext",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "ltext",
+                            "f_var": "ltext",
+                            "pre_call_intent": "len_trim(text)"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int ltext",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "ltext",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int ltext",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ltext",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "strlen(text)",
+                            "py_var": "SHPy_ltext"
+                        }
+                    },
+                    "text": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "text",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "text",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "text",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "text",
+                            "f_var": "text"
+                        },
+                        "fmtpy": {
+                            "c_const": "const ",
+                            "c_decl": "const char * text",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "text",
+                            "cxx_addr": "",
+                            "cxx_decl": "const char * text",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "text",
+                            "numpy_type": null,
+                            "py_var": "SHPy_text"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": null,
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "ImpliedLenTrim",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "text",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "len_trim(text)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ltext",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)))",
+                "declgen": "int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)",
+                "doxygen": {
+                    "__line__": 68,
+                    "brief": "Return the implied argument - text length",
+                    "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "int SHC_rv =\t ImpliedLenTrim(\ttext,\t ltext);",
+                    "C_call_list": "text,\t ltext",
+                    "C_name": "ImpliedLenTrim",
+                    "C_prototype": "const char * text,\t int ltext",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_call": "c_implied_len_trim",
+                    "F_C_name": "c_implied_len_trim",
+                    "F_arg_c_call": "text,\t ltext",
+                    "F_arguments": "text",
+                    "F_call_code": "SHT_rv = c_implied_len_trim(text,\t ltext)",
+                    "F_name_function": "implied_len_trim",
+                    "F_name_generic": "implied_len_trim",
+                    "F_name_impl": "implied_len_trim",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedLenTrim",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "ImpliedLenTrim",
+                    "underscore_name": "implied_len_trim"
+                },
+                "linenumber": 65,
+                "options": {
+                    "F_create_bufferify_function": false,
+                    "__line__": 66
+                }
             }
         ],
         "language": "c",
@@ -1181,6 +1533,7 @@
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
+            "F_create_bufferify_function": true,
             "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}",
             "F_force_wrapper": false,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",

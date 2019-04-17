@@ -95,6 +95,26 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
+        function c_implied_len(text, ltext) &
+                result(SHT_rv) &
+                bind(C, name="ImpliedLen")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: text(*)
+            integer(C_INT), value, intent(IN) :: ltext
+            integer(C_INT) :: SHT_rv
+        end function c_implied_len
+
+        function c_implied_len_trim(text, ltext) &
+                result(SHT_rv) &
+                bind(C, name="ImpliedLenTrim")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: text(*)
+            integer(C_INT), value, intent(IN) :: ltext
+            integer(C_INT) :: SHT_rv
+        end function c_implied_len_trim
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -158,6 +178,44 @@ contains
             len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
+
+    ! int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
+    !>
+    !! \brief Return the implied argument - text length
+    !!
+    !! Pass the Fortran length of the char argument directy to the C function.
+    !! No need for the bufferify version which will needlessly copy the string.
+    !<
+    function implied_len(text) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: text
+        integer(C_INT) :: ltext
+        integer(C_INT) :: SHT_rv
+        ltext = len(text)
+        ! splicer begin function.implied_len
+        SHT_rv = c_implied_len(text, ltext)
+        ! splicer end function.implied_len
+    end function implied_len
+
+    ! int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
+    !>
+    !! \brief Return the implied argument - text length
+    !!
+    !! Pass the Fortran length of the char argument directy to the C function.
+    !! No need for the bufferify version which will needlessly copy the string.
+    !<
+    function implied_len_trim(text) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: text
+        integer(C_INT) :: ltext
+        integer(C_INT) :: SHT_rv
+        ltext = len_trim(text)
+        ! splicer begin function.implied_len_trim
+        SHT_rv = c_implied_len_trim(text, ltext)
+        ! splicer end function.implied_len_trim
+    end function implied_len_trim
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

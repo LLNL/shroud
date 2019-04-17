@@ -2462,6 +2462,22 @@ class ToImplied(todict.PrintNode):
             #            arg = self.func.ast.find_arg_by_name(argname)
             fmt = self.func._fmtargs[argname]["fmtpy"]
             return wformat("PyArray_SIZE({py_var})", fmt)
+        elif node.name == "len":
+            # len(arg)
+            argname = node.args[0].name
+            #            arg = self.func.ast.find_arg_by_name(argname)
+            fmt = self.func._fmtargs[argname]["fmtpy"]
+            # XXX - need code for len_trim
+            return wformat("strlen({cxx_var})", fmt)
+        elif node.name == "len_trim":
+            # len_trim(arg)
+            argname = node.args[0].name
+            #            arg = self.func.ast.find_arg_by_name(argname)
+            fmt = self.func._fmtargs[argname]["fmtpy"]
+            return wformat("strlen({cxx_var})", fmt)
+            # XXX - need code for len_trim
+            return wformat("ShroudLenTrim({cxx_var}, strlen({cxx_var}))", fmt)
+            #c_helper="ShroudLenTrim"
         else:
             return self.param_list(node)
 

@@ -362,6 +362,51 @@ code which will be inserted into the C wrapper. *intent_in*,
 arguments with the *len* and *len_trim* annotations in the additional
 C wrapper.
 
+There are occasions when the *bufferify* wrapper is not needed.  For
+example, when using ``char *`` to pass a large buffer.  It is better
+to just pass the address of the argument instead of creating a copy
+and appending a ``NULL``.  The **F_create_bufferify_function** options
+can set to *false* to turn off this feature.
+
+While the copy of the argument is not necessary, it may still be useful
+to know the length.  This can be passed with an **implied** argument.
+
+.. code-block:: yaml
+
+    - decl: int ImpliedLen(const char *text, int ltext+implied(len(text)))
+      options:
+        F_create_bufferify_function: false
+
+.. code-block:: fortran
+
+     interface
+        function c_implied_len_trim(text, ltext) &
+                result(SHT_rv) &
+                bind(C, name="ImpliedLenTrim")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: text(*)
+            integer(C_INT), value, intent(IN) :: ltext
+            integer(C_INT) :: SHT_rv
+        end function c_implied_len_trim
+     end interface
+
+    contains
+
+    function implied_len_trim(text) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: text
+        integer(C_INT) :: ltext
+        integer(C_INT) :: SHT_rv
+        ltext = len(text)
+        SHT_rv = c_implied_len_trim(text, ltext)
+    end function implied_len_trim
+
+This can be used to emulate the behavior of most Fortran compilers
+which will pass an additional, hidden argument which contains the
+length of a ``CHARACTER`` argument.
+
 
 Char
 ^^^^

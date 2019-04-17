@@ -628,7 +628,8 @@ class GenFunctions(object):
         ordered3 = []
         for method in ordered_functions:
             ordered3.append(method)
-            self.arg_to_buffer(method, ordered3)
+            if method.options.F_create_bufferify_function:
+                self.arg_to_buffer(method, ordered3)
 
         # Create multiple generic Fortran wrappers to call a
         # single C functions
@@ -1534,6 +1535,26 @@ class CheckImplied(todict.PrintNode):
                     )
                 )
             return "size"
+        elif node.name in ["len", "len_trim"]:
+            # len(arg)  len_trim(arg)
+            if len(node.args) != 1:
+                raise RuntimeError(
+                    "Too many arguments to 'size': ".format(self.expr)
+                )
+            argname = node.args[0].name
+            arg = self.func.ast.find_arg_by_name(argname)
+            if arg is None:
+                raise RuntimeError(
+                    "Unknown argument '{}': {}".format(argname, self.expr)
+                )
+            # XXX - Make sure character
+#            if "dimension" not in arg.attrs:
+#                raise RuntimeError(
+#                    "Argument '{}' must have dimension attribute: {}".format(
+#                        argname, self.expr
+#                    )
+#                )
+            return node.name
         else:
             raise RuntimeError(
                 "Unexpected function '{}' in expression: {}".format(

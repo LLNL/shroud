@@ -354,6 +354,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_return_fortran_pointer=True,
             F_standard=2003,
             F_auto_reference_count=False,
+            F_create_bufferify_function=True,
             wrap_c=True,
             wrap_fortran=True,
             wrap_python=False,
