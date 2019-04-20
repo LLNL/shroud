@@ -37,6 +37,12 @@ declarations:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
+- decl: struct Cstruct1 {
+          int ifield;
+        };
+  options:
+    wrap_python: false
+
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
 - decl: void Sum(int len +implied(size(values)),
@@ -97,6 +103,13 @@ declarations:
 #    F_C_name: Fortran_bindC2b
   options:
     wrap_python: false
+######################################################################
+# Pass struct
+
+- decl: int passStruct1(Cstruct1 *s1)
+  options:
+    wrap_python: false
+
 ######################################################################
 
 # XXX - Replace with other code to free memory

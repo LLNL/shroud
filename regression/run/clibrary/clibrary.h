@@ -28,6 +28,11 @@ enum EnumTypeID {
 
 typedef int TypeID;
 
+struct Cstruct1 {
+  int ifield;
+};
+typedef struct Cstruct1 Cstruct1;
+
 void Function1(void);
 
 double Function2(double arg1, int arg2);
@@ -42,6 +47,8 @@ int ImpliedLenTrim(const char *text, int ltext);
 
 void bindC1(void);
 void bindC2(const char * name);
+
+int passStruct1(Cstruct1 *s1);
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);

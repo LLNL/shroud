@@ -91,6 +91,12 @@ void bindC2(const char * name)
     strncpy(last_function_called, "bindC2", MAXLAST);
 }
 
+int passStruct1(Cstruct1 *s1)
+{
+    strncpy(last_function_called, "passStruct1", MAXLAST);
+    return s1->ifield;
+}
+
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)
 {

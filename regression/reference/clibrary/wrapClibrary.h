@@ -25,6 +25,12 @@
 
 #include "typesClibrary.h"
 
+
+struct s_CLI_cstruct1 {
+    int ifield;
+};
+typedef struct s_CLI_cstruct1 CLI_cstruct1;
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

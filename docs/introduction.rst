@@ -120,6 +120,7 @@ Requirements
 ^^^^^^^^^^^^
 
 Fortran wrappers are generated as free-form source and require a Fortran 2003 compiler.
+C code requires C99.
 
 Python
 ------

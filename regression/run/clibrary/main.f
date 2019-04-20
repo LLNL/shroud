@@ -31,6 +31,7 @@ program tester
   call init_fruit
 
   call test_functions
+  call test_structs
 
 !  call test_vector
 
@@ -119,6 +120,17 @@ contains
 !    call assert_true(rv_int .eq. 2)
 
   end subroutine test_functions
+
+  subroutine test_structs
+
+    type(cstruct1) :: s1
+
+    call set_case_name("test_structs")
+
+    s1%ifield = 12
+    call assert_equals(12, pass_struct1(s1))
+
+  end subroutine test_structs
 
 !  subroutine test_vector
 !    integer(C_INT) intv(5)

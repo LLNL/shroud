@@ -21,12 +21,18 @@
 ! splicer begin file_top
 ! splicer end file_top
 module clibrary_mod
+    use iso_c_binding, only : C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+
+    type, bind(C) :: cstruct1
+        integer(C_INT) :: ifield
+    end type cstruct1
 
     interface
 
@@ -134,6 +140,16 @@ module clibrary_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
         end subroutine c_bind_c2_bufferify
+
+        function pass_struct1(s1) &
+                result(SHT_rv) &
+                bind(C, name="passStruct1")
+            use iso_c_binding, only : C_INT
+            import :: cstruct1
+            implicit none
+            type(cstruct1), intent(IN) :: s1
+            integer(C_INT) :: SHT_rv
+        end function pass_struct1
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
