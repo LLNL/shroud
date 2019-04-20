@@ -8,6 +8,9 @@ C function char * Function4a(const char * arg1 +intent(in), const char * arg2 +i
 C function void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C function int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
 C function int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
+C function void bindC1()
+C function void bindC2(const char * name +intent(in))
+C function void bindC2(const char * name +intent(in)+len_trim(Lname))
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
@@ -20,6 +23,9 @@ C-interface, Fortran function char * Function4a(const char * arg1 +intent(in), c
 C-interface function void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 C-interface, Fortran function int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
 C-interface, Fortran function int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
+C-interface, Fortran function void bindC1()
+C-interface, Fortran function void bindC2(const char * name +intent(in))
+C-interface function void bindC2(const char * name +intent(in)+len_trim(Lname))
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

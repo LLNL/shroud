@@ -1509,6 +1509,223 @@
                     "F_create_bufferify_function": false,
                     "__line__": 66
                 }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "bindC1",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void bindC1()",
+                "declgen": "void bindC1()",
+                "doxygen": {
+                    "__line__": 76,
+                    "brief": "Rename Fortran name for interface only function",
+                    "description": "This creates only an interface.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "bindC1(\t);",
+                    "C_call_list": "",
+                    "C_name": "bindC1",
+                    "C_prototype": "",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "fortran_bindc1b",
+                    "F_C_name": "Fortran_bindC1a",
+                    "F_arg_c_call": "",
+                    "F_arguments": "",
+                    "F_call_code": "call fortran_bindc1b()",
+                    "F_name_function": "bind_c1",
+                    "F_name_generic": "bind_c1",
+                    "F_name_impl": "Fortran_bindC1a",
+                    "F_subprogram": "subroutine",
+                    "__line__": 80,
+                    "c_const": "",
+                    "function_name": "bindC1",
+                    "underscore_name": "bind_c1"
+                },
+                "linenumber": 75,
+                "options": {
+                    "__line__": 85,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "name",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "idtor": "0"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "bindC2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void bindC2(const char *name)",
+                "declgen": "void bindC2(const char * name +intent(in))",
+                "doxygen": {
+                    "__line__": 89,
+                    "brief": "Rename Fortran name for interface only function",
+                    "description": "This creates a Fortran implementation and an interface.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "bindC2(\tname);",
+                    "C_call_list": "name",
+                    "C_name": "bindC2",
+                    "C_prototype": "const char * name",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_bind_c2_bufferify",
+                    "F_C_name": "c_bind_c2",
+                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
+                    "F_arguments": "name",
+                    "F_call_code": "call c_bind_c2_bufferify(name,\t len_trim(name, kind=C_INT))",
+                    "F_name_function": "bind_c2",
+                    "F_name_generic": "bind_c2",
+                    "F_name_impl": "Fortran_bindC2a",
+                    "F_subprogram": "subroutine",
+                    "__line__": 93,
+                    "c_const": "",
+                    "function_name": "bindC2",
+                    "underscore_name": "bind_c2"
+                },
+                "linenumber": 88,
+                "options": {
+                    "__line__": 98,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_name",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_name",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "name",
+                            "f_var": "name"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "bindC2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "intent": "in",
+                                "len_trim": "Lname",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void bindC2(const char *name)",
+                "declgen": "void bindC2(const char * name +intent(in)+len_trim(Lname))",
+                "doxygen": {
+                    "__line__": 89,
+                    "brief": "Rename Fortran name for interface only function",
+                    "description": "This creates a Fortran implementation and an interface.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "bindC2(\tSH_name);",
+                    "C_call_list": "SH_name",
+                    "C_name": "CLI_bind_c2_bufferify",
+                    "C_post_call": "free(SH_name);",
+                    "C_pre_call": "char * SH_name = (char *) malloc(Lname + 1);\nmemcpy(SH_name, name, Lname);\nSH_name[Lname] = '\\0';",
+                    "C_prototype": "const char * name,\t int Lname",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_bind_c2_bufferify",
+                    "F_name_impl": "Fortran_bindC2a",
+                    "__line__": 93,
+                    "c_const": "",
+                    "function_name": "bindC2",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "bind_c2"
+                },
+                "linenumber": 88,
+                "options": {
+                    "__line__": 98,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",

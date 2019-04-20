@@ -40,6 +40,9 @@ char *Function4a(const char *arg1, const char *arg2);
 int ImpliedLen(const char *text, int ltext);
 int ImpliedLenTrim(const char *text, int ltext);
 
+void bindC1(void);
+void bindC2(const char * name);
+
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
 

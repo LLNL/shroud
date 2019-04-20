@@ -440,6 +440,9 @@ to Fortran or Python wrapper.  Useful with array sizes:
 
       int Sum(int * array +intent(in), int len +implied(size(array))
 
+Several functions will be converted to the corresponding code for
+Python wrappers: ``size``, ``len`` and ``len_trim``.
+
 intent
 ^^^^^^
 

@@ -57,6 +57,24 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
 // splicer end function.function4a_bufferify
 }
 
+// void bindC2(const char * name +intent(in)+len_trim(Lname))
+/**
+ * \brief Rename Fortran name for interface only function
+ *
+ * This creates a Fortran implementation and an interface.
+ */
+void CLI_bind_c2_bufferify(const char * name, int Lname)
+{
+// splicer begin function.bind_c2_bufferify
+    char * SH_name = (char *) malloc(Lname + 1);
+    memcpy(SH_name, name, Lname);
+    SH_name[Lname] = '\0';
+    bindC2(SH_name);
+    free(SH_name);
+    return;
+// splicer end function.bind_c2_bufferify
+}
+
 // Release C++ allocated memory.
 void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
 {

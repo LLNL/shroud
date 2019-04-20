@@ -71,6 +71,34 @@ declarations:
        Pass the Fortran length of the char argument directy to the C function.
        No need for the bufferify version which will needlessly copy the string.
 
+######################################################################
+- decl: void bindC1()
+  doxygen:
+    brief: Rename Fortran name for interface only function
+    description: |
+       This creates only an interface.
+  format:
+    # Used with interface since there is no implementation.
+    F_name_impl: Fortran_bindC1a
+    # Unused.
+    F_C_name: Fortran_bindC1b
+  options:
+    wrap_python: false
+
+- decl: void bindC2(const char *name)
+  doxygen:
+    brief: Rename Fortran name for interface only function
+    description: |
+       This creates a Fortran implementation and an interface.
+  format:
+    # Used with implemention.
+    F_name_impl: Fortran_bindC2a
+    # XXX - Used with both interfaces, regular and bufferify
+#    F_C_name: Fortran_bindC2b
+  options:
+    wrap_python: false
+######################################################################
+
 # XXX - Replace with other code to free memory
 #  format:
 #    C_finalize_buf: |

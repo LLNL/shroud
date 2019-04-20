@@ -115,6 +115,26 @@ module clibrary_mod
             integer(C_INT) :: SHT_rv
         end function c_implied_len_trim
 
+        subroutine Fortran_bindC1a() &
+                bind(C, name="bindC1")
+            implicit none
+        end subroutine Fortran_bindC1a
+
+        subroutine c_bind_c2(name) &
+                bind(C, name="bindC2")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+        end subroutine c_bind_c2
+
+        subroutine c_bind_c2_bufferify(name, Lname) &
+                bind(C, name="CLI_bind_c2_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+        end subroutine c_bind_c2_bufferify
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -216,6 +236,21 @@ contains
         SHT_rv = c_implied_len_trim(text, ltext)
         ! splicer end function.implied_len_trim
     end function implied_len_trim
+
+    ! void bindC2(const char * name +intent(in))
+    ! arg_to_buffer
+    !>
+    !! \brief Rename Fortran name for interface only function
+    !!
+    !! This creates a Fortran implementation and an interface.
+    !<
+    subroutine Fortran_bindC2a(name)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: name
+        ! splicer begin function.bind_c2
+        call c_bind_c2_bufferify(name, len_trim(name, kind=C_INT))
+        ! splicer end function.bind_c2
+    end subroutine Fortran_bindC2a
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

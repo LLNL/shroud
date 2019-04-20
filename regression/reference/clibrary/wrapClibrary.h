@@ -31,4 +31,6 @@
 void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
+void CLI_bind_c2_bufferify(const char * name, int Lname);
+
 #endif  // WRAPCLIBRARY_H
