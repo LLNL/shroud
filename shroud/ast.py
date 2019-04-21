@@ -69,6 +69,10 @@ class AstNode(object):
             tname = name + tname + "_template"
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
+    def get_LibraryNode(self):
+        """Return top of AST tree."""
+        return self.parent.get_LibraryNode()
+
 
 ######################################################################
 
@@ -243,6 +247,8 @@ class LibraryNode(AstNode, NamespaceMixin):
     ):
         """Create LibraryNode.
 
+        cxx_header = blank delimited list of headers for C++ or C library.
+
         fields = value
         options:
         classes:
@@ -279,6 +285,10 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.using = []
         declast.global_namespace = self
         self.create_std_names()
+
+    def get_LibraryNode(self):
+        """Return top of AST tree."""
+        return self
 
     # # # # # namespace behavior
 

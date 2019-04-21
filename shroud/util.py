@@ -271,6 +271,11 @@ class WrapperMixin(object):
     def write_headers_nodes(self, lang_header, types, hlist, output):
         """Write out headers required by types
 
+        lang_header - "c_header"
+        types -
+        hlist -
+        output - append lines of code.
+
         types - dictionary[typedef.name] = typedef
         hlist - list of headers to include
                 From helper routines

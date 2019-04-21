@@ -1450,14 +1450,14 @@ def create_struct_typemap(node, fields=None):
     )
     if fields is not None:
         ntypemap.update(fields)
-    fill_struct_typemap_defaults(ntypemap)
+    fill_struct_typemap_defaults(node, ntypemap)
     register_type(cxx_name, ntypemap)
 
     fmt_class.C_type_name = ntypemap.c_type
     return ntypemap
 
 
-def fill_struct_typemap_defaults(ntypemap):
+def fill_struct_typemap_defaults(node, ntypemap):
     """Add some defaults to typemap.
     When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
@@ -1473,18 +1473,31 @@ def fill_struct_typemap_defaults(ntypemap):
 
     ntypemap.c_union = helper
 
-    # C++ pointer -> void pointer -> C pointer
-    ntypemap.cxx_to_c = (
-        "static_cast<{c_const}%s *>("
-        "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
-        % ntypemap.c_type
-    )
+    libnode = node.get_LibraryNode()
+    language = libnode.language
+    if language == "c++":
+        # C++ pointer -> void pointer -> C pointer
+        ntypemap.cxx_to_c = (
+            "static_cast<{c_const}%s *>("
+            "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
+            % ntypemap.c_type
+        )
 
-    # C pointer -> void pointer -> C++ pointer
-    ntypemap.c_to_cxx = (
-        "static_cast<{c_const}%s *>("
-        "\tstatic_cast<{c_const}void *>(\t{c_var}))" % ntypemap.cxx_type
-    )
+        # C pointer -> void pointer -> C++ pointer
+        ntypemap.c_to_cxx = (
+            "static_cast<{c_const}%s *>("
+            "\tstatic_cast<{c_const}void *>(\t{c_var}))" % ntypemap.cxx_type
+        )
+    else:  # language == "c"
+        # The struct from the user's library is used.
+        ntypemap.c_header = libnode.cxx_header
+        ntypemap.c_type = ntypemap.cxx_type
+        # C++ pointer -> void pointer -> C pointer
+        ntypemap.cxx_to_c = (
+            "static_cast<{c_const}%s *>("
+            "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
+            % ntypemap.c_type
+        )
 
     # To convert, extract correct field from union
     # #-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'

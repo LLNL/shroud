@@ -151,6 +151,29 @@ module clibrary_mod
             integer(C_INT) :: SHT_rv
         end function pass_struct1
 
+        function c_pass_struct2(s1, name) &
+                result(SHT_rv) &
+                bind(C, name="passStruct2")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: cstruct1
+            implicit none
+            type(cstruct1), intent(IN) :: s1
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT) :: SHT_rv
+        end function c_pass_struct2
+
+        function c_pass_struct2_bufferify(s1, name, Lname) &
+                result(SHT_rv) &
+                bind(C, name="CLI_pass_struct2_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: cstruct1
+            implicit none
+            type(cstruct1), intent(IN) :: s1
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT) :: SHT_rv
+        end function c_pass_struct2_bufferify
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -267,6 +290,23 @@ contains
         call c_bind_c2_bufferify(name, len_trim(name, kind=C_INT))
         ! splicer end function.bind_c2
     end subroutine Fortran_bindC2a
+
+    ! int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))
+    ! arg_to_buffer
+    !>
+    !! Pass name argument which will build a bufferify function.
+    !<
+    function pass_struct2(s1, name) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(cstruct1), intent(IN) :: s1
+        character(len=*), intent(IN) :: name
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.pass_struct2
+        SHT_rv = c_pass_struct2_bufferify(s1, name, &
+            len_trim(name, kind=C_INT))
+        ! splicer end function.pass_struct2
+    end function pass_struct2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -20,5 +20,6 @@ declarations:
     fields:
       base: struct
       cxx_type: Cstruct1
-      c_type: CLI_cstruct1
+      c_type: Cstruct1
+      c_header: clibrary.h
       f_derived_type: cstruct1

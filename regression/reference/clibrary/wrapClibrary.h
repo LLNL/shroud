@@ -23,13 +23,8 @@
 #ifndef WRAPCLIBRARY_H
 #define WRAPCLIBRARY_H
 
+#include "clibrary.h"
 #include "typesClibrary.h"
-
-
-struct s_CLI_cstruct1 {
-    int ifield;
-};
-typedef struct s_CLI_cstruct1 CLI_cstruct1;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -38,5 +33,8 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
 void CLI_bind_c2_bufferify(const char * name, int Lname);
+
+int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
+    int Lname);
 
 #endif  // WRAPCLIBRARY_H

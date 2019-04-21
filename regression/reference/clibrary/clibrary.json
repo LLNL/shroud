@@ -8,7 +8,7 @@
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
                     "C_impl_filename": "wrapCstruct1.c",
-                    "C_type_name": "CLI_cstruct1",
+                    "C_type_name": "Cstruct1",
                     "F_capsule_data_type": "SHROUD_cstruct1_capsule",
                     "F_derived_name": "cstruct1",
                     "PY_struct_array_descr_create": "PY_Cstruct1_create_array_descr",
@@ -1789,12 +1789,10 @@
                             "c_member": "->",
                             "c_var": "s1",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SHCXX_s1",
-                            "cxx_decl": "Cstruct1 * SHCXX_s1",
+                            "cxx_cast_to_void_ptr": "s1",
                             "cxx_member": "->",
                             "cxx_type": "Cstruct1",
-                            "cxx_val": "static_cast<Cstruct1 *>(\tstatic_cast<void *>(\ts1))",
-                            "cxx_var": "SHCXX_s1",
+                            "cxx_var": "s1",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -1850,11 +1848,10 @@
                 "decl": "int passStruct1(Cstruct1 *s1)",
                 "declgen": "int passStruct1(Cstruct1 * s1 +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct1(\tSHCXX_s1);",
-                    "C_call_list": "SHCXX_s1",
+                    "C_call_code": "int SHC_rv =\t passStruct1(\ts1);",
+                    "C_call_list": "s1",
                     "C_name": "passStruct1",
-                    "C_pre_call": "Cstruct1 * SHCXX_s1 =\t static_cast<Cstruct1 *>(\tstatic_cast<void *>(\ts1));",
-                    "C_prototype": "CLI_cstruct1 * s1",
+                    "C_prototype": "Cstruct1 * s1",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct1",
@@ -1875,6 +1872,267 @@
                 "linenumber": 109,
                 "options": {
                     "__line__": 110,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "name",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "idtor": "0"
+                        }
+                    },
+                    "s1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "s1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "s1",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "s1",
+                            "idtor": "0"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passStruct2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "s1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
+                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))",
+                "doxygen": {
+                    "__line__": 114,
+                    "description": "Pass name argument which will build a bufferify function.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t name);",
+                    "C_call_list": "s1,\t name",
+                    "C_name": "passStruct2",
+                    "C_prototype": "Cstruct1 * s1,\t const char * name",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_call": "c_pass_struct2_bufferify",
+                    "F_C_name": "c_pass_struct2",
+                    "F_arg_c_call": "s1,\t name,\t len_trim(name, kind=C_INT)",
+                    "F_arguments": "s1,\t name",
+                    "F_call_code": "SHT_rv = c_pass_struct2_bufferify(s1,\t name,\t len_trim(name, kind=C_INT))",
+                    "F_name_function": "pass_struct2",
+                    "F_name_generic": "pass_struct2",
+                    "F_name_impl": "pass_struct2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "passStruct2",
+                    "underscore_name": "pass_struct2"
+                },
+                "linenumber": 113,
+                "options": {
+                    "__line__": 117,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_name",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_name",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "name",
+                            "f_var": "name"
+                        }
+                    },
+                    "s1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "s1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "s1",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "s1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "s1",
+                            "f_var": "s1"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "passStruct2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "s1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        },
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "intent": "in",
+                                "len_trim": "Lname",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
+                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))",
+                "doxygen": {
+                    "__line__": 114,
+                    "description": "Pass name argument which will build a bufferify function.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t SH_name);",
+                    "C_call_list": "s1,\t SH_name",
+                    "C_name": "CLI_pass_struct2_bufferify",
+                    "C_post_call": "free(SH_name);",
+                    "C_pre_call": "char * SH_name = (char *) malloc(Lname + 1);\nmemcpy(SH_name, name, Lname);\nSH_name[Lname] = '\\0';",
+                    "C_prototype": "Cstruct1 * s1,\t const char * name,\t int Lname",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "int",
+                    "F_C_name": "c_pass_struct2_bufferify",
+                    "c_const": "",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "passStruct2",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "pass_struct2"
+                },
+                "linenumber": 113,
+                "options": {
+                    "__line__": 117,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 }
             }
@@ -1963,15 +2221,15 @@
             "LUA_type": "LUA_TUSERDATA",
             "PYN_descr": "PY_Cstruct1_array_descr",
             "base": "struct",
+            "c_header": "clibrary.h",
             "c_statements": {
                 "result": {
                     "c_helper": "SH_union_0_t"
                 }
             },
-            "c_to_cxx": "static_cast<{c_const}Cstruct1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))",
-            "c_type": "CLI_cstruct1",
+            "c_type": "Cstruct1",
             "c_union": "SH_union_0_t",
-            "cxx_to_c": "static_cast<{c_const}CLI_cstruct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))",
+            "cxx_to_c": "static_cast<{c_const}Cstruct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))",
             "cxx_type": "Cstruct1",
             "f_derived_type": "cstruct1",
             "f_module": {

@@ -8,10 +8,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Added format dictionary field template_suffix.
-- Added the F_create_bufferify_function option.
+- Added the **F_create_bufferify_function** option.
 
 ### Fixed
 - C++ function arguments which pass a class by value.
+- C struct arguments passed to a bufferify function.
+  It was using C++ casting.  Instead there is no C wrapper for a struct
+  like there is with a Class since it is already compatible with Fortran.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

@@ -110,6 +110,13 @@ declarations:
   options:
     wrap_python: false
 
+- decl: int passStruct2(Cstruct1 *s1, const char *name)
+  doxygen:
+    description: |
+      Pass name argument which will build a bufferify function.
+  options:
+    wrap_python: false
+
 ######################################################################
 
 # XXX - Replace with other code to free memory

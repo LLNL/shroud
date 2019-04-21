@@ -97,6 +97,12 @@ int passStruct1(Cstruct1 *s1)
     return s1->ifield;
 }
 
+int passStruct2(Cstruct1 *s1, const char *name)
+{
+    strncpy(last_function_called, "passStruct2", MAXLAST);
+    return s1->ifield;
+}
+
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)
 {

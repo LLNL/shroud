@@ -75,6 +75,23 @@ void CLI_bind_c2_bufferify(const char * name, int Lname)
 // splicer end function.bind_c2_bufferify
 }
 
+// int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))
+/**
+ * Pass name argument which will build a bufferify function.
+ */
+int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
+    int Lname)
+{
+// splicer begin function.pass_struct2_bufferify
+    char * SH_name = (char *) malloc(Lname + 1);
+    memcpy(SH_name, name, Lname);
+    SH_name[Lname] = '\0';
+    int SHC_rv = passStruct2(s1, SH_name);
+    free(SH_name);
+    return SHC_rv;
+// splicer end function.pass_struct2_bufferify
+}
+
 // Release C++ allocated memory.
 void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
 {

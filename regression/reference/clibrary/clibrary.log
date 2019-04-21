@@ -1,6 +1,5 @@
 Read yaml clibrary.yaml
 Close clibrary_types.yaml
-class Cstruct1
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
@@ -14,6 +13,8 @@ C function void bindC1()
 C function void bindC2(const char * name +intent(in))
 C function void bindC2(const char * name +intent(in)+len_trim(Lname))
 C function int passStruct1(Cstruct1 * s1 +intent(in))
+C function int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))
+C function int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
@@ -31,6 +32,8 @@ C-interface, Fortran function void bindC1()
 C-interface, Fortran function void bindC2(const char * name +intent(in))
 C-interface function void bindC2(const char * name +intent(in)+len_trim(Lname))
 C-interface, Fortran function int passStruct1(Cstruct1 * s1 +intent(in))
+C-interface, Fortran function int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))
+C-interface function int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

@@ -130,6 +130,9 @@ contains
     s1%ifield = 12
     call assert_equals(12, pass_struct1(s1))
 
+    s1%ifield = 22
+    call assert_equals(22, pass_struct2(s1, "monkey"))
+
   end subroutine test_structs
 
 !  subroutine test_vector
