@@ -1334,7 +1334,7 @@ rv = .false.
                     # Argument is not passed into Fortran.
                     # hidden value is returned from C++.
                     # implied is computed then passed to C++
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
                     arg_f_names.append(fmt_arg.f_var)
@@ -1764,7 +1764,7 @@ rv = .false.
 
 
 class ToImplied(todict.PrintNode):
-    """Convert implied expression to Python wrapper code.
+    """Convert implied expression to Fortran wrapper code.
 
     expression has already been checked for errors by generate.check_implied.
     Convert functions:
@@ -1785,8 +1785,13 @@ class ToImplied(todict.PrintNode):
 
     def visit_Identifier(self, node):
         # Look for functions
-        if node.args is None:
+        if node.name == "true":
+            return ".TRUE._C_BOOL"
+        elif node.name == "false":
+            return ".FALSE._C_BOOL"
+        elif node.args is None:
             return node.name
+        ### functions
         elif node.name == "size":
             # size(arg)
             # This expected to be assigned to a C_INT or C_LONG
@@ -1794,6 +1799,16 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
+        elif node.name == "len":
+            # len(arg)
+            argname = node.args[0].name
+            arg_typemap = self.arg.typemap
+            return "len({},kind={})".format(argname, arg_typemap.f_kind)
+        elif node.name == "len_trim":
+            # len_trim(arg)
+            argname = node.args[0].name
+            arg_typemap = self.arg.typemap
+            return "len_trim({},kind={})".format(argname, arg_typemap.f_kind)
         else:
             return self.param_list(node)
 

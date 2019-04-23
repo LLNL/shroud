@@ -59,7 +59,8 @@ declarations:
     const char *arg1,
     const char *arg2 ) +len(30)
 
-- decl: int ImpliedLen(const char *text, int ltext+implied(len(text)))
+- decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
+                       bool flag+implied(false))
   options:
     F_create_bufferify_function: false
   doxygen:
@@ -68,7 +69,8 @@ declarations:
        Pass the Fortran length of the char argument directy to the C function.
        No need for the bufferify version which will needlessly copy the string.
 
-- decl: int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)))
+- decl: int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)),
+                           bool flag+implied(true))
   options:
     F_create_bufferify_function: false
   doxygen:
@@ -76,6 +78,14 @@ declarations:
     description: |
        Pass the Fortran length of the char argument directy to the C function.
        No need for the bufferify version which will needlessly copy the string.
+
+- decl: bool ImpliedBoolTrue(bool flag+implied(true))
+  doxygen:
+    brief: Single, implied bool argument
+
+- decl: bool ImpliedBoolFalse(bool flag+implied(false))
+  doxygen:
+    brief: Single, implied bool argument
 
 ######################################################################
 - decl: void bindC1()

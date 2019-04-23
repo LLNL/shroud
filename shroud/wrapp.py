@@ -2444,7 +2444,9 @@ class ToImplied(todict.PrintNode):
 
     expression has already been checked for errors by generate.check_implied.
     Convert functions:
-      size  -  PyArray_SIZE
+      size     -  PyArray_SIZE
+      len      -  strlen
+      len_trim -
     """
 
     def __init__(self, expr, func):
@@ -2456,6 +2458,7 @@ class ToImplied(todict.PrintNode):
         # Look for functions
         if node.args is None:
             return node.name
+        ### functions
         elif node.name == "size":
             # size(arg)
             argname = node.args[0].name

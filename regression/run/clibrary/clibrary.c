@@ -69,16 +69,28 @@ char *Function4a(const char *arg1, const char *arg2)
     return out;
 }
 
-int ImpliedLen(const char *text, int ltext)
+int ImpliedLen(const char *text, int ltext, bool flag)
 {
     strncpy(last_function_called, "ImpliedLen", MAXLAST);
     return ltext;
 }
 
-int ImpliedLenTrim(const char *text, int ltext)
+int ImpliedLenTrim(const char *text, int ltext, bool flag)
 {
     strncpy(last_function_called, "ImpliedLenTrim", MAXLAST);
     return ltext;
+}
+
+bool ImpliedBoolTrue(bool flag)
+{
+    strncpy(last_function_called, "ImpliedBoolTrue", MAXLAST);
+    return flag;
+}
+
+bool ImpliedBoolFalse(bool flag)
+{
+    strncpy(last_function_called, "ImpliedBoolFalse", MAXLAST);
+    return flag;
 }
 
 void bindC1()

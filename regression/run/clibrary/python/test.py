@@ -53,6 +53,21 @@ class Tutorial(unittest.TestCase):
     def testfunction4a(self):
         self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))
 
+    def testImpliedLen(self):
+        rv_int = clibrary.ImpliedLen("bird  ")
+        self.assertEqual(6, rv_int)
+
+    def testImpliedLen2(self):
+        # XXX - this should return 4
+        rv_int = clibrary.ImpliedLenTrim("bird  ")
+        self.assertEqual(6, rv_int)
+
+    def testImpliedBoolTrue(self):
+        self.assertTrue(clibrary.ImpliedBoolTrue())
+
+    def testImpliedBoolFalse(self):
+        self.assertFalse(clibrary.ImpliedBoolFalse())
+
     def testsum(self):
         self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 

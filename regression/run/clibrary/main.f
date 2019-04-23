@@ -85,6 +85,8 @@ contains
     rv_int = implied_len_trim(rv_char)
     call assert_true(rv_int == len_trim(rv_char))
 
+    call assert_true(implied_bool_true())
+    call assert_false(implied_bool_false())
 
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")

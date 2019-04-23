@@ -1213,6 +1213,40 @@
             },
             {
                 "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "flag",
+                            "f_var": "flag",
+                            "pre_call_intent": ".FALSE._C_BOOL"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "bool flag",
+                            "c_deref": "",
+                            "c_type": "bool",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "bool flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "numpy_type": "NPY_BOOL",
+                            "pre_call_intent": "false",
+                            "py_var": "SHPy_flag"
+                        }
+                    },
                     "ltext": {
                         "fmtc": {
                             "c_const": "",
@@ -1229,7 +1263,7 @@
                         "fmtf": {
                             "c_var": "ltext",
                             "f_var": "ltext",
-                            "pre_call_intent": "len(text)"
+                            "pre_call_intent": "len(text,kind=C_INT)"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1344,6 +1378,21 @@
                                 "int"
                             ],
                             "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "false",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
                         }
                     ],
                     "specifier": [
@@ -1351,25 +1400,25 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)))",
-                "declgen": "int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)",
+                "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
+                "declgen": "int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 65,
+                    "__line__": 66,
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t ImpliedLen(\ttext,\t ltext);",
-                    "C_call_list": "text,\t ltext",
+                    "C_call_code": "int SHC_rv =\t ImpliedLen(\ttext,\t ltext,\t flag);",
+                    "C_call_list": "text,\t ltext,\t flag",
                     "C_name": "ImpliedLen",
-                    "C_prototype": "const char * text,\t int ltext",
+                    "C_prototype": "const char * text,\t int ltext,\t bool flag",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_implied_len",
                     "F_C_name": "c_implied_len",
-                    "F_arg_c_call": "text,\t ltext",
+                    "F_arg_c_call": "text,\t ltext,\t flag",
                     "F_arguments": "text",
-                    "F_call_code": "SHT_rv = c_implied_len(text,\t ltext)",
+                    "F_call_code": "SHT_rv = c_implied_len(text,\t ltext,\t flag)",
                     "F_name_function": "implied_len",
                     "F_name_generic": "implied_len",
                     "F_name_impl": "implied_len",
@@ -1384,11 +1433,45 @@
                 "linenumber": 62,
                 "options": {
                     "F_create_bufferify_function": false,
-                    "__line__": 63
+                    "__line__": 64
                 }
             },
             {
                 "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "flag",
+                            "f_var": "flag",
+                            "pre_call_intent": ".TRUE._C_BOOL"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "bool flag",
+                            "c_deref": "",
+                            "c_type": "bool",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "bool flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "numpy_type": "NPY_BOOL",
+                            "pre_call_intent": "true",
+                            "py_var": "SHPy_flag"
+                        }
+                    },
                     "ltext": {
                         "fmtc": {
                             "c_const": "",
@@ -1405,7 +1488,7 @@
                         "fmtf": {
                             "c_var": "ltext",
                             "f_var": "ltext",
-                            "pre_call_intent": "len_trim(text)"
+                            "pre_call_intent": "len_trim(text,kind=C_INT)"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1520,6 +1603,21 @@
                                 "int"
                             ],
                             "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "true",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
                         }
                     ],
                     "specifier": [
@@ -1527,25 +1625,25 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)))",
-                "declgen": "int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)",
+                "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
+                "declgen": "int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 74,
+                    "__line__": 76,
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t ImpliedLenTrim(\ttext,\t ltext);",
-                    "C_call_list": "text,\t ltext",
+                    "C_call_code": "int SHC_rv =\t ImpliedLenTrim(\ttext,\t ltext,\t flag);",
+                    "C_call_list": "text,\t ltext,\t flag",
                     "C_name": "ImpliedLenTrim",
-                    "C_prototype": "const char * text,\t int ltext",
+                    "C_prototype": "const char * text,\t int ltext,\t bool flag",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
                     "F_C_call": "c_implied_len_trim",
                     "F_C_name": "c_implied_len_trim",
-                    "F_arg_c_call": "text,\t ltext",
+                    "F_arg_c_call": "text,\t ltext,\t flag",
                     "F_arguments": "text",
-                    "F_call_code": "SHT_rv = c_implied_len_trim(text,\t ltext)",
+                    "F_call_code": "SHT_rv = c_implied_len_trim(text,\t ltext,\t flag)",
                     "F_name_function": "implied_len_trim",
                     "F_name_generic": "implied_len_trim",
                     "F_name_impl": "implied_len_trim",
@@ -1557,11 +1655,253 @@
                     "function_name": "ImpliedLenTrim",
                     "underscore_name": "implied_len_trim"
                 },
-                "linenumber": 71,
+                "linenumber": 72,
                 "options": {
                     "F_create_bufferify_function": false,
-                    "__line__": 72
+                    "__line__": 74
                 }
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "flag",
+                            "f_var": "flag",
+                            "pre_call_intent": ".TRUE._C_BOOL"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "bool flag",
+                            "c_deref": "",
+                            "c_type": "bool",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "bool flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "numpy_type": "NPY_BOOL",
+                            "pre_call_intent": "true",
+                            "py_var": "SHPy_flag"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "bool",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": "PyBool_Type",
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_BOOL",
+                        "py_var": "SHTPy_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "ImpliedBoolTrue",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "implied": "true",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        }
+                    ],
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
+                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)",
+                "doxygen": {
+                    "__line__": 83,
+                    "brief": "Single, implied bool argument"
+                },
+                "fmtdict": {
+                    "C_call_code": "bool SHC_rv =\t ImpliedBoolTrue(\tflag);",
+                    "C_call_list": "flag",
+                    "C_name": "ImpliedBoolTrue",
+                    "C_prototype": "bool flag",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "bool",
+                    "F_C_call": "c_implied_bool_true",
+                    "F_C_name": "c_implied_bool_true",
+                    "F_arg_c_call": "flag",
+                    "F_arguments": "",
+                    "F_call_code": "SHT_rv = c_implied_bool_true(flag)",
+                    "F_name_function": "implied_bool_true",
+                    "F_name_generic": "implied_bool_true",
+                    "F_name_impl": "implied_bool_true",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedBoolTrue",
+                    "c_const": "",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "ImpliedBoolTrue",
+                    "underscore_name": "implied_bool_true"
+                },
+                "linenumber": 82,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "flag",
+                            "f_var": "flag",
+                            "pre_call_intent": ".FALSE._C_BOOL"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "bool flag",
+                            "c_deref": "",
+                            "c_type": "bool",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_decl": "bool flag",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "numpy_type": "NPY_BOOL",
+                            "pre_call_intent": "false",
+                            "py_var": "SHPy_flag"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "bool",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": "PyBool_Type",
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_BOOL",
+                        "py_var": "SHTPy_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "ImpliedBoolFalse",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "implied": "false",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        }
+                    ],
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
+                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)",
+                "doxygen": {
+                    "__line__": 87,
+                    "brief": "Single, implied bool argument"
+                },
+                "fmtdict": {
+                    "C_call_code": "bool SHC_rv =\t ImpliedBoolFalse(\tflag);",
+                    "C_call_list": "flag",
+                    "C_name": "ImpliedBoolFalse",
+                    "C_prototype": "bool flag",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "bool",
+                    "F_C_call": "c_implied_bool_false",
+                    "F_C_name": "c_implied_bool_false",
+                    "F_arg_c_call": "flag",
+                    "F_arguments": "",
+                    "F_call_code": "SHT_rv = c_implied_bool_false(flag)",
+                    "F_name_function": "implied_bool_false",
+                    "F_name_generic": "implied_bool_false",
+                    "F_name_impl": "implied_bool_false",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedBoolFalse",
+                    "c_const": "",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "ImpliedBoolFalse",
+                    "underscore_name": "implied_bool_false"
+                },
+                "linenumber": 86,
+                "options": {}
             },
             {
                 "ast": {
@@ -1578,7 +1918,7 @@
                 "decl": "void bindC1()",
                 "declgen": "void bindC1()",
                 "doxygen": {
-                    "__line__": 82,
+                    "__line__": 92,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates only an interface.\n"
                 },
@@ -1598,14 +1938,14 @@
                     "F_name_generic": "bind_c1",
                     "F_name_impl": "Fortran_bindC1a",
                     "F_subprogram": "subroutine",
-                    "__line__": 86,
+                    "__line__": 96,
                     "c_const": "",
                     "function_name": "bindC1",
                     "underscore_name": "bind_c1"
                 },
-                "linenumber": 81,
+                "linenumber": 91,
                 "options": {
-                    "__line__": 91,
+                    "__line__": 101,
                     "wrap_python": false
                 }
             },
@@ -1660,7 +2000,7 @@
                 "decl": "void bindC2(const char *name)",
                 "declgen": "void bindC2(const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 95,
+                    "__line__": 105,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran implementation and an interface.\n"
                 },
@@ -1680,14 +2020,14 @@
                     "F_name_generic": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
                     "F_subprogram": "subroutine",
-                    "__line__": 99,
+                    "__line__": 109,
                     "c_const": "",
                     "function_name": "bindC2",
                     "underscore_name": "bind_c2"
                 },
-                "linenumber": 94,
+                "linenumber": 104,
                 "options": {
-                    "__line__": 104,
+                    "__line__": 114,
                     "wrap_python": false
                 }
             },
@@ -1750,7 +2090,7 @@
                 "decl": "void bindC2(const char *name)",
                 "declgen": "void bindC2(const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 95,
+                    "__line__": 105,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran implementation and an interface.\n"
                 },
@@ -1765,15 +2105,15 @@
                     "C_return_type": "void",
                     "F_C_name": "c_bind_c2_bufferify",
                     "F_name_impl": "Fortran_bindC2a",
-                    "__line__": 99,
+                    "__line__": 109,
                     "c_const": "",
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
                     "underscore_name": "bind_c2"
                 },
-                "linenumber": 94,
+                "linenumber": 104,
                 "options": {
-                    "__line__": 104,
+                    "__line__": 114,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -1869,9 +2209,9 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 109,
+                "linenumber": 119,
                 "options": {
-                    "__line__": 110,
+                    "__line__": 120,
                     "wrap_python": false
                 }
             },
@@ -1972,7 +2312,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 114,
+                    "__line__": 124,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -1997,9 +2337,9 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 113,
+                "linenumber": 123,
                 "options": {
-                    "__line__": 117,
+                    "__line__": 127,
                     "wrap_python": false
                 }
             },
@@ -2108,7 +2448,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 114,
+                    "__line__": 124,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -2127,9 +2467,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 113,
+                "linenumber": 123,
                 "options": {
-                    "__line__": 117,
+                    "__line__": 127,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

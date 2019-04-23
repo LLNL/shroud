@@ -262,7 +262,7 @@ PY_ImpliedLen(
   PyObject *args,
   PyObject *kwds)
 {
-// int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
+// int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
 // splicer begin function.implied_len
     const char * text;
     char *SHT_kwlist[] = {
@@ -275,8 +275,9 @@ PY_ImpliedLen(
 
     // pre_call
     int ltext = strlen(text);
+    bool flag = false;
 
-    int SHC_rv = ImpliedLen(text, ltext);
+    int SHC_rv = ImpliedLen(text, ltext, flag);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
@@ -301,7 +302,7 @@ PY_ImpliedLenTrim(
   PyObject *args,
   PyObject *kwds)
 {
-// int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
+// int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)
 // splicer begin function.implied_len_trim
     const char * text;
     char *SHT_kwlist[] = {
@@ -314,14 +315,71 @@ PY_ImpliedLenTrim(
 
     // pre_call
     int ltext = strlen(text);
+    bool flag = true;
 
-    int SHC_rv = ImpliedLenTrim(text, ltext);
+    int SHC_rv = ImpliedLenTrim(text, ltext, flag);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len_trim
+}
+
+static char PY_ImpliedBoolTrue__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Single, implied bool argument
+ *
+ */
+static PyObject *
+PY_ImpliedBoolTrue(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)
+// splicer begin function.implied_bool_true
+    // pre_call
+    bool flag = true;
+
+    bool SHC_rv = ImpliedBoolTrue(flag);
+
+    // post_call
+    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.implied_bool_true
+}
+
+static char PY_ImpliedBoolFalse__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Single, implied bool argument
+ *
+ */
+static PyObject *
+PY_ImpliedBoolFalse(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)
+// splicer begin function.implied_bool_false
+    // pre_call
+    bool flag = false;
+
+    bool SHC_rv = ImpliedBoolFalse(flag);
+
+    // post_call
+    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.implied_bool_false
 }
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
@@ -339,6 +397,10 @@ static PyMethodDef PY_methods[] = {
     PY_ImpliedLen__doc__},
 {"ImpliedLenTrim", (PyCFunction)PY_ImpliedLenTrim,
     METH_VARARGS|METH_KEYWORDS, PY_ImpliedLenTrim__doc__},
+{"ImpliedBoolTrue", (PyCFunction)PY_ImpliedBoolTrue, METH_NOARGS,
+    PY_ImpliedBoolTrue__doc__},
+{"ImpliedBoolFalse", (PyCFunction)PY_ImpliedBoolFalse, METH_NOARGS,
+    PY_ImpliedBoolFalse__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

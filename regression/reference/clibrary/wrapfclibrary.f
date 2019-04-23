@@ -101,25 +101,45 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
-        function c_implied_len(text, ltext) &
+        function c_implied_len(text, ltext, flag) &
                 result(SHT_rv) &
                 bind(C, name="ImpliedLen")
-            use iso_c_binding, only : C_CHAR, C_INT
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: text(*)
             integer(C_INT), value, intent(IN) :: ltext
+            logical(C_BOOL), value, intent(IN) :: flag
             integer(C_INT) :: SHT_rv
         end function c_implied_len
 
-        function c_implied_len_trim(text, ltext) &
+        function c_implied_len_trim(text, ltext, flag) &
                 result(SHT_rv) &
                 bind(C, name="ImpliedLenTrim")
-            use iso_c_binding, only : C_CHAR, C_INT
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: text(*)
             integer(C_INT), value, intent(IN) :: ltext
+            logical(C_BOOL), value, intent(IN) :: flag
             integer(C_INT) :: SHT_rv
         end function c_implied_len_trim
+
+        function c_implied_bool_true(flag) &
+                result(SHT_rv) &
+                bind(C, name="ImpliedBoolTrue")
+            use iso_c_binding, only : C_BOOL
+            implicit none
+            logical(C_BOOL), value, intent(IN) :: flag
+            logical(C_BOOL) :: SHT_rv
+        end function c_implied_bool_true
+
+        function c_implied_bool_false(flag) &
+                result(SHT_rv) &
+                bind(C, name="ImpliedBoolFalse")
+            use iso_c_binding, only : C_BOOL
+            implicit none
+            logical(C_BOOL), value, intent(IN) :: flag
+            logical(C_BOOL) :: SHT_rv
+        end function c_implied_bool_false
 
         subroutine Fortran_bindC1a() &
                 bind(C, name="bindC1")
@@ -238,7 +258,7 @@ contains
         ! splicer end function.function4a
     end function function4a
 
-    ! int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value)
+    ! int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -247,17 +267,19 @@ contains
     !<
     function implied_len(text) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_BOOL, C_INT
         character(len=*), intent(IN) :: text
         integer(C_INT) :: ltext
+        logical(C_BOOL) :: flag
         integer(C_INT) :: SHT_rv
-        ltext = len(text)
+        ltext = len(text,kind=C_INT)
+        flag = .FALSE._C_BOOL
         ! splicer begin function.implied_len
-        SHT_rv = c_implied_len(text, ltext)
+        SHT_rv = c_implied_len(text, ltext, flag)
         ! splicer end function.implied_len
     end function implied_len
 
-    ! int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value)
+    ! int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -266,15 +288,49 @@ contains
     !<
     function implied_len_trim(text) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_BOOL, C_INT
         character(len=*), intent(IN) :: text
         integer(C_INT) :: ltext
+        logical(C_BOOL) :: flag
         integer(C_INT) :: SHT_rv
-        ltext = len_trim(text)
+        ltext = len_trim(text,kind=C_INT)
+        flag = .TRUE._C_BOOL
         ! splicer begin function.implied_len_trim
-        SHT_rv = c_implied_len_trim(text, ltext)
+        SHT_rv = c_implied_len_trim(text, ltext, flag)
         ! splicer end function.implied_len_trim
     end function implied_len_trim
+
+    ! bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)
+    !>
+    !! \brief Single, implied bool argument
+    !!
+    !<
+    function implied_bool_true() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL
+        logical(C_BOOL) :: flag
+        logical :: SHT_rv
+        flag = .TRUE._C_BOOL
+        ! splicer begin function.implied_bool_true
+        SHT_rv = c_implied_bool_true(flag)
+        ! splicer end function.implied_bool_true
+    end function implied_bool_true
+
+    ! bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)
+    !>
+    !! \brief Single, implied bool argument
+    !!
+    !<
+    function implied_bool_false() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL
+        logical(C_BOOL) :: flag
+        logical :: SHT_rv
+        flag = .FALSE._C_BOOL
+        ! splicer begin function.implied_bool_false
+        SHT_rv = c_implied_bool_false(flag)
+        ! splicer end function.implied_bool_false
+    end function implied_bool_false
 
     ! void bindC2(const char * name +intent(in))
     ! arg_to_buffer

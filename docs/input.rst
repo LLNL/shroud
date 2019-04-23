@@ -420,7 +420,7 @@ For example, setting the shape of a pointer function:
 
 .. code-block:: text
 
-      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+      int * ReturnIntPtr(int *len+intent(out)+hidden +dimension(len))
 
 .. assumed intent(out)
 

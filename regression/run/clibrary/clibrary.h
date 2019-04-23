@@ -42,8 +42,10 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
 
-int ImpliedLen(const char *text, int ltext);
-int ImpliedLenTrim(const char *text, int ltext);
+int ImpliedLen(const char *text, int ltext, bool flag);
+int ImpliedLenTrim(const char *text, int ltext, bool flag);
+bool ImpliedBoolTrue(bool flag);
+bool ImpliedBoolFalse(bool flag);
 
 void bindC1(void);
 void bindC2(const char * name);
