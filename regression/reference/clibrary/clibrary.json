@@ -2475,6 +2475,372 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 }
+            },
+            {
+                "_fmtargs": {
+                    "ifield": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "ifield",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&ifield",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ifield",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "ifield",
+                            "f_var": "ifield"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct1",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnStructPtr1",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ifield",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "Cstruct1 *returnStructPtr1(int ifield)",
+                "declgen": "Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 131,
+                    "brief": "Return a pointer to a struct",
+                    "description": "Does not generate a bufferify C wrapper.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr1(\tifield);",
+                    "C_call_list": "ifield",
+                    "C_name": "returnStructPtr1",
+                    "C_prototype": "int ifield",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "Cstruct1 *",
+                    "F_C_call": "c_return_struct_ptr1",
+                    "F_C_name": "c_return_struct_ptr1",
+                    "F_arg_c_call": "ifield",
+                    "F_arguments": "ifield",
+                    "F_call_code": "SHT_ptr = c_return_struct_ptr1(ifield)",
+                    "F_name_function": "return_struct_ptr1",
+                    "F_name_generic": "return_struct_ptr1",
+                    "F_name_impl": "return_struct_ptr1",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "Cstruct1 * SHC_rv",
+                    "function_name": "returnStructPtr1",
+                    "underscore_name": "return_struct_ptr1"
+                },
+                "linenumber": 130,
+                "options": {
+                    "__line__": 135,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "ifield": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "ifield",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&ifield",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ifield",
+                            "idtor": "0"
+                        }
+                    },
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "name",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "idtor": "0"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct1",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnStructPtr2",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ifield",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
+                "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))",
+                "doxygen": {
+                    "__line__": 139,
+                    "brief": "Return a pointer to a struct",
+                    "description": "Generates a bufferify C wrapper function.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\tifield,\t name);",
+                    "C_call_list": "ifield,\t name",
+                    "C_name": "returnStructPtr2",
+                    "C_prototype": "int ifield,\t const char * name",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "Cstruct1 *",
+                    "F_C_call": "c_return_struct_ptr2_bufferify",
+                    "F_C_name": "c_return_struct_ptr2",
+                    "F_arg_c_call": "ifield,\t name,\t len_trim(name, kind=C_INT)",
+                    "F_arguments": "ifield,\t name",
+                    "F_call_code": "SHT_ptr = c_return_struct_ptr2_bufferify(ifield,\t name,\t len_trim(name, kind=C_INT))",
+                    "F_name_function": "return_struct_ptr2",
+                    "F_name_generic": "return_struct_ptr2",
+                    "F_name_impl": "return_struct_ptr2",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "c_const": "",
+                    "cxx_rv_decl": "Cstruct1 * SHC_rv",
+                    "function_name": "returnStructPtr2",
+                    "underscore_name": "return_struct_ptr2"
+                },
+                "linenumber": 138,
+                "options": {
+                    "__line__": 143,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "ifield": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "ifield",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&ifield",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "ifield",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "ifield",
+                            "f_var": "ifield"
+                        }
+                    },
+                    "name": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_name",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_name",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "name",
+                            "f_var": "name"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "returnStructPtr2",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ifield",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "intent": "in",
+                                "len_trim": "Lname",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "return_pointer_as": "pointer",
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
+                "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))",
+                "doxygen": {
+                    "__line__": 139,
+                    "brief": "Return a pointer to a struct",
+                    "description": "Generates a bufferify C wrapper function.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\tifield,\t SH_name);",
+                    "C_call_list": "ifield,\t SH_name",
+                    "C_name": "CLI_return_struct_ptr2_bufferify",
+                    "C_post_call": "free(SH_name);",
+                    "C_pre_call": "char * SH_name = (char *) malloc(Lname + 1);\nmemcpy(SH_name, name, Lname);\nSH_name[Lname] = '\\0';",
+                    "C_prototype": "int ifield,\t const char * name,\t int Lname",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "Cstruct1 *",
+                    "F_C_name": "c_return_struct_ptr2_bufferify",
+                    "c_const": "",
+                    "cxx_rv_decl": "Cstruct1 * SHC_rv",
+                    "function_name": "returnStructPtr2",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_struct_ptr2"
+                },
+                "linenumber": 138,
+                "options": {
+                    "__line__": 143,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",
@@ -2569,7 +2935,6 @@
             },
             "c_type": "Cstruct1",
             "c_union": "SH_union_0_t",
-            "cxx_to_c": "static_cast<{c_const}Cstruct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))",
             "cxx_type": "Cstruct1",
             "f_derived_type": "cstruct1",
             "f_module": {

@@ -52,6 +52,8 @@ void bindC2(const char * name);
 
 int passStruct1(Cstruct1 *s1);
 int passStruct2(Cstruct1 *s1, const char *name);
+Cstruct1 *returnStructPtr1(int ifield);
+Cstruct1 *returnStructPtr2(int ifield, const char *name);
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);

@@ -92,6 +92,25 @@ int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
 // splicer end function.pass_struct2_bufferify
 }
 
+// Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))
+/**
+ * \brief Return a pointer to a struct
+ *
+ * Generates a bufferify C wrapper function.
+ */
+Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield,
+    const char * name, int Lname)
+{
+// splicer begin function.return_struct_ptr2_bufferify
+    char * SH_name = (char *) malloc(Lname + 1);
+    memcpy(SH_name, name, Lname);
+    SH_name[Lname] = '\0';
+    Cstruct1 * SHC_rv = returnStructPtr2(ifield, SH_name);
+    free(SH_name);
+    return SHC_rv;
+// splicer end function.return_struct_ptr2_bufferify
+}
+
 // Release C++ allocated memory.
 void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
 {

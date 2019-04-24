@@ -37,4 +37,7 @@ void CLI_bind_c2_bufferify(const char * name, int Lname);
 int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
     int Lname);
 
+Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield,
+    const char * name, int Lname);
+
 #endif  // WRAPCLIBRARY_H

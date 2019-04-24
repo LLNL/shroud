@@ -1492,12 +1492,6 @@ def fill_struct_typemap_defaults(node, ntypemap):
         # The struct from the user's library is used.
         ntypemap.c_header = libnode.cxx_header
         ntypemap.c_type = ntypemap.cxx_type
-        # C++ pointer -> void pointer -> C pointer
-        ntypemap.cxx_to_c = (
-            "static_cast<{c_const}%s *>("
-            "\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))"
-            % ntypemap.c_type
-        )
 
     # To convert, extract correct field from union
     # #-    ntypemap.cxx_to_c = '{cxx_addr}{cxx_var}.cxx'

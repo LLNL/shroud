@@ -126,14 +126,25 @@ contains
   subroutine test_structs
 
     type(cstruct1) :: s1
+    type(cstruct1), pointer :: s2
 
     call set_case_name("test_structs")
 
     s1%ifield = 12
-    call assert_equals(12, pass_struct1(s1))
+    call assert_equals(12, pass_struct1(s1), "passStruct1")
 
     s1%ifield = 22
-    call assert_equals(22, pass_struct2(s1, "monkey"))
+    call assert_equals(22, pass_struct2(s1, "monkey"), "passStruct2")
+
+    nullify(s2)
+    s2 => return_struct_ptr1(33)
+    call assert_true(associated(s2), "returnStructPtr1")
+    call assert_equals(33, s2%ifield, "returnStructPtr2")
+
+    nullify(s2)
+    s2 => return_struct_ptr2(35, "ape")
+    call assert_true(associated(s2), "returnStructPtr2")
+    call assert_equals(35, s2%ifield, "returnStructPtr2")
 
   end subroutine test_structs
 

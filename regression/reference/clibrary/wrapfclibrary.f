@@ -194,6 +194,39 @@ module clibrary_mod
             integer(C_INT) :: SHT_rv
         end function c_pass_struct2_bufferify
 
+        function c_return_struct_ptr1(ifield) &
+                result(SHT_rv) &
+                bind(C, name="returnStructPtr1")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: cstruct1
+            implicit none
+            integer(C_INT), value, intent(IN) :: ifield
+            type(C_PTR) SHT_rv
+        end function c_return_struct_ptr1
+
+        function c_return_struct_ptr2(ifield, name) &
+                result(SHT_rv) &
+                bind(C, name="returnStructPtr2")
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            import :: cstruct1
+            implicit none
+            integer(C_INT), value, intent(IN) :: ifield
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            type(C_PTR) SHT_rv
+        end function c_return_struct_ptr2
+
+        function c_return_struct_ptr2_bufferify(ifield, name, Lname) &
+                result(SHT_rv) &
+                bind(C, name="CLI_return_struct_ptr2_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            import :: cstruct1
+            implicit none
+            integer(C_INT), value, intent(IN) :: ifield
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            type(C_PTR) SHT_rv
+        end function c_return_struct_ptr2_bufferify
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -363,6 +396,45 @@ contains
             len_trim(name, kind=C_INT))
         ! splicer end function.pass_struct2
     end function pass_struct2
+
+    ! Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)
+    !>
+    !! \brief Return a pointer to a struct
+    !!
+    !! Does not generate a bufferify C wrapper.
+    !<
+    function return_struct_ptr1(ifield) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), value, intent(IN) :: ifield
+        type(cstruct1), pointer :: SHT_rv
+        type(C_PTR) :: SHT_ptr
+        ! splicer begin function.return_struct_ptr1
+        SHT_ptr = c_return_struct_ptr1(ifield)
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_struct_ptr1
+    end function return_struct_ptr1
+
+    ! Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))
+    ! arg_to_buffer
+    !>
+    !! \brief Return a pointer to a struct
+    !!
+    !! Generates a bufferify C wrapper function.
+    !<
+    function return_struct_ptr2(ifield, name) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
+        integer(C_INT), value, intent(IN) :: ifield
+        character(len=*), intent(IN) :: name
+        type(cstruct1), pointer :: SHT_rv
+        type(C_PTR) :: SHT_ptr
+        ! splicer begin function.return_struct_ptr2
+        SHT_ptr = c_return_struct_ptr2_bufferify(ifield, name, &
+            len_trim(name, kind=C_INT))
+        call c_f_pointer(SHT_ptr, SHT_rv)
+        ! splicer end function.return_struct_ptr2
+    end function return_struct_ptr2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

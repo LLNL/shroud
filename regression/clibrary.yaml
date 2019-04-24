@@ -127,6 +127,22 @@ declarations:
   options:
     wrap_python: false
 
+- decl: Cstruct1 *returnStructPtr1(int ifield)
+  doxygen:
+    brief: Return a pointer to a struct
+    description: |
+      Does not generate a bufferify C wrapper.
+  options:
+    wrap_python: false
+
+- decl: Cstruct1 *returnStructPtr2(int ifield, const char *name)
+  doxygen:
+    brief: Return a pointer to a struct
+    description: |
+      Generates a bufferify C wrapper function.
+  options:
+    wrap_python: false
+
 ######################################################################
 
 # XXX - Replace with other code to free memory
