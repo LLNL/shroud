@@ -75,6 +75,27 @@ void CLI_bind_c2_bufferify(const char * name, int Lname)
 // splicer end function.bind_c2_bufferify
 }
 
+// int passAssumedTypeBuf(void * arg +assumedtype+intent(in), const char * name +intent(in)+len_trim(Lname))
+/**
+ * \brief Test assumed-type
+ *
+ * A bufferify function is created.
+ * Should only be call with an C_INT argument, and will
+ * return the value passed in.
+ */
+int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
+    int Lname)
+{
+// splicer begin function.pass_assumed_type_buf_bufferify
+    char * SH_name = (char *) malloc(Lname + 1);
+    memcpy(SH_name, name, Lname);
+    SH_name[Lname] = '\0';
+    int SHC_rv = passAssumedTypeBuf(arg, SH_name);
+    free(SH_name);
+    return SHC_rv;
+// splicer end function.pass_assumed_type_buf_bufferify
+}
+
 // int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))
 /**
  * Pass name argument which will build a bufferify function.

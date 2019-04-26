@@ -753,7 +753,11 @@ rv = .false.
             if buf_arg == "arg":
                 arg_c_names.append(ast.name)
                 # argument declarations
-                if ast.is_function_pointer():
+                if "assumedtype" in attrs:
+                    arg_c_decl.append(
+                        "type(*) :: {}".format(ast.name)
+                    )
+                elif ast.is_function_pointer():
                     absiface = self.add_abstract_interface(node, ast)
                     arg_c_decl.append(
                         "procedure({}) :: {}".format(absiface, ast.name)
@@ -1032,6 +1036,8 @@ rv = .false.
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports, arg_typemap.f_module)
+                elif "assumedtype" in c_attrs:
+                    arg_c_call.append(fmt.f_var)
                 else:
                     arg_c_call.append(fmt.c_var)
                 continue
@@ -1321,7 +1327,15 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-                if f_arg.is_function_pointer():
+
+                if "assumedtype" in c_attrs:
+                    arg_f_decl.append(
+                        "type(*) :: {}".format(f_arg.name)
+                    )
+                    arg_f_names.append(fmt_arg.f_var)
+                    arg_c_call.append(f_arg.name)
+                    continue
+                elif f_arg.is_function_pointer():
                     absiface = self.add_abstract_interface(node, f_arg)
                     arg_f_decl.append(
                         "procedure({}) :: {}".format(absiface, f_arg.name)

@@ -34,6 +34,9 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
 
 void CLI_bind_c2_bufferify(const char * name, int Lname);
 
+int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
+    int Lname);
+
 int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
     int Lname);
 

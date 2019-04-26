@@ -52,6 +52,9 @@ void bindC2(const char * name);
 
 void passVoidStarStar(void *in, void **out);
 
+int passAssumedType(void *arg);
+int passAssumedTypeBuf(void *arg, const char *name);
+
 int passStruct1(Cstruct1 *s1);
 int passStruct2(Cstruct1 *s1, const char *name);
 Cstruct1 *returnStructPtr1(int ifield);

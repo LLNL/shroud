@@ -164,6 +164,7 @@ class VerifyAttrs(object):
                 continue
             if attr not in [
                 "allocatable",
+                "assumedtype",
                 "capsule",
                 "deref",
                 "dimension",
@@ -226,6 +227,16 @@ class VerifyAttrs(object):
             else:
                 raise RuntimeError("Bad value for intent: " + attrs["intent"])
 
+        # assumedtype
+        assumedtype = attrs.get("assumedtype", None)
+        if assumedtype is not None:
+            if attrs.get("value", False):
+                raise RuntimeError(
+                    "argument must not have value=True "
+                    "because it has the assumedtype attribute."
+                )
+            attrs["value"] = False
+
         # value
         value = attrs.get("value", None)
         if value is None:
@@ -247,7 +258,7 @@ class VerifyAttrs(object):
         if dimension:
             if attrs.get("value", False):
                 raise RuntimeError(
-                    "argument must not have value=True"
+                    "argument must not have value=True "
                     "because it has the dimension attribute."
                 )
             if not is_ptr:

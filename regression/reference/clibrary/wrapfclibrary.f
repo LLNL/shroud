@@ -169,6 +169,36 @@ module clibrary_mod
             type(C_PTR), intent(OUT) :: out
         end subroutine pass_void_star_star
 
+        function pass_assumed_type(arg) &
+                result(SHT_rv) &
+                bind(C, name="passAssumedType")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(*) :: arg
+            integer(C_INT) :: SHT_rv
+        end function pass_assumed_type
+
+        function c_pass_assumed_type_buf(arg, name) &
+                result(SHT_rv) &
+                bind(C, name="passAssumedTypeBuf")
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            implicit none
+            type(*) :: arg
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT) :: SHT_rv
+        end function c_pass_assumed_type_buf
+
+        function c_pass_assumed_type_buf_bufferify(arg, name, Lname) &
+                result(SHT_rv) &
+                bind(C, name="CLI_pass_assumed_type_buf_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            implicit none
+            type(*) :: arg
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT) :: SHT_rv
+        end function c_pass_assumed_type_buf_bufferify
+
         function pass_struct1(s1) &
                 result(SHT_rv) &
                 bind(C, name="passStruct1")
@@ -387,6 +417,27 @@ contains
         call c_bind_c2_bufferify(name, len_trim(name, kind=C_INT))
         ! splicer end function.bind_c2
     end subroutine Fortran_bindC2a
+
+    ! int passAssumedTypeBuf(void * arg +assumedtype+intent(in), const char * name +intent(in))
+    ! arg_to_buffer
+    !>
+    !! \brief Test assumed-type
+    !!
+    !! A bufferify function is created.
+    !! Should only be call with an C_INT argument, and will
+    !! return the value passed in.
+    !<
+    function pass_assumed_type_buf(arg, name) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(*) :: arg
+        character(len=*), intent(IN) :: name
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.pass_assumed_type_buf
+        SHT_rv = c_pass_assumed_type_buf_bufferify(arg, name, &
+            len_trim(name, kind=C_INT))
+        ! splicer end function.pass_assumed_type_buf
+    end function pass_assumed_type_buf
 
     ! int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))
     ! arg_to_buffer

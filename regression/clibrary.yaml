@@ -121,6 +121,27 @@ declarations:
       No bufferify function is created, only an interface.
   options:
     wrap_python: false
+
+- decl: int passAssumedType(void *arg+assumedtype)
+  doxygen:
+    brief: Test assumed-type
+    description: |
+      No bufferify function is created, only an interface.
+      Should only be call with an C_INT argument, and will
+      return the value passed in.
+  options:
+    wrap_python: false
+
+- decl: int passAssumedTypeBuf(void *arg+assumedtype, const char *name)
+  doxygen:
+    brief: Test assumed-type
+    description: |
+      A bufferify function is created.
+      Should only be call with an C_INT argument, and will
+      return the value passed in.
+  options:
+    wrap_python: false
+
 ######################################################################
 # Pass struct
 

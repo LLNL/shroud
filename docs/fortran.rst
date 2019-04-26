@@ -303,6 +303,25 @@ Creates the Fortran interface:
             type(C_PTR), intent(OUT) :: out
         end subroutine pass_void_star_star
 
+A void pointer may also be used in a C function when any type may be
+passed in.  The attribute *assumedtype* can be used to declare a
+Fortran argument as assumed-type: ``type(*)``.
+
+.. code-block:: yaml
+
+    - decl: int passAssumedType(void *arg+assumedtype)
+
+.. code-block:: fortran
+
+        function pass_assumed_type(arg) &
+                result(SHT_rv) &
+                bind(C, name="passAssumedType")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(*) :: arg
+            integer(C_INT) :: SHT_rv
+        end function pass_assumed_type
+
 
 Struct Types
 ------------

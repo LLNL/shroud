@@ -95,6 +95,11 @@ contains
     call pass_void_star_star(cptr1, cptr2)
     call assert_true(c_associated(cptr1, cptr2))
 
+    rv_int = pass_assumed_type(23_C_INT)
+    call assert_equals(23, rv_int)
+    rv_int = pass_assumed_type_buf(33_C_INT, "mouse")
+    call assert_equals(33, rv_int)
+
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")
 !

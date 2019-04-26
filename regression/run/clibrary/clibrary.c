@@ -109,6 +109,22 @@ void passVoidStarStar(void *in, void **out)
     *out = in;
 }
 
+/* arg is assumed to be an int. */
+
+int passAssumedType(void *arg)
+{
+    strncpy(last_function_called, "passAssumedType", MAXLAST);
+    return *(int *) arg;
+}
+
+/* arg is assumed to be an int. */
+
+int passAssumedTypeBuf(void *arg, const char *name)
+{
+    strncpy(last_function_called, "passAssumedTypeBuf", MAXLAST);
+    return *(int *) arg;
+}
+
 int passStruct1(Cstruct1 *s1)
 {
     strncpy(last_function_called, "passStruct1", MAXLAST);
