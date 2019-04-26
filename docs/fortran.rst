@@ -274,11 +274,35 @@ the array.  If the argument is declared Fortran ``ALLOCATABLE``, then
 the value of the C++ pointer are copied into a newly allocated Fortran
 array. The C++ memory is deleted by the wrapper and it is the callers
 responsibility to ``deallocate`` the Fortran array. However, Fortran
-will release it automatically the array under some conditions when the
+will release the array automatically under some conditions when the
 caller function returns. If *owner(library)* is set, the Fortran
 caller never needs to release the memory.
 
 See :ref:`MemoryManagementAnchor` for details of the implementation.
+
+Functions with ``void *`` arguments are treated differently.  A
+``type(C_PTR)`` will be passed by value.  For a ``void **`` argument,
+the ``type(C_PTR)`` will be passed by reference (the default).  This
+will allow the C wrapper to assign a value to the argument.
+
+.. See clibrary.yaml  passVoidStarStar test
+
+.. code-block:: yaml
+
+    - decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
+
+Creates the Fortran interface:
+
+.. code-block:: fortran
+
+        subroutine pass_void_star_star(in, out) &
+                bind(C, name="passVoidStarStar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: in
+            type(C_PTR), intent(OUT) :: out
+        end subroutine pass_void_star_star
+
 
 Struct Types
 ------------

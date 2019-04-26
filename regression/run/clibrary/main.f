@@ -48,6 +48,8 @@ program tester
 contains
 
   subroutine test_functions
+    integer(C_INT), target :: int_var
+    type(C_PTR) :: cptr1, cptr2
 
     call set_case_name("test_functions")
 
@@ -87,6 +89,11 @@ contains
 
     call assert_true(implied_bool_true())
     call assert_false(implied_bool_false())
+
+    cptr1 = c_loc(int_var)
+    cptr2 = C_NULL_PTR
+    call pass_void_star_star(cptr1, cptr2)
+    call assert_true(c_associated(cptr1, cptr2))
 
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")

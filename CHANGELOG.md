@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added format dictionary field template_suffix.
 - Added the **F_create_bufferify_function** option.
 - Support `true` and `false` with implied attribute.
+- Process 'void **' argument as 'type(C_PTR)' by reference.
 
 ### Fixed
 - C++ function arguments which pass a class by value.

@@ -161,6 +161,14 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Lname
         end subroutine c_bind_c2_bufferify
 
+        subroutine pass_void_star_star(in, out) &
+                bind(C, name="passVoidStarStar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: in
+            type(C_PTR), intent(OUT) :: out
+        end subroutine pass_void_star_star
+
         function pass_struct1(s1) &
                 result(SHT_rv) &
                 bind(C, name="passStruct1")
@@ -370,7 +378,7 @@ contains
     !>
     !! \brief Rename Fortran name for interface only function
     !!
-    !! This creates a Fortran implementation and an interface.
+    !! This creates a Fortran bufferify function and an interface.
     !<
     subroutine Fortran_bindC2a(name)
         use iso_c_binding, only : C_INT

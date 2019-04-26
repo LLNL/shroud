@@ -103,6 +103,12 @@ void bindC2(const char * name)
     strncpy(last_function_called, "bindC2", MAXLAST);
 }
 
+void passVoidStarStar(void *in, void **out)
+{
+    strncpy(last_function_called, "passVoidStarStar", MAXLAST);
+    *out = in;
+}
+
 int passStruct1(Cstruct1 *s1)
 {
     strncpy(last_function_called, "passStruct1", MAXLAST);

@@ -2002,7 +2002,7 @@
                 "doxygen": {
                     "__line__": 105,
                     "brief": "Rename Fortran name for interface only function",
-                    "description": "This creates a Fortran implementation and an interface.\n"
+                    "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
                 "fmtdict": {
                     "C_call_code": "bindC2(\tname);",
@@ -2092,7 +2092,7 @@
                 "doxygen": {
                     "__line__": 105,
                     "brief": "Rename Fortran name for interface only function",
-                    "description": "This creates a Fortran implementation and an interface.\n"
+                    "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
                 "fmtdict": {
                     "C_call_code": "bindC2(\tSH_name);",
@@ -2117,6 +2117,129 @@
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "in",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "in",
+                            "cxx_member": "->",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "in",
+                            "f_var": "in"
+                        }
+                    },
+                    "out": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "out",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "out",
+                            "cxx_member": "->",
+                            "cxx_type": "void",
+                            "cxx_var": "out",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "out",
+                            "f_var": "out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passVoidStarStar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "out",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
+                "declgen": "void passVoidStarStar(void * in +intent(in)+value, void * * out +intent(out))",
+                "doxygen": {
+                    "__line__": 118,
+                    "brief": "Assign in to out.",
+                    "description": "No bufferify function is created, only an interface.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "passVoidStarStar(\tin,\t out);",
+                    "C_call_list": "in,\t out",
+                    "C_name": "passVoidStarStar",
+                    "C_prototype": "void * in,\t void * * out",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_pass_void_star_star",
+                    "F_C_name": "pass_void_star_star",
+                    "F_arg_c_call": "in,\t out",
+                    "F_arguments": "in,\t out",
+                    "F_call_code": "call c_pass_void_star_star(in,\t out)",
+                    "F_name_function": "pass_void_star_star",
+                    "F_name_generic": "pass_void_star_star",
+                    "F_name_impl": "pass_void_star_star",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "passVoidStarStar",
+                    "underscore_name": "pass_void_star_star"
+                },
+                "linenumber": 117,
+                "options": {
+                    "__line__": 122,
                     "wrap_python": false
                 }
             },
@@ -2209,9 +2332,9 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 119,
+                "linenumber": 127,
                 "options": {
-                    "__line__": 120,
+                    "__line__": 128,
                     "wrap_python": false
                 }
             },
@@ -2312,7 +2435,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 124,
+                    "__line__": 132,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -2337,9 +2460,9 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 123,
+                "linenumber": 131,
                 "options": {
-                    "__line__": 127,
+                    "__line__": 135,
                     "wrap_python": false
                 }
             },
@@ -2448,7 +2571,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 124,
+                    "__line__": 132,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -2467,9 +2590,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 123,
+                "linenumber": 131,
                 "options": {
-                    "__line__": 127,
+                    "__line__": 135,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -2545,7 +2668,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int ifield)",
                 "declgen": "Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 131,
+                    "__line__": 139,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -2571,9 +2694,9 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 130,
+                "linenumber": 138,
                 "options": {
-                    "__line__": 135,
+                    "__line__": 143,
                     "wrap_python": false
                 }
             },
@@ -2675,7 +2798,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 139,
+                    "__line__": 147,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -2701,9 +2824,9 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 138,
+                "linenumber": 146,
                 "options": {
-                    "__line__": 143,
+                    "__line__": 151,
                     "wrap_python": false
                 }
             },
@@ -2813,7 +2936,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 139,
+                    "__line__": 147,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -2833,9 +2956,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 138,
+                "linenumber": 146,
                 "options": {
-                    "__line__": 143,
+                    "__line__": 151,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

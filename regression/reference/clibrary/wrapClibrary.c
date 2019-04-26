@@ -61,7 +61,7 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
 /**
  * \brief Rename Fortran name for interface only function
  *
- * This creates a Fortran implementation and an interface.
+ * This creates a Fortran bufferify function and an interface.
  */
 void CLI_bind_c2_bufferify(const char * name, int Lname)
 {

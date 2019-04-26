@@ -74,7 +74,7 @@ class VerifyAttrs(object):
     def check_fcn_attrs(self, node):
         """
         Args:
-            node -
+            node - ast.FunctionNode
         """
         options = node.options
         if not options.wrap_fortran and not options.wrap_c:
@@ -150,8 +150,8 @@ class VerifyAttrs(object):
                else True (pass-by-value).
 
         Args:
-            node -
-            arg -
+            node - ast.FunctionNode
+            arg  - declast.Declaration
         """
         if node:
             options = node.options
@@ -230,12 +230,13 @@ class VerifyAttrs(object):
         value = attrs.get("value", None)
         if value is None:
             if is_ptr:
-                if (
-                    arg_typemap.f_c_type or arg_typemap.f_type
-                ) == "type(C_PTR)":
+                if arg_typemap.name == "void":
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
-                    attrs["value"] = True
+                    if len(arg.declarator.pointer) == 1:
+                        attrs["value"] = True  # void *
+                    else:
+                        attrs["value"] = False # void **  XXX intent(out)?
                 else:
                     attrs["value"] = False
             else:
