@@ -34,6 +34,16 @@ module clibrary_mod
         integer(C_INT) :: ifield
     end type cstruct1
 
+    abstract interface
+
+        subroutine callback2_incr(arg0) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: arg0
+        end subroutine callback2_incr
+
+    end interface
+
     interface
 
         subroutine function1() &
@@ -198,6 +208,16 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Lname
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf_bufferify
+
+        subroutine callback2(type, in, incr) &
+                bind(C, name="callback2")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: callback2_incr
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            type(*) :: in
+            procedure(callback2_incr) :: incr
+        end subroutine callback2
 
         function pass_struct1(s1) &
                 result(SHT_rv) &

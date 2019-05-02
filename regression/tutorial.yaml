@@ -303,8 +303,11 @@ declarations:
       wrap_lua: False
 
 ##################################################
-  
+# Function pointer
+
   - decl: int callback1(int in, int (*incr)(int));
+    doxygen:
+      brief: Test function pointer
     options:
       wrap_lua: False
       wrap_python: False

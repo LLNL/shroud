@@ -125,6 +125,21 @@ int passAssumedTypeBuf(void *arg, const char *name)
     return *(int *) arg;
 }
 
+//----------------------------------------------------------------------
+
+void callback2(int type, void * in, void (*incr)(int *))
+{
+  if (type == 1) {
+    // default function pointer from prototype
+    incr(in);
+  } else if (type == 2) {
+    void (*incr2)(double *) = (void(*)(double *)) incr;
+    incr2(in);
+  }
+}
+
+//----------------------------------------------------------------------
+
 int passStruct1(Cstruct1 *s1)
 {
     strncpy(last_function_called, "passStruct1", MAXLAST);

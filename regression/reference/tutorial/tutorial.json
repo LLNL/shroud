@@ -1584,14 +1584,14 @@
                             "function_name": "getReference",
                             "underscore_name": "get_reference"
                         },
-                        "linenumber": 359,
+                        "linenumber": 362,
                         "options": {}
                     }
                 ],
-                "linenumber": 354,
+                "linenumber": 357,
                 "name": "Singleton",
                 "options": {
-                    "__line__": 355,
+                    "__line__": 358,
                     "wrap_lua": false
                 },
                 "scope": "Singleton::",
@@ -8257,6 +8257,10 @@
                 },
                 "decl": "int callback1(int in, int (*incr)(int));",
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 309,
+                    "brief": "Test function pointer"
+                },
                 "fmtdict": {
                     "C_call_code": "int SHC_rv =\t tutorial::callback1(\tin,\t incr);",
                     "C_call_list": "in,\t incr",
@@ -8279,9 +8283,9 @@
                     "function_name": "callback1",
                     "underscore_name": "callback1"
                 },
-                "linenumber": 307,
+                "linenumber": 308,
                 "options": {
-                    "__line__": 308,
+                    "__line__": 311,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -8447,9 +8451,9 @@
                     "function_name": "returnStruct",
                     "underscore_name": "return_struct"
                 },
-                "linenumber": 314,
+                "linenumber": 317,
                 "options": {
-                    "__line__": 315,
+                    "__line__": 318,
                     "wrap_lua": false
                 }
             },
@@ -8621,9 +8625,9 @@
                     "function_name": "returnStructPtr",
                     "underscore_name": "return_struct_ptr"
                 },
-                "linenumber": 317,
+                "linenumber": 320,
                 "options": {
-                    "__line__": 318,
+                    "__line__": 321,
                     "wrap_lua": false
                 }
             },
@@ -8715,9 +8719,9 @@
                     "function_name": "acceptStructIn",
                     "underscore_name": "accept_struct_in"
                 },
-                "linenumber": 329,
+                "linenumber": 332,
                 "options": {
-                    "__line__": 330,
+                    "__line__": 333,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -8814,9 +8818,9 @@
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "linenumber": 333,
+                "linenumber": 336,
                 "options": {
-                    "__line__": 334,
+                    "__line__": 337,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -8961,9 +8965,9 @@
                     "function_name": "acceptStructOutPtr",
                     "underscore_name": "accept_struct_out_ptr"
                 },
-                "linenumber": 337,
+                "linenumber": 340,
                 "options": {
-                    "__line__": 338,
+                    "__line__": 341,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -9044,9 +9048,9 @@
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "linenumber": 341,
+                "linenumber": 344,
                 "options": {
-                    "__line__": 342,
+                    "__line__": 345,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -9148,7 +9152,7 @@
                     "function_name": "set_global_flag",
                     "underscore_name": "set_global_flag"
                 },
-                "linenumber": 348,
+                "linenumber": 351,
                 "options": {}
             },
             {
@@ -9221,7 +9225,7 @@
                     "function_name": "get_global_flag",
                     "underscore_name": "get_global_flag"
                 },
-                "linenumber": 349,
+                "linenumber": 352,
                 "options": {}
             },
             {
@@ -9307,7 +9311,7 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 350,
+                "linenumber": 353,
                 "options": {}
             },
             {
@@ -9395,7 +9399,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 350,
+                "linenumber": 353,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,

@@ -143,6 +143,23 @@ declarations:
     wrap_python: false
 
 ######################################################################
+# Function pointer (from tutorial.yaml)
+
+#- decl: int callback1(int in, int (*incr)(int));
+#  doxygen:
+#    brief: Test function pointer
+#  options:
+#    wrap_lua: False
+#    wrap_python: False
+  
+- decl: void callback2(int type, void * in+assumedtype, void (*incr)(int *))
+  doxygen:
+    brief: Test function pointer
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+######################################################################
 # Pass struct
 
 - decl: int passStruct1(Cstruct1 *s1)
