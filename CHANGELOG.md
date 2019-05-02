@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Process 'void **' argument as 'type(C_PTR)' by reference.
 - Added assumedtype attribute to use Fortran assumed-type declaration,
   `type(*)`, for `void *` arguments.
+- Added external attribute to use with function pointers.
+  Uses EXTERNAL statement instead of abstract interface to allow any function
+  to be used as the dummy argument since the interface is not preserved.
 
 ### Fixed
 - C++ function arguments which pass a class by value.

@@ -166,6 +166,7 @@ class VerifyAttrs(object):
                 "allocatable",
                 "assumedtype",
                 "capsule",
+                "external",
                 "deref",
                 "dimension",
                 "hidden",  # omitted in Fortran API, returned from C++

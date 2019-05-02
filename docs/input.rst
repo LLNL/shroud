@@ -406,6 +406,14 @@ If set without a value, it defaults to ``(*)``:
     double *array +dimension
     double *array +dimension(len)
 
+external
+^^^^^^^^
+
+This attribute is only valid with function pointers.  It will ensure
+that a Fortran wrapper is created which uses the ``external`` keyword
+for the argument.  This will allow any function to be used as the
+dummy argument for the function pointer.
+
 free_pattern
 ^^^^^^^^^^^^
 

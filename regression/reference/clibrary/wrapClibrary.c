@@ -96,7 +96,7 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
 // splicer end function.pass_assumed_type_buf_bufferify
 }
 
-// void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)
+// void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 /**
  * \brief Test function pointer
  *

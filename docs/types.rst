@@ -1079,6 +1079,14 @@ argument to an argument):
       F_abstract_interface_subprogram_template: custom_funptr
       F_abstract_interface_argument_template: XX{index}arg
 
+It is also possible to pass a function which will accept any function
+interface as the dummy argument. This is done by adding the *external*
+attribute.  A Fortran wrapper function is created with an ``external``
+declaration for the argument. The C function is called via an interace
+with the ``bind(C)`` attribute.  In the interface, an ``abstract
+interface`` for the function pointer argument is used.  The user's
+library is responsible for calling the argument correctly since the
+interface is not preserved by the ``external`` declaration.
 
 Class Type
 ----------

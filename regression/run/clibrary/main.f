@@ -42,6 +42,37 @@ subroutine incr3_double(input)
   input = input + 20.5_C_DOUBLE
 end subroutine incr3_double
 
+module callback_mod
+contains
+  subroutine incr2b_int(input)
+    use iso_c_binding
+    implicit none
+    integer(C_INT) :: input
+    input = input + 20
+  end subroutine incr2b_int
+
+  subroutine incr2b_double(input)
+    use iso_c_binding
+    implicit none
+    real(C_DOUBLE) :: input
+    input = input + 20.5_C_DOUBLE
+  end subroutine incr2b_double
+  
+  subroutine incr3b_int(input)
+    use iso_c_binding
+    implicit none
+    integer(C_INT) :: input
+    input = input + 20
+  end subroutine incr3b_int
+
+  subroutine incr3b_double(input)
+    use iso_c_binding
+    implicit none
+    real(C_DOUBLE) :: input
+    input = input + 20.5_C_DOUBLE
+  end subroutine incr3b_double
+end module callback_mod
+
 program tester
   use fruit
   use iso_c_binding
@@ -165,6 +196,7 @@ contains
   end subroutine test_functions
 
   subroutine test_callback
+    use callback_mod
     integer(C_INT) arg_int
     real(C_DOUBLE) arg_dbl
     external incr2_int, incr2_double
@@ -172,25 +204,53 @@ contains
 
     call set_case_name("test_callback")
 
+    ! incr_int matches the prototype in the YAML file.
+    ! incr_double, does not.
+
+    !----------
     ! callback2, accept any type of function.
     ! first argument, tells C how to cast pointer.
     arg_int = 10_C_INT
     call callback2(1, arg_int, incr2_int)
-    call assert_equals(30, arg_int)
+    call assert_equals(30, arg_int, "incr2_int")
 
     arg_dbl = 3.4_C_DOUBLE
     call callback2(2, arg_dbl, incr2_double)
-    call assert_equals(23.9_C_DOUBLE, arg_dbl)
+    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr2_int")
 
+    !----------
     ! callback3, accept any type of function.
     ! first argument, tells C how to cast pointer.
     arg_int = 10_C_INT
     call callback3("int", arg_int, incr3_int)
-    call assert_equals(30, arg_int)
+    call assert_equals(30, arg_int, "incr3_int")
 
     arg_dbl = 3.4_C_DOUBLE
     call callback3("double", arg_dbl, incr3_double)
-    call assert_equals(23.9_C_DOUBLE, arg_dbl)
+    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3_double")
+
+    !----------
+    ! routines from a module, with an implicit interface.
+    ! callback2, accept any type of function.
+    ! first argument, tells C how to cast pointer.
+    arg_int = 10_C_INT
+    call callback2(1, arg_int, incr2b_int)
+    call assert_equals(30, arg_int, "incr2b_int")
+
+    arg_dbl = 3.4_C_DOUBLE
+    call callback2(2, arg_dbl, incr2b_double)
+    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr2b_double")
+
+    !----------
+    ! callback3, accept any type of function.
+    ! first argument, tells C how to cast pointer.
+    arg_int = 10_C_INT
+    call callback3("int", arg_int, incr3b_int)
+    call assert_equals(30, arg_int, "incr3b_int")
+
+    arg_dbl = 3.4_C_DOUBLE
+    call callback3("double", arg_dbl, incr3b_double)
+    call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3b_double")
 
   end subroutine test_callback
 

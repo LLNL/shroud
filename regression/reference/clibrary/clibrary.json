@@ -2707,6 +2707,7 @@
                         },
                         {
                             "attrs": {
+                                "external": true,
                                 "intent": "in",
                                 "value": true
                             },
@@ -2750,10 +2751,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback2(int type, void * in+assumedtype, void (*incr)(int *))",
-                "declgen": "void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)",
+                "decl": "void callback2(int type, void * in+assumedtype, void (*incr)(int *)+external)",
+                "declgen": "void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 156,
+                    "__line__": 157,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -2764,7 +2765,7 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_callback2",
-                    "F_C_name": "callback2",
+                    "F_C_name": "c_callback2",
                     "F_arg_c_call": "type,\t in,\t incr",
                     "F_arguments": "type,\t in,\t incr",
                     "F_call_code": "call c_callback2(type,\t in,\t incr)",
@@ -2778,7 +2779,7 @@
                 },
                 "linenumber": 155,
                 "options": {
-                    "__line__": 158,
+                    "__line__": 159,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -2874,6 +2875,7 @@
                         },
                         {
                             "attrs": {
+                                "external": true,
                                 "intent": "in",
                                 "value": true
                             },
@@ -2917,10 +2919,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *))",
-                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)",
+                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external)",
+                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 163,
+                    "__line__": 165,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
@@ -2944,9 +2946,9 @@
                     "function_name": "callback3",
                     "underscore_name": "callback3"
                 },
-                "linenumber": 162,
+                "linenumber": 163,
                 "options": {
-                    "__line__": 167,
+                    "__line__": 169,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -3058,6 +3060,7 @@
                         },
                         {
                             "attrs": {
+                                "external": true,
                                 "intent": "in",
                                 "value": true
                             },
@@ -3101,10 +3104,10 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *))",
-                "declgen": "void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)",
+                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external)",
+                "declgen": "void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 163,
+                    "__line__": 165,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
@@ -3123,9 +3126,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "callback3"
                 },
-                "linenumber": 162,
+                "linenumber": 163,
                 "options": {
-                    "__line__": 167,
+                    "__line__": 169,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3221,9 +3224,9 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 174,
+                "linenumber": 176,
                 "options": {
-                    "__line__": 175,
+                    "__line__": 177,
                     "wrap_python": false
                 }
             },
@@ -3324,7 +3327,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 179,
+                    "__line__": 181,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -3349,9 +3352,9 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 178,
+                "linenumber": 180,
                 "options": {
-                    "__line__": 182,
+                    "__line__": 184,
                     "wrap_python": false
                 }
             },
@@ -3460,7 +3463,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 179,
+                    "__line__": 181,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -3479,9 +3482,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 178,
+                "linenumber": 180,
                 "options": {
-                    "__line__": 182,
+                    "__line__": 184,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3557,7 +3560,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int ifield)",
                 "declgen": "Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 186,
+                    "__line__": 188,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -3583,9 +3586,9 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 185,
+                "linenumber": 187,
                 "options": {
-                    "__line__": 190,
+                    "__line__": 192,
                     "wrap_python": false
                 }
             },
@@ -3687,7 +3690,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 194,
+                    "__line__": 196,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -3713,9 +3716,9 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 193,
+                "linenumber": 195,
                 "options": {
-                    "__line__": 198,
+                    "__line__": 200,
                     "wrap_python": false
                 }
             },
@@ -3825,7 +3828,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 194,
+                    "__line__": 196,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -3845,9 +3848,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 193,
+                "linenumber": 195,
                 "options": {
-                    "__line__": 198,
+                    "__line__": 200,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

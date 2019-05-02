@@ -215,7 +215,7 @@ module clibrary_mod
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf_bufferify
 
-        subroutine callback2(type, in, incr) &
+        subroutine c_callback2(type, in, incr) &
                 bind(C, name="callback2")
             use iso_c_binding, only : C_INT, C_PTR
             import :: callback2_incr
@@ -223,7 +223,7 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: type
             type(*) :: in
             procedure(callback2_incr) :: incr
-        end subroutine callback2
+        end subroutine c_callback2
 
         subroutine c_callback3(type, in, incr) &
                 bind(C, name="callback3")
@@ -486,7 +486,22 @@ contains
         ! splicer end function.pass_assumed_type_buf
     end function pass_assumed_type_buf
 
-    ! void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)
+    ! void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
+    !>
+    !! \brief Test function pointer
+    !!
+    !<
+    subroutine callback2(type, in, incr)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: type
+        type(*) :: in
+        external :: incr
+        ! splicer begin function.callback2
+        call c_callback2(type, in, incr)
+        ! splicer end function.callback2
+    end subroutine callback2
+
+    ! void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
     ! arg_to_buffer
     !>
     !! \brief Test function pointer
@@ -497,7 +512,7 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: type
         type(*) :: in
-        procedure(callback3_incr) :: incr
+        external :: incr
         ! splicer begin function.callback3
         call c_callback3_bufferify(type, len_trim(type, kind=C_INT), in, &
             incr)

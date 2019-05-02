@@ -152,14 +152,16 @@ declarations:
 #    wrap_lua: False
 #    wrap_python: False
   
-- decl: void callback2(int type, void * in+assumedtype, void (*incr)(int *))
+- decl: void callback2(int type, void * in+assumedtype,
+                       void (*incr)(int *)+external)
   doxygen:
     brief: Test function pointer
   options:
     wrap_lua: False
     wrap_python: False
 
-- decl: void callback3(const char *type, void * in+assumedtype, void (*incr)(int *))
+- decl: void callback3(const char *type, void * in+assumedtype,
+                       void (*incr)(int *)+external)
   doxygen:
     brief: Test function pointer
     description: |

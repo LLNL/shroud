@@ -1337,9 +1337,16 @@ rv = .false.
                     continue
                 elif f_arg.is_function_pointer():
                     absiface = self.add_abstract_interface(node, f_arg)
-                    arg_f_decl.append(
-                        "procedure({}) :: {}".format(absiface, f_arg.name)
-                    )
+                    if c_attrs.get("external", False):
+                        # external is similar to assumed type, in that it will
+                        # accept any function.  But external is not allowed
+                        # in bind(C), so make sure a wrapper is generated.
+                        arg_f_decl.append("external :: {}".format(f_arg.name))
+                        need_wrapper = True
+                    else:
+                        arg_f_decl.append(
+                            "procedure({}) :: {}".format(absiface, f_arg.name)
+                        )
                     arg_f_names.append(fmt_arg.f_var)
                     arg_c_call.append(f_arg.name)
                     # function pointers are pass thru without any other action
