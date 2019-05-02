@@ -2785,6 +2785,355 @@
             },
             {
                 "_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "in",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "in",
+                            "cxx_member": "->",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "idtor": "0"
+                        }
+                    },
+                    "incr": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "incr",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&incr",
+                            "cxx_member": ".",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "idtor": "0"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "type",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "type",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "type",
+                            "idtor": "0"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "callback3",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "assumedtype": true,
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "func": {
+                                    "name": "incr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": false
+                                    },
+                                    "declarator": {
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *))",
+                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 163,
+                    "brief": "Test function pointer",
+                    "description": "A bufferify function will be created.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "callback3(\ttype,\t in,\t incr);",
+                    "C_call_list": "type,\t in,\t incr",
+                    "C_name": "callback3",
+                    "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *)",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_callback3_bufferify",
+                    "F_C_name": "c_callback3",
+                    "F_arg_c_call": "type,\t len_trim(type, kind=C_INT),\t in,\t incr",
+                    "F_arguments": "type,\t in,\t incr",
+                    "F_call_code": "call c_callback3_bufferify(type,\t len_trim(type, kind=C_INT),\t in,\t incr)",
+                    "F_name_function": "callback3",
+                    "F_name_generic": "callback3",
+                    "F_name_impl": "callback3",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "callback3",
+                    "underscore_name": "callback3"
+                },
+                "linenumber": 162,
+                "options": {
+                    "__line__": 167,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "in",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "in",
+                            "cxx_member": "->",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "in",
+                            "f_var": "in"
+                        }
+                    },
+                    "incr": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "incr",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&incr",
+                            "cxx_member": ".",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "incr",
+                            "f_var": "incr"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "type",
+                            "c_var_trim": "Ltype",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_type",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_type",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "type",
+                            "f_var": "type"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "callback3",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "intent": "in",
+                                "len_trim": "Ltype",
+                                "value": false
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "assumedtype": true,
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "func": {
+                                    "name": "incr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": false
+                                    },
+                                    "declarator": {
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *))",
+                "declgen": "void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 163,
+                    "brief": "Test function pointer",
+                    "description": "A bufferify function will be created.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "callback3(\tSH_type,\t in,\t incr);",
+                    "C_call_list": "SH_type,\t in,\t incr",
+                    "C_name": "CLI_callback3_bufferify",
+                    "C_post_call": "free(SH_type);",
+                    "C_pre_call": "char * SH_type = (char *) malloc(Ltype + 1);\nmemcpy(SH_type, type, Ltype);\nSH_type[Ltype] = '\\0';",
+                    "C_prototype": "const char * type,\t int Ltype,\t void * in,\t void ( * incr)(\tint *)",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_callback3_bufferify",
+                    "c_const": "",
+                    "function_name": "callback3",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "callback3"
+                },
+                "linenumber": 162,
+                "options": {
+                    "__line__": 167,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
                     "s1": {
                         "fmtc": {
                             "c_const": "",
@@ -2872,9 +3221,9 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 165,
+                "linenumber": 174,
                 "options": {
-                    "__line__": 166,
+                    "__line__": 175,
                     "wrap_python": false
                 }
             },
@@ -2975,7 +3324,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 170,
+                    "__line__": 179,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -3000,9 +3349,9 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 169,
+                "linenumber": 178,
                 "options": {
-                    "__line__": 173,
+                    "__line__": 182,
                     "wrap_python": false
                 }
             },
@@ -3111,7 +3460,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 170,
+                    "__line__": 179,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -3130,9 +3479,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 169,
+                "linenumber": 178,
                 "options": {
-                    "__line__": 173,
+                    "__line__": 182,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3208,7 +3557,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int ifield)",
                 "declgen": "Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 177,
+                    "__line__": 186,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -3234,9 +3583,9 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 176,
+                "linenumber": 185,
                 "options": {
-                    "__line__": 181,
+                    "__line__": 190,
                     "wrap_python": false
                 }
             },
@@ -3338,7 +3687,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 185,
+                    "__line__": 194,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -3364,9 +3713,9 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 184,
+                "linenumber": 193,
                 "options": {
-                    "__line__": 189,
+                    "__line__": 198,
                     "wrap_python": false
                 }
             },
@@ -3476,7 +3825,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 185,
+                    "__line__": 194,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -3496,9 +3845,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 184,
+                "linenumber": 193,
                 "options": {
-                    "__line__": 189,
+                    "__line__": 198,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

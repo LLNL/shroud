@@ -56,6 +56,7 @@ int passAssumedType(void *arg);
 int passAssumedTypeBuf(void *arg, const char *name);
 
 void callback2(int type, void * in, void (*incr)(int *));
+void callback3(const char *type, void * in, void (*incr)(int *));
 
 int passStruct1(Cstruct1 *s1);
 int passStruct2(Cstruct1 *s1, const char *name);

@@ -42,6 +42,12 @@ module clibrary_mod
             integer(C_INT) :: arg0
         end subroutine callback2_incr
 
+        subroutine callback3_incr(arg0) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT) :: arg0
+        end subroutine callback3_incr
+
     end interface
 
     interface
@@ -218,6 +224,27 @@ module clibrary_mod
             type(*) :: in
             procedure(callback2_incr) :: incr
         end subroutine callback2
+
+        subroutine c_callback3(type, in, incr) &
+                bind(C, name="callback3")
+            use iso_c_binding, only : C_CHAR, C_PTR
+            import :: callback3_incr
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: type(*)
+            type(*) :: in
+            procedure(callback3_incr) :: incr
+        end subroutine c_callback3
+
+        subroutine c_callback3_bufferify(type, Ltype, in, incr) &
+                bind(C, name="CLI_callback3_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            import :: callback3_incr
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: type(*)
+            integer(C_INT), value, intent(IN) :: Ltype
+            type(*) :: in
+            procedure(callback3_incr) :: incr
+        end subroutine c_callback3_bufferify
 
         function pass_struct1(s1) &
                 result(SHT_rv) &
@@ -458,6 +485,24 @@ contains
             len_trim(name, kind=C_INT))
         ! splicer end function.pass_assumed_type_buf
     end function pass_assumed_type_buf
+
+    ! void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)
+    ! arg_to_buffer
+    !>
+    !! \brief Test function pointer
+    !!
+    !! A bufferify function will be created.
+    !<
+    subroutine callback3(type, in, incr)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: type
+        type(*) :: in
+        procedure(callback3_incr) :: incr
+        ! splicer begin function.callback3
+        call c_callback3_bufferify(type, len_trim(type, kind=C_INT), in, &
+            incr)
+        ! splicer end function.callback3
+    end subroutine callback3
 
     ! int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))
     ! arg_to_buffer

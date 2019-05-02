@@ -138,6 +138,17 @@ void callback2(int type, void * in, void (*incr)(int *))
   }
 }
 
+void callback3(const char *type, void * in, void (*incr)(int *))
+{
+  if (strcmp(type, "int") == 0) {
+    // default function pointer from prototype
+    incr(in);
+  } else if (strcmp(type, "double") == 0) {
+    void (*incr2)(double *) = (void(*)(double *)) incr;
+    incr2(in);
+  }
+}
+
 //----------------------------------------------------------------------
 
 int passStruct1(Cstruct1 *s1)

@@ -159,6 +159,15 @@ declarations:
     wrap_lua: False
     wrap_python: False
 
+- decl: void callback3(const char *type, void * in+assumedtype, void (*incr)(int *))
+  doxygen:
+    brief: Test function pointer
+    description: |
+      A bufferify function will be created.
+  options:
+    wrap_lua: False
+    wrap_python: False
+
 ######################################################################
 # Pass struct
 

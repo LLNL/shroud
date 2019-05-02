@@ -96,6 +96,25 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
 // splicer end function.pass_assumed_type_buf_bufferify
 }
 
+// void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +intent(in)+value)
+/**
+ * \brief Test function pointer
+ *
+ * A bufferify function will be created.
+ */
+void CLI_callback3_bufferify(const char * type, int Ltype, void * in,
+    void ( * incr)(int *))
+{
+// splicer begin function.callback3_bufferify
+    char * SH_type = (char *) malloc(Ltype + 1);
+    memcpy(SH_type, type, Ltype);
+    SH_type[Ltype] = '\0';
+    callback3(SH_type, in, incr);
+    free(SH_type);
+    return;
+// splicer end function.callback3_bufferify
+}
+
 // int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))
 /**
  * Pass name argument which will build a bufferify function.

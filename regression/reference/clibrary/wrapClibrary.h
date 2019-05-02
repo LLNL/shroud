@@ -37,6 +37,9 @@ void CLI_bind_c2_bufferify(const char * name, int Lname);
 int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
     int Lname);
 
+void CLI_callback3_bufferify(const char * type, int Ltype, void * in,
+    void ( * incr)(int *));
+
 int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
     int Lname);
 
