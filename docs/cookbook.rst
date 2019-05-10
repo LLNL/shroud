@@ -19,7 +19,7 @@ F_name_impl with fortran_generic
 --------------------------------
 
 Using the *F_name_impl* format string to explicitly name a Fortran
-wrapper when the *fortran_generic* field is used may present some
+wrapper combined with the *fortran_generic* field may present some
 surprising behavior.  The routine ``BA_change`` takes a ``long``
 argument.  However, this is inconvenient in Fortran since the default
 integer is typically an ``int``.  When passing a constant you need to
