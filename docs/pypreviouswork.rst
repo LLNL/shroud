@@ -67,3 +67,6 @@ Links
 -----
 
 * `Interfacing with C - Scipy lecture notes <https://www.scipy-lectures.org/advanced/interfacing_with_c/interfacing_with_c.html>`_
+
+.. https://cppyy.readthedocs.io/en/latest/
+

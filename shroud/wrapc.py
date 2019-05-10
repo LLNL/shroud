@@ -87,10 +87,10 @@ class Wrapc(util.WrapperMixin):
                 continue
             if node.as_struct:
                 structs.append(node)
-                continue
-            self._push_splicer(node.name)
-            self.write_file(newlibrary, node, None)
-            self._pop_splicer(node.name)
+            else:
+                self._push_splicer(node.name)
+                self.write_file(newlibrary, node, None)
+                self._pop_splicer(node.name)
         self._pop_splicer("class")
 
         self.write_file(newlibrary, None, structs)
@@ -425,13 +425,16 @@ class Wrapc(util.WrapperMixin):
     def wrap_struct(self, node):
         """Create a C copy of struct.
         A C++ struct must all POD.
-        XXX - Only need to wrap if in a namespace.
-        XXX - no need to wrap C structs
+        XXX - Only need to wrap if in a C++ namespace.
 
         Args:
             node - ast.ClasNode.
         """
-        self.log.write("class {1.name}\n".format(self, node))
+        if self.language == "c":
+            # No need for wrapper with C.
+            # Use struct definition in user's header from cxx_header.
+            return
+        self.log.write("struct {1.name}\n".format(self, node))
         cname = node.typemap.c_type
 
         output = self.struct_impl

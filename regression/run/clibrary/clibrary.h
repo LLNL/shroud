@@ -28,6 +28,11 @@ enum EnumTypeID {
 
 typedef int TypeID;
 
+struct Cstruct1 {
+  int ifield;
+};
+typedef struct Cstruct1 Cstruct1;
+
 void Function1(void);
 
 double Function2(double arg1, int arg2);
@@ -36,6 +41,28 @@ bool Function3(bool arg);
 void Function3b(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
+
+int ImpliedLen(const char *text, int ltext, bool flag);
+int ImpliedLenTrim(const char *text, int ltext, bool flag);
+bool ImpliedBoolTrue(bool flag);
+bool ImpliedBoolFalse(bool flag);
+
+void bindC1(void);
+void bindC2(const char * name);
+
+void passVoidStarStar(void *in, void **out);
+
+int passAssumedType(void *arg);
+int passAssumedTypeBuf(void *arg, const char *name);
+
+void callback2(int type, void * in, void (*incr)(int *));
+void callback3(const char *type, void * in, void (*incr)(int *));
+
+int passStruct1(Cstruct1 *s1);
+int passStruct2(Cstruct1 *s1, const char *name);
+Cstruct1 *returnStructPtr1(int ifield);
+Cstruct1 *returnStructPtr2(int ifield, const char *name);
+
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
 

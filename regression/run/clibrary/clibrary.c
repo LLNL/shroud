@@ -30,7 +30,7 @@ static char last_function_called[MAXLAST];
 //static int global_int;
 //static double global_double;
 
-
+static Cstruct1 global_Cstruct1;
 
 void Function1(void)
 {
@@ -68,6 +68,115 @@ char *Function4a(const char *arg1, const char *arg2)
     sprintf(out, "%s%s", arg1, arg2);
     return out;
 }
+
+int ImpliedLen(const char *text, int ltext, bool flag)
+{
+    strncpy(last_function_called, "ImpliedLen", MAXLAST);
+    return ltext;
+}
+
+int ImpliedLenTrim(const char *text, int ltext, bool flag)
+{
+    strncpy(last_function_called, "ImpliedLenTrim", MAXLAST);
+    return ltext;
+}
+
+bool ImpliedBoolTrue(bool flag)
+{
+    strncpy(last_function_called, "ImpliedBoolTrue", MAXLAST);
+    return flag;
+}
+
+bool ImpliedBoolFalse(bool flag)
+{
+    strncpy(last_function_called, "ImpliedBoolFalse", MAXLAST);
+    return flag;
+}
+
+void bindC1()
+{
+    strncpy(last_function_called, "bindC1", MAXLAST);
+}
+
+void bindC2(const char * name)
+{
+    strncpy(last_function_called, "bindC2", MAXLAST);
+}
+
+void passVoidStarStar(void *in, void **out)
+{
+    strncpy(last_function_called, "passVoidStarStar", MAXLAST);
+    *out = in;
+}
+
+/* arg is assumed to be an int. */
+
+int passAssumedType(void *arg)
+{
+    strncpy(last_function_called, "passAssumedType", MAXLAST);
+    return *(int *) arg;
+}
+
+/* arg is assumed to be an int. */
+
+int passAssumedTypeBuf(void *arg, const char *name)
+{
+    strncpy(last_function_called, "passAssumedTypeBuf", MAXLAST);
+    return *(int *) arg;
+}
+
+//----------------------------------------------------------------------
+
+void callback2(int type, void * in, void (*incr)(int *))
+{
+  if (type == 1) {
+    // default function pointer from prototype
+    incr(in);
+  } else if (type == 2) {
+    void (*incr2)(double *) = (void(*)(double *)) incr;
+    incr2(in);
+  }
+}
+
+void callback3(const char *type, void * in, void (*incr)(int *))
+{
+  if (strcmp(type, "int") == 0) {
+    // default function pointer from prototype
+    incr(in);
+  } else if (strcmp(type, "double") == 0) {
+    void (*incr2)(double *) = (void(*)(double *)) incr;
+    incr2(in);
+  }
+}
+
+//----------------------------------------------------------------------
+
+int passStruct1(Cstruct1 *s1)
+{
+    strncpy(last_function_called, "passStruct1", MAXLAST);
+    return s1->ifield;
+}
+
+int passStruct2(Cstruct1 *s1, const char *name)
+{
+    strncpy(last_function_called, "passStruct2", MAXLAST);
+    return s1->ifield;
+}
+
+Cstruct1 *returnStructPtr1(int ifield)
+{
+    strncpy(last_function_called, "returnStructPtr1", MAXLAST);
+    global_Cstruct1.ifield = ifield;
+    return &global_Cstruct1;
+}
+
+Cstruct1 *returnStructPtr2(int ifield, const char *name)
+{
+    strncpy(last_function_called, "returnStructPtr2", MAXLAST);
+    global_Cstruct1.ifield = ifield;
+    return &global_Cstruct1;
+}
+
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)

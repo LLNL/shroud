@@ -342,6 +342,15 @@ For Python, a similar NumPy array object will be constructed using
 ``PyArray_NewLikeArray``.
 
 
+assumedtype
+^^^^^^^^^^^
+
+When this attribute is applied to a ``void *`` argument, the Fortran
+assumed-type declaration, ``type(*)``, will be used.  Since Fortran
+defaults to pass-by-reference, the argument will be passed to C as a
+``void *`` argument.  The C function will need some other mechanism to
+determine the type of the argument before dereferencing the pointer.
+
 default
 ^^^^^^^
 
@@ -397,6 +406,14 @@ If set without a value, it defaults to ``(*)``:
     double *array +dimension
     double *array +dimension(len)
 
+external
+^^^^^^^^
+
+This attribute is only valid with function pointers.  It will ensure
+that a Fortran wrapper is created which uses the ``external``
+statement for the argument.  This will allow any function to be used
+as the dummy argument for the function pointer.
+
 free_pattern
 ^^^^^^^^^^^^
 
@@ -420,7 +437,7 @@ For example, setting the shape of a pointer function:
 
 .. code-block:: text
 
-      int * ReturnIntPtr(int *len+intent(out)+hidden) +dimension(len)
+      int * ReturnIntPtr(int *len+intent(out)+hidden +dimension(len))
 
 .. assumed intent(out)
 
@@ -439,6 +456,9 @@ to Fortran or Python wrapper.  Useful with array sizes:
 .. code-block:: text
 
       int Sum(int * array +intent(in), int len +implied(size(array))
+
+Several functions will be converted to the corresponding code for
+Python wrappers: ``size``, ``len`` and ``len_trim``.
 
 intent
 ^^^^^^

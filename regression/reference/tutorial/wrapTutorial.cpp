@@ -543,6 +543,10 @@ TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv)
 }
 
 // int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
+/**
+ * \brief Test function pointer
+ *
+ */
 int TUT_callback1(int in, int ( * incr)(int))
 {
 // splicer begin function.callback1

@@ -37,6 +37,12 @@ declarations:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
+- decl: struct Cstruct1 {
+          int ifield;
+        };
+  options:
+    wrap_python: false
+
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
 - decl: void Sum(int len +implied(size(values)),
@@ -52,6 +58,149 @@ declarations:
 - decl: char *Function4a(
     const char *arg1,
     const char *arg2 ) +len(30)
+
+- decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
+                       bool flag+implied(false))
+  options:
+    F_create_bufferify_function: false
+  doxygen:
+    brief: Return the implied argument - text length
+    description: |
+       Pass the Fortran length of the char argument directy to the C function.
+       No need for the bufferify version which will needlessly copy the string.
+
+- decl: int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)),
+                           bool flag+implied(true))
+  options:
+    F_create_bufferify_function: false
+  doxygen:
+    brief: Return the implied argument - text length
+    description: |
+       Pass the Fortran length of the char argument directy to the C function.
+       No need for the bufferify version which will needlessly copy the string.
+
+- decl: bool ImpliedBoolTrue(bool flag+implied(true))
+  doxygen:
+    brief: Single, implied bool argument
+
+- decl: bool ImpliedBoolFalse(bool flag+implied(false))
+  doxygen:
+    brief: Single, implied bool argument
+
+######################################################################
+- decl: void bindC1()
+  doxygen:
+    brief: Rename Fortran name for interface only function
+    description: |
+       This creates only an interface.
+  format:
+    # Used with interface since there is no implementation.
+    F_name_impl: Fortran_bindC1a
+    # Unused.
+    F_C_name: Fortran_bindC1b
+  options:
+    wrap_python: false
+
+- decl: void bindC2(const char *name)
+  doxygen:
+    brief: Rename Fortran name for interface only function
+    description: |
+       This creates a Fortran bufferify function and an interface.
+  format:
+    # Used with implemention.
+    F_name_impl: Fortran_bindC2a
+    # XXX - Used with both interfaces, regular and bufferify
+#    F_C_name: Fortran_bindC2b
+  options:
+    wrap_python: false
+
+- decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
+  doxygen:
+    brief: Assign in to out.
+    description: |
+      No bufferify function is created, only an interface.
+  options:
+    wrap_python: false
+
+- decl: int passAssumedType(void *arg+assumedtype)
+  doxygen:
+    brief: Test assumed-type
+    description: |
+      No bufferify function is created, only an interface.
+      Should only be call with an C_INT argument, and will
+      return the value passed in.
+  options:
+    wrap_python: false
+
+- decl: int passAssumedTypeBuf(void *arg+assumedtype, const char *name)
+  doxygen:
+    brief: Test assumed-type
+    description: |
+      A bufferify function is created.
+      Should only be call with an C_INT argument, and will
+      return the value passed in.
+  options:
+    wrap_python: false
+
+######################################################################
+# Function pointer (from tutorial.yaml)
+
+#- decl: int callback1(int in, int (*incr)(int));
+#  doxygen:
+#    brief: Test function pointer
+#  options:
+#    wrap_lua: False
+#    wrap_python: False
+  
+- decl: void callback2(int type, void * in+assumedtype,
+                       void (*incr)(int *)+external)
+  doxygen:
+    brief: Test function pointer
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void callback3(const char *type, void * in+assumedtype,
+                       void (*incr)(int *)+external)
+  doxygen:
+    brief: Test function pointer
+    description: |
+      A bufferify function will be created.
+  options:
+    wrap_lua: False
+    wrap_python: False
+
+######################################################################
+# Pass struct
+
+- decl: int passStruct1(Cstruct1 *s1)
+  options:
+    wrap_python: false
+
+- decl: int passStruct2(Cstruct1 *s1, const char *name)
+  doxygen:
+    description: |
+      Pass name argument which will build a bufferify function.
+  options:
+    wrap_python: false
+
+- decl: Cstruct1 *returnStructPtr1(int ifield)
+  doxygen:
+    brief: Return a pointer to a struct
+    description: |
+      Does not generate a bufferify C wrapper.
+  options:
+    wrap_python: false
+
+- decl: Cstruct1 *returnStructPtr2(int ifield, const char *name)
+  doxygen:
+    brief: Return a pointer to a struct
+    description: |
+      Generates a bufferify C wrapper function.
+  options:
+    wrap_python: false
+
+######################################################################
 
 # XXX - Replace with other code to free memory
 #  format:

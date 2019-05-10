@@ -49,6 +49,7 @@ Contents
    cwrapper
    fortran
    python
+   cookbook
    reference
    previouswork
    pypreviouswork

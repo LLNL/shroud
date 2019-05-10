@@ -74,7 +74,7 @@ class VerifyAttrs(object):
     def check_fcn_attrs(self, node):
         """
         Args:
-            node -
+            node - ast.FunctionNode
         """
         options = node.options
         if not options.wrap_fortran and not options.wrap_c:
@@ -150,8 +150,8 @@ class VerifyAttrs(object):
                else True (pass-by-value).
 
         Args:
-            node -
-            arg -
+            node - ast.FunctionNode
+            arg  - declast.Declaration
         """
         if node:
             options = node.options
@@ -164,7 +164,9 @@ class VerifyAttrs(object):
                 continue
             if attr not in [
                 "allocatable",
+                "assumedtype",
                 "capsule",
+                "external",
                 "deref",
                 "dimension",
                 "hidden",  # omitted in Fortran API, returned from C++
@@ -226,16 +228,27 @@ class VerifyAttrs(object):
             else:
                 raise RuntimeError("Bad value for intent: " + attrs["intent"])
 
+        # assumedtype
+        assumedtype = attrs.get("assumedtype", None)
+        if assumedtype is not None:
+            if attrs.get("value", False):
+                raise RuntimeError(
+                    "argument must not have value=True "
+                    "because it has the assumedtype attribute."
+                )
+            attrs["value"] = False
+
         # value
         value = attrs.get("value", None)
         if value is None:
             if is_ptr:
-                if (
-                    arg_typemap.f_c_type or arg_typemap.f_type
-                ) == "type(C_PTR)":
+                if arg_typemap.name == "void":
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
-                    attrs["value"] = True
+                    if len(arg.declarator.pointer) == 1:
+                        attrs["value"] = True  # void *
+                    else:
+                        attrs["value"] = False # void **  XXX intent(out)?
                 else:
                     attrs["value"] = False
             else:
@@ -246,7 +259,7 @@ class VerifyAttrs(object):
         if dimension:
             if attrs.get("value", False):
                 raise RuntimeError(
-                    "argument must not have value=True"
+                    "argument must not have value=True "
                     "because it has the dimension attribute."
                 )
             if not is_ptr:
@@ -628,7 +641,8 @@ class GenFunctions(object):
         ordered3 = []
         for method in ordered_functions:
             ordered3.append(method)
-            self.arg_to_buffer(method, ordered3)
+            if method.options.F_create_bufferify_function:
+                self.arg_to_buffer(method, ordered3)
 
         # Create multiple generic Fortran wrappers to call a
         # single C functions
@@ -1534,6 +1548,26 @@ class CheckImplied(todict.PrintNode):
                     )
                 )
             return "size"
+        elif node.name in ["len", "len_trim"]:
+            # len(arg)  len_trim(arg)
+            if len(node.args) != 1:
+                raise RuntimeError(
+                    "Too many arguments to 'size': ".format(self.expr)
+                )
+            argname = node.args[0].name
+            arg = self.func.ast.find_arg_by_name(argname)
+            if arg is None:
+                raise RuntimeError(
+                    "Unknown argument '{}': {}".format(argname, self.expr)
+                )
+            # XXX - Make sure character
+#            if "dimension" not in arg.attrs:
+#                raise RuntimeError(
+#                    "Argument '{}' must have dimension attribute: {}".format(
+#                        argname, self.expr
+#                    )
+#                )
+            return node.name
         else:
             raise RuntimeError(
                 "Unexpected function '{}' in expression: {}".format(

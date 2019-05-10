@@ -1312,6 +1312,7 @@ class Declaration(Node):
 
     def gen_arg_as_fortran(
         self,
+        bindc=False,
         local=False,
         is_pointer=False,
         is_allocatable=False,
@@ -1320,6 +1321,7 @@ class Declaration(Node):
     ):
         """Geneate declaration for Fortran variable.
 
+        bindc - Use C interoperable type. Used with hidden and implied arguments.
         If local==True, this is a local variable, skip attributes
           OPTIONAL, VALUE, and INTENT
         is_pointer - True/False - have POINTER attribute
@@ -1343,8 +1345,6 @@ class Declaration(Node):
         if not is_allocatable:
             is_allocatable = attrs.get("allocatable", False)
 
-        typ = ntypemap.f_type
-
         if ntypemap.base == "string":
             if "len" in attrs and local:
                 # Also used with function result declaration.
@@ -1355,8 +1355,10 @@ class Declaration(Node):
                 t.append("character(len=*)")
             else:
                 t.append("character")
+        elif bindc:
+            t.append(ntypemap.f_c_type or ntypemap.f_type)
         else:
-            t.append(typ)
+            t.append(ntypemap.f_type)
 
         if not local:  # must be dummy argument
             if attrs.get("value", False):

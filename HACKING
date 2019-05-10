@@ -35,6 +35,15 @@ which is wrapped by the corresponding yaml file
 
 regression/run/default.mk has compiler flags
 
+Compile a single test
+
+    fortran-XXX        compile wrappers for XXX.yaml
+    test-fortran-XXX   run test for XXX.yaml
+    test-fortran       All Fortran tests
+
+    py-XXX             compile module for XXX.yaml
+    test-python-XXX    run Python test for XXX.yaml
+    test-python        All Python tests
 
 file dependency
 ---------------

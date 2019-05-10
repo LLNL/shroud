@@ -16,6 +16,7 @@
 !
 function incr2(input) bind(C)
   use iso_c_binding
+  implicit none
   integer(c_int), value :: input
   integer(c_int) :: incr2
   incr2 = input + 20

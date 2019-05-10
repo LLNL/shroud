@@ -23,7 +23,7 @@ class Singleton
 C method static Singleton & getReference()
 Close wrapSingleton.h
 Close wrapSingleton.cpp
-class struct1
+struct struct1
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))

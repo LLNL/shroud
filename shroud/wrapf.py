@@ -753,7 +753,11 @@ rv = .false.
             if buf_arg == "arg":
                 arg_c_names.append(ast.name)
                 # argument declarations
-                if ast.is_function_pointer():
+                if "assumedtype" in attrs:
+                    arg_c_decl.append(
+                        "type(*) :: {}".format(ast.name)
+                    )
+                elif ast.is_function_pointer():
                     absiface = self.add_abstract_interface(node, ast)
                     arg_c_decl.append(
                         "procedure({}) :: {}".format(absiface, ast.name)
@@ -1032,6 +1036,8 @@ rv = .false.
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports, arg_typemap.f_module)
+                elif "assumedtype" in c_attrs:
+                    arg_c_call.append(fmt.f_var)
                 else:
                     arg_c_call.append(fmt.c_var)
                 continue
@@ -1321,11 +1327,26 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
-                if f_arg.is_function_pointer():
-                    absiface = self.add_abstract_interface(node, f_arg)
+
+                if "assumedtype" in c_attrs:
                     arg_f_decl.append(
-                        "procedure({}) :: {}".format(absiface, f_arg.name)
+                        "type(*) :: {}".format(f_arg.name)
                     )
+                    arg_f_names.append(fmt_arg.f_var)
+                    arg_c_call.append(f_arg.name)
+                    continue
+                elif f_arg.is_function_pointer():
+                    absiface = self.add_abstract_interface(node, f_arg)
+                    if c_attrs.get("external", False):
+                        # external is similar to assumed type, in that it will
+                        # accept any function.  But external is not allowed
+                        # in bind(C), so make sure a wrapper is generated.
+                        arg_f_decl.append("external :: {}".format(f_arg.name))
+                        need_wrapper = True
+                    else:
+                        arg_f_decl.append(
+                            "procedure({}) :: {}".format(absiface, f_arg.name)
+                        )
                     arg_f_names.append(fmt_arg.f_var)
                     arg_c_call.append(f_arg.name)
                     # function pointers are pass thru without any other action
@@ -1334,7 +1355,7 @@ rv = .false.
                     # Argument is not passed into Fortran.
                     # hidden value is returned from C++.
                     # implied is computed then passed to C++
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True))
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
                     arg_f_names.append(fmt_arg.f_var)
@@ -1764,7 +1785,7 @@ rv = .false.
 
 
 class ToImplied(todict.PrintNode):
-    """Convert implied expression to Python wrapper code.
+    """Convert implied expression to Fortran wrapper code.
 
     expression has already been checked for errors by generate.check_implied.
     Convert functions:
@@ -1785,8 +1806,13 @@ class ToImplied(todict.PrintNode):
 
     def visit_Identifier(self, node):
         # Look for functions
-        if node.args is None:
+        if node.name == "true":
+            return ".TRUE._C_BOOL"
+        elif node.name == "false":
+            return ".FALSE._C_BOOL"
+        elif node.args is None:
             return node.name
+        ### functions
         elif node.name == "size":
             # size(arg)
             # This expected to be assigned to a C_INT or C_LONG
@@ -1794,6 +1820,16 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
+        elif node.name == "len":
+            # len(arg)
+            argname = node.args[0].name
+            arg_typemap = self.arg.typemap
+            return "len({},kind={})".format(argname, arg_typemap.f_kind)
+        elif node.name == "len_trim":
+            # len_trim(arg)
+            argname = node.args[0].name
+            arg_typemap = self.arg.typemap
+            return "len_trim({},kind={})".format(argname, arg_typemap.f_kind)
         else:
             return self.param_list(node)
 

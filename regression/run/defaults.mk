@@ -30,7 +30,7 @@ CC = gcc
 # -Wextra
 # -O3 generates additional warnings
 CXXWARNINGS = -O3
-CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing
+CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
 CLIBS = -lstdc++
 CXX = g++
 CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
