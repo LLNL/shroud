@@ -44,3 +44,5 @@ uint32_t uint32_func(uint32_t arg1);
 uint64_t uint64_func(uint64_t arg1);
 
 size_t size_func(size_t arg1);
+
+bool returnBoolAndOthers(int *flag);

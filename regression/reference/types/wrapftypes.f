@@ -228,11 +228,41 @@ module types_mod
             integer(C_SIZE_T) :: SHT_rv
         end function size_func
 
+        function c_return_bool_and_others(flag) &
+                result(SHT_rv) &
+                bind(C, name="TYP_return_bool_and_others")
+            use iso_c_binding, only : C_BOOL, C_INT
+            implicit none
+            integer(C_INT), intent(OUT) :: flag
+            logical(C_BOOL) :: SHT_rv
+        end function c_return_bool_and_others
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
 contains
+
+    ! bool returnBoolAndOthers(int * flag +intent(out))
+    !>
+    !! \brief Function which returns bool with other intent(out) arguments
+    !!
+    !! Python treats bool differently since Py_BuildValue does not support
+    !! bool until Python 3.3.
+    !! Must create a PyObject with PyBool_FromLong then include that object
+    !! in call to Py_BuildValue as type 'O'.  But since two return values
+    !! are being created, function return and argument flag, rename first
+    !! local C variable to avoid duplicate names in wrapper.
+    !<
+    function return_bool_and_others(flag) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL, C_INT
+        integer(C_INT), intent(OUT) :: flag
+        logical :: SHT_rv
+        ! splicer begin function.return_bool_and_others
+        SHT_rv = c_return_bool_and_others(flag)
+        ! splicer end function.return_bool_and_others
+    end function return_bool_and_others
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

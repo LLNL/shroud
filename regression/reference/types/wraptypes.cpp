@@ -225,6 +225,25 @@ size_t TYP_size_func(size_t arg1)
 // splicer end function.size_func
 }
 
+// bool returnBoolAndOthers(int * flag +intent(out))
+/**
+ * \brief Function which returns bool with other intent(out) arguments
+ *
+ * Python treats bool differently since Py_BuildValue does not support
+ * bool until Python 3.3.
+ * Must create a PyObject with PyBool_FromLong then include that object
+ * in call to Py_BuildValue as type 'O'.  But since two return values
+ * are being created, function return and argument flag, rename first
+ * local C variable to avoid duplicate names in wrapper.
+ */
+bool TYP_return_bool_and_others(int * flag)
+{
+// splicer begin function.return_bool_and_others
+    bool SHC_rv = returnBoolAndOthers(flag);
+    return SHC_rv;
+// splicer end function.return_bool_and_others
+}
+
 // Release C++ allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {

@@ -81,6 +81,8 @@ uint64_t TYP_uint64_func(uint64_t arg1);
 
 size_t TYP_size_func(size_t arg1);
 
+bool TYP_return_bool_and_others(int * flag);
+
 #ifdef __cplusplus
 }
 #endif

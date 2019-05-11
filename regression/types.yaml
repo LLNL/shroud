@@ -61,3 +61,13 @@ declarations:
 - decl: size_t size_func(size_t arg1)
 
 
+- decl: bool returnBoolAndOthers(int *flag+intent(out))
+  doxygen:
+    brief: Function which returns bool with other intent(out) arguments
+    description: |
+      Python treats bool differently since Py_BuildValue does not support
+      bool until Python 3.3.
+      Must create a PyObject with PyBool_FromLong then include that object
+      in call to Py_BuildValue as type 'O'.  But since two return values
+      are being created, function return and argument flag, rename first
+      local C variable to avoid duplicate names in wrapper.

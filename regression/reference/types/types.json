@@ -2644,6 +2644,131 @@
                 },
                 "linenumber": 61,
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "flag",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(flag)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "flag",
+                            "f_var": "flag"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "int flag",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "cxx_addr": "",
+                            "cxx_decl": "int flag",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_flag"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "bool",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": "PyBool_Type",
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_BOOL",
+                        "py_var": "SHTPy_rv_tmp"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnBoolAndOthers",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool returnBoolAndOthers(int *flag+intent(out))",
+                "declgen": "bool returnBoolAndOthers(int * flag +intent(out))",
+                "doxygen": {
+                    "__line__": 65,
+                    "brief": "Function which returns bool with other intent(out) arguments",
+                    "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "bool SHC_rv =\t returnBoolAndOthers(\tflag);",
+                    "C_call_list": "flag",
+                    "C_name": "TYP_return_bool_and_others",
+                    "C_prototype": "int * flag",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "bool",
+                    "F_C_call": "c_return_bool_and_others",
+                    "F_C_name": "c_return_bool_and_others",
+                    "F_arg_c_call": "flag",
+                    "F_arguments": "flag",
+                    "F_call_code": "SHT_rv = c_return_bool_and_others(flag)",
+                    "F_name_function": "return_bool_and_others",
+                    "F_name_generic": "return_bool_and_others",
+                    "F_name_impl": "return_bool_and_others",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_returnBoolAndOthers",
+                    "c_const": "",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "returnBoolAndOthers",
+                    "underscore_name": "return_bool_and_others"
+                },
+                "linenumber": 64,
+                "options": {}
             }
         ],
         "language": "c++",

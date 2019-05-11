@@ -1511,6 +1511,12 @@ return 1;""",
             else:
                 # XXX - wrapc uses result instead of intent_out
                 result_blk = result_typemap.py_statements.get("intent_out", {})
+                if build_tuples and result_typemap.name == 'bool':
+                    # This kludges around a very specific problem.
+                    # bool creates an object since Py_BuildValue does not know bool until Python 3.3
+                    # If there are additional return arguments, a tuple will be created
+                    # which is also named py_var. So create a temporary name.
+                    fmt_result.py_var += "_tmp"
 
             ttt0 = self.intent_out(
                 result_typemap, result_blk, fmt_result, post_call)

@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - C struct arguments passed to a bufferify function.
   It was using C++ casting.  Instead there is no C wrapper for a struct
   like there is with a Class since it is already compatible with Fortran.
+- The Python wrapper for function which return bool and have other intent(out)
+  arguments where not compiling.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

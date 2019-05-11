@@ -698,6 +698,41 @@ PY_size_func(
     return (PyObject *) SHTPy_rv;
 // splicer end function.size_func
 }
+
+static char PY_returnBoolAndOthers__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Function which returns bool with other intent(out) arguments
+ *
+ * Python treats bool differently since Py_BuildValue does not support
+ * bool until Python 3.3.
+ * Must create a PyObject with PyBool_FromLong then include that object
+ * in call to Py_BuildValue as type 'O'.  But since two return values
+ * are being created, function return and argument flag, rename first
+ * local C variable to avoid duplicate names in wrapper.
+ */
+static PyObject *
+PY_returnBoolAndOthers(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// bool returnBoolAndOthers(int * flag +intent(out))
+// splicer begin function.return_bool_and_others
+    // pre_call
+    int flag;  // intent(out)
+
+    bool SHC_rv = returnBoolAndOthers(&flag);
+
+    // post_call
+    PyObject * SHTPy_rv_tmp = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = Py_BuildValue("Oi", SHTPy_rv_tmp, flag);
+
+    return SHTPy_rv;
+// splicer end function.return_bool_and_others
+}
 static PyMethodDef PY_methods[] = {
 {"short_func", (PyCFunction)PY_short_func, METH_VARARGS|METH_KEYWORDS,
     PY_short_func__doc__},
@@ -743,6 +778,8 @@ static PyMethodDef PY_methods[] = {
     PY_uint64_func__doc__},
 {"size_func", (PyCFunction)PY_size_func, METH_VARARGS|METH_KEYWORDS,
     PY_size_func__doc__},
+{"returnBoolAndOthers", (PyCFunction)PY_returnBoolAndOthers,
+    METH_NOARGS, PY_returnBoolAndOthers__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
