@@ -1213,6 +1213,460 @@
             },
             {
                 "_fmtargs": {
+                    "name1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "name1",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "char name1[MAXNAME]",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name1",
+                            "charlen": "MAXNAME",
+                            "cxx_addr": "",
+                            "cxx_decl": "char name1[MAXNAME]",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_name1"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnOneName",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
+                "doxygen": {
+                    "__line__": 68,
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "returnOneName(\tname1);",
+                    "C_call_list": "name1",
+                    "C_name": "returnOneName",
+                    "C_prototype": "char * name1",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_return_one_name_bufferify",
+                    "F_C_name": "c_return_one_name",
+                    "F_arg_c_call": "name1,\t len(name1, kind=C_INT)",
+                    "F_arguments": "name1",
+                    "F_call_code": "call c_return_one_name_bufferify(name1,\t len(name1, kind=C_INT))",
+                    "F_name_function": "return_one_name",
+                    "F_name_generic": "return_one_name",
+                    "F_name_impl": "return_one_name",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_returnOneName",
+                    "c_const": "",
+                    "function_name": "returnOneName",
+                    "underscore_name": "return_one_name"
+                },
+                "linenumber": 67,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "name1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name1",
+                            "c_var_len": "Nname1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_name1",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_name1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "name1",
+                            "f_var": "name1"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "returnOneName",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "len": "Nname1",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))",
+                "doxygen": {
+                    "__line__": 68,
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "returnOneName(\tSH_name1);",
+                    "C_call_list": "SH_name1",
+                    "C_name": "CLI_return_one_name_bufferify",
+                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t strlen(SH_name1));\nfree(SH_name1);",
+                    "C_pre_call": "char * SH_name1 = (char *) malloc(Nname1 + 1);",
+                    "C_prototype": "char * name1,\t int Nname1",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_return_one_name_bufferify",
+                    "c_const": "",
+                    "function_name": "returnOneName",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_one_name"
+                },
+                "linenumber": 67,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "name1",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "char name1[MAXNAME]",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name1",
+                            "charlen": "MAXNAME",
+                            "cxx_addr": "",
+                            "cxx_decl": "char name1[MAXNAME]",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_name1"
+                        }
+                    },
+                    "name2": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name2",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "name2",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name2",
+                            "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "char name2[MAXNAME]",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name2",
+                            "charlen": "MAXNAME",
+                            "cxx_addr": "",
+                            "cxx_decl": "char name2[MAXNAME]",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "name2",
+                            "numpy_type": null,
+                            "py_var": "SHPy_name2"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "returnTwoNames",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "name2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
+                "doxygen": {
+                    "__line__": 77,
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "returnTwoNames(\tname1,\t name2);",
+                    "C_call_list": "name1,\t name2",
+                    "C_name": "returnTwoNames",
+                    "C_prototype": "char * name1,\t char * name2",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_return_two_names_bufferify",
+                    "F_C_name": "c_return_two_names",
+                    "F_arg_c_call": "name1,\t len(name1, kind=C_INT),\t name2,\t len(name2, kind=C_INT)",
+                    "F_arguments": "name1,\t name2",
+                    "F_call_code": "call c_return_two_names_bufferify(name1,\t len(name1, kind=C_INT),\t name2,\t len(name2, kind=C_INT))",
+                    "F_name_function": "return_two_names",
+                    "F_name_generic": "return_two_names",
+                    "F_name_impl": "return_two_names",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_returnTwoNames",
+                    "c_const": "",
+                    "function_name": "returnTwoNames",
+                    "underscore_name": "return_two_names"
+                },
+                "linenumber": 75,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "name1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name1",
+                            "c_var_len": "Nname1",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_name1",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_name1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "name1",
+                            "f_var": "name1"
+                        }
+                    },
+                    "name2": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name2",
+                            "c_var_len": "Nname2",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "SH_name2",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "SH_name2",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "name2",
+                            "f_var": "name2"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "returnTwoNames",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "len": "Nname1",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "_generated_suffix": "_buf",
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "len": "Nname2",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "name2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1), char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2))",
+                "doxygen": {
+                    "__line__": 77,
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "returnTwoNames(\tSH_name1,\t SH_name2);",
+                    "C_call_list": "SH_name1,\t SH_name2",
+                    "C_name": "CLI_return_two_names_bufferify",
+                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t strlen(SH_name1));\nfree(SH_name1);\nShroudStrCopy(name2, Nname2,\t SH_name2,\t strlen(SH_name2));\nfree(SH_name2);",
+                    "C_pre_call": "char * SH_name1 = (char *) malloc(Nname1 + 1);\nchar * SH_name2 = (char *) malloc(Nname2 + 1);",
+                    "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_return_two_names_bufferify",
+                    "c_const": "",
+                    "function_name": "returnTwoNames",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_two_names"
+                },
+                "linenumber": 75,
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_const": "",
@@ -1403,7 +1857,7 @@
                 "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
                 "declgen": "int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 66,
+                    "__line__": 89,
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
@@ -1430,10 +1884,10 @@
                     "function_name": "ImpliedLen",
                     "underscore_name": "implied_len"
                 },
-                "linenumber": 62,
+                "linenumber": 85,
                 "options": {
                     "F_create_bufferify_function": false,
-                    "__line__": 64
+                    "__line__": 87
                 }
             },
             {
@@ -1628,7 +2082,7 @@
                 "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
                 "declgen": "int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 76,
+                    "__line__": 99,
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
@@ -1655,10 +2109,10 @@
                     "function_name": "ImpliedLenTrim",
                     "underscore_name": "implied_len_trim"
                 },
-                "linenumber": 72,
+                "linenumber": 95,
                 "options": {
                     "F_create_bufferify_function": false,
-                    "__line__": 74
+                    "__line__": 97
                 }
             },
             {
@@ -1753,7 +2207,7 @@
                 "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
                 "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 106,
                     "brief": "Single, implied bool argument"
                 },
                 "fmtdict": {
@@ -1779,7 +2233,7 @@
                     "function_name": "ImpliedBoolTrue",
                     "underscore_name": "implied_bool_true"
                 },
-                "linenumber": 82,
+                "linenumber": 105,
                 "options": {}
             },
             {
@@ -1874,7 +2328,7 @@
                 "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
                 "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 87,
+                    "__line__": 110,
                     "brief": "Single, implied bool argument"
                 },
                 "fmtdict": {
@@ -1900,7 +2354,7 @@
                     "function_name": "ImpliedBoolFalse",
                     "underscore_name": "implied_bool_false"
                 },
-                "linenumber": 86,
+                "linenumber": 109,
                 "options": {}
             },
             {
@@ -1918,7 +2372,7 @@
                 "decl": "void bindC1()",
                 "declgen": "void bindC1()",
                 "doxygen": {
-                    "__line__": 92,
+                    "__line__": 115,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates only an interface.\n"
                 },
@@ -1938,14 +2392,14 @@
                     "F_name_generic": "bind_c1",
                     "F_name_impl": "Fortran_bindC1a",
                     "F_subprogram": "subroutine",
-                    "__line__": 96,
+                    "__line__": 119,
                     "c_const": "",
                     "function_name": "bindC1",
                     "underscore_name": "bind_c1"
                 },
-                "linenumber": 91,
+                "linenumber": 114,
                 "options": {
-                    "__line__": 101,
+                    "__line__": 124,
                     "wrap_python": false
                 }
             },
@@ -2000,7 +2454,7 @@
                 "decl": "void bindC2(const char *name)",
                 "declgen": "void bindC2(const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 105,
+                    "__line__": 128,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
@@ -2020,14 +2474,14 @@
                     "F_name_generic": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
                     "F_subprogram": "subroutine",
-                    "__line__": 109,
+                    "__line__": 132,
                     "c_const": "",
                     "function_name": "bindC2",
                     "underscore_name": "bind_c2"
                 },
-                "linenumber": 104,
+                "linenumber": 127,
                 "options": {
-                    "__line__": 114,
+                    "__line__": 137,
                     "wrap_python": false
                 }
             },
@@ -2090,7 +2544,7 @@
                 "decl": "void bindC2(const char *name)",
                 "declgen": "void bindC2(const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 105,
+                    "__line__": 128,
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
@@ -2105,15 +2559,15 @@
                     "C_return_type": "void",
                     "F_C_name": "c_bind_c2_bufferify",
                     "F_name_impl": "Fortran_bindC2a",
-                    "__line__": 109,
+                    "__line__": 132,
                     "c_const": "",
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
                     "underscore_name": "bind_c2"
                 },
-                "linenumber": 104,
+                "linenumber": 127,
                 "options": {
-                    "__line__": 114,
+                    "__line__": 137,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -2213,7 +2667,7 @@
                 "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
                 "declgen": "void passVoidStarStar(void * in +intent(in)+value, void * * out +intent(out))",
                 "doxygen": {
-                    "__line__": 118,
+                    "__line__": 141,
                     "brief": "Assign in to out.",
                     "description": "No bufferify function is created, only an interface.\n"
                 },
@@ -2237,9 +2691,9 @@
                     "function_name": "passVoidStarStar",
                     "underscore_name": "pass_void_star_star"
                 },
-                "linenumber": 117,
+                "linenumber": 140,
                 "options": {
-                    "__line__": 122,
+                    "__line__": 145,
                     "wrap_python": false
                 }
             },
@@ -2312,7 +2766,7 @@
                 "decl": "int passAssumedType(void *arg+assumedtype)",
                 "declgen": "int passAssumedType(void * arg +assumedtype+intent(in))",
                 "doxygen": {
-                    "__line__": 126,
+                    "__line__": 149,
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
@@ -2338,9 +2792,9 @@
                     "function_name": "passAssumedType",
                     "underscore_name": "pass_assumed_type"
                 },
-                "linenumber": 125,
+                "linenumber": 148,
                 "options": {
-                    "__line__": 132,
+                    "__line__": 155,
                     "wrap_python": false
                 }
             },
@@ -2442,7 +2896,7 @@
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, const char *name)",
                 "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 136,
+                    "__line__": 159,
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
@@ -2468,9 +2922,9 @@
                     "function_name": "passAssumedTypeBuf",
                     "underscore_name": "pass_assumed_type_buf"
                 },
-                "linenumber": 135,
+                "linenumber": 158,
                 "options": {
-                    "__line__": 142,
+                    "__line__": 165,
                     "wrap_python": false
                 }
             },
@@ -2580,7 +3034,7 @@
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, const char *name)",
                 "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 136,
+                    "__line__": 159,
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
@@ -2600,9 +3054,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_assumed_type_buf"
                 },
-                "linenumber": 135,
+                "linenumber": 158,
                 "options": {
-                    "__line__": 142,
+                    "__line__": 165,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -2754,7 +3208,7 @@
                 "decl": "void callback2(int type, void * in+assumedtype, void (*incr)(int *)+external)",
                 "declgen": "void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 157,
+                    "__line__": 180,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -2777,9 +3231,9 @@
                     "function_name": "callback2",
                     "underscore_name": "callback2"
                 },
-                "linenumber": 155,
+                "linenumber": 178,
                 "options": {
-                    "__line__": 159,
+                    "__line__": 182,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -2922,7 +3376,7 @@
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external)",
                 "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 165,
+                    "__line__": 188,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
@@ -2946,9 +3400,9 @@
                     "function_name": "callback3",
                     "underscore_name": "callback3"
                 },
-                "linenumber": 163,
+                "linenumber": 186,
                 "options": {
-                    "__line__": 169,
+                    "__line__": 192,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -3107,7 +3561,7 @@
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external)",
                 "declgen": "void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 165,
+                    "__line__": 188,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
@@ -3126,9 +3580,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "callback3"
                 },
-                "linenumber": 163,
+                "linenumber": 186,
                 "options": {
-                    "__line__": 169,
+                    "__line__": 192,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3224,9 +3678,9 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "linenumber": 176,
+                "linenumber": 199,
                 "options": {
-                    "__line__": 177,
+                    "__line__": 200,
                     "wrap_python": false
                 }
             },
@@ -3327,7 +3781,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 181,
+                    "__line__": 204,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -3352,9 +3806,9 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 180,
+                "linenumber": 203,
                 "options": {
-                    "__line__": 184,
+                    "__line__": 207,
                     "wrap_python": false
                 }
             },
@@ -3463,7 +3917,7 @@
                 "decl": "int passStruct2(Cstruct1 *s1, const char *name)",
                 "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 181,
+                    "__line__": 204,
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
@@ -3482,9 +3936,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "linenumber": 180,
+                "linenumber": 203,
                 "options": {
-                    "__line__": 184,
+                    "__line__": 207,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -3560,7 +4014,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int ifield)",
                 "declgen": "Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 188,
+                    "__line__": 211,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -3586,9 +4040,9 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 187,
+                "linenumber": 210,
                 "options": {
-                    "__line__": 192,
+                    "__line__": 215,
                     "wrap_python": false
                 }
             },
@@ -3690,7 +4144,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))",
                 "doxygen": {
-                    "__line__": 196,
+                    "__line__": 219,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -3716,9 +4170,9 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 195,
+                "linenumber": 218,
                 "options": {
-                    "__line__": 200,
+                    "__line__": 223,
                     "wrap_python": false
                 }
             },
@@ -3828,7 +4282,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int ifield, const char *name)",
                 "declgen": "Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))",
                 "doxygen": {
-                    "__line__": 196,
+                    "__line__": 219,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -3848,9 +4302,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 195,
+                "linenumber": 218,
                 "options": {
-                    "__line__": 200,
+                    "__line__": 223,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

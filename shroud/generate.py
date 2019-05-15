@@ -166,6 +166,7 @@ class VerifyAttrs(object):
                 "allocatable",
                 "assumedtype",
                 "capsule",
+                "charlen",
                 "external",
                 "deref",
                 "dimension",
@@ -268,6 +269,7 @@ class VerifyAttrs(object):
                     "used on pointer and references"
                 )
             if dimension is True:
+                # XXX - Python needs a value if 'double *arg+intent(out)+dimension(SIZE)'
                 # No value was provided, provide default
                 if "allocatable" in attrs:
                     attrs["dimension"] = ":"
@@ -276,6 +278,24 @@ class VerifyAttrs(object):
         elif arg_typemap and arg_typemap.base == "vector":
             # default to 1-d assumed shape
             attrs["dimension"] = ":"
+
+        # charlen
+        # Only meaningful with 'char *arg+intent(out)'
+        # XXX - Python needs a value if 'char *+intent(out)'
+        charlen = attrs.get("charlen", None)
+        if charlen:
+            if arg_typemap and arg_typemap.base != "string":
+                raise RuntimeError(
+                    "charlen attribute can only be "
+                    "used on 'char *'"
+                )
+            if not is_ptr:
+                raise RuntimeError(
+                    "charlen attribute can only be "
+                    "used on 'char *'"
+                )
+            if charlen is True:
+                raise RuntimeError("charlen attribute must have a value")
 
         if node:
             if arg.init is not None:

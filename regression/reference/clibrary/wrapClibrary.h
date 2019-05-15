@@ -32,6 +32,11 @@
 void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
 
+void CLI_return_one_name_bufferify(char * name1, int Nname1);
+
+void CLI_return_two_names_bufferify(char * name1, int Nname1,
+    char * name2, int Nname2);
+
 void CLI_bind_c2_bufferify(const char * name, int Lname);
 
 int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,

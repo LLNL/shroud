@@ -57,6 +57,48 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
 // splicer end function.function4a_bufferify
 }
 
+// void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))
+/**
+ * \brief Test charlen attribute
+ *
+ * Each argument is assumed to be at least MAXNAME long.
+ * This define is provided by the user.
+ * The function will copy into the user provided buffer.
+ */
+void CLI_return_one_name_bufferify(char * name1, int Nname1)
+{
+// splicer begin function.return_one_name_bufferify
+    char * SH_name1 = (char *) malloc(Nname1 + 1);
+    returnOneName(SH_name1);
+    ShroudStrCopy(name1, Nname1, SH_name1, strlen(SH_name1));
+    free(SH_name1);
+    return;
+// splicer end function.return_one_name_bufferify
+}
+
+// void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1), char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2))
+/**
+ * \brief Test charlen attribute
+ *
+ * Each argument is assumed to be at least MAXNAME long.
+ * This define is provided by the user.
+ * The function will copy into the user provided buffer.
+ */
+void CLI_return_two_names_bufferify(char * name1, int Nname1,
+    char * name2, int Nname2)
+{
+// splicer begin function.return_two_names_bufferify
+    char * SH_name1 = (char *) malloc(Nname1 + 1);
+    char * SH_name2 = (char *) malloc(Nname2 + 1);
+    returnTwoNames(SH_name1, SH_name2);
+    ShroudStrCopy(name1, Nname1, SH_name1, strlen(SH_name1));
+    free(SH_name1);
+    ShroudStrCopy(name2, Nname2, SH_name2, strlen(SH_name2));
+    free(SH_name2);
+    return;
+// splicer end function.return_two_names_bufferify
+}
+
 // void bindC2(const char * name +intent(in)+len_trim(Lname))
 /**
  * \brief Rename Fortran name for interface only function

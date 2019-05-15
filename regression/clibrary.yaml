@@ -59,6 +59,29 @@ declarations:
     const char *arg1,
     const char *arg2 ) +len(30)
 
+######################################################################
+# charlen
+# returnOneName will use PyString_FromString.
+# returnTwoNames will use Py_BuildValue.
+
+- decl: void returnOneName(char *name1+intent(out)+charlen(MAXNAME))
+  doxygen:
+    brief: Test charlen attribute
+    description: |
+      Each argument is assumed to be at least MAXNAME long.
+      This define is provided by the user.
+      The function will copy into the user provided buffer.
+
+- decl: void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME),
+                            char *name2+intent(out)+charlen(MAXNAME))
+  doxygen:
+    brief: Test charlen attribute
+    description: |
+      Each argument is assumed to be at least MAXNAME long.
+      This define is provided by the user.
+      The function will copy into the user provided buffer.
+
+######################################################################
 - decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
                        bool flag+implied(false))
   options:
@@ -356,3 +379,9 @@ declarations:
 ##-  - decl: Class1()  +name(new)
 ##-  - decl: ~Class1() +name(delete)
 ##-  - decl: void Method1()
+
+
+splicer_code:
+  f:
+    module_top:
+    -  "integer, parameter :: MAXNAME = 20"
