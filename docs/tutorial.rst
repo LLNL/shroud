@@ -989,9 +989,9 @@ within an ``extern "C"`` block:
 
     //  Color
     enum TUT_Color {
-        RED,
-        BLUE,
-        WHITE
+        TUT_Color_RED,
+        TUT_Color_BLUE,
+        TUT_Color_WHITE
     };
 
 Fortran creates integer parameters for each value:

@@ -735,7 +735,7 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "BLUE",
+                        "C_enum_member": "TES_Color_BLUE",
                         "F_enum_member": "color_blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
@@ -743,7 +743,7 @@
                         "evalue": 1
                     },
                     "RED": {
-                        "C_enum_member": "RED",
+                        "C_enum_member": "TES_Color_RED",
                         "F_enum_member": "color_red",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
@@ -751,7 +751,7 @@
                         "evalue": 0
                     },
                     "WHITE": {
-                        "C_enum_member": "WHITE",
+                        "C_enum_member": "TES_Color_WHITE",
                         "F_enum_member": "color_white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
@@ -2088,7 +2088,7 @@
         ],
         "language": "c++",
         "options": {
-            "C_enum_member_template": "{enum_member_name}",
+            "C_enum_member_template": "{C_enum}_{enum_member_name}",
             "C_enum_template": "{C_prefix}{class_prefix}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",

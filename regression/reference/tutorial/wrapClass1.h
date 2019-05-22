@@ -34,10 +34,10 @@ extern "C" {
 
 //  DIRECTION
 enum TUT_class1_DIRECTION {
-    UP = 2,
-    DOWN,
-    LEFT = 100,
-    RIGHT
+    TUT_class1_DIRECTION_UP = 2,
+    TUT_class1_DIRECTION_DOWN,
+    TUT_class1_DIRECTION_LEFT = 100,
+    TUT_class1_DIRECTION_RIGHT
 };
 
 // splicer begin class.Class1.C_declarations

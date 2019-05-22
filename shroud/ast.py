@@ -381,7 +381,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
             C_header_helper_template="types{library}.{C_header_filename_suffix}",
             C_enum_template="{C_prefix}{class_prefix}{enum_name}",
-            C_enum_member_template="{enum_member_name}",
+            C_enum_member_template="{C_enum}_{enum_member_name}",
             C_name_template=(
                 "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
