@@ -1,0 +1,14 @@
+Read yaml scope.yaml
+Close scope_types.yaml
+class cls1_enum
+Close wrapcls1_enum.h
+class cls2_enum
+Close wrapcls2_enum.h
+Close wrapscope.h
+Close wrapscope.cpp
+Close typesscope.h
+class cls1_enum
+Close wrapfcls1_enum.f
+class cls2_enum
+Close wrapfcls2_enum.f
+Close wrapfscope.f

@@ -316,6 +316,7 @@ if __name__ == "__main__":
             "forward",
             "example",
             "include",
+            "scope",
             "names",
             "strings",
             "clibrary",
