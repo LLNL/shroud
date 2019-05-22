@@ -42,6 +42,10 @@ void Function3b(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
 
+#define MAXNAME 20
+void returnOneName(char *name1);
+void returnTwoNames(char *name1, char *name2);
+
 int ImpliedLen(const char *text, int ltext, bool flag);
 int ImpliedLenTrim(const char *text, int ltext, bool flag);
 bool ImpliedBoolTrue(bool flag);

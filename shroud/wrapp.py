@@ -1144,9 +1144,15 @@ return 1;""",
                 # not sure how function pointers work with Python.
                 local_var = "funcptr"
             elif arg_typemap.base == "string":
-                fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
-                #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
+                charlen = arg.attrs.get("charlen", False)
+                if charlen:
+                    fmt_arg.charlen = charlen
+                    fmt_arg.c_decl = wformat("{c_const}char {c_var}[{charlen}]", fmt_arg)
+                    fmt_arg.cxx_decl = fmt_arg.c_decl
+                else:
+                    fmt_arg.c_decl = wformat("{c_const}char * {c_var}", fmt_arg)
+                    #                fmt_arg.cxx_decl = wformat('{c_const}char * {cxx_var}', fmt_arg)
+                    fmt_arg.cxx_decl = arg.gen_arg_as_cxx()
                 local_var = "pointer"
             elif arg.attrs.get("allocatable", False):
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)

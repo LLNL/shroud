@@ -351,6 +351,39 @@ defaults to pass-by-reference, the argument will be passed to C as a
 ``void *`` argument.  The C function will need some other mechanism to
 determine the type of the argument before dereferencing the pointer.
 
+charlen
+^^^^^^^
+
+*charlen* is used to define the size of a ``char *arg+intent(out)``
+argument in the Python wrapper. This deals with the case where ``arg``
+is provided by the user and the function writes into the provided
+space.  This technique has the inherent risk of overwritting memory if
+the supplied buffer is not long enough.  For example, when used in C
+the user would write:
+
+.. code-block:: c
+
+    #define API_CHARLEN
+    char buffer[API_CHARLEN];
+    fill_buffer(buffer);
+
+The Python wrapper must know the assumed length before calling the
+function.  It will then be converted into a *str* object by
+``PyString_FromString``.
+
+Fortran does not use this attribute since the *buffer* argument is
+supplied by the user. However, it is useful to provide the parameter
+by adding a splicer block in the YAML file:
+
+.. code-block:: yaml
+
+    splicer_code:
+      f:
+        module_top:
+        -  "integer, parameter :: MAXNAME = 20"
+
+.. warning :: Using *charlen* and *dimension* together is not currently supported.
+
 default
 ^^^^^^^
 

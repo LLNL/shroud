@@ -109,6 +109,7 @@ contains
 
   subroutine test_functions
     integer(C_INT), target :: int_var
+    character(MAXNAME) name1, name2
     type(C_PTR) :: cptr1, cptr2
 
     call set_case_name("test_functions")
@@ -135,6 +136,20 @@ contains
     call assert_true(wrk_logical)
 
     call assert_true(function4a("dog", "cat") == "dogcat")
+
+    !--------------------------------------------------
+
+    name1 = " "
+    call return_one_name(name1)
+    call assert_equals("bill", name1)
+
+    name1 = " "
+    name2 = " "
+    call return_two_names(name1, name2)
+    call assert_equals("tom", name1)
+    call assert_equals("frank", name2)
+
+    !--------------------------------------------------
 
     rv_int = implied_len("bird")
     call assert_true(rv_int == 4)

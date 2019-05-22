@@ -246,6 +246,69 @@ PY_Function4a(
 // splicer end function.function4a
 }
 
+static char PY_returnOneName__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Test charlen attribute
+ *
+ * Each argument is assumed to be at least MAXNAME long.
+ * This define is provided by the user.
+ * The function will copy into the user provided buffer.
+ */
+static PyObject *
+PY_returnOneName(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
+// splicer begin function.return_one_name
+    // pre_call
+    char name1[MAXNAME];  // intent(out)
+
+    returnOneName(name1);
+
+    // post_call
+    PyObject * SHPy_name1 = PyString_FromString(name1);
+
+    return (PyObject *) SHPy_name1;
+// splicer end function.return_one_name
+}
+
+static char PY_returnTwoNames__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Test charlen attribute
+ *
+ * Each argument is assumed to be at least MAXNAME long.
+ * This define is provided by the user.
+ * The function will copy into the user provided buffer.
+ */
+static PyObject *
+PY_returnTwoNames(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
+// splicer begin function.return_two_names
+    // pre_call
+    char name1[MAXNAME];  // intent(out)
+    char name2[MAXNAME];  // intent(out)
+
+    returnTwoNames(name1, name2);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("ss", name1, name2);
+
+    return SHTPy_rv;
+// splicer end function.return_two_names
+}
+
 static char PY_ImpliedLen__doc__[] =
 "documentation"
 ;
@@ -393,6 +456,10 @@ static PyMethodDef PY_methods[] = {
     PY_Function3b__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
+{"returnOneName", (PyCFunction)PY_returnOneName, METH_NOARGS,
+    PY_returnOneName__doc__},
+{"returnTwoNames", (PyCFunction)PY_returnTwoNames, METH_NOARGS,
+    PY_returnTwoNames__doc__},
 {"ImpliedLen", (PyCFunction)PY_ImpliedLen, METH_VARARGS|METH_KEYWORDS,
     PY_ImpliedLen__doc__},
 {"ImpliedLenTrim", (PyCFunction)PY_ImpliedLenTrim,
