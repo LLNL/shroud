@@ -529,7 +529,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
-        This largly echo the C++ code
+        This largely echoes the C++ code.
         For classes, it adds prefixes.
 
         Args:
