@@ -44,6 +44,11 @@ module scope_mod
     integer(C_INT), parameter :: color_blue = 31
     integer(C_INT), parameter :: color_white = 32
 
+    !  ColorEnum
+    integer(C_INT), parameter :: colorenum_red = 60
+    integer(C_INT), parameter :: colorenum_blue = 61
+    integer(C_INT), parameter :: colorenum_white = 62
+
     interface
 
         ! splicer begin additional_interfaces

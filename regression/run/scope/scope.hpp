@@ -41,6 +41,7 @@ namespace ns2Enum {
 
 
 class cls1Enum {
+public:
   enum Color {
     RED = 40,
     BLUE,
@@ -49,9 +50,16 @@ class cls1Enum {
 };
 
 class cls2Enum {
+public:
   enum Color {
     RED = 50,
     BLUE,
     WHITE
   };
+};
+
+enum class ColorEnum {
+  RED = 60,
+  BLUE,
+  WHITE
 };

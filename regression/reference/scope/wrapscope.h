@@ -53,6 +53,13 @@ enum SCO_Color {
     SCO_Color_WHITE
 };
 
+//  ColorEnum
+enum SCO_ColorEnum {
+    SCO_ColorEnum_RED = 60,
+    SCO_ColorEnum_BLUE,
+    SCO_ColorEnum_WHITE
+};
+
 // splicer begin C_declarations
 // splicer end C_declarations
 

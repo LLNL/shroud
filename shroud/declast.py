@@ -721,9 +721,15 @@ class Parser(ExprParser):
     def enum_statement(self):
         self.enter("enum_statement")
         self.mustbe("ENUM")
+        if self.have("STRUCT"):
+            scope = "struct"
+        elif self.have("CLASS"):
+            scope = "class"
+        else:
+            scope = None
         name = self.mustbe("ID")
         self.mustbe("LCURLY")
-        node = Enum(name.value)
+        node = Enum(name.value, scope)
         members = node.members
         while self.token.typ != "RCURLY":
             name = self.mustbe("ID")
@@ -1418,10 +1424,12 @@ class Namespace(Node):
 class Enum(Node):
     """An enumeration statement.
     enum Color { RED, BLUE, WHITE }
+    enum class Color { RED, BLUE, WHITE }
     """
 
-    def __init__(self, name):
+    def __init__(self, name, scope=None):
         self.name = name
+        self.scope = scope
         self.members = []
 
 

@@ -71,3 +71,13 @@ declarations:
           BLUE,
           WHITE
         };
+
+########################################
+# scoped enum
+- decl: |
+      enum class ColorEnum {
+        RED = 60,
+        BLUE,
+        WHITE,
+      };
+

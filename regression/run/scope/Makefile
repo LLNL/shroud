@@ -14,6 +14,10 @@
 #
 # run/scope
 #
+ifeq ($(top),)
+top := ../../..
+endif 
+
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -52,3 +56,7 @@ maincpp : maincpp.o wrapscope.o scope.o
 testc.o : testc.c wrapscope.h scope.hpp
 testc : testc.o wrapscope.o scope.o
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
+
+testscope.o : scope.hpp
+testscope: testscope.o
+	$(CXX) $^ -o $@
