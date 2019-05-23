@@ -21,7 +21,7 @@ enum Color {
   WHITE
 };
 
-namespace ns1_enum {
+namespace ns1Enum {
   enum Color {
     RED,
     BLUE,
@@ -29,7 +29,7 @@ namespace ns1_enum {
   };
 };
 
-namespace ns2_enum {
+namespace ns2Enum {
   enum Color {
     RED,
     BLUE,
@@ -40,7 +40,7 @@ namespace ns2_enum {
 
 
 
-class cls1_enum {
+class cls1Enum {
   enum Color {
     RED,
     BLUE,
@@ -48,7 +48,7 @@ class cls1_enum {
   };
 };
 
-class cls2_enum {
+class cls2Enum {
   enum Color {
     RED,
     BLUE,

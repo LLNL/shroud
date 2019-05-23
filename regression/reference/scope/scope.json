@@ -8,24 +8,24 @@
                     {
                         "_fmtmembers": {
                             "BLUE": {
-                                "C_enum_member": "SCO_cls1_enum_Color_BLUE",
-                                "F_enum_member": "cls1_enum_color_blue",
+                                "C_enum_member": "SCO_cls1enum_Color_BLUE",
+                                "F_enum_member": "cls1enum_color_blue",
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
                                 "enum_member_upper": "BLUE",
                                 "evalue": 1
                             },
                             "RED": {
-                                "C_enum_member": "SCO_cls1_enum_Color_RED",
-                                "F_enum_member": "cls1_enum_color_red",
+                                "C_enum_member": "SCO_cls1enum_Color_RED",
+                                "F_enum_member": "cls1enum_color_red",
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
                                 "enum_member_upper": "RED",
                                 "evalue": 0
                             },
                             "WHITE": {
-                                "C_enum_member": "SCO_cls1_enum_Color_WHITE",
-                                "F_enum_member": "cls1_enum_color_white",
+                                "C_enum_member": "SCO_cls1enum_Color_WHITE",
+                                "F_enum_member": "cls1enum_color_white",
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
                                 "enum_member_upper": "WHITE",
@@ -48,39 +48,39 @@
                         },
                         "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                         "fmtdict": {
-                            "C_enum": "SCO_cls1_enum_Color",
+                            "C_enum": "SCO_cls1enum_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
-                            "namespace_scope": "cls1_enum::"
+                            "namespace_scope": "cls1Enum::"
                         },
                         "linenumber": 60,
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "cls1_enum::Color"
+                        "typemap_name": "cls1Enum::Color"
                     }
                 ],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapcls1_enum.h",
-                    "C_impl_filename": "wrapcls1_enum.cpp",
-                    "C_type_name": "SCO_cls1_enum",
-                    "F_capsule_data_type": "SHROUD_cls1_enum_capsule",
-                    "F_derived_name": "cls1_enum",
-                    "F_impl_filename": "wrapfcls1_enum.f",
-                    "F_module_name": "cls1_enum_mod",
-                    "class_lower": "cls1_enum",
-                    "class_prefix": "cls1_enum_",
-                    "class_scope": "cls1_enum::",
-                    "class_upper": "CLS1_ENUM",
-                    "cxx_class": "cls1_enum",
-                    "cxx_type": "cls1_enum"
+                    "C_header_filename": "wrapcls1Enum.h",
+                    "C_impl_filename": "wrapcls1Enum.cpp",
+                    "C_type_name": "SCO_cls1enum",
+                    "F_capsule_data_type": "SHROUD_cls1enum_capsule",
+                    "F_derived_name": "cls1enum",
+                    "F_impl_filename": "wrapfcls1Enum.f",
+                    "F_module_name": "cls1enum_mod",
+                    "class_lower": "cls1enum",
+                    "class_prefix": "cls1enum_",
+                    "class_scope": "cls1Enum::",
+                    "class_upper": "CLS1ENUM",
+                    "cxx_class": "cls1Enum",
+                    "cxx_type": "cls1Enum"
                 },
                 "linenumber": 58,
-                "name": "cls1_enum",
+                "name": "cls1Enum",
                 "options": {},
-                "scope": "cls1_enum::",
-                "typemap_name": "cls1_enum"
+                "scope": "cls1Enum::",
+                "typemap_name": "cls1Enum"
             },
             {
                 "cxx_header": "",
@@ -88,24 +88,24 @@
                     {
                         "_fmtmembers": {
                             "BLUE": {
-                                "C_enum_member": "SCO_cls2_enum_Color_BLUE",
-                                "F_enum_member": "cls2_enum_color_blue",
+                                "C_enum_member": "SCO_cls2enum_Color_BLUE",
+                                "F_enum_member": "cls2enum_color_blue",
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
                                 "enum_member_upper": "BLUE",
                                 "evalue": 1
                             },
                             "RED": {
-                                "C_enum_member": "SCO_cls2_enum_Color_RED",
-                                "F_enum_member": "cls2_enum_color_red",
+                                "C_enum_member": "SCO_cls2enum_Color_RED",
+                                "F_enum_member": "cls2enum_color_red",
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
                                 "enum_member_upper": "RED",
                                 "evalue": 0
                             },
                             "WHITE": {
-                                "C_enum_member": "SCO_cls2_enum_Color_WHITE",
-                                "F_enum_member": "cls2_enum_color_white",
+                                "C_enum_member": "SCO_cls2enum_Color_WHITE",
+                                "F_enum_member": "cls2enum_color_white",
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
                                 "enum_member_upper": "WHITE",
@@ -128,39 +128,39 @@
                         },
                         "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                         "fmtdict": {
-                            "C_enum": "SCO_cls2_enum_Color",
+                            "C_enum": "SCO_cls2enum_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
-                            "namespace_scope": "cls2_enum::"
+                            "namespace_scope": "cls2Enum::"
                         },
                         "linenumber": 68,
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "cls2_enum::Color"
+                        "typemap_name": "cls2Enum::Color"
                     }
                 ],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapcls2_enum.h",
-                    "C_impl_filename": "wrapcls2_enum.cpp",
-                    "C_type_name": "SCO_cls2_enum",
-                    "F_capsule_data_type": "SHROUD_cls2_enum_capsule",
-                    "F_derived_name": "cls2_enum",
-                    "F_impl_filename": "wrapfcls2_enum.f",
-                    "F_module_name": "cls2_enum_mod",
-                    "class_lower": "cls2_enum",
-                    "class_prefix": "cls2_enum_",
-                    "class_scope": "cls2_enum::",
-                    "class_upper": "CLS2_ENUM",
-                    "cxx_class": "cls2_enum",
-                    "cxx_type": "cls2_enum"
+                    "C_header_filename": "wrapcls2Enum.h",
+                    "C_impl_filename": "wrapcls2Enum.cpp",
+                    "C_type_name": "SCO_cls2enum",
+                    "F_capsule_data_type": "SHROUD_cls2enum_capsule",
+                    "F_derived_name": "cls2enum",
+                    "F_impl_filename": "wrapfcls2Enum.f",
+                    "F_module_name": "cls2enum_mod",
+                    "class_lower": "cls2enum",
+                    "class_prefix": "cls2enum_",
+                    "class_scope": "cls2Enum::",
+                    "class_upper": "CLS2ENUM",
+                    "cxx_class": "cls2Enum",
+                    "cxx_type": "cls2Enum"
                 },
                 "linenumber": 66,
-                "name": "cls2_enum",
+                "name": "cls2Enum",
                 "options": {},
-                "scope": "cls2_enum::",
-                "typemap_name": "cls2_enum"
+                "scope": "cls2Enum::",
+                "typemap_name": "cls2Enum"
             }
         ],
         "copyright": [
@@ -284,7 +284,7 @@
                 "linenumber": 41,
                 "name": "Color",
                 "options": {},
-                "typemap_name": "ns1_enum::Color"
+                "typemap_name": "ns1Enum::Color"
             },
             {
                 "_fmtmembers": {
@@ -337,7 +337,7 @@
                 "linenumber": 49,
                 "name": "Color",
                 "options": {},
-                "typemap_name": "ns2_enum::Color"
+                "typemap_name": "ns2Enum::Color"
             }
         ],
         "fmtdict": {
@@ -773,7 +773,7 @@
             "f_type": "type(C_PTR)YY",
             "flat_name": "char"
         },
-        "cls1_enum": {
+        "cls1Enum": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
             "base": "shadow",
@@ -792,24 +792,24 @@
                     ]
                 }
             },
-            "c_to_cxx": "static_cast<{c_const}cls1_enum *>({c_var}{c_member}addr)",
-            "c_type": "SCO_cls1_enum",
+            "c_to_cxx": "static_cast<{c_const}cls1Enum *>({c_var}{c_member}addr)",
+            "c_type": "SCO_cls1enum",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "cls1_enum",
+            "cxx_type": "cls1Enum",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_cls1_enum_capsule"
+                    "SHROUD_cls1enum_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_cls1_enum_capsule)",
-            "f_capsule_data_type": "SHROUD_cls1_enum_capsule",
-            "f_derived_type": "cls1_enum",
+            "f_c_type": "type(SHROUD_cls1enum_capsule)",
+            "f_capsule_data_type": "SHROUD_cls1enum_capsule",
+            "f_derived_type": "cls1enum",
             "f_module": {
-                "cls1_enum_mod": [
-                    "cls1_enum"
+                "cls1enum_mod": [
+                    "cls1enum"
                 ]
             },
-            "f_module_name": "cls1_enum_mod",
+            "f_module_name": "cls1enum_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -819,20 +819,20 @@
                 }
             },
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(cls1_enum)",
-            "flat_name": "cls1_enum",
-            "forward": "cls1_enum",
+            "f_type": "type(cls1enum)",
+            "flat_name": "cls1Enum",
+            "forward": "cls1Enum",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls1_enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls1Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls1_enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls1Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -843,7 +843,7 @@
                 }
             }
         },
-        "cls1_enum::Color": {
+        "cls1Enum::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TNUMBER",
@@ -851,10 +851,10 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_to_cxx": "static_cast<cls1_enum::Color>({c_var})",
+            "c_to_cxx": "static_cast<cls1Enum::Color>({c_var})",
             "c_type": "int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "cls1_enum::Color",
+            "cxx_type": "cls1Enum::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
             "f_module": {
@@ -863,9 +863,9 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "cls1_enum_Color"
+            "flat_name": "cls1Enum_Color"
         },
-        "cls2_enum": {
+        "cls2Enum": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
             "base": "shadow",
@@ -884,24 +884,24 @@
                     ]
                 }
             },
-            "c_to_cxx": "static_cast<{c_const}cls2_enum *>({c_var}{c_member}addr)",
-            "c_type": "SCO_cls2_enum",
+            "c_to_cxx": "static_cast<{c_const}cls2Enum *>({c_var}{c_member}addr)",
+            "c_type": "SCO_cls2enum",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "cls2_enum",
+            "cxx_type": "cls2Enum",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_cls2_enum_capsule"
+                    "SHROUD_cls2enum_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_cls2_enum_capsule)",
-            "f_capsule_data_type": "SHROUD_cls2_enum_capsule",
-            "f_derived_type": "cls2_enum",
+            "f_c_type": "type(SHROUD_cls2enum_capsule)",
+            "f_capsule_data_type": "SHROUD_cls2enum_capsule",
+            "f_derived_type": "cls2enum",
             "f_module": {
-                "cls2_enum_mod": [
-                    "cls2_enum"
+                "cls2enum_mod": [
+                    "cls2enum"
                 ]
             },
-            "f_module_name": "cls2_enum_mod",
+            "f_module_name": "cls2enum_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -911,20 +911,20 @@
                 }
             },
             "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(cls2_enum)",
-            "flat_name": "cls2_enum",
-            "forward": "cls2_enum",
+            "f_type": "type(cls2enum)",
+            "flat_name": "cls2Enum",
+            "forward": "cls2Enum",
             "py_statements": {
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls2_enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls2Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls2_enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls2Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -935,7 +935,7 @@
                 }
             }
         },
-        "cls2_enum::Color": {
+        "cls2Enum::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TNUMBER",
@@ -943,10 +943,10 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_to_cxx": "static_cast<cls2_enum::Color>({c_var})",
+            "c_to_cxx": "static_cast<cls2Enum::Color>({c_var})",
             "c_type": "int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "cls2_enum::Color",
+            "cxx_type": "cls2Enum::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
             "f_module": {
@@ -955,7 +955,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "cls2_enum_Color"
+            "flat_name": "cls2Enum_Color"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -1139,7 +1139,7 @@
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "long_long"
         },
-        "ns1_enum::Color": {
+        "ns1Enum::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TNUMBER",
@@ -1147,10 +1147,10 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_to_cxx": "static_cast<ns1_enum::Color>({c_var})",
+            "c_to_cxx": "static_cast<ns1Enum::Color>({c_var})",
             "c_type": "int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "ns1_enum::Color",
+            "cxx_type": "ns1Enum::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
             "f_module": {
@@ -1159,9 +1159,9 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "ns1_enum_Color"
+            "flat_name": "ns1Enum_Color"
         },
-        "ns2_enum::Color": {
+        "ns2Enum::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TNUMBER",
@@ -1169,10 +1169,10 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "c_to_cxx": "static_cast<ns2_enum::Color>({c_var})",
+            "c_to_cxx": "static_cast<ns2Enum::Color>({c_var})",
             "c_type": "int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "ns2_enum::Color",
+            "cxx_type": "ns2Enum::Color",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
             "f_module": {
@@ -1181,7 +1181,7 @@
                 ]
             },
             "f_type": "integer(C_INT)",
-            "flat_name": "ns2_enum_Color"
+            "flat_name": "ns2Enum_Color"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

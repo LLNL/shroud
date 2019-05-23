@@ -24,17 +24,17 @@
 extern "C" {
 #endif
 
-struct s_SCO_cls1_enum {
+struct s_SCO_cls1enum {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_SCO_cls1_enum SCO_cls1_enum;
+typedef struct s_SCO_cls1enum SCO_cls1enum;
 
-struct s_SCO_cls2_enum {
+struct s_SCO_cls2enum {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_SCO_cls2_enum SCO_cls2_enum;
+typedef struct s_SCO_cls2enum SCO_cls2enum;
 
 struct s_SCO_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
