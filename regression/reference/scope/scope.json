@@ -13,15 +13,16 @@
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
                                 "enum_member_upper": "BLUE",
-                                "evalue": 1
+                                "evalue": 41
                             },
                             "RED": {
                                 "C_enum_member": "SCO_cls1enum_Color_RED",
                                 "F_enum_member": "cls1enum_color_red",
+                                "cxx_value": "40",
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
                                 "enum_member_upper": "RED",
-                                "evalue": 0
+                                "evalue": 40
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_cls1enum_Color_WHITE",
@@ -29,13 +30,16 @@
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
                                 "enum_member_upper": "WHITE",
-                                "evalue": 2
+                                "evalue": 42
                             }
                         },
                         "ast": {
                             "members": [
                                 {
-                                    "name": "RED"
+                                    "name": "RED",
+                                    "value": {
+                                        "constant": "40"
+                                    }
                                 },
                                 {
                                     "name": "BLUE"
@@ -46,7 +50,7 @@
                             ],
                             "name": "Color"
                         },
-                        "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
+                        "decl": "enum Color {\n  RED = 40,\n  BLUE,\n  WHITE\n};\n",
                         "fmtdict": {
                             "C_enum": "SCO_cls1enum_Color",
                             "enum_lower": "color",
@@ -93,15 +97,16 @@
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
                                 "enum_member_upper": "BLUE",
-                                "evalue": 1
+                                "evalue": 51
                             },
                             "RED": {
                                 "C_enum_member": "SCO_cls2enum_Color_RED",
                                 "F_enum_member": "cls2enum_color_red",
+                                "cxx_value": "50",
                                 "enum_member_lower": "red",
                                 "enum_member_name": "RED",
                                 "enum_member_upper": "RED",
-                                "evalue": 0
+                                "evalue": 50
                             },
                             "WHITE": {
                                 "C_enum_member": "SCO_cls2enum_Color_WHITE",
@@ -109,13 +114,16 @@
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
                                 "enum_member_upper": "WHITE",
-                                "evalue": 2
+                                "evalue": 52
                             }
                         },
                         "ast": {
                             "members": [
                                 {
-                                    "name": "RED"
+                                    "name": "RED",
+                                    "value": {
+                                        "constant": "50"
+                                    }
                                 },
                                 {
                                     "name": "BLUE"
@@ -126,7 +134,7 @@
                             ],
                             "name": "Color"
                         },
-                        "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
+                        "decl": "enum Color {\n  RED = 50,\n  BLUE,\n  WHITE\n};\n",
                         "fmtdict": {
                             "C_enum": "SCO_cls2enum_Color",
                             "enum_lower": "color",
@@ -188,15 +196,16 @@
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
-                        "evalue": 1
+                        "evalue": 11
                     },
                     "RED": {
                         "C_enum_member": "SCO_Color_RED",
                         "F_enum_member": "color_red",
+                        "cxx_value": "10",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
-                        "evalue": 0
+                        "evalue": 10
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_Color_WHITE",
@@ -204,13 +213,16 @@
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
-                        "evalue": 2
+                        "evalue": 12
                     }
                 },
                 "ast": {
                     "members": [
                         {
-                            "name": "RED"
+                            "name": "RED",
+                            "value": {
+                                "constant": "10"
+                            }
                         },
                         {
                             "name": "BLUE"
@@ -221,7 +233,7 @@
                     ],
                     "name": "Color"
                 },
-                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
+                "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
                     "C_enum": "SCO_Color",
                     "enum_lower": "color",
@@ -241,15 +253,16 @@
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
-                        "evalue": 1
+                        "evalue": 21
                     },
                     "RED": {
                         "C_enum_member": "SCO_Color_RED",
                         "F_enum_member": "color_red",
+                        "cxx_value": "20",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
-                        "evalue": 0
+                        "evalue": 20
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_Color_WHITE",
@@ -257,13 +270,16 @@
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
-                        "evalue": 2
+                        "evalue": 22
                     }
                 },
                 "ast": {
                     "members": [
                         {
-                            "name": "RED"
+                            "name": "RED",
+                            "value": {
+                                "constant": "20"
+                            }
                         },
                         {
                             "name": "BLUE"
@@ -274,7 +290,7 @@
                     ],
                     "name": "Color"
                 },
-                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
+                "decl": "enum Color {\n  RED = 20,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
                     "C_enum": "SCO_Color",
                     "enum_lower": "color",
@@ -294,15 +310,16 @@
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
-                        "evalue": 1
+                        "evalue": 31
                     },
                     "RED": {
                         "C_enum_member": "SCO_Color_RED",
                         "F_enum_member": "color_red",
+                        "cxx_value": "30",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
-                        "evalue": 0
+                        "evalue": 30
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_Color_WHITE",
@@ -310,13 +327,16 @@
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
-                        "evalue": 2
+                        "evalue": 32
                     }
                 },
                 "ast": {
                     "members": [
                         {
-                            "name": "RED"
+                            "name": "RED",
+                            "value": {
+                                "constant": "30"
+                            }
                         },
                         {
                             "name": "BLUE"
@@ -327,7 +347,7 @@
                     ],
                     "name": "Color"
                 },
-                "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
+                "decl": "enum Color {\n  RED = 30,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
                     "C_enum": "SCO_Color",
                     "enum_lower": "color",

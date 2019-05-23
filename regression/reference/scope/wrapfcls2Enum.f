@@ -28,9 +28,9 @@ module cls2enum_mod
 
 
     !  Color
-    integer(C_INT), parameter :: cls2enum_color_red = 0
-    integer(C_INT), parameter :: cls2enum_color_blue = 1
-    integer(C_INT), parameter :: cls2enum_color_white = 2
+    integer(C_INT), parameter :: cls2enum_color_red = 50
+    integer(C_INT), parameter :: cls2enum_color_blue = 51
+    integer(C_INT), parameter :: cls2enum_color_white = 52
 
     ! splicer begin class.cls2Enum.module_top
     ! splicer end class.cls2Enum.module_top

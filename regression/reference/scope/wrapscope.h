@@ -34,21 +34,21 @@ extern "C" {
 
 //  Color
 enum SCO_Color {
-    SCO_Color_RED,
+    SCO_Color_RED = 10,
     SCO_Color_BLUE,
     SCO_Color_WHITE
 };
 
 //  Color
 enum SCO_Color {
-    SCO_Color_RED,
+    SCO_Color_RED = 20,
     SCO_Color_BLUE,
     SCO_Color_WHITE
 };
 
 //  Color
 enum SCO_Color {
-    SCO_Color_RED,
+    SCO_Color_RED = 30,
     SCO_Color_BLUE,
     SCO_Color_WHITE
 };

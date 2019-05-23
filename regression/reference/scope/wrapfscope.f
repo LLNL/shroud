@@ -30,19 +30,19 @@ module scope_mod
     ! splicer end module_top
 
     !  Color
-    integer(C_INT), parameter :: color_red = 0
-    integer(C_INT), parameter :: color_blue = 1
-    integer(C_INT), parameter :: color_white = 2
+    integer(C_INT), parameter :: color_red = 10
+    integer(C_INT), parameter :: color_blue = 11
+    integer(C_INT), parameter :: color_white = 12
 
     !  Color
-    integer(C_INT), parameter :: color_red = 0
-    integer(C_INT), parameter :: color_blue = 1
-    integer(C_INT), parameter :: color_white = 2
+    integer(C_INT), parameter :: color_red = 20
+    integer(C_INT), parameter :: color_blue = 21
+    integer(C_INT), parameter :: color_white = 22
 
     !  Color
-    integer(C_INT), parameter :: color_red = 0
-    integer(C_INT), parameter :: color_blue = 1
-    integer(C_INT), parameter :: color_white = 2
+    integer(C_INT), parameter :: color_red = 30
+    integer(C_INT), parameter :: color_blue = 31
+    integer(C_INT), parameter :: color_white = 32
 
     interface
 

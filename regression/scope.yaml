@@ -29,7 +29,7 @@ declarations:
 # global enum
 - decl: |
       enum Color {
-        RED,
+        RED = 10,
         BLUE,
         WHITE
       };
@@ -40,7 +40,7 @@ declarations:
   declarations:
   - decl: |
         enum Color {
-          RED,
+          RED = 20,
           BLUE,
           WHITE
         };
@@ -48,7 +48,7 @@ declarations:
   declarations:
   - decl: |
         enum Color {
-          RED,
+          RED = 30,
           BLUE,
           WHITE
         };
@@ -59,7 +59,7 @@ declarations:
   declarations:
   - decl: |
         enum Color {
-          RED,
+          RED = 40,
           BLUE,
           WHITE
         };
@@ -67,7 +67,7 @@ declarations:
   declarations:
   - decl: |
         enum Color {
-          RED,
+          RED = 50,
           BLUE,
           WHITE
         };

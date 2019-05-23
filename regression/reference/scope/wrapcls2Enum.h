@@ -34,7 +34,7 @@ extern "C" {
 
 //  Color
 enum SCO_cls2enum_Color {
-    SCO_cls2enum_Color_RED,
+    SCO_cls2enum_Color_RED = 50,
     SCO_cls2enum_Color_BLUE,
     SCO_cls2enum_Color_WHITE
 };

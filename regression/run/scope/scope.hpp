@@ -16,14 +16,14 @@
 //
 
 enum Color {
-  RED,
+  RED = 10,
   BLUE,
   WHITE
 };
 
 namespace ns1Enum {
   enum Color {
-    RED,
+    RED = 20,
     BLUE,
     WHITE
   };
@@ -31,7 +31,7 @@ namespace ns1Enum {
 
 namespace ns2Enum {
   enum Color {
-    RED,
+    RED = 30,
     BLUE,
     WHITE
   };
@@ -42,7 +42,7 @@ namespace ns2Enum {
 
 class cls1Enum {
   enum Color {
-    RED,
+    RED = 40,
     BLUE,
     WHITE
   };
@@ -50,7 +50,7 @@ class cls1Enum {
 
 class cls2Enum {
   enum Color {
-    RED,
+    RED = 50,
     BLUE,
     WHITE
   };
