@@ -34,9 +34,9 @@ extern "C" {
 
 //  Color
 enum TES_Color {
-    TES_Color_RED,
-    TES_Color_BLUE,
-    TES_Color_WHITE
+    TES_RED,
+    TES_BLUE,
+    TES_WHITE
 };
 
 // splicer begin C_declarations

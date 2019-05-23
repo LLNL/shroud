@@ -29,22 +29,22 @@ module scope_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    !  Color
-    integer(C_INT), parameter :: color_red = 10
-    integer(C_INT), parameter :: color_blue = 11
-    integer(C_INT), parameter :: color_white = 12
+    !  enum Color
+    integer(C_INT), parameter :: red = 10
+    integer(C_INT), parameter :: blue = 11
+    integer(C_INT), parameter :: white = 12
 
-    !  Color
-    integer(C_INT), parameter :: color_red = 20
-    integer(C_INT), parameter :: color_blue = 21
-    integer(C_INT), parameter :: color_white = 22
+    !  enum ns1Enum::Color
+    integer(C_INT), parameter :: ns1enum_color_red = 20
+    integer(C_INT), parameter :: ns1enum_color_blue = 21
+    integer(C_INT), parameter :: ns1enum_color_white = 22
 
-    !  Color
-    integer(C_INT), parameter :: color_red = 30
-    integer(C_INT), parameter :: color_blue = 31
-    integer(C_INT), parameter :: color_white = 32
+    !  enum ns2Enum::Color
+    integer(C_INT), parameter :: ns2enum_color_red = 30
+    integer(C_INT), parameter :: ns2enum_color_blue = 31
+    integer(C_INT), parameter :: ns2enum_color_white = 32
 
-    !  ColorEnum
+    !  enum ColorEnum
     integer(C_INT), parameter :: colorenum_red = 60
     integer(C_INT), parameter :: colorenum_blue = 61
     integer(C_INT), parameter :: colorenum_white = 62

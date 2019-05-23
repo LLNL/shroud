@@ -8,7 +8,7 @@
                     {
                         "_fmtmembers": {
                             "BLUE": {
-                                "C_enum_member": "SCO_cls1enum_Color_BLUE",
+                                "C_enum_member": "SCO_cls1Enum_Color_BLUE",
                                 "F_enum_member": "cls1enum_color_blue",
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
@@ -16,7 +16,7 @@
                                 "evalue": 41
                             },
                             "RED": {
-                                "C_enum_member": "SCO_cls1enum_Color_RED",
+                                "C_enum_member": "SCO_cls1Enum_Color_RED",
                                 "F_enum_member": "cls1enum_color_red",
                                 "cxx_value": "40",
                                 "enum_member_lower": "red",
@@ -25,7 +25,7 @@
                                 "evalue": 40
                             },
                             "WHITE": {
-                                "C_enum_member": "SCO_cls1enum_Color_WHITE",
+                                "C_enum_member": "SCO_cls1Enum_Color_WHITE",
                                 "F_enum_member": "cls1enum_color_white",
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
@@ -52,10 +52,13 @@
                         },
                         "decl": "enum Color {\n  RED = 40,\n  BLUE,\n  WHITE\n};\n",
                         "fmtdict": {
-                            "C_enum": "SCO_cls1enum_Color",
+                            "C_enum": "SCO_cls1Enum_Color",
+                            "C_scope_name": "cls1Enum_Color_",
+                            "F_scope_name": "cls1enum_color_",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
+                            "flat_name": "cls1Enum_Color",
                             "namespace_scope": "cls1Enum::"
                         },
                         "linenumber": 60,
@@ -92,7 +95,7 @@
                     {
                         "_fmtmembers": {
                             "BLUE": {
-                                "C_enum_member": "SCO_cls2enum_Color_BLUE",
+                                "C_enum_member": "SCO_cls2Enum_Color_BLUE",
                                 "F_enum_member": "cls2enum_color_blue",
                                 "enum_member_lower": "blue",
                                 "enum_member_name": "BLUE",
@@ -100,7 +103,7 @@
                                 "evalue": 51
                             },
                             "RED": {
-                                "C_enum_member": "SCO_cls2enum_Color_RED",
+                                "C_enum_member": "SCO_cls2Enum_Color_RED",
                                 "F_enum_member": "cls2enum_color_red",
                                 "cxx_value": "50",
                                 "enum_member_lower": "red",
@@ -109,7 +112,7 @@
                                 "evalue": 50
                             },
                             "WHITE": {
-                                "C_enum_member": "SCO_cls2enum_Color_WHITE",
+                                "C_enum_member": "SCO_cls2Enum_Color_WHITE",
                                 "F_enum_member": "cls2enum_color_white",
                                 "enum_member_lower": "white",
                                 "enum_member_name": "WHITE",
@@ -136,10 +139,13 @@
                         },
                         "decl": "enum Color {\n  RED = 50,\n  BLUE,\n  WHITE\n};\n",
                         "fmtdict": {
-                            "C_enum": "SCO_cls2enum_Color",
+                            "C_enum": "SCO_cls2Enum_Color",
+                            "C_scope_name": "cls2Enum_Color_",
+                            "F_scope_name": "cls2enum_color_",
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
+                            "flat_name": "cls2Enum_Color",
                             "namespace_scope": "cls2Enum::"
                         },
                         "linenumber": 68,
@@ -191,16 +197,16 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "SCO_Color_BLUE",
-                        "F_enum_member": "color_blue",
+                        "C_enum_member": "SCO_BLUE",
+                        "F_enum_member": "blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
                         "evalue": 11
                     },
                     "RED": {
-                        "C_enum_member": "SCO_Color_RED",
-                        "F_enum_member": "color_red",
+                        "C_enum_member": "SCO_RED",
+                        "F_enum_member": "red",
                         "cxx_value": "10",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
@@ -208,8 +214,8 @@
                         "evalue": 10
                     },
                     "WHITE": {
-                        "C_enum_member": "SCO_Color_WHITE",
-                        "F_enum_member": "color_white",
+                        "C_enum_member": "SCO_WHITE",
+                        "F_enum_member": "white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -236,9 +242,12 @@
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
                     "C_enum": "SCO_Color",
+                    "C_scope_name": "",
+                    "F_scope_name": "",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "enum_upper": "COLOR",
+                    "flat_name": "Color"
                 },
                 "linenumber": 30,
                 "name": "Color",
@@ -248,16 +257,16 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "SCO_Color_BLUE",
-                        "F_enum_member": "color_blue",
+                        "C_enum_member": "SCO_ns1Enum_Color_BLUE",
+                        "F_enum_member": "ns1enum_color_blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
                         "evalue": 21
                     },
                     "RED": {
-                        "C_enum_member": "SCO_Color_RED",
-                        "F_enum_member": "color_red",
+                        "C_enum_member": "SCO_ns1Enum_Color_RED",
+                        "F_enum_member": "ns1enum_color_red",
                         "cxx_value": "20",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
@@ -265,8 +274,8 @@
                         "evalue": 20
                     },
                     "WHITE": {
-                        "C_enum_member": "SCO_Color_WHITE",
-                        "F_enum_member": "color_white",
+                        "C_enum_member": "SCO_ns1Enum_Color_WHITE",
+                        "F_enum_member": "ns1enum_color_white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -292,10 +301,13 @@
                 },
                 "decl": "enum Color {\n  RED = 20,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
-                    "C_enum": "SCO_Color",
+                    "C_enum": "SCO_ns1Enum_Color",
+                    "C_scope_name": "ns1Enum_Color_",
+                    "F_scope_name": "ns1enum_color_",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "enum_upper": "COLOR",
+                    "flat_name": "ns1Enum_Color"
                 },
                 "linenumber": 41,
                 "name": "Color",
@@ -305,16 +317,16 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "SCO_Color_BLUE",
-                        "F_enum_member": "color_blue",
+                        "C_enum_member": "SCO_ns2Enum_Color_BLUE",
+                        "F_enum_member": "ns2enum_color_blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
                         "evalue": 31
                     },
                     "RED": {
-                        "C_enum_member": "SCO_Color_RED",
-                        "F_enum_member": "color_red",
+                        "C_enum_member": "SCO_ns2Enum_Color_RED",
+                        "F_enum_member": "ns2enum_color_red",
                         "cxx_value": "30",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
@@ -322,8 +334,8 @@
                         "evalue": 30
                     },
                     "WHITE": {
-                        "C_enum_member": "SCO_Color_WHITE",
-                        "F_enum_member": "color_white",
+                        "C_enum_member": "SCO_ns2Enum_Color_WHITE",
+                        "F_enum_member": "ns2enum_color_white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -349,10 +361,13 @@
                 },
                 "decl": "enum Color {\n  RED = 30,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
-                    "C_enum": "SCO_Color",
+                    "C_enum": "SCO_ns2Enum_Color",
+                    "C_scope_name": "ns2Enum_Color_",
+                    "F_scope_name": "ns2enum_color_",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "enum_upper": "COLOR",
+                    "flat_name": "ns2Enum_Color"
                 },
                 "linenumber": 49,
                 "name": "Color",
@@ -408,9 +423,12 @@
                 "decl": "enum class ColorEnum {\n  RED = 60,\n  BLUE,\n  WHITE,\n};\n",
                 "fmtdict": {
                     "C_enum": "SCO_ColorEnum",
+                    "C_scope_name": "ColorEnum_",
+                    "F_scope_name": "colorenum_",
                     "enum_lower": "colorenum",
                     "enum_name": "ColorEnum",
-                    "enum_upper": "COLORENUM"
+                    "enum_upper": "COLORENUM",
+                    "flat_name": "ColorEnum"
                 },
                 "linenumber": 77,
                 "name": "ColorEnum",
@@ -493,8 +511,8 @@
         },
         "language": "c++",
         "options": {
-            "C_enum_member_template": "{C_enum}_{enum_member_name}",
-            "C_enum_template": "{C_prefix}{class_prefix}{enum_name}",
+            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_helper_template": "types{library}.{C_header_filename_suffix}",
@@ -514,7 +532,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}",
+            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
             "F_force_wrapper": false,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",

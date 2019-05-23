@@ -34,23 +34,23 @@ extern "C" {
 
 //  Color
 enum SCO_Color {
-    SCO_Color_RED = 10,
-    SCO_Color_BLUE,
-    SCO_Color_WHITE
+    SCO_RED = 10,
+    SCO_BLUE,
+    SCO_WHITE
 };
 
-//  Color
-enum SCO_Color {
-    SCO_Color_RED = 20,
-    SCO_Color_BLUE,
-    SCO_Color_WHITE
+//  ns1Enum::Color
+enum SCO_ns1Enum_Color {
+    SCO_ns1Enum_Color_RED = 20,
+    SCO_ns1Enum_Color_BLUE,
+    SCO_ns1Enum_Color_WHITE
 };
 
-//  Color
-enum SCO_Color {
-    SCO_Color_RED = 30,
-    SCO_Color_BLUE,
-    SCO_Color_WHITE
+//  ns2Enum::Color
+enum SCO_ns2Enum_Color {
+    SCO_ns2Enum_Color_RED = 30,
+    SCO_ns2Enum_Color_BLUE,
+    SCO_ns2Enum_Color_WHITE
 };
 
 //  ColorEnum

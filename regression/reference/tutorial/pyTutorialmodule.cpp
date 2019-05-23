@@ -1434,7 +1434,7 @@ inittutorial(void)
         Py_DECREF(tmp_value);
     }
 
-    // enumeration Color
+    // enum tutorial::Color
     PyModule_AddIntConstant(m, "RED", tutorial::RED);
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);

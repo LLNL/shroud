@@ -380,8 +380,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
             C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
             C_header_helper_template="types{library}.{C_header_filename_suffix}",
-            C_enum_template="{C_prefix}{class_prefix}{enum_name}",
-            C_enum_member_template="{C_enum}_{enum_member_name}",
+            C_enum_template="{C_prefix}{flat_name}",
+            C_enum_member_template="{C_prefix}{C_scope_name}{enum_member_name}",
             C_name_template=(
                 "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
@@ -398,7 +398,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template=(
-                "{class_prefix}{enum_lower}_{enum_member_lower}"
+                "{F_scope_name}{enum_member_lower}"
             ),
             F_name_impl_template=(
                 "{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
@@ -1270,6 +1270,21 @@ class EnumNode(AstNode):
         self.scope = self.parent.scope + self.name + "::"
         self.typemap = typemap.create_enum_typemap(self)
         # also 'enum class foo' will alter scope
+
+        fmt_enum.flat_name = self.typemap.flat_name
+        if fmt_enum.flat_name == self.typemap.name and \
+           ast.scope is None:
+            # enum Color { RED };
+            # {C_prefix}_RED
+            fmt_enum.C_scope_name = ""
+        else:
+            # enum class Color { RED };
+            # {C_prefix}_Color_RED
+            fmt_enum.C_scope_name = self.typemap.flat_name + "_"
+
+        # XXX - fortran should not include scope levels which relate to 
+        # the namespace for the module
+        fmt_enum.F_scope_name = fmt_enum.C_scope_name.lower()
 
 
 ######################################################################

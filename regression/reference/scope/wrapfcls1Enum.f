@@ -27,7 +27,7 @@ module cls1enum_mod
     implicit none
 
 
-    !  Color
+    !  enum cls1Enum::Color
     integer(C_INT), parameter :: cls1enum_color_red = 40
     integer(C_INT), parameter :: cls1enum_color_blue = 41
     integer(C_INT), parameter :: cls1enum_color_white = 42

@@ -32,11 +32,11 @@
 extern "C" {
 #endif
 
-//  Color
-enum SCO_cls1enum_Color {
-    SCO_cls1enum_Color_RED = 40,
-    SCO_cls1enum_Color_BLUE,
-    SCO_cls1enum_Color_WHITE
+//  cls1Enum::Color
+enum SCO_cls1Enum_Color {
+    SCO_cls1Enum_Color_RED = 40,
+    SCO_cls1Enum_Color_BLUE,
+    SCO_cls1Enum_Color_WHITE
 };
 
 // splicer begin class.cls1Enum.C_declarations

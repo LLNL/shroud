@@ -41,16 +41,16 @@ module tutorial_mod
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
 
-    !  DIRECTION
-    integer(C_INT), parameter :: class1_direction_up = 2
-    integer(C_INT), parameter :: class1_direction_down = 3
-    integer(C_INT), parameter :: class1_direction_left = 100
-    integer(C_INT), parameter :: class1_direction_right = 101
+    !  enum tutorial::Class1::DIRECTION
+    integer(C_INT), parameter :: tutorial_class1_direction_up = 2
+    integer(C_INT), parameter :: tutorial_class1_direction_down = 3
+    integer(C_INT), parameter :: tutorial_class1_direction_left = 100
+    integer(C_INT), parameter :: tutorial_class1_direction_right = 101
 
-    !  Color
-    integer(C_INT), parameter :: color_red = 0
-    integer(C_INT), parameter :: color_blue = 1
-    integer(C_INT), parameter :: color_white = 2
+    !  enum tutorial::Color
+    integer(C_INT), parameter :: tutorial_color_red = 0
+    integer(C_INT), parameter :: tutorial_color_blue = 1
+    integer(C_INT), parameter :: tutorial_color_white = 2
 
 
     type, bind(C) :: struct1

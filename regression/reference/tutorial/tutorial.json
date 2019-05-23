@@ -88,16 +88,16 @@
                     {
                         "_fmtmembers": {
                             "DOWN": {
-                                "C_enum_member": "TUT_class1_DIRECTION_DOWN",
-                                "F_enum_member": "class1_direction_down",
+                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_DOWN",
+                                "F_enum_member": "tutorial_class1_direction_down",
                                 "enum_member_lower": "down",
                                 "enum_member_name": "DOWN",
                                 "enum_member_upper": "DOWN",
                                 "evalue": 3
                             },
                             "LEFT": {
-                                "C_enum_member": "TUT_class1_DIRECTION_LEFT",
-                                "F_enum_member": "class1_direction_left",
+                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_LEFT",
+                                "F_enum_member": "tutorial_class1_direction_left",
                                 "cxx_value": "100",
                                 "enum_member_lower": "left",
                                 "enum_member_name": "LEFT",
@@ -105,16 +105,16 @@
                                 "evalue": 100
                             },
                             "RIGHT": {
-                                "C_enum_member": "TUT_class1_DIRECTION_RIGHT",
-                                "F_enum_member": "class1_direction_right",
+                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_RIGHT",
+                                "F_enum_member": "tutorial_class1_direction_right",
                                 "enum_member_lower": "right",
                                 "enum_member_name": "RIGHT",
                                 "enum_member_upper": "RIGHT",
                                 "evalue": 101
                             },
                             "UP": {
-                                "C_enum_member": "TUT_class1_DIRECTION_UP",
-                                "F_enum_member": "class1_direction_up",
+                                "C_enum_member": "TUT_tutorial_Class1_DIRECTION_UP",
+                                "F_enum_member": "tutorial_class1_direction_up",
                                 "cxx_value": "2",
                                 "enum_member_lower": "up",
                                 "enum_member_name": "UP",
@@ -147,10 +147,13 @@
                         },
                         "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };",
                         "fmtdict": {
-                            "C_enum": "TUT_class1_DIRECTION",
+                            "C_enum": "TUT_tutorial_Class1_DIRECTION",
+                            "C_scope_name": "tutorial_Class1_DIRECTION_",
+                            "F_scope_name": "tutorial_class1_direction_",
                             "enum_lower": "direction",
                             "enum_name": "DIRECTION",
                             "enum_upper": "DIRECTION",
+                            "flat_name": "tutorial_Class1_DIRECTION",
                             "namespace_scope": "tutorial::Class1::"
                         },
                         "linenumber": 263,
@@ -1619,24 +1622,24 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "TUT_Color_BLUE",
-                        "F_enum_member": "color_blue",
+                        "C_enum_member": "TUT_tutorial_Color_BLUE",
+                        "F_enum_member": "tutorial_color_blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
                         "evalue": 1
                     },
                     "RED": {
-                        "C_enum_member": "TUT_Color_RED",
-                        "F_enum_member": "color_red",
+                        "C_enum_member": "TUT_tutorial_Color_RED",
+                        "F_enum_member": "tutorial_color_red",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
                         "evalue": 0
                     },
                     "WHITE": {
-                        "C_enum_member": "TUT_Color_WHITE",
-                        "F_enum_member": "color_white",
+                        "C_enum_member": "TUT_tutorial_Color_WHITE",
+                        "F_enum_member": "tutorial_color_white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -1659,10 +1662,13 @@
                 },
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
-                    "C_enum": "TUT_Color",
+                    "C_enum": "TUT_tutorial_Color",
+                    "C_scope_name": "tutorial_Color_",
+                    "F_scope_name": "tutorial_color_",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "enum_upper": "COLOR",
+                    "flat_name": "tutorial_Color"
                 },
                 "linenumber": 41,
                 "name": "Color",
@@ -9410,8 +9416,8 @@
         ],
         "language": "c++",
         "options": {
-            "C_enum_member_template": "{C_enum}_{enum_member_name}",
-            "C_enum_template": "{C_prefix}{class_prefix}{enum_name}",
+            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_helper_template": "types{library}.{C_header_filename_suffix}",
@@ -9431,7 +9437,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}",
+            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
             "F_force_wrapper": false,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
