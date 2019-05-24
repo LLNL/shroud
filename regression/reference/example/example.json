@@ -725,7 +725,7 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameErrorPattern(\t);",
                             "C_call_list": "",
                             "C_name": "AA_exclass1_get_name_error_pattern_bufferify",
-                            "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
+                            "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                             "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);",
                             "C_prototype": "const AA_exclass1 * self,\t char * SHF_rv,\t int NSHF_rv",
                             "C_return_code": "return;",
@@ -1173,7 +1173,7 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getNameArg(\t);",
                             "C_call_list": "",
                             "C_name": "AA_exclass1_get_name_arg_bufferify",
-                            "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(name, ' ', Nname);\n-} else {+\nShroudStrCopy(name, Nname,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
+                            "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(name, Nname,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(name, Nname,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                             "C_pre_call": "const example::nested::ExClass1 *SH_this =\t static_cast<const example::nested::ExClass1 *>(self->addr);",
                             "C_prototype": "const AA_exclass1 * self,\t char * name,\t int Nname",
                             "C_return_code": "return;",
@@ -2390,7 +2390,7 @@
                             "C_call_code": "const std::string & SHCXX_rv =\t SH_this->getName(\t);",
                             "C_call_list": "",
                             "C_name": "AA_exclass2_get_name_bufferify",
-                            "C_post_call": "if (SHCXX_rv.empty()) {+\nstd::memset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
+                            "C_post_call": "if (SHCXX_rv.empty()) {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t NULL,\t 0);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHCXX_rv.data(),\t SHCXX_rv.size());\n-}",
                             "C_pre_call": "const example::nested::ExClass2 *SH_this =\t static_cast<const example::nested::ExClass2 *>(self->addr);",
                             "C_prototype": "const AA_exclass2 * self,\t char * SHF_rv,\t int NSHF_rv",
                             "C_return_code": "return;",
@@ -9583,7 +9583,7 @@
                     "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
                         "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
@@ -9598,7 +9598,7 @@
                     "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
                         "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
@@ -9610,15 +9610,9 @@
                         "arg",
                         "len"
                     ],
-                    "c_header": "<string.h>",
                     "c_helper": "ShroudStrCopy",
-                    "cxx_header": "<cstring>",
                     "post_call": [
-                        "if ({cxx_var} == NULL) {{+",
-                        "{stdlib}memset({c_var}, ' ', {c_var_len});",
-                        "-}} else {{+",
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
-                        "-}}"
+                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
                     ]
                 }
             },
@@ -10245,10 +10239,9 @@
                         "len"
                     ],
                     "c_helper": "ShroudStrCopy",
-                    "cxx_header": "<cstring>",
                     "post_call": [
                         "if ({cxx_var}{cxx_member}empty()) {{+",
-                        "{stdlib}memset({c_var}, ' ', {c_var_len});",
+                        "ShroudStrCopy({c_var}, {c_var_len},\t NULL,\t 0);",
                         "-}} else {{+",
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
                         "-}}"

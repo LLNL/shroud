@@ -424,9 +424,14 @@ CHelpers = dict(
 // dest will not be NULL terminated.
 static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = nsrc < ndest ? nsrc : ndest;
-   memcpy(dest,src,nm);
-   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
+   if (src == NULL) {
+     memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     memcpy(dest,src,nm);
+     if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
+   }
 }""",
         cxx_header="<cstring>",
         cxx_source="""
@@ -436,9 +441,14 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // dest will not be NULL terminated.
 static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = nsrc < ndest ? nsrc : ndest;
-   std::memcpy(dest,src,nm);
-   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
 }""",
     ),
 
@@ -449,7 +459,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
         c_header="<string.h> <stdlib.h>",
         c_source="""
 // helper function
-// Copy src into a new memory and null terminate.
+// Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = malloc(nsrc + 1);
@@ -462,7 +472,7 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
         cxx_header="<cstring> <cstdlib>",
         cxx_source="""
 // helper function
-// Copy src into a new memory and null terminate.
+// Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = (char *) std::malloc(nsrc + 1);

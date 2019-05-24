@@ -429,7 +429,7 @@ computed using ``len``:
         const std::string SH_arg2(arg2, Larg2);
         const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
         if (SHCXX_rv.empty()) {
-            std::memset(SHF_rv, ' ', NSHF_rv);
+            ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
         } else {
             ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(), SHCXX_rv.size());
         }

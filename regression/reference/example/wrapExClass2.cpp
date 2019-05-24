@@ -34,9 +34,14 @@ extern "C" {
 // dest will not be NULL terminated.
 static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = nsrc < ndest ? nsrc : ndest;
-   std::memcpy(dest,src,nm);
-   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
 }
 
 // helper function
@@ -125,7 +130,7 @@ void AA_exclass2_get_name_bufferify(const AA_exclass2 * self,
         static_cast<const example::nested::ExClass2 *>(self->addr);
     const std::string & SHCXX_rv = SH_this->getName();
     if (SHCXX_rv.empty()) {
-        std::memset(SHF_rv, ' ', NSHF_rv);
+        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());

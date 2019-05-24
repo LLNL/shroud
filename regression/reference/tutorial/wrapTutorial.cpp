@@ -40,9 +40,14 @@ typedef union {
 // dest will not be NULL terminated.
 static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = nsrc < ndest ? nsrc : ndest;
-   std::memcpy(dest,src,nm);
-   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+   if (src == NULL) {
+     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = std::strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     std::memcpy(dest,src,nm);
+     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+   }
 }
 
 // helper function
@@ -127,7 +132,7 @@ void TUT_function4a_bufferify(const char * arg1, int Larg1,
     const std::string SH_arg2(arg2, Larg2);
     const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
     if (SHCXX_rv.empty()) {
-        std::memset(SHF_rv, ' ', NSHF_rv);
+        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -159,7 +164,7 @@ void TUT_function4b_bufferify(const char * arg1, int Larg1,
     const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
         SH_arg2);
     if (SHCXX_rv.empty()) {
-        std::memset(output, ' ', Noutput);
+        ShroudStrCopy(output, Noutput, NULL, 0);
     } else {
         ShroudStrCopy(output, Noutput, SHCXX_rv.data(),
             SHCXX_rv.size());
@@ -653,7 +658,7 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
-        std::memset(SHF_rv, ' ', NSHF_rv);
+        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
     } else {
         ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
             SHCXX_rv.size());

@@ -22,7 +22,7 @@
 
 
 // helper function
-// Copy src into a new memory and null terminate.
+// Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = malloc(nsrc + 1);
@@ -39,9 +39,14 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 // dest will not be NULL terminated.
 static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   int nm = nsrc < ndest ? nsrc : ndest;
-   memcpy(dest,src,nm);
-   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
+   if (src == NULL) {
+     memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+   } else {
+     if (nsrc < 0) nsrc = strlen(src);
+     int nm = nsrc < ndest ? nsrc : ndest;
+     memcpy(dest,src,nm);
+     if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
+   }
 }
 
 // helper function
@@ -63,11 +68,7 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     char * SHC_rv = Function4a(SH_arg1, SH_arg2);
     ShroudStrFree(SH_arg1);
     ShroudStrFree(SH_arg2);
-    if (SHC_rv == NULL) {
-        memset(SHF_rv, ' ', NSHF_rv);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, strlen(SHC_rv));
-    }
+    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, -1);
     return;
 // splicer end function.function4a_bufferify
 }
@@ -85,7 +86,7 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
 // splicer begin function.return_one_name_bufferify
     char * SH_name1 = ShroudStrAlloc(name1, Nname1, 0);
     returnOneName(SH_name1);
-    ShroudStrCopy(name1, Nname1, SH_name1, strlen(SH_name1));
+    ShroudStrCopy(name1, Nname1, SH_name1, -1);
     ShroudStrFree(SH_name1);
     return;
 // splicer end function.return_one_name_bufferify
@@ -106,9 +107,9 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
     char * SH_name1 = ShroudStrAlloc(name1, Nname1, 0);
     char * SH_name2 = ShroudStrAlloc(name2, Nname2, 0);
     returnTwoNames(SH_name1, SH_name2);
-    ShroudStrCopy(name1, Nname1, SH_name1, strlen(SH_name1));
+    ShroudStrCopy(name1, Nname1, SH_name1, -1);
     ShroudStrFree(SH_name1);
-    ShroudStrCopy(name2, Nname2, SH_name2, strlen(SH_name2));
+    ShroudStrCopy(name2, Nname2, SH_name2, -1);
     ShroudStrFree(SH_name2);
     return;
 // splicer end function.return_two_names_bufferify
