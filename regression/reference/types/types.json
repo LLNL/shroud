@@ -2943,16 +2943,13 @@
                         "arg",
                         "len_trim"
                     ],
-                    "c_header": "<stdlib.h> <string.h>",
-                    "cxx_header": "<stdlib.h> <cstring>",
+                    "c_helper": "ShroudStrAllocNULLTerminate ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
-                        "free({cxx_var});"
+                        "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = (char *) malloc({c_var_trim} + 1);",
-                        "{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});",
-                        "{cxx_var}[{c_var_trim}] = '\\0';"
+                        "char * {cxx_var} = ShroudStrAllocNULLTerminate({c_var}, {c_var_trim});"
                     ]
                 },
                 "intent_inout_buf": {

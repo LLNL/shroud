@@ -145,11 +145,16 @@ typedef union {{
 
 def add_external_helpers(fmt):
     """Create helper which have generated names.
+    For example, code uses format entries
+    C_prefix, C_memory_dtor_function,
+    F_array_type
+
+    Some helpers are written in C, but called by Fortran.
     Since the names are external, mangle with C_prefix to avoid
-    confict with other shroud wrapped libraries.
+    confict with other Shroud wrapped libraries.
 
     Args:
-        fmt -
+        fmt - format dictionary from the library.
     """
 
     # Only used with std::string and thus C++
@@ -200,6 +205,8 @@ integer(C_SIZE_T), value :: c_var_size
 
 def add_shadow_helper(node):
     """
+    Add helper functions for each shadow type.
+
     Args:
         node -
     """
@@ -227,7 +234,7 @@ def add_capsule_helper(fmt):
     Used with shadow classes and std::vector.
 
     Args:
-        fmt -
+        fmt - format dictionary from the library.
     """
     name = "capsule_data_helper"
     if name not in FHelpers:
@@ -347,7 +354,7 @@ def add_copy_array_helper_c(fmt):
     """Create function to copy contents of a vector.
 
     Args:
-        fmt -
+        fmt - format dictionary from the library.
     """
     name = "copy_array"
     if name not in CHelpers:
@@ -410,7 +417,6 @@ integer(C_SIZE_T), value :: c_var_size
 CHelpers = dict(
     ShroudStrCopy=dict(
         c_header="<string.h>",
-        cxx_header="<cstring>",
         c_source="""
 // helper function
 // Copy src into dest, blank fill to ndest characters
@@ -422,6 +428,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    memcpy(dest,src,nm);
    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }""",
+        cxx_header="<cstring>",
         cxx_source="""
 // helper function
 // Copy src into dest, blank fill to ndest characters
@@ -434,6 +441,55 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }""",
     ),
+
+    ########################################
+    # Used by 'const char *' arguments which need to be NULL terminated
+    # in the C wrapper.
+    ShroudStrAllocNULLTerminate=dict(
+        c_header="<string.h> <stdlib.h>",
+        c_source="""
+// helper function
+// Copy src into a new memory and null terminate.
+static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
+{
+   char *rv = (char *) malloc(nsrc + 1);
+   memcpy(rv, src, nsrc);
+   rv[nsrc] = '\\0';
+   return rv;
+}""",
+        cxx_header="<cstring> <cstdlib>",
+        cxx_source="""
+// helper function
+// Copy src into a new memory and null terminate.
+static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
+{
+   char *rv = (char *) std::malloc(nsrc + 1);
+   std::memcpy(rv, src, nsrc);
+   rv[nsrc] = '\\0';
+   return rv;
+}""",
+    ),
+
+    ShroudStrFree=dict(
+        c_header="<stdlib.h>",
+        c_source="""
+// helper function
+// Release memory allocated by ShroudStrAllocNULLTerminate
+static void ShroudStrFree(const char *src)
+{
+   free(src);
+}""",
+        cxx_header="<cstdlib>",
+        cxx_source="""
+// helper function
+// Release memory allocated by ShroudStrAllocNULLTerminate
+static void ShroudStrFree(char *src)
+{
+   free(src);
+}""",
+    ),
+
+    ########################################
     ShroudLenTrim=dict(
         source="""
 // helper function

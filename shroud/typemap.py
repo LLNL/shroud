@@ -645,14 +645,15 @@ def initialize():
                 intent_in_buf=dict(
                     buf_args=["arg", "len_trim"],
                     cxx_local_var="pointer",
-                    c_header="<stdlib.h> <string.h>",
-                    cxx_header="<stdlib.h> <cstring>",
+#                    c_header="<stdlib.h> <string.h>",
+#                    cxx_header="<stdlib.h> <cstring>",
+                    c_helper="ShroudStrAllocNULLTerminate ShroudStrFree",
                     pre_call=[
-                        "char * {cxx_var} = (char *) malloc({c_var_trim} + 1);",
-                        "{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});",
-                        "{cxx_var}[{c_var_trim}] = '\\0';",
+                        "char * {cxx_var} = ShroudStrAllocNULLTerminate({c_var}, {c_var_trim});",
                     ],
-                    post_call=["free({cxx_var});"],
+                    post_call=[
+                        "ShroudStrFree({cxx_var});"
+                    ],
                 ),
                 intent_out_buf=dict(
                     buf_args=["arg", "len"],
