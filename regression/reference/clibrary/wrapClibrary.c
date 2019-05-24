@@ -23,11 +23,13 @@
 
 // helper function
 // Copy src into a new memory and null terminate.
-static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
-   char *rv = (char *) malloc(nsrc + 1);
-   memcpy(rv, src, nsrc);
-   rv[nsrc] = '\0';
+   char *rv = malloc(nsrc + 1);
+   if (ntrim > 0) {
+     memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\0';
    return rv;
 }
 
@@ -43,8 +45,8 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
-// Release memory allocated by ShroudStrAllocNULLTerminate
-static void ShroudStrFree(const char *src)
+// Release memory allocated by ShroudStrAlloc
+static void ShroudStrFree(char *src)
 {
    free(src);
 }
@@ -56,8 +58,8 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
-    char * SH_arg1 = ShroudStrAllocNULLTerminate(arg1, Larg1);
-    char * SH_arg2 = ShroudStrAllocNULLTerminate(arg2, Larg2);
+    char * SH_arg1 = ShroudStrAlloc(arg1, Larg1, Larg1);
+    char * SH_arg2 = ShroudStrAlloc(arg2, Larg2, Larg2);
     char * SHC_rv = Function4a(SH_arg1, SH_arg2);
     ShroudStrFree(SH_arg1);
     ShroudStrFree(SH_arg2);
@@ -81,10 +83,10 @@ void CLI_function4a_bufferify(const char * arg1, int Larg1,
 void CLI_return_one_name_bufferify(char * name1, int Nname1)
 {
 // splicer begin function.return_one_name_bufferify
-    char * SH_name1 = (char *) malloc(Nname1 + 1);
+    char * SH_name1 = ShroudStrAlloc(name1, Nname1, 0);
     returnOneName(SH_name1);
     ShroudStrCopy(name1, Nname1, SH_name1, strlen(SH_name1));
-    free(SH_name1);
+    ShroudStrFree(SH_name1);
     return;
 // splicer end function.return_one_name_bufferify
 }
@@ -101,13 +103,13 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
     char * name2, int Nname2)
 {
 // splicer begin function.return_two_names_bufferify
-    char * SH_name1 = (char *) malloc(Nname1 + 1);
-    char * SH_name2 = (char *) malloc(Nname2 + 1);
+    char * SH_name1 = ShroudStrAlloc(name1, Nname1, 0);
+    char * SH_name2 = ShroudStrAlloc(name2, Nname2, 0);
     returnTwoNames(SH_name1, SH_name2);
     ShroudStrCopy(name1, Nname1, SH_name1, strlen(SH_name1));
-    free(SH_name1);
+    ShroudStrFree(SH_name1);
     ShroudStrCopy(name2, Nname2, SH_name2, strlen(SH_name2));
-    free(SH_name2);
+    ShroudStrFree(SH_name2);
     return;
 // splicer end function.return_two_names_bufferify
 }
@@ -121,7 +123,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 void CLI_bind_c2_bufferify(const char * name, int Lname)
 {
 // splicer begin function.bind_c2_bufferify
-    char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);
+    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
     bindC2(SH_name);
     ShroudStrFree(SH_name);
     return;
@@ -140,7 +142,7 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
     int Lname)
 {
 // splicer begin function.pass_assumed_type_buf_bufferify
-    char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);
+    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
     int SHC_rv = passAssumedTypeBuf(arg, SH_name);
     ShroudStrFree(SH_name);
     return SHC_rv;
@@ -157,7 +159,7 @@ void CLI_callback3_bufferify(const char * type, int Ltype, void * in,
     void ( * incr)(int *))
 {
 // splicer begin function.callback3_bufferify
-    char * SH_type = ShroudStrAllocNULLTerminate(type, Ltype);
+    char * SH_type = ShroudStrAlloc(type, Ltype, Ltype);
     callback3(SH_type, in, incr);
     ShroudStrFree(SH_type);
     return;
@@ -172,7 +174,7 @@ int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
     int Lname)
 {
 // splicer begin function.pass_struct2_bufferify
-    char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);
+    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
     int SHC_rv = passStruct2(s1, SH_name);
     ShroudStrFree(SH_name);
     return SHC_rv;
@@ -189,7 +191,7 @@ Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield,
     const char * name, int Lname)
 {
 // splicer begin function.return_struct_ptr2_bufferify
-    char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);
+    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
     Cstruct1 * SHC_rv = returnStructPtr2(ifield, SH_name);
     ShroudStrFree(SH_name);
     return SHC_rv;

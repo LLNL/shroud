@@ -31,11 +31,13 @@ extern "C" {
 
 // helper function
 // Copy src into a new memory and null terminate.
-static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = (char *) std::malloc(nsrc + 1);
-   std::memcpy(rv, src, nsrc);
-   rv[nsrc] = '\0';
+   if (ntrim > 0) {
+     std::memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\0';
    return rv;
 }
 
@@ -51,7 +53,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
-// Release memory allocated by ShroudStrAllocNULLTerminate
+// Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
    free(src);
@@ -138,11 +140,11 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src, int Lsrc)
 {
 // splicer begin function.pass_char_ptr_bufferify
-    char * SH_dest = (char *) std::malloc(Ndest + 1);
-    char * SH_src = ShroudStrAllocNULLTerminate(src, Lsrc);
+    char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
+    char * SH_src = ShroudStrAlloc(src, Lsrc, Lsrc);
     passCharPtr(SH_dest, SH_src);
     ShroudStrCopy(dest, Ndest, SH_dest, std::strlen(SH_dest));
-    free(SH_dest);
+    ShroudStrFree(SH_dest);
     ShroudStrFree(SH_src);
     return;
 // splicer end function.pass_char_ptr_bufferify
@@ -173,12 +175,10 @@ void STR_pass_char_ptr_in_out(char * s)
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
 // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SH_s = (char *) malloc(Ns + 1);
-    std::memcpy(SH_s, s, Ls);
-    SH_s[Ls] = '\0';
+    char * SH_s = ShroudStrAlloc(s, Ns, Ls);
     passCharPtrInOut(SH_s);
     ShroudStrCopy(s, Ns, SH_s, std::strlen(SH_s));
-    free(SH_s);
+    ShroudStrFree(SH_s);
     return;
 // splicer end function.pass_char_ptr_in_out_bufferify
 }
@@ -853,7 +853,7 @@ void STR_explicit1(char * name)
 void STR_explicit1_BUFFER(char * name, int AAlen)
 {
 // splicer begin function.explicit1_BUFFER
-    char * SH_name = ShroudStrAllocNULLTerminate(name, AAlen);
+    char * SH_name = ShroudStrAlloc(name, AAlen, AAlen);
     explicit1(SH_name);
     ShroudStrFree(SH_name);
     return;
@@ -873,10 +873,10 @@ void STR_explicit2(char * name)
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
 // splicer begin function.explicit2_bufferify
-    char * SH_name = (char *) std::malloc(AAtrim + 1);
+    char * SH_name = ShroudStrAlloc(name, AAtrim, 0);
     explicit2(SH_name);
     ShroudStrCopy(name, AAtrim, SH_name, std::strlen(SH_name));
-    free(SH_name);
+    ShroudStrFree(SH_name);
     return;
 // splicer end function.explicit2_bufferify
 }
@@ -908,11 +908,11 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src, int Lsrc)
 {
 // splicer begin function.cpass_char_ptr_bufferify
-    char * SH_dest = (char *) std::malloc(Ndest + 1);
-    char * SH_src = ShroudStrAllocNULLTerminate(src, Lsrc);
+    char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
+    char * SH_src = ShroudStrAlloc(src, Lsrc, Lsrc);
     CpassCharPtr(SH_dest, SH_src);
     ShroudStrCopy(dest, Ndest, SH_dest, std::strlen(SH_dest));
-    free(SH_dest);
+    ShroudStrFree(SH_dest);
     ShroudStrFree(SH_src);
     return;
 // splicer end function.cpass_char_ptr_bufferify

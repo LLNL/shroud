@@ -1192,7 +1192,7 @@
                     "C_call_list": "SH_arg1,\t SH_arg2",
                     "C_name": "CLI_function4a_bufferify",
                     "C_post_call": "ShroudStrFree(SH_arg1);\nShroudStrFree(SH_arg2);\nif (SHC_rv == NULL) {+\nmemset(SHF_rv, ' ', NSHF_rv);\n-} else {+\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHC_rv,\t strlen(SHC_rv));\n-}",
-                    "C_pre_call": "char * SH_arg1 = ShroudStrAllocNULLTerminate(arg1, Larg1);\nchar * SH_arg2 = ShroudStrAllocNULLTerminate(arg2, Larg2);",
+                    "C_pre_call": "char * SH_arg1 = ShroudStrAlloc(\targ1,\t Larg1,\t Larg1);\nchar * SH_arg2 = ShroudStrAlloc(\targ2,\t Larg2,\t Larg2);",
                     "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t char * SHF_rv,\t int NSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -1374,8 +1374,8 @@
                     "C_call_code": "returnOneName(\tSH_name1);",
                     "C_call_list": "SH_name1",
                     "C_name": "CLI_return_one_name_bufferify",
-                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t strlen(SH_name1));\nfree(SH_name1);",
-                    "C_pre_call": "char * SH_name1 = (char *) malloc(Nname1 + 1);",
+                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t strlen(SH_name1));\nShroudStrFree(SH_name1);",
+                    "C_pre_call": "char * SH_name1 = ShroudStrAlloc(\tname1,\t Nname1,\t 0);",
                     "C_prototype": "char * name1,\t int Nname1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -1646,8 +1646,8 @@
                     "C_call_code": "returnTwoNames(\tSH_name1,\t SH_name2);",
                     "C_call_list": "SH_name1,\t SH_name2",
                     "C_name": "CLI_return_two_names_bufferify",
-                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t strlen(SH_name1));\nfree(SH_name1);\nShroudStrCopy(name2, Nname2,\t SH_name2,\t strlen(SH_name2));\nfree(SH_name2);",
-                    "C_pre_call": "char * SH_name1 = (char *) malloc(Nname1 + 1);\nchar * SH_name2 = (char *) malloc(Nname2 + 1);",
+                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t strlen(SH_name1));\nShroudStrFree(SH_name1);\nShroudStrCopy(name2, Nname2,\t SH_name2,\t strlen(SH_name2));\nShroudStrFree(SH_name2);",
+                    "C_pre_call": "char * SH_name1 = ShroudStrAlloc(\tname1,\t Nname1,\t 0);\nchar * SH_name2 = ShroudStrAlloc(\tname2,\t Nname2,\t 0);",
                     "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2553,7 +2553,7 @@
                     "C_call_list": "SH_name",
                     "C_name": "CLI_bind_c2_bufferify",
                     "C_post_call": "ShroudStrFree(SH_name);",
-                    "C_pre_call": "char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);",
+                    "C_pre_call": "char * SH_name = ShroudStrAlloc(\tname,\t Lname,\t Lname);",
                     "C_prototype": "const char * name,\t int Lname",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3043,7 +3043,7 @@
                     "C_call_list": "arg,\t SH_name",
                     "C_name": "CLI_pass_assumed_type_buf_bufferify",
                     "C_post_call": "ShroudStrFree(SH_name);",
-                    "C_pre_call": "char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);",
+                    "C_pre_call": "char * SH_name = ShroudStrAlloc(\tname,\t Lname,\t Lname);",
                     "C_prototype": "void * arg,\t const char * name,\t int Lname",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -3570,7 +3570,7 @@
                     "C_call_list": "SH_type,\t in,\t incr",
                     "C_name": "CLI_callback3_bufferify",
                     "C_post_call": "ShroudStrFree(SH_type);",
-                    "C_pre_call": "char * SH_type = ShroudStrAllocNULLTerminate(type, Ltype);",
+                    "C_pre_call": "char * SH_type = ShroudStrAlloc(\ttype,\t Ltype,\t Ltype);",
                     "C_prototype": "const char * type,\t int Ltype,\t void * in,\t void ( * incr)(\tint *)",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3925,7 +3925,7 @@
                     "C_call_list": "s1,\t SH_name",
                     "C_name": "CLI_pass_struct2_bufferify",
                     "C_post_call": "ShroudStrFree(SH_name);",
-                    "C_pre_call": "char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);",
+                    "C_pre_call": "char * SH_name = ShroudStrAlloc(\tname,\t Lname,\t Lname);",
                     "C_prototype": "Cstruct1 * s1,\t const char * name,\t int Lname",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -4291,7 +4291,7 @@
                     "C_call_list": "ifield,\t SH_name",
                     "C_name": "CLI_return_struct_ptr2_bufferify",
                     "C_post_call": "ShroudStrFree(SH_name);",
-                    "C_pre_call": "char * SH_name = ShroudStrAllocNULLTerminate(name, Lname);",
+                    "C_pre_call": "char * SH_name = ShroudStrAlloc(\tname,\t Lname,\t Lname);",
                     "C_prototype": "int ifield,\t const char * name,\t int Lname",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1 *",
@@ -4572,13 +4572,13 @@
                         "arg",
                         "len_trim"
                     ],
-                    "c_helper": "ShroudStrAllocNULLTerminate ShroudStrFree",
+                    "c_helper": "ShroudStrAlloc ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
                         "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = ShroudStrAllocNULLTerminate({c_var}, {c_var_trim});"
+                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
                     ]
                 },
                 "intent_inout_buf": {
@@ -4587,18 +4587,14 @@
                         "len_trim",
                         "len"
                     ],
-                    "c_header": "<stdlib.h> <string.h>",
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_header": "<stdlib.h> <cstring>",
+                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
-                        "free({cxx_var});"
+                        "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = (char *) malloc({c_var_len} + 1);",
-                        "{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});",
-                        "{cxx_var}[{c_var_trim}] = '\\0';"
+                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
                     ]
                 },
                 "intent_out_buf": {
@@ -4606,16 +4602,14 @@
                         "arg",
                         "len"
                     ],
-                    "c_header": "<stdlib.h> <string.h>",
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_header": "<cstdlib> <cstring>",
+                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
-                        "free({cxx_var});"
+                        "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);"
+                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t 0);"
                     ]
                 },
                 "result_buf": {

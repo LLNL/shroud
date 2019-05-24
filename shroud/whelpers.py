@@ -445,27 +445,31 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
     ########################################
     # Used by 'const char *' arguments which need to be NULL terminated
     # in the C wrapper.
-    ShroudStrAllocNULLTerminate=dict(
+    ShroudStrAlloc=dict(
         c_header="<string.h> <stdlib.h>",
         c_source="""
 // helper function
 // Copy src into a new memory and null terminate.
-static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
-   char *rv = (char *) malloc(nsrc + 1);
-   memcpy(rv, src, nsrc);
-   rv[nsrc] = '\\0';
+   char *rv = malloc(nsrc + 1);
+   if (ntrim > 0) {
+     memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\\0';
    return rv;
 }""",
         cxx_header="<cstring> <cstdlib>",
         cxx_source="""
 // helper function
 // Copy src into a new memory and null terminate.
-static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = (char *) std::malloc(nsrc + 1);
-   std::memcpy(rv, src, nsrc);
-   rv[nsrc] = '\\0';
+   if (ntrim > 0) {
+     std::memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\\0';
    return rv;
 }""",
     ),
@@ -474,15 +478,15 @@ static char *ShroudStrAllocNULLTerminate(const char *src, int nsrc)
         c_header="<stdlib.h>",
         c_source="""
 // helper function
-// Release memory allocated by ShroudStrAllocNULLTerminate
-static void ShroudStrFree(const char *src)
+// Release memory allocated by ShroudStrAlloc
+static void ShroudStrFree(char *src)
 {
    free(src);
 }""",
         cxx_header="<cstdlib>",
         cxx_source="""
 // helper function
-// Release memory allocated by ShroudStrAllocNULLTerminate
+// Release memory allocated by ShroudStrAlloc
 static void ShroudStrFree(char *src)
 {
    free(src);

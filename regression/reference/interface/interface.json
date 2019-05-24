@@ -422,13 +422,13 @@
                         "arg",
                         "len_trim"
                     ],
-                    "c_helper": "ShroudStrAllocNULLTerminate ShroudStrFree",
+                    "c_helper": "ShroudStrAlloc ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
                         "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = ShroudStrAllocNULLTerminate({c_var}, {c_var_trim});"
+                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_trim},\t {c_var_trim});"
                     ]
                 },
                 "intent_inout_buf": {
@@ -437,18 +437,14 @@
                         "len_trim",
                         "len"
                     ],
-                    "c_header": "<stdlib.h> <string.h>",
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_header": "<stdlib.h> <cstring>",
+                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
-                        "free({cxx_var});"
+                        "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = (char *) malloc({c_var_len} + 1);",
-                        "{stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});",
-                        "{cxx_var}[{c_var_trim}] = '\\0';"
+                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t {c_var_trim});"
                     ]
                 },
                 "intent_out_buf": {
@@ -456,16 +452,14 @@
                         "arg",
                         "len"
                     ],
-                    "c_header": "<stdlib.h> <string.h>",
-                    "c_helper": "ShroudStrCopy",
-                    "cxx_header": "<cstdlib> <cstring>",
+                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
                     "cxx_local_var": "pointer",
                     "post_call": [
                         "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));",
-                        "free({cxx_var});"
+                        "ShroudStrFree({cxx_var});"
                     ],
                     "pre_call": [
-                        "char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);"
+                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t 0);"
                     ]
                 },
                 "result_buf": {

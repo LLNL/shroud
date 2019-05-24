@@ -86,6 +86,11 @@ contains
     call cpass_char_ptr(dest=str, src="bird")
     call assert_true( str == "bird")
 
+    ! Test passing a blank string
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call cpass_char_ptr(dest=str, src=" ")
+    call assert_true( str == " ", "blank string")
+
     ! call C version directly via the interface
     ! caller is responsible for nulls
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
