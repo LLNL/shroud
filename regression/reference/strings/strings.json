@@ -525,7 +525,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "out",
                                 "len": "Ndest",
                                 "value": false
@@ -541,11 +540,11 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Lsrc",
                                 "value": false
@@ -562,6 +561,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -728,7 +728,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "inout",
                                 "len": "Ns",
                                 "len_trim": "Ls",
@@ -745,6 +744,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -3835,7 +3835,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Larg1",
                                 "value": false
@@ -3852,6 +3851,7 @@
                             "specifier": [
                                 "std::string"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4016,7 +4016,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "out",
                                 "len": "Narg1",
                                 "value": false
@@ -4032,6 +4031,7 @@
                             "specifier": [
                                 "std::string"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4198,7 +4198,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "inout",
                                 "len": "Narg1",
                                 "len_trim": "Larg1",
@@ -4215,6 +4214,7 @@
                             "specifier": [
                                 "std::string"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4380,7 +4380,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "inout",
                                 "len": "Narg1",
                                 "len_trim": "Larg1",
@@ -4397,6 +4396,7 @@
                             "specifier": [
                                 "std::string"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "std::string"
                         }
                     ],
@@ -4707,7 +4707,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "AAlen",
                                 "value": false
@@ -4723,6 +4722,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -4866,7 +4866,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "out",
                                 "len": "AAtrim",
                                 "value": false
@@ -4882,6 +4881,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -5344,7 +5344,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "out",
                                 "len": "Ndest",
                                 "value": false
@@ -5360,11 +5359,11 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Lsrc",
                                 "value": false
@@ -5381,6 +5380,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],

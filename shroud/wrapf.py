@@ -904,7 +904,7 @@ rv = .false.
             if attrs.get("_is_result", False):
                 c_stmts = "result" + generated_suffix
             else:
-                c_stmts = "intent_" + intent + generated_suffix
+                c_stmts = "intent_" + intent + arg.stmts_suffix
             c_intent_blk = c_statements.get(c_stmts, {})
             self.build_arg_list_interface(
                 node,
@@ -1320,7 +1320,7 @@ rv = .false.
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
             else:
-                c_stmts = "intent_" + intent + generated_suffix  # e.g. _buf
+                c_stmts = "intent_" + intent + c_arg.stmts_suffix  # e.g. _buf
                 f_stmts = "intent_" + intent + deref_suffix  # e.g. _allocatable
 
             if is_f_arg:
@@ -1328,7 +1328,17 @@ rv = .false.
                 f_index += 1
                 f_arg = f_args[f_index]
 
-                if "assumedtype" in c_attrs:
+                if c_arg.ftrim_char_in:
+                    # Pass NULL terminated string to C.
+                    arg_f_decl.append(
+                        "character(len=*), intent(IN) :: {}".format(f_arg.name)
+                    )
+                    arg_f_names.append(fmt_arg.f_var)
+                    arg_c_call.append("trim({})//C_CHAR_NULL".format(f_arg.name))
+                    self.set_f_module(modules, "iso_c_binding", "C_CHAR_NULL")
+                    need_wrapper = True
+                    continue
+                elif "assumedtype" in c_attrs:
                     arg_f_decl.append(
                         "type(*) :: {}".format(f_arg.name)
                     )

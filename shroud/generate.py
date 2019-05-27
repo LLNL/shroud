@@ -222,6 +222,7 @@ class VerifyAttrs(object):
             else:
                 # void *
                 attrs["intent"] = "in"  # XXX must coordinate with VALUE
+            intent = attrs.get("intent", None)
         else:
             intent = intent.lower()
             if intent in ["in", "out", "inout"]:
@@ -284,7 +285,7 @@ class VerifyAttrs(object):
         # XXX - Python needs a value if 'char *+intent(out)'
         charlen = attrs.get("charlen", None)
         if charlen:
-            if arg_typemap and arg_typemap.base != "string":
+            if arg_typemap.base != "string":
                 raise RuntimeError(
                     "charlen attribute can only be "
                     "used on 'char *'"
@@ -296,6 +297,12 @@ class VerifyAttrs(object):
                 )
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
+
+        if False:
+            if intent == "in" and is_ptr and arg_typemap.name == "char":
+                # const char *arg
+                # char *arg+intent(in)
+                arg.ftrim_char_in = True
 
         if node:
             if arg.init is not None:
@@ -977,8 +984,8 @@ class GenFunctions(object):
         If found then create a new C function that
         will add arguments buf_args (typically a buffer and length).
 
-        String arguments add deref(allocatable) by default so that
-        char * will create an allocatable string in Fortran.
+        String arguments added deref(allocatable) by default so that
+        char * function will create an allocatable string in Fortran.
 
         Args:
             node -
@@ -1024,17 +1031,18 @@ class GenFunctions(object):
         # Is result or any argument a string or vector?
         # If so, additional arguments will be passed down so
         # create buffer version of function.
-        has_implied_arg = False
+        has_buf_arg = False
         for arg in ast.params:
             arg_typemap = arg.typemap
             if arg_typemap.base == "string":
-                is_ptr = arg.is_indirect()
-                if is_ptr:
-                    has_implied_arg = True
+                if arg.ftrim_char_in:
+                    pass
+                elif arg.is_indirect():
+                    has_buf_arg = True
                 else:
                     arg.set_type(typemap.lookup_type("char_scalar"))
             elif arg_typemap.base == "vector":
-                has_implied_arg = True
+                has_buf_arg = True
                 # Create helpers for vector template.
                 cxx_T = arg.template_arguments[0].typemap.name
                 tempate_typemap = typemap.lookup_type(cxx_T)
@@ -1064,7 +1072,7 @@ class GenFunctions(object):
         elif result_is_ptr and attrs.get("deref", "") == "allocatable":
             has_allocatable_result = True
 
-        if not (has_string_result or has_allocatable_result or has_implied_arg):
+        if not (has_string_result or has_allocatable_result or has_buf_arg):
             return
 
         # XXX       options = node['options']
@@ -1092,6 +1100,8 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             attrs = arg.attrs
+            if arg.ftrim_char_in:
+                continue
             arg_typemap = arg.typemap
             if arg_typemap.base == "vector":
                 # Do not wrap the orignal C function with vector argument.
@@ -1106,7 +1116,7 @@ class GenFunctions(object):
             # set names for implied buffer arguments
             stmts = "intent_" + attrs["intent"] + "_buf"
             if stmts in c_statements:
-                arg.attrs["_generated_suffix"] = "_buf"
+                arg.stmts_suffix = "_buf"
 
             intent_blk = c_statements.get(stmts, {})
             for buf_arg in intent_blk.get("buf_args", []):

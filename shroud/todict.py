@@ -68,9 +68,12 @@ class ToDict(visitor.Visitor):
             for tp in node.template_arguments:
                 lst.append(self.visit(tp))
             d["template_arguments"] = lst
-        if hasattr(node, "return_pointer_as"):
-            if node.return_pointer_as is not None:
-                d["return_pointer_as"] = node.return_pointer_as
+        if node.stmts_suffix:
+            d["stmts_suffix"] = node.stmts_suffix
+        if node.return_pointer_as is not None:
+            d["return_pointer_as"] = node.return_pointer_as
+        if node.ftrim_char_in:
+            d["ftrim_char_in"] = node.ftrim_char_in
         return d
 
     def visit_Identifier(self, node):

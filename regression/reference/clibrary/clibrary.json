@@ -1119,7 +1119,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Larg1",
                                 "value": false
@@ -1136,11 +1135,11 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Larg2",
                                 "value": false
@@ -1157,6 +1156,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
@@ -1338,7 +1338,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "charlen": "MAXNAME",
                                 "intent": "out",
                                 "len": "Nname1",
@@ -1355,6 +1354,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -1589,7 +1589,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "charlen": "MAXNAME",
                                 "intent": "out",
                                 "len": "Nname1",
@@ -1606,11 +1605,11 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "charlen": "MAXNAME",
                                 "intent": "out",
                                 "len": "Nname2",
@@ -1627,6 +1626,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -2516,7 +2516,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Lname",
                                 "value": false
@@ -2533,6 +2532,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -3006,7 +3006,6 @@
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Lname",
                                 "value": false
@@ -3023,6 +3022,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -3474,7 +3474,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Ltype",
                                 "value": false
@@ -3491,6 +3490,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
@@ -3889,7 +3889,6 @@
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Lname",
                                 "value": false
@@ -3906,6 +3905,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -4253,7 +4253,6 @@
                         },
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "intent": "in",
                                 "len_trim": "Lname",
                                 "value": false
@@ -4270,6 +4269,7 @@
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
