@@ -115,23 +115,24 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // splicer end function.return_two_names_bufferify
 }
 
-// void bindC2(const char * name +intent(in)+len_trim(Lname))
+// void bindC2(char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Rename Fortran name for interface only function
  *
  * This creates a Fortran bufferify function and an interface.
  */
-void CLI_bind_c2_bufferify(const char * name, int Lname)
+void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 {
 // splicer begin function.bind_c2_bufferify
-    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
-    bindC2(SH_name);
-    ShroudStrFree(SH_name);
+    char * SH_outbuf = ShroudStrAlloc(outbuf, Noutbuf, 0);
+    bindC2(SH_outbuf);
+    ShroudStrCopy(outbuf, Noutbuf, SH_outbuf, -1);
+    ShroudStrFree(SH_outbuf);
     return;
 // splicer end function.bind_c2_bufferify
 }
 
-// int passAssumedTypeBuf(void * arg +assumedtype+intent(in), const char * name +intent(in)+len_trim(Lname))
+// int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Test assumed-type
  *
@@ -139,62 +140,68 @@ void CLI_bind_c2_bufferify(const char * name, int Lname)
  * Should only be call with an C_INT argument, and will
  * return the value passed in.
  */
-int CLI_pass_assumed_type_buf_bufferify(void * arg, const char * name,
-    int Lname)
+int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
+    int Noutbuf)
 {
 // splicer begin function.pass_assumed_type_buf_bufferify
-    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
-    int SHC_rv = passAssumedTypeBuf(arg, SH_name);
-    ShroudStrFree(SH_name);
+    char * SH_outbuf = ShroudStrAlloc(outbuf, Noutbuf, 0);
+    int SHC_rv = passAssumedTypeBuf(arg, SH_outbuf);
+    ShroudStrCopy(outbuf, Noutbuf, SH_outbuf, -1);
+    ShroudStrFree(SH_outbuf);
     return SHC_rv;
 // splicer end function.pass_assumed_type_buf_bufferify
 }
 
-// void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
+// void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Test function pointer
  *
  * A bufferify function will be created.
  */
 void CLI_callback3_bufferify(const char * type, int Ltype, void * in,
-    void ( * incr)(int *))
+    void ( * incr)(int *), char * outbuf, int Noutbuf)
 {
 // splicer begin function.callback3_bufferify
     char * SH_type = ShroudStrAlloc(type, Ltype, Ltype);
-    callback3(SH_type, in, incr);
+    char * SH_outbuf = ShroudStrAlloc(outbuf, Noutbuf, 0);
+    callback3(SH_type, in, incr, SH_outbuf);
     ShroudStrFree(SH_type);
+    ShroudStrCopy(outbuf, Noutbuf, SH_outbuf, -1);
+    ShroudStrFree(SH_outbuf);
     return;
 // splicer end function.callback3_bufferify
 }
 
-// int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in)+len_trim(Lname))
+// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))
 /**
  * Pass name argument which will build a bufferify function.
  */
-int CLI_pass_struct2_bufferify(Cstruct1 * s1, const char * name,
-    int Lname)
+int CLI_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
+    int Noutbuf)
 {
 // splicer begin function.pass_struct2_bufferify
-    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
-    int SHC_rv = passStruct2(s1, SH_name);
-    ShroudStrFree(SH_name);
+    char * SH_outbuf = ShroudStrAlloc(outbuf, Noutbuf, 0);
+    int SHC_rv = passStruct2(s1, SH_outbuf);
+    ShroudStrCopy(outbuf, Noutbuf, SH_outbuf, -1);
+    ShroudStrFree(SH_outbuf);
     return SHC_rv;
 // splicer end function.pass_struct2_bufferify
 }
 
-// Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in)+len_trim(Lname))
+// Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Return a pointer to a struct
  *
  * Generates a bufferify C wrapper function.
  */
-Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield,
-    const char * name, int Lname)
+Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield, char * outbuf,
+    int Noutbuf)
 {
 // splicer begin function.return_struct_ptr2_bufferify
-    char * SH_name = ShroudStrAlloc(name, Lname, Lname);
-    Cstruct1 * SHC_rv = returnStructPtr2(ifield, SH_name);
-    ShroudStrFree(SH_name);
+    char * SH_outbuf = ShroudStrAlloc(outbuf, Noutbuf, 0);
+    Cstruct1 * SHC_rv = returnStructPtr2(ifield, SH_outbuf);
+    ShroudStrCopy(outbuf, Noutbuf, SH_outbuf, -1);
+    ShroudStrFree(SH_outbuf);
     return SHC_rv;
 // splicer end function.return_struct_ptr2_bufferify
 }

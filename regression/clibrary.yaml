@@ -17,6 +17,13 @@ copyright:
 # Wrap a C library
 # Many of the same function as Tutorial, but for C.
 
+# Several tests have a 'char *outbuf+intent(out)' argument
+# which will force a C bufferify wrapper to be created.
+# The size of this buffer is controlled by lenoutbuf.
+# This feature is helpful for the C tests since a C wrapper is not required
+# for each function since we do not need to deal with name mangling
+# like in C++.
+
 library: Clibrary
 cxx_header: clibrary.h
 
@@ -124,7 +131,7 @@ declarations:
   options:
     wrap_python: false
 
-- decl: void bindC2(const char *name)
+- decl: void bindC2(char *outbuf+intent(out))
   doxygen:
     brief: Rename Fortran name for interface only function
     description: |
@@ -155,7 +162,7 @@ declarations:
   options:
     wrap_python: false
 
-- decl: int passAssumedTypeBuf(void *arg+assumedtype, const char *name)
+- decl: int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))
   doxygen:
     brief: Test assumed-type
     description: |
@@ -184,7 +191,7 @@ declarations:
     wrap_python: False
 
 - decl: void callback3(const char *type, void * in+assumedtype,
-                       void (*incr)(int *)+external)
+                       void (*incr)(int *)+external, char *outbuf+intent(out))
   doxygen:
     brief: Test function pointer
     description: |
@@ -200,7 +207,7 @@ declarations:
   options:
     wrap_python: false
 
-- decl: int passStruct2(Cstruct1 *s1, const char *name)
+- decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))
   doxygen:
     description: |
       Pass name argument which will build a bufferify function.
@@ -215,7 +222,7 @@ declarations:
   options:
     wrap_python: false
 
-- decl: Cstruct1 *returnStructPtr2(int ifield, const char *name)
+- decl: Cstruct1 *returnStructPtr2(int ifield, char *outbuf+intent(out))
   doxygen:
     brief: Return a pointer to a struct
     description: |

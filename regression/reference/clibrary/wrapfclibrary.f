@@ -197,19 +197,19 @@ module clibrary_mod
             implicit none
         end subroutine Fortran_bindC1a
 
-        subroutine c_bind_c2(name) &
+        subroutine c_bind_c2(outbuf) &
                 bind(C, name="bindC2")
             use iso_c_binding, only : C_CHAR
             implicit none
-            character(kind=C_CHAR), intent(IN) :: name(*)
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
         end subroutine c_bind_c2
 
-        subroutine c_bind_c2_bufferify(name, Lname) &
+        subroutine c_bind_c2_bufferify(outbuf, Noutbuf) &
                 bind(C, name="CLI_bind_c2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_bind_c2_bufferify
 
         subroutine pass_void_star_star(in, out) &
@@ -229,24 +229,24 @@ module clibrary_mod
             integer(C_INT) :: SHT_rv
         end function pass_assumed_type
 
-        function c_pass_assumed_type_buf(arg, name) &
+        function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="passAssumedTypeBuf")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             type(*) :: arg
-            character(kind=C_CHAR), intent(IN) :: name(*)
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf
 
-        function c_pass_assumed_type_buf_bufferify(arg, name, Lname) &
+        function c_pass_assumed_type_buf_bufferify(arg, outbuf, Noutbuf) &
                 result(SHT_rv) &
                 bind(C, name="CLI_pass_assumed_type_buf_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             implicit none
             type(*) :: arg
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT), value, intent(IN) :: Noutbuf
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf_bufferify
 
@@ -260,7 +260,7 @@ module clibrary_mod
             procedure(callback2_incr) :: incr
         end subroutine c_callback2
 
-        subroutine c_callback3(type, in, incr) &
+        subroutine c_callback3(type, in, incr, outbuf) &
                 bind(C, name="callback3")
             use iso_c_binding, only : C_CHAR, C_PTR
             import :: callback3_incr
@@ -268,9 +268,11 @@ module clibrary_mod
             character(kind=C_CHAR), intent(IN) :: type(*)
             type(*) :: in
             procedure(callback3_incr) :: incr
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
         end subroutine c_callback3
 
-        subroutine c_callback3_bufferify(type, Ltype, in, incr) &
+        subroutine c_callback3_bufferify(type, Ltype, in, incr, outbuf, &
+                Noutbuf) &
                 bind(C, name="CLI_callback3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: callback3_incr
@@ -279,6 +281,8 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Ltype
             type(*) :: in
             procedure(callback3_incr) :: incr
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_callback3_bufferify
 
         function pass_struct1(s1) &
@@ -291,26 +295,26 @@ module clibrary_mod
             integer(C_INT) :: SHT_rv
         end function pass_struct1
 
-        function c_pass_struct2(s1, name) &
+        function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="passStruct2")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: cstruct1
             implicit none
             type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(IN) :: name(*)
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT) :: SHT_rv
         end function c_pass_struct2
 
-        function c_pass_struct2_bufferify(s1, name, Lname) &
+        function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
                 result(SHT_rv) &
                 bind(C, name="CLI_pass_struct2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: cstruct1
             implicit none
             type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT), value, intent(IN) :: Noutbuf
             integer(C_INT) :: SHT_rv
         end function c_pass_struct2_bufferify
 
@@ -324,26 +328,26 @@ module clibrary_mod
             type(C_PTR) SHT_rv
         end function c_return_struct_ptr1
 
-        function c_return_struct_ptr2(ifield, name) &
+        function c_return_struct_ptr2(ifield, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="returnStructPtr2")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: ifield
-            character(kind=C_CHAR), intent(IN) :: name(*)
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             type(C_PTR) SHT_rv
         end function c_return_struct_ptr2
 
-        function c_return_struct_ptr2_bufferify(ifield, name, Lname) &
+        function c_return_struct_ptr2_bufferify(ifield, outbuf, Noutbuf) &
                 result(SHT_rv) &
                 bind(C, name="CLI_return_struct_ptr2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: ifield
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT), value, intent(IN) :: Noutbuf
             type(C_PTR) SHT_rv
         end function c_return_struct_ptr2_bufferify
 
@@ -521,22 +525,22 @@ contains
         ! splicer end function.implied_bool_false
     end function implied_bool_false
 
-    ! void bindC2(const char * name +intent(in))
+    ! void bindC2(char * outbuf +intent(out))
     ! arg_to_buffer
     !>
     !! \brief Rename Fortran name for interface only function
     !!
     !! This creates a Fortran bufferify function and an interface.
     !<
-    subroutine Fortran_bindC2a(name)
+    subroutine Fortran_bindC2a(outbuf)
         use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: name
+        character(len=*), intent(OUT) :: outbuf
         ! splicer begin function.bind_c2
-        call c_bind_c2_bufferify(name, len_trim(name, kind=C_INT))
+        call c_bind_c2_bufferify(outbuf, len(outbuf, kind=C_INT))
         ! splicer end function.bind_c2
     end subroutine Fortran_bindC2a
 
-    ! int passAssumedTypeBuf(void * arg +assumedtype+intent(in), const char * name +intent(in))
+    ! int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out))
     ! arg_to_buffer
     !>
     !! \brief Test assumed-type
@@ -545,15 +549,15 @@ contains
     !! Should only be call with an C_INT argument, and will
     !! return the value passed in.
     !<
-    function pass_assumed_type_buf(arg, name) &
+    function pass_assumed_type_buf(arg, outbuf) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         type(*) :: arg
-        character(len=*), intent(IN) :: name
+        character(len=*), intent(OUT) :: outbuf
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_assumed_type_buf
-        SHT_rv = c_pass_assumed_type_buf_bufferify(arg, name, &
-            len_trim(name, kind=C_INT))
+        SHT_rv = c_pass_assumed_type_buf_bufferify(arg, outbuf, &
+            len(outbuf, kind=C_INT))
         ! splicer end function.pass_assumed_type_buf
     end function pass_assumed_type_buf
 
@@ -572,38 +576,39 @@ contains
         ! splicer end function.callback2
     end subroutine callback2
 
-    ! void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
+    ! void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
     ! arg_to_buffer
     !>
     !! \brief Test function pointer
     !!
     !! A bufferify function will be created.
     !<
-    subroutine callback3(type, in, incr)
+    subroutine callback3(type, in, incr, outbuf)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: type
         type(*) :: in
         external :: incr
+        character(len=*), intent(OUT) :: outbuf
         ! splicer begin function.callback3
         call c_callback3_bufferify(type, len_trim(type, kind=C_INT), in, &
-            incr)
+            incr, outbuf, len(outbuf, kind=C_INT))
         ! splicer end function.callback3
     end subroutine callback3
 
-    ! int passStruct2(Cstruct1 * s1 +intent(in), const char * name +intent(in))
+    ! int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))
     ! arg_to_buffer
     !>
     !! Pass name argument which will build a bufferify function.
     !<
-    function pass_struct2(s1, name) &
+    function pass_struct2(s1, outbuf) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         type(cstruct1), intent(IN) :: s1
-        character(len=*), intent(IN) :: name
+        character(len=*), intent(OUT) :: outbuf
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_struct2
-        SHT_rv = c_pass_struct2_bufferify(s1, name, &
-            len_trim(name, kind=C_INT))
+        SHT_rv = c_pass_struct2_bufferify(s1, outbuf, &
+            len(outbuf, kind=C_INT))
         ! splicer end function.pass_struct2
     end function pass_struct2
 
@@ -625,23 +630,23 @@ contains
         ! splicer end function.return_struct_ptr1
     end function return_struct_ptr1
 
-    ! Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, const char * name +intent(in))
+    ! Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out))
     ! arg_to_buffer
     !>
     !! \brief Return a pointer to a struct
     !!
     !! Generates a bufferify C wrapper function.
     !<
-    function return_struct_ptr2(ifield, name) &
+    function return_struct_ptr2(ifield, outbuf) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         integer(C_INT), value, intent(IN) :: ifield
-        character(len=*), intent(IN) :: name
+        character(len=*), intent(OUT) :: outbuf
         type(cstruct1), pointer :: SHT_rv
         type(C_PTR) :: SHT_ptr
         ! splicer begin function.return_struct_ptr2
-        SHT_ptr = c_return_struct_ptr2_bufferify(ifield, name, &
-            len_trim(name, kind=C_INT))
+        SHT_ptr = c_return_struct_ptr2_bufferify(ifield, outbuf, &
+            len(outbuf, kind=C_INT))
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2

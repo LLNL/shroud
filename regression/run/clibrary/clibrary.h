@@ -20,6 +20,9 @@
 
 #include <stdbool.h>
 
+/* Size of buffer passed from Fortran */
+#define LENOUTBUF 40
+
 enum EnumTypeID {
     ENUM0,
     ENUM1,
@@ -52,20 +55,20 @@ bool ImpliedBoolTrue(bool flag);
 bool ImpliedBoolFalse(bool flag);
 
 void bindC1(void);
-void bindC2(const char * name);
+void bindC2(char * outbuf);
 
 void passVoidStarStar(void *in, void **out);
 
 int passAssumedType(void *arg);
-int passAssumedTypeBuf(void *arg, const char *name);
+int passAssumedTypeBuf(void *arg, char *outbuf);
 
 void callback2(int type, void * in, void (*incr)(int *));
-void callback3(const char *type, void * in, void (*incr)(int *));
+void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
 
 int passStruct1(Cstruct1 *s1);
-int passStruct2(Cstruct1 *s1, const char *name);
+int passStruct2(Cstruct1 *s1, char *outbuf);
 Cstruct1 *returnStructPtr1(int ifield);
-Cstruct1 *returnStructPtr2(int ifield, const char *name);
+Cstruct1 *returnStructPtr2(int ifield, char *outbuf);
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);
