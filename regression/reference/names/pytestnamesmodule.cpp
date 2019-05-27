@@ -506,7 +506,7 @@ inittestnames(void)
     PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
 
 
-    // enumeration Color
+    // enum Color
     PyModule_AddIntConstant(m, "RED", RED);
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);

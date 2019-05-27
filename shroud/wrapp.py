@@ -218,7 +218,8 @@ class Wrapp(util.WrapperMixin):
             # library enumerations
             # m is module pointer from module_middle
             output.append("")
-            append_format(output, "// enumeration {enum_name}", node.fmtdict)
+            append_format(output, "// enum {namespace_scope}{enum_name}",
+                          node.fmtdict)
             for member in ast.members:
                 fmt_id = fmtmembers[member.name]
                 append_format(

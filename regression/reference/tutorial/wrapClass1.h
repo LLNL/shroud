@@ -32,12 +32,12 @@
 extern "C" {
 #endif
 
-//  DIRECTION
-enum TUT_class1_DIRECTION {
-    UP = 2,
-    DOWN,
-    LEFT = 100,
-    RIGHT
+//  tutorial::Class1::DIRECTION
+enum TUT_tutorial_Class1_DIRECTION {
+    TUT_tutorial_Class1_DIRECTION_UP = 2,
+    TUT_tutorial_Class1_DIRECTION_DOWN,
+    TUT_tutorial_Class1_DIRECTION_LEFT = 100,
+    TUT_tutorial_Class1_DIRECTION_RIGHT
 };
 
 // splicer begin class.Class1.C_declarations

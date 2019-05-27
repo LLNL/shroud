@@ -322,11 +322,12 @@ dictionary.
 
 C_enum_template
     Name of enumeration in C wrapper.
-    ``{C_prefix}{class_prefix}{enum_name}``
+    ``{C_prefix}{flat_name}``
+    *flat_name* is taken from the typedef for the enumeration.
 
 C_enum_member_template
     Name of enumeration member in C wrapper.
-    ``{enum_member_name}``
+    ``{C_prefix}{scope_name}{enum_member_name}``
 
 C_header_filename_class_template
     ``wrap{cxx_class}.{C_header_filename_suffix}``
@@ -754,6 +755,9 @@ YAML_type_filename
 Enumeration
 ^^^^^^^^^^^
 
+cxx_value
+    Value of enum from YAML file.
+
 enum_lower
 
 enum_name
@@ -766,12 +770,24 @@ enum_member_name
 
 enum_member_upper
 
-cxx_value
-    Value of enum from YAML file.
-
 evalue
     Evalued value of enumeration.
     If the enum do not have an explict value, it is the previous value plus one.
+
+flat_name
+    Scoped name of enumeration mapped to a legal C identifier.
+    Scope operator `::` replaced with `_`.
+    Used with *C_enum_template*.
+
+C_scope_name
+    Set to *flat_name* with a trailing undersore.
+    Except for non-scoped enumerations in which case it is blank.
+    Used with *C_enum_member_template*.
+    Does not include the enum name in member names for non-scoped enumerations.
+
+F_scope_name
+   Value of *C_scope_name* converted to lower case.
+   Used with *F_enum_member_template*.
 
 Class
 ^^^^^
