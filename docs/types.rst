@@ -426,43 +426,39 @@ The type map:
                     - arg
                     - len_trim
                     cxx_local_var: pointer
-                    c_header: <stdlib.h> <string.h>
-                    cxx_header: <stdlib.h> <cstring>
+                    c_helper: ShroudStrAlloc ShroudStrFree
                     pre_call:
-                    -  char * {cxx_var} = (char *) malloc({c_var_trim} + 1);
-                    -  {stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});
-                    -  {cxx_var}[{c_var_trim}] = '\0'
-                    post_call=[
-                    -  free({cxx_var});
+                    - char * {cxx_var} = ShroudStrAlloc(\t
+                        {c_var},\t {c_var_trim},\t {c_var_trim});
+                    post_call:
+                    -  ShroudStrFree({cxx_var});
                 intent_out_buf:
                     buf_args:
                     - arg
                     - len
                     cxx_local_var: pointer
-                    c_header: <stdlib.h> <string.h>
-                    cxx_header: <cstdlib> <cstring>
-                    c_helper: ShroudStrCopy
+                    c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
                     pre_call:
-                    -  char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);
+                    - char * {cxx_var} = ShroudStrAlloc(\t
+                          {c_var},\t {c_var_len},\t 0);
                     post_call:
-                    -  ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t {stdlib}strlen({cxx_var}));
-                    -  free({cxx_var});
+                    - ShroudStrCopy({c_var}, {c_var_len},
+                        \t {cxx_var},\t {stdlib}strlen({cxx_var}));
+                    - ShroudStrFree({cxx_var});
                 intent_inout_buf:
                     buf_args:
                     - arg
                     - len_trim
                     - len
                     cxx_local_var: pointer
-                    c_helper: ShroudStrCopy
-                    c_header: <stdlib.h> <string.h>
-                    cxx_header: <stdlib.h> <cstring>
+                    c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
                     pre_call:
-                    -  char * {cxx_var} = (char *) malloc({c_var_len} + 1);
-                    -  {stdlib}memcpy({cxx_var}, {c_var}, {c_var_trim});
-                    -  {cxx_var}[{c_var_trim}] = '\0';
+                    - char * {cxx_var} = ShroudStrAlloc(\t
+                        {c_var},\t {c_var_len},\t {c_var_trim});
                     post_call:
-                    -  ShroudStrCopy({c_var}, {c_var_len}, \t {cxx_var},\t {stdlib}strlen({cxx_var}));
-                    -  free({cxx_var});
+                    - ShroudStrCopy({c_var}, {c_var_len},
+                        \t {cxx_var},\t {stdlib}strlen({cxx_var}));
+                    - ShroudStrFree({cxx_var});
                 result_buf:
                     buf_args:
                     - arg
@@ -553,14 +549,12 @@ And generates:
     void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
                                      const char * src, int Lsrc)
     {
-        char * SH_dest = (char *) std::malloc(Ndest + 1);
-        char * SH_src = (char *) malloc(Lsrc + 1);
-        std::memcpy(SH_src, src, Lsrc);
-        SH_src[Lsrc] = '\0';
+        char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
+        char * SH_src = ShroudStrAlloc(src, Lsrc, Lsrc);
         passCharPtr(SH_dest, SH_src);
         ShroudStrCopy(dest, Ndest, SH_dest, std::strlen(SH_dest));
-        free(SH_dest);
-        free(SH_src);
+        ShroudStrFree(SH_dest);
+        ShroudStrFree(SH_src);
         return;
     }
 
