@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   to be used as the dummy argument since the interface is not preserved.
 - Added charlen attribute to use with 'char *arg+intent(out)' argument.
   Used to tell the Python wrapper the length of the char argument.
+- Parse `enum class` and `enum struct`.
 
 ### Fixed
 - C++ function arguments which pass a class by value.
@@ -26,6 +27,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   like there is with a Class since it is already compatible with Fortran.
 - The Python wrapper for function which return bool and have other intent(out)
   arguments where not compiling.
+- Changed enum option templates to include namespace as well as class name.
+  Non-scoped enums only use *C_prefix* on enum member names.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

@@ -987,21 +987,21 @@ within an ``extern "C"`` block:
 
 .. code-block:: c++
 
-    //  Color
+    //  tutorial::Color
     enum TUT_Color {
-        RED,
-        BLUE,
-        WHITE
+        TUT_tutorial_Color_RED,
+        TUT_tutorial_Color_BLUE,
+        TUT_tutorial_Color_WHITE
     };
 
 Fortran creates integer parameters for each value:
 
 .. code-block:: fortran
 
-    !  Color
-    integer(C_INT), parameter :: color_red = 0
-    integer(C_INT), parameter :: color_blue = 1
-    integer(C_INT), parameter :: color_white = 2
+    !  enum tutorial::Color
+    integer(C_INT), parameter :: tutorial_color_red = 0
+    integer(C_INT), parameter :: tutorial_color_blue = 1
+    integer(C_INT), parameter :: tutorial_color_white = 2
 
 
 .. note:: Fortran's ``ENUM, BIND(C)`` provides a way of matching 

@@ -529,7 +529,7 @@ class Wrapc(util.WrapperMixin):
 
     def wrap_enum(self, cls, node):
         """Wrap an enumeration.
-        This largly echo the C++ code
+        This largely echoes the C++ code.
         For classes, it adds prefixes.
 
         Args:
@@ -545,7 +545,7 @@ class Wrapc(util.WrapperMixin):
         fmtmembers = node._fmtmembers
 
         output.append("")
-        append_format(output, "//  {enum_name}", fmt_enum)
+        append_format(output, "//  {namespace_scope}{enum_name}", fmt_enum)
         append_format(output, "enum {C_enum} {{+", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]

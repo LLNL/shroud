@@ -735,24 +735,24 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "BLUE",
-                        "F_enum_member": "color_blue",
+                        "C_enum_member": "TES_BLUE",
+                        "F_enum_member": "blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
                         "evalue": 1
                     },
                     "RED": {
-                        "C_enum_member": "RED",
-                        "F_enum_member": "color_red",
+                        "C_enum_member": "TES_RED",
+                        "F_enum_member": "red",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
                         "evalue": 0
                     },
                     "WHITE": {
-                        "C_enum_member": "WHITE",
-                        "F_enum_member": "color_white",
+                        "C_enum_member": "TES_WHITE",
+                        "F_enum_member": "white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -776,9 +776,12 @@
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
                     "C_enum": "TES_Color",
+                    "C_scope_name": "",
+                    "F_scope_name": "",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR"
+                    "enum_upper": "COLOR",
+                    "flat_name": "Color"
                 },
                 "linenumber": 43,
                 "name": "Color",
@@ -2088,8 +2091,8 @@
         ],
         "language": "c++",
         "options": {
-            "C_enum_member_template": "{enum_member_name}",
-            "C_enum_template": "{C_prefix}{class_prefix}{enum_name}",
+            "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
+            "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_helper_template": "types{library}.{C_header_filename_suffix}",
@@ -2109,7 +2112,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{class_prefix}{enum_lower}_{enum_member_lower}",
+            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
             "F_force_wrapper": true,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",

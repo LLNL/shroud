@@ -33,11 +33,11 @@
 extern "C" {
 #endif
 
-//  Color
-enum TUT_Color {
-    RED,
-    BLUE,
-    WHITE
+//  tutorial::Color
+enum TUT_tutorial_Color {
+    TUT_tutorial_Color_RED,
+    TUT_tutorial_Color_BLUE,
+    TUT_tutorial_Color_WHITE
 };
 
 

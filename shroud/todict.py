@@ -111,7 +111,11 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_Enum(self, node):
-        d = dict(name=node.name, members=self.visit(node.members))
+        if node.scope:
+            d = dict(name=node.name, scope=node.scope, 
+                     members=self.visit(node.members))
+        else:
+            d = dict(name=node.name, members=self.visit(node.members))
         return d
 
     def visit_Struct(self, node):
@@ -401,9 +405,14 @@ class PrintNode(visitor.Visitor):
             return "{} = {}".format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        return "enum {} {{ {} }};".format(
-            node.name, self.comma_list(node.members)
-        )
+        if node.scope:
+            return "enum {} {} {{ {} }};".format(
+                node.name, node.scope, self.comma_list(node.members)
+            )
+        else:
+            return "enum {} {{ {} }};".format(
+                node.name, self.comma_list(node.members)
+            )
 
     def visit_Struct(self, node):
         return "struct {} {{ {} }};".format(

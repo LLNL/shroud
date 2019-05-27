@@ -29,10 +29,10 @@ module top_module
     ! splicer begin module_top
     ! splicer end module_top
 
-    !  Color
-    integer(C_INT), parameter :: color_red = 0
-    integer(C_INT), parameter :: color_blue = 1
-    integer(C_INT), parameter :: color_white = 2
+    !  enum Color
+    integer(C_INT), parameter :: red = 0
+    integer(C_INT), parameter :: blue = 1
+    integer(C_INT), parameter :: white = 2
 
     interface
 

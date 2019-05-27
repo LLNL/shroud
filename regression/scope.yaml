@@ -1,0 +1,83 @@
+# test names in scopes
+# Must flatten the scopes for C and Fortran
+
+copyright:
+- '#######################################################################'
+- 'Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.'
+-
+- 'Produced at the Lawrence Livermore National Laboratory'
+-
+- 'LLNL-CODE-738041.'
+-
+- 'All rights reserved.'
+-
+- 'This file is part of Shroud.'
+-
+- 'For details about use and distribution, please read LICENSE.'
+-
+- '#######################################################################'
+
+library: scope
+
+options:
+  debug: True
+#  wrap_python: True
+
+declarations:
+
+########################################
+# global enum
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };
+
+########################################
+# Same enum in two namespaces
+- decl: namespace ns1Enum
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 20,
+          BLUE,
+          WHITE
+        };
+- decl: namespace ns2Enum
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 30,
+          BLUE,
+          WHITE
+        };
+
+########################################
+# Same enum in two classes
+- decl: class cls1Enum
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 40,
+          BLUE,
+          WHITE
+        };
+- decl: class cls2Enum
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 50,
+          BLUE,
+          WHITE
+        };
+
+########################################
+# scoped enum
+- decl: |
+      enum class ColorEnum {
+        RED = 60,
+        BLUE,
+        WHITE,
+      };
+

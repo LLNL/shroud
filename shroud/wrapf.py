@@ -329,7 +329,7 @@ class Wrapf(util.WrapperMixin):
         fmtmembers = node._fmtmembers
 
         output.append("")
-        append_format(output, "!  {enum_name}", fmt_enum)
+        append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
         for member in ast.members:
             fmt_id = fmtmembers[member.name]
             fmt_id.F_enum_member = wformat(
