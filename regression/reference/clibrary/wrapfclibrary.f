@@ -105,15 +105,12 @@ module clibrary_mod
             type(C_PTR) SHT_rv
         end function c_function4a
 
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
-                SHF_rv, NSHF_rv) &
+        subroutine c_function4a_bufferify(arg1, arg2, SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: Larg2
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
@@ -271,14 +268,13 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
         end subroutine c_callback3
 
-        subroutine c_callback3_bufferify(type, Ltype, in, incr, outbuf, &
+        subroutine c_callback3_bufferify(type, in, incr, outbuf, &
                 Noutbuf) &
                 bind(C, name="CLI_callback3_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: callback3_incr
             implicit none
             character(kind=C_CHAR), intent(IN) :: type(*)
-            integer(C_INT), value, intent(IN) :: Ltype
             type(*) :: in
             procedure(callback3_incr) :: incr
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
@@ -404,14 +400,13 @@ contains
     ! arg_to_buffer
     function function4a(arg1, arg2) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
         character(len=30) :: SHT_rv
         ! splicer begin function.function4a
-        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
-            len(SHT_rv, kind=C_INT))
+        call c_function4a_bufferify(trim(arg1)//C_NULL_CHAR, &
+            trim(arg2)//C_NULL_CHAR, SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.function4a
     end function function4a
 
@@ -460,7 +455,7 @@ contains
     !<
     function implied_len(text) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_BOOL, C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: text
         integer(C_INT) :: ltext
         logical(C_BOOL) :: flag
@@ -468,7 +463,7 @@ contains
         ltext = len(text,kind=C_INT)
         flag = .FALSE._C_BOOL
         ! splicer begin function.implied_len
-        SHT_rv = c_implied_len(text, ltext, flag)
+        SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR, ltext, flag)
         ! splicer end function.implied_len
     end function implied_len
 
@@ -481,7 +476,7 @@ contains
     !<
     function implied_len_trim(text) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_BOOL, C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: text
         integer(C_INT) :: ltext
         logical(C_BOOL) :: flag
@@ -489,7 +484,8 @@ contains
         ltext = len_trim(text,kind=C_INT)
         flag = .TRUE._C_BOOL
         ! splicer begin function.implied_len_trim
-        SHT_rv = c_implied_len_trim(text, ltext, flag)
+        SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR, ltext, &
+            flag)
         ! splicer end function.implied_len_trim
     end function implied_len_trim
 
@@ -584,14 +580,14 @@ contains
     !! A bufferify function will be created.
     !<
     subroutine callback3(type, in, incr, outbuf)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: type
         type(*) :: in
         external :: incr
         character(len=*), intent(OUT) :: outbuf
         ! splicer begin function.callback3
-        call c_callback3_bufferify(type, len_trim(type, kind=C_INT), in, &
-            incr, outbuf, len(outbuf, kind=C_INT))
+        call c_callback3_bufferify(trim(type)//C_NULL_CHAR, in, incr, &
+            outbuf, len(outbuf, kind=C_INT))
         ! splicer end function.callback3
     end subroutine callback3
 

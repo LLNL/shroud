@@ -298,11 +298,10 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        if False:
-            if intent == "in" and is_ptr and arg_typemap.name == "char":
-                # const char *arg
-                # char *arg+intent(in)
-                arg.ftrim_char_in = True
+        if intent == "in" and is_ptr and arg_typemap.name == "char":
+            # const char *arg
+            # char *arg+intent(in)
+            arg.ftrim_char_in = True
 
         if node:
             if arg.init is not None:

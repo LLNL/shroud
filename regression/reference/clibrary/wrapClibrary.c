@@ -58,16 +58,12 @@ static void ShroudStrFree(char *src)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-void CLI_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
+// void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+void CLI_function4a_bufferify(const char * arg1, const char * arg2,
+    char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.function4a_bufferify
-    char * SH_arg1 = ShroudStrAlloc(arg1, Larg1, Larg1);
-    char * SH_arg2 = ShroudStrAlloc(arg2, Larg2, Larg2);
-    char * SHC_rv = Function4a(SH_arg1, SH_arg2);
-    ShroudStrFree(SH_arg1);
-    ShroudStrFree(SH_arg2);
+    char * SHC_rv = Function4a(arg1, arg2);
     ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, -1);
     return;
 // splicer end function.function4a_bufferify
@@ -152,20 +148,18 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 // splicer end function.pass_assumed_type_buf_bufferify
 }
 
-// void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+// void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Test function pointer
  *
  * A bufferify function will be created.
  */
-void CLI_callback3_bufferify(const char * type, int Ltype, void * in,
+void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf)
 {
 // splicer begin function.callback3_bufferify
-    char * SH_type = ShroudStrAlloc(type, Ltype, Ltype);
     char * SH_outbuf = ShroudStrAlloc(outbuf, Noutbuf, 0);
-    callback3(SH_type, in, incr, SH_outbuf);
-    ShroudStrFree(SH_type);
+    callback3(type, in, incr, SH_outbuf);
     ShroudStrCopy(outbuf, Noutbuf, SH_outbuf, -1);
     ShroudStrFree(SH_outbuf);
     return;

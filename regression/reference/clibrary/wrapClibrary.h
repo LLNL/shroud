@@ -29,8 +29,8 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void CLI_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
+void CLI_function4a_bufferify(const char * arg1, const char * arg2,
+    char * SHF_rv, int NSHF_rv);
 
 void CLI_return_one_name_bufferify(char * name1, int Nname1);
 
@@ -42,7 +42,7 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf);
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
     int Noutbuf);
 
-void CLI_callback3_bufferify(const char * type, int Ltype, void * in,
+void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf);
 
 int CLI_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,

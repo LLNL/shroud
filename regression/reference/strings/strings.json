@@ -430,6 +430,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -457,9 +458,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_pass_char_ptr_bufferify",
                     "F_C_name": "c_pass_char_ptr",
-                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t src,\t len_trim(src, kind=C_INT)",
+                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
                     "F_arguments": "dest,\t src",
-                    "F_call_code": "call c_pass_char_ptr_bufferify(dest,\t len(dest, kind=C_INT),\t src,\t len_trim(src, kind=C_INT))",
+                    "F_call_code": "call c_pass_char_ptr_bufferify(dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR)",
                     "F_name_function": "pass_char_ptr",
                     "F_name_generic": "pass_char_ptr",
                     "F_name_impl": "pass_char_ptr",
@@ -502,12 +503,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "src",
-                            "c_var_trim": "Lsrc",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SH_src))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(src))",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_src",
+                            "cxx_var": "src",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -546,7 +546,6 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Lsrc",
                                 "value": false
                             },
                             "const": true,
@@ -558,10 +557,10 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -571,19 +570,19 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))",
+                "declgen": "void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))",
                 "doxygen": {
                     "__line__": 41,
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtr(\tSH_dest,\t SH_src);",
-                    "C_call_list": "SH_dest,\t SH_src",
+                    "C_call_code": "passCharPtr(\tSH_dest,\t src);",
+                    "C_call_list": "SH_dest,\t src",
                     "C_name": "STR_pass_char_ptr_bufferify",
-                    "C_post_call": "ShroudStrCopy(dest, Ndest,\t SH_dest,\t -1);\nShroudStrFree(SH_dest);\nShroudStrFree(SH_src);",
-                    "C_pre_call": "char * SH_dest = ShroudStrAlloc(\tdest,\t Ndest,\t 0);\nchar * SH_src = ShroudStrAlloc(\tsrc,\t Lsrc,\t Lsrc);",
-                    "C_prototype": "char * dest,\t int Ndest,\t const char * src,\t int Lsrc",
+                    "C_post_call": "ShroudStrCopy(dest, Ndest,\t SH_dest,\t -1);\nShroudStrFree(SH_dest);",
+                    "C_pre_call": "char * SH_dest = ShroudStrAlloc(\tdest,\t Ndest,\t 0);",
+                    "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_pass_char_ptr_bufferify",
@@ -4601,6 +4600,10 @@
                             "cxx_var": "name",
                             "idtor": "0"
                         },
+                        "fmtf": {
+                            "c_var": "name",
+                            "f_var": "name"
+                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "char * name",
@@ -4637,6 +4640,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -4658,11 +4662,11 @@
                     "C_prototype": "char * name",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_call": "c_explicit1_buffer",
+                    "F_C_call": "c_explicit1",
                     "F_C_name": "c_explicit1",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
+                    "F_arg_c_call": "trim(name)//C_NULL_CHAR",
                     "F_arguments": "name",
-                    "F_call_code": "call c_explicit1_buffer(name,\t len_trim(name, kind=C_INT))",
+                    "F_call_code": "call c_explicit1(trim(name)//C_NULL_CHAR)",
                     "F_name_function": "explicit1",
                     "F_name_generic": "explicit1",
                     "F_name_impl": "explicit1",
@@ -4675,88 +4679,6 @@
                 },
                 "linenumber": 217,
                 "options": {}
-            },
-            {
-                "_fmtargs": {
-                    "name": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "name",
-                            "c_var_trim": "AAlen",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_name)",
-                            "cxx_member": "->",
-                            "cxx_type": "char",
-                            "cxx_var": "SH_name",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "name",
-                            "f_var": "name"
-                        }
-                    }
-                },
-                "_generated": "arg_to_buffer",
-                "ast": {
-                    "declarator": {
-                        "name": "explicit1",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "len_trim": "AAlen",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "stmts_suffix": "_buf",
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
-                "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
-                "fmtdict": {
-                    "C_bufferify_suffix": "_BUFFER",
-                    "C_call_code": "explicit1(\tSH_name);",
-                    "C_call_list": "SH_name",
-                    "C_name": "STR_explicit1_BUFFER",
-                    "C_post_call": "ShroudStrFree(SH_name);",
-                    "C_pre_call": "char * SH_name = ShroudStrAlloc(\tname,\t AAlen,\t AAlen);",
-                    "C_prototype": "char * name,\t int AAlen",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_name": "c_explicit1_buffer",
-                    "__line__": 218,
-                    "c_const": "",
-                    "function_name": "explicit1",
-                    "function_suffix": "_BUFFER",
-                    "underscore_name": "explicit1"
-                },
-                "linenumber": 217,
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                }
             },
             {
                 "_fmtargs": {
@@ -5248,6 +5170,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -5275,9 +5198,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_cpass_char_ptr_bufferify",
                     "F_C_name": "c_cpass_char_ptr",
-                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t src,\t len_trim(src, kind=C_INT)",
+                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
                     "F_arguments": "dest,\t src",
-                    "F_call_code": "call c_cpass_char_ptr_bufferify(dest,\t len(dest, kind=C_INT),\t src,\t len_trim(src, kind=C_INT))",
+                    "F_call_code": "call c_cpass_char_ptr_bufferify(dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR)",
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
                     "F_name_impl": "cpass_char_ptr",
@@ -5321,12 +5244,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "src",
-                            "c_var_trim": "Lsrc",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(SH_src))",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<char *>\t(src))",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_src",
+                            "cxx_var": "src",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -5365,7 +5287,6 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Lsrc",
                                 "value": false
                             },
                             "const": true,
@@ -5377,10 +5298,10 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         }
                     ],
@@ -5390,19 +5311,19 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))",
+                "declgen": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))",
                 "doxygen": {
                     "__line__": 258,
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "CpassCharPtr(\tSH_dest,\t SH_src);",
-                    "C_call_list": "SH_dest,\t SH_src",
+                    "C_call_code": "CpassCharPtr(\tSH_dest,\t src);",
+                    "C_call_list": "SH_dest,\t src",
                     "C_name": "STR_cpass_char_ptr_bufferify",
-                    "C_post_call": "ShroudStrCopy(dest, Ndest,\t SH_dest,\t -1);\nShroudStrFree(SH_dest);\nShroudStrFree(SH_src);",
-                    "C_pre_call": "char * SH_dest = ShroudStrAlloc(\tdest,\t Ndest,\t 0);\nchar * SH_src = ShroudStrAlloc(\tsrc,\t Lsrc,\t Lsrc);",
-                    "C_prototype": "char * dest,\t int Ndest,\t const char * src,\t int Lsrc",
+                    "C_post_call": "ShroudStrCopy(dest, Ndest,\t SH_dest,\t -1);\nShroudStrFree(SH_dest);",
+                    "C_pre_call": "char * SH_dest = ShroudStrAlloc(\tdest,\t Ndest,\t 0);",
+                    "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_cpass_char_ptr_bufferify",

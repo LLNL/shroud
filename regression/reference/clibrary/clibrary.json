@@ -978,6 +978,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -997,6 +998,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -1020,9 +1022,9 @@
                     "C_return_type": "char *",
                     "F_C_call": "c_function4a_bufferify",
                     "F_C_name": "c_function4a",
-                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "call c_function4a_bufferify(arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t SHT_rv,\t len(SHT_rv, kind=C_INT))",
+                    "F_call_code": "call c_function4a_bufferify(trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT))",
                     "F_name_function": "function4a",
                     "F_name_generic": "function4a",
                     "F_name_impl": "function4a",
@@ -1064,12 +1066,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg1",
-                            "c_var_trim": "Larg1",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_arg1",
+                            "cxx_cast_to_void_ptr": "arg1",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_arg1",
+                            "cxx_var": "arg1",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -1083,12 +1084,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg2",
-                            "c_var_trim": "Larg2",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_arg2",
+                            "cxx_cast_to_void_ptr": "arg2",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_arg2",
+                            "cxx_var": "arg2",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -1120,7 +1120,6 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Larg1",
                                 "value": false
                             },
                             "const": true,
@@ -1132,16 +1131,15 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Larg2",
                                 "value": false
                             },
                             "const": true,
@@ -1153,10 +1151,10 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
@@ -1186,14 +1184,13 @@
                     "typemap_name": "void"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "void Function4a(const char * arg1 +intent(in)+len_trim(Larg1), const char * arg2 +intent(in)+len_trim(Larg2), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "fmtdict": {
-                    "C_call_code": "char * SHC_rv =\t Function4a(\tSH_arg1,\t SH_arg2);",
-                    "C_call_list": "SH_arg1,\t SH_arg2",
+                    "C_call_code": "char * SHC_rv =\t Function4a(\targ1,\t arg2);",
+                    "C_call_list": "arg1,\t arg2",
                     "C_name": "CLI_function4a_bufferify",
-                    "C_post_call": "ShroudStrFree(SH_arg1);\nShroudStrFree(SH_arg2);\nShroudStrCopy(SHF_rv, NSHF_rv,\t SHC_rv,\t -1);",
-                    "C_pre_call": "char * SH_arg1 = ShroudStrAlloc(\targ1,\t Larg1,\t Larg1);\nchar * SH_arg2 = ShroudStrAlloc(\targ2,\t Larg2,\t Larg2);",
-                    "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t char * SHF_rv,\t int NSHF_rv",
+                    "C_post_call": "ShroudStrCopy(SHF_rv, NSHF_rv,\t SHC_rv,\t -1);",
+                    "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_function4a_bufferify",
@@ -1813,6 +1810,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -1870,9 +1868,9 @@
                     "C_return_type": "int",
                     "F_C_call": "c_implied_len",
                     "F_C_name": "c_implied_len",
-                    "F_arg_c_call": "text,\t ltext,\t flag",
+                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t ltext,\t flag",
                     "F_arguments": "text",
-                    "F_call_code": "SHT_rv = c_implied_len(text,\t ltext,\t flag)",
+                    "F_call_code": "SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR,\t ltext,\t flag)",
                     "F_name_function": "implied_len",
                     "F_name_generic": "implied_len",
                     "F_name_impl": "implied_len",
@@ -2038,6 +2036,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -2095,9 +2094,9 @@
                     "C_return_type": "int",
                     "F_C_call": "c_implied_len_trim",
                     "F_C_name": "c_implied_len_trim",
-                    "F_arg_c_call": "text,\t ltext,\t flag",
+                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t ltext,\t flag",
                     "F_arguments": "text",
-                    "F_call_code": "SHT_rv = c_implied_len_trim(text,\t ltext,\t flag)",
+                    "F_call_code": "SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR,\t ltext,\t flag)",
                     "F_name_function": "implied_len_trim",
                     "F_name_generic": "implied_len_trim",
                     "F_name_impl": "implied_len_trim",
@@ -3313,6 +3312,7 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -3417,9 +3417,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_callback3_bufferify",
                     "F_C_name": "c_callback3",
-                    "F_arg_c_call": "type,\t len_trim(type, kind=C_INT),\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT)",
+                    "F_arg_c_call": "trim(type)//C_NULL_CHAR,\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "type,\t in,\t incr,\t outbuf",
-                    "F_call_code": "call c_callback3_bufferify(type,\t len_trim(type, kind=C_INT),\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT))",
+                    "F_call_code": "call c_callback3_bufferify(trim(type)//C_NULL_CHAR,\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT))",
                     "F_name_function": "callback3",
                     "F_name_generic": "callback3",
                     "F_name_impl": "callback3",
@@ -3498,12 +3498,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "type",
-                            "c_var_trim": "Ltype",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_type",
+                            "cxx_cast_to_void_ptr": "type",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_type",
+                            "cxx_var": "type",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -3522,7 +3521,6 @@
                         {
                             "attrs": {
                                 "intent": "in",
-                                "len_trim": "Ltype",
                                 "value": false
                             },
                             "const": true,
@@ -3534,10 +3532,10 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "_buf",
                             "typemap_name": "char"
                         },
                         {
@@ -3626,19 +3624,19 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
-                "declgen": "void callback3(const char * type +intent(in)+len_trim(Ltype), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
+                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
                 "doxygen": {
                     "__line__": 195,
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "callback3(\tSH_type,\t in,\t incr,\t SH_outbuf);",
-                    "C_call_list": "SH_type,\t in,\t incr,\t SH_outbuf",
+                    "C_call_code": "callback3(\ttype,\t in,\t incr,\t SH_outbuf);",
+                    "C_call_list": "type,\t in,\t incr,\t SH_outbuf",
                     "C_name": "CLI_callback3_bufferify",
-                    "C_post_call": "ShroudStrFree(SH_type);\nShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
-                    "C_pre_call": "char * SH_type = ShroudStrAlloc(\ttype,\t Ltype,\t Ltype);\nchar * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
-                    "C_prototype": "const char * type,\t int Ltype,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
+                    "C_post_call": "ShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
+                    "C_pre_call": "char * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
+                    "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_callback3_bufferify",

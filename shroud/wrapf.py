@@ -1334,8 +1334,8 @@ rv = .false.
                         "character(len=*), intent(IN) :: {}".format(f_arg.name)
                     )
                     arg_f_names.append(fmt_arg.f_var)
-                    arg_c_call.append("trim({})//C_CHAR_NULL".format(f_arg.name))
-                    self.set_f_module(modules, "iso_c_binding", "C_CHAR_NULL")
+                    arg_c_call.append("trim({})//C_NULL_CHAR".format(f_arg.name))
+                    self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                     need_wrapper = True
                     continue
                 elif "assumedtype" in c_attrs:

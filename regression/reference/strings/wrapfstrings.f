@@ -74,14 +74,13 @@ module strings_mod
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_pass_char_ptr
 
-        subroutine c_pass_char_ptr_bufferify(dest, Ndest, src, Lsrc) &
+        subroutine c_pass_char_ptr_bufferify(dest, Ndest, src) &
                 bind(C, name="STR_pass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
             integer(C_INT), value, intent(IN) :: Ndest
             character(kind=C_CHAR), intent(IN) :: src(*)
-            integer(C_INT), value, intent(IN) :: Lsrc
         end subroutine c_pass_char_ptr_bufferify
 
         subroutine c_pass_char_ptr_in_out(s) &
@@ -390,14 +389,6 @@ module strings_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_explicit1
 
-        subroutine c_explicit1_buffer(name, AAlen) &
-                bind(C, name="STR_explicit1_BUFFER")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            integer(C_INT), value, intent(IN) :: AAlen
-        end subroutine c_explicit1_buffer
-
         subroutine c_explicit2(name) &
                 bind(C, name="STR_explicit2")
             use iso_c_binding, only : C_CHAR
@@ -444,14 +435,13 @@ module strings_mod
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_cpass_char_ptr
 
-        subroutine c_cpass_char_ptr_bufferify(dest, Ndest, src, Lsrc) &
+        subroutine c_cpass_char_ptr_bufferify(dest, Ndest, src) &
                 bind(C, name="STR_cpass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: dest(*)
             integer(C_INT), value, intent(IN) :: Ndest
             character(kind=C_CHAR), intent(IN) :: src(*)
-            integer(C_INT), value, intent(IN) :: Lsrc
         end subroutine c_cpass_char_ptr_bufferify
 
         ! splicer begin additional_interfaces
@@ -497,12 +487,12 @@ contains
     !! This avoid a copy-in on dest.
     !<
     subroutine pass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
         ! splicer begin function.pass_char_ptr
-        call c_pass_char_ptr_bufferify(dest, len(dest, kind=C_INT), src, &
-            len_trim(src, kind=C_INT))
+        call c_pass_char_ptr_bufferify(dest, len(dest, kind=C_INT), &
+            trim(src)//C_NULL_CHAR)
         ! splicer end function.pass_char_ptr
     end subroutine pass_char_ptr
 
@@ -846,12 +836,11 @@ contains
     end subroutine accept_string_pointer
 
     ! void explicit1(char * name +intent(in)+len_trim(AAlen))
-    ! arg_to_buffer
     subroutine explicit1(name)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
         ! splicer begin function.explicit1
-        call c_explicit1_buffer(name, len_trim(name, kind=C_INT))
+        call c_explicit1(trim(name)//C_NULL_CHAR)
         ! splicer end function.explicit1
     end subroutine explicit1
 
@@ -890,12 +879,12 @@ contains
     !! extern "C"
     !<
     subroutine cpass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
         ! splicer begin function.cpass_char_ptr
         call c_cpass_char_ptr_bufferify(dest, len(dest, kind=C_INT), &
-            src, len_trim(src, kind=C_INT))
+            trim(src)//C_NULL_CHAR)
         ! splicer end function.cpass_char_ptr
     end subroutine cpass_char_ptr
 
