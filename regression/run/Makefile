@@ -63,6 +63,7 @@ test-fortran : \
   test-fortran-types \
   test-fortran-pointers \
   test-fortran-vectors \
+  test-fortran-preprocess \
   test-fortran-strings \
   test-fortran-clibrary \
   test-fortran-ownership \

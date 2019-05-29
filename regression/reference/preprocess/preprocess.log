@@ -1,0 +1,13 @@
+Read yaml preprocess.yaml
+Close preprocess_types.yaml
+class User1
+C method void method1()
+C method void method2()
+Close wrapUser1.h
+Close wrapUser1.cpp
+Close wrappreprocess.cpp
+Close typespreprocess.h
+class User1
+C-interface, Fortran method void method1()
+C-interface, Fortran method void method2()
+Close wrapfUser1.f
