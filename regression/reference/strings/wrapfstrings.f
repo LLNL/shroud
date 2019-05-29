@@ -478,13 +478,14 @@ contains
         ! splicer end function.return_char
     end function return_char
 
-    ! void passCharPtr(char * dest +intent(out), const char * src +intent(in))
+    ! void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
     ! arg_to_buffer
     !>
     !! \brief strcpy like behavior
     !!
     !! dest is marked intent(OUT) to override the intent(INOUT) default
     !! This avoid a copy-in on dest.
+    !! In Python, src must not be over 40 characters, defined by charlen.
     !<
     subroutine pass_char_ptr(dest, src)
         use iso_c_binding, only : C_INT, C_NULL_CHAR

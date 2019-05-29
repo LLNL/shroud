@@ -46,6 +46,10 @@ class Tutorial(unittest.TestCase):
     def testpassChar(self):
         strings.passChar('w')
 
+    def testpassCharPtr(self):
+        out = strings.passCharPtr("elephant")
+        self.assertEqual("elephant", out)
+
     def testreturnChar(self):
         self.assertEqual('w', strings.returnChar())
 

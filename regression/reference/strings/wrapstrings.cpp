@@ -127,12 +127,13 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.return_char_bufferify
 }
 
-// void passCharPtr(char * dest +intent(out), const char * src +intent(in))
+// void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
  * dest is marked intent(OUT) to override the intent(INOUT) default
  * This avoid a copy-in on dest.
+ * In Python, src must not be over 40 characters, defined by charlen.
  */
 void STR_pass_char_ptr(char * dest, const char * src)
 {
@@ -142,12 +143,13 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // splicer end function.pass_char_ptr
 }
 
-// void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))
+// void passCharPtr(char * dest +charlen(40)+intent(out)+len(Ndest), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
  * dest is marked intent(OUT) to override the intent(INOUT) default
  * This avoid a copy-in on dest.
+ * In Python, src must not be over 40 characters, defined by charlen.
  */
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src)

@@ -37,16 +37,17 @@ declarations:
 ########################################
 # char * argument
 
-- decl: void passCharPtr(char * dest+intent(out), const char *src)
+- decl: void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)
+  # XXX - maybe charlen(strlen(src)+1)
   doxygen:
     brief: strcpy like behavior
     description: |
       dest is marked intent(OUT) to override the intent(INOUT) default
       This avoid a copy-in on dest.
+      In Python, src must not be over 40 characters, defined by charlen.
   options:
     # This copies into 'dest' which must be allocated first
     # and does not work with Python
-    wrap_python: False
     wrap_Lua: False
 
 - decl: void passCharPtrInOut(char * s+intent(inout))
