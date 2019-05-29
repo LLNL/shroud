@@ -37,7 +37,9 @@ extern "C" {
 
 void PRE_user1_method1(PRE_user1 * self);
 
+#if defined(USE_TWO)
 void PRE_user1_method2(PRE_user1 * self);
+#endif
 
 #ifdef __cplusplus
 }

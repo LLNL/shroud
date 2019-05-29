@@ -14,6 +14,8 @@
 #
 # shroud/regression/run/defaults.mk
 
+# The fortran flags turn on preprocessing.
+
 #compiler = gcc
 #compiler = intel
 ifeq ($(compiler),)
@@ -35,7 +37,7 @@ CLIBS = -lstdc++
 CXX = g++
 CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
 FC = gfortran
-FFLAGS = -g -Wall -ffree-form -fbounds-check
+FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check
 #FFLAGS += -std=f2003
 FLIBS = -lstdc++
 SHARED = -fPIC
@@ -49,7 +51,7 @@ CLIBS = -lstdc++
 CXX = icpc
 CXXFLAGS = -g -std=c++11
 FC = ifort
-FFLAGS = -g -free -check all
+FFLAGS = -g -fpp -free -check all
 FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared

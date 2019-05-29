@@ -41,7 +41,9 @@ module user1_mod
         ! splicer end class.User1.component_part
     contains
         procedure :: method1 => user1_method1
+#if defined(USE_TWO)
         procedure :: method2 => user1_method2
+#endif
         procedure :: get_instance => user1_get_instance
         procedure :: set_instance => user1_set_instance
         procedure :: associated => user1_associated
@@ -66,12 +68,14 @@ module user1_mod
             type(SHROUD_user1_capsule), intent(IN) :: self
         end subroutine c_user1_method1
 
+#if defined(USE_TWO)
         subroutine c_user1_method2(self) &
                 bind(C, name="PRE_user1_method2")
             import :: SHROUD_user1_capsule
             implicit none
             type(SHROUD_user1_capsule), intent(IN) :: self
         end subroutine c_user1_method2
+#endif
 
         ! splicer begin class.User1.additional_interfaces
         ! splicer end class.User1.additional_interfaces
@@ -87,6 +91,7 @@ contains
         ! splicer end class.User1.method.method1
     end subroutine user1_method1
 
+#if defined(USE_TWO)
     ! void method2()
     subroutine user1_method2(obj)
         class(user1) :: obj
@@ -94,6 +99,7 @@ contains
         call c_user1_method2(obj%cxxmem)
         ! splicer end class.User1.method.method2
     end subroutine user1_method2
+#endif
 
     ! Return pointer to C++ memory.
     function user1_get_instance(obj) result (cxxptr)

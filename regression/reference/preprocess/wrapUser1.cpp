@@ -36,6 +36,7 @@ void PRE_user1_method1(PRE_user1 * self)
 }
 
 // void method2()
+#if defined(USE_TWO)
 void PRE_user1_method2(PRE_user1 * self)
 {
 // splicer begin class.User1.method.method2
@@ -44,5 +45,6 @@ void PRE_user1_method2(PRE_user1 * self)
     return;
 // splicer end class.User1.method.method2
 }
+#endif  // if defined(USE_TWO)
 
 }  // extern "C"

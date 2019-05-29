@@ -39,7 +39,6 @@ preprocess : $(OBJS)
 clean :
 	rm -f $(OBJS) *.mod preprocess
 
-preprocess.o : preprocess.hpp
 wrappreprocess.o : preprocess.hpp
-wrapUser1.o : wrapUser1.h preprocess.hpp
-main.o : wrapfUser1.o
+wrapUser1.o : wrapUser1.h preprocess.hpp wrapUser1.h
+main.o : wrapfUser1.o wrappreprocess.o

@@ -1500,6 +1500,8 @@ rv = .false.
                 ).append(node)
         if cls:
             # Add procedure to derived type
+            if node.cpp_if:
+                self.type_bound_part.append("#" + node.cpp_if)
             if is_static:
                 self.type_bound_part.append(
                     "procedure, nopass :: %s => %s"
@@ -1510,6 +1512,8 @@ rv = .false.
                     "procedure :: %s => %s"
                     % (fmt_func.F_name_function, fmt_func.F_name_impl)
                 )
+            if node.cpp_if:
+                self.type_bound_part.append("#endif")
 
         # body of function
         # XXX sname = fmt_func.F_name_impl

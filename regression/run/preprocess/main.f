@@ -40,7 +40,9 @@ contains
     type(user1) var
 
     call var%method1()
+#if defined(USE_TWO)
     call var%method2()
+#endif
   end subroutine test_User1
 
 end program tester
