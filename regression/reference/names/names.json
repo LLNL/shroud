@@ -2461,14 +2461,9 @@
                         "arg",
                         "len"
                     ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
+                    "c_helper": "ShroudStrBlankFill",
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t 0);"
+                        "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ]
                 },
                 "result_buf": {

@@ -1314,10 +1314,10 @@
                             "c_var": "name1",
                             "c_var_len": "Nname1",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_name1",
+                            "cxx_cast_to_void_ptr": "name1",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_name1",
+                            "cxx_var": "name1",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -1368,11 +1368,10 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "returnOneName(\tSH_name1);",
-                    "C_call_list": "SH_name1",
+                    "C_call_code": "returnOneName(\tname1);",
+                    "C_call_list": "name1",
                     "C_name": "CLI_return_one_name_bufferify",
-                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t -1);\nShroudStrFree(SH_name1);",
-                    "C_pre_call": "char * SH_name1 = ShroudStrAlloc(\tname1,\t Nname1,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(name1, Nname1);",
                     "C_prototype": "char * name1,\t int Nname1",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -1546,10 +1545,10 @@
                             "c_var": "name1",
                             "c_var_len": "Nname1",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_name1",
+                            "cxx_cast_to_void_ptr": "name1",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_name1",
+                            "cxx_var": "name1",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -1565,10 +1564,10 @@
                             "c_var": "name2",
                             "c_var_len": "Nname2",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_name2",
+                            "cxx_cast_to_void_ptr": "name2",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_name2",
+                            "cxx_var": "name2",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -1640,11 +1639,10 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "returnTwoNames(\tSH_name1,\t SH_name2);",
-                    "C_call_list": "SH_name1,\t SH_name2",
+                    "C_call_code": "returnTwoNames(\tname1,\t name2);",
+                    "C_call_list": "name1,\t name2",
                     "C_name": "CLI_return_two_names_bufferify",
-                    "C_post_call": "ShroudStrCopy(name1, Nname1,\t SH_name1,\t -1);\nShroudStrFree(SH_name1);\nShroudStrCopy(name2, Nname2,\t SH_name2,\t -1);\nShroudStrFree(SH_name2);",
-                    "C_pre_call": "char * SH_name1 = ShroudStrAlloc(\tname1,\t Nname1,\t 0);\nchar * SH_name2 = ShroudStrAlloc(\tname2,\t Nname2,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(name1, Nname1);\nShroudStrBlankFill(name2, Nname2);",
                     "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2493,10 +2491,10 @@
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_outbuf",
+                            "cxx_cast_to_void_ptr": "outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_outbuf",
+                            "cxx_var": "outbuf",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -2546,11 +2544,10 @@
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "bindC2(\tSH_outbuf);",
-                    "C_call_list": "SH_outbuf",
+                    "C_call_code": "bindC2(\toutbuf);",
+                    "C_call_list": "outbuf",
                     "C_name": "CLI_bind_c2_bufferify",
-                    "C_post_call": "ShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
-                    "C_pre_call": "char * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "char * outbuf,\t int Noutbuf",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -2952,10 +2949,10 @@
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_outbuf",
+                            "cxx_cast_to_void_ptr": "outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_outbuf",
+                            "cxx_var": "outbuf",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -3034,11 +3031,10 @@
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passAssumedTypeBuf(\targ,\t SH_outbuf);",
-                    "C_call_list": "arg,\t SH_outbuf",
+                    "C_call_code": "int SHC_rv =\t passAssumedTypeBuf(\targ,\t outbuf);",
+                    "C_call_list": "arg,\t outbuf",
                     "C_name": "CLI_pass_assumed_type_buf_bufferify",
-                    "C_post_call": "ShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
-                    "C_pre_call": "char * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "void * arg,\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -3481,10 +3477,10 @@
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_outbuf",
+                            "cxx_cast_to_void_ptr": "outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_outbuf",
+                            "cxx_var": "outbuf",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -3631,11 +3627,10 @@
                     "description": "A bufferify function will be created.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "callback3(\ttype,\t in,\t incr,\t SH_outbuf);",
-                    "C_call_list": "type,\t in,\t incr,\t SH_outbuf",
+                    "C_call_code": "callback3(\ttype,\t in,\t incr,\t outbuf);",
+                    "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "CLI_callback3_bufferify",
-                    "C_post_call": "ShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
-                    "C_pre_call": "char * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -3886,10 +3881,10 @@
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_outbuf",
+                            "cxx_cast_to_void_ptr": "outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_outbuf",
+                            "cxx_var": "outbuf",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -3984,11 +3979,10 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t SH_outbuf);",
-                    "C_call_list": "s1,\t SH_outbuf",
+                    "C_call_code": "int SHC_rv =\t passStruct2(\ts1,\t outbuf);",
+                    "C_call_list": "s1,\t outbuf",
                     "C_name": "CLI_pass_struct2_bufferify",
-                    "C_post_call": "ShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
-                    "C_pre_call": "char * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
@@ -4266,10 +4260,10 @@
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "SH_outbuf",
+                            "cxx_cast_to_void_ptr": "outbuf",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_outbuf",
+                            "cxx_var": "outbuf",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -4348,11 +4342,10 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\tifield,\t SH_outbuf);",
-                    "C_call_list": "ifield,\t SH_outbuf",
+                    "C_call_code": "Cstruct1 * SHC_rv =\t returnStructPtr2(\tifield,\t outbuf);",
+                    "C_call_list": "ifield,\t outbuf",
                     "C_name": "CLI_return_struct_ptr2_bufferify",
-                    "C_post_call": "ShroudStrCopy(outbuf, Noutbuf,\t SH_outbuf,\t -1);\nShroudStrFree(SH_outbuf);",
-                    "C_pre_call": "char * SH_outbuf = ShroudStrAlloc(\toutbuf,\t Noutbuf,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(outbuf, Noutbuf);",
                     "C_prototype": "int ifield,\t char * outbuf,\t int Noutbuf",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "Cstruct1 *",
@@ -4663,14 +4656,9 @@
                         "arg",
                         "len"
                     ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
+                    "c_helper": "ShroudStrBlankFill",
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t 0);"
+                        "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ]
                 },
                 "result_buf": {

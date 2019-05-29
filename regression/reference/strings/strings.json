@@ -486,10 +486,10 @@
                             "c_var": "dest",
                             "c_var_len": "Ndest",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_dest)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(dest)",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_dest",
+                            "cxx_var": "dest",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -577,11 +577,10 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "passCharPtr(\tSH_dest,\t src);",
-                    "C_call_list": "SH_dest,\t src",
+                    "C_call_code": "passCharPtr(\tdest,\t src);",
+                    "C_call_list": "dest,\t src",
                     "C_name": "STR_pass_char_ptr_bufferify",
-                    "C_post_call": "ShroudStrCopy(dest, Ndest,\t SH_dest,\t -1);\nShroudStrFree(SH_dest);",
-                    "C_pre_call": "char * SH_dest = ShroudStrAlloc(\tdest,\t Ndest,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(dest, Ndest);",
                     "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -4767,10 +4766,10 @@
                             "c_var": "name",
                             "c_var_len": "AAtrim",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_name)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(name)",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_name",
+                            "cxx_var": "name",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -4815,11 +4814,10 @@
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
                 "fmtdict": {
-                    "C_call_code": "explicit2(\tSH_name);",
-                    "C_call_list": "SH_name",
+                    "C_call_code": "explicit2(\tname);",
+                    "C_call_list": "name",
                     "C_name": "STR_explicit2_bufferify",
-                    "C_post_call": "ShroudStrCopy(name, AAtrim,\t SH_name,\t -1);\nShroudStrFree(SH_name);",
-                    "C_pre_call": "char * SH_name = ShroudStrAlloc(\tname,\t AAtrim,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(name, AAtrim);",
                     "C_prototype": "char * name,\t int AAtrim",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -5227,10 +5225,10 @@
                             "c_var": "dest",
                             "c_var_len": "Ndest",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SH_dest)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(dest)",
                             "cxx_member": "->",
                             "cxx_type": "char",
-                            "cxx_var": "SH_dest",
+                            "cxx_var": "dest",
                             "idtor": "0"
                         },
                         "fmtf": {
@@ -5318,11 +5316,10 @@
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "CpassCharPtr(\tSH_dest,\t src);",
-                    "C_call_list": "SH_dest,\t src",
+                    "C_call_code": "CpassCharPtr(\tdest,\t src);",
+                    "C_call_list": "dest,\t src",
                     "C_name": "STR_cpass_char_ptr_bufferify",
-                    "C_post_call": "ShroudStrCopy(dest, Ndest,\t SH_dest,\t -1);\nShroudStrFree(SH_dest);",
-                    "C_pre_call": "char * SH_dest = ShroudStrAlloc(\tdest,\t Ndest,\t 0);",
+                    "C_post_call": "ShroudStrBlankFill(dest, Ndest);",
                     "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_code": "return;",
                     "C_return_type": "void",
@@ -5546,14 +5543,9 @@
                         "arg",
                         "len"
                     ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
+                    "c_helper": "ShroudStrBlankFill",
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t 0);"
+                        "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ]
                 },
                 "result_buf": {

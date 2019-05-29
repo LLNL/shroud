@@ -42,6 +42,14 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 }
 
 // helper function
+// blank fill dest starting at trailing NULL.
+static void ShroudStrBlankFill(char *dest, int ndest)
+{
+   int nm = std::strlen(dest);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+}
+
+// helper function
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
@@ -145,10 +153,8 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src)
 {
 // splicer begin function.pass_char_ptr_bufferify
-    char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
-    passCharPtr(SH_dest, src);
-    ShroudStrCopy(dest, Ndest, SH_dest, -1);
-    ShroudStrFree(SH_dest);
+    passCharPtr(dest, src);
+    ShroudStrBlankFill(dest, Ndest);
     return;
 // splicer end function.pass_char_ptr_bufferify
 }
@@ -857,10 +863,8 @@ void STR_explicit2(char * name)
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
 // splicer begin function.explicit2_bufferify
-    char * SH_name = ShroudStrAlloc(name, AAtrim, 0);
-    explicit2(SH_name);
-    ShroudStrCopy(name, AAtrim, SH_name, -1);
-    ShroudStrFree(SH_name);
+    explicit2(name);
+    ShroudStrBlankFill(name, AAtrim);
     return;
 // splicer end function.explicit2_bufferify
 }
@@ -892,10 +896,8 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src)
 {
 // splicer begin function.cpass_char_ptr_bufferify
-    char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
-    CpassCharPtr(SH_dest, src);
-    ShroudStrCopy(dest, Ndest, SH_dest, -1);
-    ShroudStrFree(SH_dest);
+    CpassCharPtr(dest, src);
+    ShroudStrBlankFill(dest, Ndest);
     return;
 // splicer end function.cpass_char_ptr_bufferify
 }
