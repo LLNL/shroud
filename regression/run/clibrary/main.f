@@ -139,6 +139,9 @@ contains
 
     call assert_true(function4a("dog", "cat") == "dogcat")
 
+    call accept_name("spot")
+!    call assert_true(last_function_called() == "acceptName")
+
     !--------------------------------------------------
 
     name1 = " "
@@ -152,6 +155,9 @@ contains
     call assert_equals("frank", name2)
 
     !--------------------------------------------------
+
+    call implied_text_len(name1)
+    call assert_equals("ImpliedTextLen", name1)
 
     rv_int = implied_len("bird")
     call assert_true(rv_int == 4)

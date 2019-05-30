@@ -246,6 +246,32 @@ PY_Function4a(
 // splicer end function.function4a
 }
 
+static char PY_acceptName__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptName(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void acceptName(const char * name +intent(in))
+// splicer begin function.accept_name
+    const char * name;
+    char *SHT_kwlist[] = {
+        "name",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:acceptName",
+        SHT_kwlist, &name))
+        return NULL;
+
+    acceptName(name);
+    Py_RETURN_NONE;
+// splicer end function.accept_name
+}
+
 static char PY_returnOneName__doc__[] =
 "documentation"
 ;
@@ -307,6 +333,35 @@ PY_returnTwoNames(
 
     return SHTPy_rv;
 // splicer end function.return_two_names
+}
+
+static char PY_ImpliedTextLen__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Fill text, at most ltext characters.
+ *
+ */
+static PyObject *
+PY_ImpliedTextLen(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)
+// splicer begin function.implied_text_len
+    // pre_call
+    char text[MAXNAME];  // intent(out)
+    int ltext = strlen(text);
+
+    ImpliedTextLen(text, ltext);
+
+    // post_call
+    PyObject * SHPy_text = PyString_FromString(text);
+
+    return (PyObject *) SHPy_text;
+// splicer end function.implied_text_len
 }
 
 static char PY_ImpliedLen__doc__[] =
@@ -456,10 +511,14 @@ static PyMethodDef PY_methods[] = {
     PY_Function3b__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
+{"acceptName", (PyCFunction)PY_acceptName, METH_VARARGS|METH_KEYWORDS,
+    PY_acceptName__doc__},
 {"returnOneName", (PyCFunction)PY_returnOneName, METH_NOARGS,
     PY_returnOneName__doc__},
 {"returnTwoNames", (PyCFunction)PY_returnTwoNames, METH_NOARGS,
     PY_returnTwoNames__doc__},
+{"ImpliedTextLen", (PyCFunction)PY_ImpliedTextLen, METH_NOARGS,
+    PY_ImpliedTextLen__doc__},
 {"ImpliedLen", (PyCFunction)PY_ImpliedLen, METH_VARARGS|METH_KEYWORDS,
     PY_ImpliedLen__doc__},
 {"ImpliedLenTrim", (PyCFunction)PY_ImpliedLenTrim,

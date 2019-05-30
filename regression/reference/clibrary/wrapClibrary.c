@@ -94,6 +94,20 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // splicer end function.return_two_names_bufferify
 }
 
+// void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len(Ntext), int ltext +implied(len(text))+intent(in)+value)
+/**
+ * \brief Fill text, at most ltext characters.
+ *
+ */
+void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
+{
+// splicer begin function.implied_text_len_bufferify
+    ImpliedTextLen(text, ltext);
+    ShroudStrBlankFill(text, Ntext);
+    return;
+// splicer end function.implied_text_len_bufferify
+}
+
 // void bindC2(char * outbuf +intent(out)+len(Noutbuf))
 /**
  * \brief Rename Fortran name for interface only function

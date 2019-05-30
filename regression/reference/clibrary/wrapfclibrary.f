@@ -115,6 +115,13 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
+        subroutine c_accept_name(name) &
+                bind(C, name="acceptName")
+            use iso_c_binding, only : C_CHAR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+        end subroutine c_accept_name
+
         subroutine c_return_one_name(name1) &
                 bind(C, name="returnOneName")
             use iso_c_binding, only : C_CHAR
@@ -148,6 +155,23 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: name2(*)
             integer(C_INT), value, intent(IN) :: Nname2
         end subroutine c_return_two_names_bufferify
+
+        subroutine c_implied_text_len(text, ltext) &
+                bind(C, name="ImpliedTextLen")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: text(*)
+            integer(C_INT), value, intent(IN) :: ltext
+        end subroutine c_implied_text_len
+
+        subroutine c_implied_text_len_bufferify(text, Ntext, ltext) &
+                bind(C, name="CLI_implied_text_len_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: text(*)
+            integer(C_INT), value, intent(IN) :: Ntext
+            integer(C_INT), value, intent(IN) :: ltext
+        end subroutine c_implied_text_len_bufferify
 
         function c_implied_len(text, ltext, flag) &
                 result(SHT_rv) &
@@ -410,6 +434,15 @@ contains
         ! splicer end function.function4a
     end function function4a
 
+    ! void acceptName(const char * name +intent(in))
+    subroutine accept_name(name)
+        use iso_c_binding, only : C_NULL_CHAR
+        character(len=*), intent(IN) :: name
+        ! splicer begin function.accept_name
+        call c_accept_name(trim(name)//C_NULL_CHAR)
+        ! splicer end function.accept_name
+    end subroutine accept_name
+
     ! void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer
     !>
@@ -445,6 +478,23 @@ contains
             name2, len(name2, kind=C_INT))
         ! splicer end function.return_two_names
     end subroutine return_two_names
+
+    ! void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)
+    ! arg_to_buffer
+    !>
+    !! \brief Fill text, at most ltext characters.
+    !!
+    !<
+    subroutine implied_text_len(text)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: text
+        integer(C_INT) :: ltext
+        ltext = len(text,kind=C_INT)
+        ! splicer begin function.implied_text_len
+        call c_implied_text_len_bufferify(text, len(text, kind=C_INT), &
+            ltext)
+        ! splicer end function.implied_text_len
+    end subroutine implied_text_len
 
     ! int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
     !>

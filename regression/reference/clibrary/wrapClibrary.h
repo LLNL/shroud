@@ -37,6 +37,8 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1);
 void CLI_return_two_names_bufferify(char * name1, int Nname1,
     char * name2, int Nname2);
 
+void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext);
+
 void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf);
 
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,

@@ -66,6 +66,8 @@ declarations:
     const char *arg1,
     const char *arg2 ) +len(30)
 
+- decl: void acceptName(const char *name)
+
 ######################################################################
 # charlen
 # returnOneName will use PyString_FromString.
@@ -89,6 +91,11 @@ declarations:
       The function will copy into the user provided buffer.
 
 ######################################################################
+- decl: void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME),
+                            int ltext+implied(len(text)))
+  doxygen:
+    brief: Fill text, at most ltext characters.
+
 - decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
                        bool flag+implied(false))
   options:
@@ -374,7 +381,7 @@ declarations:
 ##-
 
  
-##-##################################################
+#-##################################################
 ##-
 ##-# Used with testing
 ##-- decl: const std::string& LastFunctionCalled()

@@ -69,6 +69,11 @@ char *Function4a(const char *arg1, const char *arg2)
     return out;
 }
 
+void acceptName(const char *name)
+{
+    strncpy(last_function_called, "acceptName", MAXLAST);
+}
+
 //----------------------------------------------------------------------
 // Test charlen attribute.
 // Each argument is assumed to be MAXNAME long.
@@ -85,6 +90,12 @@ void returnTwoNames(char *name1, char *name2)
 }
 
 //----------------------------------------------------------------------
+
+void ImpliedTextLen(char *text, int ltext)
+{
+    strncpy(text, "ImpliedTextLen", ltext);
+    strncpy(last_function_called, "ImpliedTextLen", MAXLAST);
+}
 
 int ImpliedLen(const char *text, int ltext, bool flag)
 {
