@@ -2483,7 +2483,16 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
             fmt = self.func._fmtargs[argname]["fmtpy"]
-            # XXX - need code for len_trim
+
+            # find argname in function parameters
+            arg = self.func.ast.find_arg_by_name(argname)
+            if arg.attrs["intent"] == "out":
+                #   char *text+intent(out)+charlen(XXX), 
+                #   int ltext+implied(len(text)))
+                # len(text) in this case is the value of "charlen"
+                # since no variable is actually passed in as an argument.
+                return arg.attrs["charlen"]
+            # XXX - need code for len_trim?
             return wformat("strlen({cxx_var})", fmt)
         elif node.name == "len_trim":
             # len_trim(arg)

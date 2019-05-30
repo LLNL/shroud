@@ -66,8 +66,9 @@ class Tutorial(unittest.TestCase):
         self.assertEqual("tom", name1)
         self.assertEqual("frank", name2)
 
-    def xxxtestImpliedTextLen(self):
-        clibrary.ImpliedTextLen("mouse")
+    def testImpliedTextLen(self):
+        text = clibrary.ImpliedTextLen()
+        self.assertEqual("ImpliedTextLen", text)
 
     def testImpliedLen(self):
         rv_int = clibrary.ImpliedLen("bird  ")

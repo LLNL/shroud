@@ -353,7 +353,7 @@ PY_ImpliedTextLen(
 // splicer begin function.implied_text_len
     // pre_call
     char text[MAXNAME];  // intent(out)
-    int ltext = strlen(text);
+    int ltext = MAXNAME;
 
     ImpliedTextLen(text, ltext);
 

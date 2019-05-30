@@ -1780,7 +1780,7 @@
                             "cxx_type": "int",
                             "cxx_var": "ltext",
                             "numpy_type": "NPY_INT",
-                            "pre_call_intent": "strlen(text)",
+                            "pre_call_intent": "MAXNAME",
                             "py_var": "SHPy_ltext"
                         }
                     },
