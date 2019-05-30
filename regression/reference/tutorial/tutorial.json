@@ -9836,7 +9836,7 @@
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
                         "{c_var_context}->cxx.idtor = {idtor};",
                         "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});",
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
                         "{c_var_context}->size = 1;"
                     ]
                 }
