@@ -30,6 +30,12 @@ struct s_PRE_user1 {
 };
 typedef struct s_PRE_user1 PRE_user1;
 
+struct s_PRE_user2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_PRE_user2 PRE_user2;
+
 struct s_PRE_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

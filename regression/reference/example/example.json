@@ -4936,176 +4936,6 @@
                 },
                 "scope": "example::nested::ExClass2::",
                 "typemap_name": "example::nested::ExClass2"
-            },
-            {
-                "cxx_header": "",
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapExClass3.h",
-                    "C_impl_filename": "wrapExClass3.cpp",
-                    "C_type_name": "AA_exclass3",
-                    "F_capsule_data_type": "SHROUD_exclass3_capsule",
-                    "F_derived_name": "exclass3",
-                    "F_impl_filename": "wrapfExClass3.f",
-                    "F_module_name": "exclass3_mod",
-                    "LUA_class_reg": "l_ExClass3_Reg",
-                    "LUA_ctor_name": "ExClass3",
-                    "LUA_metadata": "ExClass3.metatable",
-                    "LUA_this_call": "SH_this->self->",
-                    "LUA_userdata_member": "self",
-                    "LUA_userdata_type": "l_ExClass3_Type",
-                    "LUA_userdata_var": "SH_this",
-                    "class_lower": "exclass3",
-                    "class_prefix": "exclass3_",
-                    "class_scope": "ExClass3::",
-                    "class_upper": "EXCLASS3",
-                    "cxx_class": "ExClass3",
-                    "cxx_type": "ExClass3"
-                },
-                "functions": [
-                    {
-                        "_overloaded": true,
-                        "ast": {
-                            "declarator": {
-                                "name": "exfunc",
-                                "pointer": []
-                            },
-                            "params": [],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void exfunc()",
-                        "declgen": "void exfunc()",
-                        "fmtdict": {
-                            "C_call_code": "SH_this->exfunc(\t);",
-                            "C_call_list": "",
-                            "C_name": "AA_exclass3_exfunc_0",
-                            "C_pre_call": "example::nested::ExClass3 *SH_this =\t static_cast<example::nested::ExClass3 *>(self->addr);",
-                            "C_prototype": "AA_exclass3 * self",
-                            "C_return_code": "return;",
-                            "C_return_type": "void",
-                            "F_C_call": "c_exclass3_exfunc_0",
-                            "F_C_name": "c_exclass3_exfunc_0",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
-                            "F_call_code": "call c_exclass3_exfunc_0(obj%cxxmem)",
-                            "F_name_function": "exfunc_0",
-                            "F_name_generic": "exfunc",
-                            "F_name_impl": "exclass3_exfunc_0",
-                            "F_subprogram": "subroutine",
-                            "LUA_name": "exfunc",
-                            "LUA_name_impl": "l_exclass3_exfunc",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "exfunc",
-                            "function_suffix": "_0",
-                            "underscore_name": "exfunc"
-                        },
-                        "linenumber": 232,
-                        "options": {}
-                    },
-                    {
-                        "_fmtargs": {
-                            "flag": {
-                                "fmtc": {
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_var": "flag",
-                                    "cxx_addr": "&",
-                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)",
-                                    "cxx_member": ".",
-                                    "cxx_type": "int",
-                                    "cxx_var": "flag",
-                                    "idtor": "0"
-                                },
-                                "fmtf": {
-                                    "c_var": "flag",
-                                    "f_var": "flag"
-                                },
-                                "fmtl": {
-                                    "LUA_index": 1,
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_var": "lua_tointeger(L, 1)",
-                                    "c_var_len": "Lflag",
-                                    "cxx_member": ".",
-                                    "cxx_type": "int",
-                                    "cxx_var": "flag",
-                                    "lua_var": "SH_Lua_flag"
-                                }
-                            }
-                        },
-                        "_overloaded": true,
-                        "ast": {
-                            "declarator": {
-                                "name": "exfunc",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "flag",
-                                        "pointer": []
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void exfunc(int flag)",
-                        "declgen": "void exfunc(int flag +intent(in)+value)",
-                        "fmtdict": {
-                            "C_call_code": "SH_this->exfunc(\tflag);",
-                            "C_call_list": "flag",
-                            "C_name": "AA_exclass3_exfunc_1",
-                            "C_pre_call": "example::nested::ExClass3 *SH_this =\t static_cast<example::nested::ExClass3 *>(self->addr);",
-                            "C_prototype": "AA_exclass3 * self,\t int flag",
-                            "C_return_code": "return;",
-                            "C_return_type": "void",
-                            "F_C_call": "c_exclass3_exfunc_1",
-                            "F_C_name": "c_exclass3_exfunc_1",
-                            "F_arg_c_call": "obj%cxxmem,\t flag",
-                            "F_arguments": "obj,\t flag",
-                            "F_call_code": "call c_exclass3_exfunc_1(obj%cxxmem,\t flag)",
-                            "F_name_function": "exfunc_1",
-                            "F_name_generic": "exfunc",
-                            "F_name_impl": "exclass3_exfunc_1",
-                            "F_subprogram": "subroutine",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "exfunc",
-                            "function_suffix": "_1",
-                            "underscore_name": "exfunc"
-                        },
-                        "linenumber": 234,
-                        "options": {}
-                    }
-                ],
-                "linenumber": 226,
-                "name": "ExClass3",
-                "options": {
-                    "__line__": 227,
-                    "wrap_python": false
-                },
-                "scope": "example::nested::ExClass3::",
-                "typemap_name": "example::nested::ExClass3"
             }
         ],
         "copyright": [
@@ -5257,7 +5087,7 @@
                     "function_name": "local_function1",
                     "underscore_name": "local_function1"
                 },
-                "linenumber": 238,
+                "linenumber": 227,
                 "options": {}
             },
             {
@@ -5388,13 +5218,13 @@
                     "LUA_name": "isNameValid",
                     "LUA_name_impl": "l_is_name_valid",
                     "PY_name_impl": "PP_isNameValid",
-                    "__line__": 242,
+                    "__line__": 231,
                     "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "isNameValid",
                     "underscore_name": "is_name_valid"
                 },
-                "linenumber": 241,
+                "linenumber": 230,
                 "options": {}
             },
             {
@@ -5476,14 +5306,14 @@
                     "C_return_type": "bool",
                     "F_C_name": "c_is_name_valid_bufferify",
                     "F_code": "rv = name .ne. \" \"",
-                    "__line__": 242,
+                    "__line__": 231,
                     "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "isNameValid",
                     "function_suffix": "_bufferify",
                     "underscore_name": "is_name_valid"
                 },
-                "linenumber": 241,
+                "linenumber": 230,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -5561,7 +5391,7 @@
                     "function_name": "isInitialized",
                     "underscore_name": "is_initialized"
                 },
-                "linenumber": 248,
+                "linenumber": 237,
                 "options": {}
             },
             {
@@ -5789,7 +5619,7 @@
                     "function_name": "checkBool",
                     "underscore_name": "check_bool"
                 },
-                "linenumber": 251,
+                "linenumber": 240,
                 "options": {}
             },
             {
@@ -5888,13 +5718,13 @@
                     "LUA_name": "test_names",
                     "LUA_name_impl": "l_test_names",
                     "PY_name_impl": "PP_test_names",
-                    "__line__": 257,
+                    "__line__": 246,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 255,
+                "linenumber": 244,
                 "options": {}
             },
             {
@@ -5965,13 +5795,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_test_names_bufferify",
-                    "__line__": 257,
+                    "__line__": 246,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_bufferify",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 255,
+                "linenumber": 244,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -6126,13 +5956,13 @@
                     "F_name_impl": "test_names_flag",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PP_test_names_flag",
-                    "__line__": 260,
+                    "__line__": 249,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_flag",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 259,
+                "linenumber": 248,
                 "options": {}
             },
             {
@@ -6235,13 +6065,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_test_names_flag_bufferify",
-                    "__line__": 260,
+                    "__line__": 249,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_flag_bufferify",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 259,
+                "linenumber": 248,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -6286,7 +6116,7 @@
                     "function_suffix": "_0",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 263,
+                "linenumber": 252,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6367,7 +6197,7 @@
                     "function_suffix": "_1",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 263,
+                "linenumber": 252,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6377,8 +6207,8 @@
             },
             {
                 "_default_funcs": [
-                    70,
-                    71
+                    68,
+                    69
                 ],
                 "_fmtargs": {
                     "i": {
@@ -6542,7 +6372,7 @@
                     "function_suffix": "_2",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 263,
+                "linenumber": 252,
                 "options": {}
             },
             {
@@ -6615,7 +6445,7 @@
                     "function_name": "test_size_t",
                     "underscore_name": "test_size_t"
                 },
-                "linenumber": 278,
+                "linenumber": 267,
                 "options": {}
             },
             {
@@ -6716,13 +6546,13 @@
                     "LUA_name": "testmpi",
                     "LUA_name_impl": "l_testmpi",
                     "PY_name_impl": "PP_testmpi_mpi",
-                    "__line__": 283,
+                    "__line__": 272,
                     "c_const": "",
                     "function_name": "testmpi",
                     "function_suffix": "_mpi",
                     "underscore_name": "testmpi"
                 },
-                "linenumber": 282,
+                "linenumber": 271,
                 "options": {}
             },
             {
@@ -6757,13 +6587,13 @@
                     "F_name_impl": "testmpi_serial",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PP_testmpi_serial",
-                    "__line__": 287,
+                    "__line__": 276,
                     "c_const": "",
                     "function_name": "testmpi",
                     "function_suffix": "_serial",
                     "underscore_name": "testmpi"
                 },
-                "linenumber": 286,
+                "linenumber": 275,
                 "options": {}
             },
             {
@@ -6871,7 +6701,7 @@
                     "function_name": "testgroup1",
                     "underscore_name": "testgroup1"
                 },
-                "linenumber": 291,
+                "linenumber": 280,
                 "options": {}
             },
             {
@@ -6980,7 +6810,7 @@
                     "function_name": "testgroup2",
                     "underscore_name": "testgroup2"
                 },
-                "linenumber": 292,
+                "linenumber": 281,
                 "options": {}
             },
             {
@@ -7066,7 +6896,7 @@
                 "decl": "void FuncPtr1(void (*get)());",
                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 296,
+                    "__line__": 285,
                     "brief": "subroutine"
                 },
                 "fmtdict": {
@@ -7092,7 +6922,7 @@
                     "function_name": "FuncPtr1",
                     "underscore_name": "func_ptr1"
                 },
-                "linenumber": 295,
+                "linenumber": 284,
                 "options": {}
             },
             {
@@ -7182,7 +7012,7 @@
                 "decl": "void FuncPtr2(double * (*get)());",
                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))",
                 "doxygen": {
-                    "__line__": 299,
+                    "__line__": 288,
                     "brief": "return a pointer"
                 },
                 "fmtdict": {
@@ -7208,7 +7038,7 @@
                     "function_name": "FuncPtr2",
                     "underscore_name": "func_ptr2"
                 },
-                "linenumber": 298,
+                "linenumber": 287,
                 "options": {}
             },
             {
@@ -7317,7 +7147,7 @@
                 "decl": "void FuncPtr3(double (*get)(int i, int));",
                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 302,
+                    "__line__": 291,
                     "brief": "abstract argument"
                 },
                 "fmtdict": {
@@ -7343,10 +7173,10 @@
                     "function_name": "FuncPtr3",
                     "underscore_name": "func_ptr3"
                 },
-                "linenumber": 301,
+                "linenumber": 290,
                 "options": {
                     "F_force_wrapper": true,
-                    "__line__": 304
+                    "__line__": 293
                 }
             },
             {
@@ -7426,7 +7256,7 @@
                 "decl": "void FuncPtr4(double (*get)(double, int));",
                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 307,
+                    "__line__": 296,
                     "brief": "abstract argument"
                 },
                 "fmtdict": {
@@ -7449,12 +7279,12 @@
                     "function_name": "FuncPtr4",
                     "underscore_name": "func_ptr4"
                 },
-                "linenumber": 306,
+                "linenumber": 295,
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg",
                     "F_abstract_interface_subprogram_template": "custom_funptr",
                     "F_force_wrapper": true,
-                    "__line__": 309,
+                    "__line__": 298,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -7695,7 +7525,7 @@
                     "function_name": "FuncPtr5",
                     "underscore_name": "func_ptr5"
                 },
-                "linenumber": 315,
+                "linenumber": 304,
                 "options": {}
             },
             {
@@ -8368,10 +8198,10 @@
                     "function_name": "verylongfunctionname1",
                     "underscore_name": "verylongfunctionname1"
                 },
-                "linenumber": 326,
+                "linenumber": 315,
                 "options": {
                     "F_force_wrapper": true,
-                    "__line__": 336
+                    "__line__": 325
                 }
             },
             {
@@ -9017,12 +8847,12 @@
                     "function_name": "verylongfunctionname2",
                     "underscore_name": "verylongfunctionname2"
                 },
-                "linenumber": 340,
+                "linenumber": 329,
                 "options": {
                     "C_line_length": 0,
                     "F_force_wrapper": true,
                     "F_line_length": 0,
-                    "__line__": 350
+                    "__line__": 339
                 }
             },
             {
@@ -9235,7 +9065,7 @@
                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))",
                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 360,
+                    "__line__": 349,
                     "brief": "Test multidimensional arrays with allocatable"
                 },
                 "fmtdict": {
@@ -9261,10 +9091,10 @@
                     "function_name": "cos_doubles",
                     "underscore_name": "cos_doubles"
                 },
-                "linenumber": 356,
+                "linenumber": 345,
                 "options": {
                     "F_standard": 2008,
-                    "__line__": 362
+                    "__line__": 351
                 }
             }
         ],
@@ -9873,76 +9703,6 @@
                     "cxx_local_var": "pointer",
                     "post_parse": [
                         "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                },
-                "intent_out": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
-        },
-        "example::nested::ExClass3": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
-            "LUA_type": "LUA_TUSERDATA",
-            "base": "shadow",
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                },
-                "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
-                    "post_call": [
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
-                        "{c_var}->idtor = {idtor};"
-                    ]
-                }
-            },
-            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass3 *>({c_var}{c_member}addr)",
-            "c_type": "AA_exclass3",
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "example::nested::ExClass3",
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_exclass3_capsule"
-                ]
-            },
-            "f_c_type": "type(SHROUD_exclass3_capsule)",
-            "f_capsule_data_type": "SHROUD_exclass3_capsule",
-            "f_derived_type": "exclass3",
-            "f_module": {
-                "exclass3_mod": [
-                    "exclass3"
-                ]
-            },
-            "f_module_name": "exclass3_mod",
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-                    ],
-                    "need_wrapper": true
-                }
-            },
-            "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(exclass3)",
-            "flat_name": "example_nested_ExClass3",
-            "forward": "example::nested::ExClass3",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}example::nested::ExClass3 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}example::nested::ExClass3 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_out": {

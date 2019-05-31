@@ -25,3 +25,13 @@ declarations:
       f_derived_type: user1
       f_capsule_data_type: SHROUD_user1_capsule
       f_to_c: "{f_var}%cxxmem"
+  - type: User2
+    fields:
+      base: shadow
+      cxx_header: User2.hpp
+      cxx_type: User2
+      c_type: PRE_user2
+      f_module_name: user2_mod
+      f_derived_type: user2
+      f_capsule_data_type: SHROUD_user2_capsule
+      f_to_c: "{f_var}%cxxmem"

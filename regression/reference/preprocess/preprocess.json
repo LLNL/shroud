@@ -109,6 +109,156 @@
                 "options": {},
                 "scope": "User1::",
                 "typemap_name": "User1"
+            },
+            {
+                "cxx_header": "User2.hpp",
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapUser2.h",
+                    "C_impl_filename": "wrapUser2.cpp",
+                    "C_type_name": "PRE_user2",
+                    "F_capsule_data_type": "SHROUD_user2_capsule",
+                    "F_derived_name": "user2",
+                    "F_impl_filename": "wrapfUser2.f",
+                    "F_module_name": "user2_mod",
+                    "class_lower": "user2",
+                    "class_prefix": "user2_",
+                    "class_scope": "User2::",
+                    "class_upper": "USER2",
+                    "cxx_class": "User2",
+                    "cxx_type": "User2"
+                },
+                "functions": [
+                    {
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "name": "exfunc",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void exfunc()",
+                        "declgen": "void exfunc()",
+                        "fmtdict": {
+                            "C_call_code": "SH_this->exfunc(\t);",
+                            "C_call_list": "",
+                            "C_name": "PRE_user2_exfunc_0",
+                            "C_pre_call": "User2 *SH_this =\t static_cast<User2 *>(self->addr);",
+                            "C_prototype": "PRE_user2 * self",
+                            "C_return_code": "return;",
+                            "C_return_type": "void",
+                            "F_C_call": "c_user2_exfunc_0",
+                            "F_C_name": "c_user2_exfunc_0",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_call_code": "call c_user2_exfunc_0(obj%cxxmem)",
+                            "F_name_function": "exfunc_0",
+                            "F_name_generic": "exfunc",
+                            "F_name_impl": "user2_exfunc_0",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "exfunc",
+                            "function_suffix": "_0",
+                            "underscore_name": "exfunc"
+                        },
+                        "linenumber": 42,
+                        "options": {}
+                    },
+                    {
+                        "_fmtargs": {
+                            "flag": {
+                                "fmtc": {
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "flag",
+                                    "cxx_addr": "&",
+                                    "cxx_cast_to_void_ptr": "static_cast<void *>(&flag)",
+                                    "cxx_member": ".",
+                                    "cxx_type": "int",
+                                    "cxx_var": "flag",
+                                    "idtor": "0"
+                                },
+                                "fmtf": {
+                                    "c_var": "flag",
+                                    "f_var": "flag"
+                                }
+                            }
+                        },
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "name": "exfunc",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "flag",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void exfunc(int flag)",
+                        "declgen": "void exfunc(int flag +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_code": "SH_this->exfunc(\tflag);",
+                            "C_call_list": "flag",
+                            "C_name": "PRE_user2_exfunc_1",
+                            "C_pre_call": "User2 *SH_this =\t static_cast<User2 *>(self->addr);",
+                            "C_prototype": "PRE_user2 * self,\t int flag",
+                            "C_return_code": "return;",
+                            "C_return_type": "void",
+                            "F_C_call": "c_user2_exfunc_1",
+                            "F_C_name": "c_user2_exfunc_1",
+                            "F_arg_c_call": "obj%cxxmem,\t flag",
+                            "F_arguments": "obj,\t flag",
+                            "F_call_code": "call c_user2_exfunc_1(obj%cxxmem,\t flag)",
+                            "F_name_function": "exfunc_1",
+                            "F_name_generic": "exfunc",
+                            "F_name_impl": "user2_exfunc_1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "exfunc",
+                            "function_suffix": "_1",
+                            "underscore_name": "exfunc"
+                        },
+                        "linenumber": 44,
+                        "options": {}
+                    }
+                ],
+                "linenumber": 35,
+                "name": "User2",
+                "options": {
+                    "__line__": 36,
+                    "wrap_python": false
+                },
+                "scope": "User2::",
+                "typemap_name": "User2"
             }
         ],
         "copyright": [
@@ -356,6 +506,77 @@
                     "cxx_local_var": "pointer",
                     "post_parse": [
                         "{c_const}User1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
+        },
+        "User2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}User2 *>({c_var}{c_member}addr)",
+            "c_type": "PRE_user2",
+            "cxx_header": "User2.hpp",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "User2",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_user2_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_user2_capsule)",
+            "f_capsule_data_type": "SHROUD_user2_capsule",
+            "f_derived_type": "user2",
+            "f_module": {
+                "user2_mod": [
+                    "user2"
+                ]
+            },
+            "f_module_name": "user2_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(user2)",
+            "flat_name": "User2",
+            "forward": "User2",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}User2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}User2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
