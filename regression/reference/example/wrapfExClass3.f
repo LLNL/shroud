@@ -39,8 +39,12 @@ module exclass3_mod
         ! splicer begin class.ExClass3.component_part
         ! splicer end class.ExClass3.component_part
     contains
+#ifdef USE_CLASS3_A
         procedure :: exfunc_0 => exclass3_exfunc_0
+#endif
+#ifndef USE_CLASS3_A
         procedure :: exfunc_1 => exclass3_exfunc_1
+#endif
         procedure :: yadda => exclass3_yadda
         procedure :: associated => exclass3_associated
 #ifdef USE_CLASS3_A
