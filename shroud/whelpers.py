@@ -453,6 +453,28 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
     ),
 
     ########################################
+    ShroudStrBlankFill=dict(
+        c_header="<string.h>",
+        c_source="""
+// helper function
+// blank fill dest starting at trailing NULL.
+static void ShroudStrBlankFill(char *dest, int ndest)
+{
+   int nm = strlen(dest);
+   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
+}""",
+        cxx_header="<cstring>",
+        cxx_source="""
+// helper function
+// blank fill dest starting at trailing NULL.
+static void ShroudStrBlankFill(char *dest, int ndest)
+{
+   int nm = std::strlen(dest);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+}""",
+    ),
+
+    ########################################
     # Used by 'const char *' arguments which need to be NULL terminated
     # in the C wrapper.
     ShroudStrAlloc=dict(

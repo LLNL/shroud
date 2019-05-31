@@ -205,7 +205,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "dimension": ":",
                                 "intent": "in",
                                 "size": "Sarg",
@@ -223,6 +222,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
+                            "stmts_suffix": "_buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -367,7 +367,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "context": "Darg",
                                 "dimension": ":",
                                 "intent": "out",
@@ -384,6 +383,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
+                            "stmts_suffix": "_buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -533,7 +533,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "context": "Darg",
                                 "deref": "allocatable",
                                 "dimension": ":",
@@ -551,6 +550,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
+                            "stmts_suffix": "_buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -701,7 +701,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "context": "Darg",
                                 "deref": "allocatable",
                                 "dimension": ":",
@@ -720,6 +719,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
+                            "stmts_suffix": "_buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -865,7 +865,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "context": "Darg",
                                 "dimension": ":",
                                 "intent": "inout",
@@ -883,6 +882,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
+                            "stmts_suffix": "_buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1043,7 +1043,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_generated_suffix": "_buf",
                                 "dimension": ":",
                                 "intent": "in",
                                 "len": "Narg",
@@ -1062,6 +1061,7 @@
                             "specifier": [
                                 "std::vector"
                             ],
+                            "stmts_suffix": "_buf",
                             "template_arguments": [
                                 {
                                     "specifier": [
@@ -1430,14 +1430,9 @@
                         "arg",
                         "len"
                     ],
-                    "c_helper": "ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    "cxx_local_var": "pointer",
+                    "c_helper": "ShroudStrBlankFill",
                     "post_call": [
-                        "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});"
-                    ],
-                    "pre_call": [
-                        "char * {cxx_var} = ShroudStrAlloc(\t{c_var},\t {c_var_len},\t 0);"
+                        "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ]
                 },
                 "result_buf": {
@@ -1531,7 +1526,7 @@
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
                         "{c_var_context}->cxx.idtor = {idtor};",
                         "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});",
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
                         "{c_var_context}->size = 1;"
                     ]
                 }

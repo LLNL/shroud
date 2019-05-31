@@ -79,6 +79,7 @@ program tester
   use clibrary_mod
   implicit none
   real(C_DOUBLE), parameter :: pi = 3.1415926_C_DOUBLE
+  integer, parameter :: lenoutbuf = 40
   logical ok
 
   logical rv_logical, wrk_logical
@@ -110,6 +111,7 @@ contains
   subroutine test_functions
     integer(C_INT), target :: int_var
     character(MAXNAME) name1, name2
+    character(lenoutbuf)  :: outbuf
     type(C_PTR) :: cptr1, cptr2
 
     call set_case_name("test_functions")
@@ -137,6 +139,9 @@ contains
 
     call assert_true(function4a("dog", "cat") == "dogcat")
 
+    call accept_name("spot")
+!    call assert_true(last_function_called() == "acceptName")
+
     !--------------------------------------------------
 
     name1 = " "
@@ -150,6 +155,9 @@ contains
     call assert_equals("frank", name2)
 
     !--------------------------------------------------
+
+    call implied_text_len(name1)
+    call assert_equals("ImpliedTextLen", name1)
 
     rv_int = implied_len("bird")
     call assert_true(rv_int == 4)
@@ -172,7 +180,7 @@ contains
 
     rv_int = pass_assumed_type(23_C_INT)
     call assert_equals(23, rv_int)
-    rv_int = pass_assumed_type_buf(33_C_INT, "mouse")
+    rv_int = pass_assumed_type_buf(33_C_INT, outbuf)
     call assert_equals(33, rv_int)
 
 !    call function4b("dog", "cat", rv_char)
@@ -214,6 +222,7 @@ contains
     use callback_mod
     integer(C_INT) arg_int
     real(C_DOUBLE) arg_dbl
+    character(lenoutbuf)  :: outbuf
     external incr2_int, incr2_double
     external incr3_int, incr3_double
 
@@ -237,11 +246,11 @@ contains
     ! callback3, accept any type of function.
     ! first argument, tells C how to cast pointer.
     arg_int = 10_C_INT
-    call callback3("int", arg_int, incr3_int)
+    call callback3("int", arg_int, incr3_int, outbuf)
     call assert_equals(30, arg_int, "incr3_int")
 
     arg_dbl = 3.4_C_DOUBLE
-    call callback3("double", arg_dbl, incr3_double)
+    call callback3("double", arg_dbl, incr3_double, outbuf)
     call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3_double")
 
     !----------
@@ -260,17 +269,18 @@ contains
     ! callback3, accept any type of function.
     ! first argument, tells C how to cast pointer.
     arg_int = 10_C_INT
-    call callback3("int", arg_int, incr3b_int)
+    call callback3("int", arg_int, incr3b_int, outbuf)
     call assert_equals(30, arg_int, "incr3b_int")
 
     arg_dbl = 3.4_C_DOUBLE
-    call callback3("double", arg_dbl, incr3b_double)
+    call callback3("double", arg_dbl, incr3b_double, outbuf)
     call assert_equals(23.9_C_DOUBLE, arg_dbl, "incr3b_double")
 
   end subroutine test_callback
 
   subroutine test_structs
 
+    character(lenoutbuf)  :: outbuf
     type(cstruct1) :: s1
     type(cstruct1), pointer :: s2
 
@@ -280,7 +290,7 @@ contains
     call assert_equals(12, pass_struct1(s1), "passStruct1")
 
     s1%ifield = 22
-    call assert_equals(22, pass_struct2(s1, "monkey"), "passStruct2")
+    call assert_equals(22, pass_struct2(s1, outbuf), "passStruct2")
 
     nullify(s2)
     s2 => return_struct_ptr1(33)
@@ -288,7 +298,7 @@ contains
     call assert_equals(33, s2%ifield, "returnStructPtr2")
 
     nullify(s2)
-    s2 => return_struct_ptr2(35, "ape")
+    s2 => return_struct_ptr2(35, outbuf)
     call assert_true(associated(s2), "returnStructPtr2")
     call assert_equals(35, s2%ifield, "returnStructPtr2")
 

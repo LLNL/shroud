@@ -900,6 +900,10 @@ class Declaration(Node):
         self.func_const = False
         self.typemap = None
 
+        self.return_pointer_as = None
+        self.stmts_suffix = ''  # Used to find statements in typemap
+        self.ftrim_char_in = False # Pass string as TRIM(arg)//C_NULL_CHAR
+
     def get_name(self, use_attr=True):
         """Get name from declarator
         use_attr - True, check attr for name

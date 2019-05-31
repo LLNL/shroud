@@ -69,6 +69,11 @@ char *Function4a(const char *arg1, const char *arg2)
     return out;
 }
 
+void acceptName(const char *name)
+{
+    strncpy(last_function_called, "acceptName", MAXLAST);
+}
+
 //----------------------------------------------------------------------
 // Test charlen attribute.
 // Each argument is assumed to be MAXNAME long.
@@ -85,6 +90,12 @@ void returnTwoNames(char *name1, char *name2)
 }
 
 //----------------------------------------------------------------------
+
+void ImpliedTextLen(char *text, int ltext)
+{
+    strncpy(text, "ImpliedTextLen", ltext);
+    strncpy(last_function_called, "ImpliedTextLen", MAXLAST);
+}
 
 int ImpliedLen(const char *text, int ltext, bool flag)
 {
@@ -115,8 +126,9 @@ void bindC1()
     strncpy(last_function_called, "bindC1", MAXLAST);
 }
 
-void bindC2(const char * name)
+void bindC2(char * outbuf)
 {
+    strncpy(outbuf, "bindC2", LENOUTBUF);
     strncpy(last_function_called, "bindC2", MAXLAST);
 }
 
@@ -136,8 +148,9 @@ int passAssumedType(void *arg)
 
 /* arg is assumed to be an int. */
 
-int passAssumedTypeBuf(void *arg, const char *name)
+int passAssumedTypeBuf(void *arg, char *outbuf)
 {
+    strncpy(outbuf, "passAssumedTypeBuf", LENOUTBUF);
     strncpy(last_function_called, "passAssumedTypeBuf", MAXLAST);
     return *(int *) arg;
 }
@@ -155,7 +168,8 @@ void callback2(int type, void * in, void (*incr)(int *))
   }
 }
 
-void callback3(const char *type, void * in, void (*incr)(int *))
+void callback3(const char *type, void * in, void (*incr)(int *),
+               char *outbuf)
 {
   if (strcmp(type, "int") == 0) {
     // default function pointer from prototype
@@ -164,6 +178,7 @@ void callback3(const char *type, void * in, void (*incr)(int *))
     void (*incr2)(double *) = (void(*)(double *)) incr;
     incr2(in);
   }
+  strncpy(outbuf, "callback3", LENOUTBUF);
 }
 
 //----------------------------------------------------------------------
@@ -174,8 +189,9 @@ int passStruct1(Cstruct1 *s1)
     return s1->ifield;
 }
 
-int passStruct2(Cstruct1 *s1, const char *name)
+int passStruct2(Cstruct1 *s1, char *outbuf)
 {
+    strncpy(outbuf, "passStruct2", LENOUTBUF);
     strncpy(last_function_called, "passStruct2", MAXLAST);
     return s1->ifield;
 }
@@ -187,8 +203,9 @@ Cstruct1 *returnStructPtr1(int ifield)
     return &global_Cstruct1;
 }
 
-Cstruct1 *returnStructPtr2(int ifield, const char *name)
+Cstruct1 *returnStructPtr2(int ifield, char *outbuf)
 {
+    strncpy(outbuf, "returnStructPtr2", LENOUTBUF);
     strncpy(last_function_called, "returnStructPtr2", MAXLAST);
     global_Cstruct1.ifield = ifield;
     return &global_Cstruct1;

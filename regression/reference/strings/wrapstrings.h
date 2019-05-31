@@ -44,7 +44,7 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv);
 void STR_pass_char_ptr(char * dest, const char * src);
 
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src, int Lsrc);
+    const char * src);
 
 void STR_pass_char_ptr_in_out(char * s);
 
@@ -133,8 +133,6 @@ void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
 
 void STR_explicit1(char * name);
 
-void STR_explicit1_BUFFER(char * name, int AAlen);
-
 void STR_explicit2(char * name);
 
 void STR_explicit2_bufferify(char * name, int AAtrim);
@@ -142,7 +140,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim);
 void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src, int Lsrc);
+    const char * src);
 
 #ifdef __cplusplus
 }

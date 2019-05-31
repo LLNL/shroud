@@ -53,6 +53,10 @@ class Tutorial(unittest.TestCase):
     def testfunction4a(self):
         self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))
 
+    def testacceptName(self):
+        clibrary.acceptName('spot')
+##        self.assertEqual('acceptName', clibrary.last_function_called())
+
     def testReturnOneName(self):
         name1 = clibrary.returnOneName()
         self.assertEqual("bill", name1)
@@ -61,6 +65,10 @@ class Tutorial(unittest.TestCase):
         name1, name2 = clibrary.returnTwoNames()
         self.assertEqual("tom", name1)
         self.assertEqual("frank", name2)
+
+    def testImpliedTextLen(self):
+        text = clibrary.ImpliedTextLen()
+        self.assertEqual("ImpliedTextLen", text)
 
     def testImpliedLen(self):
         rv_int = clibrary.ImpliedLen("bird  ")

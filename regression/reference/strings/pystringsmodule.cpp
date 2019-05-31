@@ -94,6 +94,46 @@ PY_returnChar(
 // splicer end function.return_char
 }
 
+static char PY_passCharPtr__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief strcpy like behavior
+ *
+ * dest is marked intent(OUT) to override the intent(INOUT) default
+ * This avoid a copy-in on dest.
+ * In Python, src must not be over 40 characters, defined by charlen.
+ */
+static PyObject *
+PY_passCharPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
+// splicer begin function.pass_char_ptr
+    const char * src;
+    const char *SHT_kwlist[] = {
+        "src",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr",
+        const_cast<char **>(SHT_kwlist), &src))
+        return NULL;
+
+    // pre_call
+    char dest[40];  // intent(out)
+
+    passCharPtr(dest, src);
+
+    // post_call
+    PyObject * SHPy_dest = PyString_FromString(dest);
+
+    return (PyObject *) SHPy_dest;
+// splicer end function.pass_char_ptr
+}
+
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
@@ -802,6 +842,8 @@ static PyMethodDef PY_methods[] = {
     PY_passChar__doc__},
 {"returnChar", (PyCFunction)PY_returnChar, METH_NOARGS,
     PY_returnChar__doc__},
+{"passCharPtr", (PyCFunction)PY_passCharPtr, METH_VARARGS|METH_KEYWORDS,
+    PY_passCharPtr__doc__},
 {"passCharPtrInOut", (PyCFunction)PY_passCharPtrInOut,
     METH_VARARGS|METH_KEYWORDS, PY_passCharPtrInOut__doc__},
 {"getCharPtr1", (PyCFunction)PY_getCharPtr1, METH_NOARGS,

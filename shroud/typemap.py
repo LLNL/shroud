@@ -656,17 +656,9 @@ def initialize():
                 ),
                 intent_out_buf=dict(
                     buf_args=["arg", "len"],
-                    cxx_local_var="pointer",
-                    c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
-                    pre_call=[
-                        "char * {cxx_var} = ShroudStrAlloc(\t"
-                        "{c_var},\t {c_var_len},\t 0);",
-                    ],
+                    c_helper="ShroudStrBlankFill",
                     post_call=[
-                        # nsrc=-1 will call strlen({cxx_var})
-                        "ShroudStrCopy({c_var}, {c_var_len},"
-                        "\t {cxx_var},\t -1);",
-                        "ShroudStrFree({cxx_var});",
+                        "ShroudStrBlankFill({c_var}, {c_var_len});"
                     ],
                 ),
                 intent_inout_buf=dict(
@@ -943,7 +935,7 @@ def initialize():
                         "{c_var_context}->cxx.addr = {cxx_cast_to_void_ptr};",
                         "{c_var_context}->cxx.idtor = {idtor};",
                         "{c_var_context}->addr.ccharp = {cxx_var};",
-                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : strlen({cxx_var});",
+                        "{c_var_context}->len = {cxx_var} == NULL ? 0 : {stdlib}strlen({cxx_var});",
                         "{c_var_context}->size = 1;",
                     ],
                 ),

@@ -42,6 +42,14 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 }
 
 // helper function
+// blank fill dest starting at trailing NULL.
+static void ShroudStrBlankFill(char *dest, int ndest)
+{
+   int nm = std::strlen(dest);
+   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+}
+
+// helper function
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
 // dest will not be NULL terminated.
@@ -119,12 +127,13 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.return_char_bufferify
 }
 
-// void passCharPtr(char * dest +intent(out), const char * src +intent(in))
+// void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
  * dest is marked intent(OUT) to override the intent(INOUT) default
  * This avoid a copy-in on dest.
+ * In Python, src must not be over 40 characters, defined by charlen.
  */
 void STR_pass_char_ptr(char * dest, const char * src)
 {
@@ -134,23 +143,20 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // splicer end function.pass_char_ptr
 }
 
-// void passCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))
+// void passCharPtr(char * dest +charlen(40)+intent(out)+len(Ndest), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
  * dest is marked intent(OUT) to override the intent(INOUT) default
  * This avoid a copy-in on dest.
+ * In Python, src must not be over 40 characters, defined by charlen.
  */
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src, int Lsrc)
+    const char * src)
 {
 // splicer begin function.pass_char_ptr_bufferify
-    char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
-    char * SH_src = ShroudStrAlloc(src, Lsrc, Lsrc);
-    passCharPtr(SH_dest, SH_src);
-    ShroudStrCopy(dest, Ndest, SH_dest, -1);
-    ShroudStrFree(SH_dest);
-    ShroudStrFree(SH_src);
+    passCharPtr(dest, src);
+    ShroudStrBlankFill(dest, Ndest);
     return;
 // splicer end function.pass_char_ptr_bufferify
 }
@@ -213,7 +219,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<char *>(SHC_rv));
     DSHF_rv->cxx.idtor = 0;
     DSHF_rv->addr.ccharp = SHC_rv;
-    DSHF_rv->len = SHC_rv == NULL ? 0 : strlen(SHC_rv);
+    DSHF_rv->len = SHC_rv == NULL ? 0 : std::strlen(SHC_rv);
     DSHF_rv->size = 1;
     return;
 // splicer end function.get_char_ptr1_bufferify
@@ -846,17 +852,6 @@ void STR_explicit1(char * name)
 // splicer end function.explicit1
 }
 
-// void explicit1(char * name +intent(in)+len_trim(AAlen))
-void STR_explicit1_BUFFER(char * name, int AAlen)
-{
-// splicer begin function.explicit1_BUFFER
-    char * SH_name = ShroudStrAlloc(name, AAlen, AAlen);
-    explicit1(SH_name);
-    ShroudStrFree(SH_name);
-    return;
-// splicer end function.explicit1_BUFFER
-}
-
 // void explicit2(char * name +intent(out)+len(AAtrim))
 void STR_explicit2(char * name)
 {
@@ -870,10 +865,8 @@ void STR_explicit2(char * name)
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
 // splicer begin function.explicit2_bufferify
-    char * SH_name = ShroudStrAlloc(name, AAtrim, 0);
-    explicit2(SH_name);
-    ShroudStrCopy(name, AAtrim, SH_name, -1);
-    ShroudStrFree(SH_name);
+    explicit2(name);
+    ShroudStrBlankFill(name, AAtrim);
     return;
 // splicer end function.explicit2_bufferify
 }
@@ -893,7 +886,7 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.creturn_char_bufferify
 }
 
-// void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in)+len_trim(Lsrc))
+// void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))
 /**
  * \brief strcpy like behavior
  *
@@ -902,15 +895,11 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
  * extern "C"
  */
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src, int Lsrc)
+    const char * src)
 {
 // splicer begin function.cpass_char_ptr_bufferify
-    char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
-    char * SH_src = ShroudStrAlloc(src, Lsrc, Lsrc);
-    CpassCharPtr(SH_dest, SH_src);
-    ShroudStrCopy(dest, Ndest, SH_dest, -1);
-    ShroudStrFree(SH_dest);
-    ShroudStrFree(SH_src);
+    CpassCharPtr(dest, src);
+    ShroudStrBlankFill(dest, Ndest);
     return;
 // splicer end function.cpass_char_ptr_bufferify
 }

@@ -1035,11 +1035,7 @@ class Wrapc(util.WrapperMixin):
                     elif arg_typemap.base == 'shadow':
                         cxx_local_var = "pointer"
 
-                stmts = (
-                    "intent_"
-                    + c_attrs["intent"]
-                    + c_attrs.get("_generated_suffix", "")
-                )
+                stmts = "intent_" + c_attrs["intent"] + arg.stmts_suffix
 
             intent_blk = c_statements.get(stmts, {})
 
@@ -1251,8 +1247,7 @@ class Wrapc(util.WrapperMixin):
                     )
 
                 c_statements = result_typemap.c_statements
-                generated_suffix = ast.attrs.get("_generated_suffix", "")
-                intent_blk = c_statements.get("result" + generated_suffix, {})
+                intent_blk = c_statements.get("result" + ast.stmts_suffix, {})
                 self.add_c_statements_headers(intent_blk)
 
                 need_wrapper = self.add_code_from_statements(
