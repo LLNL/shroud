@@ -58,16 +58,29 @@ module clibrary_mod
             implicit none
         end subroutine function1
 
-        function function2(arg1, arg2) &
+        ! before pass_by_value
+        function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="Function2")
+                bind(C, name="PassByValue")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
-        end function function2
+        end function pass_by_value
+        ! after pass_by_value
 
+        ! before pass_by_reference
+        subroutine pass_by_reference(arg1, arg2) &
+                bind(C, name="PassByReference")
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            real(C_DOUBLE), intent(IN) :: arg1
+            integer(C_INT), intent(OUT) :: arg2
+        end subroutine pass_by_reference
+        ! after pass_by_reference
+
+        ! before c_sum
         subroutine c_sum(len, values, result) &
                 bind(C, name="Sum")
             use iso_c_binding, only : C_INT
@@ -76,6 +89,7 @@ module clibrary_mod
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), intent(OUT) :: result
         end subroutine c_sum
+        ! after c_sum
 
         function c_function3(arg) &
                 result(SHT_rv) &
@@ -390,6 +404,7 @@ module clibrary_mod
 contains
 
     ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! before sum
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: len
@@ -400,6 +415,7 @@ contains
         call c_sum(len, values, result)
         ! splicer end function.sum
     end subroutine sum
+    ! after sum
 
     ! bool Function3(bool arg +intent(in)+value)
     function function3(arg) &

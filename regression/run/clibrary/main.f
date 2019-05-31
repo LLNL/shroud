@@ -119,8 +119,11 @@ contains
     call function1
     call assert_true(.true.)
 
-    rv_double = function2(1.d0, 4)
+    rv_double = pass_by_value(1.d0, 4)
     call assert_true(rv_double == 5.d0)
+
+    call pass_by_reference(3.14d0, int_var)
+    call assert_equals(3, int_var)
 
     rv_logical = function3(.false.)
     call assert_true(rv_logical)

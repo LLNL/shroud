@@ -51,13 +51,19 @@ declarations:
     wrap_python: false
 
 - decl: void Function1()
-- decl: double Function2(double arg1, int arg2)
+- decl: double PassByValue(double arg1, int arg2)
+  options:
+    literalinclude: True
+- decl: void PassByReference(double *arg1+intent(in), int *arg2+intent(out))
+  options:
+    literalinclude: True
 - decl: void Sum(int len +implied(size(values)),
                  int *values +dimension(:)+intent(in),
                  int *result +intent(out))
   options:
-    # unable to deal with dimension
+    # lua unable to deal with dimension
     wrap_lua: False
+    literalinclude: True
 
 - decl: bool Function3(bool arg)
 - decl: void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))

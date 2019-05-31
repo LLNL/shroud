@@ -38,11 +38,21 @@ void Function1(void)
     return;
 }
 
-double Function2(double arg1, int arg2)
+// start PassByValue
+double PassByValue(double arg1, int arg2)
 {
-    strncpy(last_function_called, "Function2", MAXLAST);
+    strncpy(last_function_called, "PassByValue", MAXLAST);
     return arg1 + arg2;
 }
+// end PassByValue
+
+// start PassByReference
+void PassByReference(double *arg1, int *arg2)
+{
+    strncpy(last_function_called, "PassByReference", MAXLAST);
+    *arg2 = *arg1;
+}
+// end PassByReference
 
 bool Function3(bool arg)
 {
@@ -263,6 +273,7 @@ void Function10(const std::string &name, double arg2)
 }
 #endif
 
+// start Sum
 void Sum(int len, int *values, int *result)
 {
     strncpy(last_function_called, "Sum", MAXLAST);
@@ -275,6 +286,7 @@ void Sum(int len, int *values, int *result)
     *result = sum;
     return;
 }
+// end Sum
 
 #if 0
 TypeID typefunc(TypeID arg)

@@ -38,7 +38,8 @@ typedef struct Cstruct1 Cstruct1;
 
 void Function1(void);
 
-double Function2(double arg1, int arg2);
+double PassByValue(double arg1, int arg2);
+void PassByReference(double *arg1, int *arg2);
 
 bool Function3(bool arg);
 void checkBool(const bool arg1, bool *arg2, bool *arg3);

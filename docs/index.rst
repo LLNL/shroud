@@ -44,6 +44,7 @@ Contents
    tutorial
    pytutorial
    input
+   declarations
    types
    functions
    cwrapper

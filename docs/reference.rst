@@ -281,6 +281,11 @@ F_return_fortran_pointer
 
 .. XXX how to decide length of pointer
 
+literalinclude
+
+  Write some text lines which can be used with Sphinx's literalinclude
+  directive.  This is used to insert the generated code into the
+  documentation.
 
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar

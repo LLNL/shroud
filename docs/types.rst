@@ -20,7 +20,7 @@ Types
 A typemap is created for each type to describe to Shroud how it should
 convert a type between languages for each wrapper.  Native types are
 predefined and a Shroud typemap is created for each ``struct`` and
-``class`` declarations.
+``class`` declaration.
 
 The general form is:
 
@@ -156,29 +156,8 @@ See the language specific sections for details.
 
 
 
-Types
------
-
-.. Shroud predefines many of the native types.
-
-  * void
-  * int
-  * long
-  * size_t
-  * bool
-  * float
-  * double
-  * std::string
-  * std::vector
-
-  Fortran has no support for unsigned types.
-          ``size_t`` will be the correct number of bytes, but
-          will be signed.
-
-
-
-Integer and Real
-----------------
+Numeric Types
+--------------
 
 The numeric types usually require no conversion.
 In this case the type map is mainly used to generate declaration code 
@@ -338,7 +317,7 @@ arguments for the length of the strings.  Most Fortran compiler use
 this convention when passing ``CHARACTER`` arguments. Shroud makes
 this convention explicit for three reasons:
 
-* It allows an interface to be used.  Functions with an interface may
+* It allows an interface to be used.  Functions with an interface will
   not pass the hidden, non-standard length argument, depending on compiler.
 * It may pass the result of ``len`` and/or ``len_trim``.
   The convention just passes the length.
@@ -411,83 +390,6 @@ length of a ``CHARACTER`` argument.
 
 Char
 ^^^^
-
-The type map:
-
-.. code-block:: yaml
-
-        type: char
-        fields:
-            base: string
-            cxx_type: char
-            c_type: char
-            c_statements:
-                intent_in_buf:
-                    buf_args:
-                    - arg
-                    - len_trim
-                    cxx_local_var: pointer
-                    c_helper: ShroudStrAlloc ShroudStrFree
-                    pre_call:
-                    - char * {cxx_var} = ShroudStrAlloc(\t
-                        {c_var},\t {c_var_trim},\t {c_var_trim});
-                    post_call:
-                    -  ShroudStrFree({cxx_var});
-                intent_out_buf:
-                    buf_args:
-                    - arg
-                    - len
-                    cxx_local_var: pointer
-                    c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
-                    pre_call:
-                    - char * {cxx_var} = ShroudStrAlloc(\t
-                          {c_var},\t {c_var_len},\t 0);
-                    post_call:
-                    - ShroudStrCopy({c_var}, {c_var_len},
-                        \t {cxx_var},\t {stdlib}strlen({cxx_var}));
-                    - ShroudStrFree({cxx_var});
-                intent_inout_buf:
-                    buf_args:
-                    - arg
-                    - len_trim
-                    - len
-                    cxx_local_var: pointer
-                    c_helper: ShroudStrAlloc ShroudStrCopy ShroudStrFree
-                    pre_call:
-                    - char * {cxx_var} = ShroudStrAlloc(\t
-                        {c_var},\t {c_var_len},\t {c_var_trim});
-                    post_call:
-                    - ShroudStrCopy({c_var}, {c_var_len},
-                        \t {cxx_var},\t {stdlib}strlen({cxx_var}));
-                    - ShroudStrFree({cxx_var});
-                result_buf:
-                    buf_args:
-                    - arg
-                    - len
-                    c_header: <string.h>
-                    cxx_header: <cstring>
-                    c_helper: ShroudStrCopy
-                    post_call:
-                    - if ({cxx_var} == NULL) {{+
-                    - {stdlib}memset({c_var}, ' ', {c_var_len});
-                    - -}} else {{+
-                    - ShroudStrCopy({c_var}, {c_var_len}, \t {cxx_var},\t {stdlib}strlen({cxx_var}));
-                    - -}}
-
-            f_type: character(*)
-            f_kind: C_CHAR
-            f_c_type: character(kind=C_CHAR)
-            f_c_module:
-                iso_c_binding:
-                  - C_CHAR
-
-            f_statements:
-                result_pure:
-                    need_wrapper: True
-                    f_helper: fstr_ptr
-                    call:
-                      - {F_result} = fstr_ptr({F_C_call}({F_arg_c_call_tab}))
-
 
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``:

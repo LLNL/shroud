@@ -41,8 +41,12 @@ class Tutorial(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testfunction2(self):
-        self.assertEqual(5.0, clibrary.Function2(1.0, 4))
+    def testPassByValue(self):
+        self.assertEqual(5.0, clibrary.PassByValue(1.0, 4))
+
+    def testPassByReference(self):
+        rv = clibrary.PassByReference(3.14)
+        self.assertEqual(3, rv)
 
     def testfunction3(self):
         self.assertEqual(True, clibrary.Function3(False))

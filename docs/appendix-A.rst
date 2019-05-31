@@ -1,6 +1,6 @@
 
-Sample output
-==============
+Sample Fortran Wrappers
+=======================
 
 This chapter gives details of the generated code.
 It's intended for users who want to understand the details
@@ -9,11 +9,125 @@ of how the wrappers are created.
 All of these examples are derived from tests in the ``regression``
 directory.
 
+Numeric Types
+-------------
+
+other
+^^^^^
+.. ############################################################
+
+.. _example_PassByValue:
+
+PassByValue
+"""""""""""
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: double PassByValue(double arg1, int arg2)
+
+Both types are supported directly by the ``iso_c_binding`` module
+so there is no need for a Fortran function.
+The C function can be called directly by Fortran
+by using the ``bind(C)`` keyword.
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: before pass_by_value
+   :end-before: after pass_by_value
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start PassByValue
+   :end-before: end PassByValue
+
+.. ############################################################
+
+.. _example_PassByReference:
+
+PassByReference
+"""""""""""""""
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: void PassByReference(double *arg1+intent(in), int *arg2+intent(out))
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: before pass_by_reference
+   :end-before: after pass_by_reference
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start PassByReference
+   :end-before: end PassByReference
+
+Example usage:
+
+.. code-block:: fortran
+
+    integer(C_INT) var
+    call pass_by_reference(3.14d0, var)
+    call assert_equals(3, var)
+
+.. ############################################################
+
+.. _example_Sum:
+
+Sum
+"""
+
+YAML:
+
+.. code-block:: yaml
+
+   - decl: void Sum(int len +implied(size(values)),
+                    int *values +dimension(:)+intent(in),
+                    int *result +intent(out))
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: before sum
+   :end-before: after sum
+   :dedent: 4
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: before c_sum
+   :end-before: after c_sum
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start Sum
+   :end-before: end Sum
+
+
 Bool
 ----
 
 other
 ^^^^^
+.. ############################################################
 
 .. _example_checkBool:
 
@@ -89,6 +203,8 @@ Calls C via the interface:
    :start-after: before CLI_accept_name_bufferify
    :end-before: after CLI_accept_name_bufferify
 
+.. ############################################################
+
 .. _example_returnOneName:
 
 returnOneName
@@ -125,6 +241,8 @@ The C wrapper:
    :language: c
    :start-after: before CLI_return_one_name_bufferify
    :end-before: after CLI_return_one_name_bufferify
+
+.. ############################################################
 
 .. _example_ImpliedTextLen:
 
@@ -164,10 +282,11 @@ The C wrapper:
    :start-after: before CLI_implied_text_len_bufferify
    :end-before: after CLI_implied_text_len_bufferify
 
-.. ############################################################
 
 std::string
 ^^^^^^^^^^^
+
+.. ############################################################
 
 .. _example_acceptStringReference:
 
@@ -203,10 +322,10 @@ The C wrapper:
    :start-after: before STR_accept_string_reference_bufferify
    :end-before: after STR_accept_string_reference_bufferify
 
-.. ############################################################
-
 char functions
 ^^^^^^^^^^^^^^
+
+.. ############################################################
 
 .. _example_getCharPtr1:
 
@@ -247,6 +366,8 @@ The C wrapper:
    :start-after: before STR_get_char_ptr1_bufferify
    :end-before: after STR_get_char_ptr1_bufferify
 
+.. ############################################################
+
 .. _example_getCharPtr2:
 
 getCharPtr2
@@ -285,6 +406,8 @@ The C wrapper:
    :language: c
    :start-after: before STR_get_char_ptr2_bufferify
    :end-before: after STR_get_char_ptr2_bufferify
+
+.. ############################################################
 
 .. _example_getCharPtr3:
 
@@ -331,6 +454,8 @@ The C wrapper:
 string functions
 ^^^^^^^^^^^^^^^^
 
+.. ############################################################
+
 .. _example_getConstStringRefPure:
 
 getConstStringRefPure
@@ -371,6 +496,8 @@ std::vector
 other
 ^^^^^
 
+.. ############################################################
+
 .. _example_vector_sum:
 
 vector_sum
@@ -404,6 +531,8 @@ The C wrapper:
    :language: c
    :start-after: before VEC_vector_sum_bufferify
    :end-before: after VEC_vector_sum_bufferify
+
+.. ############################################################
 
 .. _example_vector_iota_out:
 
@@ -439,6 +568,7 @@ The C wrapper:
    :start-after: before VEC_vector_iota_out_bufferify
    :end-before: after VEC_vector_iota_out_bufferify
 
+.. ############################################################
 
 .. _example_vector_iota_out_alloc:
 
@@ -473,6 +603,8 @@ The C wrapper:
    :language: c
    :start-after: before VEC_vector_iota_out_alloc_bufferify
    :end-before: after VEC_vector_iota_out_alloc_bufferify
+
+.. ############################################################
 
 .. _example_vector_iota_inout_alloc:
 

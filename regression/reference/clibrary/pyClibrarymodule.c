@@ -58,18 +58,18 @@ PY_Function1(
 // splicer end function.function1
 }
 
-static char PY_Function2__doc__[] =
+static char PY_PassByValue__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function2(
+PY_PassByValue(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-// splicer begin function.function2
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+// splicer begin function.pass_by_value
     double arg1;
     int arg2;
     char *SHT_kwlist[] = {
@@ -77,17 +77,50 @@ PY_Function2(
         "arg2",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:PassByValue",
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    double SHC_rv = Function2(arg1, arg2);
+    double SHC_rv = PassByValue(arg1, arg2);
 
     // post_call
     PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function2
+// splicer end function.pass_by_value
+}
+
+static char PY_PassByReference__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_PassByReference(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))
+// splicer begin function.pass_by_reference
+    double arg1;
+    char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:PassByReference",
+        SHT_kwlist, &arg1))
+        return NULL;
+
+    // pre_call
+    int arg2;  // intent(out)
+
+    PassByReference(&arg1, &arg2);
+
+    // post_call
+    PyObject * SHPy_arg2 = PyInt_FromLong(arg2);
+
+    return (PyObject *) SHPy_arg2;
+// splicer end function.pass_by_reference
 }
 
 static char PY_Sum__doc__[] =
@@ -506,8 +539,10 @@ PY_ImpliedBoolFalse(
 static PyMethodDef PY_methods[] = {
 {"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
     PY_Function1__doc__},
-{"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
-    PY_Function2__doc__},
+{"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
+    PY_PassByValue__doc__},
+{"PassByReference", (PyCFunction)PY_PassByReference,
+    METH_VARARGS|METH_KEYWORDS, PY_PassByReference__doc__},
 {"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
