@@ -63,15 +63,6 @@ bool AA_is_initialized()
 // splicer end function.is_initialized
 }
 
-// void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-void AA_check_bool(bool arg1, bool * arg2, bool * arg3)
-{
-// splicer begin function.check_bool
-    example::nested::checkBool(arg1, arg2, arg3);
-    return;
-// splicer end function.check_bool
-}
-
 // void test_names(const std::string & name +intent(in))
 void AA_test_names(const char * name)
 {

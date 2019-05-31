@@ -127,13 +127,13 @@ contains
 
     rv_logical = .true.
     wrk_logical = .true.
-    call function3b(.true., rv_logical, wrk_logical)
+    call check_bool(.true., rv_logical, wrk_logical)
     call assert_false(rv_logical)
     call assert_false(wrk_logical)
 
     rv_logical = .false.
     wrk_logical = .false.
-    call function3b(.false., rv_logical, wrk_logical)
+    call check_bool(.false., rv_logical, wrk_logical)
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
 

@@ -1354,7 +1354,9 @@ class Wrapc(util.WrapperMixin):
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
-                self.impl.append("#" + node.cpp_if)
+                impl.append("#" + node.cpp_if)
+            if options.literalinclude:
+                append_format(impl, "// before {C_name}", fmt_func)
             append_format(
                 impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
             )
@@ -1367,6 +1369,8 @@ class Wrapc(util.WrapperMixin):
                 C_code,
             )
             impl.append("}")
+            if options.literalinclude:
+                append_format(impl, "// after {C_name}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
         else:

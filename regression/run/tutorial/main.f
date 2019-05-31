@@ -95,18 +95,6 @@ contains
     rv_logical = function3(.false.)
     call assert_true(rv_logical, "function3")
 
-    rv_logical = .true.
-    wrk_logical = .true.
-    call function3b(.true., rv_logical, wrk_logical)
-    call assert_false(rv_logical, "function3b 1")
-    call assert_false(wrk_logical, "function2b 2")
-
-    rv_logical = .false.
-    wrk_logical = .false.
-    call function3b(.false., rv_logical, wrk_logical)
-    call assert_true(rv_logical, "function3b 1")
-    call assert_true(wrk_logical, "function3b 2")
-
     call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
 
     call function4b("dog", "cat", rv_char)

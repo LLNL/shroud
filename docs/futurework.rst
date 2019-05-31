@@ -32,8 +32,6 @@ copy.
 
 There is some initial work to support Python and Lua wrappers.
 
-Wrapping pure C library.
-
 
 Possible Future Work
 --------------------

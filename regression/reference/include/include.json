@@ -490,6 +490,7 @@
             "debug": false,
             "debug_index": false,
             "doxygen": true,
+            "literalinclude": false,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": false,
             "wrap_c": true,

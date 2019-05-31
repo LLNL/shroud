@@ -109,15 +109,6 @@ bool TUT_function3(bool arg)
 // splicer end function.function3
 }
 
-// void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
-{
-// splicer begin function.function3b
-    tutorial::Function3b(arg1, arg2, arg3);
-    return;
-// splicer end function.function3b
-}
-
 // void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * Since +len(30) is provided, the result of the function

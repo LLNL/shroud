@@ -5566,234 +5566,6 @@
             },
             {
                 "_fmtargs": {
-                    "arg1": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg1",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg1)",
-                            "cxx_member": ".",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg1",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "SH_arg1",
-                            "f_var": "arg1"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "lua_toboolean(L, 1)",
-                            "c_var_len": "Larg1",
-                            "cxx_member": ".",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg1",
-                            "lua_var": "SH_Lua_arg1"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "bool arg1",
-                            "c_deref": "",
-                            "c_type": "bool",
-                            "c_var": "arg1",
-                            "cxx_addr": "&",
-                            "cxx_decl": "bool arg1",
-                            "cxx_member": ".",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg1",
-                            "numpy_type": "NPY_BOOL",
-                            "py_type": "PyObject",
-                            "py_var": "SHPy_arg1"
-                        }
-                    },
-                    "arg2": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg2",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg2)",
-                            "cxx_member": "->",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg2",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "SH_arg2",
-                            "f_var": "arg2"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": " *",
-                            "c_member": "->",
-                            "c_var": "arg2",
-                            "c_var_len": "Larg2",
-                            "cxx_member": "->",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg2",
-                            "lua_var": "SH_Lua_arg2"
-                        },
-                        "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": "PyBool_Type",
-                            "c_const": "",
-                            "c_decl": "bool arg2",
-                            "c_deref": "",
-                            "c_type": "bool",
-                            "c_var": "arg2",
-                            "cxx_addr": "",
-                            "cxx_decl": "bool arg2",
-                            "cxx_member": "->",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg2",
-                            "numpy_type": "NPY_BOOL",
-                            "py_var": "SHPy_arg2"
-                        }
-                    },
-                    "arg3": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg3",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg3)",
-                            "cxx_member": "->",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg3",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "SH_arg3",
-                            "f_var": "arg3"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": " *",
-                            "c_member": "->",
-                            "c_var": "lua_toboolean(L, 2)",
-                            "c_var_len": "Larg3",
-                            "cxx_member": "->",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg3",
-                            "lua_var": "SH_Lua_arg3"
-                        },
-                        "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": "PyBool_Type",
-                            "c_const": "",
-                            "c_decl": "bool arg3",
-                            "c_deref": "",
-                            "c_type": "bool",
-                            "c_var": "arg3",
-                            "cxx_addr": "",
-                            "cxx_decl": "bool arg3",
-                            "cxx_member": "->",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg3",
-                            "numpy_type": "NPY_BOOL",
-                            "py_type": "PyObject",
-                            "py_var": "SHPy_arg3"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "checkBool",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "inout",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg3",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))",
-                "declgen": "void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
-                "fmtdict": {
-                    "C_call_code": "example::nested::checkBool(\targ1,\t arg2,\t arg3);",
-                    "C_call_list": "arg1,\t arg2,\t arg3",
-                    "C_name": "AA_check_bool",
-                    "C_prototype": "bool arg1,\t bool * arg2,\t bool * arg3",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_check_bool",
-                    "F_C_name": "c_check_bool",
-                    "F_arg_c_call": "SH_arg1,\t SH_arg2,\t SH_arg3",
-                    "F_arguments": "arg1,\t arg2,\t arg3",
-                    "F_call_code": "call c_check_bool(SH_arg1,\t SH_arg2,\t SH_arg3)",
-                    "F_name_function": "check_bool",
-                    "F_name_generic": "check_bool",
-                    "F_name_impl": "check_bool",
-                    "F_subprogram": "subroutine",
-                    "LUA_name": "checkBool",
-                    "LUA_name_impl": "l_check_bool",
-                    "PY_name_impl": "PP_checkBool",
-                    "c_const": "",
-                    "function_name": "checkBool",
-                    "underscore_name": "check_bool"
-                },
-                "linenumber": 251,
-                "options": {}
-            },
-            {
-                "_fmtargs": {
                     "name": {
                         "fmtc": {
                             "c_const": "const ",
@@ -5888,13 +5660,13 @@
                     "LUA_name": "test_names",
                     "LUA_name_impl": "l_test_names",
                     "PY_name_impl": "PP_test_names",
-                    "__line__": 257,
+                    "__line__": 254,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 255,
+                "linenumber": 252,
                 "options": {}
             },
             {
@@ -5965,13 +5737,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_test_names_bufferify",
-                    "__line__": 257,
+                    "__line__": 254,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_bufferify",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 255,
+                "linenumber": 252,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -6126,13 +5898,13 @@
                     "F_name_impl": "test_names_flag",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PP_test_names_flag",
-                    "__line__": 260,
+                    "__line__": 257,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_flag",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 259,
+                "linenumber": 256,
                 "options": {}
             },
             {
@@ -6235,13 +6007,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_test_names_flag_bufferify",
-                    "__line__": 260,
+                    "__line__": 257,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_flag_bufferify",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 259,
+                "linenumber": 256,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -6286,7 +6058,7 @@
                     "function_suffix": "_0",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 263,
+                "linenumber": 260,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6367,7 +6139,7 @@
                     "function_suffix": "_1",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 263,
+                "linenumber": 260,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6377,8 +6149,8 @@
             },
             {
                 "_default_funcs": [
-                    70,
-                    71
+                    69,
+                    70
                 ],
                 "_fmtargs": {
                     "i": {
@@ -6542,7 +6314,7 @@
                     "function_suffix": "_2",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 263,
+                "linenumber": 260,
                 "options": {}
             },
             {
@@ -6615,7 +6387,7 @@
                     "function_name": "test_size_t",
                     "underscore_name": "test_size_t"
                 },
-                "linenumber": 278,
+                "linenumber": 275,
                 "options": {}
             },
             {
@@ -6716,13 +6488,13 @@
                     "LUA_name": "testmpi",
                     "LUA_name_impl": "l_testmpi",
                     "PY_name_impl": "PP_testmpi_mpi",
-                    "__line__": 283,
+                    "__line__": 280,
                     "c_const": "",
                     "function_name": "testmpi",
                     "function_suffix": "_mpi",
                     "underscore_name": "testmpi"
                 },
-                "linenumber": 282,
+                "linenumber": 279,
                 "options": {}
             },
             {
@@ -6757,13 +6529,13 @@
                     "F_name_impl": "testmpi_serial",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PP_testmpi_serial",
-                    "__line__": 287,
+                    "__line__": 284,
                     "c_const": "",
                     "function_name": "testmpi",
                     "function_suffix": "_serial",
                     "underscore_name": "testmpi"
                 },
-                "linenumber": 286,
+                "linenumber": 283,
                 "options": {}
             },
             {
@@ -6871,7 +6643,7 @@
                     "function_name": "testgroup1",
                     "underscore_name": "testgroup1"
                 },
-                "linenumber": 291,
+                "linenumber": 288,
                 "options": {}
             },
             {
@@ -6980,7 +6752,7 @@
                     "function_name": "testgroup2",
                     "underscore_name": "testgroup2"
                 },
-                "linenumber": 292,
+                "linenumber": 289,
                 "options": {}
             },
             {
@@ -7066,7 +6838,7 @@
                 "decl": "void FuncPtr1(void (*get)());",
                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 296,
+                    "__line__": 293,
                     "brief": "subroutine"
                 },
                 "fmtdict": {
@@ -7092,7 +6864,7 @@
                     "function_name": "FuncPtr1",
                     "underscore_name": "func_ptr1"
                 },
-                "linenumber": 295,
+                "linenumber": 292,
                 "options": {}
             },
             {
@@ -7182,7 +6954,7 @@
                 "decl": "void FuncPtr2(double * (*get)());",
                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))",
                 "doxygen": {
-                    "__line__": 299,
+                    "__line__": 296,
                     "brief": "return a pointer"
                 },
                 "fmtdict": {
@@ -7208,7 +6980,7 @@
                     "function_name": "FuncPtr2",
                     "underscore_name": "func_ptr2"
                 },
-                "linenumber": 298,
+                "linenumber": 295,
                 "options": {}
             },
             {
@@ -7317,7 +7089,7 @@
                 "decl": "void FuncPtr3(double (*get)(int i, int));",
                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 302,
+                    "__line__": 299,
                     "brief": "abstract argument"
                 },
                 "fmtdict": {
@@ -7343,10 +7115,10 @@
                     "function_name": "FuncPtr3",
                     "underscore_name": "func_ptr3"
                 },
-                "linenumber": 301,
+                "linenumber": 298,
                 "options": {
                     "F_force_wrapper": true,
-                    "__line__": 304
+                    "__line__": 301
                 }
             },
             {
@@ -7426,7 +7198,7 @@
                 "decl": "void FuncPtr4(double (*get)(double, int));",
                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 307,
+                    "__line__": 304,
                     "brief": "abstract argument"
                 },
                 "fmtdict": {
@@ -7449,12 +7221,12 @@
                     "function_name": "FuncPtr4",
                     "underscore_name": "func_ptr4"
                 },
-                "linenumber": 306,
+                "linenumber": 303,
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg",
                     "F_abstract_interface_subprogram_template": "custom_funptr",
                     "F_force_wrapper": true,
-                    "__line__": 309,
+                    "__line__": 306,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -7695,7 +7467,7 @@
                     "function_name": "FuncPtr5",
                     "underscore_name": "func_ptr5"
                 },
-                "linenumber": 315,
+                "linenumber": 312,
                 "options": {}
             },
             {
@@ -8368,10 +8140,10 @@
                     "function_name": "verylongfunctionname1",
                     "underscore_name": "verylongfunctionname1"
                 },
-                "linenumber": 326,
+                "linenumber": 323,
                 "options": {
                     "F_force_wrapper": true,
-                    "__line__": 336
+                    "__line__": 333
                 }
             },
             {
@@ -9017,12 +8789,12 @@
                     "function_name": "verylongfunctionname2",
                     "underscore_name": "verylongfunctionname2"
                 },
-                "linenumber": 340,
+                "linenumber": 337,
                 "options": {
                     "C_line_length": 0,
                     "F_force_wrapper": true,
                     "F_line_length": 0,
-                    "__line__": 350
+                    "__line__": 347
                 }
             },
             {
@@ -9235,7 +9007,7 @@
                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))",
                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 360,
+                    "__line__": 357,
                     "brief": "Test multidimensional arrays with allocatable"
                 },
                 "fmtdict": {
@@ -9261,10 +9033,10 @@
                     "function_name": "cos_doubles",
                     "underscore_name": "cos_doubles"
                 },
-                "linenumber": 356,
+                "linenumber": 353,
                 "options": {
                     "F_standard": 2008,
-                    "__line__": 362
+                    "__line__": 359
                 }
             }
         ],
@@ -9338,6 +9110,7 @@
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "literalinclude": false,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,

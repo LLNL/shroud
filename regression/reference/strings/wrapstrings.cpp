@@ -199,6 +199,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
  * \brief return a 'const char *' as character(*)
  *
  */
+// before STR_get_char_ptr1
 const char * STR_get_char_ptr1()
 {
 // splicer begin function.get_char_ptr1
@@ -206,12 +207,14 @@ const char * STR_get_char_ptr1()
     return SHC_rv;
 // splicer end function.get_char_ptr1
 }
+// after STR_get_char_ptr1
 
 // void getCharPtr1(const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return a 'const char *' as character(*)
  *
  */
+// before STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_char_ptr1_bufferify
@@ -224,12 +227,14 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
     return;
 // splicer end function.get_char_ptr1_bufferify
 }
+// after STR_get_char_ptr1_bufferify
 
 // const char * getCharPtr2() +deref(result_as_arg)+len(30)
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
+// before STR_get_char_ptr2
 const char * STR_get_char_ptr2()
 {
 // splicer begin function.get_char_ptr2
@@ -237,12 +242,14 @@ const char * STR_get_char_ptr2()
     return SHC_rv;
 // splicer end function.get_char_ptr2
 }
+// after STR_get_char_ptr2
 
 // void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
+// before STR_get_char_ptr2_bufferify
 void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
 {
 // splicer begin function.get_char_ptr2_bufferify
@@ -251,12 +258,14 @@ void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
     return;
 // splicer end function.get_char_ptr2_bufferify
 }
+// after STR_get_char_ptr2_bufferify
 
 // const char * getCharPtr3() +deref(result_as_arg)
 /**
  * \brief return a 'const char *' as argument
  *
  */
+// before STR_get_char_ptr3
 const char * STR_get_char_ptr3()
 {
 // splicer begin function.get_char_ptr3
@@ -264,12 +273,14 @@ const char * STR_get_char_ptr3()
     return SHC_rv;
 // splicer end function.get_char_ptr3
 }
+// after STR_get_char_ptr3
 
 // void getCharPtr3(char * output +intent(out)+len(Noutput))
 /**
  * \brief return a 'const char *' as argument
  *
  */
+// before STR_get_char_ptr3_bufferify
 void STR_get_char_ptr3_bufferify(char * output, int Noutput)
 {
 // splicer begin function.get_char_ptr3_bufferify
@@ -278,6 +289,7 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput)
     return;
 // splicer end function.get_char_ptr3_bufferify
 }
+// after STR_get_char_ptr3_bufferify
 
 // void getConstStringResult(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
@@ -368,6 +380,7 @@ void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
  * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
+// before STR_get_const_string_ref_pure
 const char * STR_get_const_string_ref_pure()
 {
 // splicer begin function.get_const_string_ref_pure
@@ -376,12 +389,14 @@ const char * STR_get_const_string_ref_pure()
     return SHC_rv;
 // splicer end function.get_const_string_ref_pure
 }
+// after STR_get_const_string_ref_pure
 
 // void getConstStringRefPure(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
+// before STR_get_const_string_ref_pure_bufferify
 void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
 {
 // splicer begin function.get_const_string_ref_pure_bufferify
@@ -400,6 +415,7 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
     return;
 // splicer end function.get_const_string_ref_pure_bufferify
 }
+// after STR_get_const_string_ref_pure_bufferify
 
 // const string & getConstStringRefLen() +deref(result_as_arg)+len(30)
 /**
@@ -783,6 +799,7 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
  * arg1 is assumed to be intent(INOUT)
  * Must copy in and copy out.
  */
+// before STR_accept_string_reference
 void STR_accept_string_reference(char * arg1)
 {
 // splicer begin function.accept_string_reference
@@ -792,6 +809,7 @@ void STR_accept_string_reference(char * arg1)
     return;
 // splicer end function.accept_string_reference
 }
+// after STR_accept_string_reference
 
 // void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))
 /**
@@ -801,6 +819,7 @@ void STR_accept_string_reference(char * arg1)
  * arg1 is assumed to be intent(INOUT)
  * Must copy in and copy out.
  */
+// before STR_accept_string_reference_bufferify
 void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
     int Narg1)
 {
@@ -811,6 +830,7 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
     return;
 // splicer end function.accept_string_reference_bufferify
 }
+// after STR_accept_string_reference_bufferify
 
 // void acceptStringPointer(std::string * arg1 +intent(inout))
 /**

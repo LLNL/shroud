@@ -47,8 +47,8 @@ class Tutorial(unittest.TestCase):
     def testfunction3(self):
         self.assertEqual(True, clibrary.Function3(False))
 
-    def testfunction3b(self):
-        self.assertEqual((False, False), clibrary.Function3b(True, True))
+    def testcheckBool(self):
+        self.assertEqual((False, False), clibrary.checkBool(True, True))
 
     def testfunction4a(self):
         self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))

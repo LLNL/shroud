@@ -314,6 +314,7 @@ argument would not need a wrapper since there will be no **pre_call**
 or **post_call** code blocks.  Only the C interface would be required
 since Fortran could call the C function directly.
 
+See example :ref:`checkBool <example_checkBool>`.
 
 Character
 ---------
@@ -610,6 +611,38 @@ Now the function can be called without the user aware that it is written in C++:
     character(30) str
     call pass_char_ptr(dest=str, src="mouse")
 
+``const char *arg``
+    Create a ``NULL`` terminated string in Fortran using
+    ``trim(arg)//C_NULL_CHAR`` and pass to C.
+    Since the argument is ``const``, it is treated as ``intent(in)``.
+    A bufferify function is not required to convert the argument.
+    This is the same as ``char *arg+intent(in)``.
+    See example :ref:`acceptName <example_acceptName>`.
+
+``char *arg``
+    Pass a ``char`` pointer to a function which assign to the memory.
+    ``arg`` must be ``NULL`` terminated by the function.
+    Add the *intent(out)* attribute.
+    The bufferify function will then blank-fill the string to the length
+    of the Fortran ``CHARACTER(*)`` argument.
+    It is the users responsibility to avoid overwriting the argument. 
+    See example :ref:`returnOneName <example_returnOneName>`.
+
+    Fortran must provide a CHARACTER argument which is at least as long as
+    the amount that the C function will write into.  This includes space
+    for the terminating NULL which will be converted into a blank for
+    Fortran.
+
+``char *arg, int larg``
+    Similar to above, but pass in the length of ``arg``.
+    The argument ``larg`` does not need to be passed to Fortran explicitly
+    since its value is implied.
+    The *implied* attribute is defined to use the ``len`` Fortran 
+    intrinsic to pass the length of ``arg`` as the value of ``larg``:
+    ``char *arg+intent(out), int larg+implied(len(arg))``.
+    See example :ref:`ImpliedTextLen <example_ImpliedTextLen>`.
+
+
 
 std::string
 ^^^^^^^^^^^
@@ -770,6 +803,9 @@ And the Fortran wrapper provides the correct values for the *len* and
         ! splicer end accept_string_reference
     end subroutine accept_string_reference
 
+See example :ref:`acceptStringReference <example_acceptStringReference>`.
+
+
 char functions
 ^^^^^^^^^^^^^^
 
@@ -857,6 +893,36 @@ subroutine is generated instead of a function:
         call c_get_char_ptr3_bufferify(output, len(output, kind=C_INT))
     end subroutine get_char_ptr3
 
+``char *getCharPtr1``
+
+    Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
+    variable.  Fortran 2003 is required. The Fortran application is
+    responsible to release the memory.  However, this may be done
+    automatically by the Fortran runtime.
+
+    See example :ref:`getCharPtr1 <example_getCharPtr1>`.
+
+``char *getCharPtr2``
+
+    Create a Fortran function which returns a predefined ``CHARACTER`` 
+    value.  The size is determined by the *len* argument on the function.
+    This is useful when the maximum size is already known.
+    Works with Fortran 90.
+
+    See example :ref:`getCharPtr2 <example_getCharPtr2>`.
+
+``char *getCharPtr3``
+
+    Create a Fortran subroutine in an additional ``CHARACTER``
+    argument for the C function result. Any size character string can
+    be returned limited by the size of the Fortran argument.  The
+    argument is defined by the *F_string_result_as_arg* format string.
+    Works with Fortran 90.
+
+    See example :ref:`getCharPtr3 <example_getCharPtr3>`.
+
+
+
 .. char ** not supported
 
 string functions
@@ -897,6 +963,8 @@ The generated wrappers are:
         return;
     }
 
+
+See example :ref:`getConstStringRefPure <example_getConstStringRefPure>`.
 
 std::vector
 -----------
@@ -969,6 +1037,15 @@ after calling the function.
 
 .. note:: With ``intent(out)``, if *vector_iota* changes the size of ``arg`` to be longer than
           the original size of the Fortran argument, the additional values will not be copied. 
+
+See example :ref:`vector_sum <example_vector_sum>`.
+
+See example :ref:`vector_iota_out <example_vector_iota_out>`.
+
+See example :ref:`vector_iota_out_alloc <example_vector_iota_out_alloc>`.
+
+See example :ref:`vector_iota_inout_alloc <example_vector_iota_inout_alloc>`.
+
 
 MPI_Comm
 --------

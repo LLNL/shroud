@@ -110,46 +110,6 @@ PP_isInitialized(
 // splicer end function.is_initialized
 }
 
-static char PP_checkBool__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_checkBool(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-// splicer begin function.check_bool
-    PyObject * SHPy_arg1;
-    PyObject * SHPy_arg3;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        "arg3",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
-        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg1,
-        &PyBool_Type, &SHPy_arg3))
-        return NULL;
-
-    // pre_call
-    bool arg1 = PyObject_IsTrue(SHPy_arg1);
-    bool arg2;  // intent(out)
-    bool arg3 = PyObject_IsTrue(SHPy_arg3);
-
-    example::nested::checkBool(arg1, &arg2, &arg3);
-
-    // post_call
-    PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
-    SHPy_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
-
-    return SHTPy_rv;
-// splicer end function.check_bool
-}
-
 static PyObject *
 PP_test_names(
   PyObject *SHROUD_UNUSED(self),
@@ -738,8 +698,6 @@ static PyMethodDef PP_methods[] = {
     PP_isNameValid__doc__},
 {"isInitialized", (PyCFunction)PP_isInitialized, METH_NOARGS,
     PP_isInitialized__doc__},
-{"checkBool", (PyCFunction)PP_checkBool, METH_VARARGS|METH_KEYWORDS,
-    PP_checkBool__doc__},
 {"testoptional", (PyCFunction)PP_testoptional_2,
     METH_VARARGS|METH_KEYWORDS, PP_testoptional_2__doc__},
 {"test_size_t", (PyCFunction)PP_test_size_t, METH_NOARGS,

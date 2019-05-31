@@ -60,13 +60,19 @@ declarations:
     wrap_lua: False
 
 - decl: bool Function3(bool arg)
-- decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
+- decl: void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
+  doxygen:
+    brief: Check intent with bool
+  options:
+    literalinclude: True
 
 - decl: char *Function4a(
     const char *arg1,
     const char *arg2 ) +len(30)
 
 - decl: void acceptName(const char *name)
+  options:
+    literalinclude: True
 
 ######################################################################
 # charlen
@@ -80,6 +86,8 @@ declarations:
       Each argument is assumed to be at least MAXNAME long.
       This define is provided by the user.
       The function will copy into the user provided buffer.
+  options:
+    literalinclude: True
 
 - decl: void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME),
                             char *name2+intent(out)+charlen(MAXNAME))
@@ -95,6 +103,8 @@ declarations:
                             int ltext+implied(len(text)))
   doxygen:
     brief: Fill text, at most ltext characters.
+  options:
+    literalinclude: True
 
 - decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
                        bool flag+implied(false))

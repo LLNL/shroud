@@ -86,14 +86,16 @@ module clibrary_mod
             logical(C_BOOL) :: SHT_rv
         end function c_function3
 
-        subroutine c_function3b(arg1, arg2, arg3) &
-                bind(C, name="Function3b")
+        ! before c_check_bool
+        subroutine c_check_bool(arg1, arg2, arg3) &
+                bind(C, name="checkBool")
             use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL), value, intent(IN) :: arg1
             logical(C_BOOL), intent(OUT) :: arg2
             logical(C_BOOL), intent(INOUT) :: arg3
-        end subroutine c_function3b
+        end subroutine c_check_bool
+        ! after c_check_bool
 
         function c_function4a(arg1, arg2) &
                 result(SHT_rv) &
@@ -115,20 +117,25 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
 
+        ! before c_accept_name
         subroutine c_accept_name(name) &
                 bind(C, name="acceptName")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_accept_name
+        ! after c_accept_name
 
+        ! before c_return_one_name
         subroutine c_return_one_name(name1) &
                 bind(C, name="returnOneName")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name1(*)
         end subroutine c_return_one_name
+        ! after c_return_one_name
 
+        ! before c_return_one_name_bufferify
         subroutine c_return_one_name_bufferify(name1, Nname1) &
                 bind(C, name="CLI_return_one_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -136,6 +143,7 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: name1(*)
             integer(C_INT), value, intent(IN) :: Nname1
         end subroutine c_return_one_name_bufferify
+        ! after c_return_one_name_bufferify
 
         subroutine c_return_two_names(name1, name2) &
                 bind(C, name="returnTwoNames")
@@ -156,6 +164,7 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Nname2
         end subroutine c_return_two_names_bufferify
 
+        ! before c_implied_text_len
         subroutine c_implied_text_len(text, ltext) &
                 bind(C, name="ImpliedTextLen")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -163,7 +172,9 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: text(*)
             integer(C_INT), value, intent(IN) :: ltext
         end subroutine c_implied_text_len
+        ! after c_implied_text_len
 
+        ! before c_implied_text_len_bufferify
         subroutine c_implied_text_len_bufferify(text, Ntext, ltext) &
                 bind(C, name="CLI_implied_text_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -172,6 +183,7 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Ntext
             integer(C_INT), value, intent(IN) :: ltext
         end subroutine c_implied_text_len_bufferify
+        ! after c_implied_text_len_bufferify
 
         function c_implied_len(text, ltext, flag) &
                 result(SHT_rv) &
@@ -402,8 +414,13 @@ contains
         ! splicer end function.function3
     end function function3
 
-    ! void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    subroutine function3b(arg1, arg2, arg3)
+    ! void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
+    !>
+    !! \brief Check intent with bool
+    !!
+    !<
+    ! before check_bool
+    subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
         logical(C_BOOL) SH_arg1
@@ -413,12 +430,13 @@ contains
         logical(C_BOOL) SH_arg3
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
-        ! splicer begin function.function3b
-        call c_function3b(SH_arg1, SH_arg2, SH_arg3)
-        ! splicer end function.function3b
+        ! splicer begin function.check_bool
+        call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
+        ! splicer end function.check_bool
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
-    end subroutine function3b
+    end subroutine check_bool
+    ! after check_bool
 
     ! char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer
@@ -435,6 +453,7 @@ contains
     end function function4a
 
     ! void acceptName(const char * name +intent(in))
+    ! before accept_name
     subroutine accept_name(name)
         use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
@@ -442,6 +461,7 @@ contains
         call c_accept_name(trim(name)//C_NULL_CHAR)
         ! splicer end function.accept_name
     end subroutine accept_name
+    ! after accept_name
 
     ! void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer
@@ -452,6 +472,7 @@ contains
     !! This define is provided by the user.
     !! The function will copy into the user provided buffer.
     !<
+    ! before return_one_name
     subroutine return_one_name(name1)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name1
@@ -459,6 +480,7 @@ contains
         call c_return_one_name_bufferify(name1, len(name1, kind=C_INT))
         ! splicer end function.return_one_name
     end subroutine return_one_name
+    ! after return_one_name
 
     ! void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer
@@ -485,6 +507,7 @@ contains
     !! \brief Fill text, at most ltext characters.
     !!
     !<
+    ! before implied_text_len
     subroutine implied_text_len(text)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: text
@@ -495,6 +518,7 @@ contains
             ltext)
         ! splicer end function.implied_text_len
     end subroutine implied_text_len
+    ! after implied_text_len
 
     ! int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
     !>

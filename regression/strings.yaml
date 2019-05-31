@@ -63,16 +63,22 @@ declarations:
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const char *' as character(*)
+  options:
+    literalinclude: True
 
 - decl: const char * getCharPtr2() +len(30)
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
+  options:
+    literalinclude: True
 
 - decl: const char * getCharPtr3()
 #  C_error_pattern: C_char_invalid_name
   doxygen:
     brief: return a 'const char *' as argument
+  options:
+    literalinclude: True
   format:
     F_string_result_as_arg: output
 
@@ -105,6 +111,8 @@ declarations:
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as ALLOCATABLE character
+  options:
+    literalinclude: True
 
 - decl: const string& getConstStringRefLen() +len=30
   C_error_pattern: C_invalid_name
@@ -184,6 +192,8 @@ declarations:
        Append "dog" to the end of arg1.
        arg1 is assumed to be intent(INOUT)
        Must copy in and copy out.
+  options:
+    literalinclude: True
 
 - decl: void acceptStringPointer(std::string * arg1)
   doxygen:

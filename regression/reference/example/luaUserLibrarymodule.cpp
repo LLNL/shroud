@@ -631,20 +631,6 @@ static int l_is_initialized(lua_State *L)
     // splicer end function.isInitialized
 }
 
-// void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-static int l_check_bool(lua_State *L)
-{
-    // splicer begin function.checkBool
-    bool arg1 = lua_toboolean(L, 1);
-    bool * arg2;
-    bool * arg3 = lua_toboolean(L, 2);
-    example::nested::checkBool(arg1, arg2, arg3);
-    lua_pushboolean(L, arg2);
-    lua_pushboolean(L, lua_toboolean(L, 2));
-    return 0;
-    // splicer end function.checkBool
-}
-
 // void test_names(const std::string & name +intent(in))
 // void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
 static int l_test_names(lua_State *L)
@@ -932,7 +918,6 @@ static const struct luaL_Reg l_UserLibrary_Reg [] = {
     {"local_function1", l_local_function1},
     {"isNameValid", l_is_name_valid},
     {"isInitialized", l_is_initialized},
-    {"checkBool", l_check_bool},
     {"test_names", l_test_names},
     {"testoptional", l_testoptional},
     {"test_size_t", l_test_size_t},

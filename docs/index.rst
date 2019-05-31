@@ -54,6 +54,7 @@ Contents
    previouswork
    pypreviouswork
    futurework
+   appendix-A
 
 
 Indices and tables

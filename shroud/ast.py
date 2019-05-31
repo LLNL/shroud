@@ -370,6 +370,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             wrap_python=False,
             wrap_lua=False,
             doxygen=True,  # create doxygen comments
+            literalinclude=False, # Create sphinx literalinclude markers
             return_scalar_pointer="pointer",
             show_splicer_comments=True,
             # blank for functions, set in classes.

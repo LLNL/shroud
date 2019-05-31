@@ -50,9 +50,9 @@ bool Function3(bool arg)
     return ! arg;
 }
 
-void Function3b(const bool arg1, bool *arg2, bool *arg3)
+void checkBool(const bool arg1, bool *arg2, bool *arg3)
 {
-    strncpy(last_function_called, "Function3b", MAXLAST);
+    strncpy(last_function_called, "checkBool", MAXLAST);
     *arg2 = ! arg1;
     *arg3 = ! *arg3;
     return;

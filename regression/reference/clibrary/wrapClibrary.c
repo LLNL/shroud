@@ -66,6 +66,7 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
  * This define is provided by the user.
  * The function will copy into the user provided buffer.
  */
+// before CLI_return_one_name_bufferify
 void CLI_return_one_name_bufferify(char * name1, int Nname1)
 {
 // splicer begin function.return_one_name_bufferify
@@ -74,6 +75,7 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
     return;
 // splicer end function.return_one_name_bufferify
 }
+// after CLI_return_one_name_bufferify
 
 // void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1), char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2))
 /**
@@ -99,6 +101,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
  * \brief Fill text, at most ltext characters.
  *
  */
+// before CLI_implied_text_len_bufferify
 void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
 {
 // splicer begin function.implied_text_len_bufferify
@@ -107,6 +110,7 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
     return;
 // splicer end function.implied_text_len_bufferify
 }
+// after CLI_implied_text_len_bufferify
 
 // void bindC2(char * outbuf +intent(out)+len(Noutbuf))
 /**
