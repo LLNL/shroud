@@ -36,8 +36,8 @@ Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before pass_by_value
-   :end-before: after pass_by_value
+   :start-after: start pass_by_value
+   :end-before: end pass_by_value
    :dedent: 8
 
 C library function:
@@ -64,8 +64,8 @@ Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before pass_by_reference
-   :end-before: after pass_by_reference
+   :start-after: start pass_by_reference
+   :end-before: end pass_by_reference
    :dedent: 8
 
 C library function:
@@ -102,16 +102,16 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before sum
-   :end-before: after sum
+   :start-after: start sum
+   :end-before: end sum
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before c_sum
-   :end-before: after c_sum
+   :start-after: start c_sum
+   :end-before: end c_sum
    :dedent: 8
 
 C library function:
@@ -146,16 +146,16 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before check_bool
-   :end-before: after check_bool
+   :start-after: start check_bool
+   :end-before: end check_bool
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before c_check_bool
-   :end-before: after c_check_bool
+   :start-after: start c_check_bool
+   :end-before: end c_check_bool
    :dedent: 8
 
 
@@ -186,22 +186,22 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before accept_name
-   :end-before: after accept_name
+   :start-after: start accept_name
+   :end-before: end accept_name
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before c_accept_name
-   :end-before: after c_accept_name
+   :start-after: start c_accept_name
+   :end-before: end c_accept_name
    :dedent: 8
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: before CLI_accept_name_bufferify
-   :end-before: after CLI_accept_name_bufferify
+   :start-after: start CLI_accept_name_bufferify
+   :end-before: end CLI_accept_name_bufferify
 
 .. ############################################################
 
@@ -223,24 +223,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before return_one_name
-   :end-before: after return_one_name
+   :start-after: start return_one_name
+   :end-before: end return_one_name
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before c_return_one_name_bufferify
-   :end-before: after c_return_one_name_bufferify
+   :start-after: start c_return_one_name_bufferify
+   :end-before: end c_return_one_name_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: before CLI_return_one_name_bufferify
-   :end-before: after CLI_return_one_name_bufferify
+   :start-after: start CLI_return_one_name_bufferify
+   :end-before: end CLI_return_one_name_bufferify
 
 .. ############################################################
 
@@ -263,24 +263,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before implied_text_len
-   :end-before: after implied_text_len
+   :start-after: start implied_text_len
+   :end-before: end implied_text_len
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: before c_implied_text_len_bufferify
-   :end-before: after c_implied_text_len_bufferify
+   :start-after: start c_implied_text_len_bufferify
+   :end-before: end c_implied_text_len_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
    :language: c
-   :start-after: before CLI_implied_text_len_bufferify
-   :end-before: after CLI_implied_text_len_bufferify
+   :start-after: start CLI_implied_text_len_bufferify
+   :end-before: end CLI_implied_text_len_bufferify
 
 
 std::string
@@ -303,24 +303,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before accept_string_reference
-   :end-before: after accept_string_reference
+   :start-after: start accept_string_reference
+   :end-before: end accept_string_reference
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before c_accept_string_reference_bufferify
-   :end-before: after c_accept_string_reference_bufferify
+   :start-after: start c_accept_string_reference_bufferify
+   :end-before: end c_accept_string_reference_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: before STR_accept_string_reference_bufferify
-   :end-before: after STR_accept_string_reference_bufferify
+   :start-after: start STR_accept_string_reference_bufferify
+   :end-before: end STR_accept_string_reference_bufferify
 
 char functions
 ^^^^^^^^^^^^^^
@@ -347,24 +347,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before get_char_ptr1
-   :end-before: after get_char_ptr1
+   :start-after: start get_char_ptr1
+   :end-before: end get_char_ptr1
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before c_get_char_ptr1_bufferify
-   :end-before: after c_get_char_ptr1_bufferify
+   :start-after: start c_get_char_ptr1_bufferify
+   :end-before: end c_get_char_ptr1_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: before STR_get_char_ptr1_bufferify
-   :end-before: after STR_get_char_ptr1_bufferify
+   :start-after: start STR_get_char_ptr1_bufferify
+   :end-before: end STR_get_char_ptr1_bufferify
 
 .. ############################################################
 
@@ -388,24 +388,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before get_char_ptr2
-   :end-before: after get_char_ptr2
+   :start-after: start get_char_ptr2
+   :end-before: end get_char_ptr2
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before c_get_char_ptr2_bufferify
-   :end-before: after c_get_char_ptr2_bufferify
+   :start-after: start c_get_char_ptr2_bufferify
+   :end-before: end c_get_char_ptr2_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: before STR_get_char_ptr2_bufferify
-   :end-before: after STR_get_char_ptr2_bufferify
+   :start-after: start STR_get_char_ptr2_bufferify
+   :end-before: end STR_get_char_ptr2_bufferify
 
 .. ############################################################
 
@@ -432,24 +432,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before get_char_ptr3
-   :end-before: after get_char_ptr3
+   :start-after: start get_char_ptr3
+   :end-before: end get_char_ptr3
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before c_get_char_ptr3_bufferify
-   :end-before: after c_get_char_ptr3_bufferify
+   :start-after: start c_get_char_ptr3_bufferify
+   :end-before: end c_get_char_ptr3_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: before STR_get_char_ptr3_bufferify
-   :end-before: after STR_get_char_ptr3_bufferify
+   :start-after: start STR_get_char_ptr3_bufferify
+   :end-before: end STR_get_char_ptr3_bufferify
 
 string functions
 ^^^^^^^^^^^^^^^^
@@ -471,24 +471,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before get_const_string_ref_pure
-   :end-before: after get_const_string_ref_pure
+   :start-after: start get_const_string_ref_pure
+   :end-before: end get_const_string_ref_pure
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: before c_get_const_string_ref_pure_bufferify
-   :end-before: after c_get_const_string_ref_pure_bufferify
+   :start-after: start c_get_const_string_ref_pure_bufferify
+   :end-before: end c_get_const_string_ref_pure_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: before STR_get_const_string_ref_pure_bufferify
-   :end-before: after STR_get_const_string_ref_pure_bufferify
+   :start-after: start STR_get_const_string_ref_pure_bufferify
+   :end-before: end STR_get_const_string_ref_pure_bufferify
 
 std::vector
 -----------
@@ -513,24 +513,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before vector_sum
-   :end-before: after vector_sum
+   :start-after: start vector_sum
+   :end-before: end vector_sum
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before c_vector_sum_bufferify
-   :end-before: after c_vector_sum_bufferify
+   :start-after: start c_vector_sum_bufferify
+   :end-before: end c_vector_sum_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
-   :start-after: before VEC_vector_sum_bufferify
-   :end-before: after VEC_vector_sum_bufferify
+   :start-after: start VEC_vector_sum_bufferify
+   :end-before: end VEC_vector_sum_bufferify
 
 .. ############################################################
 
@@ -549,24 +549,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before vector_iota_out
-   :end-before: after vector_iota_out
+   :start-after: start vector_iota_out
+   :end-before: end vector_iota_out
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before c_vector_iota_out_bufferify
-   :end-before: after c_vector_iota_out_bufferify
+   :start-after: start c_vector_iota_out_bufferify
+   :end-before: end c_vector_iota_out_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
-   :start-after: before VEC_vector_iota_out_bufferify
-   :end-before: after VEC_vector_iota_out_bufferify
+   :start-after: start VEC_vector_iota_out_bufferify
+   :end-before: end VEC_vector_iota_out_bufferify
 
 .. ############################################################
 
@@ -585,24 +585,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before vector_iota_out_alloc
-   :end-before: after vector_iota_out_alloc
+   :start-after: start vector_iota_out_alloc
+   :end-before: end vector_iota_out_alloc
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before c_vector_iota_out_alloc_bufferify
-   :end-before: after c_vector_iota_out_alloc_bufferify
+   :start-after: start c_vector_iota_out_alloc_bufferify
+   :end-before: end c_vector_iota_out_alloc_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
-   :start-after: before VEC_vector_iota_out_alloc_bufferify
-   :end-before: after VEC_vector_iota_out_alloc_bufferify
+   :start-after: start VEC_vector_iota_out_alloc_bufferify
+   :end-before: end VEC_vector_iota_out_alloc_bufferify
 
 .. ############################################################
 
@@ -621,24 +621,24 @@ The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before vector_iota_inout_alloc
-   :end-before: after vector_iota_inout_alloc
+   :start-after: start vector_iota_inout_alloc
+   :end-before: end vector_iota_inout_alloc
    :dedent: 4
 
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
-   :start-after: before c_vector_iota_inout_alloc_bufferify
-   :end-before: after c_vector_iota_inout_alloc_bufferify
+   :start-after: start c_vector_iota_inout_alloc_bufferify
+   :end-before: end c_vector_iota_inout_alloc_bufferify
    :dedent: 8
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
-   :start-after: before VEC_vector_iota_inout_alloc_bufferify
-   :end-before: after VEC_vector_iota_inout_alloc_bufferify
+   :start-after: start VEC_vector_iota_inout_alloc_bufferify
+   :end-before: end VEC_vector_iota_inout_alloc_bufferify
 
 
 

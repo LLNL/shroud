@@ -52,7 +52,7 @@ In the following examples, ``int`` can be replaced by any numeric type.
     See example :ref:`PassByReference <example_PassByReference>`.
 
 ``int *arg``
-    If arg is an array, add the ``dimension(:)`` attribute.
+    If ``arg`` is an array, add the ``dimension(:)`` attribute.
     This will create an assumed-shape attribute for ``arg``.
     The C array needs to have some way to determine the length of the
     array.  One option is to add another argument which will pass

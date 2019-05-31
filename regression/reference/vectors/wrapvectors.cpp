@@ -59,7 +59,7 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 // splicer end C_definitions
 
 // int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
-// before VEC_vector_sum_bufferify
+// start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
 // splicer begin function.vector_sum_bufferify
@@ -68,14 +68,14 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
     return SHC_rv;
 // splicer end function.vector_sum_bufferify
 }
-// after VEC_vector_sum_bufferify
+// end VEC_vector_sum_bufferify
 
 // void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
 /**
  * \brief Copy vector into Fortran input array
  *
  */
-// before VEC_vector_iota_out_bufferify
+// start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_bufferify
@@ -89,14 +89,14 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
     return;
 // splicer end function.vector_iota_out_bufferify
 }
-// after VEC_vector_iota_out_bufferify
+// end VEC_vector_iota_out_bufferify
 
 // void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
-// before VEC_vector_iota_out_alloc_bufferify
+// start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_alloc_bufferify
@@ -110,14 +110,14 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
     return;
 // splicer end function.vector_iota_out_alloc_bufferify
 }
-// after VEC_vector_iota_out_alloc_bufferify
+// end VEC_vector_iota_out_alloc_bufferify
 
 // void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
-// before VEC_vector_iota_inout_alloc_bufferify
+// start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
@@ -132,7 +132,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     return;
 // splicer end function.vector_iota_inout_alloc_bufferify
 }
-// after VEC_vector_iota_inout_alloc_bufferify
+// end VEC_vector_iota_inout_alloc_bufferify
 
 // void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 void VEC_vector_increment_bufferify(int * arg, long Sarg,

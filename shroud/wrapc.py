@@ -1356,7 +1356,7 @@ class Wrapc(util.WrapperMixin):
             if node.cpp_if:
                 impl.append("#" + node.cpp_if)
             if options.literalinclude:
-                append_format(impl, "// before {C_name}", fmt_func)
+                append_format(impl, "// start {C_name}", fmt_func)
             append_format(
                 impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
             )
@@ -1370,7 +1370,7 @@ class Wrapc(util.WrapperMixin):
             )
             impl.append("}")
             if options.literalinclude:
-                append_format(impl, "// after {C_name}", fmt_func)
+                append_format(impl, "// end {C_name}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
         else:

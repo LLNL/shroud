@@ -968,7 +968,7 @@ rv = .false.
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
         if options.literalinclude:
-            append_format(c_interface, "! before {F_C_name}", fmt)
+            append_format(c_interface, "! start {F_C_name}", fmt)
         c_interface.append(
             wformat(
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
@@ -986,7 +986,7 @@ rv = .false.
         c_interface.append(-1)
         c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt))
         if options.literalinclude:
-            append_format(c_interface, "! after {F_C_name}", fmt)
+            append_format(c_interface, "! end {F_C_name}", fmt)
         if node.cpp_if:
             c_interface.append("#endif")
 
@@ -1630,7 +1630,7 @@ rv = .false.
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if options.literalinclude:
-                append_format(impl, "! before {F_name_impl}", fmt_func)
+                append_format(impl, "! start {F_name_impl}", fmt_func)
             append_format(
                 impl,
                 "\r{F_subprogram} {F_name_impl}(\t"
@@ -1646,7 +1646,7 @@ rv = .false.
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
             if options.literalinclude:
-                append_format(impl, "! after {F_name_impl}", fmt_func)
+                append_format(impl, "! end {F_name_impl}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif")
         else:
