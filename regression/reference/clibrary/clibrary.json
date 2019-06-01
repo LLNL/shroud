@@ -3335,20 +3335,6 @@
                         }
                     }
                 },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_var": "SHT_rv"
-                    }
-                },
                 "ast": {
                     "declarator": {
                         "name": "passAssumedTypeDim",
@@ -3377,35 +3363,33 @@
                         }
                     ],
                     "specifier": [
-                        "int"
+                        "void"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "void"
                 },
-                "decl": "int passAssumedTypeDim(void *arg+assumedtype+dimension)",
-                "declgen": "int passAssumedTypeDim(void * arg +assumedtype+dimension(*)+intent(in))",
+                "decl": "void passAssumedTypeDim(void *arg+assumedtype+dimension)",
+                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+dimension(*)+intent(in))",
                 "doxygen": {
                     "__line__": 191,
                     "brief": "Test assumed-type with dimension"
                 },
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t passAssumedTypeDim(\targ);",
+                    "C_call_code": "passAssumedTypeDim(\targ);",
                     "C_call_list": "arg",
                     "C_name": "passAssumedTypeDim",
                     "C_prototype": "void * arg",
-                    "C_return_code": "return SHC_rv;",
-                    "C_return_type": "int",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
                     "F_C_call": "c_pass_assumed_type_dim",
                     "F_C_name": "pass_assumed_type_dim",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_pass_assumed_type_dim(arg)",
+                    "F_call_code": "call c_pass_assumed_type_dim(arg)",
                     "F_name_function": "pass_assumed_type_dim",
                     "F_name_generic": "pass_assumed_type_dim",
                     "F_name_impl": "pass_assumed_type_dim",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
+                    "F_subprogram": "subroutine",
                     "c_const": "",
-                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedTypeDim",
                     "underscore_name": "pass_assumed_type_dim"
                 },

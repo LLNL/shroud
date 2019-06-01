@@ -287,14 +287,12 @@ module clibrary_mod
         ! end pass_assumed_type
 
         ! start pass_assumed_type_dim
-        function pass_assumed_type_dim(arg) &
-                result(SHT_rv) &
+        subroutine pass_assumed_type_dim(arg) &
                 bind(C, name="passAssumedTypeDim")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_PTR
             implicit none
             type(*) :: arg(*)
-            integer(C_INT) :: SHT_rv
-        end function pass_assumed_type_dim
+        end subroutine pass_assumed_type_dim
         ! end pass_assumed_type_dim
 
         function c_pass_assumed_type_buf(arg, outbuf) &

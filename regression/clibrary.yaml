@@ -187,7 +187,7 @@ declarations:
     wrap_python: false
     literalinclude: True
 
-- decl: int passAssumedTypeDim(void *arg+assumedtype+dimension)
+- decl: void passAssumedTypeDim(void *arg+assumedtype+dimension)
   doxygen:
     brief: Test assumed-type with dimension
   options:
