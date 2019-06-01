@@ -37,6 +37,12 @@ module clibrary_mod
 
     abstract interface
 
+        ! start abstract callback1_incr
+        subroutine callback1_incr() bind(C)
+            implicit none
+        end subroutine callback1_incr
+        ! end abstract callback1_incr
+
         subroutine callback2_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
@@ -296,6 +302,19 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Noutbuf
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf_bufferify
+
+        ! start c_callback1
+        function c_callback1(type, incr) &
+                result(SHT_rv) &
+                bind(C, name="callback1")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: callback1_incr
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            procedure(callback1_incr) :: incr
+            integer(C_INT) :: SHT_rv
+        end function c_callback1
+        ! end c_callback1
 
         subroutine c_callback2(type, in, incr) &
                 bind(C, name="callback2")
@@ -646,6 +665,24 @@ contains
             len(outbuf, kind=C_INT))
         ! splicer end function.pass_assumed_type_buf
     end function pass_assumed_type_buf
+
+    ! int callback1(int type +intent(in)+value, void ( * incr)() +external+intent(in)+value)
+    !>
+    !! \brief Test function pointer
+    !!
+    !<
+    ! start callback1
+    function callback1(type, incr) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: type
+        external :: incr
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.callback1
+        SHT_rv = c_callback1(type, incr)
+        ! splicer end function.callback1
+    end function callback1
+    ! end callback1
 
     ! void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
     !>

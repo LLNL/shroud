@@ -167,6 +167,13 @@ int passAssumedTypeBuf(void *arg, char *outbuf)
 
 //----------------------------------------------------------------------
 
+// start callback1
+void callback1(int type, void (*incr)(void))
+{
+  // Use type to decide how to call incr
+}
+// end callback1
+
 void callback2(int type, void * in, void (*incr)(int *))
 {
   if (type == 1) {

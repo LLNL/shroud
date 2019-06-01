@@ -708,6 +708,8 @@ rv = .false.
                 if subprogram == "function":
                     arg_c_decl.append(ast.bind_c(name=key, params=None))
                 arguments = ",\t ".join(arg_f_names)
+                if node.options.literalinclude:
+                    iface.append("! start abstract " + key)
                 iface.append(
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
@@ -718,6 +720,8 @@ rv = .false.
                 iface.extend(arg_c_decl)
                 iface.append(-1)
                 iface.append("end {} {}".format(subprogram, key))
+                if node.options.literalinclude:
+                    iface.append("! end abstract " + key)
             iface.append(-1)
             iface.append("")
             iface.append("end interface")

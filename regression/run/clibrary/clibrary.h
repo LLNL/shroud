@@ -65,6 +65,7 @@ void passVoidStarStar(void *in, void **out);
 int passAssumedType(void *arg);
 int passAssumedTypeBuf(void *arg, char *outbuf);
 
+void callback1(int type, void (*incr)(void));
 void callback2(int type, void * in, void (*incr)(int *));
 void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
 

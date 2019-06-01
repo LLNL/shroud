@@ -311,10 +311,12 @@ Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 
 //----------------------------------------------------------------------
 
+// start callback1
 int callback1(int in, int (*incr)(int))
 {
   return incr(in);
 }
+// end callback1
 
 //----------------------------------------------------------------------
 

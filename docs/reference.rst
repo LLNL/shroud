@@ -377,13 +377,13 @@ F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
    Defaults to ``{underscore_name}_{argname}``
    where *argname* is the name of the function argument.
-   see :ref:`TypesAnchor_Function_Pointers`.
+   see :ref:`DeclAnchor_Function_Pointers`.
 
 F_abstract_interface_subprogram_template
    The name of the abstract interface subprogram which represents a
    function pointer.
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
-   see :ref:`TypesAnchor_Function_Pointers`.
+   see :ref:`DeclAnchor_Function_Pointers`.
 
 F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the

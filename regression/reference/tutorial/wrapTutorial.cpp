@@ -545,6 +545,7 @@ TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv)
  * \brief Test function pointer
  *
  */
+// start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))
 {
 // splicer begin function.callback1
@@ -552,6 +553,7 @@ int TUT_callback1(int in, int ( * incr)(int))
     return SHC_rv;
 // splicer end function.callback1
 }
+// end TUT_callback1
 
 // struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
 TUT_struct1 TUT_return_struct(int i, double d)

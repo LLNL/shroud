@@ -307,6 +307,7 @@ declarations:
     options:
       wrap_lua: False
       wrap_python: False
+      literalinclude: True
   
 ##################################################
 

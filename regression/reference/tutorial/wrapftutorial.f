@@ -121,12 +121,14 @@ module tutorial_mod
 
     abstract interface
 
+        ! start abstract callback1_incr
         function callback1_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value :: arg0
             integer(C_INT) :: callback1_incr
         end function callback1_incr
+        ! end abstract callback1_incr
 
     end interface
 
@@ -654,6 +656,7 @@ module tutorial_mod
             type(C_PTR) SHT_rv
         end function c_get_class_copy
 
+        ! start callback1
         function callback1(in, incr) &
                 result(SHT_rv) &
                 bind(C, name="TUT_callback1")
@@ -664,6 +667,7 @@ module tutorial_mod
             procedure(callback1_incr) :: incr
             integer(C_INT) :: SHT_rv
         end function callback1
+        ! end callback1
 
         function return_struct(i, d) &
                 result(SHT_rv) &

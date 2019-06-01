@@ -12,14 +12,12 @@ directory.
 Numeric Types
 -------------
 
-other
-^^^^^
 .. ############################################################
 
 .. _example_PassByValue:
 
 PassByValue
-"""""""""""
+^^^^^^^^^^^
 
 YAML:
 
@@ -52,7 +50,7 @@ C library function:
 .. _example_PassByReference:
 
 PassByReference
-"""""""""""""""
+^^^^^^^^^^^^^^^
 
 YAML:
 
@@ -88,7 +86,7 @@ Example usage:
 .. _example_Sum:
 
 Sum
-"""
+^^^
 
 YAML:
 
@@ -126,7 +124,7 @@ C library function:
 .. ############################################################
 
 getMinMax
-"""""""""
+^^^^^^^^^
 
 No Fortran function is created.  Only an interface to a C wrapper
 which dereference the pointers so they can be treated as references.
@@ -163,14 +161,12 @@ C++ library function:
 Bool
 ----
 
-other
-^^^^^
 .. ############################################################
 
 .. _example_checkBool:
 
 checkBool
-"""""""""
+^^^^^^^^^
 
 Assignments are done to convert between ``logical`` and
 ``logical(C_BOOL)``.
@@ -203,16 +199,12 @@ Calls C via the interface:
 Character
 ---------
 
-
-Char
-^^^^
-
 .. ############################################################
 
 .. _example_acceptName:
 
 acceptName
-""""""""""
+^^^^^^^^^^
 
 Pass a ``NULL`` terminated string to a C function.
 The string will be unchanged.
@@ -249,7 +241,7 @@ Calls C via the interface:
 .. _example_returnOneName:
 
 returnOneName
-"""""""""""""
+^^^^^^^^^^^^^
 
 Pass the pointer to a buffer which the C library will fill.
 The length of the string is unknown.
@@ -288,7 +280,7 @@ The C wrapper:
 .. _example_passCharPtr:
 
 passCharPtr
-"""""""""""
+^^^^^^^^^^^
 
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``:
@@ -347,7 +339,7 @@ The C wrapper:
    :start-after: start STR_pass_char_ptr_bufferify
    :end-before: end STR_pass_char_ptr_bufferify
 
-C library function:
+C++ library function:
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
@@ -367,7 +359,7 @@ The function can be called without the user aware that it is written in C++:
 .. _example_ImpliedTextLen:
 
 ImpliedTextLen
-""""""""""""""
+^^^^^^^^^^^^^^
 
 Pass the pointer to a buffer which the C library will fill.  The
 length of the buffer is passed in ``ltext``.  Since Fortran knows the
@@ -411,20 +403,26 @@ The C wrapper:
 
 
 std::string
-^^^^^^^^^^^
+-----------
 
 .. ############################################################
 
 .. _example_acceptStringReference:
 
 acceptStringReference
-"""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^
 
 YAML:
 
 .. code-block:: yaml
 
     - decl: void acceptStringReference(std::string & arg1)
+
+A reference defaults to *intent(inout)* and will add both the *len*
+and *len_trim* annotations.
+
+Both generated functions will convert ``arg`` into a ``std::string``,
+call the function, then copy the results back into the argument.
 
 The Fortran wrapper:
 
@@ -449,15 +447,38 @@ The C wrapper:
    :start-after: start STR_accept_string_reference_bufferify
    :end-before: end STR_accept_string_reference_bufferify
 
+An interface for the native C function is also created:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_accept_string_reference
+   :end-before: end c_accept_string_reference
+   :dedent: 8
+
+Which will call the C wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_accept_string_reference
+   :end-before: end STR_accept_string_reference
+
+The important thing to notice is that the pure C version could do very
+bad things since it does not know how much space it has to copy into.
+The bufferify version knows the allocated length of the argument.
+However, since the input argument is a fixed length it may be too
+short for the new string value:
+
+
+
 char functions
-^^^^^^^^^^^^^^
+--------------
 
 .. ############################################################
 
 .. _example_getCharPtr1:
 
 getCharPtr1
-"""""""""""
+^^^^^^^^^^^
 
 Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
 variable.  The Fortran application is responsible to release the
@@ -509,7 +530,7 @@ Fortran usage:
 .. _example_getCharPtr2:
 
 getCharPtr2
-"""""""""""
+^^^^^^^^^^^
 
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
@@ -557,7 +578,7 @@ Fortran usage:
 .. _example_getCharPtr3:
 
 getCharPtr3
-"""""""""""
+^^^^^^^^^^^
 
 Create a Fortran subroutine in an additional ``CHARACTER``
 argument for the C function result. Any size character string can
@@ -604,14 +625,14 @@ Fortran usage:
     call get_char_ptrs(str)
 
 string functions
-^^^^^^^^^^^^^^^^
+----------------
 
 .. ############################################################
 
 .. _example_getConstStringRefPure:
 
 getConstStringRefPure
-"""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^
 
 YAML:
 
@@ -642,24 +663,31 @@ The C wrapper:
    :start-after: start STR_get_const_string_ref_pure_bufferify
    :end-before: end STR_get_const_string_ref_pure_bufferify
 
+The native C wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_get_const_string_ref_pure
+   :end-before: end STR_get_const_string_ref_pure
+
 std::vector
 -----------
-
-other
-^^^^^
 
 .. ############################################################
 
 .. _example_vector_sum:
 
 vector_sum
-""""""""""
+^^^^^^^^^^
 
 YAML:
 
 .. code-block:: yaml
 
     - decl: int vector_sum(const std::vector<int> &arg)
+
+``intent(in)`` is implied for the *vector_sum* argument since it is
+``const``.  The Fortran wrapper passes the array and the size to C.
 
 The Fortran wrapper:
 
@@ -689,7 +717,7 @@ The C wrapper:
 .. _example_vector_iota_out:
 
 vector_iota_out
-"""""""""""""""
+^^^^^^^^^^^^^^^
 
 YAML:
 
@@ -725,7 +753,7 @@ The C wrapper:
 .. _example_vector_iota_out_alloc:
 
 vector_iota_out_alloc
-"""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^
 
 YAML:
 
@@ -761,7 +789,7 @@ The C wrapper:
 .. _example_vector_iota_inout_alloc:
 
 vector_iota_inout_alloc
-"""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^
 
 YAML:
 
@@ -792,6 +820,139 @@ The C wrapper:
    :start-after: start VEC_vector_iota_inout_alloc_bufferify
    :end-before: end VEC_vector_iota_inout_alloc_bufferify
 
+Function Pointers
+-----------------
+
+.. ############################################################
+
+.. _example_callback1:
+
+callback1
+^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: int callback1(int in, int (*incr)(int));
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    module worker
+      use iso_c_binding
+    contains
+      subroutine userincr(i) bind(C)
+        integer(C_INT), value :: i
+        ! do work of callback
+      end subroutine user
+
+      subroutine work
+        call callback1(1, userincr)
+      end subrouine work
+    end module worker
+
+Creates the abstract interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start abstract callback1_incr
+   :end-before: end abstract callback1_incr
+   :dedent: 8
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start callback1
+   :end-before: end callback1
+   :dedent: 8
+
+The C wrapper:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c
+   :start-after: start TUT_callback1
+   :end-before: end TUT_callback1
+
+C++ library function:
+
+.. literalinclude:: ../regression/run/tutorial/tutorial.cpp
+   :language: c
+   :start-after: start callback1
+   :end-before: end callback1
+
+
+.. ############################################################
+
+.. _example_callback1c:
+
+callback1c
+^^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: int callback1(int type, void (*incr)()+external)
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    module worker
+      use iso_c_binding
+    contains
+      subroutine userincr_int(i) bind(C)
+        integer(C_INT), value :: i
+        ! do work of callback
+      end subroutine user_int
+
+      subroutine userincr_double(i) bind(C)
+        real(C_DOUBLE), value :: i
+        ! do work of callback
+      end subroutine user_int
+
+      subroutine work
+        call callback1c(1, userincr_int)
+        call callback1c(1, userincr_double)
+      end subrouine work
+    end module worker
+
+Creates the abstract interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start abstract callback1_incr
+   :end-before: end abstract callback1_incr
+   :dedent: 8
+
+The Fortran wrapper.
+By using ``external`` no abstract interface is used:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start callback1
+   :end-before: end callback1
+   :dedent: 4
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start c_callback1
+   :end-before: end c_callback1
+   :dedent: 8
+
+.. XXX why is C_PTR used here ^
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start callback1
+   :end-before: end callback1
 
 
 

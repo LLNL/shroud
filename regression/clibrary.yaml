@@ -198,12 +198,14 @@ declarations:
 ######################################################################
 # Function pointer (from tutorial.yaml)
 
-#- decl: int callback1(int in, int (*incr)(int));
-#  doxygen:
-#    brief: Test function pointer
-#  options:
-#    wrap_lua: False
-#    wrap_python: False
+# XXX (void)
+- decl: int callback1(int type, void (*incr)()+external)
+  doxygen:
+    brief: Test function pointer
+  options:
+    wrap_lua: False
+    wrap_python: False
+    literalinclude: True
   
 - decl: void callback2(int type, void * in+assumedtype,
                        void (*incr)(int *)+external)

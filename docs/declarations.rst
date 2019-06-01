@@ -129,17 +129,21 @@ is to account for blank filled vs ``NULL`` terminated.
 std::string
 -----------
 
+``std::string & arg``
+    ``arg`` will default to ``intent(inout)``.
+    See example :ref:`acceptStringReference <example_acceptStringReference>`.
+
 
 char functions
 --------------
 
 Functions which return a ``char *`` provide an additional challenge.
 Taken literally they should return a ``type(C_PTR)``.  And if you call
-the function via the interface, that's what you get.  However,
+the C library function via the interface, that's what you get.  However,
 Shroud provides several options to provide a more idiomatic usage.
 
 Each of these declaration call identical C++ functions but they are
-wrapped differently
+wrapped differently.
 
 ``char *getCharPtr1``
 
@@ -169,4 +173,104 @@ wrapped differently
 
     See example :ref:`getCharPtr3 <example_getCharPtr3>`.
 
+string functions
+----------------
 
+Functions which return ``std::string`` values are similar but must provide the
+extra step of converting the result into a ``char *``.
+
+
+``const string &``
+    See example :ref:`getConstStringRefPure <example_getConstStringRefPure>`.
+
+std::vector
+-----------
+
+A ``std::vector`` argument for a C++ function can be created from a
+Fortran array.  The address and size of the array is extracted and
+passed to the C wrapper to create the ``std::vector``
+
+
+``const std::vector<int> &arg``
+    ``arg`` defaults to ``intent(in)`` since it is const.
+    See example :ref:`vector_sum <example_vector_sum>`.
+
+``std::vector<int> &arg``
+    See example :ref:`vector_iota_out <example_vector_iota_out>`.
+
+See example :ref:`vector_iota_out_alloc <example_vector_iota_out_alloc>`.
+
+See example :ref:`vector_iota_inout_alloc <example_vector_iota_inout_alloc>`.
+
+On ``intent(in)``, the ``std::vector`` constructor copies the values
+from the input pointer.  With ``intent(out)``, the values are copied
+after calling the function.
+
+.. note:: With ``intent(out)``, if *vector_iota* changes the size of
+          ``arg`` to be longer than the original size of the Fortran
+          argument, the additional values will not be copied. 
+
+Struct
+------
+
+blah blah ...
+
+Void Pointers
+-------------
+
+``void *arg``
+
+``void **arg``
+
+.. _DeclAnchor_Function_Pointers:
+
+Function Pointers
+-----------------
+
+C or C++ arguments which are pointers to functions are supported.
+The function pointer type is wrapped using a Fortran ``abstract interface``.
+Only C compatible arguments in the function pointer are supported since
+no wrapper for the function pointer is created.  It must be callable 
+directly from Fortran.
+
+``int (*incr)(int)``
+    Create a Fortran abstract interface for the function pointer.
+    Only functions which match the interface can be used as a dummy argument.
+    See example :ref:`callback1 <example_callback1>`.
+
+``void (*incr)()``
+    Adding the ``external`` attribute will allow any function to be passed.
+    In C this is accomplished by using a cast.
+    See example :ref:`callback1c <example_callback1c>`.
+
+The ``abstract interface`` is named from option
+**F_abstract_interface_subprogram_template** which defaults to
+``{underscore_name}_{argname}`` where *argname* is the name of the
+function argument.
+
+If the function pointer uses an abstract declarator
+(no argument name), the argument name is created from option
+**F_abstract_interface_argument_template** which defaults to
+``arg{index}`` where *index* is the 0-based argument index.
+When a name is given to a function pointer argument,
+it is always used in the ``abstract interface``.
+
+To change the name of the subprogram or argument, change the option.
+There are no format fields **F_abstract_interface_subprogram** or
+**F_abstract_interface_argument** since they vary by argument (or
+argument to an argument):
+
+.. code-block:: yaml
+
+    options:
+      F_abstract_interface_subprogram_template: custom_funptr
+      F_abstract_interface_argument_template: XX{index}arg
+
+It is also possible to pass a function which will accept any function
+interface as the dummy argument. This is done by adding the *external*
+attribute.  A Fortran wrapper function is created with an ``external``
+declaration for the argument. The C function is called via an interace
+with the ``bind(C)`` attribute.  In the interface, an ``abstract
+interface`` for the function pointer argument is used.  The user's
+library is responsible for calling the argument correctly since the
+interface is not preserved by the ``external`` declaration.
