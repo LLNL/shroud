@@ -66,6 +66,7 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_return_char_bufferify
 
+        ! start c_pass_char_ptr
         subroutine c_pass_char_ptr(dest, src) &
                 bind(C, name="STR_pass_char_ptr")
             use iso_c_binding, only : C_CHAR
@@ -73,7 +74,9 @@ module strings_mod
             character(kind=C_CHAR), intent(OUT) :: dest(*)
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_pass_char_ptr
+        ! end c_pass_char_ptr
 
+        ! start c_pass_char_ptr_bufferify
         subroutine c_pass_char_ptr_bufferify(dest, Ndest, src) &
                 bind(C, name="STR_pass_char_ptr_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -82,6 +85,7 @@ module strings_mod
             integer(C_INT), value, intent(IN) :: Ndest
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_pass_char_ptr_bufferify
+        ! end c_pass_char_ptr_bufferify
 
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="STR_pass_char_ptr_in_out")
@@ -507,6 +511,7 @@ contains
     !! This avoid a copy-in on dest.
     !! In Python, src must not be over 40 characters, defined by charlen.
     !<
+    ! start pass_char_ptr
     subroutine pass_char_ptr(dest, src)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
         character(len=*), intent(OUT) :: dest
@@ -516,6 +521,7 @@ contains
             trim(src)//C_NULL_CHAR)
         ! splicer end function.pass_char_ptr
     end subroutine pass_char_ptr
+    ! end pass_char_ptr
 
     ! void passCharPtrInOut(char * s +intent(inout))
     ! arg_to_buffer

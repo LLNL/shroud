@@ -587,6 +587,7 @@ module tutorial_mod
             integer(C_INT) :: SHT_rv
         end function colorfunc
 
+        ! start get_min_max
         subroutine get_min_max(min, max) &
                 bind(C, name="TUT_get_min_max")
             use iso_c_binding, only : C_INT
@@ -594,6 +595,7 @@ module tutorial_mod
             integer(C_INT), intent(OUT) :: min
             integer(C_INT), intent(OUT) :: max
         end subroutine get_min_max
+        ! end get_min_max
 
         function direction_func(arg) &
                 result(SHT_rv) &

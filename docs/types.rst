@@ -187,43 +187,6 @@ type expected by the C++ function.
 Bool
 ----
 
-C++ functions with a ``bool`` argument generate a Fortran wrapper with
-a ``logical`` argument.  One of the goals of Shroud is to produce an
-idiomatic interface.  Converting the types in the wrapper avoids the
-awkwardness of requiring the Fortran user to passing in
-``.true._c_bool`` instead of just ``.true.``.
-
-The type map is defined as:
-
-.. code-block:: yaml
-
-    type: bool
-    fields:
-        c_type: bool 
-        cxx_type: bool 
-        f_type: logical 
-        f_kind: C_BOOL
-        f_c_type: logical(C_BOOL) 
-        f_module:
-            iso_c_binding:
-            -  C_BOOL
-        f_statements:
-           intent_in:
-              c_local_var: true 
-              pre_call:
-              -  {c_var} = {f_var}  ! coerce to C_BOOL
-           intent_out:
-              c_local_var: true 
-              post_call:
-              -  {f_var} = {c_var}  ! coerce to logical
-           intent_inout:
-              c_local_var: true 
-              pre_call:
-              -  {c_var} = {f_var}  ! coerce to C_BOOL
-              post_call:
-              -  {f_var} = {c_var}  ! coerce to logical
-           result:
-              need_wrapper: true
 
 The first thing to notice is that **f_c_type** is defined.  This is
 the type used in the Fortran interface for the C wrapper.  The type
@@ -241,50 +204,6 @@ There is no Fortran intrinsic function to convert between default
 **post_call** sections will insert an assignment statement to allow
 the compiler to do the conversion.
 
-Example of using intent with ``bool`` arguments:
-
-.. code-block:: yaml
-
-    decl: void checkBool(bool arg1, bool * arg2+intent(out), bool * arg3+intent(inout))
-
-The resulting wrappers are:
-
-.. code-block:: fortran
-
-    module userlibrary_mod
-        interface
-            subroutine c_check_bool(arg1, arg2, arg3) &
-                    bind(C, name="AA_check_bool")
-                use iso_c_binding
-                implicit none
-                logical(C_BOOL), value, intent(IN) :: arg1
-                logical(C_BOOL), intent(OUT) :: arg2
-                logical(C_BOOL), intent(INOUT) :: arg3
-            end subroutine c_check_bool
-        end interface
-    contains
-        subroutine check_bool(arg1, arg2, arg3)
-            use iso_c_binding, only : C_BOOL
-            implicit none
-            logical, value, intent(IN) :: arg1
-            logical(C_BOOL) SH_arg1
-            logical, intent(OUT) :: arg2
-            logical(C_BOOL) SH_arg2
-            logical, intent(INOUT) :: arg3
-            logical(C_BOOL) SH_arg3
-            SH_arg1 = arg1  ! coerce to C_BOOL
-            SH_arg3 = arg3  ! coerce to C_BOOL
-            ! splicer begin check_bool
-            call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
-            ! splicer end check_bool
-            arg2 = SH_arg2  ! coerce to logical
-            arg3 = SH_arg3  ! coerce to logical
-        end subroutine check_bool
-    end module userlibrary_mod
-
-Since ``arg1`` in the YAML declaration is not a pointer it defaults to
-``intent(IN)``.  The intent of the other two arguments are explicitly
-annotated.
 
 If a function returns a ``bool`` result then a wrapper is always needed
 to convert the result.  The **result** section sets **need_wrapper**
@@ -295,19 +214,8 @@ since Fortran could call the C function directly.
 
 See example :ref:`checkBool <example_checkBool>`.
 
-Character
----------
-
-Fortran, C, and C++ each have their own semantics for character variables.
-
-  * Fortran ``character`` variables know their length and are blank filled
-  * C ``char *`` variables are assumed to be ``NULL`` terminated.
-  * C++ ``std::string`` know their own length and can provide a ``NULL`` terminated pointer.
-
-It is not sufficient to pass an address between Fortran and C++ like
-it is with other native types.  In order to get idiomatic behavior in
-the Fortran wrappers it is often necessary to copy the values.  This
-is to account for blank filled vs ``NULL`` terminated.
+Char
+----
 
 ..  It also helps support ``const`` vs non-``const`` strings.
 
@@ -348,118 +256,11 @@ to just pass the address of the argument instead of creating a copy
 and appending a ``NULL``.  The **F_create_bufferify_function** options
 can set to *false* to turn off this feature.
 
-While the copy of the argument is not necessary, it may still be useful
-to know the length.  This can be passed with an **implied** argument.
-
-.. code-block:: yaml
-
-    - decl: int ImpliedLen(const char *text, int ltext+implied(len(text)))
-      options:
-        F_create_bufferify_function: false
-
-.. code-block:: fortran
-
-     interface
-        function c_implied_len_trim(text, ltext) &
-                result(SHT_rv) &
-                bind(C, name="ImpliedLenTrim")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: text(*)
-            integer(C_INT), value, intent(IN) :: ltext
-            integer(C_INT) :: SHT_rv
-        end function c_implied_len_trim
-     end interface
-
-    contains
-
-    function implied_len_trim(text) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: text
-        integer(C_INT) :: ltext
-        integer(C_INT) :: SHT_rv
-        ltext = len(text)
-        SHT_rv = c_implied_len_trim(text, ltext)
-    end function implied_len_trim
-
-This can be used to emulate the behavior of most Fortran compilers
-which will pass an additional, hidden argument which contains the
-length of a ``CHARACTER`` argument.
-
 
 Char
 ^^^^
 
-The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
-statement ``dest = src``:
 
-.. code-block:: yaml
-
-    - decl: void passCharPtr(char *dest+intent(out), const char *src)
-
-.. from tests/strings.cpp
-
-The intent of ``dest`` must be explicit.  It defaults to *intent(inout)*
-since it is a pointer.
-``src`` is implied to be *intent(in)* since it is ``const``.
-
-This single line will create five different wrappers.  The first is the 
-pure C version.  The only feature this provides to Fortran is the ability
-to call a C++ function by wrapping it in an ``extern "C"`` function:
-
-.. code-block:: c++
-
-    void STR_pass_char_ptr(char * dest, const char * src)
-    {
-        passCharPtr(dest, src);
-        return;
-    }
-
-A Fortran interface for the routine is generated which will allow the
-function to be called directly:
-
-.. code-block:: fortran
-
-        subroutine c_pass_char_ptr(dest, src) &
-                bind(C, name="STR_pass_char_ptr")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            character(kind=C_CHAR), intent(IN) :: src(*)
-        end subroutine c_pass_char_ptr
-
-The user is responsible for providing the ``NULL`` termination.
-The result in ``str`` will also be ``NULL`` terminated instead of 
-blank filled.:
-
-.. code-block:: fortran
-
-    character(30) str
-    call c_pass_char_ptr(dest=str, src="mouse" // C_NULL_CHAR)
-
-An additional C function is automatically declared which is summarized as:
-
-.. code-block:: yaml
-
-    - decl: void passCharPtr(char * dest+intent(out)+len(Ndest),
-                             const char * src+intent(in)+len_trim(Lsrc))
-
-And generates:
-
-.. code-block:: c++
-
-    void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
-                                     const char * src, int Lsrc)
-    {
-        char * SH_dest = ShroudStrAlloc(dest, Ndest, 0);
-        char * SH_src = ShroudStrAlloc(src, Lsrc, Lsrc);
-        passCharPtr(SH_dest, SH_src);
-        ShroudStrCopy(dest, Ndest, SH_dest, std::strlen(SH_dest));
-        ShroudStrFree(SH_dest);
-        ShroudStrFree(SH_src);
-        return;
-    }
 
 ``Ndest`` is the declared length of argument ``dest`` and ``Lsrc`` is
 the trimmed length of argument ``src``.  These generated names must
@@ -479,71 +280,6 @@ the result back into the ``dest`` argument and deletes the scratch
 space.  ``ShroudStrCopy`` is a function provided by Shroud which
 copies character into the destination up to ``Ndest`` characters, then
 blank fills any remaining space.
-
-The Fortran interface is generated:
-
-.. code-block:: fortran
-
-        subroutine c_pass_char_ptr_bufferify(dest, Ndest, src, Lsrc) &
-                bind(C, name="STR_pass_char_ptr_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: Ndest
-            character(kind=C_CHAR), intent(IN) :: src(*)
-            integer(C_INT), value, intent(IN) :: Lsrc
-        end subroutine c_pass_char_ptr_bufferify
-
-And finally, the Fortran wrapper with calls to ``len`` and ``len_trim``:
-
-.. code-block:: fortran
-
-    subroutine pass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT
-        character(*), intent(OUT) :: dest
-        character(*), intent(IN) :: src
-        call c_pass_char_ptr_bufferify(dest, len(dest, kind=C_INT), src,  &
-            len_trim(src, kind=C_INT))
-    end subroutine pass_char_ptr
-
-Now the function can be called without the user aware that it is written in C++:
-
-.. code-block:: fortran
-
-    character(30) str
-    call pass_char_ptr(dest=str, src="mouse")
-
-``const char *arg``
-    Create a ``NULL`` terminated string in Fortran using
-    ``trim(arg)//C_NULL_CHAR`` and pass to C.
-    Since the argument is ``const``, it is treated as ``intent(in)``.
-    A bufferify function is not required to convert the argument.
-    This is the same as ``char *arg+intent(in)``.
-    See example :ref:`acceptName <example_acceptName>`.
-
-``char *arg``
-    Pass a ``char`` pointer to a function which assign to the memory.
-    ``arg`` must be ``NULL`` terminated by the function.
-    Add the *intent(out)* attribute.
-    The bufferify function will then blank-fill the string to the length
-    of the Fortran ``CHARACTER(*)`` argument.
-    It is the users responsibility to avoid overwriting the argument. 
-    See example :ref:`returnOneName <example_returnOneName>`.
-
-    Fortran must provide a CHARACTER argument which is at least as long as
-    the amount that the C function will write into.  This includes space
-    for the terminating NULL which will be converted into a blank for
-    Fortran.
-
-``char *arg, int larg``
-    Similar to above, but pass in the length of ``arg``.
-    The argument ``larg`` does not need to be passed to Fortran explicitly
-    since its value is implied.
-    The *implied* attribute is defined to use the ``len`` Fortran 
-    intrinsic to pass the length of ``arg`` as the value of ``larg``:
-    ``char *arg+intent(out), int larg+implied(len(arg))``.
-    See example :ref:`ImpliedTextLen <example_ImpliedTextLen>`.
-
 
 
 std::string
@@ -707,125 +443,6 @@ And the Fortran wrapper provides the correct values for the *len* and
 
 See example :ref:`acceptStringReference <example_acceptStringReference>`.
 
-
-char functions
-^^^^^^^^^^^^^^
-
-Functions which return a ``char *`` provide an additional challenge.
-Taken literally they should return a ``type(C_PTR)``.  And if you call
-the function via the interface, that's what you get.  However,
-Shroud provides several options to provide a more idiomatic usage.
-
-Each of these declaration call identical C++ functions but they are
-wrapped differently:
-
-.. code-block:: yaml
-
-    - decl: const char * getCharPtr1()
-    - decl: const char * getCharPtr2() +len(30)
-    - decl: const char * getCharPtr3()
-      format:
-         F_string_result_as_arg: output
-
-All of the generated C wrappers are very similar.
-The first C wrapper will copy the metadata into a ``SHROUD_array`` struct:
-
-.. code-block:: c++
-
-    const char * STR_get_char_ptr1()
-    {
-        const char * SHC_rv = getChar1();
-        return SHC_rv;
-    }
-
-    void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
-    {
-        const char * SHC_rv = getCharPtr1();
-        DSHF_rv->cxx.addr = static_cast<void *>(const_cast<char *>(SHC_rv));
-        DSHF_rv->cxx.idtor = 0;
-        DSHF_rv->addr.ccharp = SHC_rv;
-        DSHF_rv->len = SHC_rv == NULL ? 0 : strlen(SHC_rv);
-        DSHF_rv->size = 1;
-        return;
-    }
-
-The Fortran wrapper uses the metadata in ``DSHF_rv`` to allocate
-a ``CHARACTER`` variable of the correct length.
-The helper function ``SHROUD_copy_string_and_free`` will copy 
-the results of the C++ function into the return variable:
-
-.. code-block:: fortran
-
-    function get_char_ptr1() &
-            result(SHT_rv)
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_char_ptr1
-        call c_get_char_ptr1_bufferify(DSHF_rv)
-        ! splicer end function.get_char_ptr1
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function get_char_ptr1
-
-If you know the maximum size of string that you expect the function to
-return, then the *len* attribute is used to declare the length.  The
-explicit ``ALLOCATE`` is avoided but any result which is longer than
-the length will be silently truncated:
-
-.. code-block:: fortran
-
-    function get_char_ptr2() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
-        character(kind=C_CHAR, len=30) :: SHT_rv
-        call c_get_char_ptr2_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
-    end function get_char_ptr2
-
-The third option also avoids the ``ALLOCATE`` but allows any length
-result to be returned.  The result of the C function will be returned
-in the Fortran argument named by format string
-**F_string_result_as_arg**.  The potential downside is that a Fortran
-subroutine is generated instead of a function:
-
-.. code-block:: fortran
-
-    subroutine get_char_ptr3(output)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: output
-        call c_get_char_ptr3_bufferify(output, len(output, kind=C_INT))
-    end subroutine get_char_ptr3
-
-``char *getCharPtr1``
-
-    Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
-    variable.  Fortran 2003 is required. The Fortran application is
-    responsible to release the memory.  However, this may be done
-    automatically by the Fortran runtime.
-
-    See example :ref:`getCharPtr1 <example_getCharPtr1>`.
-
-``char *getCharPtr2``
-
-    Create a Fortran function which returns a predefined ``CHARACTER`` 
-    value.  The size is determined by the *len* argument on the function.
-    This is useful when the maximum size is already known.
-    Works with Fortran 90.
-
-    See example :ref:`getCharPtr2 <example_getCharPtr2>`.
-
-``char *getCharPtr3``
-
-    Create a Fortran subroutine in an additional ``CHARACTER``
-    argument for the C function result. Any size character string can
-    be returned limited by the size of the Fortran argument.  The
-    argument is defined by the *F_string_result_as_arg* format string.
-    Works with Fortran 90.
-
-    See example :ref:`getCharPtr3 <example_getCharPtr3>`.
-
-
-
-.. char ** not supported
 
 string functions
 ^^^^^^^^^^^^^^^^

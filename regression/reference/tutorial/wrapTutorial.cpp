@@ -452,6 +452,7 @@ int TUT_colorfunc(int arg)
  * \brief Pass in reference to scalar
  *
  */
+// start TUT_get_min_max
 void TUT_get_min_max(int * min, int * max)
 {
 // splicer begin function.get_min_max
@@ -459,6 +460,7 @@ void TUT_get_min_max(int * min, int * max)
     return;
 // splicer end function.get_min_max
 }
+// end TUT_get_min_max
 
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 int TUT_direction_func(int arg)

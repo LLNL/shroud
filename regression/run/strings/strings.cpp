@@ -42,10 +42,12 @@ char returnChar()
 
 //----------------------------------------
 
+// start passCharPtr
 void passCharPtr(char *dest, const char *src)
 {
     std::strcpy(dest, src);
 }
+// end passCharPtr
 
 void passCharPtrInOut(char *s)
 {

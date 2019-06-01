@@ -212,11 +212,13 @@ Color colorfunc(Color arg)
     return RED;
 }
 
+// start getMinMaxa
 void getMinMax(int &min, int &max)
 {
   min = -1;
   max = 100;
 }
+// end getMinMaxa
 
 // Save arg flag value in global flag.
 // Used by test drive to make sure arg was passed correctly.

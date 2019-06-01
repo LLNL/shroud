@@ -49,6 +49,7 @@ declarations:
     # This copies into 'dest' which must be allocated first
     # and does not work with Python
     wrap_Lua: False
+    literalinclude: True
 
 - decl: void passCharPtrInOut(char * s+intent(inout))
   doxygen:

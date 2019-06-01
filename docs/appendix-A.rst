@@ -121,6 +121,44 @@ C library function:
    :start-after: start Sum
    :end-before: end Sum
 
+.. _example_getMinMax:
+
+.. ############################################################
+
+getMinMax
+"""""""""
+
+No Fortran function is created.  Only an interface to a C wrapper
+which dereference the pointers so they can be treated as references.
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: void getMinMax(int &min +intent(out), int &max +intent(out))
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start get_min_max
+   :end-before: end get_min_max
+   :dedent: 8
+
+The C wrapper:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c
+   :start-after: start TUT_get_min_max
+   :end-before: end TUT_get_min_max
+
+C++ library function:
+
+.. literalinclude:: ../regression/run/tutorial/tutorial.cpp
+   :language: c
+   :start-after: start getMinMax
+   :end-before: end getMinMax
+
 
 Bool
 ----
@@ -133,6 +171,9 @@ other
 
 checkBool
 """""""""
+
+Assignments are done to convert between ``logical`` and
+``logical(C_BOOL)``.
 
 YAML:
 
@@ -244,13 +285,99 @@ The C wrapper:
 
 .. ############################################################
 
+.. _example_passCharPtr:
+
+passCharPtr
+"""""""""""
+
+The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
+statement ``dest = src``:
+
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: void passCharPtr(char * dest+intent(out)+charlen(40),
+                             const char *src)
+
+The intent of ``dest`` must be explicit.  It defaults to *intent(inout)*
+since it is a pointer.
+``src`` is implied to be *intent(in)* since it is ``const``.
+This single line will create five different wrappers.
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start pass_char_ptr
+   :end-before: end pass_char_ptr
+   :dedent: 4
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_pass_char_ptr
+   :end-before: end c_pass_char_ptr
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_pass_char_ptr_bufferify
+   :end-before: end c_pass_char_ptr_bufferify
+   :dedent: 8
+
+The native C version.
+The only feature this provides to Fortran is the ability
+to call a C++ function by wrapping it in an ``extern "C"`` function.
+The user is responsible for providing the ``NULL`` termination.
+The result in ``str`` will also be ``NULL`` terminated instead of 
+blank filled.:
+
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_pass_char_ptr
+   :end-before: end STR_pass_char_ptr
+
+The C wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_pass_char_ptr_bufferify
+   :end-before: end STR_pass_char_ptr_bufferify
+
+C library function:
+
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start passCharPtr
+   :end-before: end passCharPtr
+
+The function can be called without the user aware that it is written in C++:
+
+.. code-block:: fortran
+
+    character(30) str
+    call pass_char_ptr(dest=str, src="mouse")
+
+
+.. ############################################################
+
 .. _example_ImpliedTextLen:
 
 ImpliedTextLen
 """"""""""""""
 
-Pass the pointer to a buffer which the C library will fill.
-The length of the buffer is ``ltext``.
+Pass the pointer to a buffer which the C library will fill.  The
+length of the buffer is passed in ``ltext``.  Since Fortran knows the
+length of ``CHARACTER`` variable, the Fortran wrapper does not need to
+be explicitly told the length of the variable.  Instead its value can
+be defined with the *implied* attribute.
+
+This can be used to emulate the behavior of most Fortran compilers
+which will pass an additional, hidden argument which contains the
+length of a ``CHARACTER`` argument.
 
 YAML:
 
@@ -343,7 +470,10 @@ YAML:
 
     - decl: const char * getCharPtr1()
 
-The Fortran wrapper:
+The Fortran wrapper uses the metadata in ``DSHF_rv`` to allocate
+a ``CHARACTER`` variable of the correct length.
+The helper function ``SHROUD_copy_string_and_free`` will copy 
+the results of the C++ function into the return variable:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
@@ -359,12 +489,20 @@ Calls C via the interface:
    :end-before: end c_get_char_ptr1_bufferify
    :dedent: 8
 
-The C wrapper:
+The C wrapper copies all of the metadata into a ``SHROUD_array``
+struct which is used by the Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
    :start-after: start STR_get_char_ptr1_bufferify
    :end-before: end STR_get_char_ptr1_bufferify
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    character(len=:), allocatable :: str
+    str = get_char_ptr1()
 
 .. ############################################################
 
@@ -373,10 +511,10 @@ The C wrapper:
 getCharPtr2
 """""""""""
 
-Create a Fortran function which returns a predefined ``CHARACTER`` 
-value.  The size is determined by the *len* argument on the function.
-This is useful when the maximum size is already known.
-Works with Fortran 90.
+If you know the maximum size of string that you expect the function to
+return, then the *len* attribute is used to declare the length.  The
+explicit ``ALLOCATE`` is avoided but any result which is longer than
+the length will be silently truncated.
 
 YAML:
 
@@ -406,6 +544,13 @@ The C wrapper:
    :language: c
    :start-after: start STR_get_char_ptr2_bufferify
    :end-before: end STR_get_char_ptr2_bufferify
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    character(30) str
+    str = get_char_ptr2()
 
 .. ############################################################
 
@@ -450,6 +595,13 @@ The C wrapper:
    :language: c
    :start-after: start STR_get_char_ptr3_bufferify
    :end-before: end STR_get_char_ptr3_bufferify
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    character(30) str
+    call get_char_ptrs(str)
 
 string functions
 ^^^^^^^^^^^^^^^^

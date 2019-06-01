@@ -198,6 +198,7 @@ declarations:
        brief: Pass in reference to scalar
     options:
       wrap_lua: False
+      literalinclude: True
   
 ##################################################
   

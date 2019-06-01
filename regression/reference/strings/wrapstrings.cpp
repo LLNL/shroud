@@ -135,6 +135,7 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
  * This avoid a copy-in on dest.
  * In Python, src must not be over 40 characters, defined by charlen.
  */
+// start STR_pass_char_ptr
 void STR_pass_char_ptr(char * dest, const char * src)
 {
 // splicer begin function.pass_char_ptr
@@ -142,6 +143,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
     return;
 // splicer end function.pass_char_ptr
 }
+// end STR_pass_char_ptr
 
 // void passCharPtr(char * dest +charlen(40)+intent(out)+len(Ndest), const char * src +intent(in))
 /**
@@ -151,6 +153,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
  * This avoid a copy-in on dest.
  * In Python, src must not be over 40 characters, defined by charlen.
  */
+// start STR_pass_char_ptr_bufferify
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src)
 {
@@ -160,6 +163,7 @@ void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
     return;
 // splicer end function.pass_char_ptr_bufferify
 }
+// end STR_pass_char_ptr_bufferify
 
 // void passCharPtrInOut(char * s +intent(inout))
 /**

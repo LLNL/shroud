@@ -102,6 +102,7 @@ contains
 
   subroutine test_functions
 
+    character(len=:), allocatable :: astr
     character(30) str
     character(30), parameter :: static_str = "dog                         "
 
@@ -109,9 +110,9 @@ contains
 
     ! problem with pgi
     ! character(*) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_char_ptr1()
-    call assert_true( str == "bird")
+    astr = get_char_ptr1()
+    call assert_true( astr == "bird")
+    deallocate(astr)
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
