@@ -142,19 +142,30 @@ void bindC2(char * outbuf)
     strncpy(last_function_called, "bindC2", MAXLAST);
 }
 
+// start passVoidStarStar
 void passVoidStarStar(void *in, void **out)
 {
     strncpy(last_function_called, "passVoidStarStar", MAXLAST);
     *out = in;
 }
+// end passVoidStarStar
 
 /* arg is assumed to be an int. */
 
+// start passAssumedType
 int passAssumedType(void *arg)
 {
     strncpy(last_function_called, "passAssumedType", MAXLAST);
     return *(int *) arg;
 }
+// end passAssumedType
+
+// start passAssumedTypeDim
+void passAssumedTypeDim(void *arg)
+{
+    strncpy(last_function_called, "passAssumedTypeDim", MAXLAST);
+}
+// end passAssumedTypeDim
 
 /* arg is assumed to be an int. */
 

@@ -218,9 +218,28 @@ blah blah ...
 Void Pointers
 -------------
 
+The Fortran 2003 stardard added the ``type(C_PTR)`` derived type 
+which is used to hold a C ``void *``.
+Fortran is not able to directly dereference ``type(C_PTR)`` variables.
+The function ``c_f_pointer`` must be used.
+
 ``void *arg``
+    If the intent is to be able to pass any variable to the function,
+    add the ``+assumedtype`` attribute.
+    ``type(*)`` is only available with TS 29113.
+    The Fortran wrapper will only accept scalar arguments.
+    To pass an array, add the ``dimension`` attribute
+    See examples :ref:`passAssumedType <example_passAssumedType>` and
+    :ref:`passAssumedTypeDim <example_passAssumedTypeDim>`.
+
+``void *arg``
+    Passes the value of a ``type(C_PTR)`` argument.
+    See example :ref:`passVoidStarStar <example_passVoidStarStar>`.
 
 ``void **arg``
+    Used to return a ``void *`` from a function in an argument.
+    Passes the address of a ``type(C_PTR)`` argument.
+    See example :ref:`passVoidStarStar <example_passVoidStarStar>`.
 
 .. _DeclAnchor_Function_Pointers:
 

@@ -114,6 +114,9 @@ contains
     character(lenoutbuf)  :: outbuf
     type(C_PTR) :: cptr1, cptr2
 
+    integer(C_INT) int_array(10)
+    real(C_DOUBLE) double_array(2,5)
+
     call set_case_name("test_functions")
 
     call function1
@@ -185,6 +188,11 @@ contains
     call assert_equals(23, rv_int)
     rv_int = pass_assumed_type_buf(33_C_INT, outbuf)
     call assert_equals(33, rv_int)
+
+#if 0
+    call pass_assumed_type_dim(int_array)
+    call pass_assumed_type_dim(double_array)
+#endif
 
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")

@@ -820,6 +820,124 @@ The C wrapper:
    :start-after: start VEC_vector_iota_inout_alloc_bufferify
    :end-before: end VEC_vector_iota_inout_alloc_bufferify
 
+Void Pointers
+-------------
+
+.. ############################################################
+
+.. _example_passAssumedType:
+
+passAssumedType
+^^^^^^^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: int passAssumedType(void *arg+assumedtype)
+
+Example usage:
+
+.. code-block:: fortran
+
+    use iso_c_binding, only : C_INT
+    integer(C_INT) rv_int
+    rv_int = pass_assumed_type(23_C_INT)
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start pass_assumed_type
+   :end-before: end pass_assumed_type
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passAssumedType
+   :end-before: end passAssumedType
+
+.. ############################################################
+
+.. _example_passAssumedTypeDim:
+
+passAssumedTypeDim
+^^^^^^^^^^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: int passAssumedTypeDim(void *arg+assumedtype+dimension)
+
+Example usage:
+
+.. code-block:: fortran
+
+    use iso_c_binding, only : C_INT, C_DOUBLE
+    integer(C_INT) int_array(10)
+    real(C_DOUBLE) double_array(2,5)
+    call pass_assumed_type_dim(int_array)
+    call pass_assumed_type_dim(double_array)
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start pass_assumed_type_dim
+   :end-before: end pass_assumed_type_dim
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passAssumedTypeDim
+   :end-before: end passAssumedTypeDim
+
+.. ############################################################
+
+.. _example_passVoidStarStar:
+
+passVoidStarStar
+^^^^^^^^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
+
+Example usage:
+
+.. code-block:: fortran
+
+    use iso_c_binding, only : C_INT, C_NULL_PTR, c_associated
+    integer(C_INT) int_var
+    cptr1 = c_loc(int_var)
+    cptr2 = C_NULL_PTR
+    call pass_void_star_star(cptr1, cptr2)
+    call assert_true(c_associated(cptr1, cptr2))
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start pass_void_star_star
+   :end-before: end pass_void_star_star
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passVoidStarStar
+   :end-before: end passVoidStarStar
+
+
+
 Function Pointers
 -----------------
 

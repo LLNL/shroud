@@ -63,6 +63,7 @@ void bindC2(char * outbuf);
 void passVoidStarStar(void *in, void **out);
 
 int passAssumedType(void *arg);
+void passAssumedTypeDim(void *arg);
 int passAssumedTypeBuf(void *arg, char *outbuf);
 
 void callback1(int type, void (*incr)(void));

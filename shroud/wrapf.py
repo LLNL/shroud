@@ -758,9 +758,15 @@ rv = .false.
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if "assumedtype" in attrs:
-                    arg_c_decl.append(
-                        "type(*) :: {}".format(ast.name)
-                    )
+                    if "dimension" in attrs:
+                        arg_c_decl.append(
+                            "type(*) :: {}({})".format(
+                                ast.name, attrs["dimension"])
+                        )
+                    else:
+                        arg_c_decl.append(
+                            "type(*) :: {}".format(ast.name)
+                        )
                 elif ast.is_function_pointer():
                     absiface = self.add_abstract_interface(node, ast)
                     arg_c_decl.append(

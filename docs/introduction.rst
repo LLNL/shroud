@@ -100,6 +100,11 @@ In addition, Fortran 2003 provides some object oriented programming facilities:
    * Procedure Polymorphism with Type-Bound Procedures
    * Enumerations compatible with C
 
+Technical Specification TS 29113, now part of Fortran 2019, introduced
+additional features:
+
+   * assumed-type
+
 A Fortran pointer is similar to a C++ instance in that it not only has
 the address of the memory but also contains meta-data such as the
 type, kind and shape of the array.  Some vendors document the struct

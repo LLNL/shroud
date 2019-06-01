@@ -265,6 +265,7 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_bind_c2_bufferify
 
+        ! start pass_void_star_star
         subroutine pass_void_star_star(in, out) &
                 bind(C, name="passVoidStarStar")
             use iso_c_binding, only : C_PTR
@@ -272,7 +273,9 @@ module clibrary_mod
             type(C_PTR), value, intent(IN) :: in
             type(C_PTR), intent(OUT) :: out
         end subroutine pass_void_star_star
+        ! end pass_void_star_star
 
+        ! start pass_assumed_type
         function pass_assumed_type(arg) &
                 result(SHT_rv) &
                 bind(C, name="passAssumedType")
@@ -281,6 +284,18 @@ module clibrary_mod
             type(*) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_assumed_type
+        ! end pass_assumed_type
+
+        ! start pass_assumed_type_dim
+        function pass_assumed_type_dim(arg) &
+                result(SHT_rv) &
+                bind(C, name="passAssumedTypeDim")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(*) :: arg(*)
+            integer(C_INT) :: SHT_rv
+        end function pass_assumed_type_dim
+        ! end pass_assumed_type_dim
 
         function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
