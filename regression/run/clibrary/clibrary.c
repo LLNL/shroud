@@ -211,11 +211,13 @@ void callback3(const char *type, void * in, void (*incr)(int *),
 
 //----------------------------------------------------------------------
 
+// start passStruct1
 int passStruct1(Cstruct1 *s1)
 {
     strncpy(last_function_called, "passStruct1", MAXLAST);
     return s1->ifield;
 }
+// end passStruct1
 
 int passStruct2(Cstruct1 *s1, char *outbuf)
 {

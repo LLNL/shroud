@@ -363,6 +363,7 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_callback3_bufferify
 
+        ! start pass_struct1
         function pass_struct1(s1) &
                 result(SHT_rv) &
                 bind(C, name="passStruct1")
@@ -372,6 +373,7 @@ module clibrary_mod
             type(cstruct1), intent(IN) :: s1
             integer(C_INT) :: SHT_rv
         end function pass_struct1
+        ! end pass_struct1
 
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &

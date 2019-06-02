@@ -210,11 +210,6 @@ after calling the function.
           ``arg`` to be longer than the original size of the Fortran
           argument, the additional values will not be copied. 
 
-Struct
-------
-
-blah blah ...
-
 Void Pointers
 -------------
 
@@ -293,3 +288,10 @@ with the ``bind(C)`` attribute.  In the interface, an ``abstract
 interface`` for the function pointer argument is used.  The user's
 library is responsible for calling the argument correctly since the
 interface is not preserved by the ``external`` declaration.
+
+Struct
+------
+
+See example :ref:`passStruct1 <example_passStruct1>`.
+
+See example :ref:`acceptStructIn <example_acceptStructIn>`.

@@ -240,6 +240,7 @@ declarations:
 - decl: int passStruct1(Cstruct1 *s1)
   options:
     wrap_python: false
+    literalinclude: True
 
 - decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))
   doxygen:

@@ -691,6 +691,7 @@ module tutorial_mod
             type(C_PTR) SHT_rv
         end function c_return_struct_ptr
 
+        ! start accept_struct_in
         function accept_struct_in(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_accept_struct_in")
@@ -700,6 +701,7 @@ module tutorial_mod
             type(struct1), value, intent(IN) :: arg
             real(C_DOUBLE) :: SHT_rv
         end function accept_struct_in
+        ! end accept_struct_in
 
         function accept_struct_in_ptr(arg) &
                 result(SHT_rv) &

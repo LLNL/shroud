@@ -330,6 +330,7 @@ declarations:
     options:
       wrap_lua: False
       wrap_python: False
+      literalinclude: True
   - decl: double acceptStructInPtr(struct1 *arg+intent(in))
     options:
       wrap_lua: False

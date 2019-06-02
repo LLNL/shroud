@@ -346,11 +346,13 @@ void freeStruct(struct1 *arg1)
   delete arg1;
 }
 
+// start acceptStructIn
 // return sum of fields as a check
 double acceptStructIn(struct1 arg)
 {
   return arg.ifield + arg.dfield;
 }
+// end acceptStructIn
 
 // return sum of fields as a check
 double acceptStructInPtr(struct1 *arg)

@@ -576,6 +576,7 @@ TUT_struct1 * TUT_return_struct_ptr(int i, double d)
 }
 
 // double acceptStructIn(struct1 arg +intent(in)+value)
+// start TUT_accept_struct_in
 double TUT_accept_struct_in(TUT_struct1 arg)
 {
 // splicer begin function.accept_struct_in
@@ -585,6 +586,7 @@ double TUT_accept_struct_in(TUT_struct1 arg)
     return SHC_rv;
 // splicer end function.accept_struct_in
 }
+// end TUT_accept_struct_in
 
 // double acceptStructInPtr(struct1 * arg +intent(in))
 double TUT_accept_struct_in_ptr(TUT_struct1 * arg)

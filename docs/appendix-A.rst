@@ -1072,6 +1072,71 @@ C library function:
    :start-after: start callback1
    :end-before: end callback1
 
+Struct
+------
+
+.. ############################################################
+
+.. _example_passStruct1:
+
+passStruct1
+^^^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: int passStruct1(Cstruct1 *s1)
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start pass_struct1
+   :end-before: end pass_struct1
+   :dedent: 8
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passStruct1
+   :end-before: end passStruct1
+
+.. ############################################################
+
+.. _example_acceptStructIn:
+
+acceptStructIn
+^^^^^^^^^^^^^^
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: double acceptStructIn(struct1 arg)
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start accept_struct_in
+   :end-before: end accept_struct_in
+   :dedent: 8
+
+The C++ wrapper:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c
+   :start-after: start TUT_accept_struct_in
+   :end-before: end TUT_accept_struct_in
+
+C++ library function:
+
+.. literalinclude:: ../regression/run/tutorial/tutorial.cpp
+   :language: c
+   :start-after: start acceptStructIn
+   :end-before: end acceptStructIn
 
 
 Class Type

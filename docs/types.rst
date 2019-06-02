@@ -314,12 +314,6 @@ This mapping makes the assumption that ``integer`` and
 .. Complex Type
    ------------
 
-
-.. Derived Types
-   -------------
-
-
-
 Class Type
 ----------
 
