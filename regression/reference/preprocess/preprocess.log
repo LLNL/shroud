@@ -20,3 +20,10 @@ class User2
 C-interface, Fortran method void exfunc()
 C-interface, Fortran method void exfunc(int flag +intent(in)+value)
 Close wrapfUser2.f
+class User1
+Python method void method1()
+Python method void method2()
+Close pyUser1type.cpp
+Close pypreprocesshelper.cpp
+Close pypreprocessmodule.hpp
+Close pypreprocessmodule.cpp

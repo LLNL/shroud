@@ -7,3 +7,7 @@ Wrote wrappreprocess.cpp
 Wrote typespreprocess.h
 Wrote wrapfUser1.f
 Wrote wrapfUser2.f
+Wrote pyUser1type.cpp
+Wrote pypreprocesshelper.cpp
+Wrote pypreprocessmodule.hpp
+Wrote pypreprocessmodule.cpp
