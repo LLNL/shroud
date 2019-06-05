@@ -266,6 +266,7 @@ PP_test_size_t(
 // splicer end function.test_size_t
 }
 
+#ifdef HAVE_MPI
 static PyObject *
 PP_testmpi_mpi(
   PyObject *SHROUD_UNUSED(self),
@@ -290,7 +291,9 @@ PP_testmpi_mpi(
     Py_RETURN_NONE;
 // splicer end function.testmpi_mpi
 }
+#endif // ifdef HAVE_MPI
 
+#ifndef HAVE_MPI
 static PyObject *
 PP_testmpi_serial(
   PyObject *SHROUD_UNUSED(self),
@@ -303,6 +306,7 @@ PP_testmpi_serial(
     Py_RETURN_NONE;
 // splicer end function.testmpi_serial
 }
+#endif // ifndef HAVE_MPI
 
 static char PP_testgroup1__doc__[] =
 "documentation"
@@ -710,6 +714,7 @@ PP_testmpi(
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
+#ifdef HAVE_MPI
         rvobj = PP_testmpi_mpi(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -717,8 +722,10 @@ PP_testmpi(
             return rvobj;
         }
         PyErr_Clear();
+#endif // ifdef HAVE_MPI
     }
     if (SHT_nargs == 0) {
+#ifdef HAVE_MPI
         rvobj = PP_testmpi_serial(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -726,6 +733,7 @@ PP_testmpi(
             return rvobj;
         }
         PyErr_Clear();
+#endif // ifndef HAVE_MPI
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;

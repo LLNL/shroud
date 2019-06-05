@@ -61,6 +61,7 @@ PY_user1_method1(
 // splicer end class.User1.method.method1
 }
 
+#if defined(USE_TWO)
 static char PY_user1_method2__doc__[] =
 "documentation"
 ;
@@ -77,13 +78,16 @@ PY_user1_method2(
     Py_RETURN_NONE;
 // splicer end class.User1.method.method2
 }
+#endif // if defined(USE_TWO)
 // splicer begin class.User1.impl.after_methods
 // splicer end class.User1.impl.after_methods
 static PyMethodDef PY_User1_methods[] = {
     {"method1", (PyCFunction)PY_user1_method1, METH_NOARGS,
         PY_user1_method1__doc__},
+#if defined(USE_TWO)
     {"method2", (PyCFunction)PY_user1_method2, METH_NOARGS,
         PY_user1_method2__doc__},
+#endif // if defined(USE_TWO)
     // splicer begin class.User1.PyMethodDef
     // splicer end class.User1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

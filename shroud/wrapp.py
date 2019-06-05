@@ -1605,23 +1605,30 @@ return 1;""",
 
         Args:
             node    - function node to wrap
-            expose  - True if expose to user
-            is_ctor - True if this is a constructor
-            fmt     - dictionary of format values
-            PY_impl - list of implementation lines
+                      or None when called from multi_dispatch.
+            expose  - True if exposed to user.
+            is_ctor - True if this is a constructor.
+            fmt     - dictionary of format values.
+            PY_impl - list of implementation lines.
         """
+        if node:
+            cpp_if = node.cpp_if
+        else:
+            cpp_if = False
+
         body = self.PyMethodBody
+        body.append("")
+        if cpp_if:
+            body.append("#" + node.cpp_if)
         if expose:
             append_format(
                 body,
-                "\n"
                 "static char {PY_name_impl}__doc__[] =\n"
                 '"{PY_doc_string}"\n'
-                ";",
+                ";\n",
                 fmt,
             )
 
-        body.append("")
         if node and node.options.doxygen and node.doxygen:
             self.write_doxygen(body, node.doxygen)
         if is_ctor:
@@ -1664,8 +1671,12 @@ return 1;""",
             PY_impl,
         )
         self.PyMethodBody.append("}")
+        if cpp_if:
+            body.append("#endif // " + cpp_if)
 
         if expose is True:
+            if cpp_if:
+                self.PyMethodDef.append("#" + cpp_if)
             # default name
             append_format(
                 self.PyMethodDef,
@@ -1675,6 +1686,8 @@ return 1;""",
                 "{PY_name_impl}__doc__}},",
                 fmt,
             )
+            if cpp_if:
+                self.PyMethodDef.append("#endif // " + cpp_if)
 
     #        elif expose is not False:
     #            # override name
@@ -1903,6 +1916,8 @@ return 1;""",
                     body.append(
                         "if (SHT_nargs == %d) {" % len(overload.ast.params)
                     )
+                if overload.cpp_if:
+                    body.append("#" + node.cpp_if)
                 body.append(1)
                 append_format(
                     body,
@@ -1916,7 +1931,10 @@ return 1;""",
                     "(PyExc_TypeError)) {+"
                 )
                 body.append(return_code)
-                body.append("-}\nPyErr_Clear();\n-}")
+                body.append("-}\nPyErr_Clear();")
+                if overload.cpp_if:
+                    body.append("#endif // " + overload.cpp_if)
+                body.append("-}")
 
             body.append(
                 "PyErr_SetString(PyExc_TypeError, "
