@@ -20,19 +20,10 @@
 // splicer begin header.include
 // splicer end header.include
 
-// forward declare classes
-class User1;
 
+// ------------------------------
+class User1;  // forward declare
 extern PyTypeObject PY_User1_Type;
-
-// splicer begin header.C_declaration
-// splicer end header.C_declaration
-
-// helper functions
-extern const char *PY_User1_capsule_name;
-PyObject *PP_User1_to_Object(User1 *addr);
-int PP_User1_from_Object(PyObject *obj, void **addr);
-
 // splicer begin class.User1.C_declaration
 // splicer end class.User1.C_declaration
 
@@ -42,6 +33,31 @@ PyObject_HEAD
     // splicer begin class.User1.C_object
     // splicer end class.User1.C_object
 } PY_User1;
+
+extern const char *PY_User1_capsule_name;
+PyObject *PP_User1_to_Object(User1 *addr);
+int PP_User1_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+class User2;  // forward declare
+extern PyTypeObject PY_User2_Type;
+// splicer begin class.User2.C_declaration
+// splicer end class.User2.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    User2 * obj;
+    // splicer begin class.User2.C_object
+    // splicer end class.User2.C_object
+} PY_User2;
+
+extern const char *PY_User2_capsule_name;
+PyObject *PP_User2_to_Object(User2 *addr);
+int PP_User2_from_Object(PyObject *obj, void **addr);
+// ------------------------------
+
+// splicer begin header.C_declaration
+// splicer end header.C_declaration
 
 extern PyObject *PY_error_obj;
 

@@ -126,6 +126,13 @@ initpreprocess(void)
     Py_INCREF(&PY_User1_Type);
     PyModule_AddObject(m, "User1", (PyObject *)&PY_User1_Type);
 
+    // User2
+    PY_User2_Type.tp_new   = PyType_GenericNew;
+    PY_User2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_User2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_User2_Type);
+    PyModule_AddObject(m, "User2", (PyObject *)&PY_User2_Type);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

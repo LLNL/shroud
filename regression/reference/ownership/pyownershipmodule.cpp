@@ -433,7 +433,6 @@ initownership(void)
     Py_INCREF(&PY_Class1_Type);
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
-
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;

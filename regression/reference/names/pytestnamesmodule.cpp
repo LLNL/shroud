@@ -442,7 +442,6 @@ inittestnames(void)
     Py_INCREF(&PY_Names_Type);
     PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
 
-
     // Names2
     PY_Names2_Type.tp_new   = PyType_GenericNew;
     PY_Names2_Type.tp_alloc = PyType_GenericAlloc;
@@ -450,7 +449,6 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_Names2_Type);
     PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
-
 
     // Vvv1
     PY_Vvv1_Type.tp_new   = PyType_GenericNew;
@@ -460,7 +458,6 @@ inittestnames(void)
     Py_INCREF(&PY_Vvv1_Type);
     PyModule_AddObject(m, "Vvv1", (PyObject *)&PY_Vvv1_Type);
 
-
     // vector_double
     PY_vector_double_Type.tp_new   = PyType_GenericNew;
     PY_vector_double_Type.tp_alloc = PyType_GenericAlloc;
@@ -468,7 +465,6 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_vector_double_Type);
     PyModule_AddObject(m, "vector_double", (PyObject *)&PY_vector_double_Type);
-
 
     // vector_instantiation5
     PY_vector_instantiation5_Type.tp_new   = PyType_GenericNew;
@@ -478,7 +474,6 @@ inittestnames(void)
     Py_INCREF(&PY_vector_instantiation5_Type);
     PyModule_AddObject(m, "vector_instantiation5", (PyObject *)&PY_vector_instantiation5_Type);
 
-
     // vector_instantiation3
     PY_vector_instantiation3_Type.tp_new   = PyType_GenericNew;
     PY_vector_instantiation3_Type.tp_alloc = PyType_GenericAlloc;
@@ -486,7 +481,6 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_vector_instantiation3_Type);
     PyModule_AddObject(m, "vector_instantiation3", (PyObject *)&PY_vector_instantiation3_Type);
-
 
     // twoTs_0
     PY_twoTs_0_Type.tp_new   = PyType_GenericNew;
@@ -496,7 +490,6 @@ inittestnames(void)
     Py_INCREF(&PY_twoTs_0_Type);
     PyModule_AddObject(m, "twoTs_0", (PyObject *)&PY_twoTs_0_Type);
 
-
     // twoTs_instantiation4
     PY_twoTs_instantiation4_Type.tp_new   = PyType_GenericNew;
     PY_twoTs_instantiation4_Type.tp_alloc = PyType_GenericAlloc;
@@ -504,7 +497,6 @@ inittestnames(void)
         return RETVAL;
     Py_INCREF(&PY_twoTs_instantiation4_Type);
     PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
-
 
     // enum Color
     PyModule_AddIntConstant(m, "RED", RED);

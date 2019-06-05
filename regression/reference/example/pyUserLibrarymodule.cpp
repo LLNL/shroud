@@ -862,7 +862,6 @@ inituserlibrary(void)
     Py_INCREF(&PP_ExClass1_Type);
     PyModule_AddObject(m, "ExClass1", (PyObject *)&PP_ExClass1_Type);
 
-
     // ExClass2
     PP_ExClass2_Type.tp_new   = PyType_GenericNew;
     PP_ExClass2_Type.tp_alloc = PyType_GenericAlloc;
@@ -870,7 +869,6 @@ inituserlibrary(void)
         return RETVAL;
     Py_INCREF(&PP_ExClass2_Type);
     PyModule_AddObject(m, "ExClass2", (PyObject *)&PP_ExClass2_Type);
-
 
     PP_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PP_error_obj == NULL)

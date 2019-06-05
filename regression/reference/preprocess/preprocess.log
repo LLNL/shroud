@@ -24,6 +24,10 @@ class User1
 Python method void method1()
 Python method void method2()
 Close pyUser1type.cpp
+class User2
+Python method void exfunc()
+Python method void exfunc(int flag +intent(in)+value)
+Close pyUser2type.cpp
 Close pypreprocesshelper.cpp
 Close pypreprocessmodule.hpp
 Close pypreprocessmodule.cpp

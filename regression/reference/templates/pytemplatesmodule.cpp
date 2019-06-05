@@ -231,7 +231,6 @@ inittemplates(void)
     Py_INCREF(&PY_vector_int_Type);
     PyModule_AddObject(m, "vector_int", (PyObject *)&PY_vector_int_Type);
 
-
     // vector_double
     PY_vector_double_Type.tp_new   = PyType_GenericNew;
     PY_vector_double_Type.tp_alloc = PyType_GenericAlloc;
@@ -239,7 +238,6 @@ inittemplates(void)
         return RETVAL;
     Py_INCREF(&PY_vector_double_Type);
     PyModule_AddObject(m, "vector_double", (PyObject *)&PY_vector_double_Type);
-
 
     // Worker
     PY_Worker_Type.tp_new   = PyType_GenericNew;
@@ -249,7 +247,6 @@ inittemplates(void)
     Py_INCREF(&PY_Worker_Type);
     PyModule_AddObject(m, "Worker", (PyObject *)&PY_Worker_Type);
 
-
     // ImplWorker1
     PY_ImplWorker1_Type.tp_new   = PyType_GenericNew;
     PY_ImplWorker1_Type.tp_alloc = PyType_GenericAlloc;
@@ -258,7 +255,6 @@ inittemplates(void)
     Py_INCREF(&PY_ImplWorker1_Type);
     PyModule_AddObject(m, "ImplWorker1", (PyObject *)&PY_ImplWorker1_Type);
 
-
     // user_int
     PY_user_int_Type.tp_new   = PyType_GenericNew;
     PY_user_int_Type.tp_alloc = PyType_GenericAlloc;
@@ -266,7 +262,6 @@ inittemplates(void)
         return RETVAL;
     Py_INCREF(&PY_user_int_Type);
     PyModule_AddObject(m, "user_int", (PyObject *)&PY_user_int_Type);
-
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

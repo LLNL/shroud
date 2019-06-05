@@ -124,11 +124,9 @@ class Wrapp(util.WrapperMixin):
 
         # Variables to accumulate output lines
         self.py_type_object_creation = []
-        self.py_type_extern = []
-        self.py_type_structs = []
+        self.py_class_decl = []
         self.py_helper_definition = []
         self.py_helper_declaration = []
-        self.py_helper_prototypes = []
         self.py_helper_functions = []
         # reserved the 0 slot of capsule_order
         # self.add_capsule_helper('--none--', ['// not yet implemented'])
@@ -229,7 +227,7 @@ class Wrapp(util.WrapperMixin):
                     fmt_id,
                 )
         else:
-            output.append("{+")
+            output.append("\n{+")
             append_format(output, "// enumeration {enum_name}", node.fmtdict)
             output.append("PyObject *tmp_value;")
             for member in ast.members:
@@ -257,8 +255,6 @@ class Wrapp(util.WrapperMixin):
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_obj}->", fmt_class)
 
-        self.create_class_helper_functions(node)
-
         self.py_type_object_creation.append(
             wformat(
                 """
@@ -268,26 +264,35 @@ class Wrapp(util.WrapperMixin):
 if (PyType_Ready(&{PY_PyTypeObject}) < 0)
 +return RETVAL;-
 Py_INCREF(&{PY_PyTypeObject});
-PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
-""",
+PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
                 fmt_class,
             )
         )
-        self.py_type_extern.append(
-            wformat("extern PyTypeObject {PY_PyTypeObject};", fmt_class)
-        )
 
-        self._create_splicer("C_declaration", self.py_type_structs)
+        # header declarations
+        output = self.py_class_decl
+        output.append("")
+        output.append("// ------------------------------")
+        self.write_namespace(node, "begin", output)
+        output.append("class {};  // forward declare".format(node.name))
+        self.write_namespace(node, "end", output, comment=False)
+
+        output.append(wformat("extern PyTypeObject {PY_PyTypeObject};", fmt_class))
+
+        self._create_splicer("C_declaration", output)
         append_format(
-            self.py_type_structs,
+            output,
             "\n"
             "typedef struct {{\n"
             "PyObject_HEAD\n"
             "+{namespace_scope}{cxx_class} * {PY_obj};",
             fmt_class,
         )
-        self._create_splicer("C_object", self.py_type_structs)
-        append_format(self.py_type_structs, "-}} {PY_PyObject};", fmt_class)
+        self._create_splicer("C_object", output)
+        append_format(output, "-}} {PY_PyObject};", fmt_class)
+        output.append("")
+
+        self.create_class_helper_functions(node)
 
         self.wrap_enums(node)
 
@@ -316,7 +321,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
             fmt,
         )
         append_format(
-            self.py_helper_declaration,
+            self.py_class_decl,
             "extern const char *{PY_capsule_name};",
             fmt,
         )
@@ -341,7 +346,7 @@ return rv;""",
             "PyObject *{PY_to_object_func}({namespace_scope}{cxx_class} *addr)",
             fmt,
         )
-        self.py_helper_prototypes.append(proto + ";")
+        self.py_class_decl.append(proto + ";")
 
         self.py_helper_functions.append("")
         self.py_helper_functions.append(proto)
@@ -365,7 +370,7 @@ return 1;""",
         proto = wformat(
             "int {PY_from_object_func}(PyObject *obj, void **addr)", fmt
         )
-        self.py_helper_prototypes.append(proto + ";")
+        self.py_class_decl.append(proto + ";")
 
         self.py_helper_functions.append("")
         self.py_helper_functions.append(proto)
@@ -1964,33 +1969,22 @@ return 1;""",
         self._push_splicer("header")
         self._create_splicer("include", output)
 
-        #        output.extend(self.define_arraydescr)
-        # forward declare classes for helpers
-        blank = True
-        for cls in node.classes:
-            if cls.options.wrap_python:
-                if blank:
-                    output.append("")
-                    output.append("// forward declare classes")
-                    blank = False
-                self.write_namespace(cls, "begin", output)
-                output.append("class {};".format(cls.name))
-                self.write_namespace(cls, "end", output, comment=False)
-
-        if self.py_type_extern:
+        if self.py_class_decl:
             output.append("")
-            output.extend(self.py_type_extern)
+            output.extend(self.py_class_decl)
+            output.append("// ------------------------------")
+
+        #        output.extend(self.define_arraydescr)
+
         output.append("")
         self._create_splicer("C_declaration", output)
         self._pop_splicer("header")
 
-        output.append("")
-        output.append("// helper functions")
-        output.extend(self.py_helper_declaration)
-        output.extend(self.py_helper_prototypes)
+        if self.py_helper_declaration:
+            output.append("")
+            output.append("// helper functions")
+            output.extend(self.py_helper_declaration)
 
-        output.append("")
-        output.extend(self.py_type_structs)
         append_format(
             output,
             """

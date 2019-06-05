@@ -33,8 +33,6 @@ declarations:
 
 
 - decl: class User2
-  options:
-    wrap_python: False
   cxx_header: User2.hpp
   cpp_if: ifdef USE_USER2
   declarations:

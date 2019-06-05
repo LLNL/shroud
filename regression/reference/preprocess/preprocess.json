@@ -130,6 +130,13 @@
                     "F_derived_name": "user2",
                     "F_impl_filename": "wrapfUser2.f",
                     "F_module_name": "user2_mod",
+                    "PY_PyObject": "PY_User2",
+                    "PY_PyTypeObject": "PY_User2_Type",
+                    "PY_capsule_name": "PY_User2_capsule_name",
+                    "PY_from_object_func": "PP_User2_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_User2_to_Object",
+                    "PY_type_filename": "pyUser2type.cpp",
                     "class_lower": "user2",
                     "class_prefix": "user2_",
                     "class_scope": "User2::",
@@ -170,6 +177,7 @@
                             "F_name_generic": "exfunc",
                             "F_name_impl": "user2_exfunc_0",
                             "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_user2_exfunc_0",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -178,7 +186,7 @@
                             "function_suffix": "_0",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 42,
+                        "linenumber": 40,
                         "options": {}
                     },
                     {
@@ -199,6 +207,20 @@
                                 "fmtf": {
                                     "c_var": "flag",
                                     "f_var": "flag"
+                                },
+                                "fmtpy": {
+                                    "c_const": "",
+                                    "c_decl": "int flag",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "flag",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "int flag",
+                                    "cxx_member": ".",
+                                    "cxx_type": "int",
+                                    "cxx_var": "flag",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_flag"
                                 }
                             }
                         },
@@ -248,6 +270,7 @@
                             "F_name_generic": "exfunc",
                             "F_name_impl": "user2_exfunc_1",
                             "F_subprogram": "subroutine",
+                            "PY_name_impl": "PY_user2_exfunc_1",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -256,16 +279,13 @@
                             "function_suffix": "_1",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 44,
+                        "linenumber": 42,
                         "options": {}
                     }
                 ],
                 "linenumber": 35,
                 "name": "User2",
-                "options": {
-                    "__line__": 36,
-                    "wrap_python": false
-                },
+                "options": {},
                 "scope": "User2::",
                 "typemap_name": "User2"
             }
@@ -547,6 +567,10 @@
         "User2": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_User2",
+            "PY_PyTypeObject": "PY_User2_Type",
+            "PY_from_object": "PP_User2_from_Object",
+            "PY_to_object": "PP_User2_to_Object",
             "base": "shadow",
             "c_statements": {
                 "intent_in": {
