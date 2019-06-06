@@ -35,14 +35,6 @@ typedef struct {
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } l_ExClass2_Type;
-// splicer begin class.ExClass3.C_declaration
-// splicer end class.ExClass3.C_declaration
-
-typedef struct {
-    example::nested::ExClass3 * self;
-    // splicer begin class.ExClass3.C_object
-    // splicer end class.ExClass3.C_object
-} l_ExClass3_Type;
 
 int luaopen_userlibrary(lua_State *L);
 

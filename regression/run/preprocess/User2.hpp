@@ -12,12 +12,16 @@
 //
 // #######################################################################
 //
-// preprocess.hpp
+// User2.hpp
 //
 
-class User1 {
+class User2 {
   public:
-    void method1() {};
-    void method2() {};
-    void method3(int i=0) {};
+#ifdef USE_USER2_A
+    void exfunc()
+#endif
+#ifdef USE_USER2_A
+    void exfunc(int flag) {};
+#endif
 };
+

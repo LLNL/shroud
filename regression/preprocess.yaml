@@ -22,7 +22,7 @@ cxx_header: preprocess.hpp
 options:
   debug: True
 #  F_module_per_class: False
-#  wrap_python: True
+  wrap_python: True
 
 declarations:
 - decl: class User1
@@ -30,4 +30,18 @@ declarations:
   - decl: void method1()
   - decl: void method2()
     cpp_if: if defined(USE_TWO)
+  - decl: void method3def(int i=0)
+    cpp_if: if defined(USE_THREE)
+
+
+- decl: class User2
+  cxx_header: User2.hpp
+  cpp_if: ifdef USE_USER2
+  declarations:
+  # test class, overloaded, cpp_if
+  - decl: void exfunc()
+    cpp_if: ifdef USE_CLASS3_A
+  - decl: void exfunc(int flag)
+    cpp_if: ifndef USE_CLASS3_A
+
 

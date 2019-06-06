@@ -19,32 +19,14 @@
 // splicer begin header.include
 // splicer end header.include
 
-// forward declare classes
-namespace example {
-    namespace nested {
-        class ExClass1;
-    }
-}
-namespace example {
-    namespace nested {
-        class ExClass2;
-    }
-}
 
+// ------------------------------
+namespace example {
+    namespace nested {
+        class ExClass1;  // forward declare
+    }
+}
 extern PyTypeObject PP_ExClass1_Type;
-extern PyTypeObject PP_ExClass2_Type;
-
-// splicer begin header.C_declaration
-// splicer end header.C_declaration
-
-// helper functions
-extern const char *PY_ExClass1_capsule_name;
-extern const char *PY_ExClass2_capsule_name;
-PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr);
-int PP_ExClass1_from_Object(PyObject *obj, void **addr);
-PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr);
-int PP_ExClass2_from_Object(PyObject *obj, void **addr);
-
 // splicer begin class.ExClass1.C_declaration
 // splicer end class.ExClass1.C_declaration
 
@@ -54,6 +36,18 @@ PyObject_HEAD
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
+
+extern const char *PY_ExClass1_capsule_name;
+PyObject *PP_ExClass1_to_Object(example::nested::ExClass1 *addr);
+int PP_ExClass1_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+namespace example {
+    namespace nested {
+        class ExClass2;  // forward declare
+    }
+}
+extern PyTypeObject PP_ExClass2_Type;
 // splicer begin class.ExClass2.C_declaration
 // splicer end class.ExClass2.C_declaration
 
@@ -63,6 +57,14 @@ PyObject_HEAD
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;
+
+extern const char *PY_ExClass2_capsule_name;
+PyObject *PP_ExClass2_to_Object(example::nested::ExClass2 *addr);
+int PP_ExClass2_from_Object(PyObject *obj, void **addr);
+// ------------------------------
+
+// splicer begin header.C_declaration
+// splicer end header.C_declaration
 
 extern PyObject *PP_error_obj;
 

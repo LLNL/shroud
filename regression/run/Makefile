@@ -31,6 +31,8 @@ TESTDIRS = \
     $(tempdir)/run/types/..\
     $(tempdir)/run/pointers/..\
     $(tempdir)/run/pointers/python/.. \
+    $(tempdir)/run/preprocess/..\
+    $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors/python/.. \
     $(tempdir)/run/vectors/lua/.. \
