@@ -44,9 +44,21 @@ module user1_mod
 #if defined(USE_TWO)
         procedure :: method2 => user1_method2
 #endif
+#if defined(USE_THREE)
+        procedure :: method3def_0 => user1_method3def_0
+#endif
+#if defined(USE_THREE)
+        procedure :: method3def_1 => user1_method3def_1
+#endif
         procedure :: get_instance => user1_get_instance
         procedure :: set_instance => user1_set_instance
         procedure :: associated => user1_associated
+#if defined(USE_THREE)
+        generic :: method3def => method3def_0
+#endif
+#if defined(USE_THREE)
+        generic :: method3def => method3def_1
+#endif
         ! splicer begin class.User1.type_bound_procedure_part
         ! splicer end class.User1.type_bound_procedure_part
     end type user1
@@ -77,6 +89,26 @@ module user1_mod
         end subroutine c_user1_method2
 #endif
 
+#if defined(USE_THREE)
+        subroutine c_user1_method3def_0(self) &
+                bind(C, name="PRE_user1_method3def_0")
+            import :: SHROUD_user1_capsule
+            implicit none
+            type(SHROUD_user1_capsule), intent(IN) :: self
+        end subroutine c_user1_method3def_0
+#endif
+
+#if defined(USE_THREE)
+        subroutine c_user1_method3def_1(self, i) &
+                bind(C, name="PRE_user1_method3def_1")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_user1_capsule
+            implicit none
+            type(SHROUD_user1_capsule), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: i
+        end subroutine c_user1_method3def_1
+#endif
+
         ! splicer begin class.User1.additional_interfaces
         ! splicer end class.User1.additional_interfaces
     end interface
@@ -99,6 +131,29 @@ contains
         call c_user1_method2(obj%cxxmem)
         ! splicer end class.User1.method.method2
     end subroutine user1_method2
+#endif
+
+#if defined(USE_THREE)
+    ! void method3def()
+    ! has_default_arg
+    subroutine user1_method3def_0(obj)
+        class(user1) :: obj
+        ! splicer begin class.User1.method.method3def_0
+        call c_user1_method3def_0(obj%cxxmem)
+        ! splicer end class.User1.method.method3def_0
+    end subroutine user1_method3def_0
+#endif
+
+#if defined(USE_THREE)
+    ! void method3def(int i=0 +intent(in)+value)
+    subroutine user1_method3def_1(obj, i)
+        use iso_c_binding, only : C_INT
+        class(user1) :: obj
+        integer(C_INT), value, intent(IN) :: i
+        ! splicer begin class.User1.method.method3def_1
+        call c_user1_method3def_1(obj%cxxmem, i)
+        ! splicer end class.User1.method.method3def_1
+    end subroutine user1_method3def_1
 #endif
 
     ! Return pointer to C++ memory.

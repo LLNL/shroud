@@ -3,6 +3,8 @@ Close preprocess_types.yaml
 class User1
 C method void method1()
 C method void method2()
+C method void method3def()
+C method void method3def(int i=0 +intent(in)+value)
 Close wrapUser1.h
 Close wrapUser1.cpp
 class User2
@@ -15,6 +17,8 @@ Close typespreprocess.h
 class User1
 C-interface, Fortran method void method1()
 C-interface, Fortran method void method2()
+C-interface, Fortran method void method3def()
+C-interface, Fortran method void method3def(int i=0 +intent(in)+value)
 Close wrapfUser1.f
 class User2
 C-interface, Fortran method void exfunc()
@@ -23,6 +27,7 @@ Close wrapfUser2.f
 class User1
 Python method void method1()
 Python method void method2()
+Python method void method3def(int i=0 +intent(in)+value)
 Close pyUser1type.cpp
 class User2
 Python method void exfunc()

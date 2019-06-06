@@ -79,6 +79,46 @@ PY_user1_method2(
 // splicer end class.User1.method.method2
 }
 #endif // if defined(USE_TWO)
+
+#if defined(USE_THREE)
+static char PY_user1_method3def_1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_user1_method3def_1(
+  PY_User1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// void method3def(int i=0 +intent(in)+value)
+// splicer begin class.User1.method.method3def
+    Py_ssize_t SH_nargs = 0;
+    int i;
+    const char *SHT_kwlist[] = {
+        "i",
+        NULL };
+
+    if (args != NULL) SH_nargs += PyTuple_Size(args);
+    if (kwds != NULL) SH_nargs += PyDict_Size(args);
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|i:method3def",
+        const_cast<char **>(SHT_kwlist), &i))
+        return NULL;
+    switch (SH_nargs) {
+    case 0:
+        self->obj->method3def();
+        break;
+    case 1:
+        self->obj->method3def(i);
+        break;
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return NULL;
+    }
+    Py_RETURN_NONE;
+// splicer end class.User1.method.method3def
+}
+#endif // if defined(USE_THREE)
 // splicer begin class.User1.impl.after_methods
 // splicer end class.User1.impl.after_methods
 static PyMethodDef PY_User1_methods[] = {
@@ -88,6 +128,10 @@ static PyMethodDef PY_User1_methods[] = {
     {"method2", (PyCFunction)PY_user1_method2, METH_NOARGS,
         PY_user1_method2__doc__},
 #endif // if defined(USE_TWO)
+#if defined(USE_THREE)
+    {"method3def", (PyCFunction)PY_user1_method3def_1,
+        METH_VARARGS|METH_KEYWORDS, PY_user1_method3def_1__doc__},
+#endif // if defined(USE_THREE)
     // splicer begin class.User1.PyMethodDef
     // splicer end class.User1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

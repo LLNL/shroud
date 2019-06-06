@@ -30,6 +30,8 @@ declarations:
   - decl: void method1()
   - decl: void method2()
     cpp_if: if defined(USE_TWO)
+  - decl: void method3def(int i=0)
+    cpp_if: if defined(USE_THREE)
 
 
 - decl: class User2
