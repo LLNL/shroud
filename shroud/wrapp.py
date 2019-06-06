@@ -1936,18 +1936,17 @@ return 1;""",
                 expose = True
 
             for overload in methods:
+                if overload.cpp_if:
+                    body.append("#" + overload.cpp_if)
                 if overload._nargs:
                     body.append(
-                        "if (SHT_nargs >= %d && SHT_nargs <= %d) {"
+                        "if (SHT_nargs >= %d && SHT_nargs <= %d) {+"
                         % overload._nargs
                     )
                 else:
                     body.append(
-                        "if (SHT_nargs == %d) {" % len(overload.ast.params)
+                        "if (SHT_nargs == %d) {+" % len(overload.ast.params)
                     )
-                if overload.cpp_if:
-                    body.append("#" + node.cpp_if)
-                body.append(1)
                 append_format(
                     body,
                     return_arg + " = {PY_name_impl}(self, args, kwds);",
@@ -1960,10 +1959,9 @@ return 1;""",
                     "(PyExc_TypeError)) {+"
                 )
                 body.append(return_code)
-                body.append("-}\nPyErr_Clear();")
+                body.append("-}\nPyErr_Clear();\n-}")
                 if overload.cpp_if:
                     body.append("#endif // " + overload.cpp_if)
-                body.append("-}")
 
             body.append(
                 "PyErr_SetString(PyExc_TypeError, "

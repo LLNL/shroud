@@ -99,8 +99,8 @@ PY_user2_exfunc(
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SHT_nargs == 0) {
 #ifdef USE_CLASS3_A
+    if (SHT_nargs == 0) {
         rvobj = PY_user2_exfunc_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -108,10 +108,10 @@ PY_user2_exfunc(
             return rvobj;
         }
         PyErr_Clear();
-#endif // ifdef USE_CLASS3_A
     }
+#endif // ifdef USE_CLASS3_A
+#ifndef USE_CLASS3_A
     if (SHT_nargs == 1) {
-#ifdef USE_CLASS3_A
         rvobj = PY_user2_exfunc_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -119,8 +119,8 @@ PY_user2_exfunc(
             return rvobj;
         }
         PyErr_Clear();
-#endif // ifndef USE_CLASS3_A
     }
+#endif // ifndef USE_CLASS3_A
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
 // splicer end class.User2.method.exfunc

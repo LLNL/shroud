@@ -713,8 +713,8 @@ PP_testmpi(
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
-    if (SHT_nargs == 1) {
 #ifdef HAVE_MPI
+    if (SHT_nargs == 1) {
         rvobj = PP_testmpi_mpi(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -722,10 +722,10 @@ PP_testmpi(
             return rvobj;
         }
         PyErr_Clear();
-#endif // ifdef HAVE_MPI
     }
+#endif // ifdef HAVE_MPI
+#ifndef HAVE_MPI
     if (SHT_nargs == 0) {
-#ifdef HAVE_MPI
         rvobj = PP_testmpi_serial(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
@@ -733,8 +733,8 @@ PP_testmpi(
             return rvobj;
         }
         PyErr_Clear();
-#endif // ifndef HAVE_MPI
     }
+#endif // ifndef HAVE_MPI
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
 // splicer end function.testmpi
