@@ -29,7 +29,8 @@ VPATH = \
 OBJS = \
     pypreprocessmodule.o \
     pypreprocesshelper.o \
-    pyUser1type.o
+    pyUser1type.o \
+    pyUser2type.o
 
 CXXFLAGS += $(SHARED)
 

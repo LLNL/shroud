@@ -45,8 +45,17 @@ class Preprocess(unittest.TestCase):
         obj.method1()
 
     def test_method2(self):
+        """Method User1.method2 has been conditionally compiled out."""
         obj = preprocess.User1()
-        obj.method2()
+        with self.assertRaises(AttributeError):
+            obj.method2()
+
+    def test_User2(self):
+        """Class User2 has been conditionally compiled out."""
+        obj = preprocess.User1()
+        with self.assertRaises(AttributeError):
+            preprocess.User2()
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

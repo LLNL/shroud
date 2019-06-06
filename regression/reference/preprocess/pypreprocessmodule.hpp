@@ -39,6 +39,7 @@ PyObject *PP_User1_to_Object(User1 *addr);
 int PP_User1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
+#ifdef USE_USER2
 class User2;  // forward declare
 extern PyTypeObject PY_User2_Type;
 // splicer begin class.User2.C_declaration
@@ -54,6 +55,7 @@ PyObject_HEAD
 extern const char *PY_User2_capsule_name;
 PyObject *PP_User2_to_Object(User2 *addr);
 int PP_User2_from_Object(PyObject *obj, void **addr);
+#endif // ifdef USE_USER2
 // ------------------------------
 
 // splicer begin header.C_declaration

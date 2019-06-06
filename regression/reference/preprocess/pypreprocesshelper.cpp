@@ -16,7 +16,9 @@
 // #######################################################################
 #include "pypreprocessmodule.hpp"
 const char *PY_User1_capsule_name = "User1";
+#ifdef USE_USER2
 const char *PY_User2_capsule_name = "User2";
+#endif  // ifdef USE_USER2
 
 
 PyObject *PP_User1_to_Object(User1 *addr)
@@ -48,6 +50,7 @@ int PP_User1_from_Object(PyObject *obj, void **addr)
     // splicer end class.User1.helper.from_object
 }
 
+#ifdef USE_USER2
 PyObject *PP_User2_to_Object(User2 *addr)
 {
     // splicer begin class.User2.helper.to_object
@@ -76,3 +79,4 @@ int PP_User2_from_Object(PyObject *obj, void **addr)
     return 1;
     // splicer end class.User2.helper.from_object
 }
+#endif  // ifdef USE_USER2

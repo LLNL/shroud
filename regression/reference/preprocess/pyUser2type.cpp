@@ -14,6 +14,7 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
+#ifdef USE_USER2
 #include "pypreprocessmodule.hpp"
 #include "User2.hpp"
 // splicer begin class.User2.impl.include
@@ -209,3 +210,4 @@ PyTypeObject PY_User2_Type = {
     (destructor)0,                  /* tp_finalize */
 #endif
 };
+#endif // ifdef USE_USER2

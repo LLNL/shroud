@@ -255,10 +255,13 @@ class Wrapp(util.WrapperMixin):
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_obj}->", fmt_class)
 
-        self.py_type_object_creation.append(
+        output = self.py_type_object_creation
+        output.append("")
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
+        output.append(
             wformat(
-                """
-// {cxx_class}
+                """// {cxx_class}
 {PY_PyTypeObject}.tp_new   = PyType_GenericNew;
 {PY_PyTypeObject}.tp_alloc = PyType_GenericAlloc;
 if (PyType_Ready(&{PY_PyTypeObject}) < 0)
@@ -268,11 +271,15 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
                 fmt_class,
             )
         )
+        if node.cpp_if:
+            output.append("#endif // " + node.cpp_if)
 
         # header declarations
         output = self.py_class_decl
         output.append("")
         output.append("// ------------------------------")
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
         self.write_namespace(node, "begin", output)
         output.append("class {};  // forward declare".format(node.name))
         self.write_namespace(node, "end", output, comment=False)
@@ -293,6 +300,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         output.append("")
 
         self.create_class_helper_functions(node)
+        if node.cpp_if:
+            output.append("#endif // " + node.cpp_if)
 
         self.wrap_enums(node)
 
@@ -314,10 +323,17 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
 
         fmt.PY_capsule_name = wformat("PY_{cxx_class}_capsule_name", fmt)
 
+        if node.cpp_if:
+            cpp_if = "#" + node.cpp_if + "\n"
+            cpp_endif = "\n#endif  // " + node.cpp_if
+        else:
+            cpp_if = ""
+            cpp_endif = ""
+
         self._push_splicer("helper")
         append_format(
             self.py_helper_definition,
-            'const char *{PY_capsule_name} = "{cxx_class}";',
+            cpp_if + 'const char *{PY_capsule_name} = "{cxx_class}";' + cpp_endif,
             fmt,
         )
         append_format(
@@ -349,6 +365,8 @@ return rv;""",
         self.py_class_decl.append(proto + ";")
 
         self.py_helper_functions.append("")
+        if node.cpp_if:
+            self.py_helper_functions.append("#" + node.cpp_if)
         self.py_helper_functions.append(proto)
         self.py_helper_functions.append("{+")
         self._create_splicer("to_object", self.py_helper_functions, to_object)
@@ -381,6 +399,8 @@ return 1;""",
         )
         self.py_helper_functions.append(-1)
         self.py_helper_functions.append("}")
+        if node.cpp_if:
+            self.py_helper_functions.append("#endif  // " + node.cpp_if)
 
         self._pop_splicer("helper")
 
@@ -1771,12 +1791,14 @@ return 1;""",
         """
         Args:
             library - ast.LibraryNode.
-            node -
+            node - ast.ClassNode
         """
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
         output = []
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         #        if self.need_numpy:
@@ -1842,6 +1864,8 @@ return 1;""",
         output.append("-};")
 
         append_format(output, PyTypeObject_template, fmt_type)
+        if node.cpp_if:
+            output.append("#endif // " + node.cpp_if)
 
         self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
