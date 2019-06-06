@@ -1408,7 +1408,6 @@ inittutorial(void)
     Py_INCREF(&PY_Class1_Type);
     PyModule_AddObject(m, "Class1", (PyObject *)&PY_Class1_Type);
 
-
     // Singleton
     PY_Singleton_Type.tp_new   = PyType_GenericNew;
     PY_Singleton_Type.tp_alloc = PyType_GenericAlloc;

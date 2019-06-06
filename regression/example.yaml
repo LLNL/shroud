@@ -223,17 +223,6 @@ declarations:
 #        - instantiation: <float>
         - instantiation: <double>
 
-    - decl: class ExClass3
-      options:
-        wrap_python: False
-      cpp_if: ifdef USE_CLASS3
-      declarations:
-      # test class, overloaded, cpp_if
-      - decl: void exfunc()
-        cpp_if: ifdef USE_CLASS3_A
-      - decl: void exfunc(int flag)
-        cpp_if: ifndef USE_CLASS3_A
-
     ########################################
     - decl: void local_function1()
 

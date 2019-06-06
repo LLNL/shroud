@@ -1,7 +1,7 @@
-// pyforwardmodule.cpp
+// pypreprocessmodule.cpp
 // This is generated code, do not edit
 // #######################################################################
-// Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 //
 // Produced at the Lawrence Livermore National Laboratory
 //
@@ -14,8 +14,8 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "pyforwardmodule.hpp"
-#include "tutorial.hpp"
+#include "pypreprocessmodule.hpp"
+#include "preprocess.hpp"
 
 // splicer begin include
 // splicer end include
@@ -43,8 +43,8 @@ static PyMethodDef PY_methods[] = {
 };
 
 /*
- * initforward - Initialization function for the module
- * *must* be called initforward
+ * initpreprocess - Initialization function for the module
+ * *must* be called initpreprocess
  */
 static char PY__doc__[] =
 "library documentation"
@@ -62,25 +62,25 @@ static struct module_state _state;
 #endif
 
 #if PY_MAJOR_VERSION >= 3
-static int forward_traverse(PyObject *m, visitproc visit, void *arg) {
+static int preprocess_traverse(PyObject *m, visitproc visit, void *arg) {
     Py_VISIT(GETSTATE(m)->error);
     return 0;
 }
 
-static int forward_clear(PyObject *m) {
+static int preprocess_clear(PyObject *m) {
     Py_CLEAR(GETSTATE(m)->error);
     return 0;
 }
 
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "forward", /* m_name */
+    "preprocess", /* m_name */
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
     NULL, /* m_reload */
-    forward_traverse, /* m_traverse */
-    forward_clear, /* m_clear */
+    preprocess_traverse, /* m_traverse */
+    preprocess_clear, /* m_clear */
     NULL  /* m_free */
 };
 
@@ -93,13 +93,13 @@ static struct PyModuleDef moduledef = {
 
 extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_forward(void)
+PyInit_preprocess(void)
 #else
-initforward(void)
+initpreprocess(void)
 #endif
 {
     PyObject *m = NULL;
-    const char * error_name = "forward.Error";
+    const char * error_name = "preprocess.Error";
 
     // splicer begin C_init_locals
     // splicer end C_init_locals
@@ -109,7 +109,7 @@ initforward(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule4("forward", PY_methods,
+    m = Py_InitModule4("preprocess", PY_methods,
         PY__doc__,
         (PyObject*)NULL,PYTHON_API_VERSION);
 #endif
@@ -118,21 +118,23 @@ initforward(void)
     struct module_state *st = GETSTATE(m);
 
 
-    // Class3
-    PY_Class3_Type.tp_new   = PyType_GenericNew;
-    PY_Class3_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Class3_Type) < 0)
+    // User1
+    PY_User1_Type.tp_new   = PyType_GenericNew;
+    PY_User1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_User1_Type) < 0)
         return RETVAL;
-    Py_INCREF(&PY_Class3_Type);
-    PyModule_AddObject(m, "Class3", (PyObject *)&PY_Class3_Type);
+    Py_INCREF(&PY_User1_Type);
+    PyModule_AddObject(m, "User1", (PyObject *)&PY_User1_Type);
 
-    // Class2
-    PY_Class2_Type.tp_new   = PyType_GenericNew;
-    PY_Class2_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Class2_Type) < 0)
+#ifdef USE_USER2
+    // User2
+    PY_User2_Type.tp_new   = PyType_GenericNew;
+    PY_User2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_User2_Type) < 0)
         return RETVAL;
-    Py_INCREF(&PY_Class2_Type);
-    PyModule_AddObject(m, "Class2", (PyObject *)&PY_Class2_Type);
+    Py_INCREF(&PY_User2_Type);
+    PyModule_AddObject(m, "User2", (PyObject *)&PY_User2_Type);
+#endif // ifdef USE_USER2
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
@@ -145,7 +147,7 @@ initforward(void)
 
     /* Check for errors */
     if (PyErr_Occurred())
-        Py_FatalError("can't initialize module forward");
+        Py_FatalError("can't initialize module preprocess");
     return RETVAL;
 }
 

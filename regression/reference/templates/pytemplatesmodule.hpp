@@ -6,45 +6,12 @@
 // splicer begin header.include
 // splicer end header.include
 
-// forward declare classes
-namespace std {
-    class vector;
-}
-namespace std {
-    class vector;
-}
-class Worker;
-namespace internal {
-    class ImplWorker1;
-}
-class user;
 
+// ------------------------------
+namespace std {
+    class vector;  // forward declare
+}
 extern PyTypeObject PY_vector_int_Type;
-extern PyTypeObject PY_vector_double_Type;
-extern PyTypeObject PY_Worker_Type;
-extern PyTypeObject PY_ImplWorker1_Type;
-extern PyTypeObject PY_user_int_Type;
-
-// splicer begin header.C_declaration
-// splicer end header.C_declaration
-
-// helper functions
-extern const char *PY_vector_int_capsule_name;
-extern const char *PY_vector_double_capsule_name;
-extern const char *PY_Worker_capsule_name;
-extern const char *PY_ImplWorker1_capsule_name;
-extern const char *PY_user_int_capsule_name;
-PyObject *PP_vector_int_to_Object(std::vector_int *addr);
-int PP_vector_int_from_Object(PyObject *obj, void **addr);
-PyObject *PP_vector_double_to_Object(std::vector_double *addr);
-int PP_vector_double_from_Object(PyObject *obj, void **addr);
-PyObject *PP_Worker_to_Object(Worker *addr);
-int PP_Worker_from_Object(PyObject *obj, void **addr);
-PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr);
-int PP_ImplWorker1_from_Object(PyObject *obj, void **addr);
-PyObject *PP_user_int_to_Object(user_int *addr);
-int PP_user_int_from_Object(PyObject *obj, void **addr);
-
 // splicer begin class.vector.C_declaration
 // splicer end class.vector.C_declaration
 
@@ -54,6 +21,16 @@ PyObject_HEAD
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_int;
+
+extern const char *PY_vector_int_capsule_name;
+PyObject *PP_vector_int_to_Object(std::vector_int *addr);
+int PP_vector_int_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+namespace std {
+    class vector;  // forward declare
+}
+extern PyTypeObject PY_vector_double_Type;
 // splicer begin class.vector.C_declaration
 // splicer end class.vector.C_declaration
 
@@ -63,6 +40,14 @@ PyObject_HEAD
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_double;
+
+extern const char *PY_vector_double_capsule_name;
+PyObject *PP_vector_double_to_Object(std::vector_double *addr);
+int PP_vector_double_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+class Worker;  // forward declare
+extern PyTypeObject PY_Worker_Type;
 // splicer begin class.Worker.C_declaration
 // splicer end class.Worker.C_declaration
 
@@ -72,6 +57,16 @@ PyObject_HEAD
     // splicer begin class.Worker.C_object
     // splicer end class.Worker.C_object
 } PY_Worker;
+
+extern const char *PY_Worker_capsule_name;
+PyObject *PP_Worker_to_Object(Worker *addr);
+int PP_Worker_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+namespace internal {
+    class ImplWorker1;  // forward declare
+}
+extern PyTypeObject PY_ImplWorker1_Type;
 // splicer begin class.ImplWorker1.C_declaration
 // splicer end class.ImplWorker1.C_declaration
 
@@ -81,6 +76,14 @@ PyObject_HEAD
     // splicer begin class.ImplWorker1.C_object
     // splicer end class.ImplWorker1.C_object
 } PY_ImplWorker1;
+
+extern const char *PY_ImplWorker1_capsule_name;
+PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr);
+int PP_ImplWorker1_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+class user;  // forward declare
+extern PyTypeObject PY_user_int_Type;
 // splicer begin class.user.C_declaration
 // splicer end class.user.C_declaration
 
@@ -90,6 +93,14 @@ PyObject_HEAD
     // splicer begin class.user.C_object
     // splicer end class.user.C_object
 } PY_user_int;
+
+extern const char *PY_user_int_capsule_name;
+PyObject *PP_user_int_to_Object(user_int *addr);
+int PP_user_int_from_Object(PyObject *obj, void **addr);
+// ------------------------------
+
+// splicer begin header.C_declaration
+// splicer end header.C_declaration
 
 extern PyObject *PY_error_obj;
 

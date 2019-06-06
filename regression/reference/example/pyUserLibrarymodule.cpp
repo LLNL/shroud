@@ -226,6 +226,7 @@ PP_test_size_t(
 // splicer end function.test_size_t
 }
 
+#ifdef HAVE_MPI
 static PyObject *
 PP_testmpi_mpi(
   PyObject *SHROUD_UNUSED(self),
@@ -250,7 +251,9 @@ PP_testmpi_mpi(
     Py_RETURN_NONE;
 // splicer end function.testmpi_mpi
 }
+#endif // ifdef HAVE_MPI
 
+#ifndef HAVE_MPI
 static PyObject *
 PP_testmpi_serial(
   PyObject *SHROUD_UNUSED(self),
@@ -263,6 +266,7 @@ PP_testmpi_serial(
     Py_RETURN_NONE;
 // splicer end function.testmpi_serial
 }
+#endif // ifndef HAVE_MPI
 
 static char PP_testgroup1__doc__[] =
 "documentation"
@@ -669,6 +673,7 @@ PP_testmpi(
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
+#ifdef HAVE_MPI
     if (SHT_nargs == 1) {
         rvobj = PP_testmpi_mpi(self, args, kwds);
         if (!PyErr_Occurred()) {
@@ -678,6 +683,8 @@ PP_testmpi(
         }
         PyErr_Clear();
     }
+#endif // ifdef HAVE_MPI
+#ifndef HAVE_MPI
     if (SHT_nargs == 0) {
         rvobj = PP_testmpi_serial(self, args, kwds);
         if (!PyErr_Occurred()) {
@@ -687,6 +694,7 @@ PP_testmpi(
         }
         PyErr_Clear();
     }
+#endif // ifndef HAVE_MPI
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
 // splicer end function.testmpi
@@ -812,7 +820,6 @@ inituserlibrary(void)
     Py_INCREF(&PP_ExClass1_Type);
     PyModule_AddObject(m, "ExClass1", (PyObject *)&PP_ExClass1_Type);
 
-
     // ExClass2
     PP_ExClass2_Type.tp_new   = PyType_GenericNew;
     PP_ExClass2_Type.tp_alloc = PyType_GenericAlloc;
@@ -820,7 +827,6 @@ inituserlibrary(void)
         return RETVAL;
     Py_INCREF(&PP_ExClass2_Type);
     PyModule_AddObject(m, "ExClass2", (PyObject *)&PP_ExClass2_Type);
-
 
     PP_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PP_error_obj == NULL)

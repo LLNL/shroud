@@ -41,6 +41,14 @@ void PRE_user1_method1(PRE_user1 * self);
 void PRE_user1_method2(PRE_user1 * self);
 #endif
 
+#if defined(USE_THREE)
+void PRE_user1_method3def_0(PRE_user1 * self);
+#endif
+
+#if defined(USE_THREE)
+void PRE_user1_method3def_1(PRE_user1 * self, int i);
+#endif
+
 #ifdef __cplusplus
 }
 #endif

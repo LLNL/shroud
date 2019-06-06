@@ -20,19 +20,10 @@
 // splicer begin header.include
 // splicer end header.include
 
-// forward declare classes
-class Class1;
 
+// ------------------------------
+class Class1;  // forward declare
 extern PyTypeObject PY_Class1_Type;
-
-// splicer begin header.C_declaration
-// splicer end header.C_declaration
-
-// helper functions
-extern const char *PY_Class1_capsule_name;
-PyObject *PP_Class1_to_Object(Class1 *addr);
-int PP_Class1_from_Object(PyObject *obj, void **addr);
-
 // splicer begin class.Class1.C_declaration
 // splicer end class.Class1.C_declaration
 
@@ -42,6 +33,14 @@ PyObject_HEAD
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;
+
+extern const char *PY_Class1_capsule_name;
+PyObject *PP_Class1_to_Object(Class1 *addr);
+int PP_Class1_from_Object(PyObject *obj, void **addr);
+// ------------------------------
+
+// splicer begin header.C_declaration
+// splicer end header.C_declaration
 
 extern PyObject *PY_error_obj;
 

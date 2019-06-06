@@ -1,5 +1,6 @@
-// wrapExClass3.h
+// wrapUser2.h
 // This is generated code, do not edit
+// #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 //
 // Produced at the Lawrence Livermore National Laboratory
@@ -14,38 +15,38 @@
 //
 // #######################################################################
 /**
- * \file wrapExClass3.h
- * \brief Shroud generated wrapper for ExClass3 class
+ * \file wrapUser2.h
+ * \brief Shroud generated wrapper for User2 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPEXCLASS3_H
-#define WRAPEXCLASS3_H
-#ifdef USE_CLASS3
+#ifndef WRAPUSER2_H
+#define WRAPUSER2_H
+#ifdef USE_USER2
 
-#include "typesUserLibrary.h"
+#include "typespreprocess.h"
 
-// splicer begin class.ExClass3.CXX_declarations
-// splicer end class.ExClass3.CXX_declarations
+// splicer begin class.User2.CXX_declarations
+// splicer end class.User2.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin class.ExClass3.C_declarations
-// splicer end class.ExClass3.C_declarations
+// splicer begin class.User2.C_declarations
+// splicer end class.User2.C_declarations
 
 #ifdef USE_CLASS3_A
-void AA_exclass3_exfunc_0(AA_exclass3 * self);
+void PRE_user2_exfunc_0(PRE_user2 * self);
 #endif
 
 #ifndef USE_CLASS3_A
-void AA_exclass3_exfunc_1(AA_exclass3 * self, int flag);
+void PRE_user2_exfunc_1(PRE_user2 * self, int flag);
 #endif
 
 #ifdef __cplusplus
 }
 #endif
-#endif  // ifdef USE_CLASS3
+#endif  // ifdef USE_USER2
 
-#endif  // WRAPEXCLASS3_H
+#endif  // WRAPUSER2_H

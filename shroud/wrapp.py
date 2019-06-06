@@ -124,11 +124,9 @@ class Wrapp(util.WrapperMixin):
 
         # Variables to accumulate output lines
         self.py_type_object_creation = []
-        self.py_type_extern = []
-        self.py_type_structs = []
+        self.py_class_decl = []
         self.py_helper_definition = []
         self.py_helper_declaration = []
-        self.py_helper_prototypes = []
         self.py_helper_functions = []
         # reserved the 0 slot of capsule_order
         # self.add_capsule_helper('--none--', ['// not yet implemented'])
@@ -229,7 +227,7 @@ class Wrapp(util.WrapperMixin):
                     fmt_id,
                 )
         else:
-            output.append("{+")
+            output.append("\n{+")
             append_format(output, "// enumeration {enum_name}", node.fmtdict)
             output.append("PyObject *tmp_value;")
             for member in ast.members:
@@ -257,37 +255,53 @@ class Wrapp(util.WrapperMixin):
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_obj}->", fmt_class)
 
-        self.create_class_helper_functions(node)
-
-        self.py_type_object_creation.append(
+        output = self.py_type_object_creation
+        output.append("")
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
+        output.append(
             wformat(
-                """
-// {cxx_class}
+                """// {cxx_class}
 {PY_PyTypeObject}.tp_new   = PyType_GenericNew;
 {PY_PyTypeObject}.tp_alloc = PyType_GenericAlloc;
 if (PyType_Ready(&{PY_PyTypeObject}) < 0)
 +return RETVAL;-
 Py_INCREF(&{PY_PyTypeObject});
-PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
-""",
+PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
                 fmt_class,
             )
         )
-        self.py_type_extern.append(
-            wformat("extern PyTypeObject {PY_PyTypeObject};", fmt_class)
-        )
+        if node.cpp_if:
+            output.append("#endif // " + node.cpp_if)
 
-        self._create_splicer("C_declaration", self.py_type_structs)
+        # header declarations
+        output = self.py_class_decl
+        output.append("")
+        output.append("// ------------------------------")
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
+        self.write_namespace(node, "begin", output)
+        output.append("class {};  // forward declare".format(node.name))
+        self.write_namespace(node, "end", output, comment=False)
+
+        output.append(wformat("extern PyTypeObject {PY_PyTypeObject};", fmt_class))
+
+        self._create_splicer("C_declaration", output)
         append_format(
-            self.py_type_structs,
+            output,
             "\n"
             "typedef struct {{\n"
             "PyObject_HEAD\n"
             "+{namespace_scope}{cxx_class} * {PY_obj};",
             fmt_class,
         )
-        self._create_splicer("C_object", self.py_type_structs)
-        append_format(self.py_type_structs, "-}} {PY_PyObject};", fmt_class)
+        self._create_splicer("C_object", output)
+        append_format(output, "-}} {PY_PyObject};", fmt_class)
+        output.append("")
+
+        self.create_class_helper_functions(node)
+        if node.cpp_if:
+            output.append("#endif // " + node.cpp_if)
 
         self.wrap_enums(node)
 
@@ -309,14 +323,21 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});
 
         fmt.PY_capsule_name = wformat("PY_{cxx_class}_capsule_name", fmt)
 
+        if node.cpp_if:
+            cpp_if = "#" + node.cpp_if + "\n"
+            cpp_endif = "\n#endif  // " + node.cpp_if
+        else:
+            cpp_if = ""
+            cpp_endif = ""
+
         self._push_splicer("helper")
         append_format(
             self.py_helper_definition,
-            'const char *{PY_capsule_name} = "{cxx_class}";',
+            cpp_if + 'const char *{PY_capsule_name} = "{cxx_class}";' + cpp_endif,
             fmt,
         )
         append_format(
-            self.py_helper_declaration,
+            self.py_class_decl,
             "extern const char *{PY_capsule_name};",
             fmt,
         )
@@ -341,9 +362,11 @@ return rv;""",
             "PyObject *{PY_to_object_func}({namespace_scope}{cxx_class} *addr)",
             fmt,
         )
-        self.py_helper_prototypes.append(proto + ";")
+        self.py_class_decl.append(proto + ";")
 
         self.py_helper_functions.append("")
+        if node.cpp_if:
+            self.py_helper_functions.append("#" + node.cpp_if)
         self.py_helper_functions.append(proto)
         self.py_helper_functions.append("{+")
         self._create_splicer("to_object", self.py_helper_functions, to_object)
@@ -365,7 +388,7 @@ return 1;""",
         proto = wformat(
             "int {PY_from_object_func}(PyObject *obj, void **addr)", fmt
         )
-        self.py_helper_prototypes.append(proto + ";")
+        self.py_class_decl.append(proto + ";")
 
         self.py_helper_functions.append("")
         self.py_helper_functions.append(proto)
@@ -376,6 +399,8 @@ return 1;""",
         )
         self.py_helper_functions.append(-1)
         self.py_helper_functions.append("}")
+        if node.cpp_if:
+            self.py_helper_functions.append("#endif  // " + node.cpp_if)
 
         self._pop_splicer("helper")
 
@@ -1605,23 +1630,30 @@ return 1;""",
 
         Args:
             node    - function node to wrap
-            expose  - True if expose to user
-            is_ctor - True if this is a constructor
-            fmt     - dictionary of format values
-            PY_impl - list of implementation lines
+                      or None when called from multi_dispatch.
+            expose  - True if exposed to user.
+            is_ctor - True if this is a constructor.
+            fmt     - dictionary of format values.
+            PY_impl - list of implementation lines.
         """
+        if node:
+            cpp_if = node.cpp_if
+        else:
+            cpp_if = False
+
         body = self.PyMethodBody
+        body.append("")
+        if cpp_if:
+            body.append("#" + node.cpp_if)
         if expose:
             append_format(
                 body,
-                "\n"
                 "static char {PY_name_impl}__doc__[] =\n"
                 '"{PY_doc_string}"\n'
-                ";",
+                ";\n",
                 fmt,
             )
 
-        body.append("")
         if node and node.options.doxygen and node.doxygen:
             self.write_doxygen(body, node.doxygen)
         if is_ctor:
@@ -1664,8 +1696,12 @@ return 1;""",
             PY_impl,
         )
         self.PyMethodBody.append("}")
+        if cpp_if:
+            body.append("#endif // " + cpp_if)
 
         if expose is True:
+            if cpp_if:
+                self.PyMethodDef.append("#" + cpp_if)
             # default name
             append_format(
                 self.PyMethodDef,
@@ -1675,6 +1711,8 @@ return 1;""",
                 "{PY_name_impl}__doc__}},",
                 fmt,
             )
+            if cpp_if:
+                self.PyMethodDef.append("#endif // " + cpp_if)
 
     #        elif expose is not False:
     #            # override name
@@ -1753,12 +1791,14 @@ return 1;""",
         """
         Args:
             library - ast.LibraryNode.
-            node -
+            node - ast.ClassNode
         """
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
         output = []
+        if node.cpp_if:
+            output.append("#" + node.cpp_if)
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
         #        if self.need_numpy:
@@ -1824,6 +1864,8 @@ return 1;""",
         output.append("-};")
 
         append_format(output, PyTypeObject_template, fmt_type)
+        if node.cpp_if:
+            output.append("#endif // " + node.cpp_if)
 
         self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
@@ -1894,16 +1936,17 @@ return 1;""",
                 expose = True
 
             for overload in methods:
+                if overload.cpp_if:
+                    body.append("#" + overload.cpp_if)
                 if overload._nargs:
                     body.append(
-                        "if (SHT_nargs >= %d && SHT_nargs <= %d) {"
+                        "if (SHT_nargs >= %d && SHT_nargs <= %d) {+"
                         % overload._nargs
                     )
                 else:
                     body.append(
-                        "if (SHT_nargs == %d) {" % len(overload.ast.params)
+                        "if (SHT_nargs == %d) {+" % len(overload.ast.params)
                     )
-                body.append(1)
                 append_format(
                     body,
                     return_arg + " = {PY_name_impl}(self, args, kwds);",
@@ -1917,6 +1960,8 @@ return 1;""",
                 )
                 body.append(return_code)
                 body.append("-}\nPyErr_Clear();\n-}")
+                if overload.cpp_if:
+                    body.append("#endif // " + overload.cpp_if)
 
             body.append(
                 "PyErr_SetString(PyExc_TypeError, "
@@ -1946,33 +1991,22 @@ return 1;""",
         self._push_splicer("header")
         self._create_splicer("include", output)
 
-        #        output.extend(self.define_arraydescr)
-        # forward declare classes for helpers
-        blank = True
-        for cls in node.classes:
-            if cls.options.wrap_python:
-                if blank:
-                    output.append("")
-                    output.append("// forward declare classes")
-                    blank = False
-                self.write_namespace(cls, "begin", output)
-                output.append("class {};".format(cls.name))
-                self.write_namespace(cls, "end", output, comment=False)
-
-        if self.py_type_extern:
+        if self.py_class_decl:
             output.append("")
-            output.extend(self.py_type_extern)
+            output.extend(self.py_class_decl)
+            output.append("// ------------------------------")
+
+        #        output.extend(self.define_arraydescr)
+
         output.append("")
         self._create_splicer("C_declaration", output)
         self._pop_splicer("header")
 
-        output.append("")
-        output.append("// helper functions")
-        output.extend(self.py_helper_declaration)
-        output.extend(self.py_helper_prototypes)
+        if self.py_helper_declaration:
+            output.append("")
+            output.append("// helper functions")
+            output.extend(self.py_helper_declaration)
 
-        output.append("")
-        output.extend(self.py_type_structs)
         append_format(
             output,
             """

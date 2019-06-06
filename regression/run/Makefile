@@ -29,19 +29,22 @@ TESTDIRS = \
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
     $(tempdir)/run/types/..\
-    $(tempdir)/run/templates/..\
     $(tempdir)/run/pointers/..\
     $(tempdir)/run/pointers/python/.. \
+    $(tempdir)/run/preprocess/..\
+    $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/vectors/..\
     $(tempdir)/run/vectors/python/.. \
     $(tempdir)/run/vectors/lua/.. \
+    $(tempdir)/run/preprocess/.. \
     $(tempdir)/run/forward/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
     $(tempdir)/run/ownership/.. \
-    $(tempdir)/run/ownership/python/..
+    $(tempdir)/run/ownership/python/.. \
+    $(tempdir)/run/templates/..
 
 testdirs : $(TESTDIRS)
 

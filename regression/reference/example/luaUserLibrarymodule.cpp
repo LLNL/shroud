@@ -554,53 +554,6 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// void exfunc()
-// void exfunc(int flag +intent(in)+value)
-static int l_exclass3_exfunc(lua_State *L)
-{
-    // splicer begin class.ExClass3.method.exfunc
-    int SH_nresult = 0;
-    int SH_nargs = lua_gettop(L);
-    int SH_itype1 = lua_type(L, 1);
-    switch (SH_nargs) {
-    case 0:
-        {
-            l_ExClass3_Type * SH_this = (l_ExClass3_Type *)
-                luaL_checkudata(L, 1, "ExClass3.metatable");
-            SH_this->self->exfunc();
-            SH_nresult = 0;
-        }
-        break;
-    case 1:
-        if (SH_itype1 == LUA_TNUMBER) {
-            int flag = lua_tointeger(L, 1);
-            l_ExClass3_Type * SH_this = (l_ExClass3_Type *)
-                luaL_checkudata(L, 1, "ExClass3.metatable");
-            SH_this->self->exfunc(flag);
-            SH_nresult = 0;
-        }
-        else {
-            luaL_error(L, "error with arguments");
-        }
-        break;
-    default:
-        luaL_error(L, "error with arguments");
-        break;
-    }
-    return SH_nresult;
-    // splicer end class.ExClass3.method.exfunc
-}
-
-// splicer begin class.ExClass3.additional_functions
-// splicer end class.ExClass3.additional_functions
-
-static const struct luaL_Reg l_ExClass3_Reg [] = {
-    {"exfunc", l_exclass3_exfunc},
-    // splicer begin class.ExClass3.register
-    // splicer end class.ExClass3.register
-    {NULL, NULL}   /*sentinel */
-};
-
 // void local_function1()
 static int l_local_function1(lua_State *)
 {
@@ -978,26 +931,6 @@ int luaopen_userlibrary(lua_State *L) {
     luaL_register(L, NULL, l_ExClass2_Reg);
 #else
     luaL_setfuncs(L, l_ExClass2_Reg, 0);
-#endif
-
-
-    /* Create the metatable and put it on the stack. */
-    luaL_newmetatable(L, "ExClass3.metatable");
-    /* Duplicate the metatable on the stack (We now have 2). */
-    lua_pushvalue(L, -1);
-    /* Pop the first metatable off the stack and assign it to __index
-     * of the second one. We set the metatable for the table to itself.
-     * This is equivalent to the following in lua:
-     * metatable = {}
-     * metatable.__index = metatable
-     */
-    lua_setfield(L, -2, "__index");
-
-    /* Set the methods to the metatable that should be accessed via object:func */
-#if LUA_VERSION_NUM < 502
-    luaL_register(L, NULL, l_ExClass3_Reg);
-#else
-    luaL_setfuncs(L, l_ExClass3_Reg, 0);
 #endif
 
 
