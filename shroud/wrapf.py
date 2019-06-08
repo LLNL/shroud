@@ -204,15 +204,21 @@ class Wrapf(util.WrapperMixin):
 
         # One capsule type per class.
         # Necessary since a type in one module may be used by another module.
+        self.f_type_decl.append("")
+        if node.options.literalinclude:
+            self.f_type_decl.append("! start derived-type " +
+                                    fmt_class.F_capsule_data_type)
         append_format(
             self.f_type_decl,
-            "\n"
             "type, bind(C) :: {F_capsule_data_type}\n+"
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory\n"
             "integer(C_INT) :: idtor = 0       ! index of destructor\n"
             "-end type {F_capsule_data_type}",
             fmt_class,
         )
+        if node.options.literalinclude:
+            self.f_type_decl.append("! end derived-type " +
+                                    fmt_class.F_capsule_data_type)
         self.set_f_module(
             self.module_use, "iso_c_binding", "C_PTR", "C_INT", "C_NULL_PTR"
         )

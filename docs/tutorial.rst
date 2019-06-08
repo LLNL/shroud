@@ -1250,7 +1250,7 @@ To wrap the method:
 
     class Singleton {
         static Singleton& getReference();
-    }
+    };
 
 Use the YAML input:
 

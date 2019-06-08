@@ -61,10 +61,12 @@ module tutorial_mod
     ! splicer begin class.Class1.module_top
     ! splicer end class.Class1.module_top
 
+    ! start derived-type SHROUD_class1_capsule
     type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_class1_capsule
+    ! end derived-type SHROUD_class1_capsule
 
     type class1
         type(SHROUD_class1_capsule) :: cxxmem
@@ -134,6 +136,7 @@ module tutorial_mod
 
     interface
 
+        ! start c_class1_new_default
         function c_class1_new_default(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_default")
@@ -143,7 +146,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_default
+        ! end c_class1_new_default
 
+        ! start c_class1_new_flag
         function c_class1_new_flag(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_flag")
@@ -154,14 +159,18 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_flag
+        ! end c_class1_new_flag
 
+        ! start c_class1_delete
         subroutine c_class1_delete(self) &
                 bind(C, name="TUT_class1_delete")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_delete
+        ! end c_class1_delete
 
+        ! start c_class1_method1
         function c_class1_method1(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_method1")
@@ -171,7 +180,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_method1
+        ! end c_class1_method1
 
+        ! start c_class1_equivalent
         pure function c_class1_equivalent(self, obj2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_equivalent")
@@ -182,14 +193,18 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: obj2
             logical(C_BOOL) :: SHT_rv
         end function c_class1_equivalent
+        ! end c_class1_equivalent
 
+        ! start c_class1_return_this
         subroutine c_class1_return_this(self) &
                 bind(C, name="TUT_class1_return_this")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_return_this
+        ! end c_class1_return_this
 
+        ! start c_class1_return_this_buffer
         function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer")
@@ -202,7 +217,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer
+        ! end c_class1_return_this_buffer
 
+        ! start c_class1_return_this_buffer_bufferify
         function c_class1_return_this_buffer_bufferify(self, name, &
                 Lname, flag, SHT_crv) &
                 result(SHT_rv) &
@@ -217,7 +234,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer_bufferify
+        ! end c_class1_return_this_buffer_bufferify
 
+        ! start c_class1_getclass3
         function c_class1_getclass3(self, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_getclass3")
@@ -228,7 +247,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_getclass3
+        ! end c_class1_getclass3
 
+        ! start c_class1_direction_func
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_direction_func")
@@ -239,7 +260,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_class1_direction_func
+        ! end c_class1_direction_func
 
+        ! start c_class1_get_m_flag
         function c_class1_get_m_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_m_flag")
@@ -249,7 +272,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_m_flag
+        ! end c_class1_get_m_flag
 
+        ! start c_class1_get_test
         function c_class1_get_test(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_test")
@@ -259,7 +284,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_test
+        ! end c_class1_get_test
 
+        ! start c_class1_set_test
         subroutine c_class1_set_test(self, val) &
                 bind(C, name="TUT_class1_set_test")
             use iso_c_binding, only : C_INT
@@ -268,6 +295,7 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_class1_set_test
+        ! end c_class1_set_test
 
         ! splicer begin class.Class1.additional_interfaces
         ! splicer end class.Class1.additional_interfaces
@@ -826,6 +854,7 @@ module tutorial_mod
 contains
 
     ! Class1() +name(new)
+    ! start class1_new_default
     function class1_new_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -835,8 +864,10 @@ contains
         SHT_prv = c_class1_new_default(SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_default
     end function class1_new_default
+    ! end class1_new_default
 
     ! Class1(int flag +intent(in)+value) +name(new)
+    ! start class1_new_flag
     function class1_new_flag(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -847,20 +878,24 @@ contains
         SHT_prv = c_class1_new_flag(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_flag
     end function class1_new_flag
+    ! end class1_new_flag
 
     ! ~Class1() +name(delete)
+    ! start class1_delete
     subroutine class1_delete(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%cxxmem)
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
+    ! end class1_delete
 
     ! int Method1()
     !>
     !! \brief returns the value of flag member
     !!
     !<
+    ! start class1_method1
     function class1_method1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -870,12 +905,14 @@ contains
         SHT_rv = c_class1_method1(obj%cxxmem)
         ! splicer end class.Class1.method.method1
     end function class1_method1
+    ! end class1_method1
 
     ! bool equivalent(const Class1 & obj2 +intent(in)) const
     !>
     !! \brief Pass in reference to instance
     !!
     !<
+    ! start class1_equivalent
     function class1_equivalent(obj, obj2) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -886,18 +923,21 @@ contains
         SHT_rv = c_class1_equivalent(obj%cxxmem, obj2%cxxmem)
         ! splicer end class.Class1.method.equivalent
     end function class1_equivalent
+    ! end class1_equivalent
 
     ! Class1 * returnThis()
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
     !<
+    ! start class1_return_this
     subroutine class1_return_this(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.return_this
         call c_class1_return_this(obj%cxxmem)
         ! splicer end class.Class1.method.return_this
     end subroutine class1_return_this
+    ! end class1_return_this
 
     ! Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
     ! arg_to_buffer
@@ -905,6 +945,7 @@ contains
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
     !<
+    ! start class1_return_this_buffer
     function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT, C_PTR
@@ -920,12 +961,14 @@ contains
             name, len_trim(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
+    ! end class1_return_this_buffer
 
     ! Class1 * getclass3() const
     !>
     !! \brief Test const method
     !!
     !<
+    ! start class1_getclass3
     function class1_getclass3(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -936,8 +979,10 @@ contains
         SHT_prv = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.getclass3
     end function class1_getclass3
+    ! end class1_getclass3
 
     ! DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+    ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -948,8 +993,10 @@ contains
         SHT_rv = c_class1_direction_func(obj%cxxmem, arg)
         ! splicer end class.Class1.method.direction_func
     end function class1_direction_func
+    ! end class1_direction_func
 
     ! int getM_flag()
+    ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -959,8 +1006,10 @@ contains
         SHT_rv = c_class1_get_m_flag(obj%cxxmem)
         ! splicer end class.Class1.method.get_m_flag
     end function class1_get_m_flag
+    ! end class1_get_m_flag
 
     ! int getTest()
+    ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -970,8 +1019,10 @@ contains
         SHT_rv = c_class1_get_test(obj%cxxmem)
         ! splicer end class.Class1.method.get_test
     end function class1_get_test
+    ! end class1_get_test
 
     ! void setTest(int val +intent(in)+value)
+    ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
         class(class1) :: obj
@@ -980,6 +1031,7 @@ contains
         call c_class1_set_test(obj%cxxmem, val)
         ! splicer end class.Class1.method.set_test
     end subroutine class1_set_test
+    ! end class1_set_test
 
     ! Return pointer to C++ memory.
     function class1_get_instance(obj) result (cxxptr)

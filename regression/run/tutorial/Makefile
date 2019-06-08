@@ -14,6 +14,10 @@
 #
 # run/tutorial
 #
+ifeq ($(top),)
+top := ../../..
+endif 
+
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \

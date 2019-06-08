@@ -26,11 +26,13 @@
 extern "C" {
 #endif
 
+// start struct TUT_class1
 struct s_TUT_class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TUT_class1 TUT_class1;
+// end struct TUT_class1
 
 struct s_TUT_singleton {
     void *addr;     /* address of C++ memory */

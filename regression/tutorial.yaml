@@ -203,6 +203,8 @@ declarations:
 ##################################################
   
   - decl: class Class1
+    options:
+      literalinclude: True
     declarations:
     - decl: int m_flag +readonly;
     - decl: int m_test +name(test);

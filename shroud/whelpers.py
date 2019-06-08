@@ -214,6 +214,12 @@ def add_shadow_helper(node):
 
     name = "capsule_{}".format(cname)
     if name not in CHelpers:
+        if node.options.literalinclude:
+            lstart = "// start struct " + cname + "\n"
+            lend = "\n// end struct " + cname
+        else:
+            lstart = ""
+            lend = ""
         if node.cpp_if:
             cpp_if = "#" + node.cpp_if + "\n"
             cpp_endif = "\n#endif  // " + node.cpp_if
@@ -222,14 +228,14 @@ def add_shadow_helper(node):
             cpp_endif = ""
         helper = dict(
             h_shared_code="""
-{cpp_if}struct s_{C_type_name} {{+
+{lstart}{cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
-typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""".format(
+typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
                 C_type_name=cname,
-                cpp_if=cpp_if,
-                cpp_endif=cpp_endif,
+                cpp_if=cpp_if, cpp_endif=cpp_endif,
+                lstart=lstart, lend=lend,
             )
         )
         CHelpers[name] = helper

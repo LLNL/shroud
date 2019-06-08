@@ -1142,3 +1142,260 @@ C++ library function:
 Class Type
 ----------
 
+.. ############################################################
+
+.. _example_constructor_and_destructor:
+
+constructor and destructor
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The C++ header file from ``tutorial.hpp``.
+
+.. code-block:: c++
+
+    class Class1
+    {
+    public:
+        int m_flag;
+        int m_test;
+        Class1()         : m_flag(0), m_test(0)    {};
+        Class1(int flag) : m_flag(flag), m_test(0) {};
+    };
+
+YAML input:
+
+.. code-block:: yaml
+
+    declarations:
+    - decl: class Class1
+      declarations:
+      - decl: Class1()         +name(new)
+        format:
+          function_suffix: _default
+      - decl: Class1(int flag) +name(new)
+        format:
+        function_suffix: _flag
+      - decl: ~Class1() +name(delete)
+
+A C wrapper function is created for each constructor and the destructor.
+
+The C wrappers:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+   :language: c
+   :start-after: start TUT_class1_new_default
+   :end-before: end TUT_class1_new_default
+
+.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+   :language: c
+   :start-after: start TUT_class1_new_flag
+   :end-before: end TUT_class1_new_flag
+
+.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+   :language: c
+   :start-after: start TUT_class1_delete
+   :end-before: end TUT_class1_delete
+
+The corresponding Fortran interfaces:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_class1_new_default
+   :end-before: end c_class1_new_default
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_class1_new_flag
+   :end-before: end c_class1_new_flag
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_class1_delete
+   :end-before: end c_class1_delete
+   :dedent: 8
+
+And the Fortran wrappers:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start class1_new_default
+   :end-before: end class1_new_default
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start class1_new_flag
+   :end-before: end class1_new_flag
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start class1_delete
+   :end-before: end class1_delete
+   :dedent: 4
+
+The Fortran shadow class adds the type-bound method for the destructor:
+
+.. code-block:: fortran
+
+    type, bind(C) :: SHROUD_class1_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_class1_capsule
+
+    type class1
+        type(SHROUD_class1_capsule) :: cxxmem
+    contains
+        procedure :: delete => class1_delete
+    end type class1
+
+The constructors are not type-bound procedures. But they
+are combined into a generic interface.
+
+.. code-block:: fortran
+
+    interface class1_new
+        module procedure class1_new_default
+        module procedure class1_new_flag
+    end interface class1_new
+
+A class instance is created and destroy from Fortran as:
+
+.. code-block:: fortran
+
+    use tutorial_mod
+    type(class1) obj
+
+    obj = class1_new()
+    call obj%delete
+
+Corresponding C++ code:
+
+.. code-block:: c++
+
+    include <tutorial.hpp>
+    tutorial::Class1 obj = new * tutorial::Class1;
+
+    delete obj;
+
+.. ############################################################
+
+.. _example_getter_and_setter:
+
+Getter and Setter
+^^^^^^^^^^^^^^^^^
+The C++ header file from ``tutorial.hpp``.
+
+.. code-block:: c++
+
+    class Class1
+    {
+    public:
+        int m_flag;
+        int m_test;
+    };
+
+YAML input:
+
+.. code-block:: yaml
+
+    declarations:
+    - decl: class Class1
+      declarations:
+      - decl: int m_flag +readonly;
+      - decl: int m_test +name(test);
+
+A C wrapper function is created for each getter and setter
+unless the *readonly* attribute is added.
+
+The C wrappers:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+   :language: c
+   :start-after: start TUT_class1_get_m_flag
+   :end-before: end TUT_class1_get_m_flag
+
+.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+   :language: c
+   :start-after: start TUT_class1_get_test
+   :end-before: end TUT_class1_get_test
+
+.. literalinclude:: ../regression/reference/tutorial/wrapClass1.cpp
+   :language: c
+   :start-after: start TUT_class1_set_test
+   :end-before: end TUT_class1_set_test
+
+The corresponding Fortran interfaces:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_class1_get_m_flag
+   :end-before: end c_class1_get_m_flag
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_class1_get_test
+   :end-before: end c_class1_get_test
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_class1_set_test
+   :end-before: end c_class1_set_test
+   :dedent: 8
+
+And the Fortran wrappers:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start class1_get_m_flag
+   :end-before: end class1_get_m_flag
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start class1_get_test
+   :end-before: end class1_get_test
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start class1_set_test
+   :end-before: end class1_set_test
+   :dedent: 4
+
+The Fortran shadow class adds the type-bound methods:
+
+.. code-block:: fortran
+
+    type class1
+        type(SHROUD_class1_capsule) :: cxxmem
+    contains
+        procedure :: get_m_flag => class1_get_m_flag
+        procedure :: get_test => class1_get_test
+        procedure :: set_test => class1_set_test
+    end type class1
+
+The class variables can be used as:
+
+.. code-block:: fortran
+
+    use tutorial_mod
+    type(class1) obj
+    integer iflag
+
+    obj = class1_new()
+    call obj%set_test(4)
+    iflag = obj%get_test()
+
+Corresponding C++ code:
+
+.. code-block:: c++
+
+    include <tutorial.hpp>
+    tutorial::Class1 obj = new * tutorial::Class1;
+    obj->m_test = 4;
+    int iflag = obj->m_test;

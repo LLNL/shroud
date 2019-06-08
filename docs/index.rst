@@ -44,6 +44,7 @@ Contents
    tutorial
    pytutorial
    input
+   struct
    declarations
    types
    functions

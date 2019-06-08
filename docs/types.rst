@@ -321,6 +321,16 @@ Each class in the input file will create a C struct to save
 information about the C++ class.
 .. XXX
 
+
+..
+ The *f_to_c* field uses the
+ generated ``get_instance`` function to return the pointer which will
+ be passed to C.
+
+..
+ In C an opaque typedef for a struct is created as the type for the C++
+ instance pointer.  The *c_to_cxx* and *cxx_to_c* fields casts this
+ pointer to C++ and back to C.
  
 Each class in the input file will create a Fortran derived type which
 acts as a shadow class for the C++ class.  A pointer to an instance is
@@ -423,58 +433,6 @@ The type map will be written to a file to allow its used by other
 wrapped libraries.  The file is named by the global field
 **YAML_type_filename**. This file will only list some of the fields
 show above with the remainder set to default values by Shroud.
-
-The default name of the constructor is ``ctor``.  The name can 
-be specified with the **name** attribute.
-If the constructor is overloaded, each constructor must be given the
-same **name** attribute.
-The *function_suffix* must not be explicitly set to blank since the name
-is used by the ``generic`` interface.
-
-The constructor and destructor will only be wrapped if explicitly added
-to the YAML file to avoid wrapping ``private`` constructors and destructors.
-
-..  chained function calls
-
-Member Variables
-^^^^^^^^^^^^^^^^
-
-For each member variable of a C++ class a C and Fortran wrapper
-function will be created to get or set the value.  The Python wrapper
-will create a descriptor:
-
-.. code-block:: c++
-
-    class Class1
-    {
-    public:
-       int m_flag;
-       int m_test;
-    }
-
-It is added to the YAML file as:
-
-.. code-block:: yaml
-
-    - decl: class Class1
-      declarations:
-      - decl: int m_flag +readonly;
-      - decl: int m_test +name(test);
-
-The *readonly* attribute will not write the setter function or descriptor.
-Python will report:
-
-.. code-block:: python
-
-    >>> obj = tutorial.Class1()
-    >>> obj.m_flag =1
-    Traceback (most recent call last):
-      File "<stdin>", line 1, in <module>
-    AttributeError: attribute 'm_flag' of 'tutorial.Class1' objects is not writable
-
-The *name* attribute will change the name of generated functions and
-descriptors.  This is helpful when using a naming convention like
-``m_test`` and you do not want ``m_`` to be used in the wrappers.
 
 Templates
 ---------
