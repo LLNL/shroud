@@ -8896,7 +8896,6 @@
                             "cxx_member": "->",
                             "cxx_type": "double",
                             "cxx_var": "in",
-                            "numpy_intent": "NPY_ARRAY_IN_ARRAY",
                             "numpy_type": "NPY_DOUBLE",
                             "py_type": "PyObject",
                             "py_var": "SHPy_in",

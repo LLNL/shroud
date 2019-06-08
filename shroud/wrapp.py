@@ -716,81 +716,28 @@ return 1;""",
         // pre_call
         int * arg1 = PyArray_DATA(SHPy_arg1);
         """
-        self.need_numpy = True
         intent = arg.attrs["intent"]
         if intent == "out":
-            # Create a new array.
-            # The dimension attribute must be set to an explicit length.
-            if "dimension" not in arg.attrs:
+            dimension = arg.attrs.get("dimension", None)
+            if dimension is None:
                 raise RuntimeError(
-                    "Argument must have dimension attribute")
-            dictvars = attr_dimension_out(arg, fmt_arg)
-            decl = [
-                "PyArrayObject * {py_var} = NULL;",
-                dictvars["dim_code"],
-            ]
-            asgn = "{py_var} = %s;" % do_cast(
-                self.language,
-                "reinterpret",
-                "PyArrayObject *",
-                wformat("PyArray_SimpleNew({nd}, {dims}, {typenum})", dictvars)
-            )
+                    "Argument must have non-default dimension attribute")
+            if dimension == "*":
+                raise RuntimeError(
+                    "Argument dimension must not be assumed-length")
+            fmt_arg.npy_ndims = "1"
+            fmt_arg.npy_dims = "SHD_" +  fmt_arg.cxx_var # ast.name
+            fmt_arg.pointer_shape = dimension
         else:
-            if intent == "in":
-                fmt_arg.numpy_intent = "NPY_ARRAY_IN_ARRAY"
-            else:
-                fmt_arg.numpy_intent = "NPY_ARRAY_INOUT_ARRAY"
-
-            fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
             fmt_arg.py_type = "PyObject"
-            decl = [
-                "{py_type} * {pytmp_var};",
-                "PyArrayObject * {py_var} = NULL;",
-            ]
+            fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
-            asgn = "{py_var} = %s;" % do_cast(
-                self.language,
-                "reinterpret",
-                "PyArrayObject *",
-                "PyArray_FROM_OTF("
-                "\t{pytmp_var},\t {numpy_type},\t {numpy_intent})",
-            )
-
-        if self.language == "c++":
-            cast = "{cxx_decl} = %s;" % do_cast(
-                self.language,
-                "static",
-                "{cxx_type} *",
-                "PyArray_DATA({py_var})",
-            )
+        if self.language == "c":
+            index = "intent_{}_c_dimension".format(intent)
         else:
-            # No cast needed for void * in C
-            cast = "{cxx_decl} = PyArray_DATA({py_var});"
-
-        blk = dict(
-            # Declare variables here that are used by parse or referenced in fail.
-            goto_fail=True,
-            decl=decl,
-            post_parse=[
-                asgn,
-                "if ({py_var} == NULL) {{+",
-                "PyErr_SetString(PyExc_ValueError,"
-                '\t "{c_var} must be a 1-D array of {c_type}");',
-                "goto fail;",
-                "-}}",
-            ],
-            pre_call=[cast],
-        )
-
-        if intent == "in":
-            blk["cleanup"] = ["Py_DECREF({py_var});"]
-            blk["fail"] = ["Py_XDECREF({py_var});"]
-        elif intent == "out":
-            blk["fail"] = ["Py_XDECREF({py_var});"]
-            blk["post_call"] = None  # Object already created
-        else:
-            blk["post_call"] = None  # Object already created
-
+            index = "intent_{}_cxx_dimension".format(intent)
+        blk = py_statements_dimension[index]
+        self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
     def array_result(self, capsule_order, ast, typemap, fmt):
@@ -2553,37 +2500,6 @@ def py_implied(expr, func):
     return visitor.visit(node)
 
 
-def attr_dimension_out(arg, fmt):
-    """
-    Create code to deal with an 
-      +intent(out)+dimension(3)
-
-    Args:
-        arg - argument node.
-        fmt - format dictionary.
-    """
-    dimension = arg.attrs.get("dimension", None)
-    if dimension is None:
-        raise RuntimeError(
-            "Argument must have non-default dimension attribute")
-    if dimension == "*":
-        raise RuntimeError(
-            "Argument dimension must not be assumed-length")
-
-    fmt.npy_ndims = "1"
-    fmt.npy_dims = "SHD_" +  fmt.cxx_var # ast.name
-    fmt.pointer_shape = dimension
-    # Dimensions must be in npy_intp type array.
-    dim_code = "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
-
-    return dict(
-        nd="1",
-        dims=fmt.npy_dims,
-        typenum=arg.typemap.PYN_typenum,
-        dim_code=dim_code,
-    )
-
-
 def attr_allocatable(language, allocatable, node, arg):
     """parse allocatable and return dictionary of values.
 
@@ -2661,3 +2577,137 @@ def do_cast(lang, kind, typ, var):
         return "(%s) %s" % (typ, var)
     else:
         return "%s_cast<%s>\t(%s)" % (kind, typ, var)
+
+
+# put into list to avoid duplicating text below
+array_error = [
+    "if ({py_var} == NULL) {{+",
+    "PyErr_SetString(PyExc_ValueError,"
+    '\t "{c_var} must be a 1-D array of {c_type}");',
+    "goto fail;",
+    "-}}",
+]
+
+
+py_statements_dimension=dict(
+# language=c
+    intent_in_c_dimension=dict(
+        need_numpy=True,
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        cleanup=[
+            "Py_DECREF({py_var});"
+        ],
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+
+    intent_inout_c_dimension=dict(
+        need_numpy=True,
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY);",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        post_call=None,  # Object already created in post_parse
+        goto_fail=True,
+    ),
+
+    intent_out_c_dimension=dict(
+        need_numpy=True,
+        decl=[
+            "PyArrayObject * {py_var} = NULL;",
+            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
+        ],
+        post_parse=[
+            "{py_var} = (PyArrayObject *) PyArray_SimpleNew("
+            "{npy_ndims}, {npy_dims}, {numpy_type});",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        post_call=None,  # Object already created in post_parse
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+
+# language=c++
+# use C++ casts
+    intent_in_cxx_dimension=dict(
+        need_numpy=True,
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY));",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        cleanup=[
+            "Py_DECREF({py_var});"
+        ],
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+
+    intent_inout_cxx_dimension=dict(
+        need_numpy=True,
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY));",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        post_call=None,  # Object already created in post_parse
+        goto_fail=True,
+    ),
+
+    intent_out_cxx_dimension=dict(
+        need_numpy=True,
+        decl=[
+            "PyArrayObject * {py_var} = NULL;",
+            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
+        ],
+        post_parse=[
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_SimpleNew("
+            "{npy_ndims}, {npy_dims}, {numpy_type}));",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        post_call=None,  # Object already created in post_parse
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+)

@@ -456,7 +456,6 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "values",
-                            "numpy_intent": "NPY_ARRAY_IN_ARRAY",
                             "numpy_type": "NPY_INT",
                             "py_type": "PyObject",
                             "py_var": "SHPy_values",
