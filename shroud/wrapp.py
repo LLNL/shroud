@@ -625,54 +625,16 @@ return 1;""",
 
         Examples:
         (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
-
-        // pre_call
-        SHPy_arg2 = (PyArrayObject *) PyArray_NewLikeArray(
-            SHPy_arg1, NPY_CORDER, NULL, 0);
-        if (SHPy_arg2 == NULL)
-        goto fail;
-        int * arg2 = PyArray_DATA(SHPy_arg2);
-
         """
-        self.need_numpy = True
         fmt_arg.py_type = "PyObject"
 
-        allocargs = attr_allocatable(self.language, allocatable, node, arg)
-
-        asgn = "{py_var} = %s;" % do_cast(
-            self.language,
-            "reinterpret",
-            "PyArrayObject *",
-            wformat("PyArray_NewLikeArray"
-                    "(\t{prototype},\t {order},\t {descr},\t {subok})", allocargs),
-        )
-        if self.language == "c++":
-            cast = "{cxx_decl} = %s;" % do_cast(
-                self.language,
-                "static",
-                "{cxx_type} *",
-                "PyArray_DATA({py_var})",
-            )
+        attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
+        if self.language == "c":
+            index = "intent_out_c_allocatable"
         else:
-            # No cast needed for void * in C
-            cast = "{cxx_decl} = PyArray_DATA({py_var});"
-
-        blk = dict(
-            # cxx_local_var='pointer',
-            goto_fail=True,
-            decl=["PyArrayObject * {py_var} = NULL;"],
-            pre_call=[
-                allocargs["descr_code"] + asgn,
-                "if ({py_var} == NULL)",
-                "+goto fail;-",
-                cast,
-            ],
-            post_call=None,  # Object already created
-            # cleanup = [
-            #    'Py_DECREF({pytmp_var});'
-            # ],
-            fail=["Py_XDECREF({py_var});"],
-        )
+            index = "intent_out_cxx_allocatable"
+        blk = py_statements_dimension[index]
+        self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
     def dimension_blk(self, arg, fmt_arg):
@@ -689,32 +651,6 @@ return 1;""",
         Examples:
         ----------------------------------------
         (int * arg1 +intent(in) +dimension(:))
-
-        // post_parse
-        SHPy_arg1 = (PyArrayObject *) PyArray_FROM_OTF(
-            SHTPy_arg1, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY);
-        if (SHPy_arg1 == NULL) {
-            PyErr_SetString(PyExc_ValueError,
-                "in must be a 1-D array of double");
-            goto fail;
-        }
-
-        // pre_call
-        double * in = PyArray_DATA(SHPy_arg1);
-        ----------------------------------------
-        (int * arg1 +intent(out) + dimension(3))
-
-        // post_parse
-        npy_intp SHD_arg1[1] = { 3 };
-        SHPy_arg1 = (PyArrayObject *) PyArray_SimpleNew(1, SHD_arg1, NPY_INT);
-        if (SHPy_arg1 == NULL) {
-            PyErr_SetString(PyExc_ValueError,
-                "arg1 must be a 1-D array of int");
-            goto fail;
-        }
-
-        // pre_call
-        int * arg1 = PyArray_DATA(SHPy_arg1);
         """
         intent = arg.attrs["intent"]
         if intent == "out":
@@ -2500,8 +2436,8 @@ def py_implied(expr, func):
     return visitor.visit(node)
 
 
-def attr_allocatable(language, allocatable, node, arg):
-    """parse allocatable and return dictionary of values.
+def attr_allocatable(language, allocatable, node, arg, fmt_arg):
+    """parse allocatable and add values to fmt_arg.
 
     arguments to PyArray_NewLikeArray
       (prototype, order, descr, subok)
@@ -2515,6 +2451,7 @@ def attr_allocatable(language, allocatable, node, arg):
         allocatable -
         node -
         arg -
+        fmt_arg - format dictionary for arg. 
     """
     fmtargs = node._fmtargs
 
@@ -2556,12 +2493,11 @@ def attr_allocatable(language, allocatable, node, arg):
                 )
             )
 
-    return dict(
-        prototype=prototype,
-        order=order,
-        descr=descr,
-        subok=subok,
-        descr_code=descr_code)
+    fmt_arg.npy_prototype = prototype
+    fmt_arg.npy_order = order
+    fmt_arg.npy_descr = descr
+    fmt_arg.npy_subok = subok
+    fmt_arg.npy_descr_code = descr_code
 
 
 def do_cast(lang, kind, typ, var):
@@ -2710,4 +2646,40 @@ py_statements_dimension=dict(
         ],
         goto_fail=True,
     ),
+
+## allocatable
+    intent_out_c_allocatable=dict(
+        need_numpy=True,
+        decl=["PyArrayObject * {py_var} = NULL;"],
+        pre_call=[
+            "{npy_descr_code}"
+            "{py_var} = PyArray_NewLikeArray("
+            "\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok});",
+            "if ({py_var} == NULL)",
+            "+goto fail;-",
+            "{cxx_decl} = PyArray_DATA({py_var});",
+            ],
+        post_call=None,  # Object already created in pre_call
+        fail=["Py_XDECREF({py_var});"],
+        goto_fail=True,
+    ),
+
+# language=c++
+# use C++ casts
+    intent_out_cxx_allocatable=dict(
+        need_numpy=True,
+        decl=["PyArrayObject * {py_var} = NULL;"],
+        pre_call=[
+            "{npy_descr_code}"
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_NewLikeArray"
+            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}));",
+            "if ({py_var} == NULL)",
+            "+goto fail;-",
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        post_call=None,  # Object already created in pre_call
+        fail=["Py_XDECREF({py_var});"],
+        goto_fail=True,
+    ),
+
 )

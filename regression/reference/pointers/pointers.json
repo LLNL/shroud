@@ -366,6 +366,11 @@
                             "cxx_member": "->",
                             "cxx_type": "double",
                             "cxx_var": "out",
+                            "npy_descr": "NULL",
+                            "npy_descr_code": "",
+                            "npy_order": "NPY_CORDER",
+                            "npy_prototype": "SHPy_in",
+                            "npy_subok": "0",
                             "numpy_type": "NPY_DOUBLE",
                             "py_type": "PyObject",
                             "py_var": "SHPy_out"
@@ -569,6 +574,11 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "out",
+                            "npy_descr": "SHDPy_out",
+                            "npy_descr_code": "PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);\n",
+                            "npy_order": "NPY_CORDER",
+                            "npy_prototype": "SHPy_in",
+                            "npy_subok": "0",
                             "numpy_type": "NPY_INT",
                             "py_type": "PyObject",
                             "py_var": "SHPy_out"
