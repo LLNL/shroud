@@ -629,8 +629,8 @@ return 1;""",
         fmt_arg.py_type = "PyObject"
 
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        index = "intent_out_{}_allocatable".format(self.language)
-        blk = py_statements_dimension[index]
+        index = "intent_out_{}_allocatable_numpy".format(self.language)
+        blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
@@ -665,8 +665,8 @@ return 1;""",
             fmt_arg.py_type = "PyObject"
             fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
-        index = "intent_{}_{}_dimension".format(intent, self.language)
-        blk = py_statements_dimension[index]
+        index = "intent_{}_{}_dimension_numpy".format(intent, self.language)
+        blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
@@ -2519,9 +2519,9 @@ array_error = [
 ]
 
 
-py_statements_dimension=dict(
+py_statements_local = dict(
 # language=c
-    intent_in_c_dimension=dict(
+    intent_in_c_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{py_type} * {pytmp_var};",
@@ -2543,7 +2543,7 @@ py_statements_dimension=dict(
         goto_fail=True,
     ),
 
-    intent_inout_c_dimension=dict(
+    intent_inout_c_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{py_type} * {pytmp_var};",
@@ -2560,7 +2560,7 @@ py_statements_dimension=dict(
         goto_fail=True,
     ),
 
-    intent_out_c_dimension=dict(
+    intent_out_c_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyArrayObject * {py_var} = NULL;",
@@ -2582,7 +2582,7 @@ py_statements_dimension=dict(
 
 # language=c++
 # use C++ casts
-    intent_in_cxx_dimension=dict(
+    intent_in_cxx_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{py_type} * {pytmp_var};",
@@ -2604,7 +2604,7 @@ py_statements_dimension=dict(
         goto_fail=True,
     ),
 
-    intent_inout_cxx_dimension=dict(
+    intent_inout_cxx_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{py_type} * {pytmp_var};",
@@ -2621,7 +2621,7 @@ py_statements_dimension=dict(
         goto_fail=True,
     ),
 
-    intent_out_cxx_dimension=dict(
+    intent_out_cxx_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyArrayObject * {py_var} = NULL;",
@@ -2642,7 +2642,7 @@ py_statements_dimension=dict(
     ),
 
 ## allocatable
-    intent_out_c_allocatable=dict(
+    intent_out_c_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
@@ -2660,7 +2660,7 @@ py_statements_dimension=dict(
 
 # language=c++
 # use C++ casts
-    intent_out_cxx_allocatable=dict(
+    intent_out_cxx_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
