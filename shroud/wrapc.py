@@ -28,6 +28,8 @@ from .util import append_format, wformat
 
 default_owner = "library"
 
+lang_map = {"c": "C", "cxx": "C++"}
+
 
 class Wrapc(util.WrapperMixin):
     """Generate C bindings for C++ classes
@@ -236,7 +238,7 @@ class Wrapc(util.WrapperMixin):
 
         output.extend(
             [
-                "// For C users and %s implementation" % self.language.upper(),
+                "// For C users and %s implementation" % lang_map[self.language],
                 "",
                 "#ifndef %s" % guard,
                 "#define %s" % guard,
@@ -248,7 +250,7 @@ class Wrapc(util.WrapperMixin):
             "c_header", {}, self.helper_shared_include.keys(), output
         )
 
-        if self.language == "c++":
+        if self.language == "cxx":
             output.append("")
             #            if self._create_splicer('CXX_declarations', output):
             #                write_file = True
@@ -259,7 +261,7 @@ class Wrapc(util.WrapperMixin):
         if self.shared_proto_c:
             output.extend(self.shared_proto_c)
 
-        if self.language == "c++":
+        if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
 
         output.extend(["", "#endif  // " + guard])
@@ -290,7 +292,7 @@ class Wrapc(util.WrapperMixin):
 
         output.extend(
             [
-                "// For C users and %s implementation" % self.language.upper(),
+                "// For C users and %s implementation" % lang_map[self.language],
                 "",
                 "#ifndef %s" % guard,
                 "#define %s" % guard,
@@ -307,7 +309,7 @@ class Wrapc(util.WrapperMixin):
             output,
         )
 
-        if self.language == "c++":
+        if self.language == "cxx":
             output.append("")
             if self._create_splicer("CXX_declarations", output):
                 write_file = True
@@ -346,7 +348,7 @@ class Wrapc(util.WrapperMixin):
         if self.header_proto_c:
             write_file = True
             output.extend(self.header_proto_c)
-        if self.language == "c++":
+        if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
         if cls and cls.cpp_if:
             output.append("#endif  // " + node.cpp_if)
@@ -392,7 +394,7 @@ class Wrapc(util.WrapperMixin):
             headers = self.header_impl_include.keys()
             self.write_headers(headers, output)
 
-        if self.language == "c++":
+        if self.language == "cxx":
             output.append("")
             if self._create_splicer("CXX_definitions", output):
                 write_file = True
@@ -409,7 +411,7 @@ class Wrapc(util.WrapperMixin):
             write_file = True
             output.extend(self.impl)
 
-        if self.language == "c++":
+        if self.language == "cxx":
             output.append("")
             output.append('}  // extern "C"')
 
