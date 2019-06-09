@@ -1238,7 +1238,7 @@ return 1;""",
             fmt.PY_used_param_kwds = True
             need_blank = True
 
-            if self.language == "c++":
+            if self.language == "cxx":
                 kw_const = "const "
                 fmt.PyArg_kwlist = "const_cast<char **>(SHT_kwlist)"
             else:
@@ -1306,7 +1306,7 @@ return 1;""",
                 PY_code.extend(post_parse[:len_post_parse])
                 need_blank = True
 
-            if self.language == "c++" and goto_fail:
+            if self.language == "cxx" and goto_fail:
                 # Need an extra scope to deal with C++ error
                 # error: jump to label 'fail' crosses initialization of ...
                 PY_code.append("{")

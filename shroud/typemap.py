@@ -1461,7 +1461,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
 
     libnode = node.get_LibraryNode()
     language = libnode.language
-    if language == "c++":
+    if language == "cxx":
         # C++ pointer -> void pointer -> C pointer
         ntypemap.cxx_to_c = (
             "static_cast<{c_const}%s *>("

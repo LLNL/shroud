@@ -260,6 +260,9 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
             raise RuntimeError("language must be 'c' or 'c++'")
+        if self.language == "c++":
+            # Use a form which can be used as a variable name
+            self.language = "cxx"
         self.library = library
 
         self.classes = []
