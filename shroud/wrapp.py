@@ -629,10 +629,7 @@ return 1;""",
         fmt_arg.py_type = "PyObject"
 
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        if self.language == "c":
-            index = "intent_out_c_allocatable"
-        else:
-            index = "intent_out_cxx_allocatable"
+        index = "intent_out_{}_allocatable".format(self.language)
         blk = py_statements_dimension[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
@@ -668,10 +665,7 @@ return 1;""",
             fmt_arg.py_type = "PyObject"
             fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
-        if self.language == "c":
-            index = "intent_{}_c_dimension".format(intent)
-        else:
-            index = "intent_{}_cxx_dimension".format(intent)
+        index = "intent_{}_{}_dimension".format(intent, self.language)
         blk = py_statements_dimension[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
