@@ -59,6 +59,13 @@ declarations:
     # unable to deal with dimension
     wrap_lua: False
 
+- decl: void fillIntArray(int *out +intent(out)+dimension(3))
+  doxygen:
+    description: |
+      Return three values into memory the user provides.
+#  options:
+#    Py_array_arg: list
+  
 - decl: bool Function3(bool arg)
 - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
 

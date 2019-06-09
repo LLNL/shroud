@@ -77,6 +77,13 @@ module clibrary_mod
             integer(C_INT), intent(OUT) :: result
         end subroutine c_sum
 
+        subroutine fill_int_array(out) &
+                bind(C, name="fillIntArray")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(OUT) :: out(*)
+        end subroutine fill_int_array
+
         function c_function3(arg) &
                 result(SHT_rv) &
                 bind(C, name="Function3")

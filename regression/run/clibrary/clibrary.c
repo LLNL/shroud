@@ -276,6 +276,15 @@ void Sum(int len, int *values, int *result)
     return;
 }
 
+// out is assumed to be at least 3 long
+void fillIntArray(int *out)
+{
+  out[0] = 1;
+  out[1] = 2;
+  out[2] = 3;
+}
+
+
 #if 0
 TypeID typefunc(TypeID arg)
 {

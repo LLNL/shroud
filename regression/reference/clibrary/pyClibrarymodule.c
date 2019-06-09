@@ -142,6 +142,44 @@ fail:
 // splicer end function.sum
 }
 
+static char PY_fillIntArray__doc__[] =
+"documentation"
+;
+
+/**
+ * Return three values into memory the user provides.
+ */
+static PyObject *
+PY_fillIntArray(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// void fillIntArray(int * out +dimension(3)+intent(out))
+// splicer begin function.fill_int_array
+    PyArrayObject * SHPy_out = NULL;
+    npy_intp SHD_out[1] = { 3 };
+
+    // post_parse
+    SHPy_out = (PyArrayObject *) PyArray_SimpleNew(1, SHD_out, NPY_INT);
+    if (SHPy_out == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "out must be a 1-D array of int");
+        goto fail;
+    }
+
+    // pre_call
+    int * out = PyArray_DATA(SHPy_out);
+
+    fillIntArray(out);
+    return (PyObject *) SHPy_out;
+
+fail:
+    Py_XDECREF(SHPy_out);
+    return NULL;
+// splicer end function.fill_int_array
+}
+
 static char PY_Function3__doc__[] =
 "documentation"
 ;
@@ -505,6 +543,8 @@ static PyMethodDef PY_methods[] = {
 {"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
     PY_Function2__doc__},
 {"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
+{"fillIntArray", (PyCFunction)PY_fillIntArray, METH_NOARGS,
+    PY_fillIntArray__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
 {"Function3b", (PyCFunction)PY_Function3b, METH_VARARGS|METH_KEYWORDS,
