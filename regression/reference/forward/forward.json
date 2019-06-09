@@ -532,7 +532,7 @@
             "stdlib": "std::",
             "template_suffix": ""
         },
-        "language": "c++",
+        "language": "cxx",
         "options": {
             "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
             "C_enum_template": "{C_prefix}{flat_name}",
