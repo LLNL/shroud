@@ -1823,28 +1823,19 @@ return 1;""",
         else:
             lang_header = "cxx_header"
             lang_source = "cxx_source"
+        scope = helper_info.get("scope", "file")
 
         if lang_header in helper_info:
             for include in helper_info[lang_header].split():
-                self.header_impl_include[include] = True
+                self.helper_header[scope][include] = True
+        elif "header" in helper_info:
+            for include in helper_info["header"].split():
+                self.helper_header[scope][include] = True
+
         if lang_source in helper_info:
-            self.helper_source.append(helper_info[lang_source])
+            self.helper_source[scope].append(helper_info[lang_source])
         elif "source" in helper_info:
-            self.helper_source.append(helper_info["source"])
-
-        # header code using with C API  (like structs and typedefs)
-        if "h_header" in helper_info:
-            for include in helper_info["h_header"].split():
-                self.c_helper_include[include] = True
-        if "h_source" in helper_info:
-            self.helper_header.append(helper_info["h_source"])
-
-        # helper
-        if "h_shared_include" in helper_info:
-            for include in helper_info["h_shared_include"].split():
-                self.helper_shared_include[include] = True
-        if "h_shared_code" in helper_info:
-            self.helper_shared_code.append(helper_info["h_shared_code"])
+            self.helper_source[scope].append(helper_info["source"])
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested and insert code into output.
@@ -1855,12 +1846,10 @@ return 1;""",
             helpers -
         """
         # per class
-        self.helper_source = []
-        self.helper_header = []
-        self.helper_shared_include = {}
-        self.helper_shared_code = []
+        self.helper_source = dict(file=[], utility=[])
+        self.helper_header = dict(file={}, utility={})
 
-        done = {}  # avoid duplicates
+        done = {}  # avoid duplicates and recursion
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 ######
@@ -1902,8 +1891,8 @@ return 1;""",
 
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
-        if self.helper_source:
-            output.extend(self.helper_source)
+        if self.helper_source["file"]:
+            output.extend(self.helper_source["file"])
         self._create_splicer("C_definition", output)
         self._create_splicer("additional_methods", output)
         self._pop_splicer("impl")
@@ -2140,8 +2129,8 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
-        if self.helper_source:
-            output.extend(self.helper_source)
+        if self.helper_source["file"]:
+            output.extend(self.helper_source["file"])
         output.append("")
         self._create_splicer("C_definition", output)
 

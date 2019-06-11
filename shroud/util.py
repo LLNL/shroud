@@ -275,7 +275,7 @@ class WrapperMixin(object):
         """Write out headers required by types
 
         lang_header - "c_header"
-        types -
+        types - dictionary of Typemap nodes.
         hlist -
         output - append lines of code.
 
