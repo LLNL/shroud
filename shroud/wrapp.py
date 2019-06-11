@@ -1887,6 +1887,7 @@ return 1;""",
         else:
             for include in library.cxx_header.split():
                 header_impl_include[include] = True
+        header_impl_include.update(self.helper_header["file"])
         self.write_headers(header_impl_include, output)
 
         self._create_splicer("include", output)
@@ -2126,6 +2127,7 @@ extern PyObject *{PY_prefix}error_obj;
             output.append('#include "numpy/arrayobject.h"')
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
+        self.write_headers(self.helper_header["file"], output)
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
