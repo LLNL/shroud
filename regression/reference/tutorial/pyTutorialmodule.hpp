@@ -61,7 +61,7 @@ int PP_Singleton_from_Object(PyObject *obj, void **addr);
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 
-// helper functions
+// utility functions
 extern const char * PY_array_destructor_context[];
 extern void PY_array_destructor_function(PyObject *cap);
 

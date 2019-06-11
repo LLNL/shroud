@@ -17,6 +17,11 @@ Helper functions for C and Fortran wrappers.
 
  C helper functions which may be added to a implementation file.
 
+ scope       = scope of helper.  Defaults to "file" which are added
+               as file static and may be in several files.
+               "utility" will add to C_header_utility or PY_utility_filename
+               and shared amount files. They need unique names
+               since they are shared across wrapped libraries.
  c_header    = Blank delimited list of header files to #include
                in implementation file when wrapping a C library.
  cxx_header  = Blank delimited list of header files to #include.
@@ -26,17 +31,11 @@ Helper functions for C and Fortran wrappers.
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
 
- h_header    = Blank delimited list of headers to #include in
-               c wrapper header.
- h_source    = code for include file. Must be compatible with language=c.
-
- h_shared_include = include files needed by shared header.
- h_shared_code    = code written to C_header_helper file.
-                    Useful for struct and typedefs.
-
  source      = Code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
+ header      = Blank delimited list of header files to #include.
+               Used when c_header and cxx_header are not defined.
 
 
  Fortran helper functions which may be added to a module.
@@ -221,7 +220,9 @@ def add_shadow_helper(node):
             cpp_if = ""
             cpp_endif = ""
         helper = dict(
-            h_shared_code="""
+            scope="utility",
+            # h_shared_code
+            source="""
 {cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
@@ -261,7 +262,8 @@ integer(C_INT) :: idtor = 0       ! index of destructor
 
     if name not in CHelpers:
         helper = dict(
-            h_shared_code=wformat(
+            scope="utility",
+            source=wformat(
                 """
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
@@ -317,10 +319,11 @@ call array_destructor(cap%mem, .false._C_BOOL)
     name = "array_context"
     if name not in CHelpers:
         helper = dict(
-            h_shared_include="<stddef.h>",
+            scope="utility",
+            header="<stddef.h>",
             # Create a union for addr to avoid some casts.
             # And help with debugging since ccharp will display contents.
-            h_shared_code=wformat(
+            source=wformat(
                 """
 struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */

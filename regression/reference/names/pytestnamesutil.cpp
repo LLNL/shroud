@@ -1,4 +1,4 @@
-// pytestnameshelper.cpp
+// pytestnamesutil.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -27,7 +27,7 @@ const char *PY_twoTs_instantiation4_capsule_name = "twoTs_instantiation4";
 
 PyObject *PP_Names_to_Object(Names *addr)
 {
-    // splicer begin class.Names.helper.to_object
+    // splicer begin class.Names.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -38,12 +38,12 @@ PyObject *PP_Names_to_Object(Names *addr)
     rv = PyObject_Call((PyObject *) &PY_Names_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Names.helper.to_object
+    // splicer end class.Names.utility.to_object
 }
 
 int PP_Names_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Names.helper.from_object
+    // splicer begin class.Names.utility.from_object
     if (obj->ob_type != &PY_Names_Type) {
         // raise exception
         return 0;
@@ -51,12 +51,12 @@ int PP_Names_from_Object(PyObject *obj, void **addr)
     PY_Names * self = (PY_Names *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Names.helper.from_object
+    // splicer end class.Names.utility.from_object
 }
 
 PyObject *PP_Names2_to_Object(Names2 *addr)
 {
-    // splicer begin class.Names2.helper.to_object
+    // splicer begin class.Names2.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -67,12 +67,12 @@ PyObject *PP_Names2_to_Object(Names2 *addr)
     rv = PyObject_Call((PyObject *) &PY_Names2_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Names2.helper.to_object
+    // splicer end class.Names2.utility.to_object
 }
 
 int PP_Names2_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Names2.helper.from_object
+    // splicer begin class.Names2.utility.from_object
     if (obj->ob_type != &PY_Names2_Type) {
         // raise exception
         return 0;
@@ -80,12 +80,12 @@ int PP_Names2_from_Object(PyObject *obj, void **addr)
     PY_Names2 * self = (PY_Names2 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Names2.helper.from_object
+    // splicer end class.Names2.utility.from_object
 }
 
 PyObject *PP_Vvv1_to_Object(std::Vvv1 *addr)
 {
-    // splicer begin class.vector.helper.to_object
+    // splicer begin class.vector.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -96,12 +96,12 @@ PyObject *PP_Vvv1_to_Object(std::Vvv1 *addr)
     rv = PyObject_Call((PyObject *) &PY_Vvv1_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.vector.helper.to_object
+    // splicer end class.vector.utility.to_object
 }
 
 int PP_Vvv1_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.vector.helper.from_object
+    // splicer begin class.vector.utility.from_object
     if (obj->ob_type != &PY_Vvv1_Type) {
         // raise exception
         return 0;
@@ -109,12 +109,12 @@ int PP_Vvv1_from_Object(PyObject *obj, void **addr)
     PY_Vvv1 * self = (PY_Vvv1 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.vector.helper.from_object
+    // splicer end class.vector.utility.from_object
 }
 
 PyObject *PP_vector_double_to_Object(std::vector_double *addr)
 {
-    // splicer begin class.vector.helper.to_object
+    // splicer begin class.vector.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -125,12 +125,12 @@ PyObject *PP_vector_double_to_Object(std::vector_double *addr)
     rv = PyObject_Call((PyObject *) &PY_vector_double_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.vector.helper.to_object
+    // splicer end class.vector.utility.to_object
 }
 
 int PP_vector_double_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.vector.helper.from_object
+    // splicer begin class.vector.utility.from_object
     if (obj->ob_type != &PY_vector_double_Type) {
         // raise exception
         return 0;
@@ -138,12 +138,12 @@ int PP_vector_double_from_Object(PyObject *obj, void **addr)
     PY_vector_double * self = (PY_vector_double *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.vector.helper.from_object
+    // splicer end class.vector.utility.from_object
 }
 
 PyObject *PP_vector_instantiation5_to_Object(std::vector_instantiation5 *addr)
 {
-    // splicer begin class.vector.helper.to_object
+    // splicer begin class.vector.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -154,12 +154,12 @@ PyObject *PP_vector_instantiation5_to_Object(std::vector_instantiation5 *addr)
     rv = PyObject_Call((PyObject *) &PY_vector_instantiation5_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.vector.helper.to_object
+    // splicer end class.vector.utility.to_object
 }
 
 int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.vector.helper.from_object
+    // splicer begin class.vector.utility.from_object
     if (obj->ob_type != &PY_vector_instantiation5_Type) {
         // raise exception
         return 0;
@@ -167,12 +167,12 @@ int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr)
     PY_vector_instantiation5 * self = (PY_vector_instantiation5 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.vector.helper.from_object
+    // splicer end class.vector.utility.from_object
 }
 
 PyObject *PP_vector_instantiation3_to_Object(std::vector_instantiation3 *addr)
 {
-    // splicer begin class.vector.helper.to_object
+    // splicer begin class.vector.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -183,12 +183,12 @@ PyObject *PP_vector_instantiation3_to_Object(std::vector_instantiation3 *addr)
     rv = PyObject_Call((PyObject *) &PY_vector_instantiation3_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.vector.helper.to_object
+    // splicer end class.vector.utility.to_object
 }
 
 int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.vector.helper.from_object
+    // splicer begin class.vector.utility.from_object
     if (obj->ob_type != &PY_vector_instantiation3_Type) {
         // raise exception
         return 0;
@@ -196,12 +196,12 @@ int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr)
     PY_vector_instantiation3 * self = (PY_vector_instantiation3 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.vector.helper.from_object
+    // splicer end class.vector.utility.from_object
 }
 
 PyObject *PP_twoTs_0_to_Object(twoTs_0 *addr)
 {
-    // splicer begin class.twoTs.helper.to_object
+    // splicer begin class.twoTs.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -212,12 +212,12 @@ PyObject *PP_twoTs_0_to_Object(twoTs_0 *addr)
     rv = PyObject_Call((PyObject *) &PY_twoTs_0_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.twoTs.helper.to_object
+    // splicer end class.twoTs.utility.to_object
 }
 
 int PP_twoTs_0_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.twoTs.helper.from_object
+    // splicer begin class.twoTs.utility.from_object
     if (obj->ob_type != &PY_twoTs_0_Type) {
         // raise exception
         return 0;
@@ -225,12 +225,12 @@ int PP_twoTs_0_from_Object(PyObject *obj, void **addr)
     PY_twoTs_0 * self = (PY_twoTs_0 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.twoTs.helper.from_object
+    // splicer end class.twoTs.utility.from_object
 }
 
 PyObject *PP_twoTs_instantiation4_to_Object(twoTs_instantiation4 *addr)
 {
-    // splicer begin class.twoTs.helper.to_object
+    // splicer begin class.twoTs.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -241,12 +241,12 @@ PyObject *PP_twoTs_instantiation4_to_Object(twoTs_instantiation4 *addr)
     rv = PyObject_Call((PyObject *) &PY_twoTs_instantiation4_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.twoTs.helper.to_object
+    // splicer end class.twoTs.utility.to_object
 }
 
 int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.twoTs.helper.from_object
+    // splicer begin class.twoTs.utility.from_object
     if (obj->ob_type != &PY_twoTs_instantiation4_Type) {
         // raise exception
         return 0;
@@ -254,5 +254,5 @@ int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr)
     PY_twoTs_instantiation4 * self = (PY_twoTs_instantiation4 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.twoTs.helper.from_object
+    // splicer end class.twoTs.utility.from_object
 }

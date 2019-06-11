@@ -34,7 +34,7 @@ OBJS = \
     ownership.o \
     pyClass1type.o \
     pyownershipmodule.o \
-    pyownershiphelper.o
+    pyownershiputil.o
 
 CXXFLAGS += $(SHARED)
 

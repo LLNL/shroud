@@ -28,7 +28,7 @@ VPATH = \
 
 OBJS = \
     pypreprocessmodule.o \
-    pypreprocesshelper.o \
+    pypreprocessutil.o \
     pyUser1type.o \
     pyUser2type.o
 

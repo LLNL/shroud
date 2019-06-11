@@ -36,8 +36,9 @@ import os
 import re
 
 from . import declast
-from . import util
 from . import todict
+from . import util
+from . import whelpers
 from .util import wformat, append_format
 
 # If multiple values are returned, save up into to build a tuple to return.
@@ -91,10 +92,13 @@ class Wrapp(util.WrapperMixin):
         pass
 
     def reset_file(self):
+        """Start a new output file"""
         self.PyMethodBody = []
         self.PyMethodDef = []
         self.PyGetSetBody = []
         self.PyGetSetDef = []
+        self.c_helper = {}
+#        self.c_helper_include = {}  # include files in generated C header
 
     def wrap_library(self):
         newlibrary = self.newlibrary
@@ -112,7 +116,7 @@ class Wrapp(util.WrapperMixin):
         # Format variables
         newlibrary.eval_template("PY_module_filename")
         newlibrary.eval_template("PY_header_filename")
-        newlibrary.eval_template("PY_helper_filename")
+        newlibrary.eval_template("PY_utility_filename")
         fmt_library.PY_obj = "obj"  # name of cpp class pointer in PyObject
         fmt_library.PY_PyObject = "PyObject"
         fmt_library.PY_param_self = "self"
@@ -125,11 +129,11 @@ class Wrapp(util.WrapperMixin):
         # Variables to accumulate output lines
         self.py_type_object_creation = []
         self.py_class_decl = []
-        self.py_helper_definition = []
-        self.py_helper_declaration = []
-        self.py_helper_functions = []
+        self.py_utility_definition = []
+        self.py_utility_declaration = []
+        self.py_utility_functions = []
         # reserved the 0 slot of capsule_order
-        # self.add_capsule_helper('--none--', ['// not yet implemented'])
+        # self.add_capsule_code('--none--', ['// not yet implemented'])
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -177,7 +181,7 @@ class Wrapp(util.WrapperMixin):
             self.wrap_functions(None, newlibrary.functions)
             self._pop_splicer("function")
 
-        self.write_helper()
+        self.write_utility()
         self.write_header(newlibrary)
         self.write_module(newlibrary)
 
@@ -299,7 +303,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         append_format(output, "-}} {PY_PyObject};", fmt_class)
         output.append("")
 
-        self.create_class_helper_functions(node)
+        self.create_class_utility_functions(node)
         if node.cpp_if:
             output.append("#endif // " + node.cpp_if)
 
@@ -314,8 +318,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         self.wrap_functions(node, node.functions)
         self._pop_splicer("method")
 
-    def create_class_helper_functions(self, node):
-        """Create some helper functions to and from a PyObject.
+    def create_class_utility_functions(self, node):
+        """Create some utility functions to convert to and from a PyObject.
         These functions are used by PyArg_ParseTupleAndKeywords
         and Py_BuildValue node is a C++ class.
         """
@@ -330,9 +334,9 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             cpp_if = ""
             cpp_endif = ""
 
-        self._push_splicer("helper")
+        self._push_splicer("utility")
         append_format(
-            self.py_helper_definition,
+            self.py_utility_definition,
             cpp_if + 'const char *{PY_capsule_name} = "{cxx_class}";' + cpp_endif,
             fmt,
         )
@@ -364,13 +368,13 @@ return rv;""",
         )
         self.py_class_decl.append(proto + ";")
 
-        self.py_helper_functions.append("")
+        self.py_utility_functions.append("")
         if node.cpp_if:
-            self.py_helper_functions.append("#" + node.cpp_if)
-        self.py_helper_functions.append(proto)
-        self.py_helper_functions.append("{+")
-        self._create_splicer("to_object", self.py_helper_functions, to_object)
-        self.py_helper_functions.append("-}")
+            self.py_utility_functions.append("#" + node.cpp_if)
+        self.py_utility_functions.append(proto)
+        self.py_utility_functions.append("{+")
+        self._create_splicer("to_object", self.py_utility_functions, to_object)
+        self.py_utility_functions.append("-}")
 
         # From
         from_object = wformat(
@@ -390,19 +394,19 @@ return 1;""",
         )
         self.py_class_decl.append(proto + ";")
 
-        self.py_helper_functions.append("")
-        self.py_helper_functions.append(proto)
-        self.py_helper_functions.append("{")
-        self.py_helper_functions.append(1)
+        self.py_utility_functions.append("")
+        self.py_utility_functions.append(proto)
+        self.py_utility_functions.append("{")
+        self.py_utility_functions.append(1)
         self._create_splicer(
-            "from_object", self.py_helper_functions, from_object
+            "from_object", self.py_utility_functions, from_object
         )
-        self.py_helper_functions.append(-1)
-        self.py_helper_functions.append("}")
+        self.py_utility_functions.append(-1)
+        self.py_utility_functions.append("}")
         if node.cpp_if:
-            self.py_helper_functions.append("#endif  // " + node.cpp_if)
+            self.py_utility_functions.append("#endif  // " + node.cpp_if)
 
-        self._pop_splicer("helper")
+        self._pop_splicer("utility")
 
     def create_arraydescr(self, node):
         """Create a NumPy PyArray_Descr for a struct.
@@ -969,7 +973,7 @@ return 1;""",
         self.multi_dispatch(functions)
 
     def wrap_function(self, cls, node):
-        """Write a Python wrapper for a C++ function.
+        """Write a Python wrapper for a C or C++ function.
 
         Args:
             cls  - ast.ClassNode or None for functions
@@ -1310,6 +1314,10 @@ return 1;""",
                 cleanup_code, intent_blk, "cleanup", fmt_arg
             )
             util.append_format_cmds(fail_code, intent_blk, "fail", fmt_arg)
+            if "c_helper" in intent_blk:
+                c_helper = wformat(intent_blk["c_helper"], fmt)
+                for helper in c_helper.split():
+                    self.c_helper[helper] = True
 
             if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
                 # Make intermediate C++ variable
@@ -1482,7 +1490,7 @@ return 1;""",
                         ),
                         "delete cxx_ptr;",
                     ]
-                capsule_order = self.add_capsule_helper(capsule_type, del_lines)
+                capsule_order = self.add_capsule_code(capsule_type, del_lines)
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
@@ -1787,6 +1795,65 @@ return 1;""",
             output.append("}")
         self._pop_splicer("type")
 
+
+######
+    def _gather_helper_code(self, name, done):
+        """Add code from helpers.
+
+        First recursively process dependent_helpers
+        to add code in order.
+
+        Args:
+            name -
+            done -
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = whelpers.CHelpers[name]
+        if "dependent_helpers" in helper_info:
+            for dep in helper_info["dependent_helpers"]:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        if self.language == "c":
+            lang_header = "c_header"
+            lang_source = "c_source"
+        else:
+            lang_header = "cxx_header"
+            lang_source = "cxx_source"
+        scope = helper_info.get("scope", "file")
+
+        if lang_header in helper_info:
+            for include in helper_info[lang_header].split():
+                self.helper_header[scope][include] = True
+        elif "header" in helper_info:
+            for include in helper_info["header"].split():
+                self.helper_header[scope][include] = True
+
+        if lang_source in helper_info:
+            self.helper_source[scope].append(helper_info[lang_source])
+        elif "source" in helper_info:
+            self.helper_source[scope].append(helper_info["source"])
+
+    def gather_helper_code(self, helpers):
+        """Gather up all helpers requested and insert code into output.
+
+        helpers should be self.c_helper or self.shared_helper
+
+        Args:
+            helpers -
+        """
+        # per class
+        self.helper_source = dict(file=[], utility=[])
+        self.helper_header = dict(file={}, utility={})
+
+        done = {}  # avoid duplicates and recursion
+        for name in sorted(helpers.keys()):
+            self._gather_helper_code(name, done)
+######
+
     def write_extension_type(self, library, node):
         """
         Args:
@@ -1795,6 +1862,12 @@ return 1;""",
         """
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
+
+        self.header_impl_include = {}
+        self.gather_helper_code(self.c_helper)
+        # always include helper header
+#        self.c_helper_include[library.fmtdict.C_header_utility] = True
+#        self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
         output = []
         if node.cpp_if:
@@ -1814,10 +1887,13 @@ return 1;""",
         else:
             for include in library.cxx_header.split():
                 header_impl_include[include] = True
+        header_impl_include.update(self.helper_header["file"])
         self.write_headers(header_impl_include, output)
 
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
+        if self.helper_source["file"]:
+            output.extend(self.helper_source["file"])
         self._create_splicer("C_definition", output)
         self._create_splicer("additional_methods", output)
         self._pop_splicer("impl")
@@ -2002,10 +2078,10 @@ return 1;""",
         self._create_splicer("C_declaration", output)
         self._pop_splicer("header")
 
-        if self.py_helper_declaration:
+        if self.py_utility_declaration:
             output.append("")
-            output.append("// helper functions")
-            output.extend(self.py_helper_declaration)
+            output.append("// utility functions")
+            output.extend(self.py_utility_declaration)
 
         append_format(
             output,
@@ -2027,6 +2103,8 @@ extern PyObject *{PY_prefix}error_obj;
 
     def write_module(self, node):
         """
+        Write the Python extension module.
+
         Args:
             node - ast.LibraryNode.
         """
@@ -2034,6 +2112,12 @@ extern PyObject *{PY_prefix}error_obj;
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = "library documentation"
+
+        self.header_impl_include = {}
+        self.gather_helper_code(self.c_helper)
+        # always include helper header
+#        self.c_helper_include[library.fmtdict.C_header_utility] = True
+#        self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
         output = []
 
@@ -2043,9 +2127,12 @@ extern PyObject *{PY_prefix}error_obj;
             output.append('#include "numpy/arrayobject.h"')
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
+        self.write_headers(self.helper_header["file"], output)
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
+        if self.helper_source["file"]:
+            output.extend(self.helper_source["file"])
         output.append("")
         self._create_splicer("C_definition", output)
 
@@ -2084,7 +2171,7 @@ extern PyObject *{PY_prefix}error_obj;
         self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def write_helper(self):
+    def write_utility(self):
         node = self.newlibrary
         fmt = node.fmtdict
         output = []
@@ -2094,19 +2181,19 @@ extern PyObject *{PY_prefix}error_obj;
             for include in node.cxx_header.split():
                 output.append('#include "%s"' % include)
             output.append("")
-        output.extend(self.py_helper_definition)
+        output.extend(self.py_utility_definition)
         output.append("")
-        output.extend(self.py_helper_functions)
+        output.extend(self.py_utility_functions)
         if self.capsule_order:
-            self.write_capsule_helper(output, fmt)
+            self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
-            os.path.join(self.config.python_dir, fmt.PY_helper_filename)
+            os.path.join(self.config.python_dir, fmt.PY_utility_filename)
         )
         self.write_output_file(
-            fmt.PY_helper_filename, self.config.python_dir, output
+            fmt.PY_utility_filename, self.config.python_dir, output
         )
 
-    def write_capsule_helper(self, output, fmt):
+    def write_capsule_code(self, output, fmt):
         """Write a function used to delete memory when a
         NumPy array is deleted.
 
@@ -2119,12 +2206,12 @@ extern PyObject *{PY_prefix}error_obj;
         """
 
         append_format(
-            self.py_helper_declaration,
+            self.py_utility_declaration,
             "extern const char * {PY_numpy_array_dtor_context}[];",
             fmt,
         )
         append_format(
-            self.py_helper_declaration,
+            self.py_utility_declaration,
             "extern void {PY_numpy_array_dtor_function}(PyObject *cap);",
             fmt,
         )
@@ -2173,7 +2260,7 @@ extern PyObject *{PY_prefix}error_obj;
                 )
             )
             output.append(1)
-            for line in self.capsule_helpers[name][1]:
+            for line in self.capsule_code[name][1]:
                 output.append(line)
             output.append(-1)
             start = "} else if "
@@ -2183,21 +2270,21 @@ extern PyObject *{PY_prefix}error_obj;
 
         output.append("-}")
 
-    capsule_helpers = {}
+    capsule_code = {}
     capsule_order = []
 
-    def add_capsule_helper(self, name, lines):
-        """Add unique names to capsule_helpers.
+    def add_capsule_code(self, name, lines):
+        """Add unique names to capsule_code.
         Return index of name.
 
         Args:
             name -
             lines -
         """
-        if name not in self.capsule_helpers:
-            self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
+        if name not in self.capsule_code:
+            self.capsule_code[name] = (str(len(self.capsule_code)), lines)
             self.capsule_order.append(name)
-        return self.capsule_helpers[name][0]
+        return self.capsule_code[name][0]
 
     def not_implemented_error(self, msg, ret):
         """A standard splicer for unimplemented code
