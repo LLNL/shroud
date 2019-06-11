@@ -56,7 +56,7 @@ Python function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +
 Python function void createClassStatic(int flag +intent(in)+value)
 Python function Class1 * getClassStatic() +owner(library)
 Python function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
-Close pyownershiphelper.cpp
+Close pyownershiputil.cpp
 Close pyownershipmodule.hpp
 Close pyownershipmodule.cpp
 Lua method ~Class1()

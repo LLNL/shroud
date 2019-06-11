@@ -6,7 +6,7 @@ Wrote wrapownership.cpp
 Wrote typesownership.h
 Wrote wrapfownership.f
 Wrote pyClass1type.cpp
-Wrote pyownershiphelper.cpp
+Wrote pyownershiputil.cpp
 Wrote pyownershipmodule.hpp
 Wrote pyownershipmodule.cpp
 Wrote luaownershipmodule.hpp

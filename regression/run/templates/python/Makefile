@@ -29,7 +29,7 @@ VPATH = \
 OBJS = \
     pyImplWorker1type.o \
     pyWorkertype.o \
-    pytemplateshelper.o \
+    pytemplatesutil.o \
     pytemplatesmodule.o \
     pyuser_inttype.o \
     pyvector_doubletype.o \

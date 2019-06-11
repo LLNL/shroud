@@ -1,4 +1,4 @@
-// pyTutorialhelper.cpp
+// pyTutorialutil.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -23,7 +23,7 @@ const char *PY_Singleton_capsule_name = "Singleton";
 
 PyObject *PP_Class1_to_Object(tutorial::Class1 *addr)
 {
-    // splicer begin class.Class1.helper.to_object
+    // splicer begin class.Class1.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -34,12 +34,12 @@ PyObject *PP_Class1_to_Object(tutorial::Class1 *addr)
     rv = PyObject_Call((PyObject *) &PY_Class1_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Class1.helper.to_object
+    // splicer end class.Class1.utility.to_object
 }
 
 int PP_Class1_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Class1.helper.from_object
+    // splicer begin class.Class1.utility.from_object
     if (obj->ob_type != &PY_Class1_Type) {
         // raise exception
         return 0;
@@ -47,12 +47,12 @@ int PP_Class1_from_Object(PyObject *obj, void **addr)
     PY_Class1 * self = (PY_Class1 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Class1.helper.from_object
+    // splicer end class.Class1.utility.from_object
 }
 
 PyObject *PP_Singleton_to_Object(Singleton *addr)
 {
-    // splicer begin class.Singleton.helper.to_object
+    // splicer begin class.Singleton.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -63,12 +63,12 @@ PyObject *PP_Singleton_to_Object(Singleton *addr)
     rv = PyObject_Call((PyObject *) &PY_Singleton_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Singleton.helper.to_object
+    // splicer end class.Singleton.utility.to_object
 }
 
 int PP_Singleton_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Singleton.helper.from_object
+    // splicer begin class.Singleton.utility.from_object
     if (obj->ob_type != &PY_Singleton_Type) {
         // raise exception
         return 0;
@@ -76,7 +76,7 @@ int PP_Singleton_from_Object(PyObject *obj, void **addr)
     PY_Singleton * self = (PY_Singleton *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Singleton.helper.from_object
+    // splicer end class.Singleton.utility.from_object
 }
 
 // Code used to release arrays for NumPy objects

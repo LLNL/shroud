@@ -21,6 +21,6 @@ Python function void truncate_to_int(double * in +dimension(:)+intent(in), int *
 Python function void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 Python function void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 Python function void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
-Close pypointershelper.cpp
+Close pypointersutil.cpp
 Close pypointersmodule.hpp
 Close pypointersmodule.cpp

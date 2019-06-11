@@ -1,4 +1,4 @@
-// pypreprocesshelper.cpp
+// pypreprocessutil.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -23,7 +23,7 @@ const char *PY_User2_capsule_name = "User2";
 
 PyObject *PP_User1_to_Object(User1 *addr)
 {
-    // splicer begin class.User1.helper.to_object
+    // splicer begin class.User1.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -34,12 +34,12 @@ PyObject *PP_User1_to_Object(User1 *addr)
     rv = PyObject_Call((PyObject *) &PY_User1_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.User1.helper.to_object
+    // splicer end class.User1.utility.to_object
 }
 
 int PP_User1_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.User1.helper.from_object
+    // splicer begin class.User1.utility.from_object
     if (obj->ob_type != &PY_User1_Type) {
         // raise exception
         return 0;
@@ -47,13 +47,13 @@ int PP_User1_from_Object(PyObject *obj, void **addr)
     PY_User1 * self = (PY_User1 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.User1.helper.from_object
+    // splicer end class.User1.utility.from_object
 }
 
 #ifdef USE_USER2
 PyObject *PP_User2_to_Object(User2 *addr)
 {
-    // splicer begin class.User2.helper.to_object
+    // splicer begin class.User2.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -64,12 +64,12 @@ PyObject *PP_User2_to_Object(User2 *addr)
     rv = PyObject_Call((PyObject *) &PY_User2_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.User2.helper.to_object
+    // splicer end class.User2.utility.to_object
 }
 
 int PP_User2_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.User2.helper.from_object
+    // splicer begin class.User2.utility.from_object
     if (obj->ob_type != &PY_User2_Type) {
         // raise exception
         return 0;
@@ -77,6 +77,6 @@ int PP_User2_from_Object(PyObject *obj, void **addr)
     PY_User2 * self = (PY_User2 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.User2.helper.from_object
+    // splicer end class.User2.utility.from_object
 }
 #endif  // ifdef USE_USER2
