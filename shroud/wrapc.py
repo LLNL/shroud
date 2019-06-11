@@ -80,7 +80,7 @@ class Wrapc(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
         structs = []
         # reserved the 0 slot of capsule_order
-        self.add_capsule_utility("--none--", None, ["// Nothing to delete"])
+        self.add_capsule_code("--none--", None, ["// Nothing to delete"])
         whelpers.add_copy_array_helper_c(fmt_library)
 
         self._push_splicer("class")
@@ -97,7 +97,7 @@ class Wrapc(util.WrapperMixin):
 
         self.write_file(newlibrary, None, structs)
 
-        self.write_shared_helper()
+        self.write_header_utility()
 
     def write_file(self, library, cls, structs):
         """Write a file for the library or class.
@@ -121,14 +121,14 @@ class Wrapc(util.WrapperMixin):
         else:
             self.wrap_enums(library)
             self.wrap_functions(library)
-            self.write_capsule_helper(library)
+            self.write_capsule_code(library)
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
 
         self.gather_helper_code(self.c_helper)
         # always include helper header
-        self.c_helper_include[library.fmtdict.C_header_helper] = True
+        self.c_helper_include[library.fmtdict.C_header_utility] = True
         self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
         if not self.write_header(library, cls, c_header):
@@ -225,13 +225,13 @@ class Wrapc(util.WrapperMixin):
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 
-    def write_shared_helper(self):
+    def write_header_utility(self):
         """Write a helper file with type definitions.
         """
         self.gather_helper_code(self.shared_helper)
 
         fmt = self.newlibrary.fmtdict
-        fname = fmt.C_header_helper
+        fname = fmt.C_header_utility
         output = []
 
         guard = fname.replace(".", "_").upper()
@@ -501,7 +501,7 @@ class Wrapc(util.WrapperMixin):
     def compute_idtor(self, node):
         """Create a capsule destructor for type.
 
-        Only call add_capsule_utility if the destructor is wrapped.
+        Only call add_capsule_code if the destructor is wrapped.
         Otherwise, there is no way to delete the object.
         i.e. the class has a private destructor.
 
@@ -523,7 +523,7 @@ class Wrapc(util.WrapperMixin):
                 ),
                 "delete cxx_ptr;",
             ]
-            ntypemap.idtor = self.add_capsule_utility(
+            ntypemap.idtor = self.add_capsule_code(
                 cxx_type, ntypemap, del_lines
             )
         else:
@@ -1375,7 +1375,7 @@ class Wrapc(util.WrapperMixin):
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.name
 
-    def write_capsule_helper(self, library):
+    def write_capsule_code(self, library):
         """Write a function used to delete memory when C/C++
         memory is deleted.
 
@@ -1388,7 +1388,7 @@ class Wrapc(util.WrapperMixin):
         fmt = library.fmtdict
 
         self.header_impl_include.update(self.capsule_include)
-        self.header_impl_include[fmt.C_header_helper] = True
+        self.header_impl_include[fmt.C_header_utility] = True
 
         append_format(
             self.shared_proto_c,
@@ -1426,7 +1426,7 @@ class Wrapc(util.WrapperMixin):
 
             for i, name in enumerate(self.capsule_order):
                 output.append("case {}:   // {}\n{{+".format(i, name))
-                output.extend(self.capsule_helpers[name][1])
+                output.extend(self.capsule_code[name][1])
                 output.append("break;\n-}")
 
             output.append(
@@ -1445,12 +1445,12 @@ class Wrapc(util.WrapperMixin):
             "-}"
         )
 
-    capsule_helpers = {}
+    capsule_code = {}
     capsule_order = []
     capsule_include = {}  # includes needed by C_memory_dtor_function
 
-    def add_capsule_utility(self, name, var_typemap, lines):
-        """Add unique names to capsule_helpers.
+    def add_capsule_code(self, name, var_typemap, lines):
+        """Add unique names to capsule_code.
         Return index of name.
 
         Args:
@@ -1458,8 +1458,8 @@ class Wrapc(util.WrapperMixin):
             var_typemap - typemap.Typemap.
             lines -
         """
-        if name not in self.capsule_helpers:
-            self.capsule_helpers[name] = (str(len(self.capsule_helpers)), lines)
+        if name not in self.capsule_code:
+            self.capsule_code[name] = (str(len(self.capsule_code)), lines)
             self.capsule_order.append(name)
 
             # include files required by the type
@@ -1467,7 +1467,7 @@ class Wrapc(util.WrapperMixin):
                 for include in var_typemap.cxx_header.split():
                     self.capsule_include[include] = True
 
-        return self.capsule_helpers[name][0]
+        return self.capsule_code[name][0]
 
     def add_destructor(self, fmt, name, cmd_list, arg_typemap):
         """Add a capsule destructor with name and commands.
@@ -1478,13 +1478,13 @@ class Wrapc(util.WrapperMixin):
             cmd_list -
             arg_typemap - typemap.Typemap.
         """
-        if name not in self.capsule_helpers:
+        if name not in self.capsule_code:
             del_lines = []
             for cmd in cmd_list:
                 del_lines.append(wformat(cmd, fmt))
-            idtor = self.add_capsule_utility(name, arg_typemap, del_lines)
+            idtor = self.add_capsule_code(name, arg_typemap, del_lines)
         else:
-            idtor = self.capsule_helpers[name][0]
+            idtor = self.capsule_code[name][0]
         return idtor
 
     def find_idtor(self, ast, atypemap, fmt, intent_blk):
@@ -1509,16 +1509,16 @@ class Wrapc(util.WrapperMixin):
                 # Use destructor in typemap to remove intermediate objects
                 # e.g. std::vector
                 destructor_name = wformat(destructor_name, fmt)
-                if destructor_name not in self.capsule_helpers:
+                if destructor_name not in self.capsule_code:
                     del_lines = []
                     util.append_format_cmds(
                         del_lines, intent_blk, "destructor", fmt
                     )
-                    fmt.idtor = self.add_capsule_utility(
+                    fmt.idtor = self.add_capsule_code(
                         destructor_name, atypemap, del_lines
                     )
                 else:
-                    fmt.idtor = self.capsule_helpers[destructor_name][0]
+                    fmt.idtor = self.capsule_code[destructor_name][0]
                 return
 
         owner = ast.attrs.get("owner", default_owner)

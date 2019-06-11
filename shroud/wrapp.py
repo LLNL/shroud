@@ -129,7 +129,7 @@ class Wrapp(util.WrapperMixin):
         self.py_utility_declaration = []
         self.py_utility_functions = []
         # reserved the 0 slot of capsule_order
-        # self.add_capsule_utility('--none--', ['// not yet implemented'])
+        # self.add_capsule_code('--none--', ['// not yet implemented'])
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -1482,7 +1482,7 @@ return 1;""",
                         ),
                         "delete cxx_ptr;",
                     ]
-                capsule_order = self.add_capsule_utility(capsule_type, del_lines)
+                capsule_order = self.add_capsule_code(capsule_type, del_lines)
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
@@ -2098,7 +2098,7 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         output.extend(self.py_utility_functions)
         if self.capsule_order:
-            self.write_capsule_utility(output, fmt)
+            self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
             os.path.join(self.config.python_dir, fmt.PY_utility_filename)
         )
@@ -2106,7 +2106,7 @@ extern PyObject *{PY_prefix}error_obj;
             fmt.PY_utility_filename, self.config.python_dir, output
         )
 
-    def write_capsule_utility(self, output, fmt):
+    def write_capsule_code(self, output, fmt):
         """Write a function used to delete memory when a
         NumPy array is deleted.
 
@@ -2173,7 +2173,7 @@ extern PyObject *{PY_prefix}error_obj;
                 )
             )
             output.append(1)
-            for line in self.capsule_utility[name][1]:
+            for line in self.capsule_code[name][1]:
                 output.append(line)
             output.append(-1)
             start = "} else if "
@@ -2183,21 +2183,21 @@ extern PyObject *{PY_prefix}error_obj;
 
         output.append("-}")
 
-    capsule_utility = {}
+    capsule_code = {}
     capsule_order = []
 
-    def add_capsule_utility(self, name, lines):
-        """Add unique names to capsule_utility.
+    def add_capsule_code(self, name, lines):
+        """Add unique names to capsule_code.
         Return index of name.
 
         Args:
             name -
             lines -
         """
-        if name not in self.capsule_utility:
-            self.capsule_utility[name] = (str(len(self.capsule_utility)), lines)
+        if name not in self.capsule_code:
+            self.capsule_code[name] = (str(len(self.capsule_code)), lines)
             self.capsule_order.append(name)
-        return self.capsule_utility[name][0]
+        return self.capsule_code[name][0]
 
     def not_implemented_error(self, msg, ret):
         """A standard splicer for unimplemented code

@@ -21,7 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Parse `enum class` and `enum struct`.
 
 ### Changed
-- Renamed option *PY_helper_filename_template* to *PY_utililty_filename_template*.
+- Renamed option *C_header_helper_template* to *C_header_utility_template*.
+  Renamed option *PY_helper_filename_template* to *PY_utililty_filename_template*.
   This is to avoid confusion with helper functions which have file static scope.
 
 ### Fixed

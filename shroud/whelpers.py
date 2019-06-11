@@ -31,7 +31,7 @@ Helper functions for C and Fortran wrappers.
  h_source    = code for include file. Must be compatible with language=c.
 
  h_shared_include = include files needed by shared header.
- h_shared_code    = code written to C_header_helper file.
+ h_shared_code    = code written to C_header_utility file.
                     Useful for struct and typedefs.
 
  source      = Code inserted before any wrappers.

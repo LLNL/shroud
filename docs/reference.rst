@@ -558,7 +558,7 @@ C_header_filename_suffix
    Defaults to ``h``.
    Other useful values might be ``hh`` or ``hxx``.
 
-C_header_helper
+C_header_utility
    A header file with shared Shroud internal typedefs for the library.
 
 C_impl_filename
