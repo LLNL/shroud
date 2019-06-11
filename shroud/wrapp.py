@@ -36,8 +36,9 @@ import os
 import re
 
 from . import declast
-from . import util
 from . import todict
+from . import util
+from . import whelpers
 from .util import wformat, append_format
 
 # If multiple values are returned, save up into to build a tuple to return.
@@ -91,10 +92,13 @@ class Wrapp(util.WrapperMixin):
         pass
 
     def reset_file(self):
+        """Start a new output file"""
         self.PyMethodBody = []
         self.PyMethodDef = []
         self.PyGetSetBody = []
         self.PyGetSetDef = []
+        self.c_helper = {}
+        self.c_helper_include = {}  # include files in generated C header
 
     def wrap_library(self):
         newlibrary = self.newlibrary
@@ -969,7 +973,7 @@ return 1;""",
         self.multi_dispatch(functions)
 
     def wrap_function(self, cls, node):
-        """Write a Python wrapper for a C++ function.
+        """Write a Python wrapper for a C or C++ function.
 
         Args:
             cls  - ast.ClassNode or None for functions
@@ -1310,6 +1314,10 @@ return 1;""",
                 cleanup_code, intent_blk, "cleanup", fmt_arg
             )
             util.append_format_cmds(fail_code, intent_blk, "fail", fmt_arg)
+            if "c_helper" in intent_blk:
+                c_helper = wformat(intent_blk["c_helper"], fmt)
+                for helper in c_helper.split():
+                    self.c_helper[helper] = True
 
             if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
                 # Make intermediate C++ variable
@@ -1787,6 +1795,76 @@ return 1;""",
             output.append("}")
         self._pop_splicer("type")
 
+
+######
+    def _gather_helper_code(self, name, done):
+        """Add code from helpers.
+
+        First recursively process dependent_helpers
+        to add code in order.
+
+        Args:
+            name -
+            done -
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = whelpers.CHelpers[name]
+        if "dependent_helpers" in helper_info:
+            for dep in helper_info["dependent_helpers"]:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        if self.language == "c":
+            lang_header = "c_header"
+            lang_source = "c_source"
+        else:
+            lang_header = "cxx_header"
+            lang_source = "cxx_source"
+
+        if lang_header in helper_info:
+            for include in helper_info[lang_header].split():
+                self.header_impl_include[include] = True
+        if lang_source in helper_info:
+            self.helper_source.append(helper_info[lang_source])
+        elif "source" in helper_info:
+            self.helper_source.append(helper_info["source"])
+
+        # header code using with C API  (like structs and typedefs)
+        if "h_header" in helper_info:
+            for include in helper_info["h_header"].split():
+                self.c_helper_include[include] = True
+        if "h_source" in helper_info:
+            self.helper_header.append(helper_info["h_source"])
+
+        # helper
+        if "h_shared_include" in helper_info:
+            for include in helper_info["h_shared_include"].split():
+                self.helper_shared_include[include] = True
+        if "h_shared_code" in helper_info:
+            self.helper_shared_code.append(helper_info["h_shared_code"])
+
+    def gather_helper_code(self, helpers):
+        """Gather up all helpers requested and insert code into output.
+
+        helpers should be self.c_helper or self.shared_helper
+
+        Args:
+            helpers -
+        """
+        # per class
+        self.helper_source = []
+        self.helper_header = []
+        self.helper_shared_include = {}
+        self.helper_shared_code = []
+
+        done = {}  # avoid duplicates
+        for name in sorted(helpers.keys()):
+            self._gather_helper_code(name, done)
+######
+
     def write_extension_type(self, library, node):
         """
         Args:
@@ -1795,6 +1873,12 @@ return 1;""",
         """
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
+
+        self.header_impl_include = {}
+        self.gather_helper_code(self.c_helper)
+        # always include helper header
+#        self.c_helper_include[library.fmtdict.C_header_utility] = True
+#        self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
         output = []
         if node.cpp_if:
@@ -1818,6 +1902,8 @@ return 1;""",
 
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
+        if self.helper_source:
+            output.extend(self.helper_source)
         self._create_splicer("C_definition", output)
         self._create_splicer("additional_methods", output)
         self._pop_splicer("impl")
@@ -2027,6 +2113,8 @@ extern PyObject *{PY_prefix}error_obj;
 
     def write_module(self, node):
         """
+        Write the Python extension module.
+
         Args:
             node - ast.LibraryNode.
         """
@@ -2034,6 +2122,12 @@ extern PyObject *{PY_prefix}error_obj;
         fname = fmt.PY_module_filename
 
         fmt.PY_library_doc = "library documentation"
+
+        self.header_impl_include = {}
+        self.gather_helper_code(self.c_helper)
+        # always include helper header
+#        self.c_helper_include[library.fmtdict.C_header_utility] = True
+#        self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
         output = []
 
@@ -2046,6 +2140,8 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
+        if self.helper_source:
+            output.extend(self.helper_source)
         output.append("")
         self._create_splicer("C_definition", output)
 

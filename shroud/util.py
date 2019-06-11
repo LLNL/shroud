@@ -48,11 +48,14 @@ def append_format_lst(lstout, lstin, fmt):
 def append_format_cmds(lstout, dictin, name, fmt):
     """Format entries in dictin[name] and append to lstout.
     Return True if found.
-    Used with c_statements and f_statements.
-    For example, dictin could be c_statements.intent_in.
+    Used with c_statements and py_statements.
+
+    Args:
+      lstout - list to append output lines to.
+      dictin - could be c_statements.intent_in.
+      name - entry into dictin. ex. "decl", "pre_call", "post_call".
+      fmt - format dictionary or Scope instance.
     """
-    if name not in dictin:
-        return False
     cmd_list = dictin.get(name, None)
     if cmd_list is None:
         return False

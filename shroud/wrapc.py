@@ -127,7 +127,7 @@ class Wrapc(util.WrapperMixin):
         c_impl = fmt.C_impl_filename
 
         self.gather_helper_code(self.c_helper)
-        # always include helper header
+        # always include utility header
         self.c_helper_include[library.fmtdict.C_header_utility] = True
         self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
@@ -226,7 +226,7 @@ class Wrapc(util.WrapperMixin):
             self._gather_helper_code(name, done)
 
     def write_header_utility(self):
-        """Write a helper file with type definitions.
+        """Write a utility header file with type definitions.
         """
         self.gather_helper_code(self.shared_helper)
 
