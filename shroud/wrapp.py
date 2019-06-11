@@ -98,7 +98,7 @@ class Wrapp(util.WrapperMixin):
         self.PyGetSetBody = []
         self.PyGetSetDef = []
         self.c_helper = {}
-        self.c_helper_include = {}  # include files in generated C header
+#        self.c_helper_include = {}  # include files in generated C header
 
     def wrap_library(self):
         newlibrary = self.newlibrary
