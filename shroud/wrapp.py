@@ -634,13 +634,14 @@ return 1;""",
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
-    def dimension_blk(self, arg, fmt_arg):
+    def dimension_blk(self, arg, fmt_arg, options):
         """Create code needed for a dimensioned array argument.
         Convert it to use Numpy.
 
         Args:
             arg - argument node.
             fmt_arg -
+            options - Scope
 
         Return a dictionary which defines fields
         of code to insert into the wrapper.
@@ -665,7 +666,7 @@ return 1;""",
             fmt_arg.py_type = "PyObject"
             fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
-        index = "intent_{}_{}_dimension_numpy".format(intent, self.language)
+        index = "intent_{}_{}_dimension_{}".format(intent, self.language, options.PY_array_arg)
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
@@ -1086,7 +1087,7 @@ return 1;""",
                     allocatable, node, arg, fmt_arg
                 )
             elif dimension:
-                intent_blk = self.dimension_blk(arg, fmt_arg)
+                intent_blk = self.dimension_blk(arg, fmt_arg, options)
             else:
                 py_statements = arg_typemap.py_statements
                 stmts = "intent_" + intent
@@ -2520,6 +2521,7 @@ array_error = [
 
 
 py_statements_local = dict(
+## numpy
 # language=c
     intent_in_c_dimension_numpy=dict(
         need_numpy=True,

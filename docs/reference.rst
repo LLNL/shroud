@@ -455,6 +455,9 @@ LUA_userdata_member_template
     Name of pointer to class instance in userdata.
     ``self``
 
+PY_array_arg
+    How to wrap arrays - numpy or list.
+    Defaults to *numpy*.
 
 PY_module_filename_template
     ``py{library}module.{PY_impl_filename_suffix}``

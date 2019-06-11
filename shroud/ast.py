@@ -471,6 +471,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_numpy_array_dtor_function_template=(
                 "{PY_prefix}array_destructor_function"
             ),
+            PY_array_arg="numpy",   # or "list"
         )
 
         return def_options
