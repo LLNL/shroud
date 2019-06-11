@@ -1,4 +1,4 @@
-// pyforwardhelper.cpp
+// pyforwardutil.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC.
@@ -21,7 +21,7 @@ const char *PY_Class2_capsule_name = "Class2";
 
 PyObject *PP_Class3_to_Object(tutorial::Class3 *addr)
 {
-    // splicer begin class.Class3.helper.to_object
+    // splicer begin class.Class3.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -32,12 +32,12 @@ PyObject *PP_Class3_to_Object(tutorial::Class3 *addr)
     rv = PyObject_Call((PyObject *) &PY_Class3_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Class3.helper.to_object
+    // splicer end class.Class3.utility.to_object
 }
 
 int PP_Class3_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Class3.helper.from_object
+    // splicer begin class.Class3.utility.from_object
     if (obj->ob_type != &PY_Class3_Type) {
         // raise exception
         return 0;
@@ -45,12 +45,12 @@ int PP_Class3_from_Object(PyObject *obj, void **addr)
     PY_Class3 * self = (PY_Class3 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Class3.helper.from_object
+    // splicer end class.Class3.utility.from_object
 }
 
 PyObject *PP_Class2_to_Object(tutorial::Class2 *addr)
 {
-    // splicer begin class.Class2.helper.to_object
+    // splicer begin class.Class2.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -61,12 +61,12 @@ PyObject *PP_Class2_to_Object(tutorial::Class2 *addr)
     rv = PyObject_Call((PyObject *) &PY_Class2_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Class2.helper.to_object
+    // splicer end class.Class2.utility.to_object
 }
 
 int PP_Class2_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Class2.helper.from_object
+    // splicer begin class.Class2.utility.from_object
     if (obj->ob_type != &PY_Class2_Type) {
         // raise exception
         return 0;
@@ -74,5 +74,5 @@ int PP_Class2_from_Object(PyObject *obj, void **addr)
     PY_Class2 * self = (PY_Class2 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Class2.helper.from_object
+    // splicer end class.Class2.utility.from_object
 }

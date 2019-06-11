@@ -80,7 +80,7 @@ class Wrapc(util.WrapperMixin):
         fmt_library = newlibrary.fmtdict
         structs = []
         # reserved the 0 slot of capsule_order
-        self.add_capsule_helper("--none--", None, ["// Nothing to delete"])
+        self.add_capsule_utility("--none--", None, ["// Nothing to delete"])
         whelpers.add_copy_array_helper_c(fmt_library)
 
         self._push_splicer("class")
@@ -501,7 +501,7 @@ class Wrapc(util.WrapperMixin):
     def compute_idtor(self, node):
         """Create a capsule destructor for type.
 
-        Only call add_capsule_helper if the destructor is wrapped.
+        Only call add_capsule_utility if the destructor is wrapped.
         Otherwise, there is no way to delete the object.
         i.e. the class has a private destructor.
 
@@ -523,7 +523,7 @@ class Wrapc(util.WrapperMixin):
                 ),
                 "delete cxx_ptr;",
             ]
-            ntypemap.idtor = self.add_capsule_helper(
+            ntypemap.idtor = self.add_capsule_utility(
                 cxx_type, ntypemap, del_lines
             )
         else:
@@ -1449,7 +1449,7 @@ class Wrapc(util.WrapperMixin):
     capsule_order = []
     capsule_include = {}  # includes needed by C_memory_dtor_function
 
-    def add_capsule_helper(self, name, var_typemap, lines):
+    def add_capsule_utility(self, name, var_typemap, lines):
         """Add unique names to capsule_helpers.
         Return index of name.
 
@@ -1482,7 +1482,7 @@ class Wrapc(util.WrapperMixin):
             del_lines = []
             for cmd in cmd_list:
                 del_lines.append(wformat(cmd, fmt))
-            idtor = self.add_capsule_helper(name, arg_typemap, del_lines)
+            idtor = self.add_capsule_utility(name, arg_typemap, del_lines)
         else:
             idtor = self.capsule_helpers[name][0]
         return idtor
@@ -1514,7 +1514,7 @@ class Wrapc(util.WrapperMixin):
                     util.append_format_cmds(
                         del_lines, intent_blk, "destructor", fmt
                     )
-                    fmt.idtor = self.add_capsule_helper(
+                    fmt.idtor = self.add_capsule_utility(
                         destructor_name, atypemap, del_lines
                     )
                 else:

@@ -462,8 +462,8 @@ PY_module_filename_template
 PY_header_filename_template
     ``py{library}module.{PY_header_filename_suffix}``
 
-PY_helper_filename_template
-    ``py{library}helper.{PY_impl_filename_suffix}``
+PY_utility_filename_template
+    ``py{library}util.{PY_impl_filename_suffix}``
 
 PY_PyTypeObject_template
     ``{PY_prefix}{cxx_class}_Type``

@@ -33,6 +33,6 @@ class User2
 Python method void exfunc()
 Python method void exfunc(int flag +intent(in)+value)
 Close pyUser2type.cpp
-Close pypreprocesshelper.cpp
+Close pypreprocessutil.cpp
 Close pypreprocessmodule.hpp
 Close pypreprocessmodule.cpp

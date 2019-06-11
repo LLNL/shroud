@@ -29,7 +29,7 @@ VPATH = \
 OBJS = \
     pointers.o \
     pypointersmodule.o \
-    pypointershelper.o
+    pypointersutil.o
 
 CXXFLAGS += $(SHARED)
 

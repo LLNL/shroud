@@ -9,7 +9,7 @@ Wrote typesTutorial.h
 Wrote wrapftutorial.f
 Wrote pyClass1type.cpp
 Wrote pySingletontype.cpp
-Wrote pyTutorialhelper.cpp
+Wrote pyTutorialutil.cpp
 Wrote pyTutorialmodule.hpp
 Wrote pyTutorialmodule.cpp
 Wrote luaTutorialmodule.hpp
