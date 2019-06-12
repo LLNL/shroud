@@ -655,7 +655,10 @@
                     "underscore_name": "fill_int_array"
                 },
                 "linenumber": 62,
-                "options": {}
+                "options": {
+                    "PY_array_arg": "list",
+                    "__line__": 66
+                }
             },
             {
                 "_fmtargs": {

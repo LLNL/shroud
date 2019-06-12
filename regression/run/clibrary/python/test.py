@@ -89,11 +89,16 @@ class Tutorial(unittest.TestCase):
     def testSum(self):
         self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 
-    def test_fillIntArray(self):
+    def XXXtest_fillIntArray(self): # numpy
         out = clibrary.fillIntArray()
         self.assertTrue(isinstance(out, np.ndarray))
         self.assertEqual('int32', out.dtype.name)
         self.assertEqual([1, 2, 3], list(out))
+
+    def test_fillIntArray(self):
+        out = clibrary.fillIntArray()
+        self.assertTrue(isinstance(out, list))
+        self.assertEqual([1, 2, 3], out)
 
 
 # creating a new test suite

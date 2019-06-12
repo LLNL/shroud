@@ -424,6 +424,39 @@ integer(C_SIZE_T), value :: c_var_size
         FHelpers[name] = helper
     return name
 
+def add_to_PyList_helper(arg):
+    """
+    Args:
+        fmt -
+    """
+    ntypemap = arg.typemap
+    name = "to_PyList_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            dependent_helpers=["array_context"],
+            source=wformat(
+                """
+static PyObject *SHROUD_to_PyList_{c_type}({c_type} *in, size_t size)
+{{+
+PyObject *out = PyList_New(size);
+for (size_t i = 0; i < size; ++i) {{+
+PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+-}}
+return out;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+    return name
+
+
+######################################################################
+# Static helpers
 
 CHelpers = dict(
     ShroudStrCopy=dict(

@@ -655,6 +655,7 @@ return 1;""",
         (int * arg1 +intent(in) +dimension(:))
         """
         intent = arg.attrs["intent"]
+        whelpers.add_to_PyList_helper(arg)
         if intent == "out":
             dimension = arg.attrs.get("dimension", None)
             if dimension is None:
@@ -1193,7 +1194,7 @@ return 1;""",
             )
             util.append_format_cmds(fail_code, intent_blk, "fail", fmt_arg)
             if "c_helper" in intent_blk:
-                c_helper = wformat(intent_blk["c_helper"], fmt)
+                c_helper = wformat(intent_blk["c_helper"], fmt_arg)
                 for helper in c_helper.split():
                     self.c_helper[helper] = True
 
@@ -2751,6 +2752,162 @@ py_statements_local = dict(
 # use C++ casts
     intent_out_cxx_allocatable_numpy=dict(
         need_numpy=True,
+        decl=["PyArrayObject * {py_var} = NULL;"],
+        pre_call=[
+            "{npy_descr_code}"
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_NewLikeArray"
+            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}));",
+            "if ({py_var} == NULL)",
+            "+goto fail;-",
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        post_call=None,  # Object already created in pre_call
+        fail=["Py_XDECREF({py_var});"],
+        goto_fail=True,
+    ),
+
+########################################
+## list
+# language=c
+    intent_in_c_dimension_list=dict(
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        cleanup=[
+            "Py_DECREF({py_var});"
+        ],
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+
+    intent_inout_c_dimension_list=dict(
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY);",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        post_call=None,  # Object already created in post_parse
+        goto_fail=True,
+    ),
+
+    intent_out_c_dimension_list=dict(
+        c_helper="to_PyList_{cxx_type}",
+        c_header="<stdlib.h>",  # malloc/free
+        decl=[
+            "PyObject *{py_var} = NULL;",
+            "{cxx_decl} = NULL;",
+        ],
+        pre_call=[
+#            "{cxx_decl}[{pointer_shape}];",
+            "{cxx_var} = malloc(sizeof({cxx_type}) * {pointer_shape});",
+            "if ({cxx_var} == NULL) goto fail;",
+        ],
+        post_call=[
+            "{py_var} = SHROUD_to_PyList_{cxx_type}({cxx_var}, {pointer_shape});",
+            "if ({py_var} == NULL) goto fail;",
+            "free({cxx_var});",
+            "{cxx_var} = NULL;",
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+            "if({cxx_var} != NULL) free({cxx_var});",
+        ],
+        goto_fail=True,
+    ),
+
+# language=c++
+# use C++ casts
+    intent_in_cxx_dimension_list=dict(
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY));",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        cleanup=[
+            "Py_DECREF({py_var});"
+        ],
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+
+    intent_inout_cxx_dimension_list=dict(
+        decl=[
+            "{py_type} * {pytmp_var};",
+            "PyArrayObject * {py_var} = NULL;",
+        ],
+        post_parse=[
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY));",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        post_call=None,  # Object already created in post_parse
+        goto_fail=True,
+    ),
+
+    intent_out_cxx_dimension_list=dict(
+        decl=[
+            "PyArrayObject * {py_var} = NULL;",
+            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
+        ],
+        post_parse=[
+            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_SimpleNew("
+            "{npy_ndims}, {npy_dims}, {numpy_type}));",
+        ] + array_error,
+        pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        post_call=None,  # Object already created in post_parse
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        goto_fail=True,
+    ),
+
+## allocatable
+    intent_out_c_allocatable_list=dict(
+        decl=["PyArrayObject * {py_var} = NULL;"],
+        pre_call=[
+            "{npy_descr_code}"
+            "{py_var} = PyArray_NewLikeArray("
+            "\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok});",
+            "if ({py_var} == NULL)",
+            "+goto fail;-",
+            "{cxx_decl} = PyArray_DATA({py_var});",
+            ],
+        post_call=None,  # Object already created in pre_call
+        fail=["Py_XDECREF({py_var});"],
+        goto_fail=True,
+    ),
+
+# language=c++
+# use C++ casts
+    intent_out_cxx_allocatable_list=dict(
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
             "{npy_descr_code}"
