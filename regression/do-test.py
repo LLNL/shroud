@@ -336,7 +336,11 @@ if __name__ == "__main__":
         TestDesc("clibrary"),
         TestDesc("clibrary-list",
                  yaml="clibrary",
-                 cmdline=["--option", "PY_array_arg=list"]),
+                 cmdline=[
+                     "--option", "PY_array_arg=list",
+#                     "--option", "wrap_fortran=false",
+#                     "--option", "wrap_c=false",
+                     ]),
         TestDesc("interface"),
         TestDesc("templates"),
         TestDesc("ownership"),

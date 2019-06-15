@@ -42,6 +42,7 @@ TESTDIRS = \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/clibrary-list/python/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
     $(tempdir)/run/templates/..

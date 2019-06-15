@@ -366,6 +366,10 @@ def main_with_args(args):
         cmdoptions = {}
         for option in args.option:
             name, value = option.split("=",1)
+            if value in ["true", "True"]:
+                value = True
+            elif value in ["false", "False"]:
+                value = False
             cmdoptions[name] = value
         if "options" in allinput:
             allinput["options"].update(cmdoptions)
