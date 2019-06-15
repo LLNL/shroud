@@ -15,8 +15,6 @@
 //
 // #######################################################################
 #include "pyClibrarymodule.h"
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include "numpy/arrayobject.h"
 #include "clibrary.h"
 
 // splicer begin include
@@ -34,6 +32,15 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
+static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+    }
+    return out;
+}
 
 // splicer begin C_definition
 // splicer end C_definition
@@ -157,25 +164,26 @@ PY_fillIntArray(
 {
 // void fillIntArray(int * out +dimension(3)+intent(out))
 // splicer begin function.fill_int_array
-    PyArrayObject * SHPy_out = NULL;
-    npy_intp SHD_out[1] = { 3 };
-
-    // post_parse
-    SHPy_out = (PyArrayObject *) PyArray_SimpleNew(1, SHD_out, NPY_INT);
-    if (SHPy_out == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "out must be a 1-D array of int");
-        goto fail;
-    }
+    PyObject *SHPy_out = NULL;
+    int * out = NULL;
 
     // pre_call
-    int * out = PyArray_DATA(SHPy_out);
+    out = malloc(sizeof(int) * 3);
+    if (out == NULL) goto fail;
 
     fillIntArray(out);
+
+    // post_call
+    SHPy_out = SHROUD_to_PyList_int(out, 3);
+    if (SHPy_out == NULL) goto fail;
+    free(out);
+    out = NULL;
+
     return (PyObject *) SHPy_out;
 
 fail:
     Py_XDECREF(SHPy_out);
+    if(out != NULL) free(out);
     return NULL;
 // splicer end function.fill_int_array
 }
@@ -645,7 +653,6 @@ initclibrary(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    import_array();
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

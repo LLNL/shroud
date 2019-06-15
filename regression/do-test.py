@@ -91,14 +91,19 @@ class Tester:
         makedirs(output)
         return status
 
-    def set_test(self, name, replace_ref=False):
-        """Setup for a single test.     
+    def set_test(self, desc, replace_ref=False):
+        """Setup for a single test.
+
+        Args:
+           desc - TestDesc instance.
         """
+        name = desc.name
+        self.testDesc = desc
         self.testname = name
         logging.info("--------------------------------------------------")
         logging.info("Testing " + name)
 
-        self.testyaml = os.path.join(self.test_input_dir, name + ".yaml")
+        self.testyaml = os.path.join(self.test_input_dir, desc.yaml)
         logging.info("Input file: " + self.testyaml)
         if not os.path.isfile(self.testyaml):
             logging.error("Input file does not exist")
@@ -137,7 +142,7 @@ class Tester:
         self.stderr.close()
         sys.stderr = self.saved_stderr
 
-    def do_module(self):
+    def XXX_do_module(self):
         """Run Shroud via a method."""
         args = argparse.Namespace(
             outdir=self.result_dir,
@@ -189,8 +194,7 @@ class Tester:
         ]
 
         # test specific flags
-        if self.testname == "none":
-            cmd += ["--yaml-types", "def_types.yaml"]
+        cmd += self.testDesc.cmdline
 
         cmd.append(self.testyaml)
         logging.debug(" ".join(cmd))
@@ -281,6 +285,17 @@ def clear_files(path):
             logging.warning(e)
 
 
+class TestDesc(object):
+    """Information to describe a test.
+    name = name of test.
+    yaml = basename of yaml file, defaults to name.
+    cmdline = list of command line arguments to append.
+    """
+    def __init__(self, name, yaml=None, cmdline=None):
+        self.name = name
+        self.yaml = (yaml or name) + ".yaml"
+        self.cmdline = cmdline or []
+
 if __name__ == "__main__":
     # XXX raise KeyError(key)
 
@@ -304,34 +319,43 @@ if __name__ == "__main__":
         raise SystemExit("Error in environment")
     tester.open_log("test.log")
 
-    if args.testname:
-        test_names = args.testname
-    else:
-        test_names = [
-            "none",
-            "tutorial",
-            "types",
-            "pointers",
-            "vectors",
-            "forward",
-            "example",
-            "include",
-            "preprocess",
-            "scope",
-            "names",
-            "strings",
-            "clibrary",
-            "interface",
-            "templates",
-            "ownership",
-        ]
+    availTests = [
+        TestDesc("none",
+                 cmdline=["--yaml-types", "def_types.yaml"]),
+        TestDesc("tutorial"),
+        TestDesc("types"),
+        TestDesc("pointers"),
+        TestDesc("vectors"),
+        TestDesc("forward"),
+        TestDesc("example"),
+        TestDesc("include"),
+        TestDesc("preprocess"),
+        TestDesc("scope"),
+        TestDesc("names"),
+        TestDesc("strings"),
+        TestDesc("clibrary"),
+        TestDesc("clibrary-list",
+                 yaml="clibrary",
+                 cmdline=["--option", "PY_array_arg=list"]),
+        TestDesc("interface"),
+        TestDesc("templates"),
+        TestDesc("ownership"),
+    ]
 
-    logging.info("Tests to run: {}".format(" ".join(test_names)))
+    if args.testname:
+        runTests = []
+        for test in availTests:
+            if test.name in args.testname:
+                runTests.append(test)
+    else:
+        runTests = availTests
+
+#    logging.info("Tests to run: {}".format(" ".join(test_names)))
 
     pass_names = []
     fail_names = []
-    for name in test_names:
-        status = tester.set_test(name, replace_ref)
+    for test in runTests:
+        status = tester.set_test(test, replace_ref)
 
         if status:
             status = tester.do_test()
@@ -339,6 +363,7 @@ if __name__ == "__main__":
             if status and not replace_ref:
                 status = tester.do_compare()
 
+        name = test.name
         if status:
             pass_names.append(name)
             print("{} pass".format(name))

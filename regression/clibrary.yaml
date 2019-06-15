@@ -63,8 +63,8 @@ declarations:
   doxygen:
     description: |
       Return three values into memory the user provides.
-  options:
-    PY_array_arg: list
+#  options:
+#    PY_array_arg: list
   
 - decl: bool Function3(bool arg)
 - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
