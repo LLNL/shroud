@@ -121,6 +121,7 @@ test-python : \
   test-python-tutorial \
   test-python-strings \
   test-python-pointers \
+  test-python-pointers-list \
   test-python-clibrary \
   test-python-ownership
 

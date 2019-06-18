@@ -57,14 +57,6 @@ module pointers_mod
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_truncate_to_int
 
-        subroutine c_increment(array, sizein) &
-                bind(C, name="POI_increment")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), intent(INOUT) :: array(*)
-            integer(C_INT), value, intent(IN) :: sizein
-        end subroutine c_increment
-
         subroutine get_values(nvalues, values) &
                 bind(C, name="POI_get_values")
             use iso_c_binding, only : C_INT
@@ -148,22 +140,6 @@ contains
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
 
-    ! void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
-    !>
-    !! \brief None
-    !!
-    !! array with intent(INOUT)
-    !<
-    subroutine increment(array)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), intent(INOUT) :: array(:)
-        integer(C_INT) :: sizein
-        sizein = size(array,kind=C_INT)
-        ! splicer begin function.increment
-        call c_increment(array, sizein)
-        ! splicer end function.increment
-    end subroutine increment
-
     ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
@@ -178,7 +154,7 @@ contains
 
     ! void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
     !>
-    !! Increment array in place.
+    !! Increment array in place using intent(INOUT).
     !<
     subroutine increment_int_array(array)
         use iso_c_binding, only : C_INT

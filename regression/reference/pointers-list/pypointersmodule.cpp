@@ -236,55 +236,6 @@ fail:
 // splicer end function.truncate_to_int
 }
 
-static char PY_increment__doc__[] =
-"documentation"
-;
-
-/**
- * \brief None
- *
- * array with intent(INOUT)
- */
-static PyObject *
-PY_increment(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
-// splicer begin function.increment
-    PyObject * SHTPy_array;
-    PyArrayObject * SHPy_array = NULL;
-    const char *SHT_kwlist[] = {
-        "array",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:increment",
-        const_cast<char **>(SHT_kwlist), &SHTPy_array))
-        return NULL;
-
-    // post_parse
-    SHPy_array = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_array, NPY_INT, NPY_ARRAY_INOUT_ARRAY));
-    if (SHPy_array == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "array must be a 1-D array of int");
-        goto fail;
-    }
-    {
-        // pre_call
-        int * array = static_cast<int *>(PyArray_DATA(SHPy_array));
-        int sizein = PyArray_SIZE(SHPy_array);
-
-        increment(array, sizein);
-        return (PyObject *) SHPy_array;
-    }
-
-fail:
-    return NULL;
-// splicer end function.increment
-}
-
 static char PY_get_values__doc__[] =
 "documentation"
 ;
@@ -485,7 +436,7 @@ static char PY_incrementIntArray__doc__[] =
 ;
 
 /**
- * Increment array in place.
+ * Increment array in place using intent(INOUT).
  */
 static PyObject *
 PY_incrementIntArray(
@@ -541,8 +492,6 @@ static PyMethodDef PY_methods[] = {
     PY_cos_doubles__doc__},
 {"truncate_to_int", (PyCFunction)PY_truncate_to_int,
     METH_VARARGS|METH_KEYWORDS, PY_truncate_to_int__doc__},
-{"increment", (PyCFunction)PY_increment, METH_VARARGS|METH_KEYWORDS,
-    PY_increment__doc__},
 {"get_values", (PyCFunction)PY_get_values, METH_NOARGS,
     PY_get_values__doc__},
 {"get_values2", (PyCFunction)PY_get_values2, METH_NOARGS,

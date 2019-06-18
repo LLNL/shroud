@@ -64,17 +64,6 @@ void truncate_to_int(double *in, int *out, int size)
 }
 
 //----------------------------------------------------------------------
-// array +intent(inout)
-
-void increment(int *array, int size)
-{
-    int i;
-    for(i = 0; i < size; i++) {
-       array[i] += 1;
-    }
-}
-
-//----------------------------------------------------------------------
 // values +intent(out)
 // Note that we must assume that values is long enough.
 // Otherwise, memory will be overwritten.
@@ -124,6 +113,7 @@ void fillIntArray(int *out)
   out[2] = 3;
 }
 
+// array +intent(inout)
 void incrementIntArray(int *array, int size)
 {
     for(int i=0; i < size; i++) {

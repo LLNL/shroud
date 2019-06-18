@@ -65,20 +65,6 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // splicer end function.truncate_to_int
 }
 
-// void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
-/**
- * \brief None
- *
- * array with intent(INOUT)
- */
-void POI_increment(int * array, int sizein)
-{
-// splicer begin function.increment
-    increment(array, sizein);
-    return;
-// splicer end function.increment
-}
-
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 /**
  * \brief fill values into array
@@ -134,7 +120,7 @@ void POI_fill_int_array(int * out)
 
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 /**
- * Increment array in place.
+ * Increment array in place using intent(INOUT).
  */
 void POI_increment_int_array(int * array, int sizein)
 {

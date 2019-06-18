@@ -42,7 +42,6 @@ contains
     real(c_double) :: in_double(5)
     real(c_double), allocatable :: out_double(:)
     integer(c_int), allocatable :: out_int(:)
-    integer(c_int) :: incr(4)
     integer(c_int) :: nvalues, values1(3), values2(3)
 
     call set_case_name("test_functions")
@@ -64,10 +63,6 @@ contains
     call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
     call assert_true(allocated(out_int))
     call assert_true(all(out_int == [1, 2, 3, 4]))
-
-    incr = [2, 4, 6, 8]
-    call increment(incr)
-    call assert_true(all(incr == [3, 5, 7, 9]))
 
     values1 = 0
     call get_values(nvalues, values1)

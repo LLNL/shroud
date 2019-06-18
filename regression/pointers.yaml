@@ -54,15 +54,6 @@ declarations:
   options:
     PY_array_arg: numpy
 
-- decl: void increment(int * array  +intent(inout)  +dimension(:),
-                       int   sizein +implied(size(array)))
-  doxygen:
-    brief: 
-    description: |
-      array with intent(INOUT)
-  options:
-    PY_array_arg: numpy
-
 - decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
   doxygen:
     brief: fill values into array
@@ -101,6 +92,6 @@ declarations:
                                int   sizein +implied(size(array)))
   doxygen:
     description: |
-      Increment array in place.
+      Increment array in place using intent(INOUT).
 
   

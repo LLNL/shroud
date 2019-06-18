@@ -41,8 +41,6 @@ void POI_cos_doubles(double * in, double * out, int sizein);
 
 void POI_truncate_to_int(double * in, int * out, int sizein);
 
-void POI_increment(int * array, int sizein);
-
 void POI_get_values(int * nvalues, int * values);
 
 void POI_get_values2(int * arg1, int * arg2);
