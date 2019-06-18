@@ -437,7 +437,6 @@ def add_to_PyList_helper(arg):
             Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
         )
         helper = dict(
-            dependent_helpers=["array_context"],
             source=wformat(
                 """
 static PyObject *SHROUD_to_PyList_{c_type}({c_type} *in, size_t size)
@@ -452,8 +451,59 @@ return out;
             ),
         )
         CHelpers[name] = helper
+
+    name = "from_PyObject_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_get=ntypemap.PY_get.format(py_var="item")
+        )
+        helper = dict(
+            source=wformat(
+                """
+/* Convert obj into an array of type {c_type} */
+static {c_type} * SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t char *name,\t Py_ssize_t *lenout)
+{{+
+char msg[100];
+snprintf(msg, sizeof(msg), "%s must be iterable", name);
+PyObject *seq = PySequence_Fast(obj, msg);
+if (seq == NULL) return NULL;
+Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = malloc(len * sizeof({c_type}));
+for (Py_ssize_t i = 0; i < len; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+free(in);
+in = NULL;
+// Fill in error message
+goto done;
+-}}
+-}}
+^done:
+Py_DECREF(seq);
+*lenout = len;
+return in;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
     return name
 
+"""
+http://effbot.org/zone/python-capi-sequences.htm
+if (PyList_Check(seq))
+        for (i = 0; i < len; i++) {
+            item = PyList_GET_ITEM(seq, i);
+            ...
+        }
+    else
+        for (i = 0; i < len; i++) {
+            item = PyTuple_GET_ITEM(seq, i);
+            ...
+        }
+"""
 
 ######################################################################
 # Static helpers

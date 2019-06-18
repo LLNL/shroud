@@ -33,6 +33,32 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+/* Convert obj into an array of type int */
+static int * SHROUD_from_PyObject_int(PyObject *obj, char *name,
+    Py_ssize_t *lenout)
+{
+    char msg[100];
+    snprintf(msg, sizeof(msg), "%s must be iterable", name);
+    PyObject *seq = PySequence_Fast(obj, msg);
+    if (seq == NULL) return NULL;
+    Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
+    int *in = malloc(len * sizeof(int));
+    for (Py_ssize_t i = 0; i < len; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            free(in);
+            in = NULL;
+            // Fill in error message
+            goto done;
+        }
+    }
+done:
+    Py_DECREF(seq);
+    *lenout = len;
+    return in;
+}
+
 static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -109,8 +135,8 @@ PY_Sum(
 {
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 // splicer begin function.sum
-    PyObject * SHTPy_values;
-    PyArrayObject * SHPy_values = NULL;
+    PyObject *SHTPy_values = NULL;
+    int * values = NULL;
     char *SHT_kwlist[] = {
         "values",
         NULL };
@@ -120,18 +146,15 @@ PY_Sum(
         return NULL;
 
     // post_parse
-    SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
-        NPY_INT, NPY_ARRAY_IN_ARRAY);
-    if (SHPy_values == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "values must be a 1-D array of int");
-        goto fail;
-    }
+    Py_ssize_t SHSize_values;
+    values = SHROUD_from_PyObject_int(SHTPy_values, "values",
+        &SHSize_values);
+    if (values == NULL) goto fail;
+    Py_DECREF(SHTPy_values);
 
     // pre_call
-    int * values = PyArray_DATA(SHPy_values);
     int result;  // intent(out)
-    int len = PyArray_SIZE(SHPy_values);
+    int len = SHSize_values;
 
     Sum(len, values, &result);
 
@@ -139,12 +162,13 @@ PY_Sum(
     PyObject * SHPy_result = PyInt_FromLong(result);
 
     // cleanup
-    Py_DECREF(SHPy_values);
+    if(values != NULL) free(values);
 
     return (PyObject *) SHPy_result;
 
 fail:
-    Py_XDECREF(SHPy_values);
+    Py_XDECREF(SHTPy_values);
+    if(values != NULL) free(values);
     return NULL;
 // splicer end function.sum
 }

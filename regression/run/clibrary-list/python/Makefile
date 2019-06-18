@@ -34,7 +34,7 @@ OBJS = \
 
 CFLAGS += $(SHARED)
 
-all : clibrary.so simple
+all : clibrary.so
 
 clibrary.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)

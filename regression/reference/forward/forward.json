@@ -100,7 +100,8 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -235,7 +236,8 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "SH_arg",
                                     "numpy_type": null,
-                                    "py_var": "SHPy_arg"
+                                    "py_var": "SHPy_arg",
+                                    "size_var": "SHSize_arg"
                                 }
                             }
                         },
@@ -346,7 +348,8 @@
                                     "cxx_var": "arg",
                                     "numpy_type": null,
                                     "py_type": "PY_Class3",
-                                    "py_var": "SHPy_arg"
+                                    "py_var": "SHPy_arg",
+                                    "size_var": "SHSize_arg"
                                 }
                             }
                         },

@@ -95,11 +95,6 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('int32', out.dtype.name)
         self.assertEqual([1, 2, 3], list(out))
 
-    def XXXtest_fillIntArray(self):
-        out = clibrary.fillIntArray()
-        self.assertTrue(isinstance(out, list))
-        self.assertEqual([1, 2, 3], out)
-
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

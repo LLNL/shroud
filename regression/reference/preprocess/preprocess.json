@@ -195,7 +195,8 @@
                                     "cxx_type": "int",
                                     "cxx_var": "i",
                                     "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_i"
+                                    "py_var": "SHPy_i",
+                                    "size_var": "SHSize_i"
                                 }
                             }
                         },
@@ -371,7 +372,8 @@
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
                                     "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_flag"
+                                    "py_var": "SHPy_flag",
+                                    "size_var": "SHSize_flag"
                                 }
                             }
                         },

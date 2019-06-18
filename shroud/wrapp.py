@@ -20,12 +20,14 @@ One Extension module per class
 
 Variables prefixes used by generated code:
 SH_     C or C++ version of argument
-SHPy_   Python object which corresponds to the argument
+SHPy_   Python object which corresponds to the argument {py_var}
 SHTPy_  A temporary object, usually from PyArg_Parse
-        to be converted to SHPy_ object.
+        to be converted to SHPy_ object. {pytmp_var}
 SHDPy_  PyArray_Descr object
-SHD_    npy_intp array for shape
-SHC_    PyCapsule owner of memory of NumPy array.  Used to deallocate memory.
+SHD_    npy_intp array for shape, {npy_dims}
+SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
+        Used to deallocate memory.
+SHSize_ Size of dimension argument (size_var}
 
 """
 from __future__ import print_function
@@ -976,6 +978,7 @@ return 1;""",
                 fmt_result.cxx_member = "."
             fmt_result.c_var = fmt_result.cxx_var
             fmt_result.py_var = fmt.PY_result
+            fmt_result.size_var = "SHSize_" + fmt_result.C_result
             fmt_result.numpy_type = result_typemap.PYN_typenum
         #            fmt_pattern = fmt_result
 
@@ -1024,6 +1027,7 @@ return 1;""",
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = "SHPy_" + arg_name
+            fmt_arg.size_var = "SHSize_" + arg_name
 
             arg_typemap = arg.typemap
             fmt_arg.numpy_type = arg_typemap.PYN_typenum
@@ -2468,6 +2472,10 @@ class ToImplied(todict.PrintNode):
         self.func = func
 
     def visit_Identifier(self, node):
+        """
+        Args:
+            node - declast.Identifier
+        """
         # Look for functions
         if node.args is None:
             return node.name
@@ -2477,7 +2485,10 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
             fmt = self.func._fmtargs[argname]["fmtpy"]
-            return wformat("PyArray_SIZE({py_var})", fmt)
+            if self.func.options.PY_array_arg == "numpy":
+                return wformat("PyArray_SIZE({py_var})", fmt)
+            else:
+                return fmt.size_var
         elif node.name == "len":
             # len(arg)
             argname = node.args[0].name
@@ -2511,8 +2522,8 @@ def py_implied(expr, func):
     """Convert string to Python code.
 
     Args:
-        expr -
-        func -
+        expr - string expression
+        func - declast.FunctionNode
     """
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func)
@@ -2770,35 +2781,36 @@ py_statements_local = dict(
 ## list
 # language=c
     intent_in_c_dimension_list=dict(
+        c_helper="from_PyObject_{cxx_type}",
         decl=[
-            "{py_type} * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyObject *{pytmp_var} = NULL;",
+            "{cxx_decl} = NULL;",
         ],
         post_parse=[
-            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);",
-        ] + array_error,
-        pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "Py_ssize_t {size_var};",
+            "{cxx_var} = SHROUD_from_PyObject_{c_type}\t({pytmp_var},\t \"{c_var}\",\t &{size_var});",
+            "if ({cxx_var} == NULL) goto fail;",
+            "Py_DECREF({pytmp_var});",
         ],
         cleanup=[
-            "Py_DECREF({py_var});"
+            "if({cxx_var} != NULL) free({cxx_var});",
         ],
         fail=[
-            "Py_XDECREF({py_var});"
+            "Py_XDECREF({pytmp_var});",
+            "if({cxx_var} != NULL) free({cxx_var});",
         ],
         goto_fail=True,
     ),
 
     intent_inout_c_dimension_list=dict(
         decl=[
-            "{py_type} * {pytmp_var};",
+            "BBB{py_type} * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
         ],
         post_parse=[
-            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY);",
-        ] + array_error,
+            "{py_var} = PySequence_Fast(sss, 'argument must be iterable');",
+            "if ({py_var} == NULL) goto fail;",
+        ],
         pre_call=[
             "{cxx_decl} = PyArray_DATA({py_var});",
         ],
