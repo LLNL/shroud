@@ -111,6 +111,39 @@ void POI_get_values2(int * arg1, int * arg2)
 // splicer end function.get_values2
 }
 
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+void POI_sum(int len, int * values, int * result)
+{
+// splicer begin function.sum
+    Sum(len, values, result);
+    return;
+// splicer end function.sum
+}
+
+// void fillIntArray(int * out +dimension(3)+intent(out))
+/**
+ * Return three values into memory the user provides.
+ */
+void POI_fill_int_array(int * out)
+{
+// splicer begin function.fill_int_array
+    fillIntArray(out);
+    return;
+// splicer end function.fill_int_array
+}
+
+// void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)
+/**
+ * Increment array in place.
+ */
+void POI_increment_int_array(int * values, int len)
+{
+// splicer begin function.increment_int_array
+    incrementIntArray(values, len);
+    return;
+// splicer end function.increment_int_array
+}
+
 // Release C++ allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {

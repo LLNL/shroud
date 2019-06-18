@@ -1191,6 +1191,460 @@
                 },
                 "linenumber": 69,
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "len",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&len)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "len",
+                            "f_var": "len",
+                            "pre_call_intent": "size(values,kind=C_INT)"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int len",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int len",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_values)",
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
+                        }
+                    },
+                    "result": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "result",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(result)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "result",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "result",
+                            "f_var": "result"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "int result",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "result",
+                            "cxx_addr": "",
+                            "cxx_decl": "int result",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "result",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_result",
+                            "size_var": "SHSize_result"
+                        }
+                    },
+                    "values": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(values)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "values",
+                            "f_var": "values"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int * values",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_decl": "int * values",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "numpy_type": "NPY_INT",
+                            "py_type": "PyObject",
+                            "py_var": "SHPy_values",
+                            "pytmp_var": "SHTPy_values",
+                            "size_var": "SHSize_values"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Sum",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "implied": "size(values)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "result",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
+                "fmtdict": {
+                    "C_call_code": "Sum(\tlen,\t values,\t result);",
+                    "C_call_list": "len,\t values,\t result",
+                    "C_name": "POI_sum",
+                    "C_prototype": "int len,\t int * values,\t int * result",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_sum",
+                    "F_C_name": "c_sum",
+                    "F_arg_c_call": "len,\t values,\t result",
+                    "F_arguments": "values,\t result",
+                    "F_call_code": "call c_sum(len,\t values,\t result)",
+                    "F_name_function": "sum",
+                    "F_name_generic": "sum",
+                    "F_name_impl": "sum",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_Sum",
+                    "c_const": "",
+                    "function_name": "Sum",
+                    "underscore_name": "sum"
+                },
+                "linenumber": 82,
+                "options": {
+                    "__line__": 85,
+                    "wrap_lua": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "out": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "out",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(out)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "out",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "out",
+                            "f_var": "out"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "int * out",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "out",
+                            "cxx_addr": "",
+                            "cxx_decl": "int * out",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "out",
+                            "npy_dims": "SHD_out",
+                            "npy_ndims": "1",
+                            "numpy_type": "NPY_INT",
+                            "pointer_shape": "3",
+                            "py_var": "SHPy_out",
+                            "size_var": "SHSize_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fillIntArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "3",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "out",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
+                "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
+                "doxygen": {
+                    "__line__": 90,
+                    "description": "Return three values into memory the user provides.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "fillIntArray(\tout);",
+                    "C_call_list": "out",
+                    "C_name": "POI_fill_int_array",
+                    "C_prototype": "int * out",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_fill_int_array",
+                    "F_C_name": "fill_int_array",
+                    "F_arg_c_call": "out",
+                    "F_arguments": "out",
+                    "F_call_code": "call c_fill_int_array(out)",
+                    "F_name_function": "fill_int_array",
+                    "F_name_generic": "fill_int_array",
+                    "F_name_impl": "fill_int_array",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_fillIntArray",
+                    "c_const": "",
+                    "function_name": "fillIntArray",
+                    "underscore_name": "fill_int_array"
+                },
+                "linenumber": 89,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "len",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&len)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "len",
+                            "f_var": "len",
+                            "pre_call_intent": "size(values,kind=C_INT)"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int len",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int len",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_values)",
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
+                        }
+                    },
+                    "values": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(values)",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "values",
+                            "f_var": "values"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "int * values",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_decl": "int * values",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "numpy_type": "NPY_INT",
+                            "py_type": "PyObject",
+                            "py_var": "SHPy_values",
+                            "pytmp_var": "SHTPy_values",
+                            "size_var": "SHSize_values"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "incrementIntArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "inout",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(values)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void incrementIntArray(int *values +dimension(:)+intent(inout), int len +implied(size(values)))",
+                "declgen": "void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)",
+                "doxygen": {
+                    "__line__": 96,
+                    "description": "Increment array in place.\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "incrementIntArray(\tvalues,\t len);",
+                    "C_call_list": "values,\t len",
+                    "C_name": "POI_increment_int_array",
+                    "C_prototype": "int * values,\t int len",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_increment_int_array",
+                    "F_C_name": "c_increment_int_array",
+                    "F_arg_c_call": "values,\t len",
+                    "F_arguments": "values",
+                    "F_call_code": "call c_increment_int_array(values,\t len)",
+                    "F_name_function": "increment_int_array",
+                    "F_name_generic": "increment_int_array",
+                    "F_name_impl": "increment_int_array",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_incrementIntArray",
+                    "c_const": "",
+                    "function_name": "incrementIntArray",
+                    "underscore_name": "increment_int_array"
+                },
+                "linenumber": 94,
+                "options": {}
             }
         ],
         "language": "cxx",

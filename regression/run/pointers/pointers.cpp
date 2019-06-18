@@ -102,6 +102,37 @@ void get_values2(int *arg1, int *arg2)
 }
 
 //----------------------------------------------------------------------
+
+void Sum(int len, int *values, int *result)
+{
+    strncpy(last_function_called, "Sum", MAXLAST);
+
+    int i;
+    int sum = 0;
+    for (i=0; i < len; i++) {
+	sum += values[i];
+    }
+    *result = sum;
+    return;
+}
+
+// out is assumed to be at least 3 long
+void fillIntArray(int *out)
+{
+  out[0] = 1;
+  out[1] = 2;
+  out[2] = 3;
+}
+
+void incrementIntArray(int *values, int len)
+{
+    for(int i=0; i < len; i++) {
+        values[i] += 1;
+    }
+    return;
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

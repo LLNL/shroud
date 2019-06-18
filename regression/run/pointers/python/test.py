@@ -27,8 +27,8 @@ class NotTrue:
     def __bool__(self):
         raise NotImplementedError
  
-class Tutorial(unittest.TestCase):
-    """Test tutorial problem"""
+class Pointers(unittest.TestCase):
+    """Test pointers.yaml"""
      
     def XXsetUp(self):
         """ Setting up for the test """
@@ -94,11 +94,27 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('int32', arg2.dtype.name)
         self.assertTrue(np.equal(arg2, [11,12,13]).all())
 
+    def test_Sum(self):
+        self.assertEqual(15, pointers.Sum([1, 2, 3, 4, 5]))
+
+    def test_fillIntArray(self):
+        out = pointers.fillIntArray()
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertEqual('int32', out.dtype.name)
+        self.assertEqual([1, 2, 3], list(out))
+
+    def test_incrementIntArray(self):
+        # np.int32 works, np.int fails 
+        values = np.array([1,2,3,4], dtype=np.int32)
+        pointers.incrementIntArray(values)
+        self.assertTrue(np.equal(values, [2,3,4,5]).all())
+
+
 # creating a new test suite
 newSuite = unittest.TestSuite()
  
 # adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
+newSuite.addTest(unittest.makeSuite(Pointers))
 
 if __name__ == "__main__":
     unittest.main()

@@ -14,7 +14,7 @@ copyright:
 -
 - '#######################################################################'
 
-# Test pointers and use of NumPy
+# Test pointers to POD and use of NumPy/list
 
 library: pointers
 cxx_header: pointers.hpp
@@ -76,3 +76,24 @@ declarations:
  
 ## test +allocatable(3)
 ## test +allocatable(nvar)
+
+######################################################################
+
+- decl: void Sum(int len +implied(size(values)),
+                 int *values +dimension(:)+intent(in),
+                 int *result +intent(out))
+  options:
+    # unable to deal with dimension
+    wrap_lua: False
+
+- decl: void fillIntArray(int *out +intent(out)+dimension(3))
+  doxygen:
+    description: |
+      Return three values into memory the user provides.
+
+- decl: void incrementIntArray(int *values +dimension(:)+intent(inout),
+                               int len +implied(size(values)))
+  doxygen:
+    description: |
+      Increment array in place.
+  

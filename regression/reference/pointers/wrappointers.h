@@ -47,6 +47,12 @@ void POI_get_values(int * nvalues, int * values);
 
 void POI_get_values2(int * arg1, int * arg2);
 
+void POI_sum(int len, int * values, int * result);
+
+void POI_fill_int_array(int * out);
+
+void POI_increment_int_array(int * values, int len);
+
 #ifdef __cplusplus
 }
 #endif

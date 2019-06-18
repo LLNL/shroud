@@ -81,6 +81,30 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: arg2(*)
         end subroutine get_values2
 
+        subroutine c_sum(len, values, result) &
+                bind(C, name="POI_sum")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: len
+            integer(C_INT), intent(IN) :: values(*)
+            integer(C_INT), intent(OUT) :: result
+        end subroutine c_sum
+
+        subroutine fill_int_array(out) &
+                bind(C, name="POI_fill_int_array")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(OUT) :: out(*)
+        end subroutine fill_int_array
+
+        subroutine c_increment_int_array(values, len) &
+                bind(C, name="POI_increment_int_array")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(INOUT) :: values(*)
+            integer(C_INT), value, intent(IN) :: len
+        end subroutine c_increment_int_array
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -139,6 +163,32 @@ contains
         call c_increment(array, sizein)
         ! splicer end function.increment
     end subroutine increment
+
+    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    subroutine sum(values, result)
+        use iso_c_binding, only : C_INT
+        integer(C_INT) :: len
+        integer(C_INT), intent(IN) :: values(:)
+        integer(C_INT), intent(OUT) :: result
+        len = size(values,kind=C_INT)
+        ! splicer begin function.sum
+        call c_sum(len, values, result)
+        ! splicer end function.sum
+    end subroutine sum
+
+    ! void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)
+    !>
+    !! Increment array in place.
+    !<
+    subroutine increment_int_array(values)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(INOUT) :: values(:)
+        integer(C_INT) :: len
+        len = size(values,kind=C_INT)
+        ! splicer begin function.increment_int_array
+        call c_increment_int_array(values, len)
+        ! splicer end function.increment_int_array
+    end subroutine increment_int_array
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
