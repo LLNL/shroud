@@ -201,6 +201,8 @@ PY_fillIntArray(
     // post_call
     SHPy_out = SHROUD_to_PyList_int(out, 3);
     if (SHPy_out == NULL) goto fail;
+
+    // cleanup
     free(out);
     out = NULL;
 

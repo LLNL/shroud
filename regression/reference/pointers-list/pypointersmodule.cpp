@@ -270,9 +270,11 @@ PY_get_values(
         // post_call
         SHPy_values = SHROUD_to_PyList_int(values, 3);
         if (SHPy_values == NULL) goto fail;
+        PyObject * SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+
+        // cleanup
         std::free(values);
         values = NULL;
-        PyObject * SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
 
         return SHTPy_rv;
     }
@@ -319,13 +321,15 @@ PY_get_values2(
         // post_call
         SHPy_arg1 = SHROUD_to_PyList_int(arg1, 3);
         if (SHPy_arg1 == NULL) goto fail;
-        std::free(arg1);
-        arg1 = NULL;
         SHPy_arg2 = SHROUD_to_PyList_int(arg2, 3);
         if (SHPy_arg2 == NULL) goto fail;
+        PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+
+        // cleanup
+        std::free(arg1);
+        arg1 = NULL;
         std::free(arg2);
         arg2 = NULL;
-        PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
 
         return SHTPy_rv;
     }
@@ -418,6 +422,8 @@ PY_fillIntArray(
         // post_call
         SHPy_out = SHROUD_to_PyList_int(out, 3);
         if (SHPy_out == NULL) goto fail;
+
+        // cleanup
         std::free(out);
         out = NULL;
 

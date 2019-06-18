@@ -2834,6 +2834,8 @@ py_statements_local = dict(
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == NULL) goto fail;",
+        ],
+        cleanup=[
             "{stdlib}free({cxx_var});",
             "{cxx_var} = NULL;",
         ],
@@ -2894,8 +2896,8 @@ py_statements_local = dict(
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == NULL) goto fail;",
-#        ],
-#        cleanup=[
+        ],
+        cleanup=[
             "{stdlib}free({cxx_var});",
             "{cxx_var} = NULL;",
         ],
@@ -2906,6 +2908,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
+########################################
 ## allocatable
     intent_out_c_allocatable_list=dict(
         decl=["PyArrayObject * {py_var} = NULL;"],
