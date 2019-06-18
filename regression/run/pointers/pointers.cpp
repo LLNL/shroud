@@ -124,10 +124,10 @@ void fillIntArray(int *out)
   out[2] = 3;
 }
 
-void incrementIntArray(int *values, int len)
+void incrementIntArray(int *array, int size)
 {
-    for(int i=0; i < len; i++) {
-        values[i] += 1;
+    for(int i=0; i < size; i++) {
+        array[i] += 1;
     }
     return;
 }

@@ -40,6 +40,8 @@ declarations:
     description:
       allocate OUT same type as IN
       implied size of array
+  options:
+    PY_array_arg: numpy
 
 - decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
                              int *    out    +intent(out) +allocatable(mold=in),
@@ -49,6 +51,8 @@ declarations:
     description: |
       allocate OUT different type as IN
       implied size of array
+  options:
+    PY_array_arg: numpy
 
 - decl: void increment(int * array  +intent(inout)  +dimension(:),
                        int   sizein +implied(size(array)))
@@ -56,6 +60,8 @@ declarations:
     brief: 
     description: |
       array with intent(INOUT)
+  options:
+    PY_array_arg: numpy
 
 - decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
   doxygen:
@@ -91,9 +97,12 @@ declarations:
     description: |
       Return three values into memory the user provides.
 
-- decl: void incrementIntArray(int *values +dimension(:)+intent(inout),
-                               int len +implied(size(values)))
+- decl: void incrementIntArray(int * array  +dimension(:)+intent(inout),
+                               int   sizein +implied(size(array)))
   doxygen:
     description: |
       Increment array in place.
+  options:
+    PY_array_arg: numpy
+
   

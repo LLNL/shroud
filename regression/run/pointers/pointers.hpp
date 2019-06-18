@@ -32,7 +32,7 @@ void get_values2(int *arg1, int *arg2);
 
 void Sum(int len, int * values, int *result);
 void fillIntArray(int *out);
-void incrementIntArray(int *values, int len);
+void incrementIntArray(int *array, int size);
 
 
 #endif // POINTERS_HPP
