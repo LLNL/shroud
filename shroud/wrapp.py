@@ -2828,18 +2828,18 @@ py_statements_local = dict(
         ],
         pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = {stdlib}malloc(sizeof({cxx_type}) * {pointer_shape});",
+            "{cxx_var} = {stdlib}malloc\t(sizeof({cxx_type}) * {pointer_shape});",
             "if ({cxx_var} == NULL) goto fail;",
         ],
         post_call=[
-            "{py_var} = SHROUD_to_PyList_{cxx_type}({cxx_var}, {pointer_shape});",
+            "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == NULL) goto fail;",
             "{stdlib}free({cxx_var});",
             "{cxx_var} = NULL;",
         ],
         fail=[
             "Py_XDECREF({py_var});",
-            "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
+            "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2848,22 +2848,34 @@ py_statements_local = dict(
 # language=c++
 # use C++ casts
 #    intent_in_cxx_dimension_list=dict(
-# same as c
+# same as c, assigned below.
 #    ),
 
     intent_inout_cxx_dimension_list=dict(
+#        c_helper="update_PyList_{cxx_type}",
+        c_helper="to_PyList_{cxx_type}",
         decl=[
-            "{py_type} * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyObject *{pytmp_var} = NULL;",
+            "{cxx_decl} = NULL;",
         ],
         post_parse=[
-            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY));",
-        ] + array_error,
-        pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "Py_ssize_t {size_var};",
+            "{cxx_var} = SHROUD_from_PyObject_{c_type}\t({pytmp_var},\t \"{c_var}\",\t &{size_var});",
+            "if ({cxx_var} == NULL) goto fail;",
         ],
-        post_call=None,  # Object already created in post_parse
+        post_call=[
+#            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
+            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        cleanup=[
+            "Py_DECREF({pytmp_var});",
+            "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+        ],
+        fail=[
+            "Py_XDECREF({pytmp_var});",
+            "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+        ],
         goto_fail=True,
     ),
 
@@ -2880,14 +2892,16 @@ py_statements_local = dict(
             "if ({cxx_var} == NULL) goto fail;",
         ],
         post_call=[
-            "{py_var} = SHROUD_to_PyList_{cxx_type}({cxx_var}, {pointer_shape});",
+            "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == NULL) goto fail;",
+#        ],
+#        cleanup=[
             "{stdlib}free({cxx_var});",
             "{cxx_var} = NULL;",
         ],
         fail=[
             "Py_XDECREF({py_var});",
-            "if({cxx_var} != NULL) std::free({cxx_var});",
+            "if({cxx_var} != NULL)\t std::free({cxx_var});",
         ],
         goto_fail=True,
     ),

@@ -102,7 +102,5 @@ declarations:
   doxygen:
     description: |
       Increment array in place.
-  options:
-    PY_array_arg: numpy
 
   

@@ -511,7 +511,10 @@
                     "underscore_name": "cos_doubles"
                 },
                 "linenumber": 35,
-                "options": {}
+                "options": {
+                    "PY_array_arg": "numpy",
+                    "__line__": 43
+                }
             },
             {
                 "_fmtargs": {
@@ -696,7 +699,7 @@
                 "decl": "void truncate_to_int(double * in     +intent(in)  +dimension(:), int *    out    +intent(out) +allocatable(mold=in), int      sizein +implied(size(in)))",
                 "declgen": "void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 47,
+                    "__line__": 49,
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
@@ -721,8 +724,11 @@
                     "function_name": "truncate_to_int",
                     "underscore_name": "truncate_to_int"
                 },
-                "linenumber": 44,
-                "options": {}
+                "linenumber": 46,
+                "options": {
+                    "PY_array_arg": "numpy",
+                    "__line__": 54
+                }
             },
             {
                 "_fmtargs": {
@@ -848,7 +854,7 @@
                 "decl": "void increment(int * array  +intent(inout)  +dimension(:), int   sizein +implied(size(array)))",
                 "declgen": "void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 55,
+                    "__line__": 59,
                     "brief": null,
                     "description": "array with intent(INOUT)\n"
                 },
@@ -873,8 +879,11 @@
                     "function_name": "increment",
                     "underscore_name": "increment"
                 },
-                "linenumber": 53,
-                "options": {}
+                "linenumber": 57,
+                "options": {
+                    "PY_array_arg": "numpy",
+                    "__line__": 63
+                }
             },
             {
                 "_fmtargs": {
@@ -1004,7 +1013,7 @@
                 "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))",
                 "declgen": "void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 61,
+                    "__line__": 67,
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
@@ -1029,7 +1038,7 @@
                     "function_name": "get_values",
                     "underscore_name": "get_values"
                 },
-                "linenumber": 60,
+                "linenumber": 66,
                 "options": {}
             },
             {
@@ -1164,7 +1173,7 @@
                 "decl": "void get_values2(int *arg1 +intent(out)+dimension(3), int *arg2 +intent(out)+dimension(3))",
                 "declgen": "void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 71,
+                    "__line__": 77,
                     "brief": "fill values into two arrays",
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
                 },
@@ -1189,7 +1198,7 @@
                     "function_name": "get_values2",
                     "underscore_name": "get_values2"
                 },
-                "linenumber": 69,
+                "linenumber": 75,
                 "options": {}
             },
             {
@@ -1387,9 +1396,9 @@
                     "function_name": "Sum",
                     "underscore_name": "sum"
                 },
-                "linenumber": 82,
+                "linenumber": 88,
                 "options": {
-                    "__line__": 85,
+                    "__line__": 91,
                     "wrap_lua": false
                 }
             },
@@ -1468,7 +1477,7 @@
                 "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
                 "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 90,
+                    "__line__": 96,
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
@@ -1492,81 +1501,81 @@
                     "function_name": "fillIntArray",
                     "underscore_name": "fill_int_array"
                 },
-                "linenumber": 89,
+                "linenumber": 95,
                 "options": {}
             },
             {
                 "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "len",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&len)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "len",
-                            "f_var": "len",
-                            "pre_call_intent": "size(values,kind=C_INT)"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int len",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "len",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int len",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "numpy_type": "NPY_INT",
-                            "pre_call_intent": "PyArray_SIZE(SHPy_values)",
-                            "py_var": "SHPy_len",
-                            "size_var": "SHSize_len"
-                        }
-                    },
-                    "values": {
+                    "array": {
                         "fmtc": {
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_var": "values",
+                            "c_var": "array",
                             "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(values)",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(array)",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "values",
+                            "cxx_var": "array",
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "values",
-                            "f_var": "values"
+                            "c_var": "array",
+                            "f_var": "array"
                         },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
                             "c_const": "",
-                            "c_decl": "int * values",
+                            "c_decl": "int * array",
                             "c_deref": "*",
                             "c_type": "int",
-                            "c_var": "values",
+                            "c_var": "array",
                             "cxx_addr": "",
-                            "cxx_decl": "int * values",
+                            "cxx_decl": "int * array",
                             "cxx_member": "->",
                             "cxx_type": "int",
-                            "cxx_var": "values",
+                            "cxx_var": "array",
                             "numpy_type": "NPY_INT",
                             "py_type": "PyObject",
-                            "py_var": "SHPy_values",
-                            "pytmp_var": "SHTPy_values",
-                            "size_var": "SHSize_values"
+                            "py_var": "SHPy_array",
+                            "pytmp_var": "SHTPy_array",
+                            "size_var": "SHSize_array"
+                        }
+                    },
+                    "sizein": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "sizein",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "sizein",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "sizein",
+                            "f_var": "sizein",
+                            "pre_call_intent": "size(array,kind=C_INT)"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int sizein",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "sizein",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int sizein",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "sizein",
+                            "numpy_type": "NPY_INT",
+                            "pre_call_intent": "PyArray_SIZE(SHPy_array)",
+                            "py_var": "SHPy_sizein",
+                            "size_var": "SHSize_sizein"
                         }
                     }
                 },
@@ -1583,7 +1592,7 @@
                                 "value": false
                             },
                             "declarator": {
-                                "name": "values",
+                                "name": "array",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -1597,12 +1606,12 @@
                         },
                         {
                             "attrs": {
-                                "implied": "size(values)",
+                                "implied": "size(array)",
                                 "intent": "in",
                                 "value": true
                             },
                             "declarator": {
-                                "name": "len",
+                                "name": "sizein",
                                 "pointer": []
                             },
                             "specifier": [
@@ -1616,24 +1625,24 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void incrementIntArray(int *values +dimension(:)+intent(inout), int len +implied(size(values)))",
-                "declgen": "void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)",
+                "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 96,
+                    "__line__": 102,
                     "description": "Increment array in place.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "incrementIntArray(\tvalues,\t len);",
-                    "C_call_list": "values,\t len",
+                    "C_call_code": "incrementIntArray(\tarray,\t sizein);",
+                    "C_call_list": "array,\t sizein",
                     "C_name": "POI_increment_int_array",
-                    "C_prototype": "int * values,\t int len",
+                    "C_prototype": "int * array,\t int sizein",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_call": "c_increment_int_array",
                     "F_C_name": "c_increment_int_array",
-                    "F_arg_c_call": "values,\t len",
-                    "F_arguments": "values",
-                    "F_call_code": "call c_increment_int_array(values,\t len)",
+                    "F_arg_c_call": "array,\t sizein",
+                    "F_arguments": "array",
+                    "F_call_code": "call c_increment_int_array(array,\t sizein)",
                     "F_name_function": "increment_int_array",
                     "F_name_generic": "increment_int_array",
                     "F_name_impl": "increment_int_array",
@@ -1643,7 +1652,7 @@
                     "function_name": "incrementIntArray",
                     "underscore_name": "increment_int_array"
                 },
-                "linenumber": 94,
+                "linenumber": 100,
                 "options": {}
             }
         ],

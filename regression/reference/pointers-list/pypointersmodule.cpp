@@ -495,8 +495,8 @@ PY_incrementIntArray(
 {
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 // splicer begin function.increment_int_array
-    PyObject * SHTPy_array;
-    PyArrayObject * SHPy_array = NULL;
+    PyObject *SHTPy_array = NULL;
+    int * array = NULL;
     const char *SHT_kwlist[] = {
         "array",
         NULL };
@@ -506,23 +506,31 @@ PY_incrementIntArray(
         return NULL;
 
     // post_parse
-    SHPy_array = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_array, NPY_INT, NPY_ARRAY_INOUT_ARRAY));
-    if (SHPy_array == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "array must be a 1-D array of int");
-        goto fail;
-    }
+    Py_ssize_t SHSize_array;
+    array = SHROUD_from_PyObject_int(SHTPy_array, "array",
+        &SHSize_array);
+    if (array == NULL) goto fail;
     {
         // pre_call
-        int * array = static_cast<int *>(PyArray_DATA(SHPy_array));
-        int sizein = PyArray_SIZE(SHPy_array);
+        int sizein = SHSize_array;
 
         incrementIntArray(array, sizein);
+
+        // post_call
+        PyObject *SHPy_array = SHROUD_to_PyList_int(array,
+            SHSize_array);
+        if (SHPy_array == NULL) goto fail;
+
+        // cleanup
+        Py_DECREF(SHTPy_array);
+        if(array != NULL) std::free(array);
+
         return (PyObject *) SHPy_array;
     }
 
 fail:
+    Py_XDECREF(SHTPy_array);
+    if(array != NULL) std::free(array);
     return NULL;
 // splicer end function.increment_int_array
 }

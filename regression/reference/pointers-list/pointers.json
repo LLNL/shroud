@@ -1573,7 +1573,7 @@
                             "cxx_type": "int",
                             "cxx_var": "sizein",
                             "numpy_type": "NPY_INT",
-                            "pre_call_intent": "PyArray_SIZE(SHPy_array)",
+                            "pre_call_intent": "SHSize_array",
                             "py_var": "SHPy_sizein",
                             "size_var": "SHSize_sizein"
                         }
@@ -1653,10 +1653,7 @@
                     "underscore_name": "increment_int_array"
                 },
                 "linenumber": 100,
-                "options": {
-                    "PY_array_arg": "numpy",
-                    "__line__": 105
-                }
+                "options": {}
             }
         ],
         "language": "cxx",

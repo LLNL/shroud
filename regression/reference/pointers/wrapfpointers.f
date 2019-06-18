@@ -97,12 +97,12 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: out(*)
         end subroutine fill_int_array
 
-        subroutine c_increment_int_array(values, len) &
+        subroutine c_increment_int_array(array, sizein) &
                 bind(C, name="POI_increment_int_array")
             use iso_c_binding, only : C_INT
             implicit none
-            integer(C_INT), intent(INOUT) :: values(*)
-            integer(C_INT), value, intent(IN) :: len
+            integer(C_INT), intent(INOUT) :: array(*)
+            integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_increment_int_array
 
         ! splicer begin additional_interfaces
@@ -176,17 +176,17 @@ contains
         ! splicer end function.sum
     end subroutine sum
 
-    ! void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)
+    ! void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
     !>
     !! Increment array in place.
     !<
-    subroutine increment_int_array(values)
+    subroutine increment_int_array(array)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(INOUT) :: values(:)
-        integer(C_INT) :: len
-        len = size(values,kind=C_INT)
+        integer(C_INT), intent(INOUT) :: array(:)
+        integer(C_INT) :: sizein
+        sizein = size(array,kind=C_INT)
         ! splicer begin function.increment_int_array
-        call c_increment_int_array(values, len)
+        call c_increment_int_array(array, sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
 

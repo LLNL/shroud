@@ -132,14 +132,14 @@ void POI_fill_int_array(int * out)
 // splicer end function.fill_int_array
 }
 
-// void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)
+// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 /**
  * Increment array in place.
  */
-void POI_increment_int_array(int * values, int len)
+void POI_increment_int_array(int * array, int sizein)
 {
 // splicer begin function.increment_int_array
-    incrementIntArray(values, len);
+    incrementIntArray(array, sizein);
     return;
 // splicer end function.increment_int_array
 }

@@ -60,7 +60,7 @@ class Pointers(unittest.TestCase):
         self.assertEqual('int32', rv.dtype.name)
         self.assertTrue(np.equal(rv, [1, 2, 3, 4]).all())
 
-    def test_increment(self):
+    def XXXtest_increment(self):
         # the argument is return as the result because intent(INOUT)
         array = np.array([2,4,6,8], dtype=np.intc)  # int32
         out = pointers.increment(array)
@@ -99,11 +99,31 @@ class Pointers(unittest.TestCase):
         self.assertTrue(isinstance(out, list))
         self.assertEqual([1, 2, 3], out)
 
-    def test_incrementIntArray(self):
+    def XXXtest_incrementIntArray(self):
+        # the argument is return as the result because intent(INOUT)
         # np.int32 works, np.int fails 
-        values = np.array([1,2,3,4], dtype=np.int32)
-        pointers.incrementIntArray(values)
-        self.assertTrue(np.equal(values, [2,3,4,5]).all())
+#        values = np.array([1,2,3,4], dtype=np.int32)
+        values = [1,2,3,4]
+        out = pointers.incrementIntArray(values)
+        self.assertTrue(isinstance(out, list))
+        self.assertEqual([2, 3, 4, 5], out)
+
+
+    def test_incrementIntArray(self):
+        # the argument is return as the result because intent(INOUT)
+#        array = np.array([2,4,6,8], dtype=np.intc)  # int32
+        array = [2,4,6,8]
+        out = pointers.incrementIntArray(array)
+#        self.assertIs(array, out)
+        self.assertTrue(isinstance(out, list))
+        self.assertEqual([3,5,7,9], out)
+
+        # Call with incorrect argument type
+        with self.assertRaises(TypeError) as context:
+            array = 7
+            out = pointers.incrementIntArray(array)
+        self.assertTrue('array must be' in str(context.exception))
+
 
 
 # creating a new test suite

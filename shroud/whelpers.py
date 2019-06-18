@@ -430,6 +430,8 @@ def add_to_PyList_helper(arg):
         fmt -
     """
     ntypemap = arg.typemap
+
+    # Used with intent(in)
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
         fmt = dict(
@@ -443,7 +445,7 @@ static PyObject *SHROUD_to_PyList_{c_type}({c_type} *in, size_t size)
 {{+
 PyObject *out = PyList_New(size);
 for (size_t i = 0; i < size; ++i) {{+
-PyList_SET_ITEM(out, i, PyInt_FromLong(in[i]));
+PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
 return out;
 -}}""",
@@ -452,6 +454,32 @@ return out;
         )
         CHelpers[name] = helper
 
+    # Used with intent(inout)
+    name = "update_PyList_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{{+
+for (size_t i = 0; i < size; ++i) {{+
+PyObject *item = PyList_GET_ITEM(out, i);
+Py_DECREF(item);
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # used with intent(out)
     name = "from_PyObject_" + ntypemap.c_type
     if name not in CHelpers:
         fmt = dict(

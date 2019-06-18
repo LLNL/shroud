@@ -16,6 +16,7 @@
 // #######################################################################
 #include "pyClibrarymodule.h"
 #include "clibrary.h"
+#include <stdlib.h>
 
 // splicer begin include
 // splicer end include
@@ -34,7 +35,7 @@
 #endif
 
 /* Convert obj into an array of type int */
-static int * SHROUD_from_PyObject_int(PyObject *obj, char *name,
+static int * SHROUD_from_PyObject_int(PyObject *obj, const char *name,
     Py_ssize_t *lenout)
 {
     char msg[100];

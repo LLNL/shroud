@@ -463,33 +463,33 @@ PY_incrementIntArray(
   PyObject *args,
   PyObject *kwds)
 {
-// void incrementIntArray(int * values +dimension(:)+intent(inout), int len +implied(size(values))+intent(in)+value)
+// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 // splicer begin function.increment_int_array
-    PyObject * SHTPy_values;
-    PyArrayObject * SHPy_values = NULL;
+    PyObject * SHTPy_array;
+    PyArrayObject * SHPy_array = NULL;
     const char *SHT_kwlist[] = {
-        "values",
+        "array",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:incrementIntArray",
-        const_cast<char **>(SHT_kwlist), &SHTPy_values))
+        const_cast<char **>(SHT_kwlist), &SHTPy_array))
         return NULL;
 
     // post_parse
-    SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_values, NPY_INT, NPY_ARRAY_INOUT_ARRAY));
-    if (SHPy_values == NULL) {
+    SHPy_array = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
+        SHTPy_array, NPY_INT, NPY_ARRAY_INOUT_ARRAY));
+    if (SHPy_array == NULL) {
         PyErr_SetString(PyExc_ValueError,
-            "values must be a 1-D array of int");
+            "array must be a 1-D array of int");
         goto fail;
     }
     {
         // pre_call
-        int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
-        int len = PyArray_SIZE(SHPy_values);
+        int * array = static_cast<int *>(PyArray_DATA(SHPy_array));
+        int sizein = PyArray_SIZE(SHPy_array);
 
-        incrementIntArray(values, len);
-        return (PyObject *) SHPy_values;
+        incrementIntArray(array, sizein);
+        return (PyObject *) SHPy_array;
     }
 
 fail:
