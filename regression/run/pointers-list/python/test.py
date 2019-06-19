@@ -87,7 +87,6 @@ class Pointers(unittest.TestCase):
 
     def test_incrementIntArray(self):
         # the argument is returned as the result because intent(INOUT)
-#        array = np.array([2,4,6,8], dtype=np.intc)  # int32
         array = [2,4,6,8]
         out = pointers.incrementIntArray(array)
 #        self.assertIs(array, out)
@@ -104,6 +103,18 @@ class Pointers(unittest.TestCase):
             array = [ 1, "two", 3 ]
             out = pointers.incrementIntArray(array)
         self.assertTrue('must be int' in str(context.exception))
+
+        # test with another iteratable
+        array = np.array([2,4,6,8], dtype=np.intc)  # int32
+        out = pointers.incrementIntArray(array)
+#        self.assertIs(array, out)
+        self.assertTrue(isinstance(out, list))
+        self.assertEqual([3,5,7,9], out)
+
+        out = pointers.incrementIntArray((2,4,6,8))
+#        self.assertIs(array, out)
+        self.assertTrue(isinstance(out, list))
+        self.assertEqual([3,5,7,9], out)
 
 
 # creating a new test suite
