@@ -328,8 +328,8 @@ if __name__ == "__main__":
         TestDesc("pointers-list", yaml="pointers",
                  cmdline=[
                      "--option", "PY_array_arg=list",
-#                     "--option", "wrap_fortran=false",
-#                     "--option", "wrap_c=false",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
                  ]),
         TestDesc("vectors"),
         TestDesc("forward"),

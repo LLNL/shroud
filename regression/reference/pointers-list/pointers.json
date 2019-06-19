@@ -42,8 +42,6 @@
             "C_string_result_as_arg": "SHF_rv",
             "C_this": "self",
             "F_C_prefix": "c_",
-            "F_C_pure_clause": "",
-            "F_C_result_clause": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
             "F_capsule_final_function": "SHROUD_capsule_final",
@@ -58,10 +56,8 @@
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
             "F_pointer": "SHT_ptr",
-            "F_pure_clause": "",
             "F_result": "SHT_rv",
             "F_result_capsule": "SHT_crv",
-            "F_result_clause": "",
             "F_result_ptr": "SHT_prv",
             "F_string_result_as_arg": "",
             "F_this": "obj",
@@ -110,22 +106,6 @@
             {
                 "_fmtargs": {
                     "argin": {
-                        "fmtc": {
-                            "c_const": "const ",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "argin",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>\t(const_cast<int *>\t(&argin))",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "argin",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "argin",
-                            "f_var": "argin"
-                        },
                         "fmtpy": {
                             "c_const": "const ",
                             "c_decl": "int argin",
@@ -143,22 +123,6 @@
                         }
                     },
                     "arginout": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arginout",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(arginout)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "arginout",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arginout",
-                            "f_var": "arginout"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -178,22 +142,6 @@
                         }
                     },
                     "argout": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "argout",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(argout)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "argout",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "argout",
-                            "f_var": "argout"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -279,23 +227,7 @@
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
                 "declgen": "void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "intargs(\targin,\t arginout,\t argout);",
-                    "C_call_list": "argin,\t arginout,\t argout",
-                    "C_name": "POI_intargs",
-                    "C_prototype": "const int argin,\t int * arginout,\t int * argout",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_intargs",
-                    "F_C_name": "intargs",
-                    "F_arg_c_call": "argin,\t arginout,\t argout",
-                    "F_arguments": "argin,\t arginout,\t argout",
-                    "F_call_code": "call c_intargs(argin,\t arginout,\t argout)",
-                    "F_name_function": "intargs",
-                    "F_name_generic": "intargs",
-                    "F_name_impl": "intargs",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_intargs",
-                    "c_const": "",
                     "function_name": "intargs",
                     "underscore_name": "intargs"
                 },
@@ -305,22 +237,6 @@
             {
                 "_fmtargs": {
                     "in": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "in",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(in)",
-                            "cxx_member": "->",
-                            "cxx_type": "double",
-                            "cxx_var": "in",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "in",
-                            "f_var": "in"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "double * in",
@@ -340,23 +256,6 @@
                         }
                     },
                     "out": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "out",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(out)",
-                            "cxx_member": "->",
-                            "cxx_type": "double",
-                            "cxx_var": "out",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "out",
-                            "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -382,23 +281,6 @@
                         }
                     },
                     "sizein": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "sizein",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "sizein",
-                            "f_var": "sizein",
-                            "pre_call_intent": "size(in,kind=C_INT)"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "int sizein",
@@ -490,23 +372,7 @@
                     "description": "allocate OUT same type as IN implied size of array"
                 },
                 "fmtdict": {
-                    "C_call_code": "cos_doubles(\tin,\t out,\t sizein);",
-                    "C_call_list": "in,\t out,\t sizein",
-                    "C_name": "POI_cos_doubles",
-                    "C_prototype": "double * in,\t double * out,\t int sizein",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_cos_doubles",
-                    "F_C_name": "c_cos_doubles",
-                    "F_arg_c_call": "in,\t out,\t sizein",
-                    "F_arguments": "in,\t out",
-                    "F_call_code": "call c_cos_doubles(in,\t out,\t sizein)",
-                    "F_name_function": "cos_doubles",
-                    "F_name_generic": "cos_doubles",
-                    "F_name_impl": "cos_doubles",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_cos_doubles",
-                    "c_const": "",
                     "function_name": "cos_doubles",
                     "underscore_name": "cos_doubles"
                 },
@@ -516,22 +382,6 @@
             {
                 "_fmtargs": {
                     "in": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "in",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(in)",
-                            "cxx_member": "->",
-                            "cxx_type": "double",
-                            "cxx_var": "in",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "in",
-                            "f_var": "in"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "double * in",
@@ -551,23 +401,6 @@
                         }
                     },
                     "out": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "out",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(out)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "out",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "out",
-                            "f_var": "out",
-                            "mold": "lbound(in,1):ubound(in,1)"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -593,23 +426,6 @@
                         }
                     },
                     "sizein": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "sizein",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "sizein",
-                            "f_var": "sizein",
-                            "pre_call_intent": "size(in,kind=C_INT)"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "int sizein",
@@ -701,23 +517,7 @@
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "truncate_to_int(\tin,\t out,\t sizein);",
-                    "C_call_list": "in,\t out,\t sizein",
-                    "C_name": "POI_truncate_to_int",
-                    "C_prototype": "double * in,\t int * out,\t int sizein",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_truncate_to_int",
-                    "F_C_name": "c_truncate_to_int",
-                    "F_arg_c_call": "in,\t out,\t sizein",
-                    "F_arguments": "in,\t out",
-                    "F_call_code": "call c_truncate_to_int(in,\t out,\t sizein)",
-                    "F_name_function": "truncate_to_int",
-                    "F_name_generic": "truncate_to_int",
-                    "F_name_impl": "truncate_to_int",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_truncate_to_int",
-                    "c_const": "",
                     "function_name": "truncate_to_int",
                     "underscore_name": "truncate_to_int"
                 },
@@ -727,22 +527,6 @@
             {
                 "_fmtargs": {
                     "nvalues": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "nvalues",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(nvalues)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "nvalues",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "nvalues",
-                            "f_var": "nvalues"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -762,22 +546,6 @@
                         }
                     },
                     "values": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "values",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(values)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "values",
-                            "f_var": "values"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -857,23 +625,7 @@
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "get_values(\tnvalues,\t values);",
-                    "C_call_list": "nvalues,\t values",
-                    "C_name": "POI_get_values",
-                    "C_prototype": "int * nvalues,\t int * values",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_get_values",
-                    "F_C_name": "get_values",
-                    "F_arg_c_call": "nvalues,\t values",
-                    "F_arguments": "nvalues,\t values",
-                    "F_call_code": "call c_get_values(nvalues,\t values)",
-                    "F_name_function": "get_values",
-                    "F_name_generic": "get_values",
-                    "F_name_impl": "get_values",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_get_values",
-                    "c_const": "",
                     "function_name": "get_values",
                     "underscore_name": "get_values"
                 },
@@ -883,22 +635,6 @@
             {
                 "_fmtargs": {
                     "arg1": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg1",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg1)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "arg1",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arg1",
-                            "f_var": "arg1"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -921,22 +657,6 @@
                         }
                     },
                     "arg2": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg2",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(arg2)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "arg2",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arg2",
-                            "f_var": "arg2"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -1017,23 +737,7 @@
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "get_values2(\targ1,\t arg2);",
-                    "C_call_list": "arg1,\t arg2",
-                    "C_name": "POI_get_values2",
-                    "C_prototype": "int * arg1,\t int * arg2",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_get_values2",
-                    "F_C_name": "get_values2",
-                    "F_arg_c_call": "arg1,\t arg2",
-                    "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "call c_get_values2(arg1,\t arg2)",
-                    "F_name_function": "get_values2",
-                    "F_name_generic": "get_values2",
-                    "F_name_impl": "get_values2",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_get_values2",
-                    "c_const": "",
                     "function_name": "get_values2",
                     "underscore_name": "get_values2"
                 },
@@ -1043,23 +747,6 @@
             {
                 "_fmtargs": {
                     "len": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "len",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&len)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "len",
-                            "f_var": "len",
-                            "pre_call_intent": "size(values,kind=C_INT)"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "int len",
@@ -1078,22 +765,6 @@
                         }
                     },
                     "result": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "result",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(result)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "result",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "result",
-                            "f_var": "result"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -1113,22 +784,6 @@
                         }
                     },
                     "values": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "values",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(values)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "values",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "values",
-                            "f_var": "values"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "int * values",
@@ -1215,23 +870,7 @@
                 "decl": "void Sum(int len +implied(size(values)), int *values +dimension(:)+intent(in), int *result +intent(out))",
                 "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))",
                 "fmtdict": {
-                    "C_call_code": "Sum(\tlen,\t values,\t result);",
-                    "C_call_list": "len,\t values,\t result",
-                    "C_name": "POI_sum",
-                    "C_prototype": "int len,\t int * values,\t int * result",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_sum",
-                    "F_C_name": "c_sum",
-                    "F_arg_c_call": "len,\t values,\t result",
-                    "F_arguments": "values,\t result",
-                    "F_call_code": "call c_sum(len,\t values,\t result)",
-                    "F_name_function": "sum",
-                    "F_name_generic": "sum",
-                    "F_name_impl": "sum",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_Sum",
-                    "c_const": "",
                     "function_name": "Sum",
                     "underscore_name": "sum"
                 },
@@ -1244,22 +883,6 @@
             {
                 "_fmtargs": {
                     "out": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "out",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(out)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "out",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "out",
-                            "f_var": "out"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -1320,23 +943,7 @@
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "fillIntArray(\tout);",
-                    "C_call_list": "out",
-                    "C_name": "POI_fill_int_array",
-                    "C_prototype": "int * out",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_fill_int_array",
-                    "F_C_name": "fill_int_array",
-                    "F_arg_c_call": "out",
-                    "F_arguments": "out",
-                    "F_call_code": "call c_fill_int_array(out)",
-                    "F_name_function": "fill_int_array",
-                    "F_name_generic": "fill_int_array",
-                    "F_name_impl": "fill_int_array",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_fillIntArray",
-                    "c_const": "",
                     "function_name": "fillIntArray",
                     "underscore_name": "fill_int_array"
                 },
@@ -1346,22 +953,6 @@
             {
                 "_fmtargs": {
                     "array": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "array",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(array)",
-                            "cxx_member": "->",
-                            "cxx_type": "int",
-                            "cxx_var": "array",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "array",
-                            "f_var": "array"
-                        },
                         "fmtpy": {
                             "PyObject": "PyObject",
                             "PyTypeObject": null,
@@ -1383,23 +974,6 @@
                         }
                     },
                     "sizein": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "sizein",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&sizein)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "sizein",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "sizein",
-                            "f_var": "sizein",
-                            "pre_call_intent": "size(array,kind=C_INT)"
-                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_decl": "int sizein",
@@ -1471,23 +1045,7 @@
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "fmtdict": {
-                    "C_call_code": "incrementIntArray(\tarray,\t sizein);",
-                    "C_call_list": "array,\t sizein",
-                    "C_name": "POI_increment_int_array",
-                    "C_prototype": "int * array,\t int sizein",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_increment_int_array",
-                    "F_C_name": "c_increment_int_array",
-                    "F_arg_c_call": "array,\t sizein",
-                    "F_arguments": "array",
-                    "F_call_code": "call c_increment_int_array(array,\t sizein)",
-                    "F_name_function": "increment_int_array",
-                    "F_name_generic": "increment_int_array",
-                    "F_name_impl": "increment_int_array",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_incrementIntArray",
-                    "c_const": "",
                     "function_name": "incrementIntArray",
                     "underscore_name": "increment_int_array"
                 },
@@ -1568,8 +1126,8 @@
             "doxygen": true,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
-            "wrap_c": true,
-            "wrap_fortran": true,
+            "wrap_c": false,
+            "wrap_fortran": false,
             "wrap_lua": false,
             "wrap_python": true
         }
