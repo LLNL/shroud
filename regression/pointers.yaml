@@ -40,8 +40,6 @@ declarations:
     description:
       allocate OUT same type as IN
       implied size of array
-#  options:
-#    PY_array_arg: numpy
 
 - decl: void truncate_to_int(double * in     +intent(in)  +dimension(:),
                              int *    out    +intent(out) +allocatable(mold=in),
@@ -51,8 +49,6 @@ declarations:
     description: |
       allocate OUT different type as IN
       implied size of array
-#  options:
-#    PY_array_arg: numpy
 
 - decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
   doxygen:
