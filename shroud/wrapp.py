@@ -2792,8 +2792,9 @@ py_statements_local = dict(
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
-            "{cxx_var} = SHROUD_from_PyObject_{c_type}\t({pytmp_var},\t \"{c_var}\",\t &{size_var});",
-            "if ({cxx_var} == NULL) goto fail;",
+            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "+goto fail;-",
         ],
         cleanup=[
             "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
@@ -2863,8 +2864,9 @@ py_statements_local = dict(
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
-            "{cxx_var} = SHROUD_from_PyObject_{c_type}\t({pytmp_var},\t \"{c_var}\",\t &{size_var});",
-            "if ({cxx_var} == NULL) goto fail;",
+            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "+goto fail;-",
         ],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",

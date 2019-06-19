@@ -34,30 +34,31 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-/* Convert obj into an array of type int */
-static int * SHROUD_from_PyObject_int(PyObject *obj, const char *name,
-    Py_ssize_t *lenout)
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
+    int **pin, Py_ssize_t *psize)
 {
     char msg[100];
     snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
     PyObject *seq = PySequence_Fast(obj, msg);
-    if (seq == NULL) return NULL;
-    Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
-    int *in = malloc(len * sizeof(int));
-    for (Py_ssize_t i = 0; i < len; i++) {
+    if (seq == NULL) return -1;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = malloc(size * sizeof(int));
+    for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             free(in);
-            in = NULL;
+            Py_DECREF(seq);
             // Fill in error message
-            goto done;
+            return -1;
         }
     }
-done:
     Py_DECREF(seq);
-    *lenout = len;
-    return in;
+    *pin = in;
+    *psize = size;
+    return 0;
 }
 
 static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
@@ -148,9 +149,9 @@ PY_Sum(
 
     // post_parse
     Py_ssize_t SHSize_values;
-    values = SHROUD_from_PyObject_int(SHTPy_values, "values",
-        &SHSize_values);
-    if (values == NULL) goto fail;
+    if (SHROUD_from_PyObject_int(SHTPy_values, "values", &values, 
+        &SHSize_values) == -1)
+        goto fail;
 
     // pre_call
     int result;  // intent(out)

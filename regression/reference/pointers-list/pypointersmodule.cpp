@@ -34,57 +34,59 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-/* Convert obj into an array of type double */
-static double * SHROUD_from_PyObject_double(PyObject *obj,
-    const char *name, Py_ssize_t *lenout)
+// Convert obj into an array of type double
+// Return -1 on error.
+static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
+    double **pin, Py_ssize_t *psize)
 {
     char msg[100];
     snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
     PyObject *seq = PySequence_Fast(obj, msg);
-    if (seq == NULL) return NULL;
-    Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
+    if (seq == NULL) return -1;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     double *in = static_cast<double *>
-        (std::malloc(len * sizeof(double)));
-    for (Py_ssize_t i = 0; i < len; i++) {
+        (std::malloc(size * sizeof(double)));
+    for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             std::free(in);
-            in = NULL;
+            Py_DECREF(seq);
             // Fill in error message
-            goto done;
+            return -1;
         }
     }
-done:
     Py_DECREF(seq);
-    *lenout = len;
-    return in;
+    *pin = in;
+    *psize = size;
+    return 0;
 }
 
-/* Convert obj into an array of type int */
-static int * SHROUD_from_PyObject_int(PyObject *obj, const char *name,
-    Py_ssize_t *lenout)
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
+    int **pin, Py_ssize_t *psize)
 {
     char msg[100];
     snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
     PyObject *seq = PySequence_Fast(obj, msg);
-    if (seq == NULL) return NULL;
-    Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
-    int *in = static_cast<int *>(std::malloc(len * sizeof(int)));
-    for (Py_ssize_t i = 0; i < len; i++) {
+    if (seq == NULL) return -1;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
-            in = NULL;
+            Py_DECREF(seq);
             // Fill in error message
-            goto done;
+            return -1;
         }
     }
-done:
     Py_DECREF(seq);
-    *lenout = len;
-    return in;
+    *pin = in;
+    *psize = size;
+    return 0;
 }
 
 static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
@@ -176,8 +178,9 @@ PY_cos_doubles(
 
     // post_parse
     Py_ssize_t SHSize_in;
-    in = SHROUD_from_PyObject_double(SHTPy_in, "in", &SHSize_in);
-    if (in == NULL) goto fail;
+    if (SHROUD_from_PyObject_double(SHTPy_in, "in", &in, 
+        &SHSize_in) == -1)
+        goto fail;
     {
         // pre_call
         out = static_cast<double *>
@@ -235,8 +238,9 @@ PY_truncate_to_int(
 
     // post_parse
     Py_ssize_t SHSize_in;
-    in = SHROUD_from_PyObject_double(SHTPy_in, "in", &SHSize_in);
-    if (in == NULL) goto fail;
+    if (SHROUD_from_PyObject_double(SHTPy_in, "in", &in, 
+        &SHSize_in) == -1)
+        goto fail;
     {
         // pre_call
         out = static_cast<int *>(std::malloc(sizeof(int) * SHSize_in));
@@ -393,9 +397,9 @@ PY_Sum(
 
     // post_parse
     Py_ssize_t SHSize_values;
-    values = SHROUD_from_PyObject_int(SHTPy_values, "values",
-        &SHSize_values);
-    if (values == NULL) goto fail;
+    if (SHROUD_from_PyObject_int(SHTPy_values, "values", &values, 
+        &SHSize_values) == -1)
+        goto fail;
     {
         // pre_call
         int result;  // intent(out)
@@ -488,9 +492,9 @@ PY_incrementIntArray(
 
     // post_parse
     Py_ssize_t SHSize_array;
-    array = SHROUD_from_PyObject_int(SHTPy_array, "array",
-        &SHSize_array);
-    if (array == NULL) goto fail;
+    if (SHROUD_from_PyObject_int(SHTPy_array, "array", &array, 
+        &SHSize_array) == -1)
+        goto fail;
     {
         // pre_call
         int sizein = SHSize_array;

@@ -431,7 +431,7 @@ def add_to_PyList_helper(arg):
     """
     ntypemap = arg.typemap
 
-    # Used with intent(in)
+    # Used with intent(out)
     name = "to_PyList_" + ntypemap.c_type
     if name not in CHelpers:
         fmt = dict(
@@ -479,7 +479,9 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         )
         CHelpers[name] = helper
 
-    # used with intent(out)
+    # used with intent(in)
+    # Return -1 on error.
+    # Convert an empty list into a NULL pointer.
     name = "from_PyObject_" + ntypemap.c_type
     if name not in CHelpers:
         fmt = dict(
@@ -490,58 +492,60 @@ PyList_SET_ITEM(out, i, {Py_ctor});
             c_header="<stdlib.h>",  # malloc/free
             c_source=wformat(
                 """
-/* Convert obj into an array of type {c_type} */
-static {c_type} * SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t Py_ssize_t *lenout)
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
 {{+
 char msg[100];
 snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
 PyObject *seq = PySequence_Fast(obj, msg);
-if (seq == NULL) return NULL;
-Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = malloc(len * sizeof({c_type}));
-for (Py_ssize_t i = 0; i < len; i++) {{+
+if (seq == NULL) return -1;
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = malloc(size * sizeof({c_type}));
+for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
 in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 free(in);
-in = NULL;
-// Fill in error message
-goto done;
--}}
--}}
-^done:
 Py_DECREF(seq);
-*lenout = len;
-return in;
+// Fill in error message
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
 -}}""",
                 fmt,
             ),
             cxx_header="<cstdlib>",  # malloc/free
             cxx_source=wformat(
                 """
-/* Convert obj into an array of type {c_type} */
-static {c_type} * SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t Py_ssize_t *lenout)
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
 {{+
 char msg[100];
 snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
 PyObject *seq = PySequence_Fast(obj, msg);
-if (seq == NULL) return NULL;
-Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = static_cast<{c_type} *>\t(std::malloc(len * sizeof({c_type})));
-for (Py_ssize_t i = 0; i < len; i++) {{+
+if (seq == NULL) return -1;
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = static_cast<{c_type} *>\t(std::malloc(size * sizeof({c_type})));
+for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
 in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 std::free(in);
-in = NULL;
-// Fill in error message
-goto done;
--}}
--}}
-^done:
 Py_DECREF(seq);
-*lenout = len;
-return in;
+// Fill in error message
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
 -}}""",
                 fmt,
             ),
