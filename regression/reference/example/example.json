@@ -9028,7 +9028,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_type": "PyObject",
                             "py_var": "SHPy_out",
-                            "size_var": "SHSize_out"
+                            "size_var": "SHSize_in"
                         }
                     },
                     "sizein": {

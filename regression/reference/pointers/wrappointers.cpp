@@ -71,7 +71,7 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
  *
  * The function knows how long the array must be.
  * Fortran will treat the dimension as assumed-length.
- * The Python wrapper will create a NumPy array so it must
+ * The Python wrapper will create a NumPy array or list so it must
  * have an explicit dimension (not assumed-length).
  */
 void POI_get_values(int * nvalues, int * values)

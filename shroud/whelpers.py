@@ -494,7 +494,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
 static {c_type} * SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t Py_ssize_t *lenout)
 {{+
 char msg[100];
-snprintf(msg, sizeof(msg), "%s must be iterable", name);
+snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
 PyObject *seq = PySequence_Fast(obj, msg);
 if (seq == NULL) return NULL;
 Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
@@ -523,7 +523,7 @@ return in;
 static {c_type} * SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t Py_ssize_t *lenout)
 {{+
 char msg[100];
-snprintf(msg, sizeof(msg), "%s must be iterable", name);
+snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
 PyObject *seq = PySequence_Fast(obj, msg);
 if (seq == NULL) return NULL;
 Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);

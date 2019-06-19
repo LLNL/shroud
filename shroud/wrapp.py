@@ -635,7 +635,8 @@ return 1;""",
         fmt_arg.py_type = "PyObject"
 
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        index = "intent_out_{}_allocatable_numpy".format(self.language)
+        index = "intent_out_{}_allocatable_{}".format(
+            self.language, node.options.PY_array_arg)
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
@@ -2575,6 +2576,7 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
         fmt = fmtargs[moldvar]["fmtpy"]
         # copy from the numpy array for the argument
         prototype = fmt.py_var
+        fmt_arg.size_var = fmt.size_var
 
         # Create Descr if types are different
         if arg.typemap.name != moldarg.typemap.name:
@@ -2743,6 +2745,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
+########################################
 ## allocatable
     intent_out_c_allocatable_numpy=dict(
         need_numpy=True,
@@ -2791,13 +2794,11 @@ py_statements_local = dict(
             "Py_ssize_t {size_var};",
             "{cxx_var} = SHROUD_from_PyObject_{c_type}\t({pytmp_var},\t \"{c_var}\",\t &{size_var});",
             "if ({cxx_var} == NULL) goto fail;",
-            "Py_DECREF({pytmp_var});",
         ],
         cleanup=[
             "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
         ],
         fail=[
-            "Py_XDECREF({pytmp_var});",
             "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
@@ -2871,11 +2872,9 @@ py_statements_local = dict(
             "if ({py_var} == NULL) goto fail;",
         ],
         cleanup=[
-            "Py_DECREF({pytmp_var});",
             "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         fail=[
-            "Py_XDECREF({pytmp_var});",
             "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
@@ -2928,17 +2927,24 @@ py_statements_local = dict(
 # language=c++
 # use C++ casts
     intent_out_cxx_allocatable_list=dict(
-        decl=["PyArrayObject * {py_var} = NULL;"],
+        c_helper="to_PyList_{cxx_type}",
+        c_header="<stdlib.h>",  # malloc/free
+        decl=[
+            "{cxx_decl} = NULL;",
+        ],
         pre_call=[
-            "{npy_descr_code}"
-            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_NewLikeArray"
-            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}));",
-            "if ({py_var} == NULL)",
-            "+goto fail;-",
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
             ],
-        post_call=None,  # Object already created in pre_call
-        fail=["Py_XDECREF({py_var});"],
+        post_call=[
+            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        cleanup=[
+            "if ({cxx_var} != NULL)\t std::free({cxx_var});",
+        ],
+        fail=[
+            "if ({cxx_var} != NULL)\t std::free({cxx_var});",
+        ],
         goto_fail=True,
     ),
 

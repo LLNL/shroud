@@ -39,7 +39,7 @@ static int * SHROUD_from_PyObject_int(PyObject *obj, const char *name,
     Py_ssize_t *lenout)
 {
     char msg[100];
-    snprintf(msg, sizeof(msg), "%s must be iterable", name);
+    snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
     PyObject *seq = PySequence_Fast(obj, msg);
     if (seq == NULL) return NULL;
     Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
@@ -151,7 +151,6 @@ PY_Sum(
     values = SHROUD_from_PyObject_int(SHTPy_values, "values",
         &SHSize_values);
     if (values == NULL) goto fail;
-    Py_DECREF(SHTPy_values);
 
     // pre_call
     int result;  // intent(out)
@@ -168,7 +167,6 @@ PY_Sum(
     return (PyObject *) SHPy_result;
 
 fail:
-    Py_XDECREF(SHTPy_values);
     if(values != NULL) free(values);
     return NULL;
 // splicer end function.sum

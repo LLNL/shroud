@@ -15,8 +15,6 @@
 //
 // #######################################################################
 #include "pypointersmodule.hpp"
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include "numpy/arrayobject.h"
 #include "pointers.hpp"
 #include <cstdlib>
 
@@ -36,12 +34,39 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
+/* Convert obj into an array of type double */
+static double * SHROUD_from_PyObject_double(PyObject *obj,
+    const char *name, Py_ssize_t *lenout)
+{
+    char msg[100];
+    snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
+    PyObject *seq = PySequence_Fast(obj, msg);
+    if (seq == NULL) return NULL;
+    Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
+    double *in = static_cast<double *>
+        (std::malloc(len * sizeof(double)));
+    for (Py_ssize_t i = 0; i < len; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            in = NULL;
+            // Fill in error message
+            goto done;
+        }
+    }
+done:
+    Py_DECREF(seq);
+    *lenout = len;
+    return in;
+}
+
 /* Convert obj into an array of type int */
 static int * SHROUD_from_PyObject_int(PyObject *obj, const char *name,
     Py_ssize_t *lenout)
 {
     char msg[100];
-    snprintf(msg, sizeof(msg), "%s must be iterable", name);
+    snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
     PyObject *seq = PySequence_Fast(obj, msg);
     if (seq == NULL) return NULL;
     Py_ssize_t len = PySequence_Fast_GET_SIZE(seq);
@@ -60,6 +85,15 @@ done:
     Py_DECREF(seq);
     *lenout = len;
     return in;
+}
+
+static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
 }
 
 static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
@@ -129,9 +163,9 @@ PY_cos_doubles(
 {
 // void cos_doubles(double * in +dimension(:)+intent(in), double * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.cos_doubles
-    PyObject * SHTPy_in;
-    PyArrayObject * SHPy_in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    PyObject *SHTPy_in = NULL;
+    double * in = NULL;
+    double * out = NULL;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -141,34 +175,31 @@ PY_cos_doubles(
         return NULL;
 
     // post_parse
-    SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_in == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "in must be a 1-D array of double");
-        goto fail;
-    }
+    Py_ssize_t SHSize_in;
+    in = SHROUD_from_PyObject_double(SHTPy_in, "in", &SHSize_in);
+    if (in == NULL) goto fail;
     {
         // pre_call
-        double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        SHPy_out = reinterpret_cast<PyArrayObject *>
-            (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0));
-        if (SHPy_out == NULL)
-            goto fail;
-        double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
-        int sizein = PyArray_SIZE(SHPy_in);
+        out = static_cast<double *>
+            (std::malloc(sizeof(double) * SHSize_in));
+        int sizein = SHSize_in;
 
         cos_doubles(in, out, sizein);
 
+        // post_call
+        PyObject *SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
+        if (SHPy_out == NULL) goto fail;
+
         // cleanup
-        Py_DECREF(SHPy_in);
+        if(in != NULL) std::free(in);
+        if (out != NULL) std::free(out);
 
         return (PyObject *) SHPy_out;
     }
 
 fail:
-    Py_XDECREF(SHPy_in);
-    Py_XDECREF(SHPy_out);
+    if(in != NULL) std::free(in);
+    if (out != NULL) std::free(out);
     return NULL;
 // splicer end function.cos_doubles
 }
@@ -191,9 +222,9 @@ PY_truncate_to_int(
 {
 // void truncate_to_int(double * in +dimension(:)+intent(in), int * out +allocatable(mold=in)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 // splicer begin function.truncate_to_int
-    PyObject * SHTPy_in;
-    PyArrayObject * SHPy_in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    PyObject *SHTPy_in = NULL;
+    double * in = NULL;
+    int * out = NULL;
     const char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -203,35 +234,30 @@ PY_truncate_to_int(
         return NULL;
 
     // post_parse
-    SHPy_in = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_in, NPY_DOUBLE, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_in == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "in must be a 1-D array of double");
-        goto fail;
-    }
+    Py_ssize_t SHSize_in;
+    in = SHROUD_from_PyObject_double(SHTPy_in, "in", &SHSize_in);
+    if (in == NULL) goto fail;
     {
         // pre_call
-        double * in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
-        SHPy_out = reinterpret_cast<PyArrayObject *>
-            (PyArray_NewLikeArray(SHPy_in, NPY_CORDER, SHDPy_out, 0));
-        if (SHPy_out == NULL)
-            goto fail;
-        int * out = static_cast<int *>(PyArray_DATA(SHPy_out));
-        int sizein = PyArray_SIZE(SHPy_in);
+        out = static_cast<int *>(std::malloc(sizeof(int) * SHSize_in));
+        int sizein = SHSize_in;
 
         truncate_to_int(in, out, sizein);
 
+        // post_call
+        PyObject *SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
+        if (SHPy_out == NULL) goto fail;
+
         // cleanup
-        Py_DECREF(SHPy_in);
+        if(in != NULL) std::free(in);
+        if (out != NULL) std::free(out);
 
         return (PyObject *) SHPy_out;
     }
 
 fail:
-    Py_XDECREF(SHPy_in);
-    Py_XDECREF(SHPy_out);
+    if(in != NULL) std::free(in);
+    if (out != NULL) std::free(out);
     return NULL;
 // splicer end function.truncate_to_int
 }
@@ -245,7 +271,7 @@ static char PY_get_values__doc__[] =
  *
  * The function knows how long the array must be.
  * Fortran will treat the dimension as assumed-length.
- * The Python wrapper will create a NumPy array so it must
+ * The Python wrapper will create a NumPy array or list so it must
  * have an explicit dimension (not assumed-length).
  */
 static PyObject *
@@ -370,7 +396,6 @@ PY_Sum(
     values = SHROUD_from_PyObject_int(SHTPy_values, "values",
         &SHSize_values);
     if (values == NULL) goto fail;
-    Py_DECREF(SHTPy_values);
     {
         // pre_call
         int result;  // intent(out)
@@ -388,7 +413,6 @@ PY_Sum(
     }
 
 fail:
-    Py_XDECREF(SHTPy_values);
     if(values != NULL) std::free(values);
     return NULL;
 // splicer end function.sum
@@ -479,14 +503,12 @@ PY_incrementIntArray(
         if (SHPy_array == NULL) goto fail;
 
         // cleanup
-        Py_DECREF(SHTPy_array);
         if(array != NULL) std::free(array);
 
         return (PyObject *) SHPy_array;
     }
 
 fail:
-    Py_XDECREF(SHTPy_array);
     if(array != NULL) std::free(array);
     return NULL;
 // splicer end function.increment_int_array
@@ -585,7 +607,6 @@ initpointers(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    import_array();
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

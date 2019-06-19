@@ -42,10 +42,10 @@ class Pointers(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testintargs(self):
+    def test_intargs(self):
         self.assertEqual((1, 2), pointers.intargs(1, 2))
 
-    def testcos_doubles(self):
+    def test_cos_doubles(self):
         # x = np.arange(0, 2 * np.pi, 0.1)
         inarray = [ 0.0, 0.5*np.pi, np.pi, 1.5*np.pi, 2.0*np.pi ]
         outarray = [ math.cos(v) for v in inarray]
@@ -54,7 +54,7 @@ class Pointers(unittest.TestCase):
         self.assertEqual('float64', rv.dtype.name)
         self.assertTrue(np.allclose(rv, outarray))
 
-    def test_truncate(self):
+    def test_truncate_to_int(self):
         rv = pointers.truncate_to_int([1.2, 2.3, 3.4, 4.5])
         self.assertTrue(isinstance(rv, np.ndarray))
         self.assertEqual('int32', rv.dtype.name)

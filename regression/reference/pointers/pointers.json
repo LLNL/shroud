@@ -378,7 +378,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_type": "PyObject",
                             "py_var": "SHPy_out",
-                            "size_var": "SHSize_out"
+                            "size_var": "SHSize_in"
                         }
                     },
                     "sizein": {
@@ -511,10 +511,7 @@
                     "underscore_name": "cos_doubles"
                 },
                 "linenumber": 35,
-                "options": {
-                    "PY_array_arg": "numpy",
-                    "__line__": 43
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -592,7 +589,7 @@
                             "numpy_type": "NPY_INT",
                             "py_type": "PyObject",
                             "py_var": "SHPy_out",
-                            "size_var": "SHSize_out"
+                            "size_var": "SHSize_in"
                         }
                     },
                     "sizein": {
@@ -725,10 +722,7 @@
                     "underscore_name": "truncate_to_int"
                 },
                 "linenumber": 46,
-                "options": {
-                    "PY_array_arg": "numpy",
-                    "__line__": 54
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -860,7 +854,7 @@
                 "doxygen": {
                     "__line__": 58,
                     "brief": "fill values into array",
-                    "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array so it must\nhave an explicit dimension (not assumed-length).\n"
+                    "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
                 },
                 "fmtdict": {
                     "C_call_code": "get_values(\tnvalues,\t values);",

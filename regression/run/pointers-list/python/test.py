@@ -42,29 +42,29 @@ class Pointers(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testintargs(self):
+    def test_intargs(self):
         self.assertEqual((1, 2), pointers.intargs(1, 2))
 
-    def testcos_doubles(self):
+    def test_cos_doubles(self):
         # x = np.arange(0, 2 * np.pi, 0.1)
         inarray = [ 0.0, 0.5*np.pi, np.pi, 1.5*np.pi, 2.0*np.pi ]
         outarray = [ math.cos(v) for v in inarray]
         rv = pointers.cos_doubles(inarray)
-        self.assertTrue(isinstance(rv, np.ndarray))
-        self.assertEqual('float64', rv.dtype.name)
+        self.assertTrue(isinstance(rv, list))
         self.assertTrue(np.allclose(rv, outarray))
 
-    def test_truncate(self):
+    def test_truncate_to_int(self):
+#        argin = [1.2, 2.3, 3.4, 4.5]
+#        rv = pointers.truncate_to_int(argin)
         rv = pointers.truncate_to_int([1.2, 2.3, 3.4, 4.5])
-        self.assertTrue(isinstance(rv, np.ndarray))
-        self.assertEqual('int32', rv.dtype.name)
-        self.assertTrue(np.equal(rv, [1, 2, 3, 4]).all())
+        self.assertTrue(isinstance(rv, list))
+        self.assertEqual([1, 2, 3, 4], rv)
 
     def test_get_values(self):
         # out - created list.
         nout, out = pointers.get_values()
         self.assertTrue(isinstance(out, list))
-        self.assertTrue(np.equal(out, [1,2,3]).all())
+        self.assertEqual([1,2,3], out)
 
     def test_get_values2(self):
         # out - created list.
@@ -97,7 +97,7 @@ class Pointers(unittest.TestCase):
         with self.assertRaises(TypeError) as context:
             array = 7
             out = pointers.incrementIntArray(array)
-        self.assertTrue('array must be' in str(context.exception))
+        self.assertTrue('must be iterable' in str(context.exception))
 
 
 # creating a new test suite
