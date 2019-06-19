@@ -221,6 +221,8 @@ def main():
 
     parser.add_argument("--option", default=[], action="append",
                         help="Define an option with value")
+    parser.add_argument("--language", choices=['c', 'c++'],
+                        help="Input language.")
 
     args = parser.parse_args()
     main_with_args(args)
@@ -375,6 +377,9 @@ def main_with_args(args):
             allinput["options"].update(cmdoptions)
         else:
             allinput["options"] = cmdoptions
+
+    if args.language:
+        allinput['language'] = args.language
 
     #    print(allinput)
 
