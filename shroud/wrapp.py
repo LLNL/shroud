@@ -2041,6 +2041,7 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer("C_init_locals", output)
         append_format(output, module_middle, fmt)
         if self.need_numpy:
+            output.append("")
             output.append("import_array();")
         output.extend(self.py_type_object_creation)
         output.extend(self.enum_impl)
@@ -2437,8 +2438,7 @@ m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,\t
 #endif
 -if (m == NULL)
 +return RETVAL;-
-struct module_state *st = GETSTATE(m);
-"""
+struct module_state *st = GETSTATE(m);"""
 
 module_middle2 = """
 {PY_prefix}error_obj = PyErr_NewException((char *) error_name, NULL, NULL);

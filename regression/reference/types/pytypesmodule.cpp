@@ -858,7 +858,6 @@ inittypes(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)
         return RETVAL;
