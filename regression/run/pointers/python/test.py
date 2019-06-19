@@ -63,6 +63,7 @@ class Pointers(unittest.TestCase):
     def test_get_values(self):
         # out - created NumPy array.
         nout, out = pointers.get_values()
+        self.assertEqual(3, nout)
         self.assertTrue(isinstance(out, np.ndarray))
         self.assertEqual('int32', out.dtype.name)
         self.assertTrue(np.equal(out, [1,2,3]).all())

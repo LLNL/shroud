@@ -63,6 +63,7 @@ class Pointers(unittest.TestCase):
     def test_get_values(self):
         # out - created list.
         nout, out = pointers.get_values()
+        self.assertEqual(3, nout)
         self.assertTrue(isinstance(out, list))
         self.assertEqual([1,2,3], out)
 
@@ -98,6 +99,11 @@ class Pointers(unittest.TestCase):
             array = 7
             out = pointers.incrementIntArray(array)
         self.assertTrue('must be iterable' in str(context.exception))
+
+        with self.assertRaises(ValueError) as context:
+            array = [ 1, "two", 3 ]
+            out = pointers.incrementIntArray(array)
+        self.assertTrue('must be int' in str(context.exception))
 
 
 # creating a new test suite

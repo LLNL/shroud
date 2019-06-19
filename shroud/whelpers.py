@@ -482,6 +482,8 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # used with intent(in)
     # Return -1 on error.
     # Convert an empty list into a NULL pointer.
+    # Use a fixed text in PySequence_Fast.
+    # If an error occurs, replace message with one which includes argument name.
     name = "from_PyObject_" + ntypemap.c_type
     if name not in CHelpers:
         fmt = dict(
@@ -496,10 +498,11 @@ PyList_SET_ITEM(out, i, {Py_ctor});
 // Return -1 on error.
 static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
 {{+
-char msg[100];
-snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
-PyObject *seq = PySequence_Fast(obj, msg);
-if (seq == NULL) return -1;
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 {c_type} *in = malloc(size * sizeof({c_type}));
 for (Py_ssize_t i = 0; i < size; i++) {{+
@@ -508,7 +511,7 @@ in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 free(in);
 Py_DECREF(seq);
-// Fill in error message
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
 return -1;
 -}}
 -}}
@@ -526,10 +529,11 @@ return 0;
 // Return -1 on error.
 static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
 {{+
-char msg[100];
-snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
-PyObject *seq = PySequence_Fast(obj, msg);
-if (seq == NULL) return -1;
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 {c_type} *in = static_cast<{c_type} *>\t(std::malloc(size * sizeof({c_type})));
 for (Py_ssize_t i = 0; i < size; i++) {{+
@@ -538,7 +542,7 @@ in[i] = {Py_get};
 if (PyErr_Occurred()) {{+
 std::free(in);
 Py_DECREF(seq);
-// Fill in error message
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
 return -1;
 -}}
 -}}

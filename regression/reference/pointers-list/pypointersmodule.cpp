@@ -39,10 +39,12 @@
 static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
     double **pin, Py_ssize_t *psize)
 {
-    char msg[100];
-    snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
-    PyObject *seq = PySequence_Fast(obj, msg);
-    if (seq == NULL) return -1;
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     double *in = static_cast<double *>
         (std::malloc(size * sizeof(double)));
@@ -52,7 +54,9 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            // Fill in error message
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be double", name,
+                (int) i);
             return -1;
         }
     }
@@ -67,10 +71,12 @@ static int SHROUD_from_PyObject_double(PyObject *obj, const char *name,
 static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
     int **pin, Py_ssize_t *psize)
 {
-    char msg[100];
-    snprintf(msg, sizeof(msg), "argument '%s' must be iterable", name);
-    PyObject *seq = PySequence_Fast(obj, msg);
-    if (seq == NULL) return -1;
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
     for (Py_ssize_t i = 0; i < size; i++) {
@@ -79,7 +85,8 @@ static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
-            // Fill in error message
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be int", name, (int) i);
             return -1;
         }
     }
