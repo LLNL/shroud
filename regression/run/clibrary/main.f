@@ -109,7 +109,7 @@ program tester
 contains
 
   subroutine test_functions
-    integer(C_INT), target :: int_var, int_arr(3)
+    integer(C_INT), target :: int_var
     character(MAXNAME) name1, name2
     character(lenoutbuf)  :: outbuf
     type(C_PTR) :: cptr1, cptr2
@@ -206,16 +206,6 @@ contains
 !    call assert_true(.true.)
 !    call function10("bar", 2.0d0)
 !    call assert_true(.true.)
-
-    call sum([1,2,3,4,5], rv_int)
-    call assert_true(rv_int .eq. 15)
-
-    
-    call assert_true(size(int_arr) >= 3, "fill_int_array check")  ! make sure there is enough room
-    call fill_int_array(int_arr)
-    call assert_equals(1, int_arr(1), "fill_int_array 1")
-    call assert_equals(2, int_arr(2), "fill_int_array 2")
-    call assert_equals(3, int_arr(3), "fill_int_array 3")
 
 !    rv_int = typefunc(2)
 !    call assert_true(rv_int .eq. 2)

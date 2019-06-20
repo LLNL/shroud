@@ -263,28 +263,6 @@ void Function10(const std::string &name, double arg2)
 }
 #endif
 
-void Sum(int len, int *values, int *result)
-{
-    strncpy(last_function_called, "Sum", MAXLAST);
-
-    int i;
-    int sum = 0;
-    for (i=0; i < len; i++) {
-	sum += values[i];
-    }
-    *result = sum;
-    return;
-}
-
-// out is assumed to be at least 3 long
-void fillIntArray(int *out)
-{
-  out[0] = 1;
-  out[1] = 2;
-  out[2] = 3;
-}
-
-
 #if 0
 TypeID typefunc(TypeID arg)
 {

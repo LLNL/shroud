@@ -52,20 +52,7 @@ declarations:
 
 - decl: void Function1()
 - decl: double Function2(double arg1, int arg2)
-- decl: void Sum(int len +implied(size(values)),
-                 int *values +dimension(:)+intent(in),
-                 int *result +intent(out))
-  options:
-    # unable to deal with dimension
-    wrap_lua: False
 
-- decl: void fillIntArray(int *out +intent(out)+dimension(3))
-  doxygen:
-    description: |
-      Return three values into memory the user provides.
-#  options:
-#    PY_array_arg: list
-  
 - decl: bool Function3(bool arg)
 - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
 

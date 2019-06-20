@@ -86,9 +86,6 @@ void Function10(void);
 void Function10(const std::string &name, double arg2);
 #endif
 
-void Sum(int len, int * values, int *result);
-void fillIntArray(int *out);
-
 #if 0
 TypeID typefunc(TypeID arg);
 

@@ -2,8 +2,6 @@ Read yaml clibrary.yaml
 Close clibrary_types.yaml
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-C function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-C function void fillIntArray(int * out +dimension(3)+intent(out))
 C function bool Function3(bool arg +intent(in)+value)
 C function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 C function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
@@ -41,8 +39,6 @@ Close typesClibrary.h
 class Cstruct1
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-C-interface, Fortran function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-C-interface, Fortran function void fillIntArray(int * out +dimension(3)+intent(out))
 C-interface, Fortran function bool Function3(bool arg +intent(in)+value)
 C-interface, Fortran function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 C-interface, Fortran function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
@@ -77,8 +73,6 @@ C-interface function Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, c
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-Python function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-Python function void fillIntArray(int * out +dimension(3)+intent(out))
 Python function bool Function3(bool arg +intent(in)+value)
 Python function void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 Python function char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
