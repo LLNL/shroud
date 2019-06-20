@@ -199,8 +199,8 @@ PY_cos_doubles(
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
-    if(in != NULL) free(in);
-    if (out != NULL) free(out);
+    free(in);
+    free(out);
 
     return (PyObject *) SHPy_out;
 
@@ -257,8 +257,8 @@ PY_truncate_to_int(
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
-    if(in != NULL) free(in);
-    if (out != NULL) free(out);
+    free(in);
+    free(out);
 
     return (PyObject *) SHPy_out;
 
@@ -410,7 +410,7 @@ PY_Sum(
     PyObject * SHPy_result = PyInt_FromLong(result);
 
     // cleanup
-    if(values != NULL) free(values);
+    free(values);
 
     return (PyObject *) SHPy_result;
 
@@ -502,7 +502,7 @@ PY_incrementIntArray(
     if (SHPy_array == NULL) goto fail;
 
     // cleanup
-    if(array != NULL) free(array);
+    free(array);
 
     return (PyObject *) SHPy_array;
 

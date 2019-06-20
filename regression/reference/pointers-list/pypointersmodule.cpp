@@ -201,8 +201,8 @@ PY_cos_doubles(
         if (SHPy_out == NULL) goto fail;
 
         // cleanup
-        if(in != NULL) std::free(in);
-        if (out != NULL) std::free(out);
+        std::free(in);
+        std::free(out);
 
         return (PyObject *) SHPy_out;
     }
@@ -260,8 +260,8 @@ PY_truncate_to_int(
         if (SHPy_out == NULL) goto fail;
 
         // cleanup
-        if(in != NULL) std::free(in);
-        if (out != NULL) std::free(out);
+        std::free(in);
+        std::free(out);
 
         return (PyObject *) SHPy_out;
     }
@@ -418,7 +418,7 @@ PY_Sum(
         PyObject * SHPy_result = PyInt_FromLong(result);
 
         // cleanup
-        if(values != NULL) std::free(values);
+        std::free(values);
 
         return (PyObject *) SHPy_result;
     }
@@ -514,7 +514,7 @@ PY_incrementIntArray(
         if (SHPy_array == NULL) goto fail;
 
         // cleanup
-        if(array != NULL) std::free(array);
+        std::free(array);
 
         return (PyObject *) SHPy_array;
     }

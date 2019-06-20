@@ -166,7 +166,7 @@ PY_Sum(
     PyObject * SHPy_result = PyInt_FromLong(result);
 
     // cleanup
-    if(values != NULL) free(values);
+    free(values);
 
     return (PyObject *) SHPy_result;
 

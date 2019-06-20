@@ -2797,7 +2797,7 @@ py_statements_local = dict(
             "+goto fail;-",
         ],
         cleanup=[
-            "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
+            "{stdlib}free({cxx_var});",
         ],
         fail=[
             "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
@@ -2824,7 +2824,7 @@ py_statements_local = dict(
             "if ({py_var} == NULL) goto fail;",
         ],
         cleanup=[
-            "if({cxx_var} != NULL)\t free({cxx_var});",
+            "free({cxx_var});",
         ],
         fail=[
             "if({cxx_var} != NULL)\t free({cxx_var});",
@@ -2885,7 +2885,7 @@ py_statements_local = dict(
             "if ({py_var} == NULL) goto fail;",
         ],
         cleanup=[
-            "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+            "{stdlib}free({cxx_var});",
         ],
         fail=[
             "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
@@ -2936,7 +2936,7 @@ py_statements_local = dict(
             "if ({py_var} == NULL) goto fail;",
         ],
         cleanup=[
-            "if ({cxx_var} != NULL)\t free({cxx_var});",
+            "free({cxx_var});",
         ],
         fail=[
             "if ({cxx_var} != NULL)\t free({cxx_var});",
@@ -2960,7 +2960,7 @@ py_statements_local = dict(
             "if ({py_var} == NULL) goto fail;",
         ],
         cleanup=[
-            "if ({cxx_var} != NULL)\t std::free({cxx_var});",
+            "std::free({cxx_var});",
         ],
         fail=[
             "if ({cxx_var} != NULL)\t std::free({cxx_var});",
