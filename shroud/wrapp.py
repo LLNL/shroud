@@ -100,6 +100,7 @@ class Wrapp(util.WrapperMixin):
         self.PyMethodDef = []
         self.PyGetSetBody = []
         self.PyGetSetDef = []
+        self.header_impl_include = {}  # header files in implementation file
         self.c_helper = {}
 #        self.c_helper_include = {}  # include files in generated C header
 
@@ -1203,6 +1204,7 @@ return 1;""",
                 c_helper = wformat(intent_blk["c_helper"], fmt_arg)
                 for helper in c_helper.split():
                     self.c_helper[helper] = True
+            self.add_statements_headers(intent_blk)
 
             if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
                 # Make intermediate C++ variable
@@ -1748,7 +1750,6 @@ return 1;""",
         fmt = node.fmtdict
         fname = fmt.PY_type_filename
 
-        self.header_impl_include = {}
         self.gather_helper_code(self.c_helper)
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
@@ -1765,7 +1766,7 @@ return 1;""",
         self._push_splicer("impl")
 
         # Use headers from class if they exist or else library
-        header_impl_include = {}
+        header_impl_include = self.header_impl_include
         if node and node.cxx_header:
             for include in node.cxx_header.split():
                 header_impl_include[include] = True
@@ -1998,7 +1999,6 @@ extern PyObject *{PY_prefix}error_obj;
 
         fmt.PY_library_doc = "library documentation"
 
-        self.header_impl_include = {}
         self.gather_helper_code(self.c_helper)
         # always include helper header
 #        self.c_helper_include[library.fmtdict.C_header_utility] = True
@@ -2012,7 +2012,8 @@ extern PyObject *{PY_prefix}error_obj;
             output.append('#include "numpy/arrayobject.h"')
         for include in node.cxx_header.split():
             output.append('#include "%s"' % include)
-        self.write_headers(self.helper_header["file"], output)
+        self.header_impl_include.update(self.helper_header["file"])
+        self.write_headers(self.header_impl_include, output)
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
@@ -2788,6 +2789,7 @@ py_statements_local = dict(
 
     intent_out_dimension_list=dict(
         c_helper="to_PyList_{cxx_type}",
+        c_header="<stdlib.h>",  # malloc/free
         cxx_header="<cstdlib>",  # malloc/free
         decl=[
             "PyObject *{py_var} = NULL;",
@@ -2821,6 +2823,7 @@ py_statements_local = dict(
     intent_out_allocatable_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header="<stdlib.h>",  # malloc/free
+        cxx_header="<cstdlib>",  # malloc/free
         decl=[
             "{cxx_decl} = NULL;",
         ],

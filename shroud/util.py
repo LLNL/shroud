@@ -264,6 +264,21 @@ class WrapperMixin(object):
                 else:
                     output.append("}")
 
+    def add_statements_headers(self, intent_blk):
+        """Add headers required by intent_blk to self.header_impl_include.
+
+        Args:
+            intent_blk -
+        """
+        # include any dependent header in generated source
+        if self.language == "c":
+            headers = intent_blk.get("c_header", None)
+        else:
+            headers = intent_blk.get("cxx_header", None)
+        if headers:
+            for h in headers.split():
+                self.header_impl_include[h] = True
+
     def write_headers(self, headers, output):
         for header in sorted(headers):
             if header[0] == "<":
