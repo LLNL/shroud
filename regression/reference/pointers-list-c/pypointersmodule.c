@@ -189,7 +189,7 @@ PY_cos_doubles(
         goto fail;
 
     // pre_call
-    out = malloc(sizeof(double) * SHSize_in);
+    out = (double *) malloc(sizeof(double) * SHSize_in);
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -251,7 +251,7 @@ PY_truncate_to_int(
         goto fail;
 
     // pre_call
-    out = malloc(sizeof(int) * SHSize_in);
+    out = (int *) malloc(sizeof(int) * SHSize_in);
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -302,7 +302,7 @@ PY_get_values(
 
     // pre_call
     int nvalues;  // intent(out)
-    values = malloc(sizeof(int) * 3);
+    values = (int *) malloc(sizeof(int) * 3);
     if (values == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -352,12 +352,12 @@ PY_get_values2(
     int * arg2 = NULL;
 
     // pre_call
-    arg1 = malloc(sizeof(int) * 3);
+    arg1 = (int *) malloc(sizeof(int) * 3);
     if (arg1 == NULL) {
         PyErr_NoMemory();
         goto fail;
     }
-    arg2 = malloc(sizeof(int) * 3);
+    arg2 = (int *) malloc(sizeof(int) * 3);
     if (arg2 == NULL) {
         PyErr_NoMemory();
         goto fail;
@@ -456,7 +456,7 @@ PY_fillIntArray(
     int * out = NULL;
 
     // pre_call
-    out = malloc(sizeof(int) * 3);
+    out = (int *) malloc(sizeof(int) * 3);
     if (out == NULL) {
         PyErr_NoMemory();
         goto fail;

@@ -635,8 +635,8 @@ return 1;""",
         fmt_arg.py_type = "PyObject"
 
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        index = "intent_out_{}_allocatable_{}".format(
-            self.language, node.options.PY_array_arg)
+        index = "intent_out_cxx_allocatable_{}".format(
+            node.options.PY_array_arg)
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
@@ -674,7 +674,7 @@ return 1;""",
             fmt_arg.py_type = "PyObject"
             fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
-        index = "intent_{}_{}_dimension_{}".format(intent, self.language, options.PY_array_arg)
+        index = "intent_{}_cxx_dimension_{}".format(intent, options.PY_array_arg)
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
@@ -2693,11 +2693,11 @@ py_statements_local = dict(
             "PyArrayObject * {py_var} = NULL;",
         ],
         post_parse=[
-            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY));",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + array_error,
         pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
         ],
         cleanup=[
             "Py_DECREF({py_var});"
@@ -2715,11 +2715,11 @@ py_statements_local = dict(
             "PyArrayObject * {py_var} = NULL;",
         ],
         post_parse=[
-            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY));",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
         ] + array_error,
         pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
         ],
         post_call=None,  # Object already created in post_parse
         goto_fail=True,
@@ -2732,11 +2732,11 @@ py_statements_local = dict(
             "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
         ],
         post_parse=[
-            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_SimpleNew("
-            "{npy_ndims}, {npy_dims}, {numpy_type}));",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
+            "{npy_ndims}, {npy_dims}, {numpy_type}){cast2};",
         ] + array_error,
         pre_call=[
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
         ],
         post_call=None,  # Object already created in post_parse
         fail=[
@@ -2770,11 +2770,11 @@ py_statements_local = dict(
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
             "{npy_descr_code}"
-            "{py_var} = reinterpret_cast<PyArrayObject *>\t(PyArray_NewLikeArray"
-            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}));",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewLikeArray"
+            "(\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok}){cast2};",
             "if ({py_var} == NULL)",
             "+goto fail;-",
-            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
             ],
         post_call=None,  # Object already created in pre_call
         fail=["Py_XDECREF({py_var});"],
@@ -2905,7 +2905,7 @@ py_statements_local = dict(
         ],
         pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * {pointer_shape}));",
+            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{stdlib}malloc(\tsizeof({cxx_type}) * {pointer_shape}{cast2});",
             "if ({cxx_var} == NULL) {{+",
             "PyErr_NoMemory();",
             "goto fail;",
@@ -2921,7 +2921,7 @@ py_statements_local = dict(
         ],
         fail=[
             "Py_XDECREF({py_var});",
-            "if ({cxx_var} != NULL)\t std::free({cxx_var});",
+            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2963,7 +2963,7 @@ py_statements_local = dict(
             "{cxx_decl} = NULL;",
         ],
         pre_call=[
-            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
+            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{stdlib}malloc(sizeof({cxx_type}) * {size_var}{cast2});",
             "if ({cxx_var} == NULL) {{+",
             "PyErr_NoMemory();",
             "goto fail;",
@@ -2974,10 +2974,10 @@ py_statements_local = dict(
             "if ({py_var} == NULL) goto fail;",
         ],
         cleanup=[
-            "std::free({cxx_var});",
+            "{stdlib}free({cxx_var});",
         ],
         fail=[
-            "if ({cxx_var} != NULL)\t std::free({cxx_var});",
+            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
