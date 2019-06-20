@@ -2125,17 +2125,12 @@ extern PyObject *{PY_prefix}error_obj;
             'void *ptr = PyCapsule_GetPointer(cap, "{PY_numpy_array_capsule_name}");',
             fmt,
         )
-
-        output.append(
-            "const char * context = "
-            + do_cast(
-                self.language,
-                "static",
-                "const char *",
-                "PyCapsule_GetContext(cap)",
-            )
-            + ";"
-        )
+        if self.language == "c":
+            output.append("const char * context = PyCapsule_GetContext(cap);")
+        else:
+            output.append(
+                "const char * context = static_cast<const char *>\t("
+                "PyCapsule_GetContext(cap));")
 
         start = "if"
         for i, name in enumerate(self.capsule_order):
