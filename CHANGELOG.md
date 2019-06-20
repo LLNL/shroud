@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added charlen attribute to use with 'char *arg+intent(out)' argument.
   Used to tell the Python wrapper the length of the char argument.
 - Parse `enum class` and `enum struct`.
+- Add option PY_array_arg to control how arrays are represented.
+  Values can be *numpy* or *list*.
+- Add command line option --options to set a top level option.
+- Add command line option --language. May be c or c++.
+  Replaces any language directive in the YAML file.
 
 ### Changed
 - Renamed option *C_header_helper_template* to *C_header_utility_template*.

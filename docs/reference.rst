@@ -1071,6 +1071,9 @@ cxx_var
 f_var
     Fortran variable name for argument.
 
+size_var
+    Name of variable which holds the size of an array in the
+    Python wrapper.
 
 Result
 ------

@@ -553,11 +553,6 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             fmt_library.stdlib = ""
 
-            # Casts from void do not require explicit cast
-#            fmt_library.cast_void = ""
-#            fmt_library.cast1v = ""
-#            fmt_library.cast2v = ""
-
             fmt_library.cast_static = "("
             fmt_library.cast_reinterpret = "("
             fmt_library.cast1 = ") "
@@ -570,11 +565,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_impl_filename_suffix = "cpp"
 
             fmt_library.stdlib = "std::"
-
-            # Cast from void using static_cast (malloc)
-#            fmt_library.cast_void = "static_cast<"
-#            fmt_library.cast1v = ">\t("
-#            fmt_library.cast2v = ")"
 
             fmt_library.cast_static = "static_cast<"
             fmt_library.cast_reinterpret = "reinterpret_cast<"
