@@ -635,7 +635,7 @@ return 1;""",
         fmt_arg.py_type = "PyObject"
 
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
-        index = "intent_out_cxx_allocatable_{}".format(
+        index = "intent_out_allocatable_{}".format(
             node.options.PY_array_arg)
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
@@ -674,7 +674,7 @@ return 1;""",
             fmt_arg.py_type = "PyObject"
             fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
-        index = "intent_{}_cxx_dimension_{}".format(intent, options.PY_array_arg)
+        index = "intent_{}_dimension_{}".format(intent, options.PY_array_arg)
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
@@ -2622,71 +2622,9 @@ array_error = [
 
 
 py_statements_local = dict(
-## numpy
-# language=c
-    intent_in_c_dimension_numpy=dict(
-        need_numpy=True,
-        decl=[
-            "{py_type} * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
-        ],
-        post_parse=[
-            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY);",
-        ] + array_error,
-        pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
-        ],
-        cleanup=[
-            "Py_DECREF({py_var});"
-        ],
-        fail=[
-            "Py_XDECREF({py_var});"
-        ],
-        goto_fail=True,
-    ),
-
-    intent_inout_c_dimension_numpy=dict(
-        need_numpy=True,
-        decl=[
-            "{py_type} * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
-        ],
-        post_parse=[
-            "{py_var} = (PyArrayObject *) PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY);",
-        ] + array_error,
-        pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
-        ],
-        post_call=None,  # Object already created in post_parse
-        goto_fail=True,
-    ),
-
-    intent_out_c_dimension_numpy=dict(
-        need_numpy=True,
-        decl=[
-            "PyArrayObject * {py_var} = NULL;",
-            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
-        ],
-        post_parse=[
-            "{py_var} = (PyArrayObject *) PyArray_SimpleNew("
-            "{npy_ndims}, {npy_dims}, {numpy_type});",
-        ] + array_error,
-        pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
-        ],
-        post_call=None,  # Object already created in post_parse
-        fail=[
-            "Py_XDECREF({py_var});"
-        ],
-        goto_fail=True,
-    ),
-
 ####################
-# language=c++
-# use C++ casts
-    intent_in_cxx_dimension_numpy=dict(
+## numpy
+    intent_in_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{py_type} * {pytmp_var};",
@@ -2708,7 +2646,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_inout_cxx_dimension_numpy=dict(
+    intent_inout_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "{py_type} * {pytmp_var};",
@@ -2725,7 +2663,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_out_cxx_dimension_numpy=dict(
+    intent_out_dimension_numpy=dict(
         need_numpy=True,
         decl=[
             "PyArrayObject * {py_var} = NULL;",
@@ -2747,25 +2685,7 @@ py_statements_local = dict(
 
 ########################################
 ## allocatable
-    intent_out_c_allocatable_numpy=dict(
-        need_numpy=True,
-        decl=["PyArrayObject * {py_var} = NULL;"],
-        pre_call=[
-            "{npy_descr_code}"
-            "{py_var} = (PyArrayObject *) PyArray_NewLikeArray("
-            "\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok});",
-            "if ({py_var} == NULL)",
-            "+goto fail;-",
-            "{cxx_decl} = PyArray_DATA({py_var});",
-            ],
-        post_call=None,  # Object already created in pre_call
-        fail=["Py_XDECREF({py_var});"],
-        goto_fail=True,
-    ),
-
-# language=c++
-# use C++ casts
-    intent_out_cxx_allocatable_numpy=dict(
+    intent_out_allocatable_numpy=dict(
         need_numpy=True,
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
@@ -2783,8 +2703,7 @@ py_statements_local = dict(
 
 ########################################
 ## list
-# language=c
-    intent_in_c_dimension_list=dict(
+    intent_in_dimension_list=dict(
         c_helper="from_PyObject_{cxx_type}",
         decl=[
             "PyObject *{pytmp_var} = NULL;",
@@ -2805,71 +2724,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_inout_c_dimension_list=dict(
-#        c_helper="update_PyList_{cxx_type}",
-        c_helper="to_PyList_{cxx_type}",
-        decl=[
-            "PyObject *{pytmp_var} = NULL;",
-            "{cxx_decl} = NULL;",
-        ],
-        post_parse=[
-            "Py_ssize_t {size_var};",
-            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
-            "+goto fail;-",
-        ],
-        post_call=[
-#            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
-            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
-            "if ({py_var} == NULL) goto fail;",
-        ],
-        cleanup=[
-            "free({cxx_var});",
-        ],
-        fail=[
-            "if ({cxx_var} != NULL)\t free({cxx_var});",
-        ],
-        goto_fail=True,
-    ),
-
-    intent_out_c_dimension_list=dict(
-        c_helper="to_PyList_{cxx_type}",
-        c_header="<stdlib.h>",  # malloc/free
-        decl=[
-            "PyObject *{py_var} = NULL;",
-            "{cxx_decl} = NULL;",
-        ],
-        pre_call=[
-#            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = {stdlib}malloc\t(sizeof({cxx_type}) * {pointer_shape});",
-            "if ({cxx_var} == NULL) {{+",
-            "PyErr_NoMemory();",
-            "goto fail;",
-            "-}}",
-        ],
-        post_call=[
-            "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
-            "if ({py_var} == NULL) goto fail;",
-        ],
-        cleanup=[
-            "{stdlib}free({cxx_var});",
-            "{cxx_var} = NULL;",
-        ],
-        fail=[
-            "Py_XDECREF({py_var});",
-            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
-        ],
-        goto_fail=True,
-    ),
-
-####################
-# language=c++
-# use C++ casts
-#    intent_in_cxx_dimension_list=dict(
-# same as c, assigned below.
-#    ),
-
-    intent_inout_cxx_dimension_list=dict(
+    intent_inout_dimension_list=dict(
 #        c_helper="update_PyList_{cxx_type}",
         c_helper="to_PyList_{cxx_type}",
         decl=[
@@ -2896,7 +2751,7 @@ py_statements_local = dict(
         goto_fail=True,
     ),
 
-    intent_out_cxx_dimension_list=dict(
+    intent_out_dimension_list=dict(
         c_helper="to_PyList_{cxx_type}",
         cxx_header="<cstdlib>",  # malloc/free
         decl=[
@@ -2928,35 +2783,7 @@ py_statements_local = dict(
 
 ########################################
 ## allocatable
-    intent_out_c_allocatable_list=dict(
-        c_helper="to_PyList_{cxx_type}",
-        c_header="<stdlib.h>",  # malloc/free
-        decl=[
-            "{cxx_decl} = NULL;",
-        ],
-        pre_call=[
-            "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
-            "if ({cxx_var} == NULL) {{+",
-            "PyErr_NoMemory();",
-            "goto fail;",
-            "-}}",
-            ],
-        post_call=[
-            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
-            "if ({py_var} == NULL) goto fail;",
-        ],
-        cleanup=[
-            "free({cxx_var});",
-        ],
-        fail=[
-            "if ({cxx_var} != NULL)\t free({cxx_var});",
-        ],
-        goto_fail=True,
-    ),
-
-# language=c++
-# use C++ casts
-    intent_out_cxx_allocatable_list=dict(
+    intent_out_allocatable_list=dict(
         c_helper="to_PyList_{cxx_type}",
         c_header="<stdlib.h>",  # malloc/free
         decl=[
@@ -2983,7 +2810,3 @@ py_statements_local = dict(
     ),
 
 )
-
-
-py_statements_local["intent_in_cxx_dimension_list"] = \
-    py_statements_local["intent_in_c_dimension_list"]
