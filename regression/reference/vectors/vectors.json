@@ -1117,7 +1117,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out"
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1147,7 +1149,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> & arg +dimension(:)+intent(out))",
                 "doxygen": {
                     "__line__": 78,
                     "brief": "Fill in arg with some animal names",
@@ -1179,7 +1181,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout"
+                                "dimension": ":",
+                                "intent": "inout",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "arg",
@@ -1209,7 +1213,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))",
+                "declgen": "void vector_string_append(std::vector<std::string> & arg +dimension(:)+intent(inout))",
                 "doxygen": {
                     "__line__": 90,
                     "brief": "append '-like' to names."

@@ -1632,7 +1632,8 @@
                                 "__line__": 151,
                                 "deref": "raw",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1652,7 +1653,8 @@
                         },
                         {
                             "attrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1701,7 +1703,8 @@
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1722,7 +1725,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1771,7 +1775,8 @@
                                 "deref": "allocatable",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1792,7 +1797,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1840,7 +1846,8 @@
                                 "__line__": 189,
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1861,7 +1868,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1909,7 +1917,8 @@
                                 "__line__": 206,
                                 "deref": "raw",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1930,7 +1939,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1979,7 +1989,8 @@
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -2000,7 +2011,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -2049,7 +2061,8 @@
                                 "deref": "allocatable",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -2070,7 +2083,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -2118,7 +2132,8 @@
                                 "__line__": 247,
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -2139,7 +2154,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",

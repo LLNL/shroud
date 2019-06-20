@@ -2752,7 +2752,7 @@ py_statements_local = dict(
         decl=["PyArrayObject * {py_var} = NULL;"],
         pre_call=[
             "{npy_descr_code}"
-            "{py_var} = PyArray_NewLikeArray("
+            "{py_var} = (PyArrayObject *) PyArray_NewLikeArray("
             "\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok});",
             "if ({py_var} == NULL)",
             "+goto fail;-",
@@ -2806,18 +2806,29 @@ py_statements_local = dict(
     ),
 
     intent_inout_c_dimension_list=dict(
+#        c_helper="update_PyList_{cxx_type}",
+        c_helper="to_PyList_{cxx_type}",
         decl=[
-            "BBB{py_type} * {pytmp_var};",
-            "PyArrayObject * {py_var} = NULL;",
+            "PyObject *{pytmp_var} = NULL;",
+            "{cxx_decl} = NULL;",
         ],
         post_parse=[
-            "{py_var} = PySequence_Fast(sss, 'argument must be iterable');",
+            "Py_ssize_t {size_var};",
+            "if (SHROUD_from_PyObject_{c_type}\t({pytmp_var}"
+            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "+goto fail;-",
+        ],
+        post_call=[
+#            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
+            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
             "if ({py_var} == NULL) goto fail;",
         ],
-        pre_call=[
-            "{cxx_decl} = PyArray_DATA({py_var});",
+        cleanup=[
+            "if({cxx_var} != NULL)\t free({cxx_var});",
         ],
-        post_call=None,  # Object already created in post_parse
+        fail=[
+            "if({cxx_var} != NULL)\t free({cxx_var});",
+        ],
         goto_fail=True,
     ),
 
@@ -2912,17 +2923,24 @@ py_statements_local = dict(
 ########################################
 ## allocatable
     intent_out_c_allocatable_list=dict(
-        decl=["PyArrayObject * {py_var} = NULL;"],
+        c_helper="to_PyList_{cxx_type}",
+        c_header="<stdlib.h>",  # malloc/free
+        decl=[
+            "{cxx_decl} = NULL;",
+        ],
         pre_call=[
-            "{npy_descr_code}"
-            "{py_var} = PyArray_NewLikeArray("
-            "\t{npy_prototype},\t {npy_order},\t {npy_descr},\t {npy_subok});",
-            "if ({py_var} == NULL)",
-            "+goto fail;-",
-            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
             ],
-        post_call=None,  # Object already created in pre_call
-        fail=["Py_XDECREF({py_var});"],
+        post_call=[
+            "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
+            "if ({py_var} == NULL) goto fail;",
+        ],
+        cleanup=[
+            "if ({cxx_var} != NULL)\t free({cxx_var});",
+        ],
+        fail=[
+            "if ({cxx_var} != NULL)\t free({cxx_var});",
+        ],
         goto_fail=True,
     ),
 

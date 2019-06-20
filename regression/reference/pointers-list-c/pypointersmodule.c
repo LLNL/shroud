@@ -95,6 +95,15 @@ static int SHROUD_from_PyObject_int(PyObject *obj, const char *name,
     return 0;
 }
 
+static PyObject *SHROUD_to_PyList_double(double *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+
 static PyObject *SHROUD_to_PyList_int(int *in, size_t size)
 {
     PyObject *out = PyList_New(size);
@@ -164,7 +173,7 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    double * out = NULL;
     char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -180,22 +189,24 @@ PY_cos_doubles(
         goto fail;
 
     // pre_call
-    SHPy_out = PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0);
-    if (SHPy_out == NULL)
-        goto fail;
-    double * out = PyArray_DATA(SHPy_out);
+    out = malloc(sizeof(double) * SHSize_in);
     int sizein = SHSize_in;
 
     cos_doubles(in, out, sizein);
 
+    // post_call
+    PyObject *SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
+    if (SHPy_out == NULL) goto fail;
+
     // cleanup
     if(in != NULL) free(in);
+    if (out != NULL) free(out);
 
     return (PyObject *) SHPy_out;
 
 fail:
     if(in != NULL) free(in);
-    Py_XDECREF(SHPy_out);
+    if (out != NULL) free(out);
     return NULL;
 // splicer end function.cos_doubles
 }
@@ -220,7 +231,7 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
-    PyArrayObject * SHPy_out = NULL;
+    int * out = NULL;
     char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -236,23 +247,24 @@ PY_truncate_to_int(
         goto fail;
 
     // pre_call
-    PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
-    SHPy_out = PyArray_NewLikeArray(SHPy_in, NPY_CORDER, SHDPy_out, 0);
-    if (SHPy_out == NULL)
-        goto fail;
-    int * out = PyArray_DATA(SHPy_out);
+    out = malloc(sizeof(int) * SHSize_in);
     int sizein = SHSize_in;
 
     truncate_to_int(in, out, sizein);
 
+    // post_call
+    PyObject *SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
+    if (SHPy_out == NULL) goto fail;
+
     // cleanup
     if(in != NULL) free(in);
+    if (out != NULL) free(out);
 
     return (PyObject *) SHPy_out;
 
 fail:
     if(in != NULL) free(in);
-    Py_XDECREF(SHPy_out);
+    if (out != NULL) free(out);
     return NULL;
 // splicer end function.truncate_to_int
 }
@@ -464,8 +476,8 @@ PY_incrementIntArray(
 {
 // void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
 // splicer begin function.increment_int_array
-    BBBPyObject * SHTPy_array;
-    PyArrayObject * SHPy_array = NULL;
+    PyObject *SHTPy_array = NULL;
+    int * array = NULL;
     char *SHT_kwlist[] = {
         "array",
         NULL };
@@ -475,17 +487,27 @@ PY_incrementIntArray(
         return NULL;
 
     // post_parse
-    SHPy_array = PySequence_Fast(sss, 'argument must be iterable');
-    if (SHPy_array == NULL) goto fail;
+    Py_ssize_t SHSize_array;
+    if (SHROUD_from_PyObject_int(SHTPy_array, "array", &array, 
+        &SHSize_array) == -1)
+        goto fail;
 
     // pre_call
-    int * array = PyArray_DATA(SHPy_array);
     int sizein = SHSize_array;
 
     incrementIntArray(array, sizein);
+
+    // post_call
+    PyObject *SHPy_array = SHROUD_to_PyList_int(array, SHSize_array);
+    if (SHPy_array == NULL) goto fail;
+
+    // cleanup
+    if(array != NULL) free(array);
+
     return (PyObject *) SHPy_array;
 
 fail:
+    if(array != NULL) free(array);
     return NULL;
 // splicer end function.increment_int_array
 }

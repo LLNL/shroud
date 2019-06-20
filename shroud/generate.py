@@ -173,6 +173,7 @@ class VerifyAttrs(object):
                 "intent",
                 "len",
                 "len_trim",
+                "owner",
                 "size",
                 "value",
             ]:

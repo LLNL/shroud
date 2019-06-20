@@ -115,7 +115,8 @@ PY_cos_doubles(
 
     // pre_call
     double * in = PyArray_DATA(SHPy_in);
-    SHPy_out = PyArray_NewLikeArray(SHPy_in, NPY_CORDER, NULL, 0);
+    SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(SHPy_in,
+        NPY_CORDER, NULL, 0);
     if (SHPy_out == NULL)
         goto fail;
     double * out = PyArray_DATA(SHPy_out);
@@ -176,7 +177,8 @@ PY_truncate_to_int(
     // pre_call
     double * in = PyArray_DATA(SHPy_in);
     PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
-    SHPy_out = PyArray_NewLikeArray(SHPy_in, NPY_CORDER, SHDPy_out, 0);
+    SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(SHPy_in,
+        NPY_CORDER, SHDPy_out, 0);
     if (SHPy_out == NULL)
         goto fail;
     int * out = PyArray_DATA(SHPy_out);

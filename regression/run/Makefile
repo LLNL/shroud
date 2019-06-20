@@ -32,6 +32,8 @@ TESTDIRS = \
     $(tempdir)/run/pointers/..\
     $(tempdir)/run/pointers/python/.. \
     $(tempdir)/run/pointers-list/python/.. \
+    $(tempdir)/run/pointers-numpy-c/python/.. \
+    $(tempdir)/run/pointers-list-c/python/.. \
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/vectors/..\
@@ -106,14 +108,14 @@ test-cpp : \
 
 ######################################################################
 # Compile the generated Python wrapper
-py-% : $(tempdir)/run/%/python/.. phony_explicit
+pymod-% : $(tempdir)/run/%/python/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/$(subst py-,,$@)/python \
-	    -f $(top)/regression/run/$(subst py-,,$@)/python/Makefile \
+	    -C $(tempdir)/run/$(subst pymod-,,$@)/python \
+	    -f $(top)/regression/run/$(subst pymod-,,$@)/python/Makefile \
 	    PYTHON=$(PYTHON) top=$(top) all
 
 # Run the Python tests
-test-python-% : py-%
+test-python-% : pymod-%
 	export PYTHONPATH=$(top)/$(tempdir)/run/$*/python; \
 	$(python.exe) $(top)/regression/run/$*/python/test.py
 
@@ -122,6 +124,8 @@ test-python : \
   test-python-strings \
   test-python-pointers \
   test-python-pointers-list \
+  test-python-pointers-numpy-c \
+  test-python-pointers-list-c \
   test-python-clibrary \
   test-python-ownership
 
