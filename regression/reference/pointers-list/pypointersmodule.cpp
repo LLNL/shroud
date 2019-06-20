@@ -192,6 +192,10 @@ PY_cos_doubles(
         // pre_call
         out = static_cast<double *>
             (std::malloc(sizeof(double) * SHSize_in));
+        if (out == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
         int sizein = SHSize_in;
 
         cos_doubles(in, out, sizein);
@@ -208,7 +212,7 @@ PY_cos_doubles(
     }
 
 fail:
-    if(in != NULL) std::free(in);
+    if (in != NULL) std::free(in);
     if (out != NULL) std::free(out);
     return NULL;
 // splicer end function.cos_doubles
@@ -251,6 +255,10 @@ PY_truncate_to_int(
     {
         // pre_call
         out = static_cast<int *>(std::malloc(sizeof(int) * SHSize_in));
+        if (out == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
         int sizein = SHSize_in;
 
         truncate_to_int(in, out, sizein);
@@ -267,7 +275,7 @@ PY_truncate_to_int(
     }
 
 fail:
-    if(in != NULL) std::free(in);
+    if (in != NULL) std::free(in);
     if (out != NULL) std::free(out);
     return NULL;
 // splicer end function.truncate_to_int
@@ -300,7 +308,10 @@ PY_get_values(
         // pre_call
         int nvalues;  // intent(out)
         values = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (values == NULL) goto fail;
+        if (values == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
 
         get_values(&nvalues, values);
 
@@ -318,7 +329,7 @@ PY_get_values(
 
 fail:
     Py_XDECREF(SHPy_values);
-    if(values != NULL) std::free(values);
+    if (values != NULL) std::free(values);
     return NULL;
 // splicer end function.get_values
 }
@@ -349,9 +360,15 @@ PY_get_values2(
     {
         // pre_call
         arg1 = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (arg1 == NULL) goto fail;
+        if (arg1 == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
         arg2 = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (arg2 == NULL) goto fail;
+        if (arg2 == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
 
         get_values2(arg1, arg2);
 
@@ -373,9 +390,9 @@ PY_get_values2(
 
 fail:
     Py_XDECREF(SHPy_arg1);
-    if(arg1 != NULL) std::free(arg1);
+    if (arg1 != NULL) std::free(arg1);
     Py_XDECREF(SHPy_arg2);
-    if(arg2 != NULL) std::free(arg2);
+    if (arg2 != NULL) std::free(arg2);
     return NULL;
 // splicer end function.get_values2
 }
@@ -424,7 +441,7 @@ PY_Sum(
     }
 
 fail:
-    if(values != NULL) std::free(values);
+    if (values != NULL) std::free(values);
     return NULL;
 // splicer end function.sum
 }
@@ -450,7 +467,10 @@ PY_fillIntArray(
     {
         // pre_call
         out = static_cast<int *>(std::malloc(sizeof(int) * 3));
-        if (out == NULL) goto fail;
+        if (out == NULL) {
+            PyErr_NoMemory();
+            goto fail;
+        }
 
         fillIntArray(out);
 
@@ -467,7 +487,7 @@ PY_fillIntArray(
 
 fail:
     Py_XDECREF(SHPy_out);
-    if(out != NULL) std::free(out);
+    if (out != NULL) std::free(out);
     return NULL;
 // splicer end function.fill_int_array
 }
@@ -520,7 +540,7 @@ PY_incrementIntArray(
     }
 
 fail:
-    if(array != NULL) std::free(array);
+    if (array != NULL) std::free(array);
     return NULL;
 // splicer end function.increment_int_array
 }

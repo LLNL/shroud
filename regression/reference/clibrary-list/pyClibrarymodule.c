@@ -171,7 +171,7 @@ PY_Sum(
     return (PyObject *) SHPy_result;
 
 fail:
-    if(values != NULL) free(values);
+    if (values != NULL) free(values);
     return NULL;
 // splicer end function.sum
 }
@@ -196,7 +196,10 @@ PY_fillIntArray(
 
     // pre_call
     out = malloc(sizeof(int) * 3);
-    if (out == NULL) goto fail;
+    if (out == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
 
     fillIntArray(out);
 
@@ -212,7 +215,7 @@ PY_fillIntArray(
 
 fail:
     Py_XDECREF(SHPy_out);
-    if(out != NULL) free(out);
+    if (out != NULL) free(out);
     return NULL;
 // splicer end function.fill_int_array
 }

@@ -190,6 +190,10 @@ PY_cos_doubles(
 
     // pre_call
     out = malloc(sizeof(double) * SHSize_in);
+    if (out == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
     int sizein = SHSize_in;
 
     cos_doubles(in, out, sizein);
@@ -205,7 +209,7 @@ PY_cos_doubles(
     return (PyObject *) SHPy_out;
 
 fail:
-    if(in != NULL) free(in);
+    if (in != NULL) free(in);
     if (out != NULL) free(out);
     return NULL;
 // splicer end function.cos_doubles
@@ -248,6 +252,10 @@ PY_truncate_to_int(
 
     // pre_call
     out = malloc(sizeof(int) * SHSize_in);
+    if (out == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
     int sizein = SHSize_in;
 
     truncate_to_int(in, out, sizein);
@@ -263,7 +271,7 @@ PY_truncate_to_int(
     return (PyObject *) SHPy_out;
 
 fail:
-    if(in != NULL) free(in);
+    if (in != NULL) free(in);
     if (out != NULL) free(out);
     return NULL;
 // splicer end function.truncate_to_int
@@ -295,7 +303,10 @@ PY_get_values(
     // pre_call
     int nvalues;  // intent(out)
     values = malloc(sizeof(int) * 3);
-    if (values == NULL) goto fail;
+    if (values == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
 
     get_values(&nvalues, values);
 
@@ -312,7 +323,7 @@ PY_get_values(
 
 fail:
     Py_XDECREF(SHPy_values);
-    if(values != NULL) free(values);
+    if (values != NULL) free(values);
     return NULL;
 // splicer end function.get_values
 }
@@ -342,9 +353,15 @@ PY_get_values2(
 
     // pre_call
     arg1 = malloc(sizeof(int) * 3);
-    if (arg1 == NULL) goto fail;
+    if (arg1 == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
     arg2 = malloc(sizeof(int) * 3);
-    if (arg2 == NULL) goto fail;
+    if (arg2 == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
 
     get_values2(arg1, arg2);
 
@@ -365,9 +382,9 @@ PY_get_values2(
 
 fail:
     Py_XDECREF(SHPy_arg1);
-    if(arg1 != NULL) free(arg1);
+    if (arg1 != NULL) free(arg1);
     Py_XDECREF(SHPy_arg2);
-    if(arg2 != NULL) free(arg2);
+    if (arg2 != NULL) free(arg2);
     return NULL;
 // splicer end function.get_values2
 }
@@ -415,7 +432,7 @@ PY_Sum(
     return (PyObject *) SHPy_result;
 
 fail:
-    if(values != NULL) free(values);
+    if (values != NULL) free(values);
     return NULL;
 // splicer end function.sum
 }
@@ -440,7 +457,10 @@ PY_fillIntArray(
 
     // pre_call
     out = malloc(sizeof(int) * 3);
-    if (out == NULL) goto fail;
+    if (out == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
 
     fillIntArray(out);
 
@@ -456,7 +476,7 @@ PY_fillIntArray(
 
 fail:
     Py_XDECREF(SHPy_out);
-    if(out != NULL) free(out);
+    if (out != NULL) free(out);
     return NULL;
 // splicer end function.fill_int_array
 }
@@ -507,7 +527,7 @@ PY_incrementIntArray(
     return (PyObject *) SHPy_array;
 
 fail:
-    if(array != NULL) free(array);
+    if (array != NULL) free(array);
     return NULL;
 // splicer end function.increment_int_array
 }

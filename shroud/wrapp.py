@@ -2800,7 +2800,7 @@ py_statements_local = dict(
             "{stdlib}free({cxx_var});",
         ],
         fail=[
-            "if({cxx_var} != NULL) {stdlib}free({cxx_var});",
+            "if ({cxx_var} != NULL) {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2827,7 +2827,7 @@ py_statements_local = dict(
             "free({cxx_var});",
         ],
         fail=[
-            "if({cxx_var} != NULL)\t free({cxx_var});",
+            "if ({cxx_var} != NULL)\t free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2842,7 +2842,10 @@ py_statements_local = dict(
         pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
             "{cxx_var} = {stdlib}malloc\t(sizeof({cxx_type}) * {pointer_shape});",
-            "if ({cxx_var} == NULL) goto fail;",
+            "if ({cxx_var} == NULL) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
         ],
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
@@ -2854,7 +2857,7 @@ py_statements_local = dict(
         ],
         fail=[
             "Py_XDECREF({py_var});",
-            "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2888,7 +2891,7 @@ py_statements_local = dict(
             "{stdlib}free({cxx_var});",
         ],
         fail=[
-            "if({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
+            "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2903,7 +2906,10 @@ py_statements_local = dict(
         pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * {pointer_shape}));",
-            "if ({cxx_var} == NULL) goto fail;",
+            "if ({cxx_var} == NULL) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
         ],
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
@@ -2915,7 +2921,7 @@ py_statements_local = dict(
         ],
         fail=[
             "Py_XDECREF({py_var});",
-            "if({cxx_var} != NULL)\t std::free({cxx_var});",
+            "if ({cxx_var} != NULL)\t std::free({cxx_var});",
         ],
         goto_fail=True,
     ),
@@ -2930,6 +2936,10 @@ py_statements_local = dict(
         ],
         pre_call=[
             "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
+            "if ({cxx_var} == NULL) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
             ],
         post_call=[
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
@@ -2954,6 +2964,10 @@ py_statements_local = dict(
         ],
         pre_call=[
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
+            "if ({cxx_var} == NULL) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
             ],
         post_call=[
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
