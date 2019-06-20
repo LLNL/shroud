@@ -40,13 +40,13 @@ The generated Python requires Python 2.7 or 3.4+.
 
 ## Release
 
-Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 
 Produced at the Lawrence Livermore National Laboratory.
 
 All rights reserved.
 
-Unlimited Open Source - BSD Distribution
+Unlimited Open Source - BSD 3-clause Distribution 
 
 For release details and restrictions, please read the LICENSE.txt file.
 It is also linked here:

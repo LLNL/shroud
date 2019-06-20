@@ -1,16 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 .. _TypesSandC:
 
@@ -28,6 +20,21 @@ in Fortran.
 Struct
 ------
 
+A struct is defined in a single ``decl`` in the YAML file.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct1 {
+              int ifield;
+            };
+
+This is translated directly into a Fortran derived type with the
+``bind(C)`` attribute.
+
+.. example here
+
+
+All creation and access of members can be done using Fortran.
 
 
 Class
@@ -35,7 +42,8 @@ Class
 
 Each class in the input file will create a Fortran derived type which
 acts as a shadow class for the C++ class.  A pointer to an instance is
-saved as a ``type(C_PTR)`` value.
+saved as a ``type(C_PTR)`` value. This pointer is then passed down to
+the C++ routines to be used as the *this* instance.
 
 Using the tutorial as an example, a simple class is defined in the C++
 header as:
