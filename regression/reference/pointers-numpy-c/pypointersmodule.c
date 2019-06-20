@@ -114,7 +114,7 @@ PY_cos_doubles(
     }
 
     // pre_call
-    double * in = (double *) PyArray_DATA(SHPy_in);
+    double * in = PyArray_DATA(SHPy_in);
     SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(SHPy_in,
         NPY_CORDER, NULL, 0);
     if (SHPy_out == NULL)
@@ -175,7 +175,7 @@ PY_truncate_to_int(
     }
 
     // pre_call
-    double * in = (double *) PyArray_DATA(SHPy_in);
+    double * in = PyArray_DATA(SHPy_in);
     PyArray_Descr * SHDPy_out = PyArray_DescrFromType(NPY_INT);
     SHPy_out = (PyArrayObject *) PyArray_NewLikeArray(SHPy_in,
         NPY_CORDER, SHDPy_out, 0);
@@ -231,7 +231,7 @@ PY_get_values(
 
     // pre_call
     int nvalues;  // intent(out)
-    int * values = (int *) PyArray_DATA(SHPy_values);
+    int * values = PyArray_DATA(SHPy_values);
 
     get_values(&nvalues, values);
 
@@ -284,8 +284,8 @@ PY_get_values2(
     }
 
     // pre_call
-    int * arg1 = (int *) PyArray_DATA(SHPy_arg1);
-    int * arg2 = (int *) PyArray_DATA(SHPy_arg2);
+    int * arg1 = PyArray_DATA(SHPy_arg1);
+    int * arg2 = PyArray_DATA(SHPy_arg2);
 
     get_values2(arg1, arg2);
 
@@ -333,7 +333,7 @@ PY_Sum(
     }
 
     // pre_call
-    int * values = (int *) PyArray_DATA(SHPy_values);
+    int * values = PyArray_DATA(SHPy_values);
     int result;  // intent(out)
     int len = PyArray_SIZE(SHPy_values);
 
@@ -380,7 +380,7 @@ PY_fillIntArray(
     }
 
     // pre_call
-    int * out = (int *) PyArray_DATA(SHPy_out);
+    int * out = PyArray_DATA(SHPy_out);
 
     fillIntArray(out);
     return (PyObject *) SHPy_out;
@@ -426,7 +426,7 @@ PY_incrementIntArray(
     }
 
     // pre_call
-    int * array = (int *) PyArray_DATA(SHPy_array);
+    int * array = PyArray_DATA(SHPy_array);
     int sizein = PyArray_SIZE(SHPy_array);
 
     incrementIntArray(array, sizein);

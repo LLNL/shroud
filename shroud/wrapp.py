@@ -82,6 +82,7 @@ class Wrapp(util.WrapperMixin):
         self.decl_arraydescr = []
         self.define_arraydescr = []
         self.call_arraydescr = []
+        update_for_language(self.language)
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -2611,6 +2612,25 @@ def do_cast(lang, kind, typ, var):
         return "%s_cast<%s>\t(%s)" % (kind, typ, var)
 
 
+def update_for_language(lang):
+    """
+    Move language specific entries to current language.
+
+    foo_bar=dict(
+      c_decl=[],
+      cxx_decl=[],
+    )
+
+    For lang==c,
+      foo_bar["decl"] = foo_bar["c_decl"]
+    """
+    for item in py_statements_local.values():
+        for clause in ["decl", "post_parse", "pre_call", "post_call",
+                       "cleanup", "fail"]:
+            specific = lang + "_" + clause
+            if specific in item:
+                item[clause] = item[specific]
+
 # put into list to avoid duplicating text below
 array_error = [
     "if ({py_var} == NULL) {{+",
@@ -2620,7 +2640,18 @@ array_error = [
     "-}}",
 ]
 
+malloc_error = [
+    "if ({cxx_var} == NULL) {{+",
+    "PyErr_NoMemory();",
+    "goto fail;",
+    "-}}",
+]
 
+# Code clauses are used for C and C++.
+# Differences are dealt with by format entries stdlib and cast.
+# Language specific clauses are used in update_for_language.
+# Function calls which return 'void *', do not require casts in C.
+# It doesn't hurt to add them, but I dislike the clutter.
 py_statements_local = dict(
 ####################
 ## numpy
@@ -2634,8 +2665,11 @@ py_statements_local = dict(
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + array_error,
-        pre_call=[
-            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
+        c_pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        cxx_pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
             "Py_DECREF({py_var});"
@@ -2656,8 +2690,11 @@ py_statements_local = dict(
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
         ] + array_error,
-        pre_call=[
-            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
+        c_pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        cxx_pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         post_call=None,  # Object already created in post_parse
         goto_fail=True,
@@ -2673,8 +2710,11 @@ py_statements_local = dict(
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
             "{npy_ndims}, {npy_dims}, {numpy_type}){cast2};",
         ] + array_error,
-        pre_call=[
-            "{cxx_decl} = {cast_static}{cxx_type} *{cast1}PyArray_DATA({py_var}){cast2};",
+        c_pre_call=[
+            "{cxx_decl} = PyArray_DATA({py_var});",
+        ],
+        cxx_pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         post_call=None,  # Object already created in post_parse
         fail=[
@@ -2758,14 +2798,14 @@ py_statements_local = dict(
             "PyObject *{py_var} = NULL;",
             "{cxx_decl} = NULL;",
         ],
-        pre_call=[
+        c_pre_call=[
 #            "{cxx_decl}[{pointer_shape}];",
-            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{stdlib}malloc(\tsizeof({cxx_type}) * {pointer_shape}{cast2});",
-            "if ({cxx_var} == NULL) {{+",
-            "PyErr_NoMemory();",
-            "goto fail;",
-            "-}}",
-        ],
+            "{cxx_var} = malloc(\tsizeof({cxx_type}) * {pointer_shape});",
+        ] + malloc_error,
+        cxx_pre_call=[
+#            "{cxx_decl}[{pointer_shape}];",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * {pointer_shape}));",
+        ] + malloc_error,
         post_call=[
             "{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {pointer_shape});",
             "if ({py_var} == NULL) goto fail;",
@@ -2789,13 +2829,12 @@ py_statements_local = dict(
         decl=[
             "{cxx_decl} = NULL;",
         ],
-        pre_call=[
-            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{stdlib}malloc(sizeof({cxx_type}) * {size_var}{cast2});",
-            "if ({cxx_var} == NULL) {{+",
-            "PyErr_NoMemory();",
-            "goto fail;",
-            "-}}",
-            ],
+        c_pre_call=[
+            "{cxx_var} = malloc(sizeof({cxx_type}) * {size_var});",
+        ] + malloc_error,
+        cxx_pre_call=[
+            "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(sizeof({cxx_type}) * {size_var}));",
+        ] + malloc_error,
         post_call=[
             "PyObject *{py_var} = SHROUD_to_PyList_{cxx_type}\t({cxx_var},\t {size_var});",
             "if ({py_var} == NULL) goto fail;",
