@@ -554,7 +554,13 @@ value
 
 If true, pass-by-value; else, pass-by-reference.
 This attribute is implied when the argument is not a pointer or reference.
+This will also default to ``intent(IN)`` since there is no way to return
+a value.
 
+.. note:: The Fortran wrapper may use an intrinsic function for some
+          attributes. For example, *len*, *len_trim*, and *size*.
+          If there is an argument with the same name, the generated
+          code may not compile.
 
 Patterns
 --------

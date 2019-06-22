@@ -17,6 +17,14 @@ pass meta-data arguments.  When called from Fortran, its wrappers will
 provide the meta-data.  When called directly by a C application, the
 meta-data must be provided by the user.
 
+To help control the scope of C names, all externals add a prefix.
+It defaults to the first three letters of the
+**library** but may be changed by setting the format **C_prefix**:
+
+.. code-block:: yaml
+
+    format:
+      C_prefix: NEW_
 
 Wrapper
 -------

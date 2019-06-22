@@ -66,6 +66,8 @@ a ``logical`` argument.  One of the goals of Shroud is to produce an
 idiomatic interface.  Converting the types in the wrapper avoids the
 awkwardness of requiring the Fortran user to passing in
 ``.true._c_bool`` instead of just ``.true.``.
+Using an integer for a ``bool`` argument is not portable since
+some compilers use 1 for ``.true.`` and others use -1.
 
 
 ``bool arg``
@@ -85,6 +87,17 @@ It is not sufficient to pass an address between Fortran and C++ like
 it is with other native types.  In order to get idiomatic behavior in
 the Fortran wrappers it is often necessary to copy the values.  This
 is to account for blank filled vs ``NULL`` terminated.
+
+..
+ This is the C++ prototype with the addition of **+len(30)**.  This
+ attribute defines the declared length of the returned string.  Since
+ *Function4a* is returning a ``std::string`` the contents of the string
+ must be copied out into a Fortran variable so that the ``std::string``
+ may be deallocated by C++. Otherwise, it would leak memory.
+
+ The downside of this approach is that the maximum length of the return argument must be 
+ known in advance.  By leaving off the **+len(30)**, Shroud will create an ``ALLOCATABLE``
+ function which will allocate a ``CHARACTER`` variable of the correct length:
 
 
 ``const char *arg``
@@ -120,6 +133,24 @@ is to account for blank filled vs ``NULL`` terminated.
 
 std::string
 -----------
+
+..
+ The C wrapper uses ``char *`` for ``std::string`` arguments which
+ Fortran declares as ``character``.
+ The argument is passed to the ``std::string`` constructor.
+ In addition the length of the data in each string is computed using ``len_trim``
+ and passed down.
+ No trailing ``NULL`` is required.
+ This avoids copying the string in Fortran which would be necessary to
+ append the trailing ``C_NULL_CHAR``.
+ The return value is added as another argument along with its declared length
+ computed using ``len``:
+
+ The contents of the ``std::string`` are copied into the result argument and blank
+ filled by ``ShroudStrCopy``.
+ Before the C wrapper returns, ``SHT_rv`` will be deleted by the compiler.
+
+
 
 ``std::string & arg``
     ``arg`` will default to ``intent(inout)``.

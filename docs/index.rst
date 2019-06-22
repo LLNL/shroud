@@ -34,7 +34,6 @@ Contents
    introduction
    installing
    tutorial
-   pytutorial
    input
    struct
    declarations

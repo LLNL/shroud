@@ -12,7 +12,7 @@ The source is available from `github.com/LLNL/shroud <https://github.com/LLNL/sh
 **Shroud** is written in Python and has been tested with version 2.7 and 3.4+.
 It requires the module:
 
-  * PyYAML https://pypi.python.org/pypi/PyYAML/3.11
+  * PyYAML   https://github.com/yaml/pyyaml
 
 
 After downloading the source:
