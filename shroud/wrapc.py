@@ -547,21 +547,6 @@ class Wrapc(util.WrapperMixin):
         output[-1] = output[-1][:-1]  # Avoid trailing comma for older compilers
         append_format(output, "-}};", fmt_enum)
 
-    def add_c_statements_headers(self, intent_blk):
-        """Add headers required by intent_blk.
-
-        Args:
-            intent_blk -
-        """
-        # include any dependent header in generated source
-        if self.language == "c":
-            headers = intent_blk.get("c_header", None)
-        else:
-            headers = intent_blk.get("cxx_header", None)
-        if headers:
-            for h in headers.split():
-                self.header_impl_include[h] = True
-
     def build_proto_list(self, fmt, ast, buf_args, proto_list, need_wrapper):
         """Find prototype based on buf_args in c_statements.
 
@@ -1078,7 +1063,7 @@ class Wrapc(util.WrapperMixin):
             need_wrapper = self.add_code_from_statements(
                 fmt_arg, intent_blk, pre_call, post_call, need_wrapper
             )
-            self.add_c_statements_headers(intent_blk)
+            self.add_statements_headers(intent_blk)
 
             if arg_call:
                 # Collect arguments to pass to wrapped function.
@@ -1236,7 +1221,7 @@ class Wrapc(util.WrapperMixin):
 
                 c_statements = result_typemap.c_statements
                 intent_blk = c_statements.get("result" + ast.stmts_suffix, {})
-                self.add_c_statements_headers(intent_blk)
+                self.add_statements_headers(intent_blk)
 
                 need_wrapper = self.add_code_from_statements(
                     fmt_result, intent_blk, pre_call, post_call, need_wrapper

@@ -140,11 +140,12 @@ The template for a function is:
             {ctor}    {post_call}
 
             {PyObject} *  {py_var} Py_BuildValue("{Py_format}", {vargs});
-            {cleanup_code}
+            {cleanup}
          }
+         return;
 
        fail:
-          {fail_code}
+          {fail}
           Py_XDECREF(arr_x);
     }
 

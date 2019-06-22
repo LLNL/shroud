@@ -100,7 +100,8 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -235,7 +236,8 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "SH_arg",
                                     "numpy_type": null,
-                                    "py_var": "SHPy_arg"
+                                    "py_var": "SHPy_arg",
+                                    "size_var": "SHSize_arg"
                                 }
                             }
                         },
@@ -346,7 +348,8 @@
                                     "cxx_var": "arg",
                                     "numpy_type": null,
                                     "py_type": "PY_Class3",
-                                    "py_var": "SHPy_arg"
+                                    "py_var": "SHPy_arg",
+                                    "size_var": "SHSize_arg"
                                 }
                             }
                         },
@@ -521,6 +524,10 @@
             "PY_utility_filename": "pyforwardutil.cpp",
             "YAML_type_filename": "forward_types.yaml",
             "c_temp": "SHT_",
+            "cast1": ">\t(",
+            "cast2": ")",
+            "cast_reinterpret": "reinterpret_cast<",
+            "cast_static": "static_cast<",
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
@@ -582,6 +589,7 @@
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
             "PY_PyObject_template": "{PY_prefix}{cxx_class}",
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
+            "PY_array_arg": "numpy",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",

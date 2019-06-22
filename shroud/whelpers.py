@@ -424,6 +424,155 @@ integer(C_SIZE_T), value :: c_var_size
         FHelpers[name] = helper
     return name
 
+def add_to_PyList_helper(arg):
+    """
+    Args:
+        fmt -
+    """
+    ntypemap = arg.typemap
+
+    # Used with intent(out)
+    name = "to_PyList_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+static PyObject *SHROUD_to_PyList_{c_type}({c_type} *in, size_t size)
+{{+
+PyObject *out = PyList_New(size);
+for (size_t i = 0; i < size; ++i) {{+
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+return out;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # Used with intent(inout)
+    name = "update_PyList_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{{+
+for (size_t i = 0; i < size; ++i) {{+
+PyObject *item = PyList_GET_ITEM(out, i);
+Py_DECREF(item);
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # used with intent(in)
+    # Return -1 on error.
+    # Convert an empty list into a NULL pointer.
+    # Use a fixed text in PySequence_Fast.
+    # If an error occurs, replace message with one which includes argument name.
+    name = "from_PyObject_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_get=ntypemap.PY_get.format(py_var="item"),
+        )
+        helper = dict(
+            c_header="<stdlib.h>",  # malloc/free
+            c_source=wformat(
+                """
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = malloc(size * sizeof({c_type}));
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""",
+                fmt,
+            ),
+            cxx_header="<cstdlib>",  # malloc/free
+            cxx_source=wformat(
+                """
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = static_cast<{c_type} *>\t(std::malloc(size * sizeof({c_type})));
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+std::free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+    return name
+
+"""
+http://effbot.org/zone/python-capi-sequences.htm
+if (PyList_Check(seq))
+        for (i = 0; i < len; i++) {
+            item = PyList_GET_ITEM(seq, i);
+            ...
+        }
+    else
+        for (i = 0; i < len; i++) {
+            item = PyTuple_GET_ITEM(seq, i);
+            ...
+        }
+"""
+
+######################################################################
+# Static helpers
 
 CHelpers = dict(
     ShroudStrCopy=dict(

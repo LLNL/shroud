@@ -15,8 +15,6 @@
 //
 // #######################################################################
 #include "pyClibrarymodule.h"
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include "numpy/arrayobject.h"
 #include "clibrary.h"
 
 // splicer begin include
@@ -88,58 +86,6 @@ PY_Function2(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
-}
-
-static char PY_Sum__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Sum(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-// splicer begin function.sum
-    PyObject * SHTPy_values;
-    PyArrayObject * SHPy_values = NULL;
-    char *SHT_kwlist[] = {
-        "values",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist, 
-        &SHTPy_values))
-        return NULL;
-
-    // post_parse
-    SHPy_values = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_values,
-        NPY_INT, NPY_ARRAY_IN_ARRAY);
-    if (SHPy_values == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "values must be a 1-D array of int");
-        goto fail;
-    }
-
-    // pre_call
-    int * values = PyArray_DATA(SHPy_values);
-    int result;  // intent(out)
-    int len = PyArray_SIZE(SHPy_values);
-
-    Sum(len, values, &result);
-
-    // post_call
-    PyObject * SHPy_result = PyInt_FromLong(result);
-
-    // cleanup
-    Py_DECREF(SHPy_values);
-
-    return (PyObject *) SHPy_result;
-
-fail:
-    Py_XDECREF(SHPy_values);
-    return NULL;
-// splicer end function.sum
 }
 
 static char PY_Function3__doc__[] =
@@ -504,7 +450,6 @@ static PyMethodDef PY_methods[] = {
     PY_Function1__doc__},
 {"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
     PY_Function2__doc__},
-{"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
 {"Function3b", (PyCFunction)PY_Function3b, METH_VARARGS|METH_KEYWORDS,
@@ -604,8 +549,6 @@ initclibrary(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
-
-    import_array();
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

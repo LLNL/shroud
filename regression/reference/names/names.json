@@ -871,6 +871,10 @@
             "YAML_type_filename": "testnames_types.yaml",
             "__line__": 30,
             "c_temp": "SHT_",
+            "cast1": ">\t(",
+            "cast2": ")",
+            "cast_reinterpret": "reinterpret_cast<",
+            "cast_static": "static_cast<",
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
@@ -991,7 +995,8 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_i"
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
                         }
                     }
                 },
@@ -1081,7 +1086,8 @@
                             "cxx_type": "long",
                             "cxx_var": "i",
                             "numpy_type": "NPY_LONG",
-                            "py_var": "SHPy_i"
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
                         }
                     }
                 },
@@ -1167,7 +1173,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_rv",
                             "numpy_type": null,
-                            "py_var": "SHPy_rv"
+                            "py_var": "SHPy_rv",
+                            "size_var": "SHSize_rv"
                         }
                     }
                 },
@@ -1193,7 +1200,8 @@
                         "cxx_member": ".",
                         "cxx_var": "SHC_rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1575,7 +1583,8 @@
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -1607,7 +1616,8 @@
                             "cxx_type": "long",
                             "cxx_var": "arg2",
                             "numpy_type": "NPY_LONG",
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -1774,7 +1784,8 @@
                             "cxx_type": "float",
                             "cxx_var": "arg1",
                             "numpy_type": "NPY_FLOAT",
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -1806,7 +1817,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -2017,7 +2029,8 @@
                         "cxx_member": ".",
                         "cxx_var": "SHC_rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "_generated": "cxx_template",
@@ -2139,6 +2152,7 @@
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
             "PY_PyObject_template": "{PY_prefix}{cxx_class}",
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
+            "PY_array_arg": "numpy",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",

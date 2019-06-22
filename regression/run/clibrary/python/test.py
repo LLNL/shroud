@@ -17,6 +17,7 @@
 from __future__ import print_function
 
 import math
+import numpy as np
 import unittest
 import clibrary
 
@@ -84,9 +85,6 @@ class Tutorial(unittest.TestCase):
 
     def testImpliedBoolFalse(self):
         self.assertFalse(clibrary.ImpliedBoolFalse())
-
-    def testsum(self):
-        self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 
 
 # creating a new test suite

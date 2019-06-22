@@ -433,7 +433,6 @@ inittestnames(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-
     // Names
     PY_Names_Type.tp_new   = PyType_GenericNew;
     PY_Names_Type.tp_alloc = PyType_GenericAlloc;

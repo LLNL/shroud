@@ -275,6 +275,10 @@
             "PY_utility_filename": "pyownershiputil.cpp",
             "YAML_type_filename": "ownership_types.yaml",
             "c_temp": "SHT_",
+            "cast1": ">\t(",
+            "cast2": ")",
+            "cast_reinterpret": "reinterpret_cast<",
+            "cast_static": "static_cast<",
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
@@ -364,7 +368,8 @@
                         "cxx_member": "->",
                         "cxx_var": "SHC_rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -443,7 +448,8 @@
                         "npy_dims": "NULL",
                         "npy_ndims": "0",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -617,7 +623,8 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     }
                 },
@@ -647,7 +654,8 @@
                         "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -749,7 +757,8 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     }
                 },
@@ -781,7 +790,8 @@
                         "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1018,7 +1028,8 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     }
                 },
@@ -1048,7 +1059,8 @@
                         "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1244,7 +1256,8 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     }
                 },
@@ -1274,7 +1287,8 @@
                         "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1377,7 +1391,8 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     }
                 },
@@ -1402,7 +1417,8 @@
                         "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1501,7 +1517,8 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     }
                 },
@@ -1531,7 +1548,8 @@
                         "npy_ndims": "1",
                         "numpy_type": "NPY_INT",
                         "pointer_shape": "len",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1618,7 +1636,8 @@
                                 "__line__": 151,
                                 "deref": "raw",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1638,7 +1657,8 @@
                         },
                         {
                             "attrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1687,7 +1707,8 @@
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1708,7 +1729,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1757,7 +1779,8 @@
                                 "deref": "allocatable",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1778,7 +1801,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1826,7 +1850,8 @@
                                 "__line__": 189,
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "library"
+                                "owner": "library",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1847,7 +1872,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1895,7 +1921,8 @@
                                 "__line__": 206,
                                 "deref": "raw",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1916,7 +1943,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -1965,7 +1993,8 @@
                                 "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -1986,7 +2015,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -2035,7 +2065,8 @@
                                 "deref": "allocatable",
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -2056,7 +2087,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -2104,7 +2136,8 @@
                                 "__line__": 247,
                                 "dimension": "len",
                                 "intent": "out",
-                                "owner": "caller"
+                                "owner": "caller",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "array",
@@ -2125,7 +2158,8 @@
                         {
                             "attrs": {
                                 "hidden": true,
-                                "intent": "out"
+                                "intent": "out",
+                                "value": false
                             },
                             "declarator": {
                                 "name": "len",
@@ -2192,7 +2226,8 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_flag"
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag"
                         }
                     }
                 },
@@ -2275,7 +2310,8 @@
                         "cxx_member": "->",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -2359,7 +2395,8 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_flag"
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag"
                         }
                     }
                 },
@@ -2386,7 +2423,8 @@
                         "cxx_member": "->",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -2509,6 +2547,7 @@
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
             "PY_PyObject_template": "{PY_prefix}{cxx_class}",
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
+            "PY_array_arg": "numpy",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",

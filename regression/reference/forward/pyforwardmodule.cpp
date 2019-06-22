@@ -117,7 +117,6 @@ initforward(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-
     // Class3
     PY_Class3_Type.tp_new   = PyType_GenericNew;
     PY_Class3_Type.tp_alloc = PyType_GenericAlloc;

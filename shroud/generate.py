@@ -77,8 +77,6 @@ class VerifyAttrs(object):
             node - ast.FunctionNode
         """
         options = node.options
-        if not options.wrap_fortran and not options.wrap_c:
-            return
 
         ast = node.ast
         node._has_found_default = False
@@ -175,6 +173,7 @@ class VerifyAttrs(object):
                 "intent",
                 "len",
                 "len_trim",
+                "owner",
                 "size",
                 "value",
             ]:

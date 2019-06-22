@@ -471,6 +471,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_numpy_array_dtor_function_template=(
                 "{PY_prefix}array_destructor_function"
             ),
+            PY_array_arg="numpy",   # or "list"
         )
 
         return def_options
@@ -551,6 +552,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_impl_filename_suffix = "c"
 
             fmt_library.stdlib = ""
+
+            fmt_library.cast_static = "("
+            fmt_library.cast_reinterpret = "("
+            fmt_library.cast1 = ") "
+            fmt_library.cast2 = ""
         else:
             fmt_library.C_header_filename_suffix = "h"
             fmt_library.C_impl_filename_suffix = "cpp"
@@ -559,6 +565,11 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_impl_filename_suffix = "cpp"
 
             fmt_library.stdlib = "std::"
+
+            fmt_library.cast_static = "static_cast<"
+            fmt_library.cast_reinterpret = "reinterpret_cast<"
+            fmt_library.cast1 = ">\t("
+            fmt_library.cast2 = ")"
 
         for name in [
             "C_header_filename",
