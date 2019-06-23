@@ -1,0 +1,94 @@
+copyright:
+- '#######################################################################'
+- 'Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.'
+-
+- 'Produced at the Lawrence Livermore National Laboratory'
+-
+- 'LLNL-CODE-738041.'
+-
+- 'All rights reserved.'
+-
+- 'This file is part of Shroud.'
+-
+- 'For details about use and distribution, please read LICENSE.'
+-
+- '#######################################################################'
+
+# Wrap a C library with structs
+
+# Several tests have a 'char *outbuf+intent(out)' argument
+# which will force a C bufferify wrapper to be created.
+# The size of this buffer is controlled by lenoutbuf.
+# This feature is helpful for the C tests since a C wrapper is not required
+# for each function since we do not need to deal with name mangling
+# like in C++.
+
+library: struct
+cxx_header: struct.h
+
+language: c
+
+options:
+  debug: True
+  F_module_per_class: False
+  wrap_python: False
+
+declarations:
+
+- decl: struct Cstruct1 {
+          int ifield;
+          double dfield;
+        };
+  options:
+    wrap_python: False
+
+
+#- decl: double acceptStructIn(Cstruct1 arg)
+#  options:
+#    wrap_python: False
+
+- decl: int passStruct1(Cstruct1 *arg)
+  options:
+    wrap_python: False
+
+- decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))
+  doxygen:
+    description: |
+      Pass name argument which will build a bufferify function.
+  options:
+    wrap_python: False
+
+- decl: double acceptStructInPtr(Cstruct1 *arg+intent(in))
+  options:
+    wrap_python: False
+- decl: void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)
+  options:
+    wrap_python: False
+- decl: void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))
+  options:
+    wrap_python: False
+
+######################################################################
+- decl: Cstruct1 returnStruct(int i, double d);
+
+- decl: Cstruct1 *returnStructPtr1(int i, double d)
+  doxygen:
+    brief: Return a pointer to a struct
+    description: |
+      Does not generate a bufferify C wrapper.
+  options:
+    wrap_python: False
+
+- decl: Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))
+  doxygen:
+    brief: Return a pointer to a struct
+    description: |
+      Generates a bufferify C wrapper function.
+  options:
+    wrap_python: False
+
+######################################################################
+splicer_code:
+  f:
+    module_top:
+    -  "integer, parameter :: MAXNAME = 20"
