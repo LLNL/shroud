@@ -9,6 +9,3 @@ struct Cstruct1 {
   double dfield;
 };
 typedef struct Cstruct1 Cstruct1;
-
-double acceptStructIn(Cstruct1 arg);
-
