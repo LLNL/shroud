@@ -1,3 +1,7 @@
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
+
 import re
 import requests
 import numpy
@@ -25,10 +29,6 @@ with open(np_file_name, 'wb') as file:
 from distutils.core import setup, Extension
 import numpy
 
-tutorial = Extension(
-    'tutorial',
-    sources=['../../run-tutorial/tutorial.cpp', 'tutorial_module.cpp'],
-    include_dirs=['../../run-tutorial', numpy.get_include()]
-)
-
-setup(ext_modules=[tutorial])
+setup(ext_modules=[Extension("_cos_doubles",
+      sources=["cos_doubles.c", "cos_doubles.i"],
+      include_dirs=[numpy.get_include()])])

@@ -3,6 +3,9 @@
 # See the top-level COPYRIGHT file for details.
 
 build:
-	python setup.py build
+	swig -python -c++ -o tutorial_module.cpp tutorial.i
+	python setup.py build_ext --inplace
 
-.PHONY : build
+# setup.py can call swig directly but not for C++?
+
+.PHONY: build
