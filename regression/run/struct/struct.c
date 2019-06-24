@@ -28,7 +28,10 @@ static Cstruct1 global_Cstruct1;
 // return sum of fields as a check
 double acceptStructIn(Cstruct1 arg)
 {
-  return arg.ifield + arg.dfield;
+  double rv = arg.ifield + arg.dfield;
+  // Caller will not see changes.
+  arg.ifield += 1;
+  return rv;
 }
 
 int passStruct1(Cstruct1 *s1)

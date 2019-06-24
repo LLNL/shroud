@@ -27,6 +27,7 @@ module struct_mod
     implicit none
 
     ! splicer begin module_top
+    integer, parameter :: MAXNAME = 20
     ! splicer end module_top
 
 
@@ -37,6 +38,16 @@ module struct_mod
 
     interface
 
+        function accept_struct_in(arg) &
+                result(SHT_rv) &
+                bind(C, name="acceptStructIn")
+            use iso_c_binding, only : C_DOUBLE
+            import :: cstruct1
+            implicit none
+            type(cstruct1), value, intent(IN) :: arg
+            real(C_DOUBLE) :: SHT_rv
+        end function accept_struct_in
+
         function pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="passStruct1")
@@ -46,6 +57,29 @@ module struct_mod
             type(cstruct1), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_struct1
+
+        function c_pass_struct2(s1, outbuf) &
+                result(SHT_rv) &
+                bind(C, name="passStruct2")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: cstruct1
+            implicit none
+            type(cstruct1), intent(IN) :: s1
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT) :: SHT_rv
+        end function c_pass_struct2
+
+        function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
+                result(SHT_rv) &
+                bind(C, name="STR_pass_struct2_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: cstruct1
+            implicit none
+            type(cstruct1), intent(IN) :: s1
+            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
+            integer(C_INT), value, intent(IN) :: Noutbuf
+            integer(C_INT) :: SHT_rv
+        end function c_pass_struct2_bufferify
 
         function accept_struct_in_ptr(arg) &
                 result(SHT_rv) &
@@ -73,29 +107,6 @@ module struct_mod
             implicit none
             type(cstruct1), intent(INOUT) :: arg
         end subroutine accept_struct_in_out_ptr
-
-        function c_pass_struct2(s1, outbuf) &
-                result(SHT_rv) &
-                bind(C, name="passStruct2")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT) :: SHT_rv
-        end function c_pass_struct2
-
-        function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
-                result(SHT_rv) &
-                bind(C, name="STR_pass_struct2_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: Noutbuf
-            integer(C_INT) :: SHT_rv
-        end function c_pass_struct2_bufferify
 
         function return_struct(i, d) &
                 result(SHT_rv) &

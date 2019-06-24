@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   arguments where not compiling.
 - Changed enum option templates to include namespace as well as class name.
   Non-scoped enums only use *C_prefix* on enum member names.
+- Passing a struct by value in Fortran wrapper for C library.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

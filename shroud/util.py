@@ -23,6 +23,7 @@ fmt = string.Formatter()
 
 def wformat(template, dct):
     # shorthand, wrap fmt.vformat
+    assert template is not None
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError:

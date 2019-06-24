@@ -23,12 +23,6 @@ program tester
 
   integer, parameter :: lenoutbuf = 40
 
-  logical rv_logical, wrk_logical
-  integer rv_integer
-  integer(C_INT) rv_int
-  real(C_DOUBLE) rv_double
-  character(30) rv_char
-
   call init_fruit
 
   call test_struct
@@ -51,11 +45,13 @@ contains
 
     call set_case_name("test_struct")
 
-! acceptStructIn
-!    str1%ifield = 2_C_INT
-!    str1%dfield = 2.0_C_DOUBLE
-!    rvd = accept_struct_in(str1)
-!    call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
+    str1%ifield = 2_C_INT
+    str1%dfield = 2.0_C_DOUBLE
+    rvd = accept_struct_in(str1)
+    call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
+    ! Make sure str1 was passed by value.
+    call assert_equals(2_C_INT, str1%ifield, "accept_struct_in ifield")
+    call assert_equals(2.0_C_DOUBLE, str1%dfield, "accept_struct_in dfield")
 
     str1%ifield = 12
     str1%dfield = 12.6

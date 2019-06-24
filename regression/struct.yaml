@@ -43,9 +43,9 @@ declarations:
     wrap_python: False
 
 
-#- decl: double acceptStructIn(Cstruct1 arg)
-#  options:
-#    wrap_python: False
+- decl: double acceptStructIn(Cstruct1 arg)
+  options:
+    wrap_python: False
 
 - decl: int passStruct1(Cstruct1 *arg)
   options:

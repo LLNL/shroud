@@ -34,6 +34,7 @@ TESTDIRS = \
     $(tempdir)/run/pointers-list/python/.. \
     $(tempdir)/run/pointers-numpy-c/python/.. \
     $(tempdir)/run/pointers-list-c/python/.. \
+    $(tempdir)/run/struct/..\
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/vectors/..\
@@ -69,6 +70,7 @@ test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
   test-fortran-pointers \
+  test-fortran-struct \
   test-fortran-vectors \
   test-fortran-preprocess \
   test-fortran-strings \

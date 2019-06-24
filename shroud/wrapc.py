@@ -947,14 +947,18 @@ class Wrapc(util.WrapperMixin):
                         have_idtor = True
 
             else:
+                # regular argument (not function result)
                 arg_call = arg
-                if arg_is_union_scalar:
+                if arg_is_union_scalar and arg_typemap.c_to_cxx is not None:
                     # Argument is passed from Fortran to C by value.
-                    # Take address of argument and pass to C++.
+                    # Take address of argument for cxx_var.
                     # It is dereferenced when passed to C++ to pass the value.
+                    # This avoids copying the struct since only the pointer is cast.
                     #  tutorial::struct1 * SHCXX_arg =
                     #    static_cast<tutorial::struct1 *>
                     #      (static_cast<void *>(&arg));
+                    # Preserves call-by-value semantics to allow C++ routine
+                    # to change the value.
                     tmp = fmt_arg.c_var
                     fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
                     fmt_arg.c_var = "&" + tmp

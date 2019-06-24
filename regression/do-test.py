@@ -345,6 +345,7 @@ if __name__ == "__main__":
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
+        TestDesc("struct"),
         TestDesc("vectors"),
         TestDesc("forward"),
         TestDesc("example"),
