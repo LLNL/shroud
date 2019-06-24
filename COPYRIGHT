@@ -19,3 +19,13 @@ Files that are licensed as BSD 3-Clause contain the following
 text in the license header:
 
 SPDX-License-Identifier: (BSD-3-Clause)
+
+External Packages
+-------------------
+Shroud bundles some of its external dependencies in its repository.  These
+packages are covered by various permissive licenses.  A summary listing
+follows.  See the license included with each package for full details.
+
+PackageName: fruit
+PackageHomePage: https://sourceforge.net/projects/fortranxunit/
+PackageLicenseDeclared: BSD-3-Clause
