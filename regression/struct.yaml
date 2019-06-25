@@ -35,9 +35,6 @@ declarations:
           int ifield;
           double dfield;
         };
-  options:
-    wrap_python: False
-
 
 - decl: int passStructByValue(Cstruct1 arg)
   options:

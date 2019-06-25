@@ -1262,7 +1262,7 @@ static PyMethodDef PY_methods[] = {
 };
 
 // Create PyArray_Descr for struct1
-PyArray_Descr *PY_struct1_create_array_descr()
+static PyArray_Descr *PY_struct1_create_array_descr()
 {
     int ierr;
     PyObject *obj = NULL;

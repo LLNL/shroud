@@ -7,6 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.h"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 #include "struct.h"
 
 // splicer begin include
@@ -28,11 +30,74 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyArray_Descr *PY_Cstruct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 static PyMethodDef PY_methods[] = {
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
+
+// Create PyArray_Descr for Cstruct1
+static PyArray_Descr *PY_Cstruct1_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = NULL;
+    PyObject * lnames = NULL;
+    PyObject * ldescr = NULL;
+    PyObject * dict = NULL;
+    PyArray_Descr *dtype = NULL;
+
+    lnames = PyList_New(2);
+    if (lnames == NULL) goto fail;
+    ldescr = PyList_New(2);
+    if (ldescr == NULL) goto fail;
+
+    // ifield
+    obj = PyString_FromString("ifield");
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(lnames, 0, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(ldescr, 0, obj);
+
+    // dfield
+    obj = PyString_FromString("dfield");
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(lnames, 1, obj);
+    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
+    if (obj == NULL) goto fail;
+    PyList_SET_ITEM(ldescr, 1, obj);
+    obj = NULL;
+
+    dict = PyDict_New();
+    if (dict == NULL) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = NULL;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = NULL;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != NULL) {
+        for (int i=0; i < 2; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != NULL) {
+        for (int i=0; i < 2; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return NULL;
+}
 
 /*
  * initstruct - Initialization function for the module
@@ -108,6 +173,13 @@ initcstruct(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
+
+    import_array();
+
+    // Define PyArray_Descr for structs
+    PY_Cstruct1_array_descr = PY_Cstruct1_create_array_descr();
+    PyModule_AddObject(m, "Cstruct1_dtype", 
+        (PyObject *) PY_Cstruct1_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

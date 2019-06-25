@@ -455,7 +455,7 @@ return 1;""",
         append_format(
             output,
             "// Create PyArray_Descr for {cxx_class}\n"
-            "PyArray_Descr *{PY_struct_array_descr_create}()",
+            "static PyArray_Descr *{PY_struct_array_descr_create}()",
             fmt,
         )
         output.append("{")

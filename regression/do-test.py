@@ -354,6 +354,7 @@ if __name__ == "__main__":
                  cmdline=[
                      "--language", "c++",
                      "--option", "PY_array_arg=list",
+                     "--option", "wrap_python=false",
                  ]),
         TestDesc("vectors"),
         TestDesc("forward"),
