@@ -1,14 +1,6 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
-#
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
 ########################################################################
 #
@@ -19,40 +11,6 @@ export compiler
 
 include $(top)/regression/run/defaults.mk
 
-########################################################################
-#
-# Compile code in tutrial and string directory
-# Used to make sure the generated wrappers work.
-#
-TESTDIRS = \
-    $(tempdir)/run/tutorial/..\
-    $(tempdir)/run/tutorial/python/.. \
-    $(tempdir)/run/tutorial/lua/.. \
-    $(tempdir)/run/types/..\
-    $(tempdir)/run/pointers/..\
-    $(tempdir)/run/pointers/python/.. \
-    $(tempdir)/run/pointers-list/python/.. \
-    $(tempdir)/run/pointers-numpy-c/python/.. \
-    $(tempdir)/run/pointers-list-c/python/.. \
-    $(tempdir)/run/struct/..\
-    $(tempdir)/run/preprocess/..\
-    $(tempdir)/run/preprocess/python/.. \
-    $(tempdir)/run/vectors/..\
-    $(tempdir)/run/vectors/python/.. \
-    $(tempdir)/run/vectors/lua/.. \
-    $(tempdir)/run/preprocess/.. \
-    $(tempdir)/run/forward/.. \
-    $(tempdir)/run/strings/.. \
-    $(tempdir)/run/strings/python/.. \
-    $(tempdir)/run/clibrary/.. \
-    $(tempdir)/run/clibrary/python/.. \
-    $(tempdir)/run/clibrary-list/python/.. \
-    $(tempdir)/run/ownership/.. \
-    $(tempdir)/run/ownership/python/.. \
-    $(tempdir)/run/templates/..
-
-testdirs : $(TESTDIRS)
-
 ######################################################################
 # Compile a Fortran test
 fortran-% : $(tempdir)/run/%/.. phony_explicit
@@ -61,7 +19,7 @@ fortran-% : $(tempdir)/run/%/.. phony_explicit
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) $*
 
-# run a Fortran test
+# Run a Fortran test
 test-fortran-% : fortran-%
 	$(tempdir)/run/$*/$*
 
@@ -71,6 +29,7 @@ test-fortran : \
   test-fortran-types \
   test-fortran-pointers \
   test-fortran-struct \
+  test-fortran-struct-cxx \
   test-fortran-vectors \
   test-fortran-preprocess \
   test-fortran-strings \
@@ -133,7 +92,7 @@ test-python : \
 
 ######################################################################
 # Compile the geneated Lua wrapper
-lua-tutorial : testdirs
+lua-tutorial : $(tempdir)/run/tutorial/lua/.. phony_explicit
 	$(MAKE) \
 	    -C $(tempdir)/run/tutorial/lua \
 	    -f $(top)/regression/run/tutorial/lua/Makefile \
@@ -156,3 +115,32 @@ test-all : test-c test-fortran test-python test-lua
 
 .PHONY: phony_explicit
 phony_explicit: 
+
+# Avoid deleting directories created to run tests.
+.SECONDARY: \
+    $(tempdir)/run/clibrary/.. \
+    $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/forward/.. \
+    $(tempdir)/run/ownership/.. \
+    $(tempdir)/run/ownership/python/.. \
+    $(tempdir)/run/pointers/..\
+    $(tempdir)/run/pointers/python/.. \
+    $(tempdir)/run/pointers-list/python/.. \
+    $(tempdir)/run/pointers-list-c/python/.. \
+    $(tempdir)/run/pointers-numpy-c/python/.. \
+    $(tempdir)/run/preprocess/..\
+    $(tempdir)/run/preprocess/python/.. \
+    $(tempdir)/run/preprocess/.. \
+    $(tempdir)/run/strings/.. \
+    $(tempdir)/run/strings/python/.. \
+    $(tempdir)/run/struct/.. \
+    $(tempdir)/run/struct-cxx/.. \
+    $(tempdir)/run/templates/.. \
+    $(tempdir)/run/tutorial/..\
+    $(tempdir)/run/tutorial/python/.. \
+    $(tempdir)/run/tutorial/lua/.. \
+    $(tempdir)/run/types/..\
+    $(tempdir)/run/vectors/..\
+    $(tempdir)/run/vectors/python/.. \
+    $(tempdir)/run/vectors/lua/.. \
+

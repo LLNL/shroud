@@ -346,6 +346,11 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
         TestDesc("struct"),
+        TestDesc("struct-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "PY_array_arg=list",
+                 ]),
         TestDesc("vectors"),
         TestDesc("forward"),
         TestDesc("example"),
