@@ -43,7 +43,7 @@ declarations:
     wrap_python: False
 
 
-- decl: double acceptStructIn(Cstruct1 arg)
+- decl: int passStructByValue(Cstruct1 arg)
   options:
     wrap_python: False
 
@@ -58,7 +58,7 @@ declarations:
   options:
     wrap_python: False
 
-- decl: double acceptStructInPtr(Cstruct1 *arg+intent(in))
+- decl: int acceptStructInPtr(Cstruct1 *arg+intent(in))
   options:
     wrap_python: False
 - decl: void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)

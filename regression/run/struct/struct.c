@@ -26,9 +26,9 @@ static Cstruct1 global_Cstruct1;
 //----------------------------------------------------------------------
 
 // return sum of fields as a check
-double acceptStructIn(Cstruct1 arg)
+int passStructByValue(Cstruct1 arg)
 {
-  double rv = arg.ifield + arg.dfield;
+  int rv = arg.ifield * 2;
   // Caller will not see changes.
   arg.ifield += 1;
   return rv;
@@ -48,9 +48,11 @@ int passStruct2(Cstruct1 *s1, char *outbuf)
 }
 
 // return sum of fields as a check
-double acceptStructInPtr(Cstruct1 *arg)
+int acceptStructInPtr(Cstruct1 *arg)
 {
-  return arg->ifield + arg->dfield;
+  int rv = arg->ifield + arg->dfield;
+  arg->ifield += 1;
+  return rv;
 }
 
 void acceptStructOutPtr(Cstruct1 *arg, int i, double d)

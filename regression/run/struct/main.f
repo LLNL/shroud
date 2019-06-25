@@ -41,17 +41,17 @@ contains
   subroutine test_struct
     character(lenoutbuf)  :: outbuf
     type(cstruct1) str1
-    real(C_DOUBLE) rvd
+    integer(C_INT) rvi
 
     call set_case_name("test_struct")
 
     str1%ifield = 2_C_INT
     str1%dfield = 2.0_C_DOUBLE
-    rvd = accept_struct_in(str1)
-    call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
+    rvi = pass_struct_by_value(str1)
+    call assert_equals(4, rvi, "pass_struct_by_value")
     ! Make sure str1 was passed by value.
-    call assert_equals(2_C_INT, str1%ifield, "accept_struct_in ifield")
-    call assert_equals(2.0_C_DOUBLE, str1%dfield, "accept_struct_in dfield")
+    call assert_equals(2_C_INT, str1%ifield, "pass_struct_by_value ifield")
+    call assert_equals(2.0_C_DOUBLE, str1%dfield, "pass_struct_by_value dfield")
 
     str1%ifield = 12
     str1%dfield = 12.6
@@ -63,8 +63,10 @@ contains
 
     str1%ifield = 3_C_INT
     str1%dfield = 3.0_C_DOUBLE
-    rvd = accept_struct_in_ptr(str1)
-    call assert_equals(6.0_C_DOUBLE, rvd, "accept_struct_in_ptr")
+    rvi = accept_struct_in_ptr(str1)
+    call assert_equals(6, rvi, "accept_struct_in_ptr")
+    ! ifield changed by routine.
+    call assert_equals(4, str1%ifield, "accept_struct_in_ptr ifield")
 
     str1%ifield = 0
     str1%dfield = 0.0

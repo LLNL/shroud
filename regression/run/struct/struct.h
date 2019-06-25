@@ -27,10 +27,10 @@ struct Cstruct1 {
 };
 typedef struct Cstruct1 Cstruct1;
 
-double acceptStructIn(Cstruct1 arg);
+int passStructByValue(Cstruct1 arg);
 int passStruct1(Cstruct1 *s1);
 int passStruct2(Cstruct1 *s1, char *outbuf);
-double acceptStructInPtr(Cstruct1 *arg);
+int acceptStructInPtr(Cstruct1 *arg);
 void acceptStructOutPtr(Cstruct1 *arg, int i, double d);
 void acceptStructInOutPtr(Cstruct1 *arg);
 Cstruct1 returnStruct(int i, double d);

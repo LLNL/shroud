@@ -196,18 +196,18 @@
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "double",
+                        "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0"
                     },
                     "fmtf": {
-                        "cxx_type": "double",
+                        "cxx_type": "int",
                         "f_var": "SHT_rv"
                     }
                 },
                 "ast": {
                     "declarator": {
-                        "name": "acceptStructIn",
+                        "name": "passStructByValue",
                         "pointer": []
                     },
                     "params": [
@@ -227,33 +227,33 @@
                         }
                     ],
                     "specifier": [
-                        "double"
+                        "int"
                     ],
-                    "typemap_name": "double"
+                    "typemap_name": "int"
                 },
-                "decl": "double acceptStructIn(Cstruct1 arg)",
-                "declgen": "double acceptStructIn(Cstruct1 arg +intent(in)+value)",
+                "decl": "int passStructByValue(Cstruct1 arg)",
+                "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t acceptStructIn(\t*arg);",
+                    "C_call_code": "int SHC_rv =\t passStructByValue(\t*arg);",
                     "C_call_list": "*arg",
-                    "C_name": "acceptStructIn",
+                    "C_name": "passStructByValue",
                     "C_prototype": "Cstruct1 arg",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "double",
-                    "F_C_call": "c_accept_struct_in",
-                    "F_C_name": "accept_struct_in",
+                    "C_return_type": "int",
+                    "F_C_call": "c_pass_struct_by_value",
+                    "F_C_name": "pass_struct_by_value",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_accept_struct_in(arg)",
-                    "F_name_function": "accept_struct_in",
-                    "F_name_generic": "accept_struct_in",
-                    "F_name_impl": "accept_struct_in",
+                    "F_call_code": "SHT_rv = c_pass_struct_by_value(arg)",
+                    "F_name_function": "pass_struct_by_value",
+                    "F_name_generic": "pass_struct_by_value",
+                    "F_name_impl": "pass_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
-                    "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "acceptStructIn",
-                    "underscore_name": "accept_struct_in"
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "passStructByValue",
+                    "underscore_name": "pass_struct_by_value"
                 },
                 "linenumber": 46,
                 "options": {
@@ -640,12 +640,12 @@
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_type": "double",
+                        "cxx_type": "int",
                         "cxx_var": "SHC_rv",
                         "idtor": "0"
                     },
                     "fmtf": {
-                        "cxx_type": "double",
+                        "cxx_type": "int",
                         "f_var": "SHT_rv"
                     }
                 },
@@ -675,19 +675,19 @@
                         }
                     ],
                     "specifier": [
-                        "double"
+                        "int"
                     ],
-                    "typemap_name": "double"
+                    "typemap_name": "int"
                 },
-                "decl": "double acceptStructInPtr(Cstruct1 *arg+intent(in))",
-                "declgen": "double acceptStructInPtr(Cstruct1 * arg +intent(in))",
+                "decl": "int acceptStructInPtr(Cstruct1 *arg+intent(in))",
+                "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t acceptStructInPtr(\targ);",
+                    "C_call_code": "int SHC_rv =\t acceptStructInPtr(\targ);",
                     "C_call_list": "arg",
                     "C_name": "acceptStructInPtr",
                     "C_prototype": "Cstruct1 * arg",
                     "C_return_code": "return SHC_rv;",
-                    "C_return_type": "double",
+                    "C_return_type": "int",
                     "F_C_call": "c_accept_struct_in_ptr",
                     "F_C_name": "accept_struct_in_ptr",
                     "F_arg_c_call": "arg",
@@ -699,7 +699,7 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
-                    "cxx_rv_decl": "double SHC_rv",
+                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },

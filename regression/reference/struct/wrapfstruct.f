@@ -38,15 +38,15 @@ module struct_mod
 
     interface
 
-        function accept_struct_in(arg) &
+        function pass_struct_by_value(arg) &
                 result(SHT_rv) &
-                bind(C, name="acceptStructIn")
-            use iso_c_binding, only : C_DOUBLE
+                bind(C, name="passStructByValue")
+            use iso_c_binding, only : C_INT
             import :: cstruct1
             implicit none
             type(cstruct1), value, intent(IN) :: arg
-            real(C_DOUBLE) :: SHT_rv
-        end function accept_struct_in
+            integer(C_INT) :: SHT_rv
+        end function pass_struct_by_value
 
         function pass_struct1(arg) &
                 result(SHT_rv) &
@@ -84,11 +84,11 @@ module struct_mod
         function accept_struct_in_ptr(arg) &
                 result(SHT_rv) &
                 bind(C, name="acceptStructInPtr")
-            use iso_c_binding, only : C_DOUBLE
+            use iso_c_binding, only : C_INT
             import :: cstruct1
             implicit none
             type(cstruct1), intent(IN) :: arg
-            real(C_DOUBLE) :: SHT_rv
+            integer(C_INT) :: SHT_rv
         end function accept_struct_in_ptr
 
         subroutine accept_struct_out_ptr(arg, i, d) &
