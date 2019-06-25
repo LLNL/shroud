@@ -472,6 +472,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "{PY_prefix}array_destructor_function"
             ),
             PY_array_arg="numpy",   # or "list"
+            PY_struct_arg="numpy",   # or "list", "class"
         )
 
         return def_options

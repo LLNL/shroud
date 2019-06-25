@@ -503,6 +503,10 @@ PY_struct_array_descr_create_template
     Name of C/C++ function to create a ``PyArray_Descr`` pointer for a structure.
     ``{PY_prefix}{cxx_class}_create_array_descr``
 
+PY_struct_arg
+    How to wrap arrays - numpy, list or class.
+    Defaults to *numpy*.
+
 PY_struct_array_descr_variable_template
     Name of C/C++ variable which is a pointer to a ``PyArray_Descr``
     variable for a structure.
