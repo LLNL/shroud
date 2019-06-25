@@ -345,7 +345,11 @@ if __name__ == "__main__":
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
-        TestDesc("struct"),
+        TestDesc("struct",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "PY_array_arg=numpy",
+                 ]),
         TestDesc("struct-cxx", yaml="struct",
                  cmdline=[
                      "--language", "c++",

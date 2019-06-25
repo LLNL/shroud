@@ -27,3 +27,6 @@ C-interface, Fortran function Cstruct1 * returnStructPtr1(int i +intent(in)+valu
 C-interface, Fortran function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))
 C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 Close wrapfstruct.f
+Close pystructutil.c
+Close pystructmodule.h
+Close pystructmodule.c

@@ -1,18 +1,10 @@
 copyright:
-- '#######################################################################'
-- 'Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.'
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
 -
-- 'Produced at the Lawrence Livermore National Laboratory'
+- "SPDX-License-Identifier: (BSD-3-Clause)"
 -
-- 'LLNL-CODE-738041.'
--
-- 'All rights reserved.'
--
-- 'This file is part of Shroud.'
--
-- 'For details about use and distribution, please read LICENSE.'
--
-- '#######################################################################'
 
 # Wrap a C library with structs
 
@@ -31,7 +23,11 @@ language: c
 options:
   debug: True
   F_module_per_class: False
-  wrap_python: False
+  wrap_python: True
+
+format:
+  # Avoid conflict with builtin module
+  PY_module_name: cstruct
 
 declarations:
 
@@ -70,6 +66,8 @@ declarations:
 
 ######################################################################
 - decl: Cstruct1 returnStruct(int i, double d);
+  options:
+    wrap_python: False
 
 - decl: Cstruct1 *returnStructPtr1(int i, double d)
   doxygen:
