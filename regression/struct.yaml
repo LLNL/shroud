@@ -61,8 +61,8 @@ declarations:
 #  options:
 #    wrap_python: False
 - decl: void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))
-  options:
-    wrap_python: False
+#  options:
+#    wrap_python: False
 
 ######################################################################
 - decl: Cstruct1 returnStruct(int i, double d);

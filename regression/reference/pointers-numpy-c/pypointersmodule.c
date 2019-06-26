@@ -433,6 +433,7 @@ PY_incrementIntArray(
     return (PyObject *) SHPy_array;
 
 fail:
+    Py_XDECREF(SHPy_array);
     return NULL;
 // splicer end function.increment_int_array
 }

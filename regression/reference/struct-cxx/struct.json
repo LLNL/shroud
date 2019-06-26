@@ -931,10 +931,7 @@
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
                 "linenumber": 63,
-                "options": {
-                    "__line__": 64,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

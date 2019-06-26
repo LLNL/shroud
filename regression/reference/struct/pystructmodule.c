@@ -239,6 +239,50 @@ fail:
     return NULL;
 // splicer end function.accept_struct_out_ptr
 }
+
+static char PY_acceptStructInOutPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptStructInOutPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
+// splicer begin function.accept_struct_in_out_ptr
+    PyObject * SHTPy_arg = NULL;
+    PyArrayObject * SHPy_arg = NULL;
+    char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O:acceptStructInOutPtr", SHT_kwlist, &SHTPy_arg))
+        return NULL;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
+        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
+    if (SHPy_arg == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of Cstruct1");
+        goto fail;
+    }
+
+    // pre_call
+    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+
+    acceptStructInOutPtr(arg);
+    return (PyObject *) SHPy_arg;
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return NULL;
+// splicer end function.accept_struct_in_out_ptr
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
@@ -248,6 +292,8 @@ static PyMethodDef PY_methods[] = {
     PY_passStruct2__doc__},
 {"acceptStructOutPtr", (PyCFunction)PY_acceptStructOutPtr,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructOutPtr__doc__},
+{"acceptStructInOutPtr", (PyCFunction)PY_acceptStructInOutPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStructInOutPtr__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

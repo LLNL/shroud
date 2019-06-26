@@ -1030,6 +1030,25 @@
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "c_const": "",
+                            "c_decl": "Cstruct1 arg",
+                            "c_deref": "",
+                            "c_type": "Cstruct1",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_decl": "Cstruct1 arg",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -1081,15 +1100,13 @@
                     "F_name_generic": "accept_struct_in_out_ptr",
                     "F_name_impl": "accept_struct_in_out_ptr",
                     "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_acceptStructInOutPtr",
                     "c_const": "",
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
                 "linenumber": 63,
-                "options": {
-                    "__line__": 64,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

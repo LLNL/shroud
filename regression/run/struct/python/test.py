@@ -84,7 +84,19 @@ class Struct(unittest.TestCase):
         self.assertEqual(4.5, str["dfield"])
 
     def test_acceptStructInOutPtr(self):
-        pass
+        out = cstruct.acceptStructInOutPtr((22,22.8))
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+        self.assertEqual(23,   out["ifield"])
+        self.assertEqual(23.8, out["dfield"])
+
+        dt = cstruct.Cstruct1_dtype
+        a = np.array((4, 4.0), dtype=dt)
+        out = cstruct.acceptStructInOutPtr(a)
+        self.assertTrue(isinstance(out, np.ndarray))
+        self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+        self.assertEqual(5,   out["ifield"])
+        self.assertEqual(5.0, out["dfield"])
 
     def test_returnStruct(self):
         pass
