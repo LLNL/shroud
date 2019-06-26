@@ -57,9 +57,14 @@ PY_passStructByValue(
         return NULL;
 
     // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
     SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
         PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
-    Py_INCREF(PY_Cstruct1_array_descr);
+    if (SHPy_arg == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of Cstruct1");
+        goto fail;
+    }
 
     // pre_call
     Cstruct1 * arg = PyArray_DATA(SHPy_arg);
@@ -73,6 +78,10 @@ PY_passStructByValue(
     Py_DECREF(SHPy_arg);
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return NULL;
 // splicer end function.pass_struct_by_value
 }
 static PyMethodDef PY_methods[] = {

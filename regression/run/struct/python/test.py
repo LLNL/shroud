@@ -46,6 +46,13 @@ class Struct(unittest.TestCase):
         i = cstruct.passStructByValue((2, 2.0))
         self.assertEqual(4, i)
 
+        i = cstruct.passStructByValue((2.0, 2.0))
+        self.assertEqual(4, i)
+
+        with self.assertRaises(ValueError) as context:
+            i = cstruct.passStructByValue((2.0, "two"))
+        self.assertTrue("arg must be a 1-D array of Cstruct1" in str(context.exception))
+
     def xtest_passStruct1(self):
         cstruct.passStruct1((12,12.6))
 
