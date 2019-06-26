@@ -1548,15 +1548,15 @@ def fill_struct_typemap_defaults(node, ntypemap):
             intent_in=dict(
                 cxx_local_var="pointer",
                 post_parse=[
-                    "{c_const}%s * {cxx_var} ="
-                    "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
+                    "{c_const}{cxx_type} * {cxx_var} ="
+                    "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
                 ],
             ),
             intent_inout=dict(
                 cxx_local_var="pointer",
                 post_parse=[
-                    "{c_const}%s * {cxx_var} ="
-                    "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
+                    "{c_const}{cxx_type} * {cxx_var} ="
+                    "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
                 ],
             ),
             intent_out=dict(

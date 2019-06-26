@@ -1101,6 +1101,9 @@ return 1;""",
                 intent_blk = self.allocatable_blk(
                     allocatable, node, arg, fmt_arg
                 )
+            elif arg_typemap.base == "struct":
+                index = "struct_intent_{}_{}".format(intent, options.PY_struct_arg)
+                intent_blk = py_statements_local[index]
             elif dimension:
                 intent_blk = self.dimension_blk(arg, fmt_arg, options)
             else:
@@ -2853,6 +2856,82 @@ py_statements_local = dict(
             "if ({cxx_var} != NULL)\t {stdlib}free({cxx_var});",
         ],
         goto_fail=True,
+    ),
+
+########################################
+# struct
+# numpy
+    struct_intent_in_numpy=dict(
+        parse_as_object=True,
+        cxx_local_var="pointer",
+        decl=[
+            "PyObject * {pytmp_var} = NULL;",
+            "PyArrayObject * {py_var} = NULL;",
+#            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
+            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
+            "Py_INCREF({PYN_descr});",
+        ],
+        c_pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+        ],
+        cxx_pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        cleanup=[
+            "Py_DECREF({py_var});"
+        ],
+        fail=[
+            "Py_XDECREF({py_var});"
+        ],
+        #                goto_fail=True,
+    ),
+    struct_intent_inout_numpy=dict(
+        parse_as_object=True,
+        cxx_local_var="pointer",
+        c_pre_call=[
+            "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+        ],
+        cxx_pre_call=[
+            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+    ),
+    struct_intent_out_numpy=dict(
+        post_call=[
+            (
+                "{PyObject} * {py_var} ="
+                "\t PyObject_New({PyObject}, &{PyTypeObject});"
+            ),
+            "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
+        ]
+    ),
+
+##########
+    struct_intent_in_class=dict(
+        cxx_local_var="pointer",
+        post_parse=[
+            "{c_const}{cxx_type} * {cxx_var} ="
+            "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
+        ],
+    ),
+    struct_intent_inout_class=dict(
+        cxx_local_var="pointer",
+        post_parse=[
+            "{c_const}{cxx_type} * {cxx_var} ="
+            "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
+        ],
+    ),
+    struct_intent_out_class=dict(
+        post_call=[
+            (
+                "{PyObject} * {py_var} ="
+                "\t PyObject_New({PyObject}, &{PyTypeObject});"
+            ),
+            "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
+        ]
     ),
 
 )
