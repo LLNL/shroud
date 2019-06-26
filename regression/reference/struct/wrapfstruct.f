@@ -153,7 +153,7 @@ module struct_mod
 
 contains
 
-    ! int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))
+    ! int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
     ! arg_to_buffer
     !>
     !! Pass name argument which will build a bufferify function.

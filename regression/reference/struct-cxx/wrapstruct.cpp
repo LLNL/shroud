@@ -56,7 +56,7 @@ int STR_pass_struct1(STR_cstruct1 * arg)
 // splicer end function.pass_struct1
 }
 
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))
+// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
 /**
  * Pass name argument which will build a bufferify function.
  */
@@ -70,7 +70,7 @@ int STR_pass_struct2(STR_cstruct1 * s1, char * outbuf)
 // splicer end function.pass_struct2
 }
 
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))
+// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 /**
  * Pass name argument which will build a bufferify function.
  */

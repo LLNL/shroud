@@ -84,9 +84,119 @@ fail:
     return NULL;
 // splicer end function.pass_struct_by_value
 }
+
+static char PY_passStruct1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStruct1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int passStruct1(Cstruct1 * arg +intent(in))
+// splicer begin function.pass_struct1
+    PyObject * SHTPy_arg = NULL;
+    PyArrayObject * SHPy_arg = NULL;
+    char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStruct1",
+        SHT_kwlist, &SHTPy_arg))
+        return NULL;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
+        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
+    if (SHPy_arg == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of Cstruct1");
+        goto fail;
+    }
+
+    // pre_call
+    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+
+    int SHC_rv = passStruct1(arg);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return NULL;
+// splicer end function.pass_struct1
+}
+
+static char PY_passStruct2__doc__[] =
+"documentation"
+;
+
+/**
+ * Pass name argument which will build a bufferify function.
+ */
+static PyObject *
+PY_passStruct2(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
+// splicer begin function.pass_struct2
+    PyObject * SHTPy_s1 = NULL;
+    PyArrayObject * SHPy_s1 = NULL;
+    char *SHT_kwlist[] = {
+        "s1",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStruct2",
+        SHT_kwlist, &SHTPy_s1))
+        return NULL;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_s1 = (PyArrayObject *) PyArray_FromAny(SHTPy_s1,
+        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
+    if (SHPy_s1 == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "s1 must be a 1-D array of Cstruct1");
+        goto fail;
+    }
+
+    // pre_call
+    Cstruct1 * s1 = PyArray_DATA(SHPy_s1);
+    char outbuf[LENOUTBUF];  // intent(out)
+
+    int SHC_rv = passStruct2(s1, outbuf);
+
+    // post_call
+    PyObject * SHTPy_rv = Py_BuildValue("is", SHC_rv, outbuf);
+
+    // cleanup
+    Py_DECREF(SHPy_s1);
+
+    return SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_s1);
+    return NULL;
+// splicer end function.pass_struct2
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
+{"passStruct1", (PyCFunction)PY_passStruct1, METH_VARARGS|METH_KEYWORDS,
+    PY_passStruct1__doc__},
+{"passStruct2", (PyCFunction)PY_passStruct2, METH_VARARGS|METH_KEYWORDS,
+    PY_passStruct2__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

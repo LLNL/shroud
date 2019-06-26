@@ -53,11 +53,25 @@ class Struct(unittest.TestCase):
             i = cstruct.passStructByValue((2.0, "two"))
         self.assertTrue("arg must be a 1-D array of Cstruct1" in str(context.exception))
 
-    def xtest_passStruct1(self):
-        cstruct.passStruct1((12,12.6))
+    def test_passStruct1(self):
+        i = cstruct.passStruct1((12,12.6))
+        self.assertEqual(12, i)
+
+        dt = cstruct.Cstruct1_dtype
+        a = np.array((1, 1.5), dtype=dt)
+        i = cstruct.passStruct1(a)
+        self.assertEqual(1, i)
 
     def test_passStruct2(self):
-        pass
+        i, name = cstruct.passStruct2((22,22.8))
+        self.assertEqual(22, i)
+        self.assertEqual("passStruct2", name)
+
+        dt = cstruct.Cstruct1_dtype
+        a = np.array((1, 1.5), dtype=dt)
+        i, name = cstruct.passStruct2(a)
+        self.assertEqual(1, i)
+        self.assertEqual("passStruct2", name)
 
     def test_acceptStructInPtr(self):
         pass

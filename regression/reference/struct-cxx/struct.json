@@ -344,10 +344,7 @@
                     "underscore_name": "pass_struct1"
                 },
                 "linenumber": 43,
-                "options": {
-                    "__line__": 44,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -422,6 +419,7 @@
                         },
                         {
                             "attrs": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out",
                                 "value": false
                             },
@@ -444,8 +442,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))",
+                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "__line__": 48,
                     "description": "Pass name argument which will build a bufferify function.\n"
@@ -474,10 +472,7 @@
                     "underscore_name": "pass_struct2"
                 },
                 "linenumber": 47,
-                "options": {
-                    "__line__": 51,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -558,6 +553,7 @@
                         },
                         {
                             "attrs": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out",
                                 "len": "Noutbuf",
                                 "value": false
@@ -582,8 +578,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))",
+                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
                     "__line__": 48,
                     "description": "Pass name argument which will build a bufferify function.\n"
@@ -606,7 +602,6 @@
                 },
                 "linenumber": 47,
                 "options": {
-                    "__line__": 51,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

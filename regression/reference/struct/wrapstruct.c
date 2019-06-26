@@ -23,7 +23,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))
+// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 /**
  * Pass name argument which will build a bufferify function.
  */

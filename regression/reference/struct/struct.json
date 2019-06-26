@@ -315,6 +315,23 @@
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "c_const": "",
+                            "c_decl": "Cstruct1 arg",
+                            "c_deref": "",
+                            "c_type": "Cstruct1",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_decl": "Cstruct1 arg",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -330,6 +347,18 @@
                     "fmtf": {
                         "cxx_type": "int",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": null,
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -381,16 +410,14 @@
                     "F_name_impl": "pass_struct1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_passStruct1",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
                 "linenumber": 43,
-                "options": {
-                    "__line__": 44,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -406,6 +433,24 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "char outbuf[LENOUTBUF]",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "outbuf",
+                            "charlen": "LENOUTBUF",
+                            "cxx_addr": "",
+                            "cxx_decl": "char outbuf[LENOUTBUF]",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "numpy_type": null,
+                            "py_var": "SHPy_outbuf",
+                            "size_var": "SHSize_outbuf"
                         }
                     },
                     "s1": {
@@ -420,6 +465,23 @@
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
                             "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "c_const": "",
+                            "c_decl": "Cstruct1 s1",
+                            "c_deref": "",
+                            "c_type": "Cstruct1",
+                            "c_var": "s1",
+                            "cxx_addr": "",
+                            "cxx_decl": "Cstruct1 s1",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "s1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_s1",
+                            "pytmp_var": "SHTPy_s1",
+                            "size_var": "SHSize_s1"
                         }
                     }
                 },
@@ -435,6 +497,18 @@
                     "fmtf": {
                         "cxx_type": "int",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": null,
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -463,6 +537,7 @@
                         },
                         {
                             "attrs": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out",
                                 "value": false
                             },
@@ -485,8 +560,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))",
+                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "__line__": 48,
                     "description": "Pass name argument which will build a bufferify function.\n"
@@ -508,16 +583,14 @@
                     "F_name_impl": "pass_struct2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_passStruct2",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
                 "linenumber": 47,
-                "options": {
-                    "__line__": 51,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -596,6 +669,7 @@
                         },
                         {
                             "attrs": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out",
                                 "len": "Noutbuf",
                                 "value": false
@@ -620,8 +694,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))",
+                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
                     "__line__": 48,
                     "description": "Pass name argument which will build a bufferify function.\n"
@@ -643,7 +717,6 @@
                 },
                 "linenumber": 47,
                 "options": {
-                    "__line__": 51,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
