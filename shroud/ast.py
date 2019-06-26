@@ -553,6 +553,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_impl_filename_suffix = "c"
 
             fmt_library.stdlib = ""
+            fmt_library.void_proto = "void"
 
             fmt_library.cast_static = "("
             fmt_library.cast_reinterpret = "("
@@ -566,6 +567,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.LUA_impl_filename_suffix = "cpp"
 
             fmt_library.stdlib = "std::"
+            fmt_library.void_proto = ""
 
             fmt_library.cast_static = "static_cast<"
             fmt_library.cast_reinterpret = "reinterpret_cast<"

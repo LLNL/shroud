@@ -457,7 +457,7 @@ return 1;""",
         append_format(
             output,
             "// Create PyArray_Descr for {cxx_class}\n"
-            "static PyArray_Descr *{PY_struct_array_descr_create}()",
+            "static PyArray_Descr *{PY_struct_array_descr_create}({void_proto})",
             fmt,
         )
         output.append("{")
@@ -1038,6 +1038,8 @@ return 1;""",
             # Add formats used by py_statements
             fmt_arg.c_type = arg_typemap.c_type
             fmt_arg.cxx_type = arg_typemap.cxx_type
+            if arg_typemap.PYN_descr:
+                fmt_arg.PYN_descr = arg_typemap.PYN_descr
             if arg.const:
                 fmt_arg.c_const = "const "
             else:
@@ -1115,6 +1117,7 @@ return 1;""",
                 as_object = True
             goto_fail = goto_fail or intent_blk.get("goto_fail", False)
             cxx_local_var = intent_blk.get("cxx_local_var", "")
+            create_out_decl = intent_blk.get("create_out_decl", False)
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
@@ -1156,8 +1159,6 @@ return 1;""",
                     # Use NumPy/list with dimensioned or struct arguments.
                     fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 #                    fmt_arg.pydescr_var = "SHDPy_" + arg.name
-                    if arg_typemap.PYN_descr:
-                        fmt_arg.PYN_descr = arg_typemap.PYN_descr
                     pass_var = fmt_arg.cxx_var
                     parse_format.append("O")
                     parse_vargs.append("&" + fmt_arg.pytmp_var)
@@ -1187,7 +1188,7 @@ return 1;""",
 
             if intent in ["inout", "out"]:
                 if intent == "out":
-                    if allocatable or dimension:
+                    if allocatable or dimension or create_out_decl:
                         # If an array, a local NumPy array has already been defined.
                         pass
                     elif not cxx_local_var:
@@ -2680,10 +2681,10 @@ py_statements_local = dict(
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
-            "Py_DECREF({py_var});"
+            "Py_DECREF({py_var});",
         ],
         fail=[
-            "Py_XDECREF({py_var});"
+            "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
     ),
@@ -2726,7 +2727,7 @@ py_statements_local = dict(
         ],
         post_call=None,  # Object already created in post_parse
         fail=[
-            "Py_XDECREF({py_var});"
+            "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
     ),
@@ -2862,6 +2863,7 @@ py_statements_local = dict(
 # struct
 # numpy
     struct_intent_in_numpy=dict(
+        need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
         decl=[
@@ -2884,14 +2886,15 @@ py_statements_local = dict(
             "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
-            "Py_DECREF({py_var});"
+            "Py_DECREF({py_var});",
         ],
         fail=[
-            "Py_XDECREF({py_var});"
+            "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
     ),
     struct_intent_inout_numpy=dict(
+        need_numpy=True,
         parse_as_object=True,
         cxx_local_var="pointer",
         c_pre_call=[
@@ -2902,13 +2905,33 @@ py_statements_local = dict(
         ],
     ),
     struct_intent_out_numpy=dict(
-        post_call=[
-            (
-                "{PyObject} * {py_var} ="
-                "\t PyObject_New({PyObject}, &{PyTypeObject});"
-            ),
-            "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-        ]
+        # XXX - expand to array of struct
+        need_numpy=True,
+        create_out_decl=True,
+        cxx_local_var="pointer",
+        decl=[
+            "PyArrayObject * {py_var} = NULL;",
+#            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
+        ],
+        post_parse=[
+            "Py_INCREF({PYN_descr});",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
+            "\t 0,\t NULL,\t NULL,\t NULL,\t 0,\t NULL){cast2};",
+        ] + array_error,
+        c_pre_call=[
+#            "{cxx_decl} = PyArray_DATA({py_var});",
+            "{cxx_type} *{cxx_var} = PyArray_DATA({py_var});",
+        ],
+        cxx_pre_call=[
+#            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_type} *{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+        ],
+        post_call=None,  # Object already created in post_parse
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
     ),
 
 ##########

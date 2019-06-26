@@ -92,7 +92,8 @@
             "library_upper": "DEFAULT_LIBRARY",
             "namespace_scope": "",
             "stdlib": "std::",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": ""
         },
         "language": "cxx",
         "options": {

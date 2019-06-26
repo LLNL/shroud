@@ -77,7 +77,11 @@ class Struct(unittest.TestCase):
         pass
 
     def test_acceptStructOutPtr(self):
-        pass
+        str = cstruct.acceptStructOutPtr(4, 4.5)
+        self.assertTrue(isinstance(str, np.ndarray))
+        self.assertIs(str.dtype, cstruct.Cstruct1_dtype)
+        self.assertEqual(4,   str["ifield"])
+        self.assertEqual(4.5, str["dfield"])
 
     def test_acceptStructInOutPtr(self):
         pass

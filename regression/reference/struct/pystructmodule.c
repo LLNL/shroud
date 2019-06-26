@@ -190,6 +190,55 @@ fail:
     return NULL;
 // splicer end function.pass_struct2
 }
+
+static char PY_acceptStructOutPtr__doc__[] =
+"documentation"
+;
+
+/**
+ * Pass name argument which will build a bufferify function.
+ */
+static PyObject *
+PY_acceptStructOutPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.accept_struct_out_ptr
+    PyArrayObject * SHPy_arg = NULL;
+    int i;
+    double d;
+    char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "id:acceptStructOutPtr", SHT_kwlist, &i, &d))
+        return NULL;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = (PyArrayObject *) PyArray_NewFromDescr(&PyArray_Type,
+        PY_Cstruct1_array_descr, 0, NULL, NULL, NULL, 0, NULL);
+    if (SHPy_arg == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of Cstruct1");
+        goto fail;
+    }
+
+    // pre_call
+    Cstruct1 *arg = PyArray_DATA(SHPy_arg);
+
+    acceptStructOutPtr(arg, i, d);
+    return (PyObject *) SHPy_arg;
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return NULL;
+// splicer end function.accept_struct_out_ptr
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
@@ -197,11 +246,13 @@ static PyMethodDef PY_methods[] = {
     PY_passStruct1__doc__},
 {"passStruct2", (PyCFunction)PY_passStruct2, METH_VARARGS|METH_KEYWORDS,
     PY_passStruct2__doc__},
+{"acceptStructOutPtr", (PyCFunction)PY_acceptStructOutPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStructOutPtr__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
 // Create PyArray_Descr for Cstruct1
-static PyArray_Descr *PY_Cstruct1_create_array_descr()
+static PyArray_Descr *PY_Cstruct1_create_array_descr(void)
 {
     int ierr;
     PyObject *obj = NULL;

@@ -161,7 +161,8 @@
             "library_upper": "CLIBRARY",
             "namespace_scope": "",
             "stdlib": "",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": "void"
         },
         "functions": [
             {

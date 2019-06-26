@@ -98,6 +98,9 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 }
 
 // void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
+/**
+ * Pass name argument which will build a bufferify function.
+ */
 void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 {
 // splicer begin function.accept_struct_out_ptr

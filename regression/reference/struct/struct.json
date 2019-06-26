@@ -176,7 +176,8 @@
             "library_upper": "STRUCT",
             "namespace_scope": "",
             "stdlib": "",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": "void"
         },
         "functions": [
             {
@@ -836,6 +837,24 @@
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "c_const": "",
+                            "c_decl": "Cstruct1 arg",
+                            "c_deref": "",
+                            "c_type": "Cstruct1",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_decl": "Cstruct1 arg",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     },
                     "d": {
@@ -854,6 +873,21 @@
                         "fmtf": {
                             "c_var": "d",
                             "f_var": "d"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "double d",
+                            "c_deref": "",
+                            "c_type": "double",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_decl": "double d",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_d",
+                            "size_var": "SHSize_d"
                         }
                     },
                     "i": {
@@ -872,6 +906,21 @@
                         "fmtf": {
                             "c_var": "i",
                             "f_var": "i"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int i",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int i",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
                         }
                     }
                 },
@@ -935,6 +984,10 @@
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
                 "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 58,
+                    "description": "Pass name argument which will build a bufferify function.\n"
+                },
                 "fmtdict": {
                     "C_call_code": "acceptStructOutPtr(\targ,\t i,\t d);",
                     "C_call_list": "arg,\t i,\t d",
@@ -951,15 +1004,13 @@
                     "F_name_generic": "accept_struct_out_ptr",
                     "F_name_impl": "accept_struct_out_ptr",
                     "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_acceptStructOutPtr",
                     "c_const": "",
                     "function_name": "acceptStructOutPtr",
                     "underscore_name": "accept_struct_out_ptr"
                 },
                 "linenumber": 57,
-                "options": {
-                    "__line__": 58,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -1034,9 +1085,9 @@
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "linenumber": 60,
+                "linenumber": 63,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 64,
                     "wrap_python": false
                 }
             },
@@ -1157,9 +1208,9 @@
                     "function_name": "returnStruct",
                     "underscore_name": "return_struct"
                 },
-                "linenumber": 65,
+                "linenumber": 68,
                 "options": {
-                    "__line__": 66,
+                    "__line__": 69,
                     "wrap_python": false
                 }
             },
@@ -1264,7 +1315,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 70,
+                    "__line__": 73,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -1290,9 +1341,9 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 69,
+                "linenumber": 72,
                 "options": {
-                    "__line__": 74,
+                    "__line__": 77,
                     "wrap_python": false
                 }
             },
@@ -1421,7 +1472,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))",
                 "doxygen": {
-                    "__line__": 78,
+                    "__line__": 81,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1447,9 +1498,9 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 77,
+                "linenumber": 80,
                 "options": {
-                    "__line__": 82,
+                    "__line__": 85,
                     "wrap_python": false
                 }
             },
@@ -1590,7 +1641,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 78,
+                    "__line__": 81,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1609,9 +1660,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 77,
+                "linenumber": 80,
                 "options": {
-                    "__line__": 82,
+                    "__line__": 85,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

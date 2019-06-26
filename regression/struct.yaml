@@ -55,8 +55,11 @@ declarations:
   options:
     wrap_python: False
 - decl: void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)
-  options:
-    wrap_python: False
+  doxygen:
+    description: |
+      Pass name argument which will build a bufferify function.
+#  options:
+#    wrap_python: False
 - decl: void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))
   options:
     wrap_python: False

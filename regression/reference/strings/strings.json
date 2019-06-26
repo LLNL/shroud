@@ -108,7 +108,8 @@
             "library_upper": "STRINGS",
             "namespace_scope": "",
             "stdlib": "std::",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": ""
         },
         "functions": [
             {

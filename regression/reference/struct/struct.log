@@ -30,6 +30,7 @@ Close wrapfstruct.f
 Python function int passStructByValue(Cstruct1 arg +intent(in)+value)
 Python function int passStruct1(Cstruct1 * arg +intent(in))
 Python function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
+Python function void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
 Close pystructutil.c
 Close pystructmodule.h
 Close pystructmodule.c

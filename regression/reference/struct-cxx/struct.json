@@ -157,7 +157,8 @@
             "library_upper": "STRUCT",
             "namespace_scope": "",
             "stdlib": "std::",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": ""
         },
         "functions": [
             {
@@ -825,6 +826,10 @@
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
                 "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 58,
+                    "description": "Pass name argument which will build a bufferify function.\n"
+                },
                 "fmtdict": {
                     "C_call_code": "acceptStructOutPtr(\tSHCXX_arg,\t i,\t d);",
                     "C_call_list": "SHCXX_arg,\t i,\t d",
@@ -847,10 +852,7 @@
                     "underscore_name": "accept_struct_out_ptr"
                 },
                 "linenumber": 57,
-                "options": {
-                    "__line__": 58,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -928,9 +930,9 @@
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "linenumber": 60,
+                "linenumber": 63,
                 "options": {
-                    "__line__": 61,
+                    "__line__": 64,
                     "wrap_python": false
                 }
             },
@@ -1051,9 +1053,9 @@
                     "function_name": "returnStruct",
                     "underscore_name": "return_struct"
                 },
-                "linenumber": 65,
+                "linenumber": 68,
                 "options": {
-                    "__line__": 66,
+                    "__line__": 69,
                     "wrap_python": false
                 }
             },
@@ -1160,7 +1162,7 @@
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 70,
+                    "__line__": 73,
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
@@ -1187,9 +1189,9 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "linenumber": 69,
+                "linenumber": 72,
                 "options": {
-                    "__line__": 74,
+                    "__line__": 77,
                     "wrap_python": false
                 }
             },
@@ -1320,7 +1322,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))",
                 "doxygen": {
-                    "__line__": 78,
+                    "__line__": 81,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1347,9 +1349,9 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 77,
+                "linenumber": 80,
                 "options": {
-                    "__line__": 82,
+                    "__line__": 85,
                     "wrap_python": false
                 }
             },
@@ -1492,7 +1494,7 @@
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))",
                 "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 78,
+                    "__line__": 81,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1511,9 +1513,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "linenumber": 77,
+                "linenumber": 80,
                 "options": {
-                    "__line__": 82,
+                    "__line__": 85,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
