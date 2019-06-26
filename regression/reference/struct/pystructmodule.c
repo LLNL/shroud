@@ -33,7 +33,51 @@ PyObject *PY_error_obj;
 PyArray_Descr *PY_Cstruct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
+
+static char PY_passStructByValue__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStructByValue(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// int passStructByValue(Cstruct1 arg +intent(in)+value)
+// splicer begin function.pass_struct_by_value
+    PyObject * SHTPy_arg = NULL;
+    PyArrayObject * SHPy_arg = NULL;
+    char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStructByValue",
+        SHT_kwlist, &SHTPy_arg))
+        return NULL;
+
+    // post_parse
+    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
+        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
+    Py_INCREF(PY_Cstruct1_array_descr);
+
+    // pre_call
+    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+
+    int SHC_rv = passStructByValue(*arg);
+
+    // post_call
+    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.pass_struct_by_value
+}
 static PyMethodDef PY_methods[] = {
+{"passStructByValue", (PyCFunction)PY_passStructByValue,
+    METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

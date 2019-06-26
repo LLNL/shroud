@@ -37,8 +37,8 @@ declarations:
         };
 
 - decl: int passStructByValue(Cstruct1 arg)
-  options:
-    wrap_python: False
+#  options:
+#    wrap_python: False
 
 - decl: int passStruct1(Cstruct1 *arg)
   options:

@@ -10731,15 +10731,43 @@
             "flat_name": "tutorial_struct1",
             "py_statements": {
                 "intent_in": {
+                    "c_pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
+                    ],
+                    "cleanup": [
+                        "Py_DECREF({py_var});"
+                    ],
                     "cxx_local_var": "pointer",
+                    "cxx_pre_call": [
+                        "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+                    ],
+                    "decl": [
+                        "PyObject * {pytmp_var} = NULL;",
+                        "PyArrayObject * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "parse_as_object": true,
                     "post_parse": [
-                        "{c_const}tutorial::struct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
+                        "Py_INCREF({PYN_descr});"
+                    ],
+                    "pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
                     ]
                 },
                 "intent_inout": {
+                    "c_pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
+                    ],
                     "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}tutorial::struct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    "cxx_pre_call": [
+                        "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+                    ],
+                    "parse_as_object": true,
+                    "pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
                     ]
                 },
                 "intent_out": {

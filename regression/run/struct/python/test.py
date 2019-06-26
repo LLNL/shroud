@@ -42,7 +42,7 @@ class Struct(unittest.TestCase):
         self.assertEqual(2,   a[1]["ifield"])
         self.assertEqual(2.6, a[1]["dfield"])
 
-    def xtest_passStructByValue(self):
+    def test_passStructByValue(self):
         i = cstruct.passStructByValue((2, 2.0))
         self.assertEqual(4, i)
 

@@ -1415,7 +1415,7 @@ def create_struct_typemap(node, fields=None):
     Use fields to override defaults.
 
     Args:
-        node -
+        node   - ast.ClassNode
         fields - dictionary-like object.
     """
     fmt_class = node.fmtdict
@@ -1450,6 +1450,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     the boilerplate.
 
     Args:
+        node     - ast.ClassNode
         ntypemap - typemap.Typemap.
     """
     if ntypemap.base != "struct":
@@ -1491,31 +1492,84 @@ def fill_struct_typemap_defaults(node, ntypemap):
     ntypemap.c_statements = dict(result=dict(c_helper=helper))
 
     # #-    ntypemap.PYN_typenum = 'NPY_VOID'
-    ntypemap.py_statements = dict(
-        intent_in=dict(
-            cxx_local_var="pointer",
-            post_parse=[
-                "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
-            ],
-        ),
-        intent_inout=dict(
-            cxx_local_var="pointer",
-            post_parse=[
-                "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
-            ],
-        ),
-        intent_out=dict(
-            post_call=[
-                (
-                    "{PyObject} * {py_var} ="
-                    "\t PyObject_New({PyObject}, &{PyTypeObject});"
-                ),
-                "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-            ]
-        ),
-    )
+    struct_arg = node.options.PY_struct_arg
+    if struct_arg == "numpy":
+        ntypemap.py_statements = dict(
+            intent_in=dict(
+                parse_as_object=True,
+                cxx_local_var="pointer",
+                decl=[
+                    "PyObject * {pytmp_var} = NULL;",
+                    "PyArrayObject * {py_var} = NULL;",
+#                    "PyArray_Descr * {pydescr_var} = {PYN_descr};",
+                ],
+                post_parse=[
+                    "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+                    "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
+                    "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
+                    "Py_INCREF({PYN_descr});",
+                ],
+                c_pre_call=[
+                    "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+                ],
+                cxx_pre_call=[
+                    "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+                ],
+                cleanup=[
+                    "Py_DECREF({py_var});"
+                ],
+                fail=[
+                    "Py_XDECREF({py_var});"
+                ],
+#                goto_fail=True,
+            ),
+            intent_inout=dict(
+                parse_as_object=True,
+                cxx_local_var="pointer",
+                c_pre_call=[
+                    "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});",
+                ],
+                cxx_pre_call=[
+                    "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+                ],
+            ),
+            intent_out=dict(
+                post_call=[
+                    (
+                        "{PyObject} * {py_var} ="
+                        "\t PyObject_New({PyObject}, &{PyTypeObject});"
+                    ),
+                    "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
+                ]
+            ),
+        )
+    elif struct_arg == "class":
+        ntypemap.py_statements = dict(
+            intent_in=dict(
+                cxx_local_var="pointer",
+                post_parse=[
+                    "{c_const}%s * {cxx_var} ="
+                    "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
+                ],
+            ),
+            intent_inout=dict(
+                cxx_local_var="pointer",
+                post_parse=[
+                    "{c_const}%s * {cxx_var} ="
+                    "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
+                ],
+            ),
+            intent_out=dict(
+                post_call=[
+                    (
+                        "{PyObject} * {py_var} ="
+                        "\t PyObject_New({PyObject}, &{PyTypeObject});"
+                    ),
+                    "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
+                ]
+            ),
+        )
+    update_for_language(ntypemap.py_statements, "c")  # XXXXXX
     # #-    if not ntypemap.PY_PyTypeObject:
     # #-        ntypemap.PY_PyTypeObject = 'UUU'
     # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
@@ -1546,3 +1600,24 @@ def lookup_c_statements(arg):
         cxx_T = arg_typemap.name
         c_statements = base_typemap.c_templates.get(cxx_T, c_statements)
     return arg_typemap, c_statements
+
+def update_for_language(stmts, lang):
+    """
+    Move language specific entries to current language.
+
+    stmts=dict(
+      foo_bar=dict(
+        c_decl=[],
+        cxx_decl=[],
+      )
+    )
+
+    For lang==c,
+      foo_bar["decl"] = foo_bar["c_decl"]
+    """
+    for item in stmts.values():
+        for clause in ["decl", "post_parse", "pre_call", "post_call",
+                       "cleanup", "fail"]:
+            specific = lang + "_" + clause
+            if specific in item:
+                item[clause] = item[specific]

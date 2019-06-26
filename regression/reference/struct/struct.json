@@ -197,6 +197,23 @@
                         "fmtf": {
                             "c_var": "arg",
                             "f_var": "arg"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "c_const": "",
+                            "c_decl": "Cstruct1 arg",
+                            "c_deref": "",
+                            "c_type": "Cstruct1",
+                            "c_var": "arg",
+                            "cxx_addr": "&",
+                            "cxx_decl": "Cstruct1 arg",
+                            "cxx_member": "->",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -212,6 +229,18 @@
                     "fmtf": {
                         "cxx_type": "int",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyObject": "PyObject",
+                        "PyTypeObject": null,
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -259,16 +288,14 @@
                     "F_name_impl": "pass_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_passStructByValue",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStructByValue",
                     "underscore_name": "pass_struct_by_value"
                 },
                 "linenumber": 39,
-                "options": {
-                    "__line__": 40,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -1628,15 +1655,43 @@
             "flat_name": "Cstruct1",
             "py_statements": {
                 "intent_in": {
+                    "c_pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
+                    ],
+                    "cleanup": [
+                        "Py_DECREF({py_var});"
+                    ],
                     "cxx_local_var": "pointer",
+                    "cxx_pre_call": [
+                        "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+                    ],
+                    "decl": [
+                        "PyObject * {pytmp_var} = NULL;",
+                        "PyArrayObject * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "parse_as_object": true,
                     "post_parse": [
-                        "{c_const}Cstruct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t NULL){cast2};",
+                        "Py_INCREF({PYN_descr});"
+                    ],
+                    "pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
                     ]
                 },
                 "intent_inout": {
+                    "c_pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
+                    ],
                     "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Cstruct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                    "cxx_pre_call": [
+                        "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+                    ],
+                    "parse_as_object": true,
+                    "pre_call": [
+                        "{c_const}{cxx_type} * {cxx_var} = PyArray_DATA({py_var});"
                     ]
                 },
                 "intent_out": {

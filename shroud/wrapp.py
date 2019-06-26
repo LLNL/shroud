@@ -23,7 +23,7 @@ SH_     C or C++ version of argument
 SHPy_   Python object which corresponds to the argument {py_var}
 SHTPy_  A temporary object, usually from PyArg_Parse
         to be converted to SHPy_ object. {pytmp_var}
-SHDPy_  PyArray_Descr object
+SHDPy_  PyArray_Descr object  {pydescr_var}
 SHD_    npy_intp array for shape, {npy_dims}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
@@ -143,6 +143,8 @@ class Wrapp(util.WrapperMixin):
         for node in newlibrary.classes:
             if not node.options.wrap_python:
                 continue
+
+            # XXX - classes and structs as classes
             ntypemap = node.typemap
             fmt = node.fmtdict
             ntypemap.PY_format = "O"
@@ -424,12 +426,12 @@ return 1;""",
         numpy.dtype(
           {'names': ['ifield', 'dfield'],
            'formats': [np.int32, np.float64]},
-           'offsets':[0,8],
-           'itemsize':12},
+#           'offsets':[0,8],
+#           'itemsize':12},
           align=True)
 
         Args:
-            node -
+            node - ast.ClassNode
         """
         fmt = node.fmtdict
 
@@ -674,7 +676,6 @@ return 1;""",
             fmt_arg.pointer_shape = dimension
         else:
             fmt_arg.py_type = "PyObject"
-            fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
 
         index = "intent_{}_dimension_{}".format(intent, options.PY_array_arg)
         blk = py_statements_local[index]
@@ -1051,6 +1052,7 @@ return 1;""",
                 fmt_arg.cxx_member = "."
             attrs = arg.attrs
 
+            as_object = False
             dimension = arg.attrs.get("dimension", False)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             # local_var - 'funcptr', 'pointer', or 'scalar'
@@ -1074,10 +1076,11 @@ return 1;""",
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
                 local_var = "pointer"
-            elif arg.attrs.get("dimension", False):
+            elif dimension:
                 fmt_arg.c_decl = wformat("{c_type} * {c_var}", fmt_arg)
                 fmt_arg.cxx_decl = wformat("{cxx_type} * {cxx_var}", fmt_arg)
                 local_var = "pointer"
+                as_object = True
             else:
                 # non-strings should be scalars
                 fmt_arg.c_deref = ""
@@ -1105,6 +1108,8 @@ return 1;""",
                 stmts = "intent_" + intent
                 intent_blk = py_statements.get(stmts, {})
 
+            if "parse_as_object" in intent_blk:
+                as_object = True
             goto_fail = goto_fail or intent_blk.get("goto_fail", False)
             cxx_local_var = intent_blk.get("cxx_local_var", "")
             if cxx_local_var:
@@ -1144,8 +1149,12 @@ return 1;""",
 
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
-                if dimension:
-                    # Use NumPy with dimensioned arguments
+                if as_object:
+                    # Use NumPy/list with dimensioned or struct arguments.
+                    fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
+#                    fmt_arg.pydescr_var = "SHDPy_" + arg.name
+                    if arg_typemap.PYN_descr:
+                        fmt_arg.PYN_descr = arg_typemap.PYN_descr
                     pass_var = fmt_arg.cxx_var
                     parse_format.append("O")
                     parse_vargs.append("&" + fmt_arg.pytmp_var)
