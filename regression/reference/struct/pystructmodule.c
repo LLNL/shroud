@@ -314,12 +314,17 @@ PY_returnStructByValue(
     Py_INCREF(PY_Cstruct1_array_descr);
     PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    if (SHTPy_rv == NULL) goto fail;
     PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
         PY_array_destructor_function);
+    if (SHC_SHC_rv == NULL) goto fail;
     PyCapsule_SetContext(SHC_SHC_rv, (char *) PY_array_destructor_context[0]);
     PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_struct_by_value
 }
 
@@ -357,8 +362,12 @@ PY_returnStructPtr1(
     Py_INCREF(PY_Cstruct1_array_descr);
     PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_struct_ptr1
 }
 
@@ -399,9 +408,13 @@ PY_returnStructPtr2(
     Py_INCREF(PY_Cstruct1_array_descr);
     PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    if (SHTPy_rv == NULL) goto fail;
     PyObject * SHResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
     return SHResult;
+
+fail:
+    return NULL;
 // splicer end function.return_struct_ptr2
 }
 static PyMethodDef PY_methods[] = {

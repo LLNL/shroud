@@ -740,6 +740,7 @@ return 1;""",
                 "\t {numpy_type},\t {cxx_var});",
                 fmt,
             )
+        post_call.append("if ({py_var} == NULL) goto fail;")
 
         if capsule_order is not None:
             # If NumPy owns the memory, add a way to delete it
@@ -758,14 +759,17 @@ return 1;""",
                 "PyObject * {py_capsule} = "
                 'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
                 "\t{PY_numpy_array_dtor_function});\n"
+                "if ({py_capsule} == NULL) goto fail;\n"
                 "PyCapsule_SetContext({py_capsule}, " + context + ");\n"
                 "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
                 fmt,
             )
 
+        # XXX - deal with reference counting with error
         # Return a dictionary which is used as an intent_blk.
         return dict(
             post_call=post_call,
+            goto_fail = True,
         )
 
     def implied_blk(self, node, arg, pre_call):
@@ -1455,6 +1459,7 @@ return 1;""",
                 # XXX - wrapc uses result instead of intent_out
                 result_blk = result_typemap.py_statements.get("intent_out", {})
 
+            goto_fail = goto_fail or result_blk.get("goto_fail", False)
             ttt0 = self.intent_out(
                 result_typemap, result_blk, fmt_result, post_call)
             # Add result to front of result tuple.

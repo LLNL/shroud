@@ -79,8 +79,12 @@ PY_ReturnIntPtrPointer(
     // post_call
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
         SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_pointer
 }
 
@@ -105,8 +109,12 @@ PY_ReturnIntPtrDimPointer(
     npy_intp SHD_ReturnIntPtrDimPointer[1] = { len };
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimPointer, NPY_INT, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_dim_pointer
 }
 
@@ -131,8 +139,12 @@ PY_ReturnIntPtrDimAlloc(
     npy_intp SHD_ReturnIntPtrDimAlloc[1] = { len };
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimAlloc, NPY_INT, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_dim_alloc
 }
 
@@ -157,8 +169,12 @@ PY_ReturnIntPtrDimDefault(
     npy_intp SHD_ReturnIntPtrDimDefault[1] = { len };
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimDefault, NPY_INT, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_dim_default
 }
 
@@ -183,8 +199,12 @@ PY_ReturnIntPtrDimPointerNew(
     npy_intp SHD_ReturnIntPtrDimPointerNew[1] = { len };
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimPointerNew, NPY_INT, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_dim_pointer_new
 }
 
@@ -209,8 +229,12 @@ PY_ReturnIntPtrDimAllocNew(
     npy_intp SHD_ReturnIntPtrDimAllocNew[1] = { len };
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimAllocNew, NPY_INT, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_dim_alloc_new
 }
 
@@ -235,8 +259,12 @@ PY_ReturnIntPtrDimDefaultNew(
     npy_intp SHD_ReturnIntPtrDimDefaultNew[1] = { len };
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimDefaultNew, NPY_INT, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    return NULL;
 // splicer end function.return_int_ptr_dim_default_new
 }
 
