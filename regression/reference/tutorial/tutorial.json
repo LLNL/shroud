@@ -2127,7 +2127,6 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_values",
                             "pytmp_var": "SHTPy_values",
                             "size_var": "SHSize_values"

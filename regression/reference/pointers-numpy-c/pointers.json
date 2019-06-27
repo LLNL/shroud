@@ -257,7 +257,6 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in"
@@ -283,7 +282,6 @@
                             "npy_prototype": "SHPy_in",
                             "npy_subok": "0",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in"
                         }
@@ -402,7 +400,6 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in"
@@ -428,7 +425,6 @@
                             "npy_prototype": "SHPy_in",
                             "npy_subok": "0",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in"
                         }
@@ -807,7 +803,6 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_values",
                             "pytmp_var": "SHTPy_values",
                             "size_var": "SHSize_values"
@@ -979,7 +974,6 @@
                             "cxx_type": "int",
                             "cxx_var": "array",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_array",
                             "pytmp_var": "SHTPy_array",
                             "size_var": "SHSize_array"

@@ -642,8 +642,6 @@ return 1;""",
         Examples:
         (int arg1, int arg2 +intent(out)+allocatable(mold=arg1))
         """
-        fmt_arg.py_type = "PyObject"
-
         attr_allocatable(self.language, allocatable, node, arg, fmt_arg)
         index = "intent_out_allocatable_{}".format(
             node.options.PY_array_arg)
@@ -677,8 +675,6 @@ return 1;""",
             if dimension == "*":
                 raise RuntimeError(
                     "Argument dimension must not be assumed-length")
-        else:
-            fmt_arg.py_type = "PyObject"
 
         index = "intent_{}_dimension_{}".format(intent, options.PY_array_arg)
         blk = py_statements_local[index]
@@ -2682,7 +2678,7 @@ py_statements_local = dict(
     intent_in_dimension_numpy=dict(
         need_numpy=True,
         decl=[
-            "{py_type} * {pytmp_var};",
+            "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
         ],
         post_parse=[
@@ -2707,7 +2703,7 @@ py_statements_local = dict(
     intent_inout_dimension_numpy=dict(
         need_numpy=True,
         decl=[
-            "{py_type} * {pytmp_var};",
+            "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = NULL;",
         ],
         post_parse=[
