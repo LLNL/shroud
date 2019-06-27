@@ -868,6 +868,7 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pytestnamesutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "testnames_types.yaml",
             "__line__": 30,
             "c_temp": "SHT_",
@@ -1197,8 +1198,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2026,8 +2025,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",

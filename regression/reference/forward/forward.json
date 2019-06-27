@@ -336,6 +336,8 @@
                                     "lua_var": "SH_Lua_arg"
                                 },
                                 "fmtpy": {
+                                    "PyObject": "PY_Class3",
+                                    "PyTypeObject": "PY_Class3_Type",
                                     "c_const": "",
                                     "c_decl": "FOR_class3 arg",
                                     "c_deref": "",
@@ -522,6 +524,7 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pyforwardutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "forward_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",

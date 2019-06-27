@@ -93,6 +93,7 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pypointersutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "pointers_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",
@@ -169,8 +170,6 @@
                             "f_var": "arginout"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int arginout",
                             "c_deref": "",
@@ -204,8 +203,6 @@
                             "f_var": "argout"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int argout",
                             "c_deref": "",
@@ -366,8 +363,6 @@
                             "mold": "lbound(in,1):ubound(in,1)"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "double * out",
                             "c_deref": "*",
@@ -575,8 +570,6 @@
                             "mold": "lbound(in,1):ubound(in,1)"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * out",
                             "c_deref": "*",
@@ -749,8 +742,6 @@
                             "f_var": "nvalues"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int nvalues",
                             "c_deref": "",
@@ -784,8 +775,6 @@
                             "f_var": "values"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * values",
                             "c_deref": "*",
@@ -906,8 +895,6 @@
                             "f_var": "arg1"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * arg1",
                             "c_deref": "*",
@@ -945,8 +932,6 @@
                             "f_var": "arg2"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * arg2",
                             "c_deref": "*",
@@ -1103,8 +1088,6 @@
                             "f_var": "result"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int result",
                             "c_deref": "",
@@ -1268,8 +1251,6 @@
                             "f_var": "out"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * out",
                             "c_deref": "*",
@@ -1371,8 +1352,6 @@
                             "f_var": "array"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * array",
                             "c_deref": "*",

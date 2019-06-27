@@ -483,8 +483,6 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
-                                "PyTypeObject": null,
                                 "c_deref": "",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
@@ -566,6 +564,8 @@
                                     "f_var": "obj2"
                                 },
                                 "fmtpy": {
+                                    "PyObject": "PY_Class1",
+                                    "PyTypeObject": "PY_Class1_Type",
                                     "c_const": "const ",
                                     "c_decl": "TUT_class1 obj2",
                                     "c_deref": "",
@@ -597,7 +597,6 @@
                                 "f_var": "SHT_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
                                 "PyTypeObject": "PyBool_Type",
                                 "c_deref": "",
                                 "c_var": "SHC_rv",
@@ -1160,8 +1159,6 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
-                                "PyTypeObject": null,
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1771,6 +1768,7 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pyTutorialutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "tutorial_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",
@@ -1945,8 +1943,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2082,8 +2078,6 @@
                             "f_var": "result"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int result",
                             "c_deref": "",
@@ -2278,8 +2272,6 @@
                     },
                     "fmtpy": {
                         "PY_build_format": "L",
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2381,6 +2373,7 @@
                             "lua_var": "SH_Lua_arg"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg",
                             "c_deref": "",
@@ -2418,7 +2411,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
                         "c_var": "SHC_rv",
@@ -2706,8 +2698,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -3080,8 +3070,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -3523,8 +3511,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -3818,8 +3804,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
@@ -4231,6 +4215,7 @@
                             "lua_var": "SH_Lua_arg2"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg2",
                             "c_deref": "",
@@ -4268,8 +4253,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6321,8 +6304,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -6923,8 +6904,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -7107,8 +7086,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -7247,8 +7224,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -7389,8 +7364,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -7479,8 +7452,6 @@
                             "f_var": "max"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int max",
                             "c_deref": "",
@@ -7514,8 +7485,6 @@
                             "f_var": "min"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int min",
                             "c_deref": "",
@@ -7685,8 +7654,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
@@ -7777,6 +7744,8 @@
                             "f_var": "arg"
                         },
                         "fmtpy": {
+                            "PyObject": "PY_Class1",
+                            "PyTypeObject": "PY_Class1_Type",
                             "c_const": "",
                             "c_decl": "TUT_class1 arg",
                             "c_deref": "",
@@ -7876,6 +7845,8 @@
                             "f_var": "arg"
                         },
                         "fmtpy": {
+                            "PyObject": "PY_Class1",
+                            "PyTypeObject": "PY_Class1_Type",
                             "c_const": "const ",
                             "c_decl": "TUT_class1 arg",
                             "c_deref": "",
@@ -7907,8 +7878,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -9256,8 +9225,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -9332,8 +9299,6 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",

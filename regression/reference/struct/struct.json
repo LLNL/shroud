@@ -160,6 +160,7 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pystructutil.c",
+            "PyObject": "PyObject",
             "YAML_type_filename": "struct_types.yaml",
             "__line__": 28,
             "c_temp": "SHT_",
@@ -205,6 +206,8 @@
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
                             "c_decl": "Cstruct1 arg",
                             "c_deref": "",
@@ -236,8 +239,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -323,6 +324,8 @@
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
                             "c_decl": "Cstruct1 arg",
                             "c_deref": "",
@@ -354,8 +357,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -440,8 +441,6 @@
                             "idtor": "0"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "char outbuf[LENOUTBUF]",
                             "c_deref": "*",
@@ -473,6 +472,8 @@
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
                             "c_const": "",
                             "c_decl": "Cstruct1 s1",
                             "c_deref": "",
@@ -504,8 +505,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -1526,8 +1525,6 @@
                             "idtor": "0"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "char outbuf[LENOUTBUF]",
                             "c_deref": "*",

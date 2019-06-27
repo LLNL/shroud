@@ -125,6 +125,7 @@ class Wrapp(util.WrapperMixin):
         newlibrary.eval_template("PY_utility_filename")
         fmt_library.PY_obj = "obj"  # name of cpp class pointer in PyObject
         fmt_library.PY_PyObject = "PyObject"
+        fmt_library.PyObject = "PyObject"
         fmt_library.PY_param_self = "self"
         fmt_library.PY_param_args = "args"
         fmt_library.PY_param_kwds = "kwds"
@@ -691,6 +692,14 @@ return 1;""",
 #            typemap - typemap of C++ variable.
             fmt - format dictionary
         """
+        typemap = ast.typemap
+        if typemap.PY_PyObject:
+            fmt.PyObject = typemap.PY_PyObject
+        if typemap.PY_PyTypeObject:
+            fmt.PyTypeObject = typemap.PY_PyTypeObject
+        if typemap.PYN_descr:
+            fmt.PYN_descr = typemap.PYN_descr
+
         dimension = ast.attrs.get("dimension", None)
         if dimension:
             # (*), (:), (:,:)
@@ -721,15 +730,11 @@ return 1;""",
         """
         post_call = []
 
-        fmt.PyObject = typemap.PY_PyObject or "PyObject"
-        fmt.PyTypeObject = typemap.PY_PyTypeObject
-
         # Create a 1-d array from pointer.
         # A string is not really an array, so do not deal with it here.
 
         self.need_numpy = True
         if typemap.PYN_descr:
-            fmt.PYN_descr = typemap.PYN_descr
             post_call.append(
                 "{npy_intp}"
                 "Py_INCREF({PYN_descr});\n"
@@ -803,9 +808,6 @@ return 1;""",
         NumPy intent(OUT) arguments will create a Python object as part of pre-call.
         Return a BuildTuple instance.
         """
-        fmt.PyObject = typemap.PY_PyObject or "PyObject"
-        fmt.PyTypeObject = typemap.PY_PyTypeObject
-
         if "post_call" in intent_blk:
             # Explicit code exists to create object.
             # If post_call is None, the Object has already been created

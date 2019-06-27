@@ -146,6 +146,7 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pyClibraryutil.c",
+            "PyObject": "PyObject",
             "YAML_type_filename": "clibrary_types.yaml",
             "c_temp": "SHT_",
             "cast1": ") ",
@@ -290,8 +291,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -390,6 +389,7 @@
                             "f_var": "arg"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg",
                             "c_deref": "",
@@ -421,7 +421,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
                         "c_var": "SHC_rv",
@@ -507,6 +506,7 @@
                             "f_var": "arg1"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "const ",
                             "c_decl": "bool arg1",
                             "c_deref": "",
@@ -541,7 +541,6 @@
                             "f_var": "arg2"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
                             "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg2",
@@ -576,7 +575,6 @@
                             "f_var": "arg3"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
                             "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg3",
@@ -759,8 +757,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "*",
                         "c_var": "SHC_rv",
                         "cxx_addr": "",
@@ -1139,8 +1135,6 @@
                             "idtor": "0"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "char name1[MAXNAME]",
                             "c_deref": "*",
@@ -1321,8 +1315,6 @@
                             "idtor": "0"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "char name1[MAXNAME]",
                             "c_deref": "*",
@@ -1353,8 +1345,6 @@
                             "idtor": "0"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "char name2[MAXNAME]",
                             "c_deref": "*",
@@ -1624,8 +1614,6 @@
                             "idtor": "0"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "char text[MAXNAME]",
                             "c_deref": "*",
@@ -1858,6 +1846,7 @@
                             "pre_call_intent": ".FALSE._C_BOOL"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool flag",
                             "c_deref": "",
@@ -1957,8 +1946,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2088,6 +2075,7 @@
                             "pre_call_intent": ".TRUE._C_BOOL"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool flag",
                             "c_deref": "",
@@ -2187,8 +2175,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHC_rv",
                         "cxx_addr": "&",
@@ -2318,6 +2304,7 @@
                             "pre_call_intent": ".TRUE._C_BOOL"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool flag",
                             "c_deref": "",
@@ -2349,7 +2336,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
                         "c_var": "SHC_rv",
@@ -2441,6 +2427,7 @@
                             "pre_call_intent": ".FALSE._C_BOOL"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool flag",
                             "c_deref": "",
@@ -2472,7 +2459,6 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
                         "c_var": "SHC_rv",
