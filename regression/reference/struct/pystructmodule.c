@@ -316,7 +316,8 @@ PY_returnStructByValue(
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
     PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
         PY_array_destructor_function);
-    PyCapsule_SetContext(SHC_SHC_rv, (char *) PY_array_destructor_context[0]);
+    PyCapsule_SetContext(SHC_SHC_rv,
+        (char *) PY_array_destructor_context[0]);
     PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
 
     return (PyObject *) SHTPy_rv;

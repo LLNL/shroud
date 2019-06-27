@@ -703,7 +703,7 @@ return 1;""",
                 fmt.npy_intp = "npy_intp {}[1] = {{{}}};\n".format(
                     fmt.npy_dims, dimension)
 
-    def array_result(self, capsule_order, ast, typemap, fmt):
+    def array_result(self, ast, typemap, fmt):
         """
         Deal with function result which is a NumPy array.
 
@@ -746,25 +746,18 @@ return 1;""",
             )
 #        post_call.append("if ({py_var} == NULL) goto fail;")
 
-        if capsule_order is not None:
+        if "capsule_order" in fmt:
             # If NumPy owns the memory, add a way to delete it
             # by creating a capsule base object.
-            fmt.py_capsule = "SHC_" + fmt.c_var
-            context = do_cast(
-                self.language,
-                "const",
-                "char *",
-                "{}[{}]".format(
-                    fmt.PY_numpy_array_dtor_context, capsule_order
-                ),
-            )
             append_format(
                 post_call,
                 "PyObject * {py_capsule} = "
                 'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
                 "\t{PY_numpy_array_dtor_function});\n"
 #                "if ({py_capsule} == NULL) goto fail;\n"
-                "PyCapsule_SetContext({py_capsule}, " + context + ");\n"
+                "PyCapsule_SetContext({py_capsule},"
+                "\t {cast_const}char *{cast1}{PY_numpy_array_dtor_context}"
+                "[{capsule_order}]{cast2});\n"
                 "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
                 fmt,
             )
@@ -1403,7 +1396,8 @@ return 1;""",
                         "delete cxx_ptr;",
                     ]
                 capsule_order = self.add_capsule_code(capsule_type, del_lines)
-#                fmt_result.capsule_order = capsule_order
+                fmt_result.capsule_order = capsule_order
+                fmt_result.py_capsule = "SHC_" + fmt_result.c_var
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
@@ -1461,7 +1455,7 @@ return 1;""",
             ):
                 # Returning a NumPy array.
                 result_blk = self.array_result(
-                    capsule_order, ast, result_typemap, fmt_result)
+                    ast, result_typemap, fmt_result)
             else:
                 # XXX - wrapc uses result instead of intent_out
                 result_blk = result_typemap.py_statements.get("intent_out", {})
@@ -2617,7 +2611,7 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
     fmt_arg.npy_descr_code = descr_code
 
 
-def do_cast(lang, kind, typ, var):
+def XXXdo_cast(lang, kind, typ, var):
     """Do cast based on language.
 
     Args:

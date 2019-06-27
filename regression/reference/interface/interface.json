@@ -82,6 +82,7 @@
             "c_temp": "SHT_",
             "cast1": ") ",
             "cast2": "",
+            "cast_const": "(",
             "cast_reinterpret": "(",
             "cast_static": "(",
             "class_prefix": "",

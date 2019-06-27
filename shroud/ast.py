@@ -555,8 +555,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.stdlib = ""
             fmt_library.void_proto = "void"
 
-            fmt_library.cast_static = "("
+            fmt_library.cast_const = "("
             fmt_library.cast_reinterpret = "("
+            fmt_library.cast_static = "("
             fmt_library.cast1 = ") "
             fmt_library.cast2 = ""
         else:
@@ -569,8 +570,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.stdlib = "std::"
             fmt_library.void_proto = ""
 
-            fmt_library.cast_static = "static_cast<"
+            fmt_library.cast_const = "const_cast<"
             fmt_library.cast_reinterpret = "reinterpret_cast<"
+            fmt_library.cast_static = "static_cast<"
             fmt_library.cast1 = ">\t("
             fmt_library.cast2 = ")"
 
