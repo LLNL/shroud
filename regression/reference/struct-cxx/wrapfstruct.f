@@ -189,7 +189,7 @@ contains
         ! splicer end function.return_struct_ptr1
     end function return_struct_ptr1
 
-    ! Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))
+    ! Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
     ! arg_to_buffer
     !>
     !! \brief Return a pointer to a struct

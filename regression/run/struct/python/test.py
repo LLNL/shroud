@@ -102,22 +102,28 @@ class Struct(unittest.TestCase):
         out = cstruct.returnStructByValue(1, 2.5)
         self.assertTrue(isinstance(out, np.ndarray))
         self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+        self.assertEqual(0, out.ndim)
+        self.assertEqual(1, out.size)
         self.assertEqual(1,   out["ifield"])
         self.assertEqual(2.5, out["dfield"])
 
     def test_returnStructPtr1(self):
-        out = cstruct.returnStructByValue(33, 33.5)
+        out = cstruct.returnStructPtr1(33, 33.5)
         self.assertTrue(isinstance(out, np.ndarray))
         self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+        self.assertEqual(0, out.ndim)
+        self.assertEqual(1, out.size)
         self.assertEqual(33,   out["ifield"])
         self.assertEqual(33.5, out["dfield"])
 
-    def XXXtest_returnStructPtr2(self):
-        out, name = cstruct.returnStructByValue(35, 35.5)
+    def test_returnStructPtr2(self):
+        out, name = cstruct.returnStructPtr2(35, 35.5)
         self.assertTrue(isinstance(out, np.ndarray))
         self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
-        self.assertEqual(1,   out["ifield"])
-        self.assertEqual(2.5, out["dfield"])
+        self.assertEqual(0, out.ndim)
+        self.assertEqual(1, out.size)
+        self.assertEqual(35,   out["ifield"])
+        self.assertEqual(35.5, out["dfield"])
         self.assertEqual("returnStructPtr2", name)
 
 

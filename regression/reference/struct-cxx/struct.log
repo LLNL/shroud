@@ -10,8 +10,8 @@ C function void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in
 C function void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
 C function Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 C function Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
-C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))
-C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
+C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 Close wrapstruct.h
 Close wrapstruct.cpp
 Close typesstruct.h
@@ -25,6 +25,6 @@ C-interface, Fortran function void acceptStructOutPtr(Cstruct1 * arg +intent(out
 C-interface, Fortran function void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
 C-interface, Fortran function Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
 C-interface, Fortran function Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
-C-interface, Fortran function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))
-C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+C-interface, Fortran function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
+C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 Close wrapfstruct.f

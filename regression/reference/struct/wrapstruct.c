@@ -37,7 +37,7 @@ int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
 // splicer end function.pass_struct2_bufferify
 }
 
-// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 /**
  * \brief Return a pointer to a struct
  *

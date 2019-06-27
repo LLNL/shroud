@@ -1465,6 +1465,21 @@
                             "cxx_type": "double",
                             "cxx_var": "d",
                             "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "double d",
+                            "c_deref": "",
+                            "c_type": "double",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_decl": "double d",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_d",
+                            "size_var": "SHSize_d"
                         }
                     },
                     "i": {
@@ -1479,6 +1494,21 @@
                             "cxx_type": "int",
                             "cxx_var": "i",
                             "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int i",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int i",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
                         }
                     },
                     "outbuf": {
@@ -1493,6 +1523,24 @@
                             "cxx_type": "char",
                             "cxx_var": "outbuf",
                             "idtor": "0"
+                        },
+                        "fmtpy": {
+                            "PyObject": "PyObject",
+                            "PyTypeObject": null,
+                            "c_const": "",
+                            "c_decl": "char outbuf[LENOUTBUF]",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "outbuf",
+                            "charlen": "LENOUTBUF",
+                            "cxx_addr": "",
+                            "cxx_decl": "char outbuf[LENOUTBUF]",
+                            "cxx_member": "->",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "numpy_type": null,
+                            "py_var": "SHPy_outbuf",
+                            "size_var": "SHSize_outbuf"
                         }
                     }
                 },
@@ -1508,6 +1556,21 @@
                     "fmtf": {
                         "cxx_type": "Cstruct1",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PYN_descr": "PY_Cstruct1_array_descr",
+                        "PyObject": "PY_Cstruct1",
+                        "PyTypeObject": "PY_Cstruct1_Type",
+                        "c_deref": "*",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_var": "SHC_rv",
+                        "npy_dims": "NULL",
+                        "npy_ndims": "0",
+                        "numpy_type": null,
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1550,6 +1613,7 @@
                         },
                         {
                             "attrs": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out",
                                 "value": false
                             },
@@ -1573,10 +1637,10 @@
                     ],
                     "typemap_name": "Cstruct1"
                 },
-                "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))",
+                "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
-                    "__line__": 81,
+                    "__line__": 82,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1597,16 +1661,14 @@
                     "F_name_impl": "return_struct_ptr2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_returnStructPtr2",
                     "c_const": "",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
                 "linenumber": 80,
-                "options": {
-                    "__line__": 85,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {
@@ -1717,6 +1779,7 @@
                         },
                         {
                             "attrs": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out",
                                 "len": "Noutbuf",
                                 "value": false
@@ -1742,10 +1805,10 @@
                     ],
                     "typemap_name": "Cstruct1"
                 },
-                "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
+                "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
-                    "__line__": 81,
+                    "__line__": 82,
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
@@ -1766,7 +1829,6 @@
                 },
                 "linenumber": 80,
                 "options": {
-                    "__line__": 85,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

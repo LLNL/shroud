@@ -147,7 +147,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 // splicer end function.return_struct_ptr1
 }
 
-// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out))
+// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 /**
  * \brief Return a pointer to a struct
  *
@@ -163,7 +163,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // splicer end function.return_struct_ptr2
 }
 
-// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
+// Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 /**
  * \brief Return a pointer to a struct
  *

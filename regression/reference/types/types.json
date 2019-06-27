@@ -2754,7 +2754,7 @@
                         "cxx_member": ".",
                         "cxx_var": "SHC_rv",
                         "numpy_type": "NPY_BOOL",
-                        "py_var": "SHTPy_rv_tmp",
+                        "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
                     }
                 },

@@ -750,6 +750,9 @@ PY_prefix
 PY_result
     The name of the Python wrapper's result variable.
     It defaults to *SHTPy_rv*  (return value).
+    If the function returns multiple values (due to *intent(out)*)
+    and the function result is already an object (for example, a NumPy array)
+    then **PY_result** will be **SHResult**.
 
 stdlib
     Name of C++ standard library prefix.

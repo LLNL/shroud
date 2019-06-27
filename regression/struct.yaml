@@ -77,13 +77,14 @@ declarations:
 #  options:
 #    wrap_python: False
 
-- decl: Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out))
+- decl: Cstruct1 *returnStructPtr2(int i, double d,
+            char *outbuf+intent(out)+charlen(LENOUTBUF))
   doxygen:
     brief: Return a pointer to a struct
     description: |
       Generates a bufferify C wrapper function.
-  options:
-    wrap_python: False
+#  options:
+#    wrap_python: False
 
 ######################################################################
 splicer_code:

@@ -28,6 +28,8 @@ SHD_    npy_intp array for shape, {npy_dims}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
 SHSize_ Size of dimension argument (size_var}
+SHResult Return object. Necessary when a return object is combined with others
+        by Py_BuildValue.
 
 """
 from __future__ import print_function
@@ -789,7 +791,7 @@ return 1;""",
     def intent_out(self, typemap, intent_blk, fmt, post_call):
         """Add code for post-call.
         Create PyObject from C++ value to return.
-        Used with function results and intent(OUT) arguments.
+        Used with function results, intent(OUT) and intent(INOUT) arguments.
 
         Args:
             typemap - typemap of C++ variable.
@@ -825,6 +827,7 @@ return 1;""",
                 )
                 ctorvar = fmt.py_var
             else:
+                # ex. long long does not define PY_ctor.
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
                 ctor = wformat(
@@ -1451,17 +1454,13 @@ return 1;""",
             else:
                 # XXX - wrapc uses result instead of intent_out
                 result_blk = result_typemap.py_statements.get("intent_out", {})
-                if build_tuples and result_typemap.name == 'bool':
-                    # This kludges around a very specific problem.
-                    # bool creates an object since Py_BuildValue does not know bool until Python 3.3
-                    # If there are additional return arguments, a tuple will be created
-                    # which is also named py_var. So create a temporary name.
-                    fmt_result.py_var += "_tmp"
 
             ttt0 = self.intent_out(
                 result_typemap, result_blk, fmt_result, post_call)
             # Add result to front of result tuple.
             build_tuples.insert(0, ttt0)
+            if ttt0.format == "O":
+                fmt.PY_result = "SHResult"
 
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.

@@ -727,10 +727,10 @@ PY_returnBoolAndOthers(
     bool SHC_rv = returnBoolAndOthers(&flag);
 
     // post_call
-    PyObject * SHTPy_rv_tmp = PyBool_FromLong(SHC_rv);
-    PyObject * SHTPy_rv = Py_BuildValue("Oi", SHTPy_rv_tmp, flag);
+    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHResult = Py_BuildValue("Oi", SHTPy_rv, flag);
 
-    return SHTPy_rv;
+    return SHResult;
 // splicer end function.return_bool_and_others
 }
 static PyMethodDef PY_methods[] = {
