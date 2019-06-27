@@ -98,7 +98,7 @@ class Struct(unittest.TestCase):
         self.assertEqual(5,   out["ifield"])
         self.assertEqual(5.0, out["dfield"])
 
-    def test_returnStruct(self):
+    def test_returnStructByValue(self):
         pass
 
     def test_returnStructPtr1(self):

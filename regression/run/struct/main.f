@@ -91,7 +91,7 @@ contains
 
     call set_case_name("test_struct2")
 
-    str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
+    str1 = return_struct_by_value(1_C_INT, 2.5_C_DOUBLE)
     call assert_equals(1_C_INT,      str1%ifield, "return_struct i field")
     call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct d field")
 

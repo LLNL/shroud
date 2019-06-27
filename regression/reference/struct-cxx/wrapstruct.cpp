@@ -122,13 +122,13 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 // splicer end function.accept_struct_in_out_ptr
 }
 
-// Cstruct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-STR_cstruct1 STR_return_struct(int i, double d)
+// Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+STR_cstruct1 STR_return_struct_by_value(int i, double d)
 {
-// splicer begin function.return_struct
-    SH_union_0_t SHC_rv = {returnStruct(i, d)};
+// splicer begin function.return_struct_by_value
+    SH_union_0_t SHC_rv = {returnStructByValue(i, d)};
     return SHC_rv.c;
-// splicer end function.return_struct
+// splicer end function.return_struct_by_value
 }
 
 // Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)

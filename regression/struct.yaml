@@ -65,7 +65,7 @@ declarations:
 #    wrap_python: False
 
 ######################################################################
-- decl: Cstruct1 returnStruct(int i, double d);
+- decl: Cstruct1 returnStructByValue(int i, double d);
   options:
     wrap_python: False
 

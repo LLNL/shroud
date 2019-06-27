@@ -69,7 +69,7 @@ void acceptStructInOutPtr(Cstruct1 *arg)
   return;
 }
 
-Cstruct1 returnStruct(int i, double d)
+Cstruct1 returnStructByValue(int i, double d)
 {
   Cstruct1 s = {i, d};
   return s;

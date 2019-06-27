@@ -33,7 +33,7 @@ int passStruct2(Cstruct1 *s1, char *outbuf);
 int acceptStructInPtr(Cstruct1 *arg);
 void acceptStructOutPtr(Cstruct1 *arg, int i, double d);
 void acceptStructInOutPtr(Cstruct1 *arg);
-Cstruct1 returnStruct(int i, double d);
+Cstruct1 returnStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 

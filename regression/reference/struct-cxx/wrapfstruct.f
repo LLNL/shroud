@@ -100,16 +100,16 @@ module struct_mod
             type(cstruct1), intent(INOUT) :: arg
         end subroutine accept_struct_in_out_ptr
 
-        function return_struct(i, d) &
+        function return_struct_by_value(i, d) &
                 result(SHT_rv) &
-                bind(C, name="STR_return_struct")
+                bind(C, name="STR_return_struct_by_value")
             use iso_c_binding, only : C_DOUBLE, C_INT
             import :: cstruct1
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
             type(cstruct1) :: SHT_rv
-        end function return_struct
+        end function return_struct_by_value
 
         function c_return_struct_ptr1(i, d) &
                 result(SHT_rv) &

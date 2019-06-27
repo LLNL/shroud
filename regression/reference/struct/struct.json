@@ -1163,7 +1163,7 @@
                 },
                 "ast": {
                     "declarator": {
-                        "name": "returnStruct",
+                        "name": "returnStructByValue",
                         "pointer": []
                     },
                     "params": [
@@ -1201,29 +1201,29 @@
                     ],
                     "typemap_name": "Cstruct1"
                 },
-                "decl": "Cstruct1 returnStruct(int i, double d);",
-                "declgen": "Cstruct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)",
+                "decl": "Cstruct1 returnStructByValue(int i, double d);",
+                "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "SH_union_0_t SHC_rv =\t {returnStruct(\ti,\t d)};",
+                    "C_call_code": "SH_union_0_t SHC_rv =\t {returnStructByValue(\ti,\t d)};",
                     "C_call_list": "i,\t d",
-                    "C_name": "returnStruct",
+                    "C_name": "returnStructByValue",
                     "C_prototype": "int i,\t double d",
                     "C_return_code": "return SHC_rv.c;",
                     "C_return_type": "Cstruct1",
-                    "F_C_call": "c_return_struct",
-                    "F_C_name": "return_struct",
+                    "F_C_call": "c_return_struct_by_value",
+                    "F_C_name": "return_struct_by_value",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
-                    "F_call_code": "SHT_rv = c_return_struct(i,\t d)",
-                    "F_name_function": "return_struct",
-                    "F_name_generic": "return_struct",
-                    "F_name_impl": "return_struct",
+                    "F_call_code": "SHT_rv = c_return_struct_by_value(i,\t d)",
+                    "F_name_function": "return_struct_by_value",
+                    "F_name_generic": "return_struct_by_value",
+                    "F_name_impl": "return_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "SH_union_0_t SHC_rv",
-                    "function_name": "returnStruct",
-                    "underscore_name": "return_struct"
+                    "function_name": "returnStructByValue",
+                    "underscore_name": "return_struct_by_value"
                 },
                 "linenumber": 68,
                 "options": {
