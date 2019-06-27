@@ -102,7 +102,7 @@ PY_ReturnIntPtrDimPointer(
     int * SHC_rv = ReturnIntPtrDimPointer(&len);
 
     // post_call
-    npy_intp SHD_ReturnIntPtrDimPointer[1] = { len };
+    npy_intp SHD_ReturnIntPtrDimPointer[1] = {len};
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimPointer, NPY_INT, SHC_rv);
 
@@ -128,7 +128,7 @@ PY_ReturnIntPtrDimAlloc(
     int * SHC_rv = ReturnIntPtrDimAlloc(&len);
 
     // post_call
-    npy_intp SHD_ReturnIntPtrDimAlloc[1] = { len };
+    npy_intp SHD_ReturnIntPtrDimAlloc[1] = {len};
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimAlloc, NPY_INT, SHC_rv);
 
@@ -154,7 +154,7 @@ PY_ReturnIntPtrDimDefault(
     int * SHC_rv = ReturnIntPtrDimDefault(&len);
 
     // post_call
-    npy_intp SHD_ReturnIntPtrDimDefault[1] = { len };
+    npy_intp SHD_ReturnIntPtrDimDefault[1] = {len};
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimDefault, NPY_INT, SHC_rv);
 
@@ -180,7 +180,7 @@ PY_ReturnIntPtrDimPointerNew(
     int * SHC_rv = ReturnIntPtrDimPointerNew(&len);
 
     // post_call
-    npy_intp SHD_ReturnIntPtrDimPointerNew[1] = { len };
+    npy_intp SHD_ReturnIntPtrDimPointerNew[1] = {len};
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimPointerNew, NPY_INT, SHC_rv);
 
@@ -206,7 +206,7 @@ PY_ReturnIntPtrDimAllocNew(
     int * SHC_rv = ReturnIntPtrDimAllocNew(&len);
 
     // post_call
-    npy_intp SHD_ReturnIntPtrDimAllocNew[1] = { len };
+    npy_intp SHD_ReturnIntPtrDimAllocNew[1] = {len};
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimAllocNew, NPY_INT, SHC_rv);
 
@@ -232,7 +232,7 @@ PY_ReturnIntPtrDimDefaultNew(
     int * SHC_rv = ReturnIntPtrDimDefaultNew(&len);
 
     // post_call
-    npy_intp SHD_ReturnIntPtrDimDefaultNew[1] = { len };
+    npy_intp SHD_ReturnIntPtrDimDefaultNew[1] = {len};
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(1,
         SHD_ReturnIntPtrDimDefaultNew, NPY_INT, SHC_rv);
 

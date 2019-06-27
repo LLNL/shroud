@@ -132,6 +132,10 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_args = False
         fmt_library.PY_used_param_kwds = False
 
+        fmt_library.npy_ndims = "0"   # number of dimensions
+        fmt_library.npy_dims = "NULL" # shape variable
+        fmt_library.npy_intp = ""     # shape array definition
+
         # Variables to accumulate output lines
         self.py_type_object_creation = []
         self.py_class_decl = []
@@ -673,9 +677,6 @@ return 1;""",
             if dimension == "*":
                 raise RuntimeError(
                     "Argument dimension must not be assumed-length")
-            fmt_arg.npy_ndims = "1"
-            fmt_arg.npy_dims = "SHD_" +  fmt_arg.cxx_var # ast.name
-            fmt_arg.pointer_shape = dimension
         else:
             fmt_arg.py_type = "PyObject"
 
@@ -683,6 +684,28 @@ return 1;""",
         blk = py_statements_local[index]
         self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
+
+    def set_fmt_fields(self, ast, fmt):
+        """
+        Set format fields for ast.
+
+        Args:
+            ast - declast.Declaration
+                  Abstract Syntax Tree of argument or result
+#            typemap - typemap of C++ variable.
+            fmt - format dictionary
+        """
+        dimension = ast.attrs.get("dimension", None)
+        if dimension:
+            # (*), (:), (:,:)
+            if dimension[0] not in ["*", ":"]:
+                fmt.npy_ndims = "1"
+                fmt.npy_dims = "SHD_" + ast.name
+                fmt.pointer_shape = dimension
+                # Dimensions must be in npy_intp type array.
+                # XXX - assumes 1-d
+                fmt.npy_intp = "npy_intp {}[1] = {{{}}};\n".format(
+                    fmt.npy_dims, dimension)
 
     def array_result(self, capsule_order, ast, typemap, fmt):
         """
@@ -707,38 +730,23 @@ return 1;""",
 
         # Create a 1-d array from pointer.
         # A string is not really an array, so do not deal with it here.
-        dim = ast.attrs.get("dimension", None)
-        # Dimensions must be in npy_intp type array.
+
         self.need_numpy = True
-        if dim:
-            fmt.npy_ndims = "1"
-            fmt.npy_dims = "SHD_" + ast.name
-            fmt.pointer_shape = dim
-            append_format(
-                post_call,
-                "npy_intp {npy_dims}[1] = {{{{ {pointer_shape} }}}};",
-                fmt,
-            )
-        else:
-            fmt.npy_ndims = "0"
-            fmt.npy_dims = "NULL"
         if typemap.PYN_descr:
             fmt.PYN_descr = typemap.PYN_descr
-            append_format(
-                post_call,
+            post_call.append(
+                "{npy_intp}"
                 "Py_INCREF({PYN_descr});\n"
                 "PyObject * {py_var} = "
                 "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
                 " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
-                fmt,
             )
         else:
-            append_format(
-                post_call,
+            post_call.append(
+                "{npy_intp}"
                 "PyObject * {py_var} = "
                 "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
                 "\t {numpy_type},\t {cxx_var});",
-                fmt,
             )
 #        post_call.append("if ({py_var} == NULL) goto fail;")
 
@@ -1061,6 +1069,7 @@ return 1;""",
                 fmt_arg.cxx_member = "."
             attrs = arg.attrs
 
+            self.set_fmt_fields(arg, fmt_arg)
             as_object = False
             dimension = arg.attrs.get("dimension", False)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
@@ -1398,6 +1407,7 @@ return 1;""",
                         "delete cxx_ptr;",
                     ]
                 capsule_order = self.add_capsule_code(capsule_type, del_lines)
+#                fmt_result.capsule_order = capsule_order
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
@@ -1448,6 +1458,7 @@ return 1;""",
 
         # Compute return value
         if CXX_subprogram == "function":
+            self.set_fmt_fields(ast, fmt_result)
             if (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
@@ -2719,8 +2730,8 @@ py_statements_local = dict(
     intent_out_dimension_numpy=dict(
         need_numpy=True,
         decl=[
+            "{npy_intp}"
             "PyArrayObject * {py_var} = NULL;",
-            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
         ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
@@ -2935,8 +2946,8 @@ py_statements_local = dict(
         create_out_decl=True,
         cxx_local_var="pointer",
         decl=[
+#            "{npy_intp}"
             "PyArrayObject * {py_var} = NULL;",
-#            "npy_intp {npy_dims}[1] = {{ {pointer_shape} }};"
         ],
         post_parse=[
             "Py_INCREF({PYN_descr});",
@@ -2957,6 +2968,53 @@ py_statements_local = dict(
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
+    ),
+
+
+    struct_result_numpy=dict(
+        # XXX - expand to array of struct
+#        need_numpy=True,
+#        create_out_decl=True,
+#        cxx_local_var="pointer",
+#        decl=[
+#            "{npy_intp}"
+#            "PyArrayObject * {py_var} = NULL;",
+#        ],
+#        post_parse=[
+#            "Py_INCREF({PYN_descr});",
+#            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+#            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
+#            "\t 0,\t NULL,\t NULL,\t NULL,\t 0,\t NULL){cast2};",
+#        ] + array_error,
+#        c_pre_call=[
+##            "{cxx_decl} = PyArray_DATA({py_var});",
+#            "{cxx_type} *{cxx_var} = PyArray_DATA({py_var});",
+#        ],
+#        cxx_pre_call=[
+##            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+#            "{cxx_type} *{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+#        ],
+#        post_call=None,  # Object already created in post_parse
+        post_call=[
+            "{npy_intp}"
+            "Py_INCREF({PYN_descr});",
+            "PyObject * {py_var} = "
+            "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
+            " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
+        ],
+        post_call_capsule=[
+            "PyObject * {py_capsule} = "
+            'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
+            "\t{PY_numpy_array_dtor_function});",
+#            "if ({py_capsule} == NULL) goto fail;\n"
+            "PyCapsule_SetContext({py_capsule},  + context + );",
+            "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
+        ],
+
+#        fail=[
+#            "Py_XDECREF({py_var});",
+#        ],
+#        goto_fail=True,
     ),
 
 ##########

@@ -182,6 +182,9 @@
             "library_lower": "struct",
             "library_upper": "STRUCT",
             "namespace_scope": "",
+            "npy_dims": "NULL",
+            "npy_intp": "",
+            "npy_ndims": "0",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
@@ -1227,8 +1230,6 @@
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHC_rv",
-                        "npy_dims": "NULL",
-                        "npy_ndims": "0",
                         "numpy_type": null,
                         "py_capsule": "SHC_SHC_rv",
                         "py_var": "SHTPy_rv",
@@ -1396,8 +1397,6 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_var": "SHCXX_rv",
-                        "npy_dims": "NULL",
-                        "npy_ndims": "0",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1599,8 +1598,6 @@
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_var": "SHCXX_rv",
-                        "npy_dims": "NULL",
-                        "npy_ndims": "0",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"

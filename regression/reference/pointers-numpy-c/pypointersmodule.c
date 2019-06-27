@@ -218,8 +218,8 @@ PY_get_values(
 {
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 // splicer begin function.get_values
+    npy_intp SHD_values[1] = {3};
     PyArrayObject * SHPy_values = NULL;
-    npy_intp SHD_values[1] = { 3 };
 
     // post_parse
     SHPy_values = (PyArrayObject *) PyArray_SimpleNew(1, SHD_values, NPY_INT);
@@ -264,10 +264,10 @@ PY_get_values2(
 {
 // void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))
 // splicer begin function.get_values2
+    npy_intp SHD_arg1[1] = {3};
     PyArrayObject * SHPy_arg1 = NULL;
-    npy_intp SHD_arg1[1] = { 3 };
+    npy_intp SHD_arg2[1] = {3};
     PyArrayObject * SHPy_arg2 = NULL;
-    npy_intp SHD_arg2[1] = { 3 };
 
     // post_parse
     SHPy_arg1 = (PyArrayObject *) PyArray_SimpleNew(1, SHD_arg1, NPY_INT);
@@ -368,8 +368,8 @@ PY_fillIntArray(
 {
 // void fillIntArray(int * out +dimension(3)+intent(out))
 // splicer begin function.fill_int_array
+    npy_intp SHD_out[1] = {3};
     PyArrayObject * SHPy_out = NULL;
-    npy_intp SHD_out[1] = { 3 };
 
     // post_parse
     SHPy_out = (PyArrayObject *) PyArray_SimpleNew(1, SHD_out, NPY_INT);
