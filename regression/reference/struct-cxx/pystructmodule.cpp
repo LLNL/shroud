@@ -1,4 +1,4 @@
-// pystructmodule.c
+// pystructmodule.cpp
 // This is generated code, do not edit
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
 // other Shroud Project Developers.
@@ -6,7 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "pystructmodule.h"
+#include "pystructmodule.hpp"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
 #include "struct.h"
@@ -30,7 +30,6 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
-PyArray_Descr *PY_Cstruct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -46,42 +45,24 @@ PY_passStructByValue(
 {
 // int passStructByValue(Cstruct1 arg +intent(in)+value)
 // splicer begin function.pass_struct_by_value
-    PyObject * SHTPy_arg = NULL;
-    PyArrayObject * SHPy_arg = NULL;
-    char *SHT_kwlist[] = {
+    PY_Cstruct1 * SHPy_arg;
+    const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStructByValue",
-        SHT_kwlist, &SHTPy_arg))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStructByValue",
+        const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    Py_INCREF(PY_Cstruct1_array_descr);
-    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
-        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
-    if (SHPy_arg == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
-        goto fail;
-    }
-
-    // pre_call
-    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHC_rv = passStructByValue(*arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
-    // cleanup
-    Py_DECREF(SHPy_arg);
-
     return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHPy_arg);
-    return NULL;
 // splicer end function.pass_struct_by_value
 }
 
@@ -97,42 +78,24 @@ PY_passStruct1(
 {
 // int passStruct1(Cstruct1 * arg +intent(in))
 // splicer begin function.pass_struct1
-    PyObject * SHTPy_arg = NULL;
-    PyArrayObject * SHPy_arg = NULL;
-    char *SHT_kwlist[] = {
+    PY_Cstruct1 * SHPy_arg;
+    const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStruct1",
-        SHT_kwlist, &SHTPy_arg))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStruct1",
+        const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    Py_INCREF(PY_Cstruct1_array_descr);
-    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
-        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
-    if (SHPy_arg == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
-        goto fail;
-    }
-
-    // pre_call
-    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHC_rv = passStruct1(arg);
 
     // post_call
     PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
 
-    // cleanup
-    Py_DECREF(SHPy_arg);
-
     return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHPy_arg);
-    return NULL;
 // splicer end function.pass_struct1
 }
 
@@ -151,28 +114,19 @@ PY_passStruct2(
 {
 // int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
 // splicer begin function.pass_struct2
-    PyObject * SHTPy_s1 = NULL;
-    PyArrayObject * SHPy_s1 = NULL;
-    char *SHT_kwlist[] = {
+    PY_Cstruct1 * SHPy_s1;
+    const char *SHT_kwlist[] = {
         "s1",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStruct2",
-        SHT_kwlist, &SHTPy_s1))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStruct2",
+        const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_s1))
         return NULL;
 
     // post_parse
-    Py_INCREF(PY_Cstruct1_array_descr);
-    SHPy_s1 = (PyArrayObject *) PyArray_FromAny(SHTPy_s1,
-        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
-    if (SHPy_s1 == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "s1 must be a 1-D array of Cstruct1");
-        goto fail;
-    }
+    Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
 
     // pre_call
-    Cstruct1 * s1 = PyArray_DATA(SHPy_s1);
     char outbuf[LENOUTBUF];  // intent(out)
 
     int SHC_rv = passStruct2(s1, outbuf);
@@ -180,14 +134,7 @@ PY_passStruct2(
     // post_call
     PyObject * SHTPy_rv = Py_BuildValue("is", SHC_rv, outbuf);
 
-    // cleanup
-    Py_DECREF(SHPy_s1);
-
     return SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHPy_s1);
-    return NULL;
 // splicer end function.pass_struct2
 }
 
@@ -206,37 +153,29 @@ PY_acceptStructOutPtr(
 {
 // void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
 // splicer begin function.accept_struct_out_ptr
-    PyArrayObject * SHPy_arg = NULL;
     int i;
     double d;
-    char *SHT_kwlist[] = {
+    const char *SHT_kwlist[] = {
         "i",
         "d",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "id:acceptStructOutPtr", SHT_kwlist, &i, &d))
+        "id:acceptStructOutPtr", const_cast<char **>(SHT_kwlist), &i,
+        &d))
         return NULL;
 
-    // post_parse
-    Py_INCREF(PY_Cstruct1_array_descr);
-    SHPy_arg = (PyArrayObject *) PyArray_NewFromDescr(&PyArray_Type,
-        PY_Cstruct1_array_descr, 0, NULL, NULL, NULL, 0, NULL);
-    if (SHPy_arg == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
-        goto fail;
-    }
-
     // pre_call
-    Cstruct1 *arg = PyArray_DATA(SHPy_arg);
+    Cstruct1 * arg = new Cstruct1;
 
     acceptStructOutPtr(arg, i, d);
-    return (PyObject *) SHPy_arg;
 
-fail:
-    Py_XDECREF(SHPy_arg);
-    return NULL;
+    // post_call
+    PY_Cstruct1 * SHPy_arg =
+        PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    SHPy_arg->obj = arg;
+
+    return (PyObject *) SHPy_arg;
 // splicer end function.accept_struct_out_ptr
 }
 
@@ -252,35 +191,21 @@ PY_acceptStructInOutPtr(
 {
 // void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))
 // splicer begin function.accept_struct_in_out_ptr
-    PyObject * SHTPy_arg = NULL;
-    PyArrayObject * SHPy_arg = NULL;
-    char *SHT_kwlist[] = {
+    PY_Cstruct1 * SHPy_arg;
+    const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "O:acceptStructInOutPtr", SHT_kwlist, &SHTPy_arg))
+        "O!:acceptStructInOutPtr", const_cast<char **>(SHT_kwlist), 
+        &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
     // post_parse
-    Py_INCREF(PY_Cstruct1_array_descr);
-    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
-        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
-    if (SHPy_arg == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "arg must be a 1-D array of Cstruct1");
-        goto fail;
-    }
-
-    // pre_call
-    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     acceptStructInOutPtr(arg);
     return (PyObject *) SHPy_arg;
-
-fail:
-    Py_XDECREF(SHPy_arg);
-    return NULL;
 // splicer end function.accept_struct_in_out_ptr
 }
 
@@ -298,16 +223,17 @@ PY_returnStructByValue(
 // splicer begin function.return_struct_by_value
     int i;
     double d;
-    char *SHT_kwlist[] = {
+    const char *SHT_kwlist[] = {
         "i",
         "d",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "id:returnStructByValue", SHT_kwlist, &i, &d))
+        "id:returnStructByValue", const_cast<char **>(SHT_kwlist), &i,
+        &d))
         return NULL;
 
-    Cstruct1 * SHC_rv = malloc(sizeof(Cstruct1));
+    Cstruct1 * SHC_rv = new Cstruct1;
     *SHC_rv = returnStructByValue(i, d);
 
     // post_call
@@ -316,7 +242,8 @@ PY_returnStructByValue(
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
     PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
         PY_array_destructor_function);
-    PyCapsule_SetContext(SHC_SHC_rv, (char *) PY_array_destructor_context[0]);
+    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>
+        (PY_array_destructor_context[0]));
     PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
 
     return (PyObject *) SHTPy_rv;
@@ -342,21 +269,21 @@ PY_returnStructPtr1(
 // splicer begin function.return_struct_ptr1
     int i;
     double d;
-    char *SHT_kwlist[] = {
+    const char *SHT_kwlist[] = {
         "i",
         "d",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr1",
-        SHT_kwlist, &i, &d))
+        const_cast<char **>(SHT_kwlist), &i, &d))
         return NULL;
 
-    Cstruct1 * SHC_rv = returnStructPtr1(i, d);
+    Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
     PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+        PY_Cstruct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_ptr1
@@ -381,24 +308,24 @@ PY_returnStructPtr2(
 // splicer begin function.return_struct_ptr2
     int i;
     double d;
-    char *SHT_kwlist[] = {
+    const char *SHT_kwlist[] = {
         "i",
         "d",
         NULL };
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
-        SHT_kwlist, &i, &d))
+        const_cast<char **>(SHT_kwlist), &i, &d))
         return NULL;
 
     // pre_call
     char outbuf[LENOUTBUF];  // intent(out)
 
-    Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
+    Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
     PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+        PY_Cstruct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
     PyObject * SHResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
     return SHResult;
@@ -423,68 +350,6 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr2__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
-
-// Create PyArray_Descr for Cstruct1
-static PyArray_Descr *PY_Cstruct1_create_array_descr(void)
-{
-    int ierr;
-    PyObject *obj = NULL;
-    PyObject * lnames = NULL;
-    PyObject * ldescr = NULL;
-    PyObject * dict = NULL;
-    PyArray_Descr *dtype = NULL;
-
-    lnames = PyList_New(2);
-    if (lnames == NULL) goto fail;
-    ldescr = PyList_New(2);
-    if (ldescr == NULL) goto fail;
-
-    // ifield
-    obj = PyString_FromString("ifield");
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(lnames, 0, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(ldescr, 0, obj);
-
-    // dfield
-    obj = PyString_FromString("dfield");
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(lnames, 1, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(ldescr, 1, obj);
-    obj = NULL;
-
-    dict = PyDict_New();
-    if (dict == NULL) goto fail;
-    ierr = PyDict_SetItemString(dict, "names", lnames);
-    if (ierr == -1) goto fail;
-    lnames = NULL;
-    ierr = PyDict_SetItemString(dict, "formats", ldescr);
-    if (ierr == -1) goto fail;
-    ldescr = NULL;
-    ierr = PyArray_DescrAlignConverter(dict, &dtype);
-    if (ierr == 0) goto fail;
-    return dtype;
-fail:
-    Py_XDECREF(obj);
-    if (lnames != NULL) {
-        for (int i=0; i < 2; i++) {
-            Py_XDECREF(PyList_GET_ITEM(lnames, i));
-        }
-        Py_DECREF(lnames);
-    }
-    if (ldescr != NULL) {
-        for (int i=0; i < 2; i++) {
-            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
-        }
-        Py_DECREF(ldescr);
-    }
-    Py_XDECREF(dict);
-    Py_XDECREF(dtype);
-    return NULL;
-}
 
 /*
  * initstruct - Initialization function for the module
@@ -535,7 +400,7 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return
 #endif
 
-PyMODINIT_FUNC
+extern "C" PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
 PyInit_cstruct(void)
 #else
@@ -563,10 +428,13 @@ initcstruct(void)
 
     import_array();
 
-    // Define PyArray_Descr for structs
-    PY_Cstruct1_array_descr = PY_Cstruct1_create_array_descr();
-    PyModule_AddObject(m, "Cstruct1_dtype", 
-        (PyObject *) PY_Cstruct1_array_descr);
+    // Cstruct1
+    PY_Cstruct1_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct1_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct1_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Cstruct1_Type);
+    PyModule_AddObject(m, "Cstruct1", (PyObject *)&PY_Cstruct1_Type);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

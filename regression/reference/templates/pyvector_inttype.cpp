@@ -88,11 +88,7 @@ PY_vector_int_at(
     int & SHC_rv = self->obj->at(n);
     PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT,
         SHC_rv);
-    if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
-
-fail:
-    return NULL;
 // splicer end class.vector.method.at
 }
 // splicer begin class.vector.impl.after_methods

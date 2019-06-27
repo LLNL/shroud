@@ -172,7 +172,7 @@ class Wrapp(util.WrapperMixin):
             name = node.name
             self.reset_file()
             self._push_splicer(name)
-            if node.as_struct:
+            if node.as_struct and node.options.PY_struct_arg != "class":
                 self.create_arraydescr(node)
             else:
                 self.wrap_class(node)
@@ -740,7 +740,7 @@ return 1;""",
                 "\t {numpy_type},\t {cxx_var});",
                 fmt,
             )
-        post_call.append("if ({py_var} == NULL) goto fail;")
+#        post_call.append("if ({py_var} == NULL) goto fail;")
 
         if capsule_order is not None:
             # If NumPy owns the memory, add a way to delete it
@@ -759,7 +759,7 @@ return 1;""",
                 "PyObject * {py_capsule} = "
                 'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
                 "\t{PY_numpy_array_dtor_function});\n"
-                "if ({py_capsule} == NULL) goto fail;\n"
+#                "if ({py_capsule} == NULL) goto fail;\n"
                 "PyCapsule_SetContext({py_capsule}, " + context + ");\n"
                 "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
                 fmt,
@@ -769,7 +769,7 @@ return 1;""",
         # Return a dictionary which is used as an intent_blk.
         return dict(
             post_call=post_call,
-            goto_fail = True,
+#            goto_fail = True,
         )
 
     def implied_blk(self, node, arg, pre_call):
@@ -2973,8 +2973,23 @@ py_statements_local = dict(
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
         ],
+        post_call=None,  # Object was passed in
     ),
     struct_intent_out_class=dict(
+        create_out_decl=True,
+        cxx_local_var="pointer",
+        c_pre_call=[
+            "{cxx_type} * {cxx_var} = malloc(sizeof({cxx_type}));",
+        ],
+        c_dealloc_capsule=[
+            "free(ptr);",
+        ],
+        cxx_pre_call=[
+            "{cxx_type} * {cxx_var} = new {cxx_type};",
+        ],
+        cxx_dealloc_capsule=[
+            "delete cxx_ptr;",
+        ],
         post_call=[
             (
                 "{PyObject} * {py_var} ="

@@ -348,13 +348,12 @@ if __name__ == "__main__":
         TestDesc("struct",
                  cmdline=[
                      "--language", "c",
-                     "--option", "PY_array_arg=numpy",
+                     "--option", "PY_struct_arg=numpy",
                  ]),
         TestDesc("struct-cxx", yaml="struct",
                  cmdline=[
                      "--language", "c++",
-                     "--option", "PY_array_arg=list",
-                     "--option", "wrap_python=false",
+                     "--option", "PY_struct_arg=class",
                  ]),
         TestDesc("vectors"),
         TestDesc("forward"),
