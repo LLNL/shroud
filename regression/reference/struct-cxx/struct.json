@@ -1184,10 +1184,7 @@
                     "underscore_name": "return_struct_ptr1"
                 },
                 "linenumber": 72,
-                "options": {
-                    "__line__": 77,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

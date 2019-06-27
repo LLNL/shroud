@@ -322,6 +322,45 @@ PY_returnStructByValue(
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_by_value
 }
+
+static char PY_returnStructPtr1__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Return a pointer to a struct
+ *
+ * Does not generate a bufferify C wrapper.
+ */
+static PyObject *
+PY_returnStructPtr1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_struct_ptr1
+    int i;
+    double d;
+    char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr1",
+        SHT_kwlist, &i, &d))
+        return NULL;
+
+    Cstruct1 * SHC_rv = returnStructPtr1(i, d);
+
+    // post_call
+    Py_INCREF(PY_Cstruct1_array_descr);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_struct_ptr1
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
@@ -335,6 +374,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructInOutPtr__doc__},
 {"returnStructByValue", (PyCFunction)PY_returnStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructByValue__doc__},
+{"returnStructPtr1", (PyCFunction)PY_returnStructPtr1,
+    METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
