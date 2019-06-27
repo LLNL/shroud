@@ -994,15 +994,12 @@ return 1;""",
 
         # Code blocks
         # Accumulate code from statements.
-        PY_decl = []  # variables for function
-        decl = PY_decl
-        post_parse = []
-        pre_call = []
-        post_call = []  # Create objects passed to PyBuildValue
+        decl_code = []  # variables for function
+        post_parse_code = []
+        pre_call_code = []
+        post_call_code = []  # Create objects passed to PyBuildValue
         cleanup_code = []
-        cleanup = cleanup_code
         fail_code = []
-        fail = fail_code
 
         cxx_call_list = []
 
@@ -1011,7 +1008,7 @@ return 1;""",
         default_calls = []  # each possible default call
         found_default = False
         if node._has_default_arg:
-            PY_decl.append("Py_ssize_t SH_nargs = 0;")
+            decl_code.append("Py_ssize_t SH_nargs = 0;")
             PY_code.extend(
                 [
                     "if (args != NULL) SH_nargs += PyTuple_Size(args);",
@@ -1149,8 +1146,8 @@ return 1;""",
                     default_calls.append(
                         (
                             len(cxx_call_list),
-                            len(post_parse),
-                            len(pre_call),
+                            len(post_parse_code),
+                            len(pre_call_code),
                             ",\t ".join(cxx_call_list),
                         )
                     )
@@ -1168,7 +1165,7 @@ return 1;""",
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
                     fmt_arg.py_type = arg_typemap.PY_PyObject or "PyObject"
-                    append_format(PY_decl, "{py_type} * {py_var};", fmt_arg)
+                    append_format(decl_code, "{py_type} * {py_var};", fmt_arg)
                     pass_var = fmt_arg.cxx_var
                     parse_format.append(arg_typemap.PY_format)
                     parse_format.append("!")
@@ -1177,14 +1174,14 @@ return 1;""",
                 elif arg_typemap.PY_from_object:
                     # Use function to convert object
                     # cxx_var created directly (no c_var)
-                    append_format(PY_decl, "{cxx_decl};", fmt_arg)
+                    append_format(decl_code, "{cxx_decl};", fmt_arg)
                     pass_var = fmt_arg.cxx_var
                     parse_format.append(arg_typemap.PY_format)
                     parse_format.append("&")
                     parse_vargs.append(arg_typemap.PY_from_object)
                     parse_vargs.append("&" + fmt_arg.cxx_var)
                 else:
-                    append_format(PY_decl, "{c_decl};", fmt_arg)
+                    append_format(decl_code, "{c_decl};", fmt_arg)
                     parse_format.append(arg_typemap.PY_format)
                     parse_vargs.append("&" + fmt_arg.c_var)
 
@@ -1196,7 +1193,7 @@ return 1;""",
                     elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
                         append_format(
-                            pre_call, "{cxx_decl};  // intent(out)", fmt_arg
+                            pre_call_code, "{cxx_decl};  // intent(out)", fmt_arg
                         )
 
                 if not hidden:
@@ -1222,7 +1219,7 @@ return 1;""",
                     name=fmt_arg.cxx_var, params=None, continuation=True
                 )
                 fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                append_format(post_parse, "{cxx_decl} =\t {cxx_val};", fmt_arg)
+                append_format(post_parse_code, "{cxx_decl} =\t {cxx_val};", fmt_arg)
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
@@ -1242,9 +1239,9 @@ return 1;""",
                 raise RuntimeError("unexpected value of local_var")
         # end for arg in args:
 
-        # Add implied argument initialization to pre_call code
+        # Add implied argument initialization to pre_call_code
         for arg in arg_implied:
-            intent_blk = self.implied_blk(node, arg, pre_call)
+            intent_blk = self.implied_blk(node, arg, pre_call_code)
 
         need_blank = False  # needed before next debug header
         if not arg_names:
@@ -1263,7 +1260,7 @@ return 1;""",
             else:
                 kw_const = ""
                 fmt.PyArg_kwlist = "SHT_kwlist"
-            PY_decl.append(
+            decl_code.append(
                 kw_const
                 + 'char *SHT_kwlist[] = {\f"'
                 + '",\f"'.join(arg_names)
@@ -1286,8 +1283,8 @@ return 1;""",
         default_calls.append(
             (
                 len(cxx_call_list),
-                len(post_parse),
-                len(pre_call),
+                len(post_parse_code),
+                len(pre_call_code),
                 ",\t ".join(cxx_call_list),
             )
         )
@@ -1304,12 +1301,12 @@ return 1;""",
         need_rv = False
 
         # build up code for a function
-        for nargs, len_post_parse, len_pre_call, call_list in default_calls:
+        for nargs, post_parse_len, pre_call_len, call_list in default_calls:
             if found_default:
                 PY_code.append("case %d:" % nargs)
                 PY_code.append(1)
                 need_blank = False
-                if len_post_parse or len_pre_call:
+                if post_parse_len or pre_call_len:
                     # Only add scope if necessary
                     PY_code.append("{")
                     PY_code.append(1)
@@ -1317,12 +1314,12 @@ return 1;""",
                 else:
                     extra_scope = False
 
-            if len_post_parse:
+            if post_parse_len:
                 if options.debug:
                     if need_blank:
                         PY_code.append("")
                     PY_code.append("// post_parse")
-                PY_code.extend(post_parse[:len_post_parse])
+                PY_code.extend(post_parse_code[:post_parse_len])
                 need_blank = True
 
             if self.language == "cxx" and goto_fail:
@@ -1335,12 +1332,12 @@ return 1;""",
             else:
                 fail_scope = False
 
-            if len_pre_call:
+            if pre_call_len:
                 if options.debug:
                     if need_blank:
                         PY_code.append("")
                     PY_code.append("// pre_call")
-                PY_code.extend(pre_call[:len_pre_call])
+                PY_code.extend(pre_call_code[:pre_call_len])
                 need_blank = True
             fmt.PY_call_list = call_list
 
@@ -1430,10 +1427,10 @@ return 1;""",
             need_rv = False
 
         if need_rv:
-            PY_decl.append(fmt.C_rv_decl + ";")
-        if len(PY_decl):
+            decl_code.append(fmt.C_rv_decl + ";")
+        if len(decl_code):
             # Add blank line after declarations.
-            PY_decl.append("")
+            decl_code.append("")
 
         # Compute return value
         if CXX_subprogram == "function":
@@ -1466,7 +1463,7 @@ return 1;""",
             # return a single object already created in build_stmts
             ctor = build_tuples[0].ctor
             if ctor:
-                post_call.append(ctor)
+                post_call_code.append(ctor)
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
@@ -1474,7 +1471,7 @@ return 1;""",
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
             append_format(
-                post_call,
+                post_call_code,
                 "PyObject * {PY_result} = "
                 'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
                 fmt,
@@ -1482,12 +1479,12 @@ return 1;""",
             return_code = wformat("return {PY_result};", fmt)
 
         need_blank = False  # put return right after call
-        if post_call and not is_ctor:
+        if post_call_code and not is_ctor:
             # ctor does not need to build return values
             if options.debug:
                 PY_code.append("")
                 PY_code.append("// post_call")
-            PY_code.extend(post_call)
+            PY_code.extend(post_call_code)
             need_blank = True
 
         if cleanup_code:
@@ -1509,7 +1506,7 @@ return 1;""",
             PY_code.extend(fail_code)
             append_format(PY_code, "return {PY_error_return};", fmt)
 
-        PY_impl = [1] + PY_decl + PY_code + [-1]
+        PY_impl = [1] + decl_code + PY_code + [-1]
 
         expose = True
         if is_ctor:
@@ -2611,7 +2608,7 @@ def update_code_blocks(symtab, stmts, fmt):
     for clause in ["decl", "post_parse", "pre_call",
                    "post_call", "cleanup", "fail"]:
         if clause in stmts:
-            util.append_format_cmds(symtab[clause], stmts, clause, fmt)
+            util.append_format_cmds(symtab[clause + "_code"], stmts, clause, fmt)
 
 
 def XXXdo_cast(lang, kind, typ, var):
