@@ -1051,10 +1051,7 @@
                     "underscore_name": "return_struct_by_value"
                 },
                 "linenumber": 68,
-                "options": {
-                    "__line__": 69,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

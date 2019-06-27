@@ -1126,6 +1126,21 @@
                         "fmtf": {
                             "c_var": "d",
                             "f_var": "d"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "double d",
+                            "c_deref": "",
+                            "c_type": "double",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_decl": "double d",
+                            "cxx_member": ".",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_d",
+                            "size_var": "SHSize_d"
                         }
                     },
                     "i": {
@@ -1144,6 +1159,21 @@
                         "fmtf": {
                             "c_var": "i",
                             "f_var": "i"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_decl": "int i",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_decl": "int i",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_i",
+                            "size_var": "SHSize_i"
                         }
                     }
                 },
@@ -1159,6 +1189,22 @@
                     "fmtf": {
                         "cxx_type": "Cstruct1",
                         "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PYN_descr": "PY_Cstruct1_array_descr",
+                        "PyObject": "PY_Cstruct1",
+                        "PyTypeObject": "PY_Cstruct1_Type",
+                        "c_deref": "",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHC_rv",
+                        "npy_dims": "NULL",
+                        "npy_ndims": "0",
+                        "numpy_type": null,
+                        "py_capsule": "SHC_SHC_rv",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -1220,16 +1266,14 @@
                     "F_name_impl": "return_struct_by_value",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "PY_name_impl": "PY_returnStructByValue",
                     "c_const": "",
                     "cxx_rv_decl": "SH_union_0_t SHC_rv",
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
                 "linenumber": 68,
-                "options": {
-                    "__line__": 69,
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

@@ -66,8 +66,8 @@ declarations:
 
 ######################################################################
 - decl: Cstruct1 returnStructByValue(int i, double d);
-  options:
-    wrap_python: False
+#  options:
+#    wrap_python: False
 
 - decl: Cstruct1 *returnStructPtr1(int i, double d)
   doxygen:

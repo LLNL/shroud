@@ -283,6 +283,45 @@ fail:
     return NULL;
 // splicer end function.accept_struct_in_out_ptr
 }
+
+static char PY_returnStructByValue__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_returnStructByValue(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)
+// splicer begin function.return_struct_by_value
+    int i;
+    double d;
+    char *SHT_kwlist[] = {
+        "i",
+        "d",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "id:returnStructByValue", SHT_kwlist, &i, &d))
+        return NULL;
+
+    Cstruct1 * SHC_rv = malloc(sizeof(Cstruct1));
+    *SHC_rv = returnStructByValue(i, d);
+
+    // post_call
+    Py_INCREF(PY_Cstruct1_array_descr);
+    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
+        PY_array_destructor_function);
+    PyCapsule_SetContext(SHC_SHC_rv, (char *) PY_array_destructor_context[0]);
+    PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.return_struct_by_value
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByValue", (PyCFunction)PY_passStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByValue__doc__},
@@ -294,6 +333,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructOutPtr__doc__},
 {"acceptStructInOutPtr", (PyCFunction)PY_acceptStructInOutPtr,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructInOutPtr__doc__},
+{"returnStructByValue", (PyCFunction)PY_returnStructByValue,
+    METH_VARARGS|METH_KEYWORDS, PY_returnStructByValue__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
