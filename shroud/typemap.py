@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Create and manage typemaps used to convert between languages.
 """
@@ -620,6 +613,11 @@ def initialize():
                     post_call=["{py_var} = PyBool_FromLong({c_deref}{c_var});"],
                 ),
                 intent_out=dict(
+                    post_call=[
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ]
+                ),
+                result=dict(
                     post_call=[
                         "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]
@@ -1391,7 +1389,16 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
                     "\t PyObject_New({PyObject}, &{PyTypeObject});"
                 ),
                 "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-            ]
+            ],
+        ),
+        result=dict(
+            post_call=[
+                (
+                    "{PyObject} * {py_var} ="
+                    "\t PyObject_New({PyObject}, &{PyTypeObject});"
+                ),
+                "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
+            ],
         ),
     )
     # #-    if not ntypemap.PY_PyTypeObject:

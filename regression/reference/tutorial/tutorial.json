@@ -9673,6 +9673,12 @@
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
                 }
             }
         },
@@ -9734,6 +9740,11 @@
                     ]
                 },
                 "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]
@@ -10572,6 +10583,12 @@
                     ]
                 },
                 "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"

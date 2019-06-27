@@ -1,18 +1,11 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
-Generate Python module for C++ code.
+Generate Python module for C or C++ code.
 
 Entire library in a single header.
 One Extension module per class
@@ -794,7 +787,7 @@ return 1;""",
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, "{cxx_decl} = {pre_call_intent};", fmt)
 
-    def intent_out(self, typemap, intent_blk, fmt, post_call):
+    def intent_out(self, typemap, intent_blk, fmt):
         """Add code for post-call.
         Create PyObject from C++ value to return.
         Used with function results, intent(OUT) and intent(INOUT) arguments.
@@ -803,7 +796,6 @@ return 1;""",
             typemap - typemap of C++ variable.
             intent_blk -
             fmt - format dictionary
-            post_call   - list of post_call code for function.
 
         NumPy intent(OUT) arguments will create a Python object as part of pre-call.
         Return a BuildTuple instance.
@@ -811,7 +803,6 @@ return 1;""",
         if "post_call" in intent_blk:
             # Explicit code exists to create object.
             # If post_call is None, the Object has already been created
-            util.append_format_cmds(post_call, intent_blk, "post_call", fmt)
             build_format = "O"
             vargs = fmt.py_var
             ctor = None
@@ -1002,12 +993,16 @@ return 1;""",
         build_tuples = []
 
         # Code blocks
+        # Accumulate code from statements.
         PY_decl = []  # variables for function
+        decl = PY_decl
         post_parse = []
         pre_call = []
         post_call = []  # Create objects passed to PyBuildValue
         cleanup_code = []
+        cleanup = cleanup_code
         fail_code = []
+        fail = fail_code
 
         cxx_call_list = []
 
@@ -1207,19 +1202,11 @@ return 1;""",
                 if not hidden:
                     # output variable must be a pointer
                     build_tuples.append(
-                        self.intent_out(arg_typemap, intent_blk, fmt_arg, post_call)
+                        self.intent_out(arg_typemap, intent_blk, fmt_arg)
                     )
 
             # Code to convert parsed values (C or Python) to C++.
-            util.append_format_cmds(PY_decl, intent_blk, "decl", fmt_arg)
-            util.append_format_cmds(
-                post_parse, intent_blk, "post_parse", fmt_arg
-            )
-            util.append_format_cmds(pre_call, intent_blk, "pre_call", fmt_arg)
-            util.append_format_cmds(
-                cleanup_code, intent_blk, "cleanup", fmt_arg
-            )
-            util.append_format_cmds(fail_code, intent_blk, "fail", fmt_arg)
+            update_code_blocks(locals(), intent_blk, fmt_arg)
             if "c_helper" in intent_blk:
                 c_helper = wformat(intent_blk["c_helper"], fmt_arg)
                 for helper in c_helper.split():
@@ -1459,16 +1446,15 @@ return 1;""",
                 result_blk = self.array_result(
                     ast, result_typemap, fmt_result)
             else:
-                # XXX - wrapc uses result instead of intent_out
-                result_blk = result_typemap.py_statements.get("intent_out", {})
+                result_blk = result_typemap.py_statements.get("result", {})
 
             goto_fail = goto_fail or result_blk.get("goto_fail", False)
-            ttt0 = self.intent_out(
-                result_typemap, result_blk, fmt_result, post_call)
-            # Add result to front of result tuple.
+            ttt0 = self.intent_out(result_typemap, result_blk, fmt_result)
+            # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
             if ttt0.format == "O":
                 fmt.PY_result = "SHResult"
+            update_code_blocks(locals(), result_blk, fmt_result)
 
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
@@ -2611,6 +2597,21 @@ def attr_allocatable(language, allocatable, node, arg, fmt_arg):
     fmt_arg.npy_descr = descr
     fmt_arg.npy_subok = subok
     fmt_arg.npy_descr_code = descr_code
+
+
+def update_code_blocks(symtab, stmts, fmt):
+    """ Accumulate info from statements.
+    Append to lists in symtab.
+
+    Args:
+        symtab - result of locals() of caller
+        stmts  - dictionary
+        fmt    - format dictionary (Scope)
+    """
+    for clause in ["decl", "post_parse", "pre_call",
+                   "post_call", "cleanup", "fail"]:
+        if clause in stmts:
+            util.append_format_cmds(symtab[clause], stmts, clause, fmt)
 
 
 def XXXdo_cast(lang, kind, typ, var):

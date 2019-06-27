@@ -414,6 +414,11 @@
                     "post_call": [
                         "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ]
                 }
             }
         },
