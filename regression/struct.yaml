@@ -37,45 +37,33 @@ declarations:
         };
 
 - decl: int passStructByValue(Cstruct1 arg)
-#  options:
-#    wrap_python: False
 
 - decl: int passStruct1(Cstruct1 *arg)
-#  options:
-#    wrap_python: False
 
 - decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))
   doxygen:
     description: |
       Pass name argument which will build a bufferify function.
-#  options:
-#    wrap_python: False
 
 - decl: int acceptStructInPtr(Cstruct1 *arg+intent(in))
   options:
     wrap_python: False
+
 - decl: void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)
   doxygen:
     description: |
       Pass name argument which will build a bufferify function.
-#  options:
-#    wrap_python: False
+
 - decl: void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))
-#  options:
-#    wrap_python: False
 
 ######################################################################
 - decl: Cstruct1 returnStructByValue(int i, double d);
-#  options:
-#    wrap_python: False
 
 - decl: Cstruct1 *returnStructPtr1(int i, double d)
   doxygen:
     brief: Return a pointer to a struct
     description: |
       Does not generate a bufferify C wrapper.
-#  options:
-#    wrap_python: False
 
 - decl: Cstruct1 *returnStructPtr2(int i, double d,
             char *outbuf+intent(out)+charlen(LENOUTBUF))
@@ -83,8 +71,6 @@ declarations:
     brief: Return a pointer to a struct
     description: |
       Generates a bufferify C wrapper function.
-#  options:
-#    wrap_python: False
 
 ######################################################################
 splicer_code:
