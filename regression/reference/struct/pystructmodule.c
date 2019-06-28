@@ -302,6 +302,8 @@ PY_returnStructByValue(
         "i",
         "d",
         NULL };
+    PyObject * SHTPy_rv = NULL;
+    PyObject *SHC_SHC_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "id:returnStructByValue", SHT_kwlist, &i, &d))
@@ -312,15 +314,23 @@ PY_returnStructByValue(
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+    SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
-    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
+    if (SHTPy_rv == NULL) goto fail;
+    SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
         PY_array_destructor_function);
+    if (SHC_SHC_rv == NULL) goto fail;
     PyCapsule_SetContext(SHC_SHC_rv,
         (char *) PY_array_destructor_context[0]);
-    PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
+    if (PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv,
+        SHC_SHC_rv) < 0) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    Py_XDECREF(SHC_SHC_rv);
+    return NULL;
 // splicer end function.return_struct_by_value
 }
 
@@ -347,6 +357,7 @@ PY_returnStructPtr1(
         "i",
         "d",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr1",
         SHT_kwlist, &i, &d))
@@ -356,10 +367,15 @@ PY_returnStructPtr1(
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+    SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.return_struct_ptr1
 }
 
@@ -386,6 +402,7 @@ PY_returnStructPtr2(
         "i",
         "d",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         SHT_kwlist, &i, &d))
@@ -398,11 +415,16 @@ PY_returnStructPtr2(
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
+    SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+    if (SHTPy_rv == NULL) goto fail;
     PyObject * SHResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
     return SHResult;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.return_struct_ptr2
 }
 static PyMethodDef PY_methods[] = {

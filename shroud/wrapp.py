@@ -1320,7 +1320,7 @@ return 1;""",
                     ]
                 capsule_order = self.add_capsule_code(capsule_type, del_lines)
                 fmt_result.capsule_order = capsule_order
-                fmt_result.py_capsule = "SHC_" + fmt_result.c_var
+                fmt_result.py_capsule = "SHC_" + fmt_result.c_var  #C_result
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
@@ -1365,9 +1365,6 @@ return 1;""",
 
         if need_rv:
             decl_code.append(fmt.C_rv_decl + ";")
-        if len(decl_code):
-            # Add blank line after declarations.
-            decl_code.append("")
 
         # Compute return value
         if CXX_subprogram == "function":
@@ -1446,6 +1443,9 @@ return 1;""",
             PY_code.extend(fail_code)
             append_format(PY_code, "return {PY_error_return};", fmt)
 
+        if len(decl_code):
+            # Add blank line after declarations.
+            decl_code.append("")
         PY_impl = [1] + decl_code + PY_code + [-1]
 
         expose = True
@@ -2551,11 +2551,12 @@ def update_code_blocks(symtab, stmts, fmt):
             util.append_format_cmds(symtab[clause + "_code"], stmts, clause, fmt)
 
     # If capsule_order is defined, then add some additional code to 
-    # do reference counting on the post_call object.
+    # do reference counting.
     if fmt.inlocal("capsule_order"):
-        if "post_call_capsule" in stmts:
-            util.append_format_cmds(
-                symtab["post_call_code"], stmts, "post_call_capsule", fmt)
+        for clause in ["decl", "post_call", "fail"]:
+            name = clause + "_capsule"
+            if "post_call_capsule" in stmts:
+                util.append_format_cmds(symtab[clause + "_code"], stmts, name, fmt)
 
 
 def XXXdo_cast(lang, kind, typ, var):
@@ -2608,15 +2609,23 @@ malloc_error = [
     "-}}",
 ]
 
+decl_capsule=[
+    "PyObject *{py_capsule} = NULL;",
+]
 post_call_capsule=[
-    "PyObject * {py_capsule} = "
+    "{py_capsule} = "
     'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
     "\t{PY_numpy_array_dtor_function});",
-    #            "if ({py_capsule} == NULL) goto fail;",
+    "if ({py_capsule} == NULL) goto fail;",
     "PyCapsule_SetContext({py_capsule},"
     "\t {cast_const}char *{cast1}{PY_numpy_array_dtor_context}"
     "[{capsule_order}]{cast2});",
-    "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
+    "if (PyArray_SetBaseObject(\t"
+    "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
+    "\t {py_capsule}) < 0)\t goto fail;",
+]
+fail_capsule=[
+    "Py_XDECREF({py_capsule});",
 ]
 
 # Code clauses are used for C and C++.
@@ -2700,13 +2709,23 @@ py_statements_local = dict(
 
     result_dimension_numpy=dict(
         need_numpy=True,
+        decl=[
+            "PyObject * {py_var} = NULL;",
+        ],
         post_call=[
             "{npy_intp}"
-            "PyObject * {py_var} = "
+            "{py_var} = "
             "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
             "\t {numpy_type},\t {cxx_var});",
+            "if ({py_var} == NULL) goto fail;",
         ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+        decl_capsule=decl_capsule,
         post_call_capsule=post_call_capsule,
+        fail_capsule=fail_capsule,
     ),
 
 ########################################
@@ -2931,18 +2950,24 @@ py_statements_local = dict(
     struct_result_numpy=dict(
         # XXX - expand to array of struct
         need_numpy=True,
+        decl=[
+            "PyObject * {py_var} = NULL;",
+        ],
         post_call=[
             "{npy_intp}"
             "Py_INCREF({PYN_descr});",
-            "PyObject * {py_var} = "
+            "{py_var} = "
             "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
             " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
+            "if ({py_var} == NULL) goto fail;",
         ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+        decl_capsule=decl_capsule,
         post_call_capsule=post_call_capsule,
-#        fail=[
-#            "Py_XDECREF({py_var});",
-#        ],
-#        goto_fail=True,
+        fail_capsule=fail_capsule,
     ),
 
 ##########

@@ -81,14 +81,19 @@ PY_vector_double_at(
     const char *SHT_kwlist[] = {
         "n",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
     double & SHC_rv = self->obj->at(n);
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE,
-        SHC_rv);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE, SHC_rv);
+    if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end class.vector.method.at
 }
 // splicer begin class.vector.impl.after_methods
