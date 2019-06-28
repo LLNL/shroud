@@ -640,7 +640,6 @@ return 1;""",
         index = "intent_out_allocatable_{}".format(
             node.options.PY_array_arg)
         blk = py_statements_local[index]
-        self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
     def dimension_blk(self, arg, fmt_arg, options):
@@ -672,17 +671,16 @@ return 1;""",
 
         index = "intent_{}_dimension_{}".format(intent, options.PY_array_arg)
         blk = py_statements_local[index]
-        self.need_numpy = self.need_numpy or blk.get("need_numpy", False)
         return blk
 
     def set_fmt_fields(self, ast, fmt):
         """
         Set format fields for ast.
+        Used with arguments and results.
 
         Args:
             ast - declast.Declaration
                   Abstract Syntax Tree of argument or result
-#            typemap - typemap of C++ variable.
             fmt - format dictionary
         """
         typemap = ast.typemap
@@ -704,68 +702,6 @@ return 1;""",
                 # XXX - assumes 1-d
                 fmt.npy_intp = "npy_intp {}[1] = {{{}}};\n".format(
                     fmt.npy_dims, dimension)
-
-    def array_result(self, ast, typemap, fmt):
-        """
-        Deal with function result which is a NumPy array.
-
-        A pointer or allocatable result, which is not a string,
-        creates a NumPy array.
-        Return an intent_blk with post_call set which contains
-        code to create NumPy array.
-
-        Args:
-            capsule_order - index into capsule_order of code to free memory.
-                            None = do not release memory.
-            ast - Abstract Syntax Tree of argument or result
-            typemap - typemap of C++ variable.
-            fmt - format dictionary
-        """
-        post_call = []
-
-        # Create a 1-d array from pointer.
-        # A string is not really an array, so do not deal with it here.
-
-        self.need_numpy = True
-        if typemap.PYN_descr:
-            post_call.append(
-                "{npy_intp}"
-                "Py_INCREF({PYN_descr});\n"
-                "PyObject * {py_var} = "
-                "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
-                " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
-            )
-        else:
-            post_call.append(
-                "{npy_intp}"
-                "PyObject * {py_var} = "
-                "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
-                "\t {numpy_type},\t {cxx_var});",
-            )
-#        post_call.append("if ({py_var} == NULL) goto fail;")
-
-        if "capsule_order" in fmt:
-            # If NumPy owns the memory, add a way to delete it
-            # by creating a capsule base object.
-            append_format(
-                post_call,
-                "PyObject * {py_capsule} = "
-                'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
-                "\t{PY_numpy_array_dtor_function});\n"
-#                "if ({py_capsule} == NULL) goto fail;\n"
-                "PyCapsule_SetContext({py_capsule},"
-                "\t {cast_const}char *{cast1}{PY_numpy_array_dtor_context}"
-                "[{capsule_order}]{cast2});\n"
-                "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
-                fmt,
-            )
-
-        # XXX - deal with reference counting with error
-        # Return a dictionary which is used as an intent_blk.
-        return dict(
-            post_call=post_call,
-#            goto_fail = True,
-        )
 
     def implied_blk(self, node, arg, pre_call):
         """Add the implied attribute to the pre_call block.
@@ -1117,6 +1053,7 @@ return 1;""",
             goto_fail = goto_fail or intent_blk.get("goto_fail", False)
             cxx_local_var = intent_blk.get("cxx_local_var", "")
             create_out_decl = intent_blk.get("create_out_decl", False)
+            self.need_numpy = self.need_numpy or intent_blk.get("need_numpy", False)
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
@@ -1435,17 +1372,20 @@ return 1;""",
         # Compute return value
         if CXX_subprogram == "function":
             self.set_fmt_fields(ast, fmt_result)
-            if (
+            if result_typemap.base == "struct":
+                index = "struct_result_{}".format(options.PY_struct_arg)
+                result_blk = py_statements_local[index]
+            elif (
                     result_return_pointer_as in ["pointer", "allocatable"]
                     and result_typemap.base != "string"
             ):
-                # Returning a NumPy array.
-                result_blk = self.array_result(
-                    ast, result_typemap, fmt_result)
+                index = "result_dimension_{}".format(options.PY_array_arg)
+                result_blk = py_statements_local[index]
             else:
                 result_blk = result_typemap.py_statements.get("result", {})
 
             goto_fail = goto_fail or result_blk.get("goto_fail", False)
+            self.need_numpy = self.need_numpy or result_blk.get("need_numpy", False)
             ttt0 = self.intent_out(result_typemap, result_blk, fmt_result)
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
@@ -2610,6 +2550,13 @@ def update_code_blocks(symtab, stmts, fmt):
         if clause in stmts:
             util.append_format_cmds(symtab[clause + "_code"], stmts, clause, fmt)
 
+    # If capsule_order is defined, then add some additional code to 
+    # do reference counting on the post_call object.
+    if fmt.inlocal("capsule_order"):
+        if "post_call_capsule" in stmts:
+            util.append_format_cmds(
+                symtab["post_call_code"], stmts, "post_call_capsule", fmt)
+
 
 def XXXdo_cast(lang, kind, typ, var):
     """Do cast based on language.
@@ -2659,6 +2606,17 @@ malloc_error = [
     "PyErr_NoMemory();",
     "goto fail;",
     "-}}",
+]
+
+post_call_capsule=[
+    "PyObject * {py_capsule} = "
+    'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
+    "\t{PY_numpy_array_dtor_function});",
+    #            "if ({py_capsule} == NULL) goto fail;",
+    "PyCapsule_SetContext({py_capsule},"
+    "\t {cast_const}char *{cast1}{PY_numpy_array_dtor_context}"
+    "[{capsule_order}]{cast2});",
+    "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
 ]
 
 # Code clauses are used for C and C++.
@@ -2738,6 +2696,17 @@ py_statements_local = dict(
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
+    ),
+
+    result_dimension_numpy=dict(
+        need_numpy=True,
+        post_call=[
+            "{npy_intp}"
+            "PyObject * {py_var} = "
+            "PyArray_SimpleNewFromData({npy_ndims},\t {npy_dims},"
+            "\t {numpy_type},\t {cxx_var});",
+        ],
+        post_call_capsule=post_call_capsule,
     ),
 
 ########################################
@@ -2959,32 +2928,9 @@ py_statements_local = dict(
         ],
         goto_fail=True,
     ),
-
-
     struct_result_numpy=dict(
         # XXX - expand to array of struct
-#        need_numpy=True,
-#        create_out_decl=True,
-#        cxx_local_var="pointer",
-#        decl=[
-#            "{npy_intp}"
-#            "PyArrayObject * {py_var} = NULL;",
-#        ],
-#        post_parse=[
-#            "Py_INCREF({PYN_descr});",
-#            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-#            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
-#            "\t 0,\t NULL,\t NULL,\t NULL,\t 0,\t NULL){cast2};",
-#        ] + array_error,
-#        c_pre_call=[
-##            "{cxx_decl} = PyArray_DATA({py_var});",
-#            "{cxx_type} *{cxx_var} = PyArray_DATA({py_var});",
-#        ],
-#        cxx_pre_call=[
-##            "{cxx_decl} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-#            "{cxx_type} *{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-#        ],
-#        post_call=None,  # Object already created in post_parse
+        need_numpy=True,
         post_call=[
             "{npy_intp}"
             "Py_INCREF({PYN_descr});",
@@ -2992,15 +2938,7 @@ py_statements_local = dict(
             "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
             " {npy_ndims}, {npy_dims}, \tNULL, {cxx_var}, 0, NULL);",
         ],
-        post_call_capsule=[
-            "PyObject * {py_capsule} = "
-            'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
-            "\t{PY_numpy_array_dtor_function});",
-#            "if ({py_capsule} == NULL) goto fail;\n"
-            "PyCapsule_SetContext({py_capsule},  + context + );",
-            "PyArray_SetBaseObject((PyArrayObject *) {py_var}, {py_capsule});",  # 0=ok, -1=error
-        ],
-
+        post_call_capsule=post_call_capsule,
 #        fail=[
 #            "Py_XDECREF({py_var});",
 #        ],
@@ -3039,10 +2977,16 @@ py_statements_local = dict(
             "delete cxx_ptr;",
         ],
         post_call=[
-            (
-                "{PyObject} * {py_var} ="
-                "\t PyObject_New({PyObject}, &{PyTypeObject});"
-            ),
+            "{PyObject} * {py_var} ="
+            "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
+        ]
+    ),
+    struct_result_class=dict(
+        cxx_local_var="pointer",
+        post_call=[
+            "{PyObject} * {py_var} ="
+            "\t PyObject_New({PyObject}, &{PyTypeObject});",
             "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
         ]
     ),

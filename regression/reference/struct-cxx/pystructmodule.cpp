@@ -7,8 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.hpp"
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include "numpy/arrayobject.h"
 #include "struct.h"
 
 // splicer begin include
@@ -237,14 +235,9 @@ PY_returnStructByValue(
     *SHC_rv = returnStructByValue(i, d);
 
     // post_call
-    Py_INCREF(PY_Cstruct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
-    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
-        PY_array_destructor_function);
-    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>
-        (PY_array_destructor_context[0]));
-    PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
+    PY_Cstruct1 * SHTPy_rv =
+        PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    SHTPy_rv->obj = &SHC_rv;
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_by_value
@@ -281,9 +274,9 @@ PY_returnStructPtr1(
     Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
 
     // post_call
-    Py_INCREF(PY_Cstruct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
+    PY_Cstruct1 * SHTPy_rv =
+        PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    SHTPy_rv->obj = SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_ptr1
@@ -323,9 +316,9 @@ PY_returnStructPtr2(
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
 
     // post_call
-    Py_INCREF(PY_Cstruct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
+    PY_Cstruct1 * SHTPy_rv =
+        PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
+    SHTPy_rv->obj = SHCXX_rv;
     PyObject * SHResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
     return SHResult;
@@ -425,8 +418,6 @@ initcstruct(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
-
-    import_array();
 
     // Cstruct1
     PY_Cstruct1_Type.tp_new   = PyType_GenericNew;
