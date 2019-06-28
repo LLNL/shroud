@@ -1324,6 +1324,7 @@ return 1;""",
                 capsule_order = self.add_capsule_code(capsule_type, del_lines)
                 fmt_result.capsule_order = capsule_order
                 fmt_result.py_capsule = "SHC_" + fmt_result.c_var
+                fmt_result.cxx_addr = ""
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",

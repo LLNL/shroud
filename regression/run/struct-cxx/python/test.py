@@ -30,17 +30,11 @@ class Struct(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_dtype(self):
-        dt = cstruct.Cstruct1_dtype
-        #print("Byte order is:",dt.byteorder) 
-        #print("Size is:",dt.itemsize) 
-        self.assertEqual("void128", dt.name) 
-        self.assertEqual("int32", dt["ifield"].name)
-        self.assertEqual("float64", dt["dfield"].name)
-        a = np.array([(1, 1.5), (2, 2.6)], dtype=dt) 
-        self.assertEqual(1,   a[0]["ifield"])
-        self.assertEqual(1.5, a[0]["dfield"])
-        self.assertEqual(2,   a[1]["ifield"])
-        self.assertEqual(2.6, a[1]["dfield"])
+        str = cstruct.Cstruct1()
+        str.ifield = 1
+        str.dfield = 2.5
+        self.assertEqual(1, str.ifield)
+        self.assertEqual(2.5, str.dfield)
 
     def test_passStructByValue(self):
         i = cstruct.passStructByValue((2, 2.0))

@@ -237,7 +237,7 @@ PY_returnStructByValue(
     // post_call
     PY_Cstruct1 * SHTPy_rv =
         PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-    SHTPy_rv->obj = &rv;
+    SHTPy_rv->obj = rv;
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_by_value
