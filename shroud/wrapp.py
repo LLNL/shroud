@@ -21,10 +21,10 @@ SHD_    npy_intp array for shape, {npy_dims}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
 SHSize_ Size of dimension argument (size_var}
-SHResult Return object. Necessary when a return object is combined with others
-        by Py_BuildValue.
-
+SHPyResult Return Python object.
+        Necessary when a return object is combined with others by Py_BuildValue.
 """
+
 from __future__ import print_function
 from __future__ import absolute_import
 
@@ -886,9 +886,9 @@ return 1;""",
                 # No need to convert to C.
                 is_struct_scalar = True
                 result_return_pointer_as = "pointer"
-                fmt_result.cxx_var = wformat("{C_local}{C_result}", fmt_result)
+                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
             elif result_typemap.cxx_to_c is None:
-                fmt_result.cxx_var = wformat("{C_local}{C_result}", fmt_result)
+                fmt_result.cxx_var = wformat("{C_result}", fmt_result)
             else:
                 fmt_result.cxx_var = wformat(
                     "{CXX_local}{C_result}", fmt_result
@@ -1323,7 +1323,7 @@ return 1;""",
                     ]
                 capsule_order = self.add_capsule_code(capsule_type, del_lines)
                 fmt_result.capsule_order = capsule_order
-                fmt_result.py_capsule = "SHC_" + fmt_result.c_var  #C_result
+                fmt_result.py_capsule = "SHC_" + fmt_result.c_var
                 append_format(
                     PY_code,
                     "*{cxx_var} = {PY_this_call}{function_name}({PY_call_list});",
@@ -1390,7 +1390,7 @@ return 1;""",
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
             if ttt0.format == "O":
-                fmt.PY_result = "SHResult"
+                fmt.PY_result = "SHPyResult"
             update_code_blocks(locals(), result_blk, fmt_result)
 
         # If only one return value, return the ctor

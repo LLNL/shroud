@@ -79,10 +79,10 @@ PY_Function2(
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    double SHC_rv = Function2(arg1, arg2);
+    double rv = Function2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
@@ -112,10 +112,10 @@ PY_Function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHC_rv = Function3(arg);
+    bool rv = Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function3
@@ -183,10 +183,10 @@ PY_Function4a(
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    char * SHC_rv = Function4a(arg1, arg2);
+    char * rv = Function4a(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
+    PyObject * SHTPy_rv = PyString_FromString(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
@@ -341,10 +341,10 @@ PY_ImpliedLen(
     int ltext = strlen(text);
     bool flag = false;
 
-    int SHC_rv = ImpliedLen(text, ltext, flag);
+    int rv = ImpliedLen(text, ltext, flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len
@@ -381,10 +381,10 @@ PY_ImpliedLenTrim(
     int ltext = strlen(text);
     bool flag = true;
 
-    int SHC_rv = ImpliedLenTrim(text, ltext, flag);
+    int rv = ImpliedLenTrim(text, ltext, flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len_trim
@@ -409,10 +409,10 @@ PY_ImpliedBoolTrue(
     // pre_call
     bool flag = true;
 
-    bool SHC_rv = ImpliedBoolTrue(flag);
+    bool rv = ImpliedBoolTrue(flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_bool_true
@@ -437,10 +437,10 @@ PY_ImpliedBoolFalse(
     // pre_call
     bool flag = false;
 
-    bool SHC_rv = ImpliedBoolFalse(flag);
+    bool rv = ImpliedBoolFalse(flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_bool_false

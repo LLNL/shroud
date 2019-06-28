@@ -225,10 +225,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -839,10 +839,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "*",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1013,10 +1013,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "*",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1184,10 +1184,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "*",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -4974,10 +4974,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"

@@ -86,8 +86,8 @@ PY_vector_int_at(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
-    int & SHC_rv = self->obj->at(n);
-    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, SHC_rv);
+    int & rv = self->obj->at(n);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_INT, rv);
     if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
 

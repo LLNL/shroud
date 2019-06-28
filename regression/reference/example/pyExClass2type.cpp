@@ -288,10 +288,10 @@ PP_exclass2_GetNameLength(
 {
 // int GetNameLength() const
 // splicer begin class.ExClass2.method.get_name_length
-    int SHC_rv = self->obj->GetNameLength();
+    int rv = self->obj->GetNameLength();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name_length
@@ -517,10 +517,10 @@ PP_exclass2_getValue_int(
 {
 // int getValue()
 // splicer begin class.ExClass2.method.get_value_int
-    int SHC_rv = self->obj->getValue();
+    int rv = self->obj->getValue();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_value_int
@@ -534,10 +534,10 @@ PP_exclass2_getValue_double(
 {
 // double getValue()
 // splicer begin class.ExClass2.method.get_value_double
-    double SHC_rv = self->obj->getValue();
+    double rv = self->obj->getValue();
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_value_double

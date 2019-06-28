@@ -80,10 +80,10 @@ PP_isNameValid(
     // post_parse
     const std::string SH_name(name);
 
-    bool SHC_rv = example::nested::isNameValid(SH_name);
+    bool rv = example::nested::isNameValid(SH_name);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.is_name_valid
@@ -101,10 +101,10 @@ PP_isInitialized(
 {
 // bool isInitialized()
 // splicer begin function.is_initialized
-    bool SHC_rv = example::nested::isInitialized();
+    bool rv = example::nested::isInitialized();
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.is_initialized
@@ -257,10 +257,10 @@ PP_test_size_t(
 {
 // size_t test_size_t()
 // splicer begin function.test_size_t
-    size_t SHC_rv = example::nested::test_size_t();
+    size_t rv = example::nested::test_size_t();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromSize_t(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromSize_t(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.test_size_t
@@ -588,13 +588,13 @@ PP_verylongfunctionname2(
         &verylongname10))
         return NULL;
 
-    int SHC_rv = example::nested::verylongfunctionname2(verylongname1,
+    int rv = example::nested::verylongfunctionname2(verylongname1,
         verylongname2, verylongname3, verylongname4, verylongname5,
         verylongname6, verylongname7, verylongname8, verylongname9,
         verylongname10);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.verylongfunctionname2

@@ -69,10 +69,10 @@ PY_passStructByValue(
     // pre_call
     Cstruct1 * arg = PyArray_DATA(SHPy_arg);
 
-    int SHC_rv = passStructByValue(*arg);
+    int rv = passStructByValue(*arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     // cleanup
     Py_DECREF(SHPy_arg);
@@ -120,10 +120,10 @@ PY_passStruct1(
     // pre_call
     Cstruct1 * arg = PyArray_DATA(SHPy_arg);
 
-    int SHC_rv = passStruct1(arg);
+    int rv = passStruct1(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     // cleanup
     Py_DECREF(SHPy_arg);
@@ -175,10 +175,10 @@ PY_passStruct2(
     Cstruct1 * s1 = PyArray_DATA(SHPy_s1);
     char outbuf[LENOUTBUF];  // intent(out)
 
-    int SHC_rv = passStruct2(s1, outbuf);
+    int rv = passStruct2(s1, outbuf);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("is", SHC_rv, outbuf);
+    PyObject * SHTPy_rv = Py_BuildValue("is", rv, outbuf);
 
     // cleanup
     Py_DECREF(SHPy_s1);
@@ -303,33 +303,33 @@ PY_returnStructByValue(
         "d",
         NULL };
     PyObject * SHTPy_rv = NULL;
-    PyObject *SHC_SHC_rv = NULL;
+    PyObject *SHC_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "id:returnStructByValue", SHT_kwlist, &i, &d))
         return NULL;
 
-    Cstruct1 * SHC_rv = malloc(sizeof(Cstruct1));
-    *SHC_rv = returnStructByValue(i, d);
+    Cstruct1 * rv = malloc(sizeof(Cstruct1));
+    *rv = returnStructByValue(i, d);
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
     SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+        PY_Cstruct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
-    SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
+    SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
         PY_array_destructor_function);
-    if (SHC_SHC_rv == NULL) goto fail;
-    PyCapsule_SetContext(SHC_SHC_rv,
+    if (SHC_rv == NULL) goto fail;
+    PyCapsule_SetContext(SHC_rv,
         (char *) PY_array_destructor_context[0]);
-    if (PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv,
-        SHC_SHC_rv) < 0) goto fail;
+    if (PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_rv) < 0)
+        goto fail;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    Py_XDECREF(SHC_SHC_rv);
+    Py_XDECREF(SHC_rv);
     return NULL;
 // splicer end function.return_struct_by_value
 }
@@ -363,12 +363,12 @@ PY_returnStructPtr1(
         SHT_kwlist, &i, &d))
         return NULL;
 
-    Cstruct1 * SHC_rv = returnStructPtr1(i, d);
+    Cstruct1 * rv = returnStructPtr1(i, d);
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
     SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+        PY_Cstruct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
@@ -411,16 +411,16 @@ PY_returnStructPtr2(
     // pre_call
     char outbuf[LENOUTBUF];  // intent(out)
 
-    Cstruct1 * SHC_rv = returnStructPtr2(i, d, outbuf);
+    Cstruct1 * rv = returnStructPtr2(i, d, outbuf);
 
     // post_call
     Py_INCREF(PY_Cstruct1_array_descr);
     SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_Cstruct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+        PY_Cstruct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
-    PyObject * SHResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
+    PyObject * SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
-    return SHResult;
+    return SHPyResult;
 
 fail:
     Py_XDECREF(SHTPy_rv);

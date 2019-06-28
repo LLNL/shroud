@@ -55,10 +55,10 @@ PY_passStructByValue(
     // post_parse
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int SHC_rv = passStructByValue(*arg);
+    int rv = passStructByValue(*arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct_by_value
@@ -88,10 +88,10 @@ PY_passStruct1(
     // post_parse
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int SHC_rv = passStruct1(arg);
+    int rv = passStruct1(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct1
@@ -127,10 +127,10 @@ PY_passStruct2(
     // pre_call
     char outbuf[LENOUTBUF];  // intent(out)
 
-    int SHC_rv = passStruct2(s1, outbuf);
+    int rv = passStruct2(s1, outbuf);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("is", SHC_rv, outbuf);
+    PyObject * SHTPy_rv = Py_BuildValue("is", rv, outbuf);
 
     return SHTPy_rv;
 // splicer end function.pass_struct2
@@ -231,13 +231,13 @@ PY_returnStructByValue(
         &d))
         return NULL;
 
-    Cstruct1 * SHC_rv = new Cstruct1;
-    *SHC_rv = returnStructByValue(i, d);
+    Cstruct1 * rv = new Cstruct1;
+    *rv = returnStructByValue(i, d);
 
     // post_call
     PY_Cstruct1 * SHTPy_rv =
         PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
-    SHTPy_rv->obj = &SHC_rv;
+    SHTPy_rv->obj = &rv;
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_struct_by_value
@@ -319,9 +319,9 @@ PY_returnStructPtr2(
     PY_Cstruct1 * SHTPy_rv =
         PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     SHTPy_rv->obj = SHCXX_rv;
-    PyObject * SHResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
+    PyObject * SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
-    return SHResult;
+    return SHPyResult;
 // splicer end function.return_struct_ptr2
 }
 static PyMethodDef PY_methods[] = {

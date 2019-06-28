@@ -82,10 +82,10 @@ PY_Function2(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    double SHC_rv = tutorial::Function2(arg1, arg2);
+    double rv = tutorial::Function2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
@@ -165,10 +165,10 @@ PY_TypeLongLong(
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long long SHC_rv = tutorial::TypeLongLong(arg1);
+    long long rv = tutorial::TypeLongLong(arg1);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("L", SHC_rv);
+    PyObject * SHTPy_rv = Py_BuildValue("L", rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.type_long_long
@@ -198,10 +198,10 @@ PY_Function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHC_rv = tutorial::Function3(arg);
+    bool rv = tutorial::Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function3
@@ -373,7 +373,7 @@ PY_Function5_arg1_arg2(
         "arg1",
         "arg2",
         NULL };
-    double SHC_rv;
+    double rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -383,17 +383,17 @@ PY_Function5_arg1_arg2(
         return NULL;
     switch (SH_nargs) {
     case 0:
-        SHC_rv = tutorial::Function5();
+        rv = tutorial::Function5();
         break;
     case 1:
-        SHC_rv = tutorial::Function5(arg1);
+        rv = tutorial::Function5(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            SHC_rv = tutorial::Function5(arg1, arg2);
+            rv = tutorial::Function5(arg1, arg2);
             break;
         }
     default:
@@ -402,7 +402,7 @@ PY_Function5_arg1_arg2(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function5
@@ -582,7 +582,7 @@ PY_overload1_num_offset_stride(
         "offset",
         "stride",
         NULL };
-    int SHC_rv;
+    int rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -591,13 +591,13 @@ PY_overload1_num_offset_stride(
         return NULL;
     switch (SH_nargs) {
     case 1:
-        SHC_rv = tutorial::overload1(num);
+        rv = tutorial::overload1(num);
         break;
     case 2:
-        SHC_rv = tutorial::overload1(num, offset);
+        rv = tutorial::overload1(num, offset);
         break;
     case 3:
-        SHC_rv = tutorial::overload1(num, offset, stride);
+        rv = tutorial::overload1(num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -605,7 +605,7 @@ PY_overload1_num_offset_stride(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_num_offset_stride
@@ -630,7 +630,7 @@ PY_overload1_5(
         "offset",
         "stride",
         NULL };
-    int SHC_rv;
+    int rv;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -639,13 +639,13 @@ PY_overload1_5(
         return NULL;
     switch (SH_nargs) {
     case 2:
-        SHC_rv = tutorial::overload1(type, num);
+        rv = tutorial::overload1(type, num);
         break;
     case 3:
-        SHC_rv = tutorial::overload1(type, num, offset);
+        rv = tutorial::overload1(type, num, offset);
         break;
     case 4:
-        SHC_rv = tutorial::overload1(type, num, offset, stride);
+        rv = tutorial::overload1(type, num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -653,7 +653,7 @@ PY_overload1_5(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_5
@@ -680,10 +680,10 @@ PY_typefunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
+    tutorial::TypeID rv = tutorial::typefunc(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc
@@ -877,10 +877,10 @@ PY_useclass(
     // post_parse
     const tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int SHC_rv = tutorial::useclass(arg);
+    int rv = tutorial::useclass(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.useclass
@@ -927,33 +927,33 @@ PY_returnStruct(
         "d",
         NULL };
     PyObject * SHTPy_rv = NULL;
-    PyObject *SHC_SHC_rv = NULL;
+    PyObject *SHC_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStruct",
         const_cast<char **>(SHT_kwlist), &i, &d))
         return NULL;
 
-    tutorial::struct1 * SHC_rv = new tutorial::struct1;
-    *SHC_rv = tutorial::returnStruct(i, d);
+    tutorial::struct1 * rv = new tutorial::struct1;
+    *rv = tutorial::returnStruct(i, d);
 
     // post_call
     Py_INCREF(PY_struct1_array_descr);
     SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_struct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
+        PY_struct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
-    SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
+    SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
         PY_array_destructor_function);
-    if (SHC_SHC_rv == NULL) goto fail;
-    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>
+    if (SHC_rv == NULL) goto fail;
+    PyCapsule_SetContext(SHC_rv, const_cast<char *>
         (PY_array_destructor_context[0]));
     if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
-        (SHTPy_rv), SHC_SHC_rv) < 0) goto fail;
+        (SHTPy_rv), SHC_rv) < 0) goto fail;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHTPy_rv);
-    Py_XDECREF(SHC_SHC_rv);
+    Py_XDECREF(SHC_rv);
     return NULL;
 // splicer end function.return_struct
 }
@@ -1036,10 +1036,10 @@ PY_get_global_flag(
 {
 // int get_global_flag()
 // splicer begin function.get_global_flag
-    int SHC_rv = tutorial::get_global_flag();
+    int rv = tutorial::get_global_flag();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_global_flag

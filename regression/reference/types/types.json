@@ -168,10 +168,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -282,10 +282,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -396,10 +396,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -511,14 +511,14 @@
                     "fmtpy": {
                         "PY_build_format": "L",
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "vargs": "SHC_rv"
+                        "vargs": "rv"
                     }
                 },
                 "ast": {
@@ -628,10 +628,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -744,10 +744,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -861,14 +861,14 @@
                     "fmtpy": {
                         "PY_build_format": "L",
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "vargs": "SHC_rv"
+                        "vargs": "rv"
                     }
                 },
                 "ast": {
@@ -980,10 +980,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1094,10 +1094,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_SHORT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1210,10 +1210,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1326,10 +1326,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1443,14 +1443,14 @@
                     "fmtpy": {
                         "PY_build_format": "L",
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "vargs": "SHC_rv"
+                        "vargs": "rv"
                     }
                 },
                 "ast": {
@@ -1562,10 +1562,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONG",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1680,10 +1680,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT8",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1794,10 +1794,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT16",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -1908,10 +1908,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT32",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2022,10 +2022,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT64",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2136,10 +2136,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_UINT8",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2250,10 +2250,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_UINT16",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2364,10 +2364,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_UINT32",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2478,10 +2478,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_UINT64",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2592,10 +2592,10 @@
                     },
                     "fmtpy": {
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2707,10 +2707,10 @@
                     "fmtpy": {
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
