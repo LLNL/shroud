@@ -975,8 +975,6 @@ return 1;""",
             # Add formats used by py_statements
             fmt_arg.c_type = arg_typemap.c_type
             fmt_arg.cxx_type = arg_typemap.cxx_type
-            if arg_typemap.PYN_descr:
-                fmt_arg.PYN_descr = arg_typemap.PYN_descr
             if arg.const:
                 fmt_arg.c_const = "const "
             else:
