@@ -673,7 +673,7 @@ return 1;""",
         blk = py_statements_local[index]
         return blk
 
-    def set_fmt_fields(self, ast, fmt):
+    def set_fmt_fields(self, ast, fmt, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -696,7 +696,10 @@ return 1;""",
             # (*), (:), (:,:)
             if dimension[0] not in ["*", ":"]:
                 fmt.npy_ndims = "1"
-                fmt.npy_dims = "SHD_" + ast.name
+                if is_result:
+                    fmt.npy_dims = "SHD_" + fmt.C_result
+                else:
+                    fmt.npy_dims = "SHD_" + ast.name
                 fmt.pointer_shape = dimension
                 # Dimensions must be in npy_intp type array.
                 # XXX - assumes 1-d
@@ -1368,7 +1371,7 @@ return 1;""",
 
         # Compute return value
         if CXX_subprogram == "function":
-            self.set_fmt_fields(ast, fmt_result)
+            self.set_fmt_fields(ast, fmt_result, True)
             if result_typemap.base == "struct":
                 index = "struct_result_{}".format(options.PY_struct_arg)
                 result_blk = py_statements_local[index]
