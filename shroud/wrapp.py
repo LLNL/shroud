@@ -1284,12 +1284,7 @@ return 1;""",
 
             capsule_order = None
             if is_ctor:
-                append_format(
-                    PY_code,
-                    "self->{PY_obj} = new {namespace_scope}"
-                    "{cxx_class}({PY_call_list});",
-                    fmt,
-                )
+                self.create_ctor_function(cls, node, PY_code, fmt)
             elif CXX_subprogram == "subroutine":
                 append_format(
                     PY_code,
@@ -1559,6 +1554,30 @@ return 1;""",
     #            fmt = util.Scope(fmt)
     #            fmt.expose = expose
     #            self.PyMethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
+
+    def create_ctor_function(self, cls, node, code, fmt):
+        """
+        Wrap a function which is a constructor.
+        Typical c++ constructors are created.
+        But also used for structs which are treated as constructors.
+        Explicitly assign to fields since C does not have constructors.
+
+        Allocate an instance.
+        XXX - do memory reference stuff
+        """
+        assert cls is not None
+        if cls.as_struct and cls.options.PY_struct_arg == "class":
+            append_format(code, "self->{PY_obj} = {cast_static}{cxx_type} *{cast1}"
+                          "malloc(sizeof({cxx_type})){cast2};\n"
+                          "if (self->{PY_obj} == NULL) {{+\n"
+                          "PyErr_NoMemory();\nreturn -1;\n-}}", fmt)
+            code.append("// initialize fields")
+            append_format(code, "{cxx_type} *SH_obj = self->{PY_obj};", fmt)
+            for var in node.ast.params:
+                code.append("SH_obj->{} = {};".format(var.name, var.name))
+        else:
+            line = "new {namespace_scope}{cxx_class}({PY_call_list});"
+            append_format(code, "self->{PY_obj} = " + line, fmt)
 
     def write_tp_func(self, node, fmt_type, output):
         """Create functions for tp_init et.al.

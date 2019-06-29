@@ -29,6 +29,7 @@ C-interface, Fortran function Cstruct1 * returnStructPtr2(int i +intent(in)+valu
 C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))
 Close wrapfstruct.f
 class Cstruct1
+Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 Close pyCstruct1type.cpp
 Python function int passStructByValue(Cstruct1 arg +intent(in)+value)
 Python function int passStruct1(Cstruct1 * arg +intent(in))

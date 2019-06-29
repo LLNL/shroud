@@ -2,6 +2,8 @@
 # other Shroud Project Developers.
 # See the top-level COPYRIGHT file for details.
 #
+# SPDX-License-Identifier: (BSD-3-Clause)
+#
 ########################################################################
 #
 #  Compile and test generated wrappers.
@@ -88,6 +90,8 @@ test-python : \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
   test-python-clibrary \
+  test-python-struct \
+  test-python-struct-cxx \
   test-python-ownership
 
 ######################################################################

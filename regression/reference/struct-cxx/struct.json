@@ -28,6 +28,114 @@
                     "cxx_class": "Cstruct1",
                     "cxx_type": "Cstruct1"
                 },
+                "functions": [
+                    {
+                        "_fmtargs": {
+                            "dfield": {
+                                "fmtpy": {
+                                    "c_const": "",
+                                    "c_decl": "double dfield",
+                                    "c_deref": "",
+                                    "c_type": "double",
+                                    "c_var": "dfield",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "double dfield",
+                                    "cxx_member": ".",
+                                    "cxx_type": "double",
+                                    "cxx_var": "dfield",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHPy_dfield",
+                                    "size_var": "SHSize_dfield"
+                                }
+                            },
+                            "ifield": {
+                                "fmtpy": {
+                                    "c_const": "",
+                                    "c_decl": "int ifield",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "ifield",
+                                    "cxx_addr": "&",
+                                    "cxx_decl": "int ifield",
+                                    "cxx_member": ".",
+                                    "cxx_type": "int",
+                                    "cxx_var": "ifield",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_ifield",
+                                    "size_var": "SHSize_ifield"
+                                }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtpy": {
+                                "PYN_descr": "PY_Cstruct1_array_descr",
+                                "PyObject": "PY_Cstruct1",
+                                "PyTypeObject": "PY_Cstruct1_Type",
+                                "c_deref": "",
+                                "c_var": "rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
+                            }
+                        },
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "name": "Cstruct1_ctor"
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "ifield",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "dfield",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        },
+                        "decl": "Cstruct1_ctor",
+                        "declgen": "Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)",
+                        "fmtdict": {
+                            "PY_name_impl": "PY_Cstruct1_tp_init",
+                            "PY_type_impl": "PY_Cstruct1_tp_init",
+                            "PY_type_method": "tp_init",
+                            "function_name": "Cstruct1_ctor",
+                            "underscore_name": "cstruct1_ctor"
+                        },
+                        "linenumber": "?",
+                        "options": {
+                            "wrap_c": false,
+                            "wrap_fortran": false,
+                            "wrap_lua": false
+                        }
+                    }
+                ],
                 "linenumber": 34,
                 "name": "Cstruct1",
                 "options": {},

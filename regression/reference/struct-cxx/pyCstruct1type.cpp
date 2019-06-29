@@ -35,6 +35,38 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
     self->obj = NULL;
 // splicer end class.Cstruct1.type.del
 }
+
+static int
+PY_Cstruct1_tp_init(
+  PY_Cstruct1 *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+// splicer begin class.Cstruct1.method.cstruct1_ctor
+    int ifield;
+    double dfield;
+    const char *SHT_kwlist[] = {
+        "ifield",
+        "dfield",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:Cstruct1_ctor",
+        const_cast<char **>(SHT_kwlist), &ifield, &dfield))
+        return -1;
+
+    self->obj = static_cast<Cstruct1 *>(malloc(sizeof(Cstruct1)));
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    // initialize fields
+    Cstruct1 *SH_obj = self->obj;
+    SH_obj->ifield = ifield;
+    SH_obj->dfield = dfield;
+    return 0;
+// splicer end class.Cstruct1.method.cstruct1_ctor
+}
 // splicer begin class.Cstruct1.impl.after_methods
 // splicer end class.Cstruct1.impl.after_methods
 
@@ -148,7 +180,7 @@ PyTypeObject PY_Cstruct1_Type = {
     (descrgetfunc)0,                /* tp_descr_get */
     (descrsetfunc)0,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)0,                   /* tp_init */
+    (initproc)PY_Cstruct1_tp_init,                   /* tp_init */
     (allocfunc)0,                  /* tp_alloc */
     (newfunc)0,                    /* tp_new */
     (freefunc)0,                   /* tp_free */
