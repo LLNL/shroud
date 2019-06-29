@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Parse `enum class` and `enum struct`.
 - Add option PY_array_arg to control how arrays are represented.
   Values can be *numpy* or *list*.
+- Add option PY_struct_arg to control how structs are represented.
+  Values can be *numpy* or *class*.
 - Add command line option --options to set a top level option.
 - Add command line option --language. May be c or c++.
   Replaces any language directive in the YAML file.
