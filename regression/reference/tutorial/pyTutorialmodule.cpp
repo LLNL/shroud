@@ -1,19 +1,11 @@
 // pyTutorialmodule.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pyTutorialmodule.hpp"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
@@ -38,7 +30,6 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
-PyArray_Descr *PY_struct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -908,96 +899,6 @@ PY_getclass3(
 // splicer end function.getclass3
 }
 
-static char PY_returnStruct__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_returnStruct(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-// splicer begin function.return_struct
-    int i;
-    double d;
-    const char *SHT_kwlist[] = {
-        "i",
-        "d",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-    PyObject *SHC_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStruct",
-        const_cast<char **>(SHT_kwlist), &i, &d))
-        return NULL;
-
-    tutorial::struct1 * rv = new tutorial::struct1;
-    *rv = tutorial::returnStruct(i, d);
-
-    // post_call
-    Py_INCREF(PY_struct1_array_descr);
-    SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_struct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
-    if (SHTPy_rv == NULL) goto fail;
-    SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
-        PY_array_destructor_function);
-    if (SHC_rv == NULL) goto fail;
-    PyCapsule_SetContext(SHC_rv, const_cast<char *>
-        (PY_array_destructor_context[0]));
-    if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
-        (SHTPy_rv), SHC_rv) < 0) goto fail;
-
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    Py_XDECREF(SHC_rv);
-    return NULL;
-// splicer end function.return_struct
-}
-
-static char PY_returnStructPtr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_returnStructPtr(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-// splicer begin function.return_struct_ptr
-    int i;
-    double d;
-    const char *SHT_kwlist[] = {
-        "i",
-        "d",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr",
-        const_cast<char **>(SHT_kwlist), &i, &d))
-        return NULL;
-
-    tutorial::struct1 * SHCXX_rv = tutorial::returnStructPtr(i, d);
-
-    // post_call
-    Py_INCREF(PY_struct1_array_descr);
-    SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_struct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
-    if (SHTPy_rv == NULL) goto fail;
-
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    return NULL;
-// splicer end function.return_struct_ptr
-}
-
 static char PY_set_global_flag__doc__[] =
 "documentation"
 ;
@@ -1256,10 +1157,6 @@ static PyMethodDef PY_methods[] = {
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
     PY_getclass3__doc__},
-{"returnStruct", (PyCFunction)PY_returnStruct,
-    METH_VARARGS|METH_KEYWORDS, PY_returnStruct__doc__},
-{"returnStructPtr", (PyCFunction)PY_returnStructPtr,
-    METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
 {"set_global_flag", (PyCFunction)PY_set_global_flag,
     METH_VARARGS|METH_KEYWORDS, PY_set_global_flag__doc__},
 {"get_global_flag", (PyCFunction)PY_get_global_flag, METH_NOARGS,
@@ -1276,68 +1173,6 @@ static PyMethodDef PY_methods[] = {
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
-
-// Create PyArray_Descr for struct1
-static PyArray_Descr *PY_struct1_create_array_descr()
-{
-    int ierr;
-    PyObject *obj = NULL;
-    PyObject * lnames = NULL;
-    PyObject * ldescr = NULL;
-    PyObject * dict = NULL;
-    PyArray_Descr *dtype = NULL;
-
-    lnames = PyList_New(2);
-    if (lnames == NULL) goto fail;
-    ldescr = PyList_New(2);
-    if (ldescr == NULL) goto fail;
-
-    // ifield
-    obj = PyString_FromString("ifield");
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(lnames, 0, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(ldescr, 0, obj);
-
-    // dfield
-    obj = PyString_FromString("dfield");
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(lnames, 1, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(ldescr, 1, obj);
-    obj = NULL;
-
-    dict = PyDict_New();
-    if (dict == NULL) goto fail;
-    ierr = PyDict_SetItemString(dict, "names", lnames);
-    if (ierr == -1) goto fail;
-    lnames = NULL;
-    ierr = PyDict_SetItemString(dict, "formats", ldescr);
-    if (ierr == -1) goto fail;
-    ldescr = NULL;
-    ierr = PyArray_DescrAlignConverter(dict, &dtype);
-    if (ierr == 0) goto fail;
-    return dtype;
-fail:
-    Py_XDECREF(obj);
-    if (lnames != NULL) {
-        for (int i=0; i < 2; i++) {
-            Py_XDECREF(PyList_GET_ITEM(lnames, i));
-        }
-        Py_DECREF(lnames);
-    }
-    if (ldescr != NULL) {
-        for (int i=0; i < 2; i++) {
-            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
-        }
-        Py_DECREF(ldescr);
-    }
-    Py_XDECREF(dict);
-    Py_XDECREF(dtype);
-    return NULL;
-}
 
 /*
  * inittutorial - Initialization function for the module
@@ -1453,11 +1288,6 @@ inittutorial(void)
     PyModule_AddIntConstant(m, "RED", tutorial::RED);
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
-
-    // Define PyArray_Descr for structs
-    PY_struct1_array_descr = PY_struct1_create_array_descr();
-    PyModule_AddObject(m, "struct1_dtype", 
-        (PyObject *) PY_struct1_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

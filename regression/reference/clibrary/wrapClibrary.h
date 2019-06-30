@@ -1,19 +1,11 @@
 // wrapClibrary.h
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 /**
  * \file wrapClibrary.h
  * \brief Shroud generated wrapper for Clibrary library
@@ -23,7 +15,6 @@
 #ifndef WRAPCLIBRARY_H
 #define WRAPCLIBRARY_H
 
-#include "clibrary.h"
 #include "typesClibrary.h"
 
 // splicer begin C_declarations
@@ -46,11 +37,5 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf);
-
-int CLI_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
-    int Noutbuf);
-
-Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield, char * outbuf,
-    int Noutbuf);
 
 #endif  // WRAPCLIBRARY_H

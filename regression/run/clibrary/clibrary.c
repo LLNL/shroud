@@ -1,19 +1,12 @@
-/* Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
- *
- * Produced at the Lawrence Livermore National Laboratory 
- *
- * LLNL-CODE-738041.
- *
- * All rights reserved. 
- *
- * This file is part of Shroud.
- *
- * For details about use and distribution, please read LICENSE.
- *
- * #######################################################################
- *
- * tutorial.hpp - wrapped routines
- */
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
+//
+// SPDX-License-Identifier: (BSD-3-Clause)
+//
+// clibrary.hpp - wrapped routines
+//
+// clibrary.c
 
 #include "clibrary.h"
 
@@ -29,8 +22,6 @@ static char last_function_called[MAXLAST];
 //static std::string global_str;
 //static int global_int;
 //static double global_double;
-
-static Cstruct1 global_Cstruct1;
 
 void Function1(void)
 {
@@ -182,35 +173,6 @@ void callback3(const char *type, void * in, void (*incr)(int *),
 }
 
 //----------------------------------------------------------------------
-
-int passStruct1(Cstruct1 *s1)
-{
-    strncpy(last_function_called, "passStruct1", MAXLAST);
-    return s1->ifield;
-}
-
-int passStruct2(Cstruct1 *s1, char *outbuf)
-{
-    strncpy(outbuf, "passStruct2", LENOUTBUF);
-    strncpy(last_function_called, "passStruct2", MAXLAST);
-    return s1->ifield;
-}
-
-Cstruct1 *returnStructPtr1(int ifield)
-{
-    strncpy(last_function_called, "returnStructPtr1", MAXLAST);
-    global_Cstruct1.ifield = ifield;
-    return &global_Cstruct1;
-}
-
-Cstruct1 *returnStructPtr2(int ifield, char *outbuf)
-{
-    strncpy(outbuf, "returnStructPtr2", LENOUTBUF);
-    strncpy(last_function_called, "returnStructPtr2", MAXLAST);
-    global_Cstruct1.ifield = ifield;
-    return &global_Cstruct1;
-}
-
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2)

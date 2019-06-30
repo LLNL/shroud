@@ -1,14 +1,8 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory 
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
+# SPDX-License-Identifier: (BSD-3-Clause)
 #
 # #######################################################################
 #
@@ -212,28 +206,6 @@ class Tutorial(unittest.TestCase):
         """Pass illegal argument to useclass"""
         obj0 = tutorial.Class1()
         self.assertRaises(TypeError, tutorial.useclass(obj0))
-
-    def test_returnStruct(self):
-        rv = tutorial.returnStructPtr(2,2.1)
-        self.assertIsInstance(rv, np.ndarray)
-        dtype = rv.dtype
-        self.assertEqual(dtype.names, ('ifield', 'dfield'))
-        self.assertEqual(dtype.char, 'V')
-        self.assertEqual(0, rv.ndim)
-        self.assertEqual(2, rv['ifield'])
-        self.assertEqual(2.1, rv['dfield'])
-        self.assertIs(dtype, tutorial.struct1_dtype)
-
-    def test_returnStructPtr(self):
-        rv = tutorial.returnStructPtr(1,1.1)
-        self.assertIsInstance(rv, np.ndarray)
-        dtype = rv.dtype
-        self.assertEqual(dtype.names, ('ifield', 'dfield'))
-        self.assertEqual(dtype.char, 'V')
-        self.assertEqual(0, rv.ndim)
-        self.assertEqual(1, rv['ifield'])
-        self.assertEqual(1.1, rv['dfield'])
-        self.assertIs(dtype, tutorial.struct1_dtype)
 
     def test_singleton(self):
         # XXX - it'd be cool if obj0 is obj1

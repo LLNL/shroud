@@ -1,14 +1,8 @@
-! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+! other Shroud Project Developers.
+! See the top-level COPYRIGHT file for details.
 !
-! Produced at the Lawrence Livermore National Laboratory 
-!
-! LLNL-CODE-738041.
-!
-! All rights reserved. 
-!
-! This file is part of Shroud.
-!
-! For details about use and distribution, please read LICENSE.
+! SPDX-License-Identifier: (BSD-3-Clause)
 !
 ! #######################################################################
 !
@@ -42,7 +36,6 @@ program tester
 
   call test_callback
 
-  call test_struct1
   call test_class1_final
   call test_class1_new_by_value
   call test_class1
@@ -206,43 +199,6 @@ contains
     call assert_true(irv == 22)
 
   end subroutine test_callback
-
-  subroutine test_struct1
-    type(struct1) str1
-    type(struct1), pointer :: str2
-    real(C_DOUBLE) rvd
-
-    call set_case_name("test_struct")
-
-    str1 = return_struct(1_C_INT, 2.5_C_DOUBLE)
-    call assert_equals(1_C_INT,      str1%ifield, "return_struct i field")
-    call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct d field")
-
-    str2 => return_struct_ptr(8_C_INT, 8.5_C_DOUBLE)
-
-    str1%ifield = 2_C_INT
-    str1%dfield = 2.0_C_DOUBLE
-    rvd = accept_struct_in(str1)
-    call assert_equals(4.0_C_DOUBLE, rvd, "accept_struct_in")
-
-    str1%ifield = 3_C_INT
-    str1%dfield = 3.0_C_DOUBLE
-    rvd = accept_struct_in_ptr(str1)
-    call assert_equals(6.0_C_DOUBLE, rvd, "accept_struct_in_ptr")
-
-    str1%ifield = 0
-    str1%dfield = 0.0
-    call accept_struct_out_ptr(str1, 4_C_INT, 4.5_C_DOUBLE)
-    call assert_equals(4_C_INT,      str1%ifield, "accept_struct_out_ptr i field")
-    call assert_equals(4.5_C_DOUBLE, str1%dfield, "accept_struct_out_ptr d field")
-
-    str1%ifield = 4_C_INT
-    str1%dfield = 4.0_C_DOUBLE
-    call accept_struct_in_out_ptr(str1)
-    call assert_equals(5_C_INT,      str1%ifield, "accept_struct_in_out_ptr i field")
-    call assert_equals(5.0_C_DOUBLE, str1%dfield, "accept_struct_in_out_ptr d field")
-
-  end subroutine test_struct1
 
   ! Simple test of FINAL useful with debugger.
   subroutine test_class1_final

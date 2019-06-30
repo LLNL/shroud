@@ -1,19 +1,11 @@
 // wrapTutorial.h
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 /**
  * \file wrapTutorial.h
  * \brief Shroud generated wrapper for Tutorial library
@@ -39,13 +31,6 @@ enum TUT_tutorial_Color {
     TUT_tutorial_Color_BLUE,
     TUT_tutorial_Color_WHITE
 };
-
-
-struct s_TUT_struct1 {
-    int ifield;
-    double dfield;
-};
-typedef struct s_TUT_struct1 TUT_struct1;
 
 // splicer begin C_declarations
 // splicer end C_declarations
@@ -139,18 +124,6 @@ TUT_class1 * TUT_getclass3(TUT_class1 * SHC_rv);
 TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv);
 
 int TUT_callback1(int in, int ( * incr)(int));
-
-TUT_struct1 TUT_return_struct(int i, double d);
-
-TUT_struct1 * TUT_return_struct_ptr(int i, double d);
-
-double TUT_accept_struct_in(TUT_struct1 arg);
-
-double TUT_accept_struct_in_ptr(TUT_struct1 * arg);
-
-void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d);
-
-void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg);
 
 void TUT_set_global_flag(int arg);
 
