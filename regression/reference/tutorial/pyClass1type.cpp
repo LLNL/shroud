@@ -1,19 +1,11 @@
 // pyClass1type.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pyTutorialmodule.hpp"
 #include "tutorial.hpp"
 // splicer begin class.Class1.impl.include
@@ -95,10 +87,10 @@ PY_class1_Method1(
 {
 // int Method1()
 // splicer begin class.Class1.method.method1
-    int SHC_rv = self->obj->Method1();
+    int rv = self->obj->Method1();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.method1
@@ -132,10 +124,10 @@ PY_class1_equivalent(
     // post_parse
     const tutorial::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
 
-    bool SHC_rv = self->obj->equivalent(*obj2);
+    bool rv = self->obj->equivalent(*obj2);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyBool_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.equivalent

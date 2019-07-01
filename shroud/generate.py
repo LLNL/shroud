@@ -1,21 +1,16 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Generate additional functions required to create wrappers.
 """
 from __future__ import print_function
 from __future__ import absolute_import
+
+import copy
 
 from . import ast
 from . import declast
@@ -516,6 +511,9 @@ class GenFunctions(object):
         for cls in node.classes:
             if cls.as_struct:
                 clslist.append(cls)
+                options = cls.options
+                if options.wrap_python and options.PY_struct_arg == "class":
+                    self.add_struct_ctor(cls)
             elif cls.template_arguments:
                 # Replace class with new class for each template instantiation.
                 for i, targs in enumerate(cls.template_arguments):
@@ -583,21 +581,44 @@ class GenFunctions(object):
 
         node.classes = clslist
 
-    def update_types_for_class_instantiation(self, clsnode):
+    def add_struct_ctor(self, cls):
+        """Add a constructor for a struct when
+        it will be treated like a class.
+
+        Args:
+            cls - ast.ClassNode
+        """
+        ast = declast.create_struct_ctor(cls)
+        name = ast.attrs["name"]  #cls.name + "_ctor"
+        #  Add variables as function parameters by coping AST.
+        for var in cls.variables:
+            a = copy.deepcopy(var.ast)
+            a.attrs["intent"] = "in"
+            ast.params.append(a)
+        # Python only
+        opt = dict(
+            wrap_fortran=False,
+            wrap_c=False,
+            wrap_lua=False,
+        )
+        node = cls.add_function(name, ast, options=opt)
+        node.declgen = node.ast.gen_decl()
+
+    def update_types_for_class_instantiation(self, cls):
         """Update the references to use instantiated class.
 
         Args:
-            clsnode -
+            cls - ast.ClassNode
         """
-        for function in clsnode.functions:
+        for function in cls.functions:
             if function.ast.is_ctor():
-                function.ast.typemap = clsnode.typemap
+                function.ast.typemap = cls.typemap
 
     def process_class(self, cls):
         """process variables and functions for a class.
 
         Args:
-            cls -
+            cls - ast.ClassNode
         """
         for var in cls.variables:
             self.add_var_getter_setter(cls, var)

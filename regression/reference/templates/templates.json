@@ -392,15 +392,11 @@
                                 "f_var": "SHT_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
-                                "PyTypeObject": null,
                                 "c_deref": "",
-                                "c_var": "SHC_rv",
+                                "c_var": "rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHC_rv",
-                                "npy_dims": "NULL",
-                                "npy_ndims": "0",
+                                "cxx_var": "rv",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv"
@@ -910,15 +906,11 @@
                                 "f_var": "SHT_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
-                                "PyTypeObject": null,
                                 "c_deref": "",
-                                "c_var": "SHC_rv",
+                                "c_var": "rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHC_rv",
-                                "npy_dims": "NULL",
-                                "npy_ndims": "0",
+                                "cxx_var": "rv",
                                 "numpy_type": "NPY_DOUBLE",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv"
@@ -1471,10 +1463,12 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pytemplatesutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "templates_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",
             "cast2": ")",
+            "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
             "class_prefix": "",
@@ -1485,8 +1479,12 @@
             "library_lower": "templates",
             "library_upper": "TEMPLATES",
             "namespace_scope": "",
+            "npy_dims": "NULL",
+            "npy_intp": "",
+            "npy_ndims": "0",
             "stdlib": "std::",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": ""
         },
         "functions": [
             {
@@ -2041,13 +2039,11 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv"
@@ -2181,6 +2177,7 @@
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context",
             "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function",
+            "PY_struct_arg": "numpy",
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
@@ -2289,6 +2286,12 @@
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
                 }
             }
         },
@@ -2350,6 +2353,11 @@
                     ]
                 },
                 "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]
@@ -2730,6 +2738,12 @@
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
                 }
             }
         },
@@ -3010,6 +3024,12 @@
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
                 }
             }
         },
@@ -3112,6 +3132,12 @@
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
                 }
             }
         },
@@ -3184,6 +3210,12 @@
                     ]
                 },
                 "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
@@ -3473,6 +3505,12 @@
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
                 }
             }
         },
@@ -3550,6 +3588,12 @@
                     ]
                 },
                 "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"

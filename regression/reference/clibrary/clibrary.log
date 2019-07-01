@@ -1,5 +1,4 @@
 Read yaml clibrary.yaml
-Close clibrary_types.yaml
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function bool Function3(bool arg +intent(in)+value)
@@ -27,16 +26,9 @@ C function int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * out
 C function void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 C function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
 C function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
-C function int passStruct1(Cstruct1 * s1 +intent(in))
-C function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))
-C function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))
-C function Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)
-C function Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out))
-C function Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 Close wrapClibrary.h
 Close wrapClibrary.c
 Close typesClibrary.h
-class Cstruct1
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C-interface, Fortran function bool Function3(bool arg +intent(in)+value)
@@ -64,12 +56,6 @@ C-interface function int passAssumedTypeBuf(void * arg +assumedtype+intent(in), 
 C-interface, Fortran function void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
 C-interface, Fortran function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))
 C-interface function void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
-C-interface, Fortran function int passStruct1(Cstruct1 * s1 +intent(in))
-C-interface, Fortran function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))
-C-interface function int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))
-C-interface, Fortran function Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)
-C-interface, Fortran function Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out))
-C-interface function Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
 Close wrapfclibrary.f
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)

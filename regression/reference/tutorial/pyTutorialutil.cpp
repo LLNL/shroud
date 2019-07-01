@@ -1,22 +1,12 @@
 // pyTutorialutil.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pyTutorialmodule.hpp"
-#include "tutorial.hpp"
-
 const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Singleton_capsule_name = "Singleton";
 
@@ -77,27 +67,4 @@ int PP_Singleton_from_Object(PyObject *obj, void **addr)
     *addr = self->obj;
     return 1;
     // splicer end class.Singleton.utility.from_object
-}
-
-// Code used to release arrays for NumPy objects
-// via a Capsule base object with a destructor.
-// Context strings
-const char * PY_array_destructor_context[] = {
-    "tutorial::struct1 *",
-    NULL
-};
-
-// destructor function for PyCapsule
-void PY_array_destructor_function(PyObject *cap)
-{
-    void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
-    const char * context = static_cast<const char *>
-        (PyCapsule_GetContext(cap));
-    if (context == PY_array_destructor_context[0]) {
-        tutorial::struct1 * cxx_ptr =
-            static_cast<tutorial::struct1 *>(ptr);
-        delete cxx_ptr;
-    } else {
-        // no such destructor
-    }
 }

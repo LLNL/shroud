@@ -126,6 +126,9 @@ bool: !!python/object:shroud.typemap.Typemap
     intent_out:
       post_call:
       - '{PyObject} * {py_var} = PyBool_FromLong({c_var});'
+    result:
+      post_call:
+      - '{PyObject} * {py_var} = PyBool_FromLong({c_var});'
   result_as_arg: null
   template_suffix: null
   typedef: null

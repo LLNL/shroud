@@ -1,17 +1,6 @@
-#!/usr/bin/env python
-# Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC. 
-#
-# Produced at the Lawrence Livermore National Laboratory 
-# 
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#  
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-# 
-########################################################################
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 
 import os
 from distutils.core import setup, Extension
@@ -28,8 +17,8 @@ with open(module_fname, "wt") as fp:
 
 strings = Extension(
     'strings',
-    sources = [module_fname, '../../run-strings/strings.cpp'],
-    include_dirs=['../../run-strings']
+    sources = [module_fname, '../strings.cpp'],
+    include_dirs=['..']
 )
 
 setup(

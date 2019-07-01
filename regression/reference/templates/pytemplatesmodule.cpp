@@ -94,8 +94,8 @@ PY_UseImplWorker_internal_ImplWorker1(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.use_impl_worker_internal_ImplWorker1
-    int SHC_rv = UseImplWorker();
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    int rv = UseImplWorker();
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_internal_ImplWorker1
 }

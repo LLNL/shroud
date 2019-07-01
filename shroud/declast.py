@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 A top-down, recursive descent parser for C/C++ expressions with
 additions for shroud attributes.
@@ -1550,6 +1543,23 @@ def create_voidstar(ntypemap, name, const=False):
     arg.specifier = ntypemap.cxx_type.split()
     arg.typemap = ntypemap
     return arg
+
+
+def create_struct_ctor(cls):
+    """Create a ctor function for a struct (aka C++ class).
+    Use with PY_struct_arg==class.
+    """
+    name = cls.name + "_ctor"
+    ast = Declaration()
+    ast.attrs = dict(
+        _constructor=True,
+#        _name="ctor",
+        name=name,
+    )
+    ast.typemap = cls.typemap
+    ast.specifier = [ cls.name ]
+    ast.params = []
+    return ast
 
 
 canonical_typemap = dict(

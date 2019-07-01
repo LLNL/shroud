@@ -1,19 +1,10 @@
-/* Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
- *
- * Produced at the Lawrence Livermore National Laboratory 
- *
- * LLNL-CODE-738041.
- *
- * All rights reserved. 
- *
- * This file is part of Shroud.
- *
- * For details about use and distribution, please read LICENSE.
- *
- * #######################################################################
- *
- * clibrary.hpp - wrapped routines
- */
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
+//
+// SPDX-License-Identifier: (BSD-3-Clause)
+//
+// clibrary.hpp - wrapped routines
 
 #ifndef CLIBRARY_HPP
 #define CLIBRARY_HPP
@@ -30,11 +21,6 @@ enum EnumTypeID {
 };
 
 typedef int TypeID;
-
-struct Cstruct1 {
-  int ifield;
-};
-typedef struct Cstruct1 Cstruct1;
 
 void Function1(void);
 
@@ -66,11 +52,6 @@ int passAssumedTypeBuf(void *arg, char *outbuf);
 
 void callback2(int type, void * in, void (*incr)(int *));
 void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
-
-int passStruct1(Cstruct1 *s1);
-int passStruct2(Cstruct1 *s1, char *outbuf);
-Cstruct1 *returnStructPtr1(int ifield);
-Cstruct1 *returnStructPtr2(int ifield, char *outbuf);
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);

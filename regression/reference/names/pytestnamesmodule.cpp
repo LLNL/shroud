@@ -140,10 +140,10 @@ PY_function4(
     // post_parse
     const std::string SH_rv(rv);
 
-    int SHC_rv = function4(SH_rv);
+    int rv = function4(SH_rv);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4
@@ -255,10 +255,10 @@ PY_UseImplWorker_instantiation3(
 {
 // int UseImplWorker()
 // splicer begin function.use_impl_worker_instantiation3
-    int SHC_rv = UseImplWorker();
+    int rv = UseImplWorker();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    PyObject * SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_instantiation3

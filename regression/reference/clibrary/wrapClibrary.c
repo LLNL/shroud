@@ -1,19 +1,11 @@
 // wrapClibrary.c
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "wrapClibrary.h"
 #include <stdlib.h>
 #include <string.h>
@@ -155,36 +147,6 @@ void CLI_callback3_bufferify(const char * type, void * in,
     ShroudStrBlankFill(outbuf, Noutbuf);
     return;
 // splicer end function.callback3_bufferify
-}
-
-// int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out)+len(Noutbuf))
-/**
- * Pass name argument which will build a bufferify function.
- */
-int CLI_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
-    int Noutbuf)
-{
-// splicer begin function.pass_struct2_bufferify
-    int SHC_rv = passStruct2(s1, outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
-    return SHC_rv;
-// splicer end function.pass_struct2_bufferify
-}
-
-// Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))
-/**
- * \brief Return a pointer to a struct
- *
- * Generates a bufferify C wrapper function.
- */
-Cstruct1 * CLI_return_struct_ptr2_bufferify(int ifield, char * outbuf,
-    int Noutbuf)
-{
-// splicer begin function.return_struct_ptr2_bufferify
-    Cstruct1 * SHC_rv = returnStructPtr2(ifield, outbuf);
-    ShroudStrBlankFill(outbuf, Noutbuf);
-    return SHC_rv;
-// splicer end function.return_struct_ptr2_bufferify
 }
 
 // Release C++ allocated memory.

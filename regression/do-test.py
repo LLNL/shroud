@@ -345,6 +345,16 @@ if __name__ == "__main__":
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
+        TestDesc("struct",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "PY_struct_arg=numpy",
+                 ]),
+        TestDesc("struct-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "PY_struct_arg=class",
+                 ]),
         TestDesc("vectors"),
         TestDesc("forward"),
         TestDesc("example"),
@@ -361,9 +371,13 @@ if __name__ == "__main__":
 
     if args.testname:
         runTests = []
-        for test in availTests:
-            if test.name in args.testname:
-                runTests.append(test)
+        predefined = { desc.name:desc for desc in availTests }
+        for testname in args.testname:
+            if testname in predefined:
+                runTests.append(predefined[testname])
+            else:
+                # If not predefined, assume testname.yaml
+                runTests.append(TestDesc(testname))
     else:
         runTests = availTests
 

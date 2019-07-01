@@ -1,19 +1,11 @@
 ! wrapftutorial.f
 ! This is generated code, do not edit
-! #######################################################################
-! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+! other Shroud Project Developers.
+! See the top-level COPYRIGHT file for details.
 !
-! Produced at the Lawrence Livermore National Laboratory
+! SPDX-License-Identifier: (BSD-3-Clause)
 !
-! LLNL-CODE-738041.
-!
-! All rights reserved.
-!
-! This file is part of Shroud.
-!
-! For details about use and distribution, please read LICENSE.
-!
-! #######################################################################
 !>
 !! \file wrapftutorial.f
 !! \brief Shroud generated wrapper for Tutorial library
@@ -21,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module tutorial_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -51,12 +43,6 @@ module tutorial_mod
     integer(C_INT), parameter :: tutorial_color_red = 0
     integer(C_INT), parameter :: tutorial_color_blue = 1
     integer(C_INT), parameter :: tutorial_color_white = 2
-
-
-    type, bind(C) :: struct1
-        integer(C_INT) :: ifield
-        real(C_DOUBLE) :: dfield
-    end type struct1
 
     ! splicer begin class.Class1.module_top
     ! splicer end class.Class1.module_top
@@ -671,65 +657,6 @@ module tutorial_mod
             procedure(callback1_incr) :: incr
             integer(C_INT) :: SHT_rv
         end function callback1
-
-        function return_struct(i, d) &
-                result(SHT_rv) &
-                bind(C, name="TUT_return_struct")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            import :: struct1
-            implicit none
-            integer(C_INT), value, intent(IN) :: i
-            real(C_DOUBLE), value, intent(IN) :: d
-            type(struct1) :: SHT_rv
-        end function return_struct
-
-        function c_return_struct_ptr(i, d) &
-                result(SHT_rv) &
-                bind(C, name="TUT_return_struct_ptr")
-            use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
-            import :: struct1
-            implicit none
-            integer(C_INT), value, intent(IN) :: i
-            real(C_DOUBLE), value, intent(IN) :: d
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr
-
-        function accept_struct_in(arg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_accept_struct_in")
-            use iso_c_binding, only : C_DOUBLE
-            import :: struct1
-            implicit none
-            type(struct1), value, intent(IN) :: arg
-            real(C_DOUBLE) :: SHT_rv
-        end function accept_struct_in
-
-        function accept_struct_in_ptr(arg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_accept_struct_in_ptr")
-            use iso_c_binding, only : C_DOUBLE
-            import :: struct1
-            implicit none
-            type(struct1), intent(IN) :: arg
-            real(C_DOUBLE) :: SHT_rv
-        end function accept_struct_in_ptr
-
-        subroutine accept_struct_out_ptr(arg, i, d) &
-                bind(C, name="TUT_accept_struct_out_ptr")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            import :: struct1
-            implicit none
-            type(struct1), intent(OUT) :: arg
-            integer(C_INT), value, intent(IN) :: i
-            real(C_DOUBLE), value, intent(IN) :: d
-        end subroutine accept_struct_out_ptr
-
-        subroutine accept_struct_in_out_ptr(arg) &
-                bind(C, name="TUT_accept_struct_in_out_ptr")
-            import :: struct1
-            implicit none
-            type(struct1), intent(INOUT) :: arg
-        end subroutine accept_struct_in_out_ptr
 
         subroutine set_global_flag(arg) &
                 bind(C, name="TUT_set_global_flag")
@@ -1449,20 +1376,6 @@ contains
         SHT_prv = c_get_class_copy(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
-
-    ! struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-    function return_struct_ptr(i, d) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
-        integer(C_INT), value, intent(IN) :: i
-        real(C_DOUBLE), value, intent(IN) :: d
-        type(struct1), pointer :: SHT_rv
-        type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_struct_ptr
-        SHT_ptr = c_return_struct_ptr(i, d)
-        call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end function.return_struct_ptr
-    end function return_struct_ptr
 
     ! const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
     ! arg_to_buffer

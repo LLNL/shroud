@@ -1,19 +1,11 @@
 // luaTutorialmodule.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "tutorial.hpp"
 #include "luaTutorialmodule.hpp"
 #ifdef __cplusplus
@@ -27,15 +19,6 @@ extern "C" {
 // splicer end include
 // splicer begin C_definition
 // splicer end C_definition
-
-// splicer begin class.struct1.additional_functions
-// splicer end class.struct1.additional_functions
-
-static const struct luaL_Reg l_struct1_Reg [] = {
-    // splicer begin class.struct1.register
-    // splicer end class.struct1.register
-    {NULL, NULL}   /*sentinel */
-};
 
 // Class1() +name(new)
 // Class1(int flag +intent(in)+value) +name(new)
@@ -592,26 +575,6 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
 extern "C" {
 #endif
 int luaopen_tutorial(lua_State *L) {
-
-    /* Create the metatable and put it on the stack. */
-    luaL_newmetatable(L, "struct1.metatable");
-    /* Duplicate the metatable on the stack (We now have 2). */
-    lua_pushvalue(L, -1);
-    /* Pop the first metatable off the stack and assign it to __index
-     * of the second one. We set the metatable for the table to itself.
-     * This is equivalent to the following in lua:
-     * metatable = {}
-     * metatable.__index = metatable
-     */
-    lua_setfield(L, -2, "__index");
-
-    /* Set the methods to the metatable that should be accessed via object:func */
-#if LUA_VERSION_NUM < 502
-    luaL_register(L, NULL, l_struct1_Reg);
-#else
-    luaL_setfuncs(L, l_struct1_Reg, 0);
-#endif
-
 
     /* Create the metatable and put it on the stack. */
     luaL_newmetatable(L, "Class1.metatable");

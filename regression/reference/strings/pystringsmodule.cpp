@@ -85,10 +85,10 @@ PY_returnChar(
 {
 // char returnChar()
 // splicer begin function.return_char
-    char SHC_rv = returnChar();
+    char rv = returnChar();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(&SHC_rv, 1);
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(&rv, 1);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_char
@@ -186,10 +186,10 @@ PY_getCharPtr1(
 {
 // const char * getCharPtr1() +deref(allocatable)
 // splicer begin function.get_char_ptr1
-    const char * SHC_rv = getCharPtr1();
+    const char * rv = getCharPtr1();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
+    PyObject * SHTPy_rv = PyString_FromString(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_char_ptr1
@@ -211,10 +211,10 @@ PY_getCharPtr2(
 {
 // const char * getCharPtr2() +deref(result_as_arg)+len(30)
 // splicer begin function.get_char_ptr2
-    const char * SHC_rv = getCharPtr2();
+    const char * rv = getCharPtr2();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
+    PyObject * SHTPy_rv = PyString_FromString(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_char_ptr2
@@ -236,10 +236,10 @@ PY_getCharPtr3(
 {
 // const char * getCharPtr3() +deref(result_as_arg)
 // splicer begin function.get_char_ptr3
-    const char * SHC_rv = getCharPtr3();
+    const char * rv = getCharPtr3();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
+    PyObject * SHTPy_rv = PyString_FromString(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_char_ptr3
@@ -829,10 +829,10 @@ PY_CreturnChar(
 {
 // char CreturnChar()
 // splicer begin function.creturn_char
-    char SHC_rv = CreturnChar();
+    char rv = CreturnChar();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(&SHC_rv, 1);
+    PyObject * SHTPy_rv = PyString_FromStringAndSize(&rv, 1);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.creturn_char

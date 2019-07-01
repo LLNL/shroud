@@ -89,10 +89,12 @@
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
             "PY_utility_filename": "pypointersutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "pointers_types.yaml",
             "c_temp": "SHT_",
             "cast1": ">\t(",
             "cast2": ")",
+            "cast_const": "const_cast<",
             "cast_reinterpret": "reinterpret_cast<",
             "cast_static": "static_cast<",
             "class_prefix": "",
@@ -103,8 +105,12 @@
             "library_lower": "pointers",
             "library_upper": "POINTERS",
             "namespace_scope": "",
+            "npy_dims": "NULL",
+            "npy_intp": "",
+            "npy_ndims": "0",
             "stdlib": "std::",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": ""
         },
         "functions": [
             {
@@ -128,8 +134,6 @@
                     },
                     "arginout": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int arginout",
                             "c_deref": "",
@@ -147,8 +151,6 @@
                     },
                     "argout": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int argout",
                             "c_deref": "",
@@ -253,7 +255,6 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in"
@@ -261,8 +262,6 @@
                     },
                     "out": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "double * out",
                             "c_deref": "*",
@@ -279,7 +278,6 @@
                             "npy_prototype": "SHPy_in",
                             "npy_subok": "0",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in"
                         }
@@ -398,7 +396,6 @@
                             "cxx_type": "double",
                             "cxx_var": "in",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_in",
                             "pytmp_var": "SHTPy_in",
                             "size_var": "SHSize_in"
@@ -406,8 +403,6 @@
                     },
                     "out": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * out",
                             "c_deref": "*",
@@ -424,7 +419,6 @@
                             "npy_prototype": "SHPy_in",
                             "npy_subok": "0",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_out",
                             "size_var": "SHSize_in"
                         }
@@ -532,8 +526,6 @@
                 "_fmtargs": {
                     "nvalues": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int nvalues",
                             "c_deref": "",
@@ -551,8 +543,6 @@
                     },
                     "values": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * values",
                             "c_deref": "*",
@@ -564,6 +554,7 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "npy_dims": "SHD_values",
+                            "npy_intp": "npy_intp SHD_values[1] = {3};\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -640,8 +631,6 @@
                 "_fmtargs": {
                     "arg1": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * arg1",
                             "c_deref": "*",
@@ -653,6 +642,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg1",
                             "npy_dims": "SHD_arg1",
+                            "npy_intp": "npy_intp SHD_arg1[1] = {3};\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -662,8 +652,6 @@
                     },
                     "arg2": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * arg2",
                             "c_deref": "*",
@@ -675,6 +663,7 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "npy_dims": "SHD_arg2",
+                            "npy_intp": "npy_intp SHD_arg2[1] = {3};\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -770,8 +759,6 @@
                     },
                     "result": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int result",
                             "c_deref": "",
@@ -800,7 +787,6 @@
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_values",
                             "pytmp_var": "SHTPy_values",
                             "size_var": "SHSize_values"
@@ -888,8 +874,6 @@
                 "_fmtargs": {
                     "out": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * out",
                             "c_deref": "*",
@@ -901,6 +885,7 @@
                             "cxx_type": "int",
                             "cxx_var": "out",
                             "npy_dims": "SHD_out",
+                            "npy_intp": "npy_intp SHD_out[1] = {3};\n",
                             "npy_ndims": "1",
                             "numpy_type": "NPY_INT",
                             "pointer_shape": "3",
@@ -958,8 +943,6 @@
                 "_fmtargs": {
                     "array": {
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int * array",
                             "c_deref": "*",
@@ -971,7 +954,6 @@
                             "cxx_type": "int",
                             "cxx_var": "array",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_array",
                             "pytmp_var": "SHTPy_array",
                             "size_var": "SHSize_array"
@@ -1116,6 +1098,7 @@
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
             "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context",
             "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function",
+            "PY_struct_arg": "numpy",
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
@@ -1211,6 +1194,11 @@
                     ]
                 },
                 "intent_out": {
+                    "post_call": [
+                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
                     ]

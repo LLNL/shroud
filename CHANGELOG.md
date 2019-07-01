@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Parse `enum class` and `enum struct`.
 - Add option PY_array_arg to control how arrays are represented.
   Values can be *numpy* or *list*.
+- Add option PY_struct_arg to control how structs are represented.
+  Values can be *numpy* or *class*.
 - Add command line option --options to set a top level option.
 - Add command line option --language. May be c or c++.
   Replaces any language directive in the YAML file.
@@ -39,6 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   arguments where not compiling.
 - Changed enum option templates to include namespace as well as class name.
   Non-scoped enums only use *C_prefix* on enum member names.
+- Passing a struct by value in Fortran wrapper for C library.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed

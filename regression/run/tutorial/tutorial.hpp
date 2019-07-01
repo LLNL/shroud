@@ -1,16 +1,8 @@
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory 
-//
-// LLNL-CODE-738041.
-//
-// All rights reserved. 
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
 // tutorial.hpp - wrapped routines
 //
@@ -38,11 +30,6 @@ enum Color {
 };
 
 typedef int TypeID;
-
-struct struct1 {
-  int ifield;
-  double dfield;
-};
 
 extern int tutorial_flag;
 
@@ -120,15 +107,6 @@ Class1 * getclass3();
 Class1 getClassCopy(int flag);
 
 int callback1(int in, int (*incr)(int));
-
-struct1 returnStruct(int i, double d);
-struct1 *returnStructPtr(int i, double d);
-struct1 *returnStructPtrNew(int i, double d);
-void freeStruct(struct1 *arg1);
-double acceptStructIn(struct1 arg);
-double acceptStructInPtr(struct1 *arg);
-void acceptStructOutPtr(struct1 *arg, int i, double d);
-void acceptStructInOutPtr(struct1 *arg);
 
 void set_global_flag(int arg);
 int get_global_flag();
