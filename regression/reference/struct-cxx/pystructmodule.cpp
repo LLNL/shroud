@@ -176,7 +176,7 @@ PY_acceptStructOutPtr(
         SHPy_arg = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
         if (SHPy_arg == NULL) goto fail;
         SHPy_arg->obj = arg;
-        SHPy_arg->idtor = 0;
+        SHPy_arg->idtor = -1;
 
         return (PyObject *) SHPy_arg;
     }

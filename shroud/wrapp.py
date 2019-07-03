@@ -3108,7 +3108,7 @@ py_statements_local = dict(
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
             "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = 0;",  # may not add post_call_capsule
+            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -3127,7 +3127,6 @@ py_statements_local = dict(
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
-# XXX currently have an error "crosses initialization of PyObject* SHPyResult"
         fail=[
             "Py_XDECREF({py_var});",
         ],
