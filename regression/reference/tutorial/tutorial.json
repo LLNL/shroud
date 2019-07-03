@@ -134,6 +134,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
@@ -143,7 +144,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "_overloaded": true,
@@ -264,6 +266,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
@@ -273,7 +276,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "_overloaded": true,
@@ -8813,8 +8817,16 @@
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
@@ -9727,8 +9739,16 @@
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
                         "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },

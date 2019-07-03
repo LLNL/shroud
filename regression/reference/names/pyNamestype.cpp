@@ -38,7 +38,9 @@ static void
 PY_Names_tp_del (PY_Names *self)
 {
 // splicer begin class.Names.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.Names.type.del
 }

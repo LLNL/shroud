@@ -25,7 +25,9 @@ static void
 PY_vector_int_tp_del (PY_vector_int *self)
 {
 // splicer begin class.vector.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.vector.type.del
 }
@@ -37,7 +39,12 @@ PY_vector_int_tp_init(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.vector.method.ctor
-    self->obj = new std::vector_int();
+    self->obj = new std::vector<int>();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->dtor = PY_array_destructor_context + 0;
     return 0;
 // splicer end class.vector.method.ctor
 }

@@ -12,6 +12,14 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+typedef struct {
+    const char *name;
+    void (*dtor)(void *ptr);
+} blah;
+extern blah PY_array_destructor_context[];
+extern void PY_array_destructor_function(PyObject *cap);
+
 
 // ------------------------------
 class Cstruct1;  // forward declare
@@ -22,6 +30,7 @@ extern PyTypeObject PY_Cstruct1_Type;
 typedef struct {
 PyObject_HEAD
     Cstruct1 * obj;
+    blah * dtor;
     // splicer begin class.Cstruct1.C_object
     // splicer end class.Cstruct1.C_object
 } PY_Cstruct1;
@@ -33,10 +42,6 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr);
 
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
-
-// utility functions
-extern const char * PY_array_destructor_context[];
-extern void PY_array_destructor_function(PyObject *cap);
 
 extern PyObject *PY_error_obj;
 

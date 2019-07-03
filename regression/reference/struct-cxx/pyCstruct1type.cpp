@@ -31,7 +31,9 @@ static void
 PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 {
 // splicer begin class.Cstruct1.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.Cstruct1.type.del
 }
@@ -55,11 +57,12 @@ PY_Cstruct1_tp_init(
         const_cast<char **>(SHT_kwlist), &ifield, &dfield))
         return -1;
 
-    self->obj = static_cast<Cstruct1 *>(malloc(sizeof(Cstruct1)));
+    self->obj = new Cstruct1;
     if (self->obj == NULL) {
         PyErr_NoMemory();
         return -1;
     }
+    self->dtor = PY_array_destructor_context + 0;
     // initialize fields
     Cstruct1 *SH_obj = self->obj;
     SH_obj->ifield = ifield;

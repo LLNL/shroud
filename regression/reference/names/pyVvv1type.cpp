@@ -39,7 +39,9 @@ static void
 PY_Vvv1_tp_del (PY_Vvv1 *self)
 {
 // splicer begin class.vector.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.vector.type.del
 }

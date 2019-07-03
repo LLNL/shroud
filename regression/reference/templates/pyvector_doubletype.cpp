@@ -25,7 +25,9 @@ static void
 PY_vector_double_tp_del (PY_vector_double *self)
 {
 // splicer begin class.vector.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.vector.type.del
 }
@@ -37,7 +39,12 @@ PY_vector_double_tp_init(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.vector.method.ctor
-    self->obj = new std::vector_double();
+    self->obj = new std::vector<double>();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->dtor = PY_array_destructor_context + 1;
     return 0;
 // splicer end class.vector.method.ctor
 }

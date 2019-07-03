@@ -39,7 +39,9 @@ static void
 PY_Class3_tp_del (PY_Class3 *self)
 {
 // splicer begin class.Class3.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.Class3.type.del
 }

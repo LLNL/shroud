@@ -1383,22 +1383,40 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
             ],
         ),
         intent_out=dict(
+            decl=[
+                "{PyObject} *{py_var} = NULL;"
+            ],
             post_call=[
-                (
-                    "{PyObject} * {py_var} ="
-                    "\t PyObject_New({PyObject}, &{PyTypeObject});"
-                ),
+                "{py_var} ="
+                "\t PyObject_New({PyObject}, &{PyTypeObject});",
+                "if ({py_var} == NULL) goto fail;",
                 "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
             ],
+#            post_call_capsule=[
+#                "{py_var}->dtor = {PY_numpy_array_dtor_context} + {capsule_order};",
+#            ],
+            fail=[
+                "Py_XDECREF({py_var});",
+            ],
+            goto_fail=True,
         ),
         result=dict(
+#            decl=[
+#                "{PyObject} *{py_var} = NULL;"
+#            ],
             post_call=[
-                (
-                    "{PyObject} * {py_var} ="
-                    "\t PyObject_New({PyObject}, &{PyTypeObject});"
-                ),
+                "{PyObject} * {py_var} ="
+                "\t PyObject_New({PyObject}, &{PyTypeObject});",
+#                "if ({py_var} == NULL) goto fail;",
                 "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
             ],
+#            post_call_capsule=[
+#                "{py_var}->dtor = {PY_numpy_array_dtor_context} + {capsule_order};",
+#            ],
+#            fail=[
+#                "Py_XDECREF({py_var});",
+#            ],
+#            goto_fail=True,
         ),
     )
     # #-    if not ntypemap.PY_PyTypeObject:

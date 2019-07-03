@@ -12,12 +12,16 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+typedef struct {
+    const char *name;
+    void (*dtor)(void *ptr);
+} blah;
+extern blah PY_array_destructor_context[];
+extern void PY_array_destructor_function(PyObject *cap);
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
-
-// utility functions
-extern const char * PY_array_destructor_context[];
-extern void PY_array_destructor_function(PyObject *cap);
 
 extern PyObject *PY_error_obj;
 

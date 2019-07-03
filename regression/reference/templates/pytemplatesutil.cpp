@@ -1,6 +1,8 @@
 // pytemplatesutil.cpp
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
+#include "templates.hpp"
+
 const char *PY_vector_int_capsule_name = "vector_int";
 const char *PY_vector_double_capsule_name = "vector_double";
 const char *PY_Worker_capsule_name = "Worker";
@@ -152,3 +154,35 @@ int PP_user_int_from_Object(PyObject *obj, void **addr)
     return 1;
     // splicer end class.user.utility.from_object
 }
+
+// destructor function for PyCapsule
+void PY_array_destructor_function(PyObject *cap)
+{
+    void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
+    blah * context = static_cast<blah *>(PyCapsule_GetContext(cap));
+    context->dtor(ptr);
+}
+
+// 0 - cxx std::vector<int> *
+static void PY_array_destructor_function_0(void *ptr)
+{
+    std::vector<int> * cxx_ptr = static_cast<std::vector<int> *>(ptr);
+    delete cxx_ptr;
+}
+
+// 1 - cxx std::vector<double> *
+static void PY_array_destructor_function_1(void *ptr)
+{
+    std::vector<double> * cxx_ptr =
+        static_cast<std::vector<double> *>(ptr);
+    delete cxx_ptr;
+}
+
+// Code used to release arrays for NumPy objects
+// via a Capsule base object with a destructor.
+// Context strings
+blah PY_array_destructor_context[] = {
+    {"cxx std::vector<int> *", PY_array_destructor_function_0},
+    {"cxx std::vector<double> *", PY_array_destructor_function_1},
+    {NULL, NULL}
+};

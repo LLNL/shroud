@@ -41,24 +41,25 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
     // splicer end class.Cstruct1.utility.from_object
 }
 
-// Code used to release arrays for NumPy objects
-// via a Capsule base object with a destructor.
-// Context strings
-const char * PY_array_destructor_context[] = {
-    "Cstruct1 *",
-    NULL
-};
-
 // destructor function for PyCapsule
 void PY_array_destructor_function(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
-    const char * context = static_cast<const char *>
-        (PyCapsule_GetContext(cap));
-    if (context == PY_array_destructor_context[0]) {
-        Cstruct1 * cxx_ptr = static_cast<Cstruct1 *>(ptr);
-        delete cxx_ptr;
-    } else {
-        // no such destructor
-    }
+    blah * context = static_cast<blah *>(PyCapsule_GetContext(cap));
+    context->dtor(ptr);
 }
+
+// 0 - cxx Cstruct1 *
+static void PY_array_destructor_function_0(void *ptr)
+{
+    Cstruct1 * cxx_ptr = static_cast<Cstruct1 *>(ptr);
+    delete cxx_ptr;
+}
+
+// Code used to release arrays for NumPy objects
+// via a Capsule base object with a destructor.
+// Context strings
+blah PY_array_destructor_context[] = {
+    {"cxx Cstruct1 *", PY_array_destructor_function_0},
+    {NULL, NULL}
+};

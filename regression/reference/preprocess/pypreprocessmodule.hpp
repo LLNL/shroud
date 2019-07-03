@@ -20,6 +20,12 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+typedef struct {
+    const char *name;
+    void (*dtor)(void *ptr);
+} blah;
+
 
 // ------------------------------
 class User1;  // forward declare
@@ -30,6 +36,7 @@ extern PyTypeObject PY_User1_Type;
 typedef struct {
 PyObject_HEAD
     User1 * obj;
+    blah * dtor;
     // splicer begin class.User1.C_object
     // splicer end class.User1.C_object
 } PY_User1;
@@ -48,6 +55,7 @@ extern PyTypeObject PY_User2_Type;
 typedef struct {
 PyObject_HEAD
     User2 * obj;
+    blah * dtor;
     // splicer begin class.User2.C_object
     // splicer end class.User2.C_object
 } PY_User2;

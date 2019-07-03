@@ -38,7 +38,9 @@ static void
 PY_twoTs_0_tp_del (PY_twoTs_0 *self)
 {
 // splicer begin class.twoTs.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.twoTs.type.del
 }

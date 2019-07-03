@@ -7,6 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyTutorialmodule.hpp"
+#include "tutorial.hpp"
+
 const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Singleton_capsule_name = "Singleton";
 
@@ -68,3 +70,26 @@ int PP_Singleton_from_Object(PyObject *obj, void **addr)
     return 1;
     // splicer end class.Singleton.utility.from_object
 }
+
+// destructor function for PyCapsule
+void PY_array_destructor_function(PyObject *cap)
+{
+    void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
+    blah * context = static_cast<blah *>(PyCapsule_GetContext(cap));
+    context->dtor(ptr);
+}
+
+// 0 - cxx tutorial::Class1 *
+static void PY_array_destructor_function_0(void *ptr)
+{
+    tutorial::Class1 * cxx_ptr = static_cast<tutorial::Class1 *>(ptr);
+    delete cxx_ptr;
+}
+
+// Code used to release arrays for NumPy objects
+// via a Capsule base object with a destructor.
+// Context strings
+blah PY_array_destructor_context[] = {
+    {"cxx tutorial::Class1 *", PY_array_destructor_function_0},
+    {NULL, NULL}
+};

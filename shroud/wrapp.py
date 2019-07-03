@@ -77,6 +77,7 @@ class Wrapp(util.WrapperMixin):
         self.decl_arraydescr = []
         self.define_arraydescr = []
         self.call_arraydescr = []
+        self.need_blah = False
         update_for_language(self.language)
 
     def XXX_begin_output_file(self):
@@ -173,6 +174,7 @@ class Wrapp(util.WrapperMixin):
             if node.as_struct and node.options.PY_struct_arg != "class":
                 self.create_arraydescr(node)
             else:
+                self.need_blah = True
                 self.wrap_class(node)
                 self.write_extension_type(newlibrary, node)
             self._pop_splicer(name)
@@ -302,7 +304,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "\n"
             "typedef struct {{\n"
             "PyObject_HEAD\n"
-            "+{namespace_scope}{cxx_class} * {PY_obj};",
+            "+{namespace_scope}{cxx_class} * {PY_obj};\n"
+            "blah * dtor;",
             fmt_class,
         )
         self._create_splicer("C_object", output)
@@ -1299,23 +1302,16 @@ return 1;""",
                 capsule_type = CXX_result.gen_arg_as_cxx(
                     name=None, force_ptr=True, params=None, continuation=True
                 )
-                if self.language == "c":
-                    append_format(
-                        PY_code,
-                        "{C_rv_decl} = malloc(sizeof({cxx_type}));",
-                        fmt,
-                    )
-                    del_lines = ["free(ptr);"]
-                else:
-                    append_format(PY_code, "{C_rv_decl} = new {cxx_type};", fmt)
-                    del_lines = [
-                        "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
-                            capsule_type, capsule_type
-                        ),
-                        "delete cxx_ptr;",
-                    ]
-                capsule_order = self.add_capsule_code(capsule_type, del_lines)
-                fmt_result.capsule_order = capsule_order
+                append_format(decl_code, "{C_rv_decl} = NULL;", fmt_result)
+                PY_code.extend(self.allocate_memory(
+                    self.language, fmt_result.cxx_var, capsule_type, fmt_result,
+                    "goto fail", True))
+                append_format(fail_code, "if ({cxx_var} != NULL) {{+\n"
+                              "{PY_numpy_array_dtor_context}"
+                              "[{capsule_order}].dtor({cxx_var});\n"
+                              "-}}",
+                              fmt_result)
+                goto_fail = True
                 fmt_result.py_capsule = "SHC_" + fmt_result.c_var
                 fmt_result.cxx_addr = ""
                 append_format(
@@ -1366,7 +1362,10 @@ return 1;""",
         # Compute return value
         if CXX_subprogram == "function":
             self.set_fmt_fields(ast, fmt_result, True)
-            if result_typemap.base == "struct":
+            if is_ctor:
+                # Code added by create_ctor_function.
+                result_blk = {}
+            elif result_typemap.base == "struct":
                 index = "struct_result_{}".format(options.PY_struct_arg)
                 result_blk = py_statements_local[index]
             elif (
@@ -1566,18 +1565,54 @@ return 1;""",
         XXX - do memory reference stuff
         """
         assert cls is not None
+        capsule_type = fmt.namespace_scope + fmt.cxx_type + " *"
+        var = "self->" + fmt.PY_obj
+        code.extend(self.allocate_memory(
+            self.language, var, capsule_type, fmt, "return -1", cls.as_struct))
+        append_format(code,
+                      "self->dtor = {PY_numpy_array_dtor_context} + {capsule_order};",
+                      fmt)
+
         if cls.as_struct and cls.options.PY_struct_arg == "class":
-            append_format(code, "self->{PY_obj} = {cast_static}{cxx_type} *{cast1}"
-                          "malloc(sizeof({cxx_type})){cast2};\n"
-                          "if (self->{PY_obj} == NULL) {{+\n"
-                          "PyErr_NoMemory();\nreturn -1;\n-}}", fmt)
             code.append("// initialize fields")
             append_format(code, "{cxx_type} *SH_obj = self->{PY_obj};", fmt)
             for var in node.ast.params:
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
+
+    def allocate_memory(self, lang, var, capsule_type, fmt,
+                       error, as_struct):
+        """Return code to allocate an item.
+        Set fmt.capsule order used to release it.
+
+        Args:
+            lang   - c or c++
+            var    - Name of variable for assignment.
+            capsule_type
+            fmt
+            error   - error code ex. "goto fail" or "return -1"
+            as_struct -
+        """
+        lines = []
+        if lang == "c":
+            alloc = var + " = malloc(sizeof({cxx_type}));"
+            del_lines = [wformat("{stdlib}free(ptr);",fmt)]
         else:
-            line = "new {namespace_scope}{cxx_class}({PY_call_list});"
-            append_format(code, "self->{PY_obj} = " + line, fmt)
+            if as_struct:
+                alloc = var + " = new {namespace_scope}{cxx_type};"
+            else:
+                alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
+            del_lines = [
+                "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
+                    capsule_type, capsule_type
+                ),
+                "delete cxx_ptr;",
+            ]
+        append_format(lines, alloc, fmt)
+        lines.append("if ({} == NULL) {{+\n"
+                     "PyErr_NoMemory();\n{};\n-}}".format(var, error))
+        capsule_order = self.add_capsule_code(lang + " " + capsule_type, del_lines)
+        fmt.capsule_order = capsule_order
+        return lines
 
     def write_tp_func(self, node, fmt_type, output):
         """Create functions for tp_init et.al.
@@ -1917,8 +1952,13 @@ return 1;""",
         self._push_splicer("header")
         self._create_splicer("include", output)
 
-        if self.py_class_decl:
+        if self.py_utility_declaration:
             output.append("")
+            output.append("// utility functions")
+            output.extend(self.py_utility_declaration)
+
+        if self.py_class_decl:
+            output.append("")  ## XXX - extra
             output.extend(self.py_class_decl)
             output.append("// ------------------------------")
 
@@ -1927,11 +1967,6 @@ return 1;""",
         output.append("")
         self._create_splicer("C_declaration", output)
         self._pop_splicer("header")
-
-        if self.py_utility_declaration:
-            output.append("")
-            output.append("// utility functions")
-            output.extend(self.py_utility_declaration)
 
         append_format(
             output,
@@ -2035,6 +2070,17 @@ extern PyObject *{PY_prefix}error_obj;
         output.extend(self.py_utility_definition)
         output.append("")
         output.extend(self.py_utility_functions)
+
+        if self.need_blah:
+            append_format(
+                self.py_utility_declaration,
+                "typedef struct {{+\n"
+                "const char *name;\n"
+                "void (*dtor)(void *ptr);\n"
+                "-}} blah;",
+                fmt
+            )
+
         if self.capsule_order:
             self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
@@ -2055,10 +2101,9 @@ extern PyObject *{PY_prefix}error_obj;
             output -
             fmt -
         """
-
         append_format(
             self.py_utility_declaration,
-            "extern const char * {PY_numpy_array_dtor_context}[];",
+            "extern blah {PY_numpy_array_dtor_context}[];",
             fmt,
         )
         append_format(
@@ -2066,20 +2111,6 @@ extern PyObject *{PY_prefix}error_obj;
             "extern void {PY_numpy_array_dtor_function}(PyObject *cap);",
             fmt,
         )
-
-        output.append(
-            "\n"
-            "// Code used to release arrays for NumPy objects\n"
-            "// via a Capsule base object with a destructor.\n"
-            "// Context strings"
-        )
-        append_format(
-            output, "const char * {PY_numpy_array_dtor_context}[] = {{+", fmt
-        )
-        for name in self.capsule_order:
-            output.append('"{}",'.format(name))
-        output.append("NULL")
-        output.append("-};")
 
         append_format(
             output,
@@ -2091,30 +2122,40 @@ extern PyObject *{PY_prefix}error_obj;
             fmt,
         )
         if self.language == "c":
-            output.append("const char * context = PyCapsule_GetContext(cap);")
+            output.append("blah * context = PyCapsule_GetContext(cap);")
         else:
             output.append(
-                "const char * context = static_cast<const char *>\t("
+                "blah * context = static_cast<blah *>\t("
                 "PyCapsule_GetContext(cap));")
+        output.append("context->dtor(ptr);")
+        output.append("-}")
 
-        start = "if"
+        # Create variable with as array of blah
+        # to contain function pointers to routines to release memory.
+        fcnnames = []
         for i, name in enumerate(self.capsule_order):
-            output.append(
-                start
-                + " (context == {}[{}]) {{".format(
-                    fmt.PY_numpy_array_dtor_context, i
-                )
-            )
-            output.append(1)
+            fcnname = fmt.PY_numpy_array_dtor_function + "_" + str(i)
+            fcnnames.append((name, fcnname))
+            output.append("\n// {} - {}".format(i, name))
+            output.append("static void {}(void *ptr)".format(fcnname))
+            output.append("{+")
             for line in self.capsule_code[name][1]:
                 output.append(line)
-            output.append(-1)
-            start = "} else if "
-        output.append("} else {+")
-        output.append("// no such destructor")
-        output.append("-}")
+            output.append("-}")
 
-        output.append("-}")
+        output.append(
+            "\n"
+            "// Code used to release arrays for NumPy objects\n"
+            "// via a Capsule base object with a destructor.\n"
+            "// Context strings"
+        )
+        append_format(
+            output, "blah {PY_numpy_array_dtor_context}[] = {{+", fmt
+        )
+        for name in fcnnames:
+            output.append('{{"{}", {}}},'.format(name[0], name[1]))
+        output.append("{NULL, NULL}")
+        output.append("-};")
 
     capsule_code = {}
     capsule_order = []
@@ -2127,6 +2168,7 @@ extern PyObject *{PY_prefix}error_obj;
             name -
             lines -
         """
+        self.need_blah = True
         if name not in self.capsule_code:
             self.capsule_code[name] = (str(len(self.capsule_code)), lines)
             self.capsule_order.append(name)
@@ -2154,7 +2196,10 @@ extern PyObject *{PY_prefix}error_obj;
             msg -
             ret -
         """
-        return ["Py_INCREF(Py_NotImplemented);", "return Py_NotImplemented;"]
+        return [
+            "Py_INCREF(Py_NotImplemented);",
+            "return Py_NotImplemented;"
+        ]
 
     def tp_del(self, msg, ret):
         """default method for tp_del.
@@ -2163,7 +2208,13 @@ extern PyObject *{PY_prefix}error_obj;
             msg = 'del'
             ret = ''
         """
-        return ["delete self->{PY_obj};", "self->{PY_obj} = NULL;"]
+        return [
+            "if (self->dtor != NULL) {{+",
+            " self->dtor->dtor({cast_static}void *{cast1}"
+            "self->{PY_obj}{cast2});",
+            "-}}",
+            "self->{PY_obj} = NULL;"
+        ]
 
 
 # --- Python boiler plate
@@ -2639,8 +2690,8 @@ post_call_capsule=[
     "\t{PY_numpy_array_dtor_function});",
     "if ({py_capsule} == NULL) goto fail;",
     "PyCapsule_SetContext({py_capsule},"
-    "\t {cast_const}char *{cast1}{PY_numpy_array_dtor_context}"
-    "[{capsule_order}]{cast2});",
+    "\t {cast_static}void *{cast1}{PY_numpy_array_dtor_context} + "
+    "{capsule_order}{cast2});",
     "if (PyArray_SetBaseObject(\t"
     "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
     "\t {py_capsule}) < 0)\t goto fail;",
@@ -3010,6 +3061,9 @@ py_statements_local = dict(
     struct_intent_out_class=dict(
         create_out_decl=True,
         cxx_local_var="pointer",
+        decl=[
+            "{PyObject} * {py_var} = NULL;",
+        ],
         c_pre_call=[
             "{cxx_type} * {cxx_var} = malloc(sizeof({cxx_type}));",
         ],
@@ -3023,18 +3077,38 @@ py_statements_local = dict(
             "delete cxx_ptr;",
         ],
         post_call=[
-            "{PyObject} * {py_var} ="
+            "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
+            "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-        ]
+            "{py_var}->dtor = NULL;",  # may not add post_call_capsule
+        ],
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
     ),
     struct_result_class=dict(
         cxx_local_var="pointer",
+        decl=[
+            "{PyObject} *{py_var} = NULL;",
+        ],
         post_call=[
-            "{PyObject} * {py_var} ="
+            "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
+#            "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-        ]
+            "{py_var}->dtor = NULL;",  # may not add post_call_capsule
+        ],
+        # Deallocate memory for the struct
+        post_call_capsule=[
+            "{py_var}->dtor = {PY_numpy_array_dtor_context} + {capsule_order};",
+        ],
+# XXX currently have an error "crosses initialization of PyObject* SHPyResult"
+#        fail=[
+#            "Py_XDECREF({py_var});",
+#        ],
+#        goto_fail=True,
     ),
 
 )

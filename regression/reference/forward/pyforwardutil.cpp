@@ -15,6 +15,8 @@
 //
 // #######################################################################
 #include "pyforwardmodule.hpp"
+#include "tutorial.hpp"
+
 const char *PY_Class3_capsule_name = "Class3";
 const char *PY_Class2_capsule_name = "Class2";
 
@@ -76,3 +78,26 @@ int PP_Class2_from_Object(PyObject *obj, void **addr)
     return 1;
     // splicer end class.Class2.utility.from_object
 }
+
+// destructor function for PyCapsule
+void PY_array_destructor_function(PyObject *cap)
+{
+    void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
+    blah * context = static_cast<blah *>(PyCapsule_GetContext(cap));
+    context->dtor(ptr);
+}
+
+// 0 - cxx tutorial::Class2 *
+static void PY_array_destructor_function_0(void *ptr)
+{
+    tutorial::Class2 * cxx_ptr = static_cast<tutorial::Class2 *>(ptr);
+    delete cxx_ptr;
+}
+
+// Code used to release arrays for NumPy objects
+// via a Capsule base object with a destructor.
+// Context strings
+blah PY_array_destructor_context[] = {
+    {"cxx tutorial::Class2 *", PY_array_destructor_function_0},
+    {NULL, NULL}
+};

@@ -11,22 +11,24 @@
 
 
 
-// Code used to release arrays for NumPy objects
-// via a Capsule base object with a destructor.
-// Context strings
-const char * PY_array_destructor_context[] = {
-    "Cstruct1 *",
-    NULL
-};
-
 // destructor function for PyCapsule
 void PY_array_destructor_function(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
-    const char * context = PyCapsule_GetContext(cap);
-    if (context == PY_array_destructor_context[0]) {
-        free(ptr);
-    } else {
-        // no such destructor
-    }
+    blah * context = PyCapsule_GetContext(cap);
+    context->dtor(ptr);
 }
+
+// 0 - c Cstruct1 *
+static void PY_array_destructor_function_0(void *ptr)
+{
+    free(ptr);
+}
+
+// Code used to release arrays for NumPy objects
+// via a Capsule base object with a destructor.
+// Context strings
+blah PY_array_destructor_context[] = {
+    {"c Cstruct1 *", PY_array_destructor_function_0},
+    {NULL, NULL}
+};

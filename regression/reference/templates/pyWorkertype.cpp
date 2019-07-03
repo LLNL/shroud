@@ -25,7 +25,9 @@ static void
 PY_Worker_tp_del (PY_Worker *self)
 {
 // splicer begin class.Worker.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.Worker.type.del
 }

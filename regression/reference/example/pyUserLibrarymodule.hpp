@@ -19,6 +19,14 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+typedef struct {
+    const char *name;
+    void (*dtor)(void *ptr);
+} blah;
+extern blah PP_array_destructor_context[];
+extern void PP_array_destructor_function(PyObject *cap);
+
 
 // ------------------------------
 namespace example {
@@ -33,6 +41,7 @@ extern PyTypeObject PP_ExClass1_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass1 * obj;
+    blah * dtor;
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
@@ -54,6 +63,7 @@ extern PyTypeObject PP_ExClass2_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass2 * obj;
+    blah * dtor;
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;

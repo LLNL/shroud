@@ -31,7 +31,9 @@ static void
 PY_Singleton_tp_del (PY_Singleton *self)
 {
 // splicer begin class.Singleton.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.Singleton.type.del
 }

@@ -69,6 +69,7 @@
                         "_fmtresult": {
                             "fmtpy": {
                                 "PYN_descr": "PY_Cstruct1_array_descr",
+                                "PY_build_format": "O",
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "c_deref": "",
@@ -78,7 +79,8 @@
                                 "cxx_var": "rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
+                                "size_var": "SHSize_rv",
+                                "vargs": "rv"
                             }
                         },
                         "ast": {

@@ -45,7 +45,9 @@ static void
 PP_ExClass1_tp_del (PP_ExClass1 *self)
 {
 // splicer begin class.ExClass1.type.del
-    delete self->obj;
+    if (self->dtor != NULL) {
+         self->dtor->dtor(static_cast<void *>(self->obj));
+    }
     self->obj = NULL;
 // splicer end class.ExClass1.type.del
 }
@@ -67,6 +69,11 @@ PP_ExClass1_tp_init_0(
 // ExClass1()
 // splicer begin class.ExClass1.method.ctor_0
     self->obj = new example::nested::ExClass1();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->dtor = PP_array_destructor_context + 0;
     return 0;
 // splicer end class.ExClass1.method.ctor_0
 }
@@ -100,6 +107,11 @@ PP_ExClass1_tp_init_1(
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass1(&SH_name);
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->dtor = PP_array_destructor_context + 0;
     return 0;
 // splicer end class.ExClass1.method.ctor_1
 }
