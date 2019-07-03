@@ -132,6 +132,7 @@ PY_function4(
     const char *SHT_kwlist[] = {
         "rv",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
         const_cast<char **>(SHT_kwlist), &rv))
@@ -143,7 +144,7 @@ PY_function4(
     int rv = function4(SH_rv);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4
@@ -255,10 +256,12 @@ PY_UseImplWorker_instantiation3(
 {
 // int UseImplWorker()
 // splicer begin function.use_impl_worker_instantiation3
+    PyObject * SHTPy_rv = NULL;
+
     int rv = UseImplWorker();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_instantiation3

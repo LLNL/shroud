@@ -47,6 +47,7 @@ PY_passStructByValue(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStructByValue",
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
@@ -58,7 +59,7 @@ PY_passStructByValue(
     int rv = passStructByValue(*arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct_by_value
@@ -80,6 +81,7 @@ PY_passStruct1(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:passStruct1",
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
@@ -91,7 +93,7 @@ PY_passStruct1(
     int rv = passStruct1(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct1

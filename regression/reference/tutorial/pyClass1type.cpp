@@ -97,10 +97,12 @@ PY_class1_Method1(
 {
 // int Method1()
 // splicer begin class.Class1.method.method1
+    PyObject * SHTPy_rv = NULL;
+
     int rv = self->obj->Method1();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.method1
@@ -126,6 +128,7 @@ PY_class1_equivalent(
     const char *SHT_kwlist[] = {
         "obj2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:equivalent",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
@@ -137,9 +140,14 @@ PY_class1_equivalent(
     bool rv = self->obj->equivalent(*obj2);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end class.Class1.method.equivalent
 }
 
@@ -185,6 +193,7 @@ PY_class1_directionFunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -198,7 +207,7 @@ PY_class1_directionFunc(
         self->obj->directionFunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.direction_func

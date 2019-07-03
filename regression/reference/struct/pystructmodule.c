@@ -51,6 +51,7 @@ PY_passStructByValue(
     char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStructByValue",
         SHT_kwlist, &SHTPy_arg))
@@ -72,7 +73,7 @@ PY_passStructByValue(
     int rv = passStructByValue(*arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     // cleanup
     Py_DECREF(SHPy_arg);
@@ -102,6 +103,7 @@ PY_passStruct1(
     char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStruct1",
         SHT_kwlist, &SHTPy_arg))
@@ -123,7 +125,7 @@ PY_passStruct1(
     int rv = passStruct1(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     // cleanup
     Py_DECREF(SHPy_arg);

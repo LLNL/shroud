@@ -417,6 +417,7 @@ PY_Sum(
     const char *SHT_kwlist[] = {
         "values",
         NULL };
+    PyObject * SHPy_result = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
@@ -435,7 +436,7 @@ PY_Sum(
         Sum(len, values, &result);
 
         // post_call
-        PyObject * SHPy_result = PyInt_FromLong(result);
+        SHPy_result = PyInt_FromLong(result);
 
         // cleanup
         std::free(values);

@@ -45,7 +45,7 @@ from .util import wformat, append_format
 # vargs    - Variable for PyBuild_Tuple
 # ctor     - Code to construct a Python object
 # ctorvar  - Variable created by ctor
-BuildTuple = collections.namedtuple("BuildTuple", "format vargs ctor ctorvar")
+BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk ctorvar")
 
 
 class Wrapp(util.WrapperMixin):
@@ -748,7 +748,7 @@ return 1;""",
             # If post_call is None, the Object has already been created
             build_format = "O"
             vargs = fmt.py_var
-            ctor = None
+            blk = None
             ctorvar = fmt.py_var
         else:
             # Decide values for Py_BuildValue
@@ -759,22 +759,22 @@ return 1;""",
             vargs = wformat(vargs, fmt)
 
             if typemap.PY_ctor:
-                ctor = wformat(
-                    "{PyObject} * {py_var} = " + typemap.PY_ctor + ";", fmt
-                )
+                decl = "{PyObject} * {py_var} = NULL;"
+                post_call = "{py_var} = " + typemap.PY_ctor + ";"
                 ctorvar = fmt.py_var
             else:
                 # ex. long long does not define PY_ctor.
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
-                ctor = wformat(
-                    "{PyObject} * {py_var} = "
-                    'Py_BuildValue("{PY_build_format}", {vargs});',
-                    fmt,
-                )
+                decl = "{PyObject} * {py_var} = NULL;"
+                post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
                 ctorvar = fmt.py_var
+            blk = dict(
+                decl=[wformat(decl, fmt)],
+                post_call=[wformat(post_call, fmt)],
+            )
 
-        return BuildTuple(build_format, vargs, ctor, ctorvar)
+        return BuildTuple(build_format, vargs, blk, ctorvar)
 
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.
@@ -1383,6 +1383,8 @@ return 1;""",
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
             if ttt0.format == "O":
+                # If an object has already been created,
+                # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
             update_code_blocks(locals(), result_blk, fmt_result)
 
@@ -1394,9 +1396,10 @@ return 1;""",
             return_code = "Py_RETURN_NONE;"
         elif len(build_tuples) == 1:
             # return a single object already created in build_stmts
-            ctor = build_tuples[0].ctor
-            if ctor:
-                post_call_code.append(ctor)
+            blk = build_tuples[0].blk
+            if blk:
+                decl_code.extend(blk["decl"])
+                post_call_code.extend(blk["post_call"])
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
