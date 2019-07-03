@@ -304,7 +304,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "typedef struct {{\n"
             "PyObject_HEAD\n"
             "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
-            "{PY_typedef_dtor_context} * {PY_type_dtor};",
+            "{PY_dtor_context_typedef} * {PY_type_dtor};",
             fmt_class,
         )
         self._create_splicer("C_object", output)
@@ -1306,7 +1306,7 @@ return 1;""",
                     self.language, fmt_result.cxx_var, capsule_type, fmt_result,
                     "goto fail", True))
                 append_format(fail_code, "if ({cxx_var} != NULL) {{+\n"
-                              "{PY_numpy_array_dtor_context}"
+                              "{PY_dtor_context_array}"
                               "[{capsule_order}].dtor({cxx_var});\n"
                               "-}}",
                               fmt_result)
@@ -1570,7 +1570,7 @@ return 1;""",
             self.language, var, capsule_type, fmt, "return -1", cls.as_struct))
         append_format(code,
                       "self->{PY_type_dtor} = "
-                      "{PY_numpy_array_dtor_context} + {capsule_order};",
+                      "{PY_dtor_context_array} + {capsule_order};",
                       fmt)
 
         if cls.as_struct and cls.options.PY_struct_arg == "class":
@@ -2076,7 +2076,7 @@ extern PyObject *{PY_prefix}error_obj;
                 "typedef struct {{+\n"
                 "const char *name;\n"
                 "void (*dtor)(void *ptr);\n"
-                "-}} {PY_typedef_dtor_context};",
+                "-}} {PY_dtor_context_typedef};",
                 fmt
             )
 
@@ -2102,19 +2102,19 @@ extern PyObject *{PY_prefix}error_obj;
         """
         append_format(
             self.py_utility_declaration,
-            "extern {PY_typedef_dtor_context} {PY_numpy_array_dtor_context}[];",
+            "extern {PY_dtor_context_typedef} {PY_dtor_context_array}[];",
             fmt,
         )
         append_format(
             self.py_utility_declaration,
-            "extern void {PY_numpy_array_dtor_function}(PyObject *cap);",
+            "extern void {PY_capsule_destructor_function}(PyObject *cap);",
             fmt,
         )
 
         append_format(
             output,
             "\n// destructor function for PyCapsule\n"
-            "void {PY_numpy_array_dtor_function}(PyObject *cap)\n"
+            "void {PY_capsule_destructor_function}(PyObject *cap)\n"
             "{{+\n"
             # 'const char* name = PyCapsule_GetName(cap);\n'
             'void *ptr = PyCapsule_GetPointer(cap, "{PY_numpy_array_capsule_name}");',
@@ -2123,21 +2123,21 @@ extern PyObject *{PY_prefix}error_obj;
         if self.language == "c":
             append_format(
                 output,
-                "{PY_typedef_dtor_context} * context = PyCapsule_GetContext(cap);", fmt)
+                "{PY_dtor_context_typedef} * context = PyCapsule_GetContext(cap);", fmt)
         else:
             append_format(
                 output,
-                "{PY_typedef_dtor_context} * context = "
-                "static_cast<{PY_typedef_dtor_context} *>\t("
+                "{PY_dtor_context_typedef} * context = "
+                "static_cast<{PY_dtor_context_typedef} *>\t("
                 "PyCapsule_GetContext(cap));", fmt)
         output.append("context->dtor(ptr);")
         output.append("-}")
 
-        # Create variable with as array of {PY_typedef_dtor_context}
+        # Create variable with as array of {PY_dtor_context_typedef}
         # to contain function pointers to routines to release memory.
         fcnnames = []
         for i, name in enumerate(self.capsule_order):
-            fcnname = fmt.PY_numpy_array_dtor_function + "_" + str(i)
+            fcnname = fmt.PY_capsule_destructor_function + "_" + str(i)
             fcnnames.append((name, fcnname))
             output.append("\n// {} - {}".format(i, name))
             output.append("static void {}(void *ptr)".format(fcnname))
@@ -2153,7 +2153,7 @@ extern PyObject *{PY_prefix}error_obj;
             "// Context strings"
         )
         append_format(
-            output, "{PY_typedef_dtor_context} {PY_numpy_array_dtor_context}[] = {{+", fmt
+            output, "{PY_dtor_context_typedef} {PY_dtor_context_array}[] = {{+", fmt
         )
         for name in fcnnames:
             output.append('{{"{}", {}}},'.format(name[0], name[1]))
@@ -2690,10 +2690,10 @@ decl_capsule=[
 post_call_capsule=[
     "{py_capsule} = "
     'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
-    "\t{PY_numpy_array_dtor_function});",
+    "\t{PY_capsule_destructor_function});",
     "if ({py_capsule} == NULL) goto fail;",
     "PyCapsule_SetContext({py_capsule},"
-    "\t {cast_static}void *{cast1}{PY_numpy_array_dtor_context} + "
+    "\t {cast_static}void *{cast1}{PY_dtor_context_array} + "
     "{capsule_order}{cast2});",
     "if (PyArray_SetBaseObject(\t"
     "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
@@ -3105,7 +3105,7 @@ py_statements_local = dict(
         ],
         # Deallocate memory for the struct
         post_call_capsule=[
-            "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
+            "{py_var}->{PY_type_dtor} = {PY_dtor_context_array} + {capsule_order};",
         ],
 # XXX currently have an error "crosses initialization of PyObject* SHPyResult"
 #        fail=[

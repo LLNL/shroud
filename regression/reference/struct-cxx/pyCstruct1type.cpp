@@ -62,7 +62,7 @@ PY_Cstruct1_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PY_array_destructor_context + 0;
+    self->dtor = PY_SHROUD_capsule_context + 0;
     // initialize fields
     Cstruct1 *SH_obj = self->obj;
     SH_obj->ifield = ifield;

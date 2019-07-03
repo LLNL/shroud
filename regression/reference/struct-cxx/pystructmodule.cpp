@@ -251,13 +251,13 @@ PY_returnStructByValue(
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     SHTPy_rv->obj = rv;
     SHTPy_rv->dtor = NULL;
-    SHTPy_rv->dtor = PY_array_destructor_context + 0;
+    SHTPy_rv->dtor = PY_SHROUD_capsule_context + 0;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     if (rv != NULL) {
-        PY_array_destructor_context[0].dtor(rv);
+        PY_SHROUD_capsule_context[0].dtor(rv);
     }
     return NULL;
 // splicer end function.return_struct_by_value

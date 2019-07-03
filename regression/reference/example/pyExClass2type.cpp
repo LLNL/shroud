@@ -186,7 +186,7 @@ PP_ExClass2_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PP_array_destructor_context + 1;
+    self->dtor = PP_SHROUD_capsule_context + 1;
     return 0;
 // splicer end class.ExClass2.method.ctor
 }

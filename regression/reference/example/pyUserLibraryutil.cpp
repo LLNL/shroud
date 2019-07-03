@@ -78,7 +78,7 @@ int PP_ExClass2_from_Object(PyObject *obj, void **addr)
 }
 
 // destructor function for PyCapsule
-void PP_array_destructor_function(PyObject *cap)
+void PP_SHROUD_capsule_destructor(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PP_array_dtor");
     PP_SHROUD_dtor_context * context = static_cast<PP_SHROUD_dtor_context *>
@@ -87,7 +87,7 @@ void PP_array_destructor_function(PyObject *cap)
 }
 
 // 0 - cxx example::nested::ExClass1 *
-static void PP_array_destructor_function_0(void *ptr)
+static void PP_SHROUD_capsule_destructor_0(void *ptr)
 {
     example::nested::ExClass1 * cxx_ptr =
         static_cast<example::nested::ExClass1 *>(ptr);
@@ -95,7 +95,7 @@ static void PP_array_destructor_function_0(void *ptr)
 }
 
 // 1 - cxx example::nested::ExClass2 *
-static void PP_array_destructor_function_1(void *ptr)
+static void PP_SHROUD_capsule_destructor_1(void *ptr)
 {
     example::nested::ExClass2 * cxx_ptr =
         static_cast<example::nested::ExClass2 *>(ptr);
@@ -105,8 +105,8 @@ static void PP_array_destructor_function_1(void *ptr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-PP_SHROUD_dtor_context PP_array_destructor_context[] = {
-    {"cxx example::nested::ExClass1 *", PP_array_destructor_function_0},
-    {"cxx example::nested::ExClass2 *", PP_array_destructor_function_1},
+PP_SHROUD_dtor_context PP_SHROUD_capsule_context[] = {
+    {"cxx example::nested::ExClass1 *", PP_SHROUD_capsule_destructor_0},
+    {"cxx example::nested::ExClass2 *", PP_SHROUD_capsule_destructor_1},
     {NULL, NULL}
 };

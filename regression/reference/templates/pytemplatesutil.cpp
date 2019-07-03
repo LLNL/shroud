@@ -156,7 +156,7 @@ int PP_user_int_from_Object(PyObject *obj, void **addr)
 }
 
 // destructor function for PyCapsule
-void PY_array_destructor_function(PyObject *cap)
+void PY_SHROUD_capsule_destructor(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
     PY_SHROUD_dtor_context * context = static_cast<PY_SHROUD_dtor_context *>
@@ -165,14 +165,14 @@ void PY_array_destructor_function(PyObject *cap)
 }
 
 // 0 - cxx std::vector<int> *
-static void PY_array_destructor_function_0(void *ptr)
+static void PY_SHROUD_capsule_destructor_0(void *ptr)
 {
     std::vector<int> * cxx_ptr = static_cast<std::vector<int> *>(ptr);
     delete cxx_ptr;
 }
 
 // 1 - cxx std::vector<double> *
-static void PY_array_destructor_function_1(void *ptr)
+static void PY_SHROUD_capsule_destructor_1(void *ptr)
 {
     std::vector<double> * cxx_ptr =
         static_cast<std::vector<double> *>(ptr);
@@ -182,8 +182,8 @@ static void PY_array_destructor_function_1(void *ptr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-PY_SHROUD_dtor_context PY_array_destructor_context[] = {
-    {"cxx std::vector<int> *", PY_array_destructor_function_0},
-    {"cxx std::vector<double> *", PY_array_destructor_function_1},
+PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
+    {"cxx std::vector<int> *", PY_SHROUD_capsule_destructor_0},
+    {"cxx std::vector<double> *", PY_SHROUD_capsule_destructor_1},
     {NULL, NULL}
 };

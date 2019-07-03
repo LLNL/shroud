@@ -42,7 +42,7 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
 }
 
 // destructor function for PyCapsule
-void PY_array_destructor_function(PyObject *cap)
+void PY_SHROUD_capsule_destructor(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
     PY_SHROUD_dtor_context * context = static_cast<PY_SHROUD_dtor_context *>
@@ -51,7 +51,7 @@ void PY_array_destructor_function(PyObject *cap)
 }
 
 // 0 - cxx Cstruct1 *
-static void PY_array_destructor_function_0(void *ptr)
+static void PY_SHROUD_capsule_destructor_0(void *ptr)
 {
     Cstruct1 * cxx_ptr = static_cast<Cstruct1 *>(ptr);
     delete cxx_ptr;
@@ -60,7 +60,7 @@ static void PY_array_destructor_function_0(void *ptr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-PY_SHROUD_dtor_context PY_array_destructor_context[] = {
-    {"cxx Cstruct1 *", PY_array_destructor_function_0},
+PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
+    {"cxx Cstruct1 *", PY_SHROUD_capsule_destructor_0},
     {NULL, NULL}
 };

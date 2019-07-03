@@ -12,7 +12,7 @@
 
 
 // destructor function for PyCapsule
-void PY_array_destructor_function(PyObject *cap)
+void PY_SHROUD_capsule_destructor(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
     PY_SHROUD_dtor_context * context = PyCapsule_GetContext(cap);
@@ -20,7 +20,7 @@ void PY_array_destructor_function(PyObject *cap)
 }
 
 // 0 - c Cstruct1 *
-static void PY_array_destructor_function_0(void *ptr)
+static void PY_SHROUD_capsule_destructor_0(void *ptr)
 {
     free(ptr);
 }
@@ -28,7 +28,7 @@ static void PY_array_destructor_function_0(void *ptr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-PY_SHROUD_dtor_context PY_array_destructor_context[] = {
-    {"c Cstruct1 *", PY_array_destructor_function_0},
+PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
+    {"c Cstruct1 *", PY_SHROUD_capsule_destructor_0},
     {NULL, NULL}
 };

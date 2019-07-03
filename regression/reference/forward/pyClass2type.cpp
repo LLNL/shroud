@@ -59,7 +59,7 @@ PY_Class2_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PY_array_destructor_context + 0;
+    self->dtor = PY_SHROUD_capsule_context + 0;
     return 0;
 // splicer end class.Class2.method.ctor
 }

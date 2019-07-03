@@ -24,8 +24,8 @@ typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
 } PP_SHROUD_dtor_context;
-extern PP_SHROUD_dtor_context PP_array_destructor_context[];
-extern void PP_array_destructor_function(PyObject *cap);
+extern PP_SHROUD_dtor_context PP_SHROUD_capsule_context[];
+extern void PP_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 namespace example {
