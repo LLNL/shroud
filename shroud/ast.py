@@ -519,14 +519,19 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             C_array_type=C_prefix + "SHROUD_array",
             F_array_type="SHROUD_array",
-            PY_result="SHTPy_rv",  # Create PyObject for result
+
             LUA_result="rv",
             LUA_prefix="l_",
             LUA_state_var="L",
             LUA_this_call="",
+
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
+            PY_result="SHTPy_rv",  # Create PyObject for result
             PY_this_call="",
+            PY_type_obj="obj",  # name of cpp class pointer in PyObject
+            PY_type_dtor="dtor",  # name of destructor capsule infomation
+
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),

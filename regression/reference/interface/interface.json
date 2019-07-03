@@ -78,6 +78,8 @@
             "PY_prefix": "PY_",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
+            "PY_type_dtor": "dtor",
+            "PY_type_obj": "obj",
             "YAML_type_filename": "interface_types.yaml",
             "c_temp": "SHT_",
             "cast1": ") ",

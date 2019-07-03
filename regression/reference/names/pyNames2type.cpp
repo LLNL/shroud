@@ -38,10 +38,10 @@ static void
 PY_Names2_tp_del (PY_Names2 *self)
 {
 // splicer begin class.Names2.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
+    if (self->mydtor != NULL) {
+         self->mydtor->dtor(static_cast<void *>(self->myobj));
     }
-    self->obj = NULL;
+    self->myobj = NULL;
 // splicer end class.Names2.type.del
 }
 // splicer begin class.Names2.impl.after_methods

@@ -38,10 +38,10 @@ static void
 PY_twoTs_instantiation4_tp_del_instantiation4 (PY_twoTs_instantiation4 *self)
 {
 // splicer begin class.twoTs.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
+    if (self->mydtor != NULL) {
+         self->mydtor->dtor(static_cast<void *>(self->myobj));
     }
-    self->obj = NULL;
+    self->myobj = NULL;
 // splicer end class.twoTs.type.del
 }
 // splicer begin class.twoTs.impl.after_methods

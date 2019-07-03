@@ -117,8 +117,6 @@ class Wrapp(util.WrapperMixin):
         newlibrary.eval_template("PY_module_filename")
         newlibrary.eval_template("PY_header_filename")
         newlibrary.eval_template("PY_utility_filename")
-        fmt_library.PY_type_obj = "obj"  # name of cpp class pointer in PyObject
-        fmt_library.PY_type_dtor = "dtor"  # name of destructor capsule infomation
         fmt_library.PY_PyObject = "PyObject"
         fmt_library.PyObject = "PyObject"
         fmt_library.PY_param_self = "self"

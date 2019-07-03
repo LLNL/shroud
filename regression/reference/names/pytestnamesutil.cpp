@@ -49,7 +49,7 @@ int PP_Names_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_Names * self = (PY_Names *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.Names.utility.from_object
 }
@@ -78,7 +78,7 @@ int PP_Names2_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_Names2 * self = (PY_Names2 *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.Names2.utility.from_object
 }
@@ -107,7 +107,7 @@ int PP_Vvv1_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_Vvv1 * self = (PY_Vvv1 *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.vector.utility.from_object
 }
@@ -136,7 +136,7 @@ int PP_vector_double_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_vector_double * self = (PY_vector_double *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.vector.utility.from_object
 }
@@ -165,7 +165,7 @@ int PP_vector_instantiation5_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_vector_instantiation5 * self = (PY_vector_instantiation5 *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.vector.utility.from_object
 }
@@ -194,7 +194,7 @@ int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_vector_instantiation3 * self = (PY_vector_instantiation3 *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.vector.utility.from_object
 }
@@ -223,7 +223,7 @@ int PP_twoTs_0_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_twoTs_0 * self = (PY_twoTs_0 *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.twoTs.utility.from_object
 }
@@ -252,7 +252,7 @@ int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr)
         return 0;
     }
     PY_twoTs_instantiation4 * self = (PY_twoTs_instantiation4 *) obj;
-    *addr = self->obj;
+    *addr = self->myobj;
     return 1;
     // splicer end class.twoTs.utility.from_object
 }

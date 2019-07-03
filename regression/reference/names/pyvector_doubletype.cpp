@@ -39,10 +39,10 @@ static void
 PY_vector_double_tp_del (PY_vector_double *self)
 {
 // splicer begin class.vector.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
+    if (self->mydtor != NULL) {
+         self->mydtor->dtor(static_cast<void *>(self->myobj));
     }
-    self->obj = NULL;
+    self->myobj = NULL;
 // splicer end class.vector.type.del
 }
 // splicer begin class.vector.impl.after_methods

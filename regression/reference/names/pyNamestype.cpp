@@ -38,10 +38,10 @@ static void
 PY_Names_tp_del (PY_Names *self)
 {
 // splicer begin class.Names.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
+    if (self->mydtor != NULL) {
+         self->mydtor->dtor(static_cast<void *>(self->myobj));
     }
-    self->obj = NULL;
+    self->myobj = NULL;
 // splicer end class.Names.type.del
 }
 
@@ -57,7 +57,7 @@ PY_names_method1(
 {
 // void method1()
 // splicer begin class.Names.method.method1
-    self->obj->method1();
+    self->myobj->method1();
     Py_RETURN_NONE;
 // splicer end class.Names.method.method1
 }
@@ -74,7 +74,7 @@ PY_names_method2(
 {
 // void method2()
 // splicer begin class.Names.method.method2
-    self->obj->method2();
+    self->myobj->method2();
     Py_RETURN_NONE;
 // splicer end class.Names.method.method2
 }
