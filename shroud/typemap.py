@@ -610,17 +610,40 @@ def initialize():
                 intent_inout=dict(
                     pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
                     # py_var is already declared for inout
-                    post_call=["{py_var} = PyBool_FromLong({c_deref}{c_var});"],
+                    post_call=[
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+                        "if ({py_var} == NULL) goto fail;",
+                    ],
+                    fail=[
+                        "Py_XDECREF({py_var});",
+                    ],
+                    goto_fail=True,
                 ),
                 intent_out=dict(
+                    decl=[
+                        "{PyObject} * {py_var} = NULL;",
+                    ],
                     post_call=[
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
-                    ]
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;",
+                    ],
+                    fail=[
+                        "Py_XDECREF({py_var});",
+                    ],
+                    goto_fail=True,
                 ),
                 result=dict(
+                    decl=[
+                        "{PyObject} * {py_var} = NULL;",
+                    ],
                     post_call=[
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
-                    ]
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;",
+                    ],
+                    fail=[
+                        "Py_XDECREF({py_var});",
+                    ],
+                    goto_fail=True,
                 ),
             ),
             # XXX PY_format='p',  # Python 3.3 or greater

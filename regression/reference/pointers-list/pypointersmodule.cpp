@@ -138,6 +138,7 @@ PY_intargs(
         "argin",
         "arginout",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         const_cast<char **>(SHT_kwlist), &argin, &arginout))
@@ -149,7 +150,7 @@ PY_intargs(
     intargs(argin, &arginout, &argout);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ii", arginout, argout);
+    SHTPy_rv = Py_BuildValue("ii", arginout, argout);
 
     return SHTPy_rv;
 // splicer end function.intargs
@@ -303,6 +304,7 @@ PY_get_values(
 // splicer begin function.get_values
     PyObject *SHPy_values = NULL;
     int * values = NULL;
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     {
         // pre_call
@@ -318,7 +320,7 @@ PY_get_values(
         // post_call
         SHPy_values = SHROUD_to_PyList_int(values, 3);
         if (SHPy_values == NULL) goto fail;
-        PyObject * SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+        SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
 
         // cleanup
         std::free(values);
@@ -356,6 +358,7 @@ PY_get_values2(
     int * arg1 = NULL;
     PyObject *SHPy_arg2 = NULL;
     int * arg2 = NULL;
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     {
         // pre_call
@@ -377,7 +380,7 @@ PY_get_values2(
         if (SHPy_arg1 == NULL) goto fail;
         SHPy_arg2 = SHROUD_to_PyList_int(arg2, 3);
         if (SHPy_arg2 == NULL) goto fail;
-        PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+        SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
 
         // cleanup
         std::free(arg1);
@@ -414,6 +417,7 @@ PY_Sum(
     const char *SHT_kwlist[] = {
         "values",
         NULL };
+    PyObject * SHPy_result = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
@@ -432,7 +436,7 @@ PY_Sum(
         Sum(len, values, &result);
 
         // post_call
-        PyObject * SHPy_result = PyInt_FromLong(result);
+        SHPy_result = PyInt_FromLong(result);
 
         // cleanup
         std::free(values);

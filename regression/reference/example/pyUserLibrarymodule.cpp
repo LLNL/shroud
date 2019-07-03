@@ -72,6 +72,7 @@ PP_isNameValid(
     const char *SHT_kwlist[] = {
         "name",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:isNameValid",
         const_cast<char **>(SHT_kwlist), &name))
@@ -83,9 +84,14 @@ PP_isNameValid(
     bool rv = example::nested::isNameValid(SH_name);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.is_name_valid
 }
 
@@ -101,12 +107,19 @@ PP_isInitialized(
 {
 // bool isInitialized()
 // splicer begin function.is_initialized
+    PyObject * SHTPy_rv = NULL;
+
     bool rv = example::nested::isInitialized();
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.is_initialized
 }
 
@@ -123,30 +136,40 @@ PP_checkBool(
 // void checkBool(bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // splicer begin function.check_bool
     PyObject * SHPy_arg1;
+    PyObject * SHPy_arg2 = NULL;
     PyObject * SHPy_arg3;
     const char *SHT_kwlist[] = {
         "arg1",
         "arg3",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg1,
         &PyBool_Type, &SHPy_arg3))
         return NULL;
+    {
+        // pre_call
+        bool arg1 = PyObject_IsTrue(SHPy_arg1);
+        bool arg2;  // intent(out)
+        bool arg3 = PyObject_IsTrue(SHPy_arg3);
 
-    // pre_call
-    bool arg1 = PyObject_IsTrue(SHPy_arg1);
-    bool arg2;  // intent(out)
-    bool arg3 = PyObject_IsTrue(SHPy_arg3);
+        example::nested::checkBool(arg1, &arg2, &arg3);
 
-    example::nested::checkBool(arg1, &arg2, &arg3);
+        // post_call
+        SHPy_arg2 = PyBool_FromLong(arg2);
+        if (SHPy_arg2 == NULL) goto fail;
+        SHPy_arg3 = PyBool_FromLong(arg3);
+        if (SHPy_arg3 == NULL) goto fail;
+        SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
 
-    // post_call
-    PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
-    SHPy_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+        return SHTPy_rv;
+    }
 
-    return SHTPy_rv;
+fail:
+    Py_XDECREF(SHPy_arg2);
+    Py_XDECREF(SHPy_arg3);
+    return NULL;
 // splicer end function.check_bool
 }
 
@@ -257,10 +280,12 @@ PP_test_size_t(
 {
 // size_t test_size_t()
 // splicer begin function.test_size_t
+    PyObject * SHTPy_rv = NULL;
+
     size_t rv = example::nested::test_size_t();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromSize_t(rv);
+    SHTPy_rv = PyInt_FromSize_t(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.test_size_t
@@ -521,6 +546,7 @@ PP_verylongfunctionname1(
         "verylongname9",
         "verylongname10",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname1",
@@ -536,10 +562,9 @@ PP_verylongfunctionname1(
         &verylongname10);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1,
-        verylongname2, verylongname3, verylongname4, verylongname5,
-        verylongname6, verylongname7, verylongname8, verylongname9,
-        verylongname10);
+    SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
 
     return SHTPy_rv;
 // splicer end function.verylongfunctionname1
@@ -579,6 +604,7 @@ PP_verylongfunctionname2(
         "verylongname9",
         "verylongname10",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname2",
@@ -594,7 +620,7 @@ PP_verylongfunctionname2(
         verylongname10);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.verylongfunctionname2

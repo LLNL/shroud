@@ -45,7 +45,7 @@ from .util import wformat, append_format
 # vargs    - Variable for PyBuild_Tuple
 # ctor     - Code to construct a Python object
 # ctorvar  - Variable created by ctor
-BuildTuple = collections.namedtuple("BuildTuple", "format vargs ctor ctorvar")
+BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk ctorvar")
 
 
 class Wrapp(util.WrapperMixin):
@@ -138,8 +138,9 @@ class Wrapp(util.WrapperMixin):
         self.py_utility_functions = []
 
         # reserved the 0 slot of capsule_order
-        # self.add_capsule_code('--none--', ['// Do not release'])
-        fmt_library.capsule_order = "-1"
+        self.add_capsule_code('--none--', ['// Do not release'])
+        fmt_library.capsule_order = "0"
+        self.need_blah = False  # Not needed if no there gc routines are added.
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -748,7 +749,7 @@ return 1;""",
             # If post_call is None, the Object has already been created
             build_format = "O"
             vargs = fmt.py_var
-            ctor = None
+            blk = None
             ctorvar = fmt.py_var
         else:
             # Decide values for Py_BuildValue
@@ -759,22 +760,22 @@ return 1;""",
             vargs = wformat(vargs, fmt)
 
             if typemap.PY_ctor:
-                ctor = wformat(
-                    "{PyObject} * {py_var} = " + typemap.PY_ctor + ";", fmt
-                )
+                decl = "{PyObject} * {py_var} = NULL;"
+                post_call = "{py_var} = " + typemap.PY_ctor + ";"
                 ctorvar = fmt.py_var
             else:
                 # ex. long long does not define PY_ctor.
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
-                ctor = wformat(
-                    "{PyObject} * {py_var} = "
-                    'Py_BuildValue("{PY_build_format}", {vargs});',
-                    fmt,
-                )
+                decl = "{PyObject} * {py_var} = NULL;"
+                post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
                 ctorvar = fmt.py_var
+            blk = dict(
+                decl=[wformat(decl, fmt)],
+                post_call=[wformat(post_call, fmt)],
+            )
 
-        return BuildTuple(build_format, vargs, ctor, ctorvar)
+        return BuildTuple(build_format, vargs, blk, ctorvar)
 
     def wrap_functions(self, cls, functions):
         """Wrap functions for a library or class.
@@ -1383,6 +1384,8 @@ return 1;""",
             # Add result to front of return tuple.
             build_tuples.insert(0, ttt0)
             if ttt0.format == "O":
+                # If an object has already been created,
+                # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
             update_code_blocks(locals(), result_blk, fmt_result)
 
@@ -1394,21 +1397,27 @@ return 1;""",
             return_code = "Py_RETURN_NONE;"
         elif len(build_tuples) == 1:
             # return a single object already created in build_stmts
-            ctor = build_tuples[0].ctor
-            if ctor:
-                post_call_code.append(ctor)
+            blk = build_tuples[0].blk
+            if blk:
+                decl_code.extend(blk["decl"])
+                post_call_code.extend(blk["post_call"])
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
+            # fmt=format for function. Do not use fmt_result here.
+            # There may be no return value, only intent(OUT) arguments.
             # create tuple object
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
-            append_format(
-                post_call_code,
-                "PyObject * {PY_result} = "
-                'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
-                fmt,
+            rv_blk = dict(
+                decl=["PyObject *{PY_result} = NULL;  // return value object"],
+                post_call=["{PY_result} = "
+                           'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});'],
+                # Since this is the last statement before the Return,
+                # no need to check for error. Just return NULL.
+                # fail=["Py_XDECREF(SHPyResult);"],
             )
+            update_code_blocks(locals(), rv_blk, fmt)
             return_code = wformat("return {PY_result};", fmt)
 
         need_blank = False  # put return right after call
@@ -2061,7 +2070,7 @@ extern PyObject *{PY_prefix}error_obj;
         fmt = node.fmtdict
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if self.capsule_order:
+        if len(self.capsule_order) > 1:
             # header file may be needed to fully qualify types capsule destructors
             for include in node.cxx_header.split():
                 output.append('#include "%s"' % include)
@@ -2070,7 +2079,7 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         output.extend(self.py_utility_functions)
 
-        if self.capsule_order or self.need_blah:
+        if self.need_blah:
             self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
             os.path.join(self.config.python_dir, fmt.PY_utility_filename)
@@ -2135,9 +2144,7 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(
             output,
             "{{+\n"
-            "if (icontext != -1) {{+\n"
             "{PY_dtor_context_array}[icontext].dtor(ptr);\n"
-            "-}}\n"
             "-}}", fmt)
 
         # Write function to release NumPy capsule base object.
@@ -3100,7 +3107,7 @@ py_statements_local = dict(
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
             "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = 0;",  # may not add post_call_capsule
+            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -3110,20 +3117,19 @@ py_statements_local = dict(
     struct_result_class=dict(
         cxx_local_var="pointer",
         decl=[
-            "{PyObject} *{py_var} = NULL;",
+            "{PyObject} *{py_var} = NULL;  // struct_result_class",
         ],
         post_call=[
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
-#            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
-# XXX currently have an error "crosses initialization of PyObject* SHPyResult"
-#        fail=[
-#            "Py_XDECREF({py_var});",
-#        ],
-#        goto_fail=True,
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
     ),
 
 )

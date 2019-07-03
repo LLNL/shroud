@@ -59,6 +59,7 @@ PY_intargs(
         "argin",
         "arginout",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         SHT_kwlist, &argin, &arginout))
@@ -70,7 +71,7 @@ PY_intargs(
     intargs(argin, &arginout, &argout);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ii", arginout, argout);
+    SHTPy_rv = Py_BuildValue("ii", arginout, argout);
 
     return SHTPy_rv;
 // splicer end function.intargs
@@ -220,6 +221,7 @@ PY_get_values(
 // splicer begin function.get_values
     npy_intp SHD_values[1] = {3};
     PyArrayObject * SHPy_values = NULL;
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     // post_parse
     SHPy_values = (PyArrayObject *) PyArray_SimpleNew(1, SHD_values, NPY_INT);
@@ -236,7 +238,7 @@ PY_get_values(
     get_values(&nvalues, values);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+    SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
 
     return SHTPy_rv;
 
@@ -268,6 +270,7 @@ PY_get_values2(
     PyArrayObject * SHPy_arg1 = NULL;
     npy_intp SHD_arg2[1] = {3};
     PyArrayObject * SHPy_arg2 = NULL;
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     // post_parse
     SHPy_arg1 = (PyArrayObject *) PyArray_SimpleNew(1, SHD_arg1, NPY_INT);
@@ -290,7 +293,7 @@ PY_get_values2(
     get_values2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+    SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
 
     return SHTPy_rv;
 
@@ -318,6 +321,7 @@ PY_Sum(
     char *SHT_kwlist[] = {
         "values",
         NULL };
+    PyObject * SHPy_result = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist, 
         &SHTPy_values))
@@ -340,7 +344,7 @@ PY_Sum(
     Sum(len, values, &result);
 
     // post_call
-    PyObject * SHPy_result = PyInt_FromLong(result);
+    SHPy_result = PyInt_FromLong(result);
 
     // cleanup
     Py_DECREF(SHPy_values);

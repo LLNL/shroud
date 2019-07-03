@@ -184,7 +184,7 @@ PP_ExClass2_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 1;
+    self->idtor = 2;
     return 0;
 // splicer end class.ExClass2.method.ctor
 }
@@ -201,10 +201,12 @@ PP_exclass2_getName(
 {
 // const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // splicer begin class.ExClass2.method.get_name
+    PyObject * SHTPy_rv = NULL;
+
     const std::string & SHCXX_rv = self->obj->getName();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -223,10 +225,12 @@ PP_exclass2_getName2(
 {
 // const string & getName2() +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name2
+    PyObject * SHTPy_rv = NULL;
+
     const std::string & SHCXX_rv = self->obj->getName2();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -245,10 +249,12 @@ PP_exclass2_getName3(
 {
 // string & getName3() const +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name3
+    PyObject * SHTPy_rv = NULL;
+
     std::string & SHCXX_rv = self->obj->getName3();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -267,10 +273,12 @@ PP_exclass2_getName4(
 {
 // string & getName4() +deref(allocatable)
 // splicer begin class.ExClass2.method.get_name4
+    PyObject * SHTPy_rv = NULL;
+
     std::string & SHCXX_rv = self->obj->getName4();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -293,10 +301,12 @@ PP_exclass2_GetNameLength(
 {
 // int GetNameLength() const
 // splicer begin class.ExClass2.method.get_name_length
+    PyObject * SHTPy_rv = NULL;
+
     int rv = self->obj->GetNameLength();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_name_length
@@ -417,10 +427,12 @@ PP_exclass2_getTypeID(
 {
 // TypeID getTypeID() const
 // splicer begin class.ExClass2.method.get_type_id
+    PyObject * SHTPy_rv = NULL;
+
     TypeID SHCXX_rv = self->obj->getTypeID();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_type_id
@@ -522,10 +534,12 @@ PP_exclass2_getValue_int(
 {
 // int getValue()
 // splicer begin class.ExClass2.method.get_value_int
+    PyObject * SHTPy_rv = NULL;
+
     int rv = self->obj->getValue();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_value_int
@@ -539,10 +553,12 @@ PP_exclass2_getValue_double(
 {
 // double getValue()
 // splicer begin class.ExClass2.method.get_value_double
+    PyObject * SHTPy_rv = NULL;
+
     double rv = self->obj->getValue();
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ExClass2.method.get_value_double

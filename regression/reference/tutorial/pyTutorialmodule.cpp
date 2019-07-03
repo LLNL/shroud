@@ -68,6 +68,7 @@ PY_Function2(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -76,7 +77,7 @@ PY_Function2(
     double rv = tutorial::Function2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
@@ -99,6 +100,7 @@ PY_Sum(
     const char *SHT_kwlist[] = {
         "values",
         NULL };
+    PyObject * SHPy_result = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
@@ -121,7 +123,7 @@ PY_Sum(
         tutorial::Sum(len, values, &result);
 
         // post_call
-        PyObject * SHPy_result = PyInt_FromLong(result);
+        SHPy_result = PyInt_FromLong(result);
 
         // cleanup
         Py_DECREF(SHPy_values);
@@ -151,6 +153,7 @@ PY_TypeLongLong(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
         const_cast<char **>(SHT_kwlist), &arg1))
@@ -159,7 +162,7 @@ PY_TypeLongLong(
     long long rv = tutorial::TypeLongLong(arg1);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("L", rv);
+    SHTPy_rv = Py_BuildValue("L", rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.type_long_long
@@ -181,6 +184,7 @@ PY_Function3(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
@@ -192,9 +196,14 @@ PY_Function3(
     bool rv = tutorial::Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.function3
 }
 
@@ -221,6 +230,7 @@ PY_Function4a(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -233,7 +243,7 @@ PY_Function4a(
     const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -258,6 +268,7 @@ PY_Function4b(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -271,7 +282,7 @@ PY_Function4b(
         SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -300,6 +311,7 @@ PY_Function4c(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4c",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -312,7 +324,7 @@ PY_Function4c(
     const std::string SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -335,10 +347,12 @@ PY_Function4d(
 {
 // const std::string * Function4d() +deref(allocatable)+owner(caller)
 // splicer begin function.function4d
+    PyObject * SHTPy_rv = NULL;
+
     const std::string * SHCXX_rv = tutorial::Function4d();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
         SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
@@ -365,6 +379,7 @@ PY_Function5_arg1_arg2(
         "arg2",
         NULL };
     double rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -393,7 +408,7 @@ PY_Function5_arg1_arg2(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(rv);
+    SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function5
@@ -574,6 +589,7 @@ PY_overload1_num_offset_stride(
         "stride",
         NULL };
     int rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -596,7 +612,7 @@ PY_overload1_num_offset_stride(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_num_offset_stride
@@ -622,6 +638,7 @@ PY_overload1_5(
         "stride",
         NULL };
     int rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -644,7 +661,7 @@ PY_overload1_5(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_5
@@ -666,6 +683,7 @@ PY_typefunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -674,7 +692,7 @@ PY_typefunc(
     tutorial::TypeID rv = tutorial::typefunc(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc
@@ -696,6 +714,7 @@ PY_enumfunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -708,7 +727,7 @@ PY_enumfunc(
     tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.enumfunc
@@ -730,6 +749,7 @@ PY_colorfunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:colorfunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -741,7 +761,7 @@ PY_colorfunc(
     tutorial::Color SHCXX_rv = tutorial::colorfunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.colorfunc
@@ -763,6 +783,8 @@ PY_getMinMax(
 {
 // void getMinMax(int & min +intent(out), int & max +intent(out))
 // splicer begin function.get_min_max
+    PyObject *SHTPy_rv = NULL;  // return value object
+
     // pre_call
     int min;  // intent(out)
     int max;  // intent(out)
@@ -770,7 +792,7 @@ PY_getMinMax(
     tutorial::getMinMax(min, max);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ii", min, max);
+    SHTPy_rv = Py_BuildValue("ii", min, max);
 
     return SHTPy_rv;
 // splicer end function.get_min_max
@@ -792,6 +814,7 @@ PY_directionFunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -805,7 +828,7 @@ PY_directionFunc(
         tutorial::directionFunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.direction_func
@@ -860,6 +883,7 @@ PY_useclass(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
@@ -871,7 +895,7 @@ PY_useclass(
     int rv = tutorial::useclass(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.useclass
@@ -937,10 +961,12 @@ PY_get_global_flag(
 {
 // int get_global_flag()
 // splicer begin function.get_global_flag
+    PyObject * SHTPy_rv = NULL;
+
     int rv = tutorial::get_global_flag();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_global_flag
@@ -958,10 +984,12 @@ PY_LastFunctionCalled(
 {
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
+    PyObject * SHTPy_rv = NULL;
+
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;

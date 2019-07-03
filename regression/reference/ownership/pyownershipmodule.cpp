@@ -53,10 +53,12 @@ PY_ReturnIntPtrScalar(
 {
 // int * ReturnIntPtrScalar() +deref(scalar)
 // splicer begin function.return_int_ptr_scalar
+    PyObject * SHTPy_rv = NULL;
+
     int * rv = ReturnIntPtrScalar();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(*rv);
+    SHTPy_rv = PyInt_FromLong(*rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.return_int_ptr_scalar

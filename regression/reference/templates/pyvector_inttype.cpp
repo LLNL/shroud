@@ -42,7 +42,7 @@ PY_vector_int_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     return 0;
 // splicer end class.vector.method.ctor
 }

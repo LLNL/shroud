@@ -168,7 +168,7 @@
             "YAML_type_filename": "struct_types.yaml",
             "__line__": 28,
             "c_temp": "SHT_",
-            "capsule_order": "-1",
+            "capsule_order": "0",
             "cast1": ") ",
             "cast2": "",
             "cast_const": "(",
@@ -1204,7 +1204,7 @@
                         "PyTypeObject": "PY_Cstruct1_Type",
                         "c_deref": "",
                         "c_var": "rv",
-                        "capsule_order": "0",
+                        "capsule_order": "1",
                         "cxx_addr": "",
                         "cxx_member": ".",
                         "cxx_var": "rv",
@@ -2014,21 +2014,42 @@
                     ]
                 },
                 "intent_inout": {
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});"
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ],
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ]
                 },
                 "result": {
+                    "decl": [
+                        "{PyObject} * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ]
                 }
             }

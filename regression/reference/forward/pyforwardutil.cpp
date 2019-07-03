@@ -85,8 +85,14 @@ typedef struct {
     void (*dtor)(void *ptr);
 } PY_SHROUD_dtor_context;
 
-// 0 - cxx tutorial::Class2 *
+// 0 - --none--
 static void PY_SHROUD_capsule_destructor_0(void *ptr)
+{
+    // Do not release
+}
+
+// 1 - cxx tutorial::Class2 *
+static void PY_SHROUD_capsule_destructor_1(void *ptr)
 {
     tutorial::Class2 * cxx_ptr = static_cast<tutorial::Class2 *>(ptr);
     delete cxx_ptr;
@@ -96,16 +102,15 @@ static void PY_SHROUD_capsule_destructor_0(void *ptr)
 // via a Capsule base object with a destructor.
 // Context strings
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
-    {"cxx tutorial::Class2 *", PY_SHROUD_capsule_destructor_0},
+    {"--none--", PY_SHROUD_capsule_destructor_0},
+    {"cxx tutorial::Class2 *", PY_SHROUD_capsule_destructor_1},
     {NULL, NULL}
 };
 
 // Release memory based on icontext.
 void PY_SHROUD_release_memory(int icontext, void *ptr)
 {
-    if (icontext != -1) {
-        PY_SHROUD_capsule_context[icontext].dtor(ptr);
-    }
+    PY_SHROUD_capsule_context[icontext].dtor(ptr);
 }
 
 //Fetch garbage collection context.
