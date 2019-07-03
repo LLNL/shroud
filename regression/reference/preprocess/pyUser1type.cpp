@@ -39,9 +39,7 @@ static void
 PY_User1_tp_del (PY_User1 *self)
 {
 // splicer begin class.User1.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
-    }
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.User1.type.del
 }

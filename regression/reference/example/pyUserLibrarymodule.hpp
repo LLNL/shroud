@@ -24,8 +24,10 @@ typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
 } PP_SHROUD_dtor_context;
+
 extern PP_SHROUD_dtor_context PP_SHROUD_capsule_context[];
 extern void PP_SHROUD_capsule_destructor(PyObject *cap);
+extern void PP_SHROUD_release_memory(int icontext, void *ptr);
 
 // ------------------------------
 namespace example {
@@ -40,7 +42,7 @@ extern PyTypeObject PP_ExClass1_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass1 * obj;
-    PP_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
@@ -62,7 +64,7 @@ extern PyTypeObject PP_ExClass2_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass2 * obj;
-    PP_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;

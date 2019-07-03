@@ -18,6 +18,13 @@ void PY_SHROUD_capsule_destructor(PyObject *cap)
     PY_SHROUD_dtor_context * context = PyCapsule_GetContext(cap);
     context->dtor(ptr);
 }
+// Release memory based on icontext.
+void PY_SHROUD_release_memory(int icontext, void *ptr)
+{
+    if (icontext != -1) {
+        PY_SHROUD_capsule_context[icontext].dtor(ptr);
+    }
+}
 
 // 0 - c Cstruct1 *
 static void PY_SHROUD_capsule_destructor_0(void *ptr)

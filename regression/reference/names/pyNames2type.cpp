@@ -38,9 +38,7 @@ static void
 PY_Names2_tp_del (PY_Names2 *self)
 {
 // splicer begin class.Names2.type.del
-    if (self->mydtor != NULL) {
-         self->mydtor->dtor(static_cast<void *>(self->myobj));
-    }
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
     self->myobj = NULL;
 // splicer end class.Names2.type.del
 }

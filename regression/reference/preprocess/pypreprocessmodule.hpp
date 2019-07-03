@@ -26,6 +26,10 @@ typedef struct {
     void (*dtor)(void *ptr);
 } PY_SHROUD_dtor_context;
 
+extern PY_SHROUD_dtor_context PY_SHROUD_capsule_context[];
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+
 // ------------------------------
 class User1;  // forward declare
 extern PyTypeObject PY_User1_Type;
@@ -35,7 +39,7 @@ extern PyTypeObject PY_User1_Type;
 typedef struct {
 PyObject_HEAD
     User1 * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.User1.C_object
     // splicer end class.User1.C_object
 } PY_User1;
@@ -54,7 +58,7 @@ extern PyTypeObject PY_User2_Type;
 typedef struct {
 PyObject_HEAD
     User2 * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.User2.C_object
     // splicer end class.User2.C_object
 } PY_User2;

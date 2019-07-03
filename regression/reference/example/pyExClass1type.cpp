@@ -45,9 +45,7 @@ static void
 PP_ExClass1_tp_del (PP_ExClass1 *self)
 {
 // splicer begin class.ExClass1.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
-    }
+    PP_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.ExClass1.type.del
 }
@@ -73,7 +71,7 @@ PP_ExClass1_tp_init_0(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PP_SHROUD_capsule_context + 0;
+    self->idtor = 0;
     return 0;
 // splicer end class.ExClass1.method.ctor_0
 }
@@ -111,7 +109,7 @@ PP_ExClass1_tp_init_1(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PP_SHROUD_capsule_context + 0;
+    self->idtor = 0;
     return 0;
 // splicer end class.ExClass1.method.ctor_1
 }

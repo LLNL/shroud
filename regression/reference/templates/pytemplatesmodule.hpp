@@ -11,8 +11,10 @@ typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
 } PY_SHROUD_dtor_context;
+
 extern PY_SHROUD_dtor_context PY_SHROUD_capsule_context[];
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
 
 // ------------------------------
 namespace std {
@@ -25,7 +27,7 @@ extern PyTypeObject PY_vector_int_Type;
 typedef struct {
 PyObject_HEAD
     std::vector_int * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_int;
@@ -45,7 +47,7 @@ extern PyTypeObject PY_vector_double_Type;
 typedef struct {
 PyObject_HEAD
     std::vector_double * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_double;
@@ -63,7 +65,7 @@ extern PyTypeObject PY_Worker_Type;
 typedef struct {
 PyObject_HEAD
     Worker * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.Worker.C_object
     // splicer end class.Worker.C_object
 } PY_Worker;
@@ -83,7 +85,7 @@ extern PyTypeObject PY_ImplWorker1_Type;
 typedef struct {
 PyObject_HEAD
     internal::ImplWorker1 * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.ImplWorker1.C_object
     // splicer end class.ImplWorker1.C_object
 } PY_ImplWorker1;
@@ -101,7 +103,7 @@ extern PyTypeObject PY_user_int_Type;
 typedef struct {
 PyObject_HEAD
     user_int * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.user.C_object
     // splicer end class.user.C_object
 } PY_user_int;

@@ -25,9 +25,7 @@ static void
 PY_Worker_tp_del (PY_Worker *self)
 {
 // splicer begin class.Worker.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
-    }
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.Worker.type.del
 }

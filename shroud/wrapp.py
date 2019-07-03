@@ -136,8 +136,10 @@ class Wrapp(util.WrapperMixin):
         self.py_utility_definition = []
         self.py_utility_declaration = []
         self.py_utility_functions = []
+
         # reserved the 0 slot of capsule_order
-        # self.add_capsule_code('--none--', ['// not yet implemented'])
+        # self.add_capsule_code('--none--', ['// Do not release'])
+        fmt_library.capsule_order = "-1"
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -304,7 +306,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "typedef struct {{\n"
             "PyObject_HEAD\n"
             "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
-            "{PY_dtor_context_typedef} * {PY_type_dtor};",
+            "int {PY_type_dtor};",
             fmt_class,
         )
         self._create_splicer("C_object", output)
@@ -1306,8 +1308,7 @@ return 1;""",
                     self.language, fmt_result.cxx_var, capsule_type, fmt_result,
                     "goto fail", True))
                 append_format(fail_code, "if ({cxx_var} != NULL) {{+\n"
-                              "{PY_dtor_context_array}"
-                              "[{capsule_order}].dtor({cxx_var});\n"
+                              "{PY_release_memory_function}({capsule_order}, {cxx_var});\n"
                               "-}}",
                               fmt_result)
                 goto_fail = True
@@ -1569,8 +1570,7 @@ return 1;""",
         code.extend(self.allocate_memory(
             self.language, var, capsule_type, fmt, "return -1", cls.as_struct))
         append_format(code,
-                      "self->{PY_type_dtor} = "
-                      "{PY_dtor_context_array} + {capsule_order};",
+                      "self->{PY_type_dtor} = {capsule_order};",
                       fmt)
 
         if cls.as_struct and cls.options.PY_struct_arg == "class":
@@ -2080,7 +2080,7 @@ extern PyObject *{PY_prefix}error_obj;
                 fmt
             )
 
-        if self.capsule_order:
+        if self.capsule_order or self.need_blah:
             self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
             os.path.join(self.config.python_dir, fmt.PY_utility_filename)
@@ -2102,12 +2102,10 @@ extern PyObject *{PY_prefix}error_obj;
         """
         append_format(
             self.py_utility_declaration,
-            "extern {PY_dtor_context_typedef} {PY_dtor_context_array}[];",
-            fmt,
-        )
-        append_format(
-            self.py_utility_declaration,
-            "extern void {PY_capsule_destructor_function}(PyObject *cap);",
+            "\n"
+            "extern {PY_dtor_context_typedef} {PY_dtor_context_array}[];\n"
+            "extern void {PY_capsule_destructor_function}(PyObject *cap);\n"
+            "extern void {PY_release_memory_function}(int icontext, void *ptr);",
             fmt,
         )
 
@@ -2132,6 +2130,16 @@ extern PyObject *{PY_prefix}error_obj;
                 "PyCapsule_GetContext(cap));", fmt)
         output.append("context->dtor(ptr);")
         output.append("-}")
+
+        append_format(
+            output,
+            "// Release memory based on icontext.\n"
+            "void {PY_release_memory_function}(int icontext, void *ptr)\n"
+            "{{+\n"
+            "if (icontext != -1) {{+\n"
+            "{PY_dtor_context_array}[icontext].dtor(ptr);\n"
+            "-}}\n"
+            "-}}", fmt)
 
         # Create variable with as array of {PY_dtor_context_typedef}
         # to contain function pointers to routines to release memory.
@@ -2212,10 +2220,7 @@ extern PyObject *{PY_prefix}error_obj;
             ret = ''
         """
         return [
-            "if (self->{PY_type_dtor} != NULL) {{+",
-            " self->{PY_type_dtor}->dtor({cast_static}void *{cast1}"
-            "self->{PY_type_obj}{cast2});",
-            "-}}",
+            "{PY_release_memory_function}(self->{PY_type_dtor}, self->{PY_type_obj});",
             "self->{PY_type_obj} = NULL;"
         ]
 
@@ -2696,8 +2701,7 @@ post_call_capsule=[
     "\t{PY_capsule_destructor_function});",
     "if ({py_capsule} == NULL) goto fail;",
     "PyCapsule_SetContext({py_capsule},"
-    "\t {cast_static}void *{cast1}{PY_dtor_context_array} + "
-    "{capsule_order}{cast2});",
+    "\t {PY_dtor_context_array} + {capsule_order});",
     "if (PyArray_SetBaseObject(\t"
     "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
     "\t {py_capsule}) < 0)\t goto fail;",
@@ -3087,7 +3091,7 @@ py_statements_local = dict(
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
             "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = NULL;",  # may not add post_call_capsule
+            "{py_var}->{PY_type_dtor} = 0;",  # may not add post_call_capsule
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -3104,15 +3108,7 @@ py_statements_local = dict(
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
 #            "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-        ],
-        # update_code_blocks will use either "keep" or "capsule" 
-        # depending on the existence of "capsule_order".
-        # XXX - tie into ownership
-        post_call_keep=[
-            "{py_var}->{PY_type_dtor} = NULL;",
-        ],
-        post_call_capsule=[
-            "{py_var}->{PY_type_dtor} = {PY_dtor_context_array} + {capsule_order};",
+            "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
 # XXX currently have an error "crosses initialization of PyObject* SHPyResult"
 #        fail=[

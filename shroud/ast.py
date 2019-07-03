@@ -470,6 +470,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_capsule_destructor_function_template=(
                 "{PY_prefix}SHROUD_capsule_destructor"
             ),
+            PY_release_memory_function_template=(
+                "{PY_prefix}SHROUD_release_memory"
+            ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
         )
@@ -529,7 +532,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_result="SHTPy_rv",  # Create PyObject for result
             PY_this_call="",
             PY_type_obj="obj",  # name of cpp class pointer in PyObject
-            PY_type_dtor="dtor",  # name of destructor capsule infomation
+            PY_type_dtor="idtor",  # name of destructor capsule infomation
 
             library=self.library,
             library_lower=self.library.lower(),
@@ -624,6 +627,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("PY_dtor_context_array")
         self.eval_template("PY_dtor_context_typedef")
         self.eval_template("PY_capsule_destructor_function")
+        self.eval_template("PY_release_memory_function")
 
 
 ######################################################################

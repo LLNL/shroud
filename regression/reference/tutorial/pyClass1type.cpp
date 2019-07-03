@@ -31,9 +31,7 @@ static void
 PY_Class1_tp_del (PY_Class1 *self)
 {
 // splicer begin class.Class1.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
-    }
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.Class1.type.del
 }
@@ -51,7 +49,7 @@ PY_Class1_tp_init_default(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PY_SHROUD_capsule_context + 0;
+    self->idtor = 0;
     return 0;
 // splicer end class.Class1.method.new_default
 }
@@ -78,7 +76,7 @@ PY_Class1_tp_init_flag(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PY_SHROUD_capsule_context + 0;
+    self->idtor = 0;
     return 0;
 // splicer end class.Class1.method.new_flag
 }

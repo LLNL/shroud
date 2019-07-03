@@ -85,6 +85,13 @@ void PP_SHROUD_capsule_destructor(PyObject *cap)
         (PyCapsule_GetContext(cap));
     context->dtor(ptr);
 }
+// Release memory based on icontext.
+void PP_SHROUD_release_memory(int icontext, void *ptr)
+{
+    if (icontext != -1) {
+        PP_SHROUD_capsule_context[icontext].dtor(ptr);
+    }
+}
 
 // 0 - cxx example::nested::ExClass1 *
 static void PP_SHROUD_capsule_destructor_0(void *ptr)

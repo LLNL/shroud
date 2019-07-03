@@ -39,9 +39,7 @@ static void
 PY_vector_instantiation5_tp_del_instantiation5 (PY_vector_instantiation5 *self)
 {
 // splicer begin class.vector.type.del
-    if (self->mydtor != NULL) {
-         self->mydtor->dtor(static_cast<void *>(self->myobj));
-    }
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
     self->myobj = NULL;
 // splicer end class.vector.type.del
 }

@@ -17,8 +17,10 @@ typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
 } PY_SHROUD_dtor_context;
+
 extern PY_SHROUD_dtor_context PY_SHROUD_capsule_context[];
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
 
 // ------------------------------
 class Cstruct1;  // forward declare
@@ -29,7 +31,7 @@ extern PyTypeObject PY_Cstruct1_Type;
 typedef struct {
 PyObject_HEAD
     Cstruct1 * obj;
-    PY_SHROUD_dtor_context * dtor;
+    int idtor;
     // splicer begin class.Cstruct1.C_object
     // splicer end class.Cstruct1.C_object
 } PY_Cstruct1;

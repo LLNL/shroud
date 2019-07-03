@@ -31,9 +31,7 @@ static void
 PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 {
 // splicer begin class.Cstruct1.type.del
-    if (self->dtor != NULL) {
-         self->dtor->dtor(static_cast<void *>(self->obj));
-    }
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.Cstruct1.type.del
 }
@@ -62,7 +60,7 @@ PY_Cstruct1_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->dtor = PY_SHROUD_capsule_context + 0;
+    self->idtor = 0;
     // initialize fields
     Cstruct1 *SH_obj = self->obj;
     SH_obj->ifield = ifield;
