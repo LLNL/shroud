@@ -2628,10 +2628,13 @@ def update_code_blocks(symtab, stmts, fmt):
     # If capsule_order is defined, then add some additional code to 
     # do reference counting.
     if fmt.inlocal("capsule_order"):
-        for clause in ["decl", "post_call", "fail"]:
-            name = clause + "_capsule"
-            if "post_call_capsule" in stmts:
-                util.append_format_cmds(symtab[clause + "_code"], stmts, name, fmt)
+        suffix = "_capsule"
+    else:
+        suffix = "_keep"
+    for clause in ["decl", "post_call", "fail"]:
+        name = clause + suffix
+        if "post_call_capsule" in stmts:
+            util.append_format_cmds(symtab[clause + "_code"], stmts, name, fmt)
 
 
 def XXXdo_cast(lang, kind, typ, var):
@@ -3101,9 +3104,13 @@ py_statements_local = dict(
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
 #            "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->{PY_type_dtor} = NULL;",  # may not add post_call_capsule
         ],
-        # Deallocate memory for the struct
+        # update_code_blocks will use either "keep" or "capsule" 
+        # depending on the existence of "capsule_order".
+        # XXX - tie into ownership
+        post_call_keep=[
+            "{py_var}->{PY_type_dtor} = NULL;",
+        ],
         post_call_capsule=[
             "{py_var}->{PY_type_dtor} = {PY_dtor_context_array} + {capsule_order};",
         ],
