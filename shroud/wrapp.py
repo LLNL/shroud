@@ -1960,7 +1960,6 @@ return 1;""",
             output.extend(self.py_utility_declaration)
 
         if self.py_class_decl:
-            output.append("")  ## XXX - extra
             output.extend(self.py_class_decl)
             output.append("// ------------------------------")
 

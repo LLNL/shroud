@@ -20,7 +20,6 @@ typedef struct {
 extern blah PY_array_destructor_context[];
 extern void PY_array_destructor_function(PyObject *cap);
 
-
 // ------------------------------
 namespace tutorial {
     class Class1;  // forward declare

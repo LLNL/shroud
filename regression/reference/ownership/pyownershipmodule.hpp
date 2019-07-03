@@ -26,7 +26,6 @@ typedef struct {
     void (*dtor)(void *ptr);
 } blah;
 
-
 // ------------------------------
 class Class1;  // forward declare
 extern PyTypeObject PY_Class1_Type;

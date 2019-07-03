@@ -27,7 +27,6 @@ typedef struct {
 extern blah PP_array_destructor_context[];
 extern void PP_array_destructor_function(PyObject *cap);
 
-
 // ------------------------------
 namespace example {
     namespace nested {
