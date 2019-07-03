@@ -2070,16 +2070,6 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         output.extend(self.py_utility_functions)
 
-        if self.need_blah:
-            append_format(
-                self.py_utility_declaration,
-                "typedef struct {{+\n"
-                "const char *name;\n"
-                "void (*dtor)(void *ptr);\n"
-                "-}} {PY_dtor_context_typedef};",
-                fmt
-            )
-
         if self.capsule_order or self.need_blah:
             self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
@@ -2101,45 +2091,14 @@ extern PyObject *{PY_prefix}error_obj;
             fmt -
         """
         append_format(
-            self.py_utility_declaration,
-            "\n"
-            "extern {PY_dtor_context_typedef} {PY_dtor_context_array}[];\n"
-            "extern void {PY_capsule_destructor_function}(PyObject *cap);\n"
-            "extern void {PY_release_memory_function}(int icontext, void *ptr);",
-            fmt,
-        )
-
-        append_format(
             output,
-            "\n// destructor function for PyCapsule\n"
-            "void {PY_capsule_destructor_function}(PyObject *cap)\n"
-            "{{+\n"
-            # 'const char* name = PyCapsule_GetName(cap);\n'
-            'void *ptr = PyCapsule_GetPointer(cap, "{PY_numpy_array_capsule_name}");',
-            fmt,
+            "\n// ----------------------------------------\n"
+            "typedef struct {{+\n"
+            "const char *name;\n"
+            "void (*dtor)(void *ptr);\n"
+            "-}} {PY_dtor_context_typedef};",
+            fmt
         )
-        if self.language == "c":
-            append_format(
-                output,
-                "{PY_dtor_context_typedef} * context = PyCapsule_GetContext(cap);", fmt)
-        else:
-            append_format(
-                output,
-                "{PY_dtor_context_typedef} * context = "
-                "static_cast<{PY_dtor_context_typedef} *>\t("
-                "PyCapsule_GetContext(cap));", fmt)
-        output.append("context->dtor(ptr);")
-        output.append("-}")
-
-        append_format(
-            output,
-            "// Release memory based on icontext.\n"
-            "void {PY_release_memory_function}(int icontext, void *ptr)\n"
-            "{{+\n"
-            "if (icontext != -1) {{+\n"
-            "{PY_dtor_context_array}[icontext].dtor(ptr);\n"
-            "-}}\n"
-            "-}}", fmt)
 
         # Create variable with as array of {PY_dtor_context_typedef}
         # to contain function pointers to routines to release memory.
@@ -2161,12 +2120,62 @@ extern PyObject *{PY_prefix}error_obj;
             "// Context strings"
         )
         append_format(
-            output, "{PY_dtor_context_typedef} {PY_dtor_context_array}[] = {{+", fmt
+            output, "static {PY_dtor_context_typedef} {PY_dtor_context_array}[] = {{+", fmt
         )
         for name in fcnnames:
             output.append('{{"{}", {}}},'.format(name[0], name[1]))
         output.append("{NULL, NULL}")
         output.append("-};")
+
+        # Write function to release from extension type.
+        proto = wformat("void {PY_release_memory_function}(int icontext, void *ptr)", fmt)
+        self.py_utility_declaration.append("extern " + proto + ";")
+        output.append("\n// Release memory based on icontext.")
+        output.append(proto)
+        append_format(
+            output,
+            "{{+\n"
+            "if (icontext != -1) {{+\n"
+            "{PY_dtor_context_array}[icontext].dtor(ptr);\n"
+            "-}}\n"
+            "-}}", fmt)
+
+        # Write function to release NumPy capsule base object.
+        proto = wformat("void *{PY_fetch_context_function}(int icontext)", fmt)
+        self.py_utility_declaration.append("extern " + proto + ";")
+        output.append("\n//Fetch garbage collection context.")
+        output.append(proto)
+        append_format(
+            output,
+            "{{+\n"
+            "return {PY_dtor_context_array} + icontext;\n"
+#            "return {cast_static}void *{cast1}({PY_dtor_context_array} + icontext){cast2};\n"
+            "-}}",
+            fmt)
+
+        proto = wformat("void {PY_capsule_destructor_function}(PyObject *cap)", fmt)
+        self.py_utility_declaration.append("extern " + proto + ";")
+        output.append("\n// destructor function for PyCapsule")
+        output.append(proto)
+        append_format(
+            output,
+            "{{+\n"
+            # 'const char* name = PyCapsule_GetName(cap);\n'
+            'void *ptr = PyCapsule_GetPointer(cap, "{PY_numpy_array_capsule_name}");',
+            fmt,
+        )
+        if self.language == "c":
+            append_format(
+                output,
+                "{PY_dtor_context_typedef} * context = PyCapsule_GetContext(cap);", fmt)
+        else:
+            append_format(
+                output,
+                "{PY_dtor_context_typedef} * context = "
+                "static_cast<{PY_dtor_context_typedef} *>\t("
+                "PyCapsule_GetContext(cap));", fmt)
+        output.append("context->dtor(ptr);")
+        output.append("-}")
 
     capsule_code = {}
     capsule_order = []
@@ -2701,7 +2710,7 @@ post_call_capsule=[
     "\t{PY_capsule_destructor_function});",
     "if ({py_capsule} == NULL) goto fail;",
     "PyCapsule_SetContext({py_capsule},"
-    "\t {PY_dtor_context_array} + {capsule_order});",
+    "\t {PY_fetch_context_function}({capsule_order}));",
     "if (PyArray_SetBaseObject(\t"
     "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
     "\t {py_capsule}) < 0)\t goto fail;",

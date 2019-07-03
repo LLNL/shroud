@@ -473,6 +473,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_release_memory_function_template=(
                 "{PY_prefix}SHROUD_release_memory"
             ),
+            PY_fetch_context_function_template=(
+                "{PY_prefix}SHROUD_fetch_context"
+            ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
         )
@@ -628,6 +631,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("PY_dtor_context_typedef")
         self.eval_template("PY_capsule_destructor_function")
         self.eval_template("PY_release_memory_function")
+        self.eval_template("PY_fetch_context_function")
 
 
 ######################################################################

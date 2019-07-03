@@ -20,14 +20,9 @@
 // splicer end header.include
 
 // utility functions
-typedef struct {
-    const char *name;
-    void (*dtor)(void *ptr);
-} PP_SHROUD_dtor_context;
-
-extern PP_SHROUD_dtor_context PP_SHROUD_capsule_context[];
-extern void PP_SHROUD_capsule_destructor(PyObject *cap);
 extern void PP_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PP_SHROUD_fetch_context(int icontext);
+extern void PP_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 namespace example {
