@@ -24,7 +24,7 @@
 typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
-} blah;
+} PY_SHROUD_dtor_context;
 
 // ------------------------------
 class Class1;  // forward declare
@@ -35,7 +35,7 @@ extern PyTypeObject PY_Class1_Type;
 typedef struct {
 PyObject_HEAD
     Class1 * obj;
-    blah * dtor;
+    PY_SHROUD_dtor_context * dtor;
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;

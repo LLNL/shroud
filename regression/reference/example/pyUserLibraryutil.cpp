@@ -81,7 +81,8 @@ int PP_ExClass2_from_Object(PyObject *obj, void **addr)
 void PP_array_destructor_function(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PP_array_dtor");
-    blah * context = static_cast<blah *>(PyCapsule_GetContext(cap));
+    PP_SHROUD_dtor_context * context = static_cast<PP_SHROUD_dtor_context *>
+        (PyCapsule_GetContext(cap));
     context->dtor(ptr);
 }
 
@@ -104,7 +105,7 @@ static void PP_array_destructor_function_1(void *ptr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-blah PP_array_destructor_context[] = {
+PP_SHROUD_dtor_context PP_array_destructor_context[] = {
     {"cxx example::nested::ExClass1 *", PP_array_destructor_function_0},
     {"cxx example::nested::ExClass2 *", PP_array_destructor_function_1},
     {NULL, NULL}

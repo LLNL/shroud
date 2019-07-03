@@ -304,7 +304,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "typedef struct {{\n"
             "PyObject_HEAD\n"
             "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
-            "blah * {PY_type_dtor};",
+            "{PY_typedef_dtor_context} * {PY_type_dtor};",
             fmt_class,
         )
         self._create_splicer("C_object", output)
@@ -2076,7 +2076,7 @@ extern PyObject *{PY_prefix}error_obj;
                 "typedef struct {{+\n"
                 "const char *name;\n"
                 "void (*dtor)(void *ptr);\n"
-                "-}} blah;",
+                "-}} {PY_typedef_dtor_context};",
                 fmt
             )
 
@@ -2102,7 +2102,7 @@ extern PyObject *{PY_prefix}error_obj;
         """
         append_format(
             self.py_utility_declaration,
-            "extern blah {PY_numpy_array_dtor_context}[];",
+            "extern {PY_typedef_dtor_context} {PY_numpy_array_dtor_context}[];",
             fmt,
         )
         append_format(
@@ -2121,15 +2121,19 @@ extern PyObject *{PY_prefix}error_obj;
             fmt,
         )
         if self.language == "c":
-            output.append("blah * context = PyCapsule_GetContext(cap);")
+            append_format(
+                output,
+                "{PY_typedef_dtor_context} * context = PyCapsule_GetContext(cap);", fmt)
         else:
-            output.append(
-                "blah * context = static_cast<blah *>\t("
-                "PyCapsule_GetContext(cap));")
+            append_format(
+                output,
+                "{PY_typedef_dtor_context} * context = "
+                "static_cast<{PY_typedef_dtor_context} *>\t("
+                "PyCapsule_GetContext(cap));", fmt)
         output.append("context->dtor(ptr);")
         output.append("-}")
 
-        # Create variable with as array of blah
+        # Create variable with as array of {PY_typedef_dtor_context}
         # to contain function pointers to routines to release memory.
         fcnnames = []
         for i, name in enumerate(self.capsule_order):
@@ -2149,7 +2153,7 @@ extern PyObject *{PY_prefix}error_obj;
             "// Context strings"
         )
         append_format(
-            output, "blah {PY_numpy_array_dtor_context}[] = {{+", fmt
+            output, "{PY_typedef_dtor_context} {PY_numpy_array_dtor_context}[] = {{+", fmt
         )
         for name in fcnnames:
             output.append('{{"{}", {}}},'.format(name[0], name[1]))

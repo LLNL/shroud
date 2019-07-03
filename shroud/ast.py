@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 """
@@ -415,6 +408,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
+
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
                 "lua{library}module.{LUA_impl_filename_suffix}"
@@ -430,6 +424,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
             LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
+
             PY_module_filename_template=(
                 "py{library}module.{PY_impl_filename_suffix}"
             ),
@@ -470,6 +465,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             PY_numpy_array_dtor_function_template=(
                 "{PY_prefix}array_destructor_function"
+            ),
+            PY_typedef_dtor_context_template=(
+                "{PY_prefix}SHROUD_dtor_context"
             ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
@@ -624,6 +622,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("PY_numpy_array_capsule_name")
         self.eval_template("PY_numpy_array_dtor_context")
         self.eval_template("PY_numpy_array_dtor_function")
+        self.eval_template("PY_typedef_dtor_context")
 
 
 ######################################################################

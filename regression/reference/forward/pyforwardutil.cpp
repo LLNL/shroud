@@ -83,7 +83,8 @@ int PP_Class2_from_Object(PyObject *obj, void **addr)
 void PY_array_destructor_function(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
-    blah * context = static_cast<blah *>(PyCapsule_GetContext(cap));
+    PY_SHROUD_dtor_context * context = static_cast<PY_SHROUD_dtor_context *>
+        (PyCapsule_GetContext(cap));
     context->dtor(ptr);
 }
 
@@ -97,7 +98,7 @@ static void PY_array_destructor_function_0(void *ptr)
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-blah PY_array_destructor_context[] = {
+PY_SHROUD_dtor_context PY_array_destructor_context[] = {
     {"cxx tutorial::Class2 *", PY_array_destructor_function_0},
     {NULL, NULL}
 };

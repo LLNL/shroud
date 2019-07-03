@@ -24,8 +24,8 @@
 typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
-} blah;
-extern blah PY_array_destructor_context[];
+} PY_SHROUD_dtor_context;
+extern PY_SHROUD_dtor_context PY_array_destructor_context[];
 extern void PY_array_destructor_function(PyObject *cap);
 
 // ------------------------------
@@ -39,7 +39,7 @@ extern PyTypeObject PY_Class3_Type;
 typedef struct {
 PyObject_HEAD
     tutorial::Class3 * obj;
-    blah * dtor;
+    PY_SHROUD_dtor_context * dtor;
     // splicer begin class.Class3.C_object
     // splicer end class.Class3.C_object
 } PY_Class3;
@@ -59,7 +59,7 @@ extern PyTypeObject PY_Class2_Type;
 typedef struct {
 PyObject_HEAD
     tutorial::Class2 * obj;
-    blah * dtor;
+    PY_SHROUD_dtor_context * dtor;
     // splicer begin class.Class2.C_object
     // splicer end class.Class2.C_object
 } PY_Class2;

@@ -23,8 +23,8 @@
 typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
-} blah;
-extern blah PP_array_destructor_context[];
+} PP_SHROUD_dtor_context;
+extern PP_SHROUD_dtor_context PP_array_destructor_context[];
 extern void PP_array_destructor_function(PyObject *cap);
 
 // ------------------------------
@@ -40,7 +40,7 @@ extern PyTypeObject PP_ExClass1_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass1 * obj;
-    blah * dtor;
+    PP_SHROUD_dtor_context * dtor;
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
@@ -62,7 +62,7 @@ extern PyTypeObject PP_ExClass2_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass2 * obj;
-    blah * dtor;
+    PP_SHROUD_dtor_context * dtor;
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;

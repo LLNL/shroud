@@ -16,8 +16,8 @@
 typedef struct {
     const char *name;
     void (*dtor)(void *ptr);
-} blah;
-extern blah PY_array_destructor_context[];
+} PY_SHROUD_dtor_context;
+extern PY_SHROUD_dtor_context PY_array_destructor_context[];
 extern void PY_array_destructor_function(PyObject *cap);
 
 // splicer begin header.C_declaration
