@@ -743,6 +743,8 @@ PY_returnStrings(
 {
 // void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))
 // splicer begin function.return_strings
+    PyObject *SHTPy_rv = NULL;  // return value object
+
     // post_parse
     std::string SH_arg1;
     std::string SH_arg2;
@@ -750,8 +752,8 @@ PY_returnStrings(
     returnStrings(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("s#s#", SH_arg1.data(),
-        SH_arg1.size(), SH_arg2.data(), SH_arg2.size());
+    SHTPy_rv = Py_BuildValue("s#s#", SH_arg1.data(), SH_arg1.size(),
+        SH_arg2.data(), SH_arg2.size());
 
     return SHTPy_rv;
 // splicer end function.return_strings

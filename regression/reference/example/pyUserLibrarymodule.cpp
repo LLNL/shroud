@@ -128,6 +128,7 @@ PP_checkBool(
         "arg1",
         "arg3",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg1,
@@ -144,7 +145,7 @@ PP_checkBool(
     // post_call
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+    SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
 
     return SHTPy_rv;
 // splicer end function.check_bool
@@ -521,6 +522,7 @@ PP_verylongfunctionname1(
         "verylongname9",
         "verylongname10",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "iiiiiiiiii:verylongfunctionname1",
@@ -536,10 +538,9 @@ PP_verylongfunctionname1(
         &verylongname10);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1,
-        verylongname2, verylongname3, verylongname4, verylongname5,
-        verylongname6, verylongname7, verylongname8, verylongname9,
-        verylongname10);
+    SHTPy_rv = Py_BuildValue("iiiiiiiiii", verylongname1, verylongname2,
+        verylongname3, verylongname4, verylongname5, verylongname6,
+        verylongname7, verylongname8, verylongname9, verylongname10);
 
     return SHTPy_rv;
 // splicer end function.verylongfunctionname1

@@ -131,6 +131,7 @@ PY_Function3b(
         "arg1",
         "arg3",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:Function3b",
         SHT_kwlist, &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
@@ -146,7 +147,7 @@ PY_Function3b(
     // post_call
     PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
     SHPy_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+    SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
 
     return SHTPy_rv;
 // splicer end function.function3b
@@ -260,6 +261,8 @@ PY_returnTwoNames(
 {
 // void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
 // splicer begin function.return_two_names
+    PyObject *SHTPy_rv = NULL;  // return value object
+
     // pre_call
     char name1[MAXNAME];  // intent(out)
     char name2[MAXNAME];  // intent(out)
@@ -267,7 +270,7 @@ PY_returnTwoNames(
     returnTwoNames(name1, name2);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ss", name1, name2);
+    SHTPy_rv = Py_BuildValue("ss", name1, name2);
 
     return SHTPy_rv;
 // splicer end function.return_two_names

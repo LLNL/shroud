@@ -763,6 +763,8 @@ PY_getMinMax(
 {
 // void getMinMax(int & min +intent(out), int & max +intent(out))
 // splicer begin function.get_min_max
+    PyObject *SHTPy_rv = NULL;  // return value object
+
     // pre_call
     int min;  // intent(out)
     int max;  // intent(out)
@@ -770,7 +772,7 @@ PY_getMinMax(
     tutorial::getMinMax(min, max);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ii", min, max);
+    SHTPy_rv = Py_BuildValue("ii", min, max);
 
     return SHTPy_rv;
 // splicer end function.get_min_max

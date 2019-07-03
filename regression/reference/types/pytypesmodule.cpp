@@ -721,6 +721,8 @@ PY_returnBoolAndOthers(
 {
 // bool returnBoolAndOthers(int * flag +intent(out))
 // splicer begin function.return_bool_and_others
+    PyObject *SHPyResult = NULL;  // return value object
+
     // pre_call
     int flag;  // intent(out)
 
@@ -728,7 +730,7 @@ PY_returnBoolAndOthers(
 
     // post_call
     PyObject * SHTPy_rv = PyBool_FromLong(rv);
-    PyObject * SHPyResult = Py_BuildValue("Oi", SHTPy_rv, flag);
+    SHPyResult = Py_BuildValue("Oi", SHTPy_rv, flag);
 
     return SHPyResult;
 // splicer end function.return_bool_and_others

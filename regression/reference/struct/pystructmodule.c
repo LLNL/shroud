@@ -156,6 +156,7 @@ PY_passStruct2(
     char *SHT_kwlist[] = {
         "s1",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:passStruct2",
         SHT_kwlist, &SHTPy_s1))
@@ -178,7 +179,7 @@ PY_passStruct2(
     int rv = passStruct2(s1, outbuf);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("is", rv, outbuf);
+    SHTPy_rv = Py_BuildValue("is", rv, outbuf);
 
     // cleanup
     Py_DECREF(SHPy_s1);
@@ -410,6 +411,7 @@ PY_returnStructPtr2(
         "d",
         NULL };
     PyObject * SHTPy_rv = NULL;
+    PyObject *SHPyResult = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         SHT_kwlist, &i, &d))
@@ -425,7 +427,7 @@ PY_returnStructPtr2(
     SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
         PY_Cstruct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
-    PyObject * SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
+    SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
     return SHPyResult;
 

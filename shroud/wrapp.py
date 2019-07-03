@@ -1400,15 +1400,20 @@ return 1;""",
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
+            # fmt=format for function. Do not use fmt_result here.
+            # There may be no return value, only intent(OUT) arguments.
             # create tuple object
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
-            append_format(
-                post_call_code,
-                "PyObject * {PY_result} = "
-                'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});',
-                fmt,
+            rv_blk = dict(
+                decl=["PyObject *{PY_result} = NULL;  // return value object"],
+                post_call=["{PY_result} = "
+                           'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});'],
+                # Since this is the last statement before the Return,
+                # no need to check for error. Just return NULL.
+                # fail=["Py_XDECREF(SHPyResult);"],
             )
+            update_code_blocks(locals(), rv_blk, fmt)
             return_code = wformat("return {PY_result};", fmt)
 
         need_blank = False  # put return right after call
@@ -3110,20 +3115,20 @@ py_statements_local = dict(
     struct_result_class=dict(
         cxx_local_var="pointer",
         decl=[
-            "{PyObject} *{py_var} = NULL;",
+            "{PyObject} *{py_var} = NULL;  // struct_result_class",
         ],
         post_call=[
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
-#            "if ({py_var} == NULL) goto fail;",
+            "if ({py_var} == NULL) goto fail;",
             "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
             "{py_var}->{PY_type_dtor} = {capsule_order};",
         ],
 # XXX currently have an error "crosses initialization of PyObject* SHPyResult"
-#        fail=[
-#            "Py_XDECREF({py_var});",
-#        ],
-#        goto_fail=True,
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
     ),
 
 )
