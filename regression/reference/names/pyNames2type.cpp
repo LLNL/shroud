@@ -38,8 +38,8 @@ static void
 PY_Names2_tp_del (PY_Names2 *self)
 {
 // splicer begin class.Names2.type.del
-    delete self->obj;
-    self->obj = NULL;
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
+    self->myobj = NULL;
 // splicer end class.Names2.type.del
 }
 // splicer begin class.Names2.impl.after_methods

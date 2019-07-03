@@ -39,7 +39,7 @@ static void
 PY_Class1_tp_del (PY_Class1 *self)
 {
 // splicer begin class.Class1.type.del
-    delete self->obj;
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.Class1.type.del
 }

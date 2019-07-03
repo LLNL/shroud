@@ -20,6 +20,10 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PY_SHROUD_fetch_context(int icontext);
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 class User1;  // forward declare
@@ -30,6 +34,7 @@ extern PyTypeObject PY_User1_Type;
 typedef struct {
 PyObject_HEAD
     User1 * obj;
+    int idtor;
     // splicer begin class.User1.C_object
     // splicer end class.User1.C_object
 } PY_User1;
@@ -48,6 +53,7 @@ extern PyTypeObject PY_User2_Type;
 typedef struct {
 PyObject_HEAD
     User2 * obj;
+    int idtor;
     // splicer begin class.User2.C_object
     // splicer end class.User2.C_object
 } PY_User2;

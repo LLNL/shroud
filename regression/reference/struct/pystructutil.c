@@ -11,22 +11,44 @@
 
 
 
+// ----------------------------------------
+typedef struct {
+    const char *name;
+    void (*dtor)(void *ptr);
+} PY_SHROUD_dtor_context;
+
+// 0 - c Cstruct1 *
+static void PY_SHROUD_capsule_destructor_0(void *ptr)
+{
+    free(ptr);
+}
+
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
-const char * PY_array_destructor_context[] = {
-    "Cstruct1 *",
-    NULL
+static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
+    {"c Cstruct1 *", PY_SHROUD_capsule_destructor_0},
+    {NULL, NULL}
 };
 
+// Release memory based on icontext.
+void PY_SHROUD_release_memory(int icontext, void *ptr)
+{
+    if (icontext != -1) {
+        PY_SHROUD_capsule_context[icontext].dtor(ptr);
+    }
+}
+
+//Fetch garbage collection context.
+void *PY_SHROUD_fetch_context(int icontext)
+{
+    return PY_SHROUD_capsule_context + icontext;
+}
+
 // destructor function for PyCapsule
-void PY_array_destructor_function(PyObject *cap)
+void PY_SHROUD_capsule_destructor(PyObject *cap)
 {
     void *ptr = PyCapsule_GetPointer(cap, "PY_array_dtor");
-    const char * context = PyCapsule_GetContext(cap);
-    if (context == PY_array_destructor_context[0]) {
-        free(ptr);
-    } else {
-        // no such destructor
-    }
+    PY_SHROUD_dtor_context * context = PyCapsule_GetContext(cap);
+    context->dtor(ptr);
 }

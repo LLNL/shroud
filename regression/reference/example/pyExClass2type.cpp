@@ -150,7 +150,7 @@ static void
 PP_ExClass2_tp_del (PP_ExClass2 *self)
 {
 // splicer begin class.ExClass2.type.del
-    delete self->obj;
+    PP_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.ExClass2.type.del
 }
@@ -180,6 +180,11 @@ PP_ExClass2_tp_init(
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass2(&SH_name);
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->idtor = 1;
     return 0;
 // splicer end class.ExClass2.method.ctor
 }

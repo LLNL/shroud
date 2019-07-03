@@ -58,6 +58,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PP_ExClass1",
                                 "PyTypeObject": "PP_ExClass1_Type",
                                 "c_deref": "",
@@ -67,7 +68,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "_overloaded": true,
@@ -182,6 +184,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PP_ExClass1",
                                 "PyTypeObject": "PP_ExClass1_Type",
                                 "c_deref": "",
@@ -191,7 +194,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "_overloaded": true,
@@ -1990,6 +1994,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PP_ExClass2",
                                 "PyTypeObject": "PP_ExClass2_Type",
                                 "c_deref": "",
@@ -1999,7 +2004,8 @@
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv"
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "ast": {
@@ -5017,7 +5023,11 @@
             "LUA_used_param_state": false,
             "LUA_userdata_type": "XXLUA_userdata_type",
             "PY_PyObject": "PyObject",
+            "PY_capsule_destructor_function": "PP_SHROUD_capsule_destructor",
+            "PY_dtor_context_array": "PP_SHROUD_capsule_context",
+            "PY_dtor_context_typedef": "PP_SHROUD_dtor_context",
             "PY_extern_C_begin": "extern \"C\" ",
+            "PY_fetch_context_function": "PP_SHROUD_fetch_context",
             "PY_header_filename": "pyUserLibrarymodule.hpp",
             "PY_header_filename_suffix": "hpp",
             "PY_impl_filename_suffix": "cpp",
@@ -5025,15 +5035,15 @@
             "PY_module_filename": "pyUserLibrarymodule.cpp",
             "PY_module_name": "userlibrary",
             "PY_numpy_array_capsule_name": "PP_array_dtor",
-            "PY_numpy_array_dtor_context": "PP_array_destructor_context",
-            "PY_numpy_array_dtor_function": "PP_array_destructor_function",
-            "PY_obj": "obj",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
             "PY_param_self": "self",
             "PY_prefix": "PP_",
+            "PY_release_memory_function": "PP_SHROUD_release_memory",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
+            "PY_type_dtor": "idtor",
+            "PY_type_obj": "obj",
             "PY_used_param_args": false,
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
@@ -5042,6 +5052,7 @@
             "YAML_type_filename": "userlibrary_types.yaml",
             "__line__": 26,
             "c_temp": "SHT_",
+            "capsule_order": "-1",
             "cast1": ">\t(",
             "cast2": ")",
             "cast_const": "const_cast<",
@@ -9180,14 +9191,17 @@
             "PY_PyObject_template": "{PY_prefix}{cxx_class}",
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
             "PY_array_arg": "numpy",
+            "PY_capsule_destructor_function_template": "{PY_prefix}SHROUD_capsule_destructor",
+            "PY_dtor_context_array_template": "{PY_prefix}SHROUD_capsule_context",
+            "PY_dtor_context_typedef_template": "{PY_prefix}SHROUD_dtor_context",
+            "PY_fetch_context_function_template": "{PY_prefix}SHROUD_fetch_context",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
-            "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context",
-            "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function",
+            "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
             "PY_struct_arg": "numpy",
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
@@ -9334,25 +9348,33 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}axom::sidre::Group * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}axom::sidre::Group * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}axom::sidre::Group * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}axom::sidre::Group * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -9664,25 +9686,33 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}example::nested::ExClass1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}example::nested::ExClass1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -9746,25 +9776,33 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}example::nested::ExClass2 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }

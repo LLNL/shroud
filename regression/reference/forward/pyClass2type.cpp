@@ -39,7 +39,7 @@ static void
 PY_Class2_tp_del (PY_Class2 *self)
 {
 // splicer begin class.Class2.type.del
-    delete self->obj;
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.Class2.type.del
 }
@@ -53,6 +53,11 @@ PY_Class2_tp_init(
 // Class2()
 // splicer begin class.Class2.method.ctor
     self->obj = new tutorial::Class2();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->idtor = 0;
     return 0;
 // splicer end class.Class2.method.ctor
 }

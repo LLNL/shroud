@@ -39,6 +39,9 @@ format:
   F_impl_filename: top.f
   LUA_module_name: lua_module_name
 
+  PY_type_obj: myobj
+  PY_type_dtor: mydtor
+
 declarations:
 - decl: |
       enum Color {

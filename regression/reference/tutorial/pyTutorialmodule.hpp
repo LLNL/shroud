@@ -12,6 +12,10 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PY_SHROUD_fetch_context(int icontext);
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 namespace tutorial {
@@ -24,6 +28,7 @@ extern PyTypeObject PY_Class1_Type;
 typedef struct {
 PyObject_HEAD
     tutorial::Class1 * obj;
+    int idtor;
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;
@@ -41,6 +46,7 @@ extern PyTypeObject PY_Singleton_Type;
 typedef struct {
 PyObject_HEAD
     Singleton * obj;
+    int idtor;
     // splicer begin class.Singleton.C_object
     // splicer end class.Singleton.C_object
 } PY_Singleton;

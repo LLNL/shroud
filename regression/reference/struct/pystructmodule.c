@@ -302,6 +302,7 @@ PY_returnStructByValue(
         "i",
         "d",
         NULL };
+    Cstruct1 * rv = NULL;
     PyObject * SHTPy_rv = NULL;
     PyObject *SHC_rv = NULL;
 
@@ -309,7 +310,11 @@ PY_returnStructByValue(
         "id:returnStructByValue", SHT_kwlist, &i, &d))
         return NULL;
 
-    Cstruct1 * rv = malloc(sizeof(Cstruct1));
+    rv = malloc(sizeof(Cstruct1));
+    if (rv == NULL) {
+        PyErr_NoMemory();
+        goto fail;
+    }
     *rv = returnStructByValue(i, d);
 
     // post_call
@@ -318,16 +323,18 @@ PY_returnStructByValue(
         PY_Cstruct1_array_descr, 0, NULL, NULL, rv, 0, NULL);
     if (SHTPy_rv == NULL) goto fail;
     SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
-        PY_array_destructor_function);
+        PY_SHROUD_capsule_destructor);
     if (SHC_rv == NULL) goto fail;
-    PyCapsule_SetContext(SHC_rv,
-        (char *) PY_array_destructor_context[0]);
+    PyCapsule_SetContext(SHC_rv, PY_SHROUD_fetch_context(0));
     if (PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_rv) < 0)
         goto fail;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
+    if (rv != NULL) {
+        PY_SHROUD_release_memory(0, rv);
+    }
     Py_XDECREF(SHTPy_rv);
     Py_XDECREF(SHC_rv);
     return NULL;

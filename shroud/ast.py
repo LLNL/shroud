@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 """
@@ -415,6 +408,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
+
             LUA_module_name_template="{library_lower}",
             LUA_module_filename_template=(
                 "lua{library}module.{LUA_impl_filename_suffix}"
@@ -430,6 +424,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
             LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
+
             PY_module_filename_template=(
                 "py{library}module.{PY_impl_filename_suffix}"
             ),
@@ -465,11 +460,21 @@ class LibraryNode(AstNode, NamespaceMixin):
             ),
             PY_struct_array_descr_name_template=("{cxx_class}_dtype"),
             PY_numpy_array_capsule_name_template=("{PY_prefix}array_dtor"),
-            PY_numpy_array_dtor_context_template=(
-                "{PY_prefix}array_destructor_context"
+            PY_dtor_context_array_template=(
+                # array of PY_dtor_context_typedef
+                "{PY_prefix}SHROUD_capsule_context"
             ),
-            PY_numpy_array_dtor_function_template=(
-                "{PY_prefix}array_destructor_function"
+            PY_dtor_context_typedef_template=(
+                "{PY_prefix}SHROUD_dtor_context"
+            ),
+            PY_capsule_destructor_function_template=(
+                "{PY_prefix}SHROUD_capsule_destructor"
+            ),
+            PY_release_memory_function_template=(
+                "{PY_prefix}SHROUD_release_memory"
+            ),
+            PY_fetch_context_function_template=(
+                "{PY_prefix}SHROUD_fetch_context"
             ),
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
@@ -519,14 +524,19 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_final_function="SHROUD_capsule_final",
             C_array_type=C_prefix + "SHROUD_array",
             F_array_type="SHROUD_array",
-            PY_result="SHTPy_rv",  # Create PyObject for result
+
             LUA_result="rv",
             LUA_prefix="l_",
             LUA_state_var="L",
             LUA_this_call="",
+
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
+            PY_result="SHTPy_rv",  # Create PyObject for result
             PY_this_call="",
+            PY_type_obj="obj",  # name of cpp class pointer in PyObject
+            PY_type_dtor="idtor",  # name of destructor capsule infomation
+
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
@@ -617,8 +627,11 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("F_impl_filename", "_library")
 
         self.eval_template("PY_numpy_array_capsule_name")
-        self.eval_template("PY_numpy_array_dtor_context")
-        self.eval_template("PY_numpy_array_dtor_function")
+        self.eval_template("PY_dtor_context_array")
+        self.eval_template("PY_dtor_context_typedef")
+        self.eval_template("PY_capsule_destructor_function")
+        self.eval_template("PY_release_memory_function")
+        self.eval_template("PY_fetch_context_function")
 
 
 ######################################################################
