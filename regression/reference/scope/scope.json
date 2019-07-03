@@ -937,13 +937,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls1Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls1Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls1Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls1Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -957,13 +957,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -1043,13 +1043,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls2Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls2Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}cls2Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}cls2Enum * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -1063,13 +1063,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }

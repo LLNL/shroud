@@ -117,7 +117,8 @@ class Wrapp(util.WrapperMixin):
         newlibrary.eval_template("PY_module_filename")
         newlibrary.eval_template("PY_header_filename")
         newlibrary.eval_template("PY_utility_filename")
-        fmt_library.PY_obj = "obj"  # name of cpp class pointer in PyObject
+        fmt_library.PY_type_obj = "obj"  # name of cpp class pointer in PyObject
+        fmt_library.PY_type_dtor = "dtor"  # name of destructor capsule infomation
         fmt_library.PY_PyObject = "PyObject"
         fmt_library.PyObject = "PyObject"
         fmt_library.PY_param_self = "self"
@@ -265,7 +266,7 @@ class Wrapp(util.WrapperMixin):
         fmt_class = node.fmtdict
 
         node.eval_template("PY_type_filename")
-        fmt_class.PY_this_call = wformat("self->{PY_obj}->", fmt_class)
+        fmt_class.PY_this_call = wformat("self->{PY_type_obj}->", fmt_class)
 
         output = self.py_type_object_creation
         output.append("")
@@ -304,8 +305,8 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
             "\n"
             "typedef struct {{\n"
             "PyObject_HEAD\n"
-            "+{namespace_scope}{cxx_class} * {PY_obj};\n"
-            "blah * dtor;",
+            "+{namespace_scope}{cxx_class} * {PY_type_obj};\n"
+            "blah * {PY_type_dtor};",
             fmt_class,
         )
         self._create_splicer("C_object", output)
@@ -392,7 +393,7 @@ return rv;""",
     return 0;
 }}
 {PY_PyObject} * self = ({PY_PyObject} *) obj;
-*addr = self->{PY_obj};
+*addr = self->{PY_type_obj};
 return 1;""",
             fmt,
         )
@@ -566,7 +567,7 @@ return 1;""",
         fmt_var.PY_setter = "NULL"  # readonly
 
         fmt = util.Scope(fmt_var)
-        fmt.c_var = wformat("{PY_param_self}->{PY_obj}->{field_name}", fmt_var)
+        fmt.c_var = wformat("{PY_param_self}->{PY_type_obj}->{field_name}", fmt_var)
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
 
@@ -1566,16 +1567,17 @@ return 1;""",
         """
         assert cls is not None
         capsule_type = fmt.namespace_scope + fmt.cxx_type + " *"
-        var = "self->" + fmt.PY_obj
+        var = "self->" + fmt.PY_type_obj
         code.extend(self.allocate_memory(
             self.language, var, capsule_type, fmt, "return -1", cls.as_struct))
         append_format(code,
-                      "self->dtor = {PY_numpy_array_dtor_context} + {capsule_order};",
+                      "self->{PY_type_dtor} = "
+                      "{PY_numpy_array_dtor_context} + {capsule_order};",
                       fmt)
 
         if cls.as_struct and cls.options.PY_struct_arg == "class":
             code.append("// initialize fields")
-            append_format(code, "{cxx_type} *SH_obj = self->{PY_obj};", fmt)
+            append_format(code, "{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
             for var in node.ast.params:
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
 
@@ -2209,11 +2211,11 @@ extern PyObject *{PY_prefix}error_obj;
             ret = ''
         """
         return [
-            "if (self->dtor != NULL) {{+",
-            " self->dtor->dtor({cast_static}void *{cast1}"
-            "self->{PY_obj}{cast2});",
+            "if (self->{PY_type_dtor} != NULL) {{+",
+            " self->{PY_type_dtor}->dtor({cast_static}void *{cast1}"
+            "self->{PY_type_obj}{cast2});",
             "-}}",
-            "self->{PY_obj} = NULL;"
+            "self->{PY_type_obj} = NULL;"
         ]
 
 
@@ -3047,14 +3049,14 @@ py_statements_local = dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
-            "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
+            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
         ],
     ),
     struct_intent_inout_class=dict(
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
-            "\t {py_var} ? {py_var}->{PY_obj} : NULL;",
+            "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;",
         ],
         post_call=None,  # Object was passed in
     ),
@@ -3080,8 +3082,8 @@ py_statements_local = dict(
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
             "if ({py_var} == NULL) goto fail;",
-            "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->dtor = NULL;",  # may not add post_call_capsule
+            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
+            "{py_var}->{PY_type_dtor} = NULL;",  # may not add post_call_capsule
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -3097,12 +3099,12 @@ py_statements_local = dict(
             "{py_var} ="
             "\t PyObject_New({PyObject}, &{PyTypeObject});",
 #            "if ({py_var} == NULL) goto fail;",
-            "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-            "{py_var}->dtor = NULL;",  # may not add post_call_capsule
+            "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
+            "{py_var}->{PY_type_dtor} = NULL;",  # may not add post_call_capsule
         ],
         # Deallocate memory for the struct
         post_call_capsule=[
-            "{py_var}->dtor = {PY_numpy_array_dtor_context} + {capsule_order};",
+            "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
         ],
 # XXX currently have an error "crosses initialization of PyObject* SHPyResult"
 #        fail=[

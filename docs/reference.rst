@@ -877,6 +877,11 @@ C_prefix
     The prefix helps to ensure unique global names.
     Defaults to the first three letters of *library_upper*.
 
+PY_type_obj
+    Name variable which points to C or C++ memory.
+
+PY_type_dtor
+    Pointer to information used to release memory.
 
 Function
 ^^^^^^^^

@@ -1456,13 +1456,14 @@
             "PY_numpy_array_capsule_name": "PY_array_dtor",
             "PY_numpy_array_dtor_context": "PY_array_destructor_context",
             "PY_numpy_array_dtor_function": "PY_array_destructor_function",
-            "PY_obj": "obj",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
             "PY_param_self": "self",
             "PY_prefix": "PY_",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
+            "PY_type_dtor": "dtor",
+            "PY_type_obj": "obj",
             "PY_used_param_args": false,
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
@@ -2276,13 +2277,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}Worker * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Worker * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}Worker * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Worker * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -2296,13 +2297,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -2736,13 +2737,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}internal::ImplWorker1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -2756,13 +2757,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -3030,13 +3031,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}std::vector * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}std::vector * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}std::vector * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}std::vector * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -3050,13 +3051,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -3146,13 +3147,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}std::vector<double> * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -3166,13 +3167,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -3236,13 +3237,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}std::vector<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}std::vector<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}std::vector<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}std::vector<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -3256,13 +3257,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -3535,13 +3536,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}user * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}user * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}user * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}user * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -3555,13 +3556,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -3630,13 +3631,13 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}user<int> * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
@@ -3650,13 +3651,13 @@
                     "post_call": [
                         "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
                         "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 },
                 "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
