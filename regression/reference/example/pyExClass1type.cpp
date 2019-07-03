@@ -71,7 +71,7 @@ PP_ExClass1_tp_init_0(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     return 0;
 // splicer end class.ExClass1.method.ctor_0
 }
@@ -109,7 +109,7 @@ PP_ExClass1_tp_init_1(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     return 0;
 // splicer end class.ExClass1.method.ctor_1
 }

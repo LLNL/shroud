@@ -60,7 +60,7 @@ PY_Cstruct1_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     // initialize fields
     Cstruct1 *SH_obj = self->obj;
     SH_obj->ifield = ifield;

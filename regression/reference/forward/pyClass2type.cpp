@@ -57,7 +57,7 @@ PY_Class2_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     return 0;
 // splicer end class.Class2.method.ctor
 }

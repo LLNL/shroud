@@ -92,7 +92,7 @@
             "PyObject": "PyObject",
             "YAML_type_filename": "clibrary_types.yaml",
             "c_temp": "SHT_",
-            "capsule_order": "-1",
+            "capsule_order": "0",
             "cast1": ") ",
             "cast2": "",
             "cast_const": "(",

@@ -328,7 +328,7 @@ PY_returnStructByValue(
     SHC_rv = PyCapsule_New(rv, "PY_array_dtor", 
         PY_SHROUD_capsule_destructor);
     if (SHC_rv == NULL) goto fail;
-    PyCapsule_SetContext(SHC_rv, PY_SHROUD_fetch_context(0));
+    PyCapsule_SetContext(SHC_rv, PY_SHROUD_fetch_context(1));
     if (PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_rv) < 0)
         goto fail;
 
@@ -336,7 +336,7 @@ PY_returnStructByValue(
 
 fail:
     if (rv != NULL) {
-        PY_SHROUD_release_memory(0, rv);
+        PY_SHROUD_release_memory(1, rv);
     }
     Py_XDECREF(SHTPy_rv);
     Py_XDECREF(SHC_rv);

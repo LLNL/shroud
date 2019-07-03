@@ -161,15 +161,21 @@ typedef struct {
     void (*dtor)(void *ptr);
 } PY_SHROUD_dtor_context;
 
-// 0 - cxx std::vector<int> *
+// 0 - --none--
 static void PY_SHROUD_capsule_destructor_0(void *ptr)
+{
+    // Do not release
+}
+
+// 1 - cxx std::vector<int> *
+static void PY_SHROUD_capsule_destructor_1(void *ptr)
 {
     std::vector<int> * cxx_ptr = static_cast<std::vector<int> *>(ptr);
     delete cxx_ptr;
 }
 
-// 1 - cxx std::vector<double> *
-static void PY_SHROUD_capsule_destructor_1(void *ptr)
+// 2 - cxx std::vector<double> *
+static void PY_SHROUD_capsule_destructor_2(void *ptr)
 {
     std::vector<double> * cxx_ptr =
         static_cast<std::vector<double> *>(ptr);
@@ -180,17 +186,16 @@ static void PY_SHROUD_capsule_destructor_1(void *ptr)
 // via a Capsule base object with a destructor.
 // Context strings
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
-    {"cxx std::vector<int> *", PY_SHROUD_capsule_destructor_0},
-    {"cxx std::vector<double> *", PY_SHROUD_capsule_destructor_1},
+    {"--none--", PY_SHROUD_capsule_destructor_0},
+    {"cxx std::vector<int> *", PY_SHROUD_capsule_destructor_1},
+    {"cxx std::vector<double> *", PY_SHROUD_capsule_destructor_2},
     {NULL, NULL}
 };
 
 // Release memory based on icontext.
 void PY_SHROUD_release_memory(int icontext, void *ptr)
 {
-    if (icontext != -1) {
-        PY_SHROUD_capsule_context[icontext].dtor(ptr);
-    }
+    PY_SHROUD_capsule_context[icontext].dtor(ptr);
 }
 
 //Fetch garbage collection context.

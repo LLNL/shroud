@@ -176,7 +176,7 @@ PY_acceptStructOutPtr(
         SHPy_arg = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
         if (SHPy_arg == NULL) goto fail;
         SHPy_arg->obj = arg;
-        SHPy_arg->idtor = -1;
+        SHPy_arg->idtor = 0;
 
         return (PyObject *) SHPy_arg;
     }
@@ -254,13 +254,13 @@ PY_returnStructByValue(
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == NULL) goto fail;
     SHTPy_rv->obj = rv;
-    SHTPy_rv->idtor = 0;
+    SHTPy_rv->idtor = 1;
 
     return (PyObject *) SHTPy_rv;
 
 fail:
     if (rv != NULL) {
-        PY_SHROUD_release_memory(0, rv);
+        PY_SHROUD_release_memory(1, rv);
     }
     Py_XDECREF(SHTPy_rv);
     return NULL;
@@ -302,7 +302,7 @@ PY_returnStructPtr1(
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == NULL) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
-    SHTPy_rv->idtor = -1;
+    SHTPy_rv->idtor = 0;
 
     return (PyObject *) SHTPy_rv;
 
@@ -351,7 +351,7 @@ PY_returnStructPtr2(
     SHTPy_rv = PyObject_New(PY_Cstruct1, &PY_Cstruct1_Type);
     if (SHTPy_rv == NULL) goto fail;
     SHTPy_rv->obj = SHCXX_rv;
-    SHTPy_rv->idtor = -1;
+    SHTPy_rv->idtor = 0;
     SHPyResult = Py_BuildValue("Os", SHTPy_rv, outbuf);
 
     return SHPyResult;

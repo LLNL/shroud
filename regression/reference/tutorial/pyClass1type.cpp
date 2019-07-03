@@ -49,7 +49,7 @@ PY_Class1_tp_init_default(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     return 0;
 // splicer end class.Class1.method.new_default
 }
@@ -76,7 +76,7 @@ PY_Class1_tp_init_flag(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 0;
+    self->idtor = 1;
     return 0;
 // splicer end class.Class1.method.new_flag
 }

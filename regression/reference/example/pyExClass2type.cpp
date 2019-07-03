@@ -184,7 +184,7 @@ PP_ExClass2_tp_init(
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 1;
+    self->idtor = 2;
     return 0;
 // splicer end class.ExClass2.method.ctor
 }

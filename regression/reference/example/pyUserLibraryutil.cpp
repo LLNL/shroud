@@ -83,16 +83,22 @@ typedef struct {
     void (*dtor)(void *ptr);
 } PP_SHROUD_dtor_context;
 
-// 0 - cxx example::nested::ExClass1 *
+// 0 - --none--
 static void PP_SHROUD_capsule_destructor_0(void *ptr)
+{
+    // Do not release
+}
+
+// 1 - cxx example::nested::ExClass1 *
+static void PP_SHROUD_capsule_destructor_1(void *ptr)
 {
     example::nested::ExClass1 * cxx_ptr =
         static_cast<example::nested::ExClass1 *>(ptr);
     delete cxx_ptr;
 }
 
-// 1 - cxx example::nested::ExClass2 *
-static void PP_SHROUD_capsule_destructor_1(void *ptr)
+// 2 - cxx example::nested::ExClass2 *
+static void PP_SHROUD_capsule_destructor_2(void *ptr)
 {
     example::nested::ExClass2 * cxx_ptr =
         static_cast<example::nested::ExClass2 *>(ptr);
@@ -103,17 +109,16 @@ static void PP_SHROUD_capsule_destructor_1(void *ptr)
 // via a Capsule base object with a destructor.
 // Context strings
 static PP_SHROUD_dtor_context PP_SHROUD_capsule_context[] = {
-    {"cxx example::nested::ExClass1 *", PP_SHROUD_capsule_destructor_0},
-    {"cxx example::nested::ExClass2 *", PP_SHROUD_capsule_destructor_1},
+    {"--none--", PP_SHROUD_capsule_destructor_0},
+    {"cxx example::nested::ExClass1 *", PP_SHROUD_capsule_destructor_1},
+    {"cxx example::nested::ExClass2 *", PP_SHROUD_capsule_destructor_2},
     {NULL, NULL}
 };
 
 // Release memory based on icontext.
 void PP_SHROUD_release_memory(int icontext, void *ptr)
 {
-    if (icontext != -1) {
-        PP_SHROUD_capsule_context[icontext].dtor(ptr);
-    }
+    PP_SHROUD_capsule_context[icontext].dtor(ptr);
 }
 
 //Fetch garbage collection context.

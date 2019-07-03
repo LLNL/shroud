@@ -876,7 +876,7 @@
             "YAML_type_filename": "testnames_types.yaml",
             "__line__": 30,
             "c_temp": "SHT_",
-            "capsule_order": "-1",
+            "capsule_order": "0",
             "cast1": ">\t(",
             "cast2": ")",
             "cast_const": "const_cast<",

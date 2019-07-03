@@ -138,8 +138,9 @@ class Wrapp(util.WrapperMixin):
         self.py_utility_functions = []
 
         # reserved the 0 slot of capsule_order
-        # self.add_capsule_code('--none--', ['// Do not release'])
-        fmt_library.capsule_order = "-1"
+        self.add_capsule_code('--none--', ['// Do not release'])
+        fmt_library.capsule_order = "0"
+        self.need_blah = False  # Not needed if no there gc routines are added.
 
         # preprocess all classes first to allow them to reference each other
         for node in newlibrary.classes:
@@ -2069,7 +2070,7 @@ extern PyObject *{PY_prefix}error_obj;
         fmt = node.fmtdict
         output = []
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if self.capsule_order:
+        if len(self.capsule_order) > 1:
             # header file may be needed to fully qualify types capsule destructors
             for include in node.cxx_header.split():
                 output.append('#include "%s"' % include)
@@ -2078,7 +2079,7 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         output.extend(self.py_utility_functions)
 
-        if self.capsule_order or self.need_blah:
+        if self.need_blah:
             self.write_capsule_code(output, fmt)
         self.config.pyfiles.append(
             os.path.join(self.config.python_dir, fmt.PY_utility_filename)
@@ -2143,9 +2144,7 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(
             output,
             "{{+\n"
-            "if (icontext != -1) {{+\n"
             "{PY_dtor_context_array}[icontext].dtor(ptr);\n"
-            "-}}\n"
             "-}}", fmt)
 
         # Write function to release NumPy capsule base object.
