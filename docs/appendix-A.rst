@@ -4,6 +4,14 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+.. All of the examples are ordered as
+   C or C++ code from users library
+   YAML input
+   C++ wrapper
+   Fortran interface
+   Fortran wrapper
+   Fortran example usage
+
 Sample Fortran Wrappers
 =======================
 
@@ -24,6 +32,13 @@ Numeric Types
 PassByValue
 ^^^^^^^^^^^
 
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start PassByValue
+   :end-before: end PassByValue
+
 YAML:
 
 .. code-block:: yaml
@@ -32,8 +47,8 @@ YAML:
 
 Both types are supported directly by the ``iso_c_binding`` module
 so there is no need for a Fortran function.
-The C function can be called directly by Fortran
-by using the ``bind(C)`` keyword.
+The C function can be called directly by the Fortran interface
+using the ``bind(C)`` keyword.
 
 Calls C via the interface:
 
@@ -43,19 +58,19 @@ Calls C via the interface:
    :end-before: end pass_by_value
    :dedent: 8
 
-C library function:
-
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start PassByValue
-   :end-before: end PassByValue
-
 .. ############################################################
 
 .. _example_PassByReference:
 
 PassByReference
 ^^^^^^^^^^^^^^^
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start PassByReference
+   :end-before: end PassByReference
 
 YAML:
 
@@ -70,13 +85,6 @@ Calls C via the interface:
    :start-after: start pass_by_reference
    :end-before: end pass_by_reference
    :dedent: 8
-
-C library function:
-
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start PassByReference
-   :end-before: end PassByReference
 
 Example usage:
 
@@ -93,6 +101,13 @@ Example usage:
 Sum
 ^^^
 
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start Sum
+   :end-before: end Sum
+
 YAML:
 
 .. code-block:: yaml
@@ -100,14 +115,6 @@ YAML:
    - decl: void Sum(int len +implied(size(values)),
                     int *values +dimension(:)+intent(in),
                     int *result +intent(out))
-
-The Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start sum
-   :end-before: end sum
-   :dedent: 4
 
 Calls C via the interface:
 
@@ -117,43 +124,23 @@ Calls C via the interface:
    :end-before: end c_sum
    :dedent: 8
 
-C library function:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start Sum
-   :end-before: end Sum
-
-.. _example_getMinMax:
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start sum
+   :end-before: end sum
+   :dedent: 4
 
 .. ############################################################
+
+.. _example_getMinMax:
 
 getMinMax
 ^^^^^^^^^
 
 No Fortran function is created.  Only an interface to a C wrapper
 which dereference the pointers so they can be treated as references.
-
-YAML:
-
-.. code-block:: yaml
-
-    - decl: void getMinMax(int &min +intent(out), int &max +intent(out))
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
-   :language: fortran
-   :start-after: start get_min_max
-   :end-before: end get_min_max
-   :dedent: 8
-
-The C wrapper:
-
-.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
-   :language: c
-   :start-after: start TUT_get_min_max
-   :end-before: end TUT_get_min_max
 
 C++ library function:
 
@@ -162,6 +149,26 @@ C++ library function:
    :start-after: start getMinMax
    :end-before: end getMinMax
 
+YAML:
+
+.. code-block:: yaml
+
+    - decl: void getMinMax(int &min +intent(out), int &max +intent(out))
+
+The C wrapper:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c
+   :start-after: start TUT_get_min_max
+   :end-before: end TUT_get_min_max
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start get_min_max
+   :end-before: end get_min_max
+   :dedent: 8
 
 Bool
 ----
@@ -184,14 +191,6 @@ YAML:
                            bool *arg2+intent(out),
                            bool *arg3+intent(inout))
 
-The Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start check_bool
-   :end-before: end check_bool
-   :dedent: 4
-
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
@@ -199,6 +198,14 @@ Calls C via the interface:
    :start-after: start c_check_bool
    :end-before: end c_check_bool
    :dedent: 8
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start check_bool
+   :end-before: end check_bool
+   :dedent: 4
 
 
 Character
@@ -220,14 +227,6 @@ YAML:
 
   - decl: void acceptName(const char *name)
 
-The Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start accept_name
-   :end-before: end accept_name
-   :dedent: 4
-
 Calls C via the interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
@@ -235,6 +234,14 @@ Calls C via the interface:
    :start-after: start c_accept_name
    :end-before: end c_accept_name
    :dedent: 8
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start accept_name
+   :end-before: end accept_name
+   :dedent: 4
 
 No C wrapper is required since the Fortran wrapper calls ``trim`` and
 concatenates ``C_NULL_CHAR``.
@@ -255,13 +262,12 @@ YAML:
 
     - decl: void returnOneName(char *name1+intent(out)+charlen(MAXNAME))
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start return_one_name
-   :end-before: end return_one_name
-   :dedent: 4
+.. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
+   :language: c
+   :start-after: start CLI_return_one_name_bufferify
+   :end-before: end CLI_return_one_name_bufferify
 
 Calls C via the interface:
 
@@ -271,12 +277,13 @@ Calls C via the interface:
    :end-before: end c_return_one_name_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
-   :language: c
-   :start-after: start CLI_return_one_name_bufferify
-   :end-before: end CLI_return_one_name_bufferify
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start return_one_name
+   :end-before: end return_one_name
+   :dedent: 4
 
 .. ############################################################
 
@@ -288,6 +295,12 @@ passCharPtr
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``:
 
+C++ library function:
+
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start passCharPtr
+   :end-before: end passCharPtr
 
 YAML:
 
@@ -300,28 +313,6 @@ The intent of ``dest`` must be explicit.  It defaults to *intent(inout)*
 since it is a pointer.
 ``src`` is implied to be *intent(in)* since it is ``const``.
 This single line will create five different wrappers.
-
-The Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start pass_char_ptr
-   :end-before: end pass_char_ptr
-   :dedent: 4
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start c_pass_char_ptr
-   :end-before: end c_pass_char_ptr
-   :dedent: 8
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start c_pass_char_ptr_bufferify
-   :end-before: end c_pass_char_ptr_bufferify
-   :dedent: 8
 
 The native C version.
 The only feature this provides to Fortran is the ability
@@ -342,12 +333,27 @@ The C wrapper:
    :start-after: start STR_pass_char_ptr_bufferify
    :end-before: end STR_pass_char_ptr_bufferify
 
-C++ library function:
+Calls C via the interface:
 
-.. literalinclude:: ../regression/run/strings/strings.cpp
-   :language: c
-   :start-after: start passCharPtr
-   :end-before: end passCharPtr
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_pass_char_ptr
+   :end-before: end c_pass_char_ptr
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_pass_char_ptr_bufferify
+   :end-before: end c_pass_char_ptr_bufferify
+   :dedent: 8
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start pass_char_ptr
+   :end-before: end pass_char_ptr
+   :dedent: 4
 
 The function can be called without the user aware that it is written in C++:
 
@@ -381,13 +387,12 @@ YAML:
     - decl: void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME),
                                 int ltext+implied(len(text)))
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start implied_text_len
-   :end-before: end implied_text_len
-   :dedent: 4
+.. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
+   :language: c
+   :start-after: start CLI_implied_text_len_bufferify
+   :end-before: end CLI_implied_text_len_bufferify
 
 Calls C via the interface:
 
@@ -397,12 +402,13 @@ Calls C via the interface:
    :end-before: end c_implied_text_len_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
-   :language: c
-   :start-after: start CLI_implied_text_len_bufferify
-   :end-before: end CLI_implied_text_len_bufferify
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start implied_text_len
+   :end-before: end implied_text_len
+   :dedent: 4
 
 
 std::string
@@ -427,21 +433,12 @@ and *len_trim* annotations.
 Both generated functions will convert ``arg`` into a ``std::string``,
 call the function, then copy the results back into the argument.
 
-The Fortran wrapper:
+Which will call the C wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start accept_string_reference
-   :end-before: end accept_string_reference
-   :dedent: 4
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start c_accept_string_reference_bufferify
-   :end-before: end c_accept_string_reference_bufferify
-   :dedent: 8
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_accept_string_reference
+   :end-before: end STR_accept_string_reference
 
 The C wrapper:
 
@@ -458,19 +455,27 @@ An interface for the native C function is also created:
    :end-before: end c_accept_string_reference
    :dedent: 8
 
-Which will call the C wrapper:
+Calls C via the interface:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
-   :language: c
-   :start-after: start STR_accept_string_reference
-   :end-before: end STR_accept_string_reference
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_accept_string_reference_bufferify
+   :end-before: end c_accept_string_reference_bufferify
+   :dedent: 8
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start accept_string_reference
+   :end-before: end accept_string_reference
+   :dedent: 4
 
 The important thing to notice is that the pure C version could do very
 bad things since it does not know how much space it has to copy into.
 The bufferify version knows the allocated length of the argument.
 However, since the input argument is a fixed length it may be too
 short for the new string value:
-
 
 
 char functions
@@ -494,6 +499,22 @@ YAML:
 
     - decl: const char * getCharPtr1()
 
+The C wrapper copies all of the metadata into a ``SHROUD_array``
+struct which is used by the Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_get_char_ptr1_bufferify
+   :end-before: end STR_get_char_ptr1_bufferify
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_get_char_ptr1_bufferify
+   :end-before: end c_get_char_ptr1_bufferify
+   :dedent: 8
+
 The Fortran wrapper uses the metadata in ``DSHF_rv`` to allocate
 a ``CHARACTER`` variable of the correct length.
 The helper function ``SHROUD_copy_string_and_free`` will copy 
@@ -504,22 +525,6 @@ the results of the C++ function into the return variable:
    :start-after: start get_char_ptr1
    :end-before: end get_char_ptr1
    :dedent: 4
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start c_get_char_ptr1_bufferify
-   :end-before: end c_get_char_ptr1_bufferify
-   :dedent: 8
-
-The C wrapper copies all of the metadata into a ``SHROUD_array``
-struct which is used by the Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
-   :language: c
-   :start-after: start STR_get_char_ptr1_bufferify
-   :end-before: end STR_get_char_ptr1_bufferify
 
 Fortran usage:
 
@@ -546,13 +551,12 @@ YAML:
 
     - decl: const char * getCharPtr2() +len(30)
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start get_char_ptr2
-   :end-before: end get_char_ptr2
-   :dedent: 4
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_get_char_ptr2_bufferify
+   :end-before: end STR_get_char_ptr2_bufferify
 
 Calls C via the interface:
 
@@ -562,12 +566,13 @@ Calls C via the interface:
    :end-before: end c_get_char_ptr2_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
-   :language: c
-   :start-after: start STR_get_char_ptr2_bufferify
-   :end-before: end STR_get_char_ptr2_bufferify
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start get_char_ptr2
+   :end-before: end get_char_ptr2
+   :dedent: 4
 
 Fortran usage:
 
@@ -597,13 +602,12 @@ YAML:
       format:
         F_string_result_as_arg: output
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start get_char_ptr3
-   :end-before: end get_char_ptr3
-   :dedent: 4
+.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+   :language: c
+   :start-after: start STR_get_char_ptr3_bufferify
+   :end-before: end STR_get_char_ptr3_bufferify
 
 Calls C via the interface:
 
@@ -613,12 +617,13 @@ Calls C via the interface:
    :end-before: end c_get_char_ptr3_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
-   :language: c
-   :start-after: start STR_get_char_ptr3_bufferify
-   :end-before: end STR_get_char_ptr3_bufferify
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start get_char_ptr3
+   :end-before: end get_char_ptr3
+   :dedent: 4
 
 Fortran usage:
 
@@ -643,22 +648,6 @@ YAML:
 
     - decl: const string& getConstStringRefPure()
 
-The Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start get_const_string_ref_pure
-   :end-before: end get_const_string_ref_pure
-   :dedent: 4
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
-   :language: fortran
-   :start-after: start c_get_const_string_ref_pure_bufferify
-   :end-before: end c_get_const_string_ref_pure_bufferify
-   :dedent: 8
-
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
@@ -672,6 +661,23 @@ The native C wrapper:
    :language: c
    :start-after: start STR_get_const_string_ref_pure
    :end-before: end STR_get_const_string_ref_pure
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start c_get_const_string_ref_pure_bufferify
+   :end-before: end c_get_const_string_ref_pure_bufferify
+   :dedent: 8
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+   :language: fortran
+   :start-after: start get_const_string_ref_pure
+   :end-before: end get_const_string_ref_pure
+   :dedent: 4
+
 
 std::vector
 -----------
@@ -692,13 +698,12 @@ YAML:
 ``intent(in)`` is implied for the *vector_sum* argument since it is
 ``const``.  The Fortran wrapper passes the array and the size to C.
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
-   :language: fortran
-   :start-after: start vector_sum
-   :end-before: end vector_sum
-   :dedent: 4
+.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+   :language: c
+   :start-after: start VEC_vector_sum_bufferify
+   :end-before: end VEC_vector_sum_bufferify
 
 Calls C via the interface:
 
@@ -708,12 +713,13 @@ Calls C via the interface:
    :end-before: end c_vector_sum_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
-   :language: c
-   :start-after: start VEC_vector_sum_bufferify
-   :end-before: end VEC_vector_sum_bufferify
+.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
+   :language: fortran
+   :start-after: start vector_sum
+   :end-before: end vector_sum
+   :dedent: 4
 
 .. ############################################################
 
@@ -728,13 +734,12 @@ YAML:
 
     - decl: void vector_iota_out(std::vector<int> &arg+intent(out))
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
-   :language: fortran
-   :start-after: start vector_iota_out
-   :end-before: end vector_iota_out
-   :dedent: 4
+.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+   :language: c
+   :start-after: start VEC_vector_iota_out_bufferify
+   :end-before: end VEC_vector_iota_out_bufferify
 
 Calls C via the interface:
 
@@ -744,12 +749,13 @@ Calls C via the interface:
    :end-before: end c_vector_iota_out_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
-   :language: c
-   :start-after: start VEC_vector_iota_out_bufferify
-   :end-before: end VEC_vector_iota_out_bufferify
+.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
+   :language: fortran
+   :start-after: start vector_iota_out
+   :end-before: end vector_iota_out
+   :dedent: 4
 
 .. ############################################################
 
@@ -764,13 +770,12 @@ YAML:
 
     - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
-   :language: fortran
-   :start-after: start vector_iota_out_alloc
-   :end-before: end vector_iota_out_alloc
-   :dedent: 4
+.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+   :language: c
+   :start-after: start VEC_vector_iota_out_alloc_bufferify
+   :end-before: end VEC_vector_iota_out_alloc_bufferify
 
 Calls C via the interface:
 
@@ -780,12 +785,13 @@ Calls C via the interface:
    :end-before: end c_vector_iota_out_alloc_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
-   :language: c
-   :start-after: start VEC_vector_iota_out_alloc_bufferify
-   :end-before: end VEC_vector_iota_out_alloc_bufferify
+.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
+   :language: fortran
+   :start-after: start vector_iota_out_alloc
+   :end-before: end vector_iota_out_alloc
+   :dedent: 4
 
 .. ############################################################
 
@@ -800,13 +806,12 @@ YAML:
 
     - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
 
-The Fortran wrapper:
+The C wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
-   :language: fortran
-   :start-after: start vector_iota_inout_alloc
-   :end-before: end vector_iota_inout_alloc
-   :dedent: 4
+.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+   :language: c
+   :start-after: start VEC_vector_iota_inout_alloc_bufferify
+   :end-before: end VEC_vector_iota_inout_alloc_bufferify
 
 Calls C via the interface:
 
@@ -816,12 +821,13 @@ Calls C via the interface:
    :end-before: end c_vector_iota_inout_alloc_bufferify
    :dedent: 8
 
-The C wrapper:
+The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
-   :language: c
-   :start-after: start VEC_vector_iota_inout_alloc_bufferify
-   :end-before: end VEC_vector_iota_inout_alloc_bufferify
+.. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
+   :language: fortran
+   :start-after: start vector_iota_inout_alloc
+   :end-before: end vector_iota_inout_alloc
+   :dedent: 4
 
 Void Pointers
 -------------
@@ -833,19 +839,18 @@ Void Pointers
 passAssumedType
 ^^^^^^^^^^^^^^^
 
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passAssumedType
+   :end-before: end passAssumedType
+
 YAML:
 
 .. code-block:: yaml
 
     - decl: int passAssumedType(void *arg+assumedtype)
-
-Example usage:
-
-.. code-block:: fortran
-
-    use iso_c_binding, only : C_INT
-    integer(C_INT) rv_int
-    rv_int = pass_assumed_type(23_C_INT)
 
 Calls C via the interface:
 
@@ -855,12 +860,13 @@ Calls C via the interface:
    :end-before: end pass_assumed_type
    :dedent: 8
 
-C library function:
+Example usage:
 
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start passAssumedType
-   :end-before: end passAssumedType
+.. code-block:: fortran
+
+    use iso_c_binding, only : C_INT
+    integer(C_INT) rv_int
+    rv_int = pass_assumed_type(23_C_INT)
 
 .. ############################################################
 
@@ -869,11 +875,26 @@ C library function:
 passAssumedTypeDim
 ^^^^^^^^^^^^^^^^^^
 
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passAssumedTypeDim
+   :end-before: end passAssumedTypeDim
+
 YAML:
 
 .. code-block:: yaml
 
     - decl: int passAssumedTypeDim(void *arg+assumedtype+dimension)
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start pass_assumed_type_dim
+   :end-before: end pass_assumed_type_dim
+   :dedent: 8
 
 Example usage:
 
@@ -885,21 +906,6 @@ Example usage:
     call pass_assumed_type_dim(int_array)
     call pass_assumed_type_dim(double_array)
 
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start pass_assumed_type_dim
-   :end-before: end pass_assumed_type_dim
-   :dedent: 8
-
-C library function:
-
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start passAssumedTypeDim
-   :end-before: end passAssumedTypeDim
-
 .. ############################################################
 
 .. _example_passVoidStarStar:
@@ -907,11 +913,26 @@ C library function:
 passVoidStarStar
 ^^^^^^^^^^^^^^^^
 
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start passVoidStarStar
+   :end-before: end passVoidStarStar
+
 YAML:
 
 .. code-block:: yaml
 
     - decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start pass_void_star_star
+   :end-before: end pass_void_star_star
+   :dedent: 8
 
 Example usage:
 
@@ -924,22 +945,6 @@ Example usage:
     call pass_void_star_star(cptr1, cptr2)
     call assert_true(c_associated(cptr1, cptr2))
 
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start pass_void_star_star
-   :end-before: end pass_void_star_star
-   :dedent: 8
-
-C library function:
-
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start passVoidStarStar
-   :end-before: end passVoidStarStar
-
-
 
 Function Pointers
 -----------------
@@ -951,11 +956,41 @@ Function Pointers
 callback1
 ^^^^^^^^^
 
+C++ library function:
+
+.. literalinclude:: ../regression/run/tutorial/tutorial.cpp
+   :language: c
+   :start-after: start callback1
+   :end-before: end callback1
+
 YAML:
 
 .. code-block:: yaml
 
     - decl: int callback1(int in, int (*incr)(int));
+
+The C wrapper:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c
+   :start-after: start TUT_callback1
+   :end-before: end TUT_callback1
+
+Creates the abstract interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start abstract callback1_incr
+   :end-before: end abstract callback1_incr
+   :dedent: 8
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start callback1
+   :end-before: end callback1
+   :dedent: 8
 
 Fortran usage:
 
@@ -974,36 +1009,6 @@ Fortran usage:
       end subrouine work
     end module worker
 
-Creates the abstract interface:
-
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
-   :language: fortran
-   :start-after: start abstract callback1_incr
-   :end-before: end abstract callback1_incr
-   :dedent: 8
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
-   :language: fortran
-   :start-after: start callback1
-   :end-before: end callback1
-   :dedent: 8
-
-The C wrapper:
-
-.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
-   :language: c
-   :start-after: start TUT_callback1
-   :end-before: end TUT_callback1
-
-C++ library function:
-
-.. literalinclude:: ../regression/run/tutorial/tutorial.cpp
-   :language: c
-   :start-after: start callback1
-   :end-before: end callback1
-
 
 .. ############################################################
 
@@ -1012,11 +1017,45 @@ C++ library function:
 callback1c
 ^^^^^^^^^^
 
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start callback1
+   :end-before: end callback1
+
 YAML:
 
 .. code-block:: yaml
 
     - decl: int callback1(int type, void (*incr)()+external)
+
+Creates the abstract interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start abstract callback1_incr
+   :end-before: end abstract callback1_incr
+   :dedent: 8
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start c_callback1
+   :end-before: end c_callback1
+   :dedent: 8
+
+.. XXX why is C_PTR used here ^
+
+The Fortran wrapper.
+By using ``external`` no abstract interface is used:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start callback1
+   :end-before: end callback1
+   :dedent: 4
 
 Fortran usage:
 
@@ -1041,40 +1080,6 @@ Fortran usage:
       end subrouine work
     end module worker
 
-Creates the abstract interface:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start abstract callback1_incr
-   :end-before: end abstract callback1_incr
-   :dedent: 8
-
-The Fortran wrapper.
-By using ``external`` no abstract interface is used:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start callback1
-   :end-before: end callback1
-   :dedent: 4
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
-   :language: fortran
-   :start-after: start c_callback1
-   :end-before: end c_callback1
-   :dedent: 8
-
-.. XXX why is C_PTR used here ^
-
-C library function:
-
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
-   :language: c
-   :start-after: start callback1
-   :end-before: end callback1
-
 Struct
 ------
 
@@ -1085,26 +1090,26 @@ Struct
 passStruct1
 ^^^^^^^^^^^
 
-YAML:
-
-.. code-block:: yaml
-
-    - decl: int passStruct1(Cstruct1 *s1)
-
-The Fortran wrapper:
-
-.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
-   :language: fortran
-   :start-after: start pass_struct1
-   :end-before: end pass_struct1
-   :dedent: 8
-
 C library function:
 
 .. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStruct1
    :end-before: end passStruct1
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: int passStruct1(Cstruct1 *s1)
+
+The Fortran interface:
+
+.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
+   :language: fortran
+   :start-after: start pass_struct1
+   :end-before: end pass_struct1
+   :dedent: 8
 
 .. ############################################################
 
@@ -1113,26 +1118,26 @@ C library function:
 passStructByValue
 ^^^^^^^^^^^^^^^^^
 
-YAML:
-
-.. code-block:: yaml
-
-    - decl: double passStructByValue(struct1 arg)
-
-Calls C via the interface:
-
-.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
-   :language: fortran
-   :start-after: start pass_struct_by_value
-   :end-before: end pass_struct_by_value
-   :dedent: 8
-
 C library function:
 
 .. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStructByValue
    :end-before: end passStructByValue
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: double passStructByValue(struct1 arg)
+
+Calls C via the Fortran interface:
+
+.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
+   :language: fortran
+   :start-after: start pass_struct_by_value
+   :end-before: end pass_struct_by_value
+   :dedent: 8
 
 
 Class Type
