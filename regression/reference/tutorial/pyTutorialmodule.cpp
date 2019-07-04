@@ -1,19 +1,11 @@
 // pyTutorialmodule.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pyTutorialmodule.hpp"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
@@ -38,7 +30,6 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
-PyArray_Descr *PY_struct1_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -77,15 +68,16 @@ PY_Function2(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    double SHC_rv = tutorial::Function2(arg1, arg2);
+    double rv = tutorial::Function2(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function2
@@ -108,6 +100,7 @@ PY_Sum(
     const char *SHT_kwlist[] = {
         "values",
         NULL };
+    PyObject * SHPy_result = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_values))
@@ -130,7 +123,7 @@ PY_Sum(
         tutorial::Sum(len, values, &result);
 
         // post_call
-        PyObject * SHPy_result = PyInt_FromLong(result);
+        SHPy_result = PyInt_FromLong(result);
 
         // cleanup
         Py_DECREF(SHPy_values);
@@ -160,15 +153,16 @@ PY_TypeLongLong(
     const char *SHT_kwlist[] = {
         "arg1",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
         const_cast<char **>(SHT_kwlist), &arg1))
         return NULL;
 
-    long long SHC_rv = tutorial::TypeLongLong(arg1);
+    long long rv = tutorial::TypeLongLong(arg1);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("L", SHC_rv);
+    SHTPy_rv = Py_BuildValue("L", rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.type_long_long
@@ -190,6 +184,7 @@ PY_Function3(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
@@ -198,12 +193,17 @@ PY_Function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHC_rv = tutorial::Function3(arg);
+    bool rv = tutorial::Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.function3
 }
 
@@ -230,6 +230,7 @@ PY_Function4a(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -242,7 +243,7 @@ PY_Function4a(
     const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -267,6 +268,7 @@ PY_Function4b(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -280,7 +282,7 @@ PY_Function4b(
         SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -309,6 +311,7 @@ PY_Function4c(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4c",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
@@ -321,7 +324,7 @@ PY_Function4c(
     const std::string SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -344,10 +347,12 @@ PY_Function4d(
 {
 // const std::string * Function4d() +deref(allocatable)+owner(caller)
 // splicer begin function.function4d
+    PyObject * SHTPy_rv = NULL;
+
     const std::string * SHCXX_rv = tutorial::Function4d();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
         SHCXX_rv->size());
 
     return (PyObject *) SHTPy_rv;
@@ -373,7 +378,8 @@ PY_Function5_arg1_arg2(
         "arg1",
         "arg2",
         NULL };
-    double SHC_rv;
+    double rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -383,17 +389,17 @@ PY_Function5_arg1_arg2(
         return NULL;
     switch (SH_nargs) {
     case 0:
-        SHC_rv = tutorial::Function5();
+        rv = tutorial::Function5();
         break;
     case 1:
-        SHC_rv = tutorial::Function5(arg1);
+        rv = tutorial::Function5(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            SHC_rv = tutorial::Function5(arg1, arg2);
+            rv = tutorial::Function5(arg1, arg2);
             break;
         }
     default:
@@ -402,7 +408,7 @@ PY_Function5_arg1_arg2(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function5
@@ -582,7 +588,8 @@ PY_overload1_num_offset_stride(
         "offset",
         "stride",
         NULL };
-    int SHC_rv;
+    int rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -591,13 +598,13 @@ PY_overload1_num_offset_stride(
         return NULL;
     switch (SH_nargs) {
     case 1:
-        SHC_rv = tutorial::overload1(num);
+        rv = tutorial::overload1(num);
         break;
     case 2:
-        SHC_rv = tutorial::overload1(num, offset);
+        rv = tutorial::overload1(num, offset);
         break;
     case 3:
-        SHC_rv = tutorial::overload1(num, offset, stride);
+        rv = tutorial::overload1(num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -605,7 +612,7 @@ PY_overload1_num_offset_stride(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_num_offset_stride
@@ -630,7 +637,8 @@ PY_overload1_5(
         "offset",
         "stride",
         NULL };
-    int SHC_rv;
+    int rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
@@ -639,13 +647,13 @@ PY_overload1_5(
         return NULL;
     switch (SH_nargs) {
     case 2:
-        SHC_rv = tutorial::overload1(type, num);
+        rv = tutorial::overload1(type, num);
         break;
     case 3:
-        SHC_rv = tutorial::overload1(type, num, offset);
+        rv = tutorial::overload1(type, num, offset);
         break;
     case 4:
-        SHC_rv = tutorial::overload1(type, num, offset, stride);
+        rv = tutorial::overload1(type, num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -653,7 +661,7 @@ PY_overload1_5(
     }
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.overload1_5
@@ -675,15 +683,16 @@ PY_typefunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:typefunc",
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::TypeID SHC_rv = tutorial::typefunc(arg);
+    tutorial::TypeID rv = tutorial::typefunc(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.typefunc
@@ -705,6 +714,7 @@ PY_enumfunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -717,7 +727,7 @@ PY_enumfunc(
     tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.enumfunc
@@ -739,6 +749,7 @@ PY_colorfunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:colorfunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -750,7 +761,7 @@ PY_colorfunc(
     tutorial::Color SHCXX_rv = tutorial::colorfunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.colorfunc
@@ -772,6 +783,8 @@ PY_getMinMax(
 {
 // void getMinMax(int & min +intent(out), int & max +intent(out))
 // splicer begin function.get_min_max
+    PyObject *SHTPy_rv = NULL;  // return value object
+
     // pre_call
     int min;  // intent(out)
     int max;  // intent(out)
@@ -779,7 +792,7 @@ PY_getMinMax(
     tutorial::getMinMax(min, max);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ii", min, max);
+    SHTPy_rv = Py_BuildValue("ii", min, max);
 
     return SHTPy_rv;
 // splicer end function.get_min_max
@@ -801,6 +814,7 @@ PY_directionFunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -814,7 +828,7 @@ PY_directionFunc(
         tutorial::directionFunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.direction_func
@@ -869,6 +883,7 @@ PY_useclass(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:useclass",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
@@ -877,10 +892,10 @@ PY_useclass(
     // post_parse
     const tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
-    int SHC_rv = tutorial::useclass(arg);
+    int rv = tutorial::useclass(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.useclass
@@ -906,80 +921,6 @@ PY_getclass3(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.getclass3
-}
-
-static char PY_returnStruct__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_returnStruct(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-// splicer begin function.return_struct
-    int i;
-    double d;
-    const char *SHT_kwlist[] = {
-        "i",
-        "d",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStruct",
-        const_cast<char **>(SHT_kwlist), &i, &d))
-        return NULL;
-
-    tutorial::struct1 * SHC_rv = new tutorial::struct1;
-    *SHC_rv = tutorial::returnStruct(i, d);
-
-    // post_call
-    Py_INCREF(PY_struct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_struct1_array_descr, 0, NULL, NULL, SHC_rv, 0, NULL);
-    PyObject * SHC_SHC_rv = PyCapsule_New(SHC_rv, "PY_array_dtor", 
-        PY_array_destructor_function);
-    PyCapsule_SetContext(SHC_SHC_rv, const_cast<char *>
-        (PY_array_destructor_context[0]));
-    PyArray_SetBaseObject((PyArrayObject *) SHTPy_rv, SHC_SHC_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_struct
-}
-
-static char PY_returnStructPtr__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_returnStructPtr(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-// splicer begin function.return_struct_ptr
-    int i;
-    double d;
-    const char *SHT_kwlist[] = {
-        "i",
-        "d",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr",
-        const_cast<char **>(SHT_kwlist), &i, &d))
-        return NULL;
-
-    tutorial::struct1 * SHCXX_rv = tutorial::returnStructPtr(i, d);
-
-    // post_call
-    Py_INCREF(PY_struct1_array_descr);
-    PyObject * SHTPy_rv = PyArray_NewFromDescr(&PyArray_Type, 
-        PY_struct1_array_descr, 0, NULL, NULL, SHCXX_rv, 0, NULL);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.return_struct_ptr
 }
 
 static char PY_set_global_flag__doc__[] =
@@ -1020,10 +961,12 @@ PY_get_global_flag(
 {
 // int get_global_flag()
 // splicer begin function.get_global_flag
-    int SHC_rv = tutorial::get_global_flag();
+    PyObject * SHTPy_rv = NULL;
+
+    int rv = tutorial::get_global_flag();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.get_global_flag
@@ -1041,10 +984,12 @@ PY_LastFunctionCalled(
 {
 // const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
 // splicer begin function.last_function_called
+    PyObject * SHTPy_rv = NULL;
+
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
@@ -1240,10 +1185,6 @@ static PyMethodDef PY_methods[] = {
     PY_useclass__doc__},
 {"getclass3", (PyCFunction)PY_getclass3, METH_NOARGS,
     PY_getclass3__doc__},
-{"returnStruct", (PyCFunction)PY_returnStruct,
-    METH_VARARGS|METH_KEYWORDS, PY_returnStruct__doc__},
-{"returnStructPtr", (PyCFunction)PY_returnStructPtr,
-    METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr__doc__},
 {"set_global_flag", (PyCFunction)PY_set_global_flag,
     METH_VARARGS|METH_KEYWORDS, PY_set_global_flag__doc__},
 {"get_global_flag", (PyCFunction)PY_get_global_flag, METH_NOARGS,
@@ -1260,68 +1201,6 @@ static PyMethodDef PY_methods[] = {
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
-
-// Create PyArray_Descr for struct1
-PyArray_Descr *PY_struct1_create_array_descr()
-{
-    int ierr;
-    PyObject *obj = NULL;
-    PyObject * lnames = NULL;
-    PyObject * ldescr = NULL;
-    PyObject * dict = NULL;
-    PyArray_Descr *dtype = NULL;
-
-    lnames = PyList_New(2);
-    if (lnames == NULL) goto fail;
-    ldescr = PyList_New(2);
-    if (ldescr == NULL) goto fail;
-
-    // ifield
-    obj = PyString_FromString("ifield");
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(lnames, 0, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_INT);
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(ldescr, 0, obj);
-
-    // dfield
-    obj = PyString_FromString("dfield");
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(lnames, 1, obj);
-    obj = (PyObject *) PyArray_DescrFromType(NPY_DOUBLE);
-    if (obj == NULL) goto fail;
-    PyList_SET_ITEM(ldescr, 1, obj);
-    obj = NULL;
-
-    dict = PyDict_New();
-    if (dict == NULL) goto fail;
-    ierr = PyDict_SetItemString(dict, "names", lnames);
-    if (ierr == -1) goto fail;
-    lnames = NULL;
-    ierr = PyDict_SetItemString(dict, "formats", ldescr);
-    if (ierr == -1) goto fail;
-    ldescr = NULL;
-    ierr = PyArray_DescrAlignConverter(dict, &dtype);
-    if (ierr == 0) goto fail;
-    return dtype;
-fail:
-    Py_XDECREF(obj);
-    if (lnames != NULL) {
-        for (int i=0; i < 2; i++) {
-            Py_XDECREF(PyList_GET_ITEM(lnames, i));
-        }
-        Py_DECREF(lnames);
-    }
-    if (ldescr != NULL) {
-        for (int i=0; i < 2; i++) {
-            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
-        }
-        Py_DECREF(ldescr);
-    }
-    Py_XDECREF(dict);
-    Py_XDECREF(dtype);
-    return NULL;
-}
 
 /*
  * inittutorial - Initialization function for the module
@@ -1437,11 +1316,6 @@ inittutorial(void)
     PyModule_AddIntConstant(m, "RED", tutorial::RED);
     PyModule_AddIntConstant(m, "BLUE", tutorial::BLUE);
     PyModule_AddIntConstant(m, "WHITE", tutorial::WHITE);
-
-    // Define PyArray_Descr for structs
-    PY_struct1_array_descr = PY_struct1_create_array_descr();
-    PyModule_AddObject(m, "struct1_dtype", 
-        (PyObject *) PY_struct1_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

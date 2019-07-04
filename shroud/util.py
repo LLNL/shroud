@@ -23,6 +23,7 @@ fmt = string.Formatter()
 
 def wformat(template, dct):
     # shorthand, wrap fmt.vformat
+    assert template is not None
     try:
         return fmt.vformat(template, None, dct)
     except AttributeError:
@@ -48,11 +49,14 @@ def append_format_lst(lstout, lstin, fmt):
 def append_format_cmds(lstout, dictin, name, fmt):
     """Format entries in dictin[name] and append to lstout.
     Return True if found.
-    Used with c_statements and f_statements.
-    For example, dictin could be c_statements.intent_in.
+    Used with c_statements and py_statements.
+
+    Args:
+      lstout - list to append output lines to.
+      dictin - could be c_statements.intent_in.
+      name - entry into dictin. ex. "decl", "pre_call", "post_call".
+      fmt - format dictionary or Scope instance.
     """
-    if name not in dictin:
-        return False
     cmd_list = dictin.get(name, None)
     if cmd_list is None:
         return False
@@ -261,6 +265,21 @@ class WrapperMixin(object):
                 else:
                     output.append("}")
 
+    def add_statements_headers(self, intent_blk):
+        """Add headers required by intent_blk to self.header_impl_include.
+
+        Args:
+            intent_blk -
+        """
+        # include any dependent header in generated source
+        if self.language == "c":
+            headers = intent_blk.get("c_header", None)
+        else:
+            headers = intent_blk.get("cxx_header", None)
+        if headers:
+            for h in headers.split():
+                self.header_impl_include[h] = True
+
     def write_headers(self, headers, output):
         for header in sorted(headers):
             if header[0] == "<":
@@ -272,7 +291,7 @@ class WrapperMixin(object):
         """Write out headers required by types
 
         lang_header - "c_header"
-        types -
+        types - dictionary of Typemap nodes.
         hlist -
         output - append lines of code.
 

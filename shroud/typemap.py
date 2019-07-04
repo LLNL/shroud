@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Create and manage typemaps used to convert between languages.
 """
@@ -617,12 +610,40 @@ def initialize():
                 intent_inout=dict(
                     pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
                     # py_var is already declared for inout
-                    post_call=["{py_var} = PyBool_FromLong({c_deref}{c_var});"],
+                    post_call=[
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+                        "if ({py_var} == NULL) goto fail;",
+                    ],
+                    fail=[
+                        "Py_XDECREF({py_var});",
+                    ],
+                    goto_fail=True,
                 ),
                 intent_out=dict(
+                    decl=[
+                        "{PyObject} * {py_var} = NULL;",
+                    ],
                     post_call=[
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
-                    ]
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;",
+                    ],
+                    fail=[
+                        "Py_XDECREF({py_var});",
+                    ],
+                    goto_fail=True,
+                ),
+                result=dict(
+                    decl=[
+                        "{PyObject} * {py_var} = NULL;",
+                    ],
+                    post_call=[
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;",
+                    ],
+                    fail=[
+                        "Py_XDECREF({py_var});",
+                    ],
+                    goto_fail=True,
                 ),
             ),
             # XXX PY_format='p',  # Python 3.3 or greater
@@ -1374,24 +1395,51 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
             cxx_local_var="pointer",
             post_parse=[
                 "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
+                "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;" % ntypemap.cxx_type
             ],
         ),
         intent_inout=dict(
             cxx_local_var="pointer",
             post_parse=[
                 "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
+                "\t {py_var} ? {py_var}->{PY_type_obj} : NULL;" % ntypemap.cxx_type
             ],
         ),
         intent_out=dict(
+            decl=[
+                "{PyObject} *{py_var} = NULL;"
+            ],
             post_call=[
-                (
-                    "{PyObject} * {py_var} ="
-                    "\t PyObject_New({PyObject}, &{PyTypeObject});"
-                ),
-                "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-            ]
+                "{py_var} ="
+                "\t PyObject_New({PyObject}, &{PyTypeObject});",
+                "if ({py_var} == NULL) goto fail;",
+                "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
+            ],
+#            post_call_capsule=[
+#                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
+#            ],
+            fail=[
+                "Py_XDECREF({py_var});",
+            ],
+            goto_fail=True,
+        ),
+        result=dict(
+#            decl=[
+#                "{PyObject} *{py_var} = NULL;"
+#            ],
+            post_call=[
+                "{PyObject} * {py_var} ="
+                "\t PyObject_New({PyObject}, &{PyTypeObject});",
+#                "if ({py_var} == NULL) goto fail;",
+                "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};",
+            ],
+#            post_call_capsule=[
+#                "{py_var}->{PY_type_dtor} = {PY_numpy_array_dtor_context} + {capsule_order};",
+#            ],
+#            fail=[
+#                "Py_XDECREF({py_var});",
+#            ],
+#            goto_fail=True,
         ),
     )
     # #-    if not ntypemap.PY_PyTypeObject:
@@ -1415,7 +1463,7 @@ def create_struct_typemap(node, fields=None):
     Use fields to override defaults.
 
     Args:
-        node -
+        node   - ast.ClassNode
         fields - dictionary-like object.
     """
     fmt_class = node.fmtdict
@@ -1450,6 +1498,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
     the boilerplate.
 
     Args:
+        node     - ast.ClassNode
         ntypemap - typemap.Typemap.
     """
     if ntypemap.base != "struct":
@@ -1461,7 +1510,7 @@ def fill_struct_typemap_defaults(node, ntypemap):
 
     libnode = node.get_LibraryNode()
     language = libnode.language
-    if language == "c++":
+    if language == "cxx":
         # C++ pointer -> void pointer -> C pointer
         ntypemap.cxx_to_c = (
             "static_cast<{c_const}%s *>("
@@ -1491,31 +1540,6 @@ def fill_struct_typemap_defaults(node, ntypemap):
     ntypemap.c_statements = dict(result=dict(c_helper=helper))
 
     # #-    ntypemap.PYN_typenum = 'NPY_VOID'
-    ntypemap.py_statements = dict(
-        intent_in=dict(
-            cxx_local_var="pointer",
-            post_parse=[
-                "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
-            ],
-        ),
-        intent_inout=dict(
-            cxx_local_var="pointer",
-            post_parse=[
-                "{c_const}%s * {cxx_var} ="
-                "\t {py_var} ? {py_var}->{PY_obj} : NULL;" % ntypemap.cxx_type
-            ],
-        ),
-        intent_out=dict(
-            post_call=[
-                (
-                    "{PyObject} * {py_var} ="
-                    "\t PyObject_New({PyObject}, &{PyTypeObject});"
-                ),
-                "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};",
-            ]
-        ),
-    )
     # #-    if not ntypemap.PY_PyTypeObject:
     # #-        ntypemap.PY_PyTypeObject = 'UUU'
     # ntypemap.PY_ctor = 'PyObject_New({PyObject}, &{PyTypeObject})'
@@ -1546,3 +1570,24 @@ def lookup_c_statements(arg):
         cxx_T = arg_typemap.name
         c_statements = base_typemap.c_templates.get(cxx_T, c_statements)
     return arg_typemap, c_statements
+
+def update_for_language(stmts, lang):
+    """
+    Move language specific entries to current language.
+
+    stmts=dict(
+      foo_bar=dict(
+        c_decl=[],
+        cxx_decl=[],
+      )
+    )
+
+    For lang==c,
+      foo_bar["decl"] = foo_bar["c_decl"]
+    """
+    for item in stmts.values():
+        for clause in ["decl", "post_parse", "pre_call", "post_call",
+                       "cleanup", "fail"]:
+            specific = lang + "_" + clause
+            if specific in item:
+                item[clause] = item[specific]

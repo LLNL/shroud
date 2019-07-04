@@ -14,7 +14,7 @@ copyright:
 -
 - '#######################################################################'
 
-# Test pointers and use of NumPy
+# Test pointers to POD and use of NumPy/list
 
 library: pointers
 cxx_header: pointers.hpp
@@ -50,20 +50,13 @@ declarations:
       allocate OUT different type as IN
       implied size of array
 
-- decl: void increment(int * array  +intent(inout)  +dimension(:),
-                       int   sizein +implied(size(array)))
-  doxygen:
-    brief: 
-    description: |
-      array with intent(INOUT)
-
 - decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
   doxygen:
     brief: fill values into array
     description: |
        The function knows how long the array must be.
        Fortran will treat the dimension as assumed-length.
-       The Python wrapper will create a NumPy array so it must
+       The Python wrapper will create a NumPy array or list so it must
        have an explicit dimension (not assumed-length).
 
 - decl: void get_values2(int *arg1 +intent(out)+dimension(3),
@@ -76,3 +69,25 @@ declarations:
  
 ## test +allocatable(3)
 ## test +allocatable(nvar)
+
+######################################################################
+
+- decl: void Sum(int len +implied(size(values)),
+                 int *values +dimension(:)+intent(in),
+                 int *result +intent(out))
+  options:
+    # unable to deal with dimension
+    wrap_lua: False
+
+- decl: void fillIntArray(int *out +intent(out)+dimension(3))
+  doxygen:
+    description: |
+      Return three values into memory the user provides.
+
+- decl: void incrementIntArray(int * array  +dimension(:)+intent(inout),
+                               int   sizein +implied(size(array)))
+  doxygen:
+    description: |
+      Increment array in place using intent(INOUT).
+
+  

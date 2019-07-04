@@ -64,17 +64,6 @@ void truncate_to_int(double *in, int *out, int size)
 }
 
 //----------------------------------------------------------------------
-// array +intent(inout)
-
-void increment(int *array, int size)
-{
-    int i;
-    for(i = 0; i < size; i++) {
-       array[i] += 1;
-    }
-}
-
-//----------------------------------------------------------------------
 // values +intent(out)
 // Note that we must assume that values is long enough.
 // Otherwise, memory will be overwritten.
@@ -97,6 +86,38 @@ void get_values2(int *arg1, int *arg2)
     for(i = 0; i < num_fill_values; i++) {
        arg1[i] = i + 1;
        arg2[i] = i + 11;
+    }
+    return;
+}
+
+//----------------------------------------------------------------------
+
+void Sum(int len, int *values, int *result)
+{
+    strncpy(last_function_called, "Sum", MAXLAST);
+
+    int i;
+    int sum = 0;
+    for (i=0; i < len; i++) {
+	sum += values[i];
+    }
+    *result = sum;
+    return;
+}
+
+// out is assumed to be at least 3 long
+void fillIntArray(int *out)
+{
+  out[0] = 1;
+  out[1] = 2;
+  out[2] = 3;
+}
+
+// array +intent(inout)
+void incrementIntArray(int *array, int size)
+{
+    for(int i=0; i < size; i++) {
+        array[i] += 1;
     }
     return;
 }

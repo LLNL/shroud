@@ -1,25 +1,21 @@
 // pyTutorialmodule.hpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #ifndef PYTUTORIALMODULE_HPP
 #define PYTUTORIALMODULE_HPP
 #include <Python.h>
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PY_SHROUD_fetch_context(int icontext);
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 namespace tutorial {
@@ -32,6 +28,7 @@ extern PyTypeObject PY_Class1_Type;
 typedef struct {
 PyObject_HEAD
     tutorial::Class1 * obj;
+    int idtor;
     // splicer begin class.Class1.C_object
     // splicer end class.Class1.C_object
 } PY_Class1;
@@ -49,6 +46,7 @@ extern PyTypeObject PY_Singleton_Type;
 typedef struct {
 PyObject_HEAD
     Singleton * obj;
+    int idtor;
     // splicer begin class.Singleton.C_object
     // splicer end class.Singleton.C_object
 } PY_Singleton;
@@ -60,10 +58,6 @@ int PP_Singleton_from_Object(PyObject *obj, void **addr);
 
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
-
-// helper functions
-extern const char * PY_array_destructor_context[];
-extern void PY_array_destructor_function(PyObject *cap);
 
 extern PyObject *PY_error_obj;
 

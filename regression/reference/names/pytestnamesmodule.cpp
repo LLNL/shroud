@@ -132,6 +132,7 @@ PY_function4(
     const char *SHT_kwlist[] = {
         "rv",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:function4",
         const_cast<char **>(SHT_kwlist), &rv))
@@ -140,10 +141,10 @@ PY_function4(
     // post_parse
     const std::string SH_rv(rv);
 
-    int SHC_rv = function4(SH_rv);
+    int rv = function4(SH_rv);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4
@@ -255,10 +256,12 @@ PY_UseImplWorker_instantiation3(
 {
 // int UseImplWorker()
 // splicer begin function.use_impl_worker_instantiation3
-    int SHC_rv = UseImplWorker();
+    PyObject * SHTPy_rv = NULL;
+
+    int rv = UseImplWorker();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.use_impl_worker_instantiation3
@@ -432,7 +435,6 @@ inittestnames(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
-
 
     // Names
     PY_Names_Type.tp_new   = PyType_GenericNew;

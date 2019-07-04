@@ -23,7 +23,6 @@ class Singleton
 C method static Singleton & getReference()
 Close wrapSingleton.h
 Close wrapSingleton.cpp
-struct struct1
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
@@ -66,12 +65,6 @@ C function const Class1 * getclass2()
 C function Class1 * getclass3()
 C function Class1 getClassCopy(int flag +intent(in)+value)
 C function int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
-C function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-C function struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-C function double acceptStructIn(struct1 arg +intent(in)+value)
-C function double acceptStructInPtr(struct1 * arg +intent(in))
-C function void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
-C function void acceptStructInOutPtr(struct1 * arg +intent(inout))
 C function void set_global_flag(int arg +intent(in)+value)
 C function int get_global_flag()
 C function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
@@ -79,7 +72,6 @@ C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv
 Close wrapTutorial.h
 Close wrapTutorial.cpp
 Close typesTutorial.h
-class struct1
 class Class1
 C-interface, Fortran method Class1() +name(new)
 C-interface, Fortran method Class1(int flag +intent(in)+value) +name(new)
@@ -145,12 +137,6 @@ C-interface, Fortran function const Class1 * getclass2()
 C-interface, Fortran function Class1 * getclass3()
 C-interface, Fortran function Class1 getClassCopy(int flag +intent(in)+value)
 C-interface, Fortran function int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)
-C-interface, Fortran function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-C-interface, Fortran function struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-C-interface, Fortran function double acceptStructIn(struct1 arg +intent(in)+value)
-C-interface, Fortran function double acceptStructInPtr(struct1 * arg +intent(in))
-C-interface, Fortran function void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
-C-interface, Fortran function void acceptStructInOutPtr(struct1 * arg +intent(inout))
 C-interface, Fortran function void set_global_flag(int arg +intent(in)+value)
 C-interface, Fortran function int get_global_flag()
 C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
@@ -195,12 +181,10 @@ Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in
 Python function void passClassByValue(Class1 arg +intent(in)+value)
 Python function int useclass(const Class1 * arg +intent(in))
 Python function Class1 * getclass3()
-Python function struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-Python function struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
 Python function void set_global_flag(int arg +intent(in)+value)
 Python function int get_global_flag()
 Python function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
-Close pyTutorialhelper.cpp
+Close pyTutorialutil.cpp
 Close pyTutorialmodule.hpp
 Close pyTutorialmodule.cpp
 Lua method Class1() +name(new)

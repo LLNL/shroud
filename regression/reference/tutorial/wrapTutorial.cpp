@@ -1,19 +1,11 @@
 // wrapTutorial.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "wrapTutorial.h"
 #include <cstddef>
 #include <cstring>
@@ -26,12 +18,6 @@
 // splicer end CXX_definitions
 
 extern "C" {
-
-
-typedef union {
-  tutorial::struct1 cxx;
-  TUT_struct1 c;
-} SH_union_0_t;
 
 
 // helper function
@@ -554,72 +540,6 @@ int TUT_callback1(int in, int ( * incr)(int))
 // splicer end function.callback1
 }
 // end TUT_callback1
-
-// struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)
-TUT_struct1 TUT_return_struct(int i, double d)
-{
-// splicer begin function.return_struct
-    SH_union_0_t SHC_rv = {tutorial::returnStruct(i, d)};
-    return SHC_rv.c;
-// splicer end function.return_struct
-}
-
-// struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)
-TUT_struct1 * TUT_return_struct_ptr(int i, double d)
-{
-// splicer begin function.return_struct_ptr
-    tutorial::struct1 * SHCXX_rv = tutorial::returnStructPtr(i, d);
-    TUT_struct1 * SHC_rv = static_cast<TUT_struct1 *>(
-        static_cast<void *>(SHCXX_rv));
-    return SHC_rv;
-// splicer end function.return_struct_ptr
-}
-
-// double acceptStructIn(struct1 arg +intent(in)+value)
-// start TUT_accept_struct_in
-double TUT_accept_struct_in(TUT_struct1 arg)
-{
-// splicer begin function.accept_struct_in
-    tutorial::struct1 * SHCXX_arg = static_cast<tutorial::struct1 *>(
-        static_cast<void *>(&arg));
-    double SHC_rv = tutorial::acceptStructIn(*SHCXX_arg);
-    return SHC_rv;
-// splicer end function.accept_struct_in
-}
-// end TUT_accept_struct_in
-
-// double acceptStructInPtr(struct1 * arg +intent(in))
-double TUT_accept_struct_in_ptr(TUT_struct1 * arg)
-{
-// splicer begin function.accept_struct_in_ptr
-    tutorial::struct1 * SHCXX_arg = static_cast<tutorial::struct1 *>(
-        static_cast<void *>(arg));
-    double SHC_rv = tutorial::acceptStructInPtr(SHCXX_arg);
-    return SHC_rv;
-// splicer end function.accept_struct_in_ptr
-}
-
-// void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)
-void TUT_accept_struct_out_ptr(TUT_struct1 * arg, int i, double d)
-{
-// splicer begin function.accept_struct_out_ptr
-    tutorial::struct1 * SHCXX_arg = static_cast<tutorial::struct1 *>(
-        static_cast<void *>(arg));
-    tutorial::acceptStructOutPtr(SHCXX_arg, i, d);
-    return;
-// splicer end function.accept_struct_out_ptr
-}
-
-// void acceptStructInOutPtr(struct1 * arg +intent(inout))
-void TUT_accept_struct_in_out_ptr(TUT_struct1 * arg)
-{
-// splicer begin function.accept_struct_in_out_ptr
-    tutorial::struct1 * SHCXX_arg = static_cast<tutorial::struct1 *>(
-        static_cast<void *>(arg));
-    tutorial::acceptStructInOutPtr(SHCXX_arg);
-    return;
-// splicer end function.accept_struct_in_out_ptr
-}
 
 // void set_global_flag(int arg +intent(in)+value)
 void TUT_set_global_flag(int arg)

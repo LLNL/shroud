@@ -65,27 +65,13 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // splicer end function.truncate_to_int
 }
 
-// void increment(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
-/**
- * \brief None
- *
- * array with intent(INOUT)
- */
-void POI_increment(int * array, int sizein)
-{
-// splicer begin function.increment
-    increment(array, sizein);
-    return;
-// splicer end function.increment
-}
-
 // void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))
 /**
  * \brief fill values into array
  *
  * The function knows how long the array must be.
  * Fortran will treat the dimension as assumed-length.
- * The Python wrapper will create a NumPy array so it must
+ * The Python wrapper will create a NumPy array or list so it must
  * have an explicit dimension (not assumed-length).
  */
 void POI_get_values(int * nvalues, int * values)
@@ -109,6 +95,39 @@ void POI_get_values2(int * arg1, int * arg2)
     get_values2(arg1, arg2);
     return;
 // splicer end function.get_values2
+}
+
+// void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+void POI_sum(int len, int * values, int * result)
+{
+// splicer begin function.sum
+    Sum(len, values, result);
+    return;
+// splicer end function.sum
+}
+
+// void fillIntArray(int * out +dimension(3)+intent(out))
+/**
+ * Return three values into memory the user provides.
+ */
+void POI_fill_int_array(int * out)
+{
+// splicer begin function.fill_int_array
+    fillIntArray(out);
+    return;
+// splicer end function.fill_int_array
+}
+
+// void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+/**
+ * Increment array in place using intent(INOUT).
+ */
+void POI_increment_int_array(int * array, int sizein)
+{
+// splicer begin function.increment_int_array
+    incrementIntArray(array, sizein);
+    return;
+// splicer end function.increment_int_array
 }
 
 // Release C++ allocated memory.

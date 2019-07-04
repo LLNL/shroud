@@ -1,19 +1,11 @@
 ! wrapfclibrary.f
 ! This is generated code, do not edit
-! #######################################################################
-! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+! other Shroud Project Developers.
+! See the top-level COPYRIGHT file for details.
 !
-! Produced at the Lawrence Livermore National Laboratory
+! SPDX-License-Identifier: (BSD-3-Clause)
 !
-! LLNL-CODE-738041.
-!
-! All rights reserved.
-!
-! This file is part of Shroud.
-!
-! For details about use and distribution, please read LICENSE.
-!
-! #######################################################################
 !>
 !! \file wrapfclibrary.f
 !! \brief Shroud generated wrapper for Clibrary library
@@ -21,7 +13,6 @@
 ! splicer begin file_top
 ! splicer end file_top
 module clibrary_mod
-    use iso_c_binding, only : C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -29,11 +20,6 @@ module clibrary_mod
     ! splicer begin module_top
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
-
-
-    type, bind(C) :: cstruct1
-        integer(C_INT) :: ifield
-    end type cstruct1
 
     abstract interface
 
@@ -363,74 +349,6 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_callback3_bufferify
 
-        ! start pass_struct1
-        function pass_struct1(s1) &
-                result(SHT_rv) &
-                bind(C, name="passStruct1")
-            use iso_c_binding, only : C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: s1
-            integer(C_INT) :: SHT_rv
-        end function pass_struct1
-        ! end pass_struct1
-
-        function c_pass_struct2(s1, outbuf) &
-                result(SHT_rv) &
-                bind(C, name="passStruct2")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT) :: SHT_rv
-        end function c_pass_struct2
-
-        function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
-                result(SHT_rv) &
-                bind(C, name="CLI_pass_struct2_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: s1
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: Noutbuf
-            integer(C_INT) :: SHT_rv
-        end function c_pass_struct2_bufferify
-
-        function c_return_struct_ptr1(ifield) &
-                result(SHT_rv) &
-                bind(C, name="returnStructPtr1")
-            use iso_c_binding, only : C_INT, C_PTR
-            import :: cstruct1
-            implicit none
-            integer(C_INT), value, intent(IN) :: ifield
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr1
-
-        function c_return_struct_ptr2(ifield, outbuf) &
-                result(SHT_rv) &
-                bind(C, name="returnStructPtr2")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
-            import :: cstruct1
-            implicit none
-            integer(C_INT), value, intent(IN) :: ifield
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr2
-
-        function c_return_struct_ptr2_bufferify(ifield, outbuf, Noutbuf) &
-                result(SHT_rv) &
-                bind(C, name="CLI_return_struct_ptr2_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
-            import :: cstruct1
-            implicit none
-            integer(C_INT), value, intent(IN) :: ifield
-            character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            integer(C_INT), value, intent(IN) :: Noutbuf
-            type(C_PTR) SHT_rv
-        end function c_return_struct_ptr2_bufferify
-
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -732,62 +650,6 @@ contains
             outbuf, len(outbuf, kind=C_INT))
         ! splicer end function.callback3
     end subroutine callback3
-
-    ! int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +intent(out))
-    ! arg_to_buffer
-    !>
-    !! Pass name argument which will build a bufferify function.
-    !<
-    function pass_struct2(s1, outbuf) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        type(cstruct1), intent(IN) :: s1
-        character(len=*), intent(OUT) :: outbuf
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.pass_struct2
-        SHT_rv = c_pass_struct2_bufferify(s1, outbuf, &
-            len(outbuf, kind=C_INT))
-        ! splicer end function.pass_struct2
-    end function pass_struct2
-
-    ! Cstruct1 * returnStructPtr1(int ifield +intent(in)+value)
-    !>
-    !! \brief Return a pointer to a struct
-    !!
-    !! Does not generate a bufferify C wrapper.
-    !<
-    function return_struct_ptr1(ifield) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), value, intent(IN) :: ifield
-        type(cstruct1), pointer :: SHT_rv
-        type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_struct_ptr1
-        SHT_ptr = c_return_struct_ptr1(ifield)
-        call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end function.return_struct_ptr1
-    end function return_struct_ptr1
-
-    ! Cstruct1 * returnStructPtr2(int ifield +intent(in)+value, char * outbuf +intent(out))
-    ! arg_to_buffer
-    !>
-    !! \brief Return a pointer to a struct
-    !!
-    !! Generates a bufferify C wrapper function.
-    !<
-    function return_struct_ptr2(ifield, outbuf) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT), value, intent(IN) :: ifield
-        character(len=*), intent(OUT) :: outbuf
-        type(cstruct1), pointer :: SHT_rv
-        type(C_PTR) :: SHT_ptr
-        ! splicer begin function.return_struct_ptr2
-        SHT_ptr = c_return_struct_ptr2_bufferify(ifield, outbuf, &
-            len(outbuf, kind=C_INT))
-        call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end function.return_struct_ptr2
-    end function return_struct_ptr2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

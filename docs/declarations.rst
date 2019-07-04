@@ -317,4 +317,4 @@ Struct
 
 See example :ref:`passStruct1 <example_passStruct1>`.
 
-See example :ref:`acceptStructIn <example_acceptStructIn>`.
+See example :ref:`passStructByValue <example_passStructByValue>`.

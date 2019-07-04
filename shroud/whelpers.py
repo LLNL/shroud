@@ -17,6 +17,11 @@ Helper functions for C and Fortran wrappers.
 
  C helper functions which may be added to a implementation file.
 
+ scope       = scope of helper.  Defaults to "file" which are added
+               as file static and may be in several files.
+               "utility" will add to C_header_utility or PY_utility_filename
+               and shared amount files. They need unique names
+               since they are shared across wrapped libraries.
  c_header    = Blank delimited list of header files to #include
                in implementation file when wrapping a C library.
  cxx_header  = Blank delimited list of header files to #include.
@@ -26,17 +31,11 @@ Helper functions for C and Fortran wrappers.
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
 
- h_header    = Blank delimited list of headers to #include in
-               c wrapper header.
- h_source    = code for include file. Must be compatible with language=c.
-
- h_shared_include = include files needed by shared header.
- h_shared_code    = code written to C_header_helper file.
-                    Useful for struct and typedefs.
-
  source      = Code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
+ header      = Blank delimited list of header files to #include.
+               Used when c_header and cxx_header are not defined.
 
 
  Fortran helper functions which may be added to a module.
@@ -227,7 +226,9 @@ def add_shadow_helper(node):
             cpp_if = ""
             cpp_endif = ""
         helper = dict(
-            h_shared_code="""
+            scope="utility",
+            # h_shared_code
+            source="""
 {lstart}{cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
@@ -267,7 +268,8 @@ integer(C_INT) :: idtor = 0       ! index of destructor
 
     if name not in CHelpers:
         helper = dict(
-            h_shared_code=wformat(
+            scope="utility",
+            source=wformat(
                 """
 struct s_{C_capsule_data_type} {{+
 void *addr;     /* address of C++ memory */
@@ -323,10 +325,11 @@ call array_destructor(cap%mem, .false._C_BOOL)
     name = "array_context"
     if name not in CHelpers:
         helper = dict(
-            h_shared_include="<stddef.h>",
+            scope="utility",
+            header="<stddef.h>",
             # Create a union for addr to avoid some casts.
             # And help with debugging since ccharp will display contents.
-            h_shared_code=wformat(
+            source=wformat(
                 """
 struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
@@ -427,6 +430,155 @@ integer(C_SIZE_T), value :: c_var_size
         FHelpers[name] = helper
     return name
 
+def add_to_PyList_helper(arg):
+    """
+    Args:
+        fmt -
+    """
+    ntypemap = arg.typemap
+
+    # Used with intent(out)
+    name = "to_PyList_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+static PyObject *SHROUD_to_PyList_{c_type}({c_type} *in, size_t size)
+{{+
+PyObject *out = PyList_New(size);
+for (size_t i = 0; i < size; ++i) {{+
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+return out;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # Used with intent(inout)
+    name = "update_PyList_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_ctor=ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+        )
+        helper = dict(
+            source=wformat(
+                """
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static SHROUD_update_PyList_{c_type}(PyObject *out, {c_type} *in, size_t size)
+{{+
+for (size_t i = 0; i < size; ++i) {{+
+PyObject *item = PyList_GET_ITEM(out, i);
+Py_DECREF(item);
+PyList_SET_ITEM(out, i, {Py_ctor});
+-}}
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+
+    # used with intent(in)
+    # Return -1 on error.
+    # Convert an empty list into a NULL pointer.
+    # Use a fixed text in PySequence_Fast.
+    # If an error occurs, replace message with one which includes argument name.
+    name = "from_PyObject_" + ntypemap.c_type
+    if name not in CHelpers:
+        fmt = dict(
+            c_type=ntypemap.c_type,
+            Py_get=ntypemap.PY_get.format(py_var="item"),
+        )
+        helper = dict(
+            c_header="<stdlib.h>",  # malloc/free
+            c_source=wformat(
+                """
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = malloc(size * sizeof({c_type}));
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""",
+                fmt,
+            ),
+            cxx_header="<cstdlib>",  # malloc/free
+            cxx_source=wformat(
+                """
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+static int SHROUD_from_PyObject_{c_type}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = static_cast<{c_type} *>\t(std::malloc(size * sizeof({c_type})));
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+std::free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""",
+                fmt,
+            ),
+        )
+        CHelpers[name] = helper
+    return name
+
+"""
+http://effbot.org/zone/python-capi-sequences.htm
+if (PyList_Check(seq))
+        for (i = 0; i < len; i++) {
+            item = PyList_GET_ITEM(seq, i);
+            ...
+        }
+    else
+        for (i = 0; i < len; i++) {
+            item = PyTuple_GET_ITEM(seq, i);
+            ...
+        }
+"""
+
+######################################################################
+# Static helpers
 
 CHelpers = dict(
     ShroudStrCopy=dict(

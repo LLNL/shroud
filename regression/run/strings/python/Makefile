@@ -29,7 +29,7 @@ VPATH = \
 OBJS = \
     strings.o \
     pystringsmodule.o \
-    pystringshelper.o
+    pystringsutil.o
 
 CXXFLAGS += $(SHARED)
 

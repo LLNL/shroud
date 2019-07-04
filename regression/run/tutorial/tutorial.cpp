@@ -1,16 +1,8 @@
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory 
-//
-// LLNL-CODE-738041.
-//
-// All rights reserved. 
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
 // tutorial.hpp - wrapped routines
 //
@@ -31,7 +23,6 @@ static std::string global_str;
 static int global_int;
 static double global_double;
 static const Class1 *global_class1;
-static struct1 global_struct1;
 
 
 void Function1()
@@ -317,62 +308,6 @@ int callback1(int in, int (*incr)(int))
   return incr(in);
 }
 // end callback1
-
-//----------------------------------------------------------------------
-
-struct1 returnStruct(int i, double d)
-{
-  struct1 s = {i, d};
-  return s;
-}
-
-struct1 *returnStructPtr(int i, double d)
-{
-  global_struct1.ifield = i;
-  global_struct1.dfield = d;
-  return &global_struct1;
-}
-
-struct1 *returnStructPtrNew(int i, double d)
-{
-  struct1 *s = new struct1;
-  s->ifield = i;
-  s->dfield = d;
-  return s;
-}
-
-void freeStruct(struct1 *arg1)
-{
-  delete arg1;
-}
-
-// start acceptStructIn
-// return sum of fields as a check
-double acceptStructIn(struct1 arg)
-{
-  return arg.ifield + arg.dfield;
-}
-// end acceptStructIn
-
-// return sum of fields as a check
-double acceptStructInPtr(struct1 *arg)
-{
-  return arg->ifield + arg->dfield;
-}
-
-void acceptStructOutPtr(struct1 *arg, int i, double d)
-{
-  arg->ifield = i;
-  arg->dfield = d;
-  return;
-}
-
-void acceptStructInOutPtr(struct1 *arg)
-{
-  arg->ifield += 1;
-  arg->dfield += 1.0;
-  return;
-}
 
 //----------------------------------------------------------------------
 

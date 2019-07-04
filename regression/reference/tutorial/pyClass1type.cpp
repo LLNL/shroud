@@ -1,19 +1,11 @@
 // pyClass1type.cpp
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pyTutorialmodule.hpp"
 #include "tutorial.hpp"
 // splicer begin class.Class1.impl.include
@@ -39,7 +31,7 @@ static void
 PY_Class1_tp_del (PY_Class1 *self)
 {
 // splicer begin class.Class1.type.del
-    delete self->obj;
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.Class1.type.del
 }
@@ -53,6 +45,11 @@ PY_Class1_tp_init_default(
 // Class1() +name(new)
 // splicer begin class.Class1.method.new_default
     self->obj = new tutorial::Class1();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->idtor = 1;
     return 0;
 // splicer end class.Class1.method.new_default
 }
@@ -75,6 +72,11 @@ PY_Class1_tp_init_flag(
         return -1;
 
     self->obj = new tutorial::Class1(flag);
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->idtor = 1;
     return 0;
 // splicer end class.Class1.method.new_flag
 }
@@ -95,10 +97,12 @@ PY_class1_Method1(
 {
 // int Method1()
 // splicer begin class.Class1.method.method1
-    int SHC_rv = self->obj->Method1();
+    PyObject * SHTPy_rv = NULL;
+
+    int rv = self->obj->Method1();
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.method1
@@ -124,6 +128,7 @@ PY_class1_equivalent(
     const char *SHT_kwlist[] = {
         "obj2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:equivalent",
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
@@ -132,12 +137,17 @@ PY_class1_equivalent(
     // post_parse
     const tutorial::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : NULL;
 
-    bool SHC_rv = self->obj->equivalent(*obj2);
+    bool rv = self->obj->equivalent(*obj2);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end class.Class1.method.equivalent
 }
 
@@ -183,6 +193,7 @@ PY_class1_directionFunc(
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:directionFunc",
         const_cast<char **>(SHT_kwlist), &arg))
@@ -196,7 +207,7 @@ PY_class1_directionFunc(
         self->obj->directionFunc(SH_arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.Class1.method.direction_func

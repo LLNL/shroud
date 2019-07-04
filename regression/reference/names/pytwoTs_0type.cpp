@@ -38,8 +38,8 @@ static void
 PY_twoTs_0_tp_del (PY_twoTs_0 *self)
 {
 // splicer begin class.twoTs.type.del
-    delete self->obj;
-    self->obj = NULL;
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
+    self->myobj = NULL;
 // splicer end class.twoTs.type.del
 }
 // splicer begin class.twoTs.impl.after_methods

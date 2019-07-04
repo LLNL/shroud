@@ -3,86 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
-                "cxx_header": "",
-                "fmtdict": {
-                    "C_header_filename": "wrapstruct1.h",
-                    "C_impl_filename": "wrapstruct1.cpp",
-                    "C_type_name": "TUT_struct1",
-                    "F_capsule_data_type": "SHROUD_struct1_capsule",
-                    "F_derived_name": "struct1",
-                    "LUA_class_reg": "l_struct1_Reg",
-                    "LUA_ctor_name": "struct1",
-                    "LUA_metadata": "struct1.metatable",
-                    "LUA_this_call": "SH_this->self->",
-                    "LUA_userdata_member": "self",
-                    "LUA_userdata_type": "l_struct1_Type",
-                    "LUA_userdata_var": "SH_this",
-                    "PY_PyObject": "PY_struct1",
-                    "PY_PyTypeObject": "PY_struct1_Type",
-                    "PY_from_object_func": "PP_struct1_from_Object",
-                    "PY_struct_array_descr_create": "PY_struct1_create_array_descr",
-                    "PY_struct_array_descr_name": "struct1_dtype",
-                    "PY_struct_array_descr_variable": "PY_struct1_array_descr",
-                    "PY_to_object_func": "PP_struct1_to_Object",
-                    "class_lower": "struct1",
-                    "class_prefix": "struct1_",
-                    "class_scope": "struct1::",
-                    "class_upper": "STRUCT1",
-                    "cxx_class": "struct1",
-                    "cxx_type": "struct1"
-                },
-                "linenumber": 52,
-                "name": "struct1",
-                "options": {},
-                "scope": "tutorial::struct1::",
-                "typemap_name": "tutorial::struct1",
-                "variables": [
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "ifield",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "fmtdict": {
-                            "field_name": "ifield",
-                            "variable_lower": "ifield",
-                            "variable_name": "ifield",
-                            "variable_upper": "IFIELD"
-                        },
-                        "linenumber": "?",
-                        "name": "ifield",
-                        "options": {}
-                    },
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "dfield",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        "fmtdict": {
-                            "field_name": "dfield",
-                            "variable_lower": "dfield",
-                            "variable_name": "dfield",
-                            "variable_upper": "DFIELD"
-                        },
-                        "linenumber": "?",
-                        "name": "dfield",
-                        "options": {}
-                    }
-                ]
-            },
-            {
                 "cxx_header": "",
                 "enums": [
                     {
@@ -156,7 +76,7 @@
                             "flat_name": "tutorial_Class1_DIRECTION",
                             "namespace_scope": "tutorial::Class1::"
                         },
-                        "linenumber": 261,
+                        "linenumber": 247,
                         "name": "DIRECTION",
                         "options": {},
                         "typemap_name": "tutorial::Class1::DIRECTION"
@@ -214,6 +134,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
@@ -222,7 +143,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "_overloaded": true,
@@ -263,7 +186,7 @@
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
-                            "__line__": 212,
+                            "__line__": 198,
                             "c_const": "",
                             "c_rv_decl": "TUT_class1 *SHC_rv",
                             "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
@@ -271,7 +194,7 @@
                             "function_suffix": "_default",
                             "underscore_name": "new"
                         },
-                        "linenumber": 211,
+                        "linenumber": 197,
                         "options": {}
                     },
                     {
@@ -316,7 +239,8 @@
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
                                     "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_flag"
+                                    "py_var": "SHPy_flag",
+                                    "size_var": "SHSize_flag"
                                 }
                             }
                         },
@@ -342,6 +266,7 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
+                                "PY_build_format": "O",
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
@@ -350,7 +275,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "vargs": "SHCXX_rv"
                             }
                         },
                         "_overloaded": true,
@@ -404,7 +331,7 @@
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
-                            "__line__": 215,
+                            "__line__": 201,
                             "c_const": "",
                             "c_rv_decl": "TUT_class1 *SHC_rv",
                             "cxx_rv_decl": "tutorial::Class1 *SHCXX_rv",
@@ -412,7 +339,7 @@
                             "function_suffix": "_flag",
                             "underscore_name": "new"
                         },
-                        "linenumber": 214,
+                        "linenumber": 200,
                         "options": {}
                     },
                     {
@@ -456,7 +383,7 @@
                             "function_name": "delete",
                             "underscore_name": "delete"
                         },
-                        "linenumber": 217,
+                        "linenumber": 203,
                         "options": {}
                     },
                     {
@@ -480,15 +407,14 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
-                                "PyTypeObject": null,
                                 "c_deref": "",
-                                "c_var": "SHC_rv",
+                                "c_var": "rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHC_rv",
+                                "cxx_var": "rv",
                                 "numpy_type": "NPY_INT",
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -505,7 +431,7 @@
                         "decl": "int Method1()",
                         "declgen": "int Method1()",
                         "doxygen": {
-                            "__line__": 219,
+                            "__line__": 205,
                             "brief": "returns the value of flag member"
                         },
                         "fmtdict": {
@@ -537,7 +463,7 @@
                             "function_name": "Method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 218,
+                        "linenumber": 204,
                         "options": {}
                     },
                     {
@@ -562,6 +488,8 @@
                                     "f_var": "obj2"
                                 },
                                 "fmtpy": {
+                                    "PyObject": "PY_Class1",
+                                    "PyTypeObject": "PY_Class1_Type",
                                     "c_const": "const ",
                                     "c_decl": "TUT_class1 obj2",
                                     "c_deref": "",
@@ -574,7 +502,8 @@
                                     "cxx_var": "obj2",
                                     "numpy_type": null,
                                     "py_type": "PY_Class1",
-                                    "py_var": "SHPy_obj2"
+                                    "py_var": "SHPy_obj2",
+                                    "size_var": "SHSize_obj2"
                                 }
                             }
                         },
@@ -592,15 +521,15 @@
                                 "f_var": "SHT_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
                                 "PyTypeObject": "PyBool_Type",
                                 "c_deref": "",
-                                "c_var": "SHC_rv",
+                                "c_var": "rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHC_rv",
+                                "cxx_var": "rv",
                                 "numpy_type": "NPY_BOOL",
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -638,7 +567,7 @@
                         "decl": "bool equivalent(Class1 const &obj2) const;",
                         "declgen": "bool equivalent(const Class1 & obj2 +intent(in)) const",
                         "doxygen": {
-                            "__line__": 224,
+                            "__line__": 210,
                             "brief": "Pass in reference to instance"
                         },
                         "fmtdict": {
@@ -668,9 +597,9 @@
                             "function_name": "equivalent",
                             "underscore_name": "equivalent"
                         },
-                        "linenumber": 222,
+                        "linenumber": 208,
                         "options": {
-                            "__line__": 226,
+                            "__line__": 212,
                             "wrap_lua": false
                         }
                     },
@@ -693,7 +622,7 @@
                         "decl": "Class1 * returnThis();",
                         "declgen": "Class1 * returnThis()",
                         "doxygen": {
-                            "__line__": 232,
+                            "__line__": 218,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
@@ -720,9 +649,9 @@
                             "function_name": "returnThis",
                             "underscore_name": "return_this"
                         },
-                        "linenumber": 230,
+                        "linenumber": 216,
                         "options": {
-                            "__line__": 234,
+                            "__line__": 220,
                             "wrap_lua": false,
                             "wrap_python": false
                         },
@@ -825,7 +754,7 @@
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)",
                         "doxygen": {
-                            "__line__": 247,
+                            "__line__": 233,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
@@ -855,9 +784,9 @@
                             "function_name": "returnThisBuffer",
                             "underscore_name": "return_this_buffer"
                         },
-                        "linenumber": 238,
+                        "linenumber": 224,
                         "options": {
-                            "__line__": 249,
+                            "__line__": 235,
                             "wrap_lua": false,
                             "wrap_python": false
                         }
@@ -967,7 +896,7 @@
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
                         "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)",
                         "doxygen": {
-                            "__line__": 247,
+                            "__line__": 233,
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
@@ -989,9 +918,9 @@
                             "function_suffix": "_bufferify",
                             "underscore_name": "return_this_buffer"
                         },
-                        "linenumber": 238,
+                        "linenumber": 224,
                         "options": {
-                            "__line__": 249,
+                            "__line__": 235,
                             "wrap_c": true,
                             "wrap_fortran": false,
                             "wrap_lua": false,
@@ -1022,7 +951,8 @@
                                 "cxx_member": "->",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -1044,7 +974,7 @@
                         "decl": "Class1 *getclass3() const",
                         "declgen": "Class1 * getclass3() const",
                         "doxygen": {
-                            "__line__": 254,
+                            "__line__": 240,
                             "brief": "Test const method"
                         },
                         "fmtdict": {
@@ -1075,9 +1005,9 @@
                             "function_name": "getclass3",
                             "underscore_name": "getclass3"
                         },
-                        "linenumber": 253,
+                        "linenumber": 239,
                         "options": {
-                            "__line__": 257,
+                            "__line__": 243,
                             "wrap_lua": false
                         }
                     },
@@ -1126,7 +1056,8 @@
                                     "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SH_arg",
                                     "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_arg"
+                                    "py_var": "SHPy_arg",
+                                    "size_var": "SHSize_arg"
                                 }
                             }
                         },
@@ -1152,15 +1083,14 @@
                                 "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
-                                "PyObject": "PyObject",
-                                "PyTypeObject": null,
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": "NPY_INT",
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -1221,7 +1151,7 @@
                             "function_name": "directionFunc",
                             "underscore_name": "direction_func"
                         },
-                        "linenumber": 263,
+                        "linenumber": 249,
                         "options": {}
                     },
                     {
@@ -1427,10 +1357,10 @@
                         }
                     }
                 ],
-                "linenumber": 205,
+                "linenumber": 191,
                 "name": "Class1",
                 "options": {
-                    "__line__": 206,
+                    "__line__": 192,
                     "literalinclude": true
                 },
                 "scope": "tutorial::Class1::",
@@ -1458,7 +1388,7 @@
                             "variable_name": "m_flag",
                             "variable_upper": "M_FLAG"
                         },
-                        "linenumber": 209,
+                        "linenumber": 195,
                         "name": "m_flag",
                         "options": {}
                     },
@@ -1484,7 +1414,7 @@
                             "variable_name": "test",
                             "variable_upper": "TEST"
                         },
-                        "linenumber": 210,
+                        "linenumber": 196,
                         "name": "test",
                         "options": {}
                     }
@@ -1538,7 +1468,8 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "numpy_type": null,
-                                "py_var": "SHTPy_rv"
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv"
                             }
                         },
                         "ast": {
@@ -1590,14 +1521,14 @@
                             "function_name": "getReference",
                             "underscore_name": "get_reference"
                         },
-                        "linenumber": 362,
+                        "linenumber": 313,
                         "options": {}
                     }
                 ],
-                "linenumber": 357,
+                "linenumber": 308,
                 "name": "Singleton",
                 "options": {
-                    "__line__": 358,
+                    "__line__": 309,
                     "wrap_lua": false
                 },
                 "scope": "Singleton::",
@@ -1605,20 +1536,12 @@
             }
         ],
         "copyright": [
-            "#######################################################################",
-            "Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.",
+            "Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and",
+            "other Shroud Project Developers.",
+            "See the top-level COPYRIGHT file for details.",
             "",
-            "Produced at the Lawrence Livermore National Laboratory",
-            "",
-            "LLNL-CODE-738041.",
-            "",
-            "All rights reserved.",
-            "",
-            "This file is part of Shroud.",
-            "",
-            "For details about use and distribution, please read LICENSE.",
-            "",
-            "#######################################################################"
+            "SPDX-License-Identifier: (BSD-3-Clause)",
+            ""
         ],
         "cxx_header": "tutorial.hpp",
         "enums": [
@@ -1673,10 +1596,10 @@
                     "enum_upper": "COLOR",
                     "flat_name": "tutorial_Color"
                 },
-                "linenumber": 41,
+                "linenumber": 33,
                 "name": "Color",
                 "options": {
-                    "__line__": 47,
+                    "__line__": 39,
                     "bar": 4
                 },
                 "typemap_name": "tutorial::Color"
@@ -1694,7 +1617,7 @@
             "C_custom_return_type": "",
             "C_header_filename": "wrapTutorial.h",
             "C_header_filename_suffix": "h",
-            "C_header_helper": "typesTutorial.h",
+            "C_header_utility": "typesTutorial.h",
             "C_impl_filename": "wrapTutorial.cpp",
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
@@ -1743,29 +1666,40 @@
             "LUA_used_param_state": false,
             "LUA_userdata_type": "XXLUA_userdata_type",
             "PY_PyObject": "PyObject",
+            "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
+            "PY_dtor_context_array": "PY_SHROUD_capsule_context",
+            "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
             "PY_extern_C_begin": "extern \"C\" ",
+            "PY_fetch_context_function": "PY_SHROUD_fetch_context",
             "PY_header_filename": "pyTutorialmodule.hpp",
             "PY_header_filename_suffix": "hpp",
-            "PY_helper_filename": "pyTutorialhelper.cpp",
             "PY_impl_filename_suffix": "cpp",
             "PY_library_doc": "library documentation",
             "PY_module_filename": "pyTutorialmodule.cpp",
             "PY_module_name": "tutorial",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
-            "PY_numpy_array_dtor_context": "PY_array_destructor_context",
-            "PY_numpy_array_dtor_function": "PY_array_destructor_function",
-            "PY_obj": "obj",
             "PY_param_args": "args",
             "PY_param_kwds": "kwds",
             "PY_param_self": "self",
             "PY_prefix": "PY_",
+            "PY_release_memory_function": "PY_SHROUD_release_memory",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
+            "PY_type_dtor": "idtor",
+            "PY_type_obj": "obj",
             "PY_used_param_args": false,
             "PY_used_param_kwds": false,
             "PY_used_param_self": false,
+            "PY_utility_filename": "pyTutorialutil.cpp",
+            "PyObject": "PyObject",
             "YAML_type_filename": "tutorial_types.yaml",
             "c_temp": "SHT_",
+            "capsule_order": "0",
+            "cast1": ">\t(",
+            "cast2": ")",
+            "cast_const": "const_cast<",
+            "cast_reinterpret": "reinterpret_cast<",
+            "cast_static": "static_cast<",
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
@@ -1774,8 +1708,12 @@
             "library_lower": "tutorial",
             "library_upper": "TUTORIAL",
             "namespace_scope": "",
+            "npy_dims": "NULL",
+            "npy_intp": "",
+            "npy_ndims": "0",
             "stdlib": "std::",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": ""
         },
         "functions": [
             {
@@ -1815,7 +1753,7 @@
                     "function_name": "Function1",
                     "underscore_name": "function1"
                 },
-                "linenumber": 60,
+                "linenumber": 46,
                 "options": {}
             },
             {
@@ -1860,7 +1798,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -1903,7 +1842,8 @@
                             "cxx_type": "int",
                             "cxx_var": "arg2",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -1927,15 +1867,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_DOUBLE",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -2005,7 +1944,7 @@
                     "function_name": "Function2",
                     "underscore_name": "function2"
                 },
-                "linenumber": 61,
+                "linenumber": 47,
                 "options": {}
             },
             {
@@ -2041,7 +1980,8 @@
                             "cxx_var": "len",
                             "numpy_type": null,
                             "pre_call_intent": "PyArray_SIZE(SHPy_values)",
-                            "py_var": "SHPy_len"
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len"
                         }
                     },
                     "result": {
@@ -2062,8 +2002,6 @@
                             "f_var": "result"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int result",
                             "c_deref": "",
@@ -2075,7 +2013,8 @@
                             "cxx_type": "int",
                             "cxx_var": "result",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_result"
+                            "py_var": "SHPy_result",
+                            "size_var": "SHSize_result"
                         }
                     },
                     "values": {
@@ -2106,11 +2045,10 @@
                             "cxx_member": "->",
                             "cxx_type": "int",
                             "cxx_var": "values",
-                            "numpy_intent": "NPY_ARRAY_IN_ARRAY",
                             "numpy_type": "NPY_INT",
-                            "py_type": "PyObject",
                             "py_var": "SHPy_values",
-                            "pytmp_var": "SHTPy_values"
+                            "pytmp_var": "SHTPy_values",
+                            "size_var": "SHSize_values"
                         }
                     }
                 },
@@ -2201,9 +2139,9 @@
                     "function_name": "Sum",
                     "underscore_name": "sum"
                 },
-                "linenumber": 62,
+                "linenumber": 48,
                 "options": {
-                    "__line__": 65,
+                    "__line__": 51,
                     "wrap_lua": false
                 }
             },
@@ -2238,7 +2176,8 @@
                             "cxx_type": "long long",
                             "cxx_var": "arg1",
                             "numpy_type": "NPY_LONGLONG",
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     }
                 },
@@ -2257,16 +2196,15 @@
                     },
                     "fmtpy": {
                         "PY_build_format": "L",
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_LONGLONG",
                         "py_var": "SHTPy_rv",
-                        "vargs": "SHC_rv"
+                        "size_var": "SHSize_rv",
+                        "vargs": "rv"
                     }
                 },
                 "ast": {
@@ -2322,9 +2260,9 @@
                     "function_name": "TypeLongLong",
                     "underscore_name": "type_long_long"
                 },
-                "linenumber": 69,
+                "linenumber": 55,
                 "options": {
-                    "__line__": 70,
+                    "__line__": 56,
                     "wrap_lua": false
                 }
             },
@@ -2359,6 +2297,7 @@
                             "lua_var": "SH_Lua_arg"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg",
                             "c_deref": "",
@@ -2371,7 +2310,8 @@
                             "cxx_var": "arg",
                             "numpy_type": "NPY_BOOL",
                             "py_type": "PyObject",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -2395,15 +2335,15 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
                         "PyTypeObject": "PyBool_Type",
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_BOOL",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -2459,7 +2399,7 @@
                     "function_name": "Function3",
                     "underscore_name": "function3"
                 },
-                "linenumber": 74,
+                "linenumber": 60,
                 "options": {}
             },
             {
@@ -2488,7 +2428,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
                             "numpy_type": null,
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -2515,7 +2456,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg2",
                             "numpy_type": null,
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -2531,15 +2473,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -2601,7 +2542,7 @@
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)",
                 "declgen": "const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)",
                 "doxygen": {
-                    "__line__": 82,
+                    "__line__": 68,
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
@@ -2620,7 +2561,7 @@
                     "function_name": "Function4a",
                     "underscore_name": "function4a"
                 },
-                "linenumber": 76,
+                "linenumber": 62,
                 "options": {
                     "wrap_c": false
                 }
@@ -2776,7 +2717,7 @@
                 "decl": "const std::string Function4a( const std::string& arg1, const std::string& arg2 ) +len(30)",
                 "declgen": "void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "doxygen": {
-                    "__line__": 82,
+                    "__line__": 68,
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
@@ -2795,7 +2736,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4a"
                 },
-                "linenumber": 76,
+                "linenumber": 62,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2841,7 +2782,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
                             "numpy_type": null,
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -2880,7 +2822,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg2",
                             "numpy_type": null,
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -2902,15 +2845,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -2988,13 +2930,13 @@
                     "LUA_name": "Function4b",
                     "LUA_name_impl": "l_function4b",
                     "PY_name_impl": "PY_Function4b",
-                    "__line__": 91,
+                    "__line__": 77,
                     "c_const": "const ",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "Function4b",
                     "underscore_name": "function4b"
                 },
-                "linenumber": 88,
+                "linenumber": 74,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -3157,14 +3099,14 @@
                     "C_return_type": "void",
                     "F_C_name": "c_function4b_bufferify",
                     "F_string_result_as_arg": "output",
-                    "__line__": 91,
+                    "__line__": 77,
                     "c_const": "",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "Function4b",
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4b"
                 },
-                "linenumber": 88,
+                "linenumber": 74,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3260,12 +3202,12 @@
                     "F_name_impl": "function4b",
                     "F_string_result_as_arg": "output",
                     "F_subprogram": "subroutine",
-                    "__line__": 91,
+                    "__line__": 77,
                     "function_name": "Function4b",
                     "function_suffix": "",
                     "underscore_name": "function4b"
                 },
-                "linenumber": 88,
+                "linenumber": 74,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -3299,7 +3241,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg1",
                             "numpy_type": null,
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -3326,7 +3269,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_arg2",
                             "numpy_type": null,
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -3342,15 +3286,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -3411,7 +3354,7 @@
                 "decl": "const std::string Function4c( const std::string& arg1, const std::string& arg2 )",
                 "declgen": "const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)",
                 "doxygen": {
-                    "__line__": 97,
+                    "__line__": 83,
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
@@ -3430,7 +3373,7 @@
                     "function_name": "Function4c",
                     "underscore_name": "function4c"
                 },
-                "linenumber": 94,
+                "linenumber": 80,
                 "options": {
                     "wrap_c": false
                 }
@@ -3586,7 +3529,7 @@
                 "decl": "const std::string Function4c( const std::string& arg1, const std::string& arg2 )",
                 "declgen": "void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
-                    "__line__": 97,
+                    "__line__": 83,
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "fmtdict": {
@@ -3605,7 +3548,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4c"
                 },
-                "linenumber": 94,
+                "linenumber": 80,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3636,15 +3579,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -3671,7 +3613,7 @@
                 "decl": "const std::string * Function4d() +owner(caller)",
                 "declgen": "const std::string * Function4d() +deref(allocatable)+owner(caller)",
                 "doxygen": {
-                    "__line__": 104,
+                    "__line__": 90,
                     "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
                 },
                 "fmtdict": {
@@ -3700,7 +3642,7 @@
                     "function_name": "Function4d",
                     "underscore_name": "function4d"
                 },
-                "linenumber": 102,
+                "linenumber": 88,
                 "options": {}
             },
             {
@@ -3775,7 +3717,7 @@
                 "decl": "const std::string * Function4d() +owner(caller)",
                 "declgen": "void Function4d(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))",
                 "doxygen": {
-                    "__line__": 104,
+                    "__line__": 90,
                     "description": "A string is allocated by the library is must be deleted\nby the caller.\n"
                 },
                 "fmtdict": {
@@ -3793,7 +3735,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4d"
                 },
-                "linenumber": 102,
+                "linenumber": 88,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3859,7 +3801,7 @@
                     "function_suffix": "",
                     "underscore_name": "function5"
                 },
-                "linenumber": 109,
+                "linenumber": 95,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -3961,7 +3903,7 @@
                     "function_suffix": "_arg1",
                     "underscore_name": "function5"
                 },
-                "linenumber": 109,
+                "linenumber": 95,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -3971,8 +3913,8 @@
             },
             {
                 "_default_funcs": [
-                    53,
-                    54
+                    47,
+                    48
                 ],
                 "_fmtargs": {
                     "arg1": {
@@ -4015,7 +3957,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg1",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_arg1"
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1"
                         }
                     },
                     "arg2": {
@@ -4047,6 +3990,7 @@
                             "lua_var": "SH_Lua_arg2"
                         },
                         "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
                             "c_const": "",
                             "c_decl": "bool arg2",
                             "c_deref": "",
@@ -4059,7 +4003,8 @@
                             "cxx_var": "arg2",
                             "numpy_type": "NPY_BOOL",
                             "py_type": "PyObject",
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     }
                 },
@@ -4083,15 +4028,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_DOUBLE",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "_has_default_arg": true,
@@ -4175,7 +4119,7 @@
                     "function_suffix": "_arg1_arg2",
                     "underscore_name": "function5"
                 },
-                "linenumber": 109,
+                "linenumber": 95,
                 "options": {}
             },
             {
@@ -4216,7 +4160,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_name",
                             "numpy_type": null,
-                            "py_var": "SHPy_name"
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name"
                         }
                     }
                 },
@@ -4274,13 +4219,13 @@
                     "LUA_name": "Function6",
                     "LUA_name_impl": "l_function6",
                     "PY_name_impl": "PY_Function6_from_name",
-                    "__line__": 117,
+                    "__line__": 103,
                     "c_const": "",
                     "function_name": "Function6",
                     "function_suffix": "_from_name",
                     "underscore_name": "function6"
                 },
-                "linenumber": 116,
+                "linenumber": 102,
                 "options": {}
             },
             {
@@ -4351,13 +4296,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_function6_from_name_bufferify",
-                    "__line__": 117,
+                    "__line__": 103,
                     "c_const": "",
                     "function_name": "Function6",
                     "function_suffix": "_from_name_bufferify",
                     "underscore_name": "function6"
                 },
-                "linenumber": 116,
+                "linenumber": 102,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -4407,7 +4352,8 @@
                             "cxx_type": "int",
                             "cxx_var": "indx",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_indx"
+                            "py_var": "SHPy_indx",
+                            "size_var": "SHSize_indx"
                         }
                     }
                 },
@@ -4457,13 +4403,13 @@
                     "F_name_impl": "function6_from_index",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_Function6_from_index",
-                    "__line__": 120,
+                    "__line__": 106,
                     "c_const": "",
                     "function_name": "Function6",
                     "function_suffix": "_from_index",
                     "underscore_name": "function6"
                 },
-                "linenumber": 119,
+                "linenumber": 105,
                 "options": {}
             },
             {
@@ -4507,7 +4453,7 @@
                     "underscore_name": "function7"
                 },
                 "have_template_args": true,
-                "linenumber": 123,
+                "linenumber": 109,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -4584,7 +4530,8 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -4644,7 +4591,7 @@
                     "underscore_name": "function7"
                 },
                 "have_template_args": true,
-                "linenumber": 123,
+                "linenumber": 109,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -4721,7 +4668,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -4779,7 +4727,7 @@
                     "underscore_name": "function7"
                 },
                 "have_template_args": true,
-                "linenumber": 123,
+                "linenumber": 109,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -4840,9 +4788,9 @@
                     "underscore_name": "function8"
                 },
                 "have_template_args": true,
-                "linenumber": 131,
+                "linenumber": 117,
                 "options": {
-                    "__line__": 135,
+                    "__line__": 121,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -4932,9 +4880,9 @@
                     "underscore_name": "function8"
                 },
                 "have_template_args": true,
-                "linenumber": 131,
+                "linenumber": 117,
                 "options": {
-                    "__line__": 135,
+                    "__line__": 121,
                     "wrap_c": true,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -5024,9 +4972,9 @@
                     "underscore_name": "function8"
                 },
                 "have_template_args": true,
-                "linenumber": 131,
+                "linenumber": 117,
                 "options": {
-                    "__line__": 135,
+                    "__line__": 121,
                     "wrap_c": true,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -5102,7 +5050,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -5151,13 +5100,13 @@
                     "underscore_name": "function9"
                 },
                 "fortran_generic": {
-                    "__line__": 140,
+                    "__line__": 126,
                     "arg": [
                         "float",
                         "double"
                     ]
                 },
-                "linenumber": 139,
+                "linenumber": 125,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -5206,7 +5155,7 @@
                     "function_suffix": "_float",
                     "underscore_name": "function9"
                 },
-                "linenumber": 139,
+                "linenumber": 125,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -5258,7 +5207,7 @@
                     "function_suffix": "_double",
                     "underscore_name": "function9"
                 },
-                "linenumber": 139,
+                "linenumber": 125,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -5305,7 +5254,7 @@
                     "function_suffix": "_0",
                     "underscore_name": "function10"
                 },
-                "linenumber": 164,
+                "linenumber": 150,
                 "options": {}
             },
             {
@@ -5346,7 +5295,8 @@
                             "cxx_type": "double",
                             "cxx_var": "arg2",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_arg2"
+                            "py_var": "SHPy_arg2",
+                            "size_var": "SHSize_arg2"
                         }
                     },
                     "name": {
@@ -5385,7 +5335,8 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SH_name",
                             "numpy_type": null,
-                            "py_var": "SHPy_name"
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name"
                         }
                     }
                 },
@@ -5453,16 +5404,16 @@
                     "underscore_name": "function10"
                 },
                 "fortran_generic": {
-                    "__line__": 171,
+                    "__line__": 157,
                     "arg2": [
                         "float",
                         "double"
                     ]
                 },
-                "linenumber": 165,
+                "linenumber": 151,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 166,
+                    "__line__": 152,
                     "wrap_fortran": false
                 }
             },
@@ -5529,10 +5480,10 @@
                     "function_suffix": "_1_float",
                     "underscore_name": "function10"
                 },
-                "linenumber": 165,
+                "linenumber": 151,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 166,
+                    "__line__": 152,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -5602,10 +5553,10 @@
                     "function_suffix": "_1_double",
                     "underscore_name": "function10"
                 },
-                "linenumber": 165,
+                "linenumber": 151,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 166,
+                    "__line__": 152,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -5718,16 +5669,16 @@
                     "underscore_name": "function10"
                 },
                 "fortran_generic": {
-                    "__line__": 171,
+                    "__line__": 157,
                     "arg2": [
                         "float",
                         "double"
                     ]
                 },
-                "linenumber": 165,
+                "linenumber": 151,
                 "options": {
                     "F_string_len_trim": true,
-                    "__line__": 166,
+                    "__line__": 152,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -5827,7 +5778,7 @@
                     "function_suffix": "_num",
                     "underscore_name": "overload1"
                 },
-                "linenumber": 177,
+                "linenumber": 163,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -5961,7 +5912,7 @@
                     "function_suffix": "_num_offset",
                     "underscore_name": "overload1"
                 },
-                "linenumber": 177,
+                "linenumber": 163,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -5971,8 +5922,8 @@
             },
             {
                 "_default_funcs": [
-                    59,
-                    60
+                    53,
+                    54
                 ],
                 "_fmtargs": {
                     "num": {
@@ -6015,7 +5966,8 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_num"
+                            "py_var": "SHPy_num",
+                            "size_var": "SHSize_num"
                         }
                     },
                     "offset": {
@@ -6058,7 +6010,8 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_offset"
+                            "py_var": "SHPy_offset",
+                            "size_var": "SHSize_offset"
                         }
                     },
                     "stride": {
@@ -6101,7 +6054,8 @@
                             "cxx_type": "int",
                             "cxx_var": "stride",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_stride"
+                            "py_var": "SHPy_stride",
+                            "size_var": "SHSize_stride"
                         }
                     }
                 },
@@ -6125,15 +6079,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "_has_default_arg": true,
@@ -6231,7 +6184,7 @@
                     "function_suffix": "_num_offset_stride",
                     "underscore_name": "overload1"
                 },
-                "linenumber": 177,
+                "linenumber": 163,
                 "options": {}
             },
             {
@@ -6354,7 +6307,7 @@
                     "function_suffix": "_3",
                     "underscore_name": "overload1"
                 },
-                "linenumber": 183,
+                "linenumber": 169,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6515,7 +6468,7 @@
                     "function_suffix": "_4",
                     "underscore_name": "overload1"
                 },
-                "linenumber": 183,
+                "linenumber": 169,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6525,8 +6478,8 @@
             },
             {
                 "_default_funcs": [
-                    61,
-                    62
+                    55,
+                    56
                 ],
                 "_fmtargs": {
                     "num": {
@@ -6569,7 +6522,8 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_num"
+                            "py_var": "SHPy_num",
+                            "size_var": "SHSize_num"
                         }
                     },
                     "offset": {
@@ -6612,7 +6566,8 @@
                             "cxx_type": "int",
                             "cxx_var": "offset",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_offset"
+                            "py_var": "SHPy_offset",
+                            "size_var": "SHSize_offset"
                         }
                     },
                     "stride": {
@@ -6655,7 +6610,8 @@
                             "cxx_type": "int",
                             "cxx_var": "stride",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_stride"
+                            "py_var": "SHPy_stride",
+                            "size_var": "SHSize_stride"
                         }
                     },
                     "type": {
@@ -6698,7 +6654,8 @@
                             "cxx_type": "double",
                             "cxx_var": "type",
                             "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_type"
+                            "py_var": "SHPy_type",
+                            "size_var": "SHSize_type"
                         }
                     }
                 },
@@ -6722,15 +6679,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "_has_default_arg": true,
@@ -6835,7 +6791,7 @@
                     "function_suffix": "_5",
                     "underscore_name": "overload1"
                 },
-                "linenumber": 183,
+                "linenumber": 169,
                 "options": {}
             },
             {
@@ -6880,7 +6836,8 @@
                             "cxx_type": "tutorial::TypeID",
                             "cxx_var": "arg",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -6904,15 +6861,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -6968,7 +6924,7 @@
                     "function_name": "typefunc",
                     "underscore_name": "typefunc"
                 },
-                "linenumber": 192,
+                "linenumber": 178,
                 "options": {}
             },
             {
@@ -7016,7 +6972,8 @@
                             "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)",
                             "cxx_var": "SH_arg",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -7042,15 +6999,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -7108,7 +7064,7 @@
                     "function_name": "enumfunc",
                     "underscore_name": "enumfunc"
                 },
-                "linenumber": 193,
+                "linenumber": 179,
                 "options": {}
             },
             {
@@ -7156,7 +7112,8 @@
                             "cxx_val": "static_cast<tutorial::Color>(arg)",
                             "cxx_var": "SH_arg",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -7182,15 +7139,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -7248,7 +7204,7 @@
                     "function_name": "colorfunc",
                     "underscore_name": "colorfunc"
                 },
-                "linenumber": 194,
+                "linenumber": 180,
                 "options": {}
             },
             {
@@ -7271,8 +7227,6 @@
                             "f_var": "max"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int max",
                             "c_deref": "",
@@ -7284,7 +7238,8 @@
                             "cxx_type": "int",
                             "cxx_var": "max",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_max"
+                            "py_var": "SHPy_max",
+                            "size_var": "SHSize_max"
                         }
                     },
                     "min": {
@@ -7305,8 +7260,6 @@
                             "f_var": "min"
                         },
                         "fmtpy": {
-                            "PyObject": "PyObject",
-                            "PyTypeObject": null,
                             "c_const": "",
                             "c_decl": "int min",
                             "c_deref": "",
@@ -7318,7 +7271,8 @@
                             "cxx_type": "int",
                             "cxx_var": "min",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_min"
+                            "py_var": "SHPy_min",
+                            "size_var": "SHSize_min"
                         }
                     }
                 },
@@ -7373,7 +7327,7 @@
                 "decl": "void getMinMax(int &min +intent(out), int &max +intent(out))",
                 "declgen": "void getMinMax(int & min +intent(out), int & max +intent(out))",
                 "doxygen": {
-                    "__line__": 197,
+                    "__line__": 183,
                     "brief": "Pass in reference to scalar"
                 },
                 "fmtdict": {
@@ -7397,9 +7351,9 @@
                     "function_name": "getMinMax",
                     "underscore_name": "get_min_max"
                 },
-                "linenumber": 196,
+                "linenumber": 182,
                 "options": {
-                    "__line__": 199,
+                    "__line__": 185,
                     "literalinclude": true,
                     "wrap_lua": false
                 }
@@ -7449,7 +7403,8 @@
                             "cxx_val": "static_cast<tutorial::Class1::DIRECTION>(arg)",
                             "cxx_var": "SH_arg",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -7475,15 +7430,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -7541,7 +7495,7 @@
                     "function_name": "directionFunc",
                     "underscore_name": "direction_func"
                 },
-                "linenumber": 267,
+                "linenumber": 253,
                 "options": {}
             },
             {
@@ -7566,6 +7520,8 @@
                             "f_var": "arg"
                         },
                         "fmtpy": {
+                            "PyObject": "PY_Class1",
+                            "PyTypeObject": "PY_Class1_Type",
                             "c_const": "",
                             "c_decl": "TUT_class1 arg",
                             "c_deref": "",
@@ -7578,7 +7534,8 @@
                             "cxx_var": "arg",
                             "numpy_type": null,
                             "py_type": "PY_Class1",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -7611,7 +7568,7 @@
                 "decl": "void passClassByValue(Class1 arg)",
                 "declgen": "void passClassByValue(Class1 arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 270,
+                    "__line__": 256,
                     "brief": "Pass arguments to a function."
                 },
                 "fmtdict": {
@@ -7636,9 +7593,9 @@
                     "function_name": "passClassByValue",
                     "underscore_name": "pass_class_by_value"
                 },
-                "linenumber": 269,
+                "linenumber": 255,
                 "options": {
-                    "__line__": 272,
+                    "__line__": 258,
                     "wrap_lua": false
                 }
             },
@@ -7664,6 +7621,8 @@
                             "f_var": "arg"
                         },
                         "fmtpy": {
+                            "PyObject": "PY_Class1",
+                            "PyTypeObject": "PY_Class1_Type",
                             "c_const": "const ",
                             "c_decl": "TUT_class1 arg",
                             "c_deref": "",
@@ -7676,7 +7635,8 @@
                             "cxx_var": "arg",
                             "numpy_type": null,
                             "py_type": "PY_Class1",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -7694,15 +7654,14 @@
                         "f_var": "SHT_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -7762,9 +7721,9 @@
                     "function_name": "useclass",
                     "underscore_name": "useclass"
                 },
-                "linenumber": 275,
+                "linenumber": 261,
                 "options": {
-                    "__line__": 276,
+                    "__line__": 262,
                     "wrap_lua": false
                 }
             },
@@ -7825,9 +7784,9 @@
                     "function_name": "getclass2",
                     "underscore_name": "getclass2"
                 },
-                "linenumber": 285,
+                "linenumber": 271,
                 "options": {
-                    "__line__": 286,
+                    "__line__": 272,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -7856,7 +7815,8 @@
                         "cxx_member": "->",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -7900,9 +7860,9 @@
                     "function_name": "getclass3",
                     "underscore_name": "getclass3"
                 },
-                "linenumber": 291,
+                "linenumber": 277,
                 "options": {
-                    "__line__": 292,
+                    "__line__": 278,
                     "wrap_lua": false
                 }
             },
@@ -7971,7 +7931,7 @@
                 "decl": "Class1 getClassCopy(int flag)",
                 "declgen": "Class1 getClassCopy(int flag +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 297,
+                    "__line__": 283,
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
                 "fmtdict": {
@@ -7998,9 +7958,9 @@
                     "function_name": "getClassCopy",
                     "underscore_name": "get_class_copy"
                 },
-                "linenumber": 296,
+                "linenumber": 282,
                 "options": {
-                    "__line__": 299,
+                    "__line__": 285,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -8119,7 +8079,7 @@
                 "decl": "int callback1(int in, int (*incr)(int));",
                 "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 307,
+                    "__line__": 293,
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
@@ -8144,776 +8104,10 @@
                     "function_name": "callback1",
                     "underscore_name": "callback1"
                 },
-                "linenumber": 306,
+                "linenumber": 292,
                 "options": {
-                    "__line__": 309,
+                    "__line__": 295,
                     "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                }
-            },
-            {
-                "_fmtargs": {
-                    "d": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "d",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&d)",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "d",
-                            "f_var": "d"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "double d",
-                            "c_deref": "",
-                            "c_type": "double",
-                            "c_var": "d",
-                            "cxx_addr": "&",
-                            "cxx_decl": "double d",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_d"
-                        }
-                    },
-                    "i": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "i",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "i",
-                            "f_var": "i"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int i",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "i",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int i",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_i"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "tutorial::struct1",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0"
-                    },
-                    "fmtf": {
-                        "cxx_type": "tutorial::struct1",
-                        "f_var": "SHT_rv"
-                    },
-                    "fmtpy": {
-                        "PYN_descr": "PY_struct1_array_descr",
-                        "PyObject": "PY_struct1",
-                        "PyTypeObject": "PY_struct1_Type",
-                        "c_deref": "",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
-                        "npy_dims": "NULL",
-                        "npy_ndims": "0",
-                        "numpy_type": null,
-                        "py_capsule": "SHC_SHC_rv",
-                        "py_var": "SHTPy_rv"
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "returnStruct",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
-                    "specifier": [
-                        "struct1"
-                    ],
-                    "typemap_name": "tutorial::struct1"
-                },
-                "decl": "struct1 returnStruct(int i, double d);",
-                "declgen": "struct1 returnStruct(int i +intent(in)+value, double d +intent(in)+value)",
-                "fmtdict": {
-                    "C_call_code": "SH_union_0_t SHC_rv =\t {tutorial::returnStruct(\ti,\t d)};",
-                    "C_call_list": "i,\t d",
-                    "C_name": "TUT_return_struct",
-                    "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv.c;",
-                    "C_return_type": "TUT_struct1",
-                    "F_C_call": "c_return_struct",
-                    "F_C_name": "return_struct",
-                    "F_arg_c_call": "i,\t d",
-                    "F_arguments": "i,\t d",
-                    "F_call_code": "SHT_rv = c_return_struct(i,\t d)",
-                    "F_name_function": "return_struct",
-                    "F_name_generic": "return_struct",
-                    "F_name_impl": "return_struct",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_returnStruct",
-                    "c_const": "",
-                    "cxx_rv_decl": "SH_union_0_t SHC_rv",
-                    "function_name": "returnStruct",
-                    "underscore_name": "return_struct"
-                },
-                "linenumber": 316,
-                "options": {
-                    "__line__": 317,
-                    "wrap_lua": false
-                }
-            },
-            {
-                "_fmtargs": {
-                    "d": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "d",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&d)",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "d",
-                            "f_var": "d"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "double d",
-                            "c_deref": "",
-                            "c_type": "double",
-                            "c_var": "d",
-                            "cxx_addr": "&",
-                            "cxx_decl": "double d",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_var": "SHPy_d"
-                        }
-                    },
-                    "i": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "i",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "i",
-                            "f_var": "i"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_decl": "int i",
-                            "c_deref": "",
-                            "c_type": "int",
-                            "c_var": "i",
-                            "cxx_addr": "&",
-                            "cxx_decl": "int i",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_i"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_rv_decl": "TUT_struct1 * SHC_rv",
-                        "c_val": "static_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv))",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_type": "tutorial::struct1",
-                        "cxx_var": "SHCXX_rv",
-                        "idtor": "0"
-                    },
-                    "fmtf": {
-                        "cxx_type": "tutorial::struct1",
-                        "f_var": "SHT_rv"
-                    },
-                    "fmtpy": {
-                        "PYN_descr": "PY_struct1_array_descr",
-                        "PyObject": "PY_struct1",
-                        "PyTypeObject": "PY_struct1_Type",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_var": "SHCXX_rv",
-                        "npy_dims": "NULL",
-                        "npy_ndims": "0",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv"
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "returnStructPtr",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
-                    "return_pointer_as": "pointer",
-                    "specifier": [
-                        "struct1"
-                    ],
-                    "typemap_name": "tutorial::struct1"
-                },
-                "decl": "struct1 *returnStructPtr(int i, double d);",
-                "declgen": "struct1 * returnStructPtr(int i +intent(in)+value, double d +intent(in)+value)",
-                "fmtdict": {
-                    "C_call_code": "tutorial::struct1 * SHCXX_rv =\t tutorial::returnStructPtr(\ti,\t d);",
-                    "C_call_list": "i,\t d",
-                    "C_name": "TUT_return_struct_ptr",
-                    "C_post_call": "TUT_struct1 * SHC_rv =\t static_cast<TUT_struct1 *>(\tstatic_cast<void *>(\tSHCXX_rv));",
-                    "C_prototype": "int i,\t double d",
-                    "C_return_code": "return SHC_rv;",
-                    "C_return_type": "TUT_struct1 *",
-                    "F_C_call": "c_return_struct_ptr",
-                    "F_C_name": "c_return_struct_ptr",
-                    "F_arg_c_call": "i,\t d",
-                    "F_arguments": "i,\t d",
-                    "F_call_code": "SHT_ptr = c_return_struct_ptr(i,\t d)",
-                    "F_name_function": "return_struct_ptr",
-                    "F_name_generic": "return_struct_ptr",
-                    "F_name_impl": "return_struct_ptr",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_returnStructPtr",
-                    "c_const": "",
-                    "cxx_rv_decl": "tutorial::struct1 * SHCXX_rv",
-                    "function_name": "returnStructPtr",
-                    "underscore_name": "return_struct_ptr"
-                },
-                "linenumber": 319,
-                "options": {
-                    "__line__": 320,
-                    "wrap_lua": false
-                }
-            },
-            {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_arg)",
-                            "cxx_decl": "tutorial::struct1 * SHCXX_arg",
-                            "cxx_member": ".",
-                            "cxx_type": "tutorial::struct1",
-                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\t&arg))",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arg",
-                            "f_var": "arg"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "double",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0"
-                    },
-                    "fmtf": {
-                        "cxx_type": "double",
-                        "f_var": "SHT_rv"
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptStructIn",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "struct1"
-                            ],
-                            "typemap_name": "tutorial::struct1"
-                        }
-                    ],
-                    "specifier": [
-                        "double"
-                    ],
-                    "typemap_name": "double"
-                },
-                "decl": "double acceptStructIn(struct1 arg)",
-                "declgen": "double acceptStructIn(struct1 arg +intent(in)+value)",
-                "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::acceptStructIn(\t*SHCXX_arg);",
-                    "C_call_list": "*SHCXX_arg",
-                    "C_name": "TUT_accept_struct_in",
-                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\t&arg));",
-                    "C_prototype": "TUT_struct1 arg",
-                    "C_return_code": "return SHC_rv;",
-                    "C_return_type": "double",
-                    "F_C_call": "c_accept_struct_in",
-                    "F_C_name": "accept_struct_in",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_accept_struct_in(arg)",
-                    "F_name_function": "accept_struct_in",
-                    "F_name_generic": "accept_struct_in",
-                    "F_name_impl": "accept_struct_in",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "c_const": "",
-                    "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "acceptStructIn",
-                    "underscore_name": "accept_struct_in"
-                },
-                "linenumber": 331,
-                "options": {
-                    "__line__": 332,
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                }
-            },
-            {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "tutorial::struct1 * SHCXX_arg",
-                            "cxx_member": "->",
-                            "cxx_type": "tutorial::struct1",
-                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ))",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arg",
-                            "f_var": "arg"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "double",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0"
-                    },
-                    "fmtf": {
-                        "cxx_type": "double",
-                        "f_var": "SHT_rv"
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptStructInPtr",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "struct1"
-                            ],
-                            "typemap_name": "tutorial::struct1"
-                        }
-                    ],
-                    "specifier": [
-                        "double"
-                    ],
-                    "typemap_name": "double"
-                },
-                "decl": "double acceptStructInPtr(struct1 *arg+intent(in))",
-                "declgen": "double acceptStructInPtr(struct1 * arg +intent(in))",
-                "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::acceptStructInPtr(\tSHCXX_arg);",
-                    "C_call_list": "SHCXX_arg",
-                    "C_name": "TUT_accept_struct_in_ptr",
-                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ));",
-                    "C_prototype": "TUT_struct1 * arg",
-                    "C_return_code": "return SHC_rv;",
-                    "C_return_type": "double",
-                    "F_C_call": "c_accept_struct_in_ptr",
-                    "F_C_name": "accept_struct_in_ptr",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
-                    "F_call_code": "SHT_rv = c_accept_struct_in_ptr(arg)",
-                    "F_name_function": "accept_struct_in_ptr",
-                    "F_name_generic": "accept_struct_in_ptr",
-                    "F_name_impl": "accept_struct_in_ptr",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "c_const": "",
-                    "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "acceptStructInPtr",
-                    "underscore_name": "accept_struct_in_ptr"
-                },
-                "linenumber": 336,
-                "options": {
-                    "__line__": 337,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                }
-            },
-            {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "tutorial::struct1 * SHCXX_arg",
-                            "cxx_member": "->",
-                            "cxx_type": "tutorial::struct1",
-                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ))",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arg",
-                            "f_var": "arg"
-                        }
-                    },
-                    "d": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "d",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&d)",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "d",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "d",
-                            "f_var": "d"
-                        }
-                    },
-                    "i": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "i",
-                            "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(&i)",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "i",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "i",
-                            "f_var": "i"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptStructOutPtr",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "struct1"
-                            ],
-                            "typemap_name": "tutorial::struct1"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "i",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "d",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(struct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)",
-                "fmtdict": {
-                    "C_call_code": "tutorial::acceptStructOutPtr(\tSHCXX_arg,\t i,\t d);",
-                    "C_call_list": "SHCXX_arg,\t i,\t d",
-                    "C_name": "TUT_accept_struct_out_ptr",
-                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ));",
-                    "C_prototype": "TUT_struct1 * arg,\t int i,\t double d",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_accept_struct_out_ptr",
-                    "F_C_name": "accept_struct_out_ptr",
-                    "F_arg_c_call": "arg,\t i,\t d",
-                    "F_arguments": "arg,\t i,\t d",
-                    "F_call_code": "call c_accept_struct_out_ptr(arg,\t i,\t d)",
-                    "F_name_function": "accept_struct_out_ptr",
-                    "F_name_generic": "accept_struct_out_ptr",
-                    "F_name_impl": "accept_struct_out_ptr",
-                    "F_subprogram": "subroutine",
-                    "c_const": "",
-                    "function_name": "acceptStructOutPtr",
-                    "underscore_name": "accept_struct_out_ptr"
-                },
-                "linenumber": 340,
-                "options": {
-                    "__line__": 341,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                }
-            },
-            {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_cast_to_void_ptr": "static_cast<void *>(SHCXX_arg)",
-                            "cxx_decl": "tutorial::struct1 * SHCXX_arg",
-                            "cxx_member": "->",
-                            "cxx_type": "tutorial::struct1",
-                            "cxx_val": "static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ))",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0"
-                        },
-                        "fmtf": {
-                            "c_var": "arg",
-                            "f_var": "arg"
-                        }
-                    }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptStructInOutPtr",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout",
-                                "value": false
-                            },
-                            "declarator": {
-                                "name": "arg",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "specifier": [
-                                "struct1"
-                            ],
-                            "typemap_name": "tutorial::struct1"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptStructInOutPtr(struct1 *arg +intent(inout))",
-                "declgen": "void acceptStructInOutPtr(struct1 * arg +intent(inout))",
-                "fmtdict": {
-                    "C_call_code": "tutorial::acceptStructInOutPtr(\tSHCXX_arg);",
-                    "C_call_list": "SHCXX_arg",
-                    "C_name": "TUT_accept_struct_in_out_ptr",
-                    "C_pre_call": "tutorial::struct1 * SHCXX_arg =\t static_cast<tutorial::struct1 *>(\tstatic_cast<void *>(\targ));",
-                    "C_prototype": "TUT_struct1 * arg",
-                    "C_return_code": "return;",
-                    "C_return_type": "void",
-                    "F_C_call": "c_accept_struct_in_out_ptr",
-                    "F_C_name": "accept_struct_in_out_ptr",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
-                    "F_call_code": "call c_accept_struct_in_out_ptr(arg)",
-                    "F_name_function": "accept_struct_in_out_ptr",
-                    "F_name_generic": "accept_struct_in_out_ptr",
-                    "F_name_impl": "accept_struct_in_out_ptr",
-                    "F_subprogram": "subroutine",
-                    "c_const": "",
-                    "function_name": "acceptStructInOutPtr",
-                    "underscore_name": "accept_struct_in_out_ptr"
-                },
-                "linenumber": 344,
-                "options": {
-                    "__line__": 345,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -8960,7 +8154,8 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg"
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
                         }
                     }
                 },
@@ -9015,7 +8210,7 @@
                     "function_name": "set_global_flag",
                     "underscore_name": "set_global_flag"
                 },
-                "linenumber": 351,
+                "linenumber": 302,
                 "options": {}
             },
             {
@@ -9039,15 +8234,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
-                        "c_var": "SHC_rv",
+                        "c_var": "rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHC_rv",
+                        "cxx_var": "rv",
                         "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -9088,7 +8282,7 @@
                     "function_name": "get_global_flag",
                     "underscore_name": "get_global_flag"
                 },
-                "linenumber": 352,
+                "linenumber": 303,
                 "options": {}
             },
             {
@@ -9114,15 +8308,14 @@
                         "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
-                        "PyObject": "PyObject",
-                        "PyTypeObject": null,
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "numpy_type": null,
-                        "py_var": "SHTPy_rv"
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
                     }
                 },
                 "ast": {
@@ -9174,7 +8367,7 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 353,
+                "linenumber": 304,
                 "options": {}
             },
             {
@@ -9262,7 +8455,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "linenumber": 353,
+                "linenumber": 304,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -9271,13 +8464,13 @@
                 }
             }
         ],
-        "language": "c++",
+        "language": "cxx",
         "options": {
             "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
             "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
-            "C_header_helper_template": "types{library}.{C_header_filename_suffix}",
+            "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_line_length": 72,
@@ -9321,22 +8514,27 @@
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
             "PY_PyObject_template": "{PY_prefix}{cxx_class}",
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
+            "PY_array_arg": "numpy",
+            "PY_capsule_destructor_function_template": "{PY_prefix}SHROUD_capsule_destructor",
+            "PY_dtor_context_array_template": "{PY_prefix}SHROUD_capsule_context",
+            "PY_dtor_context_typedef_template": "{PY_prefix}SHROUD_dtor_context",
+            "PY_fetch_context_function_template": "{PY_prefix}SHROUD_fetch_context",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
-            "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
-            "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context",
-            "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function",
+            "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
+            "PY_struct_arg": "numpy",
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}",
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
+            "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 22,
+            "__line__": 14,
             "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
@@ -9370,7 +8568,7 @@
                     "variable_name": "global_flag",
                     "variable_upper": "GLOBAL_FLAG"
                 },
-                "linenumber": 30,
+                "linenumber": 22,
                 "name": "global_flag",
                 "options": {}
             },
@@ -9394,7 +8592,7 @@
                     "variable_name": "tutorial_flag",
                     "variable_upper": "TUTORIAL_FLAG"
                 },
-                "linenumber": 58,
+                "linenumber": 44,
                 "name": "tutorial_flag",
                 "options": {}
             }
@@ -9474,19 +8672,33 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -9541,16 +8753,42 @@
                     ]
                 },
                 "intent_inout": {
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});"
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ],
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;"
+                    ]
+                },
+                "result": {
+                    "decl": [
+                        "{PyObject} * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ]
                 }
             }
@@ -10377,19 +9615,33 @@
                 "intent_in": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_inout": {
                     "cxx_local_var": "pointer",
                     "post_parse": [
-                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
+                        "{c_const}tutorial::Class1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
                     "post_call": [
                         "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
                     ]
                 }
             }
@@ -10446,7 +9698,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "__line__": 37,
+            "__line__": 29,
             "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})",
             "c_type": "int",
             "cxx_to_c": "static_cast<int>({cxx_var})",
@@ -10482,54 +9734,6 @@
             "f_type": "integer(C_INT)",
             "flat_name": "tutorial_TypeID",
             "typedef": "int"
-        },
-        "tutorial::struct1": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
-            "LUA_type": "LUA_TUSERDATA",
-            "PYN_descr": "PY_struct1_array_descr",
-            "PY_PyObject": "PY_struct1",
-            "PY_PyTypeObject": "PY_struct1_Type",
-            "PY_from_object": "PP_struct1_from_Object",
-            "PY_to_object": "PP_struct1_to_Object",
-            "base": "struct",
-            "c_statements": {
-                "result": {
-                    "c_helper": "SH_union_0_t"
-                }
-            },
-            "c_to_cxx": "static_cast<{c_const}tutorial::struct1 *>(\tstatic_cast<{c_const}void *>(\t{c_var}))",
-            "c_type": "TUT_struct1",
-            "c_union": "SH_union_0_t",
-            "cxx_to_c": "static_cast<{c_const}TUT_struct1 *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}))",
-            "cxx_type": "tutorial::struct1",
-            "f_derived_type": "struct1",
-            "f_module": {
-                "tutorial_mod": [
-                    "struct1"
-                ]
-            },
-            "f_type": "type(struct1)",
-            "flat_name": "tutorial_struct1",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}tutorial::struct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}tutorial::struct1 * {cxx_var} =\t {py_var} ? {py_var}->{PY_obj} : NULL;"
-                    ]
-                },
-                "intent_out": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

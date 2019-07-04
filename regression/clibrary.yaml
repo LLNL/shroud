@@ -1,18 +1,10 @@
 copyright:
-- '#######################################################################'
-- 'Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.'
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
 -
-- 'Produced at the Lawrence Livermore National Laboratory'
+- "SPDX-License-Identifier: (BSD-3-Clause)"
 -
-- 'LLNL-CODE-738041.'
--
-- 'All rights reserved.'
--
-- 'This file is part of Shroud.'
--
-- 'For details about use and distribution, please read LICENSE.'
--
-- '#######################################################################'
 
 # Wrap a C library
 # Many of the same function as Tutorial, but for C.
@@ -43,12 +35,6 @@ declarations:
   fields:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
-
-- decl: struct Cstruct1 {
-          int ifield;
-        };
-  options:
-    wrap_python: false
 
 - decl: void Function1()
 - decl: double PassByValue(double arg1, int arg2)
@@ -233,37 +219,6 @@ declarations:
   options:
     wrap_lua: False
     wrap_python: False
-
-######################################################################
-# Pass struct
-
-- decl: int passStruct1(Cstruct1 *s1)
-  options:
-    wrap_python: false
-    literalinclude: True
-
-- decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out))
-  doxygen:
-    description: |
-      Pass name argument which will build a bufferify function.
-  options:
-    wrap_python: false
-
-- decl: Cstruct1 *returnStructPtr1(int ifield)
-  doxygen:
-    brief: Return a pointer to a struct
-    description: |
-      Does not generate a bufferify C wrapper.
-  options:
-    wrap_python: false
-
-- decl: Cstruct1 *returnStructPtr2(int ifield, char *outbuf+intent(out))
-  doxygen:
-    brief: Return a pointer to a struct
-    description: |
-      Generates a bufferify C wrapper function.
-  options:
-    wrap_python: false
 
 ######################################################################
 

@@ -1,19 +1,11 @@
 // pyClibrarymodule.c
 // This is generated code, do not edit
-// #######################################################################
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved.
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
 #include "pyClibrarymodule.h"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
@@ -76,15 +68,16 @@ PY_PassByValue(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:PassByValue",
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    double SHC_rv = PassByValue(arg1, arg2);
+    double rv = PassByValue(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyFloat_FromDouble(SHC_rv);
+    SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_by_value
@@ -106,6 +99,7 @@ PY_PassByReference(
     char *SHT_kwlist[] = {
         "arg1",
         NULL };
+    PyObject * SHPy_arg2 = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:PassByReference",
         SHT_kwlist, &arg1))
@@ -117,7 +111,7 @@ PY_PassByReference(
     PassByReference(&arg1, &arg2);
 
     // post_call
-    PyObject * SHPy_arg2 = PyInt_FromLong(arg2);
+    SHPy_arg2 = PyInt_FromLong(arg2);
 
     return (PyObject *) SHPy_arg2;
 // splicer end function.pass_by_reference
@@ -140,6 +134,7 @@ PY_Sum(
     char *SHT_kwlist[] = {
         "values",
         NULL };
+    PyObject * SHPy_result = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum", SHT_kwlist, 
         &SHTPy_values))
@@ -162,7 +157,7 @@ PY_Sum(
     Sum(len, values, &result);
 
     // post_call
-    PyObject * SHPy_result = PyInt_FromLong(result);
+    SHPy_result = PyInt_FromLong(result);
 
     // cleanup
     Py_DECREF(SHPy_values);
@@ -191,6 +186,7 @@ PY_Function3(
     char *SHT_kwlist[] = {
         "arg",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
         SHT_kwlist, &PyBool_Type, &SHPy_arg))
@@ -199,12 +195,17 @@ PY_Function3(
     // pre_call
     bool arg = PyObject_IsTrue(SHPy_arg);
 
-    bool SHC_rv = Function3(arg);
+    bool rv = Function3(arg);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.function3
 }
 
@@ -225,11 +226,13 @@ PY_checkBool(
 // void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
 // splicer begin function.check_bool
     PyObject * SHPy_arg1;
+    PyObject * SHPy_arg2 = NULL;
     PyObject * SHPy_arg3;
     char *SHT_kwlist[] = {
         "arg1",
         "arg3",
         NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!O!:checkBool",
         SHT_kwlist, &PyBool_Type, &SHPy_arg1, &PyBool_Type, &SHPy_arg3))
@@ -243,11 +246,18 @@ PY_checkBool(
     checkBool(arg1, &arg2, &arg3);
 
     // post_call
-    PyObject * SHPy_arg2 = PyBool_FromLong(arg2);
+    SHPy_arg2 = PyBool_FromLong(arg2);
+    if (SHPy_arg2 == NULL) goto fail;
     SHPy_arg3 = PyBool_FromLong(arg3);
-    PyObject * SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
+    if (SHPy_arg3 == NULL) goto fail;
+    SHTPy_rv = Py_BuildValue("OO", SHPy_arg2, SHPy_arg3);
 
     return SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_arg2);
+    Py_XDECREF(SHPy_arg3);
+    return NULL;
 // splicer end function.check_bool
 }
 
@@ -269,15 +279,16 @@ PY_Function4a(
         "arg1",
         "arg2",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    char * SHC_rv = Function4a(arg1, arg2);
+    char * rv = Function4a(arg1, arg2);
 
     // post_call
-    PyObject * SHTPy_rv = PyString_FromString(SHC_rv);
+    SHTPy_rv = PyString_FromString(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.function4a
@@ -328,13 +339,15 @@ PY_returnOneName(
 {
 // void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
 // splicer begin function.return_one_name
+    PyObject * SHPy_name1 = NULL;
+
     // pre_call
     char name1[MAXNAME];  // intent(out)
 
     returnOneName(name1);
 
     // post_call
-    PyObject * SHPy_name1 = PyString_FromString(name1);
+    SHPy_name1 = PyString_FromString(name1);
 
     return (PyObject *) SHPy_name1;
 // splicer end function.return_one_name
@@ -359,6 +372,8 @@ PY_returnTwoNames(
 {
 // void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
 // splicer begin function.return_two_names
+    PyObject *SHTPy_rv = NULL;  // return value object
+
     // pre_call
     char name1[MAXNAME];  // intent(out)
     char name2[MAXNAME];  // intent(out)
@@ -366,7 +381,7 @@ PY_returnTwoNames(
     returnTwoNames(name1, name2);
 
     // post_call
-    PyObject * SHTPy_rv = Py_BuildValue("ss", name1, name2);
+    SHTPy_rv = Py_BuildValue("ss", name1, name2);
 
     return SHTPy_rv;
 // splicer end function.return_two_names
@@ -388,6 +403,8 @@ PY_ImpliedTextLen(
 {
 // void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)
 // splicer begin function.implied_text_len
+    PyObject * SHPy_text = NULL;
+
     // pre_call
     char text[MAXNAME];  // intent(out)
     int ltext = MAXNAME;
@@ -395,7 +412,7 @@ PY_ImpliedTextLen(
     ImpliedTextLen(text, ltext);
 
     // post_call
-    PyObject * SHPy_text = PyString_FromString(text);
+    SHPy_text = PyString_FromString(text);
 
     return (PyObject *) SHPy_text;
 // splicer end function.implied_text_len
@@ -423,6 +440,7 @@ PY_ImpliedLen(
     char *SHT_kwlist[] = {
         "text",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:ImpliedLen",
         SHT_kwlist, &text))
@@ -432,10 +450,10 @@ PY_ImpliedLen(
     int ltext = strlen(text);
     bool flag = false;
 
-    int SHC_rv = ImpliedLen(text, ltext, flag);
+    int rv = ImpliedLen(text, ltext, flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len
@@ -463,6 +481,7 @@ PY_ImpliedLenTrim(
     char *SHT_kwlist[] = {
         "text",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:ImpliedLenTrim",
         SHT_kwlist, &text))
@@ -472,10 +491,10 @@ PY_ImpliedLenTrim(
     int ltext = strlen(text);
     bool flag = true;
 
-    int SHC_rv = ImpliedLenTrim(text, ltext, flag);
+    int rv = ImpliedLenTrim(text, ltext, flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyInt_FromLong(SHC_rv);
+    SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.implied_len_trim
@@ -497,15 +516,22 @@ PY_ImpliedBoolTrue(
 {
 // bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)
 // splicer begin function.implied_bool_true
+    PyObject * SHTPy_rv = NULL;
+
     // pre_call
     bool flag = true;
 
-    bool SHC_rv = ImpliedBoolTrue(flag);
+    bool rv = ImpliedBoolTrue(flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.implied_bool_true
 }
 
@@ -525,15 +551,22 @@ PY_ImpliedBoolFalse(
 {
 // bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)
 // splicer begin function.implied_bool_false
+    PyObject * SHTPy_rv = NULL;
+
     // pre_call
     bool flag = false;
 
-    bool SHC_rv = ImpliedBoolFalse(flag);
+    bool rv = ImpliedBoolFalse(flag);
 
     // post_call
-    PyObject * SHTPy_rv = PyBool_FromLong(SHC_rv);
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
 
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end function.implied_bool_false
 }
 static PyMethodDef PY_methods[] = {

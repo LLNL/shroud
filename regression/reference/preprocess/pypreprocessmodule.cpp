@@ -117,7 +117,6 @@ initpreprocess(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-
     // User1
     PY_User1_Type.tp_new   = PyType_GenericNew;
     PY_User1_Type.tp_alloc = PyType_GenericAlloc;

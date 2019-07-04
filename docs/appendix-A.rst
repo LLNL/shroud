@@ -236,10 +236,8 @@ Calls C via the interface:
    :end-before: end c_accept_name
    :dedent: 8
 
-.. literalinclude:: ../regression/reference/clibrary/wrapClibrary.c
-   :language: c
-   :start-after: start CLI_accept_name_bufferify
-   :end-before: end CLI_accept_name_bufferify
+No C wrapper is required since the Fortran wrapper calls ``trim`` and
+concatenates ``C_NULL_CHAR``.
 
 .. ############################################################
 
@@ -1095,7 +1093,7 @@ YAML:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
    :language: fortran
    :start-after: start pass_struct1
    :end-before: end pass_struct1
@@ -1103,45 +1101,38 @@ The Fortran wrapper:
 
 C library function:
 
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
+.. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStruct1
    :end-before: end passStruct1
 
 .. ############################################################
 
-.. _example_acceptStructIn:
+.. _example_passStructByValue:
 
-acceptStructIn
-^^^^^^^^^^^^^^
+passStructByValue
+^^^^^^^^^^^^^^^^^
 
 YAML:
 
 .. code-block:: yaml
 
-    - decl: double acceptStructIn(struct1 arg)
+    - decl: double passStructByValue(struct1 arg)
 
 Calls C via the interface:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
    :language: fortran
-   :start-after: start accept_struct_in
-   :end-before: end accept_struct_in
+   :start-after: start pass_struct_by_value
+   :end-before: end pass_struct_by_value
    :dedent: 8
 
-The C++ wrapper:
+C library function:
 
-.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+.. literalinclude:: ../regression/run/struct/struct.c
    :language: c
-   :start-after: start TUT_accept_struct_in
-   :end-before: end TUT_accept_struct_in
-
-C++ library function:
-
-.. literalinclude:: ../regression/run/tutorial/tutorial.cpp
-   :language: c
-   :start-after: start acceptStructIn
-   :end-before: end acceptStructIn
+   :start-after: start passStructByValue
+   :end-before: end passStructByValue
 
 
 Class Type

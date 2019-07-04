@@ -39,8 +39,8 @@ static void
 PY_Vvv1_tp_del (PY_Vvv1 *self)
 {
 // splicer begin class.vector.type.del
-    delete self->obj;
-    self->obj = NULL;
+    PY_SHROUD_release_memory(self->mydtor, self->myobj);
+    self->myobj = NULL;
 // splicer end class.vector.type.del
 }
 // splicer begin class.vector.impl.after_methods

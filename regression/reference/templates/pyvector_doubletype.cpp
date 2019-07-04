@@ -25,7 +25,7 @@ static void
 PY_vector_double_tp_del (PY_vector_double *self)
 {
 // splicer begin class.vector.type.del
-    delete self->obj;
+    PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
 // splicer end class.vector.type.del
 }
@@ -37,7 +37,12 @@ PY_vector_double_tp_init(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.vector.method.ctor
-    self->obj = new std::vector_double();
+    self->obj = new std::vector<double>();
+    if (self->obj == NULL) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->idtor = 2;
     return 0;
 // splicer end class.vector.method.ctor
 }
@@ -81,14 +86,19 @@ PY_vector_double_at(
     const char *SHT_kwlist[] = {
         "n",
         NULL };
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:at",
         const_cast<char **>(SHT_kwlist), &n))
         return NULL;
-    double & SHC_rv = self->obj->at(n);
-    PyObject * SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE,
-        SHC_rv);
+    double & rv = self->obj->at(n);
+    SHTPy_rv = PyArray_SimpleNewFromData(0, NULL, NPY_DOUBLE, rv);
+    if (SHTPy_rv == NULL) goto fail;
     return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
 // splicer end class.vector.method.at
 }
 // splicer begin class.vector.impl.after_methods

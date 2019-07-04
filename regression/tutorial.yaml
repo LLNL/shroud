@@ -1,18 +1,10 @@
 copyright:
-- '#######################################################################'
-- 'Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.'
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
 -
-- 'Produced at the Lawrence Livermore National Laboratory'
+- "SPDX-License-Identifier: (BSD-3-Clause)"
 -
-- 'LLNL-CODE-738041.'
--
-- 'All rights reserved.'
--
-- 'This file is part of Shroud.'
--
-- 'For details about use and distribution, please read LICENSE.'
--
-- '#######################################################################'
 
 # Create a runnable program for the tutorial
 
@@ -48,12 +40,6 @@ declarations:
        bar: 4
     format:
        baz: 4
-
-  - decl: |
-      struct struct1 {
-        int ifield;
-        double dfield;
-      };
 
   - decl: extern int tutorial_flag;
 
@@ -311,41 +297,6 @@ declarations:
       wrap_python: False
       literalinclude: True
   
-##################################################
-
-  - decl: struct1 returnStruct(int i, double d);
-    options:
-      wrap_lua: False
-  - decl: struct1 *returnStructPtr(int i, double d);
-    options:
-      wrap_lua: False
-#  - decl: struct1 *returnStructPtrNew(int i, double d);
-#    options:
-#      wrap_lua: False
-#      wrap_python: False
-#  - decl: void freeStruct(struct1 *arg1);
-#    options:
-#      wrap_lua: False
-#      wrap_python: False
-
-  - decl: double acceptStructIn(struct1 arg)
-    options:
-      wrap_lua: False
-      wrap_python: False
-      literalinclude: True
-  - decl: double acceptStructInPtr(struct1 *arg+intent(in))
-    options:
-      wrap_lua: False
-      wrap_python: False
-  - decl: void acceptStructOutPtr(struct1 *arg +intent(out), int i, double d)
-    options:
-      wrap_lua: False
-      wrap_python: False
-  - decl: void acceptStructInOutPtr(struct1 *arg +intent(inout))
-    options:
-      wrap_lua: False
-      wrap_python: False
-
 ##################################################
 # Used with testing
   - decl: void set_global_flag(int arg)

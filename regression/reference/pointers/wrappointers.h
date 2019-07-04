@@ -41,11 +41,15 @@ void POI_cos_doubles(double * in, double * out, int sizein);
 
 void POI_truncate_to_int(double * in, int * out, int sizein);
 
-void POI_increment(int * array, int sizein);
-
 void POI_get_values(int * nvalues, int * values);
 
 void POI_get_values2(int * arg1, int * arg2);
+
+void POI_sum(int len, int * values, int * result);
+
+void POI_fill_int_array(int * out);
+
+void POI_increment_int_array(int * array, int sizein);
 
 #ifdef __cplusplus
 }

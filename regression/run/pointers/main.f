@@ -25,6 +25,7 @@ program tester
   call init_fruit
 
   call test_functions
+  call test_functions2
 
   call fruit_summary
   call fruit_finalize
@@ -41,7 +42,6 @@ contains
     real(c_double) :: in_double(5)
     real(c_double), allocatable :: out_double(:)
     integer(c_int), allocatable :: out_int(:)
-    integer(c_int) :: incr(4)
     integer(c_int) :: nvalues, values1(3), values2(3)
 
     call set_case_name("test_functions")
@@ -64,10 +64,6 @@ contains
     call assert_true(allocated(out_int))
     call assert_true(all(out_int == [1, 2, 3, 4]))
 
-    incr = [2, 4, 6, 8]
-    call increment(incr)
-    call assert_true(all(incr == [3, 5, 7, 9]))
-
     values1 = 0
     call get_values(nvalues, values1)
     call assert_equals(3, nvalues)
@@ -80,5 +76,24 @@ contains
     call assert_true(all(values2(1:3) == [11, 12, 13]))
 
   end subroutine test_functions
+
+  subroutine test_functions2
+    integer(c_int) rv_int, out(3), values(5)
+
+    call set_case_name("test_functions2")
+
+    call sum([1,2,3,4,5], rv_int)
+    call assert_true(rv_int .eq. 15, "sum")
+
+    out = 0
+    call fill_int_array(out)
+    call assert_true(all(out(1:3) == [1, 2, 3]), "fillIntArray")
+
+    values = [1, 2, 3, 4, 5]
+    call increment_int_array(values)
+    call assert_true(all(values(1:5) == [2, 3, 4, 5, 6]), "incrementIntArray")
+
+  end subroutine test_functions2
+
 
 end program tester

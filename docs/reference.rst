@@ -452,6 +452,9 @@ LUA_userdata_member_template
     Name of pointer to class instance in userdata.
     ``self``
 
+PY_array_arg
+    How to wrap arrays - numpy or list.
+    Defaults to *numpy*.
 
 PY_module_filename_template
     ``py{library}module.{PY_impl_filename_suffix}``
@@ -459,8 +462,8 @@ PY_module_filename_template
 PY_header_filename_template
     ``py{library}module.{PY_header_filename_suffix}``
 
-PY_helper_filename_template
-    ``py{library}helper.{PY_impl_filename_suffix}``
+PY_utility_filename_template
+    ``py{library}util.{PY_impl_filename_suffix}``
 
 PY_PyTypeObject_template
     ``{PY_prefix}{cxx_class}_Type``
@@ -496,6 +499,10 @@ PY_numpy_array_dtor_function_template
 PY_struct_array_descr_create_template
     Name of C/C++ function to create a ``PyArray_Descr`` pointer for a structure.
     ``{PY_prefix}{cxx_class}_create_array_descr``
+
+PY_struct_arg
+    How to wrap arrays - numpy, list or class.
+    Defaults to *numpy*.
 
 PY_struct_array_descr_variable_template
     Name of C/C++ variable which is a pointer to a ``PyArray_Descr``
@@ -555,7 +562,7 @@ C_header_filename_suffix
    Defaults to ``h``.
    Other useful values might be ``hh`` or ``hxx``.
 
-C_header_helper
+C_header_utility
    A header file with shared Shroud internal typedefs for the library.
 
 C_impl_filename
@@ -740,6 +747,9 @@ PY_prefix
 PY_result
     The name of the Python wrapper's result variable.
     It defaults to *SHTPy_rv*  (return value).
+    If the function returns multiple values (due to *intent(out)*)
+    and the function result is already an object (for example, a NumPy array)
+    then **PY_result** will be **SHResult**.
 
 stdlib
     Name of C++ standard library prefix.
@@ -864,6 +874,11 @@ C_prefix
     The prefix helps to ensure unique global names.
     Defaults to the first three letters of *library_upper*.
 
+PY_type_obj
+    Name variable which points to C or C++ memory.
+
+PY_type_dtor
+    Pointer to information used to release memory.
 
 Function
 ^^^^^^^^
@@ -1065,6 +1080,9 @@ cxx_var
 f_var
     Fortran variable name for argument.
 
+size_var
+    Name of variable which holds the size of an array in the
+    Python wrapper.
 
 Result
 ------

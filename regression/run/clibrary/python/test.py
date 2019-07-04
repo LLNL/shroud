@@ -1,14 +1,8 @@
-# Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory 
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
+# SPDX-License-Identifier: (BSD-3-Clause)
 #
 # #######################################################################
 #
@@ -17,6 +11,7 @@
 from __future__ import print_function
 
 import math
+import numpy as np
 import unittest
 import clibrary
 
@@ -88,9 +83,6 @@ class Tutorial(unittest.TestCase):
 
     def testImpliedBoolFalse(self):
         self.assertFalse(clibrary.ImpliedBoolFalse())
-
-    def testsum(self):
-        self.assertEqual(15, clibrary.Sum([1, 2, 3, 4, 5]))
 
 
 # creating a new test suite

@@ -19,6 +19,10 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PP_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PP_SHROUD_fetch_context(int icontext);
+extern void PP_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 namespace example {
@@ -33,6 +37,7 @@ extern PyTypeObject PP_ExClass1_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass1 * obj;
+    int idtor;
     // splicer begin class.ExClass1.C_object
     // splicer end class.ExClass1.C_object
 } PP_ExClass1;
@@ -54,6 +59,7 @@ extern PyTypeObject PP_ExClass2_Type;
 typedef struct {
 PyObject_HEAD
     example::nested::ExClass2 * obj;
+    int idtor;
     // splicer begin class.ExClass2.C_object
     // splicer end class.ExClass2.C_object
 } PP_ExClass2;

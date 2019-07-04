@@ -219,6 +219,11 @@ def main():
     )
     parser.add_argument("filename", nargs="*", help="Input file to process.")
 
+    parser.add_argument("--option", default=[], action="append",
+                        help="Define an option with value")
+    parser.add_argument("--language", choices=['c', 'c++'],
+                        help="Input language.")
+
     args = parser.parse_args()
     main_with_args(args)
     #    sys.stderr.write("Some useful message")  # example error message
@@ -356,6 +361,25 @@ def main_with_args(args):
         else:
             # process splicer file on command line, search path is not used
             splicer.get_splicer_based_on_suffix(filename, splicers)
+
+    # Add options from command line last
+    # so they replace values from YAML files.
+    if args.option:
+        cmdoptions = {}
+        for option in args.option:
+            name, value = option.split("=",1)
+            if value in ["true", "True"]:
+                value = True
+            elif value in ["false", "False"]:
+                value = False
+            cmdoptions[name] = value
+        if "options" in allinput:
+            allinput["options"].update(cmdoptions)
+        else:
+            allinput["options"] = cmdoptions
+
+    if args.language:
+        allinput['language'] = args.language
 
     #    print(allinput)
 

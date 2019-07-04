@@ -30,7 +30,7 @@
             "C_custom_return_type": "",
             "C_header_filename": "wrapInterface.h",
             "C_header_filename_suffix": "h",
-            "C_header_helper": "typesInterface.h",
+            "C_header_utility": "typesInterface.h",
             "C_impl_filename": "wrapInterface.c",
             "C_impl_filename_suffix": "c",
             "C_local": "SHC_",
@@ -71,15 +71,25 @@
             "LUA_result": "rv",
             "LUA_state_var": "L",
             "LUA_this_call": "",
+            "PY_capsule_destructor_function": "PY_SHROUD_capsule_destructor",
+            "PY_dtor_context_array": "PY_SHROUD_capsule_context",
+            "PY_dtor_context_typedef": "PY_SHROUD_dtor_context",
+            "PY_fetch_context_function": "PY_SHROUD_fetch_context",
             "PY_module_name": "interface",
             "PY_numpy_array_capsule_name": "PY_array_dtor",
-            "PY_numpy_array_dtor_context": "PY_array_destructor_context",
-            "PY_numpy_array_dtor_function": "PY_array_destructor_function",
             "PY_prefix": "PY_",
+            "PY_release_memory_function": "PY_SHROUD_release_memory",
             "PY_result": "SHTPy_rv",
             "PY_this_call": "",
+            "PY_type_dtor": "idtor",
+            "PY_type_obj": "obj",
             "YAML_type_filename": "interface_types.yaml",
             "c_temp": "SHT_",
+            "cast1": ") ",
+            "cast2": "",
+            "cast_const": "(",
+            "cast_reinterpret": "(",
+            "cast_static": "(",
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
@@ -89,7 +99,8 @@
             "library_upper": "INTERFACE",
             "namespace_scope": "",
             "stdlib": "",
-            "template_suffix": ""
+            "template_suffix": "",
+            "void_proto": "void"
         },
         "functions": [
             {
@@ -256,7 +267,7 @@
             "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
-            "C_header_helper_template": "types{library}.{C_header_filename_suffix}",
+            "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
             "C_line_length": 72,
@@ -300,20 +311,25 @@
             "LUA_userdata_type_template": "{LUA_prefix}{cxx_class}_Type",
             "PY_PyObject_template": "{PY_prefix}{cxx_class}",
             "PY_PyTypeObject_template": "{PY_prefix}{cxx_class}_Type",
+            "PY_array_arg": "numpy",
+            "PY_capsule_destructor_function_template": "{PY_prefix}SHROUD_capsule_destructor",
+            "PY_dtor_context_array_template": "{PY_prefix}SHROUD_capsule_context",
+            "PY_dtor_context_typedef_template": "{PY_prefix}SHROUD_dtor_context",
+            "PY_fetch_context_function_template": "{PY_prefix}SHROUD_fetch_context",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
-            "PY_helper_filename_template": "py{library}helper.{PY_impl_filename_suffix}",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
             "PY_module_filename_template": "py{library}module.{PY_impl_filename_suffix}",
             "PY_name_impl_template": "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}",
             "PY_numpy_array_capsule_name_template": "{PY_prefix}array_dtor",
-            "PY_numpy_array_dtor_context_template": "{PY_prefix}array_destructor_context",
-            "PY_numpy_array_dtor_function_template": "{PY_prefix}array_destructor_function",
+            "PY_release_memory_function_template": "{PY_prefix}SHROUD_release_memory",
+            "PY_struct_arg": "numpy",
             "PY_struct_array_descr_create_template": "{PY_prefix}{cxx_class}_create_array_descr",
             "PY_struct_array_descr_name_template": "{cxx_class}_dtype",
             "PY_struct_array_descr_variable_template": "{PY_prefix}{cxx_class}_array_descr",
             "PY_type_filename_template": "py{cxx_class}type.{PY_impl_filename_suffix}",
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
+            "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "__line__": 24,
             "class_prefix_template": "{class_lower}_",
@@ -396,16 +412,42 @@
                     ]
                 },
                 "intent_inout": {
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{py_var} = PyBool_FromLong({c_deref}{c_var});"
+                        "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ],
                     "pre_call": [
                         "bool {cxx_var} = PyObject_IsTrue({py_var});"
                     ]
                 },
                 "intent_out": {
+                    "decl": [
+                        "{PyObject} * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
                     "post_call": [
-                        "{PyObject} * {py_var} = PyBool_FromLong({c_var});"
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;"
+                    ]
+                },
+                "result": {
+                    "decl": [
+                        "{PyObject} * {py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} = PyBool_FromLong({c_var});",
+                        "if ({py_var} == NULL) goto fail;"
                     ]
                 }
             }

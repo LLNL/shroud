@@ -20,6 +20,10 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PY_SHROUD_fetch_context(int icontext);
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
 class Names;  // forward declare
@@ -29,7 +33,8 @@ extern PyTypeObject PY_Names_Type;
 
 typedef struct {
 PyObject_HEAD
-    Names * obj;
+    Names * myobj;
+    int mydtor;
     // splicer begin class.Names.C_object
     // splicer end class.Names.C_object
 } PY_Names;
@@ -46,7 +51,8 @@ extern PyTypeObject PY_Names2_Type;
 
 typedef struct {
 PyObject_HEAD
-    Names2 * obj;
+    Names2 * myobj;
+    int mydtor;
     // splicer begin class.Names2.C_object
     // splicer end class.Names2.C_object
 } PY_Names2;
@@ -65,7 +71,8 @@ extern PyTypeObject PY_Vvv1_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::Vvv1 * obj;
+    std::Vvv1 * myobj;
+    int mydtor;
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_Vvv1;
@@ -84,7 +91,8 @@ extern PyTypeObject PY_vector_double_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::vector_double * obj;
+    std::vector_double * myobj;
+    int mydtor;
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_double;
@@ -103,7 +111,8 @@ extern PyTypeObject PY_vector_instantiation5_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::vector_instantiation5 * obj;
+    std::vector_instantiation5 * myobj;
+    int mydtor;
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_instantiation5;
@@ -122,7 +131,8 @@ extern PyTypeObject PY_vector_instantiation3_Type;
 
 typedef struct {
 PyObject_HEAD
-    std::vector_instantiation3 * obj;
+    std::vector_instantiation3 * myobj;
+    int mydtor;
     // splicer begin class.vector.C_object
     // splicer end class.vector.C_object
 } PY_vector_instantiation3;
@@ -139,7 +149,8 @@ extern PyTypeObject PY_twoTs_0_Type;
 
 typedef struct {
 PyObject_HEAD
-    twoTs_0 * obj;
+    twoTs_0 * myobj;
+    int mydtor;
     // splicer begin class.twoTs.C_object
     // splicer end class.twoTs.C_object
 } PY_twoTs_0;
@@ -156,7 +167,8 @@ extern PyTypeObject PY_twoTs_instantiation4_Type;
 
 typedef struct {
 PyObject_HEAD
-    twoTs_instantiation4 * obj;
+    twoTs_instantiation4 * myobj;
+    int mydtor;
     // splicer begin class.twoTs.C_object
     // splicer end class.twoTs.C_object
 } PY_twoTs_instantiation4;
