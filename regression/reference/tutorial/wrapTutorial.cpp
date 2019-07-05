@@ -68,15 +68,6 @@ double TUT_function2(double arg1, int arg2)
 // splicer end function.function2
 }
 
-// void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-void TUT_sum(size_t len, int * values, int * result)
-{
-// splicer begin function.sum
-    tutorial::Sum(len, values, result);
-    return;
-// splicer end function.sum
-}
-
 // long long TypeLongLong(long long arg1 +intent(in)+value)
 long long TUT_type_long_long(long long arg1)
 {

@@ -63,8 +63,6 @@ void Function9(double arg);
 void Function10();
 void Function10(const std::string &name, double arg2);
 
-void Sum(size_t len, int * values, int *result);
-
 long long TypeLongLong(long long arg1);
 
 int overload1(int num, int offset = 0, int stride = 1);

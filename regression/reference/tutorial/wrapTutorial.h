@@ -15,7 +15,6 @@
 #ifndef WRAPTUTORIAL_H
 #define WRAPTUTORIAL_H
 
-#include <stddef.h>
 #include "typesTutorial.h"
 
 // splicer begin CXX_declarations
@@ -38,8 +37,6 @@ enum TUT_tutorial_Color {
 void TUT_function1();
 
 double TUT_function2(double arg1, int arg2);
-
-void TUT_sum(size_t len, int * values, int * result);
 
 long long TUT_type_long_long(long long arg1);
 

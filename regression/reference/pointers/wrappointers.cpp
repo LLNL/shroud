@@ -98,6 +98,7 @@ void POI_get_values2(int * arg1, int * arg2)
 }
 
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// start POI_sum
 void POI_sum(int len, int * values, int * result)
 {
 // splicer begin function.sum
@@ -105,6 +106,7 @@ void POI_sum(int len, int * values, int * result)
     return;
 // splicer end function.sum
 }
+// end POI_sum
 
 // void fillIntArray(int * out +dimension(3)+intent(out))
 /**

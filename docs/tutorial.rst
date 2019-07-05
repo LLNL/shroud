@@ -202,6 +202,7 @@ this value to the C wrapper:
     import tutorial
     result = tutorial.Sum([1, 2, 3, 4, 5])
 
+See example :ref:`Sum <example_Sum>` for generated code.
 
 String
 ^^^^^^

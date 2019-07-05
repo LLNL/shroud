@@ -10,7 +10,6 @@
 #
 from __future__ import print_function
 
-import numpy as np
 import unittest
 import tutorial
 
@@ -121,9 +120,6 @@ class Tutorial(unittest.TestCase):
         tutorial.Function10()
         tutorial.Function10("foo", 1.0)
         tutorial.Function10("bar", 1.0)
-
-    def testsum(self):
-        self.assertEqual(15, tutorial.Sum([1, 2, 3, 4, 5]))
 
     def test_overload1(self):
         self.assertEqual(10, tutorial.overload1(10))

@@ -146,18 +146,6 @@ void Function10(const std::string &name, double arg2)
     global_double = arg2;
 }
 
-void Sum(size_t len, int *values, int *result)
-{
-    last_function_called = "Sum";
-
-    int sum = 0;
-    for (size_t i=0; i < len; i++) {
-	sum += values[i];
-    }
-    *result = sum;
-    return;
-}
-
 long long TypeLongLong(long long arg1)
 {
   return arg1 + 2;

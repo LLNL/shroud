@@ -872,6 +872,7 @@
                 "linenumber": 75,
                 "options": {
                     "__line__": 78,
+                    "literalinclude": true,
                     "wrap_lua": false
                 }
             },
@@ -933,7 +934,7 @@
                 "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
                 "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
                 "doxygen": {
-                    "__line__": 83,
+                    "__line__": 84,
                     "description": "Return three values into memory the user provides.\n"
                 },
                 "fmtdict": {
@@ -941,7 +942,7 @@
                     "function_name": "fillIntArray",
                     "underscore_name": "fill_int_array"
                 },
-                "linenumber": 82,
+                "linenumber": 83,
                 "options": {}
             },
             {
@@ -1032,7 +1033,7 @@
                 "decl": "void incrementIntArray(int * array  +dimension(:)+intent(inout), int   sizein +implied(size(array)))",
                 "declgen": "void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 89,
+                    "__line__": 90,
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
                 "fmtdict": {
@@ -1040,7 +1041,7 @@
                     "function_name": "incrementIntArray",
                     "underscore_name": "increment_int_array"
                 },
-                "linenumber": 87,
+                "linenumber": 88,
                 "options": {}
             }
         ],

@@ -1,19 +1,10 @@
-/* Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
- *
- * Produced at the Lawrence Livermore National Laboratory 
- *
- * LLNL-CODE-738041.
- *
- * All rights reserved. 
- *
- * This file is part of Shroud.
- *
- * For details about use and distribution, please read LICENSE.
- *
- * #######################################################################
- *
- * tutorial.hpp - wrapped routines
- */
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
+//
+// SPDX-License-Identifier: (BSD-3-Clause)
+//
+// pointers.cpp
 
 #include "pointers.hpp"
 
@@ -92,18 +83,17 @@ void get_values2(int *arg1, int *arg2)
 
 //----------------------------------------------------------------------
 
+// start Sum
 void Sum(int len, int *values, int *result)
 {
-    strncpy(last_function_called, "Sum", MAXLAST);
-
-    int i;
     int sum = 0;
-    for (i=0; i < len; i++) {
+    for (int i=0; i < len; i++) {
 	sum += values[i];
     }
     *result = sum;
     return;
 }
+// end Sum
 
 // out is assumed to be at least 3 long
 void fillIntArray(int *out)

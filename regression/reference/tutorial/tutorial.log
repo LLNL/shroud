@@ -25,7 +25,6 @@ Close wrapSingleton.h
 Close wrapSingleton.cpp
 C function void Function1()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-C function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 C function long long TypeLongLong(long long arg1 +intent(in)+value)
 C function bool Function3(bool arg +intent(in)+value)
 C function void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
@@ -90,7 +89,6 @@ class Singleton
 C-interface, Fortran method static Singleton & getReference()
 C-interface, Fortran function void Function1()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-C-interface, Fortran function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 C-interface, Fortran function long long TypeLongLong(long long arg1 +intent(in)+value)
 C-interface, Fortran function bool Function3(bool arg +intent(in)+value)
 Fortran function const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
@@ -156,7 +154,6 @@ Python method static Singleton & getReference()
 Close pySingletontype.cpp
 Python function void Function1()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-Python function void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 Python function long long TypeLongLong(long long arg1 +intent(in)+value)
 Python function bool Function3(bool arg +intent(in)+value)
 Python function const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)

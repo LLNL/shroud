@@ -72,17 +72,6 @@ module clibrary_mod
         end subroutine pass_by_reference
         ! end pass_by_reference
 
-        ! start c_sum
-        subroutine c_sum(len, values, result) &
-                bind(C, name="Sum")
-            use iso_c_binding, only : C_INT
-            implicit none
-            integer(C_INT), value, intent(IN) :: len
-            integer(C_INT), intent(IN) :: values(*)
-            integer(C_INT), intent(OUT) :: result
-        end subroutine c_sum
-        ! end c_sum
-
         function c_function3(arg) &
                 result(SHT_rv) &
                 bind(C, name="Function3")
@@ -354,20 +343,6 @@ module clibrary_mod
     end interface
 
 contains
-
-    ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-    ! start sum
-    subroutine sum(values, result)
-        use iso_c_binding, only : C_INT
-        integer(C_INT) :: len
-        integer(C_INT), intent(IN) :: values(:)
-        integer(C_INT), intent(OUT) :: result
-        len = size(values,kind=C_INT)
-        ! splicer begin function.sum
-        call c_sum(len, values, result)
-        ! splicer end function.sum
-    end subroutine sum
-    ! end sum
 
     ! bool Function3(bool arg +intent(in)+value)
     function function3(arg) &

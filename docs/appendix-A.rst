@@ -109,14 +109,14 @@ Example usage:
 Sum
 ^^^
 
-C library function:
+C++ library function:
 
-.. literalinclude:: ../regression/run/clibrary/clibrary.c
+.. literalinclude:: ../regression/run/pointers/pointers.cpp
    :language: c
    :start-after: start Sum
    :end-before: end Sum
 
-YAML:
+:file:`pointers.yaml`:
 
 .. code-block:: yaml
 
@@ -124,9 +124,16 @@ YAML:
                     int *values +dimension(:)+intent(in),
                     int *result +intent(out))
 
-Calls C via the interface:
+:file:`wrappointers.cpp`:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+.. literalinclude:: ../regression/reference/pointers/wrappointers.cpp
+   :language: c
+   :start-after: start POI_sum
+   :end-before: end POI_sum
+
+Called via the Fortran interface:
+
+.. literalinclude:: ../regression/reference/pointers/wrapfpointers.f
    :language: fortran
    :start-after: start c_sum
    :end-before: end c_sum
@@ -134,11 +141,20 @@ Calls C via the interface:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+.. literalinclude:: ../regression/reference/pointers/wrapfpointers.f
    :language: fortran
    :start-after: start sum
    :end-before: end sum
    :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    integer(C_INT) rv_int
+    call sum([1,2,3,4,5], rv_int)
+    call assert_true(rv_int .eq. 15, "sum")
+
 
 .. ############################################################
 

@@ -6,7 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Create a runnable program for the tutorial
+# Create an executable program for the tutorial
 
 library: Tutorial
 cxx_header: tutorial.hpp
@@ -45,12 +45,6 @@ declarations:
 
   - decl: void Function1()
   - decl: double Function2(double arg1, int arg2)
-  - decl: void Sum(size_t len  +implied(size(values)),
-                   int *values +dimension(:)+intent(in),
-                   int *result +intent(out))
-    options:
-      # unable to deal with dimension
-      wrap_lua: False
   
   - decl: long long TypeLongLong(long long arg1)
     options:

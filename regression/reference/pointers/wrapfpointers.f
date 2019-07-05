@@ -73,6 +73,7 @@ module pointers_mod
             integer(C_INT), intent(OUT) :: arg2(*)
         end subroutine get_values2
 
+        ! start c_sum
         subroutine c_sum(len, values, result) &
                 bind(C, name="POI_sum")
             use iso_c_binding, only : C_INT
@@ -81,6 +82,7 @@ module pointers_mod
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), intent(OUT) :: result
         end subroutine c_sum
+        ! end c_sum
 
         subroutine fill_int_array(out) &
                 bind(C, name="POI_fill_int_array")
@@ -141,6 +143,7 @@ contains
     end subroutine truncate_to_int
 
     ! void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+    ! start sum
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: len
@@ -151,6 +154,7 @@ contains
         call c_sum(len, values, result)
         ! splicer end function.sum
     end subroutine sum
+    ! end sum
 
     ! void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
     !>
