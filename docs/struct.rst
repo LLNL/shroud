@@ -28,6 +28,9 @@ A struct is defined in a single ``decl`` in the YAML file.
               int ifield;
             };
 
+Fortran
+^^^^^^^
+
 This is translated directly into a Fortran derived type with the
 ``bind(C)`` attribute.
 
@@ -35,6 +38,17 @@ This is translated directly into a Fortran derived type with the
 
 
 All creation and access of members can be done using Fortran.
+
+Python
+^^^^^^
+
+Python can treat struct in several different ways.
+First, treat it the same as a class.  An extension type is created with
+descriptors for the field methods. Second, as a numpy descriptor.
+This allows an array of structs to be used easily.
+Finally, as a tuple of Python types.
+
+PY_struct_arg
 
 
 Class

@@ -4,8 +4,6 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-// clibrary.hpp - wrapped routines
-//
 // clibrary.c
 
 #include "clibrary.h"
@@ -51,6 +49,7 @@ bool Function3(bool arg)
     return ! arg;
 }
 
+// start checkBool
 void checkBool(const bool arg1, bool *arg2, bool *arg3)
 {
     strncpy(last_function_called, "checkBool", MAXLAST);
@@ -58,6 +57,7 @@ void checkBool(const bool arg1, bool *arg2, bool *arg3)
     *arg3 = ! *arg3;
     return;
 }
+// end checkBool
 
 /* Note that the caller is responsible to free memory */
 char *Function4a(const char *arg1, const char *arg2)
@@ -70,19 +70,23 @@ char *Function4a(const char *arg1, const char *arg2)
     return out;
 }
 
+// start acceptName
 void acceptName(const char *name)
 {
     strncpy(last_function_called, "acceptName", MAXLAST);
 }
+// end acceptName
 
 //----------------------------------------------------------------------
 // Test charlen attribute.
 // Each argument is assumed to be MAXNAME long.
 
+// start returnOneName
 void returnOneName(char *name1)
 {
   strcpy(name1, "bill");
 }
+// end returnOneName
 
 void returnTwoNames(char *name1, char *name2)
 {
@@ -92,11 +96,13 @@ void returnTwoNames(char *name1, char *name2)
 
 //----------------------------------------------------------------------
 
+// start ImpliedTextLen
 void ImpliedTextLen(char *text, int ltext)
 {
     strncpy(text, "ImpliedTextLen", ltext);
     strncpy(last_function_called, "ImpliedTextLen", MAXLAST);
 }
+// end ImpliedTextLen
 
 int ImpliedLen(const char *text, int ltext, bool flag)
 {

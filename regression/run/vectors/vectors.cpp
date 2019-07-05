@@ -1,19 +1,10 @@
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory 
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
-// LLNL-CODE-738041.
-//
-// All rights reserved. 
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
-//
-// #######################################################################
-//
-// vectors.hpp - wrapped routines
-//
+// vectors.cpp
 
 #include "vectors.hpp"
 
@@ -21,6 +12,7 @@
 // vector reference as argument.
 // arg+intent(in)
 
+// start vector_sum
 int vector_sum(const std::vector<int> &arg)
 {
   int sum = 0;
@@ -29,12 +21,14 @@ int vector_sum(const std::vector<int> &arg)
   }
   return sum;
 }
+// end vector_sum
 
 //----------------------------------------------------------------------
 // vector reference as argument.
 // arg+intent(out)
 // Start with empty vector and fill in values
 
+// start vector_iota_out
 void vector_iota_out(std::vector<int> &arg)
 {
   for(unsigned int i=0; i < 5; i++) {
@@ -42,12 +36,14 @@ void vector_iota_out(std::vector<int> &arg)
   }
   return;
 }
+// end vector_iota_out
 
 //----------------------------------------------------------------------
 // vector reference as argument.
 // arg+intent(out)+deref(allocatable)
 // Start with empty vector and fill in values
 
+// start vector_iota_out_alloc
 void vector_iota_out_alloc(std::vector<int> &arg)
 {
   for(unsigned int i=0; i < 5; i++) {
@@ -55,12 +51,14 @@ void vector_iota_out_alloc(std::vector<int> &arg)
   }
   return;
 }
+// end vector_iota_out_alloc
 
 //----------------------------------------------------------------------
 // vector reference as argument.
 // arg+intent(out)+deref(allocatable)
 // Start with empty vector and fill in values
 
+// start vector_iota_inout_alloc
 void vector_iota_inout_alloc(std::vector<int> &arg)
 {
   for(unsigned int i=0; i < 5; i++) {
@@ -68,6 +66,7 @@ void vector_iota_inout_alloc(std::vector<int> &arg)
   }
   return;
 }
+// end vector_iota_inout_alloc
 
 //----------------------------------------------------------------------
 // vector reference as argument.

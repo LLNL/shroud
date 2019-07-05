@@ -58,6 +58,14 @@ Calls C via the interface:
    :end-before: end pass_by_value
    :dedent: 8
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    real(C_DOUBLE) :: rv_double
+    rv_double = pass_by_value(1.d0, 4)
+    call assert_true(rv_double == 5.d0)
+
 .. ############################################################
 
 .. _example_PassByReference:
@@ -170,6 +178,14 @@ Calls C via the interface:
    :end-before: end get_min_max
    :dedent: 8
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    call get_min_max(minout, maxout)
+    call assert_equals(-1, minout, "get_min_max minout")
+    call assert_equals(100, maxout, "get_min_max maxout")
+
 Bool
 ----
 
@@ -182,6 +198,13 @@ checkBool
 
 Assignments are done to convert between ``logical`` and
 ``logical(C_BOOL)``.
+
+C function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start checkBool
+   :end-before: end checkBool
 
 YAML:
 
@@ -207,6 +230,17 @@ The Fortran wrapper:
    :end-before: end check_bool
    :dedent: 4
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    logical rv_logical, wrk_logical
+    rv_logical = .true.
+    wrk_logical = .true.
+    call check_bool(.true., rv_logical, wrk_logical)
+    call assert_false(rv_logical)
+    call assert_false(wrk_logical)
+
 
 Character
 ---------
@@ -220,6 +254,11 @@ acceptName
 
 Pass a ``NULL`` terminated string to a C function.
 The string will be unchanged.
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start acceptName
+   :end-before: end acceptName
 
 YAML:
 
@@ -246,6 +285,12 @@ The Fortran wrapper:
 No C wrapper is required since the Fortran wrapper calls ``trim`` and
 concatenates ``C_NULL_CHAR``.
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    call accept_name("spot")
+
 .. ############################################################
 
 .. _example_returnOneName:
@@ -255,6 +300,11 @@ returnOneName
 
 Pass the pointer to a buffer which the C library will fill.
 The length of the string is unknown.
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start returnOneName
+   :end-before: end returnOneName
 
 YAML:
 
@@ -284,6 +334,14 @@ The Fortran wrapper:
    :start-after: start return_one_name
    :end-before: end return_one_name
    :dedent: 4
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    name1 = " "
+    call return_one_name(name1)
+    call assert_equals("bill", name1)
 
 .. ############################################################
 
@@ -380,6 +438,11 @@ This can be used to emulate the behavior of most Fortran compilers
 which will pass an additional, hidden argument which contains the
 length of a ``CHARACTER`` argument.
 
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start ImpliedTextLen
+   :end-before: end ImpliedTextLen
+
 YAML:
 
 .. code-block:: yaml
@@ -410,6 +473,14 @@ The Fortran wrapper:
    :end-before: end implied_text_len
    :dedent: 4
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    character(MAXNAME) name1
+    call implied_text_len(name1)
+    call assert_equals("ImpliedTextLen", name1)
+
 
 std::string
 -----------
@@ -420,6 +491,11 @@ std::string
 
 acceptStringReference
 ^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start acceptStringReference
+   :end-before: end acceptStringReference
 
 YAML:
 
@@ -477,6 +553,15 @@ The bufferify version knows the allocated length of the argument.
 However, since the input argument is a fixed length it may be too
 short for the new string value:
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    character(30) str
+    str = "cat"
+    call accept_string_reference(str)
+    call assert_true( str == "catdog")
+
 
 char functions
 --------------
@@ -492,6 +577,11 @@ Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
 variable.  The Fortran application is responsible to release the
 memory.  However, this may be done automatically by the Fortran
 runtime.
+
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start getCharPtr1
+   :end-before: end getCharPtr1
 
 YAML:
 
@@ -545,6 +635,11 @@ return, then the *len* attribute is used to declare the length.  The
 explicit ``ALLOCATE`` is avoided but any result which is longer than
 the length will be silently truncated.
 
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start getCharPtr2
+   :end-before: end getCharPtr2
+
 YAML:
 
 .. code-block:: yaml
@@ -594,6 +689,11 @@ be returned limited by the size of the Fortran argument.  The
 argument is defined by the *F_string_result_as_arg* format string.
 Works with Fortran 90.
 
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start getCharPtr3
+   :end-before: end getCharPtr3
+
 YAML:
 
 .. code-block:: yaml
@@ -642,6 +742,11 @@ string functions
 getConstStringRefPure
 ^^^^^^^^^^^^^^^^^^^^^
 
+.. literalinclude:: ../regression/run/strings/strings.cpp
+   :language: c
+   :start-after: start getConstStringRefPure
+   :end-before: end getConstStringRefPure
+
 YAML:
 
 .. code-block:: yaml
@@ -678,6 +783,14 @@ The Fortran wrapper:
    :end-before: end get_const_string_ref_pure
    :dedent: 4
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ref_pure()
+    call assert_true( str == static_str, "getConstStringRefPure")
+
 
 std::vector
 -----------
@@ -688,6 +801,11 @@ std::vector
 
 vector_sum
 ^^^^^^^^^^
+
+.. literalinclude:: ../regression/run/vectors/vectors.cpp
+   :language: c
+   :start-after: start vector_sum
+   :end-before: end vector_sum
 
 YAML:
 
@@ -721,12 +839,26 @@ The Fortran wrapper:
    :end-before: end vector_sum
    :dedent: 4
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT) intv(5)
+    intv = [1,2,3,4,5]
+    irv = vector_sum(intv)
+    call assert_true(irv .eq. 15)
+
 .. ############################################################
 
 .. _example_vector_iota_out:
 
 vector_iota_out
 ^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../regression/run/vectors/vectors.cpp
+   :language: c
+   :start-after: start vector_iota_out
+   :end-before: end vector_iota_out
 
 YAML:
 
@@ -757,12 +889,26 @@ The Fortran wrapper:
    :end-before: end vector_iota_out
    :dedent: 4
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT) intv(5)
+    intv(:) = 0
+    call vector_iota_out(intv)
+    call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
+
 .. ############################################################
 
 .. _example_vector_iota_out_alloc:
 
 vector_iota_out_alloc
 ^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../regression/run/vectors/vectors.cpp
+   :language: c
+   :start-after: start vector_iota_out_alloc
+   :end-before: end vector_iota_out_alloc
 
 YAML:
 
@@ -793,12 +939,31 @@ The Fortran wrapper:
    :end-before: end vector_iota_out_alloc
    :dedent: 4
 
+``inta`` is ``intent(out)``, so it will be deallocated upon entry to ``vector_iota_out_alloc``.
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), allocatable :: inta(:)
+    call vector_iota_out_alloc(inta)
+    call assert_true(allocated(inta))
+    call assert_equals(5 , size(inta))
+    call assert_true( all(inta == [1,2,3,4,5]), &
+         "vector_iota_out_alloc value")
+
+
 .. ############################################################
 
 .. _example_vector_iota_inout_alloc:
 
 vector_iota_inout_alloc
 ^^^^^^^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: ../regression/run/vectors/vectors.cpp
+   :language: c
+   :start-after: start vector_iota_inout_alloc
+   :end-before: end vector_iota_inout_alloc
 
 YAML:
 
@@ -828,6 +993,20 @@ The Fortran wrapper:
    :start-after: start vector_iota_inout_alloc
    :end-before: end vector_iota_inout_alloc
    :dedent: 4
+
+
+``inta`` is ``intent(inout)``, so it will NOT be deallocated upon
+entry to ``vector_iota_inout_alloc``.
+Fortran usage:
+
+.. code-block:: fortran
+
+    call vector_iota_inout_alloc(inta)
+    call assert_true(allocated(inta))
+    call assert_equals(10 , size(inta))
+    call assert_true( all(inta == [1,2,3,4,5,11,12,13,14,15]), &
+         "vector_iota_inout_alloc value")
+    deallocate(inta)
 
 Void Pointers
 -------------
@@ -860,7 +1039,7 @@ Calls C via the interface:
    :end-before: end pass_assumed_type
    :dedent: 8
 
-Example usage:
+Fortran usage:
 
 .. code-block:: fortran
 
@@ -1111,6 +1290,16 @@ The Fortran interface:
    :end-before: end pass_struct1
    :dedent: 8
 
+Fortran usage:
+
+.. code-block:: fortran
+
+    type(cstruct1) str1
+    str1%ifield = 12
+    str1%dfield = 12.6
+    call assert_equals(12, pass_struct1(str1), "passStruct1")
+
+
 .. ############################################################
 
 .. _example_passStructByValue:
@@ -1138,6 +1327,19 @@ Calls C via the Fortran interface:
    :start-after: start pass_struct_by_value
    :end-before: end pass_struct_by_value
    :dedent: 8
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    type(cstruct1) str1
+    str1%ifield = 2_C_INT
+    str1%dfield = 2.0_C_DOUBLE
+    rvi = pass_struct_by_value(str1)
+    call assert_equals(4, rvi, "pass_struct_by_value")
+    ! Make sure str1 was passed by value.
+    call assert_equals(2_C_INT, str1%ifield, "pass_struct_by_value ifield")
+    call assert_equals(2.0_C_DOUBLE, str1%dfield, "pass_struct_by_value dfield")
 
 
 Class Type

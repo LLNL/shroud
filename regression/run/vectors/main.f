@@ -1,14 +1,8 @@
-! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+! other Shroud Project Developers.
+! See the top-level COPYRIGHT file for details.
 !
-! Produced at the Lawrence Livermore National Laboratory 
-!
-! LLNL-CODE-738041.
-!
-! All rights reserved. 
-!
-! This file is part of Shroud.
-!
-! For details about use and distribution, please read LICENSE.
+! SPDX-License-Identifier: (BSD-3-Clause)
 !
 ! #######################################################################
 !
@@ -53,14 +47,14 @@ contains
     call vector_iota_out(intv)
     call assert_true(all(intv(:) .eq. [1,2,3,4,5]))
 
-    ! inta is intent(out), so it will be deallocated on entry to vector_iota_out_alloc
+    ! inta is intent(out), so it will be deallocated upon entry to vector_iota_out_alloc
     call vector_iota_out_alloc(inta)
     call assert_true(allocated(inta))
     call assert_equals(5 , size(inta))
     call assert_true( all(inta == [1,2,3,4,5]), &
          "vector_iota_out_alloc value")
 
-    ! inta is intent(inout), so it will NOT be deallocated on entry to vector_iota_inout_alloc
+    ! inta is intent(inout), so it will NOT be deallocated upon entry to vector_iota_inout_alloc
     ! Use previous value to append
     call vector_iota_inout_alloc(inta)
     call assert_true(allocated(inta))
