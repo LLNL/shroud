@@ -141,6 +141,18 @@ This is a Fortran interface over the Python API written using the metaprogrammin
   * `Forpy: A library for Fortran-Python interoperability <https://github.com/ylikx/forpy>`_ 
   * `Fypp — Python powered Fortran metaprogramming <https://github.com/aradi/fypp>`_
 
+CNF
+---
+
+http://www.starlink.ac.uk/docs/sun209.htx/sun209.html
+
+The CNF package comprises two sets of software which ease the task of
+writing portable programs in a mixture of FORTRAN and C. F77 is a set
+of C macros for handling the FORTRAN/C subroutine linkage in a
+portable way, and CNF is a set of functions to handle the difference
+between FORTRAN and C character strings, logical values and pointers
+to dynamically allocated memory.
+
 
 Links
 -----
@@ -149,3 +161,6 @@ Links
   * `Shadow-object interface between Fortran95 and C++ <http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=753048>`_  Mark G. Gray, Randy M. Roberts, and Tom M. Evans (1999)
   * `Generate C interface from C++ source code using Clang libtooling <http://samanbarghi.com/blog/2016/12/06/generate-c-interface-from-c-source-code-using-clang-libtooling/>`_
   * `Memory leaks in derived types revisited <https://dl.acm.org/citation.cfm?id=962183>`_ G. W. Stewart (2003)
+  * `A General Approach to Creating Fortran Interface for C++ Application Libraries <https://link.springer.com/chapter/10.1007/3-540-27912-1_14>`_
+
+..  https://link.springer.com/content/pdf/10.1007%2F3-540-27912-1_14.pdf
