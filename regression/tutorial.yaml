@@ -44,10 +44,12 @@ declarations:
   - decl: extern int tutorial_flag;
 
   - decl: void NoReturnNoArguments()
+  # from clibrary.yaml
     options:
       literalinclude: True
 
-  - decl: double Function2(double arg1, int arg2)
+  - decl: double PassByValue(double arg1, int arg2)
+  # from clibrary.yaml
   
   - decl: long long TypeLongLong(long long arg1)
     options:

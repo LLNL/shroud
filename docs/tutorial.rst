@@ -89,7 +89,7 @@ To wrap ``Function2``:
 
 .. code-block:: c++
 
-    double Function2(double arg1, int arg2)
+    double PassByValue(double arg1, int arg2)
     {
         return arg1 + arg2;
     }
@@ -99,7 +99,7 @@ Add the declaration to the YAML file:
 .. code-block:: yaml
 
     declarations:
-    - decl: double Function2(double arg1, int arg2)
+    - decl: double PassByValue(double arg1, int arg2)
 
 Usage:
 
@@ -107,12 +107,12 @@ Usage:
 
     use tutorial_mod
     real(C_DOUBLE) result
-    result = function2(1.d0, 4)
+    result = pass_by_value(1.d0, 4)
 
 .. code-block:: python
 
     import tutorial
-    result = tutorial.Function2(1.0, 4)
+    result = tutorial.PassByValue(1.0, 4)
 
 
 

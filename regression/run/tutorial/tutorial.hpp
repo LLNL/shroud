@@ -35,7 +35,7 @@ extern int tutorial_flag;
 
 void NoReturnNoArguments();
 
-double Function2(double arg1, int arg2);
+double PassByValue(double arg1, int arg2);
 
 bool Function3(bool arg);
 void Function3b(const bool arg1, bool *arg2, bool *arg3);

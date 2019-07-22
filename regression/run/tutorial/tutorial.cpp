@@ -27,13 +27,13 @@ static const Class1 *global_class1;
 
 void NoReturnNoArguments()
 {
-    last_function_called = "Function1";
+    last_function_called = "NoReturnNoArguments";
     return;
 }
 
-double Function2(double arg1, int arg2)
+double PassByValue(double arg1, int arg2)
 {
-    last_function_called = "Function2";
+    last_function_called = "PassByValue";
     return arg1 + arg2;
 }
 

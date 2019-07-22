@@ -306,15 +306,15 @@ module tutorial_mod
         end subroutine no_return_no_arguments
         ! end no_return_no_arguments
 
-        function function2(arg1, arg2) &
+        function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_function2")
+                bind(C, name="TUT_pass_by_value")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
-        end function function2
+        end function pass_by_value
 
         function type_long_long(arg1) &
                 result(SHT_rv) &

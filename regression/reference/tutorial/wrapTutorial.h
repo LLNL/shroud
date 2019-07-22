@@ -36,7 +36,7 @@ enum TUT_tutorial_Color {
 
 void TUT_no_return_no_arguments();
 
-double TUT_function2(double arg1, int arg2);
+double TUT_pass_by_value(double arg1, int arg2);
 
 long long TUT_type_long_long(long long arg1);
 

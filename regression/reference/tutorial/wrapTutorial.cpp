@@ -61,13 +61,13 @@ void TUT_no_return_no_arguments()
 }
 // end TUT_no_return_no_arguments
 
-// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-double TUT_function2(double arg1, int arg2)
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+double TUT_pass_by_value(double arg1, int arg2)
 {
-// splicer begin function.function2
-    double SHC_rv = tutorial::Function2(arg1, arg2);
+// splicer begin function.pass_by_value
+    double SHC_rv = tutorial::PassByValue(arg1, arg2);
     return SHC_rv;
-// splicer end function.function2
+// splicer end function.pass_by_value
 }
 
 // long long TypeLongLong(long long arg1 +intent(in)+value)

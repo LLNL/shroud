@@ -129,16 +129,16 @@ static int l_no_return_no_arguments(lua_State *)
     // splicer end function.NoReturnNoArguments
 }
 
-// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-static int l_function2(lua_State *L)
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+static int l_pass_by_value(lua_State *L)
 {
-    // splicer begin function.Function2
+    // splicer begin function.PassByValue
     double arg1 = lua_tonumber(L, 1);
     int arg2 = lua_tointeger(L, 2);
-    double SHCXX_rv = tutorial::Function2(arg1, arg2);
+    double SHCXX_rv = tutorial::PassByValue(arg1, arg2);
     lua_pushnumber(L, SHCXX_rv);
     return 1;
-    // splicer end function.Function2
+    // splicer end function.PassByValue
 }
 
 // bool Function3(bool arg +intent(in)+value)
@@ -547,7 +547,7 @@ static int l_last_function_called(lua_State *L)
 static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Class1", l_class1_new},
     {"NoReturnNoArguments", l_no_return_no_arguments},
-    {"Function2", l_function2},
+    {"PassByValue", l_pass_by_value},
     {"Function3", l_function3},
     {"Function4a", l_function4a},
     {"Function4b", l_function4b},

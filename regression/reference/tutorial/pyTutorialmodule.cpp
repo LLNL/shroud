@@ -48,18 +48,18 @@ PY_NoReturnNoArguments(
 // splicer end function.no_return_no_arguments
 }
 
-static char PY_Function2__doc__[] =
+static char PY_PassByValue__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function2(
+PY_PassByValue(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-// splicer begin function.function2
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+// splicer begin function.pass_by_value
     double arg1;
     int arg2;
     const char *SHT_kwlist[] = {
@@ -68,17 +68,17 @@ PY_Function2(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:PassByValue",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    double rv = tutorial::Function2(arg1, arg2);
+    double rv = tutorial::PassByValue(arg1, arg2);
 
     // post_call
     SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function2
+// splicer end function.pass_by_value
 }
 
 static char PY_TypeLongLong__doc__[] =
@@ -1094,8 +1094,8 @@ PY_overload1(
 static PyMethodDef PY_methods[] = {
 {"NoReturnNoArguments", (PyCFunction)PY_NoReturnNoArguments,
     METH_NOARGS, PY_NoReturnNoArguments__doc__},
-{"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
-    PY_Function2__doc__},
+{"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
+    PY_PassByValue__doc__},
 {"TypeLongLong", (PyCFunction)PY_TypeLongLong,
     METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,

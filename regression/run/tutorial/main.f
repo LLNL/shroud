@@ -80,10 +80,10 @@ contains
     call set_case_name("test_functions")
 
     call no_return_no_arguments
-    call assert_true(.true.)
+    call assert_true(.true., "no_return_no_arguments")
 
-    rv_double = function2(1.d0, 4)
-    call assert_true(rv_double == 5.d0, "function2")
+    rv_double = pass_by_value(1.d0, 4)
+    call assert_true(rv_double == 5.d0, "pass_by_value")
 
     rv_logical = function3(.false.)
     call assert_true(rv_logical, "function3")
