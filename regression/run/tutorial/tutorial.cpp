@@ -37,20 +37,6 @@ double PassByValue(double arg1, int arg2)
     return arg1 + arg2;
 }
 
-bool Function3(bool arg)
-{
-    last_function_called = "Function3";
-    return ! arg;
-}
-
-void Function3b(const bool arg1, bool *arg2, bool *arg3)
-{
-    last_function_called = "Function3b";
-    *arg2 = ! arg1;
-    *arg3 = ! *arg3;
-    return;
-}
-
 const std::string Function4a(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4a";

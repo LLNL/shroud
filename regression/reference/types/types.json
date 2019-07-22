@@ -2662,6 +2662,123 @@
             },
             {
                 "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "static_cast<void *>(&arg)",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "arg",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "SH_arg",
+                            "f_var": "arg"
+                        },
+                        "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
+                            "c_const": "",
+                            "c_decl": "bool arg",
+                            "c_deref": "",
+                            "c_type": "bool",
+                            "c_var": "arg",
+                            "cxx_addr": "&",
+                            "cxx_decl": "bool arg",
+                            "cxx_member": ".",
+                            "cxx_type": "bool",
+                            "cxx_var": "arg",
+                            "numpy_type": "NPY_BOOL",
+                            "py_type": "PyObject",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    },
+                    "fmtf": {
+                        "cxx_type": "bool",
+                        "f_var": "SHT_rv"
+                    },
+                    "fmtpy": {
+                        "PyTypeObject": "PyBool_Type",
+                        "c_deref": "",
+                        "c_var": "rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "rv",
+                        "numpy_type": "NPY_BOOL",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "bool_func",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        }
+                    ],
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool bool_func(bool arg)",
+                "declgen": "bool bool_func(bool arg +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_code": "bool SHC_rv =\t bool_func(\targ);",
+                    "C_call_list": "arg",
+                    "C_name": "TYP_bool_func",
+                    "C_prototype": "bool arg",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "bool",
+                    "F_C_call": "c_bool_func",
+                    "F_C_name": "c_bool_func",
+                    "F_arg_c_call": "SH_arg",
+                    "F_arguments": "arg",
+                    "F_call_code": "SHT_rv = c_bool_func(SH_arg)",
+                    "F_name_function": "bool_func",
+                    "F_name_generic": "bool_func",
+                    "F_name_impl": "bool_func",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_bool_func",
+                    "c_const": "",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "bool_func",
+                    "underscore_name": "bool_func"
+                },
+                "linenumber": 63,
+                "options": {}
+            },
+            {
+                "_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_const": "",
@@ -2754,7 +2871,7 @@
                 "decl": "bool returnBoolAndOthers(int *flag+intent(out))",
                 "declgen": "bool returnBoolAndOthers(int * flag +intent(out))",
                 "doxygen": {
-                    "__line__": 65,
+                    "__line__": 66,
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
@@ -2781,7 +2898,7 @@
                     "function_name": "returnBoolAndOthers",
                     "underscore_name": "return_bool_and_others"
                 },
-                "linenumber": 64,
+                "linenumber": 65,
                 "options": {}
             }
         ],

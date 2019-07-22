@@ -81,45 +81,6 @@ PY_PassByValue(
 // splicer end function.pass_by_value
 }
 
-static char PY_Function3__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Function3(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// bool Function3(bool arg +intent(in)+value)
-// splicer begin function.function3
-    PyObject * SHPy_arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
-        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
-        return NULL;
-
-    // pre_call
-    bool arg = PyObject_IsTrue(SHPy_arg);
-
-    bool rv = tutorial::Function3(arg);
-
-    // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
-    if (SHTPy_rv == NULL) goto fail;
-
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    return NULL;
-// splicer end function.function3
-}
-
 static char PY_Function4a__doc__[] =
 "documentation"
 ;
@@ -1065,8 +1026,6 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_NoReturnNoArguments__doc__},
 {"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
     PY_PassByValue__doc__},
-{"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
-    PY_Function3__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
     PY_Function4a__doc__},
 {"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,

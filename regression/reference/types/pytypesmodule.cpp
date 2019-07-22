@@ -721,6 +721,45 @@ PY_size_func(
 // splicer end function.size_func
 }
 
+static char PY_bool_func__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_bool_func(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// bool bool_func(bool arg +intent(in)+value)
+// splicer begin function.bool_func
+    PyObject * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:bool_func",
+        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
+        return NULL;
+
+    // pre_call
+    bool arg = PyObject_IsTrue(SHPy_arg);
+
+    bool rv = bool_func(arg);
+
+    // post_call
+    SHTPy_rv = PyBool_FromLong(rv);
+    if (SHTPy_rv == NULL) goto fail;
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return NULL;
+// splicer end function.bool_func
+}
+
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"
 ;
@@ -808,6 +847,8 @@ static PyMethodDef PY_methods[] = {
     PY_uint64_func__doc__},
 {"size_func", (PyCFunction)PY_size_func, METH_VARARGS|METH_KEYWORDS,
     PY_size_func__doc__},
+{"bool_func", (PyCFunction)PY_bool_func, METH_VARARGS|METH_KEYWORDS,
+    PY_bool_func__doc__},
 {"returnBoolAndOthers", (PyCFunction)PY_returnBoolAndOthers,
     METH_NOARGS, PY_returnBoolAndOthers__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

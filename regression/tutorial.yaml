@@ -51,8 +51,6 @@ declarations:
   - decl: double PassByValue(double arg1, int arg2)
   # from clibrary.yaml
   
-  - decl: bool Function3(bool arg)
-
   - decl: const std::string Function4a(
       const std::string& arg1,
       const std::string& arg2 ) +len(30)

@@ -225,6 +225,15 @@ size_t TYP_size_func(size_t arg1)
 // splicer end function.size_func
 }
 
+// bool bool_func(bool arg +intent(in)+value)
+bool TYP_bool_func(bool arg)
+{
+// splicer begin function.bool_func
+    bool SHC_rv = bool_func(arg);
+    return SHC_rv;
+// splicer end function.bool_func
+}
+
 // bool returnBoolAndOthers(int * flag +intent(out))
 /**
  * \brief Function which returns bool with other intent(out) arguments

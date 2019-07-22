@@ -316,15 +316,6 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function pass_by_value
 
-        function c_function3(arg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function3")
-            use iso_c_binding, only : C_BOOL
-            implicit none
-            logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: SHT_rv
-        end function c_function3
-
         subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
                 SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_function4a_bufferify")
@@ -1004,19 +995,6 @@ contains
 
     ! splicer begin class.Singleton.additional_functions
     ! splicer end class.Singleton.additional_functions
-
-    ! bool Function3(bool arg +intent(in)+value)
-    function function3(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
-        logical, value, intent(IN) :: arg
-        logical(C_BOOL) SH_arg
-        logical :: SHT_rv
-        SH_arg = arg  ! coerce to C_BOOL
-        ! splicer begin function.function3
-        SHT_rv = c_function3(SH_arg)
-        ! splicer end function.function3
-    end function function3
 
     ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer

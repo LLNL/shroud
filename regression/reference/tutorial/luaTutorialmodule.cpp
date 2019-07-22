@@ -141,17 +141,6 @@ static int l_pass_by_value(lua_State *L)
     // splicer end function.PassByValue
 }
 
-// bool Function3(bool arg +intent(in)+value)
-static int l_function3(lua_State *L)
-{
-    // splicer begin function.Function3
-    bool arg = lua_toboolean(L, 1);
-    bool SHCXX_rv = tutorial::Function3(arg);
-    lua_pushboolean(L, SHCXX_rv);
-    return 1;
-    // splicer end function.Function3
-}
-
 // const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
 /**
  * Since +len(30) is provided, the result of the function
@@ -548,7 +537,6 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Class1", l_class1_new},
     {"NoReturnNoArguments", l_no_return_no_arguments},
     {"PassByValue", l_pass_by_value},
-    {"Function3", l_function3},
     {"Function4a", l_function4a},
     {"Function4b", l_function4b},
     {"Function4c", l_function4c},

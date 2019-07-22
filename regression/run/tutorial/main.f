@@ -85,9 +85,6 @@ contains
     rv_double = pass_by_value(1.d0, 4)
     call assert_true(rv_double == 5.d0, "pass_by_value")
 
-    rv_logical = function3(.false.)
-    call assert_true(rv_logical, "function3")
-
     call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
 
     call function4b("dog", "cat", rv_char)

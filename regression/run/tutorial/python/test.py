@@ -62,14 +62,6 @@ class Tutorial(unittest.TestCase):
         rv_double = tutorial.PassByValue(1.0, 4)
         self.assertEqual(rv_double, 5.0)#, "A is not equal to B")
 
-    def testFunction3(self):
-        rv_logical = tutorial.Function3(False)
-        self.assertTrue(rv_logical)
-
-        # Should any object which resolved to True or False be accepted?
-        # if 0:    is legal
-        self.assertRaises(TypeError, tutorial.Function3, 0)
-
     def testFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")

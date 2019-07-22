@@ -70,15 +70,6 @@ double TUT_pass_by_value(double arg1, int arg2)
 // splicer end function.pass_by_value
 }
 
-// bool Function3(bool arg +intent(in)+value)
-bool TUT_function3(bool arg)
-{
-// splicer begin function.function3
-    bool SHC_rv = tutorial::Function3(arg);
-    return SHC_rv;
-// splicer end function.function3
-}
-
 // void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 /**
  * Since +len(30) is provided, the result of the function
