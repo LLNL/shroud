@@ -11,6 +11,7 @@
    Fortran interface
    Fortran wrapper
    Fortran example usage
+   C++ example usage
 
 Sample Fortran Wrappers
 =======================
@@ -21,6 +22,57 @@ of how the wrappers are created.
 
 All of these examples are derived from tests in the ``regression``
 directory.
+
+No Arguments
+------------
+
+.. _example_NoReturnNoArguments:
+
+C library function:
+
+.. literalinclude:: ../regression/run/clibrary/clibrary.c
+   :language: c
+   :start-after: start NoReturnNoArguments
+   :end-before: end NoReturnNoArguments
+
+YAML:
+
+.. code-block:: yaml
+
+    - decl: void NoReturnNoArguments()
+
+Calls C via the interface:
+
+.. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
+   :language: fortran
+   :start-after: start no_return_no_arguments
+   :end-before: end no_return_no_arguments
+   :dedent: 8
+
+If wrapping a C++ library, a function with a C API will be created
+that Fortran can call.
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c
+   :start-after: start TUT_no_return_no_arguments
+   :end-before: end TUT_no_return_no_arguments
+
+Fortran usage:
+
+.. code-block:: fortran
+
+    use tutorial_mod
+    call no_return_no_arguments
+
+The C++ usage is similar:
+
+.. code-block:: c++
+
+    #include "tutorial.hpp"
+
+    using namespace tutorial;
+    NoReturnNoArguments();
+
 
 Numeric Types
 -------------

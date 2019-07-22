@@ -33,7 +33,7 @@ typedef int TypeID;
 
 extern int tutorial_flag;
 
-void Function1();
+void NoReturnNoArguments();
 
 double Function2(double arg1, int arg2);
 

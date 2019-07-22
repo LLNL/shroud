@@ -18,7 +18,7 @@ The simplest item to wrap is a function in the file ``tutorial.hpp``:
 .. code-block:: c++
 
     namespace tutorial {
-      void Function1(void);
+      void NoReturnNoArguments(void);
     }
 
 This is wrapped using a YAML input file ``tutorial.yaml``:
@@ -31,7 +31,7 @@ This is wrapped using a YAML input file ``tutorial.yaml``:
     declarations:
     - decl: namespace tutorial
       declarations:
-      - decl: void Function1()
+      - decl: void NoReturnNoArguments()
 
 .. XXX support (void)?
 
@@ -64,18 +64,18 @@ The C++ code to call the function:
     #include "tutorial.hpp"
 
     using namespace tutorial;
-    Function1();
+    NoReturnNoArguments();
 
 And the Fortran version:
 
 .. code-block:: fortran
 
     use tutorial_mod
-
-    call function1
+    call no_return_no_arguments
 
 .. note :: rename module to just tutorial.
 
+The generated code is listed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
 
 Arguments
 ---------

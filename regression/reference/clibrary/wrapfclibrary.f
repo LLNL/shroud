@@ -45,10 +45,12 @@ module clibrary_mod
 
     interface
 
-        subroutine function1() &
-                bind(C, name="Function1")
+        ! start no_return_no_arguments
+        subroutine no_return_no_arguments() &
+                bind(C, name="NoReturnNoArguments")
             implicit none
-        end subroutine function1
+        end subroutine no_return_no_arguments
+        ! end no_return_no_arguments
 
         ! start pass_by_value
         function pass_by_value(arg1, arg2) &

@@ -50,14 +50,16 @@ void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_v
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Function1()
-void TUT_function1()
+// void NoReturnNoArguments()
+// start TUT_no_return_no_arguments
+void TUT_no_return_no_arguments()
 {
-// splicer begin function.function1
-    tutorial::Function1();
+// splicer begin function.no_return_no_arguments
+    tutorial::NoReturnNoArguments();
     return;
-// splicer end function.function1
+// splicer end function.no_return_no_arguments
 }
+// end TUT_no_return_no_arguments
 
 // double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 double TUT_function2(double arg1, int arg2)

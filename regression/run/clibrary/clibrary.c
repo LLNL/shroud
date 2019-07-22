@@ -21,11 +21,13 @@ static char last_function_called[MAXLAST];
 //static int global_int;
 //static double global_double;
 
-void Function1(void)
+// start NoReturnNoArguments
+void NoReturnNoArguments(void)
 {
     strncpy(last_function_called, "Function1", MAXLAST);
     return;
 }
+// end NoReturnNoArguments
 
 // start PassByValue
 double PassByValue(double arg1, int arg2)

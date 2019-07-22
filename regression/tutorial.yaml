@@ -43,7 +43,10 @@ declarations:
 
   - decl: extern int tutorial_flag;
 
-  - decl: void Function1()
+  - decl: void NoReturnNoArguments()
+    options:
+      literalinclude: True
+
   - decl: double Function2(double arg1, int arg2)
   
   - decl: long long TypeLongLong(long long arg1)

@@ -35,6 +35,9 @@ class Tutorial(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
+    def testNoReturnNoArguments(self):
+        clibrary.NoReturnNoArguments()
+
     def testPassByValue(self):
         self.assertEqual(5.0, clibrary.PassByValue(1.0, 4))
 

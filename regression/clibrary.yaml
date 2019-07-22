@@ -36,7 +36,9 @@ declarations:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
-- decl: void Function1()
+- decl: void NoReturnNoArguments()
+  options:
+    literalinclude: True
 - decl: double PassByValue(double arg1, int arg2)
   options:
     literalinclude: True

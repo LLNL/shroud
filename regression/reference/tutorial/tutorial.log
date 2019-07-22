@@ -23,7 +23,7 @@ class Singleton
 C method static Singleton & getReference()
 Close wrapSingleton.h
 Close wrapSingleton.cpp
-C function void Function1()
+C function void NoReturnNoArguments()
 C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C function long long TypeLongLong(long long arg1 +intent(in)+value)
 C function bool Function3(bool arg +intent(in)+value)
@@ -87,7 +87,7 @@ C-interface, Fortran method int getTest()
 C-interface, Fortran method void setTest(int val +intent(in)+value)
 class Singleton
 C-interface, Fortran method static Singleton & getReference()
-C-interface, Fortran function void Function1()
+C-interface, Fortran function void NoReturnNoArguments()
 C-interface, Fortran function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 C-interface, Fortran function long long TypeLongLong(long long arg1 +intent(in)+value)
 C-interface, Fortran function bool Function3(bool arg +intent(in)+value)
@@ -152,7 +152,7 @@ Close pyClass1type.cpp
 class Singleton
 Python method static Singleton & getReference()
 Close pySingletontype.cpp
-Python function void Function1()
+Python function void NoReturnNoArguments()
 Python function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Python function long long TypeLongLong(long long arg1 +intent(in)+value)
 Python function bool Function3(bool arg +intent(in)+value)
@@ -189,7 +189,7 @@ Lua method Class1(int flag +intent(in)+value) +name(new)
 Lua method ~Class1() +name(delete)
 Lua method int Method1()
 Lua method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
-Lua function void Function1()
+Lua function void NoReturnNoArguments()
 Lua function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Lua function bool Function3(bool arg +intent(in)+value)
 Lua function const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)

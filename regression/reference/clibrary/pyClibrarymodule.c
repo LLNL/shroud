@@ -31,21 +31,21 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_Function1__doc__[] =
+static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function1(
+PY_NoReturnNoArguments(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void Function1()
-// splicer begin function.function1
-    Function1();
+// void NoReturnNoArguments()
+// splicer begin function.no_return_no_arguments
+    NoReturnNoArguments();
     Py_RETURN_NONE;
-// splicer end function.function1
+// splicer end function.no_return_no_arguments
 }
 
 static char PY_PassByValue__doc__[] =
@@ -515,8 +515,8 @@ fail:
 // splicer end function.implied_bool_false
 }
 static PyMethodDef PY_methods[] = {
-{"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
-    PY_Function1__doc__},
+{"NoReturnNoArguments", (PyCFunction)PY_NoReturnNoArguments,
+    METH_NOARGS, PY_NoReturnNoArguments__doc__},
 {"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
     PY_PassByValue__doc__},
 {"PassByReference", (PyCFunction)PY_PassByReference,

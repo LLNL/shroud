@@ -120,13 +120,13 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// void Function1()
-static int l_function1(lua_State *)
+// void NoReturnNoArguments()
+static int l_no_return_no_arguments(lua_State *)
 {
-    // splicer begin function.Function1
-    tutorial::Function1();
+    // splicer begin function.NoReturnNoArguments
+    tutorial::NoReturnNoArguments();
     return 0;
-    // splicer end function.Function1
+    // splicer end function.NoReturnNoArguments
 }
 
 // double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
@@ -546,7 +546,7 @@ static int l_last_function_called(lua_State *L)
 
 static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Class1", l_class1_new},
-    {"Function1", l_function1},
+    {"NoReturnNoArguments", l_no_return_no_arguments},
     {"Function2", l_function2},
     {"Function3", l_function3},
     {"Function4a", l_function4a},

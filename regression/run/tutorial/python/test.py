@@ -55,9 +55,8 @@ class Tutorial(unittest.TestCase):
         # module method with enums
         self.assertEqual(tutorial.Class1.RIGHT, tutorial.directionFunc(tutorial.Class1.LEFT))
      
-    # test routine A
-    def testFunction1(self):
-        tutorial.Function1()
+    def testNoReturnNoArguments(self):
+        tutorial.NoReturnNoArguments()
 
     def testFunction2(self):
         rv_double = tutorial.Function2(1.0, 4)

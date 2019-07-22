@@ -14,6 +14,15 @@ how arguments are intended to be used.  This information is supplied
 via attributes. This section describes how to describe the arguments
 to Shroud in order to implement the desired semantic.
 
+No Arguments
+------------
+
+A function with no arguments and which does not return a value, can be
+"wrapped" by creating a Fortran interface which allows the function to 
+be called directly.
+
+An example is detailed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
+
 Numeric Types
 -------------
 

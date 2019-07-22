@@ -112,7 +112,7 @@ contains
 
     call set_case_name("test_functions")
 
-    call function1
+    call no_return_no_arguments
     call assert_true(.true.)
 
     rv_double = pass_by_value(1.d0, 4)

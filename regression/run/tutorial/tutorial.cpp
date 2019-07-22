@@ -25,7 +25,7 @@ static double global_double;
 static const Class1 *global_class1;
 
 
-void Function1()
+void NoReturnNoArguments()
 {
     last_function_called = "Function1";
     return;

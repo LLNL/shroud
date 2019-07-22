@@ -34,7 +34,7 @@ enum TUT_tutorial_Color {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void TUT_function1();
+void TUT_no_return_no_arguments();
 
 double TUT_function2(double arg1, int arg2);
 

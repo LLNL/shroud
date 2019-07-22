@@ -299,10 +299,12 @@ module tutorial_mod
         ! splicer begin class.Singleton.additional_interfaces
         ! splicer end class.Singleton.additional_interfaces
 
-        subroutine function1() &
-                bind(C, name="TUT_function1")
+        ! start no_return_no_arguments
+        subroutine no_return_no_arguments() &
+                bind(C, name="TUT_no_return_no_arguments")
             implicit none
-        end subroutine function1
+        end subroutine no_return_no_arguments
+        ! end no_return_no_arguments
 
         function function2(arg1, arg2) &
                 result(SHT_rv) &

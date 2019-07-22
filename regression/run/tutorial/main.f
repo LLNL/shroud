@@ -23,7 +23,7 @@ program tester
   implicit none
   logical ok
 
-  logical rv_logical, wrk_logical
+  logical rv_logical
   integer rv_integer
   integer(C_INT) rv_int
   real(C_DOUBLE) rv_double
@@ -79,7 +79,7 @@ contains
 
     call set_case_name("test_functions")
 
-    call function1
+    call no_return_no_arguments
     call assert_true(.true.)
 
     rv_double = function2(1.d0, 4)
