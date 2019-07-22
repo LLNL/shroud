@@ -38,8 +38,6 @@ void TUT_no_return_no_arguments();
 
 double TUT_pass_by_value(double arg1, int arg2);
 
-long long TUT_type_long_long(long long arg1);
-
 bool TUT_function3(bool arg);
 
 void TUT_function4a_bufferify(const char * arg1, int Larg1,

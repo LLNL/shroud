@@ -142,9 +142,6 @@ contains
     call function10("bar", 2.0d0)
     call assert_true(.true., "function10 3")
 
-    rv_ll = type_long_long( 2_c_long_long)
-    call assert_true(rv_ll .eq. 4, "type_long_long")
-
     rv_int = overload1(10)
     call assert_true(rv_int .eq. 10, "overload1 1")
     rv_int = overload1(1.0d0, 10)

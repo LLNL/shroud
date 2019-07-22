@@ -81,37 +81,6 @@ PY_PassByValue(
 // splicer end function.pass_by_value
 }
 
-static char PY_TypeLongLong__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_TypeLongLong(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// long long TypeLongLong(long long arg1 +intent(in)+value)
-// splicer begin function.type_long_long
-    long long arg1;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
-        const_cast<char **>(SHT_kwlist), &arg1))
-        return NULL;
-
-    long long rv = tutorial::TypeLongLong(arg1);
-
-    // post_call
-    SHTPy_rv = Py_BuildValue("L", rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.type_long_long
-}
-
 static char PY_Function3__doc__[] =
 "documentation"
 ;
@@ -1096,8 +1065,6 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_NoReturnNoArguments__doc__},
 {"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
     PY_PassByValue__doc__},
-{"TypeLongLong", (PyCFunction)PY_TypeLongLong,
-    METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
 {"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
     PY_Function3__doc__},
 {"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,

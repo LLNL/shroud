@@ -51,11 +51,6 @@ declarations:
   - decl: double PassByValue(double arg1, int arg2)
   # from clibrary.yaml
   
-  - decl: long long TypeLongLong(long long arg1)
-    options:
-       # No long long in Lua
-       wrap_lua: False
-  
   - decl: bool Function3(bool arg)
 
   - decl: const std::string Function4a(

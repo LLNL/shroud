@@ -146,12 +146,6 @@ void Function10(const std::string &name, double arg2)
     global_double = arg2;
 }
 
-long long TypeLongLong(long long arg1)
-{
-  return arg1 + 2;
-}
-
-
 // default values and overloaded
 // int overload1(int num, int offset = 0, int stride = 1);
 int overload1(int num, int offset, int stride)

@@ -316,15 +316,6 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function pass_by_value
 
-        function type_long_long(arg1) &
-                result(SHT_rv) &
-                bind(C, name="TUT_type_long_long")
-            use iso_c_binding, only : C_LONG_LONG
-            implicit none
-            integer(C_LONG_LONG), value, intent(IN) :: arg1
-            integer(C_LONG_LONG) :: SHT_rv
-        end function type_long_long
-
         function c_function3(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_function3")

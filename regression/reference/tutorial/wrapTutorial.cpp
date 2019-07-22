@@ -70,15 +70,6 @@ double TUT_pass_by_value(double arg1, int arg2)
 // splicer end function.pass_by_value
 }
 
-// long long TypeLongLong(long long arg1 +intent(in)+value)
-long long TUT_type_long_long(long long arg1)
-{
-// splicer begin function.type_long_long
-    long long SHC_rv = tutorial::TypeLongLong(arg1);
-    return SHC_rv;
-// splicer end function.type_long_long
-}
-
 // bool Function3(bool arg +intent(in)+value)
 bool TUT_function3(bool arg)
 {
