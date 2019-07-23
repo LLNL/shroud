@@ -191,13 +191,13 @@ double TUT_template_return_double()
 // splicer end function.template_return_double
 }
 
-// void Function9(double arg +intent(in)+value)
-void TUT_function9(double arg)
+// void FortranGeneric(double arg +intent(in)+value)
+void TUT_fortran_generic(double arg)
 {
-// splicer begin function.function9
-    tutorial::Function9(arg);
+// splicer begin function.fortran_generic
+    tutorial::FortranGeneric(arg);
     return;
-// splicer end function.function9
+// splicer end function.fortran_generic
 }
 
 // void Function10()

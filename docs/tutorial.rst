@@ -455,15 +455,15 @@ Fortran usage:
 
     integer(C_INT) rv_integer
     real(C_DOUBLE) rv_double
-    rv_integer = function8_int()
-    rv_double = function8_double()
+    rv_integer = template_return_int()
+    rv_double = template_return_double()
 
 Python usage:
 
 .. code-block:: python
 
-    rv_integer = function8_int()
-    rv_double = function8_double()
+    rv_integer = TemplateReturn_int()
+    rv_double = TemplateReturn_double()
 
 Generic Functions
 -----------------
@@ -473,17 +473,17 @@ which Fortran does not support:
 
 .. code-block:: fortran
 
-    void Function9(double arg);
+    void FortranGeneric(double arg);
 
-    Function9(1.0f);
-    Function9(2.0);
+    FortranGeneric(1.0f);
+    FortranGeneric(2.0);
 
-When Function9 is wrapped in Fortran it may only be used with the correct arguments:
+When FortranGeneric is wrapped in Fortran it may only be used with the correct arguments:
 
 .. code-block:: sh
 
-    call function9(1.)
-                   1
+    call fortran_generic(1.)
+                         1
     Error: Type mismatch in argument 'arg' at (1); passed REAL(4) to REAL(8)
 
 It would be possible to create a version of the routine in C++ which
@@ -495,7 +495,7 @@ Instead of specify the Type which changes, you specify the argument which change
 
 .. code-block:: yaml
 
-  - decl: void Function9(double arg)
+  - decl: void FortranGeneric(double arg)
     fortran_generic:
        arg:
        -  float
@@ -505,8 +505,8 @@ It may now be used with single or double precision arguments:
 
 .. code-block:: fortran
 
-  call function9(1.0)
-  call function9(1.0d0)
+  call fortran_generic(1.0)
+  call fortran_generic(1.0d0)
 
 
 Types

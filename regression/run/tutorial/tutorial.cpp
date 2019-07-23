@@ -94,9 +94,9 @@ double TemplateReturn<double>()
     return global_double;
 }
 
-void Function9(double arg)
+void FortranGeneric(double arg)
 {
-    last_function_called = "Function9";
+    last_function_called = "FortranGeneric";
     global_double = arg;
     return;
 }

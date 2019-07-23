@@ -127,10 +127,10 @@ contains
     rv_double = template_return_double()
     call assert_true(rv_double == 10.d0, "FunctionReturn<double>")
 
-    call function9(1.0)
-    call assert_true(.true., "function9 1")
-    call function9(1.d0)
-    call assert_true(.true., "function9 2")
+    call fortran_generic(1.0)
+    call assert_true(.true., "fortran_generic float")
+    call fortran_generic(1.d0)
+    call assert_true(.true., "fortran_generic double")
 
     call function10()
     call assert_true(.true., "function10 1")

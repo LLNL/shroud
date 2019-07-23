@@ -409,12 +409,12 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function c_template_return_double
 
-        subroutine c_function9(arg) &
-                bind(C, name="TUT_function9")
+        subroutine c_fortran_generic(arg) &
+                bind(C, name="TUT_fortran_generic")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
-        end subroutine c_function9
+        end subroutine c_fortran_generic
 
         subroutine c_function10_0() &
                 bind(C, name="TUT_function10_0")
@@ -652,16 +652,16 @@ module tutorial_mod
         module procedure class1_new_flag
     end interface class1_new
 
+    interface fortran_generic
+        module procedure fortran_generic_float
+        module procedure fortran_generic_double
+    end interface fortran_generic
+
     interface function10
         module procedure function10_0
         module procedure function10_1_float
         module procedure function10_1_double
     end interface function10
-
-    interface function9
-        module procedure function9_float
-        module procedure function9_double
-    end interface function9
 
     interface overload1
         module procedure overload1_num
@@ -1067,25 +1067,25 @@ contains
         ! splicer end function.template_return_double
     end function template_return_double
 
-    ! void Function9(float arg +intent(in)+value)
+    ! void FortranGeneric(float arg +intent(in)+value)
     ! fortran_generic
-    subroutine function9_float(arg)
+    subroutine fortran_generic_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
-        ! splicer begin function.function9_float
-        call c_function9(real(arg, C_DOUBLE))
-        ! splicer end function.function9_float
-    end subroutine function9_float
+        ! splicer begin function.fortran_generic_float
+        call c_fortran_generic(real(arg, C_DOUBLE))
+        ! splicer end function.fortran_generic_float
+    end subroutine fortran_generic_float
 
-    ! void Function9(double arg +intent(in)+value)
+    ! void FortranGeneric(double arg +intent(in)+value)
     ! fortran_generic
-    subroutine function9_double(arg)
+    subroutine fortran_generic_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
-        ! splicer begin function.function9_double
-        call c_function9(arg)
-        ! splicer end function.function9_double
-    end subroutine function9_double
+        ! splicer begin function.fortran_generic_double
+        call c_fortran_generic(arg)
+        ! splicer end function.fortran_generic_double
+    end subroutine fortran_generic_double
 
     ! void Function10()
     subroutine function10_0()

@@ -270,14 +270,14 @@ static int l_template_argument(lua_State *L)
     // splicer end function.TemplateArgument
 }
 
-// void Function9(double arg +intent(in)+value)
-static int l_function9(lua_State *L)
+// void FortranGeneric(double arg +intent(in)+value)
+static int l_fortran_generic(lua_State *L)
 {
-    // splicer begin function.Function9
+    // splicer begin function.FortranGeneric
     double arg = lua_tonumber(L, 1);
-    tutorial::Function9(arg);
+    tutorial::FortranGeneric(arg);
     return 0;
-    // splicer end function.Function9
+    // splicer end function.FortranGeneric
 }
 
 // void Function10()
@@ -499,7 +499,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"UseDefaultArguments", l_use_default_arguments},
     {"OverloadedFunction", l_overloaded_function},
     {"TemplateArgument", l_template_argument},
-    {"Function9", l_function9},
+    {"FortranGeneric", l_fortran_generic},
     {"Function10", l_function10},
     {"overload1", l_overload1},
     {"typefunc", l_typefunc},

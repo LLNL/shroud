@@ -271,30 +271,30 @@ PY_TemplateArgument_double(
 // splicer end function.template_argument_double
 }
 
-static char PY_Function9__doc__[] =
+static char PY_FortranGeneric__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function9(
+PY_FortranGeneric(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function9(double arg +intent(in)+value)
-// splicer begin function.function9
+// void FortranGeneric(double arg +intent(in)+value)
+// splicer begin function.fortran_generic
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FortranGeneric",
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::Function9(arg);
+    tutorial::FortranGeneric(arg);
     Py_RETURN_NONE;
-// splicer end function.function9
+// splicer end function.fortran_generic
 }
 
 static PyObject *
@@ -923,8 +923,8 @@ static PyMethodDef PY_methods[] = {
 {"UseDefaultArguments", (PyCFunction)PY_UseDefaultArguments_arg1_arg2,
     METH_VARARGS|METH_KEYWORDS,
     PY_UseDefaultArguments_arg1_arg2__doc__},
-{"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,
-    PY_Function9__doc__},
+{"FortranGeneric", (PyCFunction)PY_FortranGeneric,
+    METH_VARARGS|METH_KEYWORDS, PY_FortranGeneric__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,

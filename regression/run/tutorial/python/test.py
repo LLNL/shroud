@@ -99,10 +99,10 @@ class Tutorial(unittest.TestCase):
         #rv = tutorial.TemplateReturn_double()
         #self.assertEqual(rv, 10.0)
 
-    def test_Function9(self):
+    def test_FortranGeneric(self):
         # This has fortran_generic attribute but you get that for free in Python
-        tutorial.Function9(1)
-        tutorial.Function9(1.0)
+        tutorial.FortranGeneric(1)
+        tutorial.FortranGeneric(1.0)
 
     def test_Function10(self):
         # overloaded (no default args)

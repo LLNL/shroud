@@ -62,7 +62,7 @@ int TUT_template_return_int();
 
 double TUT_template_return_double();
 
-void TUT_function9(double arg);
+void TUT_fortran_generic(double arg);
 
 void TUT_function10_0();
 

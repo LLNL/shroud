@@ -3606,7 +3606,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function9",
+                        "name": "FortranGeneric",
                         "pointer": []
                     },
                     "params": [
@@ -3630,22 +3630,22 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function9(double arg)",
-                "declgen": "void Function9(double arg +intent(in)+value)",
+                "decl": "void FortranGeneric(double arg)",
+                "declgen": "void FortranGeneric(double arg +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function9(\targ);",
+                    "C_call_code": "tutorial::FortranGeneric(\targ);",
                     "C_call_list": "arg",
-                    "C_name": "TUT_function9",
+                    "C_name": "TUT_fortran_generic",
                     "C_prototype": "double arg",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_name": "c_function9",
-                    "LUA_name": "Function9",
-                    "LUA_name_impl": "l_function9",
-                    "PY_name_impl": "PY_Function9",
+                    "F_C_name": "c_fortran_generic",
+                    "LUA_name": "FortranGeneric",
+                    "LUA_name_impl": "l_fortran_generic",
+                    "PY_name_impl": "PY_FortranGeneric",
                     "c_const": "",
-                    "function_name": "Function9",
-                    "underscore_name": "function9"
+                    "function_name": "FortranGeneric",
+                    "underscore_name": "fortran_generic"
                 },
                 "fortran_generic": {
                     "__line__": 92,
@@ -3664,7 +3664,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function9",
+                        "name": "FortranGeneric",
                         "pointer": []
                     },
                     "params": [
@@ -3688,20 +3688,20 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function9(double arg)",
-                "declgen": "void Function9(float arg +intent(in)+value)",
+                "decl": "void FortranGeneric(double arg)",
+                "declgen": "void FortranGeneric(float arg +intent(in)+value)",
                 "fmtdict": {
-                    "F_C_call": "c_function9",
+                    "F_C_call": "c_fortran_generic",
                     "F_arg_c_call": "real(arg, C_DOUBLE)",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_function9(real(arg, C_DOUBLE))",
-                    "F_name_function": "function9_float",
-                    "F_name_generic": "function9",
-                    "F_name_impl": "function9_float",
+                    "F_call_code": "call c_fortran_generic(real(arg, C_DOUBLE))",
+                    "F_name_function": "fortran_generic_float",
+                    "F_name_generic": "fortran_generic",
+                    "F_name_impl": "fortran_generic_float",
                     "F_subprogram": "subroutine",
-                    "function_name": "Function9",
+                    "function_name": "FortranGeneric",
                     "function_suffix": "_float",
-                    "underscore_name": "function9"
+                    "underscore_name": "fortran_generic"
                 },
                 "linenumber": 91,
                 "options": {
@@ -3716,7 +3716,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function9",
+                        "name": "FortranGeneric",
                         "pointer": []
                     },
                     "params": [
@@ -3740,20 +3740,20 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function9(double arg)",
-                "declgen": "void Function9(double arg +intent(in)+value)",
+                "decl": "void FortranGeneric(double arg)",
+                "declgen": "void FortranGeneric(double arg +intent(in)+value)",
                 "fmtdict": {
-                    "F_C_call": "c_function9",
+                    "F_C_call": "c_fortran_generic",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
-                    "F_call_code": "call c_function9(arg)",
-                    "F_name_function": "function9_double",
-                    "F_name_generic": "function9",
-                    "F_name_impl": "function9_double",
+                    "F_call_code": "call c_fortran_generic(arg)",
+                    "F_name_function": "fortran_generic_double",
+                    "F_name_generic": "fortran_generic",
+                    "F_name_impl": "fortran_generic_double",
                     "F_subprogram": "subroutine",
-                    "function_name": "Function9",
+                    "function_name": "FortranGeneric",
                     "function_suffix": "_double",
-                    "underscore_name": "function9"
+                    "underscore_name": "fortran_generic"
                 },
                 "linenumber": 91,
                 "options": {

@@ -52,7 +52,7 @@ void TemplateArgument(ArgType arg);
 template<typename RetType>
 RetType TemplateReturn();
 
-void Function9(double arg);
+void FortranGeneric(double arg);
 
 void Function10();
 void Function10(const std::string &name, double arg2);
