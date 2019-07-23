@@ -2331,7 +2331,8 @@
                 "declgen": "const string & getConstStringRefLen() +deref(result_as_arg)+len(30)",
                 "doxygen": {
                     "__line__": 120,
-                    "brief": "return 'const string&' with fixed size (len=30)"
+                    "brief": "return 'const string&' with fixed size (len=30)",
+                    "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);",
@@ -2434,7 +2435,8 @@
                 "declgen": "void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "doxygen": {
                     "__line__": 120,
-                    "brief": "return 'const string&' with fixed size (len=30)"
+                    "brief": "return 'const string&' with fixed size (len=30)",
+                    "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefLen(\t);",
@@ -2506,8 +2508,9 @@
                 "decl": "const string& getConstStringRefAsArg()",
                 "declgen": "const string & getConstStringRefAsArg() +deref(result_as_arg)",
                 "doxygen": {
-                    "__line__": 125,
-                    "brief": "return a 'const string&' as argument"
+                    "__line__": 132,
+                    "brief": "return a 'const string&' as argument",
+                    "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);",
@@ -2521,13 +2524,13 @@
                     "F_C_name": "c_get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
-                    "__line__": 127,
+                    "__line__": 137,
                     "c_const": "const ",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
-                "linenumber": 123,
+                "linenumber": 130,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -2601,8 +2604,9 @@
                 "decl": "const string& getConstStringRefAsArg()",
                 "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))",
                 "doxygen": {
-                    "__line__": 125,
-                    "brief": "return a 'const string&' as argument"
+                    "__line__": 132,
+                    "brief": "return a 'const string&' as argument",
+                    "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
                     "C_call_code": "const std::string & SHCXX_rv =\t getConstStringRefAsArg(\t);",
@@ -2614,14 +2618,14 @@
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
                     "F_string_result_as_arg": "output",
-                    "__line__": 127,
+                    "__line__": 137,
                     "c_const": "",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg",
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
-                "linenumber": 123,
+                "linenumber": 130,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2667,8 +2671,9 @@
                 "decl": "const string& getConstStringRefAsArg()",
                 "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))",
                 "doxygen": {
-                    "__line__": 125,
-                    "brief": "return a 'const string&' as argument"
+                    "__line__": 132,
+                    "brief": "return a 'const string&' as argument",
+                    "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
                     "F_C_call": "c_get_const_string_ref_as_arg_bufferify",
@@ -2680,12 +2685,12 @@
                     "F_name_impl": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
                     "F_subprogram": "subroutine",
-                    "__line__": 127,
+                    "__line__": 137,
                     "function_name": "getConstStringRefAsArg",
                     "function_suffix": "",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
-                "linenumber": 123,
+                "linenumber": 130,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -2745,7 +2750,7 @@
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
                 "declgen": "const string & getConstStringRefLenEmpty() +deref(result_as_arg)+len(30)",
                 "doxygen": {
-                    "__line__": 132,
+                    "__line__": 142,
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
@@ -2773,7 +2778,7 @@
                     "function_name": "getConstStringRefLenEmpty",
                     "underscore_name": "get_const_string_ref_len_empty"
                 },
-                "linenumber": 130,
+                "linenumber": 140,
                 "options": {}
             },
             {
@@ -2848,7 +2853,7 @@
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
                 "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "doxygen": {
-                    "__line__": 132,
+                    "__line__": 142,
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
@@ -2866,7 +2871,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_len_empty"
                 },
-                "linenumber": 130,
+                "linenumber": 140,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -2947,7 +2952,7 @@
                     "function_name": "getConstStringRefAlloc",
                     "underscore_name": "get_const_string_ref_alloc"
                 },
-                "linenumber": 135,
+                "linenumber": 145,
                 "options": {}
             },
             {
@@ -3035,7 +3040,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_alloc"
                 },
-                "linenumber": 135,
+                "linenumber": 145,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3094,7 +3099,7 @@
                 "decl": "const string * getConstStringPtrLen() +len=30",
                 "declgen": "const string * getConstStringPtrLen() +deref(result_as_arg)+len(30)",
                 "doxygen": {
-                    "__line__": 142,
+                    "__line__": 152,
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
@@ -3118,13 +3123,13 @@
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "PY_name_impl": "PY_getConstStringPtrLen",
-                    "__line__": 149,
+                    "__line__": 159,
                     "c_const": "const ",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
                     "underscore_name": "get_const_string_ptr_len"
                 },
-                "linenumber": 140,
+                "linenumber": 150,
                 "options": {}
             },
             {
@@ -3198,7 +3203,7 @@
                 "decl": "const string * getConstStringPtrLen() +len=30",
                 "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
                 "doxygen": {
-                    "__line__": 142,
+                    "__line__": 152,
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
@@ -3212,14 +3217,14 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_len_bufferify",
-                    "__line__": 149,
+                    "__line__": 159,
                     "c_const": "",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_len"
                 },
-                "linenumber": 140,
+                "linenumber": 150,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3301,7 +3306,7 @@
                     "function_name": "getConstStringPtrAlloc",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "linenumber": 152,
+                "linenumber": 162,
                 "options": {}
             },
             {
@@ -3390,7 +3395,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "linenumber": 152,
+                "linenumber": 162,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3449,7 +3454,7 @@
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
                 "declgen": "const std::string * getConstStringPtrOwnsAlloc() +deref(allocatable)+owner(caller)",
                 "doxygen": {
-                    "__line__": 155,
+                    "__line__": 165,
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
@@ -3476,7 +3481,7 @@
                     "function_name": "getConstStringPtrOwnsAlloc",
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 },
-                "linenumber": 154,
+                "linenumber": 164,
                 "options": {}
             },
             {
@@ -3551,7 +3556,7 @@
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
                 "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))",
                 "doxygen": {
-                    "__line__": 155,
+                    "__line__": 165,
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
@@ -3569,7 +3574,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 },
-                "linenumber": 154,
+                "linenumber": 164,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3606,7 +3611,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "__line__": 167,
+                        "__line__": 177,
                         "deref": "allocatable",
                         "free_pattern": "C_string_free",
                         "owner": "caller"
@@ -3630,7 +3635,7 @@
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
                 "declgen": "const std::string * getConstStringPtrOwnsAllocPattern() +deref(allocatable)+free_pattern(C_string_free)+owner(caller)",
                 "doxygen": {
-                    "__line__": 164,
+                    "__line__": 174,
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
@@ -3657,7 +3662,7 @@
                     "function_name": "getConstStringPtrOwnsAllocPattern",
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 },
-                "linenumber": 163,
+                "linenumber": 173,
                 "options": {}
             },
             {
@@ -3696,7 +3701,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "__line__": 167
+                        "__line__": 177
                     },
                     "declarator": {
                         "name": "getConstStringPtrOwnsAllocPattern",
@@ -3736,7 +3741,7 @@
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
                 "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))",
                 "doxygen": {
-                    "__line__": 164,
+                    "__line__": 174,
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
@@ -3754,7 +3759,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 },
-                "linenumber": 163,
+                "linenumber": 173,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -3828,7 +3833,7 @@
                 "decl": "void acceptStringConstReference(const std::string & arg1)",
                 "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in))",
                 "doxygen": {
-                    "__line__": 174,
+                    "__line__": 184,
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
@@ -3854,7 +3859,7 @@
                     "function_name": "acceptStringConstReference",
                     "underscore_name": "accept_string_const_reference"
                 },
-                "linenumber": 173,
+                "linenumber": 183,
                 "options": {}
             },
             {
@@ -3916,7 +3921,7 @@
                 "decl": "void acceptStringConstReference(const std::string & arg1)",
                 "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len_trim(Larg1))",
                 "doxygen": {
-                    "__line__": 174,
+                    "__line__": 184,
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
@@ -3934,7 +3939,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_string_const_reference"
                 },
-                "linenumber": 173,
+                "linenumber": 183,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -4007,7 +4012,7 @@
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))",
                 "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out))",
                 "doxygen": {
-                    "__line__": 182,
+                    "__line__": 192,
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
@@ -4034,7 +4039,7 @@
                     "function_name": "acceptStringReferenceOut",
                     "underscore_name": "accept_string_reference_out"
                 },
-                "linenumber": 181,
+                "linenumber": 191,
                 "options": {}
             },
             {
@@ -4095,7 +4100,7 @@
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))",
                 "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out)+len(Narg1))",
                 "doxygen": {
-                    "__line__": 182,
+                    "__line__": 192,
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
@@ -4114,7 +4119,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_string_reference_out"
                 },
-                "linenumber": 181,
+                "linenumber": 191,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -4187,7 +4192,7 @@
                 "decl": "void acceptStringReference(std::string & arg1)",
                 "declgen": "void acceptStringReference(std::string & arg1 +intent(inout))",
                 "doxygen": {
-                    "__line__": 190,
+                    "__line__": 200,
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
@@ -4214,9 +4219,9 @@
                     "function_name": "acceptStringReference",
                     "underscore_name": "accept_string_reference"
                 },
-                "linenumber": 189,
+                "linenumber": 199,
                 "options": {
-                    "__line__": 196,
+                    "__line__": 206,
                     "literalinclude": true
                 }
             },
@@ -4280,7 +4285,7 @@
                 "decl": "void acceptStringReference(std::string & arg1)",
                 "declgen": "void acceptStringReference(std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))",
                 "doxygen": {
-                    "__line__": 190,
+                    "__line__": 200,
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
@@ -4299,9 +4304,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_string_reference"
                 },
-                "linenumber": 189,
+                "linenumber": 199,
                 "options": {
-                    "__line__": 196,
+                    "__line__": 206,
                     "literalinclude": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -4374,7 +4379,7 @@
                 "decl": "void acceptStringPointer(std::string * arg1)",
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout))",
                 "doxygen": {
-                    "__line__": 200,
+                    "__line__": 210,
                     "brief": "Accept a string pointer"
                 },
                 "fmtdict": {
@@ -4400,7 +4405,7 @@
                     "function_name": "acceptStringPointer",
                     "underscore_name": "accept_string_pointer"
                 },
-                "linenumber": 199,
+                "linenumber": 209,
                 "options": {}
             },
             {
@@ -4463,7 +4468,7 @@
                 "decl": "void acceptStringPointer(std::string * arg1)",
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))",
                 "doxygen": {
-                    "__line__": 200,
+                    "__line__": 210,
                     "brief": "Accept a string pointer"
                 },
                 "fmtdict": {
@@ -4481,7 +4486,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_string_pointer"
                 },
-                "linenumber": 199,
+                "linenumber": 209,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -4577,7 +4582,7 @@
                 "decl": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))",
                 "declgen": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))",
                 "doxygen": {
-                    "__line__": 209,
+                    "__line__": 219,
                     "brief": "Test Python returning multiple std::string arguments."
                 },
                 "fmtdict": {
@@ -4585,9 +4590,9 @@
                     "function_name": "returnStrings",
                     "underscore_name": "return_strings"
                 },
-                "linenumber": 207,
+                "linenumber": 217,
                 "options": {
-                    "__line__": 211,
+                    "__line__": 221,
                     "wrap_c": false,
                     "wrap_fortran": false
                 }
@@ -4627,16 +4632,16 @@
                 "decl": "char returnMany(int *arg1 +intent(out))",
                 "declgen": "char returnMany(int * arg1 +intent(out))",
                 "doxygen": {
-                    "__line__": 216,
+                    "__line__": 226,
                     "description": "Test Py_BuildValue with multiple values.\n"
                 },
                 "fmtdict": {
                     "function_name": "returnMany",
                     "underscore_name": "return_many"
                 },
-                "linenumber": 215,
+                "linenumber": 225,
                 "options": {
-                    "__line__": 219,
+                    "__line__": 229,
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_python": false
@@ -4730,12 +4735,12 @@
                     "F_name_impl": "explicit1",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_explicit1",
-                    "__line__": 230,
+                    "__line__": 240,
                     "c_const": "",
                     "function_name": "explicit1",
                     "underscore_name": "explicit1"
                 },
-                "linenumber": 229,
+                "linenumber": 239,
                 "options": {}
             },
             {
@@ -4808,9 +4813,9 @@
                     "function_name": "explicit2",
                     "underscore_name": "explicit2"
                 },
-                "linenumber": 234,
+                "linenumber": 244,
                 "options": {
-                    "__line__": 236,
+                    "__line__": 246,
                     "wrap_Lua": false,
                     "wrap_python": false
                 }
@@ -4886,9 +4891,9 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "explicit2"
                 },
-                "linenumber": 234,
+                "linenumber": 244,
                 "options": {
-                    "__line__": 236,
+                    "__line__": 246,
                     "wrap_Lua": false,
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -4961,7 +4966,7 @@
                 "decl": "void CpassChar(char status)",
                 "declgen": "void CpassChar(char status +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 249,
+                    "__line__": 259,
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 },
                 "fmtdict": {
@@ -4985,10 +4990,10 @@
                     "function_name": "CpassChar",
                     "underscore_name": "cpass_char"
                 },
-                "linenumber": 248,
+                "linenumber": 258,
                 "options": {
                     "C_extern_C": true,
-                    "__line__": 251
+                    "__line__": 261
                 }
             },
             {
@@ -5030,7 +5035,7 @@
                 "decl": "char CreturnChar()",
                 "declgen": "char CreturnChar()",
                 "doxygen": {
-                    "__line__": 255,
+                    "__line__": 265,
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
@@ -5056,10 +5061,10 @@
                     "function_name": "CreturnChar",
                     "underscore_name": "creturn_char"
                 },
-                "linenumber": 254,
+                "linenumber": 264,
                 "options": {
                     "C_extern_C": true,
-                    "__line__": 257
+                    "__line__": 267
                 }
             },
             {
@@ -5130,7 +5135,7 @@
                 "decl": "char CreturnChar()",
                 "declgen": "void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))",
                 "doxygen": {
-                    "__line__": 255,
+                    "__line__": 265,
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
@@ -5148,10 +5153,10 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "creturn_char"
                 },
-                "linenumber": 254,
+                "linenumber": 264,
                 "options": {
                     "C_extern_C": true,
-                    "__line__": 257,
+                    "__line__": 267,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -5242,7 +5247,7 @@
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
                 "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))",
                 "doxygen": {
-                    "__line__": 270,
+                    "__line__": 280,
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
@@ -5266,10 +5271,10 @@
                     "function_name": "CpassCharPtr",
                     "underscore_name": "cpass_char_ptr"
                 },
-                "linenumber": 263,
+                "linenumber": 273,
                 "options": {
                     "C_extern_C": true,
-                    "__line__": 264,
+                    "__line__": 274,
                     "wrap_Lua": false,
                     "wrap_python": false
                 }
@@ -5370,7 +5375,7 @@
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
                 "declgen": "void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))",
                 "doxygen": {
-                    "__line__": 270,
+                    "__line__": 280,
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
@@ -5388,10 +5393,10 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "cpass_char_ptr"
                 },
-                "linenumber": 263,
+                "linenumber": 273,
                 "options": {
                     "C_extern_C": true,
-                    "__line__": 264,
+                    "__line__": 274,
                     "wrap_Lua": false,
                     "wrap_c": true,
                     "wrap_fortran": false,

@@ -85,7 +85,7 @@ Integer and Real
 
 Integer and real types are handled using the ``iso_c_binding`` module
 which match them directly to the corresponding types in C++.
-To wrap ``Function2``:
+To wrap ``PassByValue``:
 
 .. code-block:: c++
 
@@ -217,7 +217,7 @@ C++ routine:
 
 .. code-block:: c++
 
-    const std::string Function4a(
+    const std::string ConcatenateStrings(
         const std::string& arg1,
         const std::string& arg2)
     {
@@ -229,7 +229,7 @@ YAML input:
 .. code-block:: yaml
 
     declarations:
-    - decl: const std::string Function4c(
+    - decl: const std::string ConcatenateStrings(
         const std::string& arg1,
         const std::string& arg2 )
 
@@ -239,7 +239,7 @@ The function is called as:
 
     character(len=:), allocatable :: rv4c
 
-    rv4c = function4c("one", "two")
+    rv4c = concatenate_strings("one", "two")
 
 .. XXX fill in python example
 

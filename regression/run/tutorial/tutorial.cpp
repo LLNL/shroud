@@ -37,29 +37,10 @@ double PassByValue(double arg1, int arg2)
     return arg1 + arg2;
 }
 
-const std::string Function4a(const std::string& arg1, const std::string& arg2)
-{
-    last_function_called = "Function4a";
-    return arg1 + arg2;
-}
-
-const std::string& Function4b(const std::string& arg1, const std::string& arg2)
-{
-    last_function_called = "Function4b";
-    global_str = arg1 + arg2;
-    return global_str;
-}
-
-const std::string Function4c(const std::string& arg1, const std::string& arg2)
+const std::string ConcatenateStrings(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4c";
     return arg1 + arg2;
-}
-
-const std::string * Function4d()
-{
-    const std::string * rv = new std::string("Function4d");
-    return rv;
 }
 
 double Function5(double arg1, bool arg2)

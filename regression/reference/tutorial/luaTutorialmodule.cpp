@@ -141,63 +141,21 @@ static int l_pass_by_value(lua_State *L)
     // splicer end function.PassByValue
 }
 
-// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
-/**
- * Since +len(30) is provided, the result of the function
- * will be copied directly into memory provided by Fortran.
- * The function will not be ALLOCATABLE.
- */
-static int l_function4a(lua_State *L)
-{
-    // splicer begin function.Function4a
-    const char * arg1 = lua_tostring(L, 1);
-    const char * arg2 = lua_tostring(L, 2);
-    const std::string SHCXX_rv = tutorial::Function4a(arg1, arg2);
-    lua_pushstring(L, SHCXX_rv.c_str());
-    return 1;
-    // splicer end function.Function4a
-}
-
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-static int l_function4b(lua_State *L)
-{
-    // splicer begin function.Function4b
-    const char * arg1 = lua_tostring(L, 1);
-    const char * arg2 = lua_tostring(L, 2);
-    const std::string & SHCXX_rv = tutorial::Function4b(arg1, arg2);
-    lua_pushstring(L, SHCXX_rv.c_str());
-    return 1;
-    // splicer end function.Function4b
-}
-
-// const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-static int l_function4c(lua_State *L)
+static int l_concatenate_strings(lua_State *L)
 {
-    // splicer begin function.Function4c
+    // splicer begin function.ConcatenateStrings
     const char * arg1 = lua_tostring(L, 1);
     const char * arg2 = lua_tostring(L, 2);
-    const std::string SHCXX_rv = tutorial::Function4c(arg1, arg2);
+    const std::string SHCXX_rv = tutorial::ConcatenateStrings(arg1,
+        arg2);
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
-    // splicer end function.Function4c
-}
-
-// const std::string * Function4d() +deref(allocatable)+owner(caller)
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-static int l_function4d(lua_State *L)
-{
-    // splicer begin function.Function4d
-    const std::string * SHCXX_rv = tutorial::Function4d();
-    lua_pushstring(L, SHCXX_rv->c_str());
-    return 1;
-    // splicer end function.Function4d
+    // splicer end function.ConcatenateStrings
 }
 
 // double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
@@ -537,10 +495,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Class1", l_class1_new},
     {"NoReturnNoArguments", l_no_return_no_arguments},
     {"PassByValue", l_pass_by_value},
-    {"Function4a", l_function4a},
-    {"Function4b", l_function4b},
-    {"Function4c", l_function4c},
-    {"Function4d", l_function4d},
+    {"ConcatenateStrings", l_concatenate_strings},
     {"Function5", l_function5},
     {"Function6", l_function6},
     {"Function7", l_function7},

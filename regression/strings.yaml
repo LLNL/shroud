@@ -119,11 +119,21 @@ declarations:
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return 'const string&' with fixed size (len=30)
+    description: |
+       Since +len(30) is provided, the result of the function
+       will be copied directly into memory provided by Fortran.
+       The function will not be ALLOCATABLE.
+#  attrs:
+#    result:
+#      len: 30
 
 - decl: const string& getConstStringRefAsArg()
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as argument
+    description: |
+      Pass an additional argument which wil be used as the return value.
+      The length of the output variable is declared by the caller.
   format:
     F_string_result_as_arg: output
 

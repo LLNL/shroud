@@ -38,20 +38,8 @@ void TUT_no_return_no_arguments();
 
 double TUT_pass_by_value(double arg1, int arg2);
 
-void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
-
-const char * TUT_function4b(const char * arg1, const char * arg2);
-
-void TUT_function4b_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * output, int Noutput);
-
-void TUT_function4c_bufferify(const char * arg1, int Larg1,
+void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
-
-const char * TUT_function4d();
-
-void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv);
 
 double TUT_function5();
 

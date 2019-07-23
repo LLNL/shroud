@@ -70,74 +70,19 @@ double TUT_pass_by_value(double arg1, int arg2)
 // splicer end function.pass_by_value
 }
 
-// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-/**
- * Since +len(30) is provided, the result of the function
- * will be copied directly into memory provided by Fortran.
- * The function will not be ALLOCATABLE.
- */
-void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
-{
-// splicer begin function.function4a_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    const std::string SH_arg2(arg2, Larg2);
-    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-    if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
-            SHCXX_rv.size());
-    }
-    return;
-// splicer end function.function4a_bufferify
-}
-
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-const char * TUT_function4b(const char * arg1, const char * arg2)
-{
-// splicer begin function.function4b
-    const std::string SH_arg1(arg1);
-    const std::string SH_arg2(arg2);
-    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
-        SH_arg2);
-    const char * SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-// splicer end function.function4b
-}
-
-// void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-void TUT_function4b_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * output, int Noutput)
-{
-// splicer begin function.function4b_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    const std::string SH_arg2(arg2, Larg2);
-    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
-        SH_arg2);
-    if (SHCXX_rv.empty()) {
-        ShroudStrCopy(output, Noutput, NULL, 0);
-    } else {
-        ShroudStrCopy(output, Noutput, SHCXX_rv.data(),
-            SHCXX_rv.size());
-    }
-    return;
-// splicer end function.function4b_bufferify
-}
-
-// void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void ConcatenateStrings(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-void TUT_function4c_bufferify(const char * arg1, int Larg1,
+void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
-// splicer begin function.function4c_bufferify
+// splicer begin function.concatenate_strings_bufferify
     const std::string SH_arg1(arg1, Larg1);
     const std::string SH_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
+    *SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1, SH_arg2);
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 2;
@@ -150,45 +95,7 @@ void TUT_function4c_bufferify(const char * arg1, int Larg1,
     }
     DSHF_rv->size = 1;
     return;
-// splicer end function.function4c_bufferify
-}
-
-// const std::string * Function4d() +deref(allocatable)+owner(caller)
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-const char * TUT_function4d()
-{
-// splicer begin function.function4d
-    const std::string * SHCXX_rv = tutorial::Function4d();
-    const char * SHC_rv = SHCXX_rv->c_str();
-    return SHC_rv;
-// splicer end function.function4d
-}
-
-// void Function4d(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv)
-{
-// splicer begin function.function4d_bufferify
-    const std::string * SHCXX_rv = tutorial::Function4d();
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 3;
-    if (SHCXX_rv->empty()) {
-        DSHF_rv->addr.ccharp = NULL;
-        DSHF_rv->len = 0;
-    } else {
-        DSHF_rv->addr.ccharp = SHCXX_rv->data();
-        DSHF_rv->len = SHCXX_rv->size();
-    }
-    DSHF_rv->size = 1;
-    return;
-// splicer end function.function4d_bufferify
+// splicer end function.concatenate_strings_bufferify
 }
 
 // double Function5()
@@ -577,12 +484,6 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
         break;
     }
     case 2:   // new_string
-    {
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 3:   // std::string
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;

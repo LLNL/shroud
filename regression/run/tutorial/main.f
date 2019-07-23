@@ -23,11 +23,9 @@ program tester
   implicit none
   logical ok
 
-  logical rv_logical
   integer rv_integer
   integer(C_INT) rv_int
   real(C_DOUBLE) rv_double
-  character(30) rv_char
 
   call init_fruit
 
@@ -73,7 +71,6 @@ contains
 
   subroutine test_functions
 
-    integer(C_LONG_LONG) :: rv_ll
     integer(C_INT) :: minout, maxout
 !    character(len=:), allocatable :: rv4c
 
@@ -85,23 +82,23 @@ contains
     rv_double = pass_by_value(1.d0, 4)
     call assert_true(rv_double == 5.d0, "pass_by_value")
 
-    call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
+!    call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
 
-    call function4b("dog", "cat", rv_char)
-    call assert_true( rv_char == "dogcat", "function4b")
+!    call function4b("dog", "cat", rv_char)
+!    call assert_true( rv_char == "dogcat", "function4b")
 
-    call assert_equals( "dawgkat", function4c("dawg", "kat"), "function4c")
+    call assert_equals( "dawgkat", concatenate_strings("dawg", "kat"), "concatenate_strings")
 
 ! warning: '.rv4c' may be used uninitialized in this function [-Wmaybe-uninitialized]
 ! gfortran 4.9.3
 !    call assert_false(allocated(rv4c))
-!    rv4c = function4c("one", "two")
+!    rv4c = concatenate_strings("one", "two")
 !    call assert_true(allocated(rv4c))
 !    call assert_true(len(rv4c) == 6)
 !    call assert_true(rv4c == "onetwo")
 !    deallocate(rv4c)
 
-    call assert_true( function4d() == "Function4d", "function4d")
+!    call assert_true( function4d() == "Function4d", "function4d")
 
     call assert_equals(13.1415d0, function5(), "function5 1")
     call assert_equals(11.d0, function5(1.d0), "function5 2")

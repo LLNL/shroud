@@ -316,45 +316,9 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function pass_by_value
 
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
-                SHF_rv, NSHF_rv) &
-                bind(C, name="TUT_function4a_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: Larg2
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_function4a_bufferify
-
-        function c_function4b(arg1, arg2) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function4b")
-            use iso_c_binding, only : C_CHAR, C_PTR
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            type(C_PTR) SHT_rv
-        end function c_function4b
-
-        subroutine c_function4b_bufferify(arg1, Larg1, arg2, Larg2, &
-                output, Noutput) &
-                bind(C, name="TUT_function4b_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: Larg2
-            character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: Noutput
-        end subroutine c_function4b_bufferify
-
-        subroutine c_function4c_bufferify(arg1, Larg1, arg2, Larg2, &
-                DSHF_rv) &
-                bind(C, name="TUT_function4c_bufferify")
+        subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
+                Larg2, DSHF_rv) &
+                bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: SHROUD_array
             implicit none
@@ -363,22 +327,7 @@ module tutorial_mod
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
-        end subroutine c_function4c_bufferify
-
-        function c_function4d() &
-                result(SHT_rv) &
-                bind(C, name="TUT_function4d")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_function4d
-
-        subroutine c_function4d_bufferify(DSHF_rv) &
-                bind(C, name="TUT_function4d_bufferify")
-            import :: SHROUD_array
-            implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
-        end subroutine c_function4d_bufferify
+        end subroutine c_concatenate_strings_bufferify
 
         function c_function5() &
                 result(SHT_rv) &
@@ -996,77 +945,27 @@ contains
     ! splicer begin class.Singleton.additional_functions
     ! splicer end class.Singleton.additional_functions
 
-    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
-    ! arg_to_buffer
-    !>
-    !! Since +len(30) is provided, the result of the function
-    !! will be copied directly into memory provided by Fortran.
-    !! The function will not be ALLOCATABLE.
-    !<
-    function function4a(arg1, arg2) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        character(len=*), intent(IN) :: arg2
-        character(len=30) :: SHT_rv
-        ! splicer begin function.function4a
-        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
-            len(SHT_rv, kind=C_INT))
-        ! splicer end function.function4a
-    end function function4a
-
-    ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-    ! arg_to_buffer - arg_to_buffer
-    subroutine function4b(arg1, arg2, output)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        character(len=*), intent(IN) :: arg2
-        character(len=*), intent(OUT) :: output
-        ! splicer begin function.function4b
-        call c_function4b_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), output, &
-            len(output, kind=C_INT))
-        ! splicer end function.function4b
-    end subroutine function4b
-
-    ! const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+    ! const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
     ! arg_to_buffer
     !>
     !! Note that since a reference is returned, no intermediate string
     !! is allocated.  It is assumed +owner(library).
     !<
-    function function4c(arg1, arg2) &
+    function concatenate_strings(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
         type(SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.function4c
-        call c_function4c_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
-        ! splicer end function.function4c
+        ! splicer begin function.concatenate_strings
+        call c_concatenate_strings_bufferify(arg1, &
+            len_trim(arg1, kind=C_INT), arg2, &
+            len_trim(arg2, kind=C_INT), DSHF_rv)
+        ! splicer end function.concatenate_strings
         allocate(character(len=DSHF_rv%len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function function4c
-
-    ! const std::string * Function4d() +deref(allocatable)+owner(caller)
-    ! arg_to_buffer
-    !>
-    !! A string is allocated by the library is must be deleted
-    !! by the caller.
-    !<
-    function function4d() &
-            result(SHT_rv)
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.function4d
-        call c_function4d_bufferify(DSHF_rv)
-        ! splicer end function.function4d
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function function4d
+    end function concatenate_strings
 
     ! double Function5()
     ! has_default_arg

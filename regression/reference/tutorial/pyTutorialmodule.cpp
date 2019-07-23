@@ -81,89 +81,7 @@ PY_PassByValue(
 // splicer end function.pass_by_value
 }
 
-static char PY_Function4a__doc__[] =
-"documentation"
-;
-
-/**
- * Since +len(30) is provided, the result of the function
- * will be copied directly into memory provided by Fortran.
- * The function will not be ALLOCATABLE.
- */
-static PyObject *
-PY_Function4a(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
-// splicer begin function.function4a
-    const char * arg1;
-    const char * arg2;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        "arg2",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
-        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
-
-    // post_parse
-    const std::string SH_arg1(arg1);
-    const std::string SH_arg2(arg2);
-
-    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.function4a
-}
-
-static char PY_Function4b__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Function4b(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-// splicer begin function.function4b
-    const char * arg1;
-    const char * arg2;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        "arg2",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
-        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
-
-    // post_parse
-    const std::string SH_arg1(arg1);
-    const std::string SH_arg2(arg2);
-
-    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
-        SH_arg2);
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.function4b
-}
-
-static char PY_Function4c__doc__[] =
+static char PY_ConcatenateStrings__doc__[] =
 "documentation"
 ;
 
@@ -172,13 +90,13 @@ static char PY_Function4c__doc__[] =
  * is allocated.  It is assumed +owner(library).
  */
 static PyObject *
-PY_Function4c(
+PY_ConcatenateStrings(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
-// splicer begin function.function4c
+// const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// splicer begin function.concatenate_strings
     const char * arg1;
     const char * arg2;
     const char *SHT_kwlist[] = {
@@ -187,50 +105,24 @@ PY_Function4c(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4c",
-        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "ss:ConcatenateStrings", const_cast<char **>(SHT_kwlist), &arg1,
+        &arg2))
         return NULL;
 
     // post_parse
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
-    const std::string SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
+    const std::string SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1,
+        SH_arg2);
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function4c
-}
-
-static char PY_Function4d__doc__[] =
-"documentation"
-;
-
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-static PyObject *
-PY_Function4d(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// const std::string * Function4d() +deref(allocatable)+owner(caller)
-// splicer begin function.function4d
-    PyObject * SHTPy_rv = NULL;
-
-    const std::string * SHCXX_rv = tutorial::Function4d();
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
-        SHCXX_rv->size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.function4d
+// splicer end function.concatenate_strings
 }
 
 static char PY_Function5_arg1_arg2__doc__[] =
@@ -1026,14 +918,8 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_NoReturnNoArguments__doc__},
 {"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
     PY_PassByValue__doc__},
-{"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
-    PY_Function4a__doc__},
-{"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,
-    PY_Function4b__doc__},
-{"Function4c", (PyCFunction)PY_Function4c, METH_VARARGS|METH_KEYWORDS,
-    PY_Function4c__doc__},
-{"Function4d", (PyCFunction)PY_Function4d, METH_NOARGS,
-    PY_Function4d__doc__},
+{"ConcatenateStrings", (PyCFunction)PY_ConcatenateStrings,
+    METH_VARARGS|METH_KEYWORDS, PY_ConcatenateStrings__doc__},
 {"Function5", (PyCFunction)PY_Function5_arg1_arg2,
     METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
 {"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,

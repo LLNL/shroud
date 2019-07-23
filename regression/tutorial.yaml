@@ -51,38 +51,13 @@ declarations:
   - decl: double PassByValue(double arg1, int arg2)
   # from clibrary.yaml
   
-  - decl: const std::string Function4a(
-      const std::string& arg1,
-      const std::string& arg2 ) +len(30)
-#  attrs:
-#    result:
-#      len: 30
-    doxygen:
-      description: |
-         Since +len(30) is provided, the result of the function
-         will be copied directly into memory provided by Fortran.
-         The function will not be ALLOCATABLE.
-
-  - decl: const std::string& Function4b(
-      const std::string& arg1,
-      const std::string& arg2 )
-    format:
-      F_string_result_as_arg: output
-
-  - decl: const std::string Function4c(
+  - decl: const std::string ConcatenateStrings(
       const std::string& arg1,
       const std::string& arg2 )
     doxygen:
       description: |
          Note that since a reference is returned, no intermediate string
          is allocated.  It is assumed +owner(library).
-  
-  - decl: const std::string * Function4d() +owner(caller)
-# XXX - can not deal with non const yet
-    doxygen:
-      description: |
-         A string is allocated by the library is must be deleted
-         by the caller.
   
   - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
     default_arg_suffix:

@@ -425,6 +425,9 @@ void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv)
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
  */
 const char * STR_get_const_string_ref_len()
 {
@@ -444,6 +447,9 @@ const char * STR_get_const_string_ref_len()
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
  */
 void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
 {
@@ -463,6 +469,8 @@ void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
 /**
  * \brief return a 'const string&' as argument
  *
+ * Pass an additional argument which wil be used as the return value.
+ * The length of the output variable is declared by the caller.
  */
 const char * STR_get_const_string_ref_as_arg()
 {
@@ -482,6 +490,8 @@ const char * STR_get_const_string_ref_as_arg()
 /**
  * \brief return a 'const string&' as argument
  *
+ * Pass an additional argument which wil be used as the return value.
+ * The length of the output variable is declared by the caller.
  */
 void STR_get_const_string_ref_as_arg_bufferify(char * output,
     int Noutput)

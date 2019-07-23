@@ -677,6 +677,9 @@ contains
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
+    !! Since +len(30) is provided, the result of the function
+    !! will be copied directly into memory provided by Fortran.
+    !! The function will not be ALLOCATABLE.
     !<
     function get_const_string_ref_len() &
             result(SHT_rv)
@@ -693,6 +696,8 @@ contains
     !>
     !! \brief return a 'const string&' as argument
     !!
+    !! Pass an additional argument which wil be used as the return value.
+    !! The length of the output variable is declared by the caller.
     !<
     subroutine get_const_string_ref_as_arg(output)
         use iso_c_binding, only : C_INT

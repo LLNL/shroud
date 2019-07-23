@@ -62,13 +62,17 @@ class Tutorial(unittest.TestCase):
         rv_double = tutorial.PassByValue(1.0, 4)
         self.assertEqual(rv_double, 5.0)#, "A is not equal to B")
 
-    def testFunction4a(self):
+    def XXXtestFunction4a(self):
         rv_char = tutorial.Function4a("dog", "cat")
         self.assertEqual(rv_char, "dogcat")
 
         # result as argument not needed for Python
 #    call function4b("dog", "cat", rv_char)
 #    call assert_true( rv_char == "dogcat")
+
+    def test_ConcatenateStrings(self):
+        rv_char = tutorial.ConcatenateStrings("dog", "cat")
+        self.assertEqual(rv_char, "dogcat")
 
     def testFunction5(self):
         rv_double = tutorial.Function5()
