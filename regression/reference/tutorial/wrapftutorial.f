@@ -329,32 +329,32 @@ module tutorial_mod
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_concatenate_strings_bufferify
 
-        function c_function5() &
+        function c_use_default_arguments() &
                 result(SHT_rv) &
-                bind(C, name="TUT_function5")
+                bind(C, name="TUT_use_default_arguments")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
-        end function c_function5
+        end function c_use_default_arguments
 
-        function c_function5_arg1(arg1) &
+        function c_use_default_arguments_arg1(arg1) &
                 result(SHT_rv) &
-                bind(C, name="TUT_function5_arg1")
+                bind(C, name="TUT_use_default_arguments_arg1")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             real(C_DOUBLE) :: SHT_rv
-        end function c_function5_arg1
+        end function c_use_default_arguments_arg1
 
-        function c_function5_arg1_arg2(arg1, arg2) &
+        function c_use_default_arguments_arg1_arg2(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_function5_arg1_arg2")
+                bind(C, name="TUT_use_default_arguments_arg1_arg2")
             use iso_c_binding, only : C_BOOL, C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             logical(C_BOOL), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
-        end function c_function5_arg1_arg2
+        end function c_use_default_arguments_arg1_arg2
 
         subroutine c_function6_from_name(name) &
                 bind(C, name="TUT_function6_from_name")
@@ -657,12 +657,6 @@ module tutorial_mod
         module procedure function10_1_double
     end interface function10
 
-    interface function5
-        module procedure function5
-        module procedure function5_arg1
-        module procedure function5_arg1_arg2
-    end interface function5
-
     interface function6
         module procedure function6_from_name
         module procedure function6_from_index
@@ -686,6 +680,12 @@ module tutorial_mod
         module procedure overload1_4
         module procedure overload1_5
     end interface overload1
+
+    interface use_default_arguments
+        module procedure use_default_arguments
+        module procedure use_default_arguments_arg1
+        module procedure use_default_arguments_arg1_arg2
+    end interface use_default_arguments
 
     interface
         ! helper function
@@ -967,31 +967,31 @@ contains
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
     end function concatenate_strings
 
-    ! double Function5()
+    ! double UseDefaultArguments()
     ! has_default_arg
-    function function5() &
+    function use_default_arguments() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
-        ! splicer begin function.function5
-        SHT_rv = c_function5()
-        ! splicer end function.function5
-    end function function5
+        ! splicer begin function.use_default_arguments
+        SHT_rv = c_use_default_arguments()
+        ! splicer end function.use_default_arguments
+    end function use_default_arguments
 
-    ! double Function5(double arg1=3.1415 +intent(in)+value)
+    ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
-    function function5_arg1(arg1) &
+    function use_default_arguments_arg1(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         real(C_DOUBLE) :: SHT_rv
-        ! splicer begin function.function5_arg1
-        SHT_rv = c_function5_arg1(arg1)
-        ! splicer end function.function5_arg1
-    end function function5_arg1
+        ! splicer begin function.use_default_arguments_arg1
+        SHT_rv = c_use_default_arguments_arg1(arg1)
+        ! splicer end function.use_default_arguments_arg1
+    end function use_default_arguments_arg1
 
-    ! double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-    function function5_arg1_arg2(arg1, arg2) &
+    ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+    function use_default_arguments_arg1_arg2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
@@ -999,10 +999,10 @@ contains
         logical(C_BOOL) SH_arg2
         real(C_DOUBLE) :: SHT_rv
         SH_arg2 = arg2  ! coerce to C_BOOL
-        ! splicer begin function.function5_arg1_arg2
-        SHT_rv = c_function5_arg1_arg2(arg1, SH_arg2)
-        ! splicer end function.function5_arg1_arg2
-    end function function5_arg1_arg2
+        ! splicer begin function.use_default_arguments_arg1_arg2
+        SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SH_arg2)
+        ! splicer end function.use_default_arguments_arg1_arg2
+    end function use_default_arguments_arg1_arg2
 
     ! void Function6(const std::string & name +intent(in))
     ! arg_to_buffer

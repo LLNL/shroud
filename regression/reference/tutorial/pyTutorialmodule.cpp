@@ -125,18 +125,18 @@ PY_ConcatenateStrings(
 // splicer end function.concatenate_strings
 }
 
-static char PY_Function5_arg1_arg2__doc__[] =
+static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function5_arg1_arg2(
+PY_UseDefaultArguments_arg1_arg2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-// splicer begin function.function5
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// splicer begin function.use_default_arguments
     Py_ssize_t SH_nargs = 0;
     double arg1;
     PyObject * SHPy_arg2;
@@ -149,23 +149,23 @@ PY_Function5_arg1_arg2(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
-        const_cast<char **>(SHT_kwlist), &arg1, &PyBool_Type,
-        &SHPy_arg2))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "|dO!:UseDefaultArguments", const_cast<char **>(SHT_kwlist), 
+        &arg1, &PyBool_Type, &SHPy_arg2))
         return NULL;
     switch (SH_nargs) {
     case 0:
-        rv = tutorial::Function5();
+        rv = tutorial::UseDefaultArguments();
         break;
     case 1:
-        rv = tutorial::Function5(arg1);
+        rv = tutorial::UseDefaultArguments(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            rv = tutorial::Function5(arg1, arg2);
+            rv = tutorial::UseDefaultArguments(arg1, arg2);
             break;
         }
     default:
@@ -177,7 +177,7 @@ PY_Function5_arg1_arg2(
     SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function5
+// splicer end function.use_default_arguments
 }
 
 static PyObject *
@@ -920,8 +920,9 @@ static PyMethodDef PY_methods[] = {
     PY_PassByValue__doc__},
 {"ConcatenateStrings", (PyCFunction)PY_ConcatenateStrings,
     METH_VARARGS|METH_KEYWORDS, PY_ConcatenateStrings__doc__},
-{"Function5", (PyCFunction)PY_Function5_arg1_arg2,
-    METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
+{"UseDefaultArguments", (PyCFunction)PY_UseDefaultArguments_arg1_arg2,
+    METH_VARARGS|METH_KEYWORDS,
+    PY_UseDefaultArguments_arg1_arg2__doc__},
 {"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,
     PY_Function9__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,

@@ -258,13 +258,13 @@ A header files contains:
 
 .. code-block:: c++
 
-    double Function5(double arg1 = 3.1415, bool arg2 = true)
+    double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
 
 and the function is defined as:
 
 .. code-block:: c++
 
-    double Function5(double arg1, bool arg2)
+    double UseDefaultArguments(double arg1, bool arg2)
     {
         if (arg2) {
             return arg1 + 10.0;
@@ -279,7 +279,7 @@ allows C++ to provide the default values:
 .. code-block:: yaml
 
     declarations:
-    - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
+    - decl: double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
       default_arg_suffix:
       -  
       -  _arg1
@@ -294,18 +294,18 @@ Fortran usage:
 .. code-block:: fortran
 
   use tutorial_mod
-  print *, function5()
-  print *, function5(1.d0)
-  print *, function5(1.d0, .false.)
+  print *, use_default_arguments()
+  print *, use_default_arguments(1.d0)
+  print *, use_default_arguments(1.d0, .false.)
 
 Python usage:
 
      >>> import tutorial
-     >>> tutorial.Function5()
+     >>> tutorial.UseDefaultArguments()
      13.1415
-     >>> tutorial.Function5(1.0)
+     >>> tutorial.UseDefaultArguments(1.0)
      11.0
-     >>> tutorial.Function5(1.0, False)
+     >>> tutorial.UseDefaultArguments(1.0, False)
      1.0
 
 

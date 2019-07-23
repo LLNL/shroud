@@ -41,11 +41,11 @@ double TUT_pass_by_value(double arg1, int arg2);
 void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
 
-double TUT_function5();
+double TUT_use_default_arguments();
 
-double TUT_function5_arg1(double arg1);
+double TUT_use_default_arguments_arg1(double arg1);
 
-double TUT_function5_arg1_arg2(double arg1, bool arg2);
+double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2);
 
 void TUT_function6_from_name(const char * name);
 

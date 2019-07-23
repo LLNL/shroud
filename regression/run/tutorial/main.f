@@ -100,9 +100,12 @@ contains
 
 !    call assert_true( function4d() == "Function4d", "function4d")
 
-    call assert_equals(13.1415d0, function5(), "function5 1")
-    call assert_equals(11.d0, function5(1.d0), "function5 2")
-    call assert_equals(1.d0, function5(1.d0, .false.), "function5 3")
+    call assert_equals(13.1415d0, use_default_arguments(), &
+         "UseDefaultArguments 1")
+    call assert_equals(11.d0, use_default_arguments(1.d0), &
+         "UseDefaultArguments 2")
+    call assert_equals(1.d0, use_default_arguments(1.d0, .false.), &
+         "UseDefaultArguments 3")
 
     call function6("name")
     call assert_true(last_function_called() == "Function6(string)", &

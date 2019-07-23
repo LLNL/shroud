@@ -158,10 +158,10 @@ static int l_concatenate_strings(lua_State *L)
     // splicer end function.ConcatenateStrings
 }
 
-// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-static int l_function5(lua_State *L)
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+static int l_use_default_arguments(lua_State *L)
 {
-    // splicer begin function.Function5
+    // splicer begin function.UseDefaultArguments
     int SH_nresult = 0;
     int SH_nargs = lua_gettop(L);
     int SH_itype1 = lua_type(L, 1);
@@ -169,7 +169,7 @@ static int l_function5(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            double SHCXX_rv = tutorial::Function5();
+            double SHCXX_rv = tutorial::UseDefaultArguments();
             lua_pushnumber(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -177,7 +177,7 @@ static int l_function5(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             double arg1 = lua_tonumber(L, 1);
-            double SHCXX_rv = tutorial::Function5(arg1);
+            double SHCXX_rv = tutorial::UseDefaultArguments(arg1);
             lua_pushnumber(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -190,7 +190,7 @@ static int l_function5(lua_State *L)
             SH_itype2 == LUA_TBOOLEAN) {
             double arg1 = lua_tonumber(L, 1);
             bool arg2 = lua_toboolean(L, 2);
-            double SHCXX_rv = tutorial::Function5(arg1, arg2);
+            double SHCXX_rv = tutorial::UseDefaultArguments(arg1, arg2);
             lua_pushnumber(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -203,7 +203,7 @@ static int l_function5(lua_State *L)
         break;
     }
     return SH_nresult;
-    // splicer end function.Function5
+    // splicer end function.UseDefaultArguments
 }
 
 // void Function6(const std::string & name +intent(in))
@@ -496,7 +496,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"NoReturnNoArguments", l_no_return_no_arguments},
     {"PassByValue", l_pass_by_value},
     {"ConcatenateStrings", l_concatenate_strings},
-    {"Function5", l_function5},
+    {"UseDefaultArguments", l_use_default_arguments},
     {"Function6", l_function6},
     {"Function7", l_function7},
     {"Function9", l_function9},

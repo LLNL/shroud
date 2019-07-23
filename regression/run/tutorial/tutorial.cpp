@@ -43,9 +43,9 @@ const std::string ConcatenateStrings(const std::string& arg1, const std::string&
     return arg1 + arg2;
 }
 
-double Function5(double arg1, bool arg2)
+double UseDefaultArguments(double arg1, bool arg2)
 {
-    last_function_called = "Function5";
+    last_function_called = "UseDefautArguments";
     if (arg2) {
 	return arg1 + 10.0;
     } else {

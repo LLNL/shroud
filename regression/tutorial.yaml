@@ -59,7 +59,7 @@ declarations:
          Note that since a reference is returned, no intermediate string
          is allocated.  It is assumed +owner(library).
   
-  - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
+  - decl: double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
     default_arg_suffix:
     -  
     -  _arg1

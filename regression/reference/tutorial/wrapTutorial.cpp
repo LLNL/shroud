@@ -98,31 +98,31 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
 // splicer end function.concatenate_strings_bufferify
 }
 
-// double Function5()
-double TUT_function5()
+// double UseDefaultArguments()
+double TUT_use_default_arguments()
 {
-// splicer begin function.function5
-    double SHC_rv = tutorial::Function5();
+// splicer begin function.use_default_arguments
+    double SHC_rv = tutorial::UseDefaultArguments();
     return SHC_rv;
-// splicer end function.function5
+// splicer end function.use_default_arguments
 }
 
-// double Function5(double arg1=3.1415 +intent(in)+value)
-double TUT_function5_arg1(double arg1)
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
+double TUT_use_default_arguments_arg1(double arg1)
 {
-// splicer begin function.function5_arg1
-    double SHC_rv = tutorial::Function5(arg1);
+// splicer begin function.use_default_arguments_arg1
+    double SHC_rv = tutorial::UseDefaultArguments(arg1);
     return SHC_rv;
-// splicer end function.function5_arg1
+// splicer end function.use_default_arguments_arg1
 }
 
-// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-double TUT_function5_arg1_arg2(double arg1, bool arg2)
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 {
-// splicer begin function.function5_arg1_arg2
-    double SHC_rv = tutorial::Function5(arg1, arg2);
+// splicer begin function.use_default_arguments_arg1_arg2
+    double SHC_rv = tutorial::UseDefaultArguments(arg1, arg2);
     return SHC_rv;
-// splicer end function.function5_arg1_arg2
+// splicer end function.use_default_arguments_arg1_arg2
 }
 
 // void Function6(const std::string & name +intent(in))

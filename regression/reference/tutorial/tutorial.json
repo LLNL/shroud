@@ -2310,7 +2310,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function5",
+                        "name": "UseDefaultArguments",
                         "pointer": []
                     },
                     "params": [],
@@ -2319,35 +2319,35 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double Function5()",
+                "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
+                "declgen": "double UseDefaultArguments()",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::Function5(\t);",
+                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\t);",
                     "C_call_list": "",
-                    "C_name": "TUT_function5",
+                    "C_name": "TUT_use_default_arguments",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
-                    "F_C_call": "c_function5",
-                    "F_C_name": "c_function5",
+                    "F_C_call": "c_use_default_arguments",
+                    "F_C_name": "c_use_default_arguments",
                     "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_function5()",
-                    "F_name_function": "function5",
-                    "F_name_generic": "function5",
-                    "F_name_impl": "function5",
+                    "F_call_code": "SHT_rv = c_use_default_arguments()",
+                    "F_name_function": "use_default_arguments",
+                    "F_name_generic": "use_default_arguments",
+                    "F_name_impl": "use_default_arguments",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "Function5",
+                    "function_name": "UseDefaultArguments",
                     "function_suffix": "",
-                    "underscore_name": "function5"
+                    "underscore_name": "use_default_arguments"
                 },
                 "linenumber": 62,
                 "options": {
@@ -2396,7 +2396,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function5",
+                        "name": "UseDefaultArguments",
                         "pointer": []
                     },
                     "params": [
@@ -2421,35 +2421,35 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double Function5(double arg1=3.1415 +intent(in)+value)",
+                "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::Function5(\targ1);",
+                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\targ1);",
                     "C_call_list": "arg1",
-                    "C_name": "TUT_function5_arg1",
+                    "C_name": "TUT_use_default_arguments_arg1",
                     "C_prototype": "double arg1",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
-                    "F_C_call": "c_function5_arg1",
-                    "F_C_name": "c_function5_arg1",
+                    "F_C_call": "c_use_default_arguments_arg1",
+                    "F_C_name": "c_use_default_arguments_arg1",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
-                    "F_call_code": "SHT_rv = c_function5_arg1(arg1)",
-                    "F_name_function": "function5_arg1",
-                    "F_name_generic": "function5",
-                    "F_name_impl": "function5_arg1",
+                    "F_call_code": "SHT_rv = c_use_default_arguments_arg1(arg1)",
+                    "F_name_function": "use_default_arguments_arg1",
+                    "F_name_generic": "use_default_arguments",
+                    "F_name_impl": "use_default_arguments_arg1",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "Function5",
+                    "function_name": "UseDefaultArguments",
                     "function_suffix": "_arg1",
-                    "underscore_name": "function5"
+                    "underscore_name": "use_default_arguments"
                 },
                 "linenumber": 62,
                 "options": {
@@ -2594,7 +2594,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function5",
+                        "name": "UseDefaultArguments",
                         "pointer": []
                     },
                     "params": [
@@ -2634,38 +2634,38 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "double Function5(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)",
+                "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
                     "_arg1_arg2"
                 ],
                 "fmtdict": {
-                    "C_call_code": "double SHC_rv =\t tutorial::Function5(\targ1,\t arg2);",
+                    "C_call_code": "double SHC_rv =\t tutorial::UseDefaultArguments(\targ1,\t arg2);",
                     "C_call_list": "arg1,\t arg2",
-                    "C_name": "TUT_function5_arg1_arg2",
+                    "C_name": "TUT_use_default_arguments_arg1_arg2",
                     "C_prototype": "double arg1,\t bool arg2",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
-                    "F_C_call": "c_function5_arg1_arg2",
-                    "F_C_name": "c_function5_arg1_arg2",
+                    "F_C_call": "c_use_default_arguments_arg1_arg2",
+                    "F_C_name": "c_use_default_arguments_arg1_arg2",
                     "F_arg_c_call": "arg1,\t SH_arg2",
                     "F_arguments": "arg1,\t arg2",
-                    "F_call_code": "SHT_rv = c_function5_arg1_arg2(arg1,\t SH_arg2)",
-                    "F_name_function": "function5_arg1_arg2",
-                    "F_name_generic": "function5",
-                    "F_name_impl": "function5_arg1_arg2",
+                    "F_call_code": "SHT_rv = c_use_default_arguments_arg1_arg2(arg1,\t SH_arg2)",
+                    "F_name_function": "use_default_arguments_arg1_arg2",
+                    "F_name_generic": "use_default_arguments",
+                    "F_name_impl": "use_default_arguments_arg1_arg2",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "LUA_name": "Function5",
-                    "LUA_name_impl": "l_function5",
-                    "PY_name_impl": "PY_Function5_arg1_arg2",
+                    "LUA_name": "UseDefaultArguments",
+                    "LUA_name_impl": "l_use_default_arguments",
+                    "PY_name_impl": "PY_UseDefaultArguments_arg1_arg2",
                     "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "Function5",
+                    "function_name": "UseDefaultArguments",
                     "function_suffix": "_arg1_arg2",
-                    "underscore_name": "function5"
+                    "underscore_name": "use_default_arguments"
                 },
                 "linenumber": 62,
                 "options": {}
