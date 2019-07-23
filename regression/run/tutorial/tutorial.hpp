@@ -50,7 +50,7 @@ void TemplateArgument(ArgType arg);
 
 // specialize for int and double in tutorial.cpp
 template<typename RetType>
-RetType Function8();
+RetType TemplateReturn();
 
 void Function9(double arg);
 

@@ -435,7 +435,7 @@ C++:
 .. code-block:: c++
 
   template<typename RetType>
-  RetType Function8()
+  RetType TemplateReturn()
   {
       return 0;
   }
@@ -444,7 +444,7 @@ YAML:
 
 .. code-block:: yaml
 
-  - decl: template<typename RetType> RetType Function8()
+  - decl: template<typename RetType> RetType TemplateReturn()
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>

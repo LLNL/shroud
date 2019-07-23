@@ -393,21 +393,21 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_template_argument_double
 
-        function c_function8_int() &
+        function c_template_return_int() &
                 result(SHT_rv) &
-                bind(C, name="TUT_function8_int")
+                bind(C, name="TUT_template_return_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_function8_int
+        end function c_template_return_int
 
-        function c_function8_double() &
+        function c_template_return_double() &
                 result(SHT_rv) &
-                bind(C, name="TUT_function8_double")
+                bind(C, name="TUT_template_return_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
-        end function c_function8_double
+        end function c_template_return_double
 
         subroutine c_function9(arg) &
                 bind(C, name="TUT_function9")
@@ -1045,27 +1045,27 @@ contains
         ! splicer end function.template_argument_double
     end subroutine template_argument_double
 
-    ! int Function8()
+    ! int TemplateReturn()
     ! cxx_template
-    function function8_int() &
+    function template_return_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.function8_int
-        SHT_rv = c_function8_int()
-        ! splicer end function.function8_int
-    end function function8_int
+        ! splicer begin function.template_return_int
+        SHT_rv = c_template_return_int()
+        ! splicer end function.template_return_int
+    end function template_return_int
 
-    ! double Function8()
+    ! double TemplateReturn()
     ! cxx_template
-    function function8_double() &
+    function template_return_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
-        ! splicer begin function.function8_double
-        SHT_rv = c_function8_double()
-        ! splicer end function.function8_double
-    end function function8_double
+        ! splicer begin function.template_return_double
+        SHT_rv = c_template_return_double()
+        ! splicer end function.template_return_double
+    end function template_return_double
 
     ! void Function9(float arg +intent(in)+value)
     ! fortran_generic

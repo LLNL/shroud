@@ -94,9 +94,9 @@ class Tutorial(unittest.TestCase):
         self.assertEqual(tutorial.LastFunctionCalled(), "TemplateArgument<double>")
 
         # return values set by calls to TemplateArgument
-        #rv = tutorial.Function8_int()
+        #rv = tutorial.TemplateReturn_int()
         #self.assertEqual(rv, 1)
-        #rv = tutorial.Function8_double()
+        #rv = tutorial.TemplateReturn_double()
         #self.assertEqual(rv, 10.0)
 
     def test_Function9(self):

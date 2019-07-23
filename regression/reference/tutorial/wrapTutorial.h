@@ -58,9 +58,9 @@ void TUT_template_argument_int(int arg);
 
 void TUT_template_argument_double(double arg);
 
-int TUT_function8_int();
+int TUT_template_return_int();
 
-double TUT_function8_double();
+double TUT_template_return_double();
 
 void TUT_function9(double arg);
 

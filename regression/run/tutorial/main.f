@@ -122,10 +122,10 @@ contains
          "TemplateArgument<double>")
 
     ! return values set by calls to function7
-    rv_integer = function8_int()
-    call assert_true(rv_integer == 1, "function8_int")
-    rv_double = function8_double()
-    call assert_true(rv_double == 10.d0, "function8_double")
+    rv_integer = template_return_int()
+    call assert_true(rv_integer == 1, "FunctionReturn<int>")
+    rv_double = template_return_double()
+    call assert_true(rv_double == 10.d0, "FunctionReturn<double>")
 
     call function9(1.0)
     call assert_true(.true., "function9 1")

@@ -80,7 +80,7 @@ declarations:
     - instantiation: <int>
     - instantiation: <double>
   
-  - decl: template<typename RetType> RetType Function8()
+  - decl: template<typename RetType> RetType TemplateReturn()
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>

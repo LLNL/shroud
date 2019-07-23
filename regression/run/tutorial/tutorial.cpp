@@ -81,16 +81,16 @@ void TemplateArgument<double>(double arg)
 }
 
 template<>
-int Function8<int>()
+int TemplateReturn<int>()
 {
-    last_function_called = "Function8<int>";
+    last_function_called = "TemplateReturn<int>";
     return global_int;
 }
 
 template<>
-double Function8<double>()
+double TemplateReturn<double>()
 {
-    last_function_called = "Function8<double>";
+    last_function_called = "TemplateReturn<double>";
     return global_double;
 }
 

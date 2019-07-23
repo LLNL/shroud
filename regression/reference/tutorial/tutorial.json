@@ -3314,7 +3314,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function8",
+                        "name": "TemplateReturn",
                         "pointer": []
                     },
                     "params": [],
@@ -3329,11 +3329,11 @@
                         "double"
                     ]
                 },
-                "decl": "template<typename RetType> RetType Function8()",
-                "declgen": "RetType Function8()",
+                "decl": "template<typename RetType> RetType TemplateReturn()",
+                "declgen": "RetType TemplateReturn()",
                 "fmtdict": {
-                    "function_name": "Function8",
-                    "underscore_name": "function8"
+                    "function_name": "TemplateReturn",
+                    "underscore_name": "template_return"
                 },
                 "have_template_args": true,
                 "linenumber": 83,
@@ -3392,7 +3392,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function8",
+                        "name": "TemplateReturn",
                         "pointer": []
                     },
                     "params": [],
@@ -3401,31 +3401,31 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "template<typename RetType> RetType Function8()",
-                "declgen": "int Function8()",
+                "decl": "template<typename RetType> RetType TemplateReturn()",
+                "declgen": "int TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<int>",
-                    "C_call_code": "int SHC_rv =\t tutorial::Function8<int>(\t);",
+                    "C_call_code": "int SHC_rv =\t tutorial::TemplateReturn<int>(\t);",
                     "C_call_list": "",
-                    "C_name": "TUT_function8_int",
+                    "C_name": "TUT_template_return_int",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_function8_int",
-                    "F_C_name": "c_function8_int",
+                    "F_C_call": "c_template_return_int",
+                    "F_C_name": "c_template_return_int",
                     "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_function8_int()",
-                    "F_name_function": "function8_int",
-                    "F_name_generic": "function8",
-                    "F_name_impl": "function8_int",
+                    "F_call_code": "SHT_rv = c_template_return_int()",
+                    "F_name_function": "template_return_int",
+                    "F_name_generic": "template_return",
+                    "F_name_impl": "template_return_int",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "Function8",
+                    "function_name": "TemplateReturn",
                     "template_suffix": "_int",
-                    "underscore_name": "function8"
+                    "underscore_name": "template_return"
                 },
                 "have_template_args": true,
                 "linenumber": 83,
@@ -3484,7 +3484,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function8",
+                        "name": "TemplateReturn",
                         "pointer": []
                     },
                     "params": [],
@@ -3493,31 +3493,31 @@
                     ],
                     "typemap_name": "double"
                 },
-                "decl": "template<typename RetType> RetType Function8()",
-                "declgen": "double Function8()",
+                "decl": "template<typename RetType> RetType TemplateReturn()",
+                "declgen": "double TemplateReturn()",
                 "fmtdict": {
                     "CXX_template": "<double>",
-                    "C_call_code": "double SHC_rv =\t tutorial::Function8<double>(\t);",
+                    "C_call_code": "double SHC_rv =\t tutorial::TemplateReturn<double>(\t);",
                     "C_call_list": "",
-                    "C_name": "TUT_function8_double",
+                    "C_name": "TUT_template_return_double",
                     "C_prototype": "",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "double",
-                    "F_C_call": "c_function8_double",
-                    "F_C_name": "c_function8_double",
+                    "F_C_call": "c_template_return_double",
+                    "F_C_name": "c_template_return_double",
                     "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_function8_double()",
-                    "F_name_function": "function8_double",
-                    "F_name_generic": "function8",
-                    "F_name_impl": "function8_double",
+                    "F_call_code": "SHT_rv = c_template_return_double()",
+                    "F_name_function": "template_return_double",
+                    "F_name_generic": "template_return",
+                    "F_name_impl": "template_return_double",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "Function8",
+                    "function_name": "TemplateReturn",
                     "template_suffix": "_double",
-                    "underscore_name": "function8"
+                    "underscore_name": "template_return"
                 },
                 "have_template_args": true,
                 "linenumber": 83,

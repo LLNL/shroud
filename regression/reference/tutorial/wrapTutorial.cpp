@@ -173,22 +173,22 @@ void TUT_template_argument_double(double arg)
 // splicer end function.template_argument_double
 }
 
-// int Function8()
-int TUT_function8_int()
+// int TemplateReturn()
+int TUT_template_return_int()
 {
-// splicer begin function.function8_int
-    int SHC_rv = tutorial::Function8<int>();
+// splicer begin function.template_return_int
+    int SHC_rv = tutorial::TemplateReturn<int>();
     return SHC_rv;
-// splicer end function.function8_int
+// splicer end function.template_return_int
 }
 
-// double Function8()
-double TUT_function8_double()
+// double TemplateReturn()
+double TUT_template_return_double()
 {
-// splicer begin function.function8_double
-    double SHC_rv = tutorial::Function8<double>();
+// splicer begin function.template_return_double
+    double SHC_rv = tutorial::TemplateReturn<double>();
     return SHC_rv;
-// splicer end function.function8_double
+// splicer end function.template_return_double
 }
 
 // void Function9(double arg +intent(in)+value)
