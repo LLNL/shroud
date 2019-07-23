@@ -23,10 +23,10 @@ of how the wrappers are created.
 All of these examples are derived from tests in the ``regression``
 directory.
 
+.. _example_NoReturnNoArguments:
+
 No Arguments
 ------------
-
-.. _example_NoReturnNoArguments:
 
 C library function:
 
@@ -1670,3 +1670,114 @@ Corresponding C++ code:
     tutorial::Class1 obj = new * tutorial::Class1;
     obj->m_test = 4;
     int iflag = obj->m_test;
+
+.. ############################################################
+
+.. _example_UseDefaultArguments:
+
+Default Value Arguments
+-----------------------
+
+The default values are provided in the function declaration.
+
+:file:`tutorial.hpp`:
+
+.. literalinclude:: ../regression/run/tutorial/tutorial.hpp
+   :language: c++
+   :start-after: start UseDefaultArguments
+   :end-before: end UseDefaultArguments
+
+YAML:
+
+.. code-block:: yaml
+
+  - decl: double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
+    default_arg_suffix:
+    -  
+    -  _arg1
+    -  _arg1_arg2
+
+A C++ wrapper is created which calls the C++ function with no arguments 
+with default values and then adds a wrapper with an explicit argument
+for each default value argument. In this case, three wrappers are created.
+Since the C++ compiler provides the default value, it is necessary to 
+create each wrapper.
+
+:file:`wrapTutorial.cpp`:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c++
+   :start-after: start TUT_use_default_arguments
+   :end-before: end TUT_use_default_arguments
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c++
+   :start-after: start TUT_use_default_arguments_arg1
+   :end-before: end TUT_use_default_arguments_arg1
+
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c++
+   :start-after: start TUT_use_default_arguments_arg1_arg2
+   :end-before: end TUT_use_default_arguments_arg1_arg2
+
+This creates three corresponding Fortran interfaces:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_use_default_arguments
+   :end-before: end c_use_default_arguments
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_use_default_arguments_arg1
+   :end-before: end c_use_default_arguments_arg1
+   :dedent: 8
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start c_use_default_arguments_arg1_arg2
+   :end-before: end c_use_default_arguments_arg1_arg2
+   :dedent: 8
+
+In many case the interfaces would be enought to call the routines.
+However, in order to have a generic interface, there must be
+explicit Fortran wrappers:
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start use_default_arguments
+   :end-before: end use_default_arguments
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start use_default_arguments_arg1
+   :end-before: end use_default_arguments_arg1
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start use_default_arguments_arg1_arg2
+   :end-before: end use_default_arguments_arg1_arg2
+   :dedent: 4
+
+The Fortran generic interface adds the ability to call any of the
+functions by the C++ function name:
+
+.. code-block:: fortran
+
+    interface use_default_arguments
+        module procedure use_default_arguments
+        module procedure use_default_arguments_arg1
+        module procedure use_default_arguments_arg1_arg2
+    end interface use_default_arguments
+
+Usage:
+
+.. code-block:: fortran
+
+    real(C_DOUBLE) rv
+    rv = use_default_arguments()
+    rv = use_default_arguments(1.d0)
+    rv = use_default_arguments(1.d0, .false.)

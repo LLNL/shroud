@@ -64,6 +64,8 @@ declarations:
     -  
     -  _arg1
     -  _arg1_arg2
+    options:
+      literalinclude: True
   
 # overloaded functions
   - decl: void OverloadedFunction(const std::string& name)

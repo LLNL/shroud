@@ -99,6 +99,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
 }
 
 // double UseDefaultArguments()
+// start TUT_use_default_arguments
 double TUT_use_default_arguments()
 {
 // splicer begin function.use_default_arguments
@@ -106,8 +107,10 @@ double TUT_use_default_arguments()
     return SHC_rv;
 // splicer end function.use_default_arguments
 }
+// end TUT_use_default_arguments
 
 // double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
+// start TUT_use_default_arguments_arg1
 double TUT_use_default_arguments_arg1(double arg1)
 {
 // splicer begin function.use_default_arguments_arg1
@@ -115,8 +118,10 @@ double TUT_use_default_arguments_arg1(double arg1)
     return SHC_rv;
 // splicer end function.use_default_arguments_arg1
 }
+// end TUT_use_default_arguments_arg1
 
 // double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// start TUT_use_default_arguments_arg1_arg2
 double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 {
 // splicer begin function.use_default_arguments_arg1_arg2
@@ -124,6 +129,7 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
     return SHC_rv;
 // splicer end function.use_default_arguments_arg1_arg2
 }
+// end TUT_use_default_arguments_arg1_arg2
 
 // void OverloadedFunction(const std::string & name +intent(in))
 void TUT_overloaded_function_from_name(const char * name)

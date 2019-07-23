@@ -308,6 +308,8 @@ Python usage:
      >>> tutorial.UseDefaultArguments(1.0, False)
      1.0
 
+The generated code is listed at
+:ref:`UseDefaultArguments <example_UseDefaultArguments>`.
 
 .. note :: Fortran's ``OPTIONAL`` attribute provides similar but
            different semantics.

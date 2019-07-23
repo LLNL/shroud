@@ -39,7 +39,9 @@ double PassByValue(double arg1, int arg2);
 
 const std::string  ConcatenateStrings(const std::string& arg1, const std::string& arg2);
 
+// start UseDefaultArguments
 double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true);
+// end UseDefaultArguments
 
 void OverloadedFunction(const std::string& name);
 void OverloadedFunction(int indx);

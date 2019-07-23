@@ -329,6 +329,7 @@ module tutorial_mod
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_concatenate_strings_bufferify
 
+        ! start c_use_default_arguments
         function c_use_default_arguments() &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_arguments")
@@ -336,7 +337,9 @@ module tutorial_mod
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments
+        ! end c_use_default_arguments
 
+        ! start c_use_default_arguments_arg1
         function c_use_default_arguments_arg1(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_arguments_arg1")
@@ -345,7 +348,9 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg1
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments_arg1
+        ! end c_use_default_arguments_arg1
 
+        ! start c_use_default_arguments_arg1_arg2
         function c_use_default_arguments_arg1_arg2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_arguments_arg1_arg2")
@@ -355,6 +360,7 @@ module tutorial_mod
             logical(C_BOOL), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments_arg1_arg2
+        ! end c_use_default_arguments_arg1_arg2
 
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_overloaded_function_from_name")
@@ -972,6 +978,7 @@ contains
 
     ! double UseDefaultArguments()
     ! has_default_arg
+    ! start use_default_arguments
     function use_default_arguments() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -980,9 +987,11 @@ contains
         SHT_rv = c_use_default_arguments()
         ! splicer end function.use_default_arguments
     end function use_default_arguments
+    ! end use_default_arguments
 
     ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
+    ! start use_default_arguments_arg1
     function use_default_arguments_arg1(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -992,8 +1001,10 @@ contains
         SHT_rv = c_use_default_arguments_arg1(arg1)
         ! splicer end function.use_default_arguments_arg1
     end function use_default_arguments_arg1
+    ! end use_default_arguments_arg1
 
     ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+    ! start use_default_arguments_arg1_arg2
     function use_default_arguments_arg1_arg2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
@@ -1006,6 +1017,7 @@ contains
         SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SH_arg2)
         ! splicer end function.use_default_arguments_arg1_arg2
     end function use_default_arguments_arg1_arg2
+    ! end use_default_arguments_arg1_arg2
 
     ! void OverloadedFunction(const std::string & name +intent(in))
     ! arg_to_buffer
