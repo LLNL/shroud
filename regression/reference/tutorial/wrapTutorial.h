@@ -71,17 +71,19 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2);
 void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
     int Lname, double arg2);
 
-int TUT_overload1_num(int num);
+int TUT_use_default_overload_num(int num);
 
-int TUT_overload1_num_offset(int num, int offset);
+int TUT_use_default_overload_num_offset(int num, int offset);
 
-int TUT_overload1_num_offset_stride(int num, int offset, int stride);
+int TUT_use_default_overload_num_offset_stride(int num, int offset,
+    int stride);
 
-int TUT_overload1_3(double type, int num);
+int TUT_use_default_overload_3(double type, int num);
 
-int TUT_overload1_4(double type, int num, int offset);
+int TUT_use_default_overload_4(double type, int num, int offset);
 
-int TUT_overload1_5(double type, int num, int offset, int stride);
+int TUT_use_default_overload_5(double type, int num, int offset,
+    int stride);
 
 int TUT_typefunc(int arg);
 

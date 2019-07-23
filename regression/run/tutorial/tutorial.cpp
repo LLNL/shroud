@@ -114,19 +114,19 @@ void FortranGenericOverloaded(const std::string &name, double arg2)
 }
 
 // default values and overloaded
-// int overload1(int num, int offset = 0, int stride = 1);
-int overload1(int num, int offset, int stride)
+// int UseDefaultOverload(int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(int num, int offset, int stride)
 {
-    last_function_called = "overload1_0";
+    last_function_called = "UseDefaultOverload_0";
     return num + offset * stride;
     
 }
 
 // default values and overloaded
-// int overload1(double type, int num, int offset = 0, int stride = 1);
-int overload1(double type, int num, int offset, int stride)
+// int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(double type, int num, int offset, int stride)
 {
-    last_function_called = "overload1_1";
+    last_function_called = "UseDefaultOverload_1";
     global_double = type;
     return num + offset * stride;
 }

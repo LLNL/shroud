@@ -4272,7 +4272,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "overload1",
+                        "name": "UseDefaultOverload",
                         "pointer": []
                     },
                     "params": [
@@ -4296,35 +4296,35 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int overload1(int num, int offset = 0, int stride = 1)",
-                "declgen": "int overload1(int num +intent(in)+value)",
+                "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
+                "declgen": "int UseDefaultOverload(int num +intent(in)+value)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\tnum);",
+                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum);",
                     "C_call_list": "num",
-                    "C_name": "TUT_overload1_num",
+                    "C_name": "TUT_use_default_overload_num",
                     "C_prototype": "int num",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_overload1_num",
-                    "F_C_name": "c_overload1_num",
+                    "F_C_call": "c_use_default_overload_num",
+                    "F_C_name": "c_use_default_overload_num",
                     "F_arg_c_call": "num",
                     "F_arguments": "num",
-                    "F_call_code": "SHT_rv = c_overload1_num(num)",
-                    "F_name_function": "overload1_num",
-                    "F_name_generic": "overload1",
-                    "F_name_impl": "overload1_num",
+                    "F_call_code": "SHT_rv = c_use_default_overload_num(num)",
+                    "F_name_function": "use_default_overload_num",
+                    "F_name_generic": "use_default_overload",
+                    "F_name_impl": "use_default_overload_num",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "overload1",
+                    "function_name": "UseDefaultOverload",
                     "function_suffix": "_num",
-                    "underscore_name": "overload1"
+                    "underscore_name": "use_default_overload"
                 },
                 "linenumber": 129,
                 "options": {
@@ -4391,7 +4391,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "overload1",
+                        "name": "UseDefaultOverload",
                         "pointer": []
                     },
                     "params": [
@@ -4430,35 +4430,35 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int overload1(int num, int offset = 0, int stride = 1)",
-                "declgen": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)",
+                "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
+                "declgen": "int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\tnum,\t offset);",
+                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum,\t offset);",
                     "C_call_list": "num,\t offset",
-                    "C_name": "TUT_overload1_num_offset",
+                    "C_name": "TUT_use_default_overload_num_offset",
                     "C_prototype": "int num,\t int offset",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_overload1_num_offset",
-                    "F_C_name": "c_overload1_num_offset",
+                    "F_C_call": "c_use_default_overload_num_offset",
+                    "F_C_name": "c_use_default_overload_num_offset",
                     "F_arg_c_call": "num,\t offset",
                     "F_arguments": "num,\t offset",
-                    "F_call_code": "SHT_rv = c_overload1_num_offset(num,\t offset)",
-                    "F_name_function": "overload1_num_offset",
-                    "F_name_generic": "overload1",
-                    "F_name_impl": "overload1_num_offset",
+                    "F_call_code": "SHT_rv = c_use_default_overload_num_offset(num,\t offset)",
+                    "F_name_function": "use_default_overload_num_offset",
+                    "F_name_generic": "use_default_overload",
+                    "F_name_impl": "use_default_overload_num_offset",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "overload1",
+                    "function_name": "UseDefaultOverload",
                     "function_suffix": "_num_offset",
-                    "underscore_name": "overload1"
+                    "underscore_name": "use_default_overload"
                 },
                 "linenumber": 129,
                 "options": {
@@ -4645,7 +4645,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "overload1",
+                        "name": "UseDefaultOverload",
                         "pointer": []
                     },
                     "params": [
@@ -4699,38 +4699,38 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int overload1(int num, int offset = 0, int stride = 1)",
-                "declgen": "int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
+                "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
+                "declgen": "int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
                     "_num_offset_stride"
                 ],
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\tnum,\t offset,\t stride);",
+                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\tnum,\t offset,\t stride);",
                     "C_call_list": "num,\t offset,\t stride",
-                    "C_name": "TUT_overload1_num_offset_stride",
+                    "C_name": "TUT_use_default_overload_num_offset_stride",
                     "C_prototype": "int num,\t int offset,\t int stride",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_overload1_num_offset_stride",
-                    "F_C_name": "c_overload1_num_offset_stride",
+                    "F_C_call": "c_use_default_overload_num_offset_stride",
+                    "F_C_name": "c_use_default_overload_num_offset_stride",
                     "F_arg_c_call": "num,\t offset,\t stride",
                     "F_arguments": "num,\t offset,\t stride",
-                    "F_call_code": "SHT_rv = c_overload1_num_offset_stride(num,\t offset,\t stride)",
-                    "F_name_function": "overload1_num_offset_stride",
-                    "F_name_generic": "overload1",
-                    "F_name_impl": "overload1_num_offset_stride",
+                    "F_call_code": "SHT_rv = c_use_default_overload_num_offset_stride(num,\t offset,\t stride)",
+                    "F_name_function": "use_default_overload_num_offset_stride",
+                    "F_name_generic": "use_default_overload",
+                    "F_name_impl": "use_default_overload_num_offset_stride",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "LUA_name": "overload1",
-                    "LUA_name_impl": "l_overload1",
-                    "PY_name_impl": "PY_overload1_num_offset_stride",
+                    "LUA_name": "UseDefaultOverload",
+                    "LUA_name_impl": "l_use_default_overload",
+                    "PY_name_impl": "PY_UseDefaultOverload_num_offset_stride",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "overload1",
+                    "function_name": "UseDefaultOverload",
                     "function_suffix": "_num_offset_stride",
-                    "underscore_name": "overload1"
+                    "underscore_name": "use_default_overload"
                 },
                 "linenumber": 129,
                 "options": {}
@@ -4792,7 +4792,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "overload1",
+                        "name": "UseDefaultOverload",
                         "pointer": []
                     },
                     "params": [
@@ -4830,30 +4830,30 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value)",
+                "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
+                "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\ttype,\t num);",
+                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num);",
                     "C_call_list": "type,\t num",
-                    "C_name": "TUT_overload1_3",
+                    "C_name": "TUT_use_default_overload_3",
                     "C_prototype": "double type,\t int num",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_overload1_3",
-                    "F_C_name": "c_overload1_3",
+                    "F_C_call": "c_use_default_overload_3",
+                    "F_C_name": "c_use_default_overload_3",
                     "F_arg_c_call": "type,\t num",
                     "F_arguments": "type,\t num",
-                    "F_call_code": "SHT_rv = c_overload1_3(type,\t num)",
-                    "F_name_function": "overload1_3",
-                    "F_name_generic": "overload1",
-                    "F_name_impl": "overload1_3",
+                    "F_call_code": "SHT_rv = c_use_default_overload_3(type,\t num)",
+                    "F_name_function": "use_default_overload_3",
+                    "F_name_generic": "use_default_overload",
+                    "F_name_impl": "use_default_overload_3",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "overload1",
+                    "function_name": "UseDefaultOverload",
                     "function_suffix": "_3",
-                    "underscore_name": "overload1"
+                    "underscore_name": "use_default_overload"
                 },
                 "linenumber": 135,
                 "options": {
@@ -4938,7 +4938,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "overload1",
+                        "name": "UseDefaultOverload",
                         "pointer": []
                     },
                     "params": [
@@ -4991,30 +4991,30 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)",
+                "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
+                "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\ttype,\t num,\t offset);",
+                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num,\t offset);",
                     "C_call_list": "type,\t num,\t offset",
-                    "C_name": "TUT_overload1_4",
+                    "C_name": "TUT_use_default_overload_4",
                     "C_prototype": "double type,\t int num,\t int offset",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_overload1_4",
-                    "F_C_name": "c_overload1_4",
+                    "F_C_call": "c_use_default_overload_4",
+                    "F_C_name": "c_use_default_overload_4",
                     "F_arg_c_call": "type,\t num,\t offset",
                     "F_arguments": "type,\t num,\t offset",
-                    "F_call_code": "SHT_rv = c_overload1_4(type,\t num,\t offset)",
-                    "F_name_function": "overload1_4",
-                    "F_name_generic": "overload1",
-                    "F_name_impl": "overload1_4",
+                    "F_call_code": "SHT_rv = c_use_default_overload_4(type,\t num,\t offset)",
+                    "F_name_function": "use_default_overload_4",
+                    "F_name_generic": "use_default_overload",
+                    "F_name_impl": "use_default_overload_4",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "overload1",
+                    "function_name": "UseDefaultOverload",
                     "function_suffix": "_4",
-                    "underscore_name": "overload1"
+                    "underscore_name": "use_default_overload"
                 },
                 "linenumber": 135,
                 "options": {
@@ -5245,7 +5245,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "overload1",
+                        "name": "UseDefaultOverload",
                         "pointer": []
                     },
                     "params": [
@@ -5313,31 +5313,31 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int overload1(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
+                "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
+                "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "int SHC_rv =\t tutorial::overload1(\ttype,\t num,\t offset,\t stride);",
+                    "C_call_code": "int SHC_rv =\t tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride);",
                     "C_call_list": "type,\t num,\t offset,\t stride",
-                    "C_name": "TUT_overload1_5",
+                    "C_name": "TUT_use_default_overload_5",
                     "C_prototype": "double type,\t int num,\t int offset,\t int stride",
                     "C_return_code": "return SHC_rv;",
                     "C_return_type": "int",
-                    "F_C_call": "c_overload1_5",
-                    "F_C_name": "c_overload1_5",
+                    "F_C_call": "c_use_default_overload_5",
+                    "F_C_name": "c_use_default_overload_5",
                     "F_arg_c_call": "type,\t num,\t offset,\t stride",
                     "F_arguments": "type,\t num,\t offset,\t stride",
-                    "F_call_code": "SHT_rv = c_overload1_5(type,\t num,\t offset,\t stride)",
-                    "F_name_function": "overload1_5",
-                    "F_name_generic": "overload1",
-                    "F_name_impl": "overload1_5",
+                    "F_call_code": "SHT_rv = c_use_default_overload_5(type,\t num,\t offset,\t stride)",
+                    "F_name_function": "use_default_overload_5",
+                    "F_name_generic": "use_default_overload",
+                    "F_name_impl": "use_default_overload_5",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "PY_name_impl": "PY_overload1_5",
+                    "PY_name_impl": "PY_UseDefaultOverload_5",
                     "c_const": "",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "overload1",
+                    "function_name": "UseDefaultOverload",
                     "function_suffix": "_5",
-                    "underscore_name": "overload1"
+                    "underscore_name": "use_default_overload"
                 },
                 "linenumber": 135,
                 "options": {}

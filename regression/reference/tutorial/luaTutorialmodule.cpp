@@ -316,11 +316,11 @@ static int l_fortran_generic_overloaded(lua_State *L)
     // splicer end function.FortranGenericOverloaded
 }
 
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-static int l_overload1(lua_State *L)
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+static int l_use_default_overload(lua_State *L)
 {
-    // splicer begin function.overload1
+    // splicer begin function.UseDefaultOverload
     int SH_nresult = 0;
     int SH_nargs = lua_gettop(L);
     int SH_itype1 = lua_type(L, 1);
@@ -331,7 +331,7 @@ static int l_overload1(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             int num = lua_tointeger(L, 1);
-            int SHCXX_rv = tutorial::overload1(num);
+            int SHCXX_rv = tutorial::UseDefaultOverload(num);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -344,7 +344,7 @@ static int l_overload1(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             int num = lua_tointeger(L, 1);
             int offset = lua_tointeger(L, 2);
-            int SHCXX_rv = tutorial::overload1(num, offset);
+            int SHCXX_rv = tutorial::UseDefaultOverload(num, offset);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -352,7 +352,7 @@ static int l_overload1(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             double type = lua_tonumber(L, 1);
             int num = lua_tointeger(L, 2);
-            int SHCXX_rv = tutorial::overload1(type, num);
+            int SHCXX_rv = tutorial::UseDefaultOverload(type, num);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -367,7 +367,8 @@ static int l_overload1(lua_State *L)
             int num = lua_tointeger(L, 1);
             int offset = lua_tointeger(L, 2);
             int stride = lua_tointeger(L, 3);
-            int SHCXX_rv = tutorial::overload1(num, offset, stride);
+            int SHCXX_rv = tutorial::UseDefaultOverload(num, offset,
+                stride);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -377,7 +378,8 @@ static int l_overload1(lua_State *L)
             double type = lua_tonumber(L, 1);
             int num = lua_tointeger(L, 2);
             int offset = lua_tointeger(L, 3);
-            int SHCXX_rv = tutorial::overload1(type, num, offset);
+            int SHCXX_rv = tutorial::UseDefaultOverload(type, num,
+                offset);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -394,8 +396,8 @@ static int l_overload1(lua_State *L)
             int num = lua_tointeger(L, 2);
             int offset = lua_tointeger(L, 3);
             int stride = lua_tointeger(L, 4);
-            int SHCXX_rv = tutorial::overload1(type, num, offset,
-                stride);
+            int SHCXX_rv = tutorial::UseDefaultOverload(type, num,
+                offset, stride);
             lua_pushinteger(L, SHCXX_rv);
             SH_nresult = 1;
         }
@@ -408,7 +410,7 @@ static int l_overload1(lua_State *L)
         break;
     }
     return SH_nresult;
-    // splicer end function.overload1
+    // splicer end function.UseDefaultOverload
 }
 
 // TypeID typefunc(TypeID arg +intent(in)+value)
@@ -501,7 +503,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"TemplateArgument", l_template_argument},
     {"FortranGeneric", l_fortran_generic},
     {"FortranGenericOverloaded", l_fortran_generic_overloaded},
-    {"overload1", l_overload1},
+    {"UseDefaultOverload", l_use_default_overload},
     {"typefunc", l_typefunc},
     {"enumfunc", l_enumfunc},
     {"colorfunc", l_colorfunc},

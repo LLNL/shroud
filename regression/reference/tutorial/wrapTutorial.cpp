@@ -230,58 +230,61 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
 // splicer end function.fortran_generic_overloaded_1_bufferify
 }
 
-// int overload1(int num +intent(in)+value)
-int TUT_overload1_num(int num)
+// int UseDefaultOverload(int num +intent(in)+value)
+int TUT_use_default_overload_num(int num)
 {
-// splicer begin function.overload1_num
-    int SHC_rv = tutorial::overload1(num);
+// splicer begin function.use_default_overload_num
+    int SHC_rv = tutorial::UseDefaultOverload(num);
     return SHC_rv;
-// splicer end function.overload1_num
+// splicer end function.use_default_overload_num
 }
 
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
-int TUT_overload1_num_offset(int num, int offset)
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)
+int TUT_use_default_overload_num_offset(int num, int offset)
 {
-// splicer begin function.overload1_num_offset
-    int SHC_rv = tutorial::overload1(num, offset);
+// splicer begin function.use_default_overload_num_offset
+    int SHC_rv = tutorial::UseDefaultOverload(num, offset);
     return SHC_rv;
-// splicer end function.overload1_num_offset
+// splicer end function.use_default_overload_num_offset
 }
 
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-int TUT_overload1_num_offset_stride(int num, int offset, int stride)
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+int TUT_use_default_overload_num_offset_stride(int num, int offset,
+    int stride)
 {
-// splicer begin function.overload1_num_offset_stride
-    int SHC_rv = tutorial::overload1(num, offset, stride);
+// splicer begin function.use_default_overload_num_offset_stride
+    int SHC_rv = tutorial::UseDefaultOverload(num, offset, stride);
     return SHC_rv;
-// splicer end function.overload1_num_offset_stride
+// splicer end function.use_default_overload_num_offset_stride
 }
 
-// int overload1(double type +intent(in)+value, int num +intent(in)+value)
-int TUT_overload1_3(double type, int num)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)
+int TUT_use_default_overload_3(double type, int num)
 {
-// splicer begin function.overload1_3
-    int SHC_rv = tutorial::overload1(type, num);
+// splicer begin function.use_default_overload_3
+    int SHC_rv = tutorial::UseDefaultOverload(type, num);
     return SHC_rv;
-// splicer end function.overload1_3
+// splicer end function.use_default_overload_3
 }
 
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
-int TUT_overload1_4(double type, int num, int offset)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
+int TUT_use_default_overload_4(double type, int num, int offset)
 {
-// splicer begin function.overload1_4
-    int SHC_rv = tutorial::overload1(type, num, offset);
+// splicer begin function.use_default_overload_4
+    int SHC_rv = tutorial::UseDefaultOverload(type, num, offset);
     return SHC_rv;
-// splicer end function.overload1_4
+// splicer end function.use_default_overload_4
 }
 
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-int TUT_overload1_5(double type, int num, int offset, int stride)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+int TUT_use_default_overload_5(double type, int num, int offset,
+    int stride)
 {
-// splicer begin function.overload1_5
-    int SHC_rv = tutorial::overload1(type, num, offset, stride);
+// splicer begin function.use_default_overload_5
+    int SHC_rv = tutorial::UseDefaultOverload(type, num, offset,
+        stride);
     return SHC_rv;
-// splicer end function.overload1_5
+// splicer end function.use_default_overload_5
 }
 
 // TypeID typefunc(TypeID arg +intent(in)+value)

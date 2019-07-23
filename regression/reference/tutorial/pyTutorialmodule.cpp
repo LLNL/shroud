@@ -339,13 +339,13 @@ PY_FortranGenericOverloaded_1(
 }
 
 static PyObject *
-PY_overload1_num_offset_stride(
+PY_UseDefaultOverload_num_offset_stride(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// splicer begin function.overload1_num_offset_stride
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// splicer begin function.use_default_overload_num_offset_stride
     Py_ssize_t SH_nargs = 0;
     int num;
     int offset;
@@ -360,18 +360,19 @@ PY_overload1_num_offset_stride(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1",
-        const_cast<char **>(SHT_kwlist), &num, &offset, &stride))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "i|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
+        &num, &offset, &stride))
         return NULL;
     switch (SH_nargs) {
     case 1:
-        rv = tutorial::overload1(num);
+        rv = tutorial::UseDefaultOverload(num);
         break;
     case 2:
-        rv = tutorial::overload1(num, offset);
+        rv = tutorial::UseDefaultOverload(num, offset);
         break;
     case 3:
-        rv = tutorial::overload1(num, offset, stride);
+        rv = tutorial::UseDefaultOverload(num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -382,17 +383,17 @@ PY_overload1_num_offset_stride(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.overload1_num_offset_stride
+// splicer end function.use_default_overload_num_offset_stride
 }
 
 static PyObject *
-PY_overload1_5(
+PY_UseDefaultOverload_5(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// splicer begin function.overload1_5
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// splicer begin function.use_default_overload_5
     Py_ssize_t SH_nargs = 0;
     double type;
     int num;
@@ -409,18 +410,19 @@ PY_overload1_5(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1",
-        const_cast<char **>(SHT_kwlist), &type, &num, &offset, &stride))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "di|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
+        &type, &num, &offset, &stride))
         return NULL;
     switch (SH_nargs) {
     case 2:
-        rv = tutorial::overload1(type, num);
+        rv = tutorial::UseDefaultOverload(type, num);
         break;
     case 3:
-        rv = tutorial::overload1(type, num, offset);
+        rv = tutorial::UseDefaultOverload(type, num, offset);
         break;
     case 4:
-        rv = tutorial::overload1(type, num, offset, stride);
+        rv = tutorial::UseDefaultOverload(type, num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -431,7 +433,7 @@ PY_overload1_5(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.overload1_5
+// splicer end function.use_default_overload_5
 }
 
 static char PY_typefunc__doc__[] =
@@ -877,23 +879,23 @@ PY_FortranGenericOverloaded(
 // splicer end function.fortran_generic_overloaded
 }
 
-static char PY_overload1__doc__[] =
+static char PY_UseDefaultOverload__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_overload1(
+PY_UseDefaultOverload(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.overload1
+// splicer begin function.use_default_overload
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs >= 1 && SHT_nargs <= 3) {
-        rvobj = PY_overload1_num_offset_stride(self, args, kwds);
+        rvobj = PY_UseDefaultOverload_num_offset_stride(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -902,7 +904,7 @@ PY_overload1(
         PyErr_Clear();
     }
     if (SHT_nargs >= 2 && SHT_nargs <= 4) {
-        rvobj = PY_overload1_5(self, args, kwds);
+        rvobj = PY_UseDefaultOverload_5(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -912,7 +914,7 @@ PY_overload1(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.overload1
+// splicer end function.use_default_overload
 }
 static PyMethodDef PY_methods[] = {
 {"NoReturnNoArguments", (PyCFunction)PY_NoReturnNoArguments,
@@ -954,8 +956,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_TemplateArgument__doc__},
 {"FortranGenericOverloaded", (PyCFunction)PY_FortranGenericOverloaded,
     METH_VARARGS|METH_KEYWORDS, PY_FortranGenericOverloaded__doc__},
-{"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
-    PY_overload1__doc__},
+{"UseDefaultOverload", (PyCFunction)PY_UseDefaultOverload,
+    METH_VARARGS|METH_KEYWORDS, PY_UseDefaultOverload__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

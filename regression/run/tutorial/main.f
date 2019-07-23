@@ -139,15 +139,15 @@ contains
     call fortran_generic_overloaded("bar", 2.0d0)
     call assert_true(.true., "FortranGenericOverloaded 3")
 
-    rv_int = overload1(10)
-    call assert_true(rv_int .eq. 10, "overload1 1")
-    rv_int = overload1(1.0d0, 10)
-    call assert_true(rv_int .eq. 10, "overload1 2")
+    rv_int = use_default_overload(10)
+    call assert_true(rv_int .eq. 10, "UseDefaultOverload 1")
+    rv_int = use_default_overload(1.0d0, 10)
+    call assert_true(rv_int .eq. 10, "UseDefaultOverload 2")
 
-    rv_int = overload1(10, 11, 12)
-    call assert_true(rv_int .eq. 142, "overload1 3")
-    rv_int = overload1(1.0d0, 10, 11, 12)
-    call assert_true(rv_int .eq. 142, "overload1 4")
+    rv_int = use_default_overload(10, 11, 12)
+    call assert_true(rv_int .eq. 142, "UseDefaultOverload 3")
+    rv_int = use_default_overload(1.0d0, 10, 11, 12)
+    call assert_true(rv_int .eq. 142, "UseDefaultOverload 4")
 
     rv_int = typefunc(2)
     call assert_true(rv_int .eq. 2, "typefunc")

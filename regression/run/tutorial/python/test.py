@@ -110,15 +110,15 @@ class Tutorial(unittest.TestCase):
         tutorial.FortranGenericOverloaded("foo", 1.0)
         tutorial.FortranGenericOverloaded("bar", 1.0)
 
-    def test_overload1(self):
-        self.assertEqual(10, tutorial.overload1(10))
-        self.assertEqual(10, tutorial.overload1(1., 10))
+    def test_UseDefaultOverload(self):
+        self.assertEqual(10, tutorial.UseDefaultOverload(10))
+        self.assertEqual(10, tutorial.UseDefaultOverload(1., 10))
 
-        self.assertEqual(142, tutorial.overload1(10,11,12))
-        self.assertEqual(142, tutorial.overload1(1., 10,11,12))
+        self.assertEqual(142, tutorial.UseDefaultOverload(10,11,12))
+        self.assertEqual(142, tutorial.UseDefaultOverload(1., 10,11,12))
 
-        self.assertRaises(TypeError, tutorial.overload1, 1.0)
-        self.assertRaises(TypeError, tutorial.overload1, "dog")
+        self.assertRaises(TypeError, tutorial.UseDefaultOverload, 1.0)
+        self.assertRaises(TypeError, tutorial.UseDefaultOverload, "dog")
         
     def test_typefunc(self):
         self.assertEqual(2, tutorial.typefunc(2))

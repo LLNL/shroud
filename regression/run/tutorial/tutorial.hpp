@@ -57,8 +57,8 @@ void FortranGeneric(double arg);
 void FortranGenericOverloaded();
 void FortranGenericOverloaded(const std::string &name, double arg2);
 
-int overload1(int num, int offset = 0, int stride = 1);
-int overload1(double type, int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1);
 
 TypeID typefunc(TypeID arg);
 

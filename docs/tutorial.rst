@@ -369,20 +369,20 @@ Overloaded function that have optional arguments can also be wrapped:
 
 .. code-block:: yaml
 
-  - decl: int overload1(int num,
+  - decl: int UseDefaultOverload(int num,
             int offset = 0, int stride = 1)
-  - decl: int overload1(double type, int num,
+  - decl: int UseDefaultOverload(double type, int num,
             int offset = 0, int stride = 1)
 
 These routines can then be called as:
 
 .. code-block:: fortran
 
-    rv = overload1(10)
-    rv = overload1(1d0, 10)
+    rv = use_default_overload(10)
+    rv = use_default_overload(1d0, 10)
 
-    rv = overload1(10, 11, 12)
-    rv = overload1(1d0, 10, 11, 12)
+    rv = use_default_overload(10, 11, 12)
+    rv = use_default_overload(1d0, 10, 11, 12)
 
 Templates
 ---------

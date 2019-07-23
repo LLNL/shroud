@@ -439,60 +439,61 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1_bufferify
 
-        function c_overload1_num(num) &
+        function c_use_default_overload_num(num) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_num")
+                bind(C, name="TUT_use_default_overload_num")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
-        end function c_overload1_num
+        end function c_use_default_overload_num
 
-        function c_overload1_num_offset(num, offset) &
+        function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_num_offset")
+                bind(C, name="TUT_use_default_overload_num_offset")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT) :: SHT_rv
-        end function c_overload1_num_offset
+        end function c_use_default_overload_num_offset
 
-        function c_overload1_num_offset_stride(num, offset, stride) &
+        function c_use_default_overload_num_offset_stride(num, offset, &
+                stride) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_num_offset_stride")
+                bind(C, name="TUT_use_default_overload_num_offset_stride")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT), value, intent(IN) :: stride
             integer(C_INT) :: SHT_rv
-        end function c_overload1_num_offset_stride
+        end function c_use_default_overload_num_offset_stride
 
-        function c_overload1_3(type, num) &
+        function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_3")
+                bind(C, name="TUT_use_default_overload_3")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
-        end function c_overload1_3
+        end function c_use_default_overload_3
 
-        function c_overload1_4(type, num, offset) &
+        function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_4")
+                bind(C, name="TUT_use_default_overload_4")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT) :: SHT_rv
-        end function c_overload1_4
+        end function c_use_default_overload_4
 
-        function c_overload1_5(type, num, offset, stride) &
+        function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_5")
+                bind(C, name="TUT_use_default_overload_5")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
@@ -500,7 +501,7 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT), value, intent(IN) :: stride
             integer(C_INT) :: SHT_rv
-        end function c_overload1_5
+        end function c_use_default_overload_5
 
         function typefunc(arg) &
                 result(SHT_rv) &
@@ -664,15 +665,6 @@ module tutorial_mod
         module procedure fortran_generic_overloaded_1_double
     end interface fortran_generic_overloaded
 
-    interface overload1
-        module procedure overload1_num
-        module procedure overload1_num_offset
-        module procedure overload1_num_offset_stride
-        module procedure overload1_3
-        module procedure overload1_4
-        module procedure overload1_5
-    end interface overload1
-
     interface overloaded_function
         module procedure overloaded_function_from_name
         module procedure overloaded_function_from_index
@@ -688,6 +680,15 @@ module tutorial_mod
         module procedure use_default_arguments_arg1
         module procedure use_default_arguments_arg1_arg2
     end interface use_default_arguments
+
+    interface use_default_overload
+        module procedure use_default_overload_num
+        module procedure use_default_overload_num_offset
+        module procedure use_default_overload_num_offset_stride
+        module procedure use_default_overload_3
+        module procedure use_default_overload_4
+        module procedure use_default_overload_5
+    end interface use_default_overload
 
     interface
         ! helper function
@@ -1119,73 +1120,74 @@ contains
         ! splicer end function.fortran_generic_overloaded_1_double
     end subroutine fortran_generic_overloaded_1_double
 
-    ! int overload1(int num +intent(in)+value)
+    ! int UseDefaultOverload(int num +intent(in)+value)
     ! has_default_arg
-    function overload1_num(num) &
+    function use_default_overload_num(num) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_num
-        SHT_rv = c_overload1_num(num)
-        ! splicer end function.overload1_num
-    end function overload1_num
+        ! splicer begin function.use_default_overload_num
+        SHT_rv = c_use_default_overload_num(num)
+        ! splicer end function.use_default_overload_num
+    end function use_default_overload_num
 
-    ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
+    ! int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    function overload1_num_offset(num, offset) &
+    function use_default_overload_num_offset(num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_num_offset
-        SHT_rv = c_overload1_num_offset(num, offset)
-        ! splicer end function.overload1_num_offset
-    end function overload1_num_offset
+        ! splicer begin function.use_default_overload_num_offset
+        SHT_rv = c_use_default_overload_num_offset(num, offset)
+        ! splicer end function.use_default_overload_num_offset
+    end function use_default_overload_num_offset
 
-    ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-    function overload1_num_offset_stride(num, offset, stride) &
+    ! int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+    function use_default_overload_num_offset_stride(num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT), value, intent(IN) :: stride
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_num_offset_stride
-        SHT_rv = c_overload1_num_offset_stride(num, offset, stride)
-        ! splicer end function.overload1_num_offset_stride
-    end function overload1_num_offset_stride
+        ! splicer begin function.use_default_overload_num_offset_stride
+        SHT_rv = c_use_default_overload_num_offset_stride(num, offset, &
+            stride)
+        ! splicer end function.use_default_overload_num_offset_stride
+    end function use_default_overload_num_offset_stride
 
-    ! int overload1(double type +intent(in)+value, int num +intent(in)+value)
+    ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)
     ! has_default_arg
-    function overload1_3(type, num) &
+    function use_default_overload_3(type, num) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_3
-        SHT_rv = c_overload1_3(type, num)
-        ! splicer end function.overload1_3
-    end function overload1_3
+        ! splicer begin function.use_default_overload_3
+        SHT_rv = c_use_default_overload_3(type, num)
+        ! splicer end function.use_default_overload_3
+    end function use_default_overload_3
 
-    ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
+    ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    function overload1_4(type, num, offset) &
+    function use_default_overload_4(type, num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_4
-        SHT_rv = c_overload1_4(type, num, offset)
-        ! splicer end function.overload1_4
-    end function overload1_4
+        ! splicer begin function.use_default_overload_4
+        SHT_rv = c_use_default_overload_4(type, num, offset)
+        ! splicer end function.use_default_overload_4
+    end function use_default_overload_4
 
-    ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-    function overload1_5(type, num, offset, stride) &
+    ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+    function use_default_overload_5(type, num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
@@ -1193,10 +1195,10 @@ contains
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT), value, intent(IN) :: stride
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_5
-        SHT_rv = c_overload1_5(type, num, offset, stride)
-        ! splicer end function.overload1_5
-    end function overload1_5
+        ! splicer begin function.use_default_overload_5
+        SHT_rv = c_use_default_overload_5(type, num, offset, stride)
+        ! splicer end function.use_default_overload_5
+    end function use_default_overload_5
 
     ! void passClassByValue(Class1 arg +intent(in)+value)
     !>

@@ -125,14 +125,14 @@ declarations:
        - float
        - double
   
-# overload with optional
-  - decl: int overload1(int num,
+# overload with default values
+  - decl: int UseDefaultOverload(int num,
             int offset = 0, int stride = 1)
     default_arg_suffix:
     - _num
     - _num_offset
     - _num_offset_stride
-  - decl: int overload1(double type, int num,
+  - decl: int UseDefaultOverload(double type, int num,
             int offset = 0, int stride = 1)
   
 # test F_string_result_as_arg and optional arguments
