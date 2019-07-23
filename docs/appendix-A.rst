@@ -1420,7 +1420,7 @@ Class Type
 constructor and destructor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The C++ header file from ``tutorial.hpp``.
+The C++ header file from :file:`tutorial.hpp`.
 
 .. code-block:: c++
 
@@ -1557,7 +1557,7 @@ Corresponding C++ code:
 
 Getter and Setter
 ^^^^^^^^^^^^^^^^^
-The C++ header file from ``tutorial.hpp``.
+The C++ header file from :file:`tutorial.hpp`.
 
 .. code-block:: c++
 

@@ -292,7 +292,7 @@ void AA_cos_doubles(double * in, double * out, int sizein)
 }
 
 // Release C++ allocated memory.
-void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap)
+void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
     switch (cap->idtor) {

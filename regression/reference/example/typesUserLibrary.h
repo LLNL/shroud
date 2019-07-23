@@ -37,14 +37,14 @@ struct s_AA_exclass2 {
 };
 typedef struct s_AA_exclass2 AA_exclass2;
 
-struct s_USE_SHROUD_capsule_data {
+struct s_AA_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_USE_SHROUD_capsule_data USE_SHROUD_capsule_data;
+typedef struct s_AA_SHROUD_capsule_data AA_SHROUD_capsule_data;
 
-struct s_USE_SHROUD_array {
-    USE_SHROUD_capsule_data cxx;      /* address of C++ memory */
+struct s_AA_SHROUD_array {
+    AA_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
         const void * cvoidp;
         const char * ccharp;
@@ -52,9 +52,9 @@ struct s_USE_SHROUD_array {
     size_t len;     /* bytes-per-item or character len of data in cxx */
     size_t size;    /* size of data in cxx */
 };
-typedef struct s_USE_SHROUD_array USE_SHROUD_array;
+typedef struct s_AA_SHROUD_array AA_SHROUD_array;
 
-void AA_SHROUD_memory_destructor(USE_SHROUD_capsule_data *cap);
+void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }

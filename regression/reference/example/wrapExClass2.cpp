@@ -47,7 +47,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // helper function
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void AA_ShroudCopyStringAndFree(USE_SHROUD_array *data, char *c_var, size_t c_var_len) {
+void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
@@ -153,7 +153,7 @@ const char * AA_exclass2_get_name2(AA_exclass2 * self)
 
 // void getName2(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void AA_exclass2_get_name2_bufferify(AA_exclass2 * self,
-    USE_SHROUD_array *DSHF_rv)
+    AA_SHROUD_array *DSHF_rv)
 {
 // splicer begin class.ExClass2.method.get_name2_bufferify
     example::nested::ExClass2 *SH_this =
@@ -188,7 +188,7 @@ char * AA_exclass2_get_name3(const AA_exclass2 * self)
 
 // void getName3(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self,
-    USE_SHROUD_array *DSHF_rv)
+    AA_SHROUD_array *DSHF_rv)
 {
 // splicer begin class.ExClass2.method.get_name3_bufferify
     const example::nested::ExClass2 *SH_this =
@@ -222,7 +222,7 @@ char * AA_exclass2_get_name4(AA_exclass2 * self)
 
 // void getName4(std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
-    USE_SHROUD_array *DSHF_rv)
+    AA_SHROUD_array *DSHF_rv)
 {
 // splicer begin class.ExClass2.method.get_name4_bufferify
     example::nested::ExClass2 *SH_this =

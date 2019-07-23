@@ -1,16 +1,8 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
 """
 Helper functions for C and Fortran wrappers.
 
@@ -53,6 +45,13 @@ Helper functions for C and Fortran wrappers.
 from . import util
 
 wformat = util.wformat
+
+# Used with literalinclude
+# format fields {lstart} and {lend}
+cstart = "// start "
+cend   = "// end "
+fstart = "! start "
+fend   = "! end "
 
 
 def XXXwrite_helper_files(self, directory):
@@ -142,7 +141,7 @@ typedef union {{
     return name
 
 
-def add_external_helpers(fmt):
+def add_external_helpers(fmtin, literalinclude):
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
@@ -155,9 +154,15 @@ def add_external_helpers(fmt):
     Args:
         fmt - format dictionary from the library.
     """
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
 
     # Only used with std::string and thus C++
     name = "copy_string"
+    if literalinclude:
+        fmt.lstart = "{}helper_{}\n".format(cstart, name)
+        fmt.lend = "\n{}helper_{}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
         cxx_header="<string> <cstddef>",
@@ -165,7 +170,7 @@ def add_external_helpers(fmt):
         source=wformat(
             """
 // helper function
-// Copy the char* or std::string in context into c_var.
+{lstart}// Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
@@ -173,7 +178,7 @@ size_t n = c_var_len;
 if (data->len < n) n = data->len;
 strncpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}
+-}}{lend}
 """,
             fmt,
         ),
@@ -243,14 +248,20 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
     return name
 
 
-def add_capsule_helper(fmt):
+def add_capsule_helper(fmtin, literalinclude):
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
 
     Args:
         fmt - format dictionary from the library.
+        literalinclude -
     """
+    # Add some format strings
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
+
     name = "capsule_data_helper"
     if name not in FHelpers:
         helper = dict(
@@ -324,6 +335,9 @@ call array_destructor(cap%mem, .false._C_BOOL)
     ########################################
     name = "array_context"
     if name not in CHelpers:
+        if literalinclude:
+            fmt.lstart = "{}{}\n".format(cstart, name)
+            fmt.lend = "\n{}{}".format(cend, name)
         helper = dict(
             scope="utility",
             header="<stddef.h>",
@@ -331,7 +345,7 @@ call array_destructor(cap%mem, .false._C_BOOL)
             # And help with debugging since ccharp will display contents.
             source=wformat(
                 """
-struct s_{C_array_type} {{+
+{lstart}struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
 const void * cvoidp;
@@ -340,7 +354,7 @@ const char * ccharp;
 size_t len;     /* bytes-per-item or character len of data in cxx */
 size_t size;    /* size of data in cxx */
 -}};
-typedef struct s_{C_array_type} {C_array_type};""",
+typedef struct s_{C_array_type} {C_array_type};{lend}""",
                 fmt,
             ),
             dependent_helpers=["capsule_data_helper"],
@@ -350,15 +364,18 @@ typedef struct s_{C_array_type} {C_array_type};""",
     if name not in FHelpers:
         # Create a derived type used to communicate with C wrapper.
         # Should never be exposed to user.
+        if literalinclude:
+            fmt.lstart = "{}{}\n".format(fstart, name)
+            fmt.lend = "\n{}{}".format(fend, name)
         helper = dict(
             derived_type=wformat(
                 """
-type, bind(C) :: {F_array_type}+
+{lstart}type, bind(C) :: {F_array_type}+
 type({F_capsule_data_type}) :: cxx       ! address of C++ memory
 type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
 integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
 integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
--end type {F_array_type}""",
+-end type {F_array_type}{lend}""",
                 fmt,
             ),
             modules=dict(iso_c_binding=["C_NULL_PTR", "C_PTR", "C_SIZE_T"]),

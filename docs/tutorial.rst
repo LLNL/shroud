@@ -13,7 +13,7 @@ Python wrapper for a simple C++ library.
 Functions
 ---------
 
-The simplest item to wrap is a function in the file ``tutorial.hpp``:
+The simplest item to wrap is a function in the file :file:`tutorial.hpp`:
 
 .. code-block:: c++
 
@@ -21,7 +21,7 @@ The simplest item to wrap is a function in the file ``tutorial.hpp``:
       void NoReturnNoArguments(void);
     }
 
-This is wrapped using a YAML input file ``tutorial.yaml``:
+This is wrapped using a YAML input file :file:`tutorial.yaml`:
 
 .. code-block:: yaml
 
@@ -480,7 +480,8 @@ which Fortran does not support:
     FortranGeneric(1.0f);
     FortranGeneric(2.0);
 
-When FortranGeneric is wrapped in Fortran it may only be used with the correct arguments:
+When ``FortranGeneric`` is wrapped in Fortran it may only be used with
+the correct arguments:
 
 .. code-block:: sh
 

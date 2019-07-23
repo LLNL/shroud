@@ -593,13 +593,14 @@ typical function would look like:
 Character and Arrays
 ^^^^^^^^^^^^^^^^^^^^
 
-In order to create an allocatable copy of a C++ pointer, an additional structure
-is involved.  For example, ``Function4d`` returns a pointer to a new string:
+In order to create an allocatable copy of a C++ pointer, an additional
+structure is involved.  For example, ``getConstStringPtrAlloc``
+returns a pointer to a new string. From :file:`strings.yaml`:
 
 .. code-block:: yaml
 
     declarations:
-    - decl: const std::string * Function4d()
+    - decl: const std::string * getConstStringPtrAlloc() +owner(library)
 
 The C wrapper calls the function and saves the result along with
 metadata consisting of the address of the data within the
@@ -610,83 +611,47 @@ variable and deletes it.
 The metadata for variables are saved in the C struct **C_array_type**
 and the ``bind(C)`` equivalent **F_array_type**.:
 
-.. code-block:: c++
-
-    struct s_TUT_SHROUD_array {
-        TUT_SHROUD_capsule_data cxx;      /* address of C++ memory */
-        union {
-            const void * cvoidp;
-            const char * ccharp;
-        } addr;
-        size_t len;     /* bytes-per-item or character len of data in cxx */
-        size_t size;    /* size of data in cxx */
-    };
-    typedef struct s_TUT_SHROUD_array TUT_SHROUD_array;
+.. literalinclude:: ../regression/reference/memdoc/typesmemdoc.h
+   :language: c++
+   :start-after: start array_context
+   :end-before: end array_context
 
 The union for ``addr`` makes some assignments easier and also aids debugging.
 The union is replaced with a single ``type(C_PTR)`` for Fortran:
 
-.. code-block:: fortran
-
-    type, bind(C) :: SHROUD_array
-        type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
-        type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
-        integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
-    end type SHROUD_array
+.. literalinclude:: ../regression/reference/memdoc/wrapfmemdoc.f
+   :language: fortran
+   :start-after: start array_context
+   :end-before: end array_context
+   :dedent: 4
 
 The C wrapper does not return a ``std::string`` pointer.  
 Instead it passes in a **C_array_type** pointer as an argument.
 It calls ``Function4d``, saves the results and metadata into the argument.
 This allows it to be easily accessed from Fortran:
 
-.. code-block:: c++
-
-    void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv)
-    {
-        const std::string * SHCXX_rv = tutorial::Function4d();
-        DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>(SHCXX_rv));
-        DSHF_rv->cxx.idtor = 2;
-        if (SHCXX_rv->empty()) {
-            DSHF_rv->addr.ccharp = NULL;
-            DSHF_rv->len = 0;
-        } else {
-            DSHF_rv->addr.ccharp = SHCXX_rv->data();
-            DSHF_rv->len = SHCXX_rv->size();
-        }
-        DSHF_rv->size = 1;
-        return;
-    }
+.. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
+   :language: c++
+   :start-after: start STR_get_const_string_ptr_alloc_bufferify
+   :end-before: end STR_get_const_string_ptr_alloc_bufferify
 
 The Fortran wrapper uses the metadata to allocate the return argument
 to the correct length:
 
-.. code-block:: fortran
-
-    function function4d() &
-            result(SHT_rv)
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
-        call c_function4d_bufferify(DSHF_rv)
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function function4d
+.. literalinclude:: ../regression/reference/memdoc/wrapfmemdoc.f
+   :language: fortran
+   :start-after: start get_const_string_ptr_alloc
+   :end-before: end get_const_string_ptr_alloc
+   :dedent: 4
 
 Finally, the helper function ``SHROUD_copy_string_and_free`` is called
 to set the value of the result and possible free memory for
 **owner(caller)** or intermediate values:
 
-.. code-block:: c++
-
-    // Copy the std::string in context into c_var.
-    // Called by Fortran to deal with allocatable character.
-    void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_var_len) {
-        const char *cxx_var = data->addr.ccharp;
-        size_t n = c_var_len;
-        if (data->len < n) n = data->len;
-        strncpy(c_var, cxx_var, n);
-        TUT_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
-    }
+.. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
+   :language: c++
+   :start-after: start helper_copy_string
+   :end-before: end helper_copy_string
 
 .. note:: The three steps of call, allocate, copy could be replaced
           with a single call by using the *futher interoperability

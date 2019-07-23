@@ -62,6 +62,13 @@ class AstNode(object):
             tname = name + tname + "_template"
             setattr(fmt, name, util.wformat(self.options[tname], fmt))
 
+    def set_fmt_default(self, name, value, fmt=None):
+        """Set a fmt value unless already set."""
+        if fmt is None:
+            fmt = self.fmtdict
+        if not fmt.inlocal(name):
+            setattr(fmt, name, value)
+
     def get_LibraryNode(self):
         """Return top of AST tree."""
         return self.parent.get_LibraryNode()
@@ -519,11 +526,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
             F_string_result_as_arg="",
-            C_capsule_data_type=C_prefix + "SHROUD_capsule_data",
             F_capsule_data_type="SHROUD_capsule_data",
             F_capsule_type="SHROUD_capsule",
             F_capsule_final_function="SHROUD_capsule_final",
-            C_array_type=C_prefix + "SHROUD_array",
             F_array_type="SHROUD_array",
 
             LUA_result="rv",
@@ -616,6 +621,11 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.fmtdict = fmt_library
 
         # default some format strings based on other format strings
+        self.set_fmt_default("C_array_type",
+                             fmt_library.C_prefix + "SHROUD_array")
+        self.set_fmt_default("C_capsule_data_type",
+                             fmt_library.C_prefix + "SHROUD_capsule_data")
+
         self.eval_template("C_header_filename", "_library")
         self.eval_template("C_impl_filename", "_library")
         self.eval_template("C_header_utility")

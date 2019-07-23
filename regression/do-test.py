@@ -367,6 +367,7 @@ if __name__ == "__main__":
         TestDesc("interface"),
         TestDesc("templates"),
         TestDesc("ownership"),
+        TestDesc("memdoc"),
     ]
 
     if args.testname:
