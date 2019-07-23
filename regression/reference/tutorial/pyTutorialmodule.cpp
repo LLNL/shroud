@@ -228,47 +228,47 @@ PY_OverloadedFunction_from_index(
 }
 
 static PyObject *
-PY_Function7_int(
+PY_TemplateArgument_int(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function7(int arg +intent(in)+value)
-// splicer begin function.function7_int
+// void TemplateArgument(int arg +intent(in)+value)
+// splicer begin function.template_argument_int
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function7",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::Function7(arg);
+    tutorial::TemplateArgument(arg);
     Py_RETURN_NONE;
-// splicer end function.function7_int
+// splicer end function.template_argument_int
 }
 
 static PyObject *
-PY_Function7_double(
+PY_TemplateArgument_double(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function7(double arg +intent(in)+value)
-// splicer begin function.function7_double
+// void TemplateArgument(double arg +intent(in)+value)
+// splicer begin function.template_argument_double
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function7",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::Function7(arg);
+    tutorial::TemplateArgument(arg);
     Py_RETURN_NONE;
-// splicer end function.function7_double
+// splicer end function.template_argument_double
 }
 
 static char PY_Function9__doc__[] =
@@ -800,23 +800,23 @@ PY_OverloadedFunction(
 // splicer end function.overloaded_function
 }
 
-static char PY_Function7__doc__[] =
+static char PY_TemplateArgument__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function7(
+PY_TemplateArgument(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function7
+// splicer begin function.template_argument
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
-        rvobj = PY_Function7_int(self, args, kwds);
+        rvobj = PY_TemplateArgument_int(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -825,7 +825,7 @@ PY_Function7(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rvobj = PY_Function7_double(self, args, kwds);
+        rvobj = PY_TemplateArgument_double(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -835,7 +835,7 @@ PY_Function7(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function7
+// splicer end function.template_argument
 }
 
 static char PY_Function10__doc__[] =
@@ -949,8 +949,8 @@ static PyMethodDef PY_methods[] = {
     PY_LastFunctionCalled__doc__},
 {"OverloadedFunction", (PyCFunction)PY_OverloadedFunction,
     METH_VARARGS|METH_KEYWORDS, PY_OverloadedFunction__doc__},
-{"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
-    PY_Function7__doc__},
+{"TemplateArgument", (PyCFunction)PY_TemplateArgument,
+    METH_VARARGS|METH_KEYWORDS, PY_TemplateArgument__doc__},
 {"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
     PY_Function10__doc__},
 {"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,

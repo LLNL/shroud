@@ -379,19 +379,19 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: indx
         end subroutine c_overloaded_function_from_index
 
-        subroutine c_function7_int(arg) &
-                bind(C, name="TUT_function7_int")
+        subroutine c_template_argument_int(arg) &
+                bind(C, name="TUT_template_argument_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
-        end subroutine c_function7_int
+        end subroutine c_template_argument_int
 
-        subroutine c_function7_double(arg) &
-                bind(C, name="TUT_function7_double")
+        subroutine c_template_argument_double(arg) &
+                bind(C, name="TUT_template_argument_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
-        end subroutine c_function7_double
+        end subroutine c_template_argument_double
 
         function c_function8_int() &
                 result(SHT_rv) &
@@ -658,11 +658,6 @@ module tutorial_mod
         module procedure function10_1_double
     end interface function10
 
-    interface function7
-        module procedure function7_int
-        module procedure function7_double
-    end interface function7
-
     interface function9
         module procedure function9_float
         module procedure function9_double
@@ -681,6 +676,11 @@ module tutorial_mod
         module procedure overloaded_function_from_name
         module procedure overloaded_function_from_index
     end interface overloaded_function
+
+    interface template_argument
+        module procedure template_argument_int
+        module procedure template_argument_double
+    end interface template_argument
 
     interface use_default_arguments
         module procedure use_default_arguments
@@ -1025,25 +1025,25 @@ contains
         ! splicer end function.overloaded_function_from_index
     end subroutine overloaded_function_from_index
 
-    ! void Function7(int arg +intent(in)+value)
+    ! void TemplateArgument(int arg +intent(in)+value)
     ! cxx_template
-    subroutine function7_int(arg)
+    subroutine template_argument_int(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
-        ! splicer begin function.function7_int
-        call c_function7_int(arg)
-        ! splicer end function.function7_int
-    end subroutine function7_int
+        ! splicer begin function.template_argument_int
+        call c_template_argument_int(arg)
+        ! splicer end function.template_argument_int
+    end subroutine template_argument_int
 
-    ! void Function7(double arg +intent(in)+value)
+    ! void TemplateArgument(double arg +intent(in)+value)
     ! cxx_template
-    subroutine function7_double(arg)
+    subroutine template_argument_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
-        ! splicer begin function.function7_double
-        call c_function7_double(arg)
-        ! splicer end function.function7_double
-    end subroutine function7_double
+        ! splicer begin function.template_argument_double
+        call c_template_argument_double(arg)
+        ! splicer end function.template_argument_double
+    end subroutine template_argument_double
 
     ! int Function8()
     ! cxx_template

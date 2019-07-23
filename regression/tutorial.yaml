@@ -75,11 +75,10 @@ declarations:
   
   - decl: |
         template<typename ArgType>
-        void Function7(ArgType arg)
+        void TemplateArgument(ArgType arg)
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
-
   
   - decl: template<typename RetType> RetType Function8()
     cxx_template:

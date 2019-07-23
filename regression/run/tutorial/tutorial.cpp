@@ -67,16 +67,16 @@ void OverloadedFunction(int indx)
 }
 
 template<>
-void Function7<int>(int arg)
+void TemplateArgument<int>(int arg)
 {
-    last_function_called = "Function7<int>";
+    last_function_called = "TemplateArgument<int>";
     global_int = arg;
 }
 
 template<>
-void Function7<double>(double arg)
+void TemplateArgument<double>(double arg)
 {
-    last_function_called = "Function7<double>";
+    last_function_called = "TemplateArgument<double>";
     global_double = arg;
 }
 

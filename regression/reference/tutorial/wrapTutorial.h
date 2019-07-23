@@ -54,9 +54,9 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
 
 void TUT_overloaded_function_from_index(int indx);
 
-void TUT_function7_int(int arg);
+void TUT_template_argument_int(int arg);
 
-void TUT_function7_double(double arg);
+void TUT_template_argument_double(double arg);
 
 int TUT_function8_int();
 

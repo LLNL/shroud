@@ -114,12 +114,12 @@ contains
     call assert_true(last_function_called() == "OverloadedFunction(int)", &
          "OverloadedFunction 2")
 
-    call function7(1)
-    call assert_true(last_function_called() == "Function7<int>",  &
-         "function7 1")
-    call function7(10.d0)
-    call assert_true(last_function_called() == "Function7<double>", &
-         "function7 2")
+    call template_argument(1)
+    call assert_true(last_function_called() == "TemplateArgument<int>",  &
+         "TemplateArgument<int>")
+    call template_argument(10.d0)
+    call assert_true(last_function_called() == "TemplateArgument<double>", &
+         "TemplateArgument<double>")
 
     ! return values set by calls to function7
     rv_integer = function8_int()

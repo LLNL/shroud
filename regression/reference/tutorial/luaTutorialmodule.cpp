@@ -238,11 +238,11 @@ static int l_overloaded_function(lua_State *L)
     // splicer end function.OverloadedFunction
 }
 
-// void Function7(int arg +intent(in)+value)
-// void Function7(double arg +intent(in)+value)
-static int l_function7(lua_State *L)
+// void TemplateArgument(int arg +intent(in)+value)
+// void TemplateArgument(double arg +intent(in)+value)
+static int l_template_argument(lua_State *L)
 {
-    // splicer begin function.Function7
+    // splicer begin function.TemplateArgument
     int SH_nresult = 0;
     int SH_nargs = lua_gettop(L);
     int SH_itype1 = lua_type(L, 1);
@@ -250,12 +250,12 @@ static int l_function7(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TNUMBER) {
             int arg = lua_tointeger(L, 1);
-            tutorial::Function7(arg);
+            tutorial::TemplateArgument(arg);
             SH_nresult = 0;
         }
         else if (SH_itype1 == LUA_TNUMBER) {
             double arg = lua_tonumber(L, 1);
-            tutorial::Function7(arg);
+            tutorial::TemplateArgument(arg);
             SH_nresult = 0;
         }
         else {
@@ -267,7 +267,7 @@ static int l_function7(lua_State *L)
         break;
     }
     return SH_nresult;
-    // splicer end function.Function7
+    // splicer end function.TemplateArgument
 }
 
 // void Function9(double arg +intent(in)+value)
@@ -498,7 +498,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"ConcatenateStrings", l_concatenate_strings},
     {"UseDefaultArguments", l_use_default_arguments},
     {"OverloadedFunction", l_overloaded_function},
-    {"Function7", l_function7},
+    {"TemplateArgument", l_template_argument},
     {"Function9", l_function9},
     {"Function10", l_function10},
     {"overload1", l_overload1},

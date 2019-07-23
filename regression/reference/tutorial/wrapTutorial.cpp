@@ -155,22 +155,22 @@ void TUT_overloaded_function_from_index(int indx)
 // splicer end function.overloaded_function_from_index
 }
 
-// void Function7(int arg +intent(in)+value)
-void TUT_function7_int(int arg)
+// void TemplateArgument(int arg +intent(in)+value)
+void TUT_template_argument_int(int arg)
 {
-// splicer begin function.function7_int
-    tutorial::Function7<int>(arg);
+// splicer begin function.template_argument_int
+    tutorial::TemplateArgument<int>(arg);
     return;
-// splicer end function.function7_int
+// splicer end function.template_argument_int
 }
 
-// void Function7(double arg +intent(in)+value)
-void TUT_function7_double(double arg)
+// void TemplateArgument(double arg +intent(in)+value)
+void TUT_template_argument_double(double arg)
 {
-// splicer begin function.function7_double
-    tutorial::Function7<double>(arg);
+// splicer begin function.template_argument_double
+    tutorial::TemplateArgument<double>(arg);
     return;
-// splicer end function.function7_double
+// splicer end function.template_argument_double
 }
 
 // int Function8()

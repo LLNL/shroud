@@ -46,7 +46,7 @@ void OverloadedFunction(int indx);
 
 // specialize for int and double in tutorial.cpp
 template<typename ArgType>
-void Function7(ArgType arg);
+void TemplateArgument(ArgType arg);
 
 // specialize for int and double in tutorial.cpp
 template<typename RetType>

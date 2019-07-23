@@ -336,8 +336,8 @@ C++:
 
 .. code-block:: c++
 
-    void Function6(const std::string &name);
-    void Function6(int indx);
+    void OverloadedFunction(const std::string &name);
+    void OverloadedFunction(int indx);
 
 By default the names are mangled by adding an index to the end. This
 can be controlled by setting **function_suffix** in the YAML file:
@@ -345,22 +345,22 @@ can be controlled by setting **function_suffix** in the YAML file:
 .. code-block:: yaml
 
   declarations:
-  - decl: void Function6(const std::string& name)
+  - decl: void OverloadedFunction(const std::string& name)
     function_suffix: _from_name
-  - decl: void Function6(int indx)
+  - decl: void OverloadedFunction(int indx)
     function_suffix: _from_index
 
 .. code-block:: fortran
 
-  call function6_from_name("name")
-  call function6_from_index(1)
-  call function6("name")
-  call function6(1)
+  call overloaded_function_from_name("name")
+  call overloaded_function_from_index(1)
+  call overloaded_function("name")
+  call overloaded_function(1)
 
 .. code-block:: python
 
-   tutorial.Function6("name")
-   tutorial.Function6(1)
+   tutorial.OverloadedFunction("name")
+   tutorial.OverloadedFunction(1)
 
 Optional arguments and overloaded functions
 -------------------------------------------
@@ -396,7 +396,7 @@ C++:
 .. code-block:: c++
 
   template<typename ArgType>
-  void Function7(ArgType arg)
+  void TemplateArgument(ArgType arg)
   {
       return;
   }
@@ -407,20 +407,24 @@ YAML:
 
   - decl: |
         template<typename ArgType>
-        void Function7(ArgType arg)
+        void TemplateArgument(ArgType arg)
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
 
 Fortran usage:
 
-    call function7(1)
-    call function7(10.d0)
+.. code-block:: fortran
+
+    call template_argument(1)
+    call template_argument(10.d0)
 
 Python usage:
 
-        tutorial.Function7(1)
-        tutorial.Function7(10.0)
+.. code-block:: python
+
+        tutorial.TemplateArgument(1)
+        tutorial.TemplateArgument(10.0)
 
 Likewise, the return type can be templated but in this case no
 interface block will be generated since generic function cannot vary

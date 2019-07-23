@@ -86,14 +86,14 @@ class Tutorial(unittest.TestCase):
 
         self.assertRaises(TypeError, tutorial.OverloadedFunction, 1.0)
 
-    def test_Function7_8(self):
+    def test_TemplateArgument_8(self):
         """Test cxx_template"""
-        tutorial.Function7(1)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function7<int>")
-        tutorial.Function7(10.0)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function7<double>")
+        tutorial.TemplateArgument(1)
+        self.assertEqual(tutorial.LastFunctionCalled(), "TemplateArgument<int>")
+        tutorial.TemplateArgument(10.0)
+        self.assertEqual(tutorial.LastFunctionCalled(), "TemplateArgument<double>")
 
-        # return values set by calls to function7
+        # return values set by calls to TemplateArgument
         #rv = tutorial.Function8_int()
         #self.assertEqual(rv, 1)
         #rv = tutorial.Function8_double()
