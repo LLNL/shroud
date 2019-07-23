@@ -113,8 +113,8 @@ declarations:
   
   
 # test fortran_generic, overload
-  - decl: void Function10()
-  - decl: void Function10(const std::string &name, double arg2)
+  - decl: void FortranGenericOverloaded()
+  - decl: void FortranGenericOverloaded(const std::string &name, double arg2)
     options:
       F_string_len_trim: True
 #   cxx_template:

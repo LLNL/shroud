@@ -101,14 +101,14 @@ void FortranGeneric(double arg)
     return;
 }
 
-void Function10()
+void FortranGenericOverloaded()
 {
-    last_function_called = "Function10_0";
+    last_function_called = "FortranGenericOverloaded_0";
 }
 
-void Function10(const std::string &name, double arg2)
+void FortranGenericOverloaded(const std::string &name, double arg2)
 {
-    last_function_called = "Function10_1";
+    last_function_called = "FortranGenericOverloaded_1";
     global_str = name;
     global_double = arg2;
 }

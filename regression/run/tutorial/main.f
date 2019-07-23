@@ -132,12 +132,12 @@ contains
     call fortran_generic(1.d0)
     call assert_true(.true., "fortran_generic double")
 
-    call function10()
-    call assert_true(.true., "function10 1")
-    call function10("foo", 1.0e0)
-    call assert_true(.true., "function10 2")
-    call function10("bar", 2.0d0)
-    call assert_true(.true., "function10 3")
+    call fortran_generic_overloaded()
+    call assert_true(.true., "FortranGenericOverloaded 1")
+    call fortran_generic_overloaded("foo", 1.0e0)
+    call assert_true(.true., "FortranGenericOverloaded 2")
+    call fortran_generic_overloaded("bar", 2.0d0)
+    call assert_true(.true., "FortranGenericOverloaded 3")
 
     rv_int = overload1(10)
     call assert_true(rv_int .eq. 10, "overload1 1")

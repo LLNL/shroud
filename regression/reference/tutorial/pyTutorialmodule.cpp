@@ -298,26 +298,26 @@ PY_FortranGeneric(
 }
 
 static PyObject *
-PY_Function10_0(
+PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void Function10()
-// splicer begin function.function10_0
-    tutorial::Function10();
+// void FortranGenericOverloaded()
+// splicer begin function.fortran_generic_overloaded_0
+    tutorial::FortranGenericOverloaded();
     Py_RETURN_NONE;
-// splicer end function.function10_0
+// splicer end function.fortran_generic_overloaded_0
 }
 
 static PyObject *
-PY_Function10_1(
+PY_FortranGenericOverloaded_1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
-// splicer begin function.function10_1
+// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+// splicer begin function.fortran_generic_overloaded_1
     const char * name;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -325,16 +325,17 @@ PY_Function10_1(
         "arg2",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10",
-        const_cast<char **>(SHT_kwlist), &name, &arg2))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "sd:FortranGenericOverloaded", const_cast<char **>(SHT_kwlist), 
+        &name, &arg2))
         return NULL;
 
     // post_parse
     const std::string SH_name(name);
 
-    tutorial::Function10(SH_name, arg2);
+    tutorial::FortranGenericOverloaded(SH_name, arg2);
     Py_RETURN_NONE;
-// splicer end function.function10_1
+// splicer end function.fortran_generic_overloaded_1
 }
 
 static PyObject *
@@ -838,23 +839,23 @@ PY_TemplateArgument(
 // splicer end function.template_argument
 }
 
-static char PY_Function10__doc__[] =
+static char PY_FortranGenericOverloaded__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function10(
+PY_FortranGenericOverloaded(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function10
+// splicer begin function.fortran_generic_overloaded
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 0) {
-        rvobj = PY_Function10_0(self, args, kwds);
+        rvobj = PY_FortranGenericOverloaded_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -863,7 +864,7 @@ PY_Function10(
         PyErr_Clear();
     }
     if (SHT_nargs == 2) {
-        rvobj = PY_Function10_1(self, args, kwds);
+        rvobj = PY_FortranGenericOverloaded_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -873,7 +874,7 @@ PY_Function10(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function10
+// splicer end function.fortran_generic_overloaded
 }
 
 static char PY_overload1__doc__[] =
@@ -951,8 +952,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_OverloadedFunction__doc__},
 {"TemplateArgument", (PyCFunction)PY_TemplateArgument,
     METH_VARARGS|METH_KEYWORDS, PY_TemplateArgument__doc__},
-{"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
-    PY_Function10__doc__},
+{"FortranGenericOverloaded", (PyCFunction)PY_FortranGenericOverloaded,
+    METH_VARARGS|METH_KEYWORDS, PY_FortranGenericOverloaded__doc__},
 {"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
     PY_overload1__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

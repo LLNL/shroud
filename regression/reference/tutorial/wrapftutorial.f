@@ -416,27 +416,28 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_fortran_generic
 
-        subroutine c_function10_0() &
-                bind(C, name="TUT_function10_0")
+        subroutine c_fortran_generic_overloaded_0() &
+                bind(C, name="TUT_fortran_generic_overloaded_0")
             implicit none
-        end subroutine c_function10_0
+        end subroutine c_fortran_generic_overloaded_0
 
-        subroutine c_function10_1(name, arg2) &
-                bind(C, name="TUT_function10_1")
+        subroutine c_fortran_generic_overloaded_1(name, arg2) &
+                bind(C, name="TUT_fortran_generic_overloaded_1")
             use iso_c_binding, only : C_CHAR, C_DOUBLE
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine c_function10_1
+        end subroutine c_fortran_generic_overloaded_1
 
-        subroutine c_function10_1_bufferify(name, Lname, arg2) &
-                bind(C, name="TUT_function10_1_bufferify")
+        subroutine c_fortran_generic_overloaded_1_bufferify(name, Lname, &
+                arg2) &
+                bind(C, name="TUT_fortran_generic_overloaded_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine c_function10_1_bufferify
+        end subroutine c_fortran_generic_overloaded_1_bufferify
 
         function c_overload1_num(num) &
                 result(SHT_rv) &
@@ -657,11 +658,11 @@ module tutorial_mod
         module procedure fortran_generic_double
     end interface fortran_generic
 
-    interface function10
-        module procedure function10_0
-        module procedure function10_1_float
-        module procedure function10_1_double
-    end interface function10
+    interface fortran_generic_overloaded
+        module procedure fortran_generic_overloaded_0
+        module procedure fortran_generic_overloaded_1_float
+        module procedure fortran_generic_overloaded_1_double
+    end interface fortran_generic_overloaded
 
     interface overload1
         module procedure overload1_num
@@ -1087,36 +1088,36 @@ contains
         ! splicer end function.fortran_generic_double
     end subroutine fortran_generic_double
 
-    ! void Function10()
-    subroutine function10_0()
-        ! splicer begin function.function10_0
-        call c_function10_0()
-        ! splicer end function.function10_0
-    end subroutine function10_0
+    ! void FortranGenericOverloaded()
+    subroutine fortran_generic_overloaded_0()
+        ! splicer begin function.fortran_generic_overloaded_0
+        call c_fortran_generic_overloaded_0()
+        ! splicer end function.fortran_generic_overloaded_0
+    end subroutine fortran_generic_overloaded_0
 
-    ! void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)
+    ! void FortranGenericOverloaded(const std::string & name +intent(in), float arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    subroutine function10_1_float(name, arg2)
+    subroutine fortran_generic_overloaded_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(len=*), intent(IN) :: name
         real(C_FLOAT), value, intent(IN) :: arg2
-        ! splicer begin function.function10_1_float
-        call c_function10_1_bufferify(name, len_trim(name, kind=C_INT), &
-            real(arg2, C_DOUBLE))
-        ! splicer end function.function10_1_float
-    end subroutine function10_1_float
+        ! splicer begin function.fortran_generic_overloaded_1_float
+        call c_fortran_generic_overloaded_1_bufferify(name, &
+            len_trim(name, kind=C_INT), real(arg2, C_DOUBLE))
+        ! splicer end function.fortran_generic_overloaded_1_float
+    end subroutine fortran_generic_overloaded_1_float
 
-    ! void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
+    ! void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    subroutine function10_1_double(name, arg2)
+    subroutine fortran_generic_overloaded_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), value, intent(IN) :: arg2
-        ! splicer begin function.function10_1_double
-        call c_function10_1_bufferify(name, len_trim(name, kind=C_INT), &
-            arg2)
-        ! splicer end function.function10_1_double
-    end subroutine function10_1_double
+        ! splicer begin function.fortran_generic_overloaded_1_double
+        call c_fortran_generic_overloaded_1_bufferify(name, &
+            len_trim(name, kind=C_INT), arg2)
+        ! splicer end function.fortran_generic_overloaded_1_double
+    end subroutine fortran_generic_overloaded_1_double
 
     ! int overload1(int num +intent(in)+value)
     ! has_default_arg

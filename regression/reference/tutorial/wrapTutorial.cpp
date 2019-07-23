@@ -200,34 +200,34 @@ void TUT_fortran_generic(double arg)
 // splicer end function.fortran_generic
 }
 
-// void Function10()
-void TUT_function10_0()
+// void FortranGenericOverloaded()
+void TUT_fortran_generic_overloaded_0()
 {
-// splicer begin function.function10_0
-    tutorial::Function10();
+// splicer begin function.fortran_generic_overloaded_0
+    tutorial::FortranGenericOverloaded();
     return;
-// splicer end function.function10_0
+// splicer end function.fortran_generic_overloaded_0
 }
 
-// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
-void TUT_function10_1(const char * name, double arg2)
+// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 {
-// splicer begin function.function10_1
+// splicer begin function.fortran_generic_overloaded_1
     const std::string SH_name(name);
-    tutorial::Function10(SH_name, arg2);
+    tutorial::FortranGenericOverloaded(SH_name, arg2);
     return;
-// splicer end function.function10_1
+// splicer end function.fortran_generic_overloaded_1
 }
 
-// void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)
-void TUT_function10_1_bufferify(const char * name, int Lname,
-    double arg2)
+// void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)
+void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
+    int Lname, double arg2)
 {
-// splicer begin function.function10_1_bufferify
+// splicer begin function.fortran_generic_overloaded_1_bufferify
     const std::string SH_name(name, Lname);
-    tutorial::Function10(SH_name, arg2);
+    tutorial::FortranGenericOverloaded(SH_name, arg2);
     return;
-// splicer end function.function10_1_bufferify
+// splicer end function.fortran_generic_overloaded_1_bufferify
 }
 
 // int overload1(int num +intent(in)+value)

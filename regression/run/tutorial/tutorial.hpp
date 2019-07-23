@@ -54,8 +54,8 @@ RetType TemplateReturn();
 
 void FortranGeneric(double arg);
 
-void Function10();
-void Function10(const std::string &name, double arg2);
+void FortranGenericOverloaded();
+void FortranGenericOverloaded(const std::string &name, double arg2);
 
 int overload1(int num, int offset = 0, int stride = 1);
 int overload1(double type, int num, int offset = 0, int stride = 1);

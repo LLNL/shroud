@@ -3767,7 +3767,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function10",
+                        "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
                     "params": [],
@@ -3776,31 +3776,31 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function10()",
-                "declgen": "void Function10()",
+                "decl": "void FortranGenericOverloaded()",
+                "declgen": "void FortranGenericOverloaded()",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function10(\t);",
+                    "C_call_code": "tutorial::FortranGenericOverloaded(\t);",
                     "C_call_list": "",
-                    "C_name": "TUT_function10_0",
+                    "C_name": "TUT_fortran_generic_overloaded_0",
                     "C_prototype": "",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_call": "c_function10_0",
-                    "F_C_name": "c_function10_0",
+                    "F_C_call": "c_fortran_generic_overloaded_0",
+                    "F_C_name": "c_fortran_generic_overloaded_0",
                     "F_arg_c_call": "",
                     "F_arguments": "",
-                    "F_call_code": "call c_function10_0()",
-                    "F_name_function": "function10_0",
-                    "F_name_generic": "function10",
-                    "F_name_impl": "function10_0",
+                    "F_call_code": "call c_fortran_generic_overloaded_0()",
+                    "F_name_function": "fortran_generic_overloaded_0",
+                    "F_name_generic": "fortran_generic_overloaded",
+                    "F_name_impl": "fortran_generic_overloaded_0",
                     "F_subprogram": "subroutine",
-                    "LUA_name": "Function10",
-                    "LUA_name_impl": "l_function10",
-                    "PY_name_impl": "PY_Function10_0",
+                    "LUA_name": "FortranGenericOverloaded",
+                    "LUA_name_impl": "l_fortran_generic_overloaded",
+                    "PY_name_impl": "PY_FortranGenericOverloaded_0",
                     "c_const": "",
-                    "function_name": "Function10",
+                    "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_0",
-                    "underscore_name": "function10"
+                    "underscore_name": "fortran_generic_overloaded"
                 },
                 "linenumber": 116,
                 "options": {}
@@ -3891,7 +3891,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function10",
+                        "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
                     "params": [
@@ -3934,22 +3934,22 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function10(const std::string &name, double arg2)",
-                "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)",
+                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function10(\tSH_name,\t arg2);",
+                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSH_name,\t arg2);",
                     "C_call_list": "SH_name,\t arg2",
-                    "C_name": "TUT_function10_1",
+                    "C_name": "TUT_fortran_generic_overloaded_1",
                     "C_pre_call": "const std::string SH_name(name);",
                     "C_prototype": "const char * name,\t double arg2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_name": "c_function10_1",
-                    "PY_name_impl": "PY_Function10_1",
+                    "F_C_name": "c_fortran_generic_overloaded_1",
+                    "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "c_const": "",
-                    "function_name": "Function10",
+                    "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1",
-                    "underscore_name": "function10"
+                    "underscore_name": "fortran_generic_overloaded"
                 },
                 "fortran_generic": {
                     "__line__": 123,
@@ -3970,7 +3970,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function10",
+                        "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
                     "params": [
@@ -4013,20 +4013,20 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function10(const std::string &name, double arg2)",
-                "declgen": "void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)",
+                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), float arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "F_C_call": "c_function10_1_bufferify",
+                    "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE)",
                     "F_arguments": "name,\t arg2",
-                    "F_call_code": "call c_function10_1_bufferify(name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE))",
-                    "F_name_function": "function10_1_float",
-                    "F_name_generic": "function10",
-                    "F_name_impl": "function10_1_float",
+                    "F_call_code": "call c_fortran_generic_overloaded_1_bufferify(name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE))",
+                    "F_name_function": "fortran_generic_overloaded_1_float",
+                    "F_name_generic": "fortran_generic_overloaded",
+                    "F_name_impl": "fortran_generic_overloaded_1_float",
                     "F_subprogram": "subroutine",
-                    "function_name": "Function10",
+                    "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float",
-                    "underscore_name": "function10"
+                    "underscore_name": "fortran_generic_overloaded"
                 },
                 "linenumber": 117,
                 "options": {
@@ -4043,7 +4043,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function10",
+                        "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
                     "params": [
@@ -4086,20 +4086,20 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function10(const std::string &name, double arg2)",
-                "declgen": "void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)",
+                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "F_C_call": "c_function10_1_bufferify",
+                    "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
                     "F_arguments": "name,\t arg2",
-                    "F_call_code": "call c_function10_1_bufferify(name,\t len_trim(name, kind=C_INT),\t arg2)",
-                    "F_name_function": "function10_1_double",
-                    "F_name_generic": "function10",
-                    "F_name_impl": "function10_1_double",
+                    "F_call_code": "call c_fortran_generic_overloaded_1_bufferify(name,\t len_trim(name, kind=C_INT),\t arg2)",
+                    "F_name_function": "fortran_generic_overloaded_1_double",
+                    "F_name_generic": "fortran_generic_overloaded",
+                    "F_name_impl": "fortran_generic_overloaded_1_double",
                     "F_subprogram": "subroutine",
-                    "function_name": "Function10",
+                    "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double",
-                    "underscore_name": "function10"
+                    "underscore_name": "fortran_generic_overloaded"
                 },
                 "linenumber": 117,
                 "options": {
@@ -4155,7 +4155,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function10",
+                        "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
                     "params": [
@@ -4200,21 +4200,21 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function10(const std::string &name, double arg2)",
-                "declgen": "void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)",
+                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function10(\tSH_name,\t arg2);",
+                    "C_call_code": "tutorial::FortranGenericOverloaded(\tSH_name,\t arg2);",
                     "C_call_list": "SH_name,\t arg2",
-                    "C_name": "TUT_function10_1_bufferify",
+                    "C_name": "TUT_fortran_generic_overloaded_1_bufferify",
                     "C_pre_call": "const std::string SH_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname,\t double arg2",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_name": "c_function10_1_bufferify",
+                    "F_C_name": "c_fortran_generic_overloaded_1_bufferify",
                     "c_const": "",
-                    "function_name": "Function10",
+                    "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_bufferify",
-                    "underscore_name": "function10"
+                    "underscore_name": "fortran_generic_overloaded"
                 },
                 "fortran_generic": {
                     "__line__": 123,

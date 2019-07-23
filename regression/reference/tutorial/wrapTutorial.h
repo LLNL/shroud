@@ -64,12 +64,12 @@ double TUT_template_return_double();
 
 void TUT_fortran_generic(double arg);
 
-void TUT_function10_0();
+void TUT_fortran_generic_overloaded_0();
 
-void TUT_function10_1(const char * name, double arg2);
+void TUT_fortran_generic_overloaded_1(const char * name, double arg2);
 
-void TUT_function10_1_bufferify(const char * name, int Lname,
-    double arg2);
+void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
+    int Lname, double arg2);
 
 int TUT_overload1_num(int num);
 

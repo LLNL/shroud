@@ -280,11 +280,11 @@ static int l_fortran_generic(lua_State *L)
     // splicer end function.FortranGeneric
 }
 
-// void Function10()
-// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
-static int l_function10(lua_State *L)
+// void FortranGenericOverloaded()
+// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+static int l_fortran_generic_overloaded(lua_State *L)
 {
-    // splicer begin function.Function10
+    // splicer begin function.FortranGenericOverloaded
     int SH_nresult = 0;
     int SH_nargs = lua_gettop(L);
     int SH_itype1 = lua_type(L, 1);
@@ -292,7 +292,7 @@ static int l_function10(lua_State *L)
     switch (SH_nargs) {
     case 0:
         {
-            tutorial::Function10();
+            tutorial::FortranGenericOverloaded();
             SH_nresult = 0;
         }
         break;
@@ -301,7 +301,7 @@ static int l_function10(lua_State *L)
             SH_itype2 == LUA_TNUMBER) {
             const char * name = lua_tostring(L, 1);
             double arg2 = lua_tonumber(L, 2);
-            tutorial::Function10(name, arg2);
+            tutorial::FortranGenericOverloaded(name, arg2);
             SH_nresult = 0;
         }
         else {
@@ -313,7 +313,7 @@ static int l_function10(lua_State *L)
         break;
     }
     return SH_nresult;
-    // splicer end function.Function10
+    // splicer end function.FortranGenericOverloaded
 }
 
 // int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
@@ -500,7 +500,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"OverloadedFunction", l_overloaded_function},
     {"TemplateArgument", l_template_argument},
     {"FortranGeneric", l_fortran_generic},
-    {"Function10", l_function10},
+    {"FortranGenericOverloaded", l_fortran_generic_overloaded},
     {"overload1", l_overload1},
     {"typefunc", l_typefunc},
     {"enumfunc", l_enumfunc},

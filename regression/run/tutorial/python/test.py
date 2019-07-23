@@ -104,11 +104,11 @@ class Tutorial(unittest.TestCase):
         tutorial.FortranGeneric(1)
         tutorial.FortranGeneric(1.0)
 
-    def test_Function10(self):
+    def test_FortranGenericOverloaded(self):
         # overloaded (no default args)
-        tutorial.Function10()
-        tutorial.Function10("foo", 1.0)
-        tutorial.Function10("bar", 1.0)
+        tutorial.FortranGenericOverloaded()
+        tutorial.FortranGenericOverloaded("foo", 1.0)
+        tutorial.FortranGenericOverloaded("bar", 1.0)
 
     def test_overload1(self):
         self.assertEqual(10, tutorial.overload1(10))
