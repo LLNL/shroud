@@ -53,15 +53,15 @@ double UseDefaultArguments(double arg1, bool arg2)
     }
 }
 
-void Function6(const std::string& name)
+void OverloadedFunction(const std::string& name)
 {
-    last_function_called = "Function6(string)";
+    last_function_called = "OverloadedFunction(string)";
     global_str = name;
     return;
 }
-void Function6(int indx)
+void OverloadedFunction(int indx)
 {
-    last_function_called = "Function6(int)";
+    last_function_called = "OverloadedFunction(int)";
     global_int = indx;
     return;
 }

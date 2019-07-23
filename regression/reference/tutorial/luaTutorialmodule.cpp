@@ -206,11 +206,11 @@ static int l_use_default_arguments(lua_State *L)
     // splicer end function.UseDefaultArguments
 }
 
-// void Function6(const std::string & name +intent(in))
-// void Function6(int indx +intent(in)+value)
-static int l_function6(lua_State *L)
+// void OverloadedFunction(const std::string & name +intent(in))
+// void OverloadedFunction(int indx +intent(in)+value)
+static int l_overloaded_function(lua_State *L)
 {
-    // splicer begin function.Function6
+    // splicer begin function.OverloadedFunction
     int SH_nresult = 0;
     int SH_nargs = lua_gettop(L);
     int SH_itype1 = lua_type(L, 1);
@@ -218,12 +218,12 @@ static int l_function6(lua_State *L)
     case 1:
         if (SH_itype1 == LUA_TSTRING) {
             const char * name = lua_tostring(L, 1);
-            tutorial::Function6(name);
+            tutorial::OverloadedFunction(name);
             SH_nresult = 0;
         }
         else if (SH_itype1 == LUA_TNUMBER) {
             int indx = lua_tointeger(L, 1);
-            tutorial::Function6(indx);
+            tutorial::OverloadedFunction(indx);
             SH_nresult = 0;
         }
         else {
@@ -235,7 +235,7 @@ static int l_function6(lua_State *L)
         break;
     }
     return SH_nresult;
-    // splicer end function.Function6
+    // splicer end function.OverloadedFunction
 }
 
 // void Function7(int arg +intent(in)+value)
@@ -497,7 +497,7 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"PassByValue", l_pass_by_value},
     {"ConcatenateStrings", l_concatenate_strings},
     {"UseDefaultArguments", l_use_default_arguments},
-    {"Function6", l_function6},
+    {"OverloadedFunction", l_overloaded_function},
     {"Function7", l_function7},
     {"Function9", l_function9},
     {"Function10", l_function10},

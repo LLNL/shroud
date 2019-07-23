@@ -2716,7 +2716,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function6",
+                        "name": "OverloadedFunction",
                         "pointer": []
                     },
                     "params": [
@@ -2745,33 +2745,33 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function6(const std::string& name)",
-                "declgen": "void Function6(const std::string & name +intent(in))",
+                "decl": "void OverloadedFunction(const std::string& name)",
+                "declgen": "void OverloadedFunction(const std::string & name +intent(in))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function6(\tSH_name);",
+                    "C_call_code": "tutorial::OverloadedFunction(\tSH_name);",
                     "C_call_list": "SH_name",
-                    "C_name": "TUT_function6_from_name",
+                    "C_name": "TUT_overloaded_function_from_name",
                     "C_pre_call": "const std::string SH_name(name);",
                     "C_prototype": "const char * name",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_call": "c_function6_from_name_bufferify",
-                    "F_C_name": "c_function6_from_name",
+                    "F_C_call": "c_overloaded_function_from_name_bufferify",
+                    "F_C_name": "c_overloaded_function_from_name",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
                     "F_arguments": "name",
-                    "F_call_code": "call c_function6_from_name_bufferify(name,\t len_trim(name, kind=C_INT))",
-                    "F_name_function": "function6_from_name",
-                    "F_name_generic": "function6",
-                    "F_name_impl": "function6_from_name",
+                    "F_call_code": "call c_overloaded_function_from_name_bufferify(name,\t len_trim(name, kind=C_INT))",
+                    "F_name_function": "overloaded_function_from_name",
+                    "F_name_generic": "overloaded_function",
+                    "F_name_impl": "overloaded_function_from_name",
                     "F_subprogram": "subroutine",
-                    "LUA_name": "Function6",
-                    "LUA_name_impl": "l_function6",
-                    "PY_name_impl": "PY_Function6_from_name",
+                    "LUA_name": "OverloadedFunction",
+                    "LUA_name_impl": "l_overloaded_function",
+                    "PY_name_impl": "PY_OverloadedFunction_from_name",
                     "__line__": 70,
                     "c_const": "",
-                    "function_name": "Function6",
+                    "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name",
-                    "underscore_name": "function6"
+                    "underscore_name": "overloaded_function"
                 },
                 "linenumber": 69,
                 "options": {}
@@ -2802,7 +2802,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function6",
+                        "name": "OverloadedFunction",
                         "pointer": []
                     },
                     "params": [
@@ -2833,22 +2833,22 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function6(const std::string& name)",
-                "declgen": "void Function6(const std::string & name +intent(in)+len_trim(Lname))",
+                "decl": "void OverloadedFunction(const std::string& name)",
+                "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function6(\tSH_name);",
+                    "C_call_code": "tutorial::OverloadedFunction(\tSH_name);",
                     "C_call_list": "SH_name",
-                    "C_name": "TUT_function6_from_name_bufferify",
+                    "C_name": "TUT_overloaded_function_from_name_bufferify",
                     "C_pre_call": "const std::string SH_name(name, Lname);",
                     "C_prototype": "const char * name,\t int Lname",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_name": "c_function6_from_name_bufferify",
+                    "F_C_name": "c_overloaded_function_from_name_bufferify",
                     "__line__": 70,
                     "c_const": "",
-                    "function_name": "Function6",
+                    "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name_bufferify",
-                    "underscore_name": "function6"
+                    "underscore_name": "overloaded_function"
                 },
                 "linenumber": 69,
                 "options": {
@@ -2908,7 +2908,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "Function6",
+                        "name": "OverloadedFunction",
                         "pointer": []
                     },
                     "params": [
@@ -2932,30 +2932,30 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Function6(int indx)",
-                "declgen": "void Function6(int indx +intent(in)+value)",
+                "decl": "void OverloadedFunction(int indx)",
+                "declgen": "void OverloadedFunction(int indx +intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "tutorial::Function6(\tindx);",
+                    "C_call_code": "tutorial::OverloadedFunction(\tindx);",
                     "C_call_list": "indx",
-                    "C_name": "TUT_function6_from_index",
+                    "C_name": "TUT_overloaded_function_from_index",
                     "C_prototype": "int indx",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_call": "c_function6_from_index",
-                    "F_C_name": "c_function6_from_index",
+                    "F_C_call": "c_overloaded_function_from_index",
+                    "F_C_name": "c_overloaded_function_from_index",
                     "F_arg_c_call": "indx",
                     "F_arguments": "indx",
-                    "F_call_code": "call c_function6_from_index(indx)",
-                    "F_name_function": "function6_from_index",
-                    "F_name_generic": "function6",
-                    "F_name_impl": "function6_from_index",
+                    "F_call_code": "call c_overloaded_function_from_index(indx)",
+                    "F_name_function": "overloaded_function_from_index",
+                    "F_name_generic": "overloaded_function",
+                    "F_name_impl": "overloaded_function_from_index",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_Function6_from_index",
+                    "PY_name_impl": "PY_OverloadedFunction_from_index",
                     "__line__": 73,
                     "c_const": "",
-                    "function_name": "Function6",
+                    "function_name": "OverloadedFunction",
                     "function_suffix": "_from_index",
-                    "underscore_name": "function6"
+                    "underscore_name": "overloaded_function"
                 },
                 "linenumber": 72,
                 "options": {}

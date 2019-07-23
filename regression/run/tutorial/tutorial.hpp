@@ -41,8 +41,8 @@ const std::string  ConcatenateStrings(const std::string& arg1, const std::string
 
 double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true);
 
-void Function6(const std::string& name);
-void Function6(int indx);
+void OverloadedFunction(const std::string& name);
+void OverloadedFunction(int indx);
 
 // specialize for int and double in tutorial.cpp
 template<typename ArgType>

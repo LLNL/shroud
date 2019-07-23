@@ -356,27 +356,28 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments_arg1_arg2
 
-        subroutine c_function6_from_name(name) &
-                bind(C, name="TUT_function6_from_name")
+        subroutine c_overloaded_function_from_name(name) &
+                bind(C, name="TUT_overloaded_function_from_name")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-        end subroutine c_function6_from_name
+        end subroutine c_overloaded_function_from_name
 
-        subroutine c_function6_from_name_bufferify(name, Lname) &
-                bind(C, name="TUT_function6_from_name_bufferify")
+        subroutine c_overloaded_function_from_name_bufferify(name, &
+                Lname) &
+                bind(C, name="TUT_overloaded_function_from_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-        end subroutine c_function6_from_name_bufferify
+        end subroutine c_overloaded_function_from_name_bufferify
 
-        subroutine c_function6_from_index(indx) &
-                bind(C, name="TUT_function6_from_index")
+        subroutine c_overloaded_function_from_index(indx) &
+                bind(C, name="TUT_overloaded_function_from_index")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: indx
-        end subroutine c_function6_from_index
+        end subroutine c_overloaded_function_from_index
 
         subroutine c_function7_int(arg) &
                 bind(C, name="TUT_function7_int")
@@ -657,11 +658,6 @@ module tutorial_mod
         module procedure function10_1_double
     end interface function10
 
-    interface function6
-        module procedure function6_from_name
-        module procedure function6_from_index
-    end interface function6
-
     interface function7
         module procedure function7_int
         module procedure function7_double
@@ -680,6 +676,11 @@ module tutorial_mod
         module procedure overload1_4
         module procedure overload1_5
     end interface overload1
+
+    interface overloaded_function
+        module procedure overloaded_function_from_name
+        module procedure overloaded_function_from_index
+    end interface overloaded_function
 
     interface use_default_arguments
         module procedure use_default_arguments
@@ -1004,25 +1005,25 @@ contains
         ! splicer end function.use_default_arguments_arg1_arg2
     end function use_default_arguments_arg1_arg2
 
-    ! void Function6(const std::string & name +intent(in))
+    ! void OverloadedFunction(const std::string & name +intent(in))
     ! arg_to_buffer
-    subroutine function6_from_name(name)
+    subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
-        ! splicer begin function.function6_from_name
-        call c_function6_from_name_bufferify(name, &
+        ! splicer begin function.overloaded_function_from_name
+        call c_overloaded_function_from_name_bufferify(name, &
             len_trim(name, kind=C_INT))
-        ! splicer end function.function6_from_name
-    end subroutine function6_from_name
+        ! splicer end function.overloaded_function_from_name
+    end subroutine overloaded_function_from_name
 
-    ! void Function6(int indx +intent(in)+value)
-    subroutine function6_from_index(indx)
+    ! void OverloadedFunction(int indx +intent(in)+value)
+    subroutine overloaded_function_from_index(indx)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: indx
-        ! splicer begin function.function6_from_index
-        call c_function6_from_index(indx)
-        ! splicer end function.function6_from_index
-    end subroutine function6_from_index
+        ! splicer begin function.overloaded_function_from_index
+        call c_overloaded_function_from_index(indx)
+        ! splicer end function.overloaded_function_from_index
+    end subroutine overloaded_function_from_index
 
     ! void Function7(int arg +intent(in)+value)
     ! cxx_template

@@ -47,11 +47,12 @@ double TUT_use_default_arguments_arg1(double arg1);
 
 double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2);
 
-void TUT_function6_from_name(const char * name);
+void TUT_overloaded_function_from_name(const char * name);
 
-void TUT_function6_from_name_bufferify(const char * name, int Lname);
+void TUT_overloaded_function_from_name_bufferify(const char * name,
+    int Lname);
 
-void TUT_function6_from_index(int indx);
+void TUT_overloaded_function_from_index(int indx);
 
 void TUT_function7_int(int arg);
 

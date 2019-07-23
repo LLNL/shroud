@@ -75,14 +75,16 @@ class Tutorial(unittest.TestCase):
         rv_double = tutorial.UseDefaultArguments(1.0, False)
         self.assertAlmostEqual(rv_double, 1.0)
 
-    def testFunction6(self):
-        tutorial.Function6("name")
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function6(string)")
+    def test_OverloadedFunction(self):
+        tutorial.OverloadedFunction("name")
+        self.assertEqual(tutorial.LastFunctionCalled(),
+                         "OverloadedFunction(string)")
 
-        tutorial.Function6(1)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function6(int)")
+        tutorial.OverloadedFunction(1)
+        self.assertEqual(tutorial.LastFunctionCalled(),
+                         "OverloadedFunction(int)")
 
-        self.assertRaises(TypeError, tutorial.Function6, 1.0)
+        self.assertRaises(TypeError, tutorial.OverloadedFunction, 1.0)
 
     def test_Function7_8(self):
         """Test cxx_template"""

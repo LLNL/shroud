@@ -107,12 +107,12 @@ contains
     call assert_equals(1.d0, use_default_arguments(1.d0, .false.), &
          "UseDefaultArguments 3")
 
-    call function6("name")
-    call assert_true(last_function_called() == "Function6(string)", &
-         "function6 1")
-    call function6(1)
-    call assert_true(last_function_called() == "Function6(int)", &
-         "function6 2")
+    call overloaded_function("name")
+    call assert_true(last_function_called() == "OverloadedFunction(string)", &
+         "OverloadedFunction 1")
+    call overloaded_function(1)
+    call assert_true(last_function_called() == "OverloadedFunction(int)", &
+         "OverloadedFunction 2")
 
     call function7(1)
     call assert_true(last_function_called() == "Function7<int>",  &

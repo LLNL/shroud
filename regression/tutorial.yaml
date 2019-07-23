@@ -66,10 +66,10 @@ declarations:
     -  _arg1_arg2
   
 # overloaded functions
-  - decl: void Function6(const std::string& name)
+  - decl: void OverloadedFunction(const std::string& name)
     format:
       function_suffix: _from_name
-  - decl: void Function6(int indx)
+  - decl: void OverloadedFunction(int indx)
     format:
       function_suffix: _from_index
   

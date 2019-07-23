@@ -181,50 +181,50 @@ PY_UseDefaultArguments_arg1_arg2(
 }
 
 static PyObject *
-PY_Function6_from_name(
+PY_OverloadedFunction_from_name(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function6(const std::string & name +intent(in))
-// splicer begin function.function6_from_name
+// void OverloadedFunction(const std::string & name +intent(in))
+// splicer begin function.overloaded_function_from_name
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:OverloadedFunction",
         const_cast<char **>(SHT_kwlist), &name))
         return NULL;
 
     // post_parse
     const std::string SH_name(name);
 
-    tutorial::Function6(SH_name);
+    tutorial::OverloadedFunction(SH_name);
     Py_RETURN_NONE;
-// splicer end function.function6_from_name
+// splicer end function.overloaded_function_from_name
 }
 
 static PyObject *
-PY_Function6_from_index(
+PY_OverloadedFunction_from_index(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function6(int indx +intent(in)+value)
-// splicer begin function.function6_from_index
+// void OverloadedFunction(int indx +intent(in)+value)
+// splicer begin function.overloaded_function_from_index
     int indx;
     const char *SHT_kwlist[] = {
         "indx",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:OverloadedFunction",
         const_cast<char **>(SHT_kwlist), &indx))
         return NULL;
 
-    tutorial::Function6(indx);
+    tutorial::OverloadedFunction(indx);
     Py_RETURN_NONE;
-// splicer end function.function6_from_index
+// splicer end function.overloaded_function_from_index
 }
 
 static PyObject *
@@ -762,23 +762,23 @@ PY_LastFunctionCalled(
 // splicer end function.last_function_called
 }
 
-static char PY_Function6__doc__[] =
+static char PY_OverloadedFunction__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function6(
+PY_OverloadedFunction(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function6
+// splicer begin function.overloaded_function
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
-        rvobj = PY_Function6_from_name(self, args, kwds);
+        rvobj = PY_OverloadedFunction_from_name(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -787,7 +787,7 @@ PY_Function6(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rvobj = PY_Function6_from_index(self, args, kwds);
+        rvobj = PY_OverloadedFunction_from_index(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -797,7 +797,7 @@ PY_Function6(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function6
+// splicer end function.overloaded_function
 }
 
 static char PY_Function7__doc__[] =
@@ -947,8 +947,8 @@ static PyMethodDef PY_methods[] = {
     PY_get_global_flag__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
-{"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
-    PY_Function6__doc__},
+{"OverloadedFunction", (PyCFunction)PY_OverloadedFunction,
+    METH_VARARGS|METH_KEYWORDS, PY_OverloadedFunction__doc__},
 {"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
     PY_Function7__doc__},
 {"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,

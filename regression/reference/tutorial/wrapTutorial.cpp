@@ -125,33 +125,34 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 // splicer end function.use_default_arguments_arg1_arg2
 }
 
-// void Function6(const std::string & name +intent(in))
-void TUT_function6_from_name(const char * name)
+// void OverloadedFunction(const std::string & name +intent(in))
+void TUT_overloaded_function_from_name(const char * name)
 {
-// splicer begin function.function6_from_name
+// splicer begin function.overloaded_function_from_name
     const std::string SH_name(name);
-    tutorial::Function6(SH_name);
+    tutorial::OverloadedFunction(SH_name);
     return;
-// splicer end function.function6_from_name
+// splicer end function.overloaded_function_from_name
 }
 
-// void Function6(const std::string & name +intent(in)+len_trim(Lname))
-void TUT_function6_from_name_bufferify(const char * name, int Lname)
+// void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))
+void TUT_overloaded_function_from_name_bufferify(const char * name,
+    int Lname)
 {
-// splicer begin function.function6_from_name_bufferify
+// splicer begin function.overloaded_function_from_name_bufferify
     const std::string SH_name(name, Lname);
-    tutorial::Function6(SH_name);
+    tutorial::OverloadedFunction(SH_name);
     return;
-// splicer end function.function6_from_name_bufferify
+// splicer end function.overloaded_function_from_name_bufferify
 }
 
-// void Function6(int indx +intent(in)+value)
-void TUT_function6_from_index(int indx)
+// void OverloadedFunction(int indx +intent(in)+value)
+void TUT_overloaded_function_from_index(int indx)
 {
-// splicer begin function.function6_from_index
-    tutorial::Function6(indx);
+// splicer begin function.overloaded_function_from_index
+    tutorial::OverloadedFunction(indx);
     return;
-// splicer end function.function6_from_index
+// splicer end function.overloaded_function_from_index
 }
 
 // void Function7(int arg +intent(in)+value)
