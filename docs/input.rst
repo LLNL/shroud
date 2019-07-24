@@ -562,6 +562,9 @@ a value.
           If there is an argument with the same name, the generated
           code may not compile.
 
+          Shroud preserves the names of the arguments since Fortran
+          allows them to be used in function calls - ``call worker(len=10)``
+
 Patterns
 --------
 

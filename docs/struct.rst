@@ -59,6 +59,10 @@ acts as a shadow class for the C++ class.  A pointer to an instance is
 saved as a ``type(C_PTR)`` value. This pointer is then passed down to
 the C++ routines to be used as the *this* instance.
 
+    All problems in computer science can be solved by
+    another level of indirection.
+    --- David Wheeler
+
 Using the tutorial as an example, a simple class is defined in the C++
 header as:
 
@@ -84,11 +88,15 @@ used to interact with the C wrapper. The C wrapper creates a
 corresponding struct.  It contains a pointer to an instance of the
 class and index used to release the instance.
 
+:file:`wrapftutorial.f`
+
 .. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
    :language: fortran
    :start-after: start derived-type SHROUD_class1_capsule
    :end-before: end derived-type SHROUD_class1_capsule
    :dedent: 4
+
+:file:`typesTutorial.h`
 
 .. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
    :language: c
@@ -107,6 +115,62 @@ attribute.
     contains
         procedure :: method1 => class1_method1
     end type class1
+
+
+..
+ The *f_to_c* field uses the
+ generated ``get_instance`` function to return the pointer which will
+ be passed to C.
+
+..
+ In C an opaque typedef for a struct is created as the type for the C++
+ instance pointer.  The *c_to_cxx* and *cxx_to_c* fields casts this
+ pointer to C++ and back to C.
+
+Forward Declaration
+^^^^^^^^^^^^^^^^^^^
+
+A class may be forward declared by omitting ``declarations``.
+All other fields, such as ``format`` and ``options`` must be provided
+on the initial ``decl`` of a Class.
+This will define the type and allow it to be used in following declarations.
+The class's declarations can be added later:
+
+.. code-block:: yaml
+
+   declarations:
+   - decl: class Class1
+     options:
+        foo: True
+
+   - decl: class Class2
+     declarations:
+     - decl: void accept1(Class1 & arg1)
+
+   - decl: class Class1
+     declarations:
+     - decl: void accept2(Class2 & arg2)
+
+.. A class will be forward declared when the ``declarations`` field is
+   not provided.  When the class is not defined later in the file, it may
+   be necessary to provide the conversion fields to complete the type::
+   XXX - define conversion fields
+
+..     declarations:
+       - decl: class Class1
+         fields:
+           c_type: TUT_class1
+           f_derived_type: class1
+           f_to_c: "{f_var}%get_instance()"
+           f_module:
+             tutorial_mod:
+             - class1
+
+..
+ The type map will be written to a file to allow its used by other
+ wrapped libraries.  The file is named by the global field
+ **YAML_type_filename**. This file will only list some of the fields
+ show above with the remainder set to default values by Shroud.
 
 
 Constructor and Destructor
