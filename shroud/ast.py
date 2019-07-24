@@ -274,6 +274,9 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
+        if self.options.literalinclude:
+            # global literalinclude implies literalinclude2
+            self.options.literalinclude2 = True
 
         self.F_module_dependencies = []  # unused
 
@@ -374,6 +377,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             wrap_lua=False,
             doxygen=True,  # create doxygen comments
             literalinclude=False, # Create sphinx literalinclude markers
+            literalinclude2=False, # Used with global identifiers
             return_scalar_pointer="pointer",
             show_splicer_comments=True,
             # blank for functions, set in classes.

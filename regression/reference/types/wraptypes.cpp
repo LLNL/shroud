@@ -253,7 +253,7 @@ bool TYP_return_bool_and_others(int * flag)
 // splicer end function.return_bool_and_others
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;

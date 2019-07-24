@@ -26,12 +26,14 @@ module tutorial_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! start array_context
     type, bind(C) :: SHROUD_array
         type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
         type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
         integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
+    ! end array_context
 
     !  enum tutorial::Class1::DIRECTION
     integer(C_INT), parameter :: tutorial_class1_direction_up = 2

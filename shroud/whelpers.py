@@ -161,8 +161,8 @@ def add_external_helpers(fmtin, literalinclude):
     # Only used with std::string and thus C++
     name = "copy_string"
     if literalinclude:
-        fmt.lstart = "{}helper_{}\n".format(cstart, name)
-        fmt.lend = "\n{}helper_{}".format(cend, name)
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
         cxx_header="<string> <cstddef>",
@@ -219,8 +219,8 @@ def add_shadow_helper(node):
     name = "capsule_{}".format(cname)
     if name not in CHelpers:
         if node.options.literalinclude:
-            lstart = "// start struct " + cname + "\n"
-            lend = "\n// end struct " + cname
+            lstart = "{}struct {}\n".format(cstart, cname)
+            lend = "\n{}struct {}".format(cend, cname)
         else:
             lstart = ""
             lend = ""

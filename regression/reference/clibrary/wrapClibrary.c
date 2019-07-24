@@ -153,7 +153,7 @@ void CLI_callback3_bufferify(const char * type, void * in,
 // splicer end function.callback3_bufferify
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;

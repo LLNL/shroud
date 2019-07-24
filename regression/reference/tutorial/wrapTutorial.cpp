@@ -37,6 +37,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
+// start helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_var_len) {
@@ -46,6 +47,7 @@ void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_v
     strncpy(c_var, cxx_var, n);
     TUT_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
+// end helper copy_string
 
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -476,7 +478,8 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.last_function_called_bufferify
 }
 
-// Release C++ allocated memory.
+// start release allocated memory
+// Release library allocated memory.
 void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
@@ -508,5 +511,6 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

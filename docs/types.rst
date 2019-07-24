@@ -528,24 +528,20 @@ Fortran keeps track of C++ objects with the struct
 **C_capsule_data_type** and the ``bind(C)`` equivalent
 **F_capsule_data_type**. Their names default to
 ``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{class_lower}_capsule``.
-In the Tutorial these types are defined in C as:
+In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
-.. code-block:: c++
+.. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
+   :language: c++
+   :start-after: start struct TUT_class1
+   :end-before: end struct TUT_class1
 
-    struct s_TUT_class1 {
-        void *addr;     /* address of C++ memory */
-        int idtor;      /* index of destructor */
-    };
-    typedef struct s_TUT_class1 TUT_class1;
+And :file:`wrapftutorial.f`:
 
-And Fortran:
-
-.. code-block:: fortran
-
-    type, bind(C) :: SHROUD_class1_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_class1_capsule
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: start derived-type SHROUD_class1_capsule
+   :end-before: end derived-type SHROUD_class1_capsule
+   :dedent: 4
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
 or ``std::string *``.  *idtor* is a Shroud generated index of the
@@ -555,40 +551,10 @@ These code segments are collected and written to function
 be released and is used with the **owner(library)** attribute. A
 typical function would look like:
 
-.. code-block:: c++
-
-    // Release C++ allocated memory.
-    void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
-    {
-        void *ptr = cap->addr;
-        switch (cap->idtor) {
-        case 0:   // --none--
-        {
-            // Nothing to delete
-            break;
-        }
-        case 1:   // tutorial::Class1
-        {
-            tutorial::Class1 *cxx_ptr = reinterpret_cast<tutorial::Class1 *>(ptr);
-            delete cxx_ptr;
-            break;
-        }
-        case 2:   // std::string
-        {
-            std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-            delete cxx_ptr;
-            break;
-        }
-        default:
-        {
-            // Unexpected case in destructor
-            break;
-        }
-        }
-        cap->addr = NULL;
-        cap->idtor = 0;  // avoid deleting again
-    }
-
+.. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
+   :language: c++
+   :start-after: start release allocated memory
+   :end-before: end release allocated memory
 
 Character and Arrays
 ^^^^^^^^^^^^^^^^^^^^
@@ -625,10 +591,12 @@ The union is replaced with a single ``type(C_PTR)`` for Fortran:
    :end-before: end array_context
    :dedent: 4
 
-The C wrapper does not return a ``std::string`` pointer.  
-Instead it passes in a **C_array_type** pointer as an argument.
-It calls ``Function4d``, saves the results and metadata into the argument.
-This allows it to be easily accessed from Fortran:
+The C wrapper does not return a ``std::string`` pointer.  Instead it
+passes in a **C_array_type** pointer as an argument.  It calls
+``getConstStringPtrAlloc``, saves the results and metadata into the
+argument.  This allows it to be easily accessed from Fortran.
+Since the attribute is **owner(library)**, ``cxx.idtor`` is set to ``0``
+to avoid deallocating the memory.
 
 .. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
    :language: c++
@@ -650,8 +618,8 @@ to set the value of the result and possible free memory for
 
 .. literalinclude:: ../regression/reference/memdoc/wrapmemdoc.cpp
    :language: c++
-   :start-after: start helper_copy_string
-   :end-before: end helper_copy_string
+   :start-after: start helper copy_string
+   :end-before: end helper copy_string
 
 .. note:: The three steps of call, allocate, copy could be replaced
           with a single call by using the *futher interoperability

@@ -185,7 +185,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // splicer end function.return_struct_ptr2_bufferify
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;

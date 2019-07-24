@@ -19,7 +19,7 @@ extern "C" {
 
 
 // helper function
-// start helper_copy_string
+// start helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_var_len) {
@@ -29,7 +29,7 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
     strncpy(c_var, cxx_var, n);
     STR_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
-// end helper_copy_string
+// end helper copy_string
 
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -66,11 +66,13 @@ void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
 }
 // end STR_get_const_string_ptr_alloc_bufferify
 
-// Release C++ allocated memory.
+// start release allocated memory
+// Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

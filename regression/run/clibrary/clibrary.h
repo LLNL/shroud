@@ -22,7 +22,7 @@ enum EnumTypeID {
 
 typedef int TypeID;
 
-void Function1(void);
+void NoReturnNoArguments(void);
 
 double PassByValue(double arg1, int arg2);
 void PassByReference(double *arg1, int *arg2);

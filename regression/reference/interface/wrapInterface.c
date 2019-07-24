@@ -21,7 +21,7 @@
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void INT_SHROUD_memory_destructor(INT_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;

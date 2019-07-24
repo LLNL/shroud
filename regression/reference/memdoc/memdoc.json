@@ -332,6 +332,7 @@
             "debug_index": false,
             "doxygen": true,
             "literalinclude": true,
+            "literalinclude2": true,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,

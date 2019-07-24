@@ -1376,10 +1376,12 @@ class Wrapc(util.WrapperMixin):
         )
 
         output = self.impl
+        output.append("")
+        if options.literalinclude2:
+            output.append("// start release allocated memory")
         append_format(
             output,
-            "\n"
-            "// Release C++ allocated memory.\n"
+            "// Release library allocated memory.\n"
             "void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n"
             "{{+",
             fmt,
@@ -1423,6 +1425,8 @@ class Wrapc(util.WrapperMixin):
             "cap->idtor = 0;  // avoid deleting again\n"
             "-}"
         )
+        if options.literalinclude2:
+            output.append("// end release allocated memory")
 
     capsule_code = {}
     capsule_order = []

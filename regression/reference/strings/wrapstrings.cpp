@@ -938,7 +938,7 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
 // splicer end function.cpass_char_ptr_bufferify
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;

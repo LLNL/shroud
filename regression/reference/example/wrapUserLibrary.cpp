@@ -291,7 +291,7 @@ void AA_cos_doubles(double * in, double * out, int sizein)
 // splicer end function.cos_doubles
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;

@@ -373,9 +373,9 @@ class GenFunctions(object):
         """
         newlibrary = self.newlibrary
         whelpers.add_external_helpers(newlibrary.fmtdict,
-                                      newlibrary.options.literalinclude)
+                                      newlibrary.options.literalinclude2)
         whelpers.add_capsule_helper(newlibrary.fmtdict,
-                                    newlibrary.options.literalinclude)
+                                    newlibrary.options.literalinclude2)
 
         self.function_index = newlibrary.function_index
 

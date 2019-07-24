@@ -278,6 +278,15 @@ literalinclude
   Write some text lines which can be used with Sphinx's literalinclude
   directive.  This is used to insert the generated code into the
   documentation.
+  Can be applied at the top level or any declaration.
+  Setting *literalinclude* at the top level implies *literalinclude2*.
+
+literalinclude2
+
+  Write some text lines which can be used with Sphinx's literalinclude
+  directive.  Only effects some entities which do not map to a 
+  declarations such as some helper functions or types.
+  Only effective at the top level.
 
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
