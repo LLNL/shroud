@@ -132,11 +132,13 @@ void POI_increment_int_array(int * array, int sizein)
 // splicer end function.increment_int_array
 }
 
+// start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

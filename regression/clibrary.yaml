@@ -26,6 +26,7 @@ options:
   F_module_per_class: False
   wrap_python: True
   wrap_lua: False
+  literalinclude2: True
 
 declarations:
 

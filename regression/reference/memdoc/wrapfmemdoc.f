@@ -35,9 +35,8 @@ module memdoc_mod
     end type SHROUD_array
     ! end array_context
 
+    ! start c_get_const_string_ptr_alloc
     interface
-
-        ! start c_get_const_string_ptr_alloc
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc")
@@ -45,17 +44,21 @@ module memdoc_mod
             implicit none
             type(C_PTR) SHT_rv
         end function c_get_const_string_ptr_alloc
-        ! end c_get_const_string_ptr_alloc
+    end interface
+    ! end c_get_const_string_ptr_alloc
 
-        ! start c_get_const_string_ptr_alloc_bufferify
+    ! start c_get_const_string_ptr_alloc_bufferify
+    interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
             import :: SHROUD_array
             implicit none
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_alloc_bufferify
-        ! end c_get_const_string_ptr_alloc_bufferify
+    end interface
+    ! end c_get_const_string_ptr_alloc_bufferify
 
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

@@ -288,6 +288,10 @@ literalinclude2
   declarations such as some helper functions or types.
   Only effective at the top level.
 
+  Each Fortran interface will be encluded in its own ``interface`` block.
+  This is to provide the interface context when code is added to the
+  documentation.
+
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
   (it does not have the *dimension* attribute).

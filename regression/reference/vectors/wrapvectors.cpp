@@ -175,6 +175,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer end function.vector_string_count_bufferify
 }
 
+// start release allocated memory
 // Release library allocated memory.
 void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 {
@@ -201,5 +202,6 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

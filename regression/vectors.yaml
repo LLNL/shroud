@@ -21,6 +21,7 @@ cxx_header: vectors.hpp
 
 options:
   debug: True
+  literalinclude2: True
 
 declarations:
 

@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Generate Fortran bindings for C++ code.
 
@@ -61,9 +54,10 @@ class Wrapf(util.WrapperMixin):
         self.operator_impl = []
         self.operator_map = {}  # list of function names by operator
         # {'.eq.': [ 'abc', 'def'] }
-        self.c_interface.append("")
-        self.c_interface.append("interface")
-        self.c_interface.append(1)
+        if not self.newlibrary.options.literalinclude2:
+            self.c_interface.append("")
+            self.c_interface.append("interface")
+            self.c_interface.append(1)
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
         self.f_helper = {}
@@ -121,6 +115,8 @@ class Wrapf(util.WrapperMixin):
             self._pop_splicer("function")
 
             self.c_interface.append("")
+            if self.newlibrary.options.literalinclude2:
+                self.c_interface.append("interface+")
             self._create_splicer("additional_interfaces", self.c_interface)
             self.impl.append("")
             self._create_splicer("additional_functions", self.impl)
@@ -678,9 +674,10 @@ rv = .false.
         self._push_splicer("abstract")
         if len(self.f_abstract_interface) > 0:
             iface = self.abstract_interface
-            iface.append("")
-            iface.append("abstract interface")
-            iface.append(1)
+            if not self.newlibrary.options.literalinclude2:
+                iface.append("")
+                iface.append("abstract interface")
+                iface.append(1)
 
             for key in sorted(self.f_abstract_interface.keys()):
                 node, fmt, arg = self.f_abstract_interface[key]
@@ -716,6 +713,8 @@ rv = .false.
                 arguments = ",\t ".join(arg_f_names)
                 if node.options.literalinclude:
                     iface.append("! start abstract " + key)
+                if self.newlibrary.options.literalinclude2:
+                    iface.append("abstract interface+")
                 iface.append(
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
@@ -726,11 +725,14 @@ rv = .false.
                 iface.extend(arg_c_decl)
                 iface.append(-1)
                 iface.append("end {} {}".format(subprogram, key))
+                if self.newlibrary.options.literalinclude2:
+                    iface.append("-end interface")
                 if node.options.literalinclude:
                     iface.append("! end abstract " + key)
-            iface.append(-1)
-            iface.append("")
-            iface.append("end interface")
+            if not self.newlibrary.options.literalinclude2:
+                iface.append(-1)
+                iface.append("")
+                iface.append("end interface")
         self._pop_splicer("abstract")
 
     def build_arg_list_interface(
@@ -985,6 +987,8 @@ rv = .false.
             c_interface.append("#" + node.cpp_if)
         if options.literalinclude:
             append_format(c_interface, "! start {F_C_name}", fmt)
+        if self.newlibrary.options.literalinclude2:
+            self.c_interface.append("interface+")
         c_interface.append(
             wformat(
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
@@ -1001,6 +1005,8 @@ rv = .false.
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
         c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt))
+        if self.newlibrary.options.literalinclude2:
+            self.c_interface.append("-end interface")
         if options.literalinclude:
             append_format(c_interface, "! end {F_C_name}", fmt)
         if node.cpp_if:

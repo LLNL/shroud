@@ -1563,7 +1563,7 @@
             "debug_index": false,
             "doxygen": true,
             "literalinclude": false,
-            "literalinclude2": false,
+            "literalinclude2": true,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,

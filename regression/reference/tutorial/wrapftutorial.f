@@ -109,22 +109,19 @@ module tutorial_mod
         module procedure singleton_ne
     end interface
 
+    ! start abstract callback1_incr
     abstract interface
-
-        ! start abstract callback1_incr
         function callback1_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value :: arg0
             integer(C_INT) :: callback1_incr
         end function callback1_incr
-        ! end abstract callback1_incr
-
     end interface
+    ! end abstract callback1_incr
 
+    ! start c_class1_new_default
     interface
-
-        ! start c_class1_new_default
         function c_class1_new_default(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_default")
@@ -134,9 +131,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_default
-        ! end c_class1_new_default
+    end interface
+    ! end c_class1_new_default
 
-        ! start c_class1_new_flag
+    ! start c_class1_new_flag
+    interface
         function c_class1_new_flag(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_flag")
@@ -147,18 +146,22 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_flag
-        ! end c_class1_new_flag
+    end interface
+    ! end c_class1_new_flag
 
-        ! start c_class1_delete
+    ! start c_class1_delete
+    interface
         subroutine c_class1_delete(self) &
                 bind(C, name="TUT_class1_delete")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_delete
-        ! end c_class1_delete
+    end interface
+    ! end c_class1_delete
 
-        ! start c_class1_method1
+    ! start c_class1_method1
+    interface
         function c_class1_method1(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_method1")
@@ -168,9 +171,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_method1
-        ! end c_class1_method1
+    end interface
+    ! end c_class1_method1
 
-        ! start c_class1_equivalent
+    ! start c_class1_equivalent
+    interface
         pure function c_class1_equivalent(self, obj2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_equivalent")
@@ -181,18 +186,22 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: obj2
             logical(C_BOOL) :: SHT_rv
         end function c_class1_equivalent
-        ! end c_class1_equivalent
+    end interface
+    ! end c_class1_equivalent
 
-        ! start c_class1_return_this
+    ! start c_class1_return_this
+    interface
         subroutine c_class1_return_this(self) &
                 bind(C, name="TUT_class1_return_this")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_return_this
-        ! end c_class1_return_this
+    end interface
+    ! end c_class1_return_this
 
-        ! start c_class1_return_this_buffer
+    ! start c_class1_return_this_buffer
+    interface
         function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer")
@@ -205,9 +214,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer
-        ! end c_class1_return_this_buffer
+    end interface
+    ! end c_class1_return_this_buffer
 
-        ! start c_class1_return_this_buffer_bufferify
+    ! start c_class1_return_this_buffer_bufferify
+    interface
         function c_class1_return_this_buffer_bufferify(self, name, &
                 Lname, flag, SHT_crv) &
                 result(SHT_rv) &
@@ -222,9 +233,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer_bufferify
-        ! end c_class1_return_this_buffer_bufferify
+    end interface
+    ! end c_class1_return_this_buffer_bufferify
 
-        ! start c_class1_getclass3
+    ! start c_class1_getclass3
+    interface
         function c_class1_getclass3(self, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_getclass3")
@@ -235,9 +248,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_getclass3
-        ! end c_class1_getclass3
+    end interface
+    ! end c_class1_getclass3
 
-        ! start c_class1_direction_func
+    ! start c_class1_direction_func
+    interface
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_direction_func")
@@ -248,9 +263,11 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_class1_direction_func
-        ! end c_class1_direction_func
+    end interface
+    ! end c_class1_direction_func
 
-        ! start c_class1_get_m_flag
+    ! start c_class1_get_m_flag
+    interface
         function c_class1_get_m_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_m_flag")
@@ -260,9 +277,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_m_flag
-        ! end c_class1_get_m_flag
+    end interface
+    ! end c_class1_get_m_flag
 
-        ! start c_class1_get_test
+    ! start c_class1_get_test
+    interface
         function c_class1_get_test(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_test")
@@ -272,9 +291,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_test
-        ! end c_class1_get_test
+    end interface
+    ! end c_class1_get_test
 
-        ! start c_class1_set_test
+    ! start c_class1_set_test
+    interface
         subroutine c_class1_set_test(self, val) &
                 bind(C, name="TUT_class1_set_test")
             use iso_c_binding, only : C_INT
@@ -283,11 +304,13 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_class1_set_test
-        ! end c_class1_set_test
+    end interface
+    ! end c_class1_set_test
 
-        ! splicer begin class.Class1.additional_interfaces
-        ! splicer end class.Class1.additional_interfaces
+    ! splicer begin class.Class1.additional_interfaces
+    ! splicer end class.Class1.additional_interfaces
 
+    interface
         function c_singleton_get_reference(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_singleton_get_reference")
@@ -297,17 +320,21 @@ module tutorial_mod
             type(SHROUD_singleton_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_singleton_get_reference
+    end interface
 
-        ! splicer begin class.Singleton.additional_interfaces
-        ! splicer end class.Singleton.additional_interfaces
+    ! splicer begin class.Singleton.additional_interfaces
+    ! splicer end class.Singleton.additional_interfaces
 
-        ! start no_return_no_arguments
+    ! start no_return_no_arguments
+    interface
         subroutine no_return_no_arguments() &
                 bind(C, name="TUT_no_return_no_arguments")
             implicit none
         end subroutine no_return_no_arguments
-        ! end no_return_no_arguments
+    end interface
+    ! end no_return_no_arguments
 
+    interface
         function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_pass_by_value")
@@ -317,7 +344,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
         end function pass_by_value
+    end interface
 
+    interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
                 Larg2, DSHF_rv) &
                 bind(C, name="TUT_concatenate_strings_bufferify")
@@ -330,8 +359,10 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Larg2
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
         end subroutine c_concatenate_strings_bufferify
+    end interface
 
-        ! start c_use_default_arguments
+    ! start c_use_default_arguments
+    interface
         function c_use_default_arguments() &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_arguments")
@@ -339,9 +370,11 @@ module tutorial_mod
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments
-        ! end c_use_default_arguments
+    end interface
+    ! end c_use_default_arguments
 
-        ! start c_use_default_arguments_arg1
+    ! start c_use_default_arguments_arg1
+    interface
         function c_use_default_arguments_arg1(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_arguments_arg1")
@@ -350,9 +383,11 @@ module tutorial_mod
             real(C_DOUBLE), value, intent(IN) :: arg1
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments_arg1
-        ! end c_use_default_arguments_arg1
+    end interface
+    ! end c_use_default_arguments_arg1
 
-        ! start c_use_default_arguments_arg1_arg2
+    ! start c_use_default_arguments_arg1_arg2
+    interface
         function c_use_default_arguments_arg1_arg2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_arguments_arg1_arg2")
@@ -362,15 +397,19 @@ module tutorial_mod
             logical(C_BOOL), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
         end function c_use_default_arguments_arg1_arg2
-        ! end c_use_default_arguments_arg1_arg2
+    end interface
+    ! end c_use_default_arguments_arg1_arg2
 
+    interface
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_overloaded_function_from_name")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_overloaded_function_from_name
+    end interface
 
+    interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
                 Lname) &
                 bind(C, name="TUT_overloaded_function_from_name_bufferify")
@@ -379,28 +418,36 @@ module tutorial_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
         end subroutine c_overloaded_function_from_name_bufferify
+    end interface
 
+    interface
         subroutine c_overloaded_function_from_index(indx) &
                 bind(C, name="TUT_overloaded_function_from_index")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: indx
         end subroutine c_overloaded_function_from_index
+    end interface
 
+    interface
         subroutine c_template_argument_int(arg) &
                 bind(C, name="TUT_template_argument_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
         end subroutine c_template_argument_int
+    end interface
 
+    interface
         subroutine c_template_argument_double(arg) &
                 bind(C, name="TUT_template_argument_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_template_argument_double
+    end interface
 
+    interface
         function c_template_return_int() &
                 result(SHT_rv) &
                 bind(C, name="TUT_template_return_int")
@@ -408,7 +455,9 @@ module tutorial_mod
             implicit none
             integer(C_INT) :: SHT_rv
         end function c_template_return_int
+    end interface
 
+    interface
         function c_template_return_double() &
                 result(SHT_rv) &
                 bind(C, name="TUT_template_return_double")
@@ -416,19 +465,25 @@ module tutorial_mod
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_template_return_double
+    end interface
 
+    interface
         subroutine c_fortran_generic(arg) &
                 bind(C, name="TUT_fortran_generic")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_fortran_generic
+    end interface
 
+    interface
         subroutine c_fortran_generic_overloaded_0() &
                 bind(C, name="TUT_fortran_generic_overloaded_0")
             implicit none
         end subroutine c_fortran_generic_overloaded_0
+    end interface
 
+    interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1")
             use iso_c_binding, only : C_CHAR, C_DOUBLE
@@ -436,7 +491,9 @@ module tutorial_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1
+    end interface
 
+    interface
         subroutine c_fortran_generic_overloaded_1_bufferify(name, Lname, &
                 arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1_bufferify")
@@ -446,7 +503,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: Lname
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_fortran_generic_overloaded_1_bufferify
+    end interface
 
+    interface
         function c_use_default_overload_num(num) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_overload_num")
@@ -455,7 +514,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
         end function c_use_default_overload_num
+    end interface
 
+    interface
         function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_overload_num_offset")
@@ -465,7 +526,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT) :: SHT_rv
         end function c_use_default_overload_num_offset
+    end interface
 
+    interface
         function c_use_default_overload_num_offset_stride(num, offset, &
                 stride) &
                 result(SHT_rv) &
@@ -477,7 +540,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: stride
             integer(C_INT) :: SHT_rv
         end function c_use_default_overload_num_offset_stride
+    end interface
 
+    interface
         function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_overload_3")
@@ -487,7 +552,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
         end function c_use_default_overload_3
+    end interface
 
+    interface
         function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_overload_4")
@@ -498,7 +565,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT) :: SHT_rv
         end function c_use_default_overload_4
+    end interface
 
+    interface
         function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
                 bind(C, name="TUT_use_default_overload_5")
@@ -510,7 +579,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: stride
             integer(C_INT) :: SHT_rv
         end function c_use_default_overload_5
+    end interface
 
+    interface
         function typefunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_typefunc")
@@ -519,7 +590,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function typefunc
+    end interface
 
+    interface
         function enumfunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_enumfunc")
@@ -528,7 +601,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function enumfunc
+    end interface
 
+    interface
         function colorfunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_colorfunc")
@@ -537,8 +612,10 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function colorfunc
+    end interface
 
-        ! start get_min_max
+    ! start get_min_max
+    interface
         subroutine get_min_max(min, max) &
                 bind(C, name="TUT_get_min_max")
             use iso_c_binding, only : C_INT
@@ -546,8 +623,10 @@ module tutorial_mod
             integer(C_INT), intent(OUT) :: min
             integer(C_INT), intent(OUT) :: max
         end subroutine get_min_max
-        ! end get_min_max
+    end interface
+    ! end get_min_max
 
+    interface
         function direction_func(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_direction_func")
@@ -556,14 +635,18 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function direction_func
+    end interface
 
+    interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="TUT_pass_class_by_value")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), value, intent(IN) :: arg
         end subroutine c_pass_class_by_value
+    end interface
 
+    interface
         function c_useclass(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_useclass")
@@ -573,7 +656,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_useclass
+    end interface
 
+    interface
         function c_getclass2(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass2")
@@ -583,7 +668,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass2
+    end interface
 
+    interface
         function c_getclass3(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass3")
@@ -593,7 +680,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass3
+    end interface
 
+    interface
         function c_get_class_copy(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_class_copy")
@@ -604,8 +693,10 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_copy
+    end interface
 
-        ! start callback1
+    ! start callback1
+    interface
         function callback1(in, incr) &
                 result(SHT_rv) &
                 bind(C, name="TUT_callback1")
@@ -616,15 +707,19 @@ module tutorial_mod
             procedure(callback1_incr) :: incr
             integer(C_INT) :: SHT_rv
         end function callback1
-        ! end callback1
+    end interface
+    ! end callback1
 
+    interface
         subroutine set_global_flag(arg) &
                 bind(C, name="TUT_set_global_flag")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
         end subroutine set_global_flag
+    end interface
 
+    interface
         function get_global_flag() &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_global_flag")
@@ -632,7 +727,9 @@ module tutorial_mod
             implicit none
             integer(C_INT) :: SHT_rv
         end function get_global_flag
+    end interface
 
+    interface
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="TUT_last_function_called")
@@ -640,7 +737,9 @@ module tutorial_mod
             implicit none
             type(C_PTR) SHT_rv
         end function c_last_function_called
+    end interface
 
+    interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_last_function_called_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -648,7 +747,9 @@ module tutorial_mod
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_last_function_called_bufferify
+    end interface
 
+    interface
         ! splicer begin additional_interfaces
         subroutine all_test1(array)
           implicit none

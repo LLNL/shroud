@@ -23,6 +23,7 @@ cxx_header: strings.hpp
 options:
   debug: True
   wrap_python: True
+  literalinclude2: True
 
 declarations:
 
