@@ -121,9 +121,6 @@ contains
     call pass_by_reference(3.14d0, int_var)
     call assert_equals(3, int_var)
 
-    rv_logical = function3(.false.)
-    call assert_true(rv_logical)
-
     rv_logical = .true.
     wrk_logical = .true.
     call check_bool(.true., rv_logical, wrk_logical)

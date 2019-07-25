@@ -47,7 +47,6 @@ declarations:
   options:
     literalinclude: True
 
-- decl: bool Function3(bool arg)
 - decl: void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
   doxygen:
     brief: Check intent with bool

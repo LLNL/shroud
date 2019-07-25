@@ -45,9 +45,6 @@ class Tutorial(unittest.TestCase):
         rv = clibrary.PassByReference(3.14)
         self.assertEqual(3, rv)
 
-    def testfunction3(self):
-        self.assertEqual(True, clibrary.Function3(False))
-
     def testcheckBool(self):
         self.assertEqual((False, False), clibrary.checkBool(True, True))
 

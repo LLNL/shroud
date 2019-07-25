@@ -80,17 +80,6 @@ module clibrary_mod
     end interface
     ! end pass_by_reference
 
-    interface
-        function c_function3(arg) &
-                result(SHT_rv) &
-                bind(C, name="Function3")
-            use iso_c_binding, only : C_BOOL
-            implicit none
-            logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: SHT_rv
-        end function c_function3
-    end interface
-
     ! start c_check_bool
     interface
         subroutine c_check_bool(arg1, arg2, arg3) &
@@ -406,19 +395,6 @@ module clibrary_mod
     end interface
 
 contains
-
-    ! bool Function3(bool arg +intent(in)+value)
-    function function3(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
-        logical, value, intent(IN) :: arg
-        logical(C_BOOL) SH_arg
-        logical :: SHT_rv
-        SH_arg = arg  ! coerce to C_BOOL
-        ! splicer begin function.function3
-        SHT_rv = c_function3(SH_arg)
-        ! splicer end function.function3
-    end function function3
 
     ! void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
     !>

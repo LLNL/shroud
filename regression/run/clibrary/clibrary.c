@@ -45,12 +45,6 @@ void PassByReference(double *arg1, int *arg2)
 }
 // end PassByReference
 
-bool Function3(bool arg)
-{
-    strncpy(last_function_called, "Function3", MAXLAST);
-    return ! arg;
-}
-
 // start checkBool
 void checkBool(const bool arg1, bool *arg2, bool *arg3)
 {

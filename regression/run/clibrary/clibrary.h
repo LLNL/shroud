@@ -27,7 +27,6 @@ void NoReturnNoArguments(void);
 double PassByValue(double arg1, int arg2);
 void PassByReference(double *arg1, int *arg2);
 
-bool Function3(bool arg);
 void checkBool(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
