@@ -1,0 +1,10 @@
+Read yaml generic.yaml
+C function double GetGlobalDouble()
+C function void GenericReal(double arg +intent(in)+value)
+Close wrapgeneric.c
+Close typesgeneric.h
+C-interface, Fortran function double GetGlobalDouble()
+C-interface function void GenericReal(double arg +intent(in)+value)
+Fortran function void GenericReal(float arg +intent(in)+value)
+Fortran function void GenericReal(double arg +intent(in)+value)
+Close wrapfgeneric.f

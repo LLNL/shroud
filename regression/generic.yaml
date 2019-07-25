@@ -1,0 +1,31 @@
+copyright:
+- Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test fortran_generic
+
+library: generic
+cxx_header: generic.h
+language: c
+
+options:
+  debug: True
+  wrap_python: False
+  wrap_lua: False
+
+declarations:
+
+- decl: double GetGlobalDouble()
+- decl: void GenericReal(double arg)
+  fortran_generic:
+     arg:
+     - float
+     - double
+
+#- decl: void save_pointer(void *addr, int type, size_t size)
+
+
