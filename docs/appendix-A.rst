@@ -41,7 +41,7 @@ YAML:
 
     - decl: void NoReturnNoArguments()
 
-Calls C via the interface:
+Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
@@ -70,8 +70,7 @@ The C++ usage is similar:
 
     #include "tutorial.hpp"
 
-    using namespace tutorial;
-    NoReturnNoArguments();
+    tutorial::NoReturnNoArguments();
 
 
 Numeric Types
@@ -161,7 +160,7 @@ Example usage:
 Sum
 ^^^
 
-C++ library function:
+C++ library function from :file:`pointers.cpp`:
 
 .. literalinclude:: ../regression/run/pointers/pointers.cpp
    :language: c
@@ -367,7 +366,8 @@ returnOneName
 ^^^^^^^^^^^^^
 
 Pass the pointer to a buffer which the C library will fill.
-The length of the string is unknown.
+The length of the string is implicitly known not to exceed
+the library variable ``MAXNAME``.
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -755,7 +755,7 @@ Create a Fortran subroutine in an additional ``CHARACTER``
 argument for the C function result. Any size character string can
 be returned limited by the size of the Fortran argument.  The
 argument is defined by the *F_string_result_as_arg* format string.
-Works with Fortran 90.
+Works with Fortran 90 and later.
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
@@ -1115,6 +1115,8 @@ Fortran usage:
     integer(C_INT) rv_int
     rv_int = pass_assumed_type(23_C_INT)
 
+As a reminder, ``23_C_INT`` creates an ``integer(C_INT)`` constant.
+
 .. ############################################################
 
 .. _example_passAssumedTypeDim:
@@ -1253,7 +1255,7 @@ Fortran usage:
 
       subroutine work
         call callback1(1, userincr)
-      end subrouine work
+      end subroutine work
     end module worker
 
 
@@ -1547,7 +1549,8 @@ Corresponding C++ code:
 .. code-block:: c++
 
     include <tutorial.hpp>
-    tutorial::Class1 obj = new * tutorial::Class1;
+
+    tutorial::Class1 * obj = new tutorial::Class1;
 
     delete obj;
 
@@ -1578,8 +1581,11 @@ YAML input:
       - decl: int m_flag +readonly;
       - decl: int m_test +name(test);
 
-A C wrapper function is created for each getter and setter
-unless the *readonly* attribute is added.
+A C wrapper function is created for each getter and setter.
+If the *readonly* attribute is added, then only a getter is created.
+In this case ``m_`` is a convention used to designate member variables.
+The Fortran attribute is renamed as **test** to avoid cluttering
+the Fortran API with this convention.
 
 The C wrappers:
 
@@ -1740,7 +1746,7 @@ This creates three corresponding Fortran interfaces:
    :end-before: end c_use_default_arguments_arg1_arg2
    :dedent: 8
 
-In many case the interfaces would be enought to call the routines.
+In many case the interfaces would be enough to call the routines.
 However, in order to have a generic interface, there must be
 explicit Fortran wrappers:
 
