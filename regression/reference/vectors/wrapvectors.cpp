@@ -44,6 +44,7 @@ int ShroudLenTrim(const char *src, int nsrc) {
 
 
 // helper function
+// start helper copy_array
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var, 
@@ -55,6 +56,7 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
     std::memcpy(c_var, cxx_var, n);
     VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
+// end helper copy_array
 // splicer begin C_definitions
 // splicer end C_definitions
 

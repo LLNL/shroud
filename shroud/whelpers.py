@@ -53,6 +53,10 @@ cend   = "// end "
 fstart = "! start "
 fend   = "! end "
 
+_literalinclude = False
+def set_literalinclude(flag):
+    global _literalinclude
+    _literalinclude = flag
 
 def XXXwrite_helper_files(self, directory):
     """This library file is no longer needed.
@@ -152,7 +156,8 @@ def add_external_helpers(fmtin, literalinclude):
     confict with other Shroud wrapped libraries.
 
     Args:
-        fmt - format dictionary from the library.
+        fmtin - format dictionary from the library.
+        literalinclude - value of top level option.literalinclude2
     """
     fmt = util.Scope(fmtin)
     fmt.lstart = ""
@@ -384,24 +389,31 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
         FHelpers[name] = helper
 
 
-def add_copy_array_helper_c(fmt):
+def add_copy_array_helper_c(fmtin):
     """Create function to copy contents of a vector.
 
     Args:
-        fmt - format dictionary from the library.
+        fmtin - format dictionary from the library.
     """
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
+
     name = "copy_array"
+    if _literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
     if name not in CHelpers:
         helper = dict(
             dependent_helpers=["array_context"],
             c_header="<string.h>",
             cxx_header="<cstring>",
-            # Create a single C routine which is called from Fortran via an interface
-            # for each cxx_type
+            # Create a single C routine which is called from Fortran
+            # via an interface for each cxx_type.
             cxx_source=wformat(
                 """
 // helper function
-// Copy std::vector into array c_var(c_var_size).
+{lstart}// Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
@@ -410,7 +422,7 @@ int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->len;
 {stdlib}memcpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}""",
+-}}{lend}""",
                 fmt,
             ),
         )
@@ -419,6 +431,10 @@ n *= data->len;
 
 def add_copy_array_helper(fmt):
     """
+    Create Fortran interface to helper function
+    which copies an array based on cxx_type.
+    Each interface calls the same C helper.
+
     Args:
         fmt -
     """

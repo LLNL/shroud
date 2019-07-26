@@ -5,7 +5,7 @@
    SPDX-License-Identifier: (BSD-3-Clause)
 
 .. All of the examples are ordered as
-   C or C++ code from users library
+   C or C++ code from user's library
    YAML input
    C++ wrapper
    Fortran interface
@@ -83,7 +83,7 @@ Numeric Types
 PassByValue
 ^^^^^^^^^^^
 
-C library function:
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -124,7 +124,7 @@ Fortran usage:
 PassByReference
 ^^^^^^^^^^^^^^^
 
-C library function:
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -221,7 +221,7 @@ getMinMax
 No Fortran function is created.  Only an interface to a C wrapper
 which dereference the pointers so they can be treated as references.
 
-C++ library function:
+C++ library function in :file:`tutorial.cpp`:
 
 .. literalinclude:: ../regression/run/tutorial/tutorial.cpp
    :language: c
@@ -270,7 +270,7 @@ checkBool
 Assignments are done in the Fortran wrapper to convert between
 ``logical`` and ``logical(C_BOOL)``.
 
-C function:
+C library function in :file:`clibrary`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -326,6 +326,8 @@ acceptName
 Pass a ``NULL`` terminated string to a C function.
 The string will be unchanged.
 
+C library function in :file:`clibrary.c`:
+
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
    :start-after: start acceptName
@@ -374,7 +376,9 @@ returnOneName
 
 Pass the pointer to a buffer which the C library will fill.  The
 length of the string is implicitly known by the library to not exceed
-the library variable ``MAXNAME``. From :file:`clibrary.c`:
+the library variable ``MAXNAME``.
+
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -428,7 +432,7 @@ passCharPtr
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``:
 
-C++ library function:
+C++ library function in :file:`strings.cpp`:
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
@@ -513,6 +517,8 @@ This can be used to emulate the behavior of most Fortran compilers
 which will pass an additional, hidden argument which contains the
 length of a ``CHARACTER`` argument.
 
+C library function in :file:`clibrary.c`:
+
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
    :start-after: start ImpliedTextLen
@@ -566,6 +572,8 @@ std::string
 
 acceptStringReference
 ^^^^^^^^^^^^^^^^^^^^^
+
+C++ library function in :file:`strings.c`:
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
@@ -653,6 +661,8 @@ variable.  The Fortran application is responsible to release the
 memory.  However, this may be done automatically by the Fortran
 runtime.
 
+C++ library function in :file:`strings.cpp`:
+
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
    :start-after: start getCharPtr1
@@ -710,6 +720,8 @@ return, then the *len* attribute is used to declare the length.  The
 explicit ``ALLOCATE`` is avoided but any result which is longer than
 the length will be silently truncated.
 
+C++ library function in :file:`strings.cpp`:
+
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
    :start-after: start getCharPtr2
@@ -762,7 +774,8 @@ Create a Fortran subroutine with an additional ``CHARACTER``
 argument for the C function result. Any size character string can
 be returned limited by the size of the Fortran argument.  The
 argument is defined by the *F_string_result_as_arg* format string.
-Works with Fortran 90 and later.
+
+C++ library function in :file:`strings.cpp`:
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
@@ -816,6 +829,8 @@ string functions
 
 getConstStringRefPure
 ^^^^^^^^^^^^^^^^^^^^^
+
+C++ library function in :file:`strings.cpp`:
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
@@ -877,6 +892,8 @@ std::vector
 vector_sum
 ^^^^^^^^^^
 
+C++ library function in :file:`vectors.cpp`:
+
 .. literalinclude:: ../regression/run/vectors/vectors.cpp
    :language: c
    :start-after: start vector_sum
@@ -930,6 +947,10 @@ Fortran usage:
 vector_iota_out
 ^^^^^^^^^^^^^^^
 
+C++ library function in :file:`vectors.cpp` accepts an empty vector
+then fills in some values.
+In this example, a Fortran array is passed in and will be filled.
+
 .. literalinclude:: ../regression/run/vectors/vectors.cpp
    :language: c
    :start-after: start vector_iota_out
@@ -941,7 +962,12 @@ vector_iota_out
 
     - decl: void vector_iota_out(std::vector<int> &arg+intent(out))
 
-The C wrapper:
+The C wrapper allocates a new ``std::vector`` instance which will be
+returned to the Fortran wrapper.
+Variable ``Darg`` will be filled with the meta data for the ``std::vector``
+in a form that allows Fortran to access it.
+The value of ``Darg->cxx.idtor`` is computed by Shroud and used
+to release the memory (index of destructor).
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
@@ -956,13 +982,31 @@ Fortran calls C via the following interface:
    :end-before: end c_vector_iota_out_bufferify
    :dedent: 4
 
-The Fortran wrapper:
+The Fortran wrapper passes a ``SHROUD_array`` instance which will be
+filled by the C wrapper.
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
    :start-after: start vector_iota_out
    :end-before: end vector_iota_out
    :dedent: 4
+
+Function ``SHROUD_copy_array_int`` copies the values
+into the user's argument.
+If the argument is too short, not all values returned by
+the library function will be copied.
+
+.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+   :language: c
+   :start-after: start helper copy_array
+   :end-before: end helper copy_array
+
+Finally, the ``std::vector`` is released based on the value of ``idtor``:
+
+.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+   :language: c
+   :start-after: start release allocated memory
+   :end-before: end release allocated memory
 
 Fortran usage:
 
@@ -980,10 +1024,18 @@ Fortran usage:
 vector_iota_out_alloc
 ^^^^^^^^^^^^^^^^^^^^^
 
+C++ library function in :file:`vectors.cpp` accepts an empty vector
+then fills in some values.
+In this example, the Fortran argument is ``ALLOCATABLE`` and will
+be sized based on the output of the library function.
+
 .. literalinclude:: ../regression/run/vectors/vectors.cpp
    :language: c
    :start-after: start vector_iota_out_alloc
    :end-before: end vector_iota_out_alloc
+
+The attribute *+deref(allocatable)* will cause the argument to be an
+``ALLOCATABLE`` array.
 
 :file:`vectors.yaml`:
 
@@ -1006,7 +1058,10 @@ Fortran calls C via the following interface:
    :end-before: end c_vector_iota_out_alloc_bufferify
    :dedent: 4
 
-The Fortran wrapper:
+The Fortran wrapper passes a ``SHROUD_array`` instance which will be
+filled by the C wrapper.
+After the function returns, the ``allocate`` statement allocates an 
+array of the proper length.
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
@@ -1035,6 +1090,8 @@ Fortran usage:
 vector_iota_inout_alloc
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+C++ library function in :file:`vectors.cpp`:
+
 .. literalinclude:: ../regression/run/vectors/vectors.cpp
    :language: c
    :start-after: start vector_iota_inout_alloc
@@ -1046,7 +1103,8 @@ vector_iota_inout_alloc
 
     - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
 
-The C wrapper:
+The C wrapper creates a new ``std::vector`` and initializes it to the
+Fortran argument.
 
 .. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
    :language: c
@@ -1061,7 +1119,12 @@ Fortran calls C via the following interface:
    :end-before: end c_vector_iota_inout_alloc_bufferify
    :dedent: 4
 
-The Fortran wrapper:
+The Fortran wrapper will deallocate the argument after returning
+since it is *intent(inout)*.  The *in* values are now stored in
+the ``std::vector``.  A new array is allocated to the current size
+of the ``std::vector``.  Fortran has no reallocate statement.
+Finally, the new values are copied into the Fortran array and
+the ``std::vector`` is released.
 
 .. literalinclude:: ../regression/reference/vectors/wrapfvectors.f
    :language: fortran
@@ -1093,7 +1156,7 @@ Void Pointers
 passAssumedType
 ^^^^^^^^^^^^^^^
 
-C library function:
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -1124,6 +1187,8 @@ Fortran usage:
 
 As a reminder, ``23_C_INT`` creates an ``integer(C_INT)`` constant.
 
+.. note:: Assumed-type was introduced in Fortran 2018.
+
 .. ############################################################
 
 .. _example_passAssumedTypeDim:
@@ -1131,7 +1196,7 @@ As a reminder, ``23_C_INT`` creates an ``integer(C_INT)`` constant.
 passAssumedTypeDim
 ^^^^^^^^^^^^^^^^^^
 
-C library function:
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -1162,6 +1227,8 @@ Example usage:
     call pass_assumed_type_dim(int_array)
     call pass_assumed_type_dim(double_array)
 
+.. note:: Assumed-type was introduced in Fortran 2018.
+
 .. ############################################################
 
 .. _example_passVoidStarStar:
@@ -1169,7 +1236,7 @@ Example usage:
 passVoidStarStar
 ^^^^^^^^^^^^^^^^
 
-C library function:
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -1212,7 +1279,7 @@ Function Pointers
 callback1
 ^^^^^^^^^
 
-C++ library function:
+C++ library function in :file:`tutorial.cpp`:
 
 .. literalinclude:: ../regression/run/tutorial/tutorial.cpp
    :language: c
@@ -1273,7 +1340,7 @@ Fortran usage:
 callback1c
 ^^^^^^^^^^
 
-C library function:
+C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
@@ -1346,7 +1413,7 @@ Struct
 passStruct1
 ^^^^^^^^^^^
 
-C library function:
+C library function in :file:`struct.c`:
 
 .. literalinclude:: ../regression/run/struct/struct.c
    :language: c
@@ -1384,7 +1451,7 @@ Fortran usage:
 passStructByValue
 ^^^^^^^^^^^^^^^^^
 
-C library function:
+C library function in :file:`struct.c`:
 
 .. literalinclude:: ../regression/run/struct/struct.c
    :language: c
@@ -1693,7 +1760,7 @@ Default Value Arguments
 
 The default values are provided in the function declaration.
 
-:file:`tutorial.hpp`:
+C++ library function in :file:`tutorial.cpp`:
 
 .. literalinclude:: ../regression/run/tutorial/tutorial.hpp
    :language: c++

@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Generate C bindings for C++ classes
 
@@ -81,6 +74,7 @@ class Wrapc(util.WrapperMixin):
         structs = []
         # reserved the 0 slot of capsule_order
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
+        whelpers.set_literalinclude(newlibrary.options.literalinclude2)
         whelpers.add_copy_array_helper_c(fmt_library)
 
         self._push_splicer("class")
