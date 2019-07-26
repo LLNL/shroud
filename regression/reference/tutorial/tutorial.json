@@ -3753,40 +3753,44 @@
                 },
                 "fortran_generic": [
                     {
-                        "args": {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "float"
-                            ],
-                            "typemap_name": "float"
-                        },
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg2",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            }
+                        ],
                         "function_suffix": "float",
-                        "generic": "float arg2"
+                        "generic": "(float arg2)"
                     },
                     {
-                        "args": {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg2",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
                         "function_suffix": "double",
-                        "generic": "double arg2"
+                        "generic": "(double arg2)"
                     }
                 ],
                 "linenumber": 114,
@@ -4049,40 +4053,44 @@
                 },
                 "fortran_generic": [
                     {
-                        "args": {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "float"
-                            ],
-                            "typemap_name": "float"
-                        },
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg2",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            }
+                        ],
                         "function_suffix": "float",
-                        "generic": "float arg2"
+                        "generic": "(float arg2)"
                     },
                     {
-                        "args": {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg2",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
                         "function_suffix": "double",
-                        "generic": "double arg2"
+                        "generic": "(double arg2)"
                     }
                 ],
                 "linenumber": 114,

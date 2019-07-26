@@ -1453,7 +1453,7 @@ class TemplateArgument(object):
 class FortranGeneric(object):
     """Information used to create a fortran generic version of a function.
 
-    generic: double arg
+    generic: (double arg)
     args = [ Declaration() ]
     """
     def __init__(self, generic, fmtdict=None, options=None,
@@ -1468,8 +1468,7 @@ class FortranGeneric(object):
     def parse_generic(self, namespace):
         """Parse argument list (ex. int arg1, float *arg2) and set list of Declarations."""
         parser = declast.Parser(self.generic, namespace)
-        self.args = parser.declaration()
-#        self.args = parser.parameter_list()
+        self.args = parser.parameter_list()
 
     def __repr__(self):
         return self.generic

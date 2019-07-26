@@ -210,13 +210,48 @@
                     "function_name": "GenericReal",
                     "underscore_name": "generic_real"
                 },
-                "fortran_generic": {
-                    "__line__": 24,
-                    "arg": [
-                        "float",
-                        "double"
-                    ]
-                },
+                "fortran_generic": [
+                    {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            }
+                        ],
+                        "function_suffix": "float",
+                        "generic": "(float arg)"
+                    },
+                    {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "function_suffix": "double",
+                        "generic": "(double arg)"
+                    }
+                ],
                 "linenumber": 23,
                 "options": {
                     "wrap_fortran": false
@@ -402,6 +437,8 @@
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "literalinclude": false,
+            "literalinclude2": false,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,

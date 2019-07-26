@@ -3286,42 +3286,46 @@
                         },
                         "fortran_generic": [
                             {
-                                "args": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "len",
-                                        "pointer": []
-                                    },
-                                    "init": 1,
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                },
+                                "args": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
                                 "function_suffix": "int",
-                                "generic": "int len=1"
+                                "generic": "(int len=1)"
                             },
                             {
-                                "args": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "len",
-                                        "pointer": []
-                                    },
-                                    "init": 1,
-                                    "specifier": [
-                                        "long"
-                                    ],
-                                    "typemap_name": "long"
-                                },
+                                "args": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
                                 "function_suffix": "long",
-                                "generic": "long len=1"
+                                "generic": "(long len=1)"
                             }
                         ],
                         "linenumber": 197,
@@ -3619,42 +3623,46 @@
                         },
                         "fortran_generic": [
                             {
-                                "args": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "len",
-                                        "pointer": []
-                                    },
-                                    "init": 1,
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                },
+                                "args": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
                                 "function_suffix": "int",
-                                "generic": "int len=1"
+                                "generic": "(int len=1)"
                             },
                             {
-                                "args": {
-                                    "attrs": {
-                                        "intent": "in",
-                                        "value": true
-                                    },
-                                    "declarator": {
-                                        "name": "len",
-                                        "pointer": []
-                                    },
-                                    "init": 1,
-                                    "specifier": [
-                                        "long"
-                                    ],
-                                    "typemap_name": "long"
-                                },
+                                "args": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
                                 "function_suffix": "long",
-                                "generic": "long len=1"
+                                "generic": "(long len=1)"
                             }
                         ],
                         "linenumber": 197,

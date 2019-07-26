@@ -199,9 +199,9 @@ declarations:
         # make them subroutines in Fortran.
         return_this: True
         fortran_generic:
-        -  decl: int len=1
+        -  decl: (int len=1)
            function_suffix: int
-        -  decl: long len=1
+        -  decl: (long len=1)
            function_suffix: long
 
       # void function

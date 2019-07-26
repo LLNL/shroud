@@ -1,3 +1,5 @@
+Error in fortran_generic, 'len' not found in 'void * declare(TypeID type)' at line 202
+Error in fortran_generic, 'len' not found in 'void * declare(TypeID type)' at line 204
 Wrote userlibrary_types.yaml
 Wrote wrapExClass1.h
 Wrote wrapExClass1.cpp

@@ -118,9 +118,9 @@ declarations:
 #   - instantiation: <int>
 #   - instantiation: <double>
     fortran_generic:
-    - decl: float arg2
+    - decl: (float arg2)
       function_suffix: float
-    - decl: double arg2
+    - decl: (double arg2)
       function_suffix: double
   
 # overload with default values

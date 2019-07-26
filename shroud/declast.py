@@ -1003,6 +1003,15 @@ class Declaration(Node):
                 return param
         return None
 
+    def find_arg_index_by_name(self, name):
+        """Return index of argument in params with name."""
+        if self.params is None:
+            return -1
+        for i, param in enumerate(self.params):
+            if param.name == name:
+                return i
+        return -1
+
     def _as_arg(self, name):
         """Create an argument to hold the function result.
         This is intended for pointer arguments, char or string.

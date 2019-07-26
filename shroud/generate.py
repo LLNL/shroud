@@ -101,7 +101,8 @@ class VerifyAttrs(object):
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
         for generic in node.fortran_generic:
-            self.check_arg_attrs(node, generic.args)
+            for garg in generic.args:
+                self.check_arg_attrs(node, garg)
 
     def check_shared_attrs(self, node):
         """Check attributes which may be assigned to function or argument:
@@ -860,9 +861,9 @@ class GenFunctions(object):
 
         - decl: void GenericReal(double arg)
           fortran_generic:
-          - decl: float arg
+          - decl: (float arg)
             function_suffix: float
-          - decl: double arg
+          - decl: (double arg)
             function_suffix: double
 
         Args:
@@ -885,79 +886,18 @@ class GenFunctions(object):
             options.wrap_python = False
             options.wrap_lua = False
 
-            # Replace function argument with generic argument
-            argname = generic.args.name
-            for i, arg in enumerate(new.ast.params):
-                if arg.name == argname:
-                    new.ast.params[i] = generic.args
-
-        # Do not process templated node, instead process
-        # generated functions above.
-        options = node.options
-        #        options.wrap_c = False
-        options.wrap_fortran = False
-
-    #        options.wrap_python = False
-
-    def XXXgeneric_function(self, node, ordered_functions):
-        """ Create overloaded functions for each generic method.
-
-        - decl: void Function9(double arg)
-          fortran_generic:
-            arg:
-            - float
-            - double
-
-        Args:
-            node -
-            ordered_functions -
-        """
-        nkeys = 0
-        linenumber = node.fortran_generic.get("__line__", "?")
-        for argname, types in node.fortran_generic.items():
-            if argname == "__line__":
-                continue
-            nkeys += 1
-            if nkeys > 1:
-                # In the future it may be useful to have multiple generic arguments
-                # That the would start creating more permutations
-                raise NotImplementedError("Only one generic arg for now")
-            for typ in types:
-                ntypemap = typemap.lookup_type(typ)
-                if ntypemap is None:
-                    raise RuntimeError(
-                        "Unknown type '{}' for argument '{}' "
-                        "for fortran generic near line {}".format(
-                            typ, argname, linenumber
-                        )
-                    )
-                new = node.clone()
-                ordered_functions.append(new)
-                self.append_function_index(new)
-
-                new._generated = "fortran_generic"
-                new._PTR_F_C_index = node._function_index
-                fmt = new.fmtdict
-                # XXX append to existing suffix
-                fmt.function_suffix = fmt.function_suffix + "_" + typ
-                new.fortran_generic = {}
-                options = new.options
-                options.wrap_c = False
-                options.wrap_fortran = True
-                options.wrap_python = False
-                options.wrap_lua = False
-                # Convert typename to type
-                for arg in new.ast.params:
-                    if arg.name == argname:
-                        # Convert any arg_typemap to native type with f_type
-                        arg_typemap = arg.typemap
-                        if not arg_typemap.f_cast:
-                            raise RuntimeError(
-                                "unable to cast type {} in fortran_generic".format(
-                                    arg_typemap.name
-                                )
-                            )
-                        arg.set_type(ntypemap)
+            # Replace function arguments with generic arguments
+            for garg in generic.args:
+                i = new.ast.find_arg_index_by_name(garg.name)
+                if i < 0:
+                    # XXX - For default argument, the generic argument may not exist.
+                    print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
+                            garg.name, str(new.ast), generic.linenumber))
+#                    raise RuntimeError(
+#                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
+#                            garg.name, str(new.ast), generic.linenumber))
+                else:
+                    new.ast.params[i] = garg
 
         # Do not process templated node, instead process
         # generated functions above.

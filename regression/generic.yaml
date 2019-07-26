@@ -22,17 +22,24 @@ declarations:
 - decl: double GetGlobalDouble()
 - decl: void GenericReal(double arg)
   fortran_generic:
-     - decl: float arg
-       function_suffix: float
-     - decl: double arg
-       function_suffix: double
+  - decl: (float arg)
+    function_suffix: float
+  - decl: (double arg)
+    function_suffix: double
+
+#- decl: void GenericReal2(long arg1, long arg2)
+#  fortran_generic:
+#  - decl: (int arg1, int arg2)
+#    function_suffix: int
+#  - decl: (long arg1, long arg2)
+#    function_suffix: long
 
 #- decl: void save_pointer(void *addr, int type, size_t size +hidden(size(addr))
 #  fortran_generic:
-#     - decl: (float *addr+dimension(:),    type+hidden(AAA))
-#     - decl: (float *addr+dimension(:,:),  type+hidden(AAA))
+#  - decl: (float *addr+dimension(:),    type+hidden(AAA))
+#  - decl: (float *addr+dimension(:,:),  type+hidden(AAA))
 #
-#     - decl: (double *addr+dimension(:),   type+hidden(BBB))
-#     - decl: (double *addr+dimension(:,:), type+hidden(BBB))
+#  - decl: (double *addr+dimension(:),   type+hidden(BBB))
+#  - decl: (double *addr+dimension(:,:), type+hidden(BBB))
 
 

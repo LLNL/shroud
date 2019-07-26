@@ -500,9 +500,10 @@ Instead of specify the Type which changes, you specify the argument which change
 
   - decl: void FortranGeneric(double arg)
     fortran_generic:
-       arg:
-       -  float
-       -  double
+    - decl: (float arg)
+      function_suffix: float
+    - decl: (double arg)
+      function_suffix: double
 
 It may now be used with single or double precision arguments:
 
