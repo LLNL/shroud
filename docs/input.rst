@@ -1,16 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Input
 =====
@@ -562,7 +554,16 @@ value
 
 If true, pass-by-value; else, pass-by-reference.
 This attribute is implied when the argument is not a pointer or reference.
+This will also default to ``intent(IN)`` since there is no way to return
+a value.
 
+.. note:: The Fortran wrapper may use an intrinsic function for some
+          attributes. For example, *len*, *len_trim*, and *size*.
+          If there is an argument with the same name, the generated
+          code may not compile.
+
+          Shroud preserves the names of the arguments since Fortran
+          allows them to be used in function calls - ``call worker(len=10)``
 
 Patterns
 --------

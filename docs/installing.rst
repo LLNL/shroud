@@ -1,16 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Installing
 ==========
@@ -20,7 +12,7 @@ The source is available from `github.com/LLNL/shroud <https://github.com/LLNL/sh
 **Shroud** is written in Python and has been tested with version 2.7 and 3.4+.
 It requires the module:
 
-  * PyYAML https://pypi.python.org/pypi/PyYAML/3.11
+  * PyYAML   https://github.com/yaml/pyyaml
 
 
 After downloading the source:

@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Generate Fortran bindings for C++ code.
 
@@ -61,9 +54,10 @@ class Wrapf(util.WrapperMixin):
         self.operator_impl = []
         self.operator_map = {}  # list of function names by operator
         # {'.eq.': [ 'abc', 'def'] }
-        self.c_interface.append("")
-        self.c_interface.append("interface")
-        self.c_interface.append(1)
+        if not self.newlibrary.options.literalinclude2:
+            self.c_interface.append("")
+            self.c_interface.append("interface")
+            self.c_interface.append(1)
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
         self.f_helper = {}
@@ -121,6 +115,8 @@ class Wrapf(util.WrapperMixin):
             self._pop_splicer("function")
 
             self.c_interface.append("")
+            if self.newlibrary.options.literalinclude2:
+                self.c_interface.append("interface+")
             self._create_splicer("additional_interfaces", self.c_interface)
             self.impl.append("")
             self._create_splicer("additional_functions", self.impl)
@@ -204,15 +200,21 @@ class Wrapf(util.WrapperMixin):
 
         # One capsule type per class.
         # Necessary since a type in one module may be used by another module.
+        self.f_type_decl.append("")
+        if node.options.literalinclude:
+            self.f_type_decl.append("! start derived-type " +
+                                    fmt_class.F_capsule_data_type)
         append_format(
             self.f_type_decl,
-            "\n"
             "type, bind(C) :: {F_capsule_data_type}\n+"
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory\n"
             "integer(C_INT) :: idtor = 0       ! index of destructor\n"
             "-end type {F_capsule_data_type}",
             fmt_class,
         )
+        if node.options.literalinclude:
+            self.f_type_decl.append("! end derived-type " +
+                                    fmt_class.F_capsule_data_type)
         self.set_f_module(
             self.module_use, "iso_c_binding", "C_PTR", "C_INT", "C_NULL_PTR"
         )
@@ -672,9 +674,10 @@ rv = .false.
         self._push_splicer("abstract")
         if len(self.f_abstract_interface) > 0:
             iface = self.abstract_interface
-            iface.append("")
-            iface.append("abstract interface")
-            iface.append(1)
+            if not self.newlibrary.options.literalinclude2:
+                iface.append("")
+                iface.append("abstract interface")
+                iface.append(1)
 
             for key in sorted(self.f_abstract_interface.keys()):
                 node, fmt, arg = self.f_abstract_interface[key]
@@ -708,6 +711,10 @@ rv = .false.
                 if subprogram == "function":
                     arg_c_decl.append(ast.bind_c(name=key, params=None))
                 arguments = ",\t ".join(arg_f_names)
+                if node.options.literalinclude:
+                    iface.append("! start abstract " + key)
+                if self.newlibrary.options.literalinclude2:
+                    iface.append("abstract interface+")
                 iface.append(
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
@@ -718,9 +725,14 @@ rv = .false.
                 iface.extend(arg_c_decl)
                 iface.append(-1)
                 iface.append("end {} {}".format(subprogram, key))
-            iface.append(-1)
-            iface.append("")
-            iface.append("end interface")
+                if self.newlibrary.options.literalinclude2:
+                    iface.append("-end interface")
+                if node.options.literalinclude:
+                    iface.append("! end abstract " + key)
+            if not self.newlibrary.options.literalinclude2:
+                iface.append(-1)
+                iface.append("")
+                iface.append("end interface")
         self._pop_splicer("abstract")
 
     def build_arg_list_interface(
@@ -754,9 +766,15 @@ rv = .false.
                 arg_c_names.append(ast.name)
                 # argument declarations
                 if "assumedtype" in attrs:
-                    arg_c_decl.append(
-                        "type(*) :: {}".format(ast.name)
-                    )
+                    if "dimension" in attrs:
+                        arg_c_decl.append(
+                            "type(*) :: {}({})".format(
+                                ast.name, attrs["dimension"])
+                        )
+                    else:
+                        arg_c_decl.append(
+                            "type(*) :: {}".format(ast.name)
+                        )
                 elif ast.is_function_pointer():
                     absiface = self.add_abstract_interface(node, ast)
                     arg_c_decl.append(
@@ -967,6 +985,10 @@ rv = .false.
 
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
+        if options.literalinclude:
+            append_format(c_interface, "! start {F_C_name}", fmt)
+        if self.newlibrary.options.literalinclude2:
+            self.c_interface.append("interface+")
         c_interface.append(
             wformat(
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
@@ -983,6 +1005,10 @@ rv = .false.
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
         c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt))
+        if self.newlibrary.options.literalinclude2:
+            self.c_interface.append("-end interface")
+        if options.literalinclude:
+            append_format(c_interface, "! end {F_C_name}", fmt)
         if node.cpp_if:
             c_interface.append("#endif")
 
@@ -1625,6 +1651,8 @@ rv = .false.
                     impl.append("! function_index=%d" % node._function_index)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
+            if options.literalinclude:
+                append_format(impl, "! start {F_name_impl}", fmt_func)
             append_format(
                 impl,
                 "\r{F_subprogram} {F_name_impl}(\t"
@@ -1639,6 +1667,8 @@ rv = .false.
             impl.extend(post_call)
             impl.append(-1)
             append_format(impl, "end {F_subprogram} {F_name_impl}", fmt_func)
+            if options.literalinclude:
+                append_format(impl, "! end {F_name_impl}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif")
         else:

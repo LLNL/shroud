@@ -7,8 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyTutorialmodule.hpp"
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include "numpy/arrayobject.h"
 #include "tutorial.hpp"
 
 // splicer begin include
@@ -33,35 +31,35 @@ PyObject *PY_error_obj;
 // splicer begin additional_functions
 // splicer end additional_functions
 
-static char PY_Function1__doc__[] =
+static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function1(
+PY_NoReturnNoArguments(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void Function1()
-// splicer begin function.function1
-    tutorial::Function1();
+// void NoReturnNoArguments()
+// splicer begin function.no_return_no_arguments
+    tutorial::NoReturnNoArguments();
     Py_RETURN_NONE;
-// splicer end function.function1
+// splicer end function.no_return_no_arguments
 }
 
-static char PY_Function2__doc__[] =
+static char PY_PassByValue__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function2(
+PY_PassByValue(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-// splicer begin function.function2
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+// splicer begin function.pass_by_value
     double arg1;
     int arg2;
     const char *SHT_kwlist[] = {
@@ -70,226 +68,20 @@ PY_Function2(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:Function2",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di:PassByValue",
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return NULL;
 
-    double rv = tutorial::Function2(arg1, arg2);
+    double rv = tutorial::PassByValue(arg1, arg2);
 
     // post_call
     SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function2
+// splicer end function.pass_by_value
 }
 
-static char PY_Sum__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Sum(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-// splicer begin function.sum
-    PyObject * SHTPy_values;
-    PyArrayObject * SHPy_values = NULL;
-    const char *SHT_kwlist[] = {
-        "values",
-        NULL };
-    PyObject * SHPy_result = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:Sum",
-        const_cast<char **>(SHT_kwlist), &SHTPy_values))
-        return NULL;
-
-    // post_parse
-    SHPy_values = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
-        SHTPy_values, NPY_INT, NPY_ARRAY_IN_ARRAY));
-    if (SHPy_values == NULL) {
-        PyErr_SetString(PyExc_ValueError,
-            "values must be a 1-D array of int");
-        goto fail;
-    }
-    {
-        // pre_call
-        int * values = static_cast<int *>(PyArray_DATA(SHPy_values));
-        int result;  // intent(out)
-        size_t len = PyArray_SIZE(SHPy_values);
-
-        tutorial::Sum(len, values, &result);
-
-        // post_call
-        SHPy_result = PyInt_FromLong(result);
-
-        // cleanup
-        Py_DECREF(SHPy_values);
-
-        return (PyObject *) SHPy_result;
-    }
-
-fail:
-    Py_XDECREF(SHPy_values);
-    return NULL;
-// splicer end function.sum
-}
-
-static char PY_TypeLongLong__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_TypeLongLong(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// long long TypeLongLong(long long arg1 +intent(in)+value)
-// splicer begin function.type_long_long
-    long long arg1;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "L:TypeLongLong",
-        const_cast<char **>(SHT_kwlist), &arg1))
-        return NULL;
-
-    long long rv = tutorial::TypeLongLong(arg1);
-
-    // post_call
-    SHTPy_rv = Py_BuildValue("L", rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.type_long_long
-}
-
-static char PY_Function3__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Function3(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// bool Function3(bool arg +intent(in)+value)
-// splicer begin function.function3
-    PyObject * SHPy_arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:Function3",
-        const_cast<char **>(SHT_kwlist), &PyBool_Type, &SHPy_arg))
-        return NULL;
-
-    // pre_call
-    bool arg = PyObject_IsTrue(SHPy_arg);
-
-    bool rv = tutorial::Function3(arg);
-
-    // post_call
-    SHTPy_rv = PyBool_FromLong(rv);
-    if (SHTPy_rv == NULL) goto fail;
-
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHTPy_rv);
-    return NULL;
-// splicer end function.function3
-}
-
-static char PY_Function4a__doc__[] =
-"documentation"
-;
-
-/**
- * Since +len(30) is provided, the result of the function
- * will be copied directly into memory provided by Fortran.
- * The function will not be ALLOCATABLE.
- */
-static PyObject *
-PY_Function4a(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
-// splicer begin function.function4a
-    const char * arg1;
-    const char * arg2;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        "arg2",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4a",
-        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
-
-    // post_parse
-    const std::string SH_arg1(arg1);
-    const std::string SH_arg2(arg2);
-
-    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.function4a
-}
-
-static char PY_Function4b__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Function4b(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-// splicer begin function.function4b
-    const char * arg1;
-    const char * arg2;
-    const char *SHT_kwlist[] = {
-        "arg1",
-        "arg2",
-        NULL };
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4b",
-        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
-        return NULL;
-
-    // post_parse
-    const std::string SH_arg1(arg1);
-    const std::string SH_arg2(arg2);
-
-    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
-        SH_arg2);
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.function4b
-}
-
-static char PY_Function4c__doc__[] =
+static char PY_ConcatenateStrings__doc__[] =
 "documentation"
 ;
 
@@ -298,13 +90,13 @@ static char PY_Function4c__doc__[] =
  * is allocated.  It is assumed +owner(library).
  */
 static PyObject *
-PY_Function4c(
+PY_ConcatenateStrings(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
-// splicer begin function.function4c
+// const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// splicer begin function.concatenate_strings
     const char * arg1;
     const char * arg2;
     const char *SHT_kwlist[] = {
@@ -313,64 +105,38 @@ PY_Function4c(
         NULL };
     PyObject * SHTPy_rv = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "ss:Function4c",
-        const_cast<char **>(SHT_kwlist), &arg1, &arg2))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "ss:ConcatenateStrings", const_cast<char **>(SHT_kwlist), &arg1,
+        &arg2))
         return NULL;
 
     // post_parse
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
-    const std::string SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
+    const std::string SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1,
+        SH_arg2);
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function4c
+// splicer end function.concatenate_strings
 }
 
-static char PY_Function4d__doc__[] =
-"documentation"
-;
-
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-static PyObject *
-PY_Function4d(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// const std::string * Function4d() +deref(allocatable)+owner(caller)
-// splicer begin function.function4d
-    PyObject * SHTPy_rv = NULL;
-
-    const std::string * SHCXX_rv = tutorial::Function4d();
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
-        SHCXX_rv->size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.function4d
-}
-
-static char PY_Function5_arg1_arg2__doc__[] =
+static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function5_arg1_arg2(
+PY_UseDefaultArguments_arg1_arg2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-// splicer begin function.function5
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// splicer begin function.use_default_arguments
     Py_ssize_t SH_nargs = 0;
     double arg1;
     PyObject * SHPy_arg2;
@@ -383,23 +149,23 @@ PY_Function5_arg1_arg2(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|dO!:Function5",
-        const_cast<char **>(SHT_kwlist), &arg1, &PyBool_Type,
-        &SHPy_arg2))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "|dO!:UseDefaultArguments", const_cast<char **>(SHT_kwlist), 
+        &arg1, &PyBool_Type, &SHPy_arg2))
         return NULL;
     switch (SH_nargs) {
     case 0:
-        rv = tutorial::Function5();
+        rv = tutorial::UseDefaultArguments();
         break;
     case 1:
-        rv = tutorial::Function5(arg1);
+        rv = tutorial::UseDefaultArguments(arg1);
         break;
     case 2:
         {
             // pre_call
             bool arg2 = PyObject_IsTrue(SHPy_arg2);
 
-            rv = tutorial::Function5(arg1, arg2);
+            rv = tutorial::UseDefaultArguments(arg1, arg2);
             break;
         }
     default:
@@ -411,121 +177,121 @@ PY_Function5_arg1_arg2(
     SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.function5
+// splicer end function.use_default_arguments
 }
 
 static PyObject *
-PY_Function6_from_name(
+PY_OverloadedFunction_from_name(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function6(const std::string & name +intent(in))
-// splicer begin function.function6_from_name
+// void OverloadedFunction(const std::string & name +intent(in))
+// splicer begin function.overloaded_function_from_name
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:Function6",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:OverloadedFunction",
         const_cast<char **>(SHT_kwlist), &name))
         return NULL;
 
     // post_parse
     const std::string SH_name(name);
 
-    tutorial::Function6(SH_name);
+    tutorial::OverloadedFunction(SH_name);
     Py_RETURN_NONE;
-// splicer end function.function6_from_name
+// splicer end function.overloaded_function_from_name
 }
 
 static PyObject *
-PY_Function6_from_index(
+PY_OverloadedFunction_from_index(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function6(int indx +intent(in)+value)
-// splicer begin function.function6_from_index
+// void OverloadedFunction(int indx +intent(in)+value)
+// splicer begin function.overloaded_function_from_index
     int indx;
     const char *SHT_kwlist[] = {
         "indx",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function6",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:OverloadedFunction",
         const_cast<char **>(SHT_kwlist), &indx))
         return NULL;
 
-    tutorial::Function6(indx);
+    tutorial::OverloadedFunction(indx);
     Py_RETURN_NONE;
-// splicer end function.function6_from_index
+// splicer end function.overloaded_function_from_index
 }
 
 static PyObject *
-PY_Function7_int(
+PY_TemplateArgument_int(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function7(int arg +intent(in)+value)
-// splicer begin function.function7_int
+// void TemplateArgument(int arg +intent(in)+value)
+// splicer begin function.template_argument_int
     int arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:Function7",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::Function7(arg);
+    tutorial::TemplateArgument(arg);
     Py_RETURN_NONE;
-// splicer end function.function7_int
+// splicer end function.template_argument_int
 }
 
 static PyObject *
-PY_Function7_double(
+PY_TemplateArgument_double(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function7(double arg +intent(in)+value)
-// splicer begin function.function7_double
+// void TemplateArgument(double arg +intent(in)+value)
+// splicer begin function.template_argument_double
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function7",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
         return NULL;
 
-    tutorial::Function7(arg);
+    tutorial::TemplateArgument(arg);
     Py_RETURN_NONE;
-// splicer end function.function7_double
+// splicer end function.template_argument_double
 }
 
 static PyObject *
-PY_Function10_0(
+PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// void Function10()
-// splicer begin function.function10_0
-    tutorial::Function10();
+// void FortranGenericOverloaded()
+// splicer begin function.fortran_generic_overloaded_0
+    tutorial::FortranGenericOverloaded();
     Py_RETURN_NONE;
-// splicer end function.function10_0
+// splicer end function.fortran_generic_overloaded_0
 }
 
 static PyObject *
-PY_Function10_1(
+PY_FortranGenericOverloaded_1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
-// splicer begin function.function10_1
+// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+// splicer begin function.fortran_generic_overloaded_1
     const char * name;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -533,26 +299,27 @@ PY_Function10_1(
         "arg2",
         NULL };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "sd:Function10",
-        const_cast<char **>(SHT_kwlist), &name, &arg2))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "sd:FortranGenericOverloaded", const_cast<char **>(SHT_kwlist), 
+        &name, &arg2))
         return NULL;
 
     // post_parse
     const std::string SH_name(name);
 
-    tutorial::Function10(SH_name, arg2);
+    tutorial::FortranGenericOverloaded(SH_name, arg2);
     Py_RETURN_NONE;
-// splicer end function.function10_1
+// splicer end function.fortran_generic_overloaded_1
 }
 
 static PyObject *
-PY_overload1_num_offset_stride(
+PY_UseDefaultOverload_num_offset_stride(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// splicer begin function.overload1_num_offset_stride
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// splicer begin function.use_default_overload_num_offset_stride
     Py_ssize_t SH_nargs = 0;
     int num;
     int offset;
@@ -567,18 +334,19 @@ PY_overload1_num_offset_stride(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|ii:overload1",
-        const_cast<char **>(SHT_kwlist), &num, &offset, &stride))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "i|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
+        &num, &offset, &stride))
         return NULL;
     switch (SH_nargs) {
     case 1:
-        rv = tutorial::overload1(num);
+        rv = tutorial::UseDefaultOverload(num);
         break;
     case 2:
-        rv = tutorial::overload1(num, offset);
+        rv = tutorial::UseDefaultOverload(num, offset);
         break;
     case 3:
-        rv = tutorial::overload1(num, offset, stride);
+        rv = tutorial::UseDefaultOverload(num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -589,17 +357,17 @@ PY_overload1_num_offset_stride(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.overload1_num_offset_stride
+// splicer end function.use_default_overload_num_offset_stride
 }
 
 static PyObject *
-PY_overload1_5(
+PY_UseDefaultOverload_5(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// splicer begin function.overload1_5
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// splicer begin function.use_default_overload_5
     Py_ssize_t SH_nargs = 0;
     double type;
     int num;
@@ -616,18 +384,19 @@ PY_overload1_5(
 
     if (args != NULL) SH_nargs += PyTuple_Size(args);
     if (kwds != NULL) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "di|ii:overload1",
-        const_cast<char **>(SHT_kwlist), &type, &num, &offset, &stride))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "di|ii:UseDefaultOverload", const_cast<char **>(SHT_kwlist), 
+        &type, &num, &offset, &stride))
         return NULL;
     switch (SH_nargs) {
     case 2:
-        rv = tutorial::overload1(type, num);
+        rv = tutorial::UseDefaultOverload(type, num);
         break;
     case 3:
-        rv = tutorial::overload1(type, num, offset);
+        rv = tutorial::UseDefaultOverload(type, num, offset);
         break;
     case 4:
-        rv = tutorial::overload1(type, num, offset, stride);
+        rv = tutorial::UseDefaultOverload(type, num, offset, stride);
         break;
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
@@ -638,7 +407,7 @@ PY_overload1_5(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.overload1_5
+// splicer end function.use_default_overload_5
 }
 
 static char PY_typefunc__doc__[] =
@@ -970,23 +739,23 @@ PY_LastFunctionCalled(
 // splicer end function.last_function_called
 }
 
-static char PY_Function6__doc__[] =
+static char PY_OverloadedFunction__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function6(
+PY_OverloadedFunction(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function6
+// splicer begin function.overloaded_function
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
-        rvobj = PY_Function6_from_name(self, args, kwds);
+        rvobj = PY_OverloadedFunction_from_name(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -995,7 +764,7 @@ PY_Function6(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rvobj = PY_Function6_from_index(self, args, kwds);
+        rvobj = PY_OverloadedFunction_from_index(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1005,26 +774,26 @@ PY_Function6(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function6
+// splicer end function.overloaded_function
 }
 
-static char PY_Function7__doc__[] =
+static char PY_TemplateArgument__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function7(
+PY_TemplateArgument(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function7
+// splicer begin function.template_argument
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
-        rvobj = PY_Function7_int(self, args, kwds);
+        rvobj = PY_TemplateArgument_int(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1033,7 +802,7 @@ PY_Function7(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rvobj = PY_Function7_double(self, args, kwds);
+        rvobj = PY_TemplateArgument_double(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1043,26 +812,26 @@ PY_Function7(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function7
+// splicer end function.template_argument
 }
 
-static char PY_Function10__doc__[] =
+static char PY_FortranGenericOverloaded__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_Function10(
+PY_FortranGenericOverloaded(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.function10
+// splicer begin function.fortran_generic_overloaded
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 0) {
-        rvobj = PY_Function10_0(self, args, kwds);
+        rvobj = PY_FortranGenericOverloaded_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1071,7 +840,7 @@ PY_Function10(
         PyErr_Clear();
     }
     if (SHT_nargs == 2) {
-        rvobj = PY_Function10_1(self, args, kwds);
+        rvobj = PY_FortranGenericOverloaded_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1081,26 +850,26 @@ PY_Function10(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.function10
+// splicer end function.fortran_generic_overloaded
 }
 
-static char PY_overload1__doc__[] =
+static char PY_UseDefaultOverload__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_overload1(
+PY_UseDefaultOverload(
   PyObject *self,
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.overload1
+// splicer begin function.use_default_overload
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs >= 1 && SHT_nargs <= 3) {
-        rvobj = PY_overload1_num_offset_stride(self, args, kwds);
+        rvobj = PY_UseDefaultOverload_num_offset_stride(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1109,7 +878,7 @@ PY_overload1(
         PyErr_Clear();
     }
     if (SHT_nargs >= 2 && SHT_nargs <= 4) {
-        rvobj = PY_overload1_5(self, args, kwds);
+        rvobj = PY_UseDefaultOverload_5(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -1119,28 +888,18 @@ PY_overload1(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end function.overload1
+// splicer end function.use_default_overload
 }
 static PyMethodDef PY_methods[] = {
-{"Function1", (PyCFunction)PY_Function1, METH_NOARGS,
-    PY_Function1__doc__},
-{"Function2", (PyCFunction)PY_Function2, METH_VARARGS|METH_KEYWORDS,
-    PY_Function2__doc__},
-{"Sum", (PyCFunction)PY_Sum, METH_VARARGS|METH_KEYWORDS, PY_Sum__doc__},
-{"TypeLongLong", (PyCFunction)PY_TypeLongLong,
-    METH_VARARGS|METH_KEYWORDS, PY_TypeLongLong__doc__},
-{"Function3", (PyCFunction)PY_Function3, METH_VARARGS|METH_KEYWORDS,
-    PY_Function3__doc__},
-{"Function4a", (PyCFunction)PY_Function4a, METH_VARARGS|METH_KEYWORDS,
-    PY_Function4a__doc__},
-{"Function4b", (PyCFunction)PY_Function4b, METH_VARARGS|METH_KEYWORDS,
-    PY_Function4b__doc__},
-{"Function4c", (PyCFunction)PY_Function4c, METH_VARARGS|METH_KEYWORDS,
-    PY_Function4c__doc__},
-{"Function4d", (PyCFunction)PY_Function4d, METH_NOARGS,
-    PY_Function4d__doc__},
-{"Function5", (PyCFunction)PY_Function5_arg1_arg2,
-    METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
+{"NoReturnNoArguments", (PyCFunction)PY_NoReturnNoArguments,
+    METH_NOARGS, PY_NoReturnNoArguments__doc__},
+{"PassByValue", (PyCFunction)PY_PassByValue, METH_VARARGS|METH_KEYWORDS,
+    PY_PassByValue__doc__},
+{"ConcatenateStrings", (PyCFunction)PY_ConcatenateStrings,
+    METH_VARARGS|METH_KEYWORDS, PY_ConcatenateStrings__doc__},
+{"UseDefaultArguments", (PyCFunction)PY_UseDefaultArguments_arg1_arg2,
+    METH_VARARGS|METH_KEYWORDS,
+    PY_UseDefaultArguments_arg1_arg2__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
@@ -1163,14 +922,14 @@ static PyMethodDef PY_methods[] = {
     PY_get_global_flag__doc__},
 {"LastFunctionCalled", (PyCFunction)PY_LastFunctionCalled, METH_NOARGS,
     PY_LastFunctionCalled__doc__},
-{"Function6", (PyCFunction)PY_Function6, METH_VARARGS|METH_KEYWORDS,
-    PY_Function6__doc__},
-{"Function7", (PyCFunction)PY_Function7, METH_VARARGS|METH_KEYWORDS,
-    PY_Function7__doc__},
-{"Function10", (PyCFunction)PY_Function10, METH_VARARGS|METH_KEYWORDS,
-    PY_Function10__doc__},
-{"overload1", (PyCFunction)PY_overload1, METH_VARARGS|METH_KEYWORDS,
-    PY_overload1__doc__},
+{"OverloadedFunction", (PyCFunction)PY_OverloadedFunction,
+    METH_VARARGS|METH_KEYWORDS, PY_OverloadedFunction__doc__},
+{"TemplateArgument", (PyCFunction)PY_TemplateArgument,
+    METH_VARARGS|METH_KEYWORDS, PY_TemplateArgument__doc__},
+{"FortranGenericOverloaded", (PyCFunction)PY_FortranGenericOverloaded,
+    METH_VARARGS|METH_KEYWORDS, PY_FortranGenericOverloaded__doc__},
+{"UseDefaultOverload", (PyCFunction)PY_UseDefaultOverload,
+    METH_VARARGS|METH_KEYWORDS, PY_UseDefaultOverload__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 
@@ -1248,8 +1007,6 @@ inittutorial(void)
     if (m == NULL)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
-
-    import_array();
 
     // Class1
     PY_Class1_Type.tp_new   = PyType_GenericNew;

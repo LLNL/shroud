@@ -26,7 +26,7 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void PRE_SHROUD_memory_destructor(PRE_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;

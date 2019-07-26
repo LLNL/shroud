@@ -1,16 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Reference
 =========
@@ -281,6 +273,24 @@ F_return_fortran_pointer
 
 .. XXX how to decide length of pointer
 
+literalinclude
+
+  Write some text lines which can be used with Sphinx's literalinclude
+  directive.  This is used to insert the generated code into the
+  documentation.
+  Can be applied at the top level or any declaration.
+  Setting *literalinclude* at the top level implies *literalinclude2*.
+
+literalinclude2
+
+  Write some text lines which can be used with Sphinx's literalinclude
+  directive.  Only effects some entities which do not map to a 
+  declarations such as some helper functions or types.
+  Only effective at the top level.
+
+  Each Fortran interface will be encluded in its own ``interface`` block.
+  This is to provide the interface context when code is added to the
+  documentation.
 
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
@@ -372,13 +382,13 @@ F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
    Defaults to ``{underscore_name}_{argname}``
    where *argname* is the name of the function argument.
-   see :ref:`TypesAnchor_Function_Pointers`.
+   see :ref:`DeclAnchor_Function_Pointers`.
 
 F_abstract_interface_subprogram_template
    The name of the abstract interface subprogram which represents a
    function pointer.
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
-   see :ref:`TypesAnchor_Function_Pointers`.
+   see :ref:`DeclAnchor_Function_Pointers`.
 
 F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the

@@ -98,6 +98,7 @@ void POI_get_values2(int * arg1, int * arg2)
 }
 
 // void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
+// start POI_sum
 void POI_sum(int len, int * values, int * result)
 {
 // splicer begin function.sum
@@ -105,6 +106,7 @@ void POI_sum(int len, int * values, int * result)
     return;
 // splicer end function.sum
 }
+// end POI_sum
 
 // void fillIntArray(int * out +dimension(3)+intent(out))
 /**
@@ -130,11 +132,13 @@ void POI_increment_int_array(int * array, int sizein)
 // splicer end function.increment_int_array
 }
 
-// Release C++ allocated memory.
+// start release allocated memory
+// Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

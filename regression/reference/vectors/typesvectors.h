@@ -32,6 +32,7 @@ struct s_VEC_SHROUD_capsule_data {
 };
 typedef struct s_VEC_SHROUD_capsule_data VEC_SHROUD_capsule_data;
 
+// start array_context
 struct s_VEC_SHROUD_array {
     VEC_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
@@ -42,6 +43,7 @@ struct s_VEC_SHROUD_array {
     size_t size;    /* size of data in cxx */
 };
 typedef struct s_VEC_SHROUD_array VEC_SHROUD_array;
+// end array_context
 
 void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap);
 

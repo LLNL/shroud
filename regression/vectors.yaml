@@ -21,6 +21,7 @@ cxx_header: vectors.hpp
 
 options:
   debug: True
+  literalinclude2: True
 
 declarations:
 
@@ -29,6 +30,7 @@ declarations:
   options:
     wrap_python: False
     wrap_lua: False
+    literalinclude: True
 
 - decl: void vector_iota_out(std::vector<int> &arg+intent(out))
   doxygen:
@@ -36,6 +38,7 @@ declarations:
   options:
     wrap_python: False
     wrap_lua: False
+    literalinclude: True
 
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
   doxygen:
@@ -43,6 +46,7 @@ declarations:
   options:
     wrap_python: False
     wrap_lua: False
+    literalinclude: True
 
 - decl: void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
   doxygen:
@@ -50,6 +54,7 @@ declarations:
   options:
     wrap_python: False
     wrap_lua: False
+    literalinclude: True
 
 # defaults to intent(inout)
 - decl: void vector_increment(std::vector<int> &arg)

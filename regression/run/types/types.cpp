@@ -133,6 +133,11 @@ size_t size_func(size_t arg1)
   return arg1;
 }
 
+bool bool_func(bool arg1)
+{
+  return arg1;
+}
+
 // #######################################################################
 
 /* Test Python wrapper which returns bool and other intent(out) argument. */

@@ -50,17 +50,17 @@ void AA_exclass2_get_name_bufferify(const AA_exclass2 * self,
 const char * AA_exclass2_get_name2(AA_exclass2 * self);
 
 void AA_exclass2_get_name2_bufferify(AA_exclass2 * self,
-    USE_SHROUD_array *DSHF_rv);
+    AA_SHROUD_array *DSHF_rv);
 
 char * AA_exclass2_get_name3(const AA_exclass2 * self);
 
 void AA_exclass2_get_name3_bufferify(const AA_exclass2 * self,
-    USE_SHROUD_array *DSHF_rv);
+    AA_SHROUD_array *DSHF_rv);
 
 char * AA_exclass2_get_name4(AA_exclass2 * self);
 
 void AA_exclass2_get_name4_bufferify(AA_exclass2 * self,
-    USE_SHROUD_array *DSHF_rv);
+    AA_SHROUD_array *DSHF_rv);
 
 int AA_exclass2_get_name_length(const AA_exclass2 * self);
 

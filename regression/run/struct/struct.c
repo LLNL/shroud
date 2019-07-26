@@ -26,6 +26,7 @@ static Cstruct1 global_Cstruct1;
 //----------------------------------------------------------------------
 
 // return sum of fields as a check
+// start passStructByValue
 int passStructByValue(Cstruct1 arg)
 {
   int rv = arg.ifield * 2;
@@ -33,12 +34,15 @@ int passStructByValue(Cstruct1 arg)
   arg.ifield += 1;
   return rv;
 }
+// end passStructByValue
 
+// start passStruct1
 int passStruct1(Cstruct1 *s1)
 {
     strncpy(last_function_called, "passStruct1", MAXLAST);
     return s1->ifield;
 }
+// end passStruct1
 
 int passStruct2(Cstruct1 *s1, char *outbuf)
 {

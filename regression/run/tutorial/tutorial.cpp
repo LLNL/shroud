@@ -25,60 +25,27 @@ static double global_double;
 static const Class1 *global_class1;
 
 
-void Function1()
+void NoReturnNoArguments()
 {
-    last_function_called = "Function1";
+    last_function_called = "NoReturnNoArguments";
     return;
 }
 
-double Function2(double arg1, int arg2)
+double PassByValue(double arg1, int arg2)
 {
-    last_function_called = "Function2";
+    last_function_called = "PassByValue";
     return arg1 + arg2;
 }
 
-bool Function3(bool arg)
-{
-    last_function_called = "Function3";
-    return ! arg;
-}
-
-void Function3b(const bool arg1, bool *arg2, bool *arg3)
-{
-    last_function_called = "Function3b";
-    *arg2 = ! arg1;
-    *arg3 = ! *arg3;
-    return;
-}
-
-const std::string Function4a(const std::string& arg1, const std::string& arg2)
-{
-    last_function_called = "Function4a";
-    return arg1 + arg2;
-}
-
-const std::string& Function4b(const std::string& arg1, const std::string& arg2)
-{
-    last_function_called = "Function4b";
-    global_str = arg1 + arg2;
-    return global_str;
-}
-
-const std::string Function4c(const std::string& arg1, const std::string& arg2)
+const std::string ConcatenateStrings(const std::string& arg1, const std::string& arg2)
 {
     last_function_called = "Function4c";
     return arg1 + arg2;
 }
 
-const std::string * Function4d()
+double UseDefaultArguments(double arg1, bool arg2)
 {
-    const std::string * rv = new std::string("Function4d");
-    return rv;
-}
-
-double Function5(double arg1, bool arg2)
-{
-    last_function_called = "Function5";
+    last_function_called = "UseDefautArguments";
     if (arg2) {
 	return arg1 + 10.0;
     } else {
@@ -86,98 +53,80 @@ double Function5(double arg1, bool arg2)
     }
 }
 
-void Function6(const std::string& name)
+void OverloadedFunction(const std::string& name)
 {
-    last_function_called = "Function6(string)";
+    last_function_called = "OverloadedFunction(string)";
     global_str = name;
     return;
 }
-void Function6(int indx)
+void OverloadedFunction(int indx)
 {
-    last_function_called = "Function6(int)";
+    last_function_called = "OverloadedFunction(int)";
     global_int = indx;
     return;
 }
 
 template<>
-void Function7<int>(int arg)
+void TemplateArgument<int>(int arg)
 {
-    last_function_called = "Function7<int>";
+    last_function_called = "TemplateArgument<int>";
     global_int = arg;
 }
 
 template<>
-void Function7<double>(double arg)
+void TemplateArgument<double>(double arg)
 {
-    last_function_called = "Function7<double>";
+    last_function_called = "TemplateArgument<double>";
     global_double = arg;
 }
 
 template<>
-int Function8<int>()
+int TemplateReturn<int>()
 {
-    last_function_called = "Function8<int>";
+    last_function_called = "TemplateReturn<int>";
     return global_int;
 }
 
 template<>
-double Function8<double>()
+double TemplateReturn<double>()
 {
-    last_function_called = "Function8<double>";
+    last_function_called = "TemplateReturn<double>";
     return global_double;
 }
 
-void Function9(double arg)
+void FortranGeneric(double arg)
 {
-    last_function_called = "Function9";
+    last_function_called = "FortranGeneric";
     global_double = arg;
     return;
 }
 
-void Function10()
+void FortranGenericOverloaded()
 {
-    last_function_called = "Function10_0";
+    last_function_called = "FortranGenericOverloaded_0";
 }
 
-void Function10(const std::string &name, double arg2)
+void FortranGenericOverloaded(const std::string &name, double arg2)
 {
-    last_function_called = "Function10_1";
+    last_function_called = "FortranGenericOverloaded_1";
     global_str = name;
     global_double = arg2;
 }
 
-void Sum(size_t len, int *values, int *result)
-{
-    last_function_called = "Sum";
-
-    int sum = 0;
-    for (size_t i=0; i < len; i++) {
-	sum += values[i];
-    }
-    *result = sum;
-    return;
-}
-
-long long TypeLongLong(long long arg1)
-{
-  return arg1 + 2;
-}
-
-
 // default values and overloaded
-// int overload1(int num, int offset = 0, int stride = 1);
-int overload1(int num, int offset, int stride)
+// int UseDefaultOverload(int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(int num, int offset, int stride)
 {
-    last_function_called = "overload1_0";
+    last_function_called = "UseDefaultOverload_0";
     return num + offset * stride;
     
 }
 
 // default values and overloaded
-// int overload1(double type, int num, int offset = 0, int stride = 1);
-int overload1(double type, int num, int offset, int stride)
+// int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(double type, int num, int offset, int stride)
 {
-    last_function_called = "overload1_1";
+    last_function_called = "UseDefaultOverload_1";
     global_double = type;
     return num + offset * stride;
 }
@@ -203,11 +152,13 @@ Color colorfunc(Color arg)
     return RED;
 }
 
+// start getMinMaxa
 void getMinMax(int &min, int &max)
 {
   min = -1;
   max = 100;
 }
+// end getMinMaxa
 
 // Save arg flag value in global flag.
 // Used by test drive to make sure arg was passed correctly.
@@ -300,10 +251,12 @@ Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 
 //----------------------------------------------------------------------
 
+// start callback1
 int callback1(int in, int (*incr)(int))
 {
   return incr(in);
 }
+// end callback1
 
 //----------------------------------------------------------------------
 

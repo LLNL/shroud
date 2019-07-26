@@ -22,12 +22,12 @@ enum EnumTypeID {
 
 typedef int TypeID;
 
-void Function1(void);
+void NoReturnNoArguments(void);
 
-double Function2(double arg1, int arg2);
+double PassByValue(double arg1, int arg2);
+void PassByReference(double *arg1, int *arg2);
 
-bool Function3(bool arg);
-void Function3b(const bool arg1, bool *arg2, bool *arg3);
+void checkBool(const bool arg1, bool *arg2, bool *arg3);
 
 char *Function4a(const char *arg1, const char *arg2);
 void acceptName(const char *name);
@@ -48,8 +48,10 @@ void bindC2(char * outbuf);
 void passVoidStarStar(void *in, void **out);
 
 int passAssumedType(void *arg);
+void passAssumedTypeDim(void *arg);
 int passAssumedTypeBuf(void *arg, char *outbuf);
 
+void callback1(int type, void (*incr)(void));
 void callback2(int type, void * in, void (*incr)(int *));
 void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
 
@@ -66,6 +68,8 @@ void Function9(double arg);
 void Function10(void);
 void Function10(const std::string &name, double arg2);
 #endif
+
+void Sum(int len, int *values, int *result);
 
 #if 0
 TypeID typefunc(TypeID arg);

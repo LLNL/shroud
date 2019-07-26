@@ -138,7 +138,9 @@ phony_explicit:
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/struct/.. \
+    $(tempdir)/run/struct/python/.. \
     $(tempdir)/run/struct-cxx/.. \
+    $(tempdir)/run/struct-cxx/python/.. \
     $(tempdir)/run/templates/.. \
     $(tempdir)/run/tutorial/..\
     $(tempdir)/run/tutorial/python/.. \

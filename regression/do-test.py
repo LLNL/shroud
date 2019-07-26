@@ -324,7 +324,11 @@ if __name__ == "__main__":
                  cmdline=["--yaml-types", "def_types.yaml"]),
         TestDesc("tutorial"),
         TestDesc("types"),
-        TestDesc("pointers", yaml="pointers"),
+        TestDesc("pointers", yaml="pointers",
+                 cmdline=[
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                 ]),
         TestDesc("pointers-list", yaml="pointers",
                  cmdline=[
                      "--option", "PY_array_arg=list",
@@ -348,6 +352,7 @@ if __name__ == "__main__":
         TestDesc("struct",
                  cmdline=[
                      "--language", "c",
+                     "--option", "literalinclude2=true",
                      "--option", "PY_struct_arg=numpy",
                  ]),
         TestDesc("struct-cxx", yaml="struct",
@@ -367,6 +372,7 @@ if __name__ == "__main__":
         TestDesc("interface"),
         TestDesc("templates"),
         TestDesc("ownership"),
+        TestDesc("memdoc"),
     ]
 
     if args.testname:

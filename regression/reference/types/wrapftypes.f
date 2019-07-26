@@ -228,6 +228,15 @@ module types_mod
             integer(C_SIZE_T) :: SHT_rv
         end function size_func
 
+        function c_bool_func(arg) &
+                result(SHT_rv) &
+                bind(C, name="TYP_bool_func")
+            use iso_c_binding, only : C_BOOL
+            implicit none
+            logical(C_BOOL), value, intent(IN) :: arg
+            logical(C_BOOL) :: SHT_rv
+        end function c_bool_func
+
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
                 bind(C, name="TYP_return_bool_and_others")
@@ -242,6 +251,19 @@ module types_mod
     end interface
 
 contains
+
+    ! bool bool_func(bool arg +intent(in)+value)
+    function bool_func(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL
+        logical, value, intent(IN) :: arg
+        logical(C_BOOL) SH_arg
+        logical :: SHT_rv
+        SH_arg = arg  ! coerce to C_BOOL
+        ! splicer begin function.bool_func
+        SHT_rv = c_bool_func(SH_arg)
+        ! splicer end function.bool_func
+    end function bool_func
 
     ! bool returnBoolAndOthers(int * flag +intent(out))
     !>

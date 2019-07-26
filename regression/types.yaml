@@ -60,6 +60,7 @@ declarations:
 
 - decl: size_t size_func(size_t arg1)
 
+- decl: bool bool_func(bool arg)
 
 - decl: bool returnBoolAndOthers(int *flag+intent(out))
   doxygen:

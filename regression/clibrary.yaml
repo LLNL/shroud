@@ -26,6 +26,7 @@ options:
   F_module_per_class: False
   wrap_python: True
   wrap_lua: False
+  literalinclude2: True
 
 declarations:
 
@@ -36,17 +37,29 @@ declarations:
     c_to_cxx : static_cast<EnumTypeID>({c_var})
     cxx_to_c : static_cast<int>({cxx_var})
 
-- decl: void Function1()
-- decl: double Function2(double arg1, int arg2)
+- decl: void NoReturnNoArguments()
+  options:
+    literalinclude: True
+- decl: double PassByValue(double arg1, int arg2)
+  options:
+    literalinclude: True
+- decl: void PassByReference(double *arg1+intent(in), int *arg2+intent(out))
+  options:
+    literalinclude: True
 
-- decl: bool Function3(bool arg)
-- decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
+- decl: void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
+  doxygen:
+    brief: Check intent with bool
+  options:
+    literalinclude: True
 
 - decl: char *Function4a(
     const char *arg1,
     const char *arg2 ) +len(30)
 
 - decl: void acceptName(const char *name)
+  options:
+    literalinclude: True
 
 ######################################################################
 # charlen
@@ -60,6 +73,8 @@ declarations:
       Each argument is assumed to be at least MAXNAME long.
       This define is provided by the user.
       The function will copy into the user provided buffer.
+  options:
+    literalinclude: True
 
 - decl: void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME),
                             char *name2+intent(out)+charlen(MAXNAME))
@@ -75,6 +90,8 @@ declarations:
                             int ltext+implied(len(text)))
   doxygen:
     brief: Fill text, at most ltext characters.
+  options:
+    literalinclude: True
 
 - decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
                        bool flag+implied(false))
@@ -138,6 +155,7 @@ declarations:
       No bufferify function is created, only an interface.
   options:
     wrap_python: false
+    literalinclude: True
 
 - decl: int passAssumedType(void *arg+assumedtype)
   doxygen:
@@ -148,6 +166,14 @@ declarations:
       return the value passed in.
   options:
     wrap_python: false
+    literalinclude: True
+
+- decl: void passAssumedTypeDim(void *arg+assumedtype+dimension)
+  doxygen:
+    brief: Test assumed-type with dimension
+  options:
+    wrap_python: false
+    literalinclude: True
 
 - decl: int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))
   doxygen:
@@ -162,12 +188,14 @@ declarations:
 ######################################################################
 # Function pointer (from tutorial.yaml)
 
-#- decl: int callback1(int in, int (*incr)(int));
-#  doxygen:
-#    brief: Test function pointer
-#  options:
-#    wrap_lua: False
-#    wrap_python: False
+# XXX (void)
+- decl: int callback1(int type, void (*incr)()+external)
+  doxygen:
+    brief: Test function pointer
+  options:
+    wrap_lua: False
+    wrap_python: False
+    literalinclude: True
   
 - decl: void callback2(int type, void * in+assumedtype,
                        void (*incr)(int *)+external)

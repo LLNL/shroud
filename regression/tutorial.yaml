@@ -6,7 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Create a runnable program for the tutorial
+# Create an executable program for the tutorial
 
 library: Tutorial
 cxx_header: tutorial.hpp
@@ -16,6 +16,7 @@ options:
   F_module_per_class: False
   wrap_python: True
   wrap_lua: True
+  literalinclude2: True
 
 
 declarations:
@@ -43,46 +44,15 @@ declarations:
 
   - decl: extern int tutorial_flag;
 
-  - decl: void Function1()
-  - decl: double Function2(double arg1, int arg2)
-  - decl: void Sum(size_t len  +implied(size(values)),
-                   int *values +dimension(:)+intent(in),
-                   int *result +intent(out))
+  - decl: void NoReturnNoArguments()
+  # from clibrary.yaml
     options:
-      # unable to deal with dimension
-      wrap_lua: False
+      literalinclude: True
+
+  - decl: double PassByValue(double arg1, int arg2)
+  # from clibrary.yaml
   
-  - decl: long long TypeLongLong(long long arg1)
-    options:
-       # No long long in Lua
-       wrap_lua: False
-  
-  - decl: bool Function3(bool arg)
-  - decl: void Function3b(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))
-    options:
-      # check out arguments
-      wrap_python: False
-      wrap_lua: False
-
-  - decl: const std::string Function4a(
-      const std::string& arg1,
-      const std::string& arg2 ) +len(30)
-#  attrs:
-#    result:
-#      len: 30
-    doxygen:
-      description: |
-         Since +len(30) is provided, the result of the function
-         will be copied directly into memory provided by Fortran.
-         The function will not be ALLOCATABLE.
-
-  - decl: const std::string& Function4b(
-      const std::string& arg1,
-      const std::string& arg2 )
-    format:
-      F_string_result_as_arg: output
-
-  - decl: const std::string Function4c(
+  - decl: const std::string ConcatenateStrings(
       const std::string& arg1,
       const std::string& arg2 )
     doxygen:
@@ -90,43 +60,37 @@ declarations:
          Note that since a reference is returned, no intermediate string
          is allocated.  It is assumed +owner(library).
   
-  - decl: const std::string * Function4d() +owner(caller)
-# XXX - can not deal with non const yet
-    doxygen:
-      description: |
-         A string is allocated by the library is must be deleted
-         by the caller.
-  
-  - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
+  - decl: double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
     default_arg_suffix:
     -  
     -  _arg1
     -  _arg1_arg2
+    options:
+      literalinclude: True
   
 # overloaded functions
-  - decl: void Function6(const std::string& name)
+  - decl: void OverloadedFunction(const std::string& name)
     format:
       function_suffix: _from_name
-  - decl: void Function6(int indx)
+  - decl: void OverloadedFunction(int indx)
     format:
       function_suffix: _from_index
   
   - decl: |
         template<typename ArgType>
-        void Function7(ArgType arg)
+        void TemplateArgument(ArgType arg)
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
-
   
-  - decl: template<typename RetType> RetType Function8()
+  - decl: template<typename RetType> RetType TemplateReturn()
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
     options:
        wrap_lua: False
        wrap_python: False
-  
+
 # test cxx_template, fortran_generic, overload
 #- decl: void Function10()
 #- decl: template<typename ArgType> void Function10(ArgType arg1, std::string &name, double arg2 = 0)
@@ -146,8 +110,8 @@ declarations:
   
   
 # test fortran_generic, overload
-  - decl: void Function10()
-  - decl: void Function10(const std::string &name, double arg2)
+  - decl: void FortranGenericOverloaded()
+  - decl: void FortranGenericOverloaded(const std::string &name, double arg2)
     options:
       F_string_len_trim: True
 #   cxx_template:
@@ -159,14 +123,14 @@ declarations:
     - decl: double arg2
       function_suffix: double
   
-# overload with optional
-  - decl: int overload1(int num,
+# overload with default values
+  - decl: int UseDefaultOverload(int num,
             int offset = 0, int stride = 1)
     default_arg_suffix:
     - _num
     - _num_offset
     - _num_offset_stride
-  - decl: int overload1(double type, int num,
+  - decl: int UseDefaultOverload(double type, int num,
             int offset = 0, int stride = 1)
   
 # test F_string_result_as_arg and optional arguments
@@ -184,10 +148,13 @@ declarations:
        brief: Pass in reference to scalar
     options:
       wrap_lua: False
+      literalinclude: True
   
 ##################################################
   
   - decl: class Class1
+    options:
+      literalinclude: True
     declarations:
     - decl: int m_flag +readonly;
     - decl: int m_test +name(test);
@@ -292,6 +259,7 @@ declarations:
     options:
       wrap_lua: False
       wrap_python: False
+      literalinclude: True
   
 ##################################################
 # Used with testing

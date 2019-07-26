@@ -30,6 +30,7 @@ module struct_mod
 
     interface
 
+        ! start pass_struct_by_value
         function pass_struct_by_value(arg) &
                 result(SHT_rv) &
                 bind(C, name="STR_pass_struct_by_value")
@@ -39,7 +40,9 @@ module struct_mod
             type(cstruct1), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_struct_by_value
+        ! end pass_struct_by_value
 
+        ! start pass_struct1
         function pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="STR_pass_struct1")
@@ -49,6 +52,7 @@ module struct_mod
             type(cstruct1), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_struct1
+        ! end pass_struct1
 
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &

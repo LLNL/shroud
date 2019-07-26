@@ -1,17 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
 
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 C and C++
 =========
@@ -26,6 +17,14 @@ pass meta-data arguments.  When called from Fortran, its wrappers will
 provide the meta-data.  When called directly by a C application, the
 meta-data must be provided by the user.
 
+To help control the scope of C names, all externals add a prefix.
+It defaults to the first three letters of the
+**library** but may be changed by setting the format **C_prefix**:
+
+.. code-block:: yaml
+
+    format:
+      C_prefix: NEW_
 
 Wrapper
 -------

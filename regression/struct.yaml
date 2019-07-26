@@ -37,8 +37,12 @@ declarations:
         };
 
 - decl: int passStructByValue(Cstruct1 arg)
+  options:
+    literalinclude: True
 
 - decl: int passStruct1(Cstruct1 *arg)
+  options:
+    literalinclude: True
 
 - decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))
   doxygen:

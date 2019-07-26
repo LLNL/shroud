@@ -50,7 +50,7 @@ int TEM_use_impl_worker_internal_ImplWorker1()
 // splicer end function.use_impl_worker_internal_ImplWorker1
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void TEM_SHROUD_memory_destructor(TEM_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;

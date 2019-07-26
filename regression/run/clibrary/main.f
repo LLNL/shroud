@@ -107,26 +107,29 @@ contains
     character(lenoutbuf)  :: outbuf
     type(C_PTR) :: cptr1, cptr2
 
+    integer(C_INT) int_array(10)
+    real(C_DOUBLE) double_array(2,5)
+
     call set_case_name("test_functions")
 
-    call function1
+    call no_return_no_arguments
     call assert_true(.true.)
 
-    rv_double = function2(1.d0, 4)
+    rv_double = pass_by_value(1.d0, 4)
     call assert_true(rv_double == 5.d0)
 
-    rv_logical = function3(.false.)
-    call assert_true(rv_logical)
+    call pass_by_reference(3.14d0, int_var)
+    call assert_equals(3, int_var)
 
     rv_logical = .true.
     wrk_logical = .true.
-    call function3b(.true., rv_logical, wrk_logical)
+    call check_bool(.true., rv_logical, wrk_logical)
     call assert_false(rv_logical)
     call assert_false(wrk_logical)
 
     rv_logical = .false.
     wrk_logical = .false.
-    call function3b(.false., rv_logical, wrk_logical)
+    call check_bool(.false., rv_logical, wrk_logical)
     call assert_true(rv_logical)
     call assert_true(wrk_logical)
 
@@ -175,6 +178,9 @@ contains
     call assert_equals(23, rv_int)
     rv_int = pass_assumed_type_buf(33_C_INT, outbuf)
     call assert_equals(33, rv_int)
+
+    call pass_assumed_type_dim(int_array)
+    call pass_assumed_type_dim(double_array)
 
 !    call function4b("dog", "cat", rv_char)
 !    call assert_true( rv_char == "dogcat")

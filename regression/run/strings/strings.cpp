@@ -1,18 +1,12 @@
-// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+// Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+// other Shroud Project Developers.
+// See the top-level COPYRIGHT file for details.
 //
-// Produced at the Lawrence Livermore National Laboratory 
-//
-// LLNL-CODE-738041.
-//
-// All rights reserved. 
-//
-// This file is part of Shroud.
-//
-// For details about use and distribution, please read LICENSE.
+// SPDX-License-Identifier: (BSD-3-Clause)
 //
 // #######################################################################
 //
-// tutorial.hpp - wrapped routines
+// strings.cpp
 //
 
 #include "strings.hpp"
@@ -42,10 +36,12 @@ char returnChar()
 
 //----------------------------------------
 
+// start passCharPtr
 void passCharPtr(char *dest, const char *src)
 {
     std::strcpy(dest, src);
 }
+// end passCharPtr
 
 void passCharPtrInOut(char *s)
 {
@@ -57,27 +53,35 @@ void passCharPtrInOut(char *s)
 
 //----------------------------------------
 
+// start getCharPtr1
 const char * getCharPtr1()
 {
     return static_char;
 }
+// end getCharPtr1
 
+// start getCharPtr2
 const char * getCharPtr2()
 {
     return static_char;
 }
+// end getCharPtr2
 
+// start getCharPtr3
 const char * getCharPtr3()
 {
     return static_char;
 }
+// end getCharPtr3
 
 //----------------------------------------
 
+// start getConstStringRefPure
 const std::string& getConstStringRefPure()
 {
     return static_str;
 }
+// end getConstStringRefPure
 
 const std::string& getConstStringRefLen()
 {
@@ -164,10 +168,12 @@ void acceptStringReferenceOut(std::string & arg1)
     arg1 = "dog";
 }
 
+// start acceptStringReference
 void acceptStringReference(std::string & arg1)
 {
     arg1.append("dog");
 }
+// end acceptStringReference
 
 void acceptStringPointer(std::string * arg1)
 {

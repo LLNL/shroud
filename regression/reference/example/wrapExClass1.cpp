@@ -45,7 +45,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // helper function
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
-void AA_ShroudCopyStringAndFree(USE_SHROUD_array *data, char *c_var, size_t c_var_len) {
+void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var_len) {
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
@@ -205,7 +205,7 @@ const char * AA_exclass1_get_name_error_check(const AA_exclass1 * self)
 
 // void getNameErrorCheck(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
 void AA_exclass1_get_name_error_check_bufferify(
-    const AA_exclass1 * self, USE_SHROUD_array *DSHF_rv)
+    const AA_exclass1 * self, AA_SHROUD_array *DSHF_rv)
 {
 // splicer begin class.ExClass1.method.get_name_error_check_bufferify
     const example::nested::ExClass1 *SH_this =

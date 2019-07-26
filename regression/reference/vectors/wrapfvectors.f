@@ -34,15 +34,17 @@ module vectors_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! start array_context
     type, bind(C) :: SHROUD_array
         type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
         type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
         integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
+    ! end array_context
 
+    ! start c_vector_sum_bufferify
     interface
-
         function c_vector_sum_bufferify(arg, Sarg) &
                 result(SHT_rv) &
                 bind(C, name="VEC_vector_sum_bufferify")
@@ -52,7 +54,11 @@ module vectors_mod
             integer(C_LONG), value, intent(IN) :: Sarg
             integer(C_INT) :: SHT_rv
         end function c_vector_sum_bufferify
+    end interface
+    ! end c_vector_sum_bufferify
 
+    ! start c_vector_iota_out_bufferify
+    interface
         subroutine c_vector_iota_out_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_out_bufferify")
             use iso_c_binding, only : C_INT
@@ -60,7 +66,11 @@ module vectors_mod
             implicit none
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_iota_out_bufferify
+    end interface
+    ! end c_vector_iota_out_bufferify
 
+    ! start c_vector_iota_out_alloc_bufferify
+    interface
         subroutine c_vector_iota_out_alloc_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_out_alloc_bufferify")
             use iso_c_binding, only : C_INT
@@ -68,7 +78,11 @@ module vectors_mod
             implicit none
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_iota_out_alloc_bufferify
+    end interface
+    ! end c_vector_iota_out_alloc_bufferify
 
+    ! start c_vector_iota_inout_alloc_bufferify
+    interface
         subroutine c_vector_iota_inout_alloc_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_iota_inout_alloc_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
@@ -78,7 +92,10 @@ module vectors_mod
             integer(C_LONG), value, intent(IN) :: Sarg
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_iota_inout_alloc_bufferify
+    end interface
+    ! end c_vector_iota_inout_alloc_bufferify
 
+    interface
         subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_increment_bufferify")
             use iso_c_binding, only : C_INT, C_LONG
@@ -88,7 +105,9 @@ module vectors_mod
             integer(C_LONG), value, intent(IN) :: Sarg
             type(SHROUD_array), intent(INOUT) :: Darg
         end subroutine c_vector_increment_bufferify
+    end interface
 
+    interface
         function c_vector_string_count_bufferify(arg, Sarg, Narg) &
                 result(SHT_rv) &
                 bind(C, name="VEC_vector_string_count_bufferify")
@@ -99,7 +118,9 @@ module vectors_mod
             integer(C_INT), value, intent(IN) :: Narg
             integer(C_INT) :: SHT_rv
         end function c_vector_string_count_bufferify
+    end interface
 
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -121,6 +142,7 @@ contains
 
     ! int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in))
     ! arg_to_buffer
+    ! start vector_sum
     function vector_sum(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
@@ -130,6 +152,7 @@ contains
         SHT_rv = c_vector_sum_bufferify(arg, size(arg, kind=C_LONG))
         ! splicer end function.vector_sum
     end function vector_sum
+    ! end vector_sum
 
     ! void vector_iota_out(std::vector<int> & arg +dimension(:)+intent(out))
     ! arg_to_buffer
@@ -137,6 +160,7 @@ contains
     !! \brief Copy vector into Fortran input array
     !!
     !<
+    ! start vector_iota_out
     subroutine vector_iota_out(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(OUT) :: arg(:)
@@ -146,6 +170,7 @@ contains
         ! splicer end function.vector_iota_out
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_out
+    ! end vector_iota_out
 
     ! void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(out))
     ! arg_to_buffer
@@ -153,6 +178,7 @@ contains
     !! \brief Copy vector into Fortran allocatable array
     !!
     !<
+    ! start vector_iota_out_alloc
     subroutine vector_iota_out_alloc(arg)
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), intent(OUT), allocatable :: arg(:)
@@ -163,6 +189,7 @@ contains
         allocate(arg(Darg%size))
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_out_alloc
+    ! end vector_iota_out_alloc
 
     ! void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+dimension(:)+intent(inout))
     ! arg_to_buffer
@@ -170,6 +197,7 @@ contains
     !! \brief Copy vector into Fortran allocatable array
     !!
     !<
+    ! start vector_iota_inout_alloc
     subroutine vector_iota_inout_alloc(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(INOUT), allocatable :: arg(:)
@@ -182,6 +210,7 @@ contains
         allocate(arg(Darg%size))
         call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
     end subroutine vector_iota_inout_alloc
+    ! end vector_iota_inout_alloc
 
     ! void vector_increment(std::vector<int> & arg +dimension(:)+intent(inout))
     ! arg_to_buffer

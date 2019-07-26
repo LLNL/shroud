@@ -142,7 +142,7 @@ int TES_use_impl_worker_instantiation3()
 // splicer end function.use_impl_worker_instantiation3
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
