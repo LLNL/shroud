@@ -16,6 +16,9 @@ Future Work
 
   * reference counting and garbage collection
 
+  * Support for *Further Interoperability of Fortran with C*.
+    This includes the ISO_Fortran_binding.h header file.
+
 
 The copying of strings solves the blank-filled vs null-terminated
 differences between Fortran and C and works well for many strings.

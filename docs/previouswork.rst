@@ -157,6 +157,7 @@ to dynamically allocated memory.
 Links
 -----
 
+  * `Technical Specification ISO/IEC TS 29113:2012 <http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45136>`_
   * `Generating C Interfaces <http://fortranwiki.org/fortran/show/Generating+C+Interfaces>`_
   * `Shadow-object interface between Fortran95 and C++ <http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=753048>`_  Mark G. Gray, Randy M. Roberts, and Tom M. Evans (1999)
   * `Generate C interface from C++ source code using Clang libtooling <http://samanbarghi.com/blog/2016/12/06/generate-c-interface-from-c-source-code-using-clang-libtooling/>`_
