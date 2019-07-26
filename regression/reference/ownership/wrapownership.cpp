@@ -190,7 +190,7 @@ OWN_class1 * OWN_get_class_new(int flag, OWN_class1 * SHC_rv)
 // splicer end function.get_class_new
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;

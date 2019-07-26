@@ -26,12 +26,14 @@ module tutorial_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_capsule_data
 
+    ! start array_context
     type, bind(C) :: SHROUD_array
         type(SHROUD_capsule_data) :: cxx       ! address of C++ memory
         type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
         integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
+    ! end array_context
 
     !  enum tutorial::Class1::DIRECTION
     integer(C_INT), parameter :: tutorial_class1_direction_up = 2
@@ -47,10 +49,12 @@ module tutorial_mod
     ! splicer begin class.Class1.module_top
     ! splicer end class.Class1.module_top
 
+    ! start derived-type SHROUD_class1_capsule
     type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type SHROUD_class1_capsule
+    ! end derived-type SHROUD_class1_capsule
 
     type class1
         type(SHROUD_class1_capsule) :: cxxmem
@@ -105,19 +109,19 @@ module tutorial_mod
         module procedure singleton_ne
     end interface
 
+    ! start abstract callback1_incr
     abstract interface
-
         function callback1_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value :: arg0
             integer(C_INT) :: callback1_incr
         end function callback1_incr
-
     end interface
+    ! end abstract callback1_incr
 
+    ! start c_class1_new_default
     interface
-
         function c_class1_new_default(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_default")
@@ -127,7 +131,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_default
+    end interface
+    ! end c_class1_new_default
 
+    ! start c_class1_new_flag
+    interface
         function c_class1_new_flag(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_new_flag")
@@ -138,14 +146,22 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_new_flag
+    end interface
+    ! end c_class1_new_flag
 
+    ! start c_class1_delete
+    interface
         subroutine c_class1_delete(self) &
                 bind(C, name="TUT_class1_delete")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_delete
+    end interface
+    ! end c_class1_delete
 
+    ! start c_class1_method1
+    interface
         function c_class1_method1(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_method1")
@@ -155,7 +171,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_method1
+    end interface
+    ! end c_class1_method1
 
+    ! start c_class1_equivalent
+    interface
         pure function c_class1_equivalent(self, obj2) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_equivalent")
@@ -166,14 +186,22 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: obj2
             logical(C_BOOL) :: SHT_rv
         end function c_class1_equivalent
+    end interface
+    ! end c_class1_equivalent
 
+    ! start c_class1_return_this
+    interface
         subroutine c_class1_return_this(self) &
                 bind(C, name="TUT_class1_return_this")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_return_this
+    end interface
+    ! end c_class1_return_this
 
+    ! start c_class1_return_this_buffer
+    interface
         function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_return_this_buffer")
@@ -186,7 +214,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer
+    end interface
+    ! end c_class1_return_this_buffer
 
+    ! start c_class1_return_this_buffer_bufferify
+    interface
         function c_class1_return_this_buffer_bufferify(self, name, &
                 Lname, flag, SHT_crv) &
                 result(SHT_rv) &
@@ -201,7 +233,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer_bufferify
+    end interface
+    ! end c_class1_return_this_buffer_bufferify
 
+    ! start c_class1_getclass3
+    interface
         function c_class1_getclass3(self, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_getclass3")
@@ -212,7 +248,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_getclass3
+    end interface
+    ! end c_class1_getclass3
 
+    ! start c_class1_direction_func
+    interface
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_direction_func")
@@ -223,7 +263,11 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_class1_direction_func
+    end interface
+    ! end c_class1_direction_func
 
+    ! start c_class1_get_m_flag
+    interface
         function c_class1_get_m_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_m_flag")
@@ -233,7 +277,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_m_flag
+    end interface
+    ! end c_class1_get_m_flag
 
+    ! start c_class1_get_test
+    interface
         function c_class1_get_test(self) &
                 result(SHT_rv) &
                 bind(C, name="TUT_class1_get_test")
@@ -243,7 +291,11 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_test
+    end interface
+    ! end c_class1_get_test
 
+    ! start c_class1_set_test
+    interface
         subroutine c_class1_set_test(self, val) &
                 bind(C, name="TUT_class1_set_test")
             use iso_c_binding, only : C_INT
@@ -252,10 +304,13 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_class1_set_test
+    end interface
+    ! end c_class1_set_test
 
-        ! splicer begin class.Class1.additional_interfaces
-        ! splicer end class.Class1.additional_interfaces
+    ! splicer begin class.Class1.additional_interfaces
+    ! splicer end class.Class1.additional_interfaces
 
+    interface
         function c_singleton_get_reference(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_singleton_get_reference")
@@ -265,100 +320,36 @@ module tutorial_mod
             type(SHROUD_singleton_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_singleton_get_reference
+    end interface
 
-        ! splicer begin class.Singleton.additional_interfaces
-        ! splicer end class.Singleton.additional_interfaces
+    ! splicer begin class.Singleton.additional_interfaces
+    ! splicer end class.Singleton.additional_interfaces
 
-        subroutine function1() &
-                bind(C, name="TUT_function1")
+    ! start no_return_no_arguments
+    interface
+        subroutine no_return_no_arguments() &
+                bind(C, name="TUT_no_return_no_arguments")
             implicit none
-        end subroutine function1
+        end subroutine no_return_no_arguments
+    end interface
+    ! end no_return_no_arguments
 
-        function function2(arg1, arg2) &
+    interface
+        function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_function2")
+                bind(C, name="TUT_pass_by_value")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
-        end function function2
+        end function pass_by_value
+    end interface
 
-        subroutine c_sum(len, values, result) &
-                bind(C, name="TUT_sum")
-            use iso_c_binding, only : C_INT, C_SIZE_T
-            implicit none
-            integer(C_SIZE_T), value, intent(IN) :: len
-            integer(C_INT), intent(IN) :: values(*)
-            integer(C_INT), intent(OUT) :: result
-        end subroutine c_sum
-
-        function type_long_long(arg1) &
-                result(SHT_rv) &
-                bind(C, name="TUT_type_long_long")
-            use iso_c_binding, only : C_LONG_LONG
-            implicit none
-            integer(C_LONG_LONG), value, intent(IN) :: arg1
-            integer(C_LONG_LONG) :: SHT_rv
-        end function type_long_long
-
-        function c_function3(arg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function3")
-            use iso_c_binding, only : C_BOOL
-            implicit none
-            logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: SHT_rv
-        end function c_function3
-
-        subroutine c_function3b(arg1, arg2, arg3) &
-                bind(C, name="TUT_function3b")
-            use iso_c_binding, only : C_BOOL
-            implicit none
-            logical(C_BOOL), value, intent(IN) :: arg1
-            logical(C_BOOL), intent(OUT) :: arg2
-            logical(C_BOOL), intent(INOUT) :: arg3
-        end subroutine c_function3b
-
-        subroutine c_function4a_bufferify(arg1, Larg1, arg2, Larg2, &
-                SHF_rv, NSHF_rv) &
-                bind(C, name="TUT_function4a_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: Larg2
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
-            integer(C_INT), value, intent(IN) :: NSHF_rv
-        end subroutine c_function4a_bufferify
-
-        function c_function4b(arg1, arg2) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function4b")
-            use iso_c_binding, only : C_CHAR, C_PTR
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            type(C_PTR) SHT_rv
-        end function c_function4b
-
-        subroutine c_function4b_bufferify(arg1, Larg1, arg2, Larg2, &
-                output, Noutput) &
-                bind(C, name="TUT_function4b_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            character(kind=C_CHAR), intent(IN) :: arg2(*)
-            integer(C_INT), value, intent(IN) :: Larg2
-            character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: Noutput
-        end subroutine c_function4b_bufferify
-
-        subroutine c_function4c_bufferify(arg1, Larg1, arg2, Larg2, &
-                DSHF_rv) &
-                bind(C, name="TUT_function4c_bufferify")
+    interface
+        subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
+                Larg2, DSHF_rv) &
+                bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: SHROUD_array
             implicit none
@@ -367,185 +358,219 @@ module tutorial_mod
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
             type(SHROUD_array), intent(INOUT) :: DSHF_rv
-        end subroutine c_function4c_bufferify
+        end subroutine c_concatenate_strings_bufferify
+    end interface
 
-        function c_function4d() &
+    ! start c_use_default_arguments
+    interface
+        function c_use_default_arguments() &
                 result(SHT_rv) &
-                bind(C, name="TUT_function4d")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) SHT_rv
-        end function c_function4d
-
-        subroutine c_function4d_bufferify(DSHF_rv) &
-                bind(C, name="TUT_function4d_bufferify")
-            import :: SHROUD_array
-            implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHF_rv
-        end subroutine c_function4d_bufferify
-
-        function c_function5() &
-                result(SHT_rv) &
-                bind(C, name="TUT_function5")
+                bind(C, name="TUT_use_default_arguments")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
-        end function c_function5
+        end function c_use_default_arguments
+    end interface
+    ! end c_use_default_arguments
 
-        function c_function5_arg1(arg1) &
+    ! start c_use_default_arguments_arg1
+    interface
+        function c_use_default_arguments_arg1(arg1) &
                 result(SHT_rv) &
-                bind(C, name="TUT_function5_arg1")
+                bind(C, name="TUT_use_default_arguments_arg1")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             real(C_DOUBLE) :: SHT_rv
-        end function c_function5_arg1
+        end function c_use_default_arguments_arg1
+    end interface
+    ! end c_use_default_arguments_arg1
 
-        function c_function5_arg1_arg2(arg1, arg2) &
+    ! start c_use_default_arguments_arg1_arg2
+    interface
+        function c_use_default_arguments_arg1_arg2(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_function5_arg1_arg2")
+                bind(C, name="TUT_use_default_arguments_arg1_arg2")
             use iso_c_binding, only : C_BOOL, C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             logical(C_BOOL), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
-        end function c_function5_arg1_arg2
+        end function c_use_default_arguments_arg1_arg2
+    end interface
+    ! end c_use_default_arguments_arg1_arg2
 
-        subroutine c_function6_from_name(name) &
-                bind(C, name="TUT_function6_from_name")
+    interface
+        subroutine c_overloaded_function_from_name(name) &
+                bind(C, name="TUT_overloaded_function_from_name")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-        end subroutine c_function6_from_name
+        end subroutine c_overloaded_function_from_name
+    end interface
 
-        subroutine c_function6_from_name_bufferify(name, Lname) &
-                bind(C, name="TUT_function6_from_name_bufferify")
+    interface
+        subroutine c_overloaded_function_from_name_bufferify(name, &
+                Lname) &
+                bind(C, name="TUT_overloaded_function_from_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-        end subroutine c_function6_from_name_bufferify
+        end subroutine c_overloaded_function_from_name_bufferify
+    end interface
 
-        subroutine c_function6_from_index(indx) &
-                bind(C, name="TUT_function6_from_index")
+    interface
+        subroutine c_overloaded_function_from_index(indx) &
+                bind(C, name="TUT_overloaded_function_from_index")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: indx
-        end subroutine c_function6_from_index
+        end subroutine c_overloaded_function_from_index
+    end interface
 
-        subroutine c_function7_int(arg) &
-                bind(C, name="TUT_function7_int")
+    interface
+        subroutine c_template_argument_int(arg) &
+                bind(C, name="TUT_template_argument_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
-        end subroutine c_function7_int
+        end subroutine c_template_argument_int
+    end interface
 
-        subroutine c_function7_double(arg) &
-                bind(C, name="TUT_function7_double")
+    interface
+        subroutine c_template_argument_double(arg) &
+                bind(C, name="TUT_template_argument_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
-        end subroutine c_function7_double
+        end subroutine c_template_argument_double
+    end interface
 
-        function c_function8_int() &
+    interface
+        function c_template_return_int() &
                 result(SHT_rv) &
-                bind(C, name="TUT_function8_int")
+                bind(C, name="TUT_template_return_int")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: SHT_rv
-        end function c_function8_int
+        end function c_template_return_int
+    end interface
 
-        function c_function8_double() &
+    interface
+        function c_template_return_double() &
                 result(SHT_rv) &
-                bind(C, name="TUT_function8_double")
+                bind(C, name="TUT_template_return_double")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE) :: SHT_rv
-        end function c_function8_double
+        end function c_template_return_double
+    end interface
 
-        subroutine c_function9(arg) &
-                bind(C, name="TUT_function9")
+    interface
+        subroutine c_fortran_generic(arg) &
+                bind(C, name="TUT_fortran_generic")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
-        end subroutine c_function9
+        end subroutine c_fortran_generic
+    end interface
 
-        subroutine c_function10_0() &
-                bind(C, name="TUT_function10_0")
+    interface
+        subroutine c_fortran_generic_overloaded_0() &
+                bind(C, name="TUT_fortran_generic_overloaded_0")
             implicit none
-        end subroutine c_function10_0
+        end subroutine c_fortran_generic_overloaded_0
+    end interface
 
-        subroutine c_function10_1(name, arg2) &
-                bind(C, name="TUT_function10_1")
+    interface
+        subroutine c_fortran_generic_overloaded_1(name, arg2) &
+                bind(C, name="TUT_fortran_generic_overloaded_1")
             use iso_c_binding, only : C_CHAR, C_DOUBLE
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine c_function10_1
+        end subroutine c_fortran_generic_overloaded_1
+    end interface
 
-        subroutine c_function10_1_bufferify(name, Lname, arg2) &
-                bind(C, name="TUT_function10_1_bufferify")
+    interface
+        subroutine c_fortran_generic_overloaded_1_bufferify(name, Lname, &
+                arg2) &
+                bind(C, name="TUT_fortran_generic_overloaded_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine c_function10_1_bufferify
+        end subroutine c_fortran_generic_overloaded_1_bufferify
+    end interface
 
-        function c_overload1_num(num) &
+    interface
+        function c_use_default_overload_num(num) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_num")
+                bind(C, name="TUT_use_default_overload_num")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
-        end function c_overload1_num
+        end function c_use_default_overload_num
+    end interface
 
-        function c_overload1_num_offset(num, offset) &
+    interface
+        function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_num_offset")
+                bind(C, name="TUT_use_default_overload_num_offset")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT) :: SHT_rv
-        end function c_overload1_num_offset
+        end function c_use_default_overload_num_offset
+    end interface
 
-        function c_overload1_num_offset_stride(num, offset, stride) &
+    interface
+        function c_use_default_overload_num_offset_stride(num, offset, &
+                stride) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_num_offset_stride")
+                bind(C, name="TUT_use_default_overload_num_offset_stride")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT), value, intent(IN) :: stride
             integer(C_INT) :: SHT_rv
-        end function c_overload1_num_offset_stride
+        end function c_use_default_overload_num_offset_stride
+    end interface
 
-        function c_overload1_3(type, num) &
+    interface
+        function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_3")
+                bind(C, name="TUT_use_default_overload_3")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT) :: SHT_rv
-        end function c_overload1_3
+        end function c_use_default_overload_3
+    end interface
 
-        function c_overload1_4(type, num, offset) &
+    interface
+        function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_4")
+                bind(C, name="TUT_use_default_overload_4")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
             integer(C_INT), value, intent(IN) :: num
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT) :: SHT_rv
-        end function c_overload1_4
+        end function c_use_default_overload_4
+    end interface
 
-        function c_overload1_5(type, num, offset, stride) &
+    interface
+        function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
-                bind(C, name="TUT_overload1_5")
+                bind(C, name="TUT_use_default_overload_5")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: type
@@ -553,8 +578,10 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: offset
             integer(C_INT), value, intent(IN) :: stride
             integer(C_INT) :: SHT_rv
-        end function c_overload1_5
+        end function c_use_default_overload_5
+    end interface
 
+    interface
         function typefunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_typefunc")
@@ -563,7 +590,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function typefunc
+    end interface
 
+    interface
         function enumfunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_enumfunc")
@@ -572,7 +601,9 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function enumfunc
+    end interface
 
+    interface
         function colorfunc(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_colorfunc")
@@ -581,7 +612,10 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function colorfunc
+    end interface
 
+    ! start get_min_max
+    interface
         subroutine get_min_max(min, max) &
                 bind(C, name="TUT_get_min_max")
             use iso_c_binding, only : C_INT
@@ -589,7 +623,10 @@ module tutorial_mod
             integer(C_INT), intent(OUT) :: min
             integer(C_INT), intent(OUT) :: max
         end subroutine get_min_max
+    end interface
+    ! end get_min_max
 
+    interface
         function direction_func(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_direction_func")
@@ -598,14 +635,18 @@ module tutorial_mod
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function direction_func
+    end interface
 
+    interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="TUT_pass_class_by_value")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), value, intent(IN) :: arg
         end subroutine c_pass_class_by_value
+    end interface
 
+    interface
         function c_useclass(arg) &
                 result(SHT_rv) &
                 bind(C, name="TUT_useclass")
@@ -615,7 +656,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_useclass
+    end interface
 
+    interface
         function c_getclass2(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass2")
@@ -625,7 +668,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass2
+    end interface
 
+    interface
         function c_getclass3(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_getclass3")
@@ -635,7 +680,9 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass3
+    end interface
 
+    interface
         function c_get_class_copy(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_class_copy")
@@ -646,7 +693,10 @@ module tutorial_mod
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_copy
+    end interface
 
+    ! start callback1
+    interface
         function callback1(in, incr) &
                 result(SHT_rv) &
                 bind(C, name="TUT_callback1")
@@ -657,14 +707,19 @@ module tutorial_mod
             procedure(callback1_incr) :: incr
             integer(C_INT) :: SHT_rv
         end function callback1
+    end interface
+    ! end callback1
 
+    interface
         subroutine set_global_flag(arg) &
                 bind(C, name="TUT_set_global_flag")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: arg
         end subroutine set_global_flag
+    end interface
 
+    interface
         function get_global_flag() &
                 result(SHT_rv) &
                 bind(C, name="TUT_get_global_flag")
@@ -672,7 +727,9 @@ module tutorial_mod
             implicit none
             integer(C_INT) :: SHT_rv
         end function get_global_flag
+    end interface
 
+    interface
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="TUT_last_function_called")
@@ -680,7 +737,9 @@ module tutorial_mod
             implicit none
             type(C_PTR) SHT_rv
         end function c_last_function_called
+    end interface
 
+    interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_last_function_called_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -688,7 +747,9 @@ module tutorial_mod
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_last_function_called_bufferify
+    end interface
 
+    interface
         ! splicer begin additional_interfaces
         subroutine all_test1(array)
           implicit none
@@ -702,41 +763,41 @@ module tutorial_mod
         module procedure class1_new_flag
     end interface class1_new
 
-    interface function10
-        module procedure function10_0
-        module procedure function10_1_float
-        module procedure function10_1_double
-    end interface function10
+    interface fortran_generic
+        module procedure fortran_generic_float
+        module procedure fortran_generic_double
+    end interface fortran_generic
 
-    interface function5
-        module procedure function5
-        module procedure function5_arg1
-        module procedure function5_arg1_arg2
-    end interface function5
+    interface fortran_generic_overloaded
+        module procedure fortran_generic_overloaded_0
+        module procedure fortran_generic_overloaded_1_float
+        module procedure fortran_generic_overloaded_1_double
+    end interface fortran_generic_overloaded
 
-    interface function6
-        module procedure function6_from_name
-        module procedure function6_from_index
-    end interface function6
+    interface overloaded_function
+        module procedure overloaded_function_from_name
+        module procedure overloaded_function_from_index
+    end interface overloaded_function
 
-    interface function7
-        module procedure function7_int
-        module procedure function7_double
-    end interface function7
+    interface template_argument
+        module procedure template_argument_int
+        module procedure template_argument_double
+    end interface template_argument
 
-    interface function9
-        module procedure function9_float
-        module procedure function9_double
-    end interface function9
+    interface use_default_arguments
+        module procedure use_default_arguments
+        module procedure use_default_arguments_arg1
+        module procedure use_default_arguments_arg1_arg2
+    end interface use_default_arguments
 
-    interface overload1
-        module procedure overload1_num
-        module procedure overload1_num_offset
-        module procedure overload1_num_offset_stride
-        module procedure overload1_3
-        module procedure overload1_4
-        module procedure overload1_5
-    end interface overload1
+    interface use_default_overload
+        module procedure use_default_overload_num
+        module procedure use_default_overload_num_offset
+        module procedure use_default_overload_num_offset_stride
+        module procedure use_default_overload_3
+        module procedure use_default_overload_4
+        module procedure use_default_overload_5
+    end interface use_default_overload
 
     interface
         ! helper function
@@ -754,6 +815,7 @@ module tutorial_mod
 contains
 
     ! Class1() +name(new)
+    ! start class1_new_default
     function class1_new_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -763,8 +825,10 @@ contains
         SHT_prv = c_class1_new_default(SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_default
     end function class1_new_default
+    ! end class1_new_default
 
     ! Class1(int flag +intent(in)+value) +name(new)
+    ! start class1_new_flag
     function class1_new_flag(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -775,20 +839,24 @@ contains
         SHT_prv = c_class1_new_flag(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_flag
     end function class1_new_flag
+    ! end class1_new_flag
 
     ! ~Class1() +name(delete)
+    ! start class1_delete
     subroutine class1_delete(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%cxxmem)
         ! splicer end class.Class1.method.delete
     end subroutine class1_delete
+    ! end class1_delete
 
     ! int Method1()
     !>
     !! \brief returns the value of flag member
     !!
     !<
+    ! start class1_method1
     function class1_method1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -798,12 +866,14 @@ contains
         SHT_rv = c_class1_method1(obj%cxxmem)
         ! splicer end class.Class1.method.method1
     end function class1_method1
+    ! end class1_method1
 
     ! bool equivalent(const Class1 & obj2 +intent(in)) const
     !>
     !! \brief Pass in reference to instance
     !!
     !<
+    ! start class1_equivalent
     function class1_equivalent(obj, obj2) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -814,18 +884,21 @@ contains
         SHT_rv = c_class1_equivalent(obj%cxxmem, obj2%cxxmem)
         ! splicer end class.Class1.method.equivalent
     end function class1_equivalent
+    ! end class1_equivalent
 
     ! Class1 * returnThis()
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
     !<
+    ! start class1_return_this
     subroutine class1_return_this(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.return_this
         call c_class1_return_this(obj%cxxmem)
         ! splicer end class.Class1.method.return_this
     end subroutine class1_return_this
+    ! end class1_return_this
 
     ! Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
     ! arg_to_buffer
@@ -833,6 +906,7 @@ contains
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
     !<
+    ! start class1_return_this_buffer
     function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT, C_PTR
@@ -848,12 +922,14 @@ contains
             name, len_trim(name, kind=C_INT), SH_flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
+    ! end class1_return_this_buffer
 
     ! Class1 * getclass3() const
     !>
     !! \brief Test const method
     !!
     !<
+    ! start class1_getclass3
     function class1_getclass3(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -864,8 +940,10 @@ contains
         SHT_prv = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.getclass3
     end function class1_getclass3
+    ! end class1_getclass3
 
     ! DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+    ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -876,8 +954,10 @@ contains
         SHT_rv = c_class1_direction_func(obj%cxxmem, arg)
         ! splicer end class.Class1.method.direction_func
     end function class1_direction_func
+    ! end class1_direction_func
 
     ! int getM_flag()
+    ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -887,8 +967,10 @@ contains
         SHT_rv = c_class1_get_m_flag(obj%cxxmem)
         ! splicer end class.Class1.method.get_m_flag
     end function class1_get_m_flag
+    ! end class1_get_m_flag
 
     ! int getTest()
+    ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -898,8 +980,10 @@ contains
         SHT_rv = c_class1_get_test(obj%cxxmem)
         ! splicer end class.Class1.method.get_test
     end function class1_get_test
+    ! end class1_get_test
 
     ! void setTest(int val +intent(in)+value)
+    ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
         class(class1) :: obj
@@ -908,6 +992,7 @@ contains
         call c_class1_set_test(obj%cxxmem, val)
         ! splicer end class.Class1.method.set_test
     end subroutine class1_set_test
+    ! end class1_set_test
 
     ! Return pointer to C++ memory.
     function class1_get_instance(obj) result (cxxptr)
@@ -972,146 +1057,58 @@ contains
     ! splicer begin class.Singleton.additional_functions
     ! splicer end class.Singleton.additional_functions
 
-    ! void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-    subroutine sum(values, result)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        integer(C_SIZE_T) :: len
-        integer(C_INT), intent(IN) :: values(:)
-        integer(C_INT), intent(OUT) :: result
-        len = size(values,kind=C_SIZE_T)
-        ! splicer begin function.sum
-        call c_sum(len, values, result)
-        ! splicer end function.sum
-    end subroutine sum
-
-    ! bool Function3(bool arg +intent(in)+value)
-    function function3(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
-        logical, value, intent(IN) :: arg
-        logical(C_BOOL) SH_arg
-        logical :: SHT_rv
-        SH_arg = arg  ! coerce to C_BOOL
-        ! splicer begin function.function3
-        SHT_rv = c_function3(SH_arg)
-        ! splicer end function.function3
-    end function function3
-
-    ! void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    subroutine function3b(arg1, arg2, arg3)
-        use iso_c_binding, only : C_BOOL
-        logical, value, intent(IN) :: arg1
-        logical(C_BOOL) SH_arg1
-        logical, intent(OUT) :: arg2
-        logical(C_BOOL) SH_arg2
-        logical, intent(INOUT) :: arg3
-        logical(C_BOOL) SH_arg3
-        SH_arg1 = arg1  ! coerce to C_BOOL
-        SH_arg3 = arg3  ! coerce to C_BOOL
-        ! splicer begin function.function3b
-        call c_function3b(SH_arg1, SH_arg2, SH_arg3)
-        ! splicer end function.function3b
-        arg2 = SH_arg2  ! coerce to logical
-        arg3 = SH_arg3  ! coerce to logical
-    end subroutine function3b
-
-    ! const std::string Function4a(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)+len(30)
-    ! arg_to_buffer
-    !>
-    !! Since +len(30) is provided, the result of the function
-    !! will be copied directly into memory provided by Fortran.
-    !! The function will not be ALLOCATABLE.
-    !<
-    function function4a(arg1, arg2) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        character(len=*), intent(IN) :: arg2
-        character(len=30) :: SHT_rv
-        ! splicer begin function.function4a
-        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
-            len(SHT_rv, kind=C_INT))
-        ! splicer end function.function4a
-    end function function4a
-
-    ! void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-    ! arg_to_buffer - arg_to_buffer
-    subroutine function4b(arg1, arg2, output)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        character(len=*), intent(IN) :: arg2
-        character(len=*), intent(OUT) :: output
-        ! splicer begin function.function4b
-        call c_function4b_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), output, &
-            len(output, kind=C_INT))
-        ! splicer end function.function4b
-    end subroutine function4b
-
-    ! const std::string Function4c(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+    ! const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
     ! arg_to_buffer
     !>
     !! Note that since a reference is returned, no intermediate string
     !! is allocated.  It is assumed +owner(library).
     !<
-    function function4c(arg1, arg2) &
+    function concatenate_strings(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
         type(SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.function4c
-        call c_function4c_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
-        ! splicer end function.function4c
+        ! splicer begin function.concatenate_strings
+        call c_concatenate_strings_bufferify(arg1, &
+            len_trim(arg1, kind=C_INT), arg2, &
+            len_trim(arg2, kind=C_INT), DSHF_rv)
+        ! splicer end function.concatenate_strings
         allocate(character(len=DSHF_rv%len):: SHT_rv)
         call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function function4c
+    end function concatenate_strings
 
-    ! const std::string * Function4d() +deref(allocatable)+owner(caller)
-    ! arg_to_buffer
-    !>
-    !! A string is allocated by the library is must be deleted
-    !! by the caller.
-    !<
-    function function4d() &
-            result(SHT_rv)
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.function4d
-        call c_function4d_bufferify(DSHF_rv)
-        ! splicer end function.function4d
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function function4d
-
-    ! double Function5()
+    ! double UseDefaultArguments()
     ! has_default_arg
-    function function5() &
+    ! start use_default_arguments
+    function use_default_arguments() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
-        ! splicer begin function.function5
-        SHT_rv = c_function5()
-        ! splicer end function.function5
-    end function function5
+        ! splicer begin function.use_default_arguments
+        SHT_rv = c_use_default_arguments()
+        ! splicer end function.use_default_arguments
+    end function use_default_arguments
+    ! end use_default_arguments
 
-    ! double Function5(double arg1=3.1415 +intent(in)+value)
+    ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
     ! has_default_arg
-    function function5_arg1(arg1) &
+    ! start use_default_arguments_arg1
+    function use_default_arguments_arg1(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
         real(C_DOUBLE) :: SHT_rv
-        ! splicer begin function.function5_arg1
-        SHT_rv = c_function5_arg1(arg1)
-        ! splicer end function.function5_arg1
-    end function function5_arg1
+        ! splicer begin function.use_default_arguments_arg1
+        SHT_rv = c_use_default_arguments_arg1(arg1)
+        ! splicer end function.use_default_arguments_arg1
+    end function use_default_arguments_arg1
+    ! end use_default_arguments_arg1
 
-    ! double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-    function function5_arg1_arg2(arg1, arg2) &
+    ! double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+    ! start use_default_arguments_arg1_arg2
+    function use_default_arguments_arg1_arg2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg1
@@ -1119,191 +1116,193 @@ contains
         logical(C_BOOL) SH_arg2
         real(C_DOUBLE) :: SHT_rv
         SH_arg2 = arg2  ! coerce to C_BOOL
-        ! splicer begin function.function5_arg1_arg2
-        SHT_rv = c_function5_arg1_arg2(arg1, SH_arg2)
-        ! splicer end function.function5_arg1_arg2
-    end function function5_arg1_arg2
+        ! splicer begin function.use_default_arguments_arg1_arg2
+        SHT_rv = c_use_default_arguments_arg1_arg2(arg1, SH_arg2)
+        ! splicer end function.use_default_arguments_arg1_arg2
+    end function use_default_arguments_arg1_arg2
+    ! end use_default_arguments_arg1_arg2
 
-    ! void Function6(const std::string & name +intent(in))
+    ! void OverloadedFunction(const std::string & name +intent(in))
     ! arg_to_buffer
-    subroutine function6_from_name(name)
+    subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
-        ! splicer begin function.function6_from_name
-        call c_function6_from_name_bufferify(name, &
+        ! splicer begin function.overloaded_function_from_name
+        call c_overloaded_function_from_name_bufferify(name, &
             len_trim(name, kind=C_INT))
-        ! splicer end function.function6_from_name
-    end subroutine function6_from_name
+        ! splicer end function.overloaded_function_from_name
+    end subroutine overloaded_function_from_name
 
-    ! void Function6(int indx +intent(in)+value)
-    subroutine function6_from_index(indx)
+    ! void OverloadedFunction(int indx +intent(in)+value)
+    subroutine overloaded_function_from_index(indx)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: indx
-        ! splicer begin function.function6_from_index
-        call c_function6_from_index(indx)
-        ! splicer end function.function6_from_index
-    end subroutine function6_from_index
+        ! splicer begin function.overloaded_function_from_index
+        call c_overloaded_function_from_index(indx)
+        ! splicer end function.overloaded_function_from_index
+    end subroutine overloaded_function_from_index
 
-    ! void Function7(int arg +intent(in)+value)
+    ! void TemplateArgument(int arg +intent(in)+value)
     ! cxx_template
-    subroutine function7_int(arg)
+    subroutine template_argument_int(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
-        ! splicer begin function.function7_int
-        call c_function7_int(arg)
-        ! splicer end function.function7_int
-    end subroutine function7_int
+        ! splicer begin function.template_argument_int
+        call c_template_argument_int(arg)
+        ! splicer end function.template_argument_int
+    end subroutine template_argument_int
 
-    ! void Function7(double arg +intent(in)+value)
+    ! void TemplateArgument(double arg +intent(in)+value)
     ! cxx_template
-    subroutine function7_double(arg)
+    subroutine template_argument_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
-        ! splicer begin function.function7_double
-        call c_function7_double(arg)
-        ! splicer end function.function7_double
-    end subroutine function7_double
+        ! splicer begin function.template_argument_double
+        call c_template_argument_double(arg)
+        ! splicer end function.template_argument_double
+    end subroutine template_argument_double
 
-    ! int Function8()
+    ! int TemplateReturn()
     ! cxx_template
-    function function8_int() &
+    function template_return_int() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.function8_int
-        SHT_rv = c_function8_int()
-        ! splicer end function.function8_int
-    end function function8_int
+        ! splicer begin function.template_return_int
+        SHT_rv = c_template_return_int()
+        ! splicer end function.template_return_int
+    end function template_return_int
 
-    ! double Function8()
+    ! double TemplateReturn()
     ! cxx_template
-    function function8_double() &
+    function template_return_double() &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE) :: SHT_rv
-        ! splicer begin function.function8_double
-        SHT_rv = c_function8_double()
-        ! splicer end function.function8_double
-    end function function8_double
+        ! splicer begin function.template_return_double
+        SHT_rv = c_template_return_double()
+        ! splicer end function.template_return_double
+    end function template_return_double
 
-    ! void Function9(float arg +intent(in)+value)
+    ! void FortranGeneric(float arg +intent(in)+value)
     ! fortran_generic
-    subroutine function9_float(arg)
+    subroutine fortran_generic_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
-        ! splicer begin function.function9_float
-        call c_function9(real(arg, C_DOUBLE))
-        ! splicer end function.function9_float
-    end subroutine function9_float
+        ! splicer begin function.fortran_generic_float
+        call c_fortran_generic(real(arg, C_DOUBLE))
+        ! splicer end function.fortran_generic_float
+    end subroutine fortran_generic_float
 
-    ! void Function9(double arg +intent(in)+value)
+    ! void FortranGeneric(double arg +intent(in)+value)
     ! fortran_generic
-    subroutine function9_double(arg)
+    subroutine fortran_generic_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
-        ! splicer begin function.function9_double
-        call c_function9(arg)
-        ! splicer end function.function9_double
-    end subroutine function9_double
+        ! splicer begin function.fortran_generic_double
+        call c_fortran_generic(arg)
+        ! splicer end function.fortran_generic_double
+    end subroutine fortran_generic_double
 
-    ! void Function10()
-    subroutine function10_0()
-        ! splicer begin function.function10_0
-        call c_function10_0()
-        ! splicer end function.function10_0
-    end subroutine function10_0
+    ! void FortranGenericOverloaded()
+    subroutine fortran_generic_overloaded_0()
+        ! splicer begin function.fortran_generic_overloaded_0
+        call c_fortran_generic_overloaded_0()
+        ! splicer end function.fortran_generic_overloaded_0
+    end subroutine fortran_generic_overloaded_0
 
-    ! void Function10(const std::string & name +intent(in), float arg2 +intent(in)+value)
+    ! void FortranGenericOverloaded(const std::string & name +intent(in), float arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    subroutine function10_1_float(name, arg2)
+    subroutine fortran_generic_overloaded_1_float(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
         character(len=*), intent(IN) :: name
         real(C_FLOAT), value, intent(IN) :: arg2
-        ! splicer begin function.function10_1_float
-        call c_function10_1_bufferify(name, len_trim(name, kind=C_INT), &
-            real(arg2, C_DOUBLE))
-        ! splicer end function.function10_1_float
-    end subroutine function10_1_float
+        ! splicer begin function.fortran_generic_overloaded_1_float
+        call c_fortran_generic_overloaded_1_bufferify(name, &
+            len_trim(name, kind=C_INT), real(arg2, C_DOUBLE))
+        ! splicer end function.fortran_generic_overloaded_1_float
+    end subroutine fortran_generic_overloaded_1_float
 
-    ! void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
+    ! void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
     ! fortran_generic - arg_to_buffer
-    subroutine function10_1_double(name, arg2)
+    subroutine fortran_generic_overloaded_1_double(name, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), value, intent(IN) :: arg2
-        ! splicer begin function.function10_1_double
-        call c_function10_1_bufferify(name, len_trim(name, kind=C_INT), &
-            arg2)
-        ! splicer end function.function10_1_double
-    end subroutine function10_1_double
+        ! splicer begin function.fortran_generic_overloaded_1_double
+        call c_fortran_generic_overloaded_1_bufferify(name, &
+            len_trim(name, kind=C_INT), arg2)
+        ! splicer end function.fortran_generic_overloaded_1_double
+    end subroutine fortran_generic_overloaded_1_double
 
-    ! int overload1(int num +intent(in)+value)
+    ! int UseDefaultOverload(int num +intent(in)+value)
     ! has_default_arg
-    function overload1_num(num) &
+    function use_default_overload_num(num) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_num
-        SHT_rv = c_overload1_num(num)
-        ! splicer end function.overload1_num
-    end function overload1_num
+        ! splicer begin function.use_default_overload_num
+        SHT_rv = c_use_default_overload_num(num)
+        ! splicer end function.use_default_overload_num
+    end function use_default_overload_num
 
-    ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
+    ! int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    function overload1_num_offset(num, offset) &
+    function use_default_overload_num_offset(num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_num_offset
-        SHT_rv = c_overload1_num_offset(num, offset)
-        ! splicer end function.overload1_num_offset
-    end function overload1_num_offset
+        ! splicer begin function.use_default_overload_num_offset
+        SHT_rv = c_use_default_overload_num_offset(num, offset)
+        ! splicer end function.use_default_overload_num_offset
+    end function use_default_overload_num_offset
 
-    ! int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-    function overload1_num_offset_stride(num, offset, stride) &
+    ! int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+    function use_default_overload_num_offset_stride(num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT), value, intent(IN) :: stride
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_num_offset_stride
-        SHT_rv = c_overload1_num_offset_stride(num, offset, stride)
-        ! splicer end function.overload1_num_offset_stride
-    end function overload1_num_offset_stride
+        ! splicer begin function.use_default_overload_num_offset_stride
+        SHT_rv = c_use_default_overload_num_offset_stride(num, offset, &
+            stride)
+        ! splicer end function.use_default_overload_num_offset_stride
+    end function use_default_overload_num_offset_stride
 
-    ! int overload1(double type +intent(in)+value, int num +intent(in)+value)
+    ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)
     ! has_default_arg
-    function overload1_3(type, num) &
+    function use_default_overload_3(type, num) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_3
-        SHT_rv = c_overload1_3(type, num)
-        ! splicer end function.overload1_3
-    end function overload1_3
+        ! splicer begin function.use_default_overload_3
+        SHT_rv = c_use_default_overload_3(type, num)
+        ! splicer end function.use_default_overload_3
+    end function use_default_overload_3
 
-    ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
+    ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
     ! has_default_arg
-    function overload1_4(type, num, offset) &
+    function use_default_overload_4(type, num, offset) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
         integer(C_INT), value, intent(IN) :: num
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_4
-        SHT_rv = c_overload1_4(type, num, offset)
-        ! splicer end function.overload1_4
-    end function overload1_4
+        ! splicer begin function.use_default_overload_4
+        SHT_rv = c_use_default_overload_4(type, num, offset)
+        ! splicer end function.use_default_overload_4
+    end function use_default_overload_4
 
-    ! int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-    function overload1_5(type, num, offset, stride) &
+    ! int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+    function use_default_overload_5(type, num, offset, stride) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), value, intent(IN) :: type
@@ -1311,10 +1310,10 @@ contains
         integer(C_INT), value, intent(IN) :: offset
         integer(C_INT), value, intent(IN) :: stride
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.overload1_5
-        SHT_rv = c_overload1_5(type, num, offset, stride)
-        ! splicer end function.overload1_5
-    end function overload1_5
+        ! splicer begin function.use_default_overload_5
+        SHT_rv = c_use_default_overload_5(type, num, offset, stride)
+        ! splicer end function.use_default_overload_5
+    end function use_default_overload_5
 
     ! void passClassByValue(Class1 arg +intent(in)+value)
     !>

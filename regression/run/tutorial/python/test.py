@@ -10,7 +10,6 @@
 #
 from __future__ import print_function
 
-import numpy as np
 import unittest
 import tutorial
 
@@ -56,84 +55,70 @@ class Tutorial(unittest.TestCase):
         # module method with enums
         self.assertEqual(tutorial.Class1.RIGHT, tutorial.directionFunc(tutorial.Class1.LEFT))
      
-    # test routine A
-    def testFunction1(self):
-        tutorial.Function1()
+    def test_NoReturnNoArguments(self):
+        tutorial.NoReturnNoArguments()
 
-    def testFunction2(self):
-        rv_double = tutorial.Function2(1.0, 4)
+    def test_PassByValue(self):
+        rv_double = tutorial.PassByValue(1.0, 4)
         self.assertEqual(rv_double, 5.0)#, "A is not equal to B")
 
-    def testFunction3(self):
-        rv_logical = tutorial.Function3(False)
-        self.assertTrue(rv_logical)
-
-        # Should any object which resolved to True or False be accepted?
-        # if 0:    is legal
-        self.assertRaises(TypeError, tutorial.Function3, 0)
-
-    def testFunction4a(self):
-        rv_char = tutorial.Function4a("dog", "cat")
+    def test_ConcatenateStrings(self):
+        rv_char = tutorial.ConcatenateStrings("dog", "cat")
         self.assertEqual(rv_char, "dogcat")
 
-        # result as argument not needed for Python
-#    call function4b("dog", "cat", rv_char)
-#    call assert_true( rv_char == "dogcat")
-
-    def testFunction5(self):
-        rv_double = tutorial.Function5()
+    def test_UseDefaultArguments(self):
+        rv_double = tutorial.UseDefaultArguments()
         self.assertAlmostEqual(rv_double, 13.1415)
-        rv_double = tutorial.Function5(1.0)
+        rv_double = tutorial.UseDefaultArguments(1.0)
         self.assertAlmostEqual(rv_double, 11.0)
 
-        rv_double = tutorial.Function5(1.0, False)
+        rv_double = tutorial.UseDefaultArguments(1.0, False)
         self.assertAlmostEqual(rv_double, 1.0)
 
-    def testFunction6(self):
-        tutorial.Function6("name")
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function6(string)")
+    def test_OverloadedFunction(self):
+        tutorial.OverloadedFunction("name")
+        self.assertEqual(tutorial.LastFunctionCalled(),
+                         "OverloadedFunction(string)")
 
-        tutorial.Function6(1)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function6(int)")
+        tutorial.OverloadedFunction(1)
+        self.assertEqual(tutorial.LastFunctionCalled(),
+                         "OverloadedFunction(int)")
 
-        self.assertRaises(TypeError, tutorial.Function6, 1.0)
+        self.assertRaises(TypeError, tutorial.OverloadedFunction, 1.0)
 
-    def test_Function7_8(self):
+    def test_TemplateArgument_8(self):
         """Test cxx_template"""
-        tutorial.Function7(1)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function7<int>")
-        tutorial.Function7(10.0)
-        self.assertEqual(tutorial.LastFunctionCalled(), "Function7<double>")
+        tutorial.TemplateArgument(1)
+        self.assertEqual(tutorial.LastFunctionCalled(), "TemplateArgument<int>")
+        tutorial.TemplateArgument(10.0)
+        self.assertEqual(tutorial.LastFunctionCalled(), "TemplateArgument<double>")
 
-        # return values set by calls to function7
-        #rv = tutorial.Function8_int()
+        # return values set by calls to TemplateArgument
+        #rv = tutorial.TemplateReturn_int()
         #self.assertEqual(rv, 1)
-        #rv = tutorial.Function8_double()
+        #rv = tutorial.TemplateReturn_double()
         #self.assertEqual(rv, 10.0)
 
-    def test_Function9(self):
+    def test_FortranGeneric(self):
         # This has fortran_generic attribute but you get that for free in Python
-        tutorial.Function9(1)
-        tutorial.Function9(1.0)
+        tutorial.FortranGeneric(1)
+        tutorial.FortranGeneric(1.0)
 
-    def test_Function10(self):
+    def test_FortranGenericOverloaded(self):
         # overloaded (no default args)
-        tutorial.Function10()
-        tutorial.Function10("foo", 1.0)
-        tutorial.Function10("bar", 1.0)
+        tutorial.FortranGenericOverloaded()
+        tutorial.FortranGenericOverloaded("foo", 1.0)
+        tutorial.FortranGenericOverloaded("bar", 1.0)
 
-    def testsum(self):
-        self.assertEqual(15, tutorial.Sum([1, 2, 3, 4, 5]))
+    def test_UseDefaultOverload(self):
+        self.assertEqual(10, tutorial.UseDefaultOverload(10))
+        self.assertEqual(10, tutorial.UseDefaultOverload(1., 10))
 
-    def test_overload1(self):
-        self.assertEqual(10, tutorial.overload1(10))
-        self.assertEqual(10, tutorial.overload1(1., 10))
+        self.assertEqual(142, tutorial.UseDefaultOverload(10,11,12))
+        self.assertEqual(142, tutorial.UseDefaultOverload(1., 10,11,12))
 
-        self.assertEqual(142, tutorial.overload1(10,11,12))
-        self.assertEqual(142, tutorial.overload1(1., 10,11,12))
-
-        self.assertRaises(TypeError, tutorial.overload1, 1.0)
-        self.assertRaises(TypeError, tutorial.overload1, "dog")
+        self.assertRaises(TypeError, tutorial.UseDefaultOverload, 1.0)
+        self.assertRaises(TypeError, tutorial.UseDefaultOverload, "dog")
         
     def test_typefunc(self):
         self.assertEqual(2, tutorial.typefunc(2))

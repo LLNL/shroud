@@ -1,4 +1,4 @@
-# Shroud: A program to generate wrappers for language bindings.
+# Shroud: generate Fortran and Python wrappers for C and C++ libraries.
 
 **Shroud** is a tool for creating a Fortran or Python interface to a C
 or C++ library.  It can also create a C API for a C++ library.
@@ -40,13 +40,13 @@ The generated Python requires Python 2.7 or 3.4+.
 
 ## Release
 
-Copyright (c) 2017-2018, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 
 Produced at the Lawrence Livermore National Laboratory.
 
 All rights reserved.
 
-Unlimited Open Source - BSD Distribution
+Unlimited Open Source - BSD 3-clause Distribution
 
 For release details and restrictions, please read the LICENSE.txt file.
 It is also linked here:

@@ -11,7 +11,6 @@
 from __future__ import print_function
 
 import math
-import numpy as np
 import unittest
 import clibrary
 
@@ -36,14 +35,18 @@ class Tutorial(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testfunction2(self):
-        self.assertEqual(5.0, clibrary.Function2(1.0, 4))
+    def testNoReturnNoArguments(self):
+        clibrary.NoReturnNoArguments()
 
-    def testfunction3(self):
-        self.assertEqual(True, clibrary.Function3(False))
+    def testPassByValue(self):
+        self.assertEqual(5.0, clibrary.PassByValue(1.0, 4))
 
-    def testfunction3b(self):
-        self.assertEqual((False, False), clibrary.Function3b(True, True))
+    def testPassByReference(self):
+        rv = clibrary.PassByReference(3.14)
+        self.assertEqual(3, rv)
+
+    def testcheckBool(self):
+        self.assertEqual((False, False), clibrary.checkBool(True, True))
 
     def testfunction4a(self):
         self.assertEqual('dogcat', clibrary.Function4a('dog', 'cat'))

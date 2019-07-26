@@ -21,57 +21,79 @@ module clibrary_mod
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
 
+    ! start abstract callback1_incr
     abstract interface
+        subroutine callback1_incr() bind(C)
+            implicit none
+        end subroutine callback1_incr
+    end interface
+    ! end abstract callback1_incr
 
+    abstract interface
         subroutine callback2_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: arg0
         end subroutine callback2_incr
+    end interface
 
+    abstract interface
         subroutine callback3_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT) :: arg0
         end subroutine callback3_incr
-
     end interface
 
+    ! start no_return_no_arguments
     interface
-
-        subroutine function1() &
-                bind(C, name="Function1")
+        subroutine no_return_no_arguments() &
+                bind(C, name="NoReturnNoArguments")
             implicit none
-        end subroutine function1
+        end subroutine no_return_no_arguments
+    end interface
+    ! end no_return_no_arguments
 
-        function function2(arg1, arg2) &
+    ! start pass_by_value
+    interface
+        function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
-                bind(C, name="Function2")
+                bind(C, name="PassByValue")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
             real(C_DOUBLE) :: SHT_rv
-        end function function2
+        end function pass_by_value
+    end interface
+    ! end pass_by_value
 
-        function c_function3(arg) &
-                result(SHT_rv) &
-                bind(C, name="Function3")
-            use iso_c_binding, only : C_BOOL
+    ! start pass_by_reference
+    interface
+        subroutine pass_by_reference(arg1, arg2) &
+                bind(C, name="PassByReference")
+            use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
-            logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: SHT_rv
-        end function c_function3
+            real(C_DOUBLE), intent(IN) :: arg1
+            integer(C_INT), intent(OUT) :: arg2
+        end subroutine pass_by_reference
+    end interface
+    ! end pass_by_reference
 
-        subroutine c_function3b(arg1, arg2, arg3) &
-                bind(C, name="Function3b")
+    ! start c_check_bool
+    interface
+        subroutine c_check_bool(arg1, arg2, arg3) &
+                bind(C, name="checkBool")
             use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL), value, intent(IN) :: arg1
             logical(C_BOOL), intent(OUT) :: arg2
             logical(C_BOOL), intent(INOUT) :: arg3
-        end subroutine c_function3b
+        end subroutine c_check_bool
+    end interface
+    ! end c_check_bool
 
+    interface
         function c_function4a(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function4a")
@@ -81,7 +103,9 @@ module clibrary_mod
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             type(C_PTR) SHT_rv
         end function c_function4a
+    end interface
 
+    interface
         subroutine c_function4a_bufferify(arg1, arg2, SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -91,21 +115,32 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_function4a_bufferify
+    end interface
 
+    ! start c_accept_name
+    interface
         subroutine c_accept_name(name) &
                 bind(C, name="acceptName")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_accept_name
+    end interface
+    ! end c_accept_name
 
+    ! start c_return_one_name
+    interface
         subroutine c_return_one_name(name1) &
                 bind(C, name="returnOneName")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: name1(*)
         end subroutine c_return_one_name
+    end interface
+    ! end c_return_one_name
 
+    ! start c_return_one_name_bufferify
+    interface
         subroutine c_return_one_name_bufferify(name1, Nname1) &
                 bind(C, name="CLI_return_one_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -113,7 +148,10 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: name1(*)
             integer(C_INT), value, intent(IN) :: Nname1
         end subroutine c_return_one_name_bufferify
+    end interface
+    ! end c_return_one_name_bufferify
 
+    interface
         subroutine c_return_two_names(name1, name2) &
                 bind(C, name="returnTwoNames")
             use iso_c_binding, only : C_CHAR
@@ -121,7 +159,9 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: name1(*)
             character(kind=C_CHAR), intent(OUT) :: name2(*)
         end subroutine c_return_two_names
+    end interface
 
+    interface
         subroutine c_return_two_names_bufferify(name1, Nname1, name2, &
                 Nname2) &
                 bind(C, name="CLI_return_two_names_bufferify")
@@ -132,7 +172,10 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: name2(*)
             integer(C_INT), value, intent(IN) :: Nname2
         end subroutine c_return_two_names_bufferify
+    end interface
 
+    ! start c_implied_text_len
+    interface
         subroutine c_implied_text_len(text, ltext) &
                 bind(C, name="ImpliedTextLen")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -140,7 +183,11 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: text(*)
             integer(C_INT), value, intent(IN) :: ltext
         end subroutine c_implied_text_len
+    end interface
+    ! end c_implied_text_len
 
+    ! start c_implied_text_len_bufferify
+    interface
         subroutine c_implied_text_len_bufferify(text, Ntext, ltext) &
                 bind(C, name="CLI_implied_text_len_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -149,7 +196,10 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Ntext
             integer(C_INT), value, intent(IN) :: ltext
         end subroutine c_implied_text_len_bufferify
+    end interface
+    ! end c_implied_text_len_bufferify
 
+    interface
         function c_implied_len(text, ltext, flag) &
                 result(SHT_rv) &
                 bind(C, name="ImpliedLen")
@@ -160,7 +210,9 @@ module clibrary_mod
             logical(C_BOOL), value, intent(IN) :: flag
             integer(C_INT) :: SHT_rv
         end function c_implied_len
+    end interface
 
+    interface
         function c_implied_len_trim(text, ltext, flag) &
                 result(SHT_rv) &
                 bind(C, name="ImpliedLenTrim")
@@ -171,7 +223,9 @@ module clibrary_mod
             logical(C_BOOL), value, intent(IN) :: flag
             integer(C_INT) :: SHT_rv
         end function c_implied_len_trim
+    end interface
 
+    interface
         function c_implied_bool_true(flag) &
                 result(SHT_rv) &
                 bind(C, name="ImpliedBoolTrue")
@@ -180,7 +234,9 @@ module clibrary_mod
             logical(C_BOOL), value, intent(IN) :: flag
             logical(C_BOOL) :: SHT_rv
         end function c_implied_bool_true
+    end interface
 
+    interface
         function c_implied_bool_false(flag) &
                 result(SHT_rv) &
                 bind(C, name="ImpliedBoolFalse")
@@ -189,19 +245,25 @@ module clibrary_mod
             logical(C_BOOL), value, intent(IN) :: flag
             logical(C_BOOL) :: SHT_rv
         end function c_implied_bool_false
+    end interface
 
+    interface
         subroutine Fortran_bindC1a() &
                 bind(C, name="bindC1")
             implicit none
         end subroutine Fortran_bindC1a
+    end interface
 
+    interface
         subroutine c_bind_c2(outbuf) &
                 bind(C, name="bindC2")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
         end subroutine c_bind_c2
+    end interface
 
+    interface
         subroutine c_bind_c2_bufferify(outbuf, Noutbuf) &
                 bind(C, name="CLI_bind_c2_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -209,7 +271,10 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_bind_c2_bufferify
+    end interface
 
+    ! start pass_void_star_star
+    interface
         subroutine pass_void_star_star(in, out) &
                 bind(C, name="passVoidStarStar")
             use iso_c_binding, only : C_PTR
@@ -217,7 +282,11 @@ module clibrary_mod
             type(C_PTR), value, intent(IN) :: in
             type(C_PTR), intent(OUT) :: out
         end subroutine pass_void_star_star
+    end interface
+    ! end pass_void_star_star
 
+    ! start pass_assumed_type
+    interface
         function pass_assumed_type(arg) &
                 result(SHT_rv) &
                 bind(C, name="passAssumedType")
@@ -226,7 +295,21 @@ module clibrary_mod
             type(*) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_assumed_type
+    end interface
+    ! end pass_assumed_type
 
+    ! start pass_assumed_type_dim
+    interface
+        subroutine pass_assumed_type_dim(arg) &
+                bind(C, name="passAssumedTypeDim")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(*) :: arg(*)
+        end subroutine pass_assumed_type_dim
+    end interface
+    ! end pass_assumed_type_dim
+
+    interface
         function c_pass_assumed_type_buf(arg, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="passAssumedTypeBuf")
@@ -236,7 +319,9 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf
+    end interface
 
+    interface
         function c_pass_assumed_type_buf_bufferify(arg, outbuf, Noutbuf) &
                 result(SHT_rv) &
                 bind(C, name="CLI_pass_assumed_type_buf_bufferify")
@@ -247,7 +332,24 @@ module clibrary_mod
             integer(C_INT), value, intent(IN) :: Noutbuf
             integer(C_INT) :: SHT_rv
         end function c_pass_assumed_type_buf_bufferify
+    end interface
 
+    ! start c_callback1
+    interface
+        function c_callback1(type, incr) &
+                result(SHT_rv) &
+                bind(C, name="callback1")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: callback1_incr
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            procedure(callback1_incr) :: incr
+            integer(C_INT) :: SHT_rv
+        end function c_callback1
+    end interface
+    ! end c_callback1
+
+    interface
         subroutine c_callback2(type, in, incr) &
                 bind(C, name="callback2")
             use iso_c_binding, only : C_INT, C_PTR
@@ -257,7 +359,9 @@ module clibrary_mod
             type(*) :: in
             procedure(callback2_incr) :: incr
         end subroutine c_callback2
+    end interface
 
+    interface
         subroutine c_callback3(type, in, incr, outbuf) &
                 bind(C, name="callback3")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -268,7 +372,9 @@ module clibrary_mod
             procedure(callback3_incr) :: incr
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
         end subroutine c_callback3
+    end interface
 
+    interface
         subroutine c_callback3_bufferify(type, in, incr, outbuf, &
                 Noutbuf) &
                 bind(C, name="CLI_callback3_bufferify")
@@ -281,28 +387,22 @@ module clibrary_mod
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT), value, intent(IN) :: Noutbuf
         end subroutine c_callback3_bufferify
+    end interface
 
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
 contains
 
-    ! bool Function3(bool arg +intent(in)+value)
-    function function3(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
-        logical, value, intent(IN) :: arg
-        logical(C_BOOL) SH_arg
-        logical :: SHT_rv
-        SH_arg = arg  ! coerce to C_BOOL
-        ! splicer begin function.function3
-        SHT_rv = c_function3(SH_arg)
-        ! splicer end function.function3
-    end function function3
-
-    ! void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-    subroutine function3b(arg1, arg2, arg3)
+    ! void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
+    !>
+    !! \brief Check intent with bool
+    !!
+    !<
+    ! start check_bool
+    subroutine check_bool(arg1, arg2, arg3)
         use iso_c_binding, only : C_BOOL
         logical, value, intent(IN) :: arg1
         logical(C_BOOL) SH_arg1
@@ -312,12 +412,13 @@ contains
         logical(C_BOOL) SH_arg3
         SH_arg1 = arg1  ! coerce to C_BOOL
         SH_arg3 = arg3  ! coerce to C_BOOL
-        ! splicer begin function.function3b
-        call c_function3b(SH_arg1, SH_arg2, SH_arg3)
-        ! splicer end function.function3b
+        ! splicer begin function.check_bool
+        call c_check_bool(SH_arg1, SH_arg2, SH_arg3)
+        ! splicer end function.check_bool
         arg2 = SH_arg2  ! coerce to logical
         arg3 = SH_arg3  ! coerce to logical
-    end subroutine function3b
+    end subroutine check_bool
+    ! end check_bool
 
     ! char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result_as_arg)+len(30)
     ! arg_to_buffer
@@ -334,6 +435,7 @@ contains
     end function function4a
 
     ! void acceptName(const char * name +intent(in))
+    ! start accept_name
     subroutine accept_name(name)
         use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
@@ -341,6 +443,7 @@ contains
         call c_accept_name(trim(name)//C_NULL_CHAR)
         ! splicer end function.accept_name
     end subroutine accept_name
+    ! end accept_name
 
     ! void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer
@@ -351,6 +454,7 @@ contains
     !! This define is provided by the user.
     !! The function will copy into the user provided buffer.
     !<
+    ! start return_one_name
     subroutine return_one_name(name1)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name1
@@ -358,6 +462,7 @@ contains
         call c_return_one_name_bufferify(name1, len(name1, kind=C_INT))
         ! splicer end function.return_one_name
     end subroutine return_one_name
+    ! end return_one_name
 
     ! void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))
     ! arg_to_buffer
@@ -384,6 +489,7 @@ contains
     !! \brief Fill text, at most ltext characters.
     !!
     !<
+    ! start implied_text_len
     subroutine implied_text_len(text)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: text
@@ -394,6 +500,7 @@ contains
             ltext)
         ! splicer end function.implied_text_len
     end subroutine implied_text_len
+    ! end implied_text_len
 
     ! int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)
     !>
@@ -505,6 +612,24 @@ contains
             len(outbuf, kind=C_INT))
         ! splicer end function.pass_assumed_type_buf
     end function pass_assumed_type_buf
+
+    ! int callback1(int type +intent(in)+value, void ( * incr)() +external+intent(in)+value)
+    !>
+    !! \brief Test function pointer
+    !!
+    !<
+    ! start callback1
+    function callback1(type, incr) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: type
+        external :: incr
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.callback1
+        SHT_rv = c_callback1(type, incr)
+        ! splicer end function.callback1
+    end function callback1
+    ! end callback1
 
     ! void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)
     !>

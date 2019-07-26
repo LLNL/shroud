@@ -35,6 +35,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // splicer end C_definitions
 
 // int passStructByValue(Cstruct1 arg +intent(in)+value)
+// start STR_pass_struct_by_value
 int STR_pass_struct_by_value(STR_cstruct1 arg)
 {
 // splicer begin function.pass_struct_by_value
@@ -44,8 +45,10 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
     return SHC_rv;
 // splicer end function.pass_struct_by_value
 }
+// end STR_pass_struct_by_value
 
 // int passStruct1(Cstruct1 * arg +intent(in))
+// start STR_pass_struct1
 int STR_pass_struct1(STR_cstruct1 * arg)
 {
 // splicer begin function.pass_struct1
@@ -55,6 +58,7 @@ int STR_pass_struct1(STR_cstruct1 * arg)
     return SHC_rv;
 // splicer end function.pass_struct1
 }
+// end STR_pass_struct1
 
 // int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
 /**
@@ -181,7 +185,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // splicer end function.return_struct_ptr2_bufferify
 }
 
-// Release C++ allocated memory.
+// Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;

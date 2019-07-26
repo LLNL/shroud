@@ -1,14 +1,8 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory 
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
+# SPDX-License-Identifier: (BSD-3-Clause)
 #
 ########################################################################
 #
@@ -96,7 +90,12 @@ isort:
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
-	$(PYTHON) setup.py build_sphinx
+	$(PYTHON) setup.py build_sphinx --builder html
+#--build-dir build/sphinx/html
+#/usr/bin/sphinx-build -b -E html source build\html
+pdf :
+	$(PYTHON) setup.py build_sphinx -b latex
+	$(MAKE) -C build/sphinx/latex all-pdf
 
 test :
 	$(PYTHON) setup.py test

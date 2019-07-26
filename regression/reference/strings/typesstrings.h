@@ -32,6 +32,7 @@ struct s_STR_SHROUD_capsule_data {
 };
 typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
 
+// start array_context
 struct s_STR_SHROUD_array {
     STR_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
@@ -42,6 +43,7 @@ struct s_STR_SHROUD_array {
     size_t size;    /* size of data in cxx */
 };
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
+// end array_context
 
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 

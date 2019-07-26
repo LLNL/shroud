@@ -1,35 +1,27 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
 
-Fortran Tutorial
-================
+   SPDX-License-Identifier: (BSD-3-Clause)
 
-This tutorial will walk through the steps required to create a Fortran
-wrapper for a simple C++ library.
+Tutorial
+========
+
+This tutorial will walk through the steps required to create a Fortran or
+Python wrapper for a simple C++ library.
 
 Functions
 ---------
 
-The simplest item to wrap is a function in the file ``tutorial.hpp``:
+The simplest item to wrap is a function in the file :file:`tutorial.hpp`:
 
 .. code-block:: c++
 
     namespace tutorial {
-      void Function1(void);
+      void NoReturnNoArguments(void);
     }
 
-This is wrapped using a YAML input file ``tutorial.yaml``:
+This is wrapped using a YAML input file :file:`tutorial.yaml`:
 
 .. code-block:: yaml
 
@@ -39,7 +31,7 @@ This is wrapped using a YAML input file ``tutorial.yaml``:
     declarations:
     - decl: namespace tutorial
       declarations:
-      - decl: void Function1()
+      - decl: void NoReturnNoArguments()
 
 .. XXX support (void)?
 
@@ -47,7 +39,7 @@ This is wrapped using a YAML input file ``tutorial.yaml``:
 
 **library** is used to name output files and name the
 Fortran module.  **cxx_header** is the name of a C++ header file which
-contains the declarations for functions to be wrapped.  **functions**
+contains the declarations for functions to be wrapped.  **declarations**
 is a sequence of mappings which describe the functions to wrap.
 
 Process the file with *Shroud*:
@@ -59,55 +51,11 @@ Process the file with *Shroud*:
     Wrote wrapTutorial.cpp
     Wrote wrapftutorial.f
 
-The generated C function in file ``wrapTutorial.cpp`` is:
+    Wrote pyClass1type.cpp
+    Wrote pyTutorialmodule.hpp
+    Wrote pyTutorialmodule.cpp
+    Wrote pyTutorialutil.cpp
 
-.. code-block:: c++
-
-    #include "wrapTutorial.h"
-    #include "tutorial.hpp"
-
-    extern "C" {
-
-    void TUT_function1()
-    {
-        tutorial::Function1();
-        return;
-    }
-
-    }  // extern "C"
-
-To help control the scope of C names, all externals add a prefix.
-It defaults to the first three letters of the
-**library** but may be changed by setting the format **C_prefix**:
-
-.. code-block:: yaml
-
-    format:
-      C_prefix: NEW_
-
-The Fortran module in ``wrapftutorial.f`` contains an interface
-which allows the C wrapper to be called directly by Fortran:
-
-.. code-block:: fortran
-
-    module tutorial_mod
-        implicit none
-
-        interface
-            subroutine function1() &
-                    bind(C, name="TUT_function1")
-                use iso_c_binding
-                implicit none
-            end subroutine function1
-        end interface
-    contains
-    end module tutorial_mod
-
-In other cases a Fortran wrapper will also be created which will 
-do some type conversion on arguments or results 
-before or after calling the C wrapper.  It may also be used
-to pass additional information to the C wrapper such as a ``CHARACTER``
-variable ``LEN`` or an array's ``SIZE``.
 
 The C++ code to call the function:
 
@@ -116,18 +64,18 @@ The C++ code to call the function:
     #include "tutorial.hpp"
 
     using namespace tutorial;
-    Function1();
+    NoReturnNoArguments();
 
 And the Fortran version:
 
 .. code-block:: fortran
 
     use tutorial_mod
-
-    call function1
+    call no_return_no_arguments
 
 .. note :: rename module to just tutorial.
 
+The generated code is listed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
 
 Arguments
 ---------
@@ -137,11 +85,11 @@ Integer and Real
 
 Integer and real types are handled using the ``iso_c_binding`` module
 which match them directly to the corresponding types in C++.
-To wrap ``Function2``:
+To wrap ``PassByValue``:
 
 .. code-block:: c++
 
-    double Function2(double arg1, int arg2)
+    double PassByValue(double arg1, int arg2)
     {
         return arg1 + arg2;
     }
@@ -151,83 +99,21 @@ Add the declaration to the YAML file:
 .. code-block:: yaml
 
     declarations:
-    - decl: double Function2(double arg1, int arg2)
+    - decl: double PassByValue(double arg1, int arg2)
 
-The arguments are added to the interface for the C routine using the
-``value`` attribute.  They use the ``intent(IN)`` attribute since they
-are pass-by-value and cannot return a value.
-The C wrapper can be called directly by Fortran using the interface:
+Usage:
 
 .. code-block:: fortran
 
-     interface
-        function function2(arg1, arg2) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function2")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            implicit none
-            real(C_DOUBLE), value, intent(IN) :: arg1
-            integer(C_INT), value, intent(IN) :: arg2
-            real(C_DOUBLE) :: SHT_rv
-        end function function2
-     end interface
+    use tutorial_mod
+    real(C_DOUBLE) result
+    result = pass_by_value(1.d0, 4)
 
+.. code-block:: python
 
-Bool
-^^^^
+    import tutorial
+    result = tutorial.PassByValue(1.0, 4)
 
-bool variables require a conversion since they are not directly
-compatible with Fortran.  In addition, how ``.true.`` and ``.false.`` are
-represented internally is compiler dependent.  Some compilers use 1 for
-``.true.`` while other use -1.
-
-A simple C++ function which accepts and returns a ``bool`` argument:
-
-.. code-block:: c++
-
-    bool Function3(bool arg)
-    {
-        return ! arg;
-    }
-
-Added to the YAML file as before:
-
-.. code-block:: yaml
-
-    declarations:
-    - decl: bool Function3(bool arg)
-
-
-In this case a Fortran wrapper is created in addition to the interface.
-The wrapper convert the logical's value before calling the C wrapper:
-
-.. code-block:: fortran
-
-     interface
-        function c_function3(arg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_function3")
-            use iso_c_binding, only : C_BOOL
-            implicit none
-            logical(C_BOOL), value, intent(IN) :: arg
-            logical(C_BOOL) :: SHT_rv
-        end function c_function3
-    end interface
-
-    function function3(arg) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
-        logical, value, intent(IN) :: arg
-        logical(C_BOOL) SH_arg
-        logical :: SHT_rv
-        SH_arg = arg  ! coerce to C_BOOL
-        SHT_rv = c_function3(SH_arg)
-    end function function3
-
-The wrapper routine uses the compiler to coerce type using an assignment.
-It is possible to call ``c_function3`` directly from Fortran, but the
-wrapper does the type conversion necessary to make it easier to use
-within an existing Fortran application.
 
 
 Pointer Functions
@@ -245,30 +131,6 @@ in argument ``len``.  The Fortran API does not need to pass the argument
 since the returned pointer will know its length.
 The *hidden* attribute will cause ``len`` to be omitted from the Fortran API,
 but still passed to the C API.
-The Fortran wrappers:
-
-.. code-block:: fortran
-
-    interface
-        function c_return_int_ptr_dim(len) &
-                result(SHT_rv) &
-                bind(C, name="TUT_return_int_ptr_dim")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim
-    end interface
-
-    function return_int_ptr_dim() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        integer(C_INT) :: len
-        integer(C_INT), pointer :: SHT_rv(:)
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_dim(len)
-        call c_f_pointer(SHT_ptr, SHT_rv, [len])
-    end function return_int_ptr_dim
 
 It can be used as:
 
@@ -321,20 +183,7 @@ The ``dimension`` attribute defines the variable as a one dimensional,
 assumed-shape array.  In the C interface this maps to an 
 assumed-length array.  C pointers, like assumed-length arrays, have no
 idea how many values they point to.  This information is passed
-by the *len* argument:
-
-.. code-block:: fortran
-
-    interface
-        subroutine c_sum(len, values, result) &
-                bind(C, name="TUT_sum")
-            use iso_c_binding
-            implicit none
-            integer(C_SIZE_T), value, intent(IN) :: len
-            integer(C_INT), intent(IN) :: values(*)
-            integer(C_INT), intent(OUT) :: result
-        end subroutine c_sum
-    end interface
+by the *len* argument.
 
 The *len* argument defines the ``implied`` attribute.  This argument
 is not part of the Fortran API since its presence is *implied* from the
@@ -344,22 +193,16 @@ this value to the C wrapper:
 
 .. code-block:: fortran
 
-    subroutine sum(values, result)
-        use iso_c_binding, only : C_INT
-        integer(C_SIZE_T) :: len
-        integer(C_INT), intent(IN) :: values(:)
-        integer(C_INT), intent(OUT) :: result
-        len = size(values,kind=C_SIZE_T)
-        call c_sum(len, values, result)
-    end subroutine sum
+    use tutorial_mod
+    integer(C_INT) result
+    call sum([1,2,3,4,5], result)
 
-.. note:: If the *len* argument were named *size*, this would
-          present a problem since the ``size`` intrinsic function
-          is also used.  The generated code would not compile.
+.. code-block:: python
 
-.. note:: Multiply pointered arguments ( ``char **`` ) do not 
-          map to Fortran directly and require ``type(C_PTR)``.
+    import tutorial
+    result = tutorial.Sum([1, 2, 3, 4, 5])
 
+See example :ref:`Sum <example_Sum>` for generated code.
 
 String
 ^^^^^^
@@ -374,7 +217,7 @@ C++ routine:
 
 .. code-block:: c++
 
-    const std::string Function4a(
+    const std::string ConcatenateStrings(
         const std::string& arg1,
         const std::string& arg2)
     {
@@ -386,121 +229,22 @@ YAML input:
 .. code-block:: yaml
 
     declarations:
-    - decl: const std::string Function4a(
-        const std::string& arg1,
-        const std::string& arg2 ) +len(30)
-
-This is the C++ prototype with the addition of **+len(30)**.  This
-attribute defines the declared length of the returned string.  Since
-*Function4a* is returning a ``std::string`` the contents of the string
-must be copied out into a Fortran variable so that the ``std::string``
-may be deallocated by C++. Otherwise, it would leak memory.
-
-Attributes may also be added by assign new fields in **attrs**:
-
-.. code-block:: yaml
-
-    - decl: const std::string Function4a(
+    - decl: const std::string ConcatenateStrings(
         const std::string& arg1,
         const std::string& arg2 )
-      attrs:
-        result:
-          len: 30
-
-The C wrapper uses ``char *`` for ``std::string`` arguments which
-Fortran declares as ``character``.
-The argument is passed to the ``std::string`` constructor.
-In addition the length of the data in each string is computed using ``len_trim``
-and passed down.
-No trailing ``NULL`` is required.
-This avoids copying the string in Fortran which would be necessary to
-append the trailing ``C_NULL_CHAR``.
-The return value is added as another argument along with its declared length
-computed using ``len``:
-
-.. code-block:: c++
-
-    void TUT_function4a_bufferify(
-        const char * arg1, int Larg1,
-        const char * arg2, int Larg2,
-        char * SHF_rv, int NSHF_rv)
-    {
-        const std::string SH_arg1(arg1, Larg1);
-        const std::string SH_arg2(arg2, Larg2);
-        const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-        if (SHCXX_rv.empty()) {
-            ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
-        } else {
-            ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(), SHCXX_rv.size());
-        }
-        return;
-    }
-
-The contents of the ``std::string`` are copied into the result argument and blank
-filled by ``ShroudStrCopy``.
-Before the C wrapper returns, ``SHT_rv`` will be deleted by the compiler.
-
-The Fortran wrapper:
-
-.. code-block:: fortran
-
-    function function4a(arg1, arg2) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_CHAR, C_INT
-        character(*), intent(IN) :: arg1
-        character(*), intent(IN) :: arg2
-        character(kind=C_CHAR, len=30) :: rv
-        call c_function4a_bufferify(arg1, len_trim(arg1, kind=C_INT),  &
-            arg2, len_trim(arg2, kind=C_INT), SHT_rv, &
-            len(SHT_rv, kind=C_INT)))
-    end function function4a
 
 The function is called as:
 
 .. code-block:: fortran
 
-  character(30) rv4a
+    character(len=:), allocatable :: rv4c
 
-  rv4a = function4a("bird", "dog")
+    rv4c = concatenate_strings("one", "two")
+
+.. XXX fill in python example
 
 .. note :: This function is just for demonstration purposes.
            Any reasonable person would just use the concatenation operator in Fortran.
-
-The downside of this approach is that the maximum length of the return argument must be 
-known in advance.  By leaving off the **+len(30)**, Shroud will create an ``ALLOCATABLE``
-function which will allocate a ``CHARACTER`` variable of the correct length:
-
-.. code-block:: fortran
-
-    function function4c(arg1, arg2) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        character(len=*), intent(IN) :: arg2
-        type(SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
-        call c_function4c_bufferify(arg1, len_trim(arg1, kind=C_INT), &
-            arg2, len_trim(arg2, kind=C_INT), DSHF_rv)
-        allocate(character(len=DSHF_rv%len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%len)
-    end function function4c
-
-The type ``SHROUD_array`` contains the address and length of the
-``std::string`` returned by ``Function4c``.  The result ``STF_rv`` is
-allocated and the routine ``SHROUD_copy_string_and_free`` then copies
-the contents into it and deletes the C++ string if necessary.
-The details of ``SHROUD_array`` are described in :ref:`MemoryManagementAnchor`.
-
-This function can be called similar to ``Function4a``:
-
-.. code-block:: fortran
-
-    character(30) rv4a
-    character(len=:), allocatable :: rv4c
-
-    rv4a = function4c("bird", "dog")
-    rv4c = function4c("one", "two")
-
  
 
 Default Value Arguments
@@ -514,13 +258,13 @@ A header files contains:
 
 .. code-block:: c++
 
-    double Function5(double arg1 = 3.1415, bool arg2 = true)
+    double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
 
 and the function is defined as:
 
 .. code-block:: c++
 
-    double Function5(double arg1, bool arg2)
+    double UseDefaultArguments(double arg1, bool arg2)
     {
         if (arg2) {
             return arg1 + 10.0;
@@ -535,7 +279,7 @@ allows C++ to provide the default values:
 .. code-block:: yaml
 
     declarations:
-    - decl: double Function5(double arg1 = 3.1415, bool arg2 = true)
+    - decl: double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)
       default_arg_suffix:
       -  
       -  _arg1
@@ -545,74 +289,27 @@ The *default_arg_suffix* provides a list of values of
 *function_suffix* for each possible set of arguments for the function.
 In this case 0, 1, or 2 arguments.
 
-C wrappers:
-
-.. code-block:: c++
-
-    double TUT_function5()
-    {
-        double SHC_rv = tutorial::Function5();
-        return SHC_rv;
-    }
-    
-    double TUT_function5_arg1(double arg1)
-    {
-        double SHC_rv = tutorial::Function5(arg1);
-        return SHC_rv;
-    }
-    
-    double TUT_function5_arg1_arg2(double arg1, bool arg2)
-    {
-        double SHC_rv = tutorial::Function5(arg1, arg2);
-        return SHC_rv;
-    }
-
-
-Fortran wrapper:
-
-.. code-block:: fortran
-
-    interface function5
-        module procedure function5
-        module procedure function5_arg1
-        module procedure function5_arg1_arg2
-    end interface function5
-
-    contains
-
-    function function5() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE
-        real(C_DOUBLE) :: SHT_rv
-        SHT_rv = c_function5()
-    end function function5
-    
-    function function5_arg1(arg1) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE
-        real(C_DOUBLE), value, intent(IN) :: arg1
-        real(C_DOUBLE) :: SHT_rv
-        SHT_rv = c_function5_arg1(arg1)
-    end function function5_arg1
-    
-    function function5_arg1_arg2(arg1, arg2) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_DOUBLE
-        real(C_DOUBLE), value, intent(IN) :: arg1
-        logical, value, intent(IN) :: arg2
-        logical(C_BOOL) SH_arg2
-        real(C_DOUBLE) :: SHT_rv
-        SH_arg2 = arg2  ! coerce to C_BOOL
-        SHT_rv = c_function5_arg1_arg2(arg1, tmp_arg2)
-    end function function5_arg1_arg2
-
 Fortran usage:
 
 .. code-block:: fortran
 
-  print *, function5()
-  print *, function5(1.d0)
-  print *, function5(1.d0, .false.)
+  use tutorial_mod
+  print *, use_default_arguments()
+  print *, use_default_arguments(1.d0)
+  print *, use_default_arguments(1.d0, .false.)
+
+Python usage:
+
+     >>> import tutorial
+     >>> tutorial.UseDefaultArguments()
+     13.1415
+     >>> tutorial.UseDefaultArguments(1.0)
+     11.0
+     >>> tutorial.UseDefaultArguments(1.0, False)
+     1.0
+
+The generated code is listed at
+:ref:`UseDefaultArguments <example_UseDefaultArguments>`.
 
 .. note :: Fortran's ``OPTIONAL`` attribute provides similar but
            different semantics.
@@ -641,8 +338,8 @@ C++:
 
 .. code-block:: c++
 
-    void Function6(const std::string &name);
-    void Function6(int indx);
+    void OverloadedFunction(const std::string &name);
+    void OverloadedFunction(int indx);
 
 By default the names are mangled by adding an index to the end. This
 can be controlled by setting **function_suffix** in the YAML file:
@@ -650,47 +347,22 @@ can be controlled by setting **function_suffix** in the YAML file:
 .. code-block:: yaml
 
   declarations:
-  - decl: void Function6(const std::string& name)
+  - decl: void OverloadedFunction(const std::string& name)
     function_suffix: _from_name
-  - decl: void Function6(int indx)
+  - decl: void OverloadedFunction(int indx)
     function_suffix: _from_index
 
-The generated C wrappers uses the mangled name:
-
-.. code-block:: c++
-
-    void TUT_function6_from_name(const char * name)
-    {
-        const std::string SH_name(name);
-        tutorial::Function6(SH_name);
-        return;
-    }
-
-    void TUT_function6_from_index(int indx)
-    {
-        tutorial::Function6(indx);
-        return;
-    }
-
-The generated Fortran creates routines with the same mangled names but
-also creates a generic interface block to allow them to be called by
-the overloaded name:
-
 .. code-block:: fortran
 
-    interface function6
-        module procedure function6_from_name
-        module procedure function6_from_index
-    end interface function6
+  call overloaded_function_from_name("name")
+  call overloaded_function_from_index(1)
+  call overloaded_function("name")
+  call overloaded_function(1)
 
-They can be used as:
+.. code-block:: python
 
-.. code-block:: fortran
-
-  call function6_from_name("name")
-  call function6_from_index(1)
-  call function6("name")
-  call function6(1)
+   tutorial.OverloadedFunction("name")
+   tutorial.OverloadedFunction(1)
 
 Optional arguments and overloaded functions
 -------------------------------------------
@@ -699,20 +371,20 @@ Overloaded function that have optional arguments can also be wrapped:
 
 .. code-block:: yaml
 
-  - decl: int overload1(int num,
+  - decl: int UseDefaultOverload(int num,
             int offset = 0, int stride = 1)
-  - decl: int overload1(double type, int num,
+  - decl: int UseDefaultOverload(double type, int num,
             int offset = 0, int stride = 1)
 
 These routines can then be called as:
 
 .. code-block:: fortran
 
-    rv = overload1(10)
-    rv = overload1(1d0, 10)
+    rv = use_default_overload(10)
+    rv = use_default_overload(1d0, 10)
 
-    rv = overload1(10, 11, 12)
-    rv = overload1(1d0, 10, 11, 12)
+    rv = use_default_overload(10, 11, 12)
+    rv = use_default_overload(1d0, 10, 11, 12)
 
 Templates
 ---------
@@ -726,7 +398,7 @@ C++:
 .. code-block:: c++
 
   template<typename ArgType>
-  void Function7(ArgType arg)
+  void TemplateArgument(ArgType arg)
   {
       return;
   }
@@ -737,36 +409,24 @@ YAML:
 
   - decl: |
         template<typename ArgType>
-        void Function7(ArgType arg)
+        void TemplateArgument(ArgType arg)
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
 
-C wrapper:
-
-.. code-block:: c++
-
-    void TUT_function7_int(int arg)
-    {
-        tutorial::Function7<int>(arg);
-        return;
-    }
-    
-    void TUT_function7_double(double arg)
-    {
-        tutorial::Function7<double>(arg);
-        return;
-    }
-
-The Fortran wrapper will also generate an interface block:
+Fortran usage:
 
 .. code-block:: fortran
 
-    interface function7
-        module procedure function7_int
-        module procedure function7_double
-    end interface function7
+    call template_argument(1)
+    call template_argument(10.d0)
 
+Python usage:
+
+.. code-block:: python
+
+        tutorial.TemplateArgument(1)
+        tutorial.TemplateArgument(10.0)
 
 Likewise, the return type can be templated but in this case no
 interface block will be generated since generic function cannot vary
@@ -777,7 +437,7 @@ C++:
 .. code-block:: c++
 
   template<typename RetType>
-  RetType Function8()
+  RetType TemplateReturn()
   {
       return 0;
   }
@@ -786,26 +446,26 @@ YAML:
 
 .. code-block:: yaml
 
-  - decl: template<typename RetType> RetType Function8()
+  - decl: template<typename RetType> RetType TemplateReturn()
     cxx_template:
     - instantiation: <int>
     - instantiation: <double>
 
-C wrapper:
+Fortran usage:
 
-.. code-block:: c++
+.. code-block:: fortran
 
-    int TUT_function8_int()
-    {
-        int SHC_rv = tutorial::Function8<int>();
-        return SHC_rv;
-    }
+    integer(C_INT) rv_integer
+    real(C_DOUBLE) rv_double
+    rv_integer = template_return_int()
+    rv_double = template_return_double()
 
-    double TUT_function8_double()
-    {
-        double SHC_rv = tutorial::Function8<double>();
-        return SHC_rv;
-    }
+Python usage:
+
+.. code-block:: python
+
+    rv_integer = TemplateReturn_int()
+    rv_double = TemplateReturn_double()
 
 Generic Functions
 -----------------
@@ -815,16 +475,19 @@ which Fortran does not support:
 
 .. code-block:: fortran
 
-    void Function9(double arg);
+    void FortranGeneric(double arg);
 
-    Function9(1.0f);
-    Function9(2.0);
+    FortranGeneric(1.0f);
+    FortranGeneric(2.0);
 
-When Function9 is wrapped in Fortran it may only be used with the correct arguments::
+When ``FortranGeneric`` is wrapped in Fortran it may only be used with
+the correct arguments:
 
-    call function9(1.)
-                   1
-  Error: Type mismatch in argument 'arg' at (1); passed REAL(4) to REAL(8)
+.. code-block:: sh
+
+    call fortran_generic(1.)
+                         1
+    Error: Type mismatch in argument 'arg' at (1); passed REAL(4) to REAL(8)
 
 It would be possible to create a version of the routine in C++ which
 accepts floats, but that would require changes to the library being
@@ -835,50 +498,18 @@ Instead of specify the Type which changes, you specify the argument which change
 
 .. code-block:: yaml
 
-  - decl: void Function9(double arg)
+  - decl: void FortranGeneric(double arg)
     fortran_generic:
        arg:
        -  float
        -  double
 
-This will generate only one C wrapper which accepts a double:
-
-.. code-block:: c++
-
-  void TUT_function9(double arg)
-  {
-      tutorial::Function9(arg);
-      return;
-  }
-
-But it will generate two Fortran wrappers and a generic interface
-block.  Each wrapper will coerce the argument to the correct type:
-
-.. code-block:: fortran
-
-    interface function9
-        module procedure function9_float
-        module procedure function9_double
-    end interface function9
-
-    subroutine function9_float(arg)
-        use iso_c_binding, only : C_DOUBLE, C_FLOAT
-        real(C_FLOAT), value, intent(IN) :: arg
-        call c_function9(real(arg, C_DOUBLE))
-    end subroutine function9_float
-    
-    subroutine function9_double(arg)
-        use iso_c_binding, only : C_DOUBLE
-        real(C_DOUBLE), value, intent(IN) :: arg
-        call c_function9(arg)
-    end subroutine function9_double
-
 It may now be used with single or double precision arguments:
 
 .. code-block:: fortran
 
-  call function9(1.0)
-  call function9(1.0d0)
+  call fortran_generic(1.0)
+  call fortran_generic(1.0d0)
 
 
 Types
@@ -1111,8 +742,8 @@ To use the function:
 Classes
 -------
 
-Each class is wrapped in a Fortran derived type which holds a
-``type(C_PTR)`` pointer to an C++ instance of the class.  Class
+Each class is wrapped in a Fortran derived type which shadows the C++
+class by holding a ``type(C_PTR)`` pointer to an C++ instance.  Class
 methods are wrapped using Fortran's type-bound procedures.  This makes
 Fortran usage very similar to C++.
 
@@ -1144,83 +775,6 @@ them.  They default to **ctor** and **dtor**.  The names can be
 overridden by supplying the **+name** annotation.  These declarations
 will create wrappers over the ``new`` and ``delete`` C++ keywords.
 
-The file ``wrapClass1.h`` will have a struct for the class which contains
-a pointer to the instance and an index used to destroy the memory.
-This is to allows some measure of type safety over using ``void``
-pointers for every instance:
-
-.. code-block:: c++
-
-    struct s_TUT_class1 {
-        void *addr;  /* address of C++ memory */
-        int idtor;   /* index of destructor */
-    };
-    typedef struct s_TUT_class1 TUT_class1;
-
-
-    TUT_class1 * TUT_class1_new_default(TUT_class1 * SHC_rv)
-    {
-        tutorial::Class1 *SHCXX_rv = new tutorial::Class1();
-        SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-        SHC_rv->idtor = 0;
-        return SHC_rv;
-    }
-
-    void TUT_class1_delete(TUT_class1 * self)
-    {
-        tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(self->addr);
-        delete SH_this;
-        return;
-    }
-
-    void TUT_class1_method1(TUT_class1 * self)
-    {
-        tutorial::Class1 *SH_this = static_cast<tutorial::Class1 *>(self->addr);
-        int SHC_rv = SH_this->Method1();
-        return SHC_rv;
-    }
-
-For Fortran a derived type is created:
-
-.. code-block:: fortran
-
-    type, bind(C) :: SHROUD_class1_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
-
-    type class1
-        type(SHROUD_class1_capsule), private :: cxxmem
-    contains
-        procedure :: method1 => class1_method1
-    end type class1
-
-And the subroutines:
-
-.. code-block:: fortran
-
-    function class1_new_default() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_prv
-        type(class1) :: SHT_rv
-        SHT_prv = c_class1_new_default(SHT_rv%cxxmem)
-    end function class1_new_default
-    
-    subroutine class1_delete(obj)
-        use iso_c_binding, only : C_NULL_PTR
-        class(class1) :: obj
-        call c_class1_delete(obj%cxxmem)
-    end subroutine class1_delete
-
-    function class1_method1(obj) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        class(class1) :: obj
-        integer(C_INT) :: SHT_rv
-        SHT_rv = c_class1_method1(obj%cxxmem)
-    end function class1_method1
-
 The C++ code to call the function:
 
 .. code-block:: c++
@@ -1240,6 +794,15 @@ And the Fortran version:
     cptr = class1_new()
     call cptr%method1
 
+Python usage:
+
+.. code-block:: python
+
+    import tutorial
+    obj = tutorial.Class1()
+    obj.method1()
+
+
 Class static methods
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -1250,7 +813,7 @@ To wrap the method:
 
     class Singleton {
         static Singleton& getReference();
-    }
+    };
 
 Use the YAML input:
 
@@ -1259,28 +822,6 @@ Use the YAML input:
     - decl: class Singleton
       declarations:
       - decl: static Singleton& getReference()
-
-This produces the C code:
-
-.. code-block:: c++
-
-    TUT_singleton * TUT_singleton_get_reference()
-    {
-        Singleton & SHCXX_rv = Singleton::getReference();
-        TUT_singleton * SHC_rv = static_cast<TUT_singleton *>(
-            static_cast<void *>(&SHCXX_rv));
-        return SHC_rv;
-    }
-
-The derived type has a function with the ``NOPASS`` keyword:
-
-.. code-block:: fortran
-
-    type singleton
-        type(SHROUD_singleton_capsule), private :: cxxmem
-    contains
-        procedure, nopass :: get_reference => singleton_get_reference
-    end type singleton
 
 Called from Fortran as:
 

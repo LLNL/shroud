@@ -398,6 +398,9 @@ static char PY_getConstStringRefLen__doc__[] =
 /**
  * \brief return 'const string&' with fixed size (len=30)
  *
+ * Since +len(30) is provided, the result of the function
+ * will be copied directly into memory provided by Fortran.
+ * The function will not be ALLOCATABLE.
  */
 static PyObject *
 PY_getConstStringRefLen(
@@ -426,6 +429,8 @@ static char PY_getConstStringRefAsArg__doc__[] =
 /**
  * \brief return a 'const string&' as argument
  *
+ * Pass an additional argument which wil be used as the return value.
+ * The length of the output variable is declared by the caller.
  */
 static PyObject *
 PY_getConstStringRefAsArg(

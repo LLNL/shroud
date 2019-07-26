@@ -37,6 +37,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 }
 
 // helper function
+// start helper copy_string
 // Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_var_len) {
@@ -46,132 +47,44 @@ void TUT_ShroudCopyStringAndFree(TUT_SHROUD_array *data, char *c_var, size_t c_v
     strncpy(c_var, cxx_var, n);
     TUT_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
+// end helper copy_string
 
 // splicer begin C_definitions
 // splicer end C_definitions
 
-// void Function1()
-void TUT_function1()
+// void NoReturnNoArguments()
+// start TUT_no_return_no_arguments
+void TUT_no_return_no_arguments()
 {
-// splicer begin function.function1
-    tutorial::Function1();
+// splicer begin function.no_return_no_arguments
+    tutorial::NoReturnNoArguments();
     return;
-// splicer end function.function1
+// splicer end function.no_return_no_arguments
 }
+// end TUT_no_return_no_arguments
 
-// double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
-double TUT_function2(double arg1, int arg2)
+// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+double TUT_pass_by_value(double arg1, int arg2)
 {
-// splicer begin function.function2
-    double SHC_rv = tutorial::Function2(arg1, arg2);
+// splicer begin function.pass_by_value
+    double SHC_rv = tutorial::PassByValue(arg1, arg2);
     return SHC_rv;
-// splicer end function.function2
+// splicer end function.pass_by_value
 }
 
-// void Sum(size_t len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
-void TUT_sum(size_t len, int * values, int * result)
-{
-// splicer begin function.sum
-    tutorial::Sum(len, values, result);
-    return;
-// splicer end function.sum
-}
-
-// long long TypeLongLong(long long arg1 +intent(in)+value)
-long long TUT_type_long_long(long long arg1)
-{
-// splicer begin function.type_long_long
-    long long SHC_rv = tutorial::TypeLongLong(arg1);
-    return SHC_rv;
-// splicer end function.type_long_long
-}
-
-// bool Function3(bool arg +intent(in)+value)
-bool TUT_function3(bool arg)
-{
-// splicer begin function.function3
-    bool SHC_rv = tutorial::Function3(arg);
-    return SHC_rv;
-// splicer end function.function3
-}
-
-// void Function3b(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))
-void TUT_function3b(const bool arg1, bool * arg2, bool * arg3)
-{
-// splicer begin function.function3b
-    tutorial::Function3b(arg1, arg2, arg3);
-    return;
-// splicer end function.function3b
-}
-
-// void Function4a(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
-/**
- * Since +len(30) is provided, the result of the function
- * will be copied directly into memory provided by Fortran.
- * The function will not be ALLOCATABLE.
- */
-void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv)
-{
-// splicer begin function.function4a_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    const std::string SH_arg2(arg2, Larg2);
-    const std::string SHCXX_rv = tutorial::Function4a(SH_arg1, SH_arg2);
-    if (SHCXX_rv.empty()) {
-        ShroudStrCopy(SHF_rv, NSHF_rv, NULL, 0);
-    } else {
-        ShroudStrCopy(SHF_rv, NSHF_rv, SHCXX_rv.data(),
-            SHCXX_rv.size());
-    }
-    return;
-// splicer end function.function4a_bufferify
-}
-
-// const std::string & Function4b(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(result_as_arg)
-const char * TUT_function4b(const char * arg1, const char * arg2)
-{
-// splicer begin function.function4b
-    const std::string SH_arg1(arg1);
-    const std::string SH_arg2(arg2);
-    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
-        SH_arg2);
-    const char * SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-// splicer end function.function4b
-}
-
-// void Function4b(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), std::string & output +intent(out)+len(Noutput))
-void TUT_function4b_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * output, int Noutput)
-{
-// splicer begin function.function4b_bufferify
-    const std::string SH_arg1(arg1, Larg1);
-    const std::string SH_arg2(arg2, Larg2);
-    const std::string & SHCXX_rv = tutorial::Function4b(SH_arg1,
-        SH_arg2);
-    if (SHCXX_rv.empty()) {
-        ShroudStrCopy(output, Noutput, NULL, 0);
-    } else {
-        ShroudStrCopy(output, Noutput, SHCXX_rv.data(),
-            SHCXX_rv.size());
-    }
-    return;
-// splicer end function.function4b_bufferify
-}
-
-// void Function4c(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+// void ConcatenateStrings(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-void TUT_function4c_bufferify(const char * arg1, int Larg1,
+void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
-// splicer begin function.function4c_bufferify
+// splicer begin function.concatenate_strings_bufferify
     const std::string SH_arg1(arg1, Larg1);
     const std::string SH_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = tutorial::Function4c(SH_arg1, SH_arg2);
+    *SHCXX_rv = tutorial::ConcatenateStrings(SH_arg1, SH_arg2);
     DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
         (SHCXX_rv));
     DSHF_rv->cxx.idtor = 2;
@@ -184,230 +97,202 @@ void TUT_function4c_bufferify(const char * arg1, int Larg1,
     }
     DSHF_rv->size = 1;
     return;
-// splicer end function.function4c_bufferify
+// splicer end function.concatenate_strings_bufferify
 }
 
-// const std::string * Function4d() +deref(allocatable)+owner(caller)
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-const char * TUT_function4d()
+// double UseDefaultArguments()
+// start TUT_use_default_arguments
+double TUT_use_default_arguments()
 {
-// splicer begin function.function4d
-    const std::string * SHCXX_rv = tutorial::Function4d();
-    const char * SHC_rv = SHCXX_rv->c_str();
+// splicer begin function.use_default_arguments
+    double SHC_rv = tutorial::UseDefaultArguments();
     return SHC_rv;
-// splicer end function.function4d
+// splicer end function.use_default_arguments
 }
+// end TUT_use_default_arguments
 
-// void Function4d(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))
-/**
- * A string is allocated by the library is must be deleted
- * by the caller.
- */
-void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv)
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)
+// start TUT_use_default_arguments_arg1
+double TUT_use_default_arguments_arg1(double arg1)
 {
-// splicer begin function.function4d_bufferify
-    const std::string * SHCXX_rv = tutorial::Function4d();
-    DSHF_rv->cxx.addr = static_cast<void *>(const_cast<std::string *>
-        (SHCXX_rv));
-    DSHF_rv->cxx.idtor = 3;
-    if (SHCXX_rv->empty()) {
-        DSHF_rv->addr.ccharp = NULL;
-        DSHF_rv->len = 0;
-    } else {
-        DSHF_rv->addr.ccharp = SHCXX_rv->data();
-        DSHF_rv->len = SHCXX_rv->size();
-    }
-    DSHF_rv->size = 1;
-    return;
-// splicer end function.function4d_bufferify
-}
-
-// double Function5()
-double TUT_function5()
-{
-// splicer begin function.function5
-    double SHC_rv = tutorial::Function5();
+// splicer begin function.use_default_arguments_arg1
+    double SHC_rv = tutorial::UseDefaultArguments(arg1);
     return SHC_rv;
-// splicer end function.function5
+// splicer end function.use_default_arguments_arg1
 }
+// end TUT_use_default_arguments_arg1
 
-// double Function5(double arg1=3.1415 +intent(in)+value)
-double TUT_function5_arg1(double arg1)
+// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// start TUT_use_default_arguments_arg1_arg2
+double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 {
-// splicer begin function.function5_arg1
-    double SHC_rv = tutorial::Function5(arg1);
+// splicer begin function.use_default_arguments_arg1_arg2
+    double SHC_rv = tutorial::UseDefaultArguments(arg1, arg2);
     return SHC_rv;
-// splicer end function.function5_arg1
+// splicer end function.use_default_arguments_arg1_arg2
 }
+// end TUT_use_default_arguments_arg1_arg2
 
-// double Function5(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
-double TUT_function5_arg1_arg2(double arg1, bool arg2)
+// void OverloadedFunction(const std::string & name +intent(in))
+void TUT_overloaded_function_from_name(const char * name)
 {
-// splicer begin function.function5_arg1_arg2
-    double SHC_rv = tutorial::Function5(arg1, arg2);
-    return SHC_rv;
-// splicer end function.function5_arg1_arg2
-}
-
-// void Function6(const std::string & name +intent(in))
-void TUT_function6_from_name(const char * name)
-{
-// splicer begin function.function6_from_name
+// splicer begin function.overloaded_function_from_name
     const std::string SH_name(name);
-    tutorial::Function6(SH_name);
+    tutorial::OverloadedFunction(SH_name);
     return;
-// splicer end function.function6_from_name
+// splicer end function.overloaded_function_from_name
 }
 
-// void Function6(const std::string & name +intent(in)+len_trim(Lname))
-void TUT_function6_from_name_bufferify(const char * name, int Lname)
+// void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))
+void TUT_overloaded_function_from_name_bufferify(const char * name,
+    int Lname)
 {
-// splicer begin function.function6_from_name_bufferify
+// splicer begin function.overloaded_function_from_name_bufferify
     const std::string SH_name(name, Lname);
-    tutorial::Function6(SH_name);
+    tutorial::OverloadedFunction(SH_name);
     return;
-// splicer end function.function6_from_name_bufferify
+// splicer end function.overloaded_function_from_name_bufferify
 }
 
-// void Function6(int indx +intent(in)+value)
-void TUT_function6_from_index(int indx)
+// void OverloadedFunction(int indx +intent(in)+value)
+void TUT_overloaded_function_from_index(int indx)
 {
-// splicer begin function.function6_from_index
-    tutorial::Function6(indx);
+// splicer begin function.overloaded_function_from_index
+    tutorial::OverloadedFunction(indx);
     return;
-// splicer end function.function6_from_index
+// splicer end function.overloaded_function_from_index
 }
 
-// void Function7(int arg +intent(in)+value)
-void TUT_function7_int(int arg)
+// void TemplateArgument(int arg +intent(in)+value)
+void TUT_template_argument_int(int arg)
 {
-// splicer begin function.function7_int
-    tutorial::Function7<int>(arg);
+// splicer begin function.template_argument_int
+    tutorial::TemplateArgument<int>(arg);
     return;
-// splicer end function.function7_int
+// splicer end function.template_argument_int
 }
 
-// void Function7(double arg +intent(in)+value)
-void TUT_function7_double(double arg)
+// void TemplateArgument(double arg +intent(in)+value)
+void TUT_template_argument_double(double arg)
 {
-// splicer begin function.function7_double
-    tutorial::Function7<double>(arg);
+// splicer begin function.template_argument_double
+    tutorial::TemplateArgument<double>(arg);
     return;
-// splicer end function.function7_double
+// splicer end function.template_argument_double
 }
 
-// int Function8()
-int TUT_function8_int()
+// int TemplateReturn()
+int TUT_template_return_int()
 {
-// splicer begin function.function8_int
-    int SHC_rv = tutorial::Function8<int>();
+// splicer begin function.template_return_int
+    int SHC_rv = tutorial::TemplateReturn<int>();
     return SHC_rv;
-// splicer end function.function8_int
+// splicer end function.template_return_int
 }
 
-// double Function8()
-double TUT_function8_double()
+// double TemplateReturn()
+double TUT_template_return_double()
 {
-// splicer begin function.function8_double
-    double SHC_rv = tutorial::Function8<double>();
+// splicer begin function.template_return_double
+    double SHC_rv = tutorial::TemplateReturn<double>();
     return SHC_rv;
-// splicer end function.function8_double
+// splicer end function.template_return_double
 }
 
-// void Function9(double arg +intent(in)+value)
-void TUT_function9(double arg)
+// void FortranGeneric(double arg +intent(in)+value)
+void TUT_fortran_generic(double arg)
 {
-// splicer begin function.function9
-    tutorial::Function9(arg);
+// splicer begin function.fortran_generic
+    tutorial::FortranGeneric(arg);
     return;
-// splicer end function.function9
+// splicer end function.fortran_generic
 }
 
-// void Function10()
-void TUT_function10_0()
+// void FortranGenericOverloaded()
+void TUT_fortran_generic_overloaded_0()
 {
-// splicer begin function.function10_0
-    tutorial::Function10();
+// splicer begin function.fortran_generic_overloaded_0
+    tutorial::FortranGenericOverloaded();
     return;
-// splicer end function.function10_0
+// splicer end function.fortran_generic_overloaded_0
 }
 
-// void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
-void TUT_function10_1(const char * name, double arg2)
+// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 {
-// splicer begin function.function10_1
+// splicer begin function.fortran_generic_overloaded_1
     const std::string SH_name(name);
-    tutorial::Function10(SH_name, arg2);
+    tutorial::FortranGenericOverloaded(SH_name, arg2);
     return;
-// splicer end function.function10_1
+// splicer end function.fortran_generic_overloaded_1
 }
 
-// void Function10(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)
-void TUT_function10_1_bufferify(const char * name, int Lname,
-    double arg2)
+// void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)
+void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
+    int Lname, double arg2)
 {
-// splicer begin function.function10_1_bufferify
+// splicer begin function.fortran_generic_overloaded_1_bufferify
     const std::string SH_name(name, Lname);
-    tutorial::Function10(SH_name, arg2);
+    tutorial::FortranGenericOverloaded(SH_name, arg2);
     return;
-// splicer end function.function10_1_bufferify
+// splicer end function.fortran_generic_overloaded_1_bufferify
 }
 
-// int overload1(int num +intent(in)+value)
-int TUT_overload1_num(int num)
+// int UseDefaultOverload(int num +intent(in)+value)
+int TUT_use_default_overload_num(int num)
 {
-// splicer begin function.overload1_num
-    int SHC_rv = tutorial::overload1(num);
+// splicer begin function.use_default_overload_num
+    int SHC_rv = tutorial::UseDefaultOverload(num);
     return SHC_rv;
-// splicer end function.overload1_num
+// splicer end function.use_default_overload_num
 }
 
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value)
-int TUT_overload1_num_offset(int num, int offset)
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)
+int TUT_use_default_overload_num_offset(int num, int offset)
 {
-// splicer begin function.overload1_num_offset
-    int SHC_rv = tutorial::overload1(num, offset);
+// splicer begin function.use_default_overload_num_offset
+    int SHC_rv = tutorial::UseDefaultOverload(num, offset);
     return SHC_rv;
-// splicer end function.overload1_num_offset
+// splicer end function.use_default_overload_num_offset
 }
 
-// int overload1(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-int TUT_overload1_num_offset_stride(int num, int offset, int stride)
+// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+int TUT_use_default_overload_num_offset_stride(int num, int offset,
+    int stride)
 {
-// splicer begin function.overload1_num_offset_stride
-    int SHC_rv = tutorial::overload1(num, offset, stride);
+// splicer begin function.use_default_overload_num_offset_stride
+    int SHC_rv = tutorial::UseDefaultOverload(num, offset, stride);
     return SHC_rv;
-// splicer end function.overload1_num_offset_stride
+// splicer end function.use_default_overload_num_offset_stride
 }
 
-// int overload1(double type +intent(in)+value, int num +intent(in)+value)
-int TUT_overload1_3(double type, int num)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)
+int TUT_use_default_overload_3(double type, int num)
 {
-// splicer begin function.overload1_3
-    int SHC_rv = tutorial::overload1(type, num);
+// splicer begin function.use_default_overload_3
+    int SHC_rv = tutorial::UseDefaultOverload(type, num);
     return SHC_rv;
-// splicer end function.overload1_3
+// splicer end function.use_default_overload_3
 }
 
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
-int TUT_overload1_4(double type, int num, int offset)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)
+int TUT_use_default_overload_4(double type, int num, int offset)
 {
-// splicer begin function.overload1_4
-    int SHC_rv = tutorial::overload1(type, num, offset);
+// splicer begin function.use_default_overload_4
+    int SHC_rv = tutorial::UseDefaultOverload(type, num, offset);
     return SHC_rv;
-// splicer end function.overload1_4
+// splicer end function.use_default_overload_4
 }
 
-// int overload1(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-int TUT_overload1_5(double type, int num, int offset, int stride)
+// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+int TUT_use_default_overload_5(double type, int num, int offset,
+    int stride)
 {
-// splicer begin function.overload1_5
-    int SHC_rv = tutorial::overload1(type, num, offset, stride);
+// splicer begin function.use_default_overload_5
+    int SHC_rv = tutorial::UseDefaultOverload(type, num, offset,
+        stride);
     return SHC_rv;
-// splicer end function.overload1_5
+// splicer end function.use_default_overload_5
 }
 
 // TypeID typefunc(TypeID arg +intent(in)+value)
@@ -447,6 +332,7 @@ int TUT_colorfunc(int arg)
  * \brief Pass in reference to scalar
  *
  */
+// start TUT_get_min_max
 void TUT_get_min_max(int * min, int * max)
 {
 // splicer begin function.get_min_max
@@ -454,6 +340,7 @@ void TUT_get_min_max(int * min, int * max)
     return;
 // splicer end function.get_min_max
 }
+// end TUT_get_min_max
 
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 int TUT_direction_func(int arg)
@@ -538,6 +425,7 @@ TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv)
  * \brief Test function pointer
  *
  */
+// start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))
 {
 // splicer begin function.callback1
@@ -545,6 +433,7 @@ int TUT_callback1(int in, int ( * incr)(int))
     return SHC_rv;
 // splicer end function.callback1
 }
+// end TUT_callback1
 
 // void set_global_flag(int arg +intent(in)+value)
 void TUT_set_global_flag(int arg)
@@ -589,7 +478,8 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 // splicer end function.last_function_called_bufferify
 }
 
-// Release C++ allocated memory.
+// start release allocated memory
+// Release library allocated memory.
 void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
@@ -612,12 +502,6 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
-    case 3:   // std::string
-    {
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
     default:
     {
         // Unexpected case in destructor
@@ -627,5 +511,6 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

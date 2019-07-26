@@ -23,11 +23,9 @@ program tester
   implicit none
   logical ok
 
-  logical rv_logical, wrk_logical
   integer rv_integer
   integer(C_INT) rv_int
   real(C_DOUBLE) rv_double
-  character(30) rv_char
 
   call init_fruit
 
@@ -73,102 +71,83 @@ contains
 
   subroutine test_functions
 
-    integer(C_LONG_LONG) :: rv_ll
     integer(C_INT) :: minout, maxout
 !    character(len=:), allocatable :: rv4c
 
     call set_case_name("test_functions")
 
-    call function1
-    call assert_true(.true.)
+    call no_return_no_arguments
+    call assert_true(.true., "no_return_no_arguments")
 
-    rv_double = function2(1.d0, 4)
-    call assert_true(rv_double == 5.d0, "function2")
+    rv_double = pass_by_value(1.d0, 4)
+    call assert_true(rv_double == 5.d0, "pass_by_value")
 
-    rv_logical = function3(.false.)
-    call assert_true(rv_logical, "function3")
+!    call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
 
-    rv_logical = .true.
-    wrk_logical = .true.
-    call function3b(.true., rv_logical, wrk_logical)
-    call assert_false(rv_logical, "function3b 1")
-    call assert_false(wrk_logical, "function2b 2")
+!    call function4b("dog", "cat", rv_char)
+!    call assert_true( rv_char == "dogcat", "function4b")
 
-    rv_logical = .false.
-    wrk_logical = .false.
-    call function3b(.false., rv_logical, wrk_logical)
-    call assert_true(rv_logical, "function3b 1")
-    call assert_true(wrk_logical, "function3b 2")
-
-    call assert_true( function4a("dog", "cat") == "dogcat", "function4a")
-
-    call function4b("dog", "cat", rv_char)
-    call assert_true( rv_char == "dogcat", "function4b")
-
-    call assert_equals( "dawgkat", function4c("dawg", "kat"), "function4c")
+    call assert_equals( "dawgkat", concatenate_strings("dawg", "kat"), "concatenate_strings")
 
 ! warning: '.rv4c' may be used uninitialized in this function [-Wmaybe-uninitialized]
 ! gfortran 4.9.3
 !    call assert_false(allocated(rv4c))
-!    rv4c = function4c("one", "two")
+!    rv4c = concatenate_strings("one", "two")
 !    call assert_true(allocated(rv4c))
 !    call assert_true(len(rv4c) == 6)
 !    call assert_true(rv4c == "onetwo")
 !    deallocate(rv4c)
 
-    call assert_true( function4d() == "Function4d", "function4d")
+!    call assert_true( function4d() == "Function4d", "function4d")
 
-    call assert_equals(13.1415d0, function5(), "function5 1")
-    call assert_equals(11.d0, function5(1.d0), "function5 2")
-    call assert_equals(1.d0, function5(1.d0, .false.), "function5 3")
+    call assert_equals(13.1415d0, use_default_arguments(), &
+         "UseDefaultArguments 1")
+    call assert_equals(11.d0, use_default_arguments(1.d0), &
+         "UseDefaultArguments 2")
+    call assert_equals(1.d0, use_default_arguments(1.d0, .false.), &
+         "UseDefaultArguments 3")
 
-    call function6("name")
-    call assert_true(last_function_called() == "Function6(string)", &
-         "function6 1")
-    call function6(1)
-    call assert_true(last_function_called() == "Function6(int)", &
-         "function6 2")
+    call overloaded_function("name")
+    call assert_true(last_function_called() == "OverloadedFunction(string)", &
+         "OverloadedFunction 1")
+    call overloaded_function(1)
+    call assert_true(last_function_called() == "OverloadedFunction(int)", &
+         "OverloadedFunction 2")
 
-    call function7(1)
-    call assert_true(last_function_called() == "Function7<int>",  &
-         "function7 1")
-    call function7(10.d0)
-    call assert_true(last_function_called() == "Function7<double>", &
-         "function7 2")
+    call template_argument(1)
+    call assert_true(last_function_called() == "TemplateArgument<int>",  &
+         "TemplateArgument<int>")
+    call template_argument(10.d0)
+    call assert_true(last_function_called() == "TemplateArgument<double>", &
+         "TemplateArgument<double>")
 
     ! return values set by calls to function7
-    rv_integer = function8_int()
-    call assert_true(rv_integer == 1, "function8_int")
-    rv_double = function8_double()
-    call assert_true(rv_double == 10.d0, "function8_double")
+    rv_integer = template_return_int()
+    call assert_true(rv_integer == 1, "FunctionReturn<int>")
+    rv_double = template_return_double()
+    call assert_true(rv_double == 10.d0, "FunctionReturn<double>")
 
-    call function9(1.0)
-    call assert_true(.true., "function9 1")
-    call function9(1.d0)
-    call assert_true(.true., "function9 2")
+    call fortran_generic(1.0)
+    call assert_true(.true., "fortran_generic float")
+    call fortran_generic(1.d0)
+    call assert_true(.true., "fortran_generic double")
 
-    call function10()
-    call assert_true(.true., "function10 1")
-    call function10("foo", 1.0e0)
-    call assert_true(.true., "function10 2")
-    call function10("bar", 2.0d0)
-    call assert_true(.true., "function10 3")
+    call fortran_generic_overloaded()
+    call assert_true(.true., "FortranGenericOverloaded 1")
+    call fortran_generic_overloaded("foo", 1.0e0)
+    call assert_true(.true., "FortranGenericOverloaded 2")
+    call fortran_generic_overloaded("bar", 2.0d0)
+    call assert_true(.true., "FortranGenericOverloaded 3")
 
-    call sum([1,2,3,4,5], rv_int)
-    call assert_true(rv_int .eq. 15, "function")
+    rv_int = use_default_overload(10)
+    call assert_true(rv_int .eq. 10, "UseDefaultOverload 1")
+    rv_int = use_default_overload(1.0d0, 10)
+    call assert_true(rv_int .eq. 10, "UseDefaultOverload 2")
 
-    rv_ll = type_long_long( 2_c_long_long)
-    call assert_true(rv_ll .eq. 4, "type_long_long")
-
-    rv_int = overload1(10)
-    call assert_true(rv_int .eq. 10, "overload1 1")
-    rv_int = overload1(1.0d0, 10)
-    call assert_true(rv_int .eq. 10, "overload1 2")
-
-    rv_int = overload1(10, 11, 12)
-    call assert_true(rv_int .eq. 142, "overload1 3")
-    rv_int = overload1(1.0d0, 10, 11, 12)
-    call assert_true(rv_int .eq. 142, "overload1 4")
+    rv_int = use_default_overload(10, 11, 12)
+    call assert_true(rv_int .eq. 142, "UseDefaultOverload 3")
+    rv_int = use_default_overload(1.0d0, 10, 11, 12)
+    call assert_true(rv_int .eq. 142, "UseDefaultOverload 4")
 
     rv_int = typefunc(2)
     call assert_true(rv_int .eq. 2, "typefunc")

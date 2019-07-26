@@ -1,16 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Introduction
 ============
@@ -100,20 +92,26 @@ In addition, Fortran 2003 provides some object oriented programming facilities:
    * Procedure Polymorphism with Type-Bound Procedures
    * Enumerations compatible with C
 
-A Fortran pointer is similar to a C++ instance in that it not only has
-the address of the memory but also contains meta-data such as the
-type, kind and shape of the array.  Some vendors document the struct
-used to store the metadata for an array.
+*Further Interoperability of Fortran with C*, Technical Specification
+TS 29113, now part of Fortran 2019, introduced additional features:
+
+   * assumed-type
+   * ``ALLOCATABLE``, ``OPTIONAL``, and ``POINTER`` attributes may be
+     specified for a dummy argument in a procedure interface that has
+     the ``BIND`` attribute.
+
+.. A Fortran pointer is similar to a C++ instance in that it not only has
+   the address of the memory but also contains meta-data such as the
+   type, kind and shape of the array.  Some vendors document the struct
+   used to store the metadata for an array.
 
    * GNU Fortran http://gcc.gnu.org/wiki/ArrayDescriptorUpdate
    * Intel 17 https://software.intel.com/en-us/node/678452
+   * Intel 15.0 https://software.intel.com/en-us/node/525356
 
-..   * Intel 15.0 https://software.intel.com/en-us/node/525356
-
-Fortran provides a **pointer** and **allocatable** attributes which are not
-directly supported by C.  Each vendor has their own pointer struct.
-Eventually this will be supported in Fortran via the Further Interoperability of Fortran and C -
-`Technical Specification ISO/IEC TS 29113:2012 <http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45136>`_
+Shroud uses the features of Fortran 2003 as well as additional
+generated code to solve the interoperability problem to create
+an idiomatic interface.
 
 
 Requirements

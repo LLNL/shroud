@@ -33,42 +33,34 @@ typedef int TypeID;
 
 extern int tutorial_flag;
 
-void Function1();
+void NoReturnNoArguments();
 
-double Function2(double arg1, int arg2);
+double PassByValue(double arg1, int arg2);
 
-bool Function3(bool arg);
-void Function3b(const bool arg1, bool *arg2, bool *arg3);
+const std::string  ConcatenateStrings(const std::string& arg1, const std::string& arg2);
 
-const std::string  Function4a(const std::string& arg1, const std::string& arg2);
-const std::string& Function4b(const std::string& arg1, const std::string& arg2);
-const std::string  Function4c(const std::string& arg1, const std::string& arg2);
-const std::string * Function4d();
+// start UseDefaultArguments
+double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true);
+// end UseDefaultArguments
 
-double Function5(double arg1 = 3.1415, bool arg2 = true);
-
-void Function6(const std::string& name);
-void Function6(int indx);
+void OverloadedFunction(const std::string& name);
+void OverloadedFunction(int indx);
 
 // specialize for int and double in tutorial.cpp
 template<typename ArgType>
-void Function7(ArgType arg);
+void TemplateArgument(ArgType arg);
 
 // specialize for int and double in tutorial.cpp
 template<typename RetType>
-RetType Function8();
+RetType TemplateReturn();
 
-void Function9(double arg);
+void FortranGeneric(double arg);
 
-void Function10();
-void Function10(const std::string &name, double arg2);
+void FortranGenericOverloaded();
+void FortranGenericOverloaded(const std::string &name, double arg2);
 
-void Sum(size_t len, int * values, int *result);
-
-long long TypeLongLong(long long arg1);
-
-int overload1(int num, int offset = 0, int stride = 1);
-int overload1(double type, int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(int num, int offset = 0, int stride = 1);
+int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1);
 
 TypeID typefunc(TypeID arg);
 

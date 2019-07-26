@@ -44,6 +44,7 @@ int ShroudLenTrim(const char *src, int nsrc) {
 
 
 // helper function
+// start helper copy_array
 // Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var, 
@@ -55,10 +56,12 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
     std::memcpy(c_var, cxx_var, n);
     VEC_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
+// end helper copy_array
 // splicer begin C_definitions
 // splicer end C_definitions
 
 // int vector_sum(const std::vector<int> & arg +dimension(:)+intent(in)+size(Sarg))
+// start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
 // splicer begin function.vector_sum_bufferify
@@ -67,12 +70,14 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
     return SHC_rv;
 // splicer end function.vector_sum_bufferify
 }
+// end VEC_vector_sum_bufferify
 
 // void vector_iota_out(std::vector<int> & arg +context(Darg)+dimension(:)+intent(out))
 /**
  * \brief Copy vector into Fortran input array
  *
  */
+// start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_bufferify
@@ -86,12 +91,14 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
     return;
 // splicer end function.vector_iota_out_bufferify
 }
+// end VEC_vector_iota_out_bufferify
 
 // void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(out))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
+// start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
 // splicer begin function.vector_iota_out_alloc_bufferify
@@ -105,12 +112,14 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
     return;
 // splicer end function.vector_iota_out_alloc_bufferify
 }
+// end VEC_vector_iota_out_alloc_bufferify
 
 // void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+dimension(:)+intent(inout)+size(Sarg))
 /**
  * \brief Copy vector into Fortran allocatable array
  *
  */
+// start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
@@ -125,6 +134,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     return;
 // splicer end function.vector_iota_inout_alloc_bufferify
 }
+// end VEC_vector_iota_inout_alloc_bufferify
 
 // void vector_increment(std::vector<int> & arg +context(Darg)+dimension(:)+intent(inout)+size(Sarg))
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
@@ -167,7 +177,8 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // splicer end function.vector_string_count_bufferify
 }
 
-// Release C++ allocated memory.
+// start release allocated memory
+// Release library allocated memory.
 void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 {
     void *ptr = cap->addr;
@@ -193,5 +204,6 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 }  // extern "C"

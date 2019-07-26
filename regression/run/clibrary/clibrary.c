@@ -4,8 +4,6 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-// clibrary.hpp - wrapped routines
-//
 // clibrary.c
 
 #include "clibrary.h"
@@ -23,31 +21,39 @@ static char last_function_called[MAXLAST];
 //static int global_int;
 //static double global_double;
 
-void Function1(void)
+// start NoReturnNoArguments
+void NoReturnNoArguments(void)
 {
     strncpy(last_function_called, "Function1", MAXLAST);
     return;
 }
+// end NoReturnNoArguments
 
-double Function2(double arg1, int arg2)
+// start PassByValue
+double PassByValue(double arg1, int arg2)
 {
-    strncpy(last_function_called, "Function2", MAXLAST);
+    strncpy(last_function_called, "PassByValue", MAXLAST);
     return arg1 + arg2;
 }
+// end PassByValue
 
-bool Function3(bool arg)
+// start PassByReference
+void PassByReference(double *arg1, int *arg2)
 {
-    strncpy(last_function_called, "Function3", MAXLAST);
-    return ! arg;
+    strncpy(last_function_called, "PassByReference", MAXLAST);
+    *arg2 = *arg1;
 }
+// end PassByReference
 
-void Function3b(const bool arg1, bool *arg2, bool *arg3)
+// start checkBool
+void checkBool(const bool arg1, bool *arg2, bool *arg3)
 {
-    strncpy(last_function_called, "Function3b", MAXLAST);
+    strncpy(last_function_called, "checkBool", MAXLAST);
     *arg2 = ! arg1;
     *arg3 = ! *arg3;
     return;
 }
+// end checkBool
 
 /* Note that the caller is responsible to free memory */
 char *Function4a(const char *arg1, const char *arg2)
@@ -60,19 +66,23 @@ char *Function4a(const char *arg1, const char *arg2)
     return out;
 }
 
+// start acceptName
 void acceptName(const char *name)
 {
     strncpy(last_function_called, "acceptName", MAXLAST);
 }
+// end acceptName
 
 //----------------------------------------------------------------------
 // Test charlen attribute.
 // Each argument is assumed to be MAXNAME long.
 
+// start returnOneName
 void returnOneName(char *name1)
 {
   strcpy(name1, "bill");
 }
+// end returnOneName
 
 void returnTwoNames(char *name1, char *name2)
 {
@@ -82,11 +92,13 @@ void returnTwoNames(char *name1, char *name2)
 
 //----------------------------------------------------------------------
 
+// start ImpliedTextLen
 void ImpliedTextLen(char *text, int ltext)
 {
     strncpy(text, "ImpliedTextLen", ltext);
     strncpy(last_function_called, "ImpliedTextLen", MAXLAST);
 }
+// end ImpliedTextLen
 
 int ImpliedLen(const char *text, int ltext, bool flag)
 {
@@ -123,19 +135,30 @@ void bindC2(char * outbuf)
     strncpy(last_function_called, "bindC2", MAXLAST);
 }
 
+// start passVoidStarStar
 void passVoidStarStar(void *in, void **out)
 {
     strncpy(last_function_called, "passVoidStarStar", MAXLAST);
     *out = in;
 }
+// end passVoidStarStar
 
 /* arg is assumed to be an int. */
 
+// start passAssumedType
 int passAssumedType(void *arg)
 {
     strncpy(last_function_called, "passAssumedType", MAXLAST);
     return *(int *) arg;
 }
+// end passAssumedType
+
+// start passAssumedTypeDim
+void passAssumedTypeDim(void *arg)
+{
+    strncpy(last_function_called, "passAssumedTypeDim", MAXLAST);
+}
+// end passAssumedTypeDim
 
 /* arg is assumed to be an int. */
 
@@ -147,6 +170,13 @@ int passAssumedTypeBuf(void *arg, char *outbuf)
 }
 
 //----------------------------------------------------------------------
+
+// start callback1
+void callback1(int type, void (*incr)(void))
+{
+  // Use type to decide how to call incr
+}
+// end callback1
 
 void callback2(int type, void * in, void (*incr)(int *))
 {
@@ -224,6 +254,21 @@ void Function10(const std::string &name, double arg2)
     global_double = arg2;
 }
 #endif
+
+// start Sum
+void Sum(int len, int *values, int *result)
+{
+    strncpy(last_function_called, "Sum", MAXLAST);
+
+    int i;
+    int sum = 0;
+    for (i=0; i < len; i++) {
+	sum += values[i];
+    }
+    *result = sum;
+    return;
+}
+// end Sum
 
 #if 0
 TypeID typefunc(TypeID arg)

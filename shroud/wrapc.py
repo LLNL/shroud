@@ -1,16 +1,9 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
+
 """
 Generate C bindings for C++ classes
 
@@ -81,6 +74,7 @@ class Wrapc(util.WrapperMixin):
         structs = []
         # reserved the 0 slot of capsule_order
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
+        whelpers.set_literalinclude(newlibrary.options.literalinclude2)
         whelpers.add_copy_array_helper_c(fmt_library)
 
         self._push_splicer("class")
@@ -1331,7 +1325,9 @@ class Wrapc(util.WrapperMixin):
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
-                self.impl.append("#" + node.cpp_if)
+                impl.append("#" + node.cpp_if)
+            if options.literalinclude:
+                append_format(impl, "// start {C_name}", fmt_func)
             append_format(
                 impl, "{C_return_type} {C_name}(\t{C_prototype})", fmt_func
             )
@@ -1344,6 +1340,8 @@ class Wrapc(util.WrapperMixin):
                 C_code,
             )
             impl.append("}")
+            if options.literalinclude:
+                append_format(impl, "// end {C_name}", fmt_func)
             if node.cpp_if:
                 impl.append("#endif  // " + node.cpp_if)
         else:
@@ -1372,10 +1370,12 @@ class Wrapc(util.WrapperMixin):
         )
 
         output = self.impl
+        output.append("")
+        if options.literalinclude2:
+            output.append("// start release allocated memory")
         append_format(
             output,
-            "\n"
-            "// Release C++ allocated memory.\n"
+            "// Release library allocated memory.\n"
             "void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n"
             "{{+",
             fmt,
@@ -1419,6 +1419,8 @@ class Wrapc(util.WrapperMixin):
             "cap->idtor = 0;  // avoid deleting again\n"
             "-}"
         )
+        if options.literalinclude2:
+            output.append("// end release allocated memory")
 
     capsule_code = {}
     capsule_order = []

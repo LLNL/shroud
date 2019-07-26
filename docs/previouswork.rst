@@ -1,16 +1,8 @@
-.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC. 
-..
-.. Produced at the Lawrence Livermore National Laboratory 
-..
-.. LLNL-CODE-738041.
-..
-.. All rights reserved. 
-..
-.. This file is part of Shroud.
-..
-.. For details about use and distribution, please read LICENSE.
-..
-.. #######################################################################
+.. Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+   other Shroud Project Developers.
+   See the top-level COPYRIGHT file for details.
+
+   SPDX-License-Identifier: (BSD-3-Clause)
 
 Fortran Previous Work
 =====================
@@ -97,6 +89,7 @@ to 12.12.
 https://trilinos.github.io/ForTrilinos/files/ForTrilinos_Design_Document.pdf
 
 The custom version of swig available at https://github.com/swig-fortran/swig
+
 .. The custom version of swig available at https://github.com/sethrj/swig
 
 MPICH
@@ -148,11 +141,27 @@ This is a Fortran interface over the Python API written using the metaprogrammin
   * `Forpy: A library for Fortran-Python interoperability <https://github.com/ylikx/forpy>`_ 
   * `Fypp — Python powered Fortran metaprogramming <https://github.com/aradi/fypp>`_
 
+CNF
+---
+
+http://www.starlink.ac.uk/docs/sun209.htx/sun209.html
+
+The CNF package comprises two sets of software which ease the task of
+writing portable programs in a mixture of FORTRAN and C. F77 is a set
+of C macros for handling the FORTRAN/C subroutine linkage in a
+portable way, and CNF is a set of functions to handle the difference
+between FORTRAN and C character strings, logical values and pointers
+to dynamically allocated memory.
+
 
 Links
 -----
 
+  * `Technical Specification ISO/IEC TS 29113:2012 <http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=45136>`_
   * `Generating C Interfaces <http://fortranwiki.org/fortran/show/Generating+C+Interfaces>`_
   * `Shadow-object interface between Fortran95 and C++ <http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=753048>`_  Mark G. Gray, Randy M. Roberts, and Tom M. Evans (1999)
   * `Generate C interface from C++ source code using Clang libtooling <http://samanbarghi.com/blog/2016/12/06/generate-c-interface-from-c-source-code-using-clang-libtooling/>`_
   * `Memory leaks in derived types revisited <https://dl.acm.org/citation.cfm?id=962183>`_ G. W. Stewart (2003)
+  * `A General Approach to Creating Fortran Interface for C++ Application Libraries <https://link.springer.com/chapter/10.1007/3-540-27912-1_14>`_
+
+..  https://link.springer.com/content/pdf/10.1007%2F3-540-27912-1_14.pdf

@@ -18,11 +18,13 @@
 extern "C" {
 #endif
 
+// start struct TUT_class1
 struct s_TUT_class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_TUT_class1 TUT_class1;
+// end struct TUT_class1
 
 struct s_TUT_singleton {
     void *addr;     /* address of C++ memory */
@@ -36,6 +38,7 @@ struct s_TUT_SHROUD_capsule_data {
 };
 typedef struct s_TUT_SHROUD_capsule_data TUT_SHROUD_capsule_data;
 
+// start array_context
 struct s_TUT_SHROUD_array {
     TUT_SHROUD_capsule_data cxx;      /* address of C++ memory */
     union {
@@ -46,6 +49,7 @@ struct s_TUT_SHROUD_array {
     size_t size;    /* size of data in cxx */
 };
 typedef struct s_TUT_SHROUD_array TUT_SHROUD_array;
+// end array_context
 
 void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap);
 

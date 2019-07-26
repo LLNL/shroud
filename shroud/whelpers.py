@@ -1,16 +1,8 @@
-# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
 """
 Helper functions for C and Fortran wrappers.
 
@@ -54,6 +46,17 @@ from . import util
 
 wformat = util.wformat
 
+# Used with literalinclude
+# format fields {lstart} and {lend}
+cstart = "// start "
+cend   = "// end "
+fstart = "! start "
+fend   = "! end "
+
+_literalinclude = False
+def set_literalinclude(flag):
+    global _literalinclude
+    _literalinclude = flag
 
 def XXXwrite_helper_files(self, directory):
     """This library file is no longer needed.
@@ -142,7 +145,7 @@ typedef union {{
     return name
 
 
-def add_external_helpers(fmt):
+def add_external_helpers(fmtin, literalinclude):
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
@@ -153,11 +156,18 @@ def add_external_helpers(fmt):
     confict with other Shroud wrapped libraries.
 
     Args:
-        fmt - format dictionary from the library.
+        fmtin - format dictionary from the library.
+        literalinclude - value of top level option.literalinclude2
     """
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
 
     # Only used with std::string and thus C++
     name = "copy_string"
+    if literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
         cxx_header="<string> <cstddef>",
@@ -165,7 +175,7 @@ def add_external_helpers(fmt):
         source=wformat(
             """
 // helper function
-// Copy the char* or std::string in context into c_var.
+{lstart}// Copy the char* or std::string in context into c_var.
 // Called by Fortran to deal with allocatable character.
 void {C_prefix}ShroudCopyStringAndFree({C_array_type} *data, char *c_var, size_t c_var_len) {{+
 const char *cxx_var = data->addr.ccharp;
@@ -173,7 +183,7 @@ size_t n = c_var_len;
 if (data->len < n) n = data->len;
 strncpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}
+-}}{lend}
 """,
             fmt,
         ),
@@ -213,6 +223,12 @@ def add_shadow_helper(node):
 
     name = "capsule_{}".format(cname)
     if name not in CHelpers:
+        if node.options.literalinclude:
+            lstart = "{}struct {}\n".format(cstart, cname)
+            lend = "\n{}struct {}".format(cend, cname)
+        else:
+            lstart = ""
+            lend = ""
         if node.cpp_if:
             cpp_if = "#" + node.cpp_if + "\n"
             cpp_endif = "\n#endif  // " + node.cpp_if
@@ -223,28 +239,34 @@ def add_shadow_helper(node):
             scope="utility",
             # h_shared_code
             source="""
-{cpp_if}struct s_{C_type_name} {{+
+{lstart}{cpp_if}struct s_{C_type_name} {{+
 void *addr;     /* address of C++ memory */
 int idtor;      /* index of destructor */
 -}};
-typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""".format(
+typedef struct s_{C_type_name} {C_type_name};{cpp_endif}{lend}""".format(
                 C_type_name=cname,
-                cpp_if=cpp_if,
-                cpp_endif=cpp_endif,
+                cpp_if=cpp_if, cpp_endif=cpp_endif,
+                lstart=lstart, lend=lend,
             )
         )
         CHelpers[name] = helper
     return name
 
 
-def add_capsule_helper(fmt):
+def add_capsule_helper(fmtin, literalinclude):
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
 
     Args:
         fmt - format dictionary from the library.
+        literalinclude -
     """
+    # Add some format strings
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
+
     name = "capsule_data_helper"
     if name not in FHelpers:
         helper = dict(
@@ -318,6 +340,9 @@ call array_destructor(cap%mem, .false._C_BOOL)
     ########################################
     name = "array_context"
     if name not in CHelpers:
+        if literalinclude:
+            fmt.lstart = "{}{}\n".format(cstart, name)
+            fmt.lend = "\n{}{}".format(cend, name)
         helper = dict(
             scope="utility",
             header="<stddef.h>",
@@ -325,7 +350,7 @@ call array_destructor(cap%mem, .false._C_BOOL)
             # And help with debugging since ccharp will display contents.
             source=wformat(
                 """
-struct s_{C_array_type} {{+
+{lstart}struct s_{C_array_type} {{+
 {C_capsule_data_type} cxx;      /* address of C++ memory */
 union {{+
 const void * cvoidp;
@@ -334,7 +359,7 @@ const char * ccharp;
 size_t len;     /* bytes-per-item or character len of data in cxx */
 size_t size;    /* size of data in cxx */
 -}};
-typedef struct s_{C_array_type} {C_array_type};""",
+typedef struct s_{C_array_type} {C_array_type};{lend}""",
                 fmt,
             ),
             dependent_helpers=["capsule_data_helper"],
@@ -344,15 +369,18 @@ typedef struct s_{C_array_type} {C_array_type};""",
     if name not in FHelpers:
         # Create a derived type used to communicate with C wrapper.
         # Should never be exposed to user.
+        if literalinclude:
+            fmt.lstart = "{}{}\n".format(fstart, name)
+            fmt.lend = "\n{}{}".format(fend, name)
         helper = dict(
             derived_type=wformat(
                 """
-type, bind(C) :: {F_array_type}+
+{lstart}type, bind(C) :: {F_array_type}+
 type({F_capsule_data_type}) :: cxx       ! address of C++ memory
 type(C_PTR) :: addr = C_NULL_PTR       ! address of data in cxx
 integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
 integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
--end type {F_array_type}""",
+-end type {F_array_type}{lend}""",
                 fmt,
             ),
             modules=dict(iso_c_binding=["C_NULL_PTR", "C_PTR", "C_SIZE_T"]),
@@ -361,24 +389,31 @@ integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
         FHelpers[name] = helper
 
 
-def add_copy_array_helper_c(fmt):
+def add_copy_array_helper_c(fmtin):
     """Create function to copy contents of a vector.
 
     Args:
-        fmt - format dictionary from the library.
+        fmtin - format dictionary from the library.
     """
+    fmt = util.Scope(fmtin)
+    fmt.lstart = ""
+    fmt.lend = ""
+
     name = "copy_array"
+    if _literalinclude:
+        fmt.lstart = "{}helper {}\n".format(cstart, name)
+        fmt.lend = "\n{}helper {}".format(cend, name)
     if name not in CHelpers:
         helper = dict(
             dependent_helpers=["array_context"],
             c_header="<string.h>",
             cxx_header="<cstring>",
-            # Create a single C routine which is called from Fortran via an interface
-            # for each cxx_type
+            # Create a single C routine which is called from Fortran
+            # via an interface for each cxx_type.
             cxx_source=wformat(
                 """
 // helper function
-// Copy std::vector into array c_var(c_var_size).
+{lstart}// Copy std::vector into array c_var(c_var_size).
 // Then release std::vector.
 void {C_prefix}ShroudCopyArray({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)
 {{+
@@ -387,7 +422,7 @@ int n = c_var_size < data->size ? c_var_size : data->size;
 n *= data->len;
 {stdlib}memcpy(c_var, cxx_var, n);
 {C_memory_dtor_function}(&data->cxx); // delete data->cxx.addr
--}}""",
+-}}{lend}""",
                 fmt,
             ),
         )
@@ -396,6 +431,10 @@ n *= data->len;
 
 def add_copy_array_helper(fmt):
     """
+    Create Fortran interface to helper function
+    which copies an array based on cxx_type.
+    Each interface calls the same C helper.
+
     Args:
         fmt -
     """

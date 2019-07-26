@@ -27,6 +27,7 @@ program tester
   call test_unsigned_native_types
   call test_intsize_types
   call test_stddef
+  call test_bool
 
   call fruit_summary
   call fruit_finalize
@@ -172,5 +173,18 @@ contains
     call assert_true(rv_size .eq. 1_C_SIZE_T, "size_func")
 
   end subroutine test_stddef
+
+  subroutine test_bool
+    logical rv
+
+    call set_case_name("test_bool")
+
+    rv = bool_func(.true.)
+    call assert_true(rv, "bool true")
+
+    rv = bool_func(.false.)
+    call assert_false(rv, "bool false")
+
+  end subroutine test_bool
 
 end program tester

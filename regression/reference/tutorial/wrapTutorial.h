@@ -15,7 +15,6 @@
 #ifndef WRAPTUTORIAL_H
 #define WRAPTUTORIAL_H
 
-#include <stddef.h>
 #include "typesTutorial.h"
 
 // splicer begin CXX_declarations
@@ -35,73 +34,56 @@ enum TUT_tutorial_Color {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void TUT_function1();
+void TUT_no_return_no_arguments();
 
-double TUT_function2(double arg1, int arg2);
+double TUT_pass_by_value(double arg1, int arg2);
 
-void TUT_sum(size_t len, int * values, int * result);
-
-long long TUT_type_long_long(long long arg1);
-
-bool TUT_function3(bool arg);
-
-void TUT_function3b(const bool arg1, bool * arg2, bool * arg3);
-
-void TUT_function4a_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * SHF_rv, int NSHF_rv);
-
-const char * TUT_function4b(const char * arg1, const char * arg2);
-
-void TUT_function4b_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, char * output, int Noutput);
-
-void TUT_function4c_bufferify(const char * arg1, int Larg1,
+void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
 
-const char * TUT_function4d();
+double TUT_use_default_arguments();
 
-void TUT_function4d_bufferify(TUT_SHROUD_array *DSHF_rv);
+double TUT_use_default_arguments_arg1(double arg1);
 
-double TUT_function5();
+double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2);
 
-double TUT_function5_arg1(double arg1);
+void TUT_overloaded_function_from_name(const char * name);
 
-double TUT_function5_arg1_arg2(double arg1, bool arg2);
+void TUT_overloaded_function_from_name_bufferify(const char * name,
+    int Lname);
 
-void TUT_function6_from_name(const char * name);
+void TUT_overloaded_function_from_index(int indx);
 
-void TUT_function6_from_name_bufferify(const char * name, int Lname);
+void TUT_template_argument_int(int arg);
 
-void TUT_function6_from_index(int indx);
+void TUT_template_argument_double(double arg);
 
-void TUT_function7_int(int arg);
+int TUT_template_return_int();
 
-void TUT_function7_double(double arg);
+double TUT_template_return_double();
 
-int TUT_function8_int();
+void TUT_fortran_generic(double arg);
 
-double TUT_function8_double();
+void TUT_fortran_generic_overloaded_0();
 
-void TUT_function9(double arg);
+void TUT_fortran_generic_overloaded_1(const char * name, double arg2);
 
-void TUT_function10_0();
+void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
+    int Lname, double arg2);
 
-void TUT_function10_1(const char * name, double arg2);
+int TUT_use_default_overload_num(int num);
 
-void TUT_function10_1_bufferify(const char * name, int Lname,
-    double arg2);
+int TUT_use_default_overload_num_offset(int num, int offset);
 
-int TUT_overload1_num(int num);
+int TUT_use_default_overload_num_offset_stride(int num, int offset,
+    int stride);
 
-int TUT_overload1_num_offset(int num, int offset);
+int TUT_use_default_overload_3(double type, int num);
 
-int TUT_overload1_num_offset_stride(int num, int offset, int stride);
+int TUT_use_default_overload_4(double type, int num, int offset);
 
-int TUT_overload1_3(double type, int num);
-
-int TUT_overload1_4(double type, int num, int offset);
-
-int TUT_overload1_5(double type, int num, int offset, int stride);
+int TUT_use_default_overload_5(double type, int num, int offset,
+    int stride);
 
 int TUT_typefunc(int arg);
 
