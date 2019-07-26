@@ -20,19 +20,27 @@ options:
 declarations:
 
 - decl: double GetGlobalDouble()
+
 - decl: void GenericReal(double arg)
+  doxygen:
+    brief: Single argument generic
   fortran_generic:
   - decl: (float arg)
     function_suffix: float
   - decl: (double arg)
     function_suffix: double
 
-#- decl: void GenericReal2(long arg1, long arg2)
-#  fortran_generic:
-#  - decl: (int arg1, int arg2)
-#    function_suffix: int
-#  - decl: (long arg1, long arg2)
-#    function_suffix: long
+- decl: long GenericReal2(long arg1, long arg2)
+  doxygen:
+    brief: Two argument generic
+    description: |
+      It is not possible to call the function with (int, long)
+      or (long, int)
+  fortran_generic:
+  - decl: (int arg1, int arg2)
+    function_suffix: all_int
+  - decl: (long arg1, long arg2)
+    function_suffix: all_long
 
 #- decl: void save_pointer(void *addr, int type, size_t size +hidden(size(addr))
 #  fortran_generic:

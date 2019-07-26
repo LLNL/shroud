@@ -1016,8 +1016,8 @@ class FunctionNode(AstNode):
       - instantiation: <int, long>
       - instantiation: <float, double>
       fortran_generic:
-      - decl: float arg
-      - decl: double arg
+      - decl: (float arg)
+      - decl: (double arg)
       fattrs:     # function attributes
       attrs:
         arg1:     # argument attributes

@@ -31,6 +31,7 @@ program tester
 contains
 
   subroutine test_functions
+    integer(C_LONG) rv
 
     call set_case_name("test_functions")
 
@@ -39,6 +40,12 @@ contains
 
     call generic_real(2.0d0)
     call assert_equals(2.0d0, get_global_double(), "generic_real double")
+
+    rv = generic_real2(1_C_INT, 2_C_INT)
+    call assert_true(3_C_LONG == rv, "generic_real2 int")
+
+    rv = generic_real2(10_C_LONG, 20_C_LONG)
+    call assert_true(30_C_LONG == rv, "generic_real2 long")
 
   end subroutine test_functions
 

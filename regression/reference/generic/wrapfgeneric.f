@@ -37,6 +37,16 @@ module generic_mod
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_generic_real
 
+        function c_generic_real2(arg1, arg2) &
+                result(SHT_rv) &
+                bind(C, name="GenericReal2")
+            use iso_c_binding, only : C_LONG
+            implicit none
+            integer(C_LONG), value, intent(IN) :: arg1
+            integer(C_LONG), value, intent(IN) :: arg2
+            integer(C_LONG) :: SHT_rv
+        end function c_generic_real2
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -46,10 +56,19 @@ module generic_mod
         module procedure generic_real_double
     end interface generic_real
 
+    interface generic_real2
+        module procedure generic_real2_all_int
+        module procedure generic_real2_all_long
+    end interface generic_real2
+
 contains
 
     ! void GenericReal(float arg +intent(in)+value)
     ! fortran_generic
+    !>
+    !! \brief Single argument generic
+    !!
+    !<
     subroutine generic_real_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -60,6 +79,10 @@ contains
 
     ! void GenericReal(double arg +intent(in)+value)
     ! fortran_generic
+    !>
+    !! \brief Single argument generic
+    !!
+    !<
     subroutine generic_real_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -67,6 +90,44 @@ contains
         call c_generic_real(arg)
         ! splicer end function.generic_real_double
     end subroutine generic_real_double
+
+    ! long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)
+    ! fortran_generic
+    !>
+    !! \brief Two argument generic
+    !!
+    !! It is not possible to call the function with (int, long)
+    !! or (long, int)
+    !<
+    function generic_real2_all_int(arg1, arg2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_LONG
+        integer(C_INT), value, intent(IN) :: arg1
+        integer(C_INT), value, intent(IN) :: arg2
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin function.generic_real2_all_int
+        SHT_rv = c_generic_real2(int(arg1, C_LONG), int(arg2, C_LONG))
+        ! splicer end function.generic_real2_all_int
+    end function generic_real2_all_int
+
+    ! long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
+    ! fortran_generic
+    !>
+    !! \brief Two argument generic
+    !!
+    !! It is not possible to call the function with (int, long)
+    !! or (long, int)
+    !<
+    function generic_real2_all_long(arg1, arg2) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        integer(C_LONG), value, intent(IN) :: arg1
+        integer(C_LONG), value, intent(IN) :: arg2
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin function.generic_real2_all_long
+        SHT_rv = c_generic_real2(arg1, arg2)
+        ! splicer end function.generic_real2_all_long
+    end function generic_real2_all_long
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

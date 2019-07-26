@@ -198,6 +198,10 @@
                 },
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(double arg +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 25,
+                    "brief": "Single argument generic"
+                },
                 "fmtdict": {
                     "C_call_code": "GenericReal(\targ);",
                     "C_call_list": "arg",
@@ -252,7 +256,7 @@
                         "generic": "(double arg)"
                     }
                 ],
-                "linenumber": 23,
+                "linenumber": 24,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -288,6 +292,10 @@
                 },
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(float arg +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 25,
+                    "brief": "Single argument generic"
+                },
                 "fmtdict": {
                     "F_C_call": "c_generic_real",
                     "F_arg_c_call": "real(arg, C_DOUBLE)",
@@ -301,7 +309,7 @@
                     "function_suffix": "_float",
                     "underscore_name": "generic_real"
                 },
-                "linenumber": 23,
+                "linenumber": 24,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -340,6 +348,10 @@
                 },
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(double arg +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 25,
+                    "brief": "Single argument generic"
+                },
                 "fmtdict": {
                     "F_C_call": "c_generic_real",
                     "F_arg_c_call": "arg",
@@ -353,7 +365,348 @@
                     "function_suffix": "_double",
                     "underscore_name": "generic_real"
                 },
-                "linenumber": 23,
+                "linenumber": 24,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&arg1",
+                            "cxx_member": ".",
+                            "cxx_type": "long",
+                            "cxx_var": "arg1",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg1",
+                            "f_var": "arg1"
+                        }
+                    },
+                    "arg2": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg2",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&arg2",
+                            "cxx_member": ".",
+                            "cxx_type": "long",
+                            "cxx_var": "arg2",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "arg2",
+                            "f_var": "arg2"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "long",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0"
+                    }
+                },
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GenericReal2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        }
+                    ],
+                    "specifier": [
+                        "long"
+                    ],
+                    "typemap_name": "long"
+                },
+                "decl": "long GenericReal2(long arg1, long arg2)",
+                "declgen": "long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 34,
+                    "brief": "Two argument generic",
+                    "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
+                },
+                "fmtdict": {
+                    "C_call_code": "long SHC_rv =\t GenericReal2(\targ1,\t arg2);",
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "GenericReal2",
+                    "C_prototype": "long arg1,\t long arg2",
+                    "C_return_code": "return SHC_rv;",
+                    "C_return_type": "long",
+                    "F_C_name": "c_generic_real2",
+                    "c_const": "",
+                    "cxx_rv_decl": "long SHC_rv",
+                    "function_name": "GenericReal2",
+                    "underscore_name": "generic_real2"
+                },
+                "fortran_generic": [
+                    {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg1",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg2",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "all_int",
+                        "generic": "(int arg1, int arg2)"
+                    },
+                    {
+                        "args": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg1",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "arg2",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "function_suffix": "all_long",
+                        "generic": "(long arg1, long arg2)"
+                    }
+                ],
+                "linenumber": 33,
+                "options": {
+                    "wrap_fortran": false
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "long",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GenericReal2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "long"
+                    ],
+                    "typemap_name": "long"
+                },
+                "decl": "long GenericReal2(long arg1, long arg2)",
+                "declgen": "long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 34,
+                    "brief": "Two argument generic",
+                    "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_generic_real2",
+                    "F_arg_c_call": "int(arg1, C_LONG),\t int(arg2, C_LONG)",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_call_code": "SHT_rv = c_generic_real2(int(arg1, C_LONG),\t int(arg2, C_LONG))",
+                    "F_name_function": "generic_real2_all_int",
+                    "F_name_generic": "generic_real2",
+                    "F_name_impl": "generic_real2_all_int",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "GenericReal2",
+                    "function_suffix": "_all_int",
+                    "underscore_name": "generic_real2"
+                },
+                "linenumber": 33,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "long",
+                        "f_var": "SHT_rv"
+                    }
+                },
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GenericReal2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        }
+                    ],
+                    "specifier": [
+                        "long"
+                    ],
+                    "typemap_name": "long"
+                },
+                "decl": "long GenericReal2(long arg1, long arg2)",
+                "declgen": "long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)",
+                "doxygen": {
+                    "__line__": 34,
+                    "brief": "Two argument generic",
+                    "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_generic_real2",
+                    "F_arg_c_call": "arg1,\t arg2",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_call_code": "SHT_rv = c_generic_real2(arg1,\t arg2)",
+                    "F_name_function": "generic_real2_all_long",
+                    "F_name_generic": "generic_real2",
+                    "F_name_impl": "generic_real2_all_long",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "GenericReal2",
+                    "function_suffix": "_all_long",
+                    "underscore_name": "generic_real2"
+                },
+                "linenumber": 33,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
