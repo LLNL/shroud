@@ -323,16 +323,6 @@ static int l_function7(lua_State *L)
     // splicer end function.Function7
 }
 
-// void Function9(double arg +intent(in)+value)
-static int l_function9(lua_State *L)
-{
-    // splicer begin function.Function9
-    double arg = lua_tonumber(L, 1);
-    tutorial::Function9(arg);
-    return 0;
-    // splicer end function.Function9
-}
-
 // void Function10()
 // void Function10(const std::string & name +intent(in), double arg2 +intent(in)+value)
 static int l_function10(lua_State *L)
@@ -556,7 +546,6 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"Function5", l_function5},
     {"Function6", l_function6},
     {"Function7", l_function7},
-    {"Function9", l_function9},
     {"Function10", l_function10},
     {"overload1", l_overload1},
     {"typefunc", l_typefunc},

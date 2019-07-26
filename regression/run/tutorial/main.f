@@ -142,11 +142,6 @@ contains
     rv_double = function8_double()
     call assert_true(rv_double == 10.d0, "function8_double")
 
-    call function9(1.0)
-    call assert_true(.true., "function9 1")
-    call function9(1.d0)
-    call assert_true(.true., "function9 2")
-
     call function10()
     call assert_true(.true., "function10 1")
     call function10("foo", 1.0e0)

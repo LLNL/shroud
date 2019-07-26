@@ -31,6 +31,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Renamed option *C_header_helper_template* to *C_header_utility_template*.
   Renamed option *PY_helper_filename_template* to *PY_utililty_filename_template*.
   This is to avoid confusion with helper functions which have file static scope.
+- Changed how the *fortran_generic* arguments are specified to allow multiple arguments
+  and to associate attributes with arguments.
+  previous format:
+```
+  - decl: void GenericReal(double arg)
+    fortran_generic:
+       arg:
+       - float
+       - double
+```
+  new format:
+```
+  - decl: void GenericReal(double arg)
+    fortran_generic:
+       - decl: float arg
+         function_suffix: float
+       - decl: double arg
+         function_suffix: double
+```
 
 ### Fixed
 - C++ function arguments which pass a class by value.

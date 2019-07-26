@@ -505,32 +505,6 @@ PY_Function7_double(
 // splicer end function.function7_double
 }
 
-static char PY_Function9__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_Function9(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void Function9(double arg +intent(in)+value)
-// splicer begin function.function9
-    double arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:Function9",
-        const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
-
-    tutorial::Function9(arg);
-    Py_RETURN_NONE;
-// splicer end function.function9
-}
-
 static PyObject *
 PY_Function10_0(
   PyObject *SHROUD_UNUSED(self),
@@ -1167,8 +1141,6 @@ static PyMethodDef PY_methods[] = {
     PY_Function4d__doc__},
 {"Function5", (PyCFunction)PY_Function5_arg1_arg2,
     METH_VARARGS|METH_KEYWORDS, PY_Function5_arg1_arg2__doc__},
-{"Function9", (PyCFunction)PY_Function9, METH_VARARGS|METH_KEYWORDS,
-    PY_Function9__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,

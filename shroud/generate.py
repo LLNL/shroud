@@ -100,6 +100,8 @@ class VerifyAttrs(object):
             print("XXXXXX typemap is None")
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
+        for generic in node.fortran_generic:
+            self.check_arg_attrs(node, generic.args)
 
     def check_shared_attrs(self, node):
         """Check attributes which may be assigned to function or argument:
@@ -139,11 +141,11 @@ class VerifyAttrs(object):
     def check_arg_attrs(self, node, arg):
         """Regularize attributes.
         intent: lower case, no parens, must be in, out, or inout
-        value: if pointer, default to False (pass-by-reference;
+        value: if pointer, default to False (pass-by-reference)
                else True (pass-by-value).
 
         Args:
-            node - ast.FunctionNode
+            node - ast.FunctionNode or ast.FortranGeneric
             arg  - declast.Declaration
         """
         if node:
@@ -852,6 +854,50 @@ class GenFunctions(object):
         options.wrap_lua = False
 
     def generic_function(self, node, ordered_functions):
+        """ Create overloaded functions for each generic method.
+
+        - decl: void GenericReal(double arg)
+          fortran_generic:
+          - decl: float arg
+            function_suffix: float
+          - decl: double arg
+            function_suffix: double
+
+        Args:
+            node - ast.FunctionNode
+            ordered_functions -
+        """
+        for generic in node.fortran_generic:
+            new = node.clone()
+            ordered_functions.append(new)
+            self.append_function_index(new)
+            new._generated = "fortran_generic"
+            new._PTR_F_C_index = node._function_index
+            fmt = new.fmtdict
+            # XXX append to existing suffix
+            fmt.function_suffix = fmt.function_suffix + "_" + generic.function_suffix
+            new.fortran_generic = {}
+            options = new.options
+            options.wrap_c = False
+            options.wrap_fortran = True
+            options.wrap_python = False
+            options.wrap_lua = False
+
+            # Replace function argument with generic argument
+            argname = generic.args.name
+            for i, arg in enumerate(new.ast.params):
+                if arg.name == argname:
+                    new.ast.params[i] = generic.args
+
+        # Do not process templated node, instead process
+        # generated functions above.
+        options = node.options
+        #        options.wrap_c = False
+        options.wrap_fortran = False
+
+    #        options.wrap_python = False
+
+    def XXXgeneric_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
 
         - decl: void Function9(double arg)

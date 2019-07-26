@@ -82,8 +82,6 @@ int TUT_function8_int();
 
 double TUT_function8_double();
 
-void TUT_function9(double arg);
-
 void TUT_function10_0();
 
 void TUT_function10_1(const char * name, double arg2);

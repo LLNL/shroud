@@ -463,13 +463,6 @@ module tutorial_mod
             real(C_DOUBLE) :: SHT_rv
         end function c_function8_double
 
-        subroutine c_function9(arg) &
-                bind(C, name="TUT_function9")
-            use iso_c_binding, only : C_DOUBLE
-            implicit none
-            real(C_DOUBLE), value, intent(IN) :: arg
-        end subroutine c_function9
-
         subroutine c_function10_0() &
                 bind(C, name="TUT_function10_0")
             implicit none
@@ -723,11 +716,6 @@ module tutorial_mod
         module procedure function7_int
         module procedure function7_double
     end interface function7
-
-    interface function9
-        module procedure function9_float
-        module procedure function9_double
-    end interface function9
 
     interface overload1
         module procedure overload1_num
@@ -1185,26 +1173,6 @@ contains
         SHT_rv = c_function8_double()
         ! splicer end function.function8_double
     end function function8_double
-
-    ! void Function9(float arg +intent(in)+value)
-    ! fortran_generic
-    subroutine function9_float(arg)
-        use iso_c_binding, only : C_DOUBLE, C_FLOAT
-        real(C_FLOAT), value, intent(IN) :: arg
-        ! splicer begin function.function9_float
-        call c_function9(real(arg, C_DOUBLE))
-        ! splicer end function.function9_float
-    end subroutine function9_float
-
-    ! void Function9(double arg +intent(in)+value)
-    ! fortran_generic
-    subroutine function9_double(arg)
-        use iso_c_binding, only : C_DOUBLE
-        real(C_DOUBLE), value, intent(IN) :: arg
-        ! splicer begin function.function9_double
-        call c_function9(arg)
-        ! splicer end function.function9_double
-    end subroutine function9_double
 
     ! void Function10()
     subroutine function10_0()

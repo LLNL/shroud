@@ -317,15 +317,6 @@ double TUT_function8_double()
 // splicer end function.function8_double
 }
 
-// void Function9(double arg +intent(in)+value)
-void TUT_function9(double arg)
-{
-// splicer begin function.function9
-    tutorial::Function9(arg);
-    return;
-// splicer end function.function9
-}
-
 // void Function10()
 void TUT_function10_0()
 {
