@@ -153,14 +153,14 @@ contains
     ! void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     subroutine save_pointer_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: asize
         type = 1
         asize = size(addr,kind=C_SIZE_T)
         ! splicer begin function.save_pointer_float1d
-        call c_save_pointer(addr, type, asize)
+        call c_save_pointer(C_LOC(addr), type, asize)
         ! splicer end function.save_pointer_float1d
     end subroutine save_pointer_float1d
 #endif
@@ -169,14 +169,14 @@ contains
     ! void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     subroutine save_pointer_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:,:)
         integer(C_INT) :: type
         integer(C_SIZE_T) :: asize
         type = 1
         asize = size(addr,kind=C_SIZE_T)
         ! splicer begin function.save_pointer_float2d
-        call c_save_pointer(addr, type, asize)
+        call c_save_pointer(C_LOC(addr), type, asize)
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
 #endif

@@ -1033,9 +1033,9 @@
                 "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
-                    "F_arg_c_call": "addr,\t type,\t asize",
+                    "F_arg_c_call": "C_LOC(addr),\t type,\t asize",
                     "F_arguments": "addr",
-                    "F_call_code": "call c_save_pointer(addr,\t type,\t asize)",
+                    "F_call_code": "call c_save_pointer(C_LOC(addr),\t type,\t asize)",
                     "F_name_function": "save_pointer_float1d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float1d",
@@ -1120,9 +1120,9 @@
                 "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
-                    "F_arg_c_call": "addr,\t type,\t asize",
+                    "F_arg_c_call": "C_LOC(addr),\t type,\t asize",
                     "F_arguments": "addr",
-                    "F_call_code": "call c_save_pointer(addr,\t type,\t asize)",
+                    "F_call_code": "call c_save_pointer(C_LOC(addr),\t type,\t asize)",
                     "F_name_function": "save_pointer_float2d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float2d",

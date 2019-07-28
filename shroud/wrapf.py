@@ -1032,13 +1032,13 @@ rv = .false.
 
         Args:
             fmt -
-            c_ast - Abstract Syntax Tree from parser
-            f_ast - Abstract Syntax Tree from parser
+            c_ast - Abstract Syntax Tree from parser, declast.Declaration
+            f_ast - Abstract Syntax Tree from parser, declast.Declaration
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
-            arg_f_decl - Additional Fortran declarations.
+            arg_f_decl - Additional Fortran declarations for local variables.
             arg_c_call - Arguments to C wrapper.
 
         return need_wrapper
@@ -1060,8 +1060,13 @@ rv = .false.
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
                 elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
                     need_wrapper = True
-                    append_format(arg_c_call, arg_typemap.f_cast, fmt)
-                    self.update_f_module(modules, imports, arg_typemap.f_module)
+                    if c_ast.get_full_type() == 'void' and c_ast.is_pointer() == 1:
+                        append_format(arg_c_call, "C_LOC({f_var})", fmt)
+                        self.update_f_module(modules, imports,
+                                             dict(iso_c_binding=["C_LOC"]))
+                    else:
+                        append_format(arg_c_call, arg_typemap.f_cast, fmt)
+                        self.update_f_module(modules, imports, arg_typemap.f_module)
                 elif "assumedtype" in c_attrs:
                     arg_c_call.append(fmt.f_var)
                 else:

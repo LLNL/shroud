@@ -930,6 +930,9 @@ class Declaration(Node):
         # 'long long' into ['long', 'long']
         self.specifier = ntypemap.cxx_type.split()
 
+    def get_full_type(self):
+        return ' '.join(self.specifier)
+
     def is_ctor(self):
         """Return True if self is a constructor."""
         return self.attrs.get("_constructor", False)

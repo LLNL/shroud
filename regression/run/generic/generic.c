@@ -6,9 +6,11 @@
 //
 // generic.c
 
+#include "generic.h"
+
 double global_double;
 
-double GetGlobalDouble()
+double GetGlobalDouble(void)
 {
   return global_double;
 }
@@ -24,11 +26,6 @@ long GenericReal2(long arg1, long arg2)
   return arg1 + arg2;
 }
 
-
-#if 0
 void SavePointer(void *addr, int type, size_t size)
 {
 }
-#endif
-
-

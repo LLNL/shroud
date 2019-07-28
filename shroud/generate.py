@@ -106,7 +106,7 @@ class VerifyAttrs(object):
                 for garg in generic.decls:
                     generic._has_found_default = False
                     self.check_arg_attrs(generic, garg)
-            check_implied_attrs(generic.decls)
+                check_implied_attrs(generic.decls)
         else:
             check_implied_attrs(ast.params)
 
