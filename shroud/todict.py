@@ -285,8 +285,8 @@ class ToDict(visitor.Visitor):
     def visit_FortranGeneric(self, node):
         d = dict(generic=node.generic,
                  function_suffix=node.function_suffix)
-        if node.args:
-            d["args"] = self.visit(node.args)
+        if node.decls:
+            d["decls"] = self.visit(node.decls)
         #        self.add_visit_fields(node, d, ['fmtdict', 'options'])
         add_non_none_fields(node, d, ["fmtdict", "options"])
         return d

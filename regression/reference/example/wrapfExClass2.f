@@ -443,7 +443,7 @@ contains
         ! splicer end class.ExClass2.method.get_class1
     end function exclass2_get_class1
 
-    ! void * declare(TypeID type +intent(in)+value)
+    ! void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
     ! fortran_generic - has_default_arg
     subroutine exclass2_declare_0_int(obj, type)
         use iso_c_binding, only : C_INT
@@ -454,7 +454,7 @@ contains
         ! splicer end class.ExClass2.method.declare_0_int
     end subroutine exclass2_declare_0_int
 
-    ! void * declare(TypeID type +intent(in)+value)
+    ! void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
     ! fortran_generic - has_default_arg
     subroutine exclass2_declare_0_long(obj, type)
         use iso_c_binding, only : C_INT

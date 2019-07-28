@@ -3286,7 +3286,21 @@
                         },
                         "fortran_generic": [
                             {
-                                "args": [
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
                                     {
                                         "attrs": {
                                             "intent": "in",
@@ -3307,7 +3321,21 @@
                                 "generic": "(int len=1)"
                             },
                             {
-                                "args": [
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
                                     {
                                         "attrs": {
                                             "intent": "in",
@@ -3363,6 +3391,21 @@
                                         "TypeID"
                                     ],
                                     "typemap_name": "TypeID"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "len",
+                                        "pointer": []
+                                    },
+                                    "init": 1,
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
                                 }
                             ],
                             "specifier": [
@@ -3371,7 +3414,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                        "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
                         "fmtdict": {
                             "F_C_call": "c_exclass2_declare_0",
                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -3420,6 +3463,21 @@
                                         "TypeID"
                                     ],
                                     "typemap_name": "TypeID"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "len",
+                                        "pointer": []
+                                    },
+                                    "init": 1,
+                                    "specifier": [
+                                        "long"
+                                    ],
+                                    "typemap_name": "long"
                                 }
                             ],
                             "specifier": [
@@ -3428,7 +3486,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                        "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
                         "fmtdict": {
                             "F_C_call": "c_exclass2_declare_0",
                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -3623,7 +3681,21 @@
                         },
                         "fortran_generic": [
                             {
-                                "args": [
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
                                     {
                                         "attrs": {
                                             "intent": "in",
@@ -3644,7 +3716,21 @@
                                 "generic": "(int len=1)"
                             },
                             {
-                                "args": [
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
                                     {
                                         "attrs": {
                                             "intent": "in",

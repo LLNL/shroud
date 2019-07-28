@@ -216,7 +216,7 @@
                 },
                 "fortran_generic": [
                     {
-                        "args": [
+                        "decls": [
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -236,7 +236,7 @@
                         "generic": "(float arg)"
                     },
                     {
-                        "args": [
+                        "decls": [
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -485,7 +485,7 @@
                 },
                 "fortran_generic": [
                     {
-                        "args": [
+                        "decls": [
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -519,7 +519,7 @@
                         "generic": "(int arg1, int arg2)"
                     },
                     {
-                        "args": [
+                        "decls": [
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -707,6 +707,431 @@
                     "underscore_name": "generic_real2"
                 },
                 "linenumber": 33,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "addr",
+                            "cxx_member": "->",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "addr",
+                            "f_var": "addr"
+                        }
+                    },
+                    "asize": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "asize",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&asize",
+                            "cxx_member": ".",
+                            "cxx_type": "size_t",
+                            "cxx_var": "asize",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "asize",
+                            "f_var": "asize",
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "type",
+                            "cxx_addr": "&",
+                            "cxx_cast_to_void_ptr": "&type",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "type",
+                            "f_var": "type",
+                            "pre_call_intent": "1"
+                        }
+                    }
+                },
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SavePointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "0",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(addr)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "asize",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))",
+                "declgen": "void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
+                "fmtdict": {
+                    "C_call_code": "SavePointer(\taddr,\t type,\t asize);",
+                    "C_call_list": "addr,\t type,\t asize",
+                    "C_name": "SavePointer",
+                    "C_prototype": "void * addr,\t int type,\t size_t asize",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_name": "c_save_pointer",
+                    "c_const": "",
+                    "function_name": "SavePointer",
+                    "underscore_name": "save_pointer"
+                },
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "dimension": ":",
+                                    "intent": "in",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "addr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "attrs": {
+                                    "implied": "1",
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "type",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "implied": "size(addr)",
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "asize",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "size_t"
+                                ],
+                                "typemap_name": "size_t"
+                            }
+                        ],
+                        "function_suffix": "float1d",
+                        "generic": "(float *addr+dimension(:),    int type+implied(1))"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "dimension": ":,:",
+                                    "intent": "in",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "addr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "attrs": {
+                                    "implied": "1",
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "type",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "implied": "size(addr)",
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "asize",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "size_t"
+                                ],
+                                "typemap_name": "size_t"
+                            }
+                        ],
+                        "function_suffix": "float2d",
+                        "generic": "(float *addr+dimension(:,:),  int type+implied(1))"
+                    }
+                ],
+                "linenumber": 45,
+                "options": {
+                    "wrap_fortran": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SavePointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":",
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "1",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(addr)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "asize",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))",
+                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
+                "fmtdict": {
+                    "F_C_call": "c_save_pointer",
+                    "F_arg_c_call": "addr,\t type,\t asize",
+                    "F_arguments": "addr",
+                    "F_call_code": "call c_save_pointer(addr,\t type,\t asize)",
+                    "F_name_function": "save_pointer_float1d",
+                    "F_name_generic": "save_pointer",
+                    "F_name_impl": "save_pointer_float1d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "SavePointer",
+                    "function_suffix": "_float1d",
+                    "underscore_name": "save_pointer"
+                },
+                "linenumber": 45,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SavePointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": ":,:",
+                                "intent": "in",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "1",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(addr)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "asize",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))",
+                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
+                "fmtdict": {
+                    "F_C_call": "c_save_pointer",
+                    "F_arg_c_call": "addr,\t type,\t asize",
+                    "F_arguments": "addr",
+                    "F_call_code": "call c_save_pointer(addr,\t type,\t asize)",
+                    "F_name_function": "save_pointer_float2d",
+                    "F_name_generic": "save_pointer",
+                    "F_name_impl": "save_pointer_float2d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "SavePointer",
+                    "function_suffix": "_float2d",
+                    "underscore_name": "save_pointer"
+                },
+                "linenumber": 45,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,

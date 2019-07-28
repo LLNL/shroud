@@ -42,12 +42,14 @@ declarations:
   - decl: (long arg1, long arg2)
     function_suffix: all_long
 
-#- decl: void save_pointer(void *addr, int type, size_t size +hidden(size(addr))
-#  fortran_generic:
-#  - decl: (float *addr+dimension(:),    type+hidden(AAA))
-#  - decl: (float *addr+dimension(:,:),  type+hidden(AAA))
-#
-#  - decl: (double *addr+dimension(:),   type+hidden(BBB))
-#  - decl: (double *addr+dimension(:,:), type+hidden(BBB))
+- decl: void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))
+# cannot use size as an dummy argument name
+  cpp_if: if 0
+  fortran_generic:
+  - decl: (float *addr+dimension(:),    int type+implied(1))
+    function_suffix: float1d
+  - decl: (float *addr+dimension(:,:),  int type+implied(1))
+    function_suffix: float2d
 
-
+#  - decl: (double *addr+dimension(:),   int type+implied(2))
+#  - decl: (double *addr+dimension(:,:), int type+implied(2))

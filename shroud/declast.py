@@ -1595,3 +1595,33 @@ def get_canonical_typemap(specifier):
     typename = canonical_typemap.get(typename, typename)
     ntypemap = typemap.lookup_type(typename)
     return ntypemap
+
+
+def find_arg_by_name(decls, name):
+    """Find argument in params with name.
+
+    Args:
+        decls - list of Declaration
+        name  - argument to find
+    """
+    if decls is None:
+        return None
+    for decl in decls:
+        if decl.name == name:
+            return decl
+    return None
+
+def find_arg_index_by_name(decls, name):
+    """Return index of argument in decls with name.
+
+    Args:
+        decls - list of Declaration
+        name  - argument to find
+    """
+    if decls is None:
+        return -1
+    for i, decl in enumerate(decls):
+        if decl.name == name:
+            return i
+    return -1
+

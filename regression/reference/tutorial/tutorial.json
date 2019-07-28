@@ -3753,7 +3753,26 @@
                 },
                 "fortran_generic": [
                     {
-                        "args": [
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": false
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -3773,7 +3792,26 @@
                         "generic": "(float arg2)"
                     },
                     {
-                        "args": [
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": false
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -4053,7 +4091,26 @@
                 },
                 "fortran_generic": [
                     {
-                        "args": [
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": false
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
                             {
                                 "attrs": {
                                     "intent": "in",
@@ -4073,7 +4130,26 @@
                         "generic": "(float arg2)"
                     },
                     {
-                        "args": [
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": false
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "name",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
                             {
                                 "attrs": {
                                     "intent": "in",

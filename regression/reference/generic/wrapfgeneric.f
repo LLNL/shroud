@@ -47,6 +47,17 @@ module generic_mod
             integer(C_LONG) :: SHT_rv
         end function c_generic_real2
 
+#if 0
+        subroutine c_save_pointer(addr, type, asize) &
+                bind(C, name="SavePointer")
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), value, intent(IN) :: addr
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: asize
+        end subroutine c_save_pointer
+#endif
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -60,6 +71,15 @@ module generic_mod
         module procedure generic_real2_all_int
         module procedure generic_real2_all_long
     end interface generic_real2
+
+    interface save_pointer
+#if 0
+        module procedure save_pointer_float1d
+#endif
+#if 0
+        module procedure save_pointer_float2d
+#endif
+    end interface save_pointer
 
 contains
 
@@ -128,6 +148,38 @@ contains
         SHT_rv = c_generic_real2(arg1, arg2)
         ! splicer end function.generic_real2_all_long
     end function generic_real2_all_long
+
+#if 0
+    ! void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
+    ! fortran_generic
+    subroutine save_pointer_float1d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T
+        real(C_FLOAT), intent(IN) :: addr(:)
+        integer(C_INT) :: type
+        integer(C_SIZE_T) :: asize
+        type = 1
+        asize = size(addr,kind=C_SIZE_T)
+        ! splicer begin function.save_pointer_float1d
+        call c_save_pointer(addr, type, asize)
+        ! splicer end function.save_pointer_float1d
+    end subroutine save_pointer_float1d
+#endif
+
+#if 0
+    ! void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
+    ! fortran_generic
+    subroutine save_pointer_float2d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_PTR, C_SIZE_T
+        real(C_FLOAT), intent(IN) :: addr(:,:)
+        integer(C_INT) :: type
+        integer(C_SIZE_T) :: asize
+        type = 1
+        asize = size(addr,kind=C_SIZE_T)
+        ! splicer begin function.save_pointer_float2d
+        call c_save_pointer(addr, type, asize)
+        ! splicer end function.save_pointer_float2d
+    end subroutine save_pointer_float2d
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

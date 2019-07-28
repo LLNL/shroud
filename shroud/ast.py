@@ -1160,8 +1160,23 @@ class FunctionNode(AstNode):
                     self.have_template_args = True
                     break
 
-        for args in self.fortran_generic:
-            args.parse_generic(namespace=self)
+        # Compute full param list for each generic specification
+        # by copying original params then substituting decls from fortran_generic.
+        for generic in self.fortran_generic:
+            generic.parse_generic(namespace=self)
+            newdecls = copy.deepcopy(ast.params)
+            for garg in generic.decls:
+                i = declast.find_arg_index_by_name(newdecls, garg.name)
+                if i < 0:
+                    # XXX - For default argument, the generic argument may not exist.
+                    print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
+                            garg.name, str(new.ast), generic.linenumber))
+#                    raise RuntimeError(
+#                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
+#                            garg.name, str(new.ast), generic.linenumber))
+                else:
+                    newdecls[i] = garg
+            generic.decls = newdecls
 
         # add any attributes from YAML files to the ast
         if "attrs" in kwargs:
@@ -1463,12 +1478,12 @@ class FortranGeneric(object):
         self.options = options
         self.function_suffix = function_suffix
         self.linenumber = linenumber
-        self.args = None
+        self.decls = None
 
     def parse_generic(self, namespace):
         """Parse argument list (ex. int arg1, float *arg2) and set list of Declarations."""
         parser = declast.Parser(self.generic, namespace)
-        self.args = parser.parameter_list()
+        self.decls = parser.parameter_list()
 
     def __repr__(self):
         return self.generic

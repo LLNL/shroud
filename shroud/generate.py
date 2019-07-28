@@ -100,9 +100,15 @@ class VerifyAttrs(object):
             print("XXXXXX typemap is None")
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
-        for generic in node.fortran_generic:
-            for garg in generic.args:
-                self.check_arg_attrs(node, garg)
+
+        if node.fortran_generic:
+            for generic in node.fortran_generic:
+                for garg in generic.decls:
+                    generic._has_found_default = False
+                    self.check_arg_attrs(generic, garg)
+            check_implied_attrs(generic.decls)
+        else:
+            check_implied_attrs(ast.params)
 
     def check_shared_attrs(self, node):
         """Check attributes which may be assigned to function or argument:
@@ -154,8 +160,9 @@ class VerifyAttrs(object):
         else:
             options = dict()
         argname = arg.name
+        attrs = arg.attrs
 
-        for attr in arg.attrs:
+        for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
@@ -193,7 +200,6 @@ class VerifyAttrs(object):
         self.check_shared_attrs(arg)
 
         is_ptr = arg.is_indirect()
-        attrs = arg.attrs
 
         allocatable = attrs.get("allocatable", False)
         if allocatable:
@@ -305,9 +311,6 @@ class VerifyAttrs(object):
                 node._has_default_arg = True
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
-
-            if "implied" in attrs:
-                check_implied(attrs["implied"], node)
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
@@ -885,19 +888,7 @@ class GenFunctions(object):
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
-
-            # Replace function arguments with generic arguments
-            for garg in generic.args:
-                i = new.ast.find_arg_index_by_name(garg.name)
-                if i < 0:
-                    # XXX - For default argument, the generic argument may not exist.
-                    print("Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-                            garg.name, str(new.ast), generic.linenumber))
-#                    raise RuntimeError(
-#                        "Error in fortran_generic, '{}' not found in '{}' at line {}".format(
-#                            garg.name, str(new.ast), generic.linenumber))
-                else:
-                    new.ast.params[i] = garg
+            new.ast.params = generic.decls
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1553,10 +1544,10 @@ class CheckImplied(todict.PrintNode):
     """Check arguments in the implied attribute.
     """
 
-    def __init__(self, expr, func):
+    def __init__(self, expr, decls):
         super(CheckImplied, self).__init__()
         self.expr = expr
-        self.func = func
+        self.decls = decls
 
     def visit_Identifier(self, node):
         """Check arguments to size function.
@@ -1573,7 +1564,7 @@ class CheckImplied(todict.PrintNode):
                     "Too many arguments to 'size': ".format(self.expr)
                 )
             argname = node.args[0].name
-            arg = self.func.ast.find_arg_by_name(argname)
+            arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 raise RuntimeError(
                     "Unknown argument '{}': {}".format(argname, self.expr)
@@ -1581,6 +1572,7 @@ class CheckImplied(todict.PrintNode):
             if "dimension" not in arg.attrs:
                 raise RuntimeError(
                     "Argument '{}' must have dimension attribute: {}".format(
+#                        str(arg), self.expr
                         argname, self.expr
                     )
                 )
@@ -1592,7 +1584,7 @@ class CheckImplied(todict.PrintNode):
                     "Too many arguments to 'size': ".format(self.expr)
                 )
             argname = node.args[0].name
-            arg = self.func.ast.find_arg_by_name(argname)
+            arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 raise RuntimeError(
                     "Unknown argument '{}': {}".format(argname, self.expr)
@@ -1613,13 +1605,20 @@ class CheckImplied(todict.PrintNode):
             )
 
 
-def check_implied(expr, func):
-    """Check implied attribute expression for errors.
+def check_implied_attrs(decls):
+    """Check all parameters for implied arguments.
+
+    The implied attribute may reference other arguments in decls.
+    Only call on the full Fortran decls.
+    If fortran_generic, call for each decls member.
+    Otherwise, call on FunctionAst.ast.params
 
     Args:
-        expr -
-        func -
+        decls - list of Declarations
     """
-    node = declast.ExprParser(expr).expression()
-    visitor = CheckImplied(expr, func)
-    return visitor.visit(node)
+    for decl in decls:
+        expr = decl.attrs.get("implied", None)
+        if expr:
+            node = declast.ExprParser(expr).expression()
+            visitor = CheckImplied(expr, decls)
+            visitor.visit(node)
