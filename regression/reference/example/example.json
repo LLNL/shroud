@@ -10509,6 +10509,12 @@
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
             "c_type": "void",
             "cxx_type": "void",
+            "f_cast": "C_LOC({f_var})",
+            "f_cast_module": {
+                "iso_c_binding": [
+                    "C_LOC"
+                ]
+            },
             "f_module": {
                 "iso_c_binding": [
                     "C_PTR"

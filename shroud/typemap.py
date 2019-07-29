@@ -77,6 +77,7 @@ class Typemap(object):
         ("f_args", None),  # Argument in Fortran wrapper to call C.
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
         ("f_cast", "{f_var}"),  # Expression to convert to type
+        ("f_cast_module", None),  # Fortran modules needed for f_cast
         # e.g. intrinsics such as int and real
         ("f_statements", {}),
         (
@@ -256,6 +257,8 @@ def initialize():
             # fortran='subroutine',
             f_type="type(C_PTR)",
             f_module=dict(iso_c_binding=["C_PTR"]),
+            f_cast="C_LOC({f_var})",    # Cast an argument to a void *.
+            f_cast_module=dict(iso_c_binding=["C_LOC"]),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
         ),
         short=Typemap(

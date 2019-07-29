@@ -1060,13 +1060,9 @@ rv = .false.
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
                 elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
                     need_wrapper = True
-                    if c_ast.get_full_type() == 'void' and c_ast.is_pointer() == 1:
-                        append_format(arg_c_call, "C_LOC({f_var})", fmt)
-                        self.update_f_module(modules, imports,
-                                             dict(iso_c_binding=["C_LOC"]))
-                    else:
-                        append_format(arg_c_call, arg_typemap.f_cast, fmt)
-                        self.update_f_module(modules, imports, arg_typemap.f_module)
+                    append_format(arg_c_call, arg_typemap.f_cast, fmt)
+                    self.update_f_module(modules, imports,
+                                         arg_typemap.f_cast_module or arg_typemap.f_module)
                 elif "assumedtype" in c_attrs:
                     arg_c_call.append(fmt.f_var)
                 else:

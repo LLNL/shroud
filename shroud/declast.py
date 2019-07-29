@@ -70,6 +70,17 @@ token_specification = [
 tok_regex = "|".join("(?P<%s>%s)" % pair for pair in token_specification)
 get_token = re.compile(tok_regex).match
 
+canonical_typemap = dict(
+    # explict 'int'
+    short_int="short",
+    long_int="long",
+    long_long_int="long_long",
+    unsigned_short_int="unsigned_short",
+    unsigned_long_int="unsigned_long",
+    unsigned_long_long_int="unsigned_long_long",
+    # implied 'int'
+    unsigned="unsigned_int",
+)
 
 def tokenize(s):
     line = 1
@@ -445,13 +456,6 @@ class Parser(ExprParser):
                     self.token.typ, self.token.value
                 )
             )
-        if not found_type:
-            # XXX - standardize types like 'unsigned' as 'unsigned_int'
-            node.typemap = get_canonical_typemap(node.specifier)
-            if node.typemap is None:
-                self.error_msg(
-                    "Unknown typemap '{}".format("_".join(node.specifier))
-                )
         self.exit("declaration_specifier")
         return
 
@@ -468,6 +472,7 @@ class Parser(ExprParser):
             while self.token.typ != "GT":
                 temp = Declaration()
                 self.declaration_specifier(temp)
+                self.get_canonical_typemap(temp)
                 lst.append(temp)
                 if not self.have("COMMA"):
                     break
@@ -505,6 +510,7 @@ class Parser(ExprParser):
         self.enter("declaration")
         node = Declaration()
         self.declaration_specifier(node)
+        self.get_canonical_typemap(node)
 
         if "_destructor" in node.attrs:
             pass
@@ -582,6 +588,36 @@ class Parser(ExprParser):
                 self.next()
         self.exit("pointer", str(ptrs))
         return ptrs
+
+    def get_canonical_typemap(self, decl):
+        """Convert specifier to typemap.
+        Map specifier as needed.
+        specifier = ['long', 'int']
+
+        long int -> long
+
+        Args:
+            decl: ast.Declaration
+        """
+        if decl.typemap is not None:
+            return
+        typename = "_".join(decl.specifier)
+        typename = canonical_typemap.get(typename, typename)
+        ntypemap = typemap.lookup_type(typename)
+# XXX - incorporate pointer into typemap
+#        nptr = decl.is_pointer()
+#        if nptr == 0:
+#            ntypemap = typemap.lookup_type(typename)
+#        else:
+#            for i in range(nptr, -1, -1):
+#                ntypemap = typemap.lookup_type(typename + "***"[0:i])
+#                if ntypemap is not None:
+#                    break
+        if ntypemap is None:
+            self.error_msg(
+                "Unknown typemap '{}".format("_".join(node.specifier))
+            )
+        decl.typemap = ntypemap
 
     def initializer(self):
         """
@@ -705,6 +741,7 @@ class Parser(ExprParser):
         while self.token.typ != "GT":
             temp = Declaration()
             self.declaration_specifier(temp)
+            self.get_canonical_typemap(temp)
             lst.append(temp)
             if not self.have("COMMA"):
                 break
@@ -1572,32 +1609,6 @@ def create_struct_ctor(cls):
     ast.specifier = [ cls.name ]
     ast.params = []
     return ast
-
-
-canonical_typemap = dict(
-    # explict 'int'
-    short_int="short",
-    long_int="long",
-    long_long_int="long_long",
-    unsigned_short_int="unsigned_short",
-    unsigned_long_int="unsigned_long",
-    unsigned_long_long_int="unsigned_long_long",
-    # implied 'int'
-    unsigned="unsigned_int",
-)
-
-
-def get_canonical_typemap(specifier):
-    """Convert specifier to typemap.
-    Map specifier as needed.
-    specifier = ['long', 'int']
-
-    long int -> long
-    """
-    typename = "_".join(specifier)
-    typename = canonical_typemap.get(typename, typename)
-    ntypemap = typemap.lookup_type(typename)
-    return ntypemap
 
 
 def find_arg_by_name(decls, name):
