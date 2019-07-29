@@ -1622,3 +1622,16 @@ def check_implied_attrs(decls):
             node = declast.ExprParser(expr).expression()
             visitor = CheckImplied(expr, decls)
             visitor.visit(node)
+
+
+def check_implied(expr, func):
+    """Check implied attribute expression for errors.
+    Used with testing.
+
+    Args:
+        expr -
+        func -
+    """
+    node = declast.ExprParser(expr).expression()
+    visitor = CheckImplied(expr, func.ast.params)
+    return visitor.visit(node)
