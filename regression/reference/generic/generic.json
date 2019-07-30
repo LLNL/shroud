@@ -800,7 +800,6 @@
                         },
                         {
                             "attrs": {
-                                "implied": "0",
                                 "intent": "in",
                                 "value": true
                             },
@@ -834,8 +833,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
+                "declgen": "void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "C_call_code": "SavePointer(\taddr,\t type,\t size);",
                     "C_call_list": "addr,\t type,\t size",
@@ -1029,7 +1028,7 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))",
+                "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
@@ -1116,7 +1115,7 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))",
+                "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
                 "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",

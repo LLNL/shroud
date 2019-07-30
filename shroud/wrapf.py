@@ -1313,7 +1313,6 @@ rv = .false.
             is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs.get("allocatable", False)
-            implied = c_attrs.get("implied", False)
             hidden = c_attrs.get("hidden", False)
             intent = c_attrs["intent"]
 
@@ -1345,6 +1344,9 @@ rv = .false.
                 # An argument to the C and Fortran function
                 f_index += 1
                 f_arg = f_args[f_index]
+
+                f_attrs = f_arg.attrs
+                implied = f_attrs.get("implied", False)
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.

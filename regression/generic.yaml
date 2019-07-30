@@ -42,7 +42,7 @@ declarations:
   - decl: (long arg1, long arg2)
     function_suffix: all_long
 
-- decl: void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))
+- decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
 # cannot use size as an dummy argument name
   cpp_if: if 1
   fortran_generic:
