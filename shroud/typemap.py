@@ -78,6 +78,8 @@ class Typemap(object):
         ("f_module", None),  # Fortran modules needed for type  (dictionary)
         ("f_cast", "{f_var}"),  # Expression to convert to type
         ("f_cast_module", None),  # Fortran modules needed for f_cast
+        ("f_cast_keywords", None),  # Dictionary of additional arguments to gen_arg_as_fortran
+                                     # dict(is_target=True)
         # e.g. intrinsics such as int and real
         ("f_statements", {}),
         (
@@ -259,6 +261,7 @@ def initialize():
             f_module=dict(iso_c_binding=["C_PTR"]),
             f_cast="C_LOC({f_var})",    # Cast an argument to a void *.
             f_cast_module=dict(iso_c_binding=["C_LOC"]),
+            f_cast_keywords=dict(is_target=True),
             PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
         ),
         short=Typemap(

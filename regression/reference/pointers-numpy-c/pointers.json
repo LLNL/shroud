@@ -2166,6 +2166,9 @@
             "c_type": "void",
             "cxx_type": "void",
             "f_cast": "C_LOC({f_var})",
+            "f_cast_keywords": {
+                "is_target": true
+            },
             "f_cast_module": {
                 "iso_c_binding": [
                     "C_LOC"

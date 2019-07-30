@@ -1065,6 +1065,11 @@ rv = .false.
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
                     self.update_f_module(modules, imports,
                                          arg_typemap.f_cast_module or arg_typemap.f_module)
+                    if arg_typemap.f_cast_keywords:
+                        # Recreate declaration for argument with additional attributes.
+                        # e.x. is_target=True
+                        arg_f_decl[-1] = f_ast.gen_arg_as_fortran(
+                            **arg_typemap.f_cast_keywords)
                 else:
                     arg_c_call.append(fmt.c_var)
                 continue

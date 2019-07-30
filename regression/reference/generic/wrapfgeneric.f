@@ -47,7 +47,7 @@ module generic_mod
             integer(C_LONG) :: SHT_rv
         end function c_generic_real2
 
-#if 0
+#if 1
         subroutine c_save_pointer(addr, type, size) &
                 bind(C, name="SavePointer")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
@@ -73,10 +73,10 @@ module generic_mod
     end interface generic_real2
 
     interface save_pointer
-#if 0
+#if 1
         module procedure save_pointer_float1d
 #endif
-#if 0
+#if 1
         module procedure save_pointer_float2d
 #endif
     end interface save_pointer
@@ -149,12 +149,12 @@ contains
         ! splicer end function.generic_real2_all_long
     end function generic_real2_all_long
 
-#if 0
+#if 1
     ! void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(IN) :: addr(:)
+        real(C_FLOAT), intent(IN), target :: addr(:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         SH_type = 1
@@ -165,12 +165,12 @@ contains
     end subroutine save_pointer_float1d
 #endif
 
-#if 0
+#if 1
     ! void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
     ! fortran_generic
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(IN) :: addr(:,:)
+        real(C_FLOAT), intent(IN), target :: addr(:,:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         SH_type = 1

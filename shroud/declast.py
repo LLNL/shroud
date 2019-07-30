@@ -1368,6 +1368,7 @@ class Declaration(Node):
         local=False,
         is_pointer=False,
         is_allocatable=False,
+        is_target=False,
         attributes=[],
         **kwargs
     ):
@@ -1378,6 +1379,7 @@ class Declaration(Node):
           OPTIONAL, VALUE, and INTENT
         is_pointer - True/False - have POINTER attribute
         is_allocatable - True/False - have ALLOCATABLE attribute
+        is_target - True/False - have TARGET attribute
         attributes - list of literal Fortran attributes to add to declaration.
                      i.e. [ 'pointer' ]
         """
@@ -1423,6 +1425,8 @@ class Declaration(Node):
             t.append("allocatable")
         if is_pointer:
             t.append("pointer")
+        if is_target:
+            t.append("target")
         t.extend(attributes)
 
         decl = []

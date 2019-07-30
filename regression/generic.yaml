@@ -44,7 +44,7 @@ declarations:
 
 - decl: void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))
 # cannot use size as an dummy argument name
-  cpp_if: if 0
+  cpp_if: if 1
   fortran_generic:
   - decl: (float *addr+dimension(:),    int type+implied(1))
     function_suffix: float1d
