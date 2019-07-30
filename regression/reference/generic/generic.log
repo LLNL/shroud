@@ -2,7 +2,7 @@ Read yaml generic.yaml
 C function double GetGlobalDouble()
 C function void GenericReal(double arg +intent(in)+value)
 C function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C function void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
+C function void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 Close wrapgeneric.c
 Close typesgeneric.h
 C-interface, Fortran function double GetGlobalDouble()
@@ -12,7 +12,7 @@ Fortran function void GenericReal(double arg +intent(in)+value)
 C-interface function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
 Fortran function long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Fortran function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C-interface function void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
-Fortran function void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
-Fortran function void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)
+C-interface function void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+Fortran function void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+Fortran function void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 Close wrapfgeneric.f

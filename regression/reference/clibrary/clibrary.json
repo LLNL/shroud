@@ -1686,9 +1686,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_implied_text_len_bufferify",
                     "F_C_name": "c_implied_text_len",
-                    "F_arg_c_call": "text,\t len(text, kind=C_INT),\t ltext",
+                    "F_arg_c_call": "text,\t len(text, kind=C_INT),\t SH_ltext",
                     "F_arguments": "text",
-                    "F_call_code": "call c_implied_text_len_bufferify(text,\t len(text, kind=C_INT),\t ltext)",
+                    "F_call_code": "call c_implied_text_len_bufferify(text,\t len(text, kind=C_INT),\t SH_ltext)",
                     "F_name_function": "implied_text_len",
                     "F_name_generic": "implied_text_len",
                     "F_name_impl": "implied_text_len",
@@ -1720,7 +1720,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "ltext",
+                            "c_var": "SH_ltext",
                             "f_var": "ltext",
                             "pre_call_intent": "len(text,kind=C_INT)"
                         }
@@ -1840,7 +1840,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "flag",
+                            "c_var": "SH_flag",
                             "f_var": "flag",
                             "pre_call_intent": ".FALSE._C_BOOL"
                         },
@@ -1876,7 +1876,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "ltext",
+                            "c_var": "SH_ltext",
                             "f_var": "ltext",
                             "pre_call_intent": "len(text,kind=C_INT)"
                         },
@@ -2033,9 +2033,9 @@
                     "C_return_type": "int",
                     "F_C_call": "c_implied_len",
                     "F_C_name": "c_implied_len",
-                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t ltext,\t flag",
+                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
                     "F_arguments": "text",
-                    "F_call_code": "SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR,\t ltext,\t flag)",
+                    "F_call_code": "SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag)",
                     "F_name_function": "implied_len",
                     "F_name_generic": "implied_len",
                     "F_name_impl": "implied_len",
@@ -2069,7 +2069,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "flag",
+                            "c_var": "SH_flag",
                             "f_var": "flag",
                             "pre_call_intent": ".TRUE._C_BOOL"
                         },
@@ -2105,7 +2105,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "ltext",
+                            "c_var": "SH_ltext",
                             "f_var": "ltext",
                             "pre_call_intent": "len_trim(text,kind=C_INT)"
                         },
@@ -2262,9 +2262,9 @@
                     "C_return_type": "int",
                     "F_C_call": "c_implied_len_trim",
                     "F_C_name": "c_implied_len_trim",
-                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t ltext,\t flag",
+                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
                     "F_arguments": "text",
-                    "F_call_code": "SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR,\t ltext,\t flag)",
+                    "F_call_code": "SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag)",
                     "F_name_function": "implied_len_trim",
                     "F_name_generic": "implied_len_trim",
                     "F_name_impl": "implied_len_trim",
@@ -2298,7 +2298,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "flag",
+                            "c_var": "SH_flag",
                             "f_var": "flag",
                             "pre_call_intent": ".TRUE._C_BOOL"
                         },
@@ -2388,9 +2388,9 @@
                     "C_return_type": "bool",
                     "F_C_call": "c_implied_bool_true",
                     "F_C_name": "c_implied_bool_true",
-                    "F_arg_c_call": "flag",
+                    "F_arg_c_call": "SH_flag",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_implied_bool_true(flag)",
+                    "F_call_code": "SHT_rv = c_implied_bool_true(SH_flag)",
                     "F_name_function": "implied_bool_true",
                     "F_name_generic": "implied_bool_true",
                     "F_name_impl": "implied_bool_true",
@@ -2421,7 +2421,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "flag",
+                            "c_var": "SH_flag",
                             "f_var": "flag",
                             "pre_call_intent": ".FALSE._C_BOOL"
                         },
@@ -2511,9 +2511,9 @@
                     "C_return_type": "bool",
                     "F_C_call": "c_implied_bool_false",
                     "F_C_name": "c_implied_bool_false",
-                    "F_arg_c_call": "flag",
+                    "F_arg_c_call": "SH_flag",
                     "F_arguments": "",
-                    "F_call_code": "SHT_rv = c_implied_bool_false(flag)",
+                    "F_call_code": "SHT_rv = c_implied_bool_false(SH_flag)",
                     "F_name_function": "implied_bool_false",
                     "F_name_generic": "implied_bool_false",
                     "F_name_impl": "implied_bool_false",

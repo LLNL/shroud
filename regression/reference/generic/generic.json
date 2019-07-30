@@ -734,22 +734,22 @@
                             "f_var": "addr"
                         }
                     },
-                    "asize": {
+                    "size": {
                         "fmtc": {
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_var": "asize",
+                            "c_var": "size",
                             "cxx_addr": "&",
-                            "cxx_cast_to_void_ptr": "&asize",
+                            "cxx_cast_to_void_ptr": "&size",
                             "cxx_member": ".",
                             "cxx_type": "size_t",
-                            "cxx_var": "asize",
+                            "cxx_var": "size",
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "asize",
-                            "f_var": "asize",
+                            "c_var": "SH_size",
+                            "f_var": "size",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)"
                         }
                     },
@@ -767,7 +767,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "type",
+                            "c_var": "SH_type",
                             "f_var": "type",
                             "pre_call_intent": "1"
                         }
@@ -820,7 +820,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "asize",
+                                "name": "size",
                                 "pointer": []
                             },
                             "specifier": [
@@ -834,13 +834,13 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))",
-                "declgen": "void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
+                "decl": "void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))",
+                "declgen": "void SavePointer(void * addr +intent(in)+value, int type +implied(0)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
-                    "C_call_code": "SavePointer(\taddr,\t type,\t asize);",
-                    "C_call_list": "addr,\t type,\t asize",
+                    "C_call_code": "SavePointer(\taddr,\t type,\t size);",
+                    "C_call_list": "addr,\t type,\t size",
                     "C_name": "SavePointer",
-                    "C_prototype": "void * addr,\t int type,\t size_t asize",
+                    "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_save_pointer",
@@ -892,7 +892,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "asize",
+                                    "name": "size",
                                     "pointer": []
                                 },
                                 "specifier": [
@@ -947,7 +947,7 @@
                                     "value": true
                                 },
                                 "declarator": {
-                                    "name": "asize",
+                                    "name": "size",
                                     "pointer": []
                                 },
                                 "specifier": [
@@ -1015,7 +1015,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "asize",
+                                "name": "size",
                                 "pointer": []
                             },
                             "specifier": [
@@ -1029,13 +1029,13 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
+                "decl": "void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))",
+                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t type,\t asize",
+                    "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
                     "F_arguments": "addr",
-                    "F_call_code": "call c_save_pointer(C_LOC(addr),\t type,\t asize)",
+                    "F_call_code": "call c_save_pointer(C_LOC(addr),\t SH_type,\t SH_size)",
                     "F_name_function": "save_pointer_float1d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float1d",
@@ -1102,7 +1102,7 @@
                                 "value": true
                             },
                             "declarator": {
-                                "name": "asize",
+                                "name": "size",
                                 "pointer": []
                             },
                             "specifier": [
@@ -1116,13 +1116,13 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void SavePointer(void *addr, int type+implied(0), size_t asize+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t asize +implied(size(addr))+intent(in)+value)",
+                "decl": "void SavePointer(void *addr, int type+implied(0), size_t size+implied(size(addr)))",
+                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t type,\t asize",
+                    "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
                     "F_arguments": "addr",
-                    "F_call_code": "call c_save_pointer(C_LOC(addr),\t type,\t asize)",
+                    "F_call_code": "call c_save_pointer(C_LOC(addr),\t SH_type,\t SH_size)",
                     "F_name_function": "save_pointer_float2d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float2d",

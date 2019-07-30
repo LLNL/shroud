@@ -8935,7 +8935,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "sizein",
+                            "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(in,kind=C_INT)"
                         },
@@ -9049,9 +9049,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_cos_doubles",
                     "F_C_name": "c_cos_doubles",
-                    "F_arg_c_call": "in,\t out,\t sizein",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
-                    "F_call_code": "call c_cos_doubles(in,\t out,\t sizein)",
+                    "F_call_code": "call c_cos_doubles(in,\t out,\t SH_sizein)",
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",

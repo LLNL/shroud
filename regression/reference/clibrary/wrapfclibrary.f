@@ -493,11 +493,11 @@ contains
     subroutine implied_text_len(text)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: text
-        integer(C_INT) :: ltext
-        ltext = len(text,kind=C_INT)
+        integer(C_INT) :: SH_ltext
+        SH_ltext = len(text,kind=C_INT)
         ! splicer begin function.implied_text_len
         call c_implied_text_len_bufferify(text, len(text, kind=C_INT), &
-            ltext)
+            SH_ltext)
         ! splicer end function.implied_text_len
     end subroutine implied_text_len
     ! end implied_text_len
@@ -513,13 +513,14 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: text
-        integer(C_INT) :: ltext
-        logical(C_BOOL) :: flag
+        integer(C_INT) :: SH_ltext
+        logical(C_BOOL) :: SH_flag
         integer(C_INT) :: SHT_rv
-        ltext = len(text,kind=C_INT)
-        flag = .FALSE._C_BOOL
+        SH_ltext = len(text,kind=C_INT)
+        SH_flag = .FALSE._C_BOOL
         ! splicer begin function.implied_len
-        SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR, ltext, flag)
+        SHT_rv = c_implied_len(trim(text)//C_NULL_CHAR, SH_ltext, &
+            SH_flag)
         ! splicer end function.implied_len
     end function implied_len
 
@@ -534,14 +535,14 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: text
-        integer(C_INT) :: ltext
-        logical(C_BOOL) :: flag
+        integer(C_INT) :: SH_ltext
+        logical(C_BOOL) :: SH_flag
         integer(C_INT) :: SHT_rv
-        ltext = len_trim(text,kind=C_INT)
-        flag = .TRUE._C_BOOL
+        SH_ltext = len_trim(text,kind=C_INT)
+        SH_flag = .TRUE._C_BOOL
         ! splicer begin function.implied_len_trim
-        SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR, ltext, &
-            flag)
+        SHT_rv = c_implied_len_trim(trim(text)//C_NULL_CHAR, SH_ltext, &
+            SH_flag)
         ! splicer end function.implied_len_trim
     end function implied_len_trim
 
@@ -553,11 +554,11 @@ contains
     function implied_bool_true() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
-        logical(C_BOOL) :: flag
+        logical(C_BOOL) :: SH_flag
         logical :: SHT_rv
-        flag = .TRUE._C_BOOL
+        SH_flag = .TRUE._C_BOOL
         ! splicer begin function.implied_bool_true
-        SHT_rv = c_implied_bool_true(flag)
+        SHT_rv = c_implied_bool_true(SH_flag)
         ! splicer end function.implied_bool_true
     end function implied_bool_true
 
@@ -569,11 +570,11 @@ contains
     function implied_bool_false() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
-        logical(C_BOOL) :: flag
+        logical(C_BOOL) :: SH_flag
         logical :: SHT_rv
-        flag = .FALSE._C_BOOL
+        SH_flag = .FALSE._C_BOOL
         ! splicer begin function.implied_bool_false
-        SHT_rv = c_implied_bool_false(flag)
+        SHT_rv = c_implied_bool_false(SH_flag)
         ! splicer end function.implied_bool_false
     end function implied_bool_false
 

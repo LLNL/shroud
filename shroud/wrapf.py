@@ -1377,11 +1377,16 @@ rv = .false.
                     continue
                 elif implied:
                     # implied is computed then passed to C++.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
-                    fmt_arg.pre_call_intent = ftn_implied(f_arg.attrs["implied"], node, f_arg)
-                    append_format(pre_call, "{f_var} = {pre_call_intent}", fmt_arg)
-                    arg_c_call.append(f_arg.name)
-#                    arg_c_call.append(ftn_implied(f_arg.attrs["implied"], node, f_arg))
+                    fmt_arg.pre_call_intent, intermediate = ftn_implied(
+                        f_arg.attrs["implied"], node, f_arg)
+                    if intermediate:
+                        fmt_arg.c_var = "SH_" + fmt_arg.f_var
+                        arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                            name=fmt_arg.c_var, local=True, bindc=True))
+                        append_format(pre_call, "{c_var} = {pre_call_intent}", fmt_arg)
+                        arg_c_call.append(fmt_arg.c_var)
+                    else:
+                        arg_c_call.append(fmt_arg.pre_call_intent)
                     self.update_f_module(modules, imports, f_arg.typemap.f_module)
                     need_wrapper = True
                     continue
@@ -1842,6 +1847,10 @@ class ToImplied(todict.PrintNode):
         self.expr = expr
         self.func = func
         self.arg = arg
+        # If True, create an intermediate variable.
+        # Helps with debugging, and implies a type conversion of the expression
+        # to the C function argument's type.
+        self.intermediate = True
 
     def visit_Identifier(self, node):
         # Look for functions
@@ -1856,16 +1865,19 @@ class ToImplied(todict.PrintNode):
             # size(arg)
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
+            self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "len":
             # len(arg)
+            self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "len({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "len_trim":
             # len_trim(arg)
+            self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "len_trim({},kind={})".format(argname, arg_typemap.f_kind)
@@ -1883,7 +1895,7 @@ def ftn_implied(expr, func, arg):
     """
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func, arg)
-    return visitor.visit(node)
+    return visitor.visit(node), visitor.intermediate
 
 
 def attr_allocatable(allocatable, node, arg, pre_call):
