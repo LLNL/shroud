@@ -769,7 +769,7 @@
                         "fmtf": {
                             "c_var": "SH_type",
                             "f_var": "type",
-                            "pre_call_intent": "1"
+                            "pre_call_intent": "T_FLOAT"
                         }
                     }
                 },
@@ -871,7 +871,7 @@
                             },
                             {
                                 "attrs": {
-                                    "implied": "1",
+                                    "implied": "T_FLOAT",
                                     "intent": "in",
                                     "value": true
                                 },
@@ -901,7 +901,7 @@
                             }
                         ],
                         "function_suffix": "float1d",
-                        "generic": "(float *addr+dimension(:),    int type+implied(1))"
+                        "generic": "(float *addr+dimension(:),    int type+implied(T_FLOAT))"
                     },
                     {
                         "decls": [
@@ -926,7 +926,7 @@
                             },
                             {
                                 "attrs": {
-                                    "implied": "1",
+                                    "implied": "T_FLOAT",
                                     "intent": "in",
                                     "value": true
                                 },
@@ -956,7 +956,7 @@
                             }
                         ],
                         "function_suffix": "float2d",
-                        "generic": "(float *addr+dimension(:,:),  int type+implied(1))"
+                        "generic": "(float *addr+dimension(:,:),  int type+implied(T_FLOAT))"
                     }
                 ],
                 "linenumber": 45,
@@ -994,7 +994,7 @@
                         },
                         {
                             "attrs": {
-                                "implied": "1",
+                                "implied": "T_FLOAT",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1029,7 +1029,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
@@ -1081,7 +1081,7 @@
                         },
                         {
                             "attrs": {
-                                "implied": "1",
+                                "implied": "T_FLOAT",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1116,7 +1116,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(1)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
+                "declgen": "void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)",
                 "fmtdict": {
                     "F_C_call": "c_save_pointer",
                     "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",

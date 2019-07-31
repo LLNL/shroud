@@ -46,15 +46,24 @@ declarations:
 # cannot use size as an dummy argument name
   cpp_if: if 1
   fortran_generic:
-  - decl: (float *addr+dimension(:),    int type+implied(1))
+  - decl: (float *addr+dimension(:),    int type+implied(T_FLOAT))
     function_suffix: float1d
-  - decl: (float *addr+dimension(:,:),  int type+implied(1))
+  - decl: (float *addr+dimension(:,:),  int type+implied(T_FLOAT))
     function_suffix: float2d
 
-#  - decl: (double *addr+dimension(:),   int type+implied(2))
-#  - decl: (double *addr+dimension(:,:), int type+implied(2))
+#  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))
+#  - decl: (double *addr+dimension(:,:), int type+implied(T_DOUBLE))
 
 
 - decl: void GetPointer(void **addr+intent(out),
                         int *type+intent(out),
                         size_t *size+intent(out))
+
+
+splicer_code:
+  f:
+    module_top:
+    -  "integer, parameter :: T_INT = 1"
+    -  "integer, parameter :: T_LONG = 2"
+    -  "integer, parameter :: T_FLOAT = 3"
+    -  "integer, parameter :: T_DOUBLE = 4"

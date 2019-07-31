@@ -60,7 +60,11 @@ contains
 
     call save_pointer(var1)
 
+    fwa = C_NULL_PTR
     call get_pointer(fwa, itype, isize)
+    call assert_true(c_associated(fwa), "fwa is not none")
+    call assert_true(T_FLOAT == itype, "type of var1")
+    call assert_true(size(var1) == isize, "size of var1")
 
   end subroutine test_database
 
