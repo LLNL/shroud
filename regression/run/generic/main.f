@@ -19,6 +19,7 @@ program tester
   call init_fruit
 
   call test_functions
+  call test_database
 
   call fruit_summary
   call fruit_finalize
@@ -48,5 +49,19 @@ contains
     call assert_true(30_C_LONG == rv, "generic_real2 long")
 
   end subroutine test_functions
+
+  subroutine test_database
+    real(C_FLOAT) var1(10)
+    integer(C_INT)  itype
+    integer(C_SIZE_T) isize
+    type(C_PTR) fwa
+
+    call set_case_name("test_database")
+
+    call save_pointer(var1)
+
+    call get_pointer(fwa, itype, isize)
+
+  end subroutine test_database
 
 end program tester

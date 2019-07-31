@@ -15,3 +15,4 @@ void GenericReal(double arg);
 long GenericReal2(long arg1, long arg2);
 
 void SavePointer(void *addr, int type, size_t size);
+void GetPointer(void **addr, int *type, size_t *size);

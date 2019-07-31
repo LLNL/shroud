@@ -58,6 +58,15 @@ module generic_mod
         end subroutine c_save_pointer
 #endif
 
+        subroutine get_pointer(addr, type, size) &
+                bind(C, name="GetPointer")
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), intent(OUT) :: addr
+            integer(C_INT), intent(OUT) :: type
+            integer(C_SIZE_T), intent(OUT) :: size
+        end subroutine get_pointer
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

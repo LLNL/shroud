@@ -53,3 +53,8 @@ declarations:
 
 #  - decl: (double *addr+dimension(:),   int type+implied(2))
 #  - decl: (double *addr+dimension(:,:), int type+implied(2))
+
+
+- decl: void GetPointer(void **addr+intent(out),
+                        int *type+intent(out),
+                        size_t *size+intent(out))
