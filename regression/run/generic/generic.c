@@ -42,3 +42,10 @@ void GetPointer(void **addr, int *type, size_t *size)
   *type = global_type;
   *size = global_size;
 }
+
+void GetPointerAsPointer(void **addr, int *type, size_t *size)
+{
+  *addr = global_void;
+  *type = global_type;
+  *size = global_size;
+}

@@ -1288,6 +1288,157 @@
                 },
                 "linenumber": 58,
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "addr",
+                            "cxx_member": "->",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "addr",
+                            "f_var": "addr"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "size",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "size",
+                            "cxx_member": "->",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "size",
+                            "f_var": "size"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "type",
+                            "cxx_addr": "",
+                            "cxx_cast_to_void_ptr": "type",
+                            "cxx_member": "->",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0"
+                        },
+                        "fmtf": {
+                            "c_var": "type",
+                            "f_var": "type"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "GetPointerAsPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "size",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out), size_t *size+intent(out))",
+                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))",
+                "fmtdict": {
+                    "C_call_code": "GetPointerAsPointer(\taddr,\t type,\t size);",
+                    "C_call_list": "addr,\t type,\t size",
+                    "C_name": "GetPointerAsPointer",
+                    "C_prototype": "void * * addr,\t int * type,\t size_t * size",
+                    "C_return_code": "return;",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_pointer_as_pointer",
+                    "F_C_name": "get_pointer_as_pointer",
+                    "F_arg_c_call": "addr,\t type,\t size",
+                    "F_arguments": "addr,\t type,\t size",
+                    "F_call_code": "call c_get_pointer_as_pointer(addr,\t type,\t size)",
+                    "F_name_function": "get_pointer_as_pointer",
+                    "F_name_generic": "get_pointer_as_pointer",
+                    "F_name_impl": "get_pointer_as_pointer",
+                    "F_subprogram": "subroutine",
+                    "c_const": "",
+                    "function_name": "GetPointerAsPointer",
+                    "underscore_name": "get_pointer_as_pointer"
+                },
+                "linenumber": 61,
+                "options": {}
             }
         ],
         "language": "c",

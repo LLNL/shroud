@@ -58,6 +58,10 @@ declarations:
 - decl: void GetPointer(void **addr+intent(out),
                         int *type+intent(out),
                         size_t *size+intent(out))
+- decl: void GetPointerAsPointer(
+               void **addr+intent(out),
+               int *type+intent(out),
+               size_t *size+intent(out))
 
 
 splicer_code:

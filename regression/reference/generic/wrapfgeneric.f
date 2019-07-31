@@ -71,6 +71,15 @@ module generic_mod
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine get_pointer
 
+        subroutine get_pointer_as_pointer(addr, type, size) &
+                bind(C, name="GetPointerAsPointer")
+            use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
+            implicit none
+            type(C_PTR), intent(OUT) :: addr
+            integer(C_INT), intent(OUT) :: type
+            integer(C_SIZE_T), intent(OUT) :: size
+        end subroutine get_pointer_as_pointer
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface

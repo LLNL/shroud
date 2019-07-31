@@ -4,6 +4,7 @@ C function void GenericReal(double arg +intent(in)+value)
 C function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C function void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 C function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
+C function void GetPointerAsPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
 Close wrapgeneric.c
 Close typesgeneric.h
 C-interface, Fortran function double GetGlobalDouble()
@@ -17,4 +18,5 @@ C-interface function void SavePointer(void * addr +intent(in)+value, int type +i
 Fortran function void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 Fortran function void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 C-interface, Fortran function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
+C-interface, Fortran function void GetPointerAsPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
 Close wrapfgeneric.f
