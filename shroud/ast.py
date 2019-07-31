@@ -1562,17 +1562,26 @@ def clean_dictionary(ddct):
         # Convert to list of TemplateArgument instances
         fortran_generic = ddct["fortran_generic"]
         if not isinstance(fortran_generic, list):
-            raise RuntimeError("fortran_generic must be a list")
+            if isinstance(fortran_generic, dict):
+                linenumber=fortran_generic.get("__line__", "?")
+            else:
+                linenumber=ddct.get("__line__", "?")
+            raise RuntimeError("fortran_generic must be a list around line {}"
+                               .format(linenumber))
         newlst = []
         isuffix = 0
         for dct in fortran_generic:
             if not isinstance(dct, dict):
+                linenumber=ddct.get("__line__", "?")
                 raise RuntimeError(
-                    "fortran_generic must be a list of dictionaries"
+                    "fortran_generic must be a list of dictionaries around line {}"
+                    .format(linenumber)
                 )
+            linenumber=dct.get("__line__", "?")
             if "decl" not in dct:
                 raise RuntimeError(
-                    "decl must be defined for each dictionary in fortran_generic"
+                    "decl must be defined for each dictionary in fortran_generic at line {}"
+                    .format(linenumber)
                 )
             newlst.append(
                 FortranGeneric(
@@ -1580,7 +1589,7 @@ def clean_dictionary(ddct):
                     fmtdict=dct.get("format", None),
                     options=dct.get("options", None),
                     function_suffix=dct.get("function_suffix", str(isuffix)),
-                    linenumber=dct.get("__line__", "?"),
+                    linenumber=linenumber,
                 )
             )
             isuffix += 1

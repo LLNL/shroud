@@ -45,9 +45,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ```
   - decl: void GenericReal(double arg)
     fortran_generic:
-       - decl: float arg
+       - decl: (float arg)
          function_suffix: float
-       - decl: double arg
+       - decl: (double arg)
          function_suffix: double
 ```
 
