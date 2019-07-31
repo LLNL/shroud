@@ -9,6 +9,9 @@
 #include "generic.h"
 
 double global_double;
+void *global_void;
+int global_type;
+size_t global_size;
 
 double GetGlobalDouble(void)
 {
@@ -28,8 +31,14 @@ long GenericReal2(long arg1, long arg2)
 
 void SavePointer(void *addr, int type, size_t size)
 {
+  global_void = addr;
+  global_type = type;
+  global_size = size;
 }
 
 void GetPointer(void **addr, int *type, size_t *size)
 {
+  *addr = global_void;
+  *type = global_type;
+  *size = global_size;
 }
