@@ -96,23 +96,19 @@ module generic_mod
         module procedure generic_real2_all_long
     end interface generic_real2
 
+#if 0
     interface get_pointer_as_pointer
-#if 0
         module procedure get_pointer_as_pointer_float1d
-#endif
-#if 0
         module procedure get_pointer_as_pointer_float2d
-#endif
     end interface get_pointer_as_pointer
+#endif
 
+#if 1
     interface save_pointer
-#if 1
         module procedure save_pointer_float1d
-#endif
-#if 1
         module procedure save_pointer_float2d
-#endif
     end interface save_pointer
+#endif
 
 contains
 

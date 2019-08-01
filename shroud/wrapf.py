@@ -634,17 +634,36 @@ rv = .false.
             generics = self.f_function_generic[key]
             if len(generics) > 1:
                 self._push_splicer(key)
+
+                # Promote cpp_if to interface scope if all identical
+                # Useful for fortran_generic.
+                iface_cpp_if = generics[0].cpp_if
+                if iface_cpp_if is not None:
+                    for node in generics:
+                        if node.cpp_if != iface_cpp_if:
+                            iface_cpp_if = None
+                            break
+
                 iface.append("")
+                if iface_cpp_if:
+                    iface.append("#" + iface_cpp_if)
                 iface.append("interface " + key)
                 iface.append(1)
-                for node in generics:
-                    if node.cpp_if:
-                        iface.append("#" + node.cpp_if)
-                    iface.append("module procedure " + node.fmtdict.F_name_impl)
-                    if node.cpp_if:
-                        iface.append("#endif")
+                if iface_cpp_if:
+                    for node in generics:
+                        iface.append("module procedure " + node.fmtdict.F_name_impl)
+                else:
+                    for node in generics:
+                        if node.cpp_if:
+                            iface.append("#" + node.cpp_if)
+                            iface.append("module procedure " + node.fmtdict.F_name_impl)
+                            iface.append("#endif")
+                        else:
+                            iface.append("module procedure " + node.fmtdict.F_name_impl)
                 iface.append(-1)
                 iface.append("end interface " + key)
+                if iface_cpp_if:
+                    iface.append("#endif")
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
