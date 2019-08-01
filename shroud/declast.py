@@ -1036,21 +1036,11 @@ class Declaration(Node):
 
     def find_arg_by_name(self, name):
         """Find argument in params with name."""
-        if self.params is None:
-            return None
-        for param in self.params:
-            if param.name == name:
-                return param
-        return None
+        return find_arg_by_name(self.params, name)
 
     def find_arg_index_by_name(self, name):
         """Return index of argument in params with name."""
-        if self.params is None:
-            return -1
-        for i, param in enumerate(self.params):
-            if param.name == name:
-                return i
-        return -1
+        return find_arg_index_by_name(self.params, name)
 
     def _as_arg(self, name):
         """Create an argument to hold the function result.
