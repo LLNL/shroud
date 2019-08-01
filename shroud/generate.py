@@ -1550,12 +1550,13 @@ class CheckImplied(todict.PrintNode):
         self.decls = decls
 
     def visit_Identifier(self, node):
-        """Check arguments to size function.
+        """Check arguments to implied attribute.
 
         Args:
             node -
         """
         if node.args is None:
+            # Not a function.
             return node.name
         elif node.name == "size":
             # size(arg)
@@ -1581,7 +1582,7 @@ class CheckImplied(todict.PrintNode):
             # len(arg)  len_trim(arg)
             if len(node.args) != 1:
                 raise RuntimeError(
-                    "Too many arguments to 'size': ".format(self.expr)
+                    "Too many arguments to '{}': {}".format(node.name, self.expr)
                 )
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
@@ -1598,11 +1599,8 @@ class CheckImplied(todict.PrintNode):
 #                )
             return node.name
         else:
-            raise RuntimeError(
-                "Unexpected function '{}' in expression: {}".format(
-                    node.name, self.expr
-                )
-            )
+            # Assume a user defined function.
+            return self.param_list(node)
 
 
 def check_implied_attrs(decls):
@@ -1619,19 +1617,17 @@ def check_implied_attrs(decls):
     for decl in decls:
         expr = decl.attrs.get("implied", None)
         if expr:
-            node = declast.ExprParser(expr).expression()
-            visitor = CheckImplied(expr, decls)
-            visitor.visit(node)
+            check_implied(expr, decls)
 
 
-def check_implied(expr, func):
+def check_implied(expr, decls):
     """Check implied attribute expression for errors.
-    Used with testing.
+    expr may reference other arguments in decls.
 
     Args:
-        expr -
-        func -
+        expr  - implied attribute value
+        decls - list of Declarations
     """
     node = declast.ExprParser(expr).expression()
-    visitor = CheckImplied(expr, func.ast.params)
+    visitor = CheckImplied(expr, decls)
     return visitor.visit(node)

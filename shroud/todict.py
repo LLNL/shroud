@@ -351,7 +351,7 @@ class PrintNode(visitor.Visitor):
         for arg in node.args:
             n.append(self.visit(arg))
             n.append(",")
-            n[-1] = ")"
+        n[-1] = ")"
         return "".join(n)
 
     def comma_list(self, lst):

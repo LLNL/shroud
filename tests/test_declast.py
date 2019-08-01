@@ -916,11 +916,21 @@ class CheckExpr(unittest.TestCase):
         self.assertEqual("id()", todict.print_node(r))
         self.assertEqual(todict.to_dict(r), {"name": "id", "args": []})
 
-    def test_identifier_with_args(self):
+    def test_identifier_with_arg(self):
         r = declast.check_expr("id(arg1)")
         self.assertEqual("id(arg1)", todict.print_node(r))
         self.assertEqual(
             todict.to_dict(r), {"name": "id", "args": [{"name": "arg1"}]}
+        )
+
+    def test_identifier_with_args(self):
+        r = declast.check_expr("id(arg1,1)")
+        self.assertEqual("id(arg1,1)", todict.print_node(r))
+        self.assertEqual(
+            todict.to_dict(r), {"name": "id", "args": [
+                {"name": "arg1"},
+                {"constant": "1"},
+            ]}
         )
 
     def test_constant(self):

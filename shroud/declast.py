@@ -281,14 +281,14 @@ class ExprParser(RecursiveDescent):
 
     def argument_list(self):
         """
-        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
+        <argument-list> ::= '(' <expression>?  [ , <expression> ]* ')'
 
         """
         self.enter("argument_list")
         params = []
         self.next()  # consume LPAREN peeked at in caller
         while self.token.typ != "RPAREN":
-            node = self.identifier()
+            node = self.expression()
             params.append(node)
             if not self.have("COMMA"):
                 break
