@@ -25,7 +25,6 @@ module generic_mod
     ! splicer end module_top
 
     interface
-
         function get_global_double() &
                 result(SHT_rv) &
                 bind(C, name="GetGlobalDouble")
@@ -33,14 +32,20 @@ module generic_mod
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function get_global_double
+    end interface
 
+    ! start c_generic_real
+    interface
         subroutine c_generic_real(arg) &
                 bind(C, name="GenericReal")
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), value, intent(IN) :: arg
         end subroutine c_generic_real
+    end interface
+    ! end c_generic_real
 
+    interface
         function c_generic_real2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="GenericReal2")
@@ -50,8 +55,10 @@ module generic_mod
             integer(C_LONG), value, intent(IN) :: arg2
             integer(C_LONG) :: SHT_rv
         end function c_generic_real2
+    end interface
 
 #if 1
+    interface
         subroutine c_save_pointer(addr, type, size) &
                 bind(C, name="SavePointer")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
@@ -60,8 +67,10 @@ module generic_mod
             integer(C_INT), value, intent(IN) :: type
             integer(C_SIZE_T), value, intent(IN) :: size
         end subroutine c_save_pointer
+    end interface
 #endif
 
+    interface
         subroutine get_pointer(addr, type, size) &
                 bind(C, name="GetPointer")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
@@ -70,8 +79,10 @@ module generic_mod
             integer(C_INT), intent(OUT) :: type
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine get_pointer
+    end interface
 
 #if 0
+    interface
         subroutine c_get_pointer_as_pointer(addr, type, size) &
                 bind(C, name="GetPointerAsPointer")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
@@ -80,16 +91,20 @@ module generic_mod
             integer(C_INT), intent(OUT) :: type
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine c_get_pointer_as_pointer
+    end interface
 #endif
 
+    interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
+    ! start interface generic_real
     interface generic_real
         module procedure generic_real_float
         module procedure generic_real_double
     end interface generic_real
+    ! end interface generic_real
 
     interface generic_real2
         module procedure generic_real2_all_int
@@ -118,6 +133,7 @@ contains
     !! \brief Single argument generic
     !!
     !<
+    ! start generic_real_float
     subroutine generic_real_float(arg)
         use iso_c_binding, only : C_DOUBLE, C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -125,6 +141,7 @@ contains
         call c_generic_real(real(arg, C_DOUBLE))
         ! splicer end function.generic_real_float
     end subroutine generic_real_float
+    ! end generic_real_float
 
     ! void GenericReal(double arg +intent(in)+value)
     ! fortran_generic
@@ -132,6 +149,7 @@ contains
     !! \brief Single argument generic
     !!
     !<
+    ! start generic_real_double
     subroutine generic_real_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -139,6 +157,7 @@ contains
         call c_generic_real(arg)
         ! splicer end function.generic_real_double
     end subroutine generic_real_double
+    ! end generic_real_double
 
     ! long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)
     ! fortran_generic

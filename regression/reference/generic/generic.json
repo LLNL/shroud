@@ -145,7 +145,7 @@
                     "function_name": "GetGlobalDouble",
                     "underscore_name": "get_global_double"
                 },
-                "linenumber": 22,
+                "linenumber": 23,
                 "options": {}
             },
             {
@@ -199,7 +199,7 @@
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(double arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 25,
+                    "__line__": 28,
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
@@ -256,8 +256,10 @@
                         "generic": "(double arg)"
                     }
                 ],
-                "linenumber": 24,
+                "linenumber": 25,
                 "options": {
+                    "__line__": 26,
+                    "literalinclude": true,
                     "wrap_fortran": false
                 }
             },
@@ -293,7 +295,7 @@
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(float arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 25,
+                    "__line__": 28,
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
@@ -309,8 +311,10 @@
                     "function_suffix": "_float",
                     "underscore_name": "generic_real"
                 },
-                "linenumber": 24,
+                "linenumber": 25,
                 "options": {
+                    "__line__": 26,
+                    "literalinclude": true,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -349,7 +353,7 @@
                 "decl": "void GenericReal(double arg)",
                 "declgen": "void GenericReal(double arg +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 25,
+                    "__line__": 28,
                     "brief": "Single argument generic"
                 },
                 "fmtdict": {
@@ -365,8 +369,10 @@
                     "function_suffix": "_double",
                     "underscore_name": "generic_real"
                 },
-                "linenumber": 24,
+                "linenumber": 25,
                 "options": {
+                    "__line__": 26,
+                    "literalinclude": true,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -466,7 +472,7 @@
                 "decl": "long GenericReal2(long arg1, long arg2)",
                 "declgen": "long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 34,
+                    "__line__": 37,
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
@@ -553,7 +559,7 @@
                         "generic": "(long arg1, long arg2)"
                     }
                 ],
-                "linenumber": 33,
+                "linenumber": 36,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -610,7 +616,7 @@
                 "decl": "long GenericReal2(long arg1, long arg2)",
                 "declgen": "long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 34,
+                    "__line__": 37,
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
@@ -628,7 +634,7 @@
                     "function_suffix": "_all_int",
                     "underscore_name": "generic_real2"
                 },
-                "linenumber": 33,
+                "linenumber": 36,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -688,7 +694,7 @@
                 "decl": "long GenericReal2(long arg1, long arg2)",
                 "declgen": "long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 34,
+                    "__line__": 37,
                     "brief": "Two argument generic",
                     "description": "It is not possible to call the function with (int, long)\nor (long, int)\n"
                 },
@@ -706,7 +712,7 @@
                     "function_suffix": "_all_long",
                     "underscore_name": "generic_real2"
                 },
-                "linenumber": 33,
+                "linenumber": 36,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -959,7 +965,7 @@
                         "generic": "(float *addr+dimension(:,:),  int type+implied(T_FLOAT))"
                     }
                 ],
-                "linenumber": 45,
+                "linenumber": 48,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -1043,7 +1049,7 @@
                     "function_suffix": "_float1d",
                     "underscore_name": "save_pointer"
                 },
-                "linenumber": 45,
+                "linenumber": 48,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1130,7 +1136,7 @@
                     "function_suffix": "_float2d",
                     "underscore_name": "save_pointer"
                 },
-                "linenumber": 45,
+                "linenumber": 48,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1286,7 +1292,7 @@
                     "function_name": "GetPointer",
                     "underscore_name": "get_pointer"
                 },
-                "linenumber": 58,
+                "linenumber": 61,
                 "options": {}
             },
             {
@@ -1568,7 +1574,7 @@
                         "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
                     }
                 ],
-                "linenumber": 61,
+                "linenumber": 64,
                 "options": {
                     "wrap_fortran": false
                 }
@@ -1664,7 +1670,7 @@
                     "function_suffix": "_float1d",
                     "underscore_name": "get_pointer_as_pointer"
                 },
-                "linenumber": 61,
+                "linenumber": 64,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1763,7 +1769,7 @@
                     "function_suffix": "_float2d",
                     "underscore_name": "get_pointer_as_pointer"
                 },
-                "linenumber": 61,
+                "linenumber": 64,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": true,
@@ -1848,7 +1854,7 @@
             "debug_index": false,
             "doxygen": true,
             "literalinclude": false,
-            "literalinclude2": false,
+            "literalinclude2": true,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,

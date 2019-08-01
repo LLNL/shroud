@@ -173,15 +173,19 @@ format
 fortran_generic
     A dictionary of lists that define generic functions which will be
     created.  This allows different types to be passed to the function.
-    This feature is provided by C which will promote arguments:
+    This feature is provided by C which will promote arguments.
+    Each generic function will have a suffix which defaults to the sequence number.
+    This change be changed by adding *function_suffix* for a declaration.
 
 .. code-block:: yaml
 
-      decl: void Function9(double arg)
+      decl: void GenericReal(double arg)
       fortran_generic:
-         arg:
-         -  float
-         -  double
+      - decl: (float arg)
+        function_suffix: suffix1
+      - decl: (double arg)
+
+    A full example is at :ref:`GenericReal <example_GenericReal>`.
 
 options
    Options fields for the function.

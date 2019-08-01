@@ -512,6 +512,7 @@ It may now be used with single or double precision arguments:
   call fortran_generic(1.0)
   call fortran_generic(1.0d0)
 
+A full example is at :ref:`GenericReal <example_GenericReal>`.
 
 Types
 -----

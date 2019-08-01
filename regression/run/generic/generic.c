@@ -18,11 +18,13 @@ double GetGlobalDouble(void)
   return global_double;
 }
 
+! start GenericReal
 void GenericReal(double arg)
 {
     global_double = arg;
     return;
 }
+! end GenericReal
 
 long GenericReal2(long arg1, long arg2)
 {

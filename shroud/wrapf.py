@@ -635,7 +635,7 @@ rv = .false.
             if len(generics) > 1:
                 self._push_splicer(key)
 
-                # Promote cpp_if to interface scope if all identical
+                # Promote cpp_if to interface scope if all are identical.
                 # Useful for fortran_generic.
                 iface_cpp_if = generics[0].cpp_if
                 if iface_cpp_if is not None:
@@ -644,9 +644,17 @@ rv = .false.
                             iface_cpp_if = None
                             break
 
+                literalinclude = False
+                for node in generics:
+                    if node.options.literalinclude:
+                        literalinclude = True
+                        break
+
                 iface.append("")
                 if iface_cpp_if:
                     iface.append("#" + iface_cpp_if)
+                if literalinclude:
+                    iface.append("! start interface " + key)
                 iface.append("interface " + key)
                 iface.append(1)
                 if iface_cpp_if:
@@ -662,6 +670,8 @@ rv = .false.
                             iface.append("module procedure " + node.fmtdict.F_name_impl)
                 iface.append(-1)
                 iface.append("end interface " + key)
+                if literalinclude:
+                    iface.append("! end interface " + key)
                 if iface_cpp_if:
                     iface.append("#endif")
                 self._pop_splicer(key)
