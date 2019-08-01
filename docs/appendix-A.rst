@@ -1601,12 +1601,11 @@ The Fortran shadow class adds the type-bound method for the destructor:
 The constructors are not type-bound procedures. But they
 are combined into a generic interface.
 
-.. code-block:: fortran
-
-    interface class1_new
-        module procedure class1_new_default
-        module procedure class1_new_flag
-    end interface class1_new
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: ! start interface class1_new
+   :end-before: ! end interface class1_new
+   :dedent: 4
 
 A class instance is created and destroy from Fortran as:
 

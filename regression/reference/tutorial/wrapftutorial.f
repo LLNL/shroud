@@ -749,10 +749,12 @@ module tutorial_mod
         ! splicer end additional_interfaces
     end interface
 
+    ! start interface class1_new
     interface class1_new
         module procedure class1_new_default
         module procedure class1_new_flag
     end interface class1_new
+    ! end interface class1_new
 
     interface fortran_generic_overloaded
         module procedure fortran_generic_overloaded_0
@@ -770,11 +772,13 @@ module tutorial_mod
         module procedure template_argument_double
     end interface template_argument
 
+    ! start interface use_default_arguments
     interface use_default_arguments
         module procedure use_default_arguments
         module procedure use_default_arguments_arg1
         module procedure use_default_arguments_arg1_arg2
     end interface use_default_arguments
+    ! end interface use_default_arguments
 
     interface use_default_overload
         module procedure use_default_overload_num
