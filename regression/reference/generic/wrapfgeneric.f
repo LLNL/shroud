@@ -71,14 +71,16 @@ module generic_mod
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine get_pointer
 
-        subroutine get_pointer_as_pointer(addr, type, size) &
+#if 0
+        subroutine c_get_pointer_as_pointer(addr, type, size) &
                 bind(C, name="GetPointerAsPointer")
             use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
             implicit none
             type(C_PTR), intent(OUT) :: addr
             integer(C_INT), intent(OUT) :: type
             integer(C_SIZE_T), intent(OUT) :: size
-        end subroutine get_pointer_as_pointer
+        end subroutine c_get_pointer_as_pointer
+#endif
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -93,6 +95,15 @@ module generic_mod
         module procedure generic_real2_all_int
         module procedure generic_real2_all_long
     end interface generic_real2
+
+    interface get_pointer_as_pointer
+#if 0
+        module procedure get_pointer_as_pointer_float1d
+#endif
+#if 0
+        module procedure get_pointer_as_pointer_float2d
+#endif
+    end interface get_pointer_as_pointer
 
     interface save_pointer
 #if 1
@@ -201,6 +212,34 @@ contains
         call c_save_pointer(C_LOC(addr), SH_type, SH_size)
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
+#endif
+
+#if 0
+    ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+    ! fortran_generic
+    subroutine get_pointer_as_pointer_float1d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        real(C_FLOAT), intent(OUT), pointer, target :: addr(:)
+        integer(C_INT) :: type
+        integer(C_SIZE_T) :: size
+        ! splicer begin function.get_pointer_as_pointer_float1d
+        call c_get_pointer_as_pointer(C_LOC(addr), type, size)
+        ! splicer end function.get_pointer_as_pointer_float1d
+    end subroutine get_pointer_as_pointer_float1d
+#endif
+
+#if 0
+    ! void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+    ! fortran_generic
+    subroutine get_pointer_as_pointer_float2d(addr)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
+        real(C_FLOAT), intent(OUT), pointer, target :: addr(:)
+        integer(C_INT) :: type
+        integer(C_SIZE_T) :: size
+        ! splicer begin function.get_pointer_as_pointer_float2d
+        call c_get_pointer_as_pointer(C_LOC(addr), type, size)
+        ! splicer end function.get_pointer_as_pointer_float2d
+    end subroutine get_pointer_as_pointer_float2d
 #endif
 
     ! splicer begin additional_functions

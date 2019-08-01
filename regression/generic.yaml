@@ -60,8 +60,14 @@ declarations:
                         size_t *size+intent(out))
 - decl: void GetPointerAsPointer(
                void **addr+intent(out),
-               int *type+intent(out),
-               size_t *size+intent(out))
+               int *type+intent(out)+hidden,
+               size_t *size+intent(out)+hidden)
+  cpp_if: if 0
+  fortran_generic:
+  - decl: (float **addr+intent(out)+dimension(:)+deref(pointer))
+    function_suffix: float1d
+  - decl: (float **addr+intent(out)+dimension(:,:)+deref(pointer))
+    function_suffix: float2d
 
 
 splicer_code:

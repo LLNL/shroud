@@ -1346,6 +1346,7 @@
                         }
                     }
                 },
+                "_overloaded": true,
                 "ast": {
                     "declarator": {
                         "name": "GetPointerAsPointer",
@@ -1375,6 +1376,7 @@
                         },
                         {
                             "attrs": {
+                                "hidden": true,
                                 "intent": "out",
                                 "value": false
                             },
@@ -1393,6 +1395,7 @@
                         },
                         {
                             "attrs": {
+                                "hidden": true,
                                 "intent": "out",
                                 "value": false
                             },
@@ -1415,8 +1418,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out), size_t *size+intent(out))",
-                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))",
+                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
+                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fmtdict": {
                     "C_call_code": "GetPointerAsPointer(\taddr,\t type,\t size);",
                     "C_call_list": "addr,\t type,\t size",
@@ -1424,21 +1427,349 @@
                     "C_prototype": "void * * addr,\t int * type,\t size_t * size",
                     "C_return_code": "return;",
                     "C_return_type": "void",
-                    "F_C_call": "c_get_pointer_as_pointer",
-                    "F_C_name": "get_pointer_as_pointer",
-                    "F_arg_c_call": "addr,\t type,\t size",
-                    "F_arguments": "addr,\t type,\t size",
-                    "F_call_code": "call c_get_pointer_as_pointer(addr,\t type,\t size)",
-                    "F_name_function": "get_pointer_as_pointer",
-                    "F_name_generic": "get_pointer_as_pointer",
-                    "F_name_impl": "get_pointer_as_pointer",
-                    "F_subprogram": "subroutine",
+                    "F_C_name": "c_get_pointer_as_pointer",
                     "c_const": "",
                     "function_name": "GetPointerAsPointer",
                     "underscore_name": "get_pointer_as_pointer"
                 },
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "dimension": ":",
+                                    "intent": "out",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "addr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "attrs": {
+                                    "hidden": true,
+                                    "intent": "out",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "type",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "hidden": true,
+                                    "intent": "out",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "size",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "size_t"
+                                ],
+                                "typemap_name": "size_t"
+                            }
+                        ],
+                        "function_suffix": "float1d",
+                        "generic": "(float **addr+intent(out)+dimension(:)+deref(pointer))"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "dimension": ":,:",
+                                    "intent": "out",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "addr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "float"
+                                ],
+                                "typemap_name": "float"
+                            },
+                            {
+                                "attrs": {
+                                    "hidden": true,
+                                    "intent": "out",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "type",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "hidden": true,
+                                    "intent": "out",
+                                    "value": false
+                                },
+                                "declarator": {
+                                    "name": "size",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "size_t"
+                                ],
+                                "typemap_name": "size_t"
+                            }
+                        ],
+                        "function_suffix": "float2d",
+                        "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
+                    }
+                ],
                 "linenumber": 61,
-                "options": {}
+                "options": {
+                    "wrap_fortran": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetPointerAsPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "pointer",
+                                "dimension": ":",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "size",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
+                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "fmtdict": {
+                    "F_C_call": "c_get_pointer_as_pointer",
+                    "F_arg_c_call": "C_LOC(addr),\t type,\t size",
+                    "F_arguments": "addr",
+                    "F_call_code": "call c_get_pointer_as_pointer(C_LOC(addr),\t type,\t size)",
+                    "F_name_function": "get_pointer_as_pointer_float1d",
+                    "F_name_generic": "get_pointer_as_pointer",
+                    "F_name_impl": "get_pointer_as_pointer_float1d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "GetPointerAsPointer",
+                    "function_suffix": "_float1d",
+                    "underscore_name": "get_pointer_as_pointer"
+                },
+                "linenumber": 61,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetPointerAsPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "pointer",
+                                "dimension": ":,:",
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out",
+                                "value": false
+                            },
+                            "declarator": {
+                                "name": "size",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
+                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "fmtdict": {
+                    "F_C_call": "c_get_pointer_as_pointer",
+                    "F_arg_c_call": "C_LOC(addr),\t type,\t size",
+                    "F_arguments": "addr",
+                    "F_call_code": "call c_get_pointer_as_pointer(C_LOC(addr),\t type,\t size)",
+                    "F_name_function": "get_pointer_as_pointer_float2d",
+                    "F_name_generic": "get_pointer_as_pointer",
+                    "F_name_impl": "get_pointer_as_pointer_float2d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "GetPointerAsPointer",
+                    "function_suffix": "_float2d",
+                    "underscore_name": "get_pointer_as_pointer"
+                },
+                "linenumber": 61,
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",
