@@ -232,7 +232,7 @@
                                 "typemap_name": "float"
                             }
                         ],
-                        "function_suffix": "float",
+                        "function_suffix": "_float",
                         "generic": "(float arg)"
                     },
                     {
@@ -252,7 +252,7 @@
                                 "typemap_name": "double"
                             }
                         ],
-                        "function_suffix": "double",
+                        "function_suffix": "_double",
                         "generic": "(double arg)"
                     }
                 ],
@@ -521,7 +521,7 @@
                                 "typemap_name": "int"
                             }
                         ],
-                        "function_suffix": "all_int",
+                        "function_suffix": "_all_int",
                         "generic": "(int arg1, int arg2)"
                     },
                     {
@@ -555,7 +555,7 @@
                                 "typemap_name": "long"
                             }
                         ],
-                        "function_suffix": "all_long",
+                        "function_suffix": "_all_long",
                         "generic": "(long arg1, long arg2)"
                     }
                 ],
@@ -906,7 +906,7 @@
                                 "typemap_name": "size_t"
                             }
                         ],
-                        "function_suffix": "float1d",
+                        "function_suffix": "_float1d",
                         "generic": "(float *addr+dimension(:),    int type+implied(T_FLOAT))"
                     },
                     {
@@ -961,7 +961,7 @@
                                 "typemap_name": "size_t"
                             }
                         ],
-                        "function_suffix": "float2d",
+                        "function_suffix": "_float2d",
                         "generic": "(float *addr+dimension(:,:),  int type+implied(T_FLOAT))"
                     }
                 ],
@@ -1503,7 +1503,7 @@
                                 "typemap_name": "size_t"
                             }
                         ],
-                        "function_suffix": "float1d",
+                        "function_suffix": "_float1d",
                         "generic": "(float **addr+intent(out)+dimension(:)+deref(pointer))"
                     },
                     {
@@ -1570,7 +1570,7 @@
                                 "typemap_name": "size_t"
                             }
                         ],
-                        "function_suffix": "float2d",
+                        "function_suffix": "_float2d",
                         "generic": "(float **addr+intent(out)+dimension(:,:)+deref(pointer))"
                     }
                 ],

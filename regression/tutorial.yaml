@@ -104,9 +104,8 @@ declarations:
 #    - int
 #    - double
 #  fortran_generic:
-#     arg2:
-#     - float
-#     - double
+#  - decl: (float arg2)
+#  - decl: (double arg2)
   
   
 # test fortran_generic, overload
@@ -119,9 +118,9 @@ declarations:
 #   - instantiation: <double>
     fortran_generic:
     - decl: (float arg2)
-      function_suffix: float
+      function_suffix: _float
     - decl: (double arg2)
-      function_suffix: double
+      function_suffix: _double
   
 # overload with default values
   - decl: int UseDefaultOverload(int num,

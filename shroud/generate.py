@@ -881,7 +881,7 @@ class GenFunctions(object):
             new._PTR_F_C_index = node._function_index
             fmt = new.fmtdict
             # XXX append to existing suffix
-            fmt.function_suffix = fmt.function_suffix + "_" + generic.function_suffix
+            fmt.function_suffix = fmt.function_suffix + generic.function_suffix
             new.fortran_generic = {}
             options = new.options
             options.wrap_c = False

@@ -200,9 +200,9 @@ declarations:
         return_this: True
         fortran_generic:
         -  decl: (int len=1)
-           function_suffix: int
+           function_suffix: _int
         -  decl: (long len=1)
-           function_suffix: long
+           function_suffix: _long
 
       # void function
       - decl: void destroyall()
@@ -258,9 +258,8 @@ declarations:
     #    - instantiation: <int>
     #    - instantiation: <double>
     #    fortran_generic:
-    #       arg2:
-    #       - float
-    #       - double
+    #    - decl: (float arg2)
+    #    - decl: (double arg2)
 
     - decl: size_t test_size_t()
 

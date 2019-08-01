@@ -174,7 +174,8 @@ fortran_generic
     A dictionary of lists that define generic functions which will be
     created.  This allows different types to be passed to the function.
     This feature is provided by C which will promote arguments.
-    Each generic function will have a suffix which defaults to the sequence number.
+    Each generic function will have a suffix which defaults to an underscore
+    plus a sequence number.
     This change be changed by adding *function_suffix* for a declaration.
 
 .. code-block:: yaml

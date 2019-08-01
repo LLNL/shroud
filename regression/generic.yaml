@@ -29,9 +29,9 @@ declarations:
     brief: Single argument generic
   fortran_generic:
   - decl: (float arg)
-    function_suffix: float
+    function_suffix: _float
   - decl: (double arg)
-    function_suffix: double
+    function_suffix: _double
 
 - decl: long GenericReal2(long arg1, long arg2)
   doxygen:
@@ -41,18 +41,18 @@ declarations:
       or (long, int)
   fortran_generic:
   - decl: (int arg1, int arg2)
-    function_suffix: all_int
+    function_suffix: _all_int
   - decl: (long arg1, long arg2)
-    function_suffix: all_long
+    function_suffix: _all_long
 
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
 # cannot use size as an dummy argument name
   cpp_if: if 1
   fortran_generic:
   - decl: (float *addr+dimension(:),    int type+implied(T_FLOAT))
-    function_suffix: float1d
+    function_suffix: _float1d
   - decl: (float *addr+dimension(:,:),  int type+implied(T_FLOAT))
-    function_suffix: float2d
+    function_suffix: _float2d
 
 #  - decl: (double *addr+dimension(:),   int type+implied(T_DOUBLE))
 #  - decl: (double *addr+dimension(:,:), int type+implied(T_DOUBLE))
@@ -68,9 +68,9 @@ declarations:
   cpp_if: if 0
   fortran_generic:
   - decl: (float **addr+intent(out)+dimension(:)+deref(pointer))
-    function_suffix: float1d
+    function_suffix: _float1d
   - decl: (float **addr+intent(out)+dimension(:,:)+deref(pointer))
-    function_suffix: float2d
+    function_suffix: _float2d
 
 
 splicer_code:

@@ -3317,7 +3317,7 @@
                                         "typemap_name": "int"
                                     }
                                 ],
-                                "function_suffix": "int",
+                                "function_suffix": "_int",
                                 "generic": "(int len=1)"
                             },
                             {
@@ -3352,7 +3352,7 @@
                                         "typemap_name": "long"
                                     }
                                 ],
-                                "function_suffix": "long",
+                                "function_suffix": "_long",
                                 "generic": "(long len=1)"
                             }
                         ],
@@ -3712,7 +3712,7 @@
                                         "typemap_name": "int"
                                     }
                                 ],
-                                "function_suffix": "int",
+                                "function_suffix": "_int",
                                 "generic": "(int len=1)"
                             },
                             {
@@ -3747,7 +3747,7 @@
                                         "typemap_name": "long"
                                     }
                                 ],
-                                "function_suffix": "long",
+                                "function_suffix": "_long",
                                 "generic": "(long len=1)"
                             }
                         ],
@@ -6406,7 +6406,7 @@
                     "function_name": "test_size_t",
                     "underscore_name": "test_size_t"
                 },
-                "linenumber": 265,
+                "linenumber": 264,
                 "options": {}
             },
             {
@@ -6508,13 +6508,13 @@
                     "LUA_name": "testmpi",
                     "LUA_name_impl": "l_testmpi",
                     "PY_name_impl": "PP_testmpi_mpi",
-                    "__line__": 270,
+                    "__line__": 269,
                     "c_const": "",
                     "function_name": "testmpi",
                     "function_suffix": "_mpi",
                     "underscore_name": "testmpi"
                 },
-                "linenumber": 269,
+                "linenumber": 268,
                 "options": {}
             },
             {
@@ -6549,13 +6549,13 @@
                     "F_name_impl": "testmpi_serial",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PP_testmpi_serial",
-                    "__line__": 274,
+                    "__line__": 273,
                     "c_const": "",
                     "function_name": "testmpi",
                     "function_suffix": "_serial",
                     "underscore_name": "testmpi"
                 },
-                "linenumber": 273,
+                "linenumber": 272,
                 "options": {}
             },
             {
@@ -6665,7 +6665,7 @@
                     "function_name": "testgroup1",
                     "underscore_name": "testgroup1"
                 },
-                "linenumber": 278,
+                "linenumber": 277,
                 "options": {}
             },
             {
@@ -6776,7 +6776,7 @@
                     "function_name": "testgroup2",
                     "underscore_name": "testgroup2"
                 },
-                "linenumber": 279,
+                "linenumber": 278,
                 "options": {}
             },
             {
@@ -6863,7 +6863,7 @@
                 "decl": "void FuncPtr1(void (*get)());",
                 "declgen": "void FuncPtr1(void ( * get)() +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 283,
+                    "__line__": 282,
                     "brief": "subroutine"
                 },
                 "fmtdict": {
@@ -6889,7 +6889,7 @@
                     "function_name": "FuncPtr1",
                     "underscore_name": "func_ptr1"
                 },
-                "linenumber": 282,
+                "linenumber": 281,
                 "options": {}
             },
             {
@@ -6980,7 +6980,7 @@
                 "decl": "void FuncPtr2(double * (*get)());",
                 "declgen": "void FuncPtr2(double * ( * get)() +intent(in))",
                 "doxygen": {
-                    "__line__": 286,
+                    "__line__": 285,
                     "brief": "return a pointer"
                 },
                 "fmtdict": {
@@ -7006,7 +7006,7 @@
                     "function_name": "FuncPtr2",
                     "underscore_name": "func_ptr2"
                 },
-                "linenumber": 285,
+                "linenumber": 284,
                 "options": {}
             },
             {
@@ -7116,7 +7116,7 @@
                 "decl": "void FuncPtr3(double (*get)(int i, int));",
                 "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 289,
+                    "__line__": 288,
                     "brief": "abstract argument"
                 },
                 "fmtdict": {
@@ -7142,10 +7142,10 @@
                     "function_name": "FuncPtr3",
                     "underscore_name": "func_ptr3"
                 },
-                "linenumber": 288,
+                "linenumber": 287,
                 "options": {
                     "F_force_wrapper": true,
-                    "__line__": 291
+                    "__line__": 290
                 }
             },
             {
@@ -7225,7 +7225,7 @@
                 "decl": "void FuncPtr4(double (*get)(double, int));",
                 "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 294,
+                    "__line__": 293,
                     "brief": "abstract argument"
                 },
                 "fmtdict": {
@@ -7248,12 +7248,12 @@
                     "function_name": "FuncPtr4",
                     "underscore_name": "func_ptr4"
                 },
-                "linenumber": 293,
+                "linenumber": 292,
                 "options": {
                     "F_abstract_interface_argument_template": "XX{index}arg",
                     "F_abstract_interface_subprogram_template": "custom_funptr",
                     "F_force_wrapper": true,
-                    "__line__": 296,
+                    "__line__": 295,
                     "wrap_lua": false,
                     "wrap_python": false
                 }
@@ -7495,7 +7495,7 @@
                     "function_name": "FuncPtr5",
                     "underscore_name": "func_ptr5"
                 },
-                "linenumber": 302,
+                "linenumber": 301,
                 "options": {}
             },
             {
@@ -8158,10 +8158,10 @@
                     "function_name": "verylongfunctionname1",
                     "underscore_name": "verylongfunctionname1"
                 },
-                "linenumber": 313,
+                "linenumber": 312,
                 "options": {
                     "F_force_wrapper": true,
-                    "__line__": 323
+                    "__line__": 322
                 }
             },
             {
@@ -8816,12 +8816,12 @@
                     "function_name": "verylongfunctionname2",
                     "underscore_name": "verylongfunctionname2"
                 },
-                "linenumber": 327,
+                "linenumber": 326,
                 "options": {
                     "C_line_length": 0,
                     "F_force_wrapper": true,
                     "F_line_length": 0,
-                    "__line__": 337
+                    "__line__": 336
                 }
             },
             {
@@ -9037,7 +9037,7 @@
                 "decl": "void cos_doubles( double * in   +intent(in)  +dimension(:,:), double * out  +intent(out) +dimension(:,:)+allocatable(mold=in), int      sizein +implied(size(in)))",
                 "declgen": "void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)",
                 "doxygen": {
-                    "__line__": 347,
+                    "__line__": 346,
                     "brief": "Test multidimensional arrays with allocatable"
                 },
                 "fmtdict": {
@@ -9063,10 +9063,10 @@
                     "function_name": "cos_doubles",
                     "underscore_name": "cos_doubles"
                 },
-                "linenumber": 343,
+                "linenumber": 342,
                 "options": {
                     "F_standard": 2008,
-                    "__line__": 349
+                    "__line__": 348
                 }
             }
         ],

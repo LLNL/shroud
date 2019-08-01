@@ -1588,7 +1588,7 @@ def clean_dictionary(ddct):
                     dct["decl"],
                     fmtdict=dct.get("format", None),
                     options=dct.get("options", None),
-                    function_suffix=dct.get("function_suffix", str(isuffix)),
+                    function_suffix=dct.get("function_suffix", "_" + str(isuffix)),
                     linenumber=linenumber,
                 )
             )
