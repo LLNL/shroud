@@ -352,7 +352,8 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
 
-        TestDesc("struct",
+        # struct
+        TestDesc("struct-c", yaml="struct",
                  cmdline=[
                      "--language", "c",
                      "--option", "literalinclude2=true",

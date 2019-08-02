@@ -30,7 +30,7 @@ test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
   test-fortran-pointers \
-  test-fortran-struct \
+  test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
   test-fortran-preprocess \
@@ -90,7 +90,7 @@ test-python : \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
   test-python-clibrary \
-  test-python-struct \
+  test-python-struct-c \
   test-python-struct-cxx \
   test-python-ownership
 

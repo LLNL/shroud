@@ -13,7 +13,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/struct-cxx \
-    -I$(top)/regression/run/struct
+    -I$(top)/regression/run/struct-c
 
 VPATH = \
     $(top)/regression/reference/struct-cxx \
@@ -31,11 +31,11 @@ struct-cxx : main.f struct.h struct.cpp $(OBJS)
 
 # Copy all source files from run/struct, need to avoid VPATH.
 # "convert" to c++
-struct.cpp : $(top)/regression/run/struct/struct.c
+struct.cpp : $(top)/regression/run/struct-c/struct.c
 	cp $< $@
-struct.h : $(top)/regression/run/struct/struct.h
+struct.h : $(top)/regression/run/struct-c/struct.h
 	cp $< $@
-main.f : $(top)/regression/run/struct/main.f
+main.f : $(top)/regression/run/struct-c/main.f
 	cp $< $@
 
 clean :
