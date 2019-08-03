@@ -142,21 +142,33 @@ class Wrapp(util.WrapperMixin):
         fmt_library.capsule_order = "0"
         self.need_blah = False  # Not needed if no there gc routines are added.
 
+        self.wrap_namespace(newlibrary)
+        self.write_utility()
+        self.write_header(newlibrary)
+        self.write_module(newlibrary)
+
+    def wrap_namespace(self, node):
+        """Wrap a library or namespace.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+        """
+
         # preprocess all classes first to allow them to reference each other
-        for node in newlibrary.classes:
-            if not node.options.wrap_python:
+        for cls in node.classes:
+            if not cls.options.wrap_python:
                 continue
 
             # XXX - classes and structs as classes
-            ntypemap = node.typemap
-            fmt = node.fmtdict
+            ntypemap = cls.typemap
+            fmt = cls.fmtdict
             ntypemap.PY_format = "O"
 
             # PyTypeObject for class
-            node.eval_template("PY_PyTypeObject")
+            cls.eval_template("PY_PyTypeObject")
 
             # PyObject for class
-            node.eval_template("PY_PyObject")
+            cls.eval_template("PY_PyObject")
 
             fmt.PY_to_object_func = wformat("PP_{cxx_class}_to_Object", fmt)
             fmt.PY_from_object_func = wformat("PP_{cxx_class}_from_Object", fmt)
@@ -167,33 +179,32 @@ class Wrapp(util.WrapperMixin):
             ntypemap.PY_from_object = fmt.PY_from_object_func
 
         self._push_splicer("class")
-        for node in newlibrary.classes:
-            if not node.options.wrap_python:
+        for cls in node.classes:
+            if not cls.options.wrap_python:
                 continue
-            name = node.name
+            name = cls.name
             self.reset_file()
             self._push_splicer(name)
-            if node.as_struct and node.options.PY_struct_arg != "class":
-                self.create_arraydescr(node)
+            if cls.as_struct and cls.options.PY_struct_arg != "class":
+                self.create_arraydescr(cls)
             else:
                 self.need_blah = True
-                self.wrap_class(node)
-                self.write_extension_type(newlibrary, node)
+                self.wrap_class(cls)
+                self.write_extension_type(node, cls)
             self._pop_splicer(name)
         self._pop_splicer("class")
 
         self.reset_file()
         self.wrap_enums(None)
 
-        if newlibrary.functions:
+        if node.functions:
             self._push_splicer("function")
             #            self._begin_class()
-            self.wrap_functions(None, newlibrary.functions)
+            self.wrap_functions(None, node.functions)
             self._pop_splicer("function")
 
-        self.write_utility()
-        self.write_header(newlibrary)
-        self.write_module(newlibrary)
+        for ns in node.namespaces:
+            self.wrap_namespace(ns)
 
     def wrap_enums(self, cls):
         """Wrap enums for library or cls
