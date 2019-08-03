@@ -20,6 +20,7 @@ import string
 
 fmt = string.Formatter()
 
+TEMP = False  # True = process namespace
 
 def wformat(template, dct):
     # shorthand, wrap fmt.vformat

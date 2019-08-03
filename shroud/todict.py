@@ -20,7 +20,7 @@ Useful for debugging and seralizing instances as json.
 import json
 
 from . import visitor
-
+from . import util   # TEMP
 
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
@@ -168,11 +168,14 @@ class ToDict(visitor.Visitor):
                 "classes",
                 "enums",
                 "functions",
+#                "namespaces", TEMP
                 "variables",
                 "fmtdict",
                 "options",
             ],
         )
+        if util.TEMP:
+            self.add_visit_fields(node, d, ["namespaces"])
         return d
 
     def visit_ClassNode(self, node):
@@ -274,7 +277,12 @@ class ToDict(visitor.Visitor):
 
     def visit_NamespaceNode(self, node):
         d = dict(name=node.name)
-        self.add_visit_fields(node, d, ["fmtdict", "options"])
+        self.add_visit_fields(node, d, [
+#            "classes", "enums", "functions", "namespaces", "variables",
+            "fmtdict", "options"])
+        if util.TEMP:
+            self.add_visit_fields(node, d, [
+                "classes", "enums", "functions", "namespaces", "variables"])
         add_non_none_fields(node, d, ["linenumber"])
         return d
 

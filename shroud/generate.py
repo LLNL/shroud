@@ -38,17 +38,30 @@ class VerifyAttrs(object):
         self.config = config
 
     def verify_attrs(self):
-        newlibrary = self.newlibrary
+        """Verify library attributes.
+        Recurse through all declarations.
+        Entry pointer for class VerifyAttrs.
+        """
+        self.verify_namespace_attrs(self.newlibrary)
 
-        for cls in newlibrary.classes:
+    def verify_namespace_attrs(self, node):
+        """Verify attributes for a library or namespace.
+
+        Args:
+            node - ast.LibraryNode, ast.NameSpaceNode
+        """
+        for cls in node.classes:
             if not cls.as_struct:
                 for var in cls.variables:
                     self.check_var_attrs(cls, var)
             for func in cls.functions:
                 self.check_fcn_attrs(func)
 
-        for func in newlibrary.functions:
+        for func in node.functions:
             self.check_fcn_attrs(func)
+
+        for ns in node.namespaces:
+            self.verify_namespace_attrs(ns)
 
     def check_var_attrs(self, cls, node):
         """
@@ -379,8 +392,18 @@ class GenFunctions(object):
 
         self.function_index = newlibrary.function_index
 
-        self.instantiate_classes(newlibrary)
-        newlibrary.functions = self.define_function_suffix(newlibrary.functions)
+        self.instantiate_all_classes(newlibrary)
+        self.gen_namespace(newlibrary)
+
+    def gen_namespace(self, node):
+        """Process functions which are not in classes
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+        """
+        node.functions = self.define_function_suffix(node.functions)
+        for ns in node.namespaces:
+            self.gen_namespace(ns)
 
     # No longer need this, but keep code for now in case some other dependency checking is needed
     #        for cls in newlibrary.classes:
@@ -499,15 +522,30 @@ class GenFunctions(object):
 
         cls.add_function(decl, attrs=attrs, format=format, options=options)
 
+    def instantiate_all_classes(self, node):
+        """Instantate all class template_arguments recursively.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
+        """
+        self.instantiate_classes(node)
+
+        for cls in node.classes:
+            self.instantiate_classes(cls)
+
+        for ns in node.namespaces:
+            self.instantiate_classes(ns)
+
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
         node - LibraryNode or ClassNode.
 
         Create a new list of classes replacing
         any class with template_arguments with instantiated classes.
+        All new classes will be added to node.classes.
 
         Args:
-            node -
+            node - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
         clslist = []
         for cls in node.classes:
@@ -618,6 +656,7 @@ class GenFunctions(object):
 
     def process_class(self, cls):
         """process variables and functions for a class.
+        Create getter/setter functions for class variables.
 
         Args:
             cls - ast.ClassNode
@@ -1337,7 +1376,7 @@ class GenFunctions(object):
                 used_types[ntypemap.name] = ntypemap
 
     def gen_functions_decl(self, functions):
-        """ Generate declgen for generated all functions.
+        """ Generate declgen for all functions.
 
         Args:
             functions - list of ast.FunctionNode.
@@ -1370,21 +1409,24 @@ class Namify(object):
 
     def name_library(self):
         """entry pointer for library"""
-        self.name_language(self.name_function_c)
-        self.name_language(self.name_function_fortran)
+        self.name_language(self.name_function_c, self.newlibrary)
+        self.name_language(self.name_function_fortran, self.newlibrary)
 
-    def name_language(self, handler):
+    def name_language(self, handler, node):
         """
         Args:
             handler - function.
+            node - ast.LibraryNode, ast.NamespaceNode
         """
-        newlibrary = self.newlibrary
-        for cls in newlibrary.classes:
+        for cls in node.classes:
             for func in cls.functions:
                 handler(cls, func)
 
-        for func in newlibrary.functions:
+        for func in node.functions:
             handler(None, func)
+
+        for ns in node.namespaces:
+            self.name_language(handler, ns)
 
     def name_function_c(self, cls, node):
         """
@@ -1431,13 +1473,23 @@ class Preprocess(object):
 
     def process_library(self):
         """entry pointer for library"""
-        newlibrary = self.newlibrary
-        for cls in newlibrary.classes:
+        self.process_namespace(self.newlibrary)
+
+    def process_namespace(self, node):
+        """Process a namespace.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+        """
+        for cls in node.classes:
             for func in cls.functions:
                 self.process_function(cls, func)
 
-        for func in newlibrary.functions:
+        for func in node.functions:
             self.process_function(None, func)
+
+        for ns in node.namespaces:
+            self.process_namespaces(ns)
 
     def process_function(self, cls, node):
         """

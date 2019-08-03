@@ -185,6 +185,8 @@ class NamespaceMixin(object):
         """
         node = NamespaceNode(name, parent=self, **kwargs)
         self.symbols[name] = node
+        if util.TEMP:
+            self.namespaces.append(node)
         return node
 
     def add_namespaces(self, names):
@@ -268,6 +270,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.classes = []
         self.enums = []
         self.functions = []
+        self.namespaces = []
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
@@ -666,10 +669,17 @@ class BlockNode(AstNode, NamespaceMixin):
         # From arguments
         self.parent = parent
 
-        self.enums = parent.enums
-        self.functions = parent.functions
-        self.classes = parent.classes
-        self.variables = parent.variables
+        if util.TEMP:
+            self.classes = []
+            self.enums = []
+            self.functions = []
+            self.namespaces = []
+            self.variables = []
+        else:
+            self.enums = parent.enums
+            self.functions = parent.functions
+            self.classes = parent.classes
+            self.variables = parent.variables
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -698,18 +708,26 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.parent = parent
         self.linenumber = kwargs.get("__line__", "?")
 
-        # Namespaces do not own enums, functions or classes directly.
-        # Find their owner up the parent chain.
-        owner = parent
-        while owner:
-            if isinstance(owner, NamespaceNode):
-                # skip over nested namespaces
-                owner = owner.parent
-            self.enums = owner.enums
-            self.functions = owner.functions
-            self.classes = owner.classes
-            self.variables = owner.variables
-            break
+        if util.TEMP:
+            self.classes = []
+            self.enums = []
+            self.functions = []
+            self.namespaces = []
+            self.variables = []
+        else:
+            self.namespaces = []
+            # Namespaces do not own enums, functions or classes directly.
+            # Find their owner up the parent chain.
+            owner = parent
+            while owner:
+                if isinstance(owner, NamespaceNode):
+                    # skip over nested namespaces
+                    owner = owner.parent
+                self.enums = owner.enums
+                self.functions = owner.functions
+                self.classes = owner.classes
+                self.variables = owner.variables
+                break
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -805,8 +823,10 @@ class ClassNode(AstNode, NamespaceMixin):
         self.cxx_header = cxx_header
         self.linenumber = kwargs.get("__line__", "?")
 
+        self.classes = []
         self.enums = []
         self.functions = []
+        self.namespaces = []
         self.variables = []
         self.as_struct = (
             as_struct
