@@ -1,16 +1,8 @@
-# Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
 
 """
 Convert some data structures into a dictionary.
@@ -25,6 +17,9 @@ from . import util   # TEMP
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
+
+    def visit_str(self, node):
+        return str(node)
 
     def visit_list(self, node):
         return [self.visit(n) for n in node]
@@ -160,7 +155,7 @@ class ToDict(visitor.Visitor):
 
     def visit_LibraryNode(self, node):
         d = dict()
-        add_true_fields(node, d, ["copyright", "cxx_header", "language"])
+        add_true_fields(node, d, ["copyright", "cxx_header", "language", "scope"])
         self.add_visit_fields(
             node,
             d,
@@ -172,6 +167,7 @@ class ToDict(visitor.Visitor):
                 "variables",
                 "fmtdict",
                 "options",
+                "scope_file",
             ],
         )
         if util.TEMP:
@@ -284,6 +280,8 @@ class ToDict(visitor.Visitor):
             self.add_visit_fields(node, d, [
                 "classes", "enums", "functions", "namespaces", "variables"])
         add_non_none_fields(node, d, ["linenumber"])
+        self.add_visit_fields(node, d, ["scope_file"])
+        add_non_none_fields(node, d, ["scope"])
         return d
 
     def visit_VariableNode(self, node):

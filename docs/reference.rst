@@ -345,11 +345,17 @@ C_header_filename_class_template
 C_header_filename_library_template
    ``wrap{library}.{C_header_filename_suffix}``
 
+C_header_filename_namespace_template
+   ``wrap{scope_file}.{C_header_filename_suffix}``
+
 C_impl_filename_class_template
     ``wrap{cxx_class}.{C_impl_filename_suffix}``
 
 C_impl_filename_library_template
     ``wrap{library}.{C_impl_filename_suffix}``
+
+C_impl_filename_namespace_template
+    ``wrap{scope_file}.{C_impl_filename_suffix}``
 
 C_memory_dtor_function_template
     Name of function used to delete memory allocated by C or C++.
@@ -763,6 +769,10 @@ PY_result
     If the function returns multiple values (due to *intent(out)*)
     and the function result is already an object (for example, a NumPy array)
     then **PY_result** will be **SHResult**.
+
+scope_file
+    library plus any namespaces.
+    Used in filename.
 
 stdlib
     Name of C++ standard library prefix.

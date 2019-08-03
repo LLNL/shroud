@@ -71,37 +71,47 @@ class Wrapc(util.WrapperMixin):
     def wrap_library(self):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
-        structs = []
         # reserved the 0 slot of capsule_order
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
         whelpers.set_literalinclude(newlibrary.options.literalinclude2)
         whelpers.add_copy_array_helper_c(fmt_library)
-
-        self._push_splicer("class")
-        for node in newlibrary.classes:
-            if not node.options.wrap_c:
-                continue
-            if node.as_struct:
-                structs.append(node)
-            else:
-                self._push_splicer(node.name)
-                self.write_file(newlibrary, node, None)
-                self._pop_splicer(node.name)
-        self._pop_splicer("class")
-
-        self.write_file(newlibrary, None, structs)
-
+        self.wrap_namespace(newlibrary)
         self.write_header_utility()
 
-    def write_file(self, library, cls, structs):
-        """Write a file for the library or class.
+    def wrap_namespace(self, node):
+        """Wrap a library or namespace.
 
         Args:
-            library - ast.LibraryNode
+            node - ast.LibraryNode, ast.NamespaceNode
+        """
+
+        self._push_splicer("class")
+        structs = []
+        for cls in node.classes:
+            if not node.options.wrap_c:
+                continue
+            if cls.as_struct:
+                structs.append(cls)
+            else:
+                self._push_splicer(cls.name)
+                self.write_file(node, cls, None)
+                self._pop_splicer(cls.name)
+        self._pop_splicer("class")
+
+        self.write_file(node, None, structs)
+
+        for ns in node.namespaces:
+            self.wrap_namespace(ns)
+
+    def write_file(self, ns, cls, structs):
+        """Write a file for the library, namespace or class.
+
+        Args:
+            ns - ast.LibraryNode or ast.NamespaceNode
             cls - ast.ClassNode
             structs -
         """
-        node = cls or library
+        node = cls or ns
         fmt = node.fmtdict
         self._begin_output_file()
 
@@ -113,22 +123,23 @@ class Wrapc(util.WrapperMixin):
             if not cls.as_struct:
                 self.wrap_class(cls)
         else:
-            self.wrap_enums(library)
-            self.wrap_functions(library)
-            self.write_capsule_code(library)
+            self.wrap_enums(ns)
+            self.wrap_functions(ns)
+            if hasattr(ns, "library"):
+                self.write_capsule_code(ns)
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
 
         self.gather_helper_code(self.c_helper)
         # always include utility header
-        self.c_helper_include[library.fmtdict.C_header_utility] = True
+        self.c_helper_include[ns.fmtdict.C_header_utility] = True
         self.shared_helper.update(self.c_helper)  # accumulate all helpers
 
-        if not self.write_header(library, cls, c_header):
+        if not self.write_header(ns, cls, c_header):
             # The header will not be written if it is empty
             c_header = None
-        self.write_impl(library, cls, c_header, c_impl)
+        self.write_impl(ns, cls, c_header, c_impl)
 
     def wrap_enums(self, node):
         """Wrap all enums in a splicer block
@@ -271,7 +282,7 @@ class Wrapc(util.WrapperMixin):
         output = []
 
         if options.doxygen:
-            self.write_doxygen_file(output, fname, library, cls)
+            self.write_doxygen_file(output, fname, node)
 
         output.extend(
             [
@@ -340,16 +351,18 @@ class Wrapc(util.WrapperMixin):
             self.write_output_file(fname, self.config.c_fortran_dir, output)
         return write_file
 
-    def write_impl(self, library, cls, hname, fname):
-        """Write implementation
+    def write_impl(self, ns, cls, hname, fname):
+        """Write implementation.
+        Writ struct, function, enum for a
+        namespace or class.
 
         Args:
-            library - ast.LibraryNode.
-            cls - ast.ClassNode.
+            ns - ast.LibraryNode or ast.NamespaceNode
+            cls - ast.ClassNode
             hname -
             fname -
         """
-        node = cls or library
+        node = cls or ns
 
         # If no C wrappers are required, do not write the file
         write_file = False
@@ -366,7 +379,7 @@ class Wrapc(util.WrapperMixin):
             for include in cls.cxx_header.split():
                 self.header_impl_include[include] = True
         else:
-            for include in library.cxx_header.split():
+            for include in ns.cxx_header.split():
                 self.header_impl_include[include] = True
 
         # headers required by implementation

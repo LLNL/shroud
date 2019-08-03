@@ -388,6 +388,7 @@
             "library_lower": "default_library",
             "library_upper": "DEFAULT_LIBRARY",
             "namespace_scope": "",
+            "scope_file": "default_library",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
@@ -437,9 +438,11 @@
             "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{scope_file}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{scope_file}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
             "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
@@ -514,7 +517,10 @@
             "wrap_fortran": true,
             "wrap_lua": false,
             "wrap_python": false
-        }
+        },
+        "scope_file": [
+            "default_library"
+        ]
     },
     "types": {
         "Class2": {

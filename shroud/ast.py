@@ -266,6 +266,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Use a form which can be used as a variable name
             self.language = "cxx"
         self.library = library
+        self.name = library
+        self.nodename = "library"
 
         self.classes = []
         self.enums = []
@@ -274,6 +276,13 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
+
+        # namespace
+        self.scope = ""
+        self.scope_file = [library.lower()]
+        self.symbols = {}
+        self.using = []
+
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
@@ -288,10 +297,6 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.default_format(format, kwargs)
 
-        # namespace
-        self.scope = ""
-        self.symbols = {}
-        self.using = []
         declast.global_namespace = self
         self.create_std_names()
 
@@ -386,10 +391,16 @@ class LibraryNode(AstNode, NamespaceMixin):
             # blank for functions, set in classes.
             class_prefix_template="{class_lower}_",
             YAML_type_filename_template="{library_lower}_types.yaml",
+
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
+
+            C_header_filename_namespace_template="wrap{scope_file}.{C_header_filename_suffix}",
+            C_impl_filename_namespace_template="wrap{scope_file}.{C_impl_filename_suffix}",
+
             C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
             C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
+
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_enum_template="{C_prefix}{flat_name}",
             C_enum_member_template="{C_prefix}{C_scope_name}{enum_member_name}",
@@ -519,6 +530,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             CXX_local="SHCXX_",
             cxx_class="",  # Assume no class
             class_scope="",
+            scope_file = "_".join(self.scope_file),
             F_C_prefix="c_",
             F_derived_member="cxxmem",
             F_name_assign="assign",
@@ -698,7 +710,8 @@ class BlockNode(AstNode, NamespaceMixin):
 
 
 class NamespaceNode(AstNode, NamespaceMixin):
-    def __init__(self, name, parent, format=None, options=None, **kwargs):
+    def __init__(self, name, parent, cxx_header="",
+                 format=None, options=None, **kwargs):
         """Create NamespaceNode.
 
         parent may be LibraryNode or NamespaceNode.
@@ -706,6 +719,8 @@ class NamespaceNode(AstNode, NamespaceMixin):
         # From arguments
         self.name = name
         self.parent = parent
+        self.cxx_header = cxx_header
+        self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
 
         if util.TEMP:
@@ -729,16 +744,17 @@ class NamespaceNode(AstNode, NamespaceMixin):
                 self.variables = owner.variables
                 break
 
+        # add to symbol table
+        self.scope = self.parent.scope + self.name + "::"
+        self.scope_file = self.parent.scope_file + [self.name]
+        self.symbols = {}
+        self.using = []
+
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
 
         self.default_format(parent, format)
-
-        # add to symbol table
-        self.scope = self.parent.scope + self.name + "::"
-        self.symbols = {}
-        self.using = []
 
     # # # # # namespace behavior
 
@@ -781,6 +797,10 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
+        fmt_ns.scope_file = "_".join(self.scope_file)
+
+        self.eval_template("C_header_filename", "_namespace")
+        self.eval_template("C_impl_filename", "_namespace")
 
         if format:
             fmt_ns.update(format, replace=True)
@@ -821,6 +841,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.name = name
         self.parent = parent
         self.cxx_header = cxx_header
+        self.nodename = "class"
         self.linenumber = kwargs.get("__line__", "?")
 
         self.classes = []

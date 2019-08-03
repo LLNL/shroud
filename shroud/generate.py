@@ -1489,7 +1489,7 @@ class Preprocess(object):
             self.process_function(None, func)
 
         for ns in node.namespaces:
-            self.process_namespaces(ns)
+            self.process_namespace(ns)
 
     def process_function(self, cls, node):
         """

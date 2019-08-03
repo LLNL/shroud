@@ -1752,7 +1752,7 @@ rv = .false.
         self.gather_helper_code()
 
         if options.doxygen:
-            self.write_doxygen_file(output, fname, library, cls)
+            self.write_doxygen_file(output, fname, node)
         self._create_splicer("file_top", output)
 
         output.append("module %s" % module_name)
