@@ -71,47 +71,54 @@ class Wrapf(util.WrapperMixin):
         self.type_bound_part = []
 
     def wrap_library(self):
-        newlibrary = self.newlibrary
-        options = newlibrary.options
-        fmt_library = newlibrary.fmtdict
+        fmt_library = self.newlibrary.fmtdict
         fmt_library.F_result_clause = ""
         fmt_library.F_pure_clause = ""
         fmt_library.F_C_result_clause = ""
         fmt_library.F_C_pure_clause = ""
+        self.wrap_namespace(self.newlibrary)
+        self.write_c_helper()
 
+    def wrap_namespace(self, node):
+        """Wrap a library or namespace.
+
+        Args:
+            node - ast.LibraryNode, ast.NamespaceNode
+        """
+        options = node.options
         self.module_use = {}  # Use statements for a module
         self._begin_output_file()
         self._push_splicer("class")
-        for node in newlibrary.classes:
-            if not node.options.wrap_fortran:
+        for cls in node.classes:
+            if not cls.options.wrap_fortran:
                 continue
             self._begin_class()
 
             # how to decide module name, module per class
-            #            module_name = node.options.setdefault('module_name', name.lower())
-            if node.as_struct:
-                self.wrap_struct(node)
+            #            module_name = cls.options.setdefault('module_name', name.lower())
+            if cls.as_struct:
+                self.wrap_struct(cls)
             else:
-                self.wrap_class(node)
+                self.wrap_class(cls)
             if options.F_module_per_class:
                 self._pop_splicer("class")
                 self._end_output_file()
-                self.write_module(newlibrary, node)
+                self.write_module(node, cls)
                 self._begin_output_file()
                 self._push_splicer("class")
         self._pop_splicer("class")
 
-        if newlibrary.functions or newlibrary.enums:
+        if node.functions or node.enums:
             self._begin_class()  # clear out old class info
             if options.F_module_per_class:
                 self._begin_output_file()
-            newlibrary.F_module_dependencies = []
+            node.F_module_dependencies = []
 
-            self.wrap_enums(newlibrary)
+            self.wrap_enums(node)
 
             self._push_splicer("function")
-            for node in newlibrary.functions:
-                self.wrap_function(None, node)
+            for function in node.functions:
+                self.wrap_function(None, function)
             self._pop_splicer("function")
 
             self.c_interface.append("")
@@ -125,14 +132,15 @@ class Wrapf(util.WrapperMixin):
                 # library module
                 self._end_output_file()
                 self._create_splicer("module_use", self.use_stmts)
-                self.write_module(newlibrary, None)
+                self.write_module(node, None)
 
         if not options.F_module_per_class:
             # put all functions and classes into one module
             self._end_output_file()
-            self.write_module(newlibrary, None)
+            self.write_module(node, None)
 
-        self.write_c_helper()
+        for ns in node.namespaces:
+            self.wrap_namespace(ns)
 
     def wrap_struct(self, node):
         """A struct must be bind(C)-able. i.e. all POD.

@@ -429,6 +429,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_generic_template="{underscore_name}",
             F_module_name_library_template="{library_lower}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
+            F_impl_filename_namespace_template="wrapf{scope_file}.{F_filename_suffix}",
             F_capsule_data_type_class_template="SHROUD_{class_lower}_capsule",
             F_module_name_class_template="{class_lower}_mod",
             F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
@@ -801,6 +802,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
+        self.eval_template("F_impl_filename", "_namespace")
 
         if format:
             fmt_ns.update(format, replace=True)
