@@ -95,7 +95,7 @@ void YYY_TES_fiveplus()
 }
 
 // void init_ns1()
-void TES_init_ns1()
+void TES_ns1_init_ns1()
 {
 // splicer begin function.init_ns1
     ns1::init_ns1();

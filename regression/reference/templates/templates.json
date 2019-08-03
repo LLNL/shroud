@@ -20,7 +20,7 @@
                     "PY_this_call": "self->obj->",
                     "PY_to_object_func": "PP_vector_int_to_Object",
                     "PY_type_filename": "pyvector_inttype.cpp",
-                    "__line__": 20,
+                    "__line__": 22,
                     "class_lower": "vector_int",
                     "class_prefix": "vector_int_",
                     "class_scope": "vector_int::",
@@ -101,7 +101,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 32,
+                        "linenumber": 34,
                         "options": {}
                     },
                     {
@@ -142,7 +142,7 @@
                             "function_name": "dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 33,
+                        "linenumber": 35,
                         "options": {}
                     },
                     {
@@ -184,7 +184,7 @@
                             "underscore_name": "push_back"
                         },
                         "have_template_args": true,
-                        "linenumber": 34,
+                        "linenumber": 36,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -288,7 +288,7 @@
                             "underscore_name": "push_back"
                         },
                         "have_template_args": true,
-                        "linenumber": 34,
+                        "linenumber": 36,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -335,7 +335,7 @@
                             "underscore_name": "at"
                         },
                         "have_template_args": true,
-                        "linenumber": 35,
+                        "linenumber": 37,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -466,7 +466,7 @@
                             "underscore_name": "at"
                         },
                         "have_template_args": true,
-                        "linenumber": 35,
+                        "linenumber": 37,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -475,10 +475,10 @@
                         }
                     }
                 ],
-                "linenumber": 15,
+                "linenumber": 17,
                 "name": "vector",
                 "options": {
-                    "__line__": 23,
+                    "__line__": 25,
                     "optsample": "two"
                 },
                 "scope": "std::vector::",
@@ -494,12 +494,12 @@
                         ],
                         "fmtdict": {
                             "C_impl_filename": "wrapvectorforint.cpp",
-                            "__line__": 20,
+                            "__line__": 22,
                             "fmtsample": "one"
                         },
                         "instantiation": "<int>",
                         "options": {
-                            "__line__": 23,
+                            "__line__": 25,
                             "optsample": "two"
                         }
                     },
@@ -617,7 +617,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 32,
+                        "linenumber": 34,
                         "options": {}
                     },
                     {
@@ -658,7 +658,7 @@
                             "function_name": "dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 33,
+                        "linenumber": 35,
                         "options": {}
                     },
                     {
@@ -700,7 +700,7 @@
                             "underscore_name": "push_back"
                         },
                         "have_template_args": true,
-                        "linenumber": 34,
+                        "linenumber": 36,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -804,7 +804,7 @@
                             "underscore_name": "push_back"
                         },
                         "have_template_args": true,
-                        "linenumber": 34,
+                        "linenumber": 36,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -851,7 +851,7 @@
                             "underscore_name": "at"
                         },
                         "have_template_args": true,
-                        "linenumber": 35,
+                        "linenumber": 37,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -982,7 +982,7 @@
                             "underscore_name": "at"
                         },
                         "have_template_args": true,
-                        "linenumber": 35,
+                        "linenumber": 37,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -991,7 +991,7 @@
                         }
                     }
                 ],
-                "linenumber": 15,
+                "linenumber": 17,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -1007,12 +1007,12 @@
                         ],
                         "fmtdict": {
                             "C_impl_filename": "wrapvectorforint.cpp",
-                            "__line__": 20,
+                            "__line__": 22,
                             "fmtsample": "one"
                         },
                         "instantiation": "<int>",
                         "options": {
-                            "__line__": 23,
+                            "__line__": 25,
                             "optsample": "two"
                         }
                     },
@@ -1058,7 +1058,7 @@
                     "cxx_class": "Worker",
                     "cxx_type": "Worker"
                 },
-                "linenumber": 41,
+                "linenumber": 43,
                 "name": "Worker",
                 "options": {},
                 "scope": "Worker::",
@@ -1089,10 +1089,10 @@
                     "cxx_class": "ImplWorker1",
                     "cxx_type": "ImplWorker1"
                 },
-                "linenumber": 47,
+                "linenumber": 49,
                 "name": "ImplWorker1",
                 "options": {
-                    "__line__": 48,
+                    "__line__": 50,
                     "wrap_fortran": false
                 },
                 "scope": "internal::ImplWorker1::",
@@ -1178,7 +1178,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 56,
+                        "linenumber": 58,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -1343,7 +1343,7 @@
                             "underscore_name": "nested"
                         },
                         "have_template_args": true,
-                        "linenumber": 56,
+                        "linenumber": 58,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -1368,7 +1368,7 @@
                         ]
                     }
                 ],
-                "linenumber": 51,
+                "linenumber": 53,
                 "name": "user",
                 "options": {},
                 "scope": "user::",
@@ -1409,6 +1409,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "TEM_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "TEM_",
@@ -1483,6 +1484,7 @@
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "templates",
             "function_suffix": "",
             "library": "templates",
             "library_lower": "templates",
@@ -1491,7 +1493,6 @@
             "npy_dims": "NULL",
             "npy_intp": "",
             "npy_ndims": "0",
-            "scope_file": "templates",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
@@ -1548,7 +1549,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 77,
+                    "__line__": 79,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1556,7 +1557,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 76,
+                "linenumber": 78,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1718,7 +1719,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 77,
+                    "__line__": 79,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1745,7 +1746,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 76,
+                "linenumber": 78,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1907,7 +1908,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 77,
+                    "__line__": 79,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1934,7 +1935,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 76,
+                "linenumber": 78,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2003,14 +2004,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 91,
+                    "__line__": 93,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 90,
+                "linenumber": 92,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -2075,7 +2076,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 91,
+                    "__line__": 93,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -2103,7 +2104,7 @@
                     "template_suffix": "_internal_ImplWorker1",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 90,
+                "linenumber": 92,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2134,14 +2135,14 @@
             "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
-            "C_header_filename_namespace_template": "wrap{scope_file}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
-            "C_impl_filename_namespace_template": "wrap{scope_file}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
@@ -2157,10 +2158,11 @@
             "F_force_wrapper": false,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
-            "F_impl_filename_namespace_template": "wrapf{scope_file}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_module_per_class": true,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",

@@ -89,7 +89,7 @@ module forward_mod
 
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="FOR_class2_ctor")
+                bind(C, name="FOR_tutorial_class2_ctor")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_class2_capsule
             implicit none
@@ -98,14 +98,14 @@ module forward_mod
         end function c_class2_ctor
 
         subroutine c_class2_dtor(self) &
-                bind(C, name="FOR_class2_dtor")
+                bind(C, name="FOR_tutorial_class2_dtor")
             import :: SHROUD_class2_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self
         end subroutine c_class2_dtor
 
         subroutine c_class2_func1(self, arg) &
-                bind(C, name="FOR_class2_func1")
+                bind(C, name="FOR_tutorial_class2_func1")
             use tutorial_mod, only : custom_capsule
             import :: SHROUD_class2_capsule
             implicit none
@@ -114,7 +114,7 @@ module forward_mod
         end subroutine c_class2_func1
 
         subroutine c_class2_accept_class3(self, arg) &
-                bind(C, name="FOR_class2_accept_class3")
+                bind(C, name="FOR_tutorial_class2_accept_class3")
             import :: SHROUD_class2_capsule, SHROUD_class3_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self

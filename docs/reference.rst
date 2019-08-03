@@ -362,7 +362,7 @@ C_memory_dtor_function_template
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
+    ``{C_prefix}{C_name_scope}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
 
 C_var_len_template
     Format for variable created with *len* annotation.
@@ -425,6 +425,9 @@ F_module_name_class_template
 
 F_module_name_library_template
     ``{library_lower}_mod``
+
+F_module_name_namespace_template
+    ``{file_scope}_mod``
 
 F_name_function_template
     ``{underscore_name}{function_suffix}{template_suffix}``
@@ -600,6 +603,10 @@ C_local
 C_memory_dtor_function
     Name of function used to delete memory allocated by C or C++.
 
+C_name_scope
+   Underscore delimited name of namespace, class, enumeration.
+   Used with creating names in C.
+
 C_result
     The name of the C wrapper's result variable.
     It must not be the same as any of the routines arguments.
@@ -706,6 +713,9 @@ F_this
    It must not be the same as any of the routines arguments.
    Defaults to ``obj``.
 
+file_scope
+   Used in filename creation to identify library, namespace, class.
+
 library
     The value of global **field** *library*.
 
@@ -741,6 +751,7 @@ LUA_state_var
 
 namespace_scope
     The current namespace delimited with ``::`` and a trailing ``::``.
+    Used when referencing identifiers: ``{namespace_scope}id``.
 
 PY_header_filename_suffix
    Suffix added to Python header files.
@@ -770,9 +781,9 @@ PY_result
     and the function result is already an object (for example, a NumPy array)
     then **PY_result** will be **SHResult**.
 
-scope_file
+file_scope
     library plus any namespaces.
-    Used in filename.
+    Used in creating a filename.
 
 stdlib
     Name of C++ standard library prefix.

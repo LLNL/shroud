@@ -122,7 +122,7 @@
                         "fmtdict": {
                             "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();",
                             "C_call_list": "",
-                            "C_name": "FOR_class2_ctor",
+                            "C_name": "FOR_tutorial_class2_ctor",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "FOR_class2 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
@@ -168,7 +168,7 @@
                         "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
-                            "C_name": "FOR_class2_dtor",
+                            "C_name": "FOR_tutorial_class2_dtor",
                             "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);",
                             "C_prototype": "FOR_class2 * self",
                             "C_return_code": "return;",
@@ -278,7 +278,7 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "FOR_class2_func1",
+                            "C_name": "FOR_tutorial_class2_func1",
                             "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>(arg->addr);",
                             "C_prototype": "FOR_class2 * self,\t TUT_class1 * arg",
                             "C_return_code": "return;",
@@ -392,7 +392,7 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "FOR_class2_accept_class3",
+                            "C_name": "FOR_tutorial_class2_accept_class3",
                             "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class3 * SHCXX_arg =\t static_cast<tutorial::Class3 *>(arg->addr);",
                             "C_prototype": "FOR_class2 * self,\t FOR_class3 * arg",
                             "C_return_code": "return;",
@@ -461,6 +461,7 @@
             "C_impl_filename_suffix": "cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "FOR_SHROUD_memory_destructor",
+            "C_name_scope": "",
             "C_post_call": "",
             "C_pre_call": "",
             "C_prefix": "FOR_",
@@ -542,6 +543,7 @@
             "class_prefix": "",
             "class_scope": "",
             "cxx_class": "",
+            "file_scope": "forward",
             "function_suffix": "",
             "library": "forward",
             "library_lower": "forward",
@@ -550,7 +552,6 @@
             "npy_dims": "NULL",
             "npy_intp": "",
             "npy_ndims": "0",
-            "scope_file": "forward",
             "stdlib": "std::",
             "template_suffix": "",
             "void_proto": ""
@@ -561,14 +562,14 @@
             "C_enum_template": "{C_prefix}{flat_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
-            "C_header_filename_namespace_template": "wrap{scope_file}.{C_header_filename_suffix}",
+            "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",
             "C_header_utility_template": "types{library}.{C_header_filename_suffix}",
             "C_impl_filename_class_template": "wrap{cxx_class}.{C_impl_filename_suffix}",
             "C_impl_filename_library_template": "wrap{library}.{C_impl_filename_suffix}",
-            "C_impl_filename_namespace_template": "wrap{scope_file}.{C_impl_filename_suffix}",
+            "C_impl_filename_namespace_template": "wrap{file_scope}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_template": "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "C_name_template": "{C_prefix}{C_name_scope}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "C_var_len_template": "N{c_var}",
@@ -584,10 +585,11 @@
             "F_force_wrapper": false,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
-            "F_impl_filename_namespace_template": "wrapf{scope_file}.{F_filename_suffix}",
+            "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",
             "F_line_length": 72,
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
+            "F_module_name_namespace_template": "{file_scope}_mod",
             "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
@@ -1636,11 +1638,11 @@
             "f_capsule_data_type": "SHROUD_class2_capsule",
             "f_derived_type": "class2",
             "f_module": {
-                "forward_mod": [
+                "forward_tutorial_mod": [
                     "class2"
                 ]
             },
-            "f_module_name": "forward_mod",
+            "f_module_name": "forward_tutorial_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -1725,11 +1727,11 @@
             "f_capsule_data_type": "SHROUD_class3_capsule",
             "f_derived_type": "class3",
             "f_module": {
-                "forward_mod": [
+                "forward_tutorial_mod": [
                     "class3"
                 ]
             },
-            "f_module_name": "forward_mod",
+            "f_module_name": "forward_tutorial_mod",
             "f_statements": {
                 "result": {
                     "call": [

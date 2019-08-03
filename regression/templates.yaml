@@ -11,6 +11,8 @@ options:
 
 declarations:
 - decl: namespace std
+  format:
+    C_name_scope: ""
   declarations:
   - decl: template<typename T> class vector
     # std::vector class

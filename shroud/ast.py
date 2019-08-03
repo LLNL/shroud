@@ -395,8 +395,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
-            C_header_filename_namespace_template="wrap{scope_file}.{C_header_filename_suffix}",
-            C_impl_filename_namespace_template="wrap{scope_file}.{C_impl_filename_suffix}",
+            C_header_filename_namespace_template="wrap{file_scope}.{C_header_filename_suffix}",
+            C_impl_filename_namespace_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
             C_header_filename_class_template="wrap{cxx_class}.{C_header_filename_suffix}",
             C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
@@ -405,7 +405,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{flat_name}",
             C_enum_member_template="{C_prefix}{C_scope_name}{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -428,8 +428,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
             F_name_generic_template="{underscore_name}",
             F_module_name_library_template="{library_lower}_mod",
+            F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
-            F_impl_filename_namespace_template="wrapf{scope_file}.{F_filename_suffix}",
+            F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
             F_capsule_data_type_class_template="SHROUD_{class_lower}_capsule",
             F_module_name_class_template="{class_lower}_mod",
             F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
@@ -525,13 +526,14 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_argument="SH_",
             c_temp="SHT_",
             C_local="SHC_",
+            C_name_scope = "",
             C_this="self",
             C_custom_return_type="",  # assume no value
             CXX_this="SH_this",
             CXX_local="SHCXX_",
             cxx_class="",  # Assume no class
             class_scope="",
-            scope_file = "_".join(self.scope_file),
+            file_scope = "_".join(self.scope_file),
             F_C_prefix="c_",
             F_derived_member="cxxmem",
             F_name_assign="assign",
@@ -795,13 +797,17 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
+        fmt_ns.C_name_scope = (
+            parent.fmtdict.C_name_scope + self.name + "_"
+        )
+        fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
-        fmt_ns.scope_file = "_".join(self.scope_file)
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
+        self.eval_template("F_module_name", "_namespace")
         self.eval_template("F_impl_filename", "_namespace")
 
         if format:

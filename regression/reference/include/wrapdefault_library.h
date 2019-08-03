@@ -31,7 +31,7 @@ extern "C" {
 #endif
 
 
-void DEF_function1();
+void DEF_one_two_function1();
 
 #ifdef __cplusplus
 }

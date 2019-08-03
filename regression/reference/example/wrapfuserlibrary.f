@@ -77,13 +77,13 @@ module userlibrary_mod
     interface
 
         subroutine local_function1() &
-                bind(C, name="AA_local_function1")
+                bind(C, name="AA_example_nested_local_function1")
             implicit none
         end subroutine local_function1
 
         function c_is_name_valid(name) &
                 result(SHT_rv) &
-                bind(C, name="AA_is_name_valid")
+                bind(C, name="AA_example_nested_is_name_valid")
             use iso_c_binding, only : C_BOOL, C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -92,7 +92,7 @@ module userlibrary_mod
 
         function c_is_name_valid_bufferify(name, Lname) &
                 result(SHT_rv) &
-                bind(C, name="AA_is_name_valid_bufferify")
+                bind(C, name="AA_example_nested_is_name_valid_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -102,21 +102,21 @@ module userlibrary_mod
 
         function c_is_initialized() &
                 result(SHT_rv) &
-                bind(C, name="AA_is_initialized")
+                bind(C, name="AA_example_nested_is_initialized")
             use iso_c_binding, only : C_BOOL
             implicit none
             logical(C_BOOL) :: SHT_rv
         end function c_is_initialized
 
         subroutine c_test_names(name) &
-                bind(C, name="AA_test_names")
+                bind(C, name="AA_example_nested_test_names")
             use iso_c_binding, only : C_CHAR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_test_names
 
         subroutine c_test_names_bufferify(name, Lname) &
-                bind(C, name="AA_test_names_bufferify")
+                bind(C, name="AA_example_nested_test_names_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -124,7 +124,7 @@ module userlibrary_mod
         end subroutine c_test_names_bufferify
 
         subroutine c_test_names_flag(name, flag) &
-                bind(C, name="AA_test_names_flag")
+                bind(C, name="AA_example_nested_test_names_flag")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -132,7 +132,7 @@ module userlibrary_mod
         end subroutine c_test_names_flag
 
         subroutine c_test_names_flag_bufferify(name, Lname, flag) &
-                bind(C, name="AA_test_names_flag_bufferify")
+                bind(C, name="AA_example_nested_test_names_flag_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
@@ -141,19 +141,19 @@ module userlibrary_mod
         end subroutine c_test_names_flag_bufferify
 
         subroutine c_testoptional_0() &
-                bind(C, name="AA_testoptional_0")
+                bind(C, name="AA_example_nested_testoptional_0")
             implicit none
         end subroutine c_testoptional_0
 
         subroutine c_testoptional_1(i) &
-                bind(C, name="AA_testoptional_1")
+                bind(C, name="AA_example_nested_testoptional_1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: i
         end subroutine c_testoptional_1
 
         subroutine c_testoptional_2(i, j) &
-                bind(C, name="AA_testoptional_2")
+                bind(C, name="AA_example_nested_testoptional_2")
             use iso_c_binding, only : C_INT, C_LONG
             implicit none
             integer(C_INT), value, intent(IN) :: i
@@ -162,7 +162,7 @@ module userlibrary_mod
 
         function test_size_t() &
                 result(SHT_rv) &
-                bind(C, name="AA_test_size_t")
+                bind(C, name="AA_example_nested_test_size_t")
             use iso_c_binding, only : C_SIZE_T
             implicit none
             integer(C_SIZE_T) :: SHT_rv
@@ -170,7 +170,7 @@ module userlibrary_mod
 
 #ifdef HAVE_MPI
         subroutine c_testmpi_mpi(comm) &
-                bind(C, name="AA_testmpi_mpi")
+                bind(C, name="AA_example_nested_testmpi_mpi")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: comm
@@ -179,27 +179,27 @@ module userlibrary_mod
 
 #ifndef HAVE_MPI
         subroutine c_testmpi_serial() &
-                bind(C, name="AA_testmpi_serial")
+                bind(C, name="AA_example_nested_testmpi_serial")
             implicit none
         end subroutine c_testmpi_serial
 #endif
 
         subroutine c_testgroup1(grp) &
-                bind(C, name="AA_testgroup1")
+                bind(C, name="AA_example_nested_testgroup1")
             use sidre_mod, only : SHROUD_group_capsule
             implicit none
             type(SHROUD_group_capsule), intent(IN) :: grp
         end subroutine c_testgroup1
 
         subroutine c_testgroup2(grp) &
-                bind(C, name="AA_testgroup2")
+                bind(C, name="AA_example_nested_testgroup2")
             use sidre_mod, only : SHROUD_group_capsule
             implicit none
             type(SHROUD_group_capsule), intent(IN) :: grp
         end subroutine c_testgroup2
 
         subroutine func_ptr1(get) &
-                bind(C, name="AA_func_ptr1")
+                bind(C, name="AA_example_nested_func_ptr1")
             use iso_c_binding, only : C_PTR
             import :: func_ptr1_get
             implicit none
@@ -207,7 +207,7 @@ module userlibrary_mod
         end subroutine func_ptr1
 
         subroutine func_ptr2(get) &
-                bind(C, name="AA_func_ptr2")
+                bind(C, name="AA_example_nested_func_ptr2")
             use iso_c_binding, only : C_DOUBLE
             import :: func_ptr2_get
             implicit none
@@ -215,7 +215,7 @@ module userlibrary_mod
         end subroutine func_ptr2
 
         subroutine c_func_ptr3(get) &
-                bind(C, name="AA_func_ptr3")
+                bind(C, name="AA_example_nested_func_ptr3")
             use iso_c_binding, only : C_DOUBLE
             import :: func_ptr3_get
             implicit none
@@ -223,7 +223,7 @@ module userlibrary_mod
         end subroutine c_func_ptr3
 
         subroutine c_func_ptr4(get) &
-                bind(C, name="AA_func_ptr4")
+                bind(C, name="AA_example_nested_func_ptr4")
             use iso_c_binding, only : C_DOUBLE
             import :: custom_funptr
             implicit none
@@ -231,7 +231,7 @@ module userlibrary_mod
         end subroutine c_func_ptr4
 
         subroutine func_ptr5(get) &
-                bind(C, name="AA_func_ptr5")
+                bind(C, name="AA_example_nested_func_ptr5")
             use iso_c_binding, only : C_PTR
             import :: func_ptr5_get
             implicit none
@@ -242,7 +242,7 @@ module userlibrary_mod
                 verylongname3, verylongname4, verylongname5, &
                 verylongname6, verylongname7, verylongname8, &
                 verylongname9, verylongname10) &
-                bind(C, name="AA_verylongfunctionname1")
+                bind(C, name="AA_example_nested_verylongfunctionname1")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(INOUT) :: verylongname1
@@ -262,7 +262,7 @@ module userlibrary_mod
                 verylongname6, verylongname7, verylongname8, &
                 verylongname9, verylongname10) &
                 result(SHT_rv) &
-                bind(C, name="AA_verylongfunctionname2")
+                bind(C, name="AA_example_nested_verylongfunctionname2")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: verylongname1
@@ -279,7 +279,7 @@ module userlibrary_mod
         end function c_verylongfunctionname2
 
         subroutine c_cos_doubles(in, out, sizein) &
-                bind(C, name="AA_cos_doubles")
+                bind(C, name="AA_example_nested_cos_doubles")
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), intent(IN) :: in(*)

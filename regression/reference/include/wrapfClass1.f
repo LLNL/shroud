@@ -49,7 +49,7 @@ module class1_mod
     interface
 
         subroutine c_class1_method1(self, arg1) &
-                bind(C, name="DEF_class1_method1")
+                bind(C, name="DEF_three_class1_method1")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none

@@ -22,6 +22,8 @@ options:
 declarations:
 - decl: extern int global_flag;
 - decl: namespace tutorial
+  format:
+    C_name_scope: ""
   declarations:
 
   - decl: typedef int TypeID;

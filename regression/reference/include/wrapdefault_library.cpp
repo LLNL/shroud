@@ -23,7 +23,7 @@
 extern "C" {
 
 
-void DEF_function1()
+void DEF_one_two_function1()
 {
     one::two::function1();
     return;
