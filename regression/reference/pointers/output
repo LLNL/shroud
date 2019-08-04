@@ -2,6 +2,6 @@ Wrote wrappointers.h
 Wrote wrappointers.cpp
 Wrote typespointers.h
 Wrote wrapfpointers.f
+Wrote pypointersmodule.cpp
 Wrote pypointersutil.cpp
 Wrote pypointersmodule.hpp
-Wrote pypointersmodule.cpp

@@ -114,7 +114,6 @@ class Wrapp(util.WrapperMixin):
             fmt_library.PY_extern_C_begin = 'extern "C" '
 
         # Format variables
-        newlibrary.eval_template("PY_module_filename")
         newlibrary.eval_template("PY_header_filename")
         newlibrary.eval_template("PY_utility_filename")
         fmt_library.PY_PyObject = "PyObject"
@@ -131,8 +130,8 @@ class Wrapp(util.WrapperMixin):
         fmt_library.npy_intp = ""     # shape array definition
 
         # Variables to accumulate output lines
-        self.py_type_object_creation = []
-        self.py_class_decl = []
+        self.py_type_object_creation = [] # code to add class to module.
+        self.py_class_decl = []  # code for header file
         self.py_utility_definition = []
         self.py_utility_declaration = []
         self.py_utility_functions = []
@@ -145,14 +144,16 @@ class Wrapp(util.WrapperMixin):
         self.wrap_namespace(newlibrary)
         self.write_utility()
         self.write_header(newlibrary)
-        self.write_module(newlibrary)
 
     def wrap_namespace(self, node):
         """Wrap a library or namespace.
 
+        Each class is written into its own file.
+
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
         """
+        node.eval_template("PY_module_filename")
 
         # preprocess all classes first to allow them to reference each other
         for cls in node.classes:
@@ -205,6 +206,8 @@ class Wrapp(util.WrapperMixin):
 
         for ns in node.namespaces:
             self.wrap_namespace(ns)
+
+        self.write_module(node)
 
     def wrap_enums(self, cls):
         """Wrap enums for library or cls
@@ -270,7 +273,10 @@ class Wrapp(util.WrapperMixin):
             output.append("-}")
 
     def wrap_class(self, node):
-        """
+        """Create an extension type for a C++ class.
+
+        Wrapper code added to py_type_object_creation.
+
         Args:
             node - ast.ClassNode.
         """
@@ -280,6 +286,7 @@ class Wrapp(util.WrapperMixin):
         node.eval_template("PY_type_filename")
         fmt_class.PY_this_call = wformat("self->{PY_type_obj}->", fmt_class)
 
+        # Create code for module to add type to module
         output = self.py_type_object_creation
         output.append("")
         if node.cpp_if:
@@ -2008,6 +2015,7 @@ extern PyObject *{PY_prefix}error_obj;
     def write_module(self, node):
         """
         Write the Python extension module.
+        Used with a Library or Namespace node
 
         Args:
             node - ast.LibraryNode.

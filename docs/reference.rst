@@ -670,6 +670,7 @@ F_module_name
     Name of module for Fortran interface for the library.
     Defaulted from expansion of option *F_module_name_library_template*
     which is **{library_lower}_mod**.
+    Then converted to lower case.
 
 F_impl_filename
     Name of generated Fortran implementation file for the library.

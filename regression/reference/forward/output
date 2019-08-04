@@ -6,8 +6,8 @@ Wrote typesforward.h
 Wrote wrapfforward.f
 Wrote pyClass3type.cpp
 Wrote pyClass2type.cpp
+Wrote pyforwardmodule.cpp
 Wrote pyforwardutil.cpp
 Wrote pyforwardmodule.hpp
-Wrote pyforwardmodule.cpp
 Wrote luaforwardmodule.hpp
 Wrote luaforwardmodule.cpp

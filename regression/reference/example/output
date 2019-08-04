@@ -11,8 +11,8 @@ Wrote wrapfExClass2.f
 Wrote wrapfuserlibrary.f
 Wrote pyExClass1type.cpp
 Wrote pyExClass2type.cpp
+Wrote pyUserLibrarymodule.cpp
 Wrote pyUserLibraryutil.cpp
 Wrote pyUserLibrarymodule.hpp
-Wrote pyUserLibrarymodule.cpp
 Wrote luaUserLibrarymodule.hpp
 Wrote luaUserLibrarymodule.cpp

@@ -58,7 +58,7 @@ static char vector_instantiation5__doc__[] =
 /* static */
 PyTypeObject PY_vector_instantiation5_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames.vector_instantiation5",                       /* tp_name */
+    "testnames_std.vector_instantiation5",                       /* tp_name */
     sizeof(PY_vector_instantiation5),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

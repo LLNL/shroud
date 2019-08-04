@@ -24,6 +24,7 @@ declarations:
 - decl: namespace tutorial
   format:
     C_name_scope: ""
+    PY_module_name: tutorial
   declarations:
 
   - decl: typedef int TypeID;

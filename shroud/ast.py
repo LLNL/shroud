@@ -279,7 +279,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         # namespace
         self.scope = ""
-        self.scope_file = [library.lower()]
+        self.scope_file = [library]
         self.symbols = {}
         self.using = []
 
@@ -454,7 +454,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
 
             PY_module_filename_template=(
-                "py{library}module.{PY_impl_filename_suffix}"
+                "py{file_scope}module.{PY_impl_filename_suffix}"
             ),
             PY_header_filename_template=(
                 "py{library}module.{PY_header_filename_suffix}"
@@ -657,6 +657,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         # All class/methods and functions may go into this file or
         # just functions.
         self.eval_template("F_module_name", "_library")
+        fmt_library.F_module_name = fmt_library.F_module_name.lower()
         self.eval_template("F_impl_filename", "_library")
 
         self.eval_template("PY_numpy_array_capsule_name")
@@ -804,10 +805,12 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
+        fmt_ns.PY_module_name = fmt_ns.file_scope
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
         self.eval_template("F_module_name", "_namespace")
+        fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
         self.eval_template("F_impl_filename", "_namespace")
 
         if format:

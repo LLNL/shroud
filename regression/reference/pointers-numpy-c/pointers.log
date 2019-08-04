@@ -7,6 +7,6 @@ Python function void get_values2(int * arg1 +dimension(3)+intent(out), int * arg
 Python function void Sum(int len +implied(size(values))+intent(in)+value, int * values +dimension(:)+intent(in), int * result +intent(out))
 Python function void fillIntArray(int * out +dimension(3)+intent(out))
 Python function void incrementIntArray(int * array +dimension(:)+intent(inout), int sizein +implied(size(array))+intent(in)+value)
+Close pypointersmodule.c
 Close pypointersutil.c
 Close pypointersmodule.h
-Close pypointersmodule.c

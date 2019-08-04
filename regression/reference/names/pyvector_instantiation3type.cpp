@@ -58,7 +58,7 @@ static char vector_instantiation3__doc__[] =
 /* static */
 PyTypeObject PY_vector_instantiation3_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames.vector_instantiation3",                       /* tp_name */
+    "testnames_std.vector_instantiation3",                       /* tp_name */
     sizeof(PY_vector_instantiation3),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

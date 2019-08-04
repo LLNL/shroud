@@ -25,9 +25,9 @@ Python method ~Class2()
 Python method void func1(Class1 * arg +intent(in))
 Python method void acceptClass3(Class3 * arg +intent(in))
 Close pyClass2type.cpp
+Close pyforwardmodule.cpp
 Close pyforwardutil.cpp
 Close pyforwardmodule.hpp
-Close pyforwardmodule.cpp
 Lua method Class2()
 Lua method ~Class2()
 Lua method void func1(Class1 * arg +intent(in))
