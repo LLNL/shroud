@@ -694,7 +694,7 @@ static char ExClass2__doc__[] =
 /* static */
 PyTypeObject PP_ExClass2_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "UserLibrary_example_nested.ExClass2",                       /* tp_name */
+    "userlibrary.example.nested.ExClass2",                       /* tp_name */
     sizeof(PP_ExClass2),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

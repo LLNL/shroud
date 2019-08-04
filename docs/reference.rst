@@ -764,9 +764,19 @@ PY_impl_filename_suffix
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
+PY_module_init
+    Name of module and submodule initialization routine.
+    library and namespaces delimited by ``_``.
+    Setting *PY_module_name* will update *PY_module_init*.
+
 PY_module_name
-    Name of wrapper Python module.
-    Defaults to library name.
+    Name of generated Python module.
+    Defaults to library name or namespace name.
+
+PY_module_scope
+    Name of module and submodule initialization routine.
+    library and namespaces delimited by ``.``.
+    Setting *PY_module_name* will update *PY_module_scope*.
 
 PY_name_impl
     Name of Python wrapper implemenation function.

@@ -58,7 +58,7 @@ static char vector_double__doc__[] =
 /* static */
 PyTypeObject PY_vector_double_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames_std.vector_double",                       /* tp_name */
+    "testnames.std.vector_double",                       /* tp_name */
     sizeof(PY_vector_double),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

@@ -138,7 +138,7 @@ static char Class2__doc__[] =
 /* static */
 PyTypeObject PY_Class2_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "forward_tutorial.Class2",                       /* tp_name */
+    "forward.tutorial.Class2",                       /* tp_name */
     sizeof(PY_Class2),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

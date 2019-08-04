@@ -660,6 +660,11 @@ class LibraryNode(AstNode, NamespaceMixin):
         fmt_library.F_module_name = fmt_library.F_module_name.lower()
         self.eval_template("F_impl_filename", "_library")
 
+        # If user changes PY_module_name, reflect change in PY_module_scope.
+        self.set_fmt_default(
+            "PY_module_init", fmt_library.PY_module_name, fmt_library)
+        self.set_fmt_default(
+            "PY_module_scope", fmt_library.PY_module_name, fmt_library)
         self.eval_template("PY_numpy_array_capsule_name")
         self.eval_template("PY_dtor_context_array")
         self.eval_template("PY_dtor_context_typedef")
@@ -805,7 +810,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
-        fmt_ns.PY_module_name = fmt_ns.file_scope
+        fmt_ns.PY_module_name = self.name
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
@@ -815,6 +820,18 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         if format:
             fmt_ns.update(format, replace=True)
+
+        # If user changes PY_module_name, reflect change in PY_module_scope.
+        self.set_fmt_default(
+            "PY_module_init",
+            parent.fmtdict.PY_module_init + "_" + fmt_ns.PY_module_name,
+            fmt_ns
+        )
+        self.set_fmt_default(
+            "PY_module_scope",
+            parent.fmtdict.PY_module_scope + "." + fmt_ns.PY_module_name,
+            fmt_ns
+        )
 
 
 ######################################################################

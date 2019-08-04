@@ -58,7 +58,7 @@ static char Vvv1__doc__[] =
 /* static */
 PyTypeObject PY_Vvv1_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames_std.Vvv1",                       /* tp_name */
+    "testnames.std.Vvv1",                       /* tp_name */
     sizeof(PY_Vvv1),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

@@ -58,7 +58,7 @@ static char Class3__doc__[] =
 /* static */
 PyTypeObject PY_Class3_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "forward_tutorial.Class3",                       /* tp_name */
+    "forward.tutorial.Class3",                       /* tp_name */
     sizeof(PY_Class3),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

@@ -47,6 +47,9 @@ from .util import wformat, append_format
 # ctorvar  - Variable created by ctor
 BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk ctorvar")
 
+# type_object_creation - code to add variables to module.
+ModuleTuple = collections.namedtuple("ModuleTuple", "type_object_creation")
+
 
 class Wrapp(util.WrapperMixin):
     """Generate Python bindings.
@@ -130,7 +133,6 @@ class Wrapp(util.WrapperMixin):
         fmt_library.npy_intp = ""     # shape array definition
 
         # Variables to accumulate output lines
-        self.py_type_object_creation = [] # code to add class to module.
         self.py_class_decl = []  # code for header file
         self.py_utility_definition = []
         self.py_utility_declaration = []
@@ -154,6 +156,7 @@ class Wrapp(util.WrapperMixin):
             node - ast.LibraryNode, ast.NamespaceNode
         """
         node.eval_template("PY_module_filename")
+        modinfo = ModuleTuple([])
 
         # preprocess all classes first to allow them to reference each other
         for cls in node.classes:
@@ -190,7 +193,7 @@ class Wrapp(util.WrapperMixin):
                 self.create_arraydescr(cls)
             else:
                 self.need_blah = True
-                self.wrap_class(cls)
+                self.wrap_class(cls, modinfo)
                 self.write_extension_type(node, cls)
             self._pop_splicer(name)
         self._pop_splicer("class")
@@ -206,8 +209,27 @@ class Wrapp(util.WrapperMixin):
 
         for ns in node.namespaces:
             self.wrap_namespace(ns)
+            self.register_submodule(ns, modinfo)
 
-        self.write_module(node)
+        self.write_module(node, modinfo)
+
+    def register_submodule(self, ns, modinfo):
+        """Create code to add submodule to a module"""
+        fmt_ns = ns.fmtdict
+
+        output = modinfo.type_object_creation
+        output.append(
+            wformat("""
+{{+
+PyObject *submodule = init_{PY_module_init}();
+if (submodule == NULL)
++return MOD_ERROR;-
+Py_INCREF(submodule);
+PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
+-}}""",
+                    fmt_ns,
+                )
+        )
 
     def wrap_enums(self, cls):
         """Wrap enums for library or cls
@@ -272,7 +294,7 @@ class Wrapp(util.WrapperMixin):
                 )
             output.append("-}")
 
-    def wrap_class(self, node):
+    def wrap_class(self, node, modinfo):
         """Create an extension type for a C++ class.
 
         Wrapper code added to py_type_object_creation.
@@ -287,7 +309,7 @@ class Wrapp(util.WrapperMixin):
         fmt_class.PY_this_call = wformat("self->{PY_type_obj}->", fmt_class)
 
         # Create code for module to add type to module
-        output = self.py_type_object_creation
+        output = modinfo.type_object_creation
         output.append("")
         if node.cpp_if:
             output.append("#" + node.cpp_if)
@@ -1811,7 +1833,7 @@ return 1;""",
         self._pop_splicer("impl")
 
         fmt_type = dict(
-            PY_module_name=fmt.PY_module_name,
+            PY_module_scope=fmt.PY_module_scope,
             PY_PyObject=fmt.PY_PyObject,
             PY_PyTypeObject=fmt.PY_PyTypeObject,
             cxx_class=fmt.cxx_class,
@@ -2000,9 +2022,9 @@ return 1;""",
 extern PyObject *{PY_prefix}error_obj;
 
 #if PY_MAJOR_VERSION >= 3
-{PY_extern_C_begin}PyMODINIT_FUNC PyInit_{PY_module_name}(void);
+{PY_extern_C_begin}PyMODINIT_FUNC PyInit_{PY_module_init}(void);
 #else
-{PY_extern_C_begin}PyMODINIT_FUNC init{PY_module_name}(void);
+{PY_extern_C_begin}PyMODINIT_FUNC init{PY_module_init}(void);
 #endif
 """,
             fmt,
@@ -2012,7 +2034,7 @@ extern PyObject *{PY_prefix}error_obj;
         #            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def write_module(self, node):
+    def write_module(self, node, modinfo):
         """
         Write the Python extension module.
         Used with a Library or Namespace node
@@ -2065,13 +2087,27 @@ extern PyObject *{PY_prefix}error_obj;
 
         output.extend(self.arraydescr)
 
+        if node.nodename == "library":
+            self.write_init_module(fmt, output, modinfo)
+        else:
+            self.write_init_submodule(fmt, output, modinfo)
+
+        self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
+        self.write_output_file(fname, self.config.python_dir, output)
+
+    def write_init_module(self, fmt, output, modinfo):
+        """Initialize the top level module.
+
+        Uses Python's API for importing a module from a shared library.
+        Deal with numpy initialization.
+        """
         append_format(output, module_begin, fmt)
         self._create_splicer("C_init_locals", output)
         append_format(output, module_middle, fmt)
         if self.need_numpy:
             output.append("")
             output.append("import_array();")
-        output.extend(self.py_type_object_creation)
+        output.extend(modinfo.type_object_creation)
         output.extend(self.enum_impl)
         if self.call_arraydescr:
             output.append("")
@@ -2081,8 +2117,15 @@ extern PyObject *{PY_prefix}error_obj;
         self._create_splicer("C_init_body", output)
         append_format(output, module_end, fmt)
 
-        self.config.pyfiles.append(os.path.join(self.config.python_dir, fname))
-        self.write_output_file(fname, self.config.python_dir, output)
+    def write_init_submodule(self, fmt, output, modinfo):
+        """Initialize namespace module.
+
+        Always return a PyObject.
+        """
+        append_format(output, submodule_begin, fmt)
+        output.extend(modinfo.type_object_creation)
+#        output.extend(self.enum_impl)
+        append_format(output, submodule_end, fmt)
 
     def write_utility(self):
         node = self.newlibrary
@@ -2350,7 +2393,7 @@ static char {cxx_class}__doc__[] =
 /* static */
 PyTypeObject {PY_PyTypeObject} = {{+
 PyVarObject_HEAD_INIT(NULL, 0)
-"{PY_module_name}.{cxx_class}",                       /* tp_name */
+"{PY_module_scope}.{cxx_class}",                       /* tp_name */
 sizeof({PY_PyObject}),         /* tp_basicsize */
 {nullptr},                              /* tp_itemsize */
 /* Methods to implement standard operations */
@@ -2472,9 +2515,9 @@ static struct PyModuleDef moduledef = {{
 
 {PY_extern_C_begin}PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_{PY_module_name}(void)
+PyInit_{PY_module_init}(void)
 #else
-init{PY_module_name}(void)
+init{PY_module_init}(void)
 #endif
 {{+
 PyObject *m = NULL;
@@ -2508,6 +2551,36 @@ module_end = """
 if (PyErr_Occurred())
 +Py_FatalError("can't initialize module {PY_module_name}");-
 return RETVAL;
+-}}
+"""
+
+# A submodule always returns a PyObject.
+submodule_begin = """
+static struct PyModuleDef moduledef = {{
+    PyModuleDef_HEAD_INIT,
+    "{PY_module_scope}", /* m_name */
+    {PY_prefix}_doc__, /* m_doc */
+    sizeof(struct module_state), /* m_size */
+    {PY_prefix}methods, /* m_methods */
+//    NULL, /* m_reload */
+//    {library_lower}_traverse, /* m_traverse */
+//    {library_lower}_clear, /* m_clear */
+//    NULL  /* m_free */
+}};
+
+init_{PY_module_init}(void)
+{{+
+PyObject *m;
+#if PY_MAJOR_VERSION >= 3
+m = PyModule_Create(&moduledef);
+#else
+m = Py_InitModule3((char *) "{PY_module_scope}", {PY_prefix}methods, NULL);
+#endif
+if (m == NULL)
++return NULL;-
+"""
+submodule_end = """
+return m;
 -}}
 """
 
