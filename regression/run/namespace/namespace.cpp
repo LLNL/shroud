@@ -4,12 +4,13 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 
-namespace outer {
-  struct Cstruct1 {
-    int ifield;
-    double dfield;
-  };
-  void One();
-};
+#include "namespace.hpp"
 
-void One();
+void outer::One()
+{
+}
+
+void One()
+{
+}
+

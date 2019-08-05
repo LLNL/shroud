@@ -17,6 +17,7 @@ VPATH = \
     $(top)/regression/run/namespace/python
 
 OBJS = \
+    namespace.o \
     pyCstruct1type.o \
     pynsmodule.o \
     pyns_outermodule.o \
@@ -25,10 +26,12 @@ OBJS = \
 
 CXXFLAGS += $(SHARED)
 
-all : namespace.so
+all : ns.so
 
-namespace.so : $(OBJS)
+ns.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+namespace.o : namespace.hpp
 
 clean :
 	rm -f *.so *.o

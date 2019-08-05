@@ -138,6 +138,8 @@ class Wrapp(util.WrapperMixin):
         self.py_utility_definition = []
         self.py_utility_declaration = []
         self.py_utility_functions = []
+        append_format(self.module_init_decls,
+                      "PyObject *{PY_prefix}error_obj;", fmt_library)
 
         # reserved the 0 slot of capsule_order
         self.add_capsule_code('--none--', ['// Do not release'])
@@ -2080,7 +2082,8 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         self._create_splicer("C_definition", output)
 
-        append_format(output, "PyObject *{PY_prefix}error_obj;", fmt)
+        if node.nodename == "library":
+            output.extend(self.module_init_decls)
         output.extend(self.define_arraydescr)
 
         self._create_splicer("additional_functions", output)
@@ -2112,7 +2115,6 @@ extern PyObject *{PY_prefix}error_obj;
         Deal with numpy initialization.
         """
         append_format(output, module_begin, fmt)
-        output.extend(self.module_init_decls)
         self._create_splicer("C_init_locals", output)
         append_format(output, module_middle, fmt)
         if self.need_numpy:
