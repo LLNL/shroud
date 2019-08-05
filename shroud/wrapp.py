@@ -76,6 +76,7 @@ class Wrapp(util.WrapperMixin):
         self.doxygen_end = " */"
         self.need_numpy = False
         self.enum_impl = []
+        self.module_init_decls = []
         self.arraydescr = []  # Create PyArray_Descr for struct
         self.decl_arraydescr = []
         self.define_arraydescr = []
@@ -217,13 +218,16 @@ class Wrapp(util.WrapperMixin):
         """Create code to add submodule to a module"""
         fmt_ns = ns.fmtdict
 
+        self.module_init_decls.append(
+            wformat("PyObject *{PY_prefix}init_{PY_module_init}(void);", fmt_ns))
+
         output = modinfo.type_object_creation
         output.append(
             wformat("""
 {{+
-PyObject *submodule = init_{PY_module_init}();
+PyObject *submodule = {PY_prefix}init_{PY_module_init}();
 if (submodule == NULL)
-+return MOD_ERROR;-
++INITERROR;-
 Py_INCREF(submodule);
 PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
 -}}""",
@@ -1624,7 +1628,7 @@ return 1;""",
 
         if cls.as_struct and cls.options.PY_struct_arg == "class":
             code.append("// initialize fields")
-            append_format(code, "{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
+            append_format(code, "{namespace_scope}{cxx_type} *SH_obj = self->{PY_type_obj};", fmt)
             for var in node.ast.params:
                 code.append("SH_obj->{} = {};".format(var.name, var.name))
 
@@ -1819,7 +1823,7 @@ return 1;""",
             for include in node.cxx_header.split():
                 header_impl_include[include] = True
         else:
-            for include in library.cxx_header.split():
+            for include in self.newlibrary.cxx_header.split():
                 header_impl_include[include] = True
         header_impl_include.update(self.helper_header["file"])
         self.write_headers(header_impl_include, output)
@@ -2055,11 +2059,17 @@ extern PyObject *{PY_prefix}error_obj;
         output = []
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if self.need_numpy:
+        if node.nodename == "library" and  self.need_numpy:
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
-        for include in node.cxx_header.split():
-            output.append('#include "%s"' % include)
+
+        if node.cxx_header:
+            for include in node.cxx_header.split():
+                output.append('#include "%s"' % include)
+        else:
+            for include in self.newlibrary.cxx_header.split():
+                output.append('#include "%s"' % include)
+
         self.header_impl_include.update(self.helper_header["file"])
         self.write_headers(self.header_impl_include, output)
         output.append("")
@@ -2102,6 +2112,7 @@ extern PyObject *{PY_prefix}error_obj;
         Deal with numpy initialization.
         """
         append_format(output, module_begin, fmt)
+        output.extend(self.module_init_decls)
         self._create_splicer("C_init_locals", output)
         append_format(output, module_middle, fmt)
         if self.need_numpy:
@@ -2538,6 +2549,7 @@ m = Py_InitModule4("{PY_module_name}", {PY_prefix}methods,\t
 +return RETVAL;-
 struct module_state *st = GETSTATE(m);"""
 
+# XXX - +INITERROR;-
 module_middle2 = """
 {PY_prefix}error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
 if ({PY_prefix}error_obj == NULL)
@@ -2556,19 +2568,24 @@ return RETVAL;
 
 # A submodule always returns a PyObject.
 submodule_begin = """
+#if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef moduledef = {{
     PyModuleDef_HEAD_INIT,
     "{PY_module_scope}", /* m_name */
     {PY_prefix}_doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     {PY_prefix}methods, /* m_methods */
-//    NULL, /* m_reload */
+    NULL, /* m_reload */
 //    {library_lower}_traverse, /* m_traverse */
 //    {library_lower}_clear, /* m_clear */
-//    NULL  /* m_free */
+    NULL, /* m_traverse */
+    NULL, /* m_clear */
+    NULL  /* m_free */
 }};
+#endif
+#define RETVAL NULL
 
-init_{PY_module_init}(void)
+PyObject *{PY_prefix}init_{PY_module_init}(void)
 {{+
 PyObject *m;
 #if PY_MAJOR_VERSION >= 3
