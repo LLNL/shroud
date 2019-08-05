@@ -6,11 +6,20 @@
 
 #include "namespace.hpp"
 
+static std::string last_function_called;
+
+const std::string& LastFunctionCalled()
+{
+    return last_function_called;
+}
+
 void outer::One()
 {
+  last_function_called = "outer::One";
 }
 
 void One()
 {
+  last_function_called = "One";
 }
 
