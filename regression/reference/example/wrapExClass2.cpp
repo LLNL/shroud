@@ -51,7 +51,7 @@ void AA_ShroudCopyStringAndFree(AA_SHROUD_array *data, char *c_var, size_t c_var
     const char *cxx_var = data->addr.ccharp;
     size_t n = c_var_len;
     if (data->len < n) n = data->len;
-    strncpy(c_var, cxx_var, n);
+    std::strncpy(c_var, cxx_var, n);
     AA_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 

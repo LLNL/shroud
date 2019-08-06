@@ -379,7 +379,7 @@ class Wrapc(util.WrapperMixin):
             for include in cls.cxx_header.split():
                 self.header_impl_include[include] = True
         else:
-            for include in ns.cxx_header.split():
+            for include in self.newlibrary.cxx_header.split():
                 self.header_impl_include[include] = True
 
         # headers required by implementation
