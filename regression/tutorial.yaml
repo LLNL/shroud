@@ -91,12 +91,6 @@ declarations:
        wrap_lua: False
        wrap_python: False
 
-  - decl: void FortranGeneric(double arg)
-    fortran_generic:
-       arg:
-       - float
-       - double
-
 # test cxx_template, fortran_generic, overload
 #- decl: void Function10()
 #- decl: template<typename ArgType> void Function10(ArgType arg1, std::string &name, double arg2 = 0)
@@ -110,9 +104,8 @@ declarations:
 #    - int
 #    - double
 #  fortran_generic:
-#     arg2:
-#     - float
-#     - double
+#  - decl: (float arg2)
+#  - decl: (double arg2)
   
   
 # test fortran_generic, overload
@@ -124,9 +117,10 @@ declarations:
 #   - instantiation: <int>
 #   - instantiation: <double>
     fortran_generic:
-       arg2:
-       - float
-       - double
+    - decl: (float arg2)
+      function_suffix: _float
+    - decl: (double arg2)
+      function_suffix: _double
   
 # overload with default values
   - decl: int UseDefaultOverload(int num,

@@ -1601,12 +1601,11 @@ The Fortran shadow class adds the type-bound method for the destructor:
 The constructors are not type-bound procedures. But they
 are combined into a generic interface.
 
-.. code-block:: fortran
-
-    interface class1_new
-        module procedure class1_new_default
-        module procedure class1_new_flag
-    end interface class1_new
+.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+   :language: fortran
+   :start-after: ! start interface class1_new
+   :end-before: ! end interface class1_new
+   :dedent: 4
 
 A class instance is created and destroy from Fortran as:
 
@@ -1861,3 +1860,79 @@ Usage:
     rv = use_default_arguments()
     rv = use_default_arguments(1.d0)
     rv = use_default_arguments(1.d0, .false.)
+
+.. ############################################################
+
+.. _example_GenericReal:
+
+Generic Real
+------------
+
+C library function in :file:`clibrary.c`:
+
+.. literalinclude:: ../regression/run/generic/generic.c
+   :language: c
+   :start-after: start GenericReal
+   :end-before: end GenericReal
+
+:file:`generic.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void GenericReal(double arg)
+      fortran_generic:
+      - decl: (float arg)
+        function_suffix: float
+      - decl: (double arg)
+        function_suffix: double
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
+   :language: fortran
+   :start-after: start c_generic_real
+   :end-before: end c_generic_real
+   :dedent: 4
+
+There is a single interface since there is a single C function.
+A generic interface is created for each declaration in the *fortran_generic* block.
+
+.. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
+   :language: fortran
+   :start-after: ! start interface generic_real
+   :end-before: ! end interface generic_real
+   :dedent: 4
+
+A Fortran wrapper is created for each declaration in the *fortran_generic* block.
+The argument is explicitly converted to a ``C_DOUBLE`` before calling the C function
+in ``generic_real_float``.  There is no conversion necessary in ``generic_real_double``.
+
+.. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
+   :language: fortran
+   :start-after: start generic_real_float
+   :end-before: end generic_real_float
+   :dedent: 4
+
+.. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
+   :language: fortran
+   :start-after: start generic_real_double
+   :end-before: end generic_real_double
+   :dedent: 4
+
+The function can be called via the generic interface with either type.
+If the specific function is called, the correct type must be passed.
+
+.. code-block:: fortran
+
+    call generic_real(0.0)
+    call generic_real(0.0d0)
+
+    call generic_real_float(0.0)
+    call generic_real_double(0.0d0)
+
+In C, the compiler will promote the argument.
+
+.. code-block:: c
+
+    GenericReal(0.0f);
+    GenericReal(0.0);

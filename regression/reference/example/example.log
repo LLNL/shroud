@@ -113,8 +113,8 @@ C-interface method void getName4(std::string * SHF_rv +context(DSHF_rv)+deref(al
 C-interface, Fortran method int GetNameLength() const
 C-interface, Fortran method ExClass1 * get_class1(const ExClass1 * in +intent(in))
 C-interface method void * declare(TypeID type +intent(in)+value)
-Fortran method void * declare(TypeID type +intent(in)+value)
-Fortran method void * declare(TypeID type +intent(in)+value)
+Fortran method void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
+Fortran method void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)
 C-interface method void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 Fortran method void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)
 Fortran method void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)

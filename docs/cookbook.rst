@@ -29,9 +29,10 @@ functions will have the same name.  The solution is to set format field
       options:
         F_name_impl_template: "{F_name_generic}{function_suffix}"
       fortran_generic:
-        n:
-        -  int
-        -  long
+      - decl: (int n)
+        function_suffix: int
+      - decl: (long n)
+        function_suffix: long
 
 Will generate the Fortran code
 

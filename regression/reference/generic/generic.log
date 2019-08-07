@@ -1,0 +1,24 @@
+Read yaml generic.yaml
+C function double GetGlobalDouble()
+C function void GenericReal(double arg +intent(in)+value)
+C function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+C function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
+C function void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+Close wrapgeneric.c
+Close typesgeneric.h
+C-interface, Fortran function double GetGlobalDouble()
+C-interface function void GenericReal(double arg +intent(in)+value)
+Fortran function void GenericReal(float arg +intent(in)+value)
+Fortran function void GenericReal(double arg +intent(in)+value)
+C-interface function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
+Fortran function long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)
+Fortran function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C-interface function void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+Fortran function void SavePointer(float * addr +dimension(:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+Fortran function void SavePointer(float * addr +dimension(:,:)+intent(in), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
+C-interface, Fortran function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
+C-interface function void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+Fortran function void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+Fortran function void GetPointerAsPointer(float * * addr +deref(pointer)+dimension(:,:)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+Close wrapfgeneric.f

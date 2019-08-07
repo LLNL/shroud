@@ -101,6 +101,15 @@ class VerifyAttrs(object):
         for arg in ast.params:
             self.check_arg_attrs(node, arg)
 
+        if node.fortran_generic:
+            for generic in node.fortran_generic:
+                for garg in generic.decls:
+                    generic._has_found_default = False
+                    self.check_arg_attrs(generic, garg)
+                check_implied_attrs(generic.decls)
+        else:
+            check_implied_attrs(ast.params)
+
     def check_shared_attrs(self, node):
         """Check attributes which may be assigned to function or argument:
         deref, free_pattern, owner
@@ -139,11 +148,11 @@ class VerifyAttrs(object):
     def check_arg_attrs(self, node, arg):
         """Regularize attributes.
         intent: lower case, no parens, must be in, out, or inout
-        value: if pointer, default to False (pass-by-reference;
+        value: if pointer, default to False (pass-by-reference)
                else True (pass-by-value).
 
         Args:
-            node - ast.FunctionNode
+            node - ast.FunctionNode or ast.FortranGeneric
             arg  - declast.Declaration
         """
         if node:
@@ -151,8 +160,9 @@ class VerifyAttrs(object):
         else:
             options = dict()
         argname = arg.name
+        attrs = arg.attrs
 
-        for attr in arg.attrs:
+        for attr in attrs:
             if attr[0] == "_":  # internal attribute
                 continue
             if attr not in [
@@ -190,7 +200,6 @@ class VerifyAttrs(object):
         self.check_shared_attrs(arg)
 
         is_ptr = arg.is_indirect()
-        attrs = arg.attrs
 
         allocatable = attrs.get("allocatable", False)
         if allocatable:
@@ -302,9 +311,6 @@ class VerifyAttrs(object):
                 node._has_default_arg = True
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
-
-            if "implied" in attrs:
-                check_implied(attrs["implied"], node)
 
         # compute argument names for some attributes
         # XXX make sure they don't conflict with other names
@@ -856,62 +862,33 @@ class GenFunctions(object):
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
 
-        - decl: void Function9(double arg)
+        - decl: void GenericReal(double arg)
           fortran_generic:
-            arg:
-            - float
-            - double
+          - decl: (float arg)
+            function_suffix: float
+          - decl: (double arg)
+            function_suffix: double
 
         Args:
-            node -
+            node - ast.FunctionNode
             ordered_functions -
         """
-        nkeys = 0
-        linenumber = node.fortran_generic.get("__line__", "?")
-        for argname, types in node.fortran_generic.items():
-            if argname == "__line__":
-                continue
-            nkeys += 1
-            if nkeys > 1:
-                # In the future it may be useful to have multiple generic arguments
-                # That the would start creating more permutations
-                raise NotImplementedError("Only one generic arg for now")
-            for typ in types:
-                ntypemap = typemap.lookup_type(typ)
-                if ntypemap is None:
-                    raise RuntimeError(
-                        "Unknown type '{}' for argument '{}' "
-                        "for fortran generic near line {}".format(
-                            typ, argname, linenumber
-                        )
-                    )
-                new = node.clone()
-                ordered_functions.append(new)
-                self.append_function_index(new)
-
-                new._generated = "fortran_generic"
-                new._PTR_F_C_index = node._function_index
-                fmt = new.fmtdict
-                # XXX append to existing suffix
-                fmt.function_suffix = fmt.function_suffix + "_" + typ
-                new.fortran_generic = {}
-                options = new.options
-                options.wrap_c = False
-                options.wrap_fortran = True
-                options.wrap_python = False
-                options.wrap_lua = False
-                # Convert typename to type
-                for arg in new.ast.params:
-                    if arg.name == argname:
-                        # Convert any arg_typemap to native type with f_type
-                        arg_typemap = arg.typemap
-                        if not arg_typemap.f_cast:
-                            raise RuntimeError(
-                                "unable to cast type {} in fortran_generic".format(
-                                    arg_typemap.name
-                                )
-                            )
-                        arg.set_type(ntypemap)
+        for generic in node.fortran_generic:
+            new = node.clone()
+            ordered_functions.append(new)
+            self.append_function_index(new)
+            new._generated = "fortran_generic"
+            new._PTR_F_C_index = node._function_index
+            fmt = new.fmtdict
+            # XXX append to existing suffix
+            fmt.function_suffix = fmt.function_suffix + generic.function_suffix
+            new.fortran_generic = {}
+            options = new.options
+            options.wrap_c = False
+            options.wrap_fortran = True
+            options.wrap_python = False
+            options.wrap_lua = False
+            new.ast.params = generic.decls
 
         # Do not process templated node, instead process
         # generated functions above.
@@ -1567,18 +1544,19 @@ class CheckImplied(todict.PrintNode):
     """Check arguments in the implied attribute.
     """
 
-    def __init__(self, expr, func):
+    def __init__(self, expr, decls):
         super(CheckImplied, self).__init__()
         self.expr = expr
-        self.func = func
+        self.decls = decls
 
     def visit_Identifier(self, node):
-        """Check arguments to size function.
+        """Check arguments to implied attribute.
 
         Args:
             node -
         """
         if node.args is None:
+            # Not a function.
             return node.name
         elif node.name == "size":
             # size(arg)
@@ -1587,7 +1565,7 @@ class CheckImplied(todict.PrintNode):
                     "Too many arguments to 'size': ".format(self.expr)
                 )
             argname = node.args[0].name
-            arg = self.func.ast.find_arg_by_name(argname)
+            arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 raise RuntimeError(
                     "Unknown argument '{}': {}".format(argname, self.expr)
@@ -1595,6 +1573,7 @@ class CheckImplied(todict.PrintNode):
             if "dimension" not in arg.attrs:
                 raise RuntimeError(
                     "Argument '{}' must have dimension attribute: {}".format(
+#                        str(arg), self.expr
                         argname, self.expr
                     )
                 )
@@ -1603,10 +1582,10 @@ class CheckImplied(todict.PrintNode):
             # len(arg)  len_trim(arg)
             if len(node.args) != 1:
                 raise RuntimeError(
-                    "Too many arguments to 'size': ".format(self.expr)
+                    "Too many arguments to '{}': {}".format(node.name, self.expr)
                 )
             argname = node.args[0].name
-            arg = self.func.ast.find_arg_by_name(argname)
+            arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 raise RuntimeError(
                     "Unknown argument '{}': {}".format(argname, self.expr)
@@ -1620,20 +1599,35 @@ class CheckImplied(todict.PrintNode):
 #                )
             return node.name
         else:
-            raise RuntimeError(
-                "Unexpected function '{}' in expression: {}".format(
-                    node.name, self.expr
-                )
-            )
+            # Assume a user defined function.
+            return self.param_list(node)
 
 
-def check_implied(expr, func):
-    """Check implied attribute expression for errors.
+def check_implied_attrs(decls):
+    """Check all parameters for implied arguments.
+
+    The implied attribute may reference other arguments in decls.
+    Only call on the full Fortran decls.
+    If fortran_generic, call for each decls member.
+    Otherwise, call on FunctionAst.ast.params
 
     Args:
-        expr -
-        func -
+        decls - list of Declarations
+    """
+    for decl in decls:
+        expr = decl.attrs.get("implied", None)
+        if expr:
+            check_implied(expr, decls)
+
+
+def check_implied(expr, decls):
+    """Check implied attribute expression for errors.
+    expr may reference other arguments in decls.
+
+    Args:
+        expr  - implied attribute value
+        decls - list of Declarations
     """
     node = declast.ExprParser(expr).expression()
-    visitor = CheckImplied(expr, func)
+    visitor = CheckImplied(expr, decls)
     return visitor.visit(node)

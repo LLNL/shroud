@@ -634,17 +634,46 @@ rv = .false.
             generics = self.f_function_generic[key]
             if len(generics) > 1:
                 self._push_splicer(key)
+
+                # Promote cpp_if to interface scope if all are identical.
+                # Useful for fortran_generic.
+                iface_cpp_if = generics[0].cpp_if
+                if iface_cpp_if is not None:
+                    for node in generics:
+                        if node.cpp_if != iface_cpp_if:
+                            iface_cpp_if = None
+                            break
+
+                literalinclude = False
+                for node in generics:
+                    if node.options.literalinclude:
+                        literalinclude = True
+                        break
+
                 iface.append("")
+                if iface_cpp_if:
+                    iface.append("#" + iface_cpp_if)
+                if literalinclude:
+                    iface.append("! start interface " + key)
                 iface.append("interface " + key)
                 iface.append(1)
-                for node in generics:
-                    if node.cpp_if:
-                        iface.append("#" + node.cpp_if)
-                    iface.append("module procedure " + node.fmtdict.F_name_impl)
-                    if node.cpp_if:
-                        iface.append("#endif")
+                if iface_cpp_if:
+                    for node in generics:
+                        iface.append("module procedure " + node.fmtdict.F_name_impl)
+                else:
+                    for node in generics:
+                        if node.cpp_if:
+                            iface.append("#" + node.cpp_if)
+                            iface.append("module procedure " + node.fmtdict.F_name_impl)
+                            iface.append("#endif")
+                        else:
+                            iface.append("module procedure " + node.fmtdict.F_name_impl)
                 iface.append(-1)
                 iface.append("end interface " + key)
+                if literalinclude:
+                    iface.append("! end interface " + key)
+                if iface_cpp_if:
+                    iface.append("#endif")
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
@@ -1027,18 +1056,19 @@ rv = .false.
     ):
         """
         Build up code to call C wrapper.
-        This includes arguments to the function and any
-        additional declarations.
+        This includes arguments to the function in arg_c_call 
+        and any additional declarations for local variables in arg_f_decl.
+        modules and imports may also be updated.
 
         Args:
             fmt -
-            c_ast - Abstract Syntax Tree from parser
-            f_ast - Abstract Syntax Tree from parser
+            c_ast - Abstract Syntax Tree from parser, declast.Declaration
+            f_ast - Abstract Syntax Tree from parser, declast.Declaration
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
             buf_args - List of arguments/metadata to add.
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
-            arg_f_decl - Additional Fortran declarations.
+            arg_f_decl - Additional Fortran declarations for local variables.
             arg_c_call - Arguments to C wrapper.
 
         return need_wrapper
@@ -1059,11 +1089,16 @@ rv = .false.
                     append_format(arg_c_call, arg_typemap.f_to_c, fmt)
                 # XXX            elif f_ast and (c_ast.typemap is not f_ast.typemap):
                 elif f_ast and (c_ast.typemap.name != f_ast.typemap.name):
+                    # Used with fortran_generic
                     need_wrapper = True
                     append_format(arg_c_call, arg_typemap.f_cast, fmt)
-                    self.update_f_module(modules, imports, arg_typemap.f_module)
-                elif "assumedtype" in c_attrs:
-                    arg_c_call.append(fmt.f_var)
+                    self.update_f_module(modules, imports,
+                                         arg_typemap.f_cast_module or arg_typemap.f_module)
+                    if arg_typemap.f_cast_keywords:
+                        # Recreate declaration for argument with additional attributes.
+                        # e.x. is_target=True
+                        arg_f_decl[-1] = f_ast.gen_arg_as_fortran(
+                            **arg_typemap.f_cast_keywords)
                 else:
                     arg_c_call.append(fmt.c_var)
                 continue
@@ -1157,21 +1192,6 @@ rv = .false.
             for helper in f_helper.split():
                 self.f_helper[helper] = True
         return need_wrapper
-
-    def attr_implied(self, node, arg, fmt):
-        """Add the implied attribute to the pre_call block.
-
-        Args:
-            node - ast.FunctionNode.
-            arg -
-            fmt -
-        """
-        init = arg.attrs.get("implied", None)
-        blk = {}
-        if init:
-            fmt.pre_call_intent = ftn_implied(init, node, arg)
-            blk["pre_call"] = ["{f_var} = {pre_call_intent}"]
-        return blk
 
     def wrap_function_impl(self, cls, node):
         """Wrap implementation of Fortran function.
@@ -1272,6 +1292,7 @@ rv = .false.
                 )
 
         if hasattr(C_node, "statements"):
+            # function result
             if "f" in C_node.statements:
                 fmt_result.f_kind = result_typemap.f_kind
                 whelpers.add_copy_array_helper(fmt_result)
@@ -1321,7 +1342,6 @@ rv = .false.
             is_f_arg = True  # assume C and Fortran arguments match
             c_attrs = c_arg.attrs
             allocatable = c_attrs.get("allocatable", False)
-            implied = c_attrs.get("implied", False)
             hidden = c_attrs.get("hidden", False)
             intent = c_attrs["intent"]
 
@@ -1354,6 +1374,9 @@ rv = .false.
                 f_index += 1
                 f_arg = f_args[f_index]
 
+                f_attrs = f_arg.attrs
+                implied = f_attrs.get("implied", False)
+
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
                     arg_f_decl.append(
@@ -1365,6 +1388,7 @@ rv = .false.
                     need_wrapper = True
                     continue
                 elif "assumedtype" in c_attrs:
+                    # Passed directly to C as a 'void *'
                     arg_f_decl.append(
                         "type(*) :: {}".format(f_arg.name)
                     )
@@ -1387,11 +1411,26 @@ rv = .false.
                     arg_c_call.append(f_arg.name)
                     # function pointers are pass thru without any other action
                     continue
-                elif hidden or implied:
+                elif implied:
+                    # implied is computed then passed to C++.
+                    fmt_arg.pre_call_intent, intermediate = ftn_implied(
+                        f_arg.attrs["implied"], node, f_arg)
+                    if intermediate:
+                        fmt_arg.c_var = "SH_" + fmt_arg.f_var
+                        arg_f_decl.append(f_arg.gen_arg_as_fortran(
+                            name=fmt_arg.c_var, local=True, bindc=True))
+                        append_format(pre_call, "{c_var} = {pre_call_intent}", fmt_arg)
+                        arg_c_call.append(fmt_arg.c_var)
+                    else:
+                        arg_c_call.append(fmt_arg.pre_call_intent)
+                    self.update_f_module(modules, imports, f_arg.typemap.f_module)
+                    need_wrapper = True
+                    continue
+                elif hidden:
                     # Argument is not passed into Fortran.
                     # hidden value is returned from C++.
-                    # implied is computed then passed to C++
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
+                    need_wrapper = True
                 else:
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
                     arg_f_names.append(fmt_arg.f_var)
@@ -1408,12 +1447,9 @@ rv = .false.
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
-            if implied:
-                f_intent_blk = self.attr_implied(node, f_arg, fmt_arg)
-            else:
-                f_statements = base_typemap.f_statements  # AAA - new vector
-                #                f_statements = arg_typemap.f_statements
-                f_intent_blk = f_statements.get(f_stmts, {})
+            f_statements = base_typemap.f_statements  # AAA - new vector
+            #                f_statements = arg_typemap.f_statements
+            f_intent_blk = f_statements.get(f_stmts, {})
 
             # Now C function arguments
             # May have different types, like generic
@@ -1422,7 +1458,8 @@ rv = .false.
             arg_typemap, c_statements = typemap.lookup_c_statements(c_arg)
             c_intent_blk = c_statements.get(c_stmts, {})
 
-            # Create a local variable for C if necessary
+            # Create a local variable for C if necessary.
+            # The local variable c_var is used in f_statements. 
             have_c_local_var = f_intent_blk.get("c_local_var", False)
             if have_c_local_var:
                 fmt_arg.c_var = "SH_" + fmt_arg.f_var
@@ -1601,7 +1638,8 @@ rv = .false.
 
             if return_pointer_as == "allocatable":
                 # Copy into allocatable array.
-                # Processed by types stringout and charout.
+                # Processed by types stringout and charout in
+                # f_statements.result.post_call.
                 pass
             #                dim = ast.attrs.get('dimension', None)
             #                if dim:
@@ -1847,6 +1885,10 @@ class ToImplied(todict.PrintNode):
         self.expr = expr
         self.func = func
         self.arg = arg
+        # If True, create an intermediate variable.
+        # Helps with debugging, and implies a type conversion of the expression
+        # to the C function argument's type.
+        self.intermediate = True
 
     def visit_Identifier(self, node):
         # Look for functions
@@ -1861,16 +1903,19 @@ class ToImplied(todict.PrintNode):
             # size(arg)
             # This expected to be assigned to a C_INT or C_LONG
             # add KIND argument to the size intrinsic
+            self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "size({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "len":
             # len(arg)
+            self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "len({},kind={})".format(argname, arg_typemap.f_kind)
         elif node.name == "len_trim":
             # len_trim(arg)
+            self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             return "len_trim({},kind={})".format(argname, arg_typemap.f_kind)
@@ -1888,7 +1933,7 @@ def ftn_implied(expr, func, arg):
     """
     node = declast.ExprParser(expr).expression()
     visitor = ToImplied(expr, func, arg)
-    return visitor.visit(node)
+    return visitor.visit(node), visitor.intermediate
 
 
 def attr_allocatable(allocatable, node, arg, pre_call):

@@ -199,9 +199,10 @@ declarations:
         # make them subroutines in Fortran.
         return_this: True
         fortran_generic:
-          len:
-          -  int
-          -  long
+        -  decl: (int len=1)
+           function_suffix: _int
+        -  decl: (long len=1)
+           function_suffix: _long
 
       # void function
       - decl: void destroyall()
@@ -257,9 +258,8 @@ declarations:
     #    - instantiation: <int>
     #    - instantiation: <double>
     #    fortran_generic:
-    #       arg2:
-    #       - float
-    #       - double
+    #    - decl: (float arg2)
+    #    - decl: (double arg2)
 
     - decl: size_t test_size_t()
 

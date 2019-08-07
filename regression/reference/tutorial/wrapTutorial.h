@@ -62,8 +62,6 @@ int TUT_template_return_int();
 
 double TUT_template_return_double();
 
-void TUT_fortran_generic(double arg);
-
 void TUT_fortran_generic_overloaded_0();
 
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2);
