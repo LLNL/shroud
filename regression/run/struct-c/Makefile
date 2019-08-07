@@ -6,31 +6,33 @@
 #
 # #######################################################################
 #
-# run/pointers-numpy-cpp
+# run/struct-c
 #
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-numpy-cpp \
-    -I$(top)/regression/run/pointers \
+    -I$(top)/regression/reference/struct-c \
+    -I$(top)/regression/run/struct-c \
     -I$(top)/regression/run/fruit
 
 VPATH = \
-    $(top)/regression/reference/pointers-numpy-cpp \
-    $(top)/regression/run/pointers \
+    $(top)/regression/reference/struct-c \
+    $(top)/regression/run/struct-c \
     $(top)/regression/run/fruit
 
 OBJS = \
-    pointers.o \
-    wrapfpointers.o \
-    wrappointers.o \
+    struct.o \
+    wrapfstruct.o \
+    wrapstruct.o \
     fruit.o \
     main.o
 
-pointers : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+struct-c : $(OBJS)
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
-	rm -f $(OBJS) *.mod pointers
+	rm -f $(OBJS) *.mod struct-c
 
-main.o : wrapfpointers.o
+struct.o : struct.h
+wrapstruct.o : wrapstruct.h struct.h
+main.o : wrapfstruct.o

@@ -30,7 +30,7 @@ test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
   test-fortran-pointers \
-  test-fortran-struct \
+  test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
   test-fortran-preprocess \
@@ -86,12 +86,12 @@ test-python-% : pymod-%
 test-python : \
   test-python-tutorial \
   test-python-strings \
-  test-python-pointers \
-  test-python-pointers-list \
+  test-python-pointers-numpy-cpp \
+  test-python-pointers-list-cpp \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
   test-python-clibrary \
-  test-python-struct \
+  test-python-struct-c \
   test-python-struct-cxx \
   test-python-ownership
 
@@ -130,10 +130,10 @@ phony_explicit:
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
     $(tempdir)/run/pointers/..\
-    $(tempdir)/run/pointers/python/.. \
-    $(tempdir)/run/pointers-list/python/.. \
-    $(tempdir)/run/pointers-list-c/python/.. \
+    $(tempdir)/run/pointers-numpy-cpp/python/.. \
+    $(tempdir)/run/pointers-list-cpp/python/.. \
     $(tempdir)/run/pointers-numpy-c/python/.. \
+    $(tempdir)/run/pointers-list-c/python/.. \
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \

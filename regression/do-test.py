@@ -317,12 +317,14 @@ if __name__ == "__main__":
                  cmdline=["--yaml-types", "def_types.yaml"]),
         TestDesc("tutorial"),
         TestDesc("types"),
-        TestDesc("pointers", yaml="pointers",
+
+        # pointers
+        TestDesc("pointers-numpy-cpp", yaml="pointers",
                  cmdline=[
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
                  ]),
-        TestDesc("pointers-list", yaml="pointers",
+        TestDesc("pointers-list-cpp", yaml="pointers",
                  cmdline=[
                      "--option", "PY_array_arg=list",
                      "--option", "wrap_fortran=false",
@@ -342,7 +344,9 @@ if __name__ == "__main__":
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
-        TestDesc("struct",
+
+        # struct
+        TestDesc("struct-c", yaml="struct",
                  cmdline=[
                      "--language", "c",
                      "--option", "literalinclude2=true",
@@ -370,12 +374,19 @@ if __name__ == "__main__":
     ]
 
     if args.testname:
+        # Run a test if the name or yaml file matches
         runTests = []
         predefined = { desc.name:desc for desc in availTests }
         for testname in args.testname:
-            if testname in predefined:
-                runTests.append(predefined[testname])
-            else:
+            found = False
+            for predefined in availTests:
+                if testname == predefined.name:
+                    runTests.append(predefined)
+                    found = True
+                elif testname + ".yaml" == predefined.yaml:
+                    runTests.append(predefined)
+                    found = True
+            if not found:
                 # If not predefined, assume testname.yaml
                 runTests.append(TestDesc(testname))
     else:
