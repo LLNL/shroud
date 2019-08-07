@@ -181,14 +181,14 @@ of the *library* field, in this case *pointers*.
 This is a C++ file which provides a C API via ``extern "C"``.
 :file:`wrappointers.cpp`:
 
-.. literalinclude:: ../regression/reference/pointers/wrappointers.cpp
+.. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrappointers.cpp
    :language: c
    :start-after: start POI_sum
    :end-before: end POI_sum
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/pointers/wrapfpointers.f
+.. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrapfpointers.f
    :language: fortran
    :start-after: start c_sum
    :end-before: end c_sum
@@ -196,7 +196,7 @@ Fortran calls C via the following interface:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/pointers/wrapfpointers.f
+.. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrapfpointers.f
    :language: fortran
    :start-after: start sum
    :end-before: end sum
@@ -1415,7 +1415,7 @@ passStruct1
 
 C library function in :file:`struct.c`:
 
-.. literalinclude:: ../regression/run/struct/struct.c
+.. literalinclude:: ../regression/run/struct-c/struct.c
    :language: c
    :start-after: start passStruct1
    :end-before: end passStruct1
@@ -1428,7 +1428,7 @@ C library function in :file:`struct.c`:
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
    :language: fortran
    :start-after: start pass_struct1
    :end-before: end pass_struct1
@@ -1453,7 +1453,7 @@ passStructByValue
 
 C library function in :file:`struct.c`:
 
-.. literalinclude:: ../regression/run/struct/struct.c
+.. literalinclude:: ../regression/run/struct-c/struct.c
    :language: c
    :start-after: start passStructByValue
    :end-before: end passStructByValue
@@ -1466,7 +1466,7 @@ C library function in :file:`struct.c`:
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/struct/wrapfstruct.f
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
    :language: fortran
    :start-after: start pass_struct_by_value
    :end-before: end pass_struct_by_value
