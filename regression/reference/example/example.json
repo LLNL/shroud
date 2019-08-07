@@ -3284,13 +3284,78 @@
                             "function_suffix": "_0",
                             "underscore_name": "declare"
                         },
-                        "fortran_generic": {
-                            "__line__": 201,
-                            "len": [
-                                "int",
-                                "long"
-                            ]
-                        },
+                        "fortran_generic": [
+                            {
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "function_suffix": "_int",
+                                "generic": "(int len=1)"
+                            },
+                            {
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "function_suffix": "_long",
+                                "generic": "(long len=1)"
+                            }
+                        ],
                         "linenumber": 197,
                         "options": {
                             "wrap_c": true,
@@ -3326,6 +3391,21 @@
                                         "TypeID"
                                     ],
                                     "typemap_name": "TypeID"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "len",
+                                        "pointer": []
+                                    },
+                                    "init": 1,
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
                                 }
                             ],
                             "specifier": [
@@ -3334,7 +3414,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                        "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
                         "fmtdict": {
                             "F_C_call": "c_exclass2_declare_0",
                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -3383,6 +3463,21 @@
                                         "TypeID"
                                     ],
                                     "typemap_name": "TypeID"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "len",
+                                        "pointer": []
+                                    },
+                                    "init": 1,
+                                    "specifier": [
+                                        "long"
+                                    ],
+                                    "typemap_name": "long"
                                 }
                             ],
                             "specifier": [
@@ -3391,7 +3486,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                        "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
                         "fmtdict": {
                             "F_C_call": "c_exclass2_declare_0",
                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -3584,13 +3679,78 @@
                             "function_suffix": "_1",
                             "underscore_name": "declare"
                         },
-                        "fortran_generic": {
-                            "__line__": 201,
-                            "len": [
-                                "int",
-                                "long"
-                            ]
-                        },
+                        "fortran_generic": [
+                            {
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "function_suffix": "_int",
+                                "generic": "(int len=1)"
+                            },
+                            {
+                                "decls": [
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "type",
+                                            "pointer": []
+                                        },
+                                        "specifier": [
+                                            "TypeID"
+                                        ],
+                                        "typemap_name": "TypeID"
+                                    },
+                                    {
+                                        "attrs": {
+                                            "intent": "in",
+                                            "value": true
+                                        },
+                                        "declarator": {
+                                            "name": "len",
+                                            "pointer": []
+                                        },
+                                        "init": 1,
+                                        "specifier": [
+                                            "long"
+                                        ],
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "function_suffix": "_long",
+                                "generic": "(long len=1)"
+                            }
+                        ],
                         "linenumber": 197,
                         "options": {
                             "wrap_fortran": false
@@ -3798,7 +3958,7 @@
                             "function_name": "destroyall",
                             "underscore_name": "destroyall"
                         },
-                        "linenumber": 207,
+                        "linenumber": 208,
                         "options": {}
                     },
                     {
@@ -3878,7 +4038,7 @@
                             "function_name": "getTypeID",
                             "underscore_name": "get_type_id"
                         },
-                        "linenumber": 210,
+                        "linenumber": 211,
                         "options": {}
                     },
                     {
@@ -3924,7 +4084,7 @@
                             "underscore_name": "set_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 212,
+                        "linenumber": 213,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -4088,7 +4248,7 @@
                             "underscore_name": "set_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 212,
+                        "linenumber": 213,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -4250,7 +4410,7 @@
                             "underscore_name": "set_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 212,
+                        "linenumber": 213,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -4412,7 +4572,7 @@
                             "underscore_name": "set_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 212,
+                        "linenumber": 213,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -4574,7 +4734,7 @@
                             "underscore_name": "set_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 212,
+                        "linenumber": 213,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -4657,7 +4817,7 @@
                             "underscore_name": "get_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 219,
+                        "linenumber": 220,
                         "options": {
                             "wrap_c": false,
                             "wrap_fortran": false,
@@ -4771,7 +4931,7 @@
                             "underscore_name": "get_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 219,
+                        "linenumber": 220,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -4883,7 +5043,7 @@
                             "underscore_name": "get_value"
                         },
                         "have_template_args": true,
-                        "linenumber": 219,
+                        "linenumber": 220,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -5111,7 +5271,7 @@
                     "function_name": "local_function1",
                     "underscore_name": "local_function1"
                 },
-                "linenumber": 227,
+                "linenumber": 228,
                 "options": {}
             },
             {
@@ -5243,13 +5403,13 @@
                     "LUA_name": "isNameValid",
                     "LUA_name_impl": "l_is_name_valid",
                     "PY_name_impl": "PP_isNameValid",
-                    "__line__": 231,
+                    "__line__": 232,
                     "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "isNameValid",
                     "underscore_name": "is_name_valid"
                 },
-                "linenumber": 230,
+                "linenumber": 231,
                 "options": {}
             },
             {
@@ -5331,14 +5491,14 @@
                     "C_return_type": "bool",
                     "F_C_name": "c_is_name_valid_bufferify",
                     "F_code": "rv = name .ne. \" \"",
-                    "__line__": 231,
+                    "__line__": 232,
                     "c_const": "",
                     "cxx_rv_decl": "bool SHC_rv",
                     "function_name": "isNameValid",
                     "function_suffix": "_bufferify",
                     "underscore_name": "is_name_valid"
                 },
-                "linenumber": 230,
+                "linenumber": 231,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -5416,7 +5576,7 @@
                     "function_name": "isInitialized",
                     "underscore_name": "is_initialized"
                 },
-                "linenumber": 237,
+                "linenumber": 238,
                 "options": {}
             },
             {
@@ -5516,13 +5676,13 @@
                     "LUA_name": "test_names",
                     "LUA_name_impl": "l_test_names",
                     "PY_name_impl": "PP_test_names",
-                    "__line__": 243,
+                    "__line__": 244,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 241,
+                "linenumber": 242,
                 "options": {}
             },
             {
@@ -5593,13 +5753,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_test_names_bufferify",
-                    "__line__": 243,
+                    "__line__": 244,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_bufferify",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 241,
+                "linenumber": 242,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -5756,13 +5916,13 @@
                     "F_name_impl": "test_names_flag",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PP_test_names_flag",
-                    "__line__": 246,
+                    "__line__": 247,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_flag",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 245,
+                "linenumber": 246,
                 "options": {}
             },
             {
@@ -5865,13 +6025,13 @@
                     "C_return_code": "return;",
                     "C_return_type": "void",
                     "F_C_name": "c_test_names_flag_bufferify",
-                    "__line__": 246,
+                    "__line__": 247,
                     "c_const": "",
                     "function_name": "test_names",
                     "function_suffix": "_flag_bufferify",
                     "underscore_name": "test_names"
                 },
-                "linenumber": 245,
+                "linenumber": 246,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -5916,7 +6076,7 @@
                     "function_suffix": "_0",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 249,
+                "linenumber": 250,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -5997,7 +6157,7 @@
                     "function_suffix": "_1",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 249,
+                "linenumber": 250,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -6174,7 +6334,7 @@
                     "function_suffix": "_2",
                     "underscore_name": "testoptional"
                 },
-                "linenumber": 249,
+                "linenumber": 250,
                 "options": {}
             },
             {
@@ -8775,7 +8935,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "sizein",
+                            "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(in,kind=C_INT)"
                         },
@@ -8889,9 +9049,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_cos_doubles",
                     "F_C_name": "c_cos_doubles",
-                    "F_arg_c_call": "in,\t out,\t sizein",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
-                    "F_call_code": "call c_cos_doubles(in,\t out,\t sizein)",
+                    "F_call_code": "call c_cos_doubles(in,\t out,\t SH_sizein)",
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",
@@ -10349,6 +10509,15 @@
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
             "c_type": "void",
             "cxx_type": "void",
+            "f_cast": "C_LOC({f_var})",
+            "f_cast_keywords": {
+                "is_target": true
+            },
+            "f_cast_module": {
+                "iso_c_binding": [
+                    "C_LOC"
+                ]
+            },
             "f_module": {
                 "iso_c_binding": [
                     "C_PTR"

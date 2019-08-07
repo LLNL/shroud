@@ -130,11 +130,11 @@ contains
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
         real(C_DOUBLE), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
+        integer(C_INT) :: SH_sizein
         allocate(out(lbound(in,1):ubound(in,1)))
-        sizein = size(in,kind=C_INT)
+        SH_sizein = size(in,kind=C_INT)
         ! splicer begin function.cos_doubles
-        call c_cos_doubles(in, out, sizein)
+        call c_cos_doubles(in, out, SH_sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
 
@@ -149,11 +149,11 @@ contains
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:)
         integer(C_INT), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
+        integer(C_INT) :: SH_sizein
         allocate(out(lbound(in,1):ubound(in,1)))
-        sizein = size(in,kind=C_INT)
+        SH_sizein = size(in,kind=C_INT)
         ! splicer begin function.truncate_to_int
-        call c_truncate_to_int(in, out, sizein)
+        call c_truncate_to_int(in, out, SH_sizein)
         ! splicer end function.truncate_to_int
     end subroutine truncate_to_int
 
@@ -161,12 +161,12 @@ contains
     ! start sum
     subroutine sum(values, result)
         use iso_c_binding, only : C_INT
-        integer(C_INT) :: len
+        integer(C_INT) :: SH_len
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), intent(OUT) :: result
-        len = size(values,kind=C_INT)
+        SH_len = size(values,kind=C_INT)
         ! splicer begin function.sum
-        call c_sum(len, values, result)
+        call c_sum(SH_len, values, result)
         ! splicer end function.sum
     end subroutine sum
     ! end sum
@@ -178,10 +178,10 @@ contains
     subroutine increment_int_array(array)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(INOUT) :: array(:)
-        integer(C_INT) :: sizein
-        sizein = size(array,kind=C_INT)
+        integer(C_INT) :: SH_sizein
+        SH_sizein = size(array,kind=C_INT)
         ! splicer begin function.increment_int_array
-        call c_increment_int_array(array, sizein)
+        call c_increment_int_array(array, SH_sizein)
         ! splicer end function.increment_int_array
     end subroutine increment_int_array
 

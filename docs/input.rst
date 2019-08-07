@@ -342,6 +342,7 @@ assumed-type declaration, ``type(*)``, will be used.  Since Fortran
 defaults to pass-by-reference, the argument will be passed to C as a
 ``void *`` argument.  The C function will need some other mechanism to
 determine the type of the argument before dereferencing the pointer.
+Note that *assumed-type* is part of Fortran 2018.
 
 charlen
 ^^^^^^^

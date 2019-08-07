@@ -37,6 +37,7 @@ test-fortran : \
   test-fortran-strings \
   test-fortran-clibrary \
   test-fortran-ownership \
+  test-fortran-generic \
   test-fortran-templates
 
 ######################################################################
@@ -125,6 +126,7 @@ phony_explicit:
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
     $(tempdir)/run/forward/.. \
+    $(tempdir)/run/generic/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
     $(tempdir)/run/pointers/..\

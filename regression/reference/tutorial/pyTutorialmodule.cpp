@@ -271,32 +271,6 @@ PY_TemplateArgument_double(
 // splicer end function.template_argument_double
 }
 
-static char PY_FortranGeneric__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_FortranGeneric(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// void FortranGeneric(double arg +intent(in)+value)
-// splicer begin function.fortran_generic
-    double arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        NULL };
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:FortranGeneric",
-        const_cast<char **>(SHT_kwlist), &arg))
-        return NULL;
-
-    tutorial::FortranGeneric(arg);
-    Py_RETURN_NONE;
-// splicer end function.fortran_generic
-}
-
 static PyObject *
 PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(self),
@@ -926,8 +900,6 @@ static PyMethodDef PY_methods[] = {
 {"UseDefaultArguments", (PyCFunction)PY_UseDefaultArguments_arg1_arg2,
     METH_VARARGS|METH_KEYWORDS,
     PY_UseDefaultArguments_arg1_arg2__doc__},
-{"FortranGeneric", (PyCFunction)PY_FortranGeneric,
-    METH_VARARGS|METH_KEYWORDS, PY_FortranGeneric__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
 {"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,

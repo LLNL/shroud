@@ -1,16 +1,8 @@
-# Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC.
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved.
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
-#
-########################################################################
+# SPDX-License-Identifier: (BSD-3-Clause)
 
 """
 Convert some data structures into a dictionary.
@@ -210,6 +202,7 @@ class ToDict(visitor.Visitor):
                 "fmtdict",
                 "options",
                 "template_arguments",
+                "fortran_generic",
             ],
         )
         add_true_fields(
@@ -220,7 +213,6 @@ class ToDict(visitor.Visitor):
                 "default_arg_suffix",
                 "declgen",
                 "doxygen",
-                "fortran_generic",
                 "linenumber",
                 "return_this",
                 "have_template_args",
@@ -290,6 +282,15 @@ class ToDict(visitor.Visitor):
         add_non_none_fields(node, d, ["fmtdict", "options"])
         return d
 
+    def visit_FortranGeneric(self, node):
+        d = dict(generic=node.generic,
+                 function_suffix=node.function_suffix)
+        if node.decls:
+            d["decls"] = self.visit(node.decls)
+        #        self.add_visit_fields(node, d, ['fmtdict', 'options'])
+        add_non_none_fields(node, d, ["fmtdict", "options"])
+        return d
+
     def add_visit_fields(self, node, d, fields):
         """Update dict d with fields which must be visited."""
         for key in fields:
@@ -350,7 +351,7 @@ class PrintNode(visitor.Visitor):
         for arg in node.args:
             n.append(self.visit(arg))
             n.append(",")
-            n[-1] = ")"
+        n[-1] = ")"
         return "".join(n)
 
     def comma_list(self, lst):

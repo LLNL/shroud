@@ -51,7 +51,9 @@ be controlled directly by the input YAML file:
     contains
 
       {F_subprogram} {F_name_impl}
+        {pre_call}
         {F_code}
+        {post_call}
       end {F_subprogram} {F_name_impl}
 
     end module {F_module_name}
