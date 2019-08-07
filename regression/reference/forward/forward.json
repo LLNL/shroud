@@ -32,7 +32,7 @@
                     "cxx_class": "Class3",
                     "cxx_type": "Class3"
                 },
-                "linenumber": 44,
+                "linenumber": 43,
                 "name": "Class3",
                 "options": {},
                 "scope": "tutorial::Class3::",
@@ -148,7 +148,7 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "linenumber": 50,
+                        "linenumber": 49,
                         "options": {}
                     },
                     {
@@ -191,7 +191,7 @@
                             "function_name": "dtor",
                             "underscore_name": "dtor"
                         },
-                        "linenumber": 51,
+                        "linenumber": 50,
                         "options": {}
                     },
                     {
@@ -302,7 +302,7 @@
                             "function_name": "func1",
                             "underscore_name": "func1"
                         },
-                        "linenumber": 52,
+                        "linenumber": 51,
                         "options": {}
                     },
                     {
@@ -416,11 +416,11 @@
                             "function_name": "acceptClass3",
                             "underscore_name": "accept_class3"
                         },
-                        "linenumber": 53,
+                        "linenumber": 52,
                         "options": {}
                     }
                 ],
-                "linenumber": 48,
+                "linenumber": 47,
                 "name": "Class2",
                 "options": {},
                 "scope": "tutorial::Class2::",
@@ -1522,7 +1522,7 @@
         "tutorial::Class1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
-            "__line__": 34,
+            "__line__": 33,
             "base": "shadow",
             "c_statements": {
                 "intent_in": {

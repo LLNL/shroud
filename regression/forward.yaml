@@ -27,7 +27,6 @@ options:
   wrap_python: True
   wrap_lua: True
 
-
 typemap:
 # Class1 is wrapped by another YAML file
 - type: tutorial::Class1
