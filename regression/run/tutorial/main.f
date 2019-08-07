@@ -127,11 +127,6 @@ contains
     rv_double = template_return_double()
     call assert_true(rv_double == 10.d0, "FunctionReturn<double>")
 
-    call fortran_generic(1.0)
-    call assert_true(.true., "fortran_generic float")
-    call fortran_generic(1.d0)
-    call assert_true(.true., "fortran_generic double")
-
     call fortran_generic_overloaded()
     call assert_true(.true., "FortranGenericOverloaded 1")
     call fortran_generic_overloaded("foo", 1.0e0)

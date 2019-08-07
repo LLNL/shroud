@@ -468,15 +468,6 @@ module tutorial_mod
     end interface
 
     interface
-        subroutine c_fortran_generic(arg) &
-                bind(C, name="TUT_fortran_generic")
-            use iso_c_binding, only : C_DOUBLE
-            implicit none
-            real(C_DOUBLE), value, intent(IN) :: arg
-        end subroutine c_fortran_generic
-    end interface
-
-    interface
         subroutine c_fortran_generic_overloaded_0() &
                 bind(C, name="TUT_fortran_generic_overloaded_0")
             implicit none
@@ -758,15 +749,12 @@ module tutorial_mod
         ! splicer end additional_interfaces
     end interface
 
+    ! start interface class1_new
     interface class1_new
         module procedure class1_new_default
         module procedure class1_new_flag
     end interface class1_new
-
-    interface fortran_generic
-        module procedure fortran_generic_float
-        module procedure fortran_generic_double
-    end interface fortran_generic
+    ! end interface class1_new
 
     interface fortran_generic_overloaded
         module procedure fortran_generic_overloaded_0
@@ -784,11 +772,13 @@ module tutorial_mod
         module procedure template_argument_double
     end interface template_argument
 
+    ! start interface use_default_arguments
     interface use_default_arguments
         module procedure use_default_arguments
         module procedure use_default_arguments_arg1
         module procedure use_default_arguments_arg1_arg2
     end interface use_default_arguments
+    ! end interface use_default_arguments
 
     interface use_default_overload
         module procedure use_default_overload_num
@@ -1183,26 +1173,6 @@ contains
         SHT_rv = c_template_return_double()
         ! splicer end function.template_return_double
     end function template_return_double
-
-    ! void FortranGeneric(float arg +intent(in)+value)
-    ! fortran_generic
-    subroutine fortran_generic_float(arg)
-        use iso_c_binding, only : C_DOUBLE, C_FLOAT
-        real(C_FLOAT), value, intent(IN) :: arg
-        ! splicer begin function.fortran_generic_float
-        call c_fortran_generic(real(arg, C_DOUBLE))
-        ! splicer end function.fortran_generic_float
-    end subroutine fortran_generic_float
-
-    ! void FortranGeneric(double arg +intent(in)+value)
-    ! fortran_generic
-    subroutine fortran_generic_double(arg)
-        use iso_c_binding, only : C_DOUBLE
-        real(C_DOUBLE), value, intent(IN) :: arg
-        ! splicer begin function.fortran_generic_double
-        call c_fortran_generic(arg)
-        ! splicer end function.fortran_generic_double
-    end subroutine fortran_generic_double
 
     ! void FortranGenericOverloaded()
     subroutine fortran_generic_overloaded_0()

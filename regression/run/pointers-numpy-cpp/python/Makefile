@@ -1,14 +1,8 @@
-# Copyright (c) 2018-2019, Lawrence Livermore National Security, LLC. 
+# Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
 #
-# Produced at the Lawrence Livermore National Laboratory 
-#
-# LLNL-CODE-738041.
-#
-# All rights reserved. 
-#
-# This file is part of Shroud.
-#
-# For details about use and distribution, please read LICENSE.
+# SPDX-License-Identifier: (BSD-3-Clause)
 #
 # #######################################################################
 #
@@ -17,14 +11,14 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-list \
+    -I$(top)/regression/reference/pointers-numpy-cpp \
     -I$(top)/regression/run/pointers \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/pointers-list \
+    $(top)/regression/reference/pointers-numpy-cpp \
     $(top)/regression/run/pointers \
-    $(top)/regression/run/pointers-list/python
+    $(top)/regression/run/pointers/python
 
 OBJS = \
     pointers.o \
@@ -33,8 +27,7 @@ OBJS = \
 
 CXXFLAGS += $(SHARED)
 
-all : pointers.so
-# simple
+all : pointers.so simple
 
 pointers.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)

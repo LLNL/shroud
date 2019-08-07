@@ -501,11 +501,11 @@ contains
         use iso_c_binding, only : C_DOUBLE, C_INT
         real(C_DOUBLE), intent(IN) :: in(:,:)
         real(C_DOUBLE), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
+        integer(C_INT) :: SH_sizein
         allocate(out, mold=in)
-        sizein = size(in,kind=C_INT)
+        SH_sizein = size(in,kind=C_INT)
         ! splicer begin function.cos_doubles
-        call c_cos_doubles(in, out, sizein)
+        call c_cos_doubles(in, out, SH_sizein)
         ! splicer end function.cos_doubles
     end subroutine cos_doubles
 

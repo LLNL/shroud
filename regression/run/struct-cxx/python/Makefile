@@ -12,7 +12,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/struct-cxx \
-    -I$(top)/regression/run/struct \
+    -I$(top)/regression/run/struct-c \
     $(PYTHON_INC)
 
 VPATH = \
@@ -30,7 +30,7 @@ CXXFLAGS += $(SHARED)
 all : cstruct.so
 
 # Convert C++ file to C
-struct.cpp : $(top)/regression/run/struct/struct.c
+struct.cpp : $(top)/regression/run/struct-c/struct.c
 	cp $^ $@
 
 cstruct.so : $(OBJS)

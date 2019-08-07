@@ -199,15 +199,6 @@ double TUT_template_return_double()
 // splicer end function.template_return_double
 }
 
-// void FortranGeneric(double arg +intent(in)+value)
-void TUT_fortran_generic(double arg)
-{
-// splicer begin function.fortran_generic
-    tutorial::FortranGeneric(arg);
-    return;
-// splicer end function.fortran_generic
-}
-
 // void FortranGenericOverloaded()
 void TUT_fortran_generic_overloaded_0()
 {

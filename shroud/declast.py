@@ -70,6 +70,17 @@ token_specification = [
 tok_regex = "|".join("(?P<%s>%s)" % pair for pair in token_specification)
 get_token = re.compile(tok_regex).match
 
+canonical_typemap = dict(
+    # explict 'int'
+    short_int="short",
+    long_int="long",
+    long_long_int="long_long",
+    unsigned_short_int="unsigned_short",
+    unsigned_long_int="unsigned_long",
+    unsigned_long_long_int="unsigned_long_long",
+    # implied 'int'
+    unsigned="unsigned_int",
+)
 
 def tokenize(s):
     line = 1
@@ -270,14 +281,14 @@ class ExprParser(RecursiveDescent):
 
     def argument_list(self):
         """
-        <argument-list> ::= '(' <name>?  [ , <name ]* ')'
+        <argument-list> ::= '(' <expression>?  [ , <expression> ]* ')'
 
         """
         self.enter("argument_list")
         params = []
         self.next()  # consume LPAREN peeked at in caller
         while self.token.typ != "RPAREN":
-            node = self.identifier()
+            node = self.expression()
             params.append(node)
             if not self.have("COMMA"):
                 break
@@ -445,13 +456,6 @@ class Parser(ExprParser):
                     self.token.typ, self.token.value
                 )
             )
-        if not found_type:
-            # XXX - standardize types like 'unsigned' as 'unsigned_int'
-            node.typemap = get_canonical_typemap(node.specifier)
-            if node.typemap is None:
-                self.error_msg(
-                    "Unknown typemap '{}".format("_".join(node.specifier))
-                )
         self.exit("declaration_specifier")
         return
 
@@ -468,6 +472,7 @@ class Parser(ExprParser):
             while self.token.typ != "GT":
                 temp = Declaration()
                 self.declaration_specifier(temp)
+                self.get_canonical_typemap(temp)
                 lst.append(temp)
                 if not self.have("COMMA"):
                     break
@@ -505,6 +510,7 @@ class Parser(ExprParser):
         self.enter("declaration")
         node = Declaration()
         self.declaration_specifier(node)
+        self.get_canonical_typemap(node)
 
         if "_destructor" in node.attrs:
             pass
@@ -582,6 +588,36 @@ class Parser(ExprParser):
                 self.next()
         self.exit("pointer", str(ptrs))
         return ptrs
+
+    def get_canonical_typemap(self, decl):
+        """Convert specifier to typemap.
+        Map specifier as needed.
+        specifier = ['long', 'int']
+
+        long int -> long
+
+        Args:
+            decl: ast.Declaration
+        """
+        if decl.typemap is not None:
+            return
+        typename = "_".join(decl.specifier)
+        typename = canonical_typemap.get(typename, typename)
+        ntypemap = typemap.lookup_type(typename)
+# XXX - incorporate pointer into typemap
+#        nptr = decl.is_pointer()
+#        if nptr == 0:
+#            ntypemap = typemap.lookup_type(typename)
+#        else:
+#            for i in range(nptr, -1, -1):
+#                ntypemap = typemap.lookup_type(typename + "***"[0:i])
+#                if ntypemap is not None:
+#                    break
+        if ntypemap is None:
+            self.error_msg(
+                "Unknown typemap '{}".format("_".join(node.specifier))
+            )
+        decl.typemap = ntypemap
 
     def initializer(self):
         """
@@ -705,6 +741,7 @@ class Parser(ExprParser):
         while self.token.typ != "GT":
             temp = Declaration()
             self.declaration_specifier(temp)
+            self.get_canonical_typemap(temp)
             lst.append(temp)
             if not self.have("COMMA"):
                 break
@@ -930,6 +967,9 @@ class Declaration(Node):
         # 'long long' into ['long', 'long']
         self.specifier = ntypemap.cxx_type.split()
 
+    def get_full_type(self):
+        return ' '.join(self.specifier)
+
     def is_ctor(self):
         """Return True if self is a constructor."""
         return self.attrs.get("_constructor", False)
@@ -996,12 +1036,11 @@ class Declaration(Node):
 
     def find_arg_by_name(self, name):
         """Find argument in params with name."""
-        if self.params is None:
-            return None
-        for param in self.params:
-            if param.name == name:
-                return param
-        return None
+        return find_arg_by_name(self.params, name)
+
+    def find_arg_index_by_name(self, name):
+        """Return index of argument in params with name."""
+        return find_arg_index_by_name(self.params, name)
 
     def _as_arg(self, name):
         """Create an argument to hold the function result.
@@ -1319,6 +1358,7 @@ class Declaration(Node):
         local=False,
         is_pointer=False,
         is_allocatable=False,
+        is_target=False,
         attributes=[],
         **kwargs
     ):
@@ -1329,6 +1369,7 @@ class Declaration(Node):
           OPTIONAL, VALUE, and INTENT
         is_pointer - True/False - have POINTER attribute
         is_allocatable - True/False - have ALLOCATABLE attribute
+        is_target - True/False - have TARGET attribute
         attributes - list of literal Fortran attributes to add to declaration.
                      i.e. [ 'pointer' ]
         """
@@ -1374,6 +1415,8 @@ class Declaration(Node):
             t.append("allocatable")
         if is_pointer:
             t.append("pointer")
+        if is_target:
+            t.append("target")
         t.extend(attributes)
 
         decl = []
@@ -1562,27 +1605,31 @@ def create_struct_ctor(cls):
     return ast
 
 
-canonical_typemap = dict(
-    # explict 'int'
-    short_int="short",
-    long_int="long",
-    long_long_int="long_long",
-    unsigned_short_int="unsigned_short",
-    unsigned_long_int="unsigned_long",
-    unsigned_long_long_int="unsigned_long_long",
-    # implied 'int'
-    unsigned="unsigned_int",
-)
+def find_arg_by_name(decls, name):
+    """Find argument in params with name.
 
-
-def get_canonical_typemap(specifier):
-    """Convert specifier to typemap.
-    Map specifier as needed.
-    specifier = ['long', 'int']
-
-    long int -> long
+    Args:
+        decls - list of Declaration
+        name  - argument to find
     """
-    typename = "_".join(specifier)
-    typename = canonical_typemap.get(typename, typename)
-    ntypemap = typemap.lookup_type(typename)
-    return ntypemap
+    if decls is None:
+        return None
+    for decl in decls:
+        if decl.name == name:
+            return decl
+    return None
+
+def find_arg_index_by_name(decls, name):
+    """Return index of argument in decls with name.
+
+    Args:
+        decls - list of Declaration
+        name  - argument to find
+    """
+    if decls is None:
+        return -1
+    for i, decl in enumerate(decls):
+        if decl.name == name:
+            return i
+    return -1
+

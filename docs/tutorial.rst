@@ -500,9 +500,10 @@ Instead of specify the Type which changes, you specify the argument which change
 
   - decl: void FortranGeneric(double arg)
     fortran_generic:
-       arg:
-       -  float
-       -  double
+    - decl: (float arg)
+      function_suffix: float
+    - decl: (double arg)
+      function_suffix: double
 
 It may now be used with single or double precision arguments:
 
@@ -511,6 +512,7 @@ It may now be used with single or double precision arguments:
   call fortran_generic(1.0)
   call fortran_generic(1.0d0)
 
+A full example is at :ref:`GenericReal <example_GenericReal>`.
 
 Types
 -----

@@ -406,7 +406,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "sizein",
+                            "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(in,kind=C_INT)"
                         },
@@ -509,9 +509,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_cos_doubles",
                     "F_C_name": "c_cos_doubles",
-                    "F_arg_c_call": "in,\t out,\t sizein",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
-                    "F_call_code": "call c_cos_doubles(in,\t out,\t sizein)",
+                    "F_call_code": "call c_cos_doubles(in,\t out,\t SH_sizein)",
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",
@@ -613,7 +613,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "sizein",
+                            "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(in,kind=C_INT)"
                         },
@@ -716,9 +716,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_truncate_to_int",
                     "F_C_name": "c_truncate_to_int",
-                    "F_arg_c_call": "in,\t out,\t sizein",
+                    "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
-                    "F_call_code": "call c_truncate_to_int(in,\t out,\t sizein)",
+                    "F_call_code": "call c_truncate_to_int(in,\t out,\t SH_sizein)",
                     "F_name_function": "truncate_to_int",
                     "F_name_generic": "truncate_to_int",
                     "F_name_impl": "truncate_to_int",
@@ -1058,7 +1058,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "len",
+                            "c_var": "SH_len",
                             "f_var": "len",
                             "pre_call_intent": "size(values,kind=C_INT)"
                         },
@@ -1222,9 +1222,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_sum",
                     "F_C_name": "c_sum",
-                    "F_arg_c_call": "len,\t values,\t result",
+                    "F_arg_c_call": "SH_len,\t values,\t result",
                     "F_arguments": "values,\t result",
-                    "F_call_code": "call c_sum(len,\t values,\t result)",
+                    "F_call_code": "call c_sum(SH_len,\t values,\t result)",
                     "F_name_function": "sum",
                     "F_name_generic": "sum",
                     "F_name_impl": "sum",
@@ -1392,7 +1392,7 @@
                             "idtor": "0"
                         },
                         "fmtf": {
-                            "c_var": "sizein",
+                            "c_var": "SH_sizein",
                             "f_var": "sizein",
                             "pre_call_intent": "size(array,kind=C_INT)"
                         },
@@ -1475,9 +1475,9 @@
                     "C_return_type": "void",
                     "F_C_call": "c_increment_int_array",
                     "F_C_name": "c_increment_int_array",
-                    "F_arg_c_call": "array,\t sizein",
+                    "F_arg_c_call": "array,\t SH_sizein",
                     "F_arguments": "array",
-                    "F_call_code": "call c_increment_int_array(array,\t sizein)",
+                    "F_call_code": "call c_increment_int_array(array,\t SH_sizein)",
                     "F_name_function": "increment_int_array",
                     "F_name_generic": "increment_int_array",
                     "F_name_impl": "increment_int_array",
@@ -2618,6 +2618,15 @@
             "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
             "c_type": "void",
             "cxx_type": "void",
+            "f_cast": "C_LOC({f_var})",
+            "f_cast_keywords": {
+                "is_target": true
+            },
+            "f_cast_module": {
+                "iso_c_binding": [
+                    "C_LOC"
+                ]
+            },
             "f_module": {
                 "iso_c_binding": [
                     "C_PTR"
