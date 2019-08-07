@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 
-void DEF_three_class1_method1(DEF_class1 * self, int arg1);
+void DEF_class1_method1(DEF_class1 * self, int arg1);
 
 #ifdef __cplusplus
 }

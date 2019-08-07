@@ -803,9 +803,10 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
-        fmt_ns.C_name_scope = (
-            parent.fmtdict.C_name_scope + self.name + "_"
-        )
+        if util.TEMP:
+            fmt_ns.C_name_scope = (
+                parent.fmtdict.C_name_scope + self.name + "_"
+            )
         fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope

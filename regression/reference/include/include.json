@@ -73,7 +73,7 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->method1(\targ1);",
                             "C_call_list": "arg1",
-                            "C_name": "DEF_three_class1_method1",
+                            "C_name": "DEF_class1_method1",
                             "C_pre_call": "three::Class1 *SH_this =\t static_cast<three::Class1 *>(self->addr);",
                             "C_prototype": "DEF_class1 * self,\t int arg1",
                             "C_return_code": "return;",
@@ -414,7 +414,7 @@
                 "fmtdict": {
                     "C_call_code": "one::two::function1(\t);",
                     "C_call_list": "",
-                    "C_name": "DEF_one_two_function1",
+                    "C_name": "DEF_function1",
                     "C_prototype": "",
                     "C_return_code": "return;",
                     "C_return_type": "void",

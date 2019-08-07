@@ -10,6 +10,7 @@ copyright:
 
 library: Tutorial
 cxx_header: tutorial.hpp
+namespace: tutorial
 
 options:
   debug: True
@@ -20,12 +21,11 @@ options:
 
 
 declarations:
-- decl: extern int global_flag;
-- decl: namespace tutorial
-  format:
-    C_name_scope: ""
-    PY_module_name: tutorial
-  declarations:
+#  declarations:
+  - decl: extern int global_flag;
+#  format:
+#    C_name_scope: ""
+#    PY_module_name: tutorial
 
   - decl: typedef int TypeID;
 

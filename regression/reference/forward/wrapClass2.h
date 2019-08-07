@@ -35,14 +35,13 @@ extern "C" {
 // splicer begin class.Class2.C_declarations
 // splicer end class.Class2.C_declarations
 
-FOR_class2 * FOR_tutorial_class2_ctor(FOR_class2 * SHC_rv);
+FOR_class2 * FOR_class2_ctor(FOR_class2 * SHC_rv);
 
-void FOR_tutorial_class2_dtor(FOR_class2 * self);
+void FOR_class2_dtor(FOR_class2 * self);
 
-void FOR_tutorial_class2_func1(FOR_class2 * self, TUT_class1 * arg);
+void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg);
 
-void FOR_tutorial_class2_accept_class3(FOR_class2 * self,
-    FOR_class3 * arg);
+void FOR_class2_accept_class3(FOR_class2 * self, FOR_class3 * arg);
 
 #ifdef __cplusplus
 }

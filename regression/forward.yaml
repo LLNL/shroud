@@ -19,6 +19,7 @@ copyright:
 
 library: forward
 cxx_header: tutorial.hpp
+namespace: tutorial
 
 options:
   debug: True
@@ -26,7 +27,6 @@ options:
   wrap_python: True
   wrap_lua: True
 
-namespace: tutorial
 
 typemap:
 # Class1 is wrapped by another YAML file

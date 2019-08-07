@@ -22,7 +22,7 @@
 extern "C" {
 
 
-void DEF_three_class1_method1(DEF_class1 * self, int arg1)
+void DEF_class1_method1(DEF_class1 * self, int arg1)
 {
     three::Class1 *SH_this = static_cast<three::Class1 *>(self->addr);
     SH_this->method1(arg1);

@@ -85,7 +85,7 @@ module top_module
         end subroutine yyy_tes_fiveplus
 
         subroutine c_init_ns1() &
-                bind(C, name="TES_ns1_init_ns1")
+                bind(C, name="TES_init_ns1")
             implicit none
         end subroutine c_init_ns1
 

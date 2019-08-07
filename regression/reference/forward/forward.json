@@ -122,7 +122,7 @@
                         "fmtdict": {
                             "C_call_code": "tutorial::Class2 *SHCXX_rv =\t new tutorial::Class2();",
                             "C_call_list": "",
-                            "C_name": "FOR_tutorial_class2_ctor",
+                            "C_name": "FOR_class2_ctor",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(\tSHCXX_rv);\nSHC_rv->idtor = 0;",
                             "C_prototype": "FOR_class2 * SHC_rv",
                             "C_return_code": "return SHC_rv;",
@@ -168,7 +168,7 @@
                         "fmtdict": {
                             "C_call_code": "delete SH_this;\nself->addr = NULL;",
                             "C_call_list": "",
-                            "C_name": "FOR_tutorial_class2_dtor",
+                            "C_name": "FOR_class2_dtor",
                             "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);",
                             "C_prototype": "FOR_class2 * self",
                             "C_return_code": "return;",
@@ -278,7 +278,7 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->func1(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "FOR_tutorial_class2_func1",
+                            "C_name": "FOR_class2_func1",
                             "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class1 * SHCXX_arg =\t static_cast<tutorial::Class1 *>(arg->addr);",
                             "C_prototype": "FOR_class2 * self,\t TUT_class1 * arg",
                             "C_return_code": "return;",
@@ -392,7 +392,7 @@
                         "fmtdict": {
                             "C_call_code": "SH_this->acceptClass3(\tSHCXX_arg);",
                             "C_call_list": "SHCXX_arg",
-                            "C_name": "FOR_tutorial_class2_accept_class3",
+                            "C_name": "FOR_class2_accept_class3",
                             "C_pre_call": "tutorial::Class2 *SH_this =\t static_cast<tutorial::Class2 *>(self->addr);\ntutorial::Class3 * SHCXX_arg =\t static_cast<tutorial::Class3 *>(arg->addr);",
                             "C_prototype": "FOR_class2 * self,\t FOR_class3 * arg",
                             "C_return_code": "return;",
@@ -632,7 +632,7 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 23,
+            "__line__": 24,
             "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,

@@ -86,7 +86,7 @@ module exclass1_mod
 
         function c_exclass1_ctor_0(SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_ctor_0")
+                bind(C, name="AA_exclass1_ctor_0")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -96,7 +96,7 @@ module exclass1_mod
 
         function c_exclass1_ctor_1(name, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_ctor_1")
+                bind(C, name="AA_exclass1_ctor_1")
             use iso_c_binding, only : C_CHAR, C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -107,7 +107,7 @@ module exclass1_mod
 
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_ctor_1_bufferify")
+                bind(C, name="AA_exclass1_ctor_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -118,7 +118,7 @@ module exclass1_mod
         end function c_exclass1_ctor_1_bufferify
 
         subroutine c_exclass1_dtor(self) &
-                bind(C, name="AA_example_nested_exclass1_dtor")
+                bind(C, name="AA_exclass1_dtor")
             import :: SHROUD_exclass1_capsule
             implicit none
             type(SHROUD_exclass1_capsule), intent(IN) :: self
@@ -126,7 +126,7 @@ module exclass1_mod
 
         function c_exclass1_increment_count(self, incr) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_increment_count")
+                bind(C, name="AA_exclass1_increment_count")
             use iso_c_binding, only : C_INT
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -137,7 +137,7 @@ module exclass1_mod
 
         pure function c_exclass1_get_name_error_pattern(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_name_error_pattern")
+                bind(C, name="AA_exclass1_get_name_error_pattern")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -147,7 +147,7 @@ module exclass1_mod
 
         subroutine c_exclass1_get_name_error_pattern_bufferify(self, &
                 SHF_rv, NSHF_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_name_error_pattern_bufferify")
+                bind(C, name="AA_exclass1_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -158,7 +158,7 @@ module exclass1_mod
 
         pure function c_exclass1_get_name_length(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_name_length")
+                bind(C, name="AA_exclass1_get_name_length")
             use iso_c_binding, only : C_INT
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -168,7 +168,7 @@ module exclass1_mod
 
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_name_error_check")
+                bind(C, name="AA_exclass1_get_name_error_check")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -178,7 +178,7 @@ module exclass1_mod
 
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_name_error_check_bufferify")
+                bind(C, name="AA_exclass1_get_name_error_check_bufferify")
             import :: SHROUD_array, SHROUD_exclass1_capsule
             implicit none
             type(SHROUD_exclass1_capsule), intent(IN) :: self
@@ -187,7 +187,7 @@ module exclass1_mod
 
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_name_arg")
+                bind(C, name="AA_exclass1_get_name_arg")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -196,7 +196,7 @@ module exclass1_mod
         end function c_exclass1_get_name_arg
 
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
-                bind(C, name="AA_example_nested_exclass1_get_name_arg_bufferify")
+                bind(C, name="AA_exclass1_get_name_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -207,7 +207,7 @@ module exclass1_mod
 
         function c_exclass1_get_root(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_root")
+                bind(C, name="AA_exclass1_get_root")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -217,7 +217,7 @@ module exclass1_mod
 
         function c_exclass1_get_value_from_int(self, value) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_value_from_int")
+                bind(C, name="AA_exclass1_get_value_from_int")
             use iso_c_binding, only : C_INT
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -228,7 +228,7 @@ module exclass1_mod
 
         function c_exclass1_get_value_1(self, value) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_value_1")
+                bind(C, name="AA_exclass1_get_value_1")
             use iso_c_binding, only : C_LONG
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -239,7 +239,7 @@ module exclass1_mod
 
         function c_exclass1_get_addr(self) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_get_addr")
+                bind(C, name="AA_exclass1_get_addr")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -249,7 +249,7 @@ module exclass1_mod
 
         function c_exclass1_has_addr(self, in) &
                 result(SHT_rv) &
-                bind(C, name="AA_example_nested_exclass1_has_addr")
+                bind(C, name="AA_exclass1_has_addr")
             use iso_c_binding, only : C_BOOL
             import :: SHROUD_exclass1_capsule
             implicit none
@@ -259,7 +259,7 @@ module exclass1_mod
         end function c_exclass1_has_addr
 
         subroutine c_exclass1_splicer_special(self) &
-                bind(C, name="AA_example_nested_exclass1_splicer_special")
+                bind(C, name="AA_exclass1_splicer_special")
             import :: SHROUD_exclass1_capsule
             implicit none
             type(SHROUD_exclass1_capsule), intent(IN) :: self

@@ -7036,7 +7036,7 @@
             "PY_type_impl_template": "{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}",
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "YAML_type_filename_template": "{library_lower}_types.yaml",
-            "__line__": 14,
+            "__line__": 15,
             "class_prefix_template": "{class_lower}_",
             "debug": true,
             "debug_index": false,
@@ -7074,7 +7074,7 @@
                     "variable_name": "global_flag",
                     "variable_upper": "GLOBAL_FLAG"
                 },
-                "linenumber": 23,
+                "linenumber": 25,
                 "name": "global_flag",
                 "options": {}
             },
