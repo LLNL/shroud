@@ -1451,12 +1451,12 @@
                                 "cxx_addr": "&",
                                 "cxx_cast_to_void_ptr": "static_cast<void *>(&SHCXX_rv)",
                                 "cxx_member": ".",
-                                "cxx_type": "Singleton",
+                                "cxx_type": "tutorial::Singleton",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0"
                             },
                             "fmtf": {
-                                "cxx_type": "Singleton",
+                                "cxx_type": "tutorial::Singleton",
                                 "f_var": "SHT_rv"
                             },
                             "fmtpy": {
@@ -1488,13 +1488,13 @@
                             "storage": [
                                 "static"
                             ],
-                            "typemap_name": "Singleton"
+                            "typemap_name": "tutorial::Singleton"
                         },
                         "decl": "static Singleton& getReference()",
                         "declgen": "static Singleton & getReference()",
                         "fmtdict": {
-                            "CXX_this_call": "Singleton::",
-                            "C_call_code": "Singleton & SHCXX_rv =\t Singleton::getReference(\t);",
+                            "CXX_this_call": "tutorial::Singleton::",
+                            "C_call_code": "tutorial::Singleton & SHCXX_rv =\t tutorial::Singleton::getReference(\t);",
                             "C_call_list": "",
                             "C_name": "TUT_singleton_get_reference",
                             "C_post_call": "SHC_rv->addr = static_cast<void *>(&SHCXX_rv);\nSHC_rv->idtor = 0;",
@@ -1512,12 +1512,12 @@
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "PY_name_impl": "PY_singleton_getReference",
-                            "PY_this_call": "Singleton::",
+                            "PY_this_call": "tutorial::Singleton::",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
-                            "cxx_rv_decl": "Singleton & SHCXX_rv",
+                            "cxx_rv_decl": "tutorial::Singleton & SHCXX_rv",
                             "function_name": "getReference",
                             "underscore_name": "get_reference"
                         },
@@ -1531,8 +1531,8 @@
                     "__line__": 275,
                     "wrap_lua": false
                 },
-                "scope": "Singleton::",
-                "typemap_name": "Singleton"
+                "scope": "tutorial::Singleton::",
+                "typemap_name": "tutorial::Singleton"
             }
         ],
         "copyright": [
@@ -7121,94 +7121,6 @@
             "f_type": "integer",
             "flat_name": "MPI_Comm"
         },
-        "Singleton": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
-            "LUA_type": "LUA_TUSERDATA",
-            "PY_PyObject": "PY_Singleton",
-            "PY_PyTypeObject": "PY_Singleton_Type",
-            "PY_from_object": "PP_Singleton_from_Object",
-            "PY_to_object": "PP_Singleton_to_Object",
-            "base": "shadow",
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                },
-                "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
-                    "post_call": [
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
-                        "{c_var}->idtor = {idtor};"
-                    ]
-                }
-            },
-            "c_to_cxx": "static_cast<{c_const}Singleton *>({c_var}{c_member}addr)",
-            "c_type": "TUT_singleton",
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "Singleton",
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_singleton_capsule"
-                ]
-            },
-            "f_c_type": "type(SHROUD_singleton_capsule)",
-            "f_capsule_data_type": "SHROUD_singleton_capsule",
-            "f_derived_type": "singleton",
-            "f_module": {
-                "tutorial_mod": [
-                    "singleton"
-                ]
-            },
-            "f_module_name": "tutorial_mod",
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-                    ],
-                    "need_wrapper": true
-                }
-            },
-            "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(singleton)",
-            "flat_name": "Singleton",
-            "forward": "Singleton",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} *{py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                },
-                "result": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
-        },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})",
@@ -8217,6 +8129,94 @@
             "f_type": "integer(C_INT)",
             "flat_name": "tutorial_EnumTypeID",
             "typedef": "int"
+        },
+        "tutorial::Singleton": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Singleton",
+            "PY_PyTypeObject": "PY_Singleton_Type",
+            "PY_from_object": "PP_Singleton_from_Object",
+            "PY_to_object": "PP_Singleton_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}tutorial::Singleton *>({c_var}{c_member}addr)",
+            "c_type": "TUT_singleton",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "tutorial::Singleton",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_singleton_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_singleton_capsule)",
+            "f_capsule_data_type": "SHROUD_singleton_capsule",
+            "f_derived_type": "singleton",
+            "f_module": {
+                "tutorial_tutorial_mod": [
+                    "singleton"
+                ]
+            },
+            "f_module_name": "tutorial_tutorial_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(singleton)",
+            "flat_name": "tutorial_Singleton",
+            "forward": "tutorial::Singleton",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}tutorial::Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}tutorial::Singleton * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         },
         "tutorial::TypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

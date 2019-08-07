@@ -38,21 +38,23 @@ PyObject *PP_Class1_to_Object(tutorial::Class1 *addr);
 int PP_Class1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-class Singleton;  // forward declare
+namespace tutorial {
+    class Singleton;  // forward declare
+}
 extern PyTypeObject PY_Singleton_Type;
 // splicer begin class.Singleton.C_declaration
 // splicer end class.Singleton.C_declaration
 
 typedef struct {
 PyObject_HEAD
-    Singleton * obj;
+    tutorial::Singleton * obj;
     int idtor;
     // splicer begin class.Singleton.C_object
     // splicer end class.Singleton.C_object
 } PY_Singleton;
 
 extern const char *PY_Singleton_capsule_name;
-PyObject *PP_Singleton_to_Object(Singleton *addr);
+PyObject *PP_Singleton_to_Object(tutorial::Singleton *addr);
 int PP_Singleton_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 

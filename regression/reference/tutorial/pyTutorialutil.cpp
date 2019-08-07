@@ -42,7 +42,7 @@ int PP_Class1_from_Object(PyObject *obj, void **addr)
     // splicer end class.Class1.utility.from_object
 }
 
-PyObject *PP_Singleton_to_Object(Singleton *addr)
+PyObject *PP_Singleton_to_Object(tutorial::Singleton *addr)
 {
     // splicer begin class.Singleton.utility.to_object
     PyObject *voidobj;

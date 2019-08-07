@@ -22,7 +22,8 @@ extern "C" {
 TUT_singleton * TUT_singleton_get_reference(TUT_singleton * SHC_rv)
 {
 // splicer begin class.Singleton.method.get_reference
-    Singleton & SHCXX_rv = Singleton::getReference();
+    tutorial::Singleton & SHCXX_rv = tutorial::Singleton::getReference(
+        );
     SHC_rv->addr = static_cast<void *>(&SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;

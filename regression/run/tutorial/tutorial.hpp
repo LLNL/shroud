@@ -104,9 +104,6 @@ void set_global_flag(int arg);
 int get_global_flag();
 const std::string& LastFunctionCalled();
 
-} /* end namespace tutorial */
-
-
 #if 0
 class Singleton {
 public:
@@ -146,6 +143,8 @@ class Singleton
         void operator=(Singleton const&);      // Don't implement
 };
 #endif
+
+} /* end namespace tutorial */
 
 
 #endif // TUTORIAL_HPP

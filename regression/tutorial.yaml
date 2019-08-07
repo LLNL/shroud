@@ -271,12 +271,12 @@ declarations:
 
 ##########
   
-- decl: class Singleton
-  options:
-    wrap_lua: false
-  declarations:
-#  - decl: static Singleton* instancePtr()
-  - decl: static Singleton& getReference()
+  - decl: class Singleton
+    options:
+      wrap_lua: false
+    declarations:
+#    - decl: static Singleton* instancePtr()
+    - decl: static Singleton& getReference()
   
   
 ##################################################
