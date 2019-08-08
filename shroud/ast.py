@@ -815,8 +815,9 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
-        self.eval_template("F_module_name", "_namespace")
-        fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
+        if util.TEMP:
+            self.eval_template("F_module_name", "_namespace")
+            fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
         self.eval_template("F_impl_filename", "_namespace")
 
         if format:

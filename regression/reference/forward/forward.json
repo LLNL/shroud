@@ -1640,11 +1640,11 @@
             "f_capsule_data_type": "SHROUD_class2_capsule",
             "f_derived_type": "class2",
             "f_module": {
-                "forward_tutorial_mod": [
+                "forward_mod": [
                     "class2"
                 ]
             },
-            "f_module_name": "forward_tutorial_mod",
+            "f_module_name": "forward_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -1729,11 +1729,11 @@
             "f_capsule_data_type": "SHROUD_class3_capsule",
             "f_derived_type": "class3",
             "f_module": {
-                "forward_tutorial_mod": [
+                "forward_mod": [
                     "class3"
                 ]
             },
-            "f_module_name": "forward_tutorial_mod",
+            "f_module_name": "forward_mod",
             "f_statements": {
                 "result": {
                     "call": [

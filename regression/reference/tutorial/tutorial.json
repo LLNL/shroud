@@ -8009,11 +8009,11 @@
             "f_capsule_data_type": "SHROUD_class1_capsule",
             "f_derived_type": "class1",
             "f_module": {
-                "tutorial_tutorial_mod": [
+                "tutorial_mod": [
                     "class1"
                 ]
             },
-            "f_module_name": "tutorial_tutorial_mod",
+            "f_module_name": "tutorial_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -8166,11 +8166,11 @@
             "f_capsule_data_type": "SHROUD_singleton_capsule",
             "f_derived_type": "singleton",
             "f_module": {
-                "tutorial_tutorial_mod": [
+                "tutorial_mod": [
                     "singleton"
                 ]
             },
-            "f_module_name": "tutorial_tutorial_mod",
+            "f_module_name": "tutorial_mod",
             "f_statements": {
                 "result": {
                     "call": [
