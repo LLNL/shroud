@@ -11,8 +11,6 @@
                     "C_type_name": "AA_exclass1",
                     "F_capsule_data_type": "SHROUD_exclass1_capsule",
                     "F_derived_name": "exclass1",
-                    "F_impl_filename": "wrapfExClass1.f",
-                    "F_module_name": "exclass1_mod",
                     "LUA_class_reg": "l_ExClass1_Reg",
                     "LUA_ctor_name": "ExClass1",
                     "LUA_metadata": "ExClass1.metatable",
@@ -1905,8 +1903,6 @@
                     "C_type_name": "AA_exclass2",
                     "F_capsule_data_type": "SHROUD_exclass2_capsule",
                     "F_derived_name": "exclass2",
-                    "F_impl_filename": "wrapfExClass2.f",
-                    "F_module_name": "exclass2_mod",
                     "LUA_class_reg": "l_ExClass2_Reg",
                     "LUA_ctor_name": "ExClass2",
                     "LUA_metadata": "ExClass2.metatable",
@@ -9108,7 +9104,7 @@
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": true,
+            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
@@ -9628,11 +9624,11 @@
             "f_capsule_data_type": "SHROUD_exclass1_capsule",
             "f_derived_type": "exclass1",
             "f_module": {
-                "exclass1_mod": [
+                "userlibrary_mod": [
                     "exclass1"
                 ]
             },
-            "f_module_name": "exclass1_mod",
+            "f_module_name": "userlibrary_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -9718,11 +9714,11 @@
             "f_capsule_data_type": "SHROUD_exclass2_capsule",
             "f_derived_type": "exclass2",
             "f_module": {
-                "exclass2_mod": [
+                "userlibrary_mod": [
                     "exclass2"
                 ]
             },
-            "f_module_name": "exclass2_mod",
+            "f_module_name": "userlibrary_mod",
             "f_statements": {
                 "result": {
                     "call": [

@@ -97,7 +97,6 @@ C-interface, Fortran method long getValue(long value +intent(in)+value)
 C-interface, Fortran method void * getAddr()
 C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
-Close wrapfExClass1.f
 class ExClass2
 C-interface, Fortran method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C-interface method ExClass2(const string * name +intent(in)+len_trim(trim_name))
@@ -126,7 +125,6 @@ C-interface, Fortran method void setValue(float value +intent(in)+value)
 C-interface, Fortran method void setValue(double value +intent(in)+value)
 C-interface, Fortran method int getValue()
 C-interface, Fortran method double getValue()
-Close wrapfExClass2.f
 C-interface, Fortran function void local_function1()
 C-interface, Fortran function bool isNameValid(const std::string & name +intent(in))
 C-interface function bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
