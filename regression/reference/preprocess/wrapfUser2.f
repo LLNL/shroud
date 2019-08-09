@@ -30,6 +30,7 @@ module user2_mod
     ! splicer begin class.User2.module_top
     ! splicer end class.User2.module_top
 
+#ifdef USE_USER2
     type, bind(C) :: SHROUD_user2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -58,16 +59,22 @@ module user2_mod
         ! splicer begin class.User2.type_bound_procedure_part
         ! splicer end class.User2.type_bound_procedure_part
     end type user2
+#endif
 
     interface operator (.eq.)
+#ifdef USE_USER2
         module procedure user2_eq
+#endif
     end interface
 
     interface operator (.ne.)
+#ifdef USE_USER2
         module procedure user2_ne
+#endif
     end interface
 
     interface
+#ifdef USE_USER2
 
 #ifdef USE_CLASS3_A
         subroutine c_user2_exfunc_0(self) &
@@ -88,12 +95,14 @@ module user2_mod
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_user2_exfunc_1
 #endif
+#endif
 
         ! splicer begin class.User2.additional_interfaces
         ! splicer end class.User2.additional_interfaces
     end interface
 
 contains
+#ifdef USE_USER2
 
 #ifdef USE_CLASS3_A
     ! void exfunc()
@@ -142,6 +151,8 @@ contains
 
     ! splicer begin class.User2.additional_functions
     ! splicer end class.User2.additional_functions
+#endif
+#ifdef USE_USER2
 
     function user2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
@@ -164,5 +175,6 @@ contains
             rv = .false.
         endif
     end function user2_ne
+#endif
 
 end module user2_mod

@@ -28,8 +28,10 @@ VPATH = \
 
 OBJS = \
     wrapfUser1.f \
+    wrapfUser2.f \
     wrappreprocess.o \
     wrapUser1.o \
+    wrapUser2.o \
     fruit.o \
     main.o
 

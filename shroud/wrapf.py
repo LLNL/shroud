@@ -190,10 +190,16 @@ class Wrapf(util.WrapperMixin):
 
         self.wrap_enums(node)
 
+        if node.cpp_if:
+            self.impl.append("#" + node.cpp_if)
+        if node.cpp_if:
+            self.c_interface.append("#" + node.cpp_if)
         self._push_splicer("method")
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer("method")
+        if node.cpp_if:
+            self.c_interface.append("#endif")
 
         self.write_object_get_set(node)
         self.impl.append("")
@@ -209,6 +215,8 @@ class Wrapf(util.WrapperMixin):
         # One capsule type per class.
         # Necessary since a type in one module may be used by another module.
         self.f_type_decl.append("")
+        if node.cpp_if:
+            self.f_type_decl.append("#" + node.cpp_if)
         if node.options.literalinclude:
             self.f_type_decl.append("! start derived-type " +
                                     fmt_class.F_capsule_data_type)
@@ -251,28 +259,28 @@ class Wrapf(util.WrapperMixin):
 
                 # Look for any cpp_if declarations
                 any_cpp_if = False
-                for node in methods:
-                    if node.cpp_if:
+                for function in methods:
+                    if function.cpp_if:
                         any_cpp_if = True
                         break
 
                 if any_cpp_if:
                     # If using cpp, add a generic line for each function
                     # to avoid conditional/continuation problems.
-                    for node in methods:
-                        if node.cpp_if:
-                            f_type_decl.append("#" + node.cpp_if)
+                    for function in methods:
+                        if function.cpp_if:
+                            f_type_decl.append("#" + function.cpp_if)
                         f_type_decl.append(
                             "generic :: {} => {}".format(
-                                key, node.fmtdict.F_name_function
+                                key, function.fmtdict.F_name_function
                             )
                         )
-                        if node.cpp_if:
+                        if function.cpp_if:
                             f_type_decl.append("#endif")
                 else:
                     parts = ["generic :: ", key, " => "]
-                    for node in methods:
-                        parts.append(node.fmtdict.F_name_function)
+                    for function in methods:
+                        parts.append(function.fmtdict.F_name_function)
                         parts.append(", ")
                     del parts[-1]
                     f_type_decl.append("\t".join(parts))
@@ -281,14 +289,22 @@ class Wrapf(util.WrapperMixin):
 
         self._create_splicer("type_bound_procedure_part", self.f_type_decl)
         append_format(self.f_type_decl, "-end type {F_derived_name}", fmt_class)
+        if node.cpp_if:
+            self.f_type_decl.append("#endif")
 
         self.c_interface.append("")
         self._create_splicer("additional_interfaces", self.c_interface)
 
         self._pop_splicer(fmt_class.cxx_class)
+        if node.cpp_if:
+            self.impl.append("#endif")
+
 
         # overload operators
+        if node.cpp_if:
+            self.operator_impl.append("#" + node.cpp_if)
         self.overload_compare(
+            node,
             fmt_class,
             ".eq.",
             fmt_class.class_lower + "_eq",
@@ -300,6 +316,7 @@ class Wrapf(util.WrapperMixin):
         )
         #        self.overload_compare(fmt_class, '==', fmt_class.class_lower + '_eq', None)
         self.overload_compare(
+            node,
             fmt_class,
             ".ne.",
             fmt_class.class_lower + "_ne",
@@ -309,6 +326,8 @@ class Wrapf(util.WrapperMixin):
                 fmt_class,
             ),
         )
+        if node.cpp_if:
+            self.operator_impl.append("#endif")
 
     #        self.overload_compare(fmt_class, '/=', fmt_class.class_lower + '_ne', None)
 
@@ -493,10 +512,11 @@ nullify({F_this}%{F_derived_member})
                 fmt,
             )
 
-    def overload_compare(self, fmt_class, operator, procedure, predicate):
+    def overload_compare(self, node, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
 
         Args:
+            node - ast.ClassNode
             fmt_class -
             operator - ".eq.", ".ne."
             procedure -
@@ -507,7 +527,7 @@ nullify({F_this}%{F_derived_member})
         fmt.predicate = predicate
 
         ops = self.operator_map.setdefault(operator, [])
-        ops.append(procedure)
+        ops.append((node, procedure))
 
         if predicate is None:
             # .eq. and == use same function
@@ -1833,8 +1853,12 @@ rv = .false.
                 output.append("")
                 output.append("interface operator (%s)" % op)
                 output.append(1)
-                for opfcn in self.operator_map[op]:
+                for fcn, opfcn in self.operator_map[op]:
+                    if fcn.cpp_if:
+                        output.append("#" + node.cpp_if)
                     output.append("module procedure %s" % opfcn)
+                    if fcn.cpp_if:
+                        output.append("#endif")
                 output.append(-1)
                 output.append("end interface")
 
