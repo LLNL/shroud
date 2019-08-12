@@ -11,8 +11,6 @@
                     "C_type_name": "PRE_user1",
                     "F_capsule_data_type": "SHROUD_user1_capsule",
                     "F_derived_name": "user1",
-                    "F_impl_filename": "wrapfUser1.f",
-                    "F_module_name": "user1_mod",
                     "PY_PyObject": "PY_User1",
                     "PY_PyTypeObject": "PY_User1_Type",
                     "PY_capsule_name": "PY_User1_capsule_name",
@@ -280,8 +278,6 @@
                     "C_type_name": "PRE_user2",
                     "F_capsule_data_type": "SHROUD_user2_capsule",
                     "F_derived_name": "user2",
-                    "F_impl_filename": "wrapfUser2.f",
-                    "F_module_name": "user2_mod",
                     "PY_PyObject": "PY_User2",
                     "PY_PyTypeObject": "PY_User2_Type",
                     "PY_capsule_name": "PY_User2_capsule_name",
@@ -601,7 +597,7 @@
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": true,
+            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
@@ -712,11 +708,11 @@
             "f_capsule_data_type": "SHROUD_user1_capsule",
             "f_derived_type": "user1",
             "f_module": {
-                "user1_mod": [
+                "preprocess_mod": [
                     "user1"
                 ]
             },
-            "f_module_name": "user1_mod",
+            "f_module_name": "preprocess_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -801,11 +797,11 @@
             "f_capsule_data_type": "SHROUD_user2_capsule",
             "f_derived_type": "user2",
             "f_module": {
-                "user2_mod": [
+                "preprocess_mod": [
                     "user2"
                 ]
             },
-            "f_module_name": "user2_mod",
+            "f_module_name": "preprocess_mod",
             "f_statements": {
                 "result": {
                     "call": [

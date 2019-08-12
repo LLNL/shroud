@@ -1855,7 +1855,7 @@ rv = .false.
                 output.append(1)
                 for fcn, opfcn in self.operator_map[op]:
                     if fcn.cpp_if:
-                        output.append("#" + node.cpp_if)
+                        output.append("#" + fcn.cpp_if)
                     output.append("module procedure %s" % opfcn)
                     if fcn.cpp_if:
                         output.append("#endif")

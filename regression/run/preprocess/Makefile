@@ -27,8 +27,7 @@ VPATH = \
     $(top)/regression/run/fruit
 
 OBJS = \
-    wrapfUser1.f \
-    wrapfUser2.f \
+    wrapfpreprocess.o \
     wrappreprocess.o \
     wrapUser1.o \
     wrapUser2.o \
@@ -43,4 +42,4 @@ clean :
 
 wrappreprocess.o : preprocess.hpp
 wrapUser1.o : wrapUser1.h preprocess.hpp wrapUser1.h
-main.o : wrapfUser1.o wrappreprocess.o
+main.o : wrapfpreprocess.o wrappreprocess.o
