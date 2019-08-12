@@ -8,7 +8,5 @@ Close wrapscope.h
 Close wrapscope.cpp
 Close typesscope.h
 class cls1Enum
-Close wrapfcls1Enum.f
 class cls2Enum
-Close wrapfcls2Enum.f
 Close wrapfscope.f

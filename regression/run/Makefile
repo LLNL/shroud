@@ -139,8 +139,8 @@ phony_explicit:
     $(tempdir)/run/preprocess/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
-    $(tempdir)/run/struct/.. \
-    $(tempdir)/run/struct/python/.. \
+    $(tempdir)/run/struct-c/.. \
+    $(tempdir)/run/struct-c/python/.. \
     $(tempdir)/run/struct-cxx/.. \
     $(tempdir)/run/struct-cxx/python/.. \
     $(tempdir)/run/templates/.. \

@@ -21,7 +21,7 @@ declarations:
       base: shadow
       cxx_type: cls1Enum
       c_type: SCO_cls1enum
-      f_module_name: cls1enum_mod
+      f_module_name: scope_mod
       f_derived_type: cls1enum
       f_capsule_data_type: SHROUD_cls1enum_capsule
       f_to_c: "{f_var}%cxxmem"
@@ -30,7 +30,7 @@ declarations:
       base: shadow
       cxx_type: cls2Enum
       c_type: SCO_cls2enum
-      f_module_name: cls2enum_mod
+      f_module_name: scope_mod
       f_derived_type: cls2enum
       f_capsule_data_type: SHROUD_cls2enum_capsule
       f_to_c: "{f_var}%cxxmem"

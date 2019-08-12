@@ -22,6 +22,7 @@ library: scope
 options:
   debug: True
 #  wrap_python: True
+  F_module_per_class: False
 
 declarations:
 

@@ -61,7 +61,7 @@
                             "flat_name": "cls1Enum_Color",
                             "namespace_scope": "cls1Enum::"
                         },
-                        "linenumber": 60,
+                        "linenumber": 61,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "cls1Enum::Color"
@@ -74,8 +74,6 @@
                     "C_type_name": "SCO_cls1enum",
                     "F_capsule_data_type": "SHROUD_cls1enum_capsule",
                     "F_derived_name": "cls1enum",
-                    "F_impl_filename": "wrapfcls1Enum.f",
-                    "F_module_name": "cls1enum_mod",
                     "class_lower": "cls1enum",
                     "class_prefix": "cls1enum_",
                     "class_scope": "cls1Enum::",
@@ -83,7 +81,7 @@
                     "cxx_class": "cls1Enum",
                     "cxx_type": "cls1Enum"
                 },
-                "linenumber": 58,
+                "linenumber": 59,
                 "name": "cls1Enum",
                 "options": {},
                 "scope": "cls1Enum::",
@@ -148,7 +146,7 @@
                             "flat_name": "cls2Enum_Color",
                             "namespace_scope": "cls2Enum::"
                         },
-                        "linenumber": 68,
+                        "linenumber": 69,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "cls2Enum::Color"
@@ -161,8 +159,6 @@
                     "C_type_name": "SCO_cls2enum",
                     "F_capsule_data_type": "SHROUD_cls2enum_capsule",
                     "F_derived_name": "cls2enum",
-                    "F_impl_filename": "wrapfcls2Enum.f",
-                    "F_module_name": "cls2enum_mod",
                     "class_lower": "cls2enum",
                     "class_prefix": "cls2enum_",
                     "class_scope": "cls2Enum::",
@@ -170,7 +166,7 @@
                     "cxx_class": "cls2Enum",
                     "cxx_type": "cls2Enum"
                 },
-                "linenumber": 66,
+                "linenumber": 67,
                 "name": "cls2Enum",
                 "options": {},
                 "scope": "cls2Enum::",
@@ -249,7 +245,7 @@
                     "enum_upper": "COLOR",
                     "flat_name": "Color"
                 },
-                "linenumber": 30,
+                "linenumber": 31,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "Color"
@@ -309,7 +305,7 @@
                     "enum_upper": "COLOR",
                     "flat_name": "ns1Enum_Color"
                 },
-                "linenumber": 41,
+                "linenumber": 42,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "ns1Enum::Color"
@@ -369,7 +365,7 @@
                     "enum_upper": "COLOR",
                     "flat_name": "ns2Enum_Color"
                 },
-                "linenumber": 49,
+                "linenumber": 50,
                 "name": "Color",
                 "options": {},
                 "typemap_name": "ns2Enum::Color"
@@ -430,7 +426,7 @@
                     "enum_upper": "COLORENUM",
                     "flat_name": "ColorEnum"
                 },
-                "linenumber": 77,
+                "linenumber": 78,
                 "name": "ColorEnum",
                 "options": {},
                 "typemap_name": "ColorEnum"
@@ -558,7 +554,7 @@
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": true,
+            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
@@ -958,11 +954,11 @@
             "f_capsule_data_type": "SHROUD_cls1enum_capsule",
             "f_derived_type": "cls1enum",
             "f_module": {
-                "cls1enum_mod": [
+                "scope_mod": [
                     "cls1enum"
                 ]
             },
-            "f_module_name": "cls1enum_mod",
+            "f_module_name": "scope_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -1064,11 +1060,11 @@
             "f_capsule_data_type": "SHROUD_cls2enum_capsule",
             "f_derived_type": "cls2enum",
             "f_module": {
-                "cls2enum_mod": [
+                "scope_mod": [
                     "cls2enum"
                 ]
             },
-            "f_module_name": "cls2enum_mod",
+            "f_module_name": "scope_mod",
             "f_statements": {
                 "result": {
                     "call": [
