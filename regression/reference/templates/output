@@ -8,10 +8,6 @@ Wrote wrapuser_int.cpp
 Wrote wraptemplates.h
 Wrote wraptemplates.cpp
 Wrote typestemplates.h
-Wrote wrapfvector_int.f
-Wrote wrapfvector_double.f
-Wrote wrapfWorker.f
-Wrote wrapfuser_int.f
 Wrote wrapftemplates.f
 Wrote pyvector_inttype.cpp
 Wrote pyvector_doubletype.cpp

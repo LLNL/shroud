@@ -30,13 +30,13 @@ module twots_instantiation4_mod
     ! splicer begin class.twoTs_instantiation4.module_top
     ! splicer end class.twoTs_instantiation4.module_top
 
-    type, bind(C) :: SHROUD_twots_capsule
+    type, bind(C) :: SHROUD_twots_instantiation4_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_twots_capsule
+    end type SHROUD_twots_instantiation4_capsule
 
     type twots_instantiation4
-        type(SHROUD_twots_capsule) :: cxxmem
+        type(SHROUD_twots_instantiation4_capsule) :: cxxmem
         ! splicer begin class.twoTs_instantiation4.component_part
         ! splicer end class.twoTs_instantiation4.component_part
     contains

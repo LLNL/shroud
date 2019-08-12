@@ -198,7 +198,7 @@
                     "C_header_filename": "wrapVvv1.hh",
                     "C_impl_filename": "wrapVvv1.cc",
                     "C_type_name": "TES_vvv1",
-                    "F_capsule_data_type": "SHROUD_vector_capsule",
+                    "F_capsule_data_type": "SHROUD_vvv1_capsule",
                     "F_derived_name": "FFvvv1",
                     "F_impl_filename": "wrapfVvv1.F",
                     "F_module_name": "vvv1_mod",
@@ -291,7 +291,7 @@
                     "C_header_filename": "wrapvector_double.hh",
                     "C_impl_filename": "wrapvector_double.cc",
                     "C_type_name": "TES_vector_double",
-                    "F_capsule_data_type": "SHROUD_vector_capsule",
+                    "F_capsule_data_type": "SHROUD_vector_double_capsule",
                     "F_derived_name": "vector_double",
                     "F_impl_filename": "wrapfvector_double.F",
                     "F_module_name": "vector_double_mod",
@@ -383,7 +383,7 @@
                     "C_header_filename": "wrapvector_instantiation5.hh",
                     "C_impl_filename": "wrapvector_instantiation5.cc",
                     "C_type_name": "TES_vector_instantiation5",
-                    "F_capsule_data_type": "SHROUD_vector_capsule",
+                    "F_capsule_data_type": "SHROUD_vector_instantiation5_capsule",
                     "F_derived_name": "vector_instantiation5",
                     "F_impl_filename": "wrapfvector_instantiation5.F",
                     "F_module_name": "vector_instantiation5_mod",
@@ -477,7 +477,7 @@
                     "C_header_filename": "wrapvector_instantiation3.hh",
                     "C_impl_filename": "wrapvector_instantiation3.cc",
                     "C_type_name": "TES_vector_instantiation3",
-                    "F_capsule_data_type": "SHROUD_vector_capsule",
+                    "F_capsule_data_type": "SHROUD_vector_instantiation3_capsule",
                     "F_derived_name": "vector_instantiation3",
                     "F_impl_filename": "wrapfvector_instantiation3.F",
                     "F_module_name": "vector_instantiation3_mod",
@@ -569,7 +569,7 @@
                     "C_header_filename": "wraptwoTs_0.hh",
                     "C_impl_filename": "wraptwoTs_0.cc",
                     "C_type_name": "TES_twots_0",
-                    "F_capsule_data_type": "SHROUD_twots_capsule",
+                    "F_capsule_data_type": "SHROUD_twots_0_capsule",
                     "F_derived_name": "twots_0",
                     "F_impl_filename": "wrapftwoTs_0.F",
                     "F_module_name": "twots_0_mod",
@@ -644,7 +644,7 @@
                     "C_header_filename": "wraptwoTs_instantiation4.hh",
                     "C_impl_filename": "wraptwoTs_instantiation4.cc",
                     "C_type_name": "TES_twots_instantiation4",
-                    "F_capsule_data_type": "SHROUD_twots_capsule",
+                    "F_capsule_data_type": "SHROUD_twots_instantiation4_capsule",
                     "F_derived_name": "twots_instantiation4",
                     "F_impl_filename": "wrapftwoTs_instantiation4.F",
                     "F_module_name": "twots_instantiation4_mod",
@@ -3004,11 +3004,11 @@
             "cxx_type": "std::vector<int>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_vector_capsule"
+                    "SHROUD_vvv1_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_vector_capsule)",
-            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_c_type": "type(SHROUD_vvv1_capsule)",
+            "f_capsule_data_type": "SHROUD_vvv1_capsule",
             "f_derived_type": "FFvvv1",
             "f_module": {
                 "vvv1_mod": [
@@ -3318,11 +3318,11 @@
             "cxx_type": "std::vector<double>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_vector_capsule"
+                    "SHROUD_vector_double_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_vector_capsule)",
-            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_c_type": "type(SHROUD_vector_double_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_double_capsule",
             "f_derived_type": "vector_double",
             "f_module": {
                 "vector_double_mod": [
@@ -3407,11 +3407,11 @@
             "cxx_type": "std::vector<internal::ImplWorker1>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_vector_capsule"
+                    "SHROUD_vector_instantiation3_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_vector_capsule)",
-            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_c_type": "type(SHROUD_vector_instantiation3_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_instantiation3_capsule",
             "f_derived_type": "vector_instantiation3",
             "f_module": {
                 "vector_instantiation3_mod": [
@@ -3496,11 +3496,11 @@
             "cxx_type": "std::vector<long>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_vector_capsule"
+                    "SHROUD_vector_instantiation5_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_vector_capsule)",
-            "f_capsule_data_type": "SHROUD_vector_capsule",
+            "f_c_type": "type(SHROUD_vector_instantiation5_capsule)",
+            "f_capsule_data_type": "SHROUD_vector_instantiation5_capsule",
             "f_derived_type": "vector_instantiation5",
             "f_module": {
                 "vector_instantiation5_mod": [
@@ -3735,11 +3735,11 @@
             "cxx_type": "twoTs<int, long>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_twots_capsule"
+                    "SHROUD_twots_0_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_twots_capsule)",
-            "f_capsule_data_type": "SHROUD_twots_capsule",
+            "f_c_type": "type(SHROUD_twots_0_capsule)",
+            "f_capsule_data_type": "SHROUD_twots_0_capsule",
             "f_derived_type": "twots_0",
             "f_module": {
                 "twots_0_mod": [
@@ -3823,11 +3823,11 @@
             "cxx_type": "twoTs<float, double>",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_twots_capsule"
+                    "SHROUD_twots_instantiation4_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_twots_capsule)",
-            "f_capsule_data_type": "SHROUD_twots_capsule",
+            "f_c_type": "type(SHROUD_twots_instantiation4_capsule)",
+            "f_capsule_data_type": "SHROUD_twots_instantiation4_capsule",
             "f_derived_type": "twots_instantiation4",
             "f_module": {
                 "twots_instantiation4_mod": [

@@ -30,13 +30,13 @@ module vvv1_mod
     ! splicer begin class.Vvv1.module_top
     ! splicer end class.Vvv1.module_top
 
-    type, bind(C) :: SHROUD_vector_capsule
+    type, bind(C) :: SHROUD_vvv1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_vector_capsule
+    end type SHROUD_vvv1_capsule
 
     type FFvvv1
-        type(SHROUD_vector_capsule) :: cxxmem
+        type(SHROUD_vvv1_capsule) :: cxxmem
         ! splicer begin class.Vvv1.component_part
         ! splicer end class.Vvv1.component_part
     contains

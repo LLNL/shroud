@@ -1039,6 +1039,7 @@ class ClassNode(AstNode, NamespaceMixin):
                 "C_impl_filename",
                 "F_module_name",
                 "F_impl_filename",
+                "F_capsule_data_type",
                 "PY_struct_array_descr_create",
                 "PY_struct_array_descr_variable",
                 "PY_struct_array_descr_name",

@@ -7,7 +7,7 @@ declarations:
       base: shadow
       cxx_type: Worker
       c_type: TEM_worker
-      f_module_name: worker_mod
+      f_module_name: templates_mod
       f_derived_type: worker
       f_capsule_data_type: SHROUD_worker_capsule
       f_to_c: "{f_var}%cxxmem"
@@ -18,7 +18,7 @@ declarations:
         base: shadow
         cxx_type: internal::ImplWorker1
         c_type: TEM_implworker1
-        f_module_name: implworker1_mod
+        f_module_name: templates_mod
         f_derived_type: implworker1
         f_capsule_data_type: SHROUD_implworker1_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -30,9 +30,9 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<double>
         c_type: TEM_vector_double
-        f_module_name: vector_double_mod
+        f_module_name: templates_mod
         f_derived_type: vector_double
-        f_capsule_data_type: SHROUD_vector_capsule
+        f_capsule_data_type: SHROUD_vector_double_capsule
         f_to_c: "{f_var}%cxxmem"
     - type: vector_int
       fields:
@@ -40,16 +40,16 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<int>
         c_type: TEM_vector_int
-        f_module_name: vector_int_mod
+        f_module_name: templates_mod
         f_derived_type: vector_int
-        f_capsule_data_type: SHROUD_vector_capsule
+        f_capsule_data_type: SHROUD_vector_int_capsule
         f_to_c: "{f_var}%cxxmem"
   - type: user_int
     fields:
       base: shadow
       cxx_type: user<int>
       c_type: TEM_user_int
-      f_module_name: user_int_mod
+      f_module_name: templates_mod
       f_derived_type: user_int
-      f_capsule_data_type: SHROUD_user_capsule
+      f_capsule_data_type: SHROUD_user_int_capsule
       f_to_c: "{f_var}%cxxmem"

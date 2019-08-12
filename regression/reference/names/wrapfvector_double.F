@@ -30,13 +30,13 @@ module vector_double_mod
     ! splicer begin class.vector_double.module_top
     ! splicer end class.vector_double.module_top
 
-    type, bind(C) :: SHROUD_vector_capsule
+    type, bind(C) :: SHROUD_vector_double_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_vector_capsule
+    end type SHROUD_vector_double_capsule
 
     type vector_double
-        type(SHROUD_vector_capsule) :: cxxmem
+        type(SHROUD_vector_double_capsule) :: cxxmem
         ! splicer begin class.vector_double.component_part
         ! splicer end class.vector_double.component_part
     contains

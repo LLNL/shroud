@@ -30,13 +30,13 @@ module vector_instantiation3_mod
     ! splicer begin class.vector_instantiation3.module_top
     ! splicer end class.vector_instantiation3.module_top
 
-    type, bind(C) :: SHROUD_vector_capsule
+    type, bind(C) :: SHROUD_vector_instantiation3_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_vector_capsule
+    end type SHROUD_vector_instantiation3_capsule
 
     type vector_instantiation3
-        type(SHROUD_vector_capsule) :: cxxmem
+        type(SHROUD_vector_instantiation3_capsule) :: cxxmem
         ! splicer begin class.vector_instantiation3.component_part
         ! splicer end class.vector_instantiation3.component_part
     contains
