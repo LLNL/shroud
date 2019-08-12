@@ -20,7 +20,7 @@
                     "PY_this_call": "self->myobj->",
                     "PY_to_object_func": "PP_Names_to_Object",
                     "PY_type_filename": "pyNamestype.cpp",
-                    "__line__": 64,
+                    "__line__": 71,
                     "class_lower": "names",
                     "class_prefix": "names_",
                     "class_scope": "Names::",
@@ -47,7 +47,7 @@
                             "C_call_code": "SH_this->method1(\t);",
                             "C_call_list": "",
                             "C_name": "XXX_TES_names_method1",
-                            "C_pre_call": "Names *SH_this =\t static_cast<Names *>(self->addr);",
+                            "C_pre_call": "ns0::Names *SH_this =\t static_cast<ns0::Names *>(self->addr);",
                             "C_prototype": "TES_names * self",
                             "C_return_code": "return;",
                             "C_return_type": "void",
@@ -61,7 +61,7 @@
                             "F_name_impl": "names_method1",
                             "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_names_method1",
-                            "__line__": 73,
+                            "__line__": 80,
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -69,7 +69,7 @@
                             "function_name": "method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 72,
+                        "linenumber": 79,
                         "options": {}
                     },
                     {
@@ -91,7 +91,7 @@
                             "C_call_code": "SH_this->method2(\t);",
                             "C_call_list": "",
                             "C_name": "XXX_TES_names_method2",
-                            "C_pre_call": "Names *SH_this2 =\t static_cast<Names *>(self2->addr);",
+                            "C_pre_call": "ns0::Names *SH_this2 =\t static_cast<ns0::Names *>(self2->addr);",
                             "C_prototype": "TES_names * self2",
                             "C_return_code": "return;",
                             "C_return_type": "void",
@@ -107,7 +107,7 @@
                             "F_subprogram": "subroutine",
                             "F_this": "obj2",
                             "PY_name_impl": "PY_names_method2",
-                            "__line__": 76,
+                            "__line__": 83,
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -115,20 +115,20 @@
                             "function_name": "method2",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 75,
+                        "linenumber": 82,
                         "options": {}
                     }
                 ],
-                "linenumber": 59,
+                "linenumber": 66,
                 "name": "Names",
                 "options": {
                     "C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}",
                     "F_C_name_template": "XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}",
-                    "__line__": 60,
+                    "__line__": 67,
                     "none": "foo"
                 },
-                "scope": "Names::",
-                "typemap_name": "Names"
+                "scope": "ns0::Names::",
+                "typemap_name": "ns0::Names"
             },
             {
                 "cxx_header": "",
@@ -155,7 +155,7 @@
                     "cxx_class": "Names2",
                     "cxx_type": "Names2"
                 },
-                "linenumber": 82,
+                "linenumber": 89,
                 "name": "Names2",
                 "options": {},
                 "scope": "Names2::",
@@ -172,7 +172,7 @@
                     "F_derived_name": "implworker1",
                     "F_impl_filename": "wrapfImplWorker1.F",
                     "F_module_name": "implworker1_mod",
-                    "__line__": 129,
+                    "__line__": 136,
                     "class_lower": "implworker1",
                     "class_prefix": "implworker1_",
                     "class_scope": "ImplWorker1::",
@@ -181,10 +181,10 @@
                     "cxx_type": "ImplWorker1",
                     "template_suffix": "_instantiation3"
                 },
-                "linenumber": 128,
+                "linenumber": 135,
                 "name": "ImplWorker1",
                 "options": {
-                    "__line__": 131,
+                    "__line__": 138,
                     "wrap_fortran": false,
                     "wrap_python": false
                 },
@@ -209,7 +209,7 @@
                     "PY_this_call": "self->myobj->",
                     "PY_to_object_func": "PP_Vvv1_to_Object",
                     "PY_type_filename": "pyVvv1type.cpp",
-                    "__line__": 162,
+                    "__line__": 169,
                     "class_lower": "vvv1",
                     "class_prefix": "vvv1_",
                     "class_scope": "VvV1::",
@@ -217,7 +217,7 @@
                     "cxx_class": "Vvv1",
                     "cxx_type": "vector<int>"
                 },
-                "linenumber": 157,
+                "linenumber": 164,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -233,7 +233,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv1",
-                            "__line__": 162,
+                            "__line__": 169,
                             "class_lower": "vvv1",
                             "class_scope": "VvV1::",
                             "class_upper": "VVV1",
@@ -262,7 +262,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 174,
+                            "__line__": 181,
                             "template_suffix": "_instantiation5"
                         },
                         "instantiation": "<long>"
@@ -309,7 +309,7 @@
                     "cxx_class": "vector_double",
                     "cxx_type": "vector<double>"
                 },
-                "linenumber": 157,
+                "linenumber": 164,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -325,7 +325,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv1",
-                            "__line__": 162,
+                            "__line__": 169,
                             "class_lower": "vvv1",
                             "class_scope": "VvV1::",
                             "class_upper": "VVV1",
@@ -354,7 +354,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 174,
+                            "__line__": 181,
                             "template_suffix": "_instantiation5"
                         },
                         "instantiation": "<long>"
@@ -394,7 +394,7 @@
                     "PY_this_call": "self->myobj->",
                     "PY_to_object_func": "PP_vector_instantiation5_to_Object",
                     "PY_type_filename": "pyvector_instantiation5type.cpp",
-                    "__line__": 174,
+                    "__line__": 181,
                     "class_lower": "vector_instantiation5",
                     "class_prefix": "vector_instantiation5_",
                     "class_scope": "vector_instantiation5::",
@@ -403,7 +403,7 @@
                     "cxx_type": "vector<long>",
                     "template_suffix": "_instantiation5"
                 },
-                "linenumber": 157,
+                "linenumber": 164,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -419,7 +419,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv1",
-                            "__line__": 162,
+                            "__line__": 169,
                             "class_lower": "vvv1",
                             "class_scope": "VvV1::",
                             "class_upper": "VVV1",
@@ -448,7 +448,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 174,
+                            "__line__": 181,
                             "template_suffix": "_instantiation5"
                         },
                         "instantiation": "<long>"
@@ -495,7 +495,7 @@
                     "cxx_class": "vector_instantiation3",
                     "cxx_type": "vector<internal::ImplWorker1>"
                 },
-                "linenumber": 157,
+                "linenumber": 164,
                 "name": "vector",
                 "options": {},
                 "scope": "std::vector::",
@@ -511,7 +511,7 @@
                         ],
                         "fmtdict": {
                             "F_derived_name": "FFvvv1",
-                            "__line__": 162,
+                            "__line__": 169,
                             "class_lower": "vvv1",
                             "class_scope": "VvV1::",
                             "class_upper": "VVV1",
@@ -540,7 +540,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 174,
+                            "__line__": 181,
                             "template_suffix": "_instantiation5"
                         },
                         "instantiation": "<long>"
@@ -587,7 +587,7 @@
                     "cxx_class": "twoTs_0",
                     "cxx_type": "twoTs<int, long>"
                 },
-                "linenumber": 180,
+                "linenumber": 187,
                 "name": "twoTs",
                 "options": {},
                 "scope": "twoTs::",
@@ -625,7 +625,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 185,
+                            "__line__": 192,
                             "template_suffix": "_instantiation4"
                         },
                         "instantiation": "<float, double>"
@@ -655,7 +655,7 @@
                     "PY_this_call": "self->myobj->",
                     "PY_to_object_func": "PP_twoTs_instantiation4_to_Object",
                     "PY_type_filename": "pytwoTs_instantiation4type.cpp",
-                    "__line__": 185,
+                    "__line__": 192,
                     "class_lower": "twots_instantiation4",
                     "class_prefix": "twots_instantiation4_",
                     "class_scope": "twoTs_instantiation4::",
@@ -664,7 +664,7 @@
                     "cxx_type": "twoTs<float, double>",
                     "template_suffix": "_instantiation4"
                 },
-                "linenumber": 180,
+                "linenumber": 187,
                 "name": "twoTs",
                 "options": {},
                 "scope": "twoTs::",
@@ -702,7 +702,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 185,
+                            "__line__": 192,
                             "template_suffix": "_instantiation4"
                         },
                         "instantiation": "<float, double>"
@@ -783,10 +783,10 @@
                     "enum_upper": "COLOR",
                     "flat_name": "Color"
                 },
-                "linenumber": 46,
+                "linenumber": 47,
                 "name": "Color",
                 "options": {
-                    "__line__": 52,
+                    "__line__": 53,
                     "bar": 4
                 },
                 "typemap_name": "Color"
@@ -877,7 +877,7 @@
             "PY_utility_filename": "pytestnamesutil.cpp",
             "PyObject": "PyObject",
             "YAML_type_filename": "testnames_types.yaml",
-            "__line__": 30,
+            "__line__": 31,
             "c_temp": "SHT_",
             "capsule_order": "0",
             "cast1": ">\t(",
@@ -937,7 +937,7 @@
                     "function_name": "function1",
                     "underscore_name": "function1"
                 },
-                "linenumber": 91,
+                "linenumber": 98,
                 "options": {}
             },
             {
@@ -971,12 +971,12 @@
                     "F_name_impl": "f_name_special",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function2",
-                    "__line__": 93,
+                    "__line__": 100,
                     "c_const": "",
                     "function_name": "function2",
                     "underscore_name": "function2"
                 },
-                "linenumber": 92,
+                "linenumber": 99,
                 "options": {}
             },
             {
@@ -1061,13 +1061,13 @@
                     "F_name_impl": "F_name_function3a_int",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function3a_0",
-                    "__line__": 100,
+                    "__line__": 107,
                     "c_const": "",
                     "function_name": "function3a",
                     "function_suffix": "_0",
                     "underscore_name": "function3a"
                 },
-                "linenumber": 99,
+                "linenumber": 106,
                 "options": {}
             },
             {
@@ -1152,13 +1152,13 @@
                     "F_name_impl": "F_name_function3a_long",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_function3a_1",
-                    "__line__": 104,
+                    "__line__": 111,
                     "c_const": "",
                     "function_name": "function3a",
                     "function_suffix": "_1",
                     "underscore_name": "function3a"
                 },
-                "linenumber": 103,
+                "linenumber": 110,
                 "options": {}
             },
             {
@@ -1274,7 +1274,7 @@
                     "function_name": "function4",
                     "underscore_name": "function4"
                 },
-                "linenumber": 110,
+                "linenumber": 117,
                 "options": {}
             },
             {
@@ -1360,7 +1360,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4"
                 },
-                "linenumber": 110,
+                "linenumber": 117,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": false,
@@ -1406,7 +1406,7 @@
                     "function_name": "fiveplus",
                     "underscore_name": "fiveplus"
                 },
-                "linenumber": 112,
+                "linenumber": 119,
                 "options": {}
             },
             {
@@ -1444,7 +1444,7 @@
                     "function_name": "init_ns1",
                     "underscore_name": "init_ns1"
                 },
-                "linenumber": 119,
+                "linenumber": 126,
                 "options": {}
             },
             {
@@ -1498,7 +1498,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 140,
+                    "__line__": 147,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1506,7 +1506,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 139,
+                "linenumber": 146,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -1534,7 +1534,7 @@
                             "F_C_name": "f_c_name_instantiation1",
                             "F_name_impl": "f_name_instantiation1",
                             "PY_name_impl": "PY_name_instantiation1",
-                            "__line__": 144
+                            "__line__": 151
                         },
                         "instantiation": "<int, long>"
                     },
@@ -1554,7 +1554,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 150,
+                            "__line__": 157,
                             "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
@@ -1679,7 +1679,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 140,
+                    "__line__": 147,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1700,14 +1700,14 @@
                     "F_name_impl": "f_name_instantiation1",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_name_instantiation1",
-                    "__line__": 144,
+                    "__line__": 151,
                     "c_const": "",
                     "function_name": "FunctionTU",
                     "template_suffix": "_0",
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 139,
+                "linenumber": 146,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1735,7 +1735,7 @@
                             "F_C_name": "f_c_name_instantiation1",
                             "F_name_impl": "f_name_instantiation1",
                             "PY_name_impl": "PY_name_instantiation1",
-                            "__line__": 144
+                            "__line__": 151
                         },
                         "instantiation": "<int, long>"
                     },
@@ -1755,7 +1755,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 150,
+                            "__line__": 157,
                             "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
@@ -1880,7 +1880,7 @@
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
                 "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
                 "doxygen": {
-                    "__line__": 140,
+                    "__line__": 147,
                     "brief": "Function template with two template parameters."
                 },
                 "fmtdict": {
@@ -1901,14 +1901,14 @@
                     "F_name_impl": "function_tu_instantiation2",
                     "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_FunctionTU_instantiation2",
-                    "__line__": 150,
+                    "__line__": 157,
                     "c_const": "",
                     "function_name": "FunctionTU",
                     "template_suffix": "_instantiation2",
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "linenumber": 139,
+                "linenumber": 146,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -1936,7 +1936,7 @@
                             "F_C_name": "f_c_name_instantiation1",
                             "F_name_impl": "f_name_instantiation1",
                             "PY_name_impl": "PY_name_instantiation1",
-                            "__line__": 144
+                            "__line__": 151
                         },
                         "instantiation": "<int, long>"
                     },
@@ -1956,7 +1956,7 @@
                             }
                         ],
                         "fmtdict": {
-                            "__line__": 150,
+                            "__line__": 157,
                             "template_suffix": "_instantiation2"
                         },
                         "instantiation": "<float, double>"
@@ -1988,14 +1988,14 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 191,
+                    "__line__": 198,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 190,
+                "linenumber": 197,
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
@@ -2060,7 +2060,7 @@
                 "decl": "template<typename T> int UseImplWorker()",
                 "declgen": "int UseImplWorker()",
                 "doxygen": {
-                    "__line__": 191,
+                    "__line__": 198,
                     "brief": "Function which uses a templated T in the implemetation."
                 },
                 "fmtdict": {
@@ -2088,7 +2088,7 @@
                     "template_suffix": "_instantiation3",
                     "underscore_name": "use_impl_worker"
                 },
-                "linenumber": 190,
+                "linenumber": 197,
                 "options": {
                     "wrap_c": true,
                     "wrap_fortran": true,
@@ -2243,94 +2243,6 @@
             "f_kind": "C_INT",
             "f_type": "integer",
             "flat_name": "MPI_Comm"
-        },
-        "Names": {
-            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
-            "LUA_type": "LUA_TUSERDATA",
-            "PY_PyObject": "PY_Names",
-            "PY_PyTypeObject": "PY_Names_Type",
-            "PY_from_object": "PP_Names_from_Object",
-            "PY_to_object": "PP_Names_to_Object",
-            "base": "shadow",
-            "c_statements": {
-                "intent_in": {
-                    "buf_args": [
-                        "shadow"
-                    ]
-                },
-                "result": {
-                    "c_header": "<stdlib.h>",
-                    "cxx_header": "<stdlib.h>",
-                    "post_call": [
-                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
-                        "{c_var}->idtor = {idtor};"
-                    ]
-                }
-            },
-            "c_to_cxx": "static_cast<{c_const}Names *>({c_var}{c_member}addr)",
-            "c_type": "TES_names",
-            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
-            "cxx_type": "Names",
-            "f_c_module": {
-                "--import--": [
-                    "SHROUD_names_capsule"
-                ]
-            },
-            "f_c_type": "type(SHROUD_names_capsule)",
-            "f_capsule_data_type": "SHROUD_names_capsule",
-            "f_derived_type": "FNames",
-            "f_module": {
-                "name_module": [
-                    "FNames"
-                ]
-            },
-            "f_module_name": "name_module",
-            "f_statements": {
-                "result": {
-                    "call": [
-                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
-                    ],
-                    "need_wrapper": true
-                }
-            },
-            "f_to_c": "{f_var}%cxxmem",
-            "f_type": "type(FNames)",
-            "flat_name": "Names",
-            "forward": "Names",
-            "py_statements": {
-                "intent_in": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Names * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
-                    ]
-                },
-                "intent_inout": {
-                    "cxx_local_var": "pointer",
-                    "post_parse": [
-                        "{c_const}Names * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
-                    ]
-                },
-                "intent_out": {
-                    "decl": [
-                        "{PyObject} *{py_var} = NULL;"
-                    ],
-                    "fail": [
-                        "Py_XDECREF({py_var});"
-                    ],
-                    "goto_fail": true,
-                    "post_call": [
-                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "if ({py_var} == NULL) goto fail;",
-                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                },
-                "result": {
-                    "post_call": [
-                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
-                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
-                    ]
-                }
-            }
         },
         "Names2": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
@@ -2935,6 +2847,94 @@
             },
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "long_long"
+        },
+        "ns0::Names": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Names",
+            "PY_PyTypeObject": "PY_Names_Type",
+            "PY_from_object": "PP_Names_from_Object",
+            "PY_to_object": "PP_Names_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}ns0::Names *>({c_var}{c_member}addr)",
+            "c_type": "TES_names",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "ns0::Names",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_names_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_names_capsule)",
+            "f_capsule_data_type": "SHROUD_names_capsule",
+            "f_derived_type": "FNames",
+            "f_module": {
+                "name_module": [
+                    "FNames"
+                ]
+            },
+            "f_module_name": "name_module",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(FNames)",
+            "flat_name": "ns0_Names",
+            "forward": "ns0::Names",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}ns0::Names * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}ns0::Names * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

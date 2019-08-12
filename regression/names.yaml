@@ -25,6 +25,7 @@ options:
 
   # always create wrappers to demonstrate name generation
   F_force_wrapper: True
+#  F_module_per_class: False
   wrap_python: True
 
 format:
@@ -55,28 +56,34 @@ declarations:
      baz: 4  
 
 
-
-- decl: class Names
-  options:
-    none: foo
-    C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
-    F_C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
+- decl: namespace ns0
   format:
     C_header_filename: foo.h
     C_impl_filename: foo.cpp
     F_module_name: name_module
     F_impl_filename: foo.f
-    F_derived_name: FNames
-
   declarations:
-  - decl: void method1()
+  - decl: class Names
+    options:
+      none: foo
+      C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
+      F_C_name_template: XXX_{C_prefix}{class_prefix}{underscore_name}{function_suffix}
     format:
-      F_name_function: type_method1
-  - decl: void method2()
-    format:
-      C_this: self2
-      CXX_this: SH_this2
-      F_this:  obj2
+      C_header_filename: foo.h
+      C_impl_filename: foo.cpp
+      F_module_name: name_module
+      F_impl_filename: foo.f
+      F_derived_name: FNames
+  
+    declarations:
+    - decl: void method1()
+      format:
+        F_name_function: type_method1
+    - decl: void method2()
+      format:
+        C_this: self2
+        CXX_this: SH_this2
+        F_this:  obj2
 
 # test file suffix
 - decl: class Names2

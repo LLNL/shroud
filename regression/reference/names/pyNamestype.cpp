@@ -95,7 +95,7 @@ static char Names__doc__[] =
 /* static */
 PyTypeObject PY_Names_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "testnames.Names",                       /* tp_name */
+    "testnames.ns0.Names",                       /* tp_name */
     sizeof(PY_Names),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

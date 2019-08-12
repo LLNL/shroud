@@ -25,7 +25,7 @@ const char *PY_twoTs_0_capsule_name = "twoTs_0";
 const char *PY_twoTs_instantiation4_capsule_name = "twoTs_instantiation4";
 
 
-PyObject *PP_Names_to_Object(Names *addr)
+PyObject *PP_Names_to_Object(ns0::Names *addr)
 {
     // splicer begin class.Names.utility.to_object
     PyObject *voidobj;

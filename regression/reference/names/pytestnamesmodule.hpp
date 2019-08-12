@@ -26,21 +26,23 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
-class Names;  // forward declare
+namespace ns0 {
+    class Names;  // forward declare
+}
 extern PyTypeObject PY_Names_Type;
 // splicer begin class.Names.C_declaration
 // splicer end class.Names.C_declaration
 
 typedef struct {
 PyObject_HEAD
-    Names * myobj;
+    ns0::Names * myobj;
     int mydtor;
     // splicer begin class.Names.C_object
     // splicer end class.Names.C_object
 } PY_Names;
 
 extern const char *PY_Names_capsule_name;
-PyObject *PP_Names_to_Object(Names *addr);
+PyObject *PP_Names_to_Object(ns0::Names *addr);
 int PP_Names_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
