@@ -79,7 +79,7 @@ library
   The name of the library.
   Used to name output files and modules.
   The first three letters are used as the default for **C_prefix** option.
-  Defaults to *default_library*.
+  Defaults to *library*.
   Each YAML file is intended to wrap a single library.
 
 options

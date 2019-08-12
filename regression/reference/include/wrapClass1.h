@@ -24,7 +24,7 @@
 #define WRAPCLASS1_H
 
 #include "type_header.h"
-#include "typesdefault_library.h"
+#include "typeslibrary.h"
 
 
 #ifdef __cplusplus
@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 
-void DEF_class1_method1(DEF_class1 * self, int arg1);
+void LIB_class1_method1(LIB_class1 * self, int arg1);
 
 #ifdef __cplusplus
 }

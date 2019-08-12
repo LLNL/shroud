@@ -1,4 +1,4 @@
-// typesdefault_library.h
+// typeslibrary.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -16,36 +16,24 @@
 // #######################################################################
 // For C users and C++ implementation
 
-#ifndef TYPESDEFAULT_LIBRARY_H
-#define TYPESDEFAULT_LIBRARY_H
+#ifndef TYPESLIBRARY_H
+#define TYPESLIBRARY_H
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-struct s_DEF_class1 {
+struct s_LIB_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_DEF_class1 DEF_class1;
+typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
 
-struct s_DEF_class2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_DEF_class2 DEF_class2;
-
-struct s_DEF_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_DEF_SHROUD_capsule_data DEF_SHROUD_capsule_data;
-
-void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap);
+void LIB_SHROUD_memory_destructor(LIB_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // TYPESDEFAULT_LIBRARY_H
+#endif  // TYPESLIBRARY_H

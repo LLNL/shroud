@@ -1,11 +1,11 @@
-Wrote default_library_types.yaml
+Wrote library_types.yaml
 Wrote wrapClass1.h
 Wrote wrapClass1.cpp
 Wrote wrapClass2.h
 Wrote wrapClass2.cpp
-Wrote wrapdefault_library.h
-Wrote wrapdefault_library.cpp
-Wrote typesdefault_library.h
+Wrote wraplibrary.h
+Wrote wraplibrary.cpp
+Wrote typeslibrary.h
 Wrote wrapfClass1.f
 Wrote wrapfClass2.f
-Wrote wrapfdefault_library.f
+Wrote wrapflibrary.f

@@ -1,4 +1,4 @@
-// typesdefault_library.h
+// wraplibrary.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,26 +14,27 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
+/**
+ * \file wraplibrary.h
+ * \brief Shroud generated wrapper for library library
+ */
 // For C users and C++ implementation
 
-#ifndef TYPESDEFAULT_LIBRARY_H
-#define TYPESDEFAULT_LIBRARY_H
+#ifndef WRAPLIBRARY_H
+#define WRAPLIBRARY_H
+
+#include "typeslibrary.h"
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-struct s_DEF_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_DEF_SHROUD_capsule_data DEF_SHROUD_capsule_data;
 
-void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap);
+void LIB_function1();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // TYPESDEFAULT_LIBRARY_H
+#endif  // WRAPLIBRARY_H

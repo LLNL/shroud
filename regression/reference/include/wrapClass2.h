@@ -24,7 +24,7 @@
 #define WRAPCLASS2_H
 
 #include "mpi.h"
-#include "typesdefault_library.h"
+#include "typeslibrary.h"
 
 
 #ifdef __cplusplus
@@ -32,9 +32,9 @@ extern "C" {
 #endif
 
 
-void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm);
+void LIB_class2_method1(LIB_class2 * self, MPI_Fint comm);
 
-void DEF_class2_method2(DEF_class2 * self, DEF_class1 * c2);
+void LIB_class2_method2(LIB_class2 * self, LIB_class1 * c2);
 
 #ifdef __cplusplus
 }

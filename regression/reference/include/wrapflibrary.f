@@ -1,4 +1,4 @@
-! wrapfdefault_library.f
+! wrapflibrary.f
 ! This is generated code, do not edit
 ! #######################################################################
 ! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,17 +15,17 @@
 !
 ! #######################################################################
 !>
-!! \file wrapfdefault_library.f
-!! \brief Shroud generated wrapper for default_library library
+!! \file wrapflibrary.f
+!! \brief Shroud generated wrapper for library library
 !<
-module default_library_mod
+module library_mod
     implicit none
 
 
     interface
 
         subroutine function1() &
-                bind(C, name="DEF_function1")
+                bind(C, name="LIB_function1")
             implicit none
         end subroutine function1
 
@@ -34,4 +34,4 @@ module default_library_mod
 contains
 
 
-end module default_library_mod
+end module library_mod

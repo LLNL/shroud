@@ -1,4 +1,4 @@
-// wrapdefault_library.cpp
+// wraplibrary.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,7 +15,7 @@
 //
 // #######################################################################
 #include <stdlib.h>
-#include "typesdefault_library.h"
+#include "typeslibrary.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -26,7 +26,7 @@ extern "C" {
 // splicer end C_definitions
 
 // Release library allocated memory.
-void DEF_SHROUD_memory_destructor(DEF_SHROUD_capsule_data *cap)
+void LIB_SHROUD_memory_destructor(LIB_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again

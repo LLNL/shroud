@@ -1803,6 +1803,7 @@ rv = .false.
 
     def write_module(self, library, cls):
         """ Write Fortran wrapper module.
+        This may be for a library or a class.
 
         Args:
             library - ast.LibraryNode.

@@ -1,4 +1,4 @@
-// wrapdefault_library.h
+// wraplibrary.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,27 +14,26 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-/**
- * \file wrapdefault_library.h
- * \brief Shroud generated wrapper for default_library library
- */
-// For C users and C++ implementation
-
-#ifndef WRAPDEFAULT_LIBRARY_H
-#define WRAPDEFAULT_LIBRARY_H
-
-#include "typesdefault_library.h"
+#include "wraplibrary.h"
+#include <stdlib.h>
+#include "global_header.hpp"
+#include "typeslibrary.h"
 
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 
 
-void DEF_function1();
-
-#ifdef __cplusplus
+void LIB_function1()
+{
+    one::two::function1();
+    return;
 }
-#endif
 
-#endif  // WRAPDEFAULT_LIBRARY_H
+// Release library allocated memory.
+void LIB_SHROUD_memory_destructor(LIB_SHROUD_capsule_data *cap)
+{
+    cap->addr = NULL;
+    cap->idtor = 0;  // avoid deleting again
+}
+
+}  // extern "C"

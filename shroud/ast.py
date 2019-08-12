@@ -243,7 +243,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         cxx_header="",
         format=None,
         language="c++",
-        library="default_library",
+        library="library",
         options=None,
         **kwargs
     ):

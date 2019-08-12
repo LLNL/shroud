@@ -22,7 +22,7 @@
 extern "C" {
 
 
-void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm)
+void LIB_class2_method1(LIB_class2 * self, MPI_Fint comm)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);
     MPI_Comm SHCXX_comm = MPI_Comm_f2c(comm);
@@ -30,7 +30,7 @@ void DEF_class2_method1(DEF_class2 * self, MPI_Fint comm)
     return;
 }
 
-void DEF_class2_method2(DEF_class2 * self, DEF_class1 * c2)
+void LIB_class2_method2(LIB_class2 * self, LIB_class1 * c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);
     three::Class1 * SHCXX_c2 = static_cast<three::Class1 *>(c2->addr);
