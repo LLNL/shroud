@@ -11,8 +11,6 @@
                     "C_type_name": "LIB_class1",
                     "F_capsule_data_type": "SHROUD_class1_capsule",
                     "F_derived_name": "class1",
-                    "F_impl_filename": "wrapfClass1.f",
-                    "F_module_name": "class1_mod",
                     "class_lower": "class1",
                     "class_prefix": "class1_",
                     "class_scope": "Class1::",
@@ -94,11 +92,11 @@
                             "function_name": "method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 43,
+                        "linenumber": 44,
                         "options": {}
                     }
                 ],
-                "linenumber": 40,
+                "linenumber": 41,
                 "name": "Class1",
                 "options": {},
                 "scope": "three::Class1::",
@@ -113,8 +111,6 @@
                     "C_type_name": "LIB_class2",
                     "F_capsule_data_type": "SHROUD_class2_capsule",
                     "F_derived_name": "class2",
-                    "F_impl_filename": "wrapfClass2.f",
-                    "F_module_name": "class2_mod",
                     "class_lower": "class2",
                     "class_prefix": "class2_",
                     "class_scope": "Class2::",
@@ -198,7 +194,7 @@
                             "function_name": "method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 49,
+                        "linenumber": 50,
                         "options": {}
                     },
                     {
@@ -280,11 +276,11 @@
                             "function_name": "method2",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 51,
+                        "linenumber": 52,
                         "options": {}
                     }
                 ],
-                "linenumber": 45,
+                "linenumber": 46,
                 "name": "Class2",
                 "options": {},
                 "scope": "Class2::",
@@ -431,7 +427,7 @@
                     "function_name": "function1",
                     "underscore_name": "function1"
                 },
-                "linenumber": 37,
+                "linenumber": 38,
                 "options": {}
             }
         ],
@@ -469,7 +465,7 @@
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": true,
+            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
@@ -560,11 +556,11 @@
             "f_capsule_data_type": "SHROUD_class2_capsule",
             "f_derived_type": "class2",
             "f_module": {
-                "class2_mod": [
+                "library_mod": [
                     "class2"
                 ]
             },
-            "f_module_name": "class2_mod",
+            "f_module_name": "library_mod",
             "f_statements": {
                 "result": {
                     "call": [
@@ -620,7 +616,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "__line__": 29,
+            "__line__": 30,
             "c_header": "type_header.h",
             "c_type": "int",
             "cxx_header": "type_header.hpp",
@@ -1537,11 +1533,11 @@
             "f_capsule_data_type": "SHROUD_class1_capsule",
             "f_derived_type": "class1",
             "f_module": {
-                "class1_mod": [
+                "library_mod": [
                     "class1"
                 ]
             },
-            "f_module_name": "class1_mod",
+            "f_module_name": "library_mod",
             "f_statements": {
                 "result": {
                     "call": [

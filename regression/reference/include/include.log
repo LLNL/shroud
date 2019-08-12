@@ -15,10 +15,8 @@ Close wraplibrary.cpp
 Close typeslibrary.h
 class Class1
 C-interface, Fortran method void method1(CustomType arg1 +intent(in)+value)
-Close wrapfClass1.f
 class Class2
 C-interface, Fortran method void method1(MPI_Comm comm +intent(in)+value)
 C-interface, Fortran method void method2(three::Class1 * c2 +intent(in))
-Close wrapfClass2.f
 C-interface, Fortran function void function1()
 Close wrapflibrary.f

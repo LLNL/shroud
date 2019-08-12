@@ -21,7 +21,7 @@ declarations:
       base: shadow
       cxx_type: Class2
       c_type: LIB_class2
-      f_module_name: class2_mod
+      f_module_name: library_mod
       f_derived_type: class2
       f_capsule_data_type: SHROUD_class2_capsule
       f_to_c: "{f_var}%cxxmem"
@@ -33,7 +33,7 @@ declarations:
         cxx_header: class_header.hpp
         cxx_type: three::Class1
         c_type: LIB_class1
-        f_module_name: class1_mod
+        f_module_name: library_mod
         f_derived_type: class1
         f_capsule_data_type: SHROUD_class1_capsule
         f_to_c: "{f_var}%cxxmem"

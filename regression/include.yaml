@@ -23,6 +23,7 @@ cxx_header: global_header.hpp
 
 options:
   show_splicer_comments: false
+  F_module_per_class: False
 
 declarations:
 - decl: typedef int CustomType
