@@ -98,7 +98,8 @@ class Wrapl(util.WrapperMixin):
             self._pop_splicer("function")
 
         for ns in node.namespaces:
-            self.wrap_namespace(ns)
+            if ns.options.wrap_lua:
+                self.wrap_namespace(ns)
 
     def wrap_class(self, node):
         """

@@ -101,7 +101,8 @@ class Wrapc(util.WrapperMixin):
         self.write_file(node, None, structs)
 
         for ns in node.namespaces:
-            self.wrap_namespace(ns)
+            if ns.options.wrap_c:
+                self.wrap_namespace(ns)
 
     def write_file(self, ns, cls, structs):
         """Write a file for the library, namespace or class.

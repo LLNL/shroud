@@ -258,6 +258,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         """
         # From arguments
+        if "TEMP" in kwargs:
+            util.TEMP = True
         self.cxx_header = cxx_header
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
@@ -507,6 +509,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
         )
+        if util.TEMP:
+            def_options.F_module_per_class = False
 
         return def_options
 
@@ -1566,10 +1570,18 @@ class FortranGeneric(object):
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
     (string and vector)
+
+    Args:
+        glb: ast.LibraryNode
     """
     std = glb.add_namespace("std")
     std.add_typedef("string")
     std.add_typedef("vector")
+    options = std.options
+    options.wrap_fortran = False
+    options.wrap_c = False
+    options.wrap_python = False
+    options.wrap_lua = False
     return std
 
 

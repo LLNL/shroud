@@ -140,7 +140,8 @@ class Wrapf(util.WrapperMixin):
             self.write_module(node, None)
 
         for ns in node.namespaces:
-            self.wrap_namespace(ns)
+            if ns.options.wrap_fortran:
+                self.wrap_namespace(ns)
 
     def wrap_struct(self, node):
         """A struct must be bind(C)-able. i.e. all POD.

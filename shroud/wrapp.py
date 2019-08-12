@@ -214,8 +214,9 @@ class Wrapp(util.WrapperMixin):
             self._pop_splicer("function")
 
         for ns in node.namespaces:
-            self.wrap_namespace(ns)
-            self.register_submodule(ns, modinfo)
+            if ns.options.wrap_python:
+                self.wrap_namespace(ns)
+                self.register_submodule(ns, modinfo)
 
         self.write_module(node, modinfo, fileinfo)
 

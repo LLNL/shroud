@@ -16,5 +16,4 @@ copyright:
 #
 #  Try totally empty file to check defaults
 #
-options:
-  F_module_per_class: False
+TEMP: True
