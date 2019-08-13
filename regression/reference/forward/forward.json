@@ -514,8 +514,6 @@
             "PY_header_filename": "pyforwardmodule.hpp",
             "PY_header_filename_suffix": "hpp",
             "PY_impl_filename_suffix": "cpp",
-            "PY_library_doc": "library documentation",
-            "PY_module_filename": "pyforwardmodule.cpp",
             "PY_module_init": "forward",
             "PY_module_name": "forward",
             "PY_module_scope": "forward",

@@ -76,7 +76,7 @@ class Wrapf(util.WrapperMixin):
         fmt_library.F_pure_clause = ""
         fmt_library.F_C_result_clause = ""
         fmt_library.F_C_pure_clause = ""
-        self.wrap_namespace(self.newlibrary)
+        self.wrap_namespace(self.newlibrary.wrap_namespace)
         self.write_c_helper()
 
     def wrap_namespace(self, node):

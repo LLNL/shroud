@@ -16,7 +16,7 @@
 ! #######################################################################
 !>
 !! \file wrapfforward.f
-!! \brief Shroud generated wrapper for forward library
+!! \brief Shroud generated wrapper for tutorial namespace
 !<
 ! splicer begin file_top
 ! splicer end file_top

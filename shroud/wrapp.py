@@ -149,17 +149,18 @@ class Wrapp(util.WrapperMixin):
         fmt_library.capsule_order = "0"
         self.need_blah = False  # Not needed if no there gc routines are added.
 
-        self.wrap_namespace(newlibrary)
+        self.wrap_namespace(newlibrary.wrap_namespace, top=True)
         self.write_utility()
         self.write_header(newlibrary)
 
-    def wrap_namespace(self, node):
+    def wrap_namespace(self, node, top=False):
         """Wrap a library or namespace.
 
         Each class is written into its own file.
 
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
+            top  - True if top level module, else submodule.
         """
         node.eval_template("PY_module_filename")
         modinfo = ModuleTuple([])
@@ -218,7 +219,7 @@ class Wrapp(util.WrapperMixin):
                 self.wrap_namespace(ns)
                 self.register_submodule(ns, modinfo)
 
-        self.write_module(node, modinfo, fileinfo)
+        self.write_module(node, modinfo, fileinfo, top)
 
     def register_submodule(self, ns, modinfo):
         """Create code to add submodule to a module.
@@ -2058,7 +2059,7 @@ extern PyObject *{PY_prefix}error_obj;
         #            os.path.join(self.config.python_dir, fname))
         self.write_output_file(fname, self.config.python_dir, output)
 
-    def write_module(self, node, modinfo, fileinfo):
+    def write_module(self, node, modinfo, fileinfo, top):
         """
         Write the Python extension module.
         Used with a Library or Namespace node
@@ -2067,6 +2068,7 @@ extern PyObject *{PY_prefix}error_obj;
             node - ast.LibraryNode
             modinfo - ModuleTuple
             fileinfo - FileTuple
+            top - True = top module, else submodule.
         """
         fmt = node.fmtdict
         fname = fmt.PY_module_filename
@@ -2081,7 +2083,7 @@ extern PyObject *{PY_prefix}error_obj;
         output = []
 
         append_format(output, '#include "{PY_header_filename}"', fmt)
-        if node.nodename == "library" and  self.need_numpy:
+        if top and self.need_numpy:
             output.append("#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION")
             output.append('#include "numpy/arrayobject.h"')
 
@@ -2102,7 +2104,7 @@ extern PyObject *{PY_prefix}error_obj;
         output.append("")
         self._create_splicer("C_definition", output)
 
-        if node.nodename == "library":
+        if top:
             output.extend(self.module_init_decls)
         output.extend(self.define_arraydescr)
 
@@ -2120,7 +2122,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         output.extend(self.arraydescr)
 
-        if node.nodename == "library":
+        if top:
             self.write_init_module(fmt, output, modinfo)
         else:
             self.write_init_submodule(fmt, output, modinfo)

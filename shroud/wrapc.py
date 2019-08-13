@@ -75,14 +75,15 @@ class Wrapc(util.WrapperMixin):
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
         whelpers.set_literalinclude(newlibrary.options.literalinclude2)
         whelpers.add_copy_array_helper_c(fmt_library)
-        self.wrap_namespace(newlibrary)
+        self.wrap_namespace(newlibrary.wrap_namespace, True)
         self.write_header_utility()
 
-    def wrap_namespace(self, node):
+    def wrap_namespace(self, node, top=False):
         """Wrap a library or namespace.
 
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
+            top - True = top level library/namespace, else nested.
         """
 
         self._push_splicer("class")
@@ -94,17 +95,17 @@ class Wrapc(util.WrapperMixin):
                 structs.append(cls)
             else:
                 self._push_splicer(cls.name)
-                self.write_file(node, cls, None)
+                self.write_file(node, cls, None, False)
                 self._pop_splicer(cls.name)
         self._pop_splicer("class")
 
-        self.write_file(node, None, structs)
+        self.write_file(node, None, structs, top)
 
         for ns in node.namespaces:
             if ns.options.wrap_c:
                 self.wrap_namespace(ns)
 
-    def write_file(self, ns, cls, structs):
+    def write_file(self, ns, cls, structs, top):
         """Write a file for the library, namespace or class.
 
         Args:
@@ -126,7 +127,7 @@ class Wrapc(util.WrapperMixin):
         else:
             self.wrap_enums(ns)
             self.wrap_functions(ns)
-            if hasattr(ns, "library"):
+            if top:
                 self.write_capsule_code(ns)
 
         c_header = fmt.C_header_filename

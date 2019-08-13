@@ -42,7 +42,7 @@ class VerifyAttrs(object):
         Recurse through all declarations.
         Entry pointer for class VerifyAttrs.
         """
-        self.verify_namespace_attrs(self.newlibrary)
+        self.verify_namespace_attrs(self.newlibrary.wrap_namespace)
 
     def verify_namespace_attrs(self, node):
         """Verify attributes for a library or namespace.
@@ -398,8 +398,8 @@ class GenFunctions(object):
 
         self.function_index = newlibrary.function_index
 
-        self.instantiate_all_classes(newlibrary)
-        self.gen_namespace(newlibrary)
+        self.instantiate_all_classes(newlibrary.wrap_namespace)
+        self.gen_namespace(newlibrary.wrap_namespace)
 
     def gen_namespace(self, node):
         """Process functions which are not in classes
@@ -705,7 +705,6 @@ class GenFunctions(object):
             elif method.have_template_args:
                 #                method._overloaded = True
                 self.template_function2(method, ordered_functions)
-                pass
 
         # Look for overloaded functions
         overloaded_functions = {}
@@ -1386,8 +1385,8 @@ class Namify(object):
 
     def name_library(self):
         """entry pointer for library"""
-        self.name_language(self.name_function_c, self.newlibrary)
-        self.name_language(self.name_function_fortran, self.newlibrary)
+        self.name_language(self.name_function_c, self.newlibrary.wrap_namespace)
+        self.name_language(self.name_function_fortran, self.newlibrary.wrap_namespace)
 
     def name_language(self, handler, node):
         """
@@ -1450,7 +1449,7 @@ class Preprocess(object):
 
     def process_library(self):
         """entry pointer for library"""
-        self.process_namespace(self.newlibrary)
+        self.process_namespace(self.newlibrary.wrap_namespace)
 
     def process_namespace(self, node):
         """Process a namespace.

@@ -82,7 +82,7 @@ class TypeOut(util.WrapperMixin):
 
         # split up into namespaces
         top = {}
-        for cls in newlibrary.classes:
+        for cls in newlibrary.wrap_namespace.classes:
             fullname = cls.typemap.name
             parts = fullname.split("::")
             ns = top

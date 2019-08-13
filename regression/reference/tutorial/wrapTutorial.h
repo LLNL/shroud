@@ -8,7 +8,7 @@
 //
 /**
  * \file wrapTutorial.h
- * \brief Shroud generated wrapper for Tutorial library
+ * \brief Shroud generated wrapper for tutorial namespace
  */
 // For C users and C++ implementation
 

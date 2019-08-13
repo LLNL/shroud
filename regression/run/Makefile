@@ -124,11 +124,14 @@ test-all : test-c test-fortran test-python test-lua
 phony_explicit: 
 
 # Avoid deleting directories created to run tests.
+# They are created via pattern rules.
 .SECONDARY: \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
     $(tempdir)/run/forward/.. \
     $(tempdir)/run/generic/.. \
+    $(tempdir)/run/namespace/.. \
+    $(tempdir)/run/namespace/python/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
     $(tempdir)/run/pointers/..\

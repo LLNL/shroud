@@ -304,7 +304,7 @@ static char Class1__doc__[] =
 /* static */
 PyTypeObject PY_Class1_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "tutorial.tutorial.Class1",                       /* tp_name */
+    "tutorial.Class1",                       /* tp_name */
     sizeof(PY_Class1),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

@@ -756,7 +756,7 @@ LUA_state_var
     Name of argument in Lua wrapper functions for lua_State pointer.
 
 namespace_scope
-    The current namespace delimited with ``::`` and a trailing ``::``.
+    The current C++ namespace delimited with ``::`` and a trailing ``::``.
     Used when referencing identifiers: ``{namespace_scope}id``.
 
 PY_header_filename_suffix
@@ -799,6 +799,8 @@ PY_result
 
 file_scope
     library plus any namespaces.
+    The namespaces listed in the top level variable *namespace* is not included in the value.
+    It is assumed that *library* will be used to generate unique names.
     Used in creating a filename.
 
 stdlib

@@ -8,7 +8,7 @@
 !
 !>
 !! \file wrapftutorial.f
-!! \brief Shroud generated wrapper for Tutorial library
+!! \brief Shroud generated wrapper for tutorial namespace
 !<
 ! splicer begin file_top
 ! splicer end file_top

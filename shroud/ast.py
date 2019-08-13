@@ -256,6 +256,9 @@ class LibraryNode(AstNode, NamespaceMixin):
         classes:
         functions:
 
+        wrap_namespace - Node to start wrapping.  This is the current node but 
+            will be changed if the top level "namespace" variable is set.
+
         """
         # From arguments
         if "TEMP" in kwargs:
@@ -270,6 +273,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.library = library
         self.name = library
         self.nodename = "library"
+        self.wrap_namespace = self
 
         self.classes = []
         self.enums = []
@@ -724,10 +728,15 @@ class BlockNode(AstNode, NamespaceMixin):
 
 class NamespaceNode(AstNode, NamespaceMixin):
     def __init__(self, name, parent, cxx_header="",
-                 format=None, options=None, **kwargs):
+                 format=None, options=None, skip=False, **kwargs):
         """Create NamespaceNode.
 
         parent may be LibraryNode or NamespaceNode.
+
+        Args:
+            skip - skip when generating scope_file and format names since
+                   it is part of the initial namespace, not a namespace
+                   within a declaration.
         """
         # From arguments
         self.name = name
@@ -759,7 +768,10 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         # add to symbol table
         self.scope = self.parent.scope + self.name + "::"
-        self.scope_file = self.parent.scope_file + [self.name]
+        if skip:
+            self.scope_file = self.parent.scope_file
+        else:
+            self.scope_file = self.parent.scope_file + [self.name]
         self.symbols = {}
         self.using = []
 
@@ -767,7 +779,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if options:
             self.options.update(options, replace=True)
 
-        self.default_format(parent, format)
+        self.default_format(parent, format, skip)
 
     # # # # # namespace behavior
 
@@ -798,7 +810,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
     #####
 
-    def default_format(self, parent, format):
+    def default_format(self, parent, format, skip=False):
         """Set format dictionary."""
 
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -807,7 +819,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
-        if util.TEMP:
+        if util.TEMP and not skip:
             fmt_ns.C_name_scope = (
                 parent.fmtdict.C_name_scope + self.name + "_"
             )
@@ -815,29 +827,35 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
         fmt_ns.PY_this_call = fmt_ns.namespace_scope
-        fmt_ns.PY_module_name = self.name
+        if not skip:
+            fmt_ns.PY_module_name = self.name
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
         if util.TEMP:
             self.eval_template("F_module_name", "_namespace")
             fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
-        self.eval_template("F_impl_filename", "_namespace")
+        if skip:
+            # No module will be created for this namespace, use library template.
+            self.eval_template("F_impl_filename", "_library")
+        else:
+            self.eval_template("F_impl_filename", "_namespace")
 
         if format:
             fmt_ns.update(format, replace=True)
 
         # If user changes PY_module_name, reflect change in PY_module_scope.
-        self.set_fmt_default(
-            "PY_module_init",
-            parent.fmtdict.PY_module_init + "_" + fmt_ns.PY_module_name,
-            fmt_ns
-        )
-        self.set_fmt_default(
-            "PY_module_scope",
-            parent.fmtdict.PY_module_scope + "." + fmt_ns.PY_module_name,
-            fmt_ns
-        )
+        if not skip:
+            self.set_fmt_default(
+                "PY_module_init",
+                parent.fmtdict.PY_module_init + "_" + fmt_ns.PY_module_name,
+                fmt_ns
+            )
+            self.set_fmt_default(
+                "PY_module_scope",
+                parent.fmtdict.PY_module_scope + "." + fmt_ns.PY_module_name,
+                fmt_ns
+            )
 
 
 ######################################################################
@@ -1746,7 +1764,7 @@ def create_library_from_dictionary(node):
     # Create default namespace
     if "namespace" in node:
         for name in node["namespace"].split():
-            ns = ns.add_namespace(name)
+            ns = ns.add_namespace(name, skip=True)
 
     if "typemap" in node:
         # list of dictionaries
@@ -1769,5 +1787,8 @@ def create_library_from_dictionary(node):
                     raise RuntimeError("base must be 'shadow'")
 
     add_declarations(ns, node)
+
+    # Any namespaces listed in the "namespace" field are not wrapped.
+    library.wrap_namespace = ns
 
     return library

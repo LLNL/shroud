@@ -76,7 +76,7 @@ static char Singleton__doc__[] =
 /* static */
 PyTypeObject PY_Singleton_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "tutorial.tutorial.Singleton",                       /* tp_name */
+    "tutorial.Singleton",                       /* tp_name */
     sizeof(PY_Singleton),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

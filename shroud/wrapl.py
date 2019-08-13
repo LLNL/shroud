@@ -68,7 +68,7 @@ class Wrapl(util.WrapperMixin):
         self.class_lines = []
         self.lua_type_structs = []
 
-        self.wrap_namespace(newlibrary)
+        self.wrap_namespace(newlibrary.wrap_namespace)
         self.write_header(newlibrary)
         self.write_module(newlibrary)
     #        self.write_helper()
