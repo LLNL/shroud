@@ -241,6 +241,7 @@ class LibraryNode(AstNode, NamespaceMixin):
     def __init__(
         self,
         cxx_header="",
+        namespace=None,
         format=None,
         language="c++",
         library="library",
@@ -250,6 +251,9 @@ class LibraryNode(AstNode, NamespaceMixin):
         """Create LibraryNode.
 
         cxx_header = blank delimited list of headers for C++ or C library.
+
+        Args:
+            namespace - blank delimited list of initial namespaces.
 
         fields = value
         options:
@@ -302,6 +306,14 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.patterns = kwargs.get("patterns", [])
 
         self.default_format(format, kwargs)
+
+        # Create default namespace
+        if namespace:
+            ns = self
+            for name in namespace.split():
+                ns = ns.add_namespace(name, skip=True)
+            # Any namespaces listed in the "namespace" field are not wrapped.
+            self.wrap_namespace = ns
 
         declast.global_namespace = self
         self.create_std_names()
@@ -1759,12 +1771,6 @@ def create_library_from_dictionary(node):
 
     clean_dictionary(node)
     library = LibraryNode(**node)
-    ns = library
-
-    # Create default namespace
-    if "namespace" in node:
-        for name in node["namespace"].split():
-            ns = ns.add_namespace(name, skip=True)
 
     if "typemap" in node:
         # list of dictionaries
@@ -1786,9 +1792,6 @@ def create_library_from_dictionary(node):
                 else:
                     raise RuntimeError("base must be 'shadow'")
 
-    add_declarations(ns, node)
-
-    # Any namespaces listed in the "namespace" field are not wrapped.
-    library.wrap_namespace = ns
+    add_declarations(library.wrap_namespace, node)
 
     return library
