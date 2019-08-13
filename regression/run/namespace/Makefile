@@ -25,7 +25,6 @@ VPATH = \
 
 OBJS = \
     namespace.o \
-    wrapfCstruct1.o \
     wrapfns.f \
     wrapfns_outer.o \
     wrapns.o \
@@ -42,4 +41,4 @@ clean :
 namespace.o : namespace.hpp
 wrapns.o : namespace.hpp
 wrapns_outer.o : namespace.hpp
-main.o : wrapfCstruct1.o wrapfns.o wrapfns_outer.o
+main.o : wrapfns.o wrapfns_outer.o

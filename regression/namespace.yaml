@@ -1,0 +1,22 @@
+
+library: ns
+cxx_header: namespace.hpp
+
+options:
+  debug: True
+  wrap_python: True
+  PY_struct_arg: class
+
+declarations:
+- decl: const std::string& LastFunctionCalled()
+
+- decl: namespace outer
+  declarations:
+    - decl: struct Cstruct1 {
+              int ifield;
+              double dfield;
+            };
+    - decl: void One()
+- decl: void One()
+TEMP: True
+

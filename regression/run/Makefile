@@ -29,6 +29,7 @@ test-fortran-% : fortran-%
 test-fortran : \
   test-fortran-tutorial \
   test-fortran-types \
+  test-fortran-namespace \
   test-fortran-pointers \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
@@ -85,6 +86,7 @@ test-python-% : pymod-%
 
 test-python : \
   test-python-tutorial \
+  test-python-namespace \
   test-python-strings \
   test-python-pointers-numpy-cpp \
   test-python-pointers-list-cpp \
