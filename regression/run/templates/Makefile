@@ -26,6 +26,8 @@ OBJS = \
     wrapuser_int.o \
     wrapvector_double.o \
     wrapftemplates.o \
+    wrapftemplates_internal.o \
+    wrapftemplates_std.o \
     fruit.o \
     main.o
 

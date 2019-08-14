@@ -12,6 +12,42 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
+class Worker;  // forward declare
+extern PyTypeObject PY_Worker_Type;
+// splicer begin class.Worker.C_declaration
+// splicer end class.Worker.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    Worker * obj;
+    int idtor;
+    // splicer begin class.Worker.C_object
+    // splicer end class.Worker.C_object
+} PY_Worker;
+
+extern const char *PY_Worker_capsule_name;
+PyObject *PP_Worker_to_Object(Worker *addr);
+int PP_Worker_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+class user;  // forward declare
+extern PyTypeObject PY_user_int_Type;
+// splicer begin class.user.C_declaration
+// splicer end class.user.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    user_int * obj;
+    int idtor;
+    // splicer begin class.user.C_object
+    // splicer end class.user.C_object
+} PY_user_int;
+
+extern const char *PY_user_int_capsule_name;
+PyObject *PP_user_int_to_Object(user_int *addr);
+int PP_user_int_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
 namespace std {
     class vector;  // forward declare
 }
@@ -52,24 +88,6 @@ PyObject *PP_vector_double_to_Object(std::vector_double *addr);
 int PP_vector_double_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
-class Worker;  // forward declare
-extern PyTypeObject PY_Worker_Type;
-// splicer begin class.Worker.C_declaration
-// splicer end class.Worker.C_declaration
-
-typedef struct {
-PyObject_HEAD
-    Worker * obj;
-    int idtor;
-    // splicer begin class.Worker.C_object
-    // splicer end class.Worker.C_object
-} PY_Worker;
-
-extern const char *PY_Worker_capsule_name;
-PyObject *PP_Worker_to_Object(Worker *addr);
-int PP_Worker_from_Object(PyObject *obj, void **addr);
-
-// ------------------------------
 namespace internal {
     class ImplWorker1;  // forward declare
 }
@@ -88,24 +106,6 @@ PyObject_HEAD
 extern const char *PY_ImplWorker1_capsule_name;
 PyObject *PP_ImplWorker1_to_Object(internal::ImplWorker1 *addr);
 int PP_ImplWorker1_from_Object(PyObject *obj, void **addr);
-
-// ------------------------------
-class user;  // forward declare
-extern PyTypeObject PY_user_int_Type;
-// splicer begin class.user.C_declaration
-// splicer end class.user.C_declaration
-
-typedef struct {
-PyObject_HEAD
-    user_int * obj;
-    int idtor;
-    // splicer begin class.user.C_object
-    // splicer end class.user.C_object
-} PY_user_int;
-
-extern const char *PY_user_int_capsule_name;
-PyObject *PP_user_int_to_Object(user_int *addr);
-int PP_user_int_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 
 // splicer begin header.C_declaration

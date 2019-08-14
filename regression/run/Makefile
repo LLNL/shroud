@@ -97,6 +97,8 @@ test-python : \
   test-python-struct-cxx \
   test-python-ownership
 
+# test-python-templates
+
 ######################################################################
 # Compile the geneated Lua wrapper
 lua-tutorial : $(tempdir)/run/tutorial/lua/.. phony_explicit

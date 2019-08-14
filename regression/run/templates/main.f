@@ -12,6 +12,8 @@ program tester
   use fruit
   use iso_c_binding
   use templates_mod
+  use templates_internal_mod
+  use templates_std_mod
   implicit none
   logical ok
 

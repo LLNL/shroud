@@ -99,3 +99,4 @@ declarations:
      brief: Function which uses a templated T in the implemetation.
   cxx_template:
   - instantiation: <internal::ImplWorker1>
+TEMP: True

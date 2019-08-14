@@ -25,6 +25,8 @@ OBJS = \
     pyWorkertype.o \
     pytemplatesutil.o \
     pytemplatesmodule.o \
+    pytemplates_internalmodule.o \
+    pytemplates_stdmodule.o \
     pyuser_inttype.o \
     pyvector_doubletype.o \
     pyvector_inttype.o

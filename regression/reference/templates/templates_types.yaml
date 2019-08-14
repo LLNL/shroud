@@ -18,7 +18,7 @@ declarations:
         base: shadow
         cxx_type: internal::ImplWorker1
         c_type: TEM_implworker1
-        f_module_name: templates_mod
+        f_module_name: templates_internal_mod
         f_derived_type: implworker1
         f_capsule_data_type: SHROUD_implworker1_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -30,7 +30,7 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<double>
         c_type: TEM_vector_double
-        f_module_name: templates_mod
+        f_module_name: templates_std_mod
         f_derived_type: vector_double
         f_capsule_data_type: SHROUD_vector_double_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -40,7 +40,7 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<int>
         c_type: TEM_vector_int
-        f_module_name: templates_mod
+        f_module_name: templates_std_mod
         f_derived_type: vector_int
         f_capsule_data_type: SHROUD_vector_int_capsule
         f_to_c: "{f_var}%cxxmem"
