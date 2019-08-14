@@ -2907,6 +2907,38 @@
             }
         ],
         "language": "cxx",
+        "namespaces": [
+            {
+                "fmtdict": {
+                    "CXX_this_call": "std::",
+                    "C_header_filename": "wraptypes_std.h",
+                    "C_impl_filename": "wraptypes_std.cpp",
+                    "C_name_scope": "std_",
+                    "F_impl_filename": "wrapftypes_std.f",
+                    "F_module_name": "types_std_mod",
+                    "LUA_this_call": "std::",
+                    "PY_module_init": "types_std",
+                    "PY_module_name": "std",
+                    "PY_module_scope": "types.std",
+                    "PY_this_call": "std::",
+                    "file_scope": "types_std",
+                    "namespace_scope": "std::"
+                },
+                "linenumber": "?",
+                "name": "std",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "scope": "std::",
+                "scope_file": [
+                    "types",
+                    "std"
+                ]
+            }
+        ],
         "options": {
             "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
             "C_enum_template": "{C_prefix}{flat_name}",

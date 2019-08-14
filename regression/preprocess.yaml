@@ -45,3 +45,4 @@ declarations:
     cpp_if: ifndef USE_CLASS3_A
 
 
+TEMP: True

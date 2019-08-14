@@ -261,6 +261,38 @@
             }
         ],
         "language": "cxx",
+        "namespaces": [
+            {
+                "fmtdict": {
+                    "CXX_this_call": "std::",
+                    "C_header_filename": "wrapmemdoc_std.h",
+                    "C_impl_filename": "wrapmemdoc_std.cpp",
+                    "C_name_scope": "std_",
+                    "F_impl_filename": "wrapfmemdoc_std.f",
+                    "F_module_name": "memdoc_std_mod",
+                    "LUA_this_call": "std::",
+                    "PY_module_init": "memdoc_std",
+                    "PY_module_name": "std",
+                    "PY_module_scope": "memdoc.std",
+                    "PY_this_call": "std::",
+                    "file_scope": "memdoc_std",
+                    "namespace_scope": "std::"
+                },
+                "linenumber": "?",
+                "name": "std",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "scope": "std::",
+                "scope_file": [
+                    "memdoc",
+                    "std"
+                ]
+            }
+        ],
         "options": {
             "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
             "C_enum_template": "{C_prefix}{flat_name}",
@@ -294,7 +326,7 @@
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": true,
+            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",

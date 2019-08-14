@@ -81,3 +81,4 @@ splicer_code:
   f:
     module_top:
     -  "integer, parameter :: MAXNAME = 20"
+TEMP: True

@@ -72,3 +72,4 @@ declarations:
       in call to Py_BuildValue as type 'O'.  But since two return values
       are being created, function return and argument flag, rename first
       local C variable to avoid duplicate names in wrapper.
+TEMP: True

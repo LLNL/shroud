@@ -1816,7 +1816,7 @@
             "F_module_name_class_template": "{class_lower}_mod",
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": true,
+            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",

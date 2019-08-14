@@ -80,3 +80,4 @@ splicer_code:
     -  "integer, parameter :: T_LONG = 2"
     -  "integer, parameter :: T_FLOAT = 3"
     -  "integer, parameter :: T_DOUBLE = 4"
+TEMP: True

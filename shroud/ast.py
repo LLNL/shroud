@@ -317,6 +317,9 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         declast.global_namespace = self
         self.create_std_names()
+        if self.language == "cxx":
+            create_std_namespace(self)  # add 'std::' to library
+            self.using_directive("std")
 
     def get_LibraryNode(self):
         """Return top of AST tree."""
@@ -336,8 +339,6 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.add_typedef("uint32_t")
         self.add_typedef("uint64_t")
         self.add_typedef("MPI_Comm")
-        create_std_namespace(self)  # add 'std::' to library
-        self.using_directive("std")
 
     def qualified_lookup(self, name):
         """Look for symbols within class.

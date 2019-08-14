@@ -14,7 +14,7 @@ namespace: tutorial
 
 options:
   debug: True
-  F_module_per_class: False
+#  F_module_per_class: False
   wrap_python: True
   wrap_lua: True
   literalinclude2: True
@@ -282,3 +282,4 @@ splicer:
 #  -  ctutorialsplicer.c
   f:
   -  ftutorialsplicer.f
+TEMP: True
