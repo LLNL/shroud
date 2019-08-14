@@ -44,16 +44,6 @@ module scope_mod
     integer(C_INT), parameter :: blue = 11
     integer(C_INT), parameter :: white = 12
 
-    !  enum ns1Enum::Color
-    integer(C_INT), parameter :: ns1enum_color_red = 20
-    integer(C_INT), parameter :: ns1enum_color_blue = 21
-    integer(C_INT), parameter :: ns1enum_color_white = 22
-
-    !  enum ns2Enum::Color
-    integer(C_INT), parameter :: ns2enum_color_red = 30
-    integer(C_INT), parameter :: ns2enum_color_blue = 31
-    integer(C_INT), parameter :: ns2enum_color_white = 32
-
     !  enum ColorEnum
     integer(C_INT), parameter :: colorenum_red = 60
     integer(C_INT), parameter :: colorenum_blue = 61

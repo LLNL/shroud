@@ -253,126 +253,6 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
-                        "C_enum_member": "SCO_ns1Enum_Color_BLUE",
-                        "F_enum_member": "ns1enum_color_blue",
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 21
-                    },
-                    "RED": {
-                        "C_enum_member": "SCO_ns1Enum_Color_RED",
-                        "F_enum_member": "ns1enum_color_red",
-                        "cxx_value": "20",
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 20
-                    },
-                    "WHITE": {
-                        "C_enum_member": "SCO_ns1Enum_Color_WHITE",
-                        "F_enum_member": "ns1enum_color_white",
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 22
-                    }
-                },
-                "ast": {
-                    "members": [
-                        {
-                            "name": "RED",
-                            "value": {
-                                "constant": "20"
-                            }
-                        },
-                        {
-                            "name": "BLUE"
-                        },
-                        {
-                            "name": "WHITE"
-                        }
-                    ],
-                    "name": "Color"
-                },
-                "decl": "enum Color {\n  RED = 20,\n  BLUE,\n  WHITE\n};\n",
-                "fmtdict": {
-                    "C_enum": "SCO_ns1Enum_Color",
-                    "C_scope_name": "ns1Enum_Color_",
-                    "F_scope_name": "ns1enum_color_",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "ns1Enum_Color"
-                },
-                "linenumber": 42,
-                "name": "Color",
-                "options": {},
-                "typemap_name": "ns1Enum::Color"
-            },
-            {
-                "_fmtmembers": {
-                    "BLUE": {
-                        "C_enum_member": "SCO_ns2Enum_Color_BLUE",
-                        "F_enum_member": "ns2enum_color_blue",
-                        "enum_member_lower": "blue",
-                        "enum_member_name": "BLUE",
-                        "enum_member_upper": "BLUE",
-                        "evalue": 31
-                    },
-                    "RED": {
-                        "C_enum_member": "SCO_ns2Enum_Color_RED",
-                        "F_enum_member": "ns2enum_color_red",
-                        "cxx_value": "30",
-                        "enum_member_lower": "red",
-                        "enum_member_name": "RED",
-                        "enum_member_upper": "RED",
-                        "evalue": 30
-                    },
-                    "WHITE": {
-                        "C_enum_member": "SCO_ns2Enum_Color_WHITE",
-                        "F_enum_member": "ns2enum_color_white",
-                        "enum_member_lower": "white",
-                        "enum_member_name": "WHITE",
-                        "enum_member_upper": "WHITE",
-                        "evalue": 32
-                    }
-                },
-                "ast": {
-                    "members": [
-                        {
-                            "name": "RED",
-                            "value": {
-                                "constant": "30"
-                            }
-                        },
-                        {
-                            "name": "BLUE"
-                        },
-                        {
-                            "name": "WHITE"
-                        }
-                    ],
-                    "name": "Color"
-                },
-                "decl": "enum Color {\n  RED = 30,\n  BLUE,\n  WHITE\n};\n",
-                "fmtdict": {
-                    "C_enum": "SCO_ns2Enum_Color",
-                    "C_scope_name": "ns2Enum_Color_",
-                    "F_scope_name": "ns2enum_color_",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "ns2Enum_Color"
-                },
-                "linenumber": 50,
-                "name": "Color",
-                "options": {},
-                "typemap_name": "ns2Enum::Color"
-            },
-            {
-                "_fmtmembers": {
-                    "BLUE": {
                         "C_enum_member": "SCO_ColorEnum_BLUE",
                         "F_enum_member": "colorenum_blue",
                         "enum_member_lower": "blue",
@@ -521,6 +401,212 @@
             "void_proto": ""
         },
         "language": "cxx",
+        "namespaces": [
+            {
+                "fmtdict": {
+                    "CXX_this_call": "std::",
+                    "C_header_filename": "wrapscope_std.h",
+                    "C_impl_filename": "wrapscope_std.cpp",
+                    "C_name_scope": "std_",
+                    "F_impl_filename": "wrapfscope_std.f",
+                    "F_module_name": "scope_std_mod",
+                    "LUA_this_call": "std::",
+                    "PY_module_init": "scope_std",
+                    "PY_module_name": "std",
+                    "PY_module_scope": "scope.std",
+                    "PY_this_call": "std::",
+                    "file_scope": "scope_std",
+                    "namespace_scope": "std::"
+                },
+                "linenumber": "?",
+                "name": "std",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "scope": "std::",
+                "scope_file": [
+                    "scope",
+                    "std"
+                ]
+            },
+            {
+                "enums": [
+                    {
+                        "_fmtmembers": {
+                            "BLUE": {
+                                "C_enum_member": "SCO_ns1Enum_Color_BLUE",
+                                "F_enum_member": "ns1enum_color_blue",
+                                "enum_member_lower": "blue",
+                                "enum_member_name": "BLUE",
+                                "enum_member_upper": "BLUE",
+                                "evalue": 21
+                            },
+                            "RED": {
+                                "C_enum_member": "SCO_ns1Enum_Color_RED",
+                                "F_enum_member": "ns1enum_color_red",
+                                "cxx_value": "20",
+                                "enum_member_lower": "red",
+                                "enum_member_name": "RED",
+                                "enum_member_upper": "RED",
+                                "evalue": 20
+                            },
+                            "WHITE": {
+                                "C_enum_member": "SCO_ns1Enum_Color_WHITE",
+                                "F_enum_member": "ns1enum_color_white",
+                                "enum_member_lower": "white",
+                                "enum_member_name": "WHITE",
+                                "enum_member_upper": "WHITE",
+                                "evalue": 22
+                            }
+                        },
+                        "ast": {
+                            "members": [
+                                {
+                                    "name": "RED",
+                                    "value": {
+                                        "constant": "20"
+                                    }
+                                },
+                                {
+                                    "name": "BLUE"
+                                },
+                                {
+                                    "name": "WHITE"
+                                }
+                            ],
+                            "name": "Color"
+                        },
+                        "decl": "enum Color {\n  RED = 20,\n  BLUE,\n  WHITE\n};\n",
+                        "fmtdict": {
+                            "C_enum": "SCO_ns1Enum_Color",
+                            "C_scope_name": "ns1Enum_Color_",
+                            "F_scope_name": "ns1enum_color_",
+                            "enum_lower": "color",
+                            "enum_name": "Color",
+                            "enum_upper": "COLOR",
+                            "flat_name": "ns1Enum_Color"
+                        },
+                        "linenumber": 42,
+                        "name": "Color",
+                        "options": {},
+                        "typemap_name": "ns1Enum::Color"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "ns1Enum::",
+                    "C_header_filename": "wrapscope_ns1Enum.h",
+                    "C_impl_filename": "wrapscope_ns1Enum.cpp",
+                    "C_name_scope": "ns1Enum_",
+                    "F_impl_filename": "wrapfscope_ns1Enum.f",
+                    "F_module_name": "scope_ns1enum_mod",
+                    "LUA_this_call": "ns1Enum::",
+                    "PY_module_init": "scope_ns1Enum",
+                    "PY_module_name": "ns1Enum",
+                    "PY_module_scope": "scope.ns1Enum",
+                    "PY_this_call": "ns1Enum::",
+                    "file_scope": "scope_ns1Enum",
+                    "namespace_scope": "ns1Enum::"
+                },
+                "linenumber": 40,
+                "name": "ns1Enum",
+                "options": {},
+                "scope": "ns1Enum::",
+                "scope_file": [
+                    "scope",
+                    "ns1Enum"
+                ]
+            },
+            {
+                "enums": [
+                    {
+                        "_fmtmembers": {
+                            "BLUE": {
+                                "C_enum_member": "SCO_ns2Enum_Color_BLUE",
+                                "F_enum_member": "ns2enum_color_blue",
+                                "enum_member_lower": "blue",
+                                "enum_member_name": "BLUE",
+                                "enum_member_upper": "BLUE",
+                                "evalue": 31
+                            },
+                            "RED": {
+                                "C_enum_member": "SCO_ns2Enum_Color_RED",
+                                "F_enum_member": "ns2enum_color_red",
+                                "cxx_value": "30",
+                                "enum_member_lower": "red",
+                                "enum_member_name": "RED",
+                                "enum_member_upper": "RED",
+                                "evalue": 30
+                            },
+                            "WHITE": {
+                                "C_enum_member": "SCO_ns2Enum_Color_WHITE",
+                                "F_enum_member": "ns2enum_color_white",
+                                "enum_member_lower": "white",
+                                "enum_member_name": "WHITE",
+                                "enum_member_upper": "WHITE",
+                                "evalue": 32
+                            }
+                        },
+                        "ast": {
+                            "members": [
+                                {
+                                    "name": "RED",
+                                    "value": {
+                                        "constant": "30"
+                                    }
+                                },
+                                {
+                                    "name": "BLUE"
+                                },
+                                {
+                                    "name": "WHITE"
+                                }
+                            ],
+                            "name": "Color"
+                        },
+                        "decl": "enum Color {\n  RED = 30,\n  BLUE,\n  WHITE\n};\n",
+                        "fmtdict": {
+                            "C_enum": "SCO_ns2Enum_Color",
+                            "C_scope_name": "ns2Enum_Color_",
+                            "F_scope_name": "ns2enum_color_",
+                            "enum_lower": "color",
+                            "enum_name": "Color",
+                            "enum_upper": "COLOR",
+                            "flat_name": "ns2Enum_Color"
+                        },
+                        "linenumber": 50,
+                        "name": "Color",
+                        "options": {},
+                        "typemap_name": "ns2Enum::Color"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "ns2Enum::",
+                    "C_header_filename": "wrapscope_ns2Enum.h",
+                    "C_impl_filename": "wrapscope_ns2Enum.cpp",
+                    "C_name_scope": "ns2Enum_",
+                    "F_impl_filename": "wrapfscope_ns2Enum.f",
+                    "F_module_name": "scope_ns2enum_mod",
+                    "LUA_this_call": "ns2Enum::",
+                    "PY_module_init": "scope_ns2Enum",
+                    "PY_module_name": "ns2Enum",
+                    "PY_module_scope": "scope.ns2Enum",
+                    "PY_this_call": "ns2Enum::",
+                    "file_scope": "scope_ns2Enum",
+                    "namespace_scope": "ns2Enum::"
+                },
+                "linenumber": 48,
+                "name": "ns2Enum",
+                "options": {},
+                "scope": "ns2Enum::",
+                "scope_file": [
+                    "scope",
+                    "ns2Enum"
+                ]
+            }
+        ],
         "options": {
             "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
             "C_enum_template": "{C_prefix}{flat_name}",

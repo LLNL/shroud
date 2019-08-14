@@ -6,7 +6,11 @@ class cls2Enum
 Close wrapcls2Enum.h
 Close wrapscope.h
 Close wrapscope.cpp
+Close wrapscope_ns1Enum.h
+Close wrapscope_ns2Enum.h
 Close typesscope.h
 class cls1Enum
 class cls2Enum
 Close wrapfscope.f
+Close wrapfscope_ns1Enum.f
+Close wrapfscope_ns2Enum.f

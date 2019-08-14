@@ -1,4 +1,4 @@
-// wrapscope.h
+// wrapscope_ns1Enum.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,13 +15,13 @@
 //
 // #######################################################################
 /**
- * \file wrapscope.h
- * \brief Shroud generated wrapper for scope library
+ * \file wrapscope_ns1Enum.h
+ * \brief Shroud generated wrapper for ns1Enum namespace
  */
 // For C users and C++ implementation
 
-#ifndef WRAPSCOPE_H
-#define WRAPSCOPE_H
+#ifndef WRAPSCOPE_NS1ENUM_H
+#define WRAPSCOPE_NS1ENUM_H
 
 #include "typesscope.h"
 
@@ -32,18 +32,11 @@
 extern "C" {
 #endif
 
-//  Color
-enum SCO_Color {
-    SCO_RED = 10,
-    SCO_BLUE,
-    SCO_WHITE
-};
-
-//  ColorEnum
-enum SCO_ColorEnum {
-    SCO_ColorEnum_RED = 60,
-    SCO_ColorEnum_BLUE,
-    SCO_ColorEnum_WHITE
+//  ns1Enum::Color
+enum SCO_ns1Enum_Color {
+    SCO_ns1Enum_Color_RED = 20,
+    SCO_ns1Enum_Color_BLUE,
+    SCO_ns1Enum_Color_WHITE
 };
 
 // splicer begin C_declarations
@@ -53,4 +46,4 @@ enum SCO_ColorEnum {
 }
 #endif
 
-#endif  // WRAPSCOPE_H
+#endif  // WRAPSCOPE_NS1ENUM_H

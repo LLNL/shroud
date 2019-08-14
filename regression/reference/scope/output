@@ -3,5 +3,9 @@ Wrote wrapcls1Enum.h
 Wrote wrapcls2Enum.h
 Wrote wrapscope.h
 Wrote wrapscope.cpp
+Wrote wrapscope_ns1Enum.h
+Wrote wrapscope_ns2Enum.h
 Wrote typesscope.h
 Wrote wrapfscope.f
+Wrote wrapfscope_ns1Enum.f
+Wrote wrapfscope_ns2Enum.f
