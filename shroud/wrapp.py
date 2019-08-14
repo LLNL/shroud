@@ -206,7 +206,7 @@ class Wrapp(util.WrapperMixin):
         self._pop_splicer("class")
 
         self.reset_file()
-        self.wrap_enums(None)
+        self.wrap_enums(node)
 
         if node.functions:
             self._push_splicer("function")
@@ -247,24 +247,21 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
                 )
         )
 
-    def wrap_enums(self, cls):
-        """Wrap enums for library or cls
+    def wrap_enums(self, node):
+        """Wrap enums for library, namespace or class.
 
         Args:
-            cls - ast.ClassNode.
+            node - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
-        if cls is None:
-            enums = self.newlibrary.enums
-        else:
-            enums = cls.enums
+        enums = node.enums
         if not enums:
             return
         self._push_splicer("enums")
         for enum in enums:
-            self.wrap_enum(enum, cls)
+            self.wrap_enum(enum)
         self._pop_splicer("enums")
 
-    def wrap_enum(self, node, cls):
+    def wrap_enum(self, node):
         """Wrap an enumeration.
         If module, use PyModule_AddIntConstant.
         If class, create a descriptor.
@@ -272,14 +269,13 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
 
         Args:
             node -
-            cls -
         """
         fmtmembers = node._fmtmembers
 
         ast = node.ast
         output = self.enum_impl
-        if cls is None:
-            # library enumerations
+        if node.parent.nodename != "class":
+            # library/namespace enumerations
             # m is module pointer from module_middle
             output.append("")
             append_format(output, "// enum {namespace_scope}{enum_name}",
