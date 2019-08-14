@@ -1,4 +1,5 @@
 Read yaml namespace.yaml
+Close ns_types.yaml
 C function const std::string & LastFunctionCalled() +deref(allocatable)
 C function void LastFunctionCalled(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C function void One()

@@ -757,6 +757,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.cxx_header = cxx_header
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
+        self.internal = False
 
         if util.TEMP:
             self.classes = []
@@ -1606,6 +1607,7 @@ def create_std_namespace(glb):
         glb: ast.LibraryNode
     """
     std = glb.add_namespace("std")
+    std.internal = True  # skip unless added by user
     std.add_typedef("string")
     std.add_typedef("vector")
     options = std.options

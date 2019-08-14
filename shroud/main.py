@@ -80,15 +80,29 @@ class TypeOut(util.WrapperMixin):
         fname = newlibrary.fmtdict.YAML_type_filename
         output = []
 
-        # split up into namespaces
+        def get_namespaces(node, top):
+            for cls in node.classes:
+                fullname = cls.typemap.name
+                parts = fullname.split("::")
+                top[parts[-1]] = cls.typemap
+            for ns in node.namespaces:
+                if ns.internal:
+                    continue
+                top[ns.name] = {}
+                get_namespaces(ns, top[ns.name])
         top = {}
-        for cls in newlibrary.wrap_namespace.classes:
-            fullname = cls.typemap.name
-            parts = fullname.split("::")
-            ns = top
-            for part in parts[:-1]:
-                ns = ns.setdefault(part, {})
-            ns[parts[-1]] = cls.typemap
+        if util.TEMP:
+            #        get_namespaces(newlibrary.wrap_namespace, top)
+            get_namespaces(newlibrary, top)
+        else:
+            # split up into namespaces
+            for cls in newlibrary.wrap_namespace.classes:
+                fullname = cls.typemap.name
+                parts = fullname.split("::")
+                ns = top
+                for part in parts[:-1]:
+                    ns = ns.setdefault(part, {})
+                ns[parts[-1]] = cls.typemap
 
         output = []
 
@@ -96,11 +110,12 @@ class TypeOut(util.WrapperMixin):
             for name in sorted(ns.keys()):
                 nxt = ns[name]
                 if isinstance(nxt, dict):
-                    output.append("@- namespace: " + name)
-                    output.append(1)
-                    output.append("declarations: " + name)
-                    splitup(nxt, output)
-                    output.append(-1)
+                    if nxt:
+                        output.append("@- namespace: " + name)
+                        output.append(1)
+                        output.append("declarations: " + name)
+                        splitup(nxt, output)
+                        output.append(-1)
                 elif isinstance(nxt, typemap.Typemap):
                     output.append("@- type: " + name)
                     output.append(1)
@@ -109,7 +124,7 @@ class TypeOut(util.WrapperMixin):
                     nxt.__export_yaml__(0, output)
                     output.append(-2)
                 else:
-                    raise RuntimeError("Unexpected clss in splitup")
+                    raise RuntimeError("Unexpected class in splitup")
 
         splitup(top, output)
 
