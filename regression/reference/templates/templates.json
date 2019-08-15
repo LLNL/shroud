@@ -1065,36 +1065,6 @@
         "language": "cxx",
         "namespaces": [
             {
-                "fmtdict": {
-                    "CXX_this_call": "std::",
-                    "C_header_filename": "wraptemplates_std.h",
-                    "C_impl_filename": "wraptemplates_std.cpp",
-                    "C_name_scope": "std_",
-                    "F_impl_filename": "wrapftemplates_std.f",
-                    "F_module_name": "templates_std_mod",
-                    "LUA_this_call": "std::",
-                    "PY_module_init": "templates_std",
-                    "PY_module_name": "std",
-                    "PY_module_scope": "templates.std",
-                    "PY_this_call": "std::",
-                    "file_scope": "templates_std",
-                    "namespace_scope": "std::"
-                },
-                "linenumber": "?",
-                "name": "std",
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "scope": "std::",
-                "scope_file": [
-                    "templates",
-                    "std"
-                ]
-            },
-            {
                 "classes": [
                     {
                         "cxx_header": "<vector>",

@@ -86,8 +86,6 @@ class TypeOut(util.WrapperMixin):
                 parts = fullname.split("::")
                 top[parts[-1]] = cls.typemap
             for ns in node.namespaces:
-                if ns.internal:
-                    continue
                 top[ns.name] = {}
                 get_namespaces(ns, top[ns.name])
         top = {}

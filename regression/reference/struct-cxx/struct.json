@@ -1994,38 +1994,6 @@
             }
         ],
         "language": "cxx",
-        "namespaces": [
-            {
-                "fmtdict": {
-                    "CXX_this_call": "std::",
-                    "C_header_filename": "wrapstruct_std.h",
-                    "C_impl_filename": "wrapstruct_std.cpp",
-                    "C_name_scope": "std_",
-                    "F_impl_filename": "wrapfstruct_std.f",
-                    "F_module_name": "struct_std_mod",
-                    "LUA_this_call": "std::",
-                    "PY_module_init": "cstruct_std",
-                    "PY_module_name": "std",
-                    "PY_module_scope": "cstruct.std",
-                    "PY_this_call": "std::",
-                    "file_scope": "struct_std",
-                    "namespace_scope": "std::"
-                },
-                "linenumber": "?",
-                "name": "std",
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "scope": "std::",
-                "scope_file": [
-                    "struct",
-                    "std"
-                ]
-            }
-        ],
         "options": {
             "C_enum_member_template": "{C_prefix}{C_scope_name}{enum_member_name}",
             "C_enum_template": "{C_prefix}{flat_name}",

@@ -391,10 +391,9 @@ class GenFunctions(object):
         """Entry routine to generate functions for a library.
         """
         newlibrary = self.newlibrary
-        whelpers.add_external_helpers(newlibrary.fmtdict,
-                                      newlibrary.options.literalinclude2)
-        whelpers.add_capsule_helper(newlibrary.fmtdict,
-                                    newlibrary.options.literalinclude2)
+        literalinclude2 = newlibrary.options.literalinclude2
+        whelpers.add_external_helpers(newlibrary.fmtdict, literalinclude2)
+        whelpers.add_capsule_helper(newlibrary.fmtdict, literalinclude2)
 
         self.function_index = newlibrary.function_index
 
@@ -540,7 +539,7 @@ class GenFunctions(object):
             self.instantiate_classes(cls)
 
         for ns in node.namespaces:
-            self.instantiate_classes(ns)
+            self.instantiate_all_classes(ns)
 
     def instantiate_classes(self, node):
         """Instantate any template_arguments.

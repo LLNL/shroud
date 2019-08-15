@@ -180,24 +180,34 @@ class NamespaceMixin(object):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, name, **kwargs):
+    def add_namespace(self, name, expose=True, **kwargs):
         """Add an namespace
+
+        Args:
+            name - name of namespace
+            expose - If True, will be wrapped.
+                     Otherwise, only used for lookup while parsing.
         """
         node = NamespaceNode(name, parent=self, **kwargs)
         self.symbols[name] = node
-        if util.TEMP:
+        if util.TEMP and expose:
             self.namespaces.append(node)
         return node
 
-    def add_namespaces(self, names):
+    def add_namespaces(self, names, expose=True):
         """Create nested namespaces from list of names.
+
+        Args:
+            name - list of names for namespaces.
+            expose - If True, will be wrapped.
+                     Otherwise, only used for lookup while parsing.
         """
         ns = self
         for name in names:
             if name in ns.symbols:
                 ns = ns.symbols[name]
             else:
-                ns = ns.add_namespace(name)
+                ns = ns.add_namespace(name, expose)
         return ns
 
     def add_struct(self, decl, ast=None, **kwargs):
@@ -262,6 +272,9 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         wrap_namespace - Node to start wrapping.  This is the current node but 
             will be changed if the top level "namespace" variable is set.
+
+        symbols - used to look up symbols in nametable.  This includes items which
+            are not wrapped such as the std namespace and types from other files.
 
         """
         # From arguments
@@ -374,7 +387,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         """
         names = ntypemap.name.split("::")
         cxx_name = names.pop()
-        ns = self.add_namespaces(names)
+        ns = self.add_namespaces(names, expose=False)
 
         node = ClassNode(cxx_name, ns, ntypemap=ntypemap)
         # node is not added to self.classes
@@ -751,7 +764,6 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.cxx_header = cxx_header
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
-        self.internal = False
 
         if util.TEMP:
             self.classes = []
@@ -1600,15 +1612,9 @@ def create_std_namespace(glb):
     Args:
         glb: ast.LibraryNode
     """
-    std = glb.add_namespace("std")
-    std.internal = True  # skip unless added by user
+    std = glb.add_namespace("std", expose=False)
     std.add_typedef("string")
     std.add_typedef("vector")
-    options = std.options
-    options.wrap_fortran = False
-    options.wrap_c = False
-    options.wrap_python = False
-    options.wrap_lua = False
     return std
 
 
