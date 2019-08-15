@@ -21,7 +21,7 @@ declarations:
       base: shadow
       cxx_type: Names2
       c_type: TES_names2
-      f_module_name: names2_mod
+      f_module_name: top_module
       f_derived_type: names2
       f_capsule_data_type: SHROUD_names2_capsule
       f_to_c: "{f_var}%cxxmem"
@@ -32,7 +32,7 @@ declarations:
         base: shadow
         cxx_type: internal::ImplWorker1
         c_type: TES_implworker1
-        f_module_name: implworker1_mod
+        f_module_name: testnames_internal_mod
         f_derived_type: implworker1
         f_capsule_data_type: SHROUD_implworker1_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -55,7 +55,7 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<int>
         c_type: TES_vvv1
-        f_module_name: vvv1_mod
+        f_module_name: testnames_std_mod
         f_derived_type: FFvvv1
         f_capsule_data_type: SHROUD_vvv1_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -65,7 +65,7 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<double>
         c_type: TES_vector_double
-        f_module_name: vector_double_mod
+        f_module_name: testnames_std_mod
         f_derived_type: vector_double
         f_capsule_data_type: SHROUD_vector_double_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -75,7 +75,7 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<internal::ImplWorker1>
         c_type: TES_vector_instantiation3
-        f_module_name: vector_instantiation3_mod
+        f_module_name: testnames_std_mod
         f_derived_type: vector_instantiation3
         f_capsule_data_type: SHROUD_vector_instantiation3_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -85,7 +85,7 @@ declarations:
         cxx_header: <vector>
         cxx_type: std::vector<long>
         c_type: TES_vector_instantiation5
-        f_module_name: vector_instantiation5_mod
+        f_module_name: testnames_std_mod
         f_derived_type: vector_instantiation5
         f_capsule_data_type: SHROUD_vector_instantiation5_capsule
         f_to_c: "{f_var}%cxxmem"
@@ -94,7 +94,7 @@ declarations:
       base: shadow
       cxx_type: twoTs<int, long>
       c_type: TES_twots_0
-      f_module_name: twots_0_mod
+      f_module_name: top_module
       f_derived_type: twots_0
       f_capsule_data_type: SHROUD_twots_0_capsule
       f_to_c: "{f_var}%cxxmem"
@@ -103,7 +103,7 @@ declarations:
       base: shadow
       cxx_type: twoTs<float, double>
       c_type: TES_twots_instantiation4
-      f_module_name: twots_instantiation4_mod
+      f_module_name: top_module
       f_derived_type: twots_instantiation4
       f_capsule_data_type: SHROUD_twots_instantiation4_capsule
       f_to_c: "{f_var}%cxxmem"

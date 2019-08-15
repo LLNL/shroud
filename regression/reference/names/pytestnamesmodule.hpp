@@ -26,6 +26,60 @@ extern void *PY_SHROUD_fetch_context(int icontext);
 extern void PY_SHROUD_capsule_destructor(PyObject *cap);
 
 // ------------------------------
+class Names2;  // forward declare
+extern PyTypeObject PY_Names2_Type;
+// splicer begin class.Names2.C_declaration
+// splicer end class.Names2.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    Names2 * myobj;
+    int mydtor;
+    // splicer begin class.Names2.C_object
+    // splicer end class.Names2.C_object
+} PY_Names2;
+
+extern const char *PY_Names2_capsule_name;
+PyObject *PP_Names2_to_Object(Names2 *addr);
+int PP_Names2_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+class twoTs;  // forward declare
+extern PyTypeObject PY_twoTs_0_Type;
+// splicer begin class.twoTs.C_declaration
+// splicer end class.twoTs.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    twoTs_0 * myobj;
+    int mydtor;
+    // splicer begin class.twoTs.C_object
+    // splicer end class.twoTs.C_object
+} PY_twoTs_0;
+
+extern const char *PY_twoTs_0_capsule_name;
+PyObject *PP_twoTs_0_to_Object(twoTs_0 *addr);
+int PP_twoTs_0_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+class twoTs;  // forward declare
+extern PyTypeObject PY_twoTs_instantiation4_Type;
+// splicer begin class.twoTs.C_declaration
+// splicer end class.twoTs.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    twoTs_instantiation4 * myobj;
+    int mydtor;
+    // splicer begin class.twoTs.C_object
+    // splicer end class.twoTs.C_object
+} PY_twoTs_instantiation4;
+
+extern const char *PY_twoTs_instantiation4_capsule_name;
+PyObject *PP_twoTs_instantiation4_to_Object(twoTs_instantiation4 *addr);
+int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
 namespace ns0 {
     class Names;  // forward declare
 }
@@ -44,24 +98,6 @@ PyObject_HEAD
 extern const char *PY_Names_capsule_name;
 PyObject *PP_Names_to_Object(ns0::Names *addr);
 int PP_Names_from_Object(PyObject *obj, void **addr);
-
-// ------------------------------
-class Names2;  // forward declare
-extern PyTypeObject PY_Names2_Type;
-// splicer begin class.Names2.C_declaration
-// splicer end class.Names2.C_declaration
-
-typedef struct {
-PyObject_HEAD
-    Names2 * myobj;
-    int mydtor;
-    // splicer begin class.Names2.C_object
-    // splicer end class.Names2.C_object
-} PY_Names2;
-
-extern const char *PY_Names2_capsule_name;
-PyObject *PP_Names2_to_Object(Names2 *addr);
-int PP_Names2_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
 namespace std {
@@ -142,42 +178,6 @@ PyObject_HEAD
 extern const char *PY_vector_instantiation3_capsule_name;
 PyObject *PP_vector_instantiation3_to_Object(std::vector_instantiation3 *addr);
 int PP_vector_instantiation3_from_Object(PyObject *obj, void **addr);
-
-// ------------------------------
-class twoTs;  // forward declare
-extern PyTypeObject PY_twoTs_0_Type;
-// splicer begin class.twoTs.C_declaration
-// splicer end class.twoTs.C_declaration
-
-typedef struct {
-PyObject_HEAD
-    twoTs_0 * myobj;
-    int mydtor;
-    // splicer begin class.twoTs.C_object
-    // splicer end class.twoTs.C_object
-} PY_twoTs_0;
-
-extern const char *PY_twoTs_0_capsule_name;
-PyObject *PP_twoTs_0_to_Object(twoTs_0 *addr);
-int PP_twoTs_0_from_Object(PyObject *obj, void **addr);
-
-// ------------------------------
-class twoTs;  // forward declare
-extern PyTypeObject PY_twoTs_instantiation4_Type;
-// splicer begin class.twoTs.C_declaration
-// splicer end class.twoTs.C_declaration
-
-typedef struct {
-PyObject_HEAD
-    twoTs_instantiation4 * myobj;
-    int mydtor;
-    // splicer begin class.twoTs.C_object
-    // splicer end class.twoTs.C_object
-} PY_twoTs_instantiation4;
-
-extern const char *PY_twoTs_instantiation4_capsule_name;
-PyObject *PP_twoTs_instantiation4_to_Object(twoTs_instantiation4 *addr);
-int PP_twoTs_instantiation4_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 
 // splicer begin header.C_declaration

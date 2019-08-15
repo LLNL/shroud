@@ -16,16 +16,18 @@
 ! #######################################################################
 !>
 !! \file foo.f
-!! \brief Shroud generated wrapper for Names class
+!! \brief Shroud generated wrapper for ns0 namespace
 !<
 ! splicer begin file_top
 ! splicer end file_top
 module name_module
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
-    ! splicer begin class.Names.module_use
-    ! splicer end class.Names.module_use
+    ! splicer begin module_use
+    ! splicer end module_use
     implicit none
 
+    ! splicer begin module_top
+    ! splicer end module_top
 
     ! splicer begin class.Names.module_top
     ! splicer end class.Names.module_top

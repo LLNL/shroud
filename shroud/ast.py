@@ -711,17 +711,11 @@ class BlockNode(AstNode, NamespaceMixin):
         # From arguments
         self.parent = parent
 
-        if util.TEMP:
-            self.classes = []
-            self.enums = []
-            self.functions = []
-            self.namespaces = []
-            self.variables = []
-        else:
-            self.enums = parent.enums
-            self.functions = parent.functions
-            self.classes = parent.classes
-            self.variables = parent.variables
+        self.classes = parent.classes
+        self.enums = parent.enums
+        self.functions = parent.functions
+        self.namespaces = parent.namespaces
+        self.variables = parent.variables
 
         self.options = util.Scope(parent=parent.options)
         if options:

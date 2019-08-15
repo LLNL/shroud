@@ -1,4 +1,4 @@
-// top.h
+// wraptestnames_ns1.hh
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,13 +15,13 @@
 //
 // #######################################################################
 /**
- * \file top.h
- * \brief Shroud generated wrapper for testnames library
+ * \file wraptestnames_ns1.hh
+ * \brief Shroud generated wrapper for ns1 namespace
  */
 // For C users and C++ implementation
 
-#ifndef TOP_H
-#define TOP_H
+#ifndef WRAPTESTNAMES_NS1_HH
+#define WRAPTESTNAMES_NS1_HH
 
 #include "typestestnames.hh"
 
@@ -32,38 +32,13 @@
 extern "C" {
 #endif
 
-//  Color
-enum TES_Color {
-    TES_RED,
-    TES_BLUE,
-    TES_WHITE
-};
-
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void YYY_TES_function1();
-
-void c_name_special();
-
-void YYY_TES_function3a_0(int i);
-
-void YYY_TES_function3a_1(long i);
-
-int YYY_TES_function4(const char * rv);
-
-int YYY_TES_function4_bufferify(const char * rv, int Lrv);
-
-void YYY_TES_fiveplus();
-
-void c_name_instantiation1(int arg1, long arg2);
-
-void TES_function_tu_instantiation2(float arg1, double arg2);
-
-int TES_use_impl_worker_instantiation3();
+void TES_ns1_init_ns1();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // TOP_H
+#endif  // WRAPTESTNAMES_NS1_HH

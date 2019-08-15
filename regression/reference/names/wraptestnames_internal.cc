@@ -1,4 +1,4 @@
-// foo.cpp
+// wraptestnames_internal.cc
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
