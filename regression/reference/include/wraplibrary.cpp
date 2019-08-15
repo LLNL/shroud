@@ -14,7 +14,6 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-#include "wraplibrary.h"
 #include <stdlib.h>
 #include "global_header.hpp"
 #include "typeslibrary.h"
@@ -22,12 +21,6 @@
 
 extern "C" {
 
-
-void LIB_function1()
-{
-    one::two::function1();
-    return;
-}
 
 // Release library allocated memory.
 void LIB_SHROUD_memory_destructor(LIB_SHROUD_capsule_data *cap)

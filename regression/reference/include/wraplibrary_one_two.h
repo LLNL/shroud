@@ -1,4 +1,4 @@
-// wrapClass1.h
+// wraplibrary_one_two.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,15 +15,14 @@
 //
 // #######################################################################
 /**
- * \file wrapClass1.h
- * \brief Shroud generated wrapper for Class1 class
+ * \file wraplibrary_one_two.h
+ * \brief Shroud generated wrapper for two namespace
  */
 // For C users and C++ implementation
 
-#ifndef WRAPCLASS1_H
-#define WRAPCLASS1_H
+#ifndef WRAPLIBRARY_ONE_TWO_H
+#define WRAPLIBRARY_ONE_TWO_H
 
-#include "type_header.h"
 #include "typeslibrary.h"
 
 
@@ -32,10 +31,10 @@ extern "C" {
 #endif
 
 
-void LIB_three_class1_method1(LIB_class1 * self, int arg1);
+void LIB_one_two_function1();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPCLASS1_H
+#endif  // WRAPLIBRARY_ONE_TWO_H

@@ -1,4 +1,4 @@
-// wraplibrary.h
+// wraplibrary_one_two.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -14,27 +14,17 @@
 // For details about use and distribution, please read LICENSE.
 //
 // #######################################################################
-/**
- * \file wraplibrary.h
- * \brief Shroud generated wrapper for library library
- */
-// For C users and C++ implementation
-
-#ifndef WRAPLIBRARY_H
-#define WRAPLIBRARY_H
-
-#include "typeslibrary.h"
+#include "wraplibrary_one_two.h"
+#include "global_header.hpp"
 
 
-#ifdef __cplusplus
 extern "C" {
-#endif
 
 
-void LIB_function1();
-
-#ifdef __cplusplus
+void LIB_one_two_function1()
+{
+    one::two::function1();
+    return;
 }
-#endif
 
-#endif  // WRAPLIBRARY_H
+}  // extern "C"
