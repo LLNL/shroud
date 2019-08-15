@@ -1,4 +1,4 @@
-! wrapfuserlibrary.f
+! wrapfUserLibrary_example.f
 ! This is generated code, do not edit
 ! Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
 !
@@ -14,12 +14,12 @@
 !
 ! #######################################################################
 !>
-!! \file wrapfuserlibrary.f
-!! \brief Shroud generated wrapper for UserLibrary library
+!! \file wrapfUserLibrary_example.f
+!! \brief Shroud generated wrapper for example namespace
 !<
 ! splicer begin file_top
 ! splicer end file_top
-module userlibrary_mod
+module userlibrary_example_mod
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -32,4 +32,4 @@ module userlibrary_mod
 
 contains
 
-end module userlibrary_mod
+end module userlibrary_example_mod
