@@ -21,7 +21,7 @@ C method void method1()
 C method void method2()
 Close foo.h
 Close foo.cpp
-Close foo.cpp
+Close foons0.cpp
 C function void init_ns1()
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc

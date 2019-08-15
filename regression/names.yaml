@@ -58,8 +58,9 @@ declarations:
 
 - decl: namespace ns0
   format:
-    C_header_filename: foo.h
-    C_impl_filename: foo.cpp
+    # C_header_filename is not created.
+    C_header_filename: foons0.h
+    C_impl_filename: foons0.cpp
     F_module_name: name_module
     F_impl_filename: foo.f
   declarations:
@@ -71,8 +72,6 @@ declarations:
     format:
       C_header_filename: foo.h
       C_impl_filename: foo.cpp
-      F_module_name: name_module
-      F_impl_filename: foo.f
       F_derived_name: FNames
   
     declarations:
