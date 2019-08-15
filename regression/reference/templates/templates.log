@@ -1,15 +1,5 @@
 Read yaml templates.yaml
 Close templates_types.yaml
-class Worker
-class user
-C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
-Close wrapuser_int.h
-Close wrapuser_int.cpp
-C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C function int UseImplWorker()
-Close wraptemplates.h
-Close wraptemplates.cpp
 class vector
 C method vector()
 C method ~vector()
@@ -25,6 +15,16 @@ C method double & at(size_type n +intent(in)+value)
 Close wrapvector_double.h
 Close wrapvector_double.cpp
 class ImplWorker1
+class Worker
+class user
+C method void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Close wrapuser_int.h
+Close wrapuser_int.cpp
+C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C function int UseImplWorker()
+Close wraptemplates.h
+Close wraptemplates.cpp
 Close typestemplates.h
 class Worker
 class user

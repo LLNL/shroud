@@ -1,21 +1,5 @@
 Read yaml names.yaml
 Close testnames_types.yaml
-class Names2
-Close wrapNames2.cc
-class twoTs
-class twoTs
-C function void function1()
-C function void function2()
-C function void function3a(int i +intent(in)+value)
-C function void function3a(long i +intent(in)+value)
-C function int function4(const std::string & rv +intent(in))
-C function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
-C function void function5() +name(fiveplus)
-C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C function int UseImplWorker()
-Close top.h
-Close top.cpp
 class Names
 C method void method1()
 C method void method2()
@@ -32,6 +16,22 @@ class vector
 class vector
 class vector
 Close wraptestnames_std.cc
+class Names2
+Close wrapNames2.cc
+class twoTs
+class twoTs
+C function void function1()
+C function void function2()
+C function void function3a(int i +intent(in)+value)
+C function void function3a(long i +intent(in)+value)
+C function int function4(const std::string & rv +intent(in))
+C function int function4(const std::string & rv +intent(in)+len_trim(Lrv))
+C function void function5() +name(fiveplus)
+C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C function int UseImplWorker()
+Close top.h
+Close top.cpp
 Close typestestnames.hh
 class Names2
 class twoTs

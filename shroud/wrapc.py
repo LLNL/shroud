@@ -25,9 +25,12 @@ lang_map = {"c": "C", "cxx": "C++"}
 
 
 class Wrapc(util.WrapperMixin):
-    """Generate C bindings for C++ classes
+    """Generate C bindings and Fortran helpers for C++ library.
 
     """
+    capsule_code = {}
+    capsule_order = []
+    capsule_include = {}  # includes needed by C_memory_dtor_function
 
     def __init__(self, newlibrary, config, splicers):
         """
@@ -84,7 +87,13 @@ class Wrapc(util.WrapperMixin):
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
             top - True = top level library/namespace, else nested.
+
+        Wrap depth first to accumulate destructor information
+        which is written at the library level.
         """
+        for ns in node.namespaces:
+            if ns.options.wrap_c:
+                self.wrap_namespace(ns)
 
         self._push_splicer("class")
         structs = []
@@ -100,10 +109,6 @@ class Wrapc(util.WrapperMixin):
         self._pop_splicer("class")
 
         self.write_file(node, None, structs, top)
-
-        for ns in node.namespaces:
-            if ns.options.wrap_c:
-                self.wrap_namespace(ns)
 
     def write_file(self, ns, cls, structs, top):
         """Write a file for the library, namespace or class.
@@ -128,7 +133,7 @@ class Wrapc(util.WrapperMixin):
             self.wrap_enums(ns)
             self.wrap_functions(ns)
             if top:
-                self.write_capsule_code(ns)
+                self.write_capsule_code()
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -1363,13 +1368,11 @@ class Wrapc(util.WrapperMixin):
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.name
 
-    def write_capsule_code(self, library):
+    def write_capsule_code(self):
         """Write a function used to delete memory when C/C++
         memory is deleted.
-
-        Args:
-            library = ast.LibraryNode.
         """
+        library = self.newlibrary
         options = library.options
 
         self.c_helper["capsule_data_helper"] = True
@@ -1437,16 +1440,12 @@ class Wrapc(util.WrapperMixin):
         if options.literalinclude2:
             output.append("// end release allocated memory")
 
-    capsule_code = {}
-    capsule_order = []
-    capsule_include = {}  # includes needed by C_memory_dtor_function
-
     def add_capsule_code(self, name, var_typemap, lines):
         """Add unique names to capsule_code.
         Return index of name.
 
         Args:
-            name -
+            name - ex.  std::vector<int>
             var_typemap - typemap.Typemap.
             lines -
         """
@@ -1481,6 +1480,7 @@ class Wrapc(util.WrapperMixin):
 
     def find_idtor(self, ast, atypemap, fmt, intent_blk):
         """Find the destructor based on the typemap.
+        idtor = index of destructor.
 
         Only arguments have idtor's.
         For example,

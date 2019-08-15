@@ -1,7 +1,4 @@
 Wrote testnames_types.yaml
-Wrote wrapNames2.cc
-Wrote top.h
-Wrote top.cpp
 Wrote foo.h
 Wrote foo.cpp
 Wrote foons0.cpp
@@ -9,6 +6,9 @@ Wrote wraptestnames_ns1.hh
 Wrote wraptestnames_ns1.cc
 Wrote wraptestnames_internal.cc
 Wrote wraptestnames_std.cc
+Wrote wrapNames2.cc
+Wrote top.h
+Wrote top.cpp
 Wrote typestestnames.hh
 Wrote top.f
 Wrote foo.f

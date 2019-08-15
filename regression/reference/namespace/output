@@ -1,8 +1,8 @@
 Wrote ns_types.yaml
-Wrote wrapns.h
-Wrote wrapns.cpp
 Wrote wrapns_outer.h
 Wrote wrapns_outer.cpp
+Wrote wrapns.h
+Wrote wrapns.cpp
 Wrote typesns.h
 Wrote wrapfns.f
 Wrote wrapfns_outer.f
