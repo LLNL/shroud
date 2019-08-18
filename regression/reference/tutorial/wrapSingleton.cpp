@@ -19,7 +19,7 @@ extern "C" {
 // splicer end class.Singleton.C_definitions
 
 // static Singleton & getReference()
-TUT_singleton * TUT_singleton_get_reference(TUT_singleton * SHC_rv)
+TUT_singleton * TUT_Singleton_get_reference(TUT_singleton * SHC_rv)
 {
 // splicer begin class.Singleton.method.get_reference
     tutorial::Singleton & SHCXX_rv = tutorial::Singleton::getReference(

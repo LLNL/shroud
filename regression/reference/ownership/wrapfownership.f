@@ -74,7 +74,7 @@ module ownership_mod
     interface
 
         subroutine c_class1_dtor(self) &
-                bind(C, name="OWN_class1_dtor")
+                bind(C, name="OWN_Class1_dtor")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
@@ -82,7 +82,7 @@ module ownership_mod
 
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
-                bind(C, name="OWN_class1_get_flag")
+                bind(C, name="OWN_Class1_get_flag")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none

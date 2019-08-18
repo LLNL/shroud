@@ -437,7 +437,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_template="{C_prefix}{flat_name}",
             C_enum_member_template="{C_prefix}{C_scope_name}{enum_member_name}",
             C_name_template=(
-                "{C_prefix}{C_name_scope}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
             C_memory_dtor_function_template=(
                 "{C_prefix}SHROUD_memory_destructor"
@@ -483,7 +483,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_metadata_template="{cxx_class}.metatable",
             LUA_ctor_name_template="{cxx_class}",
             LUA_name_template="{function_name}",
-            LUA_name_impl_template="{LUA_prefix}{class_prefix}{underscore_name}",
+            LUA_name_impl_template="{LUA_prefix}{C_name_scope}{underscore_name}",
 
             PY_module_filename_template=(
                 "py{file_scope}module.{PY_impl_filename_suffix}"
@@ -1038,6 +1038,8 @@ class ClassNode(AstNode, NamespaceMixin):
             class_lower=self.name.lower(),
             class_upper=self.name.upper(),
             class_scope=self.name + "::",
+#            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
+            C_name_scope=self.parent.fmtdict.C_name_scope + self.name + "_",
             F_derived_name=self.name.lower(),
         )
 

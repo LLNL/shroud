@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin class.Singleton.C_declarations
 // splicer end class.Singleton.C_declarations
 
-TUT_singleton * TUT_singleton_get_reference(TUT_singleton * SHC_rv);
+TUT_singleton * TUT_Singleton_get_reference(TUT_singleton * SHC_rv);
 
 #ifdef __cplusplus
 }

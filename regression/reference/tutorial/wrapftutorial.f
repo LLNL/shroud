@@ -124,7 +124,7 @@ module tutorial_mod
     interface
         function c_class1_new_default(SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_new_default")
+                bind(C, name="TUT_Class1_new_default")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_class1_capsule
             implicit none
@@ -138,7 +138,7 @@ module tutorial_mod
     interface
         function c_class1_new_flag(flag, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_new_flag")
+                bind(C, name="TUT_Class1_new_flag")
             use iso_c_binding, only : C_INT, C_PTR
             import :: SHROUD_class1_capsule
             implicit none
@@ -152,7 +152,7 @@ module tutorial_mod
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
-                bind(C, name="TUT_class1_delete")
+                bind(C, name="TUT_Class1_delete")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
@@ -164,7 +164,7 @@ module tutorial_mod
     interface
         function c_class1_method1(self) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_method1")
+                bind(C, name="TUT_Class1_method1")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none
@@ -178,7 +178,7 @@ module tutorial_mod
     interface
         pure function c_class1_equivalent(self, obj2) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_equivalent")
+                bind(C, name="TUT_Class1_equivalent")
             use iso_c_binding, only : C_BOOL
             import :: SHROUD_class1_capsule
             implicit none
@@ -192,7 +192,7 @@ module tutorial_mod
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
-                bind(C, name="TUT_class1_return_this")
+                bind(C, name="TUT_Class1_return_this")
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(IN) :: self
@@ -204,7 +204,7 @@ module tutorial_mod
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_return_this_buffer")
+                bind(C, name="TUT_Class1_return_this_buffer")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
             import :: SHROUD_class1_capsule
             implicit none
@@ -222,7 +222,7 @@ module tutorial_mod
         function c_class1_return_this_buffer_bufferify(self, name, &
                 Lname, flag, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_return_this_buffer_bufferify")
+                bind(C, name="TUT_Class1_return_this_buffer_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
             import :: SHROUD_class1_capsule
             implicit none
@@ -240,7 +240,7 @@ module tutorial_mod
     interface
         function c_class1_getclass3(self, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_getclass3")
+                bind(C, name="TUT_Class1_getclass3")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_class1_capsule
             implicit none
@@ -255,7 +255,7 @@ module tutorial_mod
     interface
         function c_class1_direction_func(self, arg) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_direction_func")
+                bind(C, name="TUT_Class1_direction_func")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none
@@ -270,7 +270,7 @@ module tutorial_mod
     interface
         function c_class1_get_m_flag(self) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_get_m_flag")
+                bind(C, name="TUT_Class1_get_m_flag")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none
@@ -284,7 +284,7 @@ module tutorial_mod
     interface
         function c_class1_get_test(self) &
                 result(SHT_rv) &
-                bind(C, name="TUT_class1_get_test")
+                bind(C, name="TUT_Class1_get_test")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none
@@ -297,7 +297,7 @@ module tutorial_mod
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
-                bind(C, name="TUT_class1_set_test")
+                bind(C, name="TUT_Class1_set_test")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none
@@ -313,7 +313,7 @@ module tutorial_mod
     interface
         function c_singleton_get_reference(SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="TUT_singleton_get_reference")
+                bind(C, name="TUT_Singleton_get_reference")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_singleton_capsule
             implicit none

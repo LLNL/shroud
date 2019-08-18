@@ -597,6 +597,7 @@ class GenFunctions(object):
                             class_lower=cxx_class.lower(),
                             class_upper=cxx_class.upper(),
                             class_scope=cxx_class + "::",
+                            C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_derived_name=cxx_class.lower(),
                         )
                     )

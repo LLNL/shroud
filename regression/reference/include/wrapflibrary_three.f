@@ -49,7 +49,7 @@ module library_three_mod
     interface
 
         subroutine c_class1_method1(self, arg1) &
-                bind(C, name="LIB_three_class1_method1")
+                bind(C, name="LIB_three_Class1_method1")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class1_capsule
             implicit none

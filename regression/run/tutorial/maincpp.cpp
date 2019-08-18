@@ -17,6 +17,16 @@
 
 #include "tutorial.hpp"
 
+int tester1()
+{
+  return tutorial::Class1::DIRECTION::UP;
+}
+int tester2()
+{
+  return tutorial::Class1::UP;
+}
+
+
 
 int main(int argc, char *argv[])
 {

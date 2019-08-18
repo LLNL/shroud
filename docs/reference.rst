@@ -367,7 +367,7 @@ C_memory_dtor_function_template
     defaults to ``{C_prefix}SHROUD_memory_destructor``.
 
 C_name_template
-    ``{C_prefix}{C_name_scope}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
+    ``{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
 C_var_len_template
     Format for variable created with *len* annotation.
@@ -464,7 +464,7 @@ LUA_name_impl_template
     Name of implementation function.
     All overloaded function use the same Lua wrapper so 
     *function_suffix* is not needed.
-    ``{LUA_prefix}{class_prefix}{underscore_name}``
+    ``{LUA_prefix}{C_name_scope}{underscore_name}``
 
 LUA_name_template
     Name of function as know by Lua.
@@ -897,11 +897,13 @@ F_name_instance_set
 
 cxx_class
     The name of the C++ class from the YAML input file.
-    ex. ``std::vector``.
+    ex. ``std::string``.
     Used in generating names for C and Fortran and filenames.
+    When the class is templated, it willl be converted to a legal identifier
+    by adding the *template_suffix* or a sequence number.
 
 cxx_type
-    The name of the C++ class, including information
+    The namespace qualified name of the C++ class, including information
     from *template_arguments*, ex. ``std::vector<int>``.
     Same as *cxx_class* if *template_arguments* is not defined.
     Used in generating C++ code.
@@ -918,7 +920,8 @@ class_prefix
     Outside of a class, set to empty string.
 
 class_scope
-    Use with name resolution or blank if not in a class.
+    Used to to access class static functions.
+    Blank when not in a class.
     ``{cxx_class}::``
 
 C_prefix

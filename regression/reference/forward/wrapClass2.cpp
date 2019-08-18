@@ -27,7 +27,7 @@ extern "C" {
 // splicer end class.Class2.C_definitions
 
 // Class2()
-FOR_class2 * FOR_class2_ctor(FOR_class2 * SHC_rv)
+FOR_class2 * FOR_Class2_ctor(FOR_class2 * SHC_rv)
 {
 // splicer begin class.Class2.method.ctor
     tutorial::Class2 *SHCXX_rv = new tutorial::Class2();
@@ -38,7 +38,7 @@ FOR_class2 * FOR_class2_ctor(FOR_class2 * SHC_rv)
 }
 
 // ~Class2()
-void FOR_class2_dtor(FOR_class2 * self)
+void FOR_Class2_dtor(FOR_class2 * self)
 {
 // splicer begin class.Class2.method.dtor
     tutorial::Class2 *SH_this =
@@ -50,7 +50,7 @@ void FOR_class2_dtor(FOR_class2 * self)
 }
 
 // void func1(Class1 * arg +intent(in))
-void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
+void FOR_Class2_func1(FOR_class2 * self, TUT_class1 * arg)
 {
 // splicer begin class.Class2.method.func1
     tutorial::Class2 *SH_this =
@@ -63,7 +63,7 @@ void FOR_class2_func1(FOR_class2 * self, TUT_class1 * arg)
 }
 
 // void acceptClass3(Class3 * arg +intent(in))
-void FOR_class2_accept_class3(FOR_class2 * self, FOR_class3 * arg)
+void FOR_Class2_accept_class3(FOR_class2 * self, FOR_class3 * arg)
 {
 // splicer begin class.Class2.method.accept_class3
     tutorial::Class2 *SH_this =

@@ -29,7 +29,7 @@ extern "C" {
 // splicer end C_definition
 
 // ~Class1()
-static int l_class1_dtor(lua_State *L)
+static int l_Class1_dtor(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
@@ -44,7 +44,7 @@ static int l_class1_dtor(lua_State *L)
 // splicer end class.Class1.additional_functions
 
 static const struct luaL_Reg l_Class1_Reg [] = {
-    {"__gc", l_class1_dtor},
+    {"__gc", l_Class1_dtor},
     // splicer begin class.Class1.register
     // splicer end class.Class1.register
     {NULL, NULL}   /*sentinel */

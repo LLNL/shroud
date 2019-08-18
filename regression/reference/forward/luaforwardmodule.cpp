@@ -38,7 +38,7 @@ static const struct luaL_Reg l_Class3_Reg [] = {
 };
 
 // Class2()
-static int l_class2_ctor(lua_State *L)
+static int l_Class2_ctor(lua_State *L)
 {
     // splicer begin class.Class2.method.ctor
     l_Class2_Type * SH_this =
@@ -53,7 +53,7 @@ static int l_class2_ctor(lua_State *L)
 }
 
 // ~Class2()
-static int l_class2_dtor(lua_State *L)
+static int l_Class2_dtor(lua_State *L)
 {
     // splicer begin class.Class2.method.__gc
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
@@ -65,7 +65,7 @@ static int l_class2_dtor(lua_State *L)
 }
 
 // void func1(Class1 * arg +intent(in))
-static int l_class2_func1(lua_State *L)
+static int l_Class2_func1(lua_State *L)
 {
     // splicer begin class.Class2.method.func1
     tutorial::Class1 * arg = static_cast<tutorial::Class1 *>(
@@ -79,7 +79,7 @@ static int l_class2_func1(lua_State *L)
 }
 
 // void acceptClass3(Class3 * arg +intent(in))
-static int l_class2_accept_class3(lua_State *L)
+static int l_Class2_accept_class3(lua_State *L)
 {
     // splicer begin class.Class2.method.acceptClass3
     tutorial::Class3 * arg = static_cast<tutorial::Class3 *>(
@@ -96,9 +96,9 @@ static int l_class2_accept_class3(lua_State *L)
 // splicer end class.Class2.additional_functions
 
 static const struct luaL_Reg l_Class2_Reg [] = {
-    {"__gc", l_class2_dtor},
-    {"func1", l_class2_func1},
-    {"acceptClass3", l_class2_accept_class3},
+    {"__gc", l_Class2_dtor},
+    {"func1", l_Class2_func1},
+    {"acceptClass3", l_Class2_accept_class3},
     // splicer begin class.Class2.register
     // splicer end class.Class2.register
     {NULL, NULL}   /*sentinel */
@@ -108,7 +108,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // splicer end additional_functions
 
 static const struct luaL_Reg l_forward_Reg [] = {
-    {"Class2", l_class2_ctor},
+    {"Class2", l_Class2_ctor},
     // splicer begin register
     // splicer end register
     {NULL, NULL}   /*sentinel */

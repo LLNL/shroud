@@ -116,7 +116,7 @@ module preprocess_mod
     interface
 
         subroutine c_user1_method1(self) &
-                bind(C, name="PRE_user1_method1")
+                bind(C, name="PRE_User1_method1")
             import :: SHROUD_user1_capsule
             implicit none
             type(SHROUD_user1_capsule), intent(IN) :: self
@@ -124,7 +124,7 @@ module preprocess_mod
 
 #if defined(USE_TWO)
         subroutine c_user1_method2(self) &
-                bind(C, name="PRE_user1_method2")
+                bind(C, name="PRE_User1_method2")
             import :: SHROUD_user1_capsule
             implicit none
             type(SHROUD_user1_capsule), intent(IN) :: self
@@ -133,7 +133,7 @@ module preprocess_mod
 
 #if defined(USE_THREE)
         subroutine c_user1_method3def_0(self) &
-                bind(C, name="PRE_user1_method3def_0")
+                bind(C, name="PRE_User1_method3def_0")
             import :: SHROUD_user1_capsule
             implicit none
             type(SHROUD_user1_capsule), intent(IN) :: self
@@ -142,7 +142,7 @@ module preprocess_mod
 
 #if defined(USE_THREE)
         subroutine c_user1_method3def_1(self, i) &
-                bind(C, name="PRE_user1_method3def_1")
+                bind(C, name="PRE_User1_method3def_1")
             use iso_c_binding, only : C_INT
             import :: SHROUD_user1_capsule
             implicit none
@@ -157,7 +157,7 @@ module preprocess_mod
 
 #ifdef USE_CLASS3_A
         subroutine c_user2_exfunc_0(self) &
-                bind(C, name="PRE_user2_exfunc_0")
+                bind(C, name="PRE_User2_exfunc_0")
             import :: SHROUD_user2_capsule
             implicit none
             type(SHROUD_user2_capsule), intent(IN) :: self
@@ -166,7 +166,7 @@ module preprocess_mod
 
 #ifndef USE_CLASS3_A
         subroutine c_user2_exfunc_1(self, flag) &
-                bind(C, name="PRE_user2_exfunc_1")
+                bind(C, name="PRE_User2_exfunc_1")
             use iso_c_binding, only : C_INT
             import :: SHROUD_user2_capsule
             implicit none

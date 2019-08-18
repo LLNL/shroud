@@ -41,7 +41,7 @@ class Typemap(object):
         ("typedef", None),  # Initialize from existing type
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
-        ("cxx_type", None),  # Name of type in C++
+        ("cxx_type", None),  # Name of type in C++, including namespace
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
         (

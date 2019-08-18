@@ -35,9 +35,9 @@ extern "C" {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-void OWN_class1_dtor(OWN_class1 * self);
+void OWN_Class1_dtor(OWN_class1 * self);
 
-int OWN_class1_get_flag(OWN_class1 * self);
+int OWN_Class1_get_flag(OWN_class1 * self);
 
 #ifdef __cplusplus
 }

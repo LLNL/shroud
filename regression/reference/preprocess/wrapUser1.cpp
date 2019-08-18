@@ -26,7 +26,7 @@ extern "C" {
 // splicer end class.User1.C_definitions
 
 // void method1()
-void PRE_user1_method1(PRE_user1 * self)
+void PRE_User1_method1(PRE_user1 * self)
 {
 // splicer begin class.User1.method.method1
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -37,7 +37,7 @@ void PRE_user1_method1(PRE_user1 * self)
 
 // void method2()
 #if defined(USE_TWO)
-void PRE_user1_method2(PRE_user1 * self)
+void PRE_User1_method2(PRE_user1 * self)
 {
 // splicer begin class.User1.method.method2
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -49,7 +49,7 @@ void PRE_user1_method2(PRE_user1 * self)
 
 // void method3def()
 #if defined(USE_THREE)
-void PRE_user1_method3def_0(PRE_user1 * self)
+void PRE_User1_method3def_0(PRE_user1 * self)
 {
 // splicer begin class.User1.method.method3def_0
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -61,7 +61,7 @@ void PRE_user1_method3def_0(PRE_user1 * self)
 
 // void method3def(int i=0 +intent(in)+value)
 #if defined(USE_THREE)
-void PRE_user1_method3def_1(PRE_user1 * self, int i)
+void PRE_User1_method3def_1(PRE_user1 * self, int i)
 {
 // splicer begin class.User1.method.method3def_1
     User1 *SH_this = static_cast<User1 *>(self->addr);

@@ -50,7 +50,7 @@ module library_mod
     interface
 
         subroutine c_class2_method1(self, comm) &
-                bind(C, name="LIB_class2_method1")
+                bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
             import :: SHROUD_class2_capsule
             implicit none
@@ -59,7 +59,7 @@ module library_mod
         end subroutine c_class2_method1
 
         subroutine c_class2_method2(self, c2) &
-                bind(C, name="LIB_class2_method2")
+                bind(C, name="LIB_Class2_method2")
             import :: SHROUD_class1_capsule, SHROUD_class2_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self
