@@ -34,9 +34,9 @@ extern "C" {
 
 //  cls2Enum::Color
 enum SCO_cls2Enum_Color {
-    SCO_cls2Enum_Color_RED = 50,
-    SCO_cls2Enum_Color_BLUE,
-    SCO_cls2Enum_Color_WHITE
+    SCO_cls2Enum_RED = 50,
+    SCO_cls2Enum_BLUE,
+    SCO_cls2Enum_WHITE
 };
 
 // splicer begin class.cls2Enum.C_declarations

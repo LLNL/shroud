@@ -26,9 +26,9 @@ extern "C" {
 
 //  tutorial::Color
 enum TUT_tutorial_Color {
-    TUT_tutorial_Color_RED,
-    TUT_tutorial_Color_BLUE,
-    TUT_tutorial_Color_WHITE
+    TUT_RED,
+    TUT_BLUE,
+    TUT_WHITE
 };
 
 // splicer begin C_declarations

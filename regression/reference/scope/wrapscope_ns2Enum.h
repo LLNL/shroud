@@ -34,9 +34,9 @@ extern "C" {
 
 //  ns2Enum::Color
 enum SCO_ns2Enum_Color {
-    SCO_ns2Enum_Color_RED = 30,
-    SCO_ns2Enum_Color_BLUE,
-    SCO_ns2Enum_Color_WHITE
+    SCO_ns2Enum_RED = 30,
+    SCO_ns2Enum_BLUE,
+    SCO_ns2Enum_WHITE
 };
 
 // splicer begin C_declarations

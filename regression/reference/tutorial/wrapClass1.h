@@ -26,10 +26,10 @@ extern "C" {
 
 //  tutorial::Class1::DIRECTION
 enum TUT_tutorial_Class1_DIRECTION {
-    TUT_tutorial_Class1_DIRECTION_UP = 2,
-    TUT_tutorial_Class1_DIRECTION_DOWN,
-    TUT_tutorial_Class1_DIRECTION_LEFT = 100,
-    TUT_tutorial_Class1_DIRECTION_RIGHT
+    TUT_Class1_UP = 2,
+    TUT_Class1_DOWN,
+    TUT_Class1_LEFT = 100,
+    TUT_Class1_RIGHT
 };
 
 // splicer begin class.Class1.C_declarations

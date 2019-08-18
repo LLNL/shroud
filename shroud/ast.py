@@ -435,7 +435,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
             C_enum_template="{C_prefix}{flat_name}",
-            C_enum_member_template="{C_prefix}{C_scope_name}{enum_member_name}",
+            C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
@@ -1456,6 +1456,9 @@ class EnumNode(AstNode):
         self.scope = self.parent.scope + self.name + "::"
         self.typemap = typemap.create_enum_typemap(self)
         # also 'enum class foo' will alter scope
+
+        if ast.scope is not None:
+            fmt_enum.C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
 
         fmt_enum.flat_name = self.typemap.flat_name
         if fmt_enum.flat_name == self.typemap.name and \
