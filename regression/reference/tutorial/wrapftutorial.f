@@ -36,15 +36,15 @@ module tutorial_mod
     ! end array_context
 
     !  enum tutorial::Class1::DIRECTION
-    integer(C_INT), parameter :: tutorial_class1_direction_up = 2
-    integer(C_INT), parameter :: tutorial_class1_direction_down = 3
-    integer(C_INT), parameter :: tutorial_class1_direction_left = 100
-    integer(C_INT), parameter :: tutorial_class1_direction_right = 101
+    integer(C_INT), parameter :: class1_up = 2
+    integer(C_INT), parameter :: class1_down = 3
+    integer(C_INT), parameter :: class1_left = 100
+    integer(C_INT), parameter :: class1_right = 101
 
     !  enum tutorial::Color
-    integer(C_INT), parameter :: tutorial_color_red = 0
-    integer(C_INT), parameter :: tutorial_color_blue = 1
-    integer(C_INT), parameter :: tutorial_color_white = 2
+    integer(C_INT), parameter :: red = 0
+    integer(C_INT), parameter :: blue = 1
+    integer(C_INT), parameter :: white = 2
 
     ! splicer begin class.Class1.module_top
     ! splicer end class.Class1.module_top

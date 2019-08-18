@@ -409,9 +409,9 @@ F_capsule_data_type_class_template
 
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
-    ``{class_prefix}{enum_lower}_{enum_member_lower}``
-    Note that there is not F_enum_template since only the members are 
-    in the Fortran code, not the enum itself.
+    ``{F_name_scope}{enum_member_lower}``
+    Note that *F_enum_template* does not exist since only the members are 
+    in the Fortran code, not the enum name itself.
 
 F_name_generic_template
     ``{underscore_name}``

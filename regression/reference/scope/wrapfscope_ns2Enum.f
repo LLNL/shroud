@@ -30,9 +30,9 @@ module scope_ns2enum_mod
     ! splicer end module_top
 
     !  enum ns2Enum::Color
-    integer(C_INT), parameter :: ns2enum_color_red = 30
-    integer(C_INT), parameter :: ns2enum_color_blue = 31
-    integer(C_INT), parameter :: ns2enum_color_white = 32
+    integer(C_INT), parameter :: red = 30
+    integer(C_INT), parameter :: blue = 31
+    integer(C_INT), parameter :: white = 32
 
     interface
 

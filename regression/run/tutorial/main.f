@@ -55,17 +55,17 @@ contains
 
     call set_case_name("test_enums")
 
-    call assert_equals(0, tutorial_color_red, "tutorial_color_red")
-    call assert_equals(1, tutorial_color_blue, "tutorial_color_blue")
-    call assert_equals(2, tutorial_color_white, "tutorial_color_white")
+    call assert_equals(0, red, "tutorial_color_red")
+    call assert_equals(1, blue, "tutorial_color_blue")
+    call assert_equals(2, white, "tutorial_color_white")
 
-    call assert_equals(2, tutorial_class1_direction_up, "tutorial_class1_direction_up")
-    call assert_equals(3, tutorial_class1_direction_down, "tutorial_class1_direction_down")
-    call assert_equals(100, tutorial_class1_direction_left, "tutorial_class1_direction_left")
-    call assert_equals(101, tutorial_class1_direction_right, "tutorial_class1_direction_right")
+    call assert_equals(2, class1_up, "tutorial_class1_direction_up")
+    call assert_equals(3, class1_down, "tutorial_class1_direction_down")
+    call assert_equals(100, class1_left, "tutorial_class1_direction_left")
+    call assert_equals(101, class1_right, "tutorial_class1_direction_right")
 
-    rv_int = colorfunc(tutorial_color_BLUE)
-    call assert_true(rv_int .eq. tutorial_color_RED, "tutorial_color_RED")
+    rv_int = colorfunc(BLUE)
+    call assert_true(rv_int .eq. RED, "tutorial_color_RED")
 
   end subroutine test_enums
 
@@ -260,12 +260,12 @@ contains
     call assert_true(obj0 .eq. obj2, "return_this_buffer equal")
 
     direction = -1
-    direction = obj0%direction_func(tutorial_class1_direction_left)
-    call assert_equals(tutorial_class1_direction_left, direction, "obj0.directionFunc")
+    direction = obj0%direction_func(class1_left)
+    call assert_equals(class1_left, direction, "obj0.directionFunc")
 
     direction = -1
-    direction = direction_func(tutorial_class1_direction_left)
-    call assert_equals(tutorial_class1_direction_right, direction, "directionFunc")
+    direction = direction_func(class1_left)
+    call assert_equals(class1_right, direction, "directionFunc")
 
     ! Since obj0 is passed by value, save flag in global_flag
     

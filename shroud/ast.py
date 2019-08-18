@@ -452,7 +452,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template=(
-                "{F_scope_name}{enum_member_lower}"
+                "{F_name_scope}{enum_member_lower}"
             ),
             F_name_impl_template=(
                 "{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
@@ -578,6 +578,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_result="SHT_rv",
             F_result_ptr="SHT_prv",
             F_result_capsule="SHT_crv",
+            F_name_scope = "",
             F_pointer="SHT_ptr",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
@@ -1040,6 +1041,7 @@ class ClassNode(AstNode, NamespaceMixin):
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
             C_name_scope=self.parent.fmtdict.C_name_scope + self.name + "_",
+            F_name_scope=self.parent.fmtdict.F_name_scope + self.name.lower() + "_",
             F_derived_name=self.name.lower(),
         )
 
@@ -1459,22 +1461,9 @@ class EnumNode(AstNode):
 
         if ast.scope is not None:
             fmt_enum.C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
+            fmt_enum.F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
 
         fmt_enum.flat_name = self.typemap.flat_name
-        if fmt_enum.flat_name == self.typemap.name and \
-           ast.scope is None:
-            # enum Color { RED };
-            # {C_prefix}_RED
-            fmt_enum.C_scope_name = ""
-        else:
-            # enum class Color { RED };
-            # {C_prefix}_Color_RED
-            fmt_enum.C_scope_name = self.typemap.flat_name + "_"
-
-        # XXX - fortran should not include scope levels which relate to 
-        # the namespace for the module
-        fmt_enum.F_scope_name = fmt_enum.C_scope_name.lower()
-
 
 ######################################################################
 

@@ -9,7 +9,7 @@
                         "_fmtmembers": {
                             "DOWN": {
                                 "C_enum_member": "TUT_Class1_DOWN",
-                                "F_enum_member": "tutorial_class1_direction_down",
+                                "F_enum_member": "class1_down",
                                 "enum_member_lower": "down",
                                 "enum_member_name": "DOWN",
                                 "enum_member_upper": "DOWN",
@@ -17,7 +17,7 @@
                             },
                             "LEFT": {
                                 "C_enum_member": "TUT_Class1_LEFT",
-                                "F_enum_member": "tutorial_class1_direction_left",
+                                "F_enum_member": "class1_left",
                                 "cxx_value": "100",
                                 "enum_member_lower": "left",
                                 "enum_member_name": "LEFT",
@@ -26,7 +26,7 @@
                             },
                             "RIGHT": {
                                 "C_enum_member": "TUT_Class1_RIGHT",
-                                "F_enum_member": "tutorial_class1_direction_right",
+                                "F_enum_member": "class1_right",
                                 "enum_member_lower": "right",
                                 "enum_member_name": "RIGHT",
                                 "enum_member_upper": "RIGHT",
@@ -34,7 +34,7 @@
                             },
                             "UP": {
                                 "C_enum_member": "TUT_Class1_UP",
-                                "F_enum_member": "tutorial_class1_direction_up",
+                                "F_enum_member": "class1_up",
                                 "cxx_value": "2",
                                 "enum_member_lower": "up",
                                 "enum_member_name": "UP",
@@ -68,8 +68,6 @@
                         "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };",
                         "fmtdict": {
                             "C_enum": "TUT_tutorial_Class1_DIRECTION",
-                            "C_scope_name": "tutorial_Class1_DIRECTION_",
-                            "F_scope_name": "tutorial_class1_direction_",
                             "enum_lower": "direction",
                             "enum_name": "DIRECTION",
                             "enum_upper": "DIRECTION",
@@ -90,6 +88,7 @@
                     "C_type_name": "TUT_class1",
                     "F_capsule_data_type": "SHROUD_class1_capsule",
                     "F_derived_name": "class1",
+                    "F_name_scope": "class1_",
                     "LUA_class_reg": "l_Class1_Reg",
                     "LUA_ctor_name": "Class1",
                     "LUA_metadata": "Class1.metatable",
@@ -1431,6 +1430,7 @@
                     "C_type_name": "TUT_singleton",
                     "F_capsule_data_type": "SHROUD_singleton_capsule",
                     "F_derived_name": "singleton",
+                    "F_name_scope": "singleton_",
                     "PY_PyObject": "PY_Singleton",
                     "PY_PyTypeObject": "PY_Singleton_Type",
                     "PY_capsule_name": "PY_Singleton_capsule_name",
@@ -1551,7 +1551,7 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "TUT_BLUE",
-                        "F_enum_member": "tutorial_color_blue",
+                        "F_enum_member": "blue",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
@@ -1559,7 +1559,7 @@
                     },
                     "RED": {
                         "C_enum_member": "TUT_RED",
-                        "F_enum_member": "tutorial_color_red",
+                        "F_enum_member": "red",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
                         "enum_member_upper": "RED",
@@ -1567,7 +1567,7 @@
                     },
                     "WHITE": {
                         "C_enum_member": "TUT_WHITE",
-                        "F_enum_member": "tutorial_color_white",
+                        "F_enum_member": "white",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -1591,8 +1591,6 @@
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
                     "C_enum": "TUT_tutorial_Color",
-                    "C_scope_name": "tutorial_Color_",
-                    "F_scope_name": "tutorial_color_",
                     "enum_lower": "color",
                     "enum_name": "Color",
                     "enum_upper": "COLOR",
@@ -1647,6 +1645,7 @@
             "F_name_final": "final",
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
+            "F_name_scope": "",
             "F_pointer": "SHT_ptr",
             "F_pure_clause": "",
             "F_result": "SHT_rv",
@@ -6987,7 +6986,7 @@
             "F_auto_reference_count": false,
             "F_capsule_data_type_class_template": "SHROUD_{class_lower}_capsule",
             "F_create_bufferify_function": true,
-            "F_enum_member_template": "{F_scope_name}{enum_member_lower}",
+            "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
             "F_force_wrapper": false,
             "F_impl_filename_class_template": "wrapf{cxx_class}.{F_filename_suffix}",
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",

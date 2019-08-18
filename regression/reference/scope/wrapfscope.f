@@ -30,21 +30,21 @@ module scope_mod
     ! splicer end module_top
 
     !  enum cls1Enum::Color
-    integer(C_INT), parameter :: cls1enum_color_red = 40
-    integer(C_INT), parameter :: cls1enum_color_blue = 41
-    integer(C_INT), parameter :: cls1enum_color_white = 42
+    integer(C_INT), parameter :: cls1enum_red = 40
+    integer(C_INT), parameter :: cls1enum_blue = 41
+    integer(C_INT), parameter :: cls1enum_white = 42
 
     !  enum cls2Enum::Color
-    integer(C_INT), parameter :: cls2enum_color_red = 50
-    integer(C_INT), parameter :: cls2enum_color_blue = 51
-    integer(C_INT), parameter :: cls2enum_color_white = 52
+    integer(C_INT), parameter :: cls2enum_red = 50
+    integer(C_INT), parameter :: cls2enum_blue = 51
+    integer(C_INT), parameter :: cls2enum_white = 52
 
     !  enum Color
     integer(C_INT), parameter :: red = 10
     integer(C_INT), parameter :: blue = 11
     integer(C_INT), parameter :: white = 12
 
-    !  enum ColorEnum
+    !  enum class ColorEnum
     integer(C_INT), parameter :: colorenum_red = 60
     integer(C_INT), parameter :: colorenum_blue = 61
     integer(C_INT), parameter :: colorenum_white = 62
