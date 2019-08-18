@@ -364,6 +364,7 @@ if __name__ == "__main__":
         TestDesc("preprocess"),
         TestDesc("scope"),
         TestDesc("names"),
+        TestDesc("names2"),
         TestDesc("namespace"),
         TestDesc("strings"),
         TestDesc("clibrary"),

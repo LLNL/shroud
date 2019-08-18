@@ -853,14 +853,14 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         self.eval_template("C_header_filename", "_namespace")
         self.eval_template("C_impl_filename", "_namespace")
-        if util.TEMP:
-            self.eval_template("F_module_name", "_namespace")
-            fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
         if skip:
             # No module will be created for this namespace, use library template.
             self.eval_template("F_impl_filename", "_library")
+            self.eval_template("F_module_name", "_library")
         else:
             self.eval_template("F_impl_filename", "_namespace")
+            self.eval_template("F_module_name", "_namespace")
+        fmt_ns.F_module_name = fmt_ns.F_module_name.lower()
 
         if format:
             fmt_ns.update(format, replace=True)
