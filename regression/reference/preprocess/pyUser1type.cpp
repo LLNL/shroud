@@ -44,12 +44,12 @@ PY_User1_tp_del (PY_User1 *self)
 // splicer end class.User1.type.del
 }
 
-static char PY_user1_method1__doc__[] =
+static char PY_method1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_user1_method1(
+PY_method1(
   PY_User1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -62,12 +62,12 @@ PY_user1_method1(
 }
 
 #if defined(USE_TWO)
-static char PY_user1_method2__doc__[] =
+static char PY_method2__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_user1_method2(
+PY_method2(
   PY_User1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -81,12 +81,12 @@ PY_user1_method2(
 #endif // if defined(USE_TWO)
 
 #if defined(USE_THREE)
-static char PY_user1_method3def_1__doc__[] =
+static char PY_method3def_1__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_user1_method3def_1(
+PY_method3def_1(
   PY_User1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -122,15 +122,15 @@ PY_user1_method3def_1(
 // splicer begin class.User1.impl.after_methods
 // splicer end class.User1.impl.after_methods
 static PyMethodDef PY_User1_methods[] = {
-    {"method1", (PyCFunction)PY_user1_method1, METH_NOARGS,
-        PY_user1_method1__doc__},
+    {"method1", (PyCFunction)PY_method1, METH_NOARGS,
+        PY_method1__doc__},
 #if defined(USE_TWO)
-    {"method2", (PyCFunction)PY_user1_method2, METH_NOARGS,
-        PY_user1_method2__doc__},
+    {"method2", (PyCFunction)PY_method2, METH_NOARGS,
+        PY_method2__doc__},
 #endif // if defined(USE_TWO)
 #if defined(USE_THREE)
-    {"method3def", (PyCFunction)PY_user1_method3def_1,
-        METH_VARARGS|METH_KEYWORDS, PY_user1_method3def_1__doc__},
+    {"method3def", (PyCFunction)PY_method3def_1,
+        METH_VARARGS|METH_KEYWORDS, PY_method3def_1__doc__},
 #endif // if defined(USE_THREE)
     // splicer begin class.User1.PyMethodDef
     // splicer end class.User1.PyMethodDef

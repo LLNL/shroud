@@ -47,7 +47,7 @@ PY_User2_tp_del (PY_User2 *self)
 
 #ifdef USE_CLASS3_A
 static PyObject *
-PY_user2_exfunc_0(
+PY_exfunc_0(
   PY_User2 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -62,7 +62,7 @@ PY_user2_exfunc_0(
 
 #ifndef USE_CLASS3_A
 static PyObject *
-PY_user2_exfunc_1(
+PY_exfunc_1(
   PY_User2 *self,
   PyObject *args,
   PyObject *kwds)
@@ -84,12 +84,12 @@ PY_user2_exfunc_1(
 }
 #endif // ifndef USE_CLASS3_A
 
-static char PY_user2_exfunc__doc__[] =
+static char PY_exfunc__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_user2_exfunc(
+PY_exfunc(
   PY_User2 *self,
   PyObject *args,
   PyObject *kwds)
@@ -101,7 +101,7 @@ PY_user2_exfunc(
     PyObject *rvobj;
 #ifdef USE_CLASS3_A
     if (SHT_nargs == 0) {
-        rvobj = PY_user2_exfunc_0(self, args, kwds);
+        rvobj = PY_exfunc_0(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -112,7 +112,7 @@ PY_user2_exfunc(
 #endif // ifdef USE_CLASS3_A
 #ifndef USE_CLASS3_A
     if (SHT_nargs == 1) {
-        rvobj = PY_user2_exfunc_1(self, args, kwds);
+        rvobj = PY_exfunc_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -128,8 +128,8 @@ PY_user2_exfunc(
 // splicer begin class.User2.impl.after_methods
 // splicer end class.User2.impl.after_methods
 static PyMethodDef PY_User2_methods[] = {
-    {"exfunc", (PyCFunction)PY_user2_exfunc, METH_VARARGS|METH_KEYWORDS,
-        PY_user2_exfunc__doc__},
+    {"exfunc", (PyCFunction)PY_exfunc, METH_VARARGS|METH_KEYWORDS,
+        PY_exfunc__doc__},
     // splicer begin class.User2.PyMethodDef
     // splicer end class.User2.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

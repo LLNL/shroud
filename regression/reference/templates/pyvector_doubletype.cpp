@@ -47,12 +47,12 @@ PY_vector_double_tp_init(
 // splicer end class.vector.method.ctor
 }
 
-static char PY_vector_double_push_back__doc__[] =
+static char PY_push_back__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_vector_double_push_back(
+PY_push_back(
   PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
@@ -71,12 +71,12 @@ PY_vector_double_push_back(
 // splicer end class.vector.method.push_back
 }
 
-static char PY_vector_double_at__doc__[] =
+static char PY_at__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_vector_double_at(
+PY_at(
   PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
@@ -104,10 +104,10 @@ fail:
 // splicer begin class.vector.impl.after_methods
 // splicer end class.vector.impl.after_methods
 static PyMethodDef PY_vector_double_methods[] = {
-    {"push_back", (PyCFunction)PY_vector_double_push_back,
-        METH_VARARGS|METH_KEYWORDS, PY_vector_double_push_back__doc__},
-    {"at", (PyCFunction)PY_vector_double_at, METH_VARARGS|METH_KEYWORDS,
-        PY_vector_double_at__doc__},
+    {"push_back", (PyCFunction)PY_push_back, METH_VARARGS|METH_KEYWORDS,
+        PY_push_back__doc__},
+    {"at", (PyCFunction)PY_at, METH_VARARGS|METH_KEYWORDS,
+        PY_at__doc__},
     // splicer begin class.vector.PyMethodDef
     // splicer end class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

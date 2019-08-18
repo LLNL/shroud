@@ -500,7 +500,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "py{cxx_class}type.{PY_impl_filename_suffix}"
             ),
             PY_name_impl_template=(
-                "{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}"
+                "{PY_prefix}{function_name}{function_suffix}{template_suffix}"
             ),
             # names for type methods (tp_init)
             PY_type_impl_template=(

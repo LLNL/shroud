@@ -114,12 +114,12 @@ PP_ExClass1_tp_init_1(
 // splicer end class.ExClass1.method.ctor_1
 }
 
-static char PP_exclass1_incrementCount__doc__[] =
+static char PP_incrementCount__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_incrementCount(
+PP_incrementCount(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -145,12 +145,12 @@ PP_exclass1_incrementCount(
 // splicer end class.ExClass1.method.increment_count
 }
 
-static char PP_exclass1_getNameErrorPattern__doc__[] =
+static char PP_getNameErrorPattern__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getNameErrorPattern(
+PP_getNameErrorPattern(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -174,7 +174,7 @@ PP_exclass1_getNameErrorPattern(
 // splicer end class.ExClass1.method.get_name_error_pattern
 }
 
-static char PP_exclass1_GetNameLength__doc__[] =
+static char PP_GetNameLength__doc__[] =
 "documentation"
 ;
 
@@ -183,7 +183,7 @@ static char PP_exclass1_GetNameLength__doc__[] =
  *
  */
 static PyObject *
-PP_exclass1_GetNameLength(
+PP_GetNameLength(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -201,12 +201,12 @@ PP_exclass1_GetNameLength(
 // splicer end class.ExClass1.method.get_name_length
 }
 
-static char PP_exclass1_getNameErrorCheck__doc__[] =
+static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getNameErrorCheck(
+PP_getNameErrorCheck(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -225,12 +225,12 @@ PP_exclass1_getNameErrorCheck(
 // splicer end class.ExClass1.method.get_name_error_check
 }
 
-static char PP_exclass1_getNameArg__doc__[] =
+static char PP_getNameArg__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getNameArg(
+PP_getNameArg(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -249,12 +249,12 @@ PP_exclass1_getNameArg(
 // splicer end class.ExClass1.method.get_name_arg
 }
 
-static char PP_exclass1_getRoot__doc__[] =
+static char PP_getRoot__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getRoot(
+PP_getRoot(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -273,7 +273,7 @@ PP_exclass1_getRoot(
 }
 
 static PyObject *
-PP_exclass1_getValue_from_int(
+PP_getValue_from_int(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -300,7 +300,7 @@ PP_exclass1_getValue_from_int(
 }
 
 static PyObject *
-PP_exclass1_getValue_1(
+PP_getValue_1(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -326,12 +326,12 @@ PP_exclass1_getValue_1(
 // splicer end class.ExClass1.method.get_value_1
 }
 
-static char PP_exclass1_getAddr__doc__[] =
+static char PP_getAddr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getAddr(
+PP_getAddr(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -349,12 +349,12 @@ PP_exclass1_getAddr(
 // splicer end class.ExClass1.method.get_addr
 }
 
-static char PP_exclass1_hasAddr__doc__[] =
+static char PP_hasAddr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_hasAddr(
+PP_hasAddr(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -388,12 +388,12 @@ fail:
 // splicer end class.ExClass1.method.has_addr
 }
 
-static char PP_exclass1_SplicerSpecial__doc__[] =
+static char PP_SplicerSpecial__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_SplicerSpecial(
+PP_SplicerSpecial(
   PP_ExClass1 *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
@@ -439,12 +439,12 @@ PP_ExClass1_tp_init(
 // splicer end class.ExClass1.method.ctor
 }
 
-static char PP_exclass1_getValue__doc__[] =
+static char PP_getValue__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PP_exclass1_getValue(
+PP_getValue(
   PP_ExClass1 *self,
   PyObject *args,
   PyObject *kwds)
@@ -455,7 +455,7 @@ PP_exclass1_getValue(
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
     PyObject *rvobj;
     if (SHT_nargs == 1) {
-        rvobj = PP_exclass1_getValue_from_int(self, args, kwds);
+        rvobj = PP_getValue_from_int(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -464,7 +464,7 @@ PP_exclass1_getValue(
         PyErr_Clear();
     }
     if (SHT_nargs == 1) {
-        rvobj = PP_exclass1_getValue_1(self, args, kwds);
+        rvobj = PP_getValue_1(self, args, kwds);
         if (!PyErr_Occurred()) {
             return rvobj;
         } else if (! PyErr_ExceptionMatches(PyExc_TypeError)) {
@@ -479,27 +479,26 @@ PP_exclass1_getValue(
 // splicer begin class.ExClass1.impl.after_methods
 // splicer end class.ExClass1.impl.after_methods
 static PyMethodDef PP_ExClass1_methods[] = {
-    {"incrementCount", (PyCFunction)PP_exclass1_incrementCount,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass1_incrementCount__doc__},
-    {"getNameErrorPattern",
-        (PyCFunction)PP_exclass1_getNameErrorPattern, METH_NOARGS,
-        PP_exclass1_getNameErrorPattern__doc__},
-    {"GetNameLength", (PyCFunction)PP_exclass1_GetNameLength,
-        METH_NOARGS, PP_exclass1_GetNameLength__doc__},
-    {"getNameErrorCheck", (PyCFunction)PP_exclass1_getNameErrorCheck,
-        METH_NOARGS, PP_exclass1_getNameErrorCheck__doc__},
-    {"getNameArg", (PyCFunction)PP_exclass1_getNameArg, METH_NOARGS,
-        PP_exclass1_getNameArg__doc__},
-    {"getRoot", (PyCFunction)PP_exclass1_getRoot, METH_NOARGS,
-        PP_exclass1_getRoot__doc__},
-    {"getAddr", (PyCFunction)PP_exclass1_getAddr, METH_NOARGS,
-        PP_exclass1_getAddr__doc__},
-    {"hasAddr", (PyCFunction)PP_exclass1_hasAddr,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass1_hasAddr__doc__},
-    {"SplicerSpecial", (PyCFunction)PP_exclass1_SplicerSpecial,
-        METH_NOARGS, PP_exclass1_SplicerSpecial__doc__},
-    {"getValue", (PyCFunction)PP_exclass1_getValue,
-        METH_VARARGS|METH_KEYWORDS, PP_exclass1_getValue__doc__},
+    {"incrementCount", (PyCFunction)PP_incrementCount,
+        METH_VARARGS|METH_KEYWORDS, PP_incrementCount__doc__},
+    {"getNameErrorPattern", (PyCFunction)PP_getNameErrorPattern,
+        METH_NOARGS, PP_getNameErrorPattern__doc__},
+    {"GetNameLength", (PyCFunction)PP_GetNameLength, METH_NOARGS,
+        PP_GetNameLength__doc__},
+    {"getNameErrorCheck", (PyCFunction)PP_getNameErrorCheck,
+        METH_NOARGS, PP_getNameErrorCheck__doc__},
+    {"getNameArg", (PyCFunction)PP_getNameArg, METH_NOARGS,
+        PP_getNameArg__doc__},
+    {"getRoot", (PyCFunction)PP_getRoot, METH_NOARGS,
+        PP_getRoot__doc__},
+    {"getAddr", (PyCFunction)PP_getAddr, METH_NOARGS,
+        PP_getAddr__doc__},
+    {"hasAddr", (PyCFunction)PP_hasAddr, METH_VARARGS|METH_KEYWORDS,
+        PP_hasAddr__doc__},
+    {"SplicerSpecial", (PyCFunction)PP_SplicerSpecial, METH_NOARGS,
+        PP_SplicerSpecial__doc__},
+    {"getValue", (PyCFunction)PP_getValue, METH_VARARGS|METH_KEYWORDS,
+        PP_getValue__doc__},
     // splicer begin class.ExClass1.PyMethodDef
     // splicer end class.ExClass1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */

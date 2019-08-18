@@ -30,12 +30,12 @@ PY_user_int_tp_del (PY_user_int *self)
 // splicer end class.user.type.del
 }
 
-static char PY_user_int_nested_double__doc__[] =
+static char PY_nested_double__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_user_int_nested_double(
+PY_nested_double(
   PY_user_int *self,
   PyObject *args,
   PyObject *kwds)
@@ -58,8 +58,8 @@ PY_user_int_nested_double(
 // splicer begin class.user.impl.after_methods
 // splicer end class.user.impl.after_methods
 static PyMethodDef PY_user_int_methods[] = {
-    {"nested_double", (PyCFunction)PY_user_int_nested_double,
-        METH_VARARGS|METH_KEYWORDS, PY_user_int_nested_double__doc__},
+    {"nested_double", (PyCFunction)PY_nested_double,
+        METH_VARARGS|METH_KEYWORDS, PY_nested_double__doc__},
     // splicer begin class.user.PyMethodDef
     // splicer end class.user.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
