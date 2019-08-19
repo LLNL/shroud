@@ -337,8 +337,7 @@ dictionary.
 
 C_enum_template
     Name of enumeration in C wrapper.
-    ``{C_prefix}{flat_name}``
-    *flat_name* is taken from the typedef for the enumeration.
+    ``{C_prefix}{C_name_scope}{enum_name}``
 
 C_enum_member_template
     Name of enumeration member in C wrapper.

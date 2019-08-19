@@ -56,7 +56,6 @@
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
-                            "flat_name": "cls1Enum_Color",
                             "namespace_scope": "cls1Enum::"
                         },
                         "linenumber": 71,
@@ -141,7 +140,6 @@
                             "enum_lower": "color",
                             "enum_name": "Color",
                             "enum_upper": "COLOR",
-                            "flat_name": "cls2Enum_Color",
                             "namespace_scope": "cls2Enum::"
                         },
                         "linenumber": 79,
@@ -240,8 +238,7 @@
                     "C_enum": "SCO_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "Color"
+                    "enum_upper": "COLOR"
                 },
                 "linenumber": 31,
                 "name": "Color",
@@ -298,8 +295,7 @@
                     "C_enum": "SCO_ns3Enum_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "ns3Enum_Color"
+                    "enum_upper": "COLOR"
                 },
                 "linenumber": 60,
                 "name": "Color",
@@ -310,7 +306,9 @@
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "SCO_ColorEnum_BLUE",
+                        "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_blue",
+                        "F_name_scope": "colorenum_",
                         "enum_member_lower": "blue",
                         "enum_member_name": "BLUE",
                         "enum_member_upper": "BLUE",
@@ -318,7 +316,9 @@
                     },
                     "RED": {
                         "C_enum_member": "SCO_ColorEnum_RED",
+                        "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_red",
+                        "F_name_scope": "colorenum_",
                         "cxx_value": "60",
                         "enum_member_lower": "red",
                         "enum_member_name": "RED",
@@ -327,7 +327,9 @@
                     },
                     "WHITE": {
                         "C_enum_member": "SCO_ColorEnum_WHITE",
+                        "C_name_scope": "ColorEnum_",
                         "F_enum_member": "colorenum_white",
+                        "F_name_scope": "colorenum_",
                         "enum_member_lower": "white",
                         "enum_member_name": "WHITE",
                         "enum_member_upper": "WHITE",
@@ -355,12 +357,9 @@
                 "decl": "enum class ColorEnum {\n  RED = 60,\n  BLUE,\n  WHITE,\n};\n",
                 "fmtdict": {
                     "C_enum": "SCO_ColorEnum",
-                    "C_name_scope": "ColorEnum_",
-                    "F_name_scope": "colorenum_",
                     "enum_lower": "colorenum",
                     "enum_name": "ColorEnum",
-                    "enum_upper": "COLORENUM",
-                    "flat_name": "ColorEnum"
+                    "enum_upper": "COLORENUM"
                 },
                 "linenumber": 88,
                 "name": "ColorEnum",
@@ -511,8 +510,7 @@
                             "C_enum": "SCO_ns1Enum_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
-                            "enum_upper": "COLOR",
-                            "flat_name": "ns1Enum_Color"
+                            "enum_upper": "COLOR"
                         },
                         "linenumber": 42,
                         "name": "Color",
@@ -596,8 +594,7 @@
                             "C_enum": "SCO_ns2Enum_Color",
                             "enum_lower": "color",
                             "enum_name": "Color",
-                            "enum_upper": "COLOR",
-                            "flat_name": "ns2Enum_Color"
+                            "enum_upper": "COLOR"
                         },
                         "linenumber": 50,
                         "name": "Color",
@@ -632,7 +629,7 @@
         ],
         "options": {
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",

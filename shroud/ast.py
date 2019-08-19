@@ -435,7 +435,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_impl_filename_class_template="wrap{cxx_class}.{C_impl_filename_suffix}",
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
-            C_enum_template="{C_prefix}{flat_name}",
+            C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{underscore_name}{function_suffix}{template_suffix}"
@@ -1435,11 +1435,18 @@ class EnumNode(AstNode):
         # format for each enum member
         fmtmembers = {}
         evalue = 0
+        if ast.scope is not None:
+            # members of 'class enum' must be qualified, add to scope.
+            C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
+            F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
         for member in ast.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
             fmt.enum_member_lower = member.name.lower()
             fmt.enum_member_upper = member.name.upper()
+            if ast.scope is not None:
+                fmt.C_name_scope = C_name_scope
+                fmt.F_name_scope = F_name_scope
 
             # evaluate value
             if member.value is not None:
@@ -1455,12 +1462,6 @@ class EnumNode(AstNode):
         self.scope = self.parent.scope + self.name + "::"
         self.typemap = typemap.create_enum_typemap(self)
         # also 'enum class foo' will alter scope
-
-        if ast.scope is not None:
-            fmt_enum.C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
-            fmt_enum.F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
-
-        fmt_enum.flat_name = self.typemap.flat_name
 
 ######################################################################
 

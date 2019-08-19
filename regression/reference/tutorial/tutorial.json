@@ -67,11 +67,10 @@
                         },
                         "decl": "enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };",
                         "fmtdict": {
-                            "C_enum": "TUT_tutorial_Class1_DIRECTION",
+                            "C_enum": "TUT_Class1_DIRECTION",
                             "enum_lower": "direction",
                             "enum_name": "DIRECTION",
                             "enum_upper": "DIRECTION",
-                            "flat_name": "tutorial_Class1_DIRECTION",
                             "namespace_scope": "tutorial::Class1::"
                         },
                         "linenumber": 209,
@@ -1590,11 +1589,10 @@
                 },
                 "decl": "enum Color {\n  RED,\n  BLUE,\n  WHITE\n};\n",
                 "fmtdict": {
-                    "C_enum": "TUT_tutorial_Color",
+                    "C_enum": "TUT_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "tutorial_Color"
+                    "enum_upper": "COLOR"
                 },
                 "linenumber": 33,
                 "name": "Color",
@@ -6964,7 +6962,7 @@
         "language": "cxx",
         "options": {
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",

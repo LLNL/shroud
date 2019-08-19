@@ -249,8 +249,7 @@
                     "C_enum": "TES_Color",
                     "enum_lower": "color",
                     "enum_name": "Color",
-                    "enum_upper": "COLOR",
-                    "flat_name": "Color"
+                    "enum_upper": "COLOR"
                 },
                 "linenumber": 47,
                 "name": "Color",
@@ -2237,7 +2236,7 @@
         ],
         "options": {
             "C_enum_member_template": "{C_prefix}{C_name_scope}{enum_member_name}",
-            "C_enum_template": "{C_prefix}{flat_name}",
+            "C_enum_template": "{C_prefix}{C_name_scope}{enum_name}",
             "C_header_filename_class_template": "wrap{cxx_class}.{C_header_filename_suffix}",
             "C_header_filename_library_template": "wrap{library}.{C_header_filename_suffix}",
             "C_header_filename_namespace_template": "wrap{file_scope}.{C_header_filename_suffix}",

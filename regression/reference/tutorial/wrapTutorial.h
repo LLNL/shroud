@@ -25,7 +25,7 @@ extern "C" {
 #endif
 
 //  tutorial::Color
-enum TUT_tutorial_Color {
+enum TUT_Color {
     TUT_RED,
     TUT_BLUE,
     TUT_WHITE

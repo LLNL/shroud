@@ -25,7 +25,7 @@ extern "C" {
 #endif
 
 //  tutorial::Class1::DIRECTION
-enum TUT_tutorial_Class1_DIRECTION {
+enum TUT_Class1_DIRECTION {
     TUT_Class1_UP = 2,
     TUT_Class1_DOWN,
     TUT_Class1_LEFT = 100,
