@@ -598,8 +598,6 @@ class GenFunctions(object):
                         dict(
                             cxx_type=cxx_type,
                             cxx_class=cxx_class,
-                            class_lower=cxx_class.lower(),
-                            class_upper=cxx_class.upper(),
                             class_scope=cxx_class + "::",
                             C_name_scope=newcls.parent.fmtdict.C_name_scope + cxx_class + "_",
                             F_name_scope=newcls.parent.fmtdict.F_name_scope + cxx_class.lower() + "_",
@@ -720,7 +718,7 @@ class GenFunctions(object):
                 continue
             if function.have_template_args:
                 # Stuff like push_back which is in a templated class, is not an overload
-                # class_prefix is used to distigunish the functions, not function_suffix.
+                # C_name_scope is used to distigunish the functions, not function_suffix.
                 continue
             overloaded_functions.setdefault(function.ast.name, []).append(
                 function
@@ -854,7 +852,7 @@ class GenFunctions(object):
         Use when the function itself is not templated, but it has a templated argument
         from a class.
         function_suffix is not modified for functions in a templated class.
-        Instead class_prefix is used to distinguish the functions.
+        Instead C_name_scope is used to distinguish the functions.
 
         Args:
             node -

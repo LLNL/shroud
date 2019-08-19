@@ -100,18 +100,10 @@ class Wrapf(util.WrapperMixin):
                 self.wrap_struct(cls)
             else:
                 self.wrap_class(cls)
-            if options.F_module_per_class:
-                self._pop_splicer("class")
-                self._end_output_file()
-                self.write_module(node, cls)
-                self._begin_output_file()
-                self._push_splicer("class")
         self._pop_splicer("class")
 
         if node.functions or node.enums:
             self._begin_class()  # clear out old class info
-            if options.F_module_per_class:
-                self._begin_output_file()
             node.F_module_dependencies = []
 
             self.wrap_enums(node)
@@ -128,16 +120,9 @@ class Wrapf(util.WrapperMixin):
             self.impl.append("")
             self._create_splicer("additional_functions", self.impl)
 
-            if options.F_module_per_class:
-                # library module
-                self._end_output_file()
-                self._create_splicer("module_use", self.use_stmts)
-                self.write_module(node, None)
-
-        if not options.F_module_per_class:
-            # put all functions and classes into one module
-            self._end_output_file()
-            self.write_module(node, None)
+        # put all functions and classes into one module
+        self._end_output_file()
+        self.write_module(node, None)
 
         for ns in node.namespaces:
             if ns.options.wrap_fortran:
@@ -1834,10 +1819,7 @@ rv = .false.
         output.extend(arg_f_use)
         self.module_use = {}
 
-        if options.F_module_per_class:
-            output.extend(self.use_stmts)
-        else:
-            self._create_splicer("module_use", output)
+        self._create_splicer("module_use", output)
         output.append("implicit none")
         output.append("")
         if cls is None:

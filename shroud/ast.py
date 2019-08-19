@@ -405,7 +405,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             flatten_namespace=False,
             C_line_length=72,
             F_line_length=72,
-            F_module_per_class=True,
             F_string_len_trim=True,
             F_force_wrapper=False,
             F_return_fortran_pointer=True,
@@ -464,8 +463,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
             F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
             F_capsule_data_type_class_template="SHROUD_{F_name_scope}capsule",
-            F_module_name_class_template="{class_lower}_mod",
-            F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
 
@@ -539,9 +536,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_array_arg="numpy",   # or "list"
             PY_struct_arg="numpy",   # or "list", "class"
         )
-        if util.TEMP:
-            def_options.F_module_per_class = False
-
         return def_options
 
     def default_format(self, fmtdict, kwargs):
@@ -1031,8 +1025,6 @@ class ClassNode(AstNode, NamespaceMixin):
             parent=parent.fmtdict,
             cxx_type=self.name,
             cxx_class=self.name,
-            class_lower=self.name.lower(),
-            class_upper=self.name.upper(),
             class_scope=self.name + "::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + self.name + "::",
             C_name_scope=self.parent.fmtdict.C_name_scope + self.name + "_",
@@ -1057,9 +1049,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_impl_filename", "_class")
 
         self.eval_template("F_capsule_data_type", "_class")
-        if self.options.F_module_per_class:
-            self.eval_template("F_module_name", "_class")
-            self.eval_template("F_impl_filename", "_class")
 
         # As PyArray_Descr
         if self.as_struct:

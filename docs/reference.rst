@@ -410,17 +410,11 @@ F_enum_member_template
 F_name_generic_template
     ``{underscore_name}``
 
-F_impl_filename_class_template
-    ``wrapf{cxx_class}.{F_filename_suffix}``
-
 F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
     ``{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
-
-F_module_name_class_template
-    ``{class_lower}_mod``
 
 F_module_name_library_template
     ``{library_lower}_mod``
@@ -674,8 +668,6 @@ F_module_name
 F_impl_filename
     Name of generated Fortran implementation file for the library.
     Defaulted from expansion of option *F_impl_filename_library_template*.
-    If option *F_module_per_class* is false, then all derived types
-    generated for each class will also be in this file.
 
 F_pointer
     The name of Fortran wrapper local variable to save result of a 
@@ -861,17 +853,6 @@ F_derived_name
    Defaults to the value *cxx_class* (usually the C++ class name) converted
    to lowercase.
 
-F_impl_filename
-    Name of generated Fortran implementation file for the library.
-    Defaulted from expansion of option *F_impl_filename_class_template*.
-    Only defined if *F_module_per_class* is true.
-
-F_module_name
-    Name of module for Fortran interface for the class.
-    Defaulted from expansion of option *F_module_name_class_template*
-    which is **{class_lower}_mod**.
-    Only defined if *F_module_per_class* is true.
-
 F_name_assign
     Name of method that controls assignment of shadow types.
     Used to help with reference counting.
@@ -901,20 +882,13 @@ cxx_class
     by adding the *template_suffix* or a sequence number.
 
     When *cxx_class* is set in the YAML file for a class, its value will be
-    used in *class_lower*, *class_upper*, *class_scope*, *C_name_scope*,
-    *F_name_scope* and *F_derived_name*.
+    used in *class_scope*, *C_name_scope*, *F_name_scope* and *F_derived_name*.
 
 cxx_type
     The namespace qualified name of the C++ class, including information
     from *template_arguments*, ex. ``std::vector<int>``.
     Same as *cxx_class* if *template_arguments* is not defined.
     Used in generating C++ code.
-
-class_lower
-    Lowercase version of *cxx_class*.
-
-class_upper
-    Uppercase version of *cxx_class*.
 
 class_scope
     Used to to access class static functions.

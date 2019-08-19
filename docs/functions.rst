@@ -15,12 +15,11 @@ C++ or Fortran compilers.
 
 One C++ file will be created for the library and one file for each C++ class.
 
-By default, Fortran will create one file per class similar to the way
-C is handled.
-If classes refer to each other in a library,
-it is necessary to put all of the classes
-into a single file using the *F_module_per_class* option
-since Fortran does not support the idea of forward reference.
+Fortran creates a file for the library and one per additional namespace.
+Since Fortran does not support forward referencing of derived types,
+it is necessary to add all classes from a namespace into a single module.
+
+.. XXX some comment about submodules?
 
 Each Fortran file will only contain one module to make it easier to
 create makefile dependencies using pattern rules:
@@ -62,12 +61,15 @@ It's also possible to change just the suffix of files:
         C_header_filename_library_template: wrap{library}.{C_header_filename_suffix}
         C_impl_filename_library_template: wrap{library}.{C_impl_filename_suffix}
 
+        C_header_filename_namespace_template: wrap{file_scope}.{C_header_file_suffix}
+        C_impl_filename_namespace_template: wrap{file_scope}.{C_impl_filename_suffix}
+
         C_header_filename_class_template: wrap{cxx_class}.{C_header_file_suffix}
         C_impl_filename_class_template: wrap{cxx_class}.{C_impl_filename_suffix}
 
         F_filename_suffix: f
         F_impl_filename_library_template: wrapf{library_lower}.{F_filename_suffix}
-        F_impl_filename_class_template: wrapf{cxx_class}.{F_filename_suffix}
+        F_impl_filename_namespace_template: wrapf{file_scope}.{F_filename_suffix}
 
 
 How names are created

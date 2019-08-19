@@ -66,6 +66,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 - Format field *class_prefix*. Replace with *C_name_scope* or *F_name_scope*
   which includes the namespace.
+- Option F_module_per_class. Now a namespace corresponds to a Fortran module.
 
 ## v0.10.1 - 2018-08-07
 ### Fixed
