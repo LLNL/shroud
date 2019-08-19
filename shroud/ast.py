@@ -463,7 +463,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
             F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
-            F_capsule_data_type_class_template="SHROUD_{class_lower}_capsule",
+            F_capsule_data_type_class_template="SHROUD_{F_name_scope}capsule",
             F_module_name_class_template="{class_lower}_mod",
             F_impl_filename_class_template="wrapf{cxx_class}.{F_filename_suffix}",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",

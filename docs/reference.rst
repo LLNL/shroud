@@ -399,7 +399,7 @@ F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the
     struct used to implement a shadow class.
     Each class must have a unique name.
-    Defaults to ``SHROUD_{class_lower}_capsule``.
+    Defaults to ``SHROUD_{F_name_scope}capsule``.
 
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.

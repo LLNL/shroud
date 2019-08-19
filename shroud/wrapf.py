@@ -308,19 +308,19 @@ class Wrapf(util.WrapperMixin):
             node,
             fmt_class,
             ".eq.",
-            fmt_class.class_lower + "_eq",
+            fmt_class.F_name_scope + "eq",
             wformat(
                 "c_associated"
                 "(a%{F_derived_member}%addr, b%{F_derived_member}%addr)",
                 fmt_class,
             ),
         )
-        #        self.overload_compare(fmt_class, '==', fmt_class.class_lower + '_eq', None)
+        #        self.overload_compare(fmt_class, '==', fmt_class.F_name_scope + 'eq', None)
         self.overload_compare(
             node,
             fmt_class,
             ".ne.",
-            fmt_class.class_lower + "_ne",
+            fmt_class.F_name_scope + "ne",
             wformat(
                 ".not. c_associated"
                 "(a%{F_derived_member}%addr, b%{F_derived_member}%addr)",
@@ -330,7 +330,7 @@ class Wrapf(util.WrapperMixin):
         if node.cpp_if:
             self.operator_impl.append("#endif")
 
-    #        self.overload_compare(fmt_class, '/=', fmt_class.class_lower + '_ne', None)
+    #        self.overload_compare(fmt_class, '/=', fmt_class.F_name_scope + 'ne', None)
 
     def wrap_enums(self, node):
         """Wrap all enums in a splicer block
