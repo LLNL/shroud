@@ -380,11 +380,6 @@ C_var_trim_template
     Format for variable created with *len_trim* annotation.
     Default ``L{c_var}``
 
-class_prefix_template
-    Class component for function names.
-    Will be blank if the function is not in a class.
-    ``{class_lower}_``
-
 F_C_name_template
     ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
@@ -506,7 +501,7 @@ PY_member_setter_template
     ``{PY_prefix}{cxx_class}_{variable_name}_setter``
 
 PY_name_impl_template
-    ``{PY_prefix}{class_prefix}{function_name}{function_suffix}{template_suffix}``
+    ``{PY_prefix}{function_name}{function_suffix}{template_suffix}``
 
 PY_numpy_array_capsule_name_template
     Name of ``PyCapsule object`` used as base object of NumPy arrays.
@@ -784,7 +779,10 @@ PY_module_scope
 
 PY_name_impl
     Name of Python wrapper implemenation function.
-    Defaults to *{PY_prefix}{class_prefix}{function_name}{function_suffix}*.
+    Each class and namespace is implemented in its own function with file
+    static functions.  There is no need to include the class or namespace in
+    this name.
+    Defaults to *{PY_prefix}{function_name}{function_suffix}*.
 
 PY_prefix
     Prefix added to Python wrapper functions.
@@ -917,11 +915,6 @@ class_lower
 
 class_upper
     Uppercase version of *cxx_class*.
-
-class_prefix
-    Variable which may be used in creating function names.
-    Defaults to evaluation of *class_prefix_template*.
-    Outside of a class, set to empty string.
 
 class_scope
     Used to to access class static functions.

@@ -1601,7 +1601,7 @@ rv = .false.
                 ).append(node)
             else:
                 self.f_function_generic.setdefault(
-                    fmt_func.class_prefix + fmt_func.F_name_generic, []
+                    fmt_func.F_name_scope + fmt_func.F_name_generic, []
                 ).append(node)
         if cls:
             # Add procedure to derived type

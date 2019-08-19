@@ -422,7 +422,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             return_scalar_pointer="pointer",
             show_splicer_comments=True,
             # blank for functions, set in classes.
-            class_prefix_template="{class_lower}_",
             YAML_type_filename_template="{library_lower}_types.yaml",
 
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
@@ -605,7 +604,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
             # set default values for fields which may be unset.
-            class_prefix="",  # expand to blanks for library
             # c_ptr='',
             # c_const='',
             CXX_this_call="",
@@ -1054,8 +1052,6 @@ class ClassNode(AstNode, NamespaceMixin):
         Call delete_format_template to remove previous values to
         force them to be recomputed during class template instantiation.
         """
-        self.eval_template("class_prefix")
-
         # Only one file per class for C.
         self.eval_template("C_header_filename", "_class")
         self.eval_template("C_impl_filename", "_class")
@@ -1077,7 +1073,6 @@ class ClassNode(AstNode, NamespaceMixin):
         """
         self.fmtdict.delattrs(
             [
-                "class_prefix",
                 "C_header_filename",
                 "C_impl_filename",
                 "F_module_name",

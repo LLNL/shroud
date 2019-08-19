@@ -62,14 +62,14 @@ module name_module
     interface
 
         subroutine xxx_tes_names_method1(self) &
-                bind(C, name="XXX_TES_names_method1")
+                bind(C, name="XXX_TES_ns0_Names_method1")
             import :: SHROUD_names_capsule
             implicit none
             type(SHROUD_names_capsule), intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
         subroutine xxx_tes_names_method2(self2) &
-                bind(C, name="XXX_TES_names_method2")
+                bind(C, name="XXX_TES_ns0_Names_method2")
             import :: SHROUD_names_capsule
             implicit none
             type(SHROUD_names_capsule), intent(IN) :: self2
