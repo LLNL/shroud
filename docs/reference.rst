@@ -386,7 +386,7 @@ class_prefix_template
     ``{class_lower}_``
 
 F_C_name_template
-    ``{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
 F_abstract_interface_argument_template
    The name of arguments for an abstract interface used with function pointers.
@@ -422,7 +422,7 @@ F_impl_filename_library_template
     ``wrapf{library_lower}.{F_filename_suffix}``
 
 F_name_impl_template
-    ``{class_prefix}{underscore_name}{function_suffix}{template_suffix}``
+    ``{F_name_scope}{underscore_name}{function_suffix}{template_suffix}``
 
 F_module_name_class_template
     ``{class_lower}_mod``
@@ -860,7 +860,8 @@ C_impl_file
 
 F_derived_name
    Name of Fortran derived type for this class.
-   Defaults to the C++ class name.
+   Defaults to the value *cxx_class* (usually the C++ class name) converted
+   to lowercase.
 
 F_impl_filename
     Name of generated Fortran implementation file for the library.
@@ -900,6 +901,10 @@ cxx_class
     Used in generating names for C and Fortran and filenames.
     When the class is templated, it willl be converted to a legal identifier
     by adding the *template_suffix* or a sequence number.
+
+    When *cxx_class* is set in the YAML file for a class, its value will be
+    used in *class_lower*, *class_upper*, *class_scope*, *C_name_scope*,
+    *F_name_scope* and *F_derived_name*.
 
 cxx_type
     The namespace qualified name of the C++ class, including information

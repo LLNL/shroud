@@ -1841,11 +1841,11 @@
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapVvv1.hh",
                             "C_impl_filename": "wrapVvv1.cc",
-                            "C_name_scope": "std_vector_int_",
+                            "C_name_scope": "std_Vvv1_",
                             "C_type_name": "TES_vvv1",
                             "F_capsule_data_type": "SHROUD_vvv1_capsule",
                             "F_derived_name": "FFvvv1",
-                            "F_name_scope": "vector_int_",
+                            "F_name_scope": "vvv1_",
                             "PY_PyObject": "PY_Vvv1",
                             "PY_PyTypeObject": "PY_Vvv1_Type",
                             "PY_capsule_name": "PY_Vvv1_capsule_name",
@@ -1856,7 +1856,7 @@
                             "__line__": 168,
                             "class_lower": "vvv1",
                             "class_prefix": "vvv1_",
-                            "class_scope": "VvV1::",
+                            "class_scope": "Vvv1::",
                             "class_upper": "VVV1",
                             "cxx_class": "Vvv1",
                             "cxx_type": "vector<int>"
@@ -1878,9 +1878,6 @@
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
                                     "__line__": 168,
-                                    "class_lower": "vvv1",
-                                    "class_scope": "VvV1::",
-                                    "class_upper": "VVV1",
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -1970,9 +1967,6 @@
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
                                     "__line__": 168,
-                                    "class_lower": "vvv1",
-                                    "class_scope": "VvV1::",
-                                    "class_upper": "VVV1",
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2064,9 +2058,6 @@
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
                                     "__line__": 168,
-                                    "class_lower": "vvv1",
-                                    "class_scope": "VvV1::",
-                                    "class_upper": "VVV1",
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2156,9 +2147,6 @@
                                 "fmtdict": {
                                     "F_derived_name": "FFvvv1",
                                     "__line__": 168,
-                                    "class_lower": "vvv1",
-                                    "class_scope": "VvV1::",
-                                    "class_upper": "VVV1",
                                     "cxx_class": "Vvv1"
                                 },
                                 "instantiation": "<int>"
@@ -2252,7 +2240,7 @@
             "C_var_len_template": "N{c_var}",
             "C_var_size_template": "S{c_var}",
             "C_var_trim_template": "L{c_var}",
-            "F_C_name_template": "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_C_name_template": "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_auto_reference_count": false,
@@ -2270,7 +2258,7 @@
             "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
-            "F_name_impl_template": "{class_prefix}{underscore_name}{function_suffix}{template_suffix}",
+            "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
             "F_return_fortran_pointer": true,
             "F_standard": 2003,
             "F_string_len_trim": true,

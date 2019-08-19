@@ -450,13 +450,13 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_var_size_template="S{c_var}",  # argument for result of size(arg)
             # Fortran's names for C functions
             F_C_name_template=(
-                "{F_C_prefix}{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_enum_member_template=(
                 "{F_name_scope}{enum_member_lower}"
             ),
             F_name_impl_template=(
-                "{class_prefix}{underscore_name}{function_suffix}{template_suffix}"
+                "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
             ),
             F_name_function_template="{underscore_name}{function_suffix}{template_suffix}",
             F_name_generic_template="{underscore_name}",

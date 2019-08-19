@@ -589,6 +589,10 @@ class GenFunctions(object):
                         newcls.fmtdict.cxx_class, targs.instantiation
                     )
 
+                    if targs.fmtdict and "cxx_class" in targs.fmtdict:
+                        # Check if user has changed cxx_class.
+                        cxx_class = targs.fmtdict["cxx_class"]
+
                     # Add default values to format dictionary.
                     newcls.fmtdict.update(
                         dict(

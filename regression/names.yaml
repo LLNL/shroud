@@ -169,9 +169,9 @@ declarations:
         # Explicit class name.
         # XXX - Necessary to specify lower and upper.
         cxx_class: Vvv1
-        class_lower: vvv1
-        class_upper: VVV1
-        class_scope: 'VvV1::'
+#        class_lower: vvv1     # automatically set from cxx_class
+#        class_upper: VVV1     # automatically set from cxx_class
+#        class_scope: 'VvV1::' # automatically set from cxx_class
         F_derived_name: FFvvv1
     - instantiation: <double>
       # Based on template typename.   vector_double
