@@ -340,6 +340,7 @@
             "debug": false,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": true,
             "literalinclude2": true,
             "return_scalar_pointer": "pointer",

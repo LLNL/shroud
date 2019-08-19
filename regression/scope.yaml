@@ -53,6 +53,16 @@ declarations:
           BLUE,
           WHITE
         };
+- decl: namespace ns3Enum
+  options:
+    flatten_namespace: True
+  declarations:
+  - decl: |
+        enum Color {
+          RED = 70,
+          BLUE,
+          WHITE
+        };
 
 ########################################
 # Same enum in two classes

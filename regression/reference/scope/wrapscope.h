@@ -39,6 +39,13 @@ enum SCO_Color {
     SCO_WHITE
 };
 
+//  ns3Enum::Color
+enum SCO_ns3Enum_Color {
+    SCO_ns3Enum_RED = 70,
+    SCO_ns3Enum_BLUE,
+    SCO_ns3Enum_WHITE
+};
+
 //  ColorEnum
 enum SCO_ColorEnum {
     SCO_ColorEnum_RED = 60,

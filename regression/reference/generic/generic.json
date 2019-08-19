@@ -1862,6 +1862,7 @@
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": true,
             "return_scalar_pointer": "pointer",

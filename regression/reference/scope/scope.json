@@ -59,7 +59,7 @@
                             "flat_name": "cls1Enum_Color",
                             "namespace_scope": "cls1Enum::"
                         },
-                        "linenumber": 61,
+                        "linenumber": 71,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "cls1Enum::Color"
@@ -81,7 +81,7 @@
                     "cxx_class": "cls1Enum",
                     "cxx_type": "cls1Enum"
                 },
-                "linenumber": 59,
+                "linenumber": 69,
                 "name": "cls1Enum",
                 "options": {},
                 "scope": "cls1Enum::",
@@ -144,7 +144,7 @@
                             "flat_name": "cls2Enum_Color",
                             "namespace_scope": "cls2Enum::"
                         },
-                        "linenumber": 69,
+                        "linenumber": 79,
                         "name": "Color",
                         "options": {},
                         "typemap_name": "cls2Enum::Color"
@@ -166,7 +166,7 @@
                     "cxx_class": "cls2Enum",
                     "cxx_type": "cls2Enum"
                 },
-                "linenumber": 67,
+                "linenumber": 77,
                 "name": "cls2Enum",
                 "options": {},
                 "scope": "cls2Enum::",
@@ -251,6 +251,64 @@
             {
                 "_fmtmembers": {
                     "BLUE": {
+                        "C_enum_member": "SCO_ns3Enum_BLUE",
+                        "F_enum_member": "ns3enum_blue",
+                        "enum_member_lower": "blue",
+                        "enum_member_name": "BLUE",
+                        "enum_member_upper": "BLUE",
+                        "evalue": 71
+                    },
+                    "RED": {
+                        "C_enum_member": "SCO_ns3Enum_RED",
+                        "F_enum_member": "ns3enum_red",
+                        "cxx_value": "70",
+                        "enum_member_lower": "red",
+                        "enum_member_name": "RED",
+                        "enum_member_upper": "RED",
+                        "evalue": 70
+                    },
+                    "WHITE": {
+                        "C_enum_member": "SCO_ns3Enum_WHITE",
+                        "F_enum_member": "ns3enum_white",
+                        "enum_member_lower": "white",
+                        "enum_member_name": "WHITE",
+                        "enum_member_upper": "WHITE",
+                        "evalue": 72
+                    }
+                },
+                "ast": {
+                    "members": [
+                        {
+                            "name": "RED",
+                            "value": {
+                                "constant": "70"
+                            }
+                        },
+                        {
+                            "name": "BLUE"
+                        },
+                        {
+                            "name": "WHITE"
+                        }
+                    ],
+                    "name": "Color"
+                },
+                "decl": "enum Color {\n  RED = 70,\n  BLUE,\n  WHITE\n};\n",
+                "fmtdict": {
+                    "C_enum": "SCO_ns3Enum_Color",
+                    "enum_lower": "color",
+                    "enum_name": "Color",
+                    "enum_upper": "COLOR",
+                    "flat_name": "ns3Enum_Color"
+                },
+                "linenumber": 60,
+                "name": "Color",
+                "options": {},
+                "typemap_name": "ns3Enum::Color"
+            },
+            {
+                "_fmtmembers": {
+                    "BLUE": {
                         "C_enum_member": "SCO_ColorEnum_BLUE",
                         "F_enum_member": "colorenum_blue",
                         "enum_member_lower": "blue",
@@ -304,7 +362,7 @@
                     "enum_upper": "COLORENUM",
                     "flat_name": "ColorEnum"
                 },
-                "linenumber": 78,
+                "linenumber": 88,
                 "name": "ColorEnum",
                 "options": {},
                 "typemap_name": "ColorEnum"
@@ -650,6 +708,7 @@
             "debug": true,
             "debug_index": false,
             "doxygen": true,
+            "flatten_namespace": false,
             "literalinclude": false,
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
@@ -1410,6 +1469,28 @@
             },
             "f_type": "integer(C_INT)",
             "flat_name": "ns2Enum_Color"
+        },
+        "ns3Enum::Color": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "c_to_cxx": "static_cast<ns3Enum::Color>({c_var})",
+            "c_type": "int",
+            "cxx_to_c": "static_cast<int>({cxx_var})",
+            "cxx_type": "ns3Enum::Color",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_type": "integer(C_INT)",
+            "flat_name": "ns3Enum_Color"
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

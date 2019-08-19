@@ -44,6 +44,11 @@ module scope_mod
     integer(C_INT), parameter :: blue = 11
     integer(C_INT), parameter :: white = 12
 
+    !  enum ns3Enum::Color
+    integer(C_INT), parameter :: ns3enum_red = 70
+    integer(C_INT), parameter :: ns3enum_blue = 71
+    integer(C_INT), parameter :: ns3enum_white = 72
+
     !  enum class ColorEnum
     integer(C_INT), parameter :: colorenum_red = 60
     integer(C_INT), parameter :: colorenum_blue = 61

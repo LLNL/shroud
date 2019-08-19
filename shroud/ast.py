@@ -181,7 +181,7 @@ class NamespaceMixin(object):
         return fcnnode
 
     def add_namespace(self, name, expose=True, **kwargs):
-        """Add an namespace
+        """Add a namespace.
 
         Args:
             name - name of namespace
@@ -190,7 +190,7 @@ class NamespaceMixin(object):
         """
         node = NamespaceNode(name, parent=self, **kwargs)
         self.symbols[name] = node
-        if util.TEMP and expose:
+        if not node.options.flatten_namespace and expose:
             self.namespaces.append(node)
         return node
 
@@ -402,6 +402,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug=False,  # print additional debug info
             debug_index=False,  # print function indexes. debug must also be True.
             # They change when a function is inserted.
+            flatten_namespace=False,
             C_line_length=72,
             F_line_length=72,
             F_module_per_class=True,
@@ -766,26 +767,22 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
 
-        if util.TEMP:
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+        if self.options.flatten_namespace:
+            self.classes = parent.classes
+            self.enums = parent.enums
+            self.functions = parent.functions
+            self.namespaces = parent.namespaces
+            self.variables = parent.variables
+        else:
             self.classes = []
             self.enums = []
             self.functions = []
             self.namespaces = []
             self.variables = []
-        else:
-            self.namespaces = []
-            # Namespaces do not own enums, functions or classes directly.
-            # Find their owner up the parent chain.
-            owner = parent
-            while owner:
-                if isinstance(owner, NamespaceNode):
-                    # skip over nested namespaces
-                    owner = owner.parent
-                self.enums = owner.enums
-                self.functions = owner.functions
-                self.classes = owner.classes
-                self.variables = owner.variables
-                break
 
         # add to symbol table
         self.scope = self.parent.scope + self.name + "::"
@@ -795,10 +792,6 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.scope_file = self.parent.scope_file + [self.name]
         self.symbols = {}
         self.using = []
-
-        self.options = util.Scope(parent=parent.options)
-        if options:
-            self.options.update(options, replace=True)
 
         self.default_format(parent, format, skip)
 
@@ -844,6 +837,10 @@ class NamespaceNode(AstNode, NamespaceMixin):
             fmt_ns.C_name_scope = (
                 parent.fmtdict.C_name_scope + self.name + "_"
             )
+            if self.options.flatten_namespace:
+                fmt_ns.F_name_scope = (
+                    parent.fmtdict.F_name_scope + self.name.lower() + "_"
+                )
         fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
         fmt_ns.LUA_this_call = fmt_ns.namespace_scope
