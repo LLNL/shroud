@@ -29,9 +29,6 @@ module forward_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! splicer begin class.Class3.module_top
-    ! splicer end class.Class3.module_top
-
     type, bind(C) :: SHROUD_class3_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -48,9 +45,6 @@ module forward_mod
         ! splicer begin class.Class3.type_bound_procedure_part
         ! splicer end class.Class3.type_bound_procedure_part
     end type class3
-
-    ! splicer begin class.Class2.module_top
-    ! splicer end class.Class2.module_top
 
     type, bind(C) :: SHROUD_class2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

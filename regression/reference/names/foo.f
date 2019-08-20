@@ -29,9 +29,6 @@ module name_module
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! splicer begin class.Names.module_top
-    ! splicer end class.Names.module_top
-
     type, bind(C) :: SHROUD_names_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

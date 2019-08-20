@@ -15,9 +15,6 @@ module templates_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! splicer begin class.Worker.module_top
-    ! splicer end class.Worker.module_top
-
     type, bind(C) :: SHROUD_worker_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -34,9 +31,6 @@ module templates_mod
         ! splicer begin class.Worker.type_bound_procedure_part
         ! splicer end class.Worker.type_bound_procedure_part
     end type worker
-
-    ! splicer begin class.user_int.module_top
-    ! splicer end class.user_int.module_top
 
     type, bind(C) :: SHROUD_user_int_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

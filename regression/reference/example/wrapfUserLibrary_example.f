@@ -25,6 +25,7 @@ module userlibrary_example_mod
     implicit none
 
     ! splicer begin module_top
+    top of module library splicer  1
     ! splicer end module_top
 
     interface

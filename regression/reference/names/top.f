@@ -34,9 +34,6 @@ module top_module
     integer(C_INT), parameter :: blue = 1
     integer(C_INT), parameter :: white = 2
 
-    ! splicer begin class.Names2.module_top
-    ! splicer end class.Names2.module_top
-
     type, bind(C) :: SHROUD_names2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -54,9 +51,6 @@ module top_module
         ! splicer end class.Names2.type_bound_procedure_part
     end type names2
 
-    ! splicer begin class.twoTs_0.module_top
-    ! splicer end class.twoTs_0.module_top
-
     type, bind(C) :: SHROUD_twots_0_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -73,9 +67,6 @@ module top_module
         ! splicer begin class.twoTs_0.type_bound_procedure_part
         ! splicer end class.twoTs_0.type_bound_procedure_part
     end type twots_0
-
-    ! splicer begin class.twoTs_instantiation4.module_top
-    ! splicer end class.twoTs_instantiation4.module_top
 
     type, bind(C) :: SHROUD_twots_instantiation4_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

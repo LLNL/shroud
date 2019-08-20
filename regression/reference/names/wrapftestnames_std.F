@@ -29,9 +29,6 @@ module testnames_std_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! splicer begin class.Vvv1.module_top
-    ! splicer end class.Vvv1.module_top
-
     type, bind(C) :: SHROUD_vvv1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -48,9 +45,6 @@ module testnames_std_mod
         ! splicer begin class.Vvv1.type_bound_procedure_part
         ! splicer end class.Vvv1.type_bound_procedure_part
     end type FFvvv1
-
-    ! splicer begin class.vector_double.module_top
-    ! splicer end class.vector_double.module_top
 
     type, bind(C) :: SHROUD_vector_double_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -69,9 +63,6 @@ module testnames_std_mod
         ! splicer end class.vector_double.type_bound_procedure_part
     end type vector_double
 
-    ! splicer begin class.vector_instantiation5.module_top
-    ! splicer end class.vector_instantiation5.module_top
-
     type, bind(C) :: SHROUD_vector_instantiation5_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -88,9 +79,6 @@ module testnames_std_mod
         ! splicer begin class.vector_instantiation5.type_bound_procedure_part
         ! splicer end class.vector_instantiation5.type_bound_procedure_part
     end type vector_instantiation5
-
-    ! splicer begin class.vector_instantiation3.module_top
-    ! splicer end class.vector_instantiation3.module_top
 
     type, bind(C) :: SHROUD_vector_instantiation3_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

@@ -26,6 +26,7 @@ module userlibrary_example_nested_mod
     implicit none
 
     ! splicer begin module_top
+    top of module library splicer  1
     ! splicer end module_top
 
     type, bind(C) :: SHROUD_capsule_data
@@ -39,10 +40,6 @@ module userlibrary_example_nested_mod
         integer(C_SIZE_T) :: len = 0_C_SIZE_T  ! bytes-per-item or character len of data in cxx
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
-
-    ! splicer begin class.ExClass1.module_top
-    top of module splicer  1
-    ! splicer end class.ExClass1.module_top
 
     type, bind(C) :: SHROUD_exclass1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -75,10 +72,6 @@ module userlibrary_example_nested_mod
           type bound procedure part 1
         ! splicer end class.ExClass1.type_bound_procedure_part
     end type exclass1
-
-    ! splicer begin class.ExClass2.module_top
-    top of module splicer  2
-    ! splicer end class.ExClass2.module_top
 
     type, bind(C) :: SHROUD_exclass2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

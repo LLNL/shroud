@@ -54,9 +54,6 @@ module scope_mod
     integer(C_INT), parameter :: colorenum_blue = 61
     integer(C_INT), parameter :: colorenum_white = 62
 
-    ! splicer begin class.cls1Enum.module_top
-    ! splicer end class.cls1Enum.module_top
-
     type, bind(C) :: SHROUD_cls1enum_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -73,9 +70,6 @@ module scope_mod
         ! splicer begin class.cls1Enum.type_bound_procedure_part
         ! splicer end class.cls1Enum.type_bound_procedure_part
     end type cls1enum
-
-    ! splicer begin class.cls2Enum.module_top
-    ! splicer end class.cls2Enum.module_top
 
     type, bind(C) :: SHROUD_cls2enum_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

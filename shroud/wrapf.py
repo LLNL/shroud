@@ -193,9 +193,7 @@ class Wrapf(util.WrapperMixin):
         self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
-        self.f_type_decl.append("")
         self._push_splicer(fmt_class.cxx_class)
-        self._create_splicer("module_top", self.f_type_decl)
         # XXX - make members private later, but not now for debugging.
 
         # One capsule type per class.

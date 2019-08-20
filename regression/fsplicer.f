@@ -13,9 +13,9 @@
 ! #######################################################################
 
 
-! splicer begin class.ExClass1.module_top
-top of module splicer  1
-! splicer end class.ExClass1.module_top
+! splicer begin module_top
+top of module library splicer  1
+! splicer end module_top
 
 ! splicer begin class.ExClass1.component_part
   component part 1a
@@ -35,9 +35,6 @@ blah blah blah
 ! splicer end   class.ExClass1.extra_methods
 
 
-! splicer begin class.ExClass2.module_top
-top of module splicer  2
-! splicer end class.ExClass2.module_top
 
 
 

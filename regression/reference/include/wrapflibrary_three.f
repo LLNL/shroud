@@ -23,7 +23,6 @@ module library_three_mod
     implicit none
 
 
-
     type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

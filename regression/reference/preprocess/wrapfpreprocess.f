@@ -29,9 +29,6 @@ module preprocess_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! splicer begin class.User1.module_top
-    ! splicer end class.User1.module_top
-
     type, bind(C) :: SHROUD_user1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -64,9 +61,6 @@ module preprocess_mod
         ! splicer begin class.User1.type_bound_procedure_part
         ! splicer end class.User1.type_bound_procedure_part
     end type user1
-
-    ! splicer begin class.User2.module_top
-    ! splicer end class.User2.module_top
 
 #ifdef USE_USER2
     type, bind(C) :: SHROUD_user2_capsule

@@ -46,9 +46,6 @@ module tutorial_mod
     integer(C_INT), parameter :: blue = 1
     integer(C_INT), parameter :: white = 2
 
-    ! splicer begin class.Class1.module_top
-    ! splicer end class.Class1.module_top
-
     ! start derived-type SHROUD_class1_capsule
     type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -77,9 +74,6 @@ module tutorial_mod
         ! splicer begin class.Class1.type_bound_procedure_part
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
-
-    ! splicer begin class.Singleton.module_top
-    ! splicer end class.Singleton.module_top
 
     type, bind(C) :: SHROUD_singleton_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory

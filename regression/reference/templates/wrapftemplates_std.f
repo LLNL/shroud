@@ -15,9 +15,6 @@ module templates_std_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! splicer begin class.vector_int.module_top
-    ! splicer end class.vector_int.module_top
-
     type, bind(C) :: SHROUD_vector_int_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
@@ -37,9 +34,6 @@ module templates_std_mod
         ! splicer begin class.vector_int.type_bound_procedure_part
         ! splicer end class.vector_int.type_bound_procedure_part
     end type vector_int
-
-    ! splicer begin class.vector_double.module_top
-    ! splicer end class.vector_double.module_top
 
     type, bind(C) :: SHROUD_vector_double_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
