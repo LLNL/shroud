@@ -89,18 +89,8 @@ class TypeOut(util.WrapperMixin):
                 top[ns.name] = {}
                 get_namespaces(ns, top[ns.name])
         top = {}
-        if util.TEMP:
-            #        get_namespaces(newlibrary.wrap_namespace, top)
-            get_namespaces(newlibrary, top)
-        else:
-            # split up into namespaces
-            for cls in newlibrary.wrap_namespace.classes:
-                fullname = cls.typemap.name
-                parts = fullname.split("::")
-                ns = top
-                for part in parts[:-1]:
-                    ns = ns.setdefault(part, {})
-                ns[parts[-1]] = cls.typemap
+        #        get_namespaces(newlibrary.wrap_namespace, top)
+        get_namespaces(newlibrary, top)
 
         output = []
 

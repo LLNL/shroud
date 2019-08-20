@@ -278,8 +278,6 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         """
         # From arguments
-        if "TEMP" in kwargs:
-            util.TEMP = True
         self.cxx_header = cxx_header
         self.language = language.lower()
         if self.language not in ["c", "c++"]:
@@ -825,7 +823,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         fmt_ns.namespace_scope = (
             parent.fmtdict.namespace_scope + self.name + "::"
         )
-        if util.TEMP and not skip:
+        if not skip:
             fmt_ns.C_name_scope = (
                 parent.fmtdict.C_name_scope + self.name + "_"
             )
