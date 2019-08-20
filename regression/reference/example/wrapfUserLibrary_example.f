@@ -17,16 +17,16 @@
 !! \file wrapfUserLibrary_example.f
 !! \brief Shroud generated wrapper for example namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.example.file_top
+! splicer end namespace.example.file_top
 module userlibrary_example_mod
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.example.module_use
+    ! splicer end namespace.example.module_use
     implicit none
 
-    ! splicer begin module_top
-    top of module library splicer  1
-    ! splicer end module_top
+    ! splicer begin namespace.example.module_top
+    top of module namespace example splicer  2
+    ! splicer end namespace.example.module_top
 
     interface
     end interface

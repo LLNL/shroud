@@ -18,16 +18,16 @@
 !! \file wrapftestnames_std.F
 !! \brief Shroud generated wrapper for std namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.std.file_top
+! splicer end namespace.std.file_top
 module testnames_std_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.std.module_use
+    ! splicer end namespace.std.module_use
     implicit none
 
-    ! splicer begin module_top
-    ! splicer end module_top
+    ! splicer begin namespace.std.module_top
+    ! splicer end namespace.std.module_top
 
     type, bind(C) :: SHROUD_vvv1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -36,14 +36,14 @@ module testnames_std_mod
 
     type FFvvv1
         type(SHROUD_vvv1_capsule) :: cxxmem
-        ! splicer begin class.Vvv1.component_part
-        ! splicer end class.Vvv1.component_part
+        ! splicer begin namespace.std.class.Vvv1.component_part
+        ! splicer end namespace.std.class.Vvv1.component_part
     contains
         procedure :: get_instance => vvv1_get_instance
         procedure :: set_instance => vvv1_set_instance
         procedure :: associated => vvv1_associated
-        ! splicer begin class.Vvv1.type_bound_procedure_part
-        ! splicer end class.Vvv1.type_bound_procedure_part
+        ! splicer begin namespace.std.class.Vvv1.type_bound_procedure_part
+        ! splicer end namespace.std.class.Vvv1.type_bound_procedure_part
     end type FFvvv1
 
     type, bind(C) :: SHROUD_vector_double_capsule
@@ -53,14 +53,14 @@ module testnames_std_mod
 
     type vector_double
         type(SHROUD_vector_double_capsule) :: cxxmem
-        ! splicer begin class.vector_double.component_part
-        ! splicer end class.vector_double.component_part
+        ! splicer begin namespace.std.class.vector_double.component_part
+        ! splicer end namespace.std.class.vector_double.component_part
     contains
         procedure :: get_instance => vector_double_get_instance
         procedure :: set_instance => vector_double_set_instance
         procedure :: associated => vector_double_associated
-        ! splicer begin class.vector_double.type_bound_procedure_part
-        ! splicer end class.vector_double.type_bound_procedure_part
+        ! splicer begin namespace.std.class.vector_double.type_bound_procedure_part
+        ! splicer end namespace.std.class.vector_double.type_bound_procedure_part
     end type vector_double
 
     type, bind(C) :: SHROUD_vector_instantiation5_capsule
@@ -70,14 +70,14 @@ module testnames_std_mod
 
     type vector_instantiation5
         type(SHROUD_vector_instantiation5_capsule) :: cxxmem
-        ! splicer begin class.vector_instantiation5.component_part
-        ! splicer end class.vector_instantiation5.component_part
+        ! splicer begin namespace.std.class.vector_instantiation5.component_part
+        ! splicer end namespace.std.class.vector_instantiation5.component_part
     contains
         procedure :: get_instance_instantiation5 => vector_instantiation5_get_instance_instantiation5
         procedure :: set_instance_instantiation5 => vector_instantiation5_set_instance_instantiation5
         procedure :: associated_instantiation5 => vector_instantiation5_associated_instantiation5
-        ! splicer begin class.vector_instantiation5.type_bound_procedure_part
-        ! splicer end class.vector_instantiation5.type_bound_procedure_part
+        ! splicer begin namespace.std.class.vector_instantiation5.type_bound_procedure_part
+        ! splicer end namespace.std.class.vector_instantiation5.type_bound_procedure_part
     end type vector_instantiation5
 
     type, bind(C) :: SHROUD_vector_instantiation3_capsule
@@ -87,14 +87,14 @@ module testnames_std_mod
 
     type vector_instantiation3
         type(SHROUD_vector_instantiation3_capsule) :: cxxmem
-        ! splicer begin class.vector_instantiation3.component_part
-        ! splicer end class.vector_instantiation3.component_part
+        ! splicer begin namespace.std.class.vector_instantiation3.component_part
+        ! splicer end namespace.std.class.vector_instantiation3.component_part
     contains
         procedure :: get_instance => vector_instantiation3_get_instance
         procedure :: set_instance => vector_instantiation3_set_instance
         procedure :: associated => vector_instantiation3_associated
-        ! splicer begin class.vector_instantiation3.type_bound_procedure_part
-        ! splicer end class.vector_instantiation3.type_bound_procedure_part
+        ! splicer begin namespace.std.class.vector_instantiation3.type_bound_procedure_part
+        ! splicer end namespace.std.class.vector_instantiation3.type_bound_procedure_part
     end type vector_instantiation3
 
     interface operator (.eq.)
@@ -113,17 +113,17 @@ module testnames_std_mod
 
     interface
 
-        ! splicer begin class.Vvv1.additional_interfaces
-        ! splicer end class.Vvv1.additional_interfaces
+        ! splicer begin namespace.std.class.Vvv1.additional_interfaces
+        ! splicer end namespace.std.class.Vvv1.additional_interfaces
 
-        ! splicer begin class.vector_double.additional_interfaces
-        ! splicer end class.vector_double.additional_interfaces
+        ! splicer begin namespace.std.class.vector_double.additional_interfaces
+        ! splicer end namespace.std.class.vector_double.additional_interfaces
 
-        ! splicer begin class.vector_instantiation5.additional_interfaces
-        ! splicer end class.vector_instantiation5.additional_interfaces
+        ! splicer begin namespace.std.class.vector_instantiation5.additional_interfaces
+        ! splicer end namespace.std.class.vector_instantiation5.additional_interfaces
 
-        ! splicer begin class.vector_instantiation3.additional_interfaces
-        ! splicer end class.vector_instantiation3.additional_interfaces
+        ! splicer begin namespace.std.class.vector_instantiation3.additional_interfaces
+        ! splicer end namespace.std.class.vector_instantiation3.additional_interfaces
     end interface
 
 contains
@@ -151,8 +151,8 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function vvv1_associated
 
-    ! splicer begin class.Vvv1.additional_functions
-    ! splicer end class.Vvv1.additional_functions
+    ! splicer begin namespace.std.class.Vvv1.additional_functions
+    ! splicer end namespace.std.class.Vvv1.additional_functions
 
     ! Return pointer to C++ memory.
     function vector_double_get_instance(obj) result (cxxptr)
@@ -177,8 +177,8 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function vector_double_associated
 
-    ! splicer begin class.vector_double.additional_functions
-    ! splicer end class.vector_double.additional_functions
+    ! splicer begin namespace.std.class.vector_double.additional_functions
+    ! splicer end namespace.std.class.vector_double.additional_functions
 
     ! Return pointer to C++ memory.
     function vector_instantiation5_get_instance_instantiation5(obj) result (cxxptr)
@@ -203,8 +203,8 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function vector_instantiation5_associated_instantiation5
 
-    ! splicer begin class.vector_instantiation5.additional_functions
-    ! splicer end class.vector_instantiation5.additional_functions
+    ! splicer begin namespace.std.class.vector_instantiation5.additional_functions
+    ! splicer end namespace.std.class.vector_instantiation5.additional_functions
 
     ! Return pointer to C++ memory.
     function vector_instantiation3_get_instance(obj) result (cxxptr)
@@ -229,8 +229,8 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function vector_instantiation3_associated
 
-    ! splicer begin class.vector_instantiation3.additional_functions
-    ! splicer end class.vector_instantiation3.additional_functions
+    ! splicer begin namespace.std.class.vector_instantiation3.additional_functions
+    ! splicer end namespace.std.class.vector_instantiation3.additional_functions
 
     function vvv1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

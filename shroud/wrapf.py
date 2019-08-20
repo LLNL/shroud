@@ -76,14 +76,15 @@ class Wrapf(util.WrapperMixin):
         fmt_library.F_pure_clause = ""
         fmt_library.F_C_result_clause = ""
         fmt_library.F_C_pure_clause = ""
-        self.wrap_namespace(self.newlibrary.wrap_namespace)
+        self.wrap_namespace(self.newlibrary.wrap_namespace, top=True)
         self.write_c_helper()
 
-    def wrap_namespace(self, node):
+    def wrap_namespace(self, node, top=False):
         """Wrap a library or namespace.
 
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
+            top  - True if library module, else namespace module.
         """
         options = node.options
         self.module_use = {}  # Use statements for a module
@@ -124,9 +125,18 @@ class Wrapf(util.WrapperMixin):
         self._end_output_file()
         self.write_module(node, None)
 
+        if top:
+            # have one namespace level, then replace name each time
+            self._push_splicer("namespace")
+            self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
             if ns.options.wrap_fortran:
+                # Skip file component in scope_file for splicer name.
+                self._update_splicer_top("::".join(ns.scope_file[1:]))
                 self.wrap_namespace(ns)
+        if top:
+            self._pop_splicer("XXX")  # This name will not match since it is replaced.
+            self._pop_splicer("namespace")
 
     def wrap_struct(self, node):
         """A struct must be bind(C)-able. i.e. all POD.

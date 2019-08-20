@@ -4,16 +4,16 @@
 !! \file wrapfns_outer.f
 !! \brief Shroud generated wrapper for outer namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.outer.file_top
+! splicer end namespace.outer.file_top
 module ns_outer_mod
     use iso_c_binding, only : C_DOUBLE, C_INT
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.outer.module_use
+    ! splicer end namespace.outer.module_use
     implicit none
 
-    ! splicer begin module_top
-    ! splicer end module_top
+    ! splicer begin namespace.outer.module_top
+    ! splicer end namespace.outer.module_top
 
 
     type, bind(C) :: cstruct1
@@ -28,13 +28,13 @@ module ns_outer_mod
             implicit none
         end subroutine one
 
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
+        ! splicer begin namespace.outer.additional_interfaces
+        ! splicer end namespace.outer.additional_interfaces
     end interface
 
 contains
 
-    ! splicer begin additional_functions
-    ! splicer end additional_functions
+    ! splicer begin namespace.outer.additional_functions
+    ! splicer end namespace.outer.additional_functions
 
 end module ns_outer_mod

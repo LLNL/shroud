@@ -18,15 +18,15 @@
 !! \file wrapftestnames_internal.F
 !! \brief Shroud generated wrapper for internal namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.internal.file_top
+! splicer end namespace.internal.file_top
 module testnames_internal_mod
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.internal.module_use
+    ! splicer end namespace.internal.module_use
     implicit none
 
-    ! splicer begin module_top
-    ! splicer end module_top
+    ! splicer begin namespace.internal.module_top
+    ! splicer end namespace.internal.module_top
 
     interface
     end interface

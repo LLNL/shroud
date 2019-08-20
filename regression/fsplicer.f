@@ -17,22 +17,31 @@
 top of module library splicer  1
 ! splicer end module_top
 
-! splicer begin class.ExClass1.component_part
+! splicer begin namespace.example.module_top
+top of module namespace example splicer  2
+! splicer end namespace.example.module_top
+
+! splicer begin namespace.example::nested.module_top
+top of module namespace example splicer  3
+! splicer end namespace.example::nested.module_top
+
+
+! splicer begin namespace.example::nested.class.ExClass1.component_part
   component part 1a
   component part 1b
-! splicer end   class.ExClass1.component_part
+! splicer end namespace.example::nested.class.ExClass1.component_part
 
-! splicer begin class.ExClass1.type_bound_procedure_part
+! splicer begin namespace.example::nested.class.ExClass1.type_bound_procedure_part
   type bound procedure part 1
-! splicer end   class.ExClass1.type_bound_procedure_part
+! splicer end   namespace.example::nested.class.ExClass1.type_bound_procedure_part
 
-! splicer begin class.ExClass1.method.splicer_special
+! splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
 blah blah blah
-! splicer end class.ExClass1.method.splicer_special
+! splicer end namespace.example::nested.class.ExClass1.method.splicer_special
 
-! splicer begin class.ExClass1.extra_methods
-  insert extra methods here
-! splicer end   class.ExClass1.extra_methods
+! splicer begin namespace.example::nested.class.ExClass1.additional_functions
+  insert extra functions here
+! splicer end   namespace.example::nested.class.ExClass1.additional_functions
 
 
 
@@ -40,6 +49,6 @@ blah blah blah
 
 
 # test a full path
-! splicer begin  class.ExClass1.method.extra_method2
+! splicer begin  namespace.example::nested.class.ExClass1.method.extra_method2
   ! extra method 2
-! splicer end    class.ExClass1.method.extra_method2
+! splicer end    namespace.example::nested.class.ExClass1.method.extra_method2

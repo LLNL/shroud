@@ -18,15 +18,15 @@
 !! \file wrapftestnames_ns1.F
 !! \brief Shroud generated wrapper for ns1 namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.ns1.file_top
+! splicer end namespace.ns1.file_top
 module testnames_ns1_mod
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.ns1.module_use
+    ! splicer end namespace.ns1.module_use
     implicit none
 
-    ! splicer begin module_top
-    ! splicer end module_top
+    ! splicer begin namespace.ns1.module_top
+    ! splicer end namespace.ns1.module_top
 
     interface
 
@@ -35,20 +35,20 @@ module testnames_ns1_mod
             implicit none
         end subroutine c_init_ns1
 
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
+        ! splicer begin namespace.ns1.additional_interfaces
+        ! splicer end namespace.ns1.additional_interfaces
     end interface
 
 contains
 
     ! void init_ns1()
     subroutine testnames_init_ns1()
-        ! splicer begin function.init_ns1
+        ! splicer begin namespace.ns1.function.init_ns1
         call c_init_ns1()
-        ! splicer end function.init_ns1
+        ! splicer end namespace.ns1.function.init_ns1
     end subroutine testnames_init_ns1
 
-    ! splicer begin additional_functions
-    ! splicer end additional_functions
+    ! splicer begin namespace.ns1.additional_functions
+    ! splicer end namespace.ns1.additional_functions
 
 end module testnames_ns1_mod

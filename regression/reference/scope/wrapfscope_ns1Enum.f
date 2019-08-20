@@ -18,16 +18,16 @@
 !! \file wrapfscope_ns1Enum.f
 !! \brief Shroud generated wrapper for ns1Enum namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.ns1Enum.file_top
+! splicer end namespace.ns1Enum.file_top
 module scope_ns1enum_mod
     use iso_c_binding, only : C_INT
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.ns1Enum.module_use
+    ! splicer end namespace.ns1Enum.module_use
     implicit none
 
-    ! splicer begin module_top
-    ! splicer end module_top
+    ! splicer begin namespace.ns1Enum.module_top
+    ! splicer end namespace.ns1Enum.module_top
 
     !  enum ns1Enum::Color
     integer(C_INT), parameter :: red = 20
@@ -36,13 +36,13 @@ module scope_ns1enum_mod
 
     interface
 
-        ! splicer begin additional_interfaces
-        ! splicer end additional_interfaces
+        ! splicer begin namespace.ns1Enum.additional_interfaces
+        ! splicer end namespace.ns1Enum.additional_interfaces
     end interface
 
 contains
 
-    ! splicer begin additional_functions
-    ! splicer end additional_functions
+    ! splicer begin namespace.ns1Enum.additional_functions
+    ! splicer end namespace.ns1Enum.additional_functions
 
 end module scope_ns1enum_mod

@@ -4,16 +4,16 @@
 !! \file wrapftemplates_std.f
 !! \brief Shroud generated wrapper for std namespace
 !<
-! splicer begin file_top
-! splicer end file_top
+! splicer begin namespace.std.file_top
+! splicer end namespace.std.file_top
 module templates_std_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
-    ! splicer begin module_use
-    ! splicer end module_use
+    ! splicer begin namespace.std.module_use
+    ! splicer end namespace.std.module_use
     implicit none
 
-    ! splicer begin module_top
-    ! splicer end module_top
+    ! splicer begin namespace.std.module_top
+    ! splicer end namespace.std.module_top
 
     type, bind(C) :: SHROUD_vector_int_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
@@ -22,8 +22,8 @@ module templates_std_mod
 
     type vector_int
         type(SHROUD_vector_int_capsule) :: cxxmem
-        ! splicer begin class.vector_int.component_part
-        ! splicer end class.vector_int.component_part
+        ! splicer begin namespace.std.class.vector_int.component_part
+        ! splicer end namespace.std.class.vector_int.component_part
     contains
         procedure :: dtor => vector_int_dtor
         procedure :: push_back => vector_int_push_back
@@ -31,8 +31,8 @@ module templates_std_mod
         procedure :: get_instance => vector_int_get_instance
         procedure :: set_instance => vector_int_set_instance
         procedure :: associated => vector_int_associated
-        ! splicer begin class.vector_int.type_bound_procedure_part
-        ! splicer end class.vector_int.type_bound_procedure_part
+        ! splicer begin namespace.std.class.vector_int.type_bound_procedure_part
+        ! splicer end namespace.std.class.vector_int.type_bound_procedure_part
     end type vector_int
 
     type, bind(C) :: SHROUD_vector_double_capsule
@@ -42,8 +42,8 @@ module templates_std_mod
 
     type vector_double
         type(SHROUD_vector_double_capsule) :: cxxmem
-        ! splicer begin class.vector_double.component_part
-        ! splicer end class.vector_double.component_part
+        ! splicer begin namespace.std.class.vector_double.component_part
+        ! splicer end namespace.std.class.vector_double.component_part
     contains
         procedure :: dtor => vector_double_dtor
         procedure :: push_back => vector_double_push_back
@@ -51,8 +51,8 @@ module templates_std_mod
         procedure :: get_instance => vector_double_get_instance
         procedure :: set_instance => vector_double_set_instance
         procedure :: associated => vector_double_associated
-        ! splicer begin class.vector_double.type_bound_procedure_part
-        ! splicer end class.vector_double.type_bound_procedure_part
+        ! splicer begin namespace.std.class.vector_double.type_bound_procedure_part
+        ! splicer end namespace.std.class.vector_double.type_bound_procedure_part
     end type vector_double
 
     interface operator (.eq.)
@@ -104,8 +104,8 @@ module templates_std_mod
             type(C_PTR) SHT_rv
         end function c_vector_int_at
 
-        ! splicer begin class.vector_int.additional_interfaces
-        ! splicer end class.vector_int.additional_interfaces
+        ! splicer begin namespace.std.class.vector_int.additional_interfaces
+        ! splicer end namespace.std.class.vector_int.additional_interfaces
 
         function c_vector_double_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -144,8 +144,8 @@ module templates_std_mod
             type(C_PTR) SHT_rv
         end function c_vector_double_at
 
-        ! splicer begin class.vector_double.additional_interfaces
-        ! splicer end class.vector_double.additional_interfaces
+        ! splicer begin namespace.std.class.vector_double.additional_interfaces
+        ! splicer end namespace.std.class.vector_double.additional_interfaces
     end interface
 
 contains
@@ -155,25 +155,25 @@ contains
         use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_prv
         type(vector_int) :: SHT_rv
-        ! splicer begin class.vector_int.method.ctor
+        ! splicer begin namespace.std.class.vector_int.method.ctor
         SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
-        ! splicer end class.vector_int.method.ctor
+        ! splicer end namespace.std.class.vector_int.method.ctor
     end function vector_int_ctor
 
     subroutine vector_int_dtor(obj)
         class(vector_int) :: obj
-        ! splicer begin class.vector_int.method.dtor
+        ! splicer begin namespace.std.class.vector_int.method.dtor
         call c_vector_int_dtor(obj%cxxmem)
-        ! splicer end class.vector_int.method.dtor
+        ! splicer end namespace.std.class.vector_int.method.dtor
     end subroutine vector_int_dtor
 
     subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
         class(vector_int) :: obj
         integer(C_INT), intent(IN) :: value
-        ! splicer begin class.vector_int.method.push_back
+        ! splicer begin namespace.std.class.vector_int.method.push_back
         call c_vector_int_push_back(obj%cxxmem, value)
-        ! splicer end class.vector_int.method.push_back
+        ! splicer end namespace.std.class.vector_int.method.push_back
     end subroutine vector_int_push_back
 
     function vector_int_at(obj, n) &
@@ -183,10 +183,10 @@ contains
         integer(C_SIZE_T), value, intent(IN) :: n
         integer(C_INT), pointer :: SHT_rv
         type(C_PTR) :: SHT_ptr
-        ! splicer begin class.vector_int.method.at
+        ! splicer begin namespace.std.class.vector_int.method.at
         SHT_ptr = c_vector_int_at(obj%cxxmem, n)
         call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end class.vector_int.method.at
+        ! splicer end namespace.std.class.vector_int.method.at
     end function vector_int_at
 
     ! Return pointer to C++ memory.
@@ -212,33 +212,33 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function vector_int_associated
 
-    ! splicer begin class.vector_int.additional_functions
-    ! splicer end class.vector_int.additional_functions
+    ! splicer begin namespace.std.class.vector_int.additional_functions
+    ! splicer end namespace.std.class.vector_int.additional_functions
 
     function vector_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_prv
         type(vector_double) :: SHT_rv
-        ! splicer begin class.vector_double.method.ctor
+        ! splicer begin namespace.std.class.vector_double.method.ctor
         SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)
-        ! splicer end class.vector_double.method.ctor
+        ! splicer end namespace.std.class.vector_double.method.ctor
     end function vector_double_ctor
 
     subroutine vector_double_dtor(obj)
         class(vector_double) :: obj
-        ! splicer begin class.vector_double.method.dtor
+        ! splicer begin namespace.std.class.vector_double.method.dtor
         call c_vector_double_dtor(obj%cxxmem)
-        ! splicer end class.vector_double.method.dtor
+        ! splicer end namespace.std.class.vector_double.method.dtor
     end subroutine vector_double_dtor
 
     subroutine vector_double_push_back(obj, value)
         use iso_c_binding, only : C_DOUBLE
         class(vector_double) :: obj
         real(C_DOUBLE), intent(IN) :: value
-        ! splicer begin class.vector_double.method.push_back
+        ! splicer begin namespace.std.class.vector_double.method.push_back
         call c_vector_double_push_back(obj%cxxmem, value)
-        ! splicer end class.vector_double.method.push_back
+        ! splicer end namespace.std.class.vector_double.method.push_back
     end subroutine vector_double_push_back
 
     function vector_double_at(obj, n) &
@@ -248,10 +248,10 @@ contains
         integer(C_SIZE_T), value, intent(IN) :: n
         real(C_DOUBLE), pointer :: SHT_rv
         type(C_PTR) :: SHT_ptr
-        ! splicer begin class.vector_double.method.at
+        ! splicer begin namespace.std.class.vector_double.method.at
         SHT_ptr = c_vector_double_at(obj%cxxmem, n)
         call c_f_pointer(SHT_ptr, SHT_rv)
-        ! splicer end class.vector_double.method.at
+        ! splicer end namespace.std.class.vector_double.method.at
     end function vector_double_at
 
     ! Return pointer to C++ memory.
@@ -277,8 +277,8 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function vector_double_associated
 
-    ! splicer begin class.vector_double.additional_functions
-    ! splicer end class.vector_double.additional_functions
+    ! splicer begin namespace.std.class.vector_double.additional_functions
+    ! splicer end namespace.std.class.vector_double.additional_functions
 
     function vector_int_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

@@ -198,6 +198,14 @@ class WrapperMixin(object):
         else:
             self.splicer_path = ""
 
+    def _update_splicer_top(self, name):
+        """Replace name on the top of the splicer stack.
+        """
+        level = self.splicer_stack[-2].setdefault(name, {})
+        self.splicer_stack[-1] = level
+        self.splicer_names[-1] = name
+        self.splicer_path = ".".join(self.splicer_names) + "."
+
     def _create_splicer(self, name, out, default=[]):
         """Insert a splicer with *name* into list *out*.
         Use the splicer from the splicer_stack if it exists.
