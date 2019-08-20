@@ -8,7 +8,6 @@ cxx_header: templates.hpp
 
 options:
   wrap_python: True
-  F_module_per_class: False
 
 declarations:
 - decl: namespace std

@@ -237,7 +237,7 @@
                     "function_name": "short_func",
                     "underscore_name": "short_func"
                 },
-                "linenumber": 32,
+                "linenumber": 31,
                 "options": {}
             },
             {
@@ -351,7 +351,7 @@
                     "function_name": "int_func",
                     "underscore_name": "int_func"
                 },
-                "linenumber": 33,
+                "linenumber": 32,
                 "options": {}
             },
             {
@@ -465,7 +465,7 @@
                     "function_name": "long_func",
                     "underscore_name": "long_func"
                 },
-                "linenumber": 34,
+                "linenumber": 33,
                 "options": {}
             },
             {
@@ -583,7 +583,7 @@
                     "function_name": "long_long_func",
                     "underscore_name": "long_long_func"
                 },
-                "linenumber": 35,
+                "linenumber": 34,
                 "options": {}
             },
             {
@@ -699,7 +699,7 @@
                     "function_name": "short_int_func",
                     "underscore_name": "short_int_func"
                 },
-                "linenumber": 38,
+                "linenumber": 37,
                 "options": {}
             },
             {
@@ -815,7 +815,7 @@
                     "function_name": "long_int_func",
                     "underscore_name": "long_int_func"
                 },
-                "linenumber": 39,
+                "linenumber": 38,
                 "options": {}
             },
             {
@@ -935,7 +935,7 @@
                     "function_name": "long_long_int_func",
                     "underscore_name": "long_long_int_func"
                 },
-                "linenumber": 40,
+                "linenumber": 39,
                 "options": {}
             },
             {
@@ -1049,7 +1049,7 @@
                     "function_name": "unsigned_func",
                     "underscore_name": "unsigned_func"
                 },
-                "linenumber": 43,
+                "linenumber": 42,
                 "options": {}
             },
             {
@@ -1165,7 +1165,7 @@
                     "function_name": "ushort_func",
                     "underscore_name": "ushort_func"
                 },
-                "linenumber": 45,
+                "linenumber": 44,
                 "options": {}
             },
             {
@@ -1281,7 +1281,7 @@
                     "function_name": "uint_func",
                     "underscore_name": "uint_func"
                 },
-                "linenumber": 46,
+                "linenumber": 45,
                 "options": {}
             },
             {
@@ -1397,7 +1397,7 @@
                     "function_name": "ulong_func",
                     "underscore_name": "ulong_func"
                 },
-                "linenumber": 47,
+                "linenumber": 46,
                 "options": {}
             },
             {
@@ -1517,7 +1517,7 @@
                     "function_name": "ulong_long_func",
                     "underscore_name": "ulong_long_func"
                 },
-                "linenumber": 48,
+                "linenumber": 47,
                 "options": {}
             },
             {
@@ -1635,7 +1635,7 @@
                     "function_name": "ulong_int_func",
                     "underscore_name": "ulong_int_func"
                 },
-                "linenumber": 49,
+                "linenumber": 48,
                 "options": {}
             },
             {
@@ -1749,7 +1749,7 @@
                     "function_name": "int8_func",
                     "underscore_name": "int8_func"
                 },
-                "linenumber": 51,
+                "linenumber": 50,
                 "options": {}
             },
             {
@@ -1863,7 +1863,7 @@
                     "function_name": "int16_func",
                     "underscore_name": "int16_func"
                 },
-                "linenumber": 52,
+                "linenumber": 51,
                 "options": {}
             },
             {
@@ -1977,7 +1977,7 @@
                     "function_name": "int32_func",
                     "underscore_name": "int32_func"
                 },
-                "linenumber": 53,
+                "linenumber": 52,
                 "options": {}
             },
             {
@@ -2091,7 +2091,7 @@
                     "function_name": "int64_func",
                     "underscore_name": "int64_func"
                 },
-                "linenumber": 54,
+                "linenumber": 53,
                 "options": {}
             },
             {
@@ -2205,7 +2205,7 @@
                     "function_name": "uint8_func",
                     "underscore_name": "uint8_func"
                 },
-                "linenumber": 56,
+                "linenumber": 55,
                 "options": {}
             },
             {
@@ -2319,7 +2319,7 @@
                     "function_name": "uint16_func",
                     "underscore_name": "uint16_func"
                 },
-                "linenumber": 57,
+                "linenumber": 56,
                 "options": {}
             },
             {
@@ -2433,7 +2433,7 @@
                     "function_name": "uint32_func",
                     "underscore_name": "uint32_func"
                 },
-                "linenumber": 58,
+                "linenumber": 57,
                 "options": {}
             },
             {
@@ -2547,7 +2547,7 @@
                     "function_name": "uint64_func",
                     "underscore_name": "uint64_func"
                 },
-                "linenumber": 59,
+                "linenumber": 58,
                 "options": {}
             },
             {
@@ -2661,7 +2661,7 @@
                     "function_name": "size_func",
                     "underscore_name": "size_func"
                 },
-                "linenumber": 61,
+                "linenumber": 60,
                 "options": {}
             },
             {
@@ -2778,7 +2778,7 @@
                     "function_name": "bool_func",
                     "underscore_name": "bool_func"
                 },
-                "linenumber": 63,
+                "linenumber": 62,
                 "options": {}
             },
             {
@@ -2875,7 +2875,7 @@
                 "decl": "bool returnBoolAndOthers(int *flag+intent(out))",
                 "declgen": "bool returnBoolAndOthers(int * flag +intent(out))",
                 "doxygen": {
-                    "__line__": 66,
+                    "__line__": 65,
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"
                 },
@@ -2902,7 +2902,7 @@
                     "function_name": "returnBoolAndOthers",
                     "underscore_name": "return_bool_and_others"
                 },
-                "linenumber": 65,
+                "linenumber": 64,
                 "options": {}
             }
         ],
@@ -2938,7 +2938,6 @@
             "F_line_length": 72,
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",

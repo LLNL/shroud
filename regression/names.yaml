@@ -25,7 +25,6 @@ options:
 
   # always create wrappers to demonstrate name generation
   F_force_wrapper: True
-#  F_module_per_class: False
   wrap_python: True
 
 format:

@@ -93,7 +93,7 @@
                             "function_name": "method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 50,
+                        "linenumber": 49,
                         "options": {}
                     },
                     {
@@ -175,11 +175,11 @@
                             "function_name": "method2",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 52,
+                        "linenumber": 51,
                         "options": {}
                     }
                 ],
-                "linenumber": 46,
+                "linenumber": 45,
                 "name": "Class2",
                 "options": {},
                 "scope": "Class2::",
@@ -309,7 +309,7 @@
                     "file_scope": "library_one",
                     "namespace_scope": "one::"
                 },
-                "linenumber": 34,
+                "linenumber": 33,
                 "name": "one",
                 "namespaces": [
                     {
@@ -363,11 +363,11 @@
                                     "function_name": "function1",
                                     "underscore_name": "function1"
                                 },
-                                "linenumber": 38,
+                                "linenumber": 37,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 36,
+                        "linenumber": 35,
                         "name": "two",
                         "options": {},
                         "scope": "one::two::",
@@ -476,11 +476,11 @@
                                     "function_name": "method1",
                                     "underscore_name": "method1"
                                 },
-                                "linenumber": 44,
+                                "linenumber": 43,
                                 "options": {}
                             }
                         ],
-                        "linenumber": 41,
+                        "linenumber": 40,
                         "name": "Class1",
                         "options": {},
                         "scope": "three::Class1::",
@@ -502,7 +502,7 @@
                     "file_scope": "library_three",
                     "namespace_scope": "three::"
                 },
-                "linenumber": 39,
+                "linenumber": 38,
                 "name": "three",
                 "options": {},
                 "scope": "three::",
@@ -543,7 +543,6 @@
             "F_line_length": 72,
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
@@ -694,7 +693,7 @@
             "PY_ctor": "PyInt_FromLong({c_deref}{c_var})",
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
-            "__line__": 30,
+            "__line__": 29,
             "c_header": "type_header.h",
             "c_type": "int",
             "cxx_header": "type_header.hpp",

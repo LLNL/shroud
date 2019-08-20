@@ -20,7 +20,6 @@ cxx_header: ownership.hpp
 
 options:
   debug: True
-  F_module_per_class: False
   wrap_python: True
   wrap_lua: True
 

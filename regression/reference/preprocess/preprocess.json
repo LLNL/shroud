@@ -64,7 +64,7 @@
                             "function_name": "method1",
                             "underscore_name": "method1"
                         },
-                        "linenumber": 30,
+                        "linenumber": 29,
                         "options": {}
                     },
                     {
@@ -106,7 +106,7 @@
                             "function_name": "method2",
                             "underscore_name": "method2"
                         },
-                        "linenumber": 31,
+                        "linenumber": 30,
                         "options": {}
                     },
                     {
@@ -150,7 +150,7 @@
                             "function_suffix": "_0",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 33,
+                        "linenumber": 32,
                         "options": {
                             "wrap_c": true,
                             "wrap_fortran": true,
@@ -258,11 +258,11 @@
                             "function_suffix": "_1",
                             "underscore_name": "method3def"
                         },
-                        "linenumber": 33,
+                        "linenumber": 32,
                         "options": {}
                     }
                 ],
-                "linenumber": 28,
+                "linenumber": 27,
                 "name": "User1",
                 "options": {},
                 "scope": "User1::",
@@ -332,7 +332,7 @@
                             "function_suffix": "_0",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 42,
+                        "linenumber": 41,
                         "options": {}
                     },
                     {
@@ -426,11 +426,11 @@
                             "function_suffix": "_1",
                             "underscore_name": "exfunc"
                         },
-                        "linenumber": 44,
+                        "linenumber": 43,
                         "options": {}
                     }
                 ],
-                "linenumber": 37,
+                "linenumber": 36,
                 "name": "User2",
                 "options": {},
                 "scope": "User2::",
@@ -593,7 +593,6 @@
             "F_line_length": 72,
             "F_module_name_library_template": "{library_lower}_mod",
             "F_module_name_namespace_template": "{file_scope}_mod",
-            "F_module_per_class": false,
             "F_name_function_template": "{underscore_name}{function_suffix}{template_suffix}",
             "F_name_generic_template": "{underscore_name}",
             "F_name_impl_template": "{F_name_scope}{underscore_name}{function_suffix}{template_suffix}",
