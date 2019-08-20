@@ -103,5 +103,3 @@ declarations:
 #  doxygen:
 #    description: |
 #      Return a vector as an ALLOCATABLE array.
-
-TEMP: True

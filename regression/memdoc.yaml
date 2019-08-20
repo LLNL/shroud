@@ -22,4 +22,3 @@ options:
 declarations:
 - decl: const std::string * getConstStringPtrAlloc() +owner(library)
   # from strings.yaml
-TEMP: True

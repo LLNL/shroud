@@ -50,4 +50,3 @@ declarations:
            # Use another class in the file
   - decl: void method2(three::Class1 * c2)
 
-TEMP: True

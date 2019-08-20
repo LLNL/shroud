@@ -18,5 +18,4 @@ declarations:
             };
     - decl: void One()
 - decl: void One()
-TEMP: True
 

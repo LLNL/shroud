@@ -210,4 +210,3 @@ splicer_code:
        Names2:
          C_definitions:
            - int write_file;
-TEMP: True

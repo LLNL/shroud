@@ -281,4 +281,3 @@ patterns:
    delete_int_array: |
        int * cxx_ptr = reinterpret_cast<int *>(ptr);
        delete [] cxx_ptr;
-TEMP: True

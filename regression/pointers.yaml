@@ -92,4 +92,3 @@ declarations:
       Increment array in place using intent(INOUT).
 
   
-TEMP: True

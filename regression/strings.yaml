@@ -304,4 +304,3 @@ patterns:
         // Used with +free_pattern(C_string_free)
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
-TEMP: True
