@@ -2,8 +2,8 @@
 // This is generated code, do not edit
 #include "pytemplatesmodule.hpp"
 #include "templates.hpp"
-// splicer begin class.ImplWorker1.impl.include
-// splicer end class.ImplWorker1.impl.include
+// splicer begin namespace.internal.class.ImplWorker1.impl.include
+// splicer end namespace.internal.class.ImplWorker1.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -17,23 +17,23 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.ImplWorker1.impl.C_definition
-// splicer end class.ImplWorker1.impl.C_definition
-// splicer begin class.ImplWorker1.impl.additional_methods
-// splicer end class.ImplWorker1.impl.additional_methods
+// splicer begin namespace.internal.class.ImplWorker1.impl.C_definition
+// splicer end namespace.internal.class.ImplWorker1.impl.C_definition
+// splicer begin namespace.internal.class.ImplWorker1.impl.additional_methods
+// splicer end namespace.internal.class.ImplWorker1.impl.additional_methods
 static void
 PY_ImplWorker1_tp_del (PY_ImplWorker1 *self)
 {
-// splicer begin class.ImplWorker1.type.del
+// splicer begin namespace.internal.class.ImplWorker1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
-// splicer end class.ImplWorker1.type.del
+// splicer end namespace.internal.class.ImplWorker1.type.del
 }
-// splicer begin class.ImplWorker1.impl.after_methods
-// splicer end class.ImplWorker1.impl.after_methods
+// splicer begin namespace.internal.class.ImplWorker1.impl.after_methods
+// splicer end namespace.internal.class.ImplWorker1.impl.after_methods
 static PyMethodDef PY_ImplWorker1_methods[] = {
-    // splicer begin class.ImplWorker1.PyMethodDef
-    // splicer end class.ImplWorker1.PyMethodDef
+    // splicer begin namespace.internal.class.ImplWorker1.PyMethodDef
+    // splicer end namespace.internal.class.ImplWorker1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

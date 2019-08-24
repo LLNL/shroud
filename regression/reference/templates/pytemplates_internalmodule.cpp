@@ -3,8 +3,8 @@
 #include "pytemplatesmodule.hpp"
 #include "templates.hpp"
 
-// splicer begin include
-// splicer end include
+// splicer begin namespace.internal.include
+// splicer end namespace.internal.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -19,10 +19,10 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// splicer begin C_definition
-// splicer end C_definition
-// splicer begin additional_functions
-// splicer end additional_functions
+// splicer begin namespace.internal.C_definition
+// splicer end namespace.internal.C_definition
+// splicer begin namespace.internal.additional_functions
+// splicer end namespace.internal.additional_functions
 static PyMethodDef PY_methods[] = {
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

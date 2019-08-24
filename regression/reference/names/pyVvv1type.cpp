@@ -16,8 +16,8 @@
 // #######################################################################
 #include "pytestnamesmodule.hpp"
 #include <vector>
-// splicer begin class.vector.impl.include
-// splicer end class.vector.impl.include
+// splicer begin namespace.std.class.vector.impl.include
+// splicer end namespace.std.class.vector.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -31,23 +31,23 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.vector.impl.C_definition
-// splicer end class.vector.impl.C_definition
-// splicer begin class.vector.impl.additional_methods
-// splicer end class.vector.impl.additional_methods
+// splicer begin namespace.std.class.vector.impl.C_definition
+// splicer end namespace.std.class.vector.impl.C_definition
+// splicer begin namespace.std.class.vector.impl.additional_methods
+// splicer end namespace.std.class.vector.impl.additional_methods
 static void
 PY_Vvv1_tp_del (PY_Vvv1 *self)
 {
-// splicer begin class.vector.type.del
+// splicer begin namespace.std.class.vector.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
     self->myobj = NULL;
-// splicer end class.vector.type.del
+// splicer end namespace.std.class.vector.type.del
 }
-// splicer begin class.vector.impl.after_methods
-// splicer end class.vector.impl.after_methods
+// splicer begin namespace.std.class.vector.impl.after_methods
+// splicer end namespace.std.class.vector.impl.after_methods
 static PyMethodDef PY_Vvv1_methods[] = {
-    // splicer begin class.vector.PyMethodDef
-    // splicer end class.vector.PyMethodDef
+    // splicer begin namespace.std.class.vector.PyMethodDef
+    // splicer end namespace.std.class.vector.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

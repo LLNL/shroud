@@ -15,8 +15,8 @@
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
 #include "ExClass2.hpp"
-// splicer begin class.ExClass2.impl.include
-// splicer end class.ExClass2.impl.include
+// splicer begin namespace.example::nested.class.ExClass2.impl.include
+// splicer end namespace.example::nested.class.ExClass2.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -30,129 +30,129 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.ExClass2.impl.C_definition
-// splicer end class.ExClass2.impl.C_definition
-// splicer begin class.ExClass2.impl.additional_methods
-// splicer end class.ExClass2.impl.additional_methods
+// splicer begin namespace.example::nested.class.ExClass2.impl.C_definition
+// splicer end namespace.example::nested.class.ExClass2.impl.C_definition
+// splicer begin namespace.example::nested.class.ExClass2.impl.additional_methods
+// splicer end namespace.example::nested.class.ExClass2.impl.additional_methods
 static void
 PP_ExClass2_tp_dealloc (PP_ExClass2 *self)
 {
-// splicer begin class.ExClass2.type.dealloc
+// splicer begin namespace.example::nested.class.ExClass2.type.dealloc
     PyErr_SetString(PyExc_NotImplementedError, "dealloc");
     return;
-// splicer end class.ExClass2.type.dealloc
+// splicer end namespace.example::nested.class.ExClass2.type.dealloc
 }
 static int
 PP_ExClass2_tp_print (PP_ExClass2 *self, FILE *fp, int flags)
 {
-// splicer begin class.ExClass2.type.print
+// splicer begin namespace.example::nested.class.ExClass2.type.print
     PyErr_SetString(PyExc_NotImplementedError, "print");
     return -1;
-// splicer end class.ExClass2.type.print
+// splicer end namespace.example::nested.class.ExClass2.type.print
 }
 static int
 PP_ExClass2_tp_compare (PP_ExClass2 *self, PyObject *)
 {
-// splicer begin class.ExClass2.type.compare
+// splicer begin namespace.example::nested.class.ExClass2.type.compare
     PyErr_SetString(PyExc_NotImplementedError, "compare");
     return -1;
-// splicer end class.ExClass2.type.compare
+// splicer end namespace.example::nested.class.ExClass2.type.compare
 }
 static PyObject *
 PP_ExClass2_tp_getattr (PP_ExClass2 *self, char *name)
 {
-// splicer begin class.ExClass2.type.getattr
+// splicer begin namespace.example::nested.class.ExClass2.type.getattr
     PyErr_SetString(PyExc_NotImplementedError, "getattr");
     return NULL;
-// splicer end class.ExClass2.type.getattr
+// splicer end namespace.example::nested.class.ExClass2.type.getattr
 }
 static int
 PP_ExClass2_tp_setattr (PP_ExClass2 *self, char *name, PyObject *value)
 {
-// splicer begin class.ExClass2.type.setattr
+// splicer begin namespace.example::nested.class.ExClass2.type.setattr
     PyErr_SetString(PyExc_NotImplementedError, "setattr");
     return -1;
-// splicer end class.ExClass2.type.setattr
+// splicer end namespace.example::nested.class.ExClass2.type.setattr
 }
 static PyObject *
 PP_ExClass2_tp_getattro (PP_ExClass2 *self, PyObject *name)
 {
-// splicer begin class.ExClass2.type.getattro
+// splicer begin namespace.example::nested.class.ExClass2.type.getattro
     PyErr_SetString(PyExc_NotImplementedError, "getattro");
     return NULL;
-// splicer end class.ExClass2.type.getattro
+// splicer end namespace.example::nested.class.ExClass2.type.getattro
 }
 static int
 PP_ExClass2_tp_setattro (PP_ExClass2 *self, PyObject *name, PyObject *value)
 {
-// splicer begin class.ExClass2.type.setattro
+// splicer begin namespace.example::nested.class.ExClass2.type.setattro
     PyErr_SetString(PyExc_NotImplementedError, "setattro");
     return -1;
-// splicer end class.ExClass2.type.setattro
+// splicer end namespace.example::nested.class.ExClass2.type.setattro
 }
 static PyObject *
 PP_ExClass2_tp_repr (PP_ExClass2 *self)
 {
-// splicer begin class.ExClass2.type.repr
+// splicer begin namespace.example::nested.class.ExClass2.type.repr
     PyErr_SetString(PyExc_NotImplementedError, "repr");
     return NULL;
-// splicer end class.ExClass2.type.repr
+// splicer end namespace.example::nested.class.ExClass2.type.repr
 }
 static long
 PP_ExClass2_tp_hash (PP_ExClass2 *self)
 {
-// splicer begin class.ExClass2.type.hash
+// splicer begin namespace.example::nested.class.ExClass2.type.hash
     PyErr_SetString(PyExc_NotImplementedError, "hash");
     return -1;
-// splicer end class.ExClass2.type.hash
+// splicer end namespace.example::nested.class.ExClass2.type.hash
 }
 static PyObject *
 PP_ExClass2_tp_call (PP_ExClass2 *self, PyObject *args, PyObject *kwds)
 {
-// splicer begin class.ExClass2.type.call
+// splicer begin namespace.example::nested.class.ExClass2.type.call
     PyErr_SetString(PyExc_NotImplementedError, "call");
     return NULL;
-// splicer end class.ExClass2.type.call
+// splicer end namespace.example::nested.class.ExClass2.type.call
 }
 static PyObject *
 PP_ExClass2_tp_str (PP_ExClass2 *self)
 {
-// splicer begin class.ExClass2.type.str
+// splicer begin namespace.example::nested.class.ExClass2.type.str
     PyErr_SetString(PyExc_NotImplementedError, "str");
     return NULL;
-// splicer end class.ExClass2.type.str
+// splicer end namespace.example::nested.class.ExClass2.type.str
 }
 static PyObject *
 PP_ExClass2_tp_alloc (PyTypeObject *type, Py_ssize_t nitems)
 {
-// splicer begin class.ExClass2.type.alloc
+// splicer begin namespace.example::nested.class.ExClass2.type.alloc
     PyErr_SetString(PyExc_NotImplementedError, "alloc");
     return NULL;
-// splicer end class.ExClass2.type.alloc
+// splicer end namespace.example::nested.class.ExClass2.type.alloc
 }
 static PyObject *
 PP_ExClass2_tp_new (PyTypeObject *type, PyObject *args, PyObject *kwds)
 {
-// splicer begin class.ExClass2.type.new
+// splicer begin namespace.example::nested.class.ExClass2.type.new
     PyErr_SetString(PyExc_NotImplementedError, "new");
     return NULL;
-// splicer end class.ExClass2.type.new
+// splicer end namespace.example::nested.class.ExClass2.type.new
 }
 static void
 PP_ExClass2_tp_free (void *op)
 {
-// splicer begin class.ExClass2.type.free
+// splicer begin namespace.example::nested.class.ExClass2.type.free
     PyErr_SetString(PyExc_NotImplementedError, "free");
     return;
-// splicer end class.ExClass2.type.free
+// splicer end namespace.example::nested.class.ExClass2.type.free
 }
 static void
 PP_ExClass2_tp_del (PP_ExClass2 *self)
 {
-// splicer begin class.ExClass2.type.del
+// splicer begin namespace.example::nested.class.ExClass2.type.del
     PP_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
-// splicer end class.ExClass2.type.del
+// splicer end namespace.example::nested.class.ExClass2.type.del
 }
 
 /**
@@ -166,7 +166,7 @@ PP_ExClass2_tp_init(
   PyObject *kwds)
 {
 // ExClass2(const string * name +intent(in)+len_trim(trim_name))
-// splicer begin class.ExClass2.method.ctor
+// splicer begin namespace.example::nested.class.ExClass2.method.ctor
     const char * name;
     const char *SHT_kwlist[] = {
         "name",
@@ -186,7 +186,7 @@ PP_ExClass2_tp_init(
     }
     self->idtor = 2;
     return 0;
-// splicer end class.ExClass2.method.ctor
+// splicer end namespace.example::nested.class.ExClass2.method.ctor
 }
 
 static char PP_getName__doc__[] =
@@ -200,7 +200,7 @@ PP_getName(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// splicer begin class.ExClass2.method.get_name
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name
     PyObject * SHTPy_rv = NULL;
 
     const std::string & SHCXX_rv = self->obj->getName();
@@ -210,7 +210,7 @@ PP_getName(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_name
+// splicer end namespace.example::nested.class.ExClass2.method.get_name
 }
 
 static char PP_getName2__doc__[] =
@@ -224,7 +224,7 @@ PP_getName2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // const string & getName2() +deref(allocatable)
-// splicer begin class.ExClass2.method.get_name2
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name2
     PyObject * SHTPy_rv = NULL;
 
     const std::string & SHCXX_rv = self->obj->getName2();
@@ -234,7 +234,7 @@ PP_getName2(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_name2
+// splicer end namespace.example::nested.class.ExClass2.method.get_name2
 }
 
 static char PP_getName3__doc__[] =
@@ -248,7 +248,7 @@ PP_getName3(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // string & getName3() const +deref(allocatable)
-// splicer begin class.ExClass2.method.get_name3
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name3
     PyObject * SHTPy_rv = NULL;
 
     std::string & SHCXX_rv = self->obj->getName3();
@@ -258,7 +258,7 @@ PP_getName3(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_name3
+// splicer end namespace.example::nested.class.ExClass2.method.get_name3
 }
 
 static char PP_getName4__doc__[] =
@@ -272,7 +272,7 @@ PP_getName4(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // string & getName4() +deref(allocatable)
-// splicer begin class.ExClass2.method.get_name4
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name4
     PyObject * SHTPy_rv = NULL;
 
     std::string & SHCXX_rv = self->obj->getName4();
@@ -282,7 +282,7 @@ PP_getName4(
         SHCXX_rv.size());
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_name4
+// splicer end namespace.example::nested.class.ExClass2.method.get_name4
 }
 
 static char PP_GetNameLength__doc__[] =
@@ -300,7 +300,7 @@ PP_GetNameLength(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // int GetNameLength() const
-// splicer begin class.ExClass2.method.get_name_length
+// splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
     PyObject * SHTPy_rv = NULL;
 
     int rv = self->obj->GetNameLength();
@@ -309,7 +309,7 @@ PP_GetNameLength(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_name_length
+// splicer end namespace.example::nested.class.ExClass2.method.get_name_length
 }
 
 static char PP_get_class1__doc__[] =
@@ -323,7 +323,7 @@ PP_get_class1(
   PyObject *kwds)
 {
 // ExClass1 * get_class1(const ExClass1 * in +intent(in))
-// splicer begin class.ExClass2.method.get_class1
+// splicer begin namespace.example::nested.class.ExClass2.method.get_class1
     PP_ExClass1 * SHPy_in;
     const char *SHT_kwlist[] = {
         "in",
@@ -345,7 +345,7 @@ PP_get_class1(
     SHTPy_rv->obj = SHCXX_rv;
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_class1
+// splicer end namespace.example::nested.class.ExClass2.method.get_class1
 }
 
 static char PP_declare_1__doc__[] =
@@ -359,7 +359,7 @@ PP_declare_1(
   PyObject *kwds)
 {
 // void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
-// splicer begin class.ExClass2.method.declare
+// splicer begin namespace.example::nested.class.ExClass2.method.declare
     Py_ssize_t SH_nargs = 0;
     int type;
     SIDRE_SidreLength len;
@@ -395,7 +395,7 @@ PP_declare_1(
         return NULL;
     }
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.declare
+// splicer end namespace.example::nested.class.ExClass2.method.declare
 }
 
 static char PP_destroyall__doc__[] =
@@ -409,10 +409,10 @@ PP_destroyall(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void destroyall()
-// splicer begin class.ExClass2.method.destroyall
+// splicer begin namespace.example::nested.class.ExClass2.method.destroyall
     self->obj->destroyall();
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.destroyall
+// splicer end namespace.example::nested.class.ExClass2.method.destroyall
 }
 
 static char PP_getTypeID__doc__[] =
@@ -426,7 +426,7 @@ PP_getTypeID(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // TypeID getTypeID() const
-// splicer begin class.ExClass2.method.get_type_id
+// splicer begin namespace.example::nested.class.ExClass2.method.get_type_id
     PyObject * SHTPy_rv = NULL;
 
     TypeID SHCXX_rv = self->obj->getTypeID();
@@ -435,7 +435,7 @@ PP_getTypeID(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_type_id
+// splicer end namespace.example::nested.class.ExClass2.method.get_type_id
 }
 
 static PyObject *
@@ -445,7 +445,7 @@ PP_setValue_int(
   PyObject *kwds)
 {
 // void setValue(int value +intent(in)+value)
-// splicer begin class.ExClass2.method.set_value_int
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_int
     int value;
     const char *SHT_kwlist[] = {
         "value",
@@ -457,7 +457,7 @@ PP_setValue_int(
 
     self->obj->setValue(value);
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.set_value_int
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_int
 }
 
 static PyObject *
@@ -467,7 +467,7 @@ PP_setValue_long(
   PyObject *kwds)
 {
 // void setValue(long value +intent(in)+value)
-// splicer begin class.ExClass2.method.set_value_long
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_long
     long value;
     const char *SHT_kwlist[] = {
         "value",
@@ -479,7 +479,7 @@ PP_setValue_long(
 
     self->obj->setValue(value);
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.set_value_long
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_long
 }
 
 static PyObject *
@@ -489,7 +489,7 @@ PP_setValue_float(
   PyObject *kwds)
 {
 // void setValue(float value +intent(in)+value)
-// splicer begin class.ExClass2.method.set_value_float
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_float
     float value;
     const char *SHT_kwlist[] = {
         "value",
@@ -501,7 +501,7 @@ PP_setValue_float(
 
     self->obj->setValue(value);
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.set_value_float
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_float
 }
 
 static PyObject *
@@ -511,7 +511,7 @@ PP_setValue_double(
   PyObject *kwds)
 {
 // void setValue(double value +intent(in)+value)
-// splicer begin class.ExClass2.method.set_value_double
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value_double
     double value;
     const char *SHT_kwlist[] = {
         "value",
@@ -523,7 +523,7 @@ PP_setValue_double(
 
     self->obj->setValue(value);
     Py_RETURN_NONE;
-// splicer end class.ExClass2.method.set_value_double
+// splicer end namespace.example::nested.class.ExClass2.method.set_value_double
 }
 
 static PyObject *
@@ -533,7 +533,7 @@ PP_getValue_int(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // int getValue()
-// splicer begin class.ExClass2.method.get_value_int
+// splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
     PyObject * SHTPy_rv = NULL;
 
     int rv = self->obj->getValue();
@@ -542,7 +542,7 @@ PP_getValue_int(
     SHTPy_rv = PyInt_FromLong(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_value_int
+// splicer end namespace.example::nested.class.ExClass2.method.get_value_int
 }
 
 static PyObject *
@@ -552,7 +552,7 @@ PP_getValue_double(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // double getValue()
-// splicer begin class.ExClass2.method.get_value_double
+// splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
     PyObject * SHTPy_rv = NULL;
 
     double rv = self->obj->getValue();
@@ -561,7 +561,7 @@ PP_getValue_double(
     SHTPy_rv = PyFloat_FromDouble(rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end class.ExClass2.method.get_value_double
+// splicer end namespace.example::nested.class.ExClass2.method.get_value_double
 }
 
 static char PP_setValue__doc__[] =
@@ -574,7 +574,7 @@ PP_setValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.ExClass2.method.set_value
+// splicer begin namespace.example::nested.class.ExClass2.method.set_value
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
@@ -617,7 +617,7 @@ PP_setValue(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end class.ExClass2.method.set_value
+// splicer end namespace.example::nested.class.ExClass2.method.set_value
 }
 
 static char PP_getValue__doc__[] =
@@ -630,7 +630,7 @@ PP_getValue(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.ExClass2.method.get_value
+// splicer begin namespace.example::nested.class.ExClass2.method.get_value
     Py_ssize_t SHT_nargs = 0;
     if (args != NULL) SHT_nargs += PyTuple_Size(args);
     if (kwds != NULL) SHT_nargs += PyDict_Size(args);
@@ -655,10 +655,10 @@ PP_getValue(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return NULL;
-// splicer end class.ExClass2.method.get_value
+// splicer end namespace.example::nested.class.ExClass2.method.get_value
 }
-// splicer begin class.ExClass2.impl.after_methods
-// splicer end class.ExClass2.impl.after_methods
+// splicer begin namespace.example::nested.class.ExClass2.impl.after_methods
+// splicer end namespace.example::nested.class.ExClass2.impl.after_methods
 static PyMethodDef PP_ExClass2_methods[] = {
     {"getName", (PyCFunction)PP_getName, METH_NOARGS,
         PP_getName__doc__},
@@ -682,8 +682,8 @@ static PyMethodDef PP_ExClass2_methods[] = {
         PP_setValue__doc__},
     {"getValue", (PyCFunction)PP_getValue, METH_VARARGS|METH_KEYWORDS,
         PP_getValue__doc__},
-    // splicer begin class.ExClass2.PyMethodDef
-    // splicer end class.ExClass2.PyMethodDef
+    // splicer begin namespace.example::nested.class.ExClass2.PyMethodDef
+    // splicer end namespace.example::nested.class.ExClass2.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

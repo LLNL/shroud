@@ -30,15 +30,15 @@ namespace ns0 {
     class Names;  // forward declare
 }
 extern PyTypeObject PY_Names_Type;
-// splicer begin class.Names.C_declaration
-// splicer end class.Names.C_declaration
+// splicer begin namespace.ns0.class.Names.C_declaration
+// splicer end namespace.ns0.class.Names.C_declaration
 
 typedef struct {
 PyObject_HEAD
     ns0::Names * myobj;
     int mydtor;
-    // splicer begin class.Names.C_object
-    // splicer end class.Names.C_object
+    // splicer begin namespace.ns0.class.Names.C_object
+    // splicer end namespace.ns0.class.Names.C_object
 } PY_Names;
 
 extern const char *PY_Names_capsule_name;
@@ -50,15 +50,15 @@ namespace std {
     class vector;  // forward declare
 }
 extern PyTypeObject PY_Vvv1_Type;
-// splicer begin class.vector.C_declaration
-// splicer end class.vector.C_declaration
+// splicer begin namespace.std.class.vector.C_declaration
+// splicer end namespace.std.class.vector.C_declaration
 
 typedef struct {
 PyObject_HEAD
     std::Vvv1 * myobj;
     int mydtor;
-    // splicer begin class.vector.C_object
-    // splicer end class.vector.C_object
+    // splicer begin namespace.std.class.vector.C_object
+    // splicer end namespace.std.class.vector.C_object
 } PY_Vvv1;
 
 extern const char *PY_Vvv1_capsule_name;
@@ -70,15 +70,15 @@ namespace std {
     class vector;  // forward declare
 }
 extern PyTypeObject PY_vector_double_Type;
-// splicer begin class.vector.C_declaration
-// splicer end class.vector.C_declaration
+// splicer begin namespace.std.class.vector.C_declaration
+// splicer end namespace.std.class.vector.C_declaration
 
 typedef struct {
 PyObject_HEAD
     std::vector_double * myobj;
     int mydtor;
-    // splicer begin class.vector.C_object
-    // splicer end class.vector.C_object
+    // splicer begin namespace.std.class.vector.C_object
+    // splicer end namespace.std.class.vector.C_object
 } PY_vector_double;
 
 extern const char *PY_vector_double_capsule_name;
@@ -90,15 +90,15 @@ namespace std {
     class vector;  // forward declare
 }
 extern PyTypeObject PY_vector_instantiation5_Type;
-// splicer begin class.vector.C_declaration
-// splicer end class.vector.C_declaration
+// splicer begin namespace.std.class.vector.C_declaration
+// splicer end namespace.std.class.vector.C_declaration
 
 typedef struct {
 PyObject_HEAD
     std::vector_instantiation5 * myobj;
     int mydtor;
-    // splicer begin class.vector.C_object
-    // splicer end class.vector.C_object
+    // splicer begin namespace.std.class.vector.C_object
+    // splicer end namespace.std.class.vector.C_object
 } PY_vector_instantiation5;
 
 extern const char *PY_vector_instantiation5_capsule_name;
@@ -110,15 +110,15 @@ namespace std {
     class vector;  // forward declare
 }
 extern PyTypeObject PY_vector_instantiation3_Type;
-// splicer begin class.vector.C_declaration
-// splicer end class.vector.C_declaration
+// splicer begin namespace.std.class.vector.C_declaration
+// splicer end namespace.std.class.vector.C_declaration
 
 typedef struct {
 PyObject_HEAD
     std::vector_instantiation3 * myobj;
     int mydtor;
-    // splicer begin class.vector.C_object
-    // splicer end class.vector.C_object
+    // splicer begin namespace.std.class.vector.C_object
+    // splicer end namespace.std.class.vector.C_object
 } PY_vector_instantiation3;
 
 extern const char *PY_vector_instantiation3_capsule_name;

@@ -98,11 +98,11 @@ class Wrapc(util.WrapperMixin):
         for ns in node.namespaces:
             if ns.options.wrap_c:
                 self.wrap_namespace(ns)
-        # Skip file component in scope_file for splicer name.
         if top:
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
         else:
+            # Skip file component in scope_file for splicer name.
             self._update_splicer_top("::".join(node.scope_file[1:]))
 
         self._push_splicer("class")

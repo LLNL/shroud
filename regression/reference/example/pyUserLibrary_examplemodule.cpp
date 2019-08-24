@@ -15,8 +15,8 @@
 // #######################################################################
 #include "pyUserLibrarymodule.hpp"
 
-// splicer begin include
-// splicer end include
+// splicer begin namespace.example.include
+// splicer end namespace.example.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -31,10 +31,10 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// splicer begin C_definition
-// splicer end C_definition
-// splicer begin additional_functions
-// splicer end additional_functions
+// splicer begin namespace.example.C_definition
+// splicer end namespace.example.C_definition
+// splicer begin namespace.example.additional_functions
+// splicer end namespace.example.additional_functions
 static PyMethodDef PP_methods[] = {
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

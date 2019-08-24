@@ -3,8 +3,8 @@
 #include "pynsmodule.hpp"
 #include "namespace.hpp"
 
-// splicer begin include
-// splicer end include
+// splicer begin namespace.outer.include
+// splicer end namespace.outer.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -19,10 +19,10 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// splicer begin C_definition
-// splicer end C_definition
-// splicer begin additional_functions
-// splicer end additional_functions
+// splicer begin namespace.outer.C_definition
+// splicer end namespace.outer.C_definition
+// splicer begin namespace.outer.additional_functions
+// splicer end namespace.outer.additional_functions
 
 static char PY_One__doc__[] =
 "documentation"
@@ -35,10 +35,10 @@ PY_One(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void One()
-// splicer begin function.one
+// splicer begin namespace.outer.function.one
     outer::One();
     Py_RETURN_NONE;
-// splicer end function.one
+// splicer end namespace.outer.function.one
 }
 static PyMethodDef PY_methods[] = {
 {"One", (PyCFunction)PY_One, METH_NOARGS, PY_One__doc__},

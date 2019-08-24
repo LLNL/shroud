@@ -16,15 +16,15 @@ namespace outer {
     class Cstruct1;  // forward declare
 }
 extern PyTypeObject PY_Cstruct1_Type;
-// splicer begin class.Cstruct1.C_declaration
-// splicer end class.Cstruct1.C_declaration
+// splicer begin namespace.outer.class.Cstruct1.C_declaration
+// splicer end namespace.outer.class.Cstruct1.C_declaration
 
 typedef struct {
 PyObject_HEAD
     outer::Cstruct1 * obj;
     int idtor;
-    // splicer begin class.Cstruct1.C_object
-    // splicer end class.Cstruct1.C_object
+    // splicer begin namespace.outer.class.Cstruct1.C_object
+    // splicer end namespace.outer.class.Cstruct1.C_object
 } PY_Cstruct1;
 
 extern const char *PY_Cstruct1_capsule_name;

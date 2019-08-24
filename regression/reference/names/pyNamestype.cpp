@@ -15,8 +15,8 @@
 //
 // #######################################################################
 #include "pytestnamesmodule.hpp"
-// splicer begin class.Names.impl.include
-// splicer end class.Names.impl.include
+// splicer begin namespace.ns0.class.Names.impl.include
+// splicer end namespace.ns0.class.Names.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -30,17 +30,17 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.Names.impl.C_definition
-// splicer end class.Names.impl.C_definition
-// splicer begin class.Names.impl.additional_methods
-// splicer end class.Names.impl.additional_methods
+// splicer begin namespace.ns0.class.Names.impl.C_definition
+// splicer end namespace.ns0.class.Names.impl.C_definition
+// splicer begin namespace.ns0.class.Names.impl.additional_methods
+// splicer end namespace.ns0.class.Names.impl.additional_methods
 static void
 PY_Names_tp_del (PY_Names *self)
 {
-// splicer begin class.Names.type.del
+// splicer begin namespace.ns0.class.Names.type.del
     PY_SHROUD_release_memory(self->mydtor, self->myobj);
     self->myobj = NULL;
-// splicer end class.Names.type.del
+// splicer end namespace.ns0.class.Names.type.del
 }
 
 static char PY_method1__doc__[] =
@@ -54,10 +54,10 @@ PY_method1(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void method1()
-// splicer begin class.Names.method.method1
+// splicer begin namespace.ns0.class.Names.method.method1
     self->myobj->method1();
     Py_RETURN_NONE;
-// splicer end class.Names.method.method1
+// splicer end namespace.ns0.class.Names.method.method1
 }
 
 static char PY_method2__doc__[] =
@@ -71,20 +71,20 @@ PY_method2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void method2()
-// splicer begin class.Names.method.method2
+// splicer begin namespace.ns0.class.Names.method.method2
     self->myobj->method2();
     Py_RETURN_NONE;
-// splicer end class.Names.method.method2
+// splicer end namespace.ns0.class.Names.method.method2
 }
-// splicer begin class.Names.impl.after_methods
-// splicer end class.Names.impl.after_methods
+// splicer begin namespace.ns0.class.Names.impl.after_methods
+// splicer end namespace.ns0.class.Names.impl.after_methods
 static PyMethodDef PY_Names_methods[] = {
     {"method1", (PyCFunction)PY_method1, METH_NOARGS,
         PY_method1__doc__},
     {"method2", (PyCFunction)PY_method2, METH_NOARGS,
         PY_method2__doc__},
-    // splicer begin class.Names.PyMethodDef
-    // splicer end class.Names.PyMethodDef
+    // splicer begin namespace.ns0.class.Names.PyMethodDef
+    // splicer end namespace.ns0.class.Names.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

@@ -16,8 +16,8 @@
 // #######################################################################
 #include "pytestnamesmodule.hpp"
 
-// splicer begin include
-// splicer end include
+// splicer begin namespace.ns1.include
+// splicer end namespace.ns1.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -32,10 +32,10 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// splicer begin C_definition
-// splicer end C_definition
-// splicer begin additional_functions
-// splicer end additional_functions
+// splicer begin namespace.ns1.C_definition
+// splicer end namespace.ns1.C_definition
+// splicer begin namespace.ns1.additional_functions
+// splicer end namespace.ns1.additional_functions
 
 static char PY_init_ns1__doc__[] =
 "documentation"
@@ -48,10 +48,10 @@ PY_init_ns1(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // void init_ns1()
-// splicer begin function.init_ns1
+// splicer begin namespace.ns1.function.init_ns1
     ns1::init_ns1();
     Py_RETURN_NONE;
-// splicer end function.init_ns1
+// splicer end namespace.ns1.function.init_ns1
 }
 static PyMethodDef PY_methods[] = {
 {"init_ns1", (PyCFunction)PY_init_ns1, METH_NOARGS, PY_init_ns1__doc__},

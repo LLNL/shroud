@@ -8,7 +8,7 @@ const char *PY_Cstruct1_capsule_name = "Cstruct1";
 
 PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr)
 {
-    // splicer begin class.Cstruct1.utility.to_object
+    // splicer begin namespace.outer.class.Cstruct1.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -19,12 +19,12 @@ PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr)
     rv = PyObject_Call((PyObject *) &PY_Cstruct1_Type, args, NULL);
     Py_DECREF(args);
     return rv;
-    // splicer end class.Cstruct1.utility.to_object
+    // splicer end namespace.outer.class.Cstruct1.utility.to_object
 }
 
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin class.Cstruct1.utility.from_object
+    // splicer begin namespace.outer.class.Cstruct1.utility.from_object
     if (obj->ob_type != &PY_Cstruct1_Type) {
         // raise exception
         return 0;
@@ -32,7 +32,7 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
     PY_Cstruct1 * self = (PY_Cstruct1 *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end class.Cstruct1.utility.from_object
+    // splicer end namespace.outer.class.Cstruct1.utility.from_object
 }
 
 // ----------------------------------------

@@ -2,8 +2,8 @@
 // This is generated code, do not edit
 #include "pynsmodule.hpp"
 #include "namespace.hpp"
-// splicer begin class.Cstruct1.impl.include
-// splicer end class.Cstruct1.impl.include
+// splicer begin namespace.outer.class.Cstruct1.impl.include
+// splicer end namespace.outer.class.Cstruct1.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -17,17 +17,17 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-// splicer begin class.Cstruct1.impl.C_definition
-// splicer end class.Cstruct1.impl.C_definition
-// splicer begin class.Cstruct1.impl.additional_methods
-// splicer end class.Cstruct1.impl.additional_methods
+// splicer begin namespace.outer.class.Cstruct1.impl.C_definition
+// splicer end namespace.outer.class.Cstruct1.impl.C_definition
+// splicer begin namespace.outer.class.Cstruct1.impl.additional_methods
+// splicer end namespace.outer.class.Cstruct1.impl.additional_methods
 static void
 PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 {
-// splicer begin class.Cstruct1.type.del
+// splicer begin namespace.outer.class.Cstruct1.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = NULL;
-// splicer end class.Cstruct1.type.del
+// splicer end namespace.outer.class.Cstruct1.type.del
 }
 
 static int
@@ -37,7 +37,7 @@ PY_Cstruct1_tp_init(
   PyObject *kwds)
 {
 // Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
-// splicer begin class.Cstruct1.method.cstruct1_ctor
+// splicer begin namespace.outer.class.Cstruct1.method.cstruct1_ctor
     int ifield;
     double dfield;
     const char *SHT_kwlist[] = {
@@ -60,10 +60,10 @@ PY_Cstruct1_tp_init(
     SH_obj->ifield = ifield;
     SH_obj->dfield = dfield;
     return 0;
-// splicer end class.Cstruct1.method.cstruct1_ctor
+// splicer end namespace.outer.class.Cstruct1.method.cstruct1_ctor
 }
-// splicer begin class.Cstruct1.impl.after_methods
-// splicer end class.Cstruct1.impl.after_methods
+// splicer begin namespace.outer.class.Cstruct1.impl.after_methods
+// splicer end namespace.outer.class.Cstruct1.impl.after_methods
 
 static PyObject *PY_Cstruct1_ifield_getter(PY_Cstruct1 *self,
     void *SHROUD_UNUSED(closure))
@@ -106,13 +106,13 @@ static PyGetSetDef PY_Cstruct1_getset[] = {
         (setter)PY_Cstruct1_ifield_setter, NULL, NULL},
     {(char *)"dfield", (getter)PY_Cstruct1_dfield_getter,
         (setter)PY_Cstruct1_dfield_setter, NULL, NULL},
-    // splicer begin class.Cstruct1.PyGetSetDef
-    // splicer end class.Cstruct1.PyGetSetDef
+    // splicer begin namespace.outer.class.Cstruct1.PyGetSetDef
+    // splicer end namespace.outer.class.Cstruct1.PyGetSetDef
     {NULL}            /* sentinel */
 };
 static PyMethodDef PY_Cstruct1_methods[] = {
-    // splicer begin class.Cstruct1.PyMethodDef
-    // splicer end class.Cstruct1.PyMethodDef
+    // splicer begin namespace.outer.class.Cstruct1.PyMethodDef
+    // splicer end namespace.outer.class.Cstruct1.PyMethodDef
     {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

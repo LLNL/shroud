@@ -16,8 +16,8 @@
 // #######################################################################
 #include "pytestnamesmodule.hpp"
 
-// splicer begin include
-// splicer end include
+// splicer begin namespace.ns0::inner.include
+// splicer end namespace.ns0::inner.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -32,10 +32,10 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// splicer begin C_definition
-// splicer end C_definition
-// splicer begin additional_functions
-// splicer end additional_functions
+// splicer begin namespace.ns0::inner.C_definition
+// splicer end namespace.ns0::inner.C_definition
+// splicer begin namespace.ns0::inner.additional_functions
+// splicer end namespace.ns0::inner.additional_functions
 static PyMethodDef PY_methods[] = {
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };

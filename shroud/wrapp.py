@@ -166,10 +166,20 @@ class Wrapp(util.WrapperMixin):
         modinfo = ModuleTuple([])
         fileinfo = FileTuple([], [], [], [])
 
+        if top:
+            # have one namespace level, then replace name each time
+            self._push_splicer("namespace")
+            self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
             if ns.options.wrap_python:
                 self.wrap_namespace(ns)
                 self.register_submodule(ns, modinfo)
+        if top:
+            self._pop_splicer("XXX")  # This name will not match since it is replaced.
+            self._pop_splicer("namespace")
+        else:
+            # Skip file component in scope_file for splicer name.
+            self._update_splicer_top("::".join(node.scope_file[1:]))
 
         # preprocess all classes first to allow them to reference each other
         for cls in node.classes:
