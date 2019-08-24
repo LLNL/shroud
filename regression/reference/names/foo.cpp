@@ -16,32 +16,33 @@
 // #######################################################################
 #include "foo.h"
 
-// splicer begin class.Names.CXX_definitions
-// splicer end class.Names.CXX_definitions
+// splicer begin namespace.ns0.class.Names.CXX_definitions
+// CXX_definitions for ns0 class Names
+// splicer end namespace.ns0.class.Names.CXX_definitions
 
 extern "C" {
 
-// splicer begin class.Names.C_definitions
-// splicer end class.Names.C_definitions
+// splicer begin namespace.ns0.class.Names.C_definitions
+// splicer end namespace.ns0.class.Names.C_definitions
 
 // void method1()
 void XXX_TES_ns0_Names_method1(TES_names * self)
 {
-// splicer begin class.Names.method.method1
+// splicer begin namespace.ns0.class.Names.method.method1
     ns0::Names *SH_this = static_cast<ns0::Names *>(self->addr);
     SH_this->method1();
     return;
-// splicer end class.Names.method.method1
+// splicer end namespace.ns0.class.Names.method.method1
 }
 
 // void method2()
 void XXX_TES_ns0_Names_method2(TES_names * self2)
 {
-// splicer begin class.Names.method.method2
+// splicer begin namespace.ns0.class.Names.method.method2
     ns0::Names *SH_this2 = static_cast<ns0::Names *>(self2->addr);
     SH_this->method2();
     return;
-// splicer end class.Names.method.method2
+// splicer end namespace.ns0.class.Names.method.method2
 }
 
 }  // extern "C"

@@ -1,5 +1,6 @@
 Read yaml names.yaml
 Close testnames_types.yaml
+Close wraptestnames_ns0_inner.cc
 class Names
 C method void method1()
 C method void method2()
@@ -10,12 +11,10 @@ C function void init_ns1()
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc
 class ImplWorker1
-Close wraptestnames_internal.cc
 class vector
 class vector
 class vector
 class vector
-Close wraptestnames_std.cc
 class Names2
 Close wrapNames2.cc
 class twoTs
@@ -51,6 +50,7 @@ class Names
 C-interface, Fortran method void method1()
 C-interface, Fortran method void method2()
 Close foo.f
+Close wrapftestnames_ns0_inner.F
 C-interface, Fortran function void init_ns1()
 Close wrapftestnames_ns1.F
 Close wrapftestnames_internal.F
@@ -78,6 +78,7 @@ class Names
 Python method void method1()
 Python method void method2()
 Close pyNamestype.cpp
+Close pytestnames_ns0_innermodule.cpp
 Close pytestnames_ns0module.cpp
 Python function void init_ns1()
 Close pytestnames_ns1module.cpp

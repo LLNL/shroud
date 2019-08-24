@@ -16,23 +16,21 @@
 // #######################################################################
 #include "wraptestnames_ns1.hh"
 
-// splicer begin CXX_definitions
-// Add some text from splicer
-// And another line
-// splicer end CXX_definitions
+// splicer begin namespace.ns1.CXX_definitions
+// splicer end namespace.ns1.CXX_definitions
 
 extern "C" {
 
-// splicer begin C_definitions
-// splicer end C_definitions
+// splicer begin namespace.ns1.C_definitions
+// splicer end namespace.ns1.C_definitions
 
 // void init_ns1()
 void TES_ns1_init_ns1()
 {
-// splicer begin function.init_ns1
+// splicer begin namespace.ns1.function.init_ns1
     ns1::init_ns1();
     return;
-// splicer end function.init_ns1
+// splicer end namespace.ns1.function.init_ns1
 }
 
 }  // extern "C"

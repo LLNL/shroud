@@ -15,14 +15,13 @@
 //
 // #######################################################################
 
-// splicer begin CXX_definitions
-// Add some text from splicer
-// And another line
-// splicer end CXX_definitions
+// splicer begin namespace.ns0.CXX_definitions
+// lines from explict splicer - namespace ns0
+// splicer end namespace.ns0.CXX_definitions
 
 extern "C" {
 
-// splicer begin C_definitions
-// splicer end C_definitions
+// splicer begin namespace.ns0.C_definitions
+// splicer end namespace.ns0.C_definitions
 
 }  // extern "C"

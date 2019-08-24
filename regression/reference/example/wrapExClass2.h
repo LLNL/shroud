@@ -25,15 +25,15 @@
 #include "sidre/SidreTypes.h"
 #include "typesUserLibrary.h"
 
-// splicer begin class.ExClass2.CXX_declarations
-// splicer end class.ExClass2.CXX_declarations
+// splicer begin namespace.example::nested.class.ExClass2.CXX_declarations
+// splicer end namespace.example::nested.class.ExClass2.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin class.ExClass2.C_declarations
-// splicer end class.ExClass2.C_declarations
+// splicer begin namespace.example::nested.class.ExClass2.C_declarations
+// splicer end namespace.example::nested.class.ExClass2.C_declarations
 
 AA_exclass2 * AA_example_nested_ExClass2_ctor(const char * name,
     AA_exclass2 * SHC_rv);

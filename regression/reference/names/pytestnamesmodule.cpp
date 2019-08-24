@@ -35,6 +35,7 @@
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
+PyObject *PY_init_testnames_ns0_inner(void);
 PyObject *PY_init_testnames_ns0(void);
 PyObject *PY_init_testnames_ns1(void);
 PyObject *PY_init_testnames_internal(void);

@@ -11,8 +11,8 @@
 
 #include "typesns.h"
 
-// splicer begin CXX_declarations
-// splicer end CXX_declarations
+// splicer begin namespace.outer.CXX_declarations
+// splicer end namespace.outer.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,8 +25,8 @@ struct s_NS_cstruct1 {
 };
 typedef struct s_NS_cstruct1 NS_cstruct1;
 
-// splicer begin C_declarations
-// splicer end C_declarations
+// splicer begin namespace.outer.C_declarations
+// splicer end namespace.outer.C_declarations
 
 void NS_outer_one();
 

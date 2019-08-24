@@ -1,4 +1,4 @@
-// pytestnames_ns0module.cpp
+// pytestnames_ns0_innermodule.cpp
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -43,7 +43,7 @@ static PyMethodDef PY_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "testnames.ns0", /* m_name */
+    "testnames.ns0.inner", /* m_name */
     PY__doc__, /* m_doc */
     sizeof(struct module_state), /* m_size */
     PY_methods, /* m_methods */
@@ -57,33 +57,17 @@ static struct PyModuleDef moduledef = {
 #endif
 #define RETVAL NULL
 
-PyObject *PY_init_testnames_ns0(void)
+PyObject *PY_init_testnames_ns0_inner(void)
 {
     PyObject *m;
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "testnames.ns0", PY_methods, NULL);
+    m = Py_InitModule3((char *) "testnames.ns0.inner", PY_methods, NULL);
 #endif
     if (m == NULL)
         return NULL;
 
-
-    // Names
-    PY_Names_Type.tp_new   = PyType_GenericNew;
-    PY_Names_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Names_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Names_Type);
-    PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
-
-    {
-        PyObject *submodule = PY_init_testnames_ns0_inner();
-        if (submodule == NULL)
-            INITERROR;
-        Py_INCREF(submodule);
-        PyModule_AddObject(m, (char *) "inner", submodule);
-    }
 
     return m;
 }

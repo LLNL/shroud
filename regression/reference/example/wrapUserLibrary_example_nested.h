@@ -29,15 +29,15 @@
 #include "sidre/wrapGroup.h"
 #include "typesUserLibrary.h"
 
-// splicer begin CXX_declarations
-// splicer end CXX_declarations
+// splicer begin namespace.example::nested.CXX_declarations
+// splicer end namespace.example::nested.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin C_declarations
-// splicer end C_declarations
+// splicer begin namespace.example::nested.C_declarations
+// splicer end namespace.example::nested.C_declarations
 
 void AA_example_nested_local_function1();
 

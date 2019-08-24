@@ -91,9 +91,19 @@ class Wrapc(util.WrapperMixin):
         Wrap depth first to accumulate destructor information
         which is written at the library level.
         """
+        if top:
+            # have one namespace level, then replace name each time
+            self._push_splicer("namespace")
+            self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
             if ns.options.wrap_c:
                 self.wrap_namespace(ns)
+        # Skip file component in scope_file for splicer name.
+        if top:
+            self._pop_splicer("XXX")  # This name will not match since it is replaced.
+            self._pop_splicer("namespace")
+        else:
+            self._update_splicer_top("::".join(node.scope_file[1:]))
 
         self._push_splicer("class")
         structs = []

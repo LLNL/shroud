@@ -3,21 +3,21 @@
 #include "wrapns_outer.h"
 #include "namespace.hpp"
 
-// splicer begin CXX_definitions
-// splicer end CXX_definitions
+// splicer begin namespace.outer.CXX_definitions
+// splicer end namespace.outer.CXX_definitions
 
 extern "C" {
 
-// splicer begin C_definitions
-// splicer end C_definitions
+// splicer begin namespace.outer.C_definitions
+// splicer end namespace.outer.C_definitions
 
 // void One()
 void NS_outer_one()
 {
-// splicer begin function.one
+// splicer begin namespace.outer.function.one
     outer::One();
     return;
-// splicer end function.one
+// splicer end namespace.outer.function.one
 }
 
 }  // extern "C"

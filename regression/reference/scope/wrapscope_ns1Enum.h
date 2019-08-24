@@ -25,8 +25,8 @@
 
 #include "typesscope.h"
 
-// splicer begin CXX_declarations
-// splicer end CXX_declarations
+// splicer begin namespace.ns1Enum.CXX_declarations
+// splicer end namespace.ns1Enum.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,8 +39,8 @@ enum SCO_ns1Enum_Color {
     SCO_ns1Enum_WHITE
 };
 
-// splicer begin C_declarations
-// splicer end C_declarations
+// splicer begin namespace.ns1Enum.C_declarations
+// splicer end namespace.ns1Enum.C_declarations
 
 #ifdef __cplusplus
 }

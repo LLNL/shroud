@@ -19,6 +19,7 @@
 #include "typesUserLibrary.h"
 
 // splicer begin CXX_definitions
+//   CXX_definitions
 // splicer end CXX_definitions
 
 extern "C" {

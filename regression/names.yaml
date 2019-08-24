@@ -63,6 +63,7 @@ declarations:
     F_module_name: name_module
     F_impl_filename: foo.f
   declarations:
+  - decl: namespace inner
   - decl: class Names
     options:
       none: foo
@@ -206,7 +207,23 @@ splicer_code:
      CXX_definitions:
        - // Add some text from splicer
        - // And another line
+     namespace:
+       ns0:
+         CXX_definitions:
+         - // lines from explict splicer - namespace ns0
+         class:
+           Names:
+             CXX_definitions:
+             - // CXX_definitions for ns0 class Names
+       ns0::inner:
+          CXX_definitions:
+          - // CXX_definitions for ns0::inner
      class:
        Names2:
          C_definitions:
            - int write_file;
+   f:
+     namespace:
+       ns0::inner:
+          file_top:
+          -  "! top of ns0::inner"

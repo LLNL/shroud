@@ -1,4 +1,4 @@
-// wraptestnames_std.cc
+// wraptestnames_ns0_inner.cc
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,14 +15,13 @@
 //
 // #######################################################################
 
-// splicer begin CXX_definitions
-// Add some text from splicer
-// And another line
-// splicer end CXX_definitions
+// splicer begin namespace.ns0::inner.CXX_definitions
+// CXX_definitions for ns0::inner
+// splicer end namespace.ns0::inner.CXX_definitions
 
 extern "C" {
 
-// splicer begin C_definitions
-// splicer end C_definitions
+// splicer begin namespace.ns0::inner.C_definitions
+// splicer end namespace.ns0::inner.C_definitions
 
 }  // extern "C"

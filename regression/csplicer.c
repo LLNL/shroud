@@ -15,6 +15,19 @@
 // code to test C splicers
 //
 
-// splicer begin  class.ExClass1.method.SplicerSpecial
+// splicer begin  namespace.example::nested.class.ExClass1.method.SplicerSpecial
 //   splicer for SplicerSpecial
-// splicer end    class.ExClass1.method.SplicerSpecial
+// splicer end    namespace.example::nested.class.ExClass1.method.SplicerSpecial
+
+
+// splicer begin CXX_definitions
+//   CXX_definitions
+// splicer end   CXX_definitions
+
+// splicer begin namespace.example::nested.class.ExClass1.CXX_definitions
+//   namespace.example::nested.class.ExClass1.CXX_definitions
+// splicer end   namespace.example::nested.class.ExClass1.CXX_definitions
+
+// splicer begin namespace.example::nested.class.ExClass2.CXX_definitions
+//   namespace.example::nested.class.ExClass2.CXX_definitions
+// splicer end   namespace.example::nested.class.ExClass2.CXX_definitions

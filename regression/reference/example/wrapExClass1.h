@@ -24,15 +24,15 @@
 
 #include "typesUserLibrary.h"
 
-// splicer begin class.ExClass1.CXX_declarations
-// splicer end class.ExClass1.CXX_declarations
+// splicer begin namespace.example::nested.class.ExClass1.CXX_declarations
+// splicer end namespace.example::nested.class.ExClass1.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin class.ExClass1.C_declarations
-// splicer end class.ExClass1.C_declarations
+// splicer begin namespace.example::nested.class.ExClass1.C_declarations
+// splicer end namespace.example::nested.class.ExClass1.C_declarations
 
 AA_exclass1 * AA_example_nested_ExClass1_ctor_0(AA_exclass1 * SHC_rv);
 

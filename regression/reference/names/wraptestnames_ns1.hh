@@ -25,15 +25,15 @@
 
 #include "typestestnames.hh"
 
-// splicer begin CXX_declarations
-// splicer end CXX_declarations
+// splicer begin namespace.ns1.CXX_declarations
+// splicer end namespace.ns1.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// splicer begin C_declarations
-// splicer end C_declarations
+// splicer begin namespace.ns1.C_declarations
+// splicer end namespace.ns1.C_declarations
 
 void TES_ns1_init_ns1();
 
