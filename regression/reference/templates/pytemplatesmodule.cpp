@@ -227,22 +227,6 @@ inittemplates(void)
 
     import_array();
 
-    // Worker
-    PY_Worker_Type.tp_new   = PyType_GenericNew;
-    PY_Worker_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Worker_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Worker_Type);
-    PyModule_AddObject(m, "Worker", (PyObject *)&PY_Worker_Type);
-
-    // user_int
-    PY_user_int_Type.tp_new   = PyType_GenericNew;
-    PY_user_int_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_user_int_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_user_int_Type);
-    PyModule_AddObject(m, "user_int", (PyObject *)&PY_user_int_Type);
-
     {
         PyObject *submodule = PY_init_templates_std();
         if (submodule == NULL)
@@ -258,6 +242,22 @@ inittemplates(void)
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "internal", submodule);
     }
+
+    // Worker
+    PY_Worker_Type.tp_new   = PyType_GenericNew;
+    PY_Worker_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Worker_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Worker_Type);
+    PyModule_AddObject(m, "Worker", (PyObject *)&PY_Worker_Type);
+
+    // user_int
+    PY_user_int_Type.tp_new   = PyType_GenericNew;
+    PY_user_int_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_user_int_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_user_int_Type);
+    PyModule_AddObject(m, "user_int", (PyObject *)&PY_user_int_Type);
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);
     if (PY_error_obj == NULL)

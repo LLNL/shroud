@@ -69,14 +69,6 @@ PyObject *PY_init_testnames_ns0(void)
         return NULL;
 
 
-    // Names
-    PY_Names_Type.tp_new   = PyType_GenericNew;
-    PY_Names_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Names_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Names_Type);
-    PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
-
     {
         PyObject *submodule = PY_init_testnames_ns0_inner();
         if (submodule == NULL)
@@ -84,6 +76,14 @@ PyObject *PY_init_testnames_ns0(void)
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "inner", submodule);
     }
+
+    // Names
+    PY_Names_Type.tp_new   = PyType_GenericNew;
+    PY_Names_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Names_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Names_Type);
+    PyModule_AddObject(m, "Names", (PyObject *)&PY_Names_Type);
 
     return m;
 }

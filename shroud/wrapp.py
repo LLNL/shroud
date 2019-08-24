@@ -166,6 +166,11 @@ class Wrapp(util.WrapperMixin):
         modinfo = ModuleTuple([])
         fileinfo = FileTuple([], [], [], [])
 
+        for ns in node.namespaces:
+            if ns.options.wrap_python:
+                self.wrap_namespace(ns)
+                self.register_submodule(ns, modinfo)
+
         # preprocess all classes first to allow them to reference each other
         for cls in node.classes:
             if not cls.options.wrap_python:
@@ -213,11 +218,6 @@ class Wrapp(util.WrapperMixin):
             #            self._begin_class()
             self.wrap_functions(None, node.functions, fileinfo)
             self._pop_splicer("function")
-
-        for ns in node.namespaces:
-            if ns.options.wrap_python:
-                self.wrap_namespace(ns)
-                self.register_submodule(ns, modinfo)
 
         self.write_module(node, modinfo, fileinfo, top)
 

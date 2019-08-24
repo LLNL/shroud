@@ -15,11 +15,8 @@ Wrote wrapftestnames_ns0_inner.F
 Wrote wrapftestnames_ns1.F
 Wrote wrapftestnames_internal.F
 Wrote wrapftestnames_std.F
-Wrote pyNames2type.cpp
-Wrote pytwoTs_0type.cpp
-Wrote pytwoTs_instantiation4type.cpp
-Wrote pyNamestype.cpp
 Wrote pytestnames_ns0_innermodule.cpp
+Wrote pyNamestype.cpp
 Wrote pytestnames_ns0module.cpp
 Wrote pytestnames_ns1module.cpp
 Wrote pytestnames_internalmodule.cpp
@@ -28,6 +25,9 @@ Wrote pyvector_doubletype.cpp
 Wrote pyvector_instantiation5type.cpp
 Wrote pyvector_instantiation3type.cpp
 Wrote pytestnames_stdmodule.cpp
+Wrote pyNames2type.cpp
+Wrote pytwoTs_0type.cpp
+Wrote pytwoTs_instantiation4type.cpp
 Wrote pytestnamesmodule.cpp
 Wrote pytestnamesutil.cpp
 Wrote pytestnamesmodule.hpp

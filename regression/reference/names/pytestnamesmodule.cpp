@@ -423,30 +423,6 @@ inittestnames(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
-    // Names2
-    PY_Names2_Type.tp_new   = PyType_GenericNew;
-    PY_Names2_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_Names2_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_Names2_Type);
-    PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
-
-    // twoTs_0
-    PY_twoTs_0_Type.tp_new   = PyType_GenericNew;
-    PY_twoTs_0_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_twoTs_0_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_twoTs_0_Type);
-    PyModule_AddObject(m, "twoTs_0", (PyObject *)&PY_twoTs_0_Type);
-
-    // twoTs_instantiation4
-    PY_twoTs_instantiation4_Type.tp_new   = PyType_GenericNew;
-    PY_twoTs_instantiation4_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_twoTs_instantiation4_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_twoTs_instantiation4_Type);
-    PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
-
     {
         PyObject *submodule = PY_init_testnames_ns0();
         if (submodule == NULL)
@@ -478,6 +454,30 @@ inittestnames(void)
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "std", submodule);
     }
+
+    // Names2
+    PY_Names2_Type.tp_new   = PyType_GenericNew;
+    PY_Names2_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Names2_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Names2_Type);
+    PyModule_AddObject(m, "Names2", (PyObject *)&PY_Names2_Type);
+
+    // twoTs_0
+    PY_twoTs_0_Type.tp_new   = PyType_GenericNew;
+    PY_twoTs_0_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_twoTs_0_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_twoTs_0_Type);
+    PyModule_AddObject(m, "twoTs_0", (PyObject *)&PY_twoTs_0_Type);
+
+    // twoTs_instantiation4
+    PY_twoTs_instantiation4_Type.tp_new   = PyType_GenericNew;
+    PY_twoTs_instantiation4_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_twoTs_instantiation4_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_twoTs_instantiation4_Type);
+    PyModule_AddObject(m, "twoTs_instantiation4", (PyObject *)&PY_twoTs_instantiation4_Type);
 
     // enum Color
     PyModule_AddIntConstant(m, "RED", RED);
