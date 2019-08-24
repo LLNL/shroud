@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- A C++ namespace corresponds to a module in Fortran and Python.
 - Added format dictionary field template_suffix.
 - Added the **F_create_bufferify_function** option.
 - Support `true` and `false` with implied attribute.
