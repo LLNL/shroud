@@ -1,4 +1,4 @@
-// wrapcls1Enum.h
+// wrapClass2.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,35 +15,35 @@
 //
 // #######################################################################
 /**
- * \file wrapcls1Enum.h
- * \brief Shroud generated wrapper for cls1Enum class
+ * \file wrapClass2.h
+ * \brief Shroud generated wrapper for Class2 class
  */
 // For C users and C++ implementation
 
-#ifndef WRAPCLS1ENUM_H
-#define WRAPCLS1ENUM_H
+#ifndef WRAPCLASS2_H
+#define WRAPCLASS2_H
 
 #include "typesscope.h"
 
-// splicer begin class.cls1Enum.CXX_declarations
-// splicer end class.cls1Enum.CXX_declarations
+// splicer begin class.Class2.CXX_declarations
+// splicer end class.Class2.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-//  cls1Enum::Color
-enum SCO_cls1Enum_Color {
-    SCO_cls1Enum_RED = 40,
-    SCO_cls1Enum_BLUE,
-    SCO_cls1Enum_WHITE
+//  Class2::Color
+enum SCO_Class2_Color {
+    SCO_Class2_RED = 50,
+    SCO_Class2_BLUE,
+    SCO_Class2_WHITE
 };
 
-// splicer begin class.cls1Enum.C_declarations
-// splicer end class.cls1Enum.C_declarations
+// splicer begin class.Class2.C_declarations
+// splicer end class.Class2.C_declarations
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPCLS1ENUM_H
+#endif  // WRAPCLASS2_H

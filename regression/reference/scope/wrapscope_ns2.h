@@ -1,4 +1,4 @@
-// wrapscope_ns1Enum.h
+// wrapscope_ns2.h
 // This is generated code, do not edit
 // #######################################################################
 // Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC.
@@ -15,35 +15,35 @@
 //
 // #######################################################################
 /**
- * \file wrapscope_ns1Enum.h
- * \brief Shroud generated wrapper for ns1Enum namespace
+ * \file wrapscope_ns2.h
+ * \brief Shroud generated wrapper for ns2 namespace
  */
 // For C users and C++ implementation
 
-#ifndef WRAPSCOPE_NS1ENUM_H
-#define WRAPSCOPE_NS1ENUM_H
+#ifndef WRAPSCOPE_NS2_H
+#define WRAPSCOPE_NS2_H
 
 #include "typesscope.h"
 
-// splicer begin namespace.ns1Enum.CXX_declarations
-// splicer end namespace.ns1Enum.CXX_declarations
+// splicer begin namespace.ns2.CXX_declarations
+// splicer end namespace.ns2.CXX_declarations
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-//  ns1Enum::Color
-enum SCO_ns1Enum_Color {
-    SCO_ns1Enum_RED = 20,
-    SCO_ns1Enum_BLUE,
-    SCO_ns1Enum_WHITE
+//  ns2::Color
+enum SCO_ns2_Color {
+    SCO_ns2_RED = 30,
+    SCO_ns2_BLUE,
+    SCO_ns2_WHITE
 };
 
-// splicer begin namespace.ns1Enum.C_declarations
-// splicer end namespace.ns1Enum.C_declarations
+// splicer begin namespace.ns2.C_declarations
+// splicer end namespace.ns2.C_declarations
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // WRAPSCOPE_NS1ENUM_H
+#endif  // WRAPSCOPE_NS2_H

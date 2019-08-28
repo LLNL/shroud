@@ -29,82 +29,82 @@ module scope_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    !  enum cls1Enum::Color
-    integer(C_INT), parameter :: cls1enum_red = 40
-    integer(C_INT), parameter :: cls1enum_blue = 41
-    integer(C_INT), parameter :: cls1enum_white = 42
+    !  enum Class1::Color
+    integer(C_INT), parameter :: class1_red = 40
+    integer(C_INT), parameter :: class1_blue = 41
+    integer(C_INT), parameter :: class1_white = 42
 
-    !  enum cls2Enum::Color
-    integer(C_INT), parameter :: cls2enum_red = 50
-    integer(C_INT), parameter :: cls2enum_blue = 51
-    integer(C_INT), parameter :: cls2enum_white = 52
+    !  enum Class2::Color
+    integer(C_INT), parameter :: class2_red = 50
+    integer(C_INT), parameter :: class2_blue = 51
+    integer(C_INT), parameter :: class2_white = 52
 
     !  enum Color
     integer(C_INT), parameter :: red = 10
     integer(C_INT), parameter :: blue = 11
     integer(C_INT), parameter :: white = 12
 
-    !  enum ns3Enum::Color
-    integer(C_INT), parameter :: ns3enum_red = 70
-    integer(C_INT), parameter :: ns3enum_blue = 71
-    integer(C_INT), parameter :: ns3enum_white = 72
+    !  enum ns3::Color
+    integer(C_INT), parameter :: ns3_red = 70
+    integer(C_INT), parameter :: ns3_blue = 71
+    integer(C_INT), parameter :: ns3_white = 72
 
     !  enum class ColorEnum
     integer(C_INT), parameter :: colorenum_red = 60
     integer(C_INT), parameter :: colorenum_blue = 61
     integer(C_INT), parameter :: colorenum_white = 62
 
-    type, bind(C) :: SHROUD_cls1enum_capsule
+    type, bind(C) :: SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_cls1enum_capsule
+    end type SHROUD_class1_capsule
 
-    type cls1enum
-        type(SHROUD_cls1enum_capsule) :: cxxmem
-        ! splicer begin class.cls1Enum.component_part
-        ! splicer end class.cls1Enum.component_part
+    type class1
+        type(SHROUD_class1_capsule) :: cxxmem
+        ! splicer begin class.Class1.component_part
+        ! splicer end class.Class1.component_part
     contains
-        procedure :: get_instance => cls1enum_get_instance
-        procedure :: set_instance => cls1enum_set_instance
-        procedure :: associated => cls1enum_associated
-        ! splicer begin class.cls1Enum.type_bound_procedure_part
-        ! splicer end class.cls1Enum.type_bound_procedure_part
-    end type cls1enum
+        procedure :: get_instance => class1_get_instance
+        procedure :: set_instance => class1_set_instance
+        procedure :: associated => class1_associated
+        ! splicer begin class.Class1.type_bound_procedure_part
+        ! splicer end class.Class1.type_bound_procedure_part
+    end type class1
 
-    type, bind(C) :: SHROUD_cls2enum_capsule
+    type, bind(C) :: SHROUD_class2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_cls2enum_capsule
+    end type SHROUD_class2_capsule
 
-    type cls2enum
-        type(SHROUD_cls2enum_capsule) :: cxxmem
-        ! splicer begin class.cls2Enum.component_part
-        ! splicer end class.cls2Enum.component_part
+    type class2
+        type(SHROUD_class2_capsule) :: cxxmem
+        ! splicer begin class.Class2.component_part
+        ! splicer end class.Class2.component_part
     contains
-        procedure :: get_instance => cls2enum_get_instance
-        procedure :: set_instance => cls2enum_set_instance
-        procedure :: associated => cls2enum_associated
-        ! splicer begin class.cls2Enum.type_bound_procedure_part
-        ! splicer end class.cls2Enum.type_bound_procedure_part
-    end type cls2enum
+        procedure :: get_instance => class2_get_instance
+        procedure :: set_instance => class2_set_instance
+        procedure :: associated => class2_associated
+        ! splicer begin class.Class2.type_bound_procedure_part
+        ! splicer end class.Class2.type_bound_procedure_part
+    end type class2
 
     interface operator (.eq.)
-        module procedure cls1enum_eq
-        module procedure cls2enum_eq
+        module procedure class1_eq
+        module procedure class2_eq
     end interface
 
     interface operator (.ne.)
-        module procedure cls1enum_ne
-        module procedure cls2enum_ne
+        module procedure class1_ne
+        module procedure class2_ne
     end interface
 
     interface
 
-        ! splicer begin class.cls1Enum.additional_interfaces
-        ! splicer end class.cls1Enum.additional_interfaces
+        ! splicer begin class.Class1.additional_interfaces
+        ! splicer end class.Class1.additional_interfaces
 
-        ! splicer begin class.cls2Enum.additional_interfaces
-        ! splicer end class.cls2Enum.additional_interfaces
+        ! splicer begin class.Class2.additional_interfaces
+        ! splicer end class.Class2.additional_interfaces
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -113,102 +113,102 @@ module scope_mod
 contains
 
     ! Return pointer to C++ memory.
-    function cls1enum_get_instance(obj) result (cxxptr)
+    function class1_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(cls1enum), intent(IN) :: obj
+        class(class1), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function cls1enum_get_instance
+    end function class1_get_instance
 
-    subroutine cls1enum_set_instance(obj, cxxmem)
+    subroutine class1_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(cls1enum), intent(INOUT) :: obj
+        class(class1), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine cls1enum_set_instance
+    end subroutine class1_set_instance
 
-    function cls1enum_associated(obj) result (rv)
+    function class1_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(cls1enum), intent(IN) :: obj
+        class(class1), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function cls1enum_associated
+    end function class1_associated
 
-    ! splicer begin class.cls1Enum.additional_functions
-    ! splicer end class.cls1Enum.additional_functions
+    ! splicer begin class.Class1.additional_functions
+    ! splicer end class.Class1.additional_functions
 
     ! Return pointer to C++ memory.
-    function cls2enum_get_instance(obj) result (cxxptr)
+    function class2_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
-        class(cls2enum), intent(IN) :: obj
+        class(class2), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function cls2enum_get_instance
+    end function class2_get_instance
 
-    subroutine cls2enum_set_instance(obj, cxxmem)
+    subroutine class2_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
-        class(cls2enum), intent(INOUT) :: obj
+        class(class2), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine cls2enum_set_instance
+    end subroutine class2_set_instance
 
-    function cls2enum_associated(obj) result (rv)
+    function class2_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
-        class(cls2enum), intent(IN) :: obj
+        class(class2), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function cls2enum_associated
+    end function class2_associated
 
-    ! splicer begin class.cls2Enum.additional_functions
-    ! splicer end class.cls2Enum.additional_functions
+    ! splicer begin class.Class2.additional_functions
+    ! splicer end class.Class2.additional_functions
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
-    function cls1enum_eq(a,b) result (rv)
+    function class1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(cls1enum), intent(IN) ::a,b
+        type(class1), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function cls1enum_eq
+    end function class1_eq
 
-    function cls1enum_ne(a,b) result (rv)
+    function class1_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(cls1enum), intent(IN) ::a,b
+        type(class1), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function cls1enum_ne
+    end function class1_ne
 
-    function cls2enum_eq(a,b) result (rv)
+    function class2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(cls2enum), intent(IN) ::a,b
+        type(class2), intent(IN) ::a,b
         logical :: rv
         if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function cls2enum_eq
+    end function class2_eq
 
-    function cls2enum_ne(a,b) result (rv)
+    function class2_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
-        type(cls2enum), intent(IN) ::a,b
+        type(class2), intent(IN) ::a,b
         logical :: rv
         if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
             rv = .true.
         else
             rv = .false.
         endif
-    end function cls2enum_ne
+    end function class2_ne
 
 end module scope_mod

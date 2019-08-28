@@ -2,10 +2,10 @@
 //
 #include "scope.hpp"
 #include "wrapscope.h"
-#include "wrapcls1Enum.h"
-#include "wrapcls2Enum.h"
-#include "wrapscope_ns1Enum.h"
-#include "wrapscope_ns2Enum.h"
+#include "wrapClass1.h"
+#include "wrapClass2.h"
+#include "wrapscope_ns1.h"
+#include "wrapscope_ns2.h"
 #include <string>
 #include <iostream>
 
@@ -22,22 +22,22 @@ int main(int argc, char *argv[])
   check(static_cast<int>(SCO_RED) == static_cast<int>(RED),
         "top level enum");
 
-  check(static_cast<int>(SCO_ns1Enum_RED) ==
-        static_cast<int>(ns1Enum::RED),
+  check(static_cast<int>(SCO_ns1_RED) ==
+        static_cast<int>(ns1::RED),
         "namespace ns1 enum");
-  check(static_cast<int>(SCO_ns2Enum_RED) ==
-        static_cast<int>(ns2Enum::RED),
+  check(static_cast<int>(SCO_ns2_RED) ==
+        static_cast<int>(ns2::RED),
         "namespace ns2 enum");
-  check(static_cast<int>(SCO_ns3Enum_RED) ==
-        static_cast<int>(ns3Enum::RED),
+  check(static_cast<int>(SCO_ns3_RED) ==
+        static_cast<int>(ns3::RED),
         "namespace ns3 enum");
 
   // enum in a class
-  check(static_cast<int>(SCO_cls1Enum_RED) ==
-        static_cast<int>(cls1Enum::RED),
+  check(static_cast<int>(SCO_Class1_RED) ==
+        static_cast<int>(Class1::RED),
         "class1 enum");
-  check(static_cast<int>(SCO_cls2Enum_RED) ==
-        static_cast<int>(cls2Enum::RED),
+  check(static_cast<int>(SCO_Class2_RED) ==
+        static_cast<int>(Class2::RED),
         "class2 enum");
 
   // class enum
