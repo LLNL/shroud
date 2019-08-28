@@ -67,9 +67,14 @@ cpp-% : $(tempdir)/run/%/.. phony_explicit
 	    -f $(top)/regression/run/$*/Makefile \
 	    top=$(top) maincpp
 
+# Run a C++ test
+test-cpp-% : cpp-%
+	$(tempdir)/run/$*/maincpp
+
 test-cpp : \
   cpp-tutorial \
-  cpp-templates
+  cpp-templates \
+  test-cpp-scope
 
 ######################################################################
 # Compile the generated Python wrapper
@@ -144,6 +149,7 @@ phony_explicit:
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
+    $(tempdir)/run/scope/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/struct-c/.. \

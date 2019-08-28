@@ -37,8 +37,13 @@ namespace ns2Enum {
   };
 };
 
-
-
+namespace ns3Enum {
+  enum Color {
+    RED = 70,
+    BLUE,
+    WHITE
+  };
+};
 
 class cls1Enum {
 public:

@@ -42,13 +42,9 @@ wrapScope.o : wrapscope.h scope.hpp
 main.o : wrapfscope.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o wrapscope.o scope.o
+maincpp : maincpp.o wrapscope.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapscope.h scope.hpp
 testc : testc.o wrapscope.o scope.o
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
-
-testscope.o : scope.hpp
-testscope: testscope.o
-	$(CXX) $^ -o $@
