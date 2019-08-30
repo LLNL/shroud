@@ -42,7 +42,7 @@ class Wrapf(util.WrapperMixin):
 
     _default_buf_args = ["arg"]
 
-    def _begin_output_file(self):
+    def XXX_begin_output_file(self):
         """Start a new class for output"""
         self.use_stmts = []
         self.enum_impl = []
@@ -62,11 +62,11 @@ class Wrapf(util.WrapperMixin):
         self.f_abstract_interface = {}
         self.f_helper = {}
 
-    def _end_output_file(self):
+    def XXX_end_output_file(self):
         self.c_interface.append(-1)
         self.c_interface.append("end interface")
 
-    def _begin_class(self):
+    def XXX_begin_class(self):
         self.f_type_generic = {}  # look for generic methods
         self.type_bound_part = []
 
@@ -88,42 +88,44 @@ class Wrapf(util.WrapperMixin):
         """
         options = node.options
         self.module_use = {}  # Use statements for a module
-        self._begin_output_file()
+        fileinfo = ModuleInfo(self.newlibrary)
+
         self._push_splicer("class")
         for cls in node.classes:
             if not cls.options.wrap_fortran:
                 continue
-            self._begin_class()
+            fileinfo.begin_class()
 
             # how to decide module name, module per class
             #            module_name = cls.options.setdefault('module_name', name.lower())
             if cls.as_struct:
-                self.wrap_struct(cls)
+                self.wrap_struct(cls, fileinfo)
             else:
-                self.wrap_class(cls)
+                self.wrap_class(cls, fileinfo)
         self._pop_splicer("class")
 
         if node.functions or node.enums:
-            self._begin_class()  # clear out old class info
+            fileinfo.begin_class()  # clear out old class info
             node.F_module_dependencies = []
 
-            self.wrap_enums(node)
+            self.wrap_enums(node, fileinfo)
 
             self._push_splicer("function")
             for function in node.functions:
-                self.wrap_function(None, function)
+                self.wrap_function(None, function, fileinfo)
             self._pop_splicer("function")
 
-            self.c_interface.append("")
+            c_interface = fileinfo.c_interface
+            c_interface.append("")
             if self.newlibrary.options.literalinclude2:
-                self.c_interface.append("interface+")
-            self._create_splicer("additional_interfaces", self.c_interface)
-            self.impl.append("")
-            self._create_splicer("additional_functions", self.impl)
+                c_interface.append("interface+")
+            self._create_splicer("additional_interfaces", c_interface)
+            fileinfo.impl.append("")
+            self._create_splicer("additional_functions", fileinfo.impl)
 
         # put all functions and classes into one module
-        self._end_output_file()
-        self.write_module(node, None)
+        fileinfo.finish()
+        self.write_module(node, None, fileinfo)
 
         if top:
             # have one namespace level, then replace name each time
@@ -138,12 +140,13 @@ class Wrapf(util.WrapperMixin):
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
 
-    def wrap_struct(self, node):
+    def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
 
         Args:
             node - ast.ClassNode
+            fileinfo - ModuleInfo
         """
         self.log.write("class {0.name}\n".format(node))
         ntypemap = node.typemap
@@ -153,7 +156,7 @@ class Wrapf(util.WrapperMixin):
         fmt_class.F_derived_name = ntypemap.f_derived_type
 
         # type declaration
-        output = self.f_type_decl
+        output = fileinfo.f_type_decl
         output.append("")
         self._push_splicer(fmt_class.cxx_class)
         append_format(output, "\ntype, bind(C) :: {F_derived_name}+", fmt_class)
@@ -167,11 +170,12 @@ class Wrapf(util.WrapperMixin):
         append_format(output, "-end type {F_derived_name}", fmt_class)
         self._pop_splicer(fmt_class.cxx_class)
 
-    def wrap_class(self, node):
+    def wrap_class(self, node, fileinfo):
         """Wrap a class for Fortran.
 
         Args:
             node - ast.ClassNode.
+            fileinfo - ModuleInfo
         """
 
         self.log.write("class {1.name}\n".format(self, node))
@@ -182,24 +186,24 @@ class Wrapf(util.WrapperMixin):
 
         # wrap methods
         self._push_splicer(fmt_class.cxx_class)
-        self._create_splicer("module_use", self.use_stmts)
+        self._create_splicer("module_use", fileinfo.use_stmts)
 
-        self.wrap_enums(node)
+        self.wrap_enums(node, fileinfo)
 
         if node.cpp_if:
-            self.impl.append("#" + node.cpp_if)
+            fileinfo.impl.append("#" + node.cpp_if)
         if node.cpp_if:
-            self.c_interface.append("#" + node.cpp_if)
+            fileinfo.c_interface.append("#" + node.cpp_if)
         self._push_splicer("method")
         for method in node.functions:
-            self.wrap_function(node, method)
+            self.wrap_function(node, method, fileinfo)
         self._pop_splicer("method")
         if node.cpp_if:
-            self.c_interface.append("#endif")
+            fileinfo.c_interface.append("#endif")
 
-        self.write_object_get_set(node)
-        self.impl.append("")
-        self._create_splicer("additional_functions", self.impl)
+        self.write_object_get_set(node, fileinfo)
+        fileinfo.impl.append("")
+        self._create_splicer("additional_functions", fileinfo.impl)
         self._pop_splicer(fmt_class.cxx_class)
 
         # type declaration
@@ -208,14 +212,15 @@ class Wrapf(util.WrapperMixin):
 
         # One capsule type per class.
         # Necessary since a type in one module may be used by another module.
-        self.f_type_decl.append("")
+        f_type_decl = fileinfo.f_type_decl
+        f_type_decl.append("")
         if node.cpp_if:
-            self.f_type_decl.append("#" + node.cpp_if)
+            f_type_decl.append("#" + node.cpp_if)
         if node.options.literalinclude:
-            self.f_type_decl.append("! start derived-type " +
-                                    fmt_class.F_capsule_data_type)
+            f_type_decl.append("! start derived-type " +
+                               fmt_class.F_capsule_data_type)
         append_format(
-            self.f_type_decl,
+            f_type_decl,
             "type, bind(C) :: {F_capsule_data_type}\n+"
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory\n"
             "integer(C_INT) :: idtor = 0       ! index of destructor\n"
@@ -223,14 +228,14 @@ class Wrapf(util.WrapperMixin):
             fmt_class,
         )
         if node.options.literalinclude:
-            self.f_type_decl.append("! end derived-type " +
-                                    fmt_class.F_capsule_data_type)
+            f_type_decl.append("! end derived-type " +
+                               fmt_class.F_capsule_data_type)
         self.set_f_module(
             self.module_use, "iso_c_binding", "C_PTR", "C_INT", "C_NULL_PTR"
         )
 
         append_format(
-            self.f_type_decl,
+            f_type_decl,
             "\n"
             "type {F_derived_name}\n+"
             "type({F_capsule_data_type}) :: {F_derived_member}",
@@ -239,16 +244,15 @@ class Wrapf(util.WrapperMixin):
         self.set_f_module(
             self.module_use, "iso_c_binding", "C_PTR", "C_NULL_PTR"
         )
-        self._create_splicer("component_part", self.f_type_decl)
-        self.f_type_decl.append("-contains+")
-        self.f_type_decl.extend(self.type_bound_part)
+        self._create_splicer("component_part", f_type_decl)
+        f_type_decl.append("-contains+")
+        f_type_decl.extend(fileinfo.type_bound_part)
 
         # Look for generics
         # splicer to extend generic
         #        self._push_splicer('generic')
-        f_type_decl = self.f_type_decl
-        for key in sorted(self.f_type_generic.keys()):
-            methods = self.f_type_generic[key]
+        for key in sorted(fileinfo.f_type_generic.keys()):
+            methods = fileinfo.f_type_generic[key]
             if len(methods) > 1:
 
                 # Look for any cpp_if declarations
@@ -281,24 +285,24 @@ class Wrapf(util.WrapperMixin):
         #                    self._create_splicer(key, self.f_type_decl)
         #        self._pop_splicer('generic')
 
-        self._create_splicer("type_bound_procedure_part", self.f_type_decl)
-        append_format(self.f_type_decl, "-end type {F_derived_name}", fmt_class)
+        self._create_splicer("type_bound_procedure_part", f_type_decl)
+        append_format(f_type_decl, "-end type {F_derived_name}", fmt_class)
         if node.cpp_if:
-            self.f_type_decl.append("#endif")
+            f_type_decl.append("#endif")
 
-        self.c_interface.append("")
-        self._create_splicer("additional_interfaces", self.c_interface)
+        fileinfo.c_interface.append("")
+        self._create_splicer("additional_interfaces", fileinfo.c_interface)
 
         self._pop_splicer(fmt_class.cxx_class)
         if node.cpp_if:
-            self.impl.append("#endif")
+            fileinfo.impl.append("#endif")
 
 
         # overload operators
         if node.cpp_if:
-            self.operator_impl.append("#" + node.cpp_if)
+            fileinfo.operator_impl.append("#" + node.cpp_if)
         self.overload_compare(
-            node,
+            node, fileinfo,
             fmt_class,
             ".eq.",
             fmt_class.F_name_scope + "eq",
@@ -310,7 +314,7 @@ class Wrapf(util.WrapperMixin):
         )
         #        self.overload_compare(fmt_class, '==', fmt_class.F_name_scope + 'eq', None)
         self.overload_compare(
-            node,
+            node, fileinfo,
             fmt_class,
             ".ne.",
             fmt_class.F_name_scope + "ne",
@@ -321,32 +325,34 @@ class Wrapf(util.WrapperMixin):
             ),
         )
         if node.cpp_if:
-            self.operator_impl.append("#endif")
+            fileinfo.operator_impl.append("#endif")
 
     #        self.overload_compare(fmt_class, '/=', fmt_class.F_name_scope + 'ne', None)
 
-    def wrap_enums(self, node):
+    def wrap_enums(self, node, fileinfo):
         """Wrap all enums in a splicer block
 
         Args:
             node - ast.EnumNode
+            fileinfo - ModuleInfo
         """
         self._push_splicer("enum")
         for node in node.enums:
-            self.wrap_enum(None, node)
+            self.wrap_enum(None, node, fileinfo)
         self._pop_splicer("enum")
 
-    def wrap_enum(self, cls, node):
+    def wrap_enum(self, cls, node, fileinfo):
         """Wrap an enumeration.
         Create an integer parameter for each member.
 
         Args:
             cls - ast.ClassNode
             node - ast.EnumNode
+            fileinfo - ModuleInfo
         """
         options = node.options
         ast = node.ast
-        output = self.enum_impl
+        output = fileinfo.enum_impl
 
         fmt_enum = node.fmtdict
         fmtmembers = node._fmtmembers
@@ -368,15 +374,17 @@ class Wrapf(util.WrapperMixin):
             )
         self.set_f_module(self.module_use, "iso_c_binding", "C_INT")
 
-    def write_object_get_set(self, node):
+    def write_object_get_set(self, node, fileinfo):
         """Write get and set methods for instance pointer.
 
         Args:
             node - ast.ClassNode.
+            fileinfo - ModuleInfo
         """
         options = node.options
         fmt_class = node.fmtdict
-        impl = self.impl
+        impl = fileinfo.impl
+        type_bound_part = fileinfo.type_bound_part
         fmt = util.Scope(fmt_class)
 
         # getter
@@ -385,7 +393,7 @@ class Wrapf(util.WrapperMixin):
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            self.type_bound_part.append(
+            type_bound_part.append(
                 "procedure :: %s => %s" % (fmt.F_name_function, fmt.F_name_impl)
             )
 
@@ -408,7 +416,7 @@ cxxptr = {F_this}%{F_derived_member}%addr
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            self.type_bound_part.append(
+            type_bound_part.append(
                 "procedure :: %s => %s" % (fmt.F_name_function, fmt.F_name_impl)
             )
 
@@ -432,7 +440,7 @@ type(C_PTR), intent(IN) :: {F_derived_member}
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            self.type_bound_part.append(
+            type_bound_part.append(
                 "procedure :: %s => %s" % (fmt.F_name_function, fmt.F_name_impl)
             )
 
@@ -454,8 +462,8 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            self.type_bound_part.append("procedure :: %s" % fmt.F_name_impl)
-            self.type_bound_part.append(
+            type_bound_part.append("procedure :: %s" % fmt.F_name_impl)
+            type_bound_part.append(
                 "generic :: assignment(=) => %s" % fmt.F_name_impl
             )
 
@@ -484,7 +492,7 @@ nullify(lhs%{F_derived_member})
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            self.type_bound_part.append("final :: %s" % fmt.F_name_impl)
+            type_bound_part.append("final :: %s" % fmt.F_name_impl)
 
             append_format(
                 impl,
@@ -509,11 +517,12 @@ nullify({F_this}%{F_derived_member})
                 fmt,
             )
 
-    def overload_compare(self, node, fmt_class, operator, procedure, predicate):
+    def overload_compare(self, node, fileinfo, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
 
         Args:
             node - ast.ClassNode
+            fileinfo - ModuleInfo
             fmt_class -
             operator - ".eq.", ".ne."
             procedure -
@@ -523,14 +532,14 @@ nullify({F_this}%{F_derived_member})
         fmt.procedure = procedure
         fmt.predicate = predicate
 
-        ops = self.operator_map.setdefault(operator, [])
+        ops = fileinfo.operator_map.setdefault(operator, [])
         ops.append((node, procedure))
 
         if predicate is None:
             # .eq. and == use same function
             return
 
-        operator = self.operator_impl
+        operator = fileinfo.operator_impl
         append_format(
             operator,
             """
@@ -547,7 +556,7 @@ rv = .false.
             fmt,
         )
 
-    def wrap_function(self, cls, node):
+    def wrap_function(self, cls, node, fileinfo):
         """
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
@@ -556,6 +565,7 @@ rv = .false.
         Args:
             cls  - ast.ClassNode or None for functions
             node - ast.FunctionNode
+            fileinfo - ModuleInfo
         """
         if cls:
             cls_function = "method"
@@ -577,9 +587,9 @@ rv = .false.
         # Create fortran wrappers first.
         # If no real work to do, call the C function directly.
         if options.wrap_fortran:
-            self.wrap_function_impl(cls, node)
+            self.wrap_function_impl(cls, node, fileinfo)
         if options.wrap_c:
-            self.wrap_function_interface(cls, node)
+            self.wrap_function_interface(cls, node, fileinfo)
 
     def update_f_module(self, modules, imports, f_module):
         """aggragate the information from f_module into modules.
@@ -648,15 +658,19 @@ rv = .false.
                     arg_f_use.append("use %s" % mname)
         return arg_f_use
 
-    def dump_generic_interfaces(self):
+    def dump_generic_interfaces(self, fileinfo):
         """Generate code for generic interfaces into self.generic_interface
+
+        Args:
+            fileinfo - ModuleInfo
         """
         # Look for generic interfaces
         # splicer to extend generic
         self._push_splicer("generic")
-        iface = self.generic_interface
-        for key in sorted(self.f_function_generic.keys()):
-            generics = self.f_function_generic[key]
+        iface = fileinfo.generic_interface
+        f_function_generic = fileinfo.f_function_generic
+        for key in sorted(f_function_generic.keys()):
+            generics = f_function_generic[key]
             if len(generics) > 1:
                 self._push_splicer(key)
 
@@ -702,7 +716,7 @@ rv = .false.
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
-    def add_abstract_interface(self, node, arg):
+    def add_abstract_interface(self, node, arg, fileinfo):
         """Record an abstract interface.
 
         Function pointers are converted to abstract interfaces.
@@ -711,30 +725,34 @@ rv = .false.
         Args:
             node -
             arg -
+            fileinfo - ModuleInfo
         """
         fmt = util.Scope(node.fmtdict)
         fmt.argname = arg.name
         name = wformat(
             node.options.F_abstract_interface_subprogram_template, fmt
         )
-        entry = self.f_abstract_interface.get(name)
+        entry = fileinfo.f_abstract_interface.get(name)
         if entry is None:
-            self.f_abstract_interface[name] = (node, fmt, arg)
+            fileinfo.f_abstract_interface[name] = (node, fmt, arg)
         return name
 
-    def dump_abstract_interfaces(self):
+    def dump_abstract_interfaces(self, fileinfo):
         """Generate code for abstract interfaces
+
+        Args:
+            fileinfo - ModuleInfo
         """
         self._push_splicer("abstract")
-        if len(self.f_abstract_interface) > 0:
-            iface = self.abstract_interface
+        if len(fileinfo.f_abstract_interface) > 0:
+            iface = fileinfo.abstract_interface
             if not self.newlibrary.options.literalinclude2:
                 iface.append("")
                 iface.append("abstract interface")
                 iface.append(1)
 
-            for key in sorted(self.f_abstract_interface.keys()):
-                node, fmt, arg = self.f_abstract_interface[key]
+            for key in sorted(fileinfo.f_abstract_interface.keys()):
+                node, fmt, arg = fileinfo.f_abstract_interface[key]
                 ast = node.ast
                 subprogram = arg.get_subprogram()
                 iface.append("")
@@ -791,7 +809,7 @@ rv = .false.
 
     def build_arg_list_interface(
         self,
-        node,
+        node, fileinfo,
         fmt,
         ast,
         buf_args,
@@ -804,6 +822,7 @@ rv = .false.
 
         Args:
             node -
+            fileinfo - ModuleInfo
             fmt -
             ast - Abstract Syntax Tree from parser
             buf_args - List of arguments/metadata to add.
@@ -830,7 +849,7 @@ rv = .false.
                             "type(*) :: {}".format(ast.name)
                         )
                 elif ast.is_function_pointer():
-                    absiface = self.add_abstract_interface(node, ast)
+                    absiface = self.add_abstract_interface(node, ast, fileinfo)
                     arg_c_decl.append(
                         "procedure({}) :: {}".format(absiface, ast.name)
                     )
@@ -890,12 +909,13 @@ rv = .false.
                     )
                 )
 
-    def wrap_function_interface(self, cls, node):
+    def wrap_function_interface(self, cls, node, fileinfo):
         """Write Fortran interface for C function.
 
         Args:
             cls  - ast.ClassNode or None for functions
             node - ast.FunctionNode
+            fileinfo - ModuleInfo
 
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
@@ -946,7 +966,7 @@ rv = .false.
             if "c" in node.statements:
                 iblk = node.statements["c"]["result_buf"]
                 self.build_arg_list_interface(
-                    node,
+                    node, fileinfo,
                     fmt_func,
                     ast,
                     iblk.get("buf_args", []),
@@ -979,7 +999,7 @@ rv = .false.
                 c_stmts = "intent_" + intent + arg.stmts_suffix
             c_intent_blk = c_statements.get(c_stmts, {})
             self.build_arg_list_interface(
-                node,
+                node, fileinfo,
                 fmt,
                 arg,
                 c_intent_blk.get("buf_args", self._default_buf_args),
@@ -1034,7 +1054,7 @@ rv = .false.
             modules, fmt_func.F_module_name, imports
         )
 
-        c_interface = self.c_interface
+        c_interface = fileinfo.c_interface
         c_interface.append("")
 
         if node.cpp_if:
@@ -1042,7 +1062,7 @@ rv = .false.
         if options.literalinclude:
             append_format(c_interface, "! start {F_C_name}", fmt)
         if self.newlibrary.options.literalinclude2:
-            self.c_interface.append("interface+")
+            c_interface.append("interface+")
         c_interface.append(
             wformat(
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
@@ -1060,7 +1080,7 @@ rv = .false.
         c_interface.append(-1)
         c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt))
         if self.newlibrary.options.literalinclude2:
-            self.c_interface.append("-end interface")
+            c_interface.append("-end interface")
         if options.literalinclude:
             append_format(c_interface, "! end {F_C_name}", fmt)
         if node.cpp_if:
@@ -1169,6 +1189,7 @@ rv = .false.
     def add_code_from_statements(
         self,
         need_wrapper,
+        fileinfo,
         fmt,
         intent_blk,
         modules,
@@ -1183,6 +1204,7 @@ rv = .false.
 
         Args:
             need_wrapper -
+            fileinfo - ModuleInfo
             fmt -
             intent_blk -
             modules -
@@ -1215,15 +1237,16 @@ rv = .false.
         if "f_helper" in intent_blk:
             f_helper = wformat(intent_blk["f_helper"], fmt)
             for helper in f_helper.split():
-                self.f_helper[helper] = True
+                fileinfo.f_helper[helper] = True
         return need_wrapper
 
-    def wrap_function_impl(self, cls, node):
+    def wrap_function_impl(self, cls, node, fileinfo):
         """Wrap implementation of Fortran function.
 
         Args:
             cls - ast.ClassNode.
             node - ast.FunctionNode.
+            fileinfo - ModuleInfo
         """
         options = node.options
         fmt_func = node.fmtdict
@@ -1337,7 +1360,7 @@ rv = .false.
                     need_wrapper,
                 )
                 need_wrapper = self.add_code_from_statements(
-                    need_wrapper,
+                    need_wrapper, fileinfo,
                     fmt_result,
                     iblk,
                     modules,
@@ -1421,7 +1444,7 @@ rv = .false.
                     arg_c_call.append(f_arg.name)
                     continue
                 elif f_arg.is_function_pointer():
-                    absiface = self.add_abstract_interface(node, f_arg)
+                    absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                     if c_attrs.get("external", False):
                         # external is similar to assumed type, in that it will
                         # accept any function.  But external is not allowed
@@ -1509,7 +1532,7 @@ rv = .false.
             )
 
             need_wrapper = self.add_code_from_statements(
-                need_wrapper,
+                need_wrapper, fileinfo,
                 fmt_arg,
                 f_intent_blk,
                 modules,
@@ -1589,29 +1612,30 @@ rv = .false.
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())
             if cls and not is_ctor:
-                self.f_type_generic.setdefault(
+                fileinfo.f_type_generic.setdefault(
                     fmt_func.F_name_generic, []
                 ).append(node)
             else:
-                self.f_function_generic.setdefault(
+                fileinfo.f_function_generic.setdefault(
                     fmt_func.F_name_scope + fmt_func.F_name_generic, []
                 ).append(node)
         if cls:
             # Add procedure to derived type
+            type_bound_part = fileinfo.type_bound_part
             if node.cpp_if:
-                self.type_bound_part.append("#" + node.cpp_if)
+                type_bound_part.append("#" + node.cpp_if)
             if is_static:
-                self.type_bound_part.append(
+                type_bound_part.append(
                     "procedure, nopass :: %s => %s"
                     % (fmt_func.F_name_function, fmt_func.F_name_impl)
                 )
             elif not is_ctor:
-                self.type_bound_part.append(
+                type_bound_part.append(
                     "procedure :: %s => %s"
                     % (fmt_func.F_name_function, fmt_func.F_name_impl)
                 )
             if node.cpp_if:
-                self.type_bound_part.append("#endif")
+                type_bound_part.append("#endif")
 
         # body of function
         # XXX sname = fmt_func.F_name_impl
@@ -1647,7 +1671,7 @@ rv = .false.
                 F_code.append(fmt_func.F_call_code)
 
                 need_wrapper = self.add_code_from_statements(
-                    need_wrapper,
+                    need_wrapper, fileinfo,
                     fmt_func,
                     intent_blk,
                     modules,
@@ -1702,7 +1726,7 @@ rv = .false.
         arg_f_use = self.sort_module_info(modules, fmt_func.F_module_name)
 
         if need_wrapper:
-            impl = self.impl
+            impl = fileinfo.impl
             impl.append("")
             if node.cpp_if:
                 impl.append("#" + node.cpp_if)
@@ -1737,7 +1761,7 @@ rv = .false.
         else:
             fmt_func.F_C_name = fmt_func.F_name_impl
 
-    def _gather_helper_code(self, name, done):
+    def _gather_helper_code(self, name, done, fileinfo):
         """Add code from helpers.
 
         First recursively process dependent_helpers
@@ -1746,6 +1770,7 @@ rv = .false.
         Args:
             name -
             done -
+            fileinfo - ModuleInfo
         """
         if name in done:
             return  # avoid recursion
@@ -1755,19 +1780,19 @@ rv = .false.
         if "dependent_helpers" in helper_info:
             for dep in helper_info["dependent_helpers"]:
                 # check for recursion
-                self._gather_helper_code(dep, done)
+                self._gather_helper_code(dep, done, fileinfo)
 
         lines = helper_info.get("derived_type", None)
         if lines:
-            self.helper_derived_type.append(lines)
+            fileinfo.helper_derived_type.append(lines)
 
         lines = helper_info.get("interface", None)
         if lines:
-            self.interface_lines.append(lines)
+            fileinfo.interface_lines.append(lines)
 
         lines = helper_info.get("source", None)
         if lines:
-            self.helper_source.append(lines)
+            fileinfo.helper_source.append(lines)
 
         mods = helper_info.get("modules", None)
         if mods:
@@ -1782,29 +1807,28 @@ rv = .false.
                 "private " + ", ".join(helper_info["private"])
             )
 
-    def gather_helper_code(self):
+    def gather_helper_code(self, fileinfo):
         """Gather up all helpers requested and insert code into output.
 
         Add in sorted order.  However, first process dependent_helpers
         to add code in order.
         Helpers are duplicated in each module as needed.
+
+        Args:
+            fileinfo - ModuleInfo
         """
-        self.helper_derived_type = []
-        self.helper_source = []
-        self.private_lines = []
-        self.interface_lines = []
-
         done = {}  # avoid duplicates
-        for name in sorted(self.f_helper.keys()):
-            self._gather_helper_code(name, done)
+        for name in sorted(fileinfo.f_helper.keys()):
+            self._gather_helper_code(name, done, fileinfo)
 
-    def write_module(self, library, cls):
+    def write_module(self, library, cls, fileinfo):
         """ Write Fortran wrapper module.
         This may be for a library or a class.
 
         Args:
             library - ast.LibraryNode.
             cls - ast.ClassNode.
+            fileinfo - ModuleInfo
         """
         node = cls or library
         options = node.options
@@ -1813,7 +1837,7 @@ rv = .false.
         module_name = fmt_node.F_module_name
 
         output = []
-        self.gather_helper_code()
+        self.gather_helper_code(fileinfo)
 
         if options.doxygen:
             self.write_doxygen_file(output, fname, node)
@@ -1833,22 +1857,22 @@ rv = .false.
         if cls is None:
             self._create_splicer("module_top", output)
 
-        output.extend(self.helper_derived_type)
+        output.extend(fileinfo.helper_derived_type)
 
-        output.extend(self.enum_impl)
+        output.extend(fileinfo.enum_impl)
 
         # XXX output.append('! splicer push class')
-        output.extend(self.f_type_decl)
+        output.extend(fileinfo.f_type_decl)
         # XXX  output.append('! splicer pop class')
 
         # Interfaces for operator overloads
-        if self.operator_map:
-            ops = sorted(self.operator_map)
+        if fileinfo.operator_map:
+            ops = sorted(fileinfo.operator_map)
             for op in ops:
                 output.append("")
                 output.append("interface operator (%s)" % op)
                 output.append(1)
-                for fcn, opfcn in self.operator_map[op]:
+                for fcn, opfcn in fileinfo.operator_map[op]:
                     if fcn.cpp_if:
                         output.append("#" + fcn.cpp_if)
                     output.append("module procedure %s" % opfcn)
@@ -1857,29 +1881,10 @@ rv = .false.
                 output.append(-1)
                 output.append("end interface")
 
-        self.dump_abstract_interfaces()
-        self.dump_generic_interfaces()
+        self.dump_abstract_interfaces(fileinfo)
+        self.dump_generic_interfaces(fileinfo)
 
-        output.extend(self.abstract_interface)
-        output.extend(self.c_interface)
-        output.extend(self.generic_interface)
-
-        output.extend(self.private_lines)
-        output.extend(self.interface_lines)
-
-        output.append(-1)
-        output.append("")
-        output.append("contains")
-        output.append(1)
-
-        output.extend(self.impl)
-
-        output.extend(self.operator_impl)
-
-        output.extend(self.helper_source)
-
-        output.append(-1)
-        output.append("")
+        fileinfo.write_module(output)
         output.append("end module %s" % module_name)
 
         self.config.ffiles.append(
@@ -2013,3 +2018,62 @@ def attr_allocatable(allocatable, node, arg, pre_call):
                 )
             fmt.mold = ",".join(bounds)
             append_format(pre_call, "allocate({f_var}({mold}))", fmt)
+
+
+class ModuleInfo(object):
+    """Contains information to create a Fortran module.
+
+    """
+    def __init__(self, library):
+        self.use_stmts = []
+        self.enum_impl = []
+        self.f_type_decl = []
+        self.c_interface = []
+        self.abstract_interface = []
+        self.generic_interface = []
+        self.impl = []  # implementation, after contains
+        self.operator_impl = []
+        self.operator_map = {}  # list of function names by operator
+        # {'.eq.': [ 'abc', 'def'] }
+        if not library.options.literalinclude2:
+            self.c_interface.append("")
+            self.c_interface.append("interface")
+            self.c_interface.append(1)
+        self.f_function_generic = {}  # look for generic functions
+        self.f_abstract_interface = {}
+
+        self.f_helper = {}
+        self.helper_derived_type = []
+        self.helper_source = []
+        self.private_lines = []
+        self.interface_lines = []
+
+    def finish(self):
+        self.c_interface.append(-1)
+        self.c_interface.append("end interface")
+
+    def begin_class(self):
+        self.f_type_generic = {}  # look for generic methods
+        self.type_bound_part = []
+
+    def write_module(self, output):
+        output.extend(self.abstract_interface)
+        output.extend(self.c_interface)
+        output.extend(self.generic_interface)
+
+        output.extend(self.private_lines)
+        output.extend(self.interface_lines)
+
+        output.append(-1)
+        output.append("")
+        output.append("contains")
+        output.append(1)
+
+        output.extend(self.impl)
+
+        output.extend(self.operator_impl)
+
+        output.extend(self.helper_source)
+
+        output.append(-1)
+        output.append("")
