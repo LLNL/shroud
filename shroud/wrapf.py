@@ -94,9 +94,7 @@ class Wrapf(util.WrapperMixin):
             fileinfo.impl.append("")
             self._create_splicer("additional_functions", fileinfo.impl)
 
-        # put all functions and classes into one module
-        fileinfo.finish()
-        self.write_module(node, None, fileinfo)
+        self.write_module(node, fileinfo)
 
         if top:
             # have one namespace level, then replace name each time
@@ -1792,21 +1790,21 @@ rv = .false.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
-    def write_module(self, library, cls, fileinfo):
+    def write_module(self, node, fileinfo):
         """ Write Fortran wrapper module.
         This may be for a library or a class.
 
         Args:
-            library - ast.LibraryNode.
+            library - ast.LibraryNode or ast.NamespaceNode.
             cls - ast.ClassNode.
             fileinfo - ModuleInfo
         """
-        node = cls or library
         options = node.options
         fmt_node = node.fmtdict
         fname = fmt_node.F_impl_filename
         module_name = fmt_node.F_module_name
 
+        fileinfo.finish()
         output = []
         self.gather_helper_code(fileinfo)
 
@@ -1824,8 +1822,7 @@ rv = .false.
         self._create_splicer("module_use", output)
         output.append("implicit none")
         output.append("")
-        if cls is None:
-            self._create_splicer("module_top", output)
+        self._create_splicer("module_top", output)
 
         output.extend(fileinfo.helper_derived_type)
 
