@@ -42,34 +42,6 @@ class Wrapf(util.WrapperMixin):
 
     _default_buf_args = ["arg"]
 
-    def XXX_begin_output_file(self):
-        """Start a new class for output"""
-        self.use_stmts = []
-        self.enum_impl = []
-        self.f_type_decl = []
-        self.c_interface = []
-        self.abstract_interface = []
-        self.generic_interface = []
-        self.impl = []  # implementation, after contains
-        self.operator_impl = []
-        self.operator_map = {}  # list of function names by operator
-        # {'.eq.': [ 'abc', 'def'] }
-        if not self.newlibrary.options.literalinclude2:
-            self.c_interface.append("")
-            self.c_interface.append("interface")
-            self.c_interface.append(1)
-        self.f_function_generic = {}  # look for generic functions
-        self.f_abstract_interface = {}
-        self.f_helper = {}
-
-    def XXX_end_output_file(self):
-        self.c_interface.append(-1)
-        self.c_interface.append("end interface")
-
-    def XXX_begin_class(self):
-        self.f_type_generic = {}  # look for generic methods
-        self.type_bound_part = []
-
     def wrap_library(self):
         fmt_library = self.newlibrary.fmtdict
         fmt_library.F_result_clause = ""
@@ -87,7 +59,6 @@ class Wrapf(util.WrapperMixin):
             top  - True if library module, else namespace module.
         """
         options = node.options
-        self.module_use = {}  # Use statements for a module
         fileinfo = ModuleInfo(self.newlibrary)
 
         self._push_splicer("class")
@@ -165,7 +136,7 @@ class Wrapf(util.WrapperMixin):
             ntypemap = ast.typemap
             output.append(ast.gen_arg_as_fortran())
             self.update_f_module(
-                self.module_use, {}, ntypemap.f_module
+                fileinfo.module_use, {}, ntypemap.f_module
             )  # XXX - self.module_imports?
         append_format(output, "-end type {F_derived_name}", fmt_class)
         self._pop_splicer(fmt_class.cxx_class)
@@ -231,7 +202,7 @@ class Wrapf(util.WrapperMixin):
             f_type_decl.append("! end derived-type " +
                                fmt_class.F_capsule_data_type)
         self.set_f_module(
-            self.module_use, "iso_c_binding", "C_PTR", "C_INT", "C_NULL_PTR"
+            fileinfo.module_use, "iso_c_binding", "C_PTR", "C_INT", "C_NULL_PTR"
         )
 
         append_format(
@@ -242,7 +213,7 @@ class Wrapf(util.WrapperMixin):
             fmt_class,
         )
         self.set_f_module(
-            self.module_use, "iso_c_binding", "C_PTR", "C_NULL_PTR"
+            fileinfo.module_use, "iso_c_binding", "C_PTR", "C_NULL_PTR"
         )
         self._create_splicer("component_part", f_type_decl)
         f_type_decl.append("-contains+")
@@ -372,7 +343,7 @@ class Wrapf(util.WrapperMixin):
                 "integer(C_INT), parameter :: {F_enum_member} = {evalue}",
                 fmt_id,
             )
-        self.set_f_module(self.module_use, "iso_c_binding", "C_INT")
+        self.set_f_module(fileinfo.module_use, "iso_c_binding", "C_INT")
 
     def write_object_get_set(self, node, fileinfo):
         """Write get and set methods for instance pointer.
@@ -1797,7 +1768,7 @@ rv = .false.
         mods = helper_info.get("modules", None)
         if mods:
             self.update_f_module(
-                self.module_use, {}, mods
+                fileinfo.module_use, {}, mods
             )  # XXX self.module_imports
 
         if "private" in helper_info:
@@ -1847,9 +1818,8 @@ rv = .false.
         output.append(1)
 
         # Write use statments (classes use iso_c_binding C_PTR)
-        arg_f_use = self.sort_module_info(self.module_use, module_name)
+        arg_f_use = self.sort_module_info(fileinfo.module_use, module_name)
         output.extend(arg_f_use)
-        self.module_use = {}
 
         self._create_splicer("module_use", output)
         output.append("implicit none")
@@ -2025,6 +1995,7 @@ class ModuleInfo(object):
 
     """
     def __init__(self, library):
+        self.module_use = {}  # Use statements for a module
         self.use_stmts = []
         self.enum_impl = []
         self.f_type_decl = []
