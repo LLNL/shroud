@@ -580,6 +580,7 @@
             "F_capsule_data_type_class_template": "SHROUD_{F_name_scope}capsule",
             "F_create_bufferify_function": true,
             "F_enum_member_template": "{F_name_scope}{enum_member_lower}",
+            "F_flatten_namespace": false,
             "F_force_wrapper": false,
             "F_impl_filename_library_template": "wrapf{library_lower}.{F_filename_suffix}",
             "F_impl_filename_namespace_template": "wrapf{file_scope}.{F_filename_suffix}",

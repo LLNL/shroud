@@ -402,6 +402,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # They change when a function is inserted.
             flatten_namespace=False,
             C_line_length=72,
+            F_flatten_namespace=False,
             F_line_length=72,
             F_string_len_trim=True,
             F_force_wrapper=False,
