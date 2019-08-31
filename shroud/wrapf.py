@@ -50,13 +50,16 @@ class Wrapf(util.WrapperMixin):
         fmt_library.F_pure_clause = ""
         fmt_library.F_C_result_clause = ""
         fmt_library.F_C_pure_clause = ""
-        self.wrap_namespace(self.newlibrary.wrap_namespace, top=True)
+
+        node = self.newlibrary.wrap_namespace
+        fileinfo = ModuleInfo(node)
+        self.wrap_namespace(node, fileinfo, top=True)
 
 #        for info in self.file_list:
 #            self.write_module(info)
         self.write_c_helper()
 
-    def wrap_namespace(self, node, top=False):
+    def wrap_namespace(self, node, fileinfo, top=False):
         """Wrap a library or namespace.
 
         Args:
@@ -64,8 +67,6 @@ class Wrapf(util.WrapperMixin):
             top  - True if library module, else namespace module.
         """
         options = node.options
-        fileinfo = ModuleInfo(node)
-        self.file_list.append(fileinfo)
 
         self._push_splicer("class")
         for cls in node.classes:
@@ -108,7 +109,8 @@ class Wrapf(util.WrapperMixin):
             if ns.options.wrap_fortran:
                 # Skip file component in scope_file for splicer name.
                 self._update_splicer_top("::".join(ns.scope_file[1:]))
-                self.wrap_namespace(ns)
+                nsinfo = ModuleInfo(ns)
+                self.wrap_namespace(ns, nsinfo)
         if top:
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
