@@ -39,6 +39,8 @@ class Wrapf(util.WrapperMixin):
         self.doxygen_begin = "!>"
         self.doxygen_cont = "!!"
         self.doxygen_end = "!<"
+        self.file_list = []
+        ModuleInfo.newlibrary = newlibrary
 
     _default_buf_args = ["arg"]
 
@@ -49,6 +51,9 @@ class Wrapf(util.WrapperMixin):
         fmt_library.F_C_result_clause = ""
         fmt_library.F_C_pure_clause = ""
         self.wrap_namespace(self.newlibrary.wrap_namespace, top=True)
+
+#        for info in self.file_list:
+#            self.write_module(info)
         self.write_c_helper()
 
     def wrap_namespace(self, node, top=False):
@@ -59,7 +64,8 @@ class Wrapf(util.WrapperMixin):
             top  - True if library module, else namespace module.
         """
         options = node.options
-        fileinfo = ModuleInfo(self.newlibrary)
+        fileinfo = ModuleInfo(node)
+        self.file_list.append(fileinfo)
 
         self._push_splicer("class")
         for cls in node.classes:
@@ -94,7 +100,7 @@ class Wrapf(util.WrapperMixin):
             fileinfo.impl.append("")
             self._create_splicer("additional_functions", fileinfo.impl)
 
-        self.write_module(node, fileinfo)
+        self.write_module(fileinfo)
 
         if top:
             # have one namespace level, then replace name each time
@@ -1790,15 +1796,14 @@ rv = .false.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
-    def write_module(self, node, fileinfo):
+    def write_module(self, fileinfo):
         """ Write Fortran wrapper module.
         This may be for a library or a class.
 
         Args:
-            library - ast.LibraryNode or ast.NamespaceNode.
-            cls - ast.ClassNode.
             fileinfo - ModuleInfo
         """
+        node = fileinfo.node
         options = node.options
         fmt_node = node.fmtdict
         fname = fmt_node.F_impl_filename
@@ -1991,7 +1996,9 @@ class ModuleInfo(object):
     """Contains information to create a Fortran module.
 
     """
-    def __init__(self, library):
+    newlibrary = None
+    def __init__(self, node):
+        self.node = node
         self.module_use = {}  # Use statements for a module
         self.use_stmts = []
         self.enum_impl = []
@@ -2003,7 +2010,7 @@ class ModuleInfo(object):
         self.operator_impl = []
         self.operator_map = {}  # list of function names by operator
         # {'.eq.': [ 'abc', 'def'] }
-        if not library.options.literalinclude2:
+        if not self.newlibrary.options.literalinclude2:
             self.c_interface.append("")
             self.c_interface.append("interface")
             self.c_interface.append(1)
