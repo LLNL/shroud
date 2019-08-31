@@ -577,6 +577,66 @@
                     "ns",
                     "outer"
                 ]
+            },
+            {
+                "classes": [
+                    {
+                        "cxx_header": "",
+                        "fmtdict": {
+                            "CXX_this_call": "SH_this->",
+                            "C_header_filename": "wrapClassWork.h",
+                            "C_impl_filename": "wrapClassWork.cpp",
+                            "C_name_scope": "nswork_ClassWork_",
+                            "C_type_name": "NS_classwork",
+                            "F_capsule_data_type": "SHROUD_classwork_capsule",
+                            "F_derived_name": "classwork",
+                            "F_name_scope": "classwork_",
+                            "PY_PyObject": "PY_ClassWork",
+                            "PY_PyTypeObject": "PY_ClassWork_Type",
+                            "PY_capsule_name": "PY_ClassWork_capsule_name",
+                            "PY_from_object_func": "PP_ClassWork_from_Object",
+                            "PY_this_call": "self->obj->",
+                            "PY_to_object_func": "PP_ClassWork_to_Object",
+                            "PY_type_filename": "pyClassWorktype.cpp",
+                            "class_scope": "ClassWork::",
+                            "cxx_class": "ClassWork",
+                            "cxx_type": "ClassWork"
+                        },
+                        "linenumber": 26,
+                        "name": "ClassWork",
+                        "options": {},
+                        "scope": "nswork::ClassWork::",
+                        "typemap_name": "nswork::ClassWork"
+                    }
+                ],
+                "fmtdict": {
+                    "CXX_this_call": "nswork::",
+                    "C_header_filename": "wrapns_nswork.h",
+                    "C_impl_filename": "wrapns_nswork.cpp",
+                    "C_name_scope": "nswork_",
+                    "F_impl_filename": "wrapfns_nswork.f",
+                    "F_module_name": "ns_nswork_mod",
+                    "LUA_this_call": "nswork::",
+                    "PY_library_doc": "library documentation",
+                    "PY_module_filename": "pyns_nsworkmodule.cpp",
+                    "PY_module_init": "ns_nswork",
+                    "PY_module_name": "nswork",
+                    "PY_module_scope": "ns.nswork",
+                    "PY_this_call": "nswork::",
+                    "file_scope": "ns_nswork",
+                    "namespace_scope": "nswork::"
+                },
+                "linenumber": 22,
+                "name": "nswork",
+                "options": {
+                    "F_flatten_namespace": true,
+                    "__line__": 23
+                },
+                "scope": "nswork::",
+                "scope_file": [
+                    "ns",
+                    "nswork"
+                ]
             }
         ],
         "options": {
@@ -1115,6 +1175,94 @@
             },
             "f_type": "integer(C_LONG_LONG)",
             "flat_name": "long_long"
+        },
+        "nswork::ClassWork": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_ClassWork",
+            "PY_PyTypeObject": "PY_ClassWork_Type",
+            "PY_from_object": "PP_ClassWork_from_Object",
+            "PY_to_object": "PP_ClassWork_to_Object",
+            "base": "shadow",
+            "c_statements": {
+                "intent_in": {
+                    "buf_args": [
+                        "shadow"
+                    ]
+                },
+                "result": {
+                    "c_header": "<stdlib.h>",
+                    "cxx_header": "<stdlib.h>",
+                    "post_call": [
+                        "{c_var}->addr = {cxx_cast_to_void_ptr};",
+                        "{c_var}->idtor = {idtor};"
+                    ]
+                }
+            },
+            "c_to_cxx": "static_cast<{c_const}nswork::ClassWork *>({c_var}{c_member}addr)",
+            "c_type": "NS_classwork",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "nswork::ClassWork",
+            "f_c_module": {
+                "--import--": [
+                    "SHROUD_classwork_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_classwork_capsule)",
+            "f_capsule_data_type": "SHROUD_classwork_capsule",
+            "f_derived_type": "classwork",
+            "f_module": {
+                "ns_nswork_mod": [
+                    "classwork"
+                ]
+            },
+            "f_module_name": "ns_nswork_mod",
+            "f_statements": {
+                "result": {
+                    "call": [
+                        "{F_result_ptr} = {F_C_call}({F_arg_c_call})"
+                    ],
+                    "need_wrapper": true
+                }
+            },
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(classwork)",
+            "flat_name": "nswork_ClassWork",
+            "forward": "nswork::ClassWork",
+            "py_statements": {
+                "intent_in": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}nswork::ClassWork * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_inout": {
+                    "cxx_local_var": "pointer",
+                    "post_parse": [
+                        "{c_const}nswork::ClassWork * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : NULL;"
+                    ]
+                },
+                "intent_out": {
+                    "decl": [
+                        "{PyObject} *{py_var} = NULL;"
+                    ],
+                    "fail": [
+                        "Py_XDECREF({py_var});"
+                    ],
+                    "goto_fail": true,
+                    "post_call": [
+                        "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "if ({py_var} == NULL) goto fail;",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                },
+                "result": {
+                    "post_call": [
+                        "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});",
+                        "{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};"
+                    ]
+                }
+            }
         },
         "outer::Cstruct1": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

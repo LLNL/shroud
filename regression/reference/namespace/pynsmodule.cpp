@@ -23,6 +23,7 @@
 // splicer end C_definition
 PyObject *PY_error_obj;
 PyObject *PY_init_ns_outer(void);
+PyObject *PY_init_ns_nswork(void);
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -154,6 +155,14 @@ initns(void)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "outer", submodule);
+    }
+
+    {
+        PyObject *submodule = PY_init_ns_nswork();
+        if (submodule == NULL)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "nswork", submodule);
     }
 
     PY_error_obj = PyErr_NewException((char *) error_name, NULL, NULL);

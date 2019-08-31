@@ -12,6 +12,12 @@
 extern "C" {
 #endif
 
+struct s_NS_classwork {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_NS_classwork NS_classwork;
+
 struct s_NS_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

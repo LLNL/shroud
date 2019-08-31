@@ -21,6 +21,8 @@ OBJS = \
     pyCstruct1type.o \
     pynsmodule.o \
     pyns_outermodule.o \
+    pyClassWorktype.o \
+    pyns_nsworkmodule.o \
     pynsutil.o
 
 CXXFLAGS += $(SHARED)

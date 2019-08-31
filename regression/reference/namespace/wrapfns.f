@@ -27,6 +27,31 @@ module ns_mod
         integer(C_SIZE_T) :: size = 0_C_SIZE_T ! size of data in cxx
     end type SHROUD_array
 
+    type, bind(C) :: SHROUD_classwork_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SHROUD_classwork_capsule
+
+    type classwork
+        type(SHROUD_classwork_capsule) :: cxxmem
+        ! splicer begin namespace.outer.class.ClassWork.component_part
+        ! splicer end namespace.outer.class.ClassWork.component_part
+    contains
+        procedure :: get_instance => classwork_get_instance
+        procedure :: set_instance => classwork_set_instance
+        procedure :: associated => classwork_associated
+        ! splicer begin namespace.outer.class.ClassWork.type_bound_procedure_part
+        ! splicer end namespace.outer.class.ClassWork.type_bound_procedure_part
+    end type classwork
+
+    interface operator (.eq.)
+        module procedure classwork_eq
+    end interface
+
+    interface operator (.ne.)
+        module procedure classwork_ne
+    end interface
+
     interface
 
         function c_last_function_called() &
@@ -51,6 +76,9 @@ module ns_mod
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
+
+        ! splicer begin namespace.outer.class.ClassWork.additional_interfaces
+        ! splicer end namespace.outer.class.ClassWork.additional_interfaces
     end interface
 
     interface
@@ -83,5 +111,53 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    ! Return pointer to C++ memory.
+    function classwork_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(classwork), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function classwork_get_instance
+
+    subroutine classwork_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(classwork), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine classwork_set_instance
+
+    function classwork_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(classwork), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function classwork_associated
+
+    ! splicer begin namespace.outer.class.ClassWork.additional_functions
+    ! splicer end namespace.outer.class.ClassWork.additional_functions
+
+    function classwork_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(classwork), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function classwork_eq
+
+    function classwork_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(classwork), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function classwork_ne
 
 end module ns_mod

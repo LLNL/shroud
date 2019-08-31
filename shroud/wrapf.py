@@ -106,7 +106,11 @@ class Wrapf(util.WrapperMixin):
             self._push_splicer("namespace")
             self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
-            if ns.options.wrap_fortran:
+            if not ns.options.wrap_fortran:
+                continue
+            if ns.options.F_flatten_namespace:
+                self.wrap_namespace(ns, fileinfo)
+            else:
                 # Skip file component in scope_file for splicer name.
                 self._update_splicer_top("::".join(ns.scope_file[1:]))
                 nsinfo = ModuleInfo(ns)
@@ -115,9 +119,11 @@ class Wrapf(util.WrapperMixin):
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
         else:
+            # restore namespace splicer
             self._update_splicer_top("::".join(node.scope_file[1:]))
 
-        self.write_module(fileinfo)
+        if not node.options.F_flatten_namespace:
+            self.write_module(fileinfo)
 
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.

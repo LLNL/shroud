@@ -30,6 +30,26 @@ PyObject_HEAD
 extern const char *PY_Cstruct1_capsule_name;
 PyObject *PP_Cstruct1_to_Object(outer::Cstruct1 *addr);
 int PP_Cstruct1_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+namespace nswork {
+    class ClassWork;  // forward declare
+}
+extern PyTypeObject PY_ClassWork_Type;
+// splicer begin namespace.nswork.class.ClassWork.C_declaration
+// splicer end namespace.nswork.class.ClassWork.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    nswork::ClassWork * obj;
+    int idtor;
+    // splicer begin namespace.nswork.class.ClassWork.C_object
+    // splicer end namespace.nswork.class.ClassWork.C_object
+} PY_ClassWork;
+
+extern const char *PY_ClassWork_capsule_name;
+PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr);
+int PP_ClassWork_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 
 // splicer begin header.C_declaration

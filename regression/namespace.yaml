@@ -19,3 +19,8 @@ declarations:
     - decl: void One()
 - decl: void One()
 
+- decl: namespace nswork
+  options:
+    F_flatten_namespace: True
+  declarations:
+  - decl: class ClassWork

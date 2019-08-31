@@ -8,6 +8,8 @@ Wrote wrapfns_outer.f
 Wrote wrapfns.f
 Wrote pyCstruct1type.cpp
 Wrote pyns_outermodule.cpp
+Wrote pyClassWorktype.cpp
+Wrote pyns_nsworkmodule.cpp
 Wrote pynsmodule.cpp
 Wrote pynsutil.cpp
 Wrote pynsmodule.hpp
