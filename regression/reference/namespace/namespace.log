@@ -13,10 +13,10 @@ Close typesns.h
 C-interface, Fortran function const std::string & LastFunctionCalled() +deref(allocatable)
 C-interface function void LastFunctionCalled(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C-interface, Fortran function void One()
-Close wrapfns.f
 class Cstruct1
 C-interface, Fortran function void One()
 Close wrapfns_outer.f
+Close wrapfns.f
 class Cstruct1
 Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 Close pyCstruct1type.cpp

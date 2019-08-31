@@ -9,12 +9,12 @@ Wrote wrapNames2.cc
 Wrote top.h
 Wrote top.cpp
 Wrote typestestnames.hh
-Wrote top.f
-Wrote foo.f
 Wrote wrapftestnames_ns0_inner.F
+Wrote foo.f
 Wrote wrapftestnames_ns1.F
 Wrote wrapftestnames_internal.F
 Wrote wrapftestnames_std.F
+Wrote top.f
 Wrote pytestnames_ns0_innermodule.cpp
 Wrote pyNamestype.cpp
 Wrote pytestnames_ns0module.cpp

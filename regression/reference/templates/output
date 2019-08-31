@@ -8,9 +8,9 @@ Wrote wrapuser_int.cpp
 Wrote wraptemplates.h
 Wrote wraptemplates.cpp
 Wrote typestemplates.h
-Wrote wrapftemplates.f
 Wrote wrapftemplates_std.f
 Wrote wrapftemplates_internal.f
+Wrote wrapftemplates.f
 Wrote pyvector_inttype.cpp
 Wrote pyvector_doubletype.cpp
 Wrote pytemplates_stdmodule.cpp

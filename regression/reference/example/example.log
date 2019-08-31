@@ -78,8 +78,6 @@ Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.cpp
 Close typesUserLibrary.h
-Close wrapfuserlibrary.f
-Close wrapfUserLibrary_example.f
 class ExClass1
 C-interface, Fortran method ExClass1()
 C-interface, Fortran method ExClass1(const string * name +intent(in))
@@ -153,6 +151,8 @@ C-interface, Fortran function void verylongfunctionname1(int * verylongname1 +in
 C-interface, Fortran function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
 C-interface, Fortran function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapfUserLibrary_example_nested.f
+Close wrapfUserLibrary_example.f
+Close wrapfuserlibrary.f
 class ExClass1
 Python method ExClass1()
 Python method ExClass1(const string * name +intent(in))

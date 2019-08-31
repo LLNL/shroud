@@ -100,8 +100,6 @@ class Wrapf(util.WrapperMixin):
             fileinfo.impl.append("")
             self._create_splicer("additional_functions", fileinfo.impl)
 
-        self.write_module(fileinfo)
-
         if top:
             # have one namespace level, then replace name each time
             self._push_splicer("namespace")
@@ -114,6 +112,10 @@ class Wrapf(util.WrapperMixin):
         if top:
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
+        else:
+            self._update_splicer_top("::".join(node.scope_file[1:]))
+
+        self.write_module(fileinfo)
 
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
