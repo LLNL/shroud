@@ -10,11 +10,17 @@
 extern "C" {
 #endif
 
-struct s_TEM_implworker1 {
+struct s_TEM_Worker {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TEM_implworker1 TEM_implworker1;
+typedef struct s_TEM_Worker TEM_Worker;
+
+struct s_TEM_internal_ImplWorker1 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_internal_ImplWorker1 TEM_internal_ImplWorker1;
 
 struct s_TEM_user_int {
     void *addr;     /* address of C++ memory */
@@ -33,12 +39,6 @@ struct s_TEM_vector_int {
     int idtor;      /* index of destructor */
 };
 typedef struct s_TEM_vector_int TEM_vector_int;
-
-struct s_TEM_worker {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_TEM_worker TEM_worker;
 
 struct s_TEM_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

@@ -1313,7 +1313,7 @@ def create_class_typemap(node, fields=None):
     ntypemap = lookup_type(cxx_name)
     # unname = util.un_camel(name)
     f_name = fmt_class.cxx_class.lower()
-    c_name = fmt_class.C_prefix + f_name
+    c_name = fmt_class.C_prefix + fmt_class.C_name_scope[:-1]
     ntypemap = Typemap(
         cxx_name,
         base="shadow",

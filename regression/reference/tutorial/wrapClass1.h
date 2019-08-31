@@ -35,35 +35,35 @@ enum TUT_Class1_DIRECTION {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-TUT_class1 * TUT_Class1_new_default(TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_Class1_new_default(TUT_Class1 * SHC_rv);
 
-TUT_class1 * TUT_Class1_new_flag(int flag, TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_Class1_new_flag(int flag, TUT_Class1 * SHC_rv);
 
-void TUT_Class1_delete(TUT_class1 * self);
+void TUT_Class1_delete(TUT_Class1 * self);
 
-int TUT_Class1_method1(TUT_class1 * self);
+int TUT_Class1_method1(TUT_Class1 * self);
 
-bool TUT_Class1_equivalent(const TUT_class1 * self,
-    const TUT_class1 * obj2);
+bool TUT_Class1_equivalent(const TUT_Class1 * self,
+    const TUT_Class1 * obj2);
 
-void TUT_Class1_return_this(TUT_class1 * self);
+void TUT_Class1_return_this(TUT_Class1 * self);
 
-TUT_class1 * TUT_Class1_return_this_buffer(TUT_class1 * self,
-    char * name, bool flag, TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_Class1_return_this_buffer(TUT_Class1 * self,
+    char * name, bool flag, TUT_Class1 * SHC_rv);
 
-TUT_class1 * TUT_Class1_return_this_buffer_bufferify(TUT_class1 * self,
-    char * name, int Lname, bool flag, TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_Class1_return_this_buffer_bufferify(TUT_Class1 * self,
+    char * name, int Lname, bool flag, TUT_Class1 * SHC_rv);
 
-TUT_class1 * TUT_Class1_getclass3(const TUT_class1 * self,
-    TUT_class1 * SHC_rv);
+TUT_Class1 * TUT_Class1_getclass3(const TUT_Class1 * self,
+    TUT_Class1 * SHC_rv);
 
-int TUT_Class1_direction_func(TUT_class1 * self, int arg);
+int TUT_Class1_direction_func(TUT_Class1 * self, int arg);
 
-int TUT_Class1_get_m_flag(TUT_class1 * self);
+int TUT_Class1_get_m_flag(TUT_Class1 * self);
 
-int TUT_Class1_get_test(TUT_class1 * self);
+int TUT_Class1_get_test(TUT_Class1 * self);
 
-void TUT_Class1_set_test(TUT_class1 * self, int val);
+void TUT_Class1_set_test(TUT_Class1 * self, int val);
 
 #ifdef __cplusplus
 }

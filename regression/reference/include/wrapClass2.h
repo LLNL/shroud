@@ -32,9 +32,9 @@ extern "C" {
 #endif
 
 
-void LIB_Class2_method1(LIB_class2 * self, MPI_Fint comm);
+void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm);
 
-void LIB_Class2_method2(LIB_class2 * self, LIB_class1 * c2);
+void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2);
 
 #ifdef __cplusplus
 }

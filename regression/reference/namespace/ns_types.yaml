@@ -8,7 +8,7 @@ declarations:
       fields:
         base: shadow
         cxx_type: nswork::ClassWork
-        c_type: NS_classwork
+        c_type: NS_nswork_ClassWork
         f_module_name: ns_nswork_mod
         f_derived_type: classwork
         f_capsule_data_type: SHROUD_classwork_capsule

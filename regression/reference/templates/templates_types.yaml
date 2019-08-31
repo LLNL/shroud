@@ -6,7 +6,7 @@ declarations:
     fields:
       base: shadow
       cxx_type: Worker
-      c_type: TEM_worker
+      c_type: TEM_Worker
       f_module_name: templates_mod
       f_derived_type: worker
       f_capsule_data_type: SHROUD_worker_capsule
@@ -17,7 +17,7 @@ declarations:
       fields:
         base: shadow
         cxx_type: internal::ImplWorker1
-        c_type: TEM_implworker1
+        c_type: TEM_internal_ImplWorker1
         f_module_name: templates_internal_mod
         f_derived_type: implworker1
         f_capsule_data_type: SHROUD_implworker1_capsule

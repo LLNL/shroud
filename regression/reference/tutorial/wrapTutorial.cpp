@@ -351,7 +351,7 @@ int TUT_direction_func(int arg)
  * \brief Pass arguments to a function.
  *
  */
-void TUT_pass_class_by_value(TUT_class1 arg)
+void TUT_pass_class_by_value(TUT_Class1 arg)
 {
 // splicer begin function.pass_class_by_value
     tutorial::Class1 * SHCXX_arg =
@@ -362,7 +362,7 @@ void TUT_pass_class_by_value(TUT_class1 arg)
 }
 
 // int useclass(const Class1 * arg +intent(in))
-int TUT_useclass(const TUT_class1 * arg)
+int TUT_useclass(const TUT_Class1 * arg)
 {
 // splicer begin function.useclass
     const tutorial::Class1 * SHCXX_arg =
@@ -373,7 +373,7 @@ int TUT_useclass(const TUT_class1 * arg)
 }
 
 // const Class1 * getclass2()
-TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv)
+TUT_Class1 * TUT_getclass2(TUT_Class1 * SHC_rv)
 {
 // splicer begin function.getclass2
     const tutorial::Class1 * SHCXX_rv = tutorial::getclass2();
@@ -385,7 +385,7 @@ TUT_class1 * TUT_getclass2(TUT_class1 * SHC_rv)
 }
 
 // Class1 * getclass3()
-TUT_class1 * TUT_getclass3(TUT_class1 * SHC_rv)
+TUT_Class1 * TUT_getclass3(TUT_Class1 * SHC_rv)
 {
 // splicer begin function.getclass3
     tutorial::Class1 * SHCXX_rv = tutorial::getclass3();
@@ -400,7 +400,7 @@ TUT_class1 * TUT_getclass3(TUT_class1 * SHC_rv)
  * \brief Return Class1 instance by value, uses copy constructor
  *
  */
-TUT_class1 * TUT_get_class_copy(int flag, TUT_class1 * SHC_rv)
+TUT_Class1 * TUT_get_class_copy(int flag, TUT_Class1 * SHC_rv)
 {
 // splicer begin function.get_class_copy
     tutorial::Class1 * SHCXX_rv = new tutorial::Class1;

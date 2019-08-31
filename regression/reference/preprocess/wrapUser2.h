@@ -37,11 +37,11 @@ extern "C" {
 // splicer end class.User2.C_declarations
 
 #ifdef USE_CLASS3_A
-void PRE_User2_exfunc_0(PRE_user2 * self);
+void PRE_User2_exfunc_0(PRE_User2 * self);
 #endif
 
 #ifndef USE_CLASS3_A
-void PRE_User2_exfunc_1(PRE_user2 * self, int flag);
+void PRE_User2_exfunc_1(PRE_User2 * self, int flag);
 #endif
 
 #ifdef __cplusplus

@@ -26,7 +26,7 @@ extern "C" {
 // splicer end class.Class1.C_definitions
 
 // ~Class1()
-void OWN_Class1_dtor(OWN_class1 * self)
+void OWN_Class1_dtor(OWN_Class1 * self)
 {
 // splicer begin class.Class1.method.dtor
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -37,7 +37,7 @@ void OWN_Class1_dtor(OWN_class1 * self)
 }
 
 // int getFlag()
-int OWN_Class1_get_flag(OWN_class1 * self)
+int OWN_Class1_get_flag(OWN_Class1 * self)
 {
 // splicer begin class.Class1.method.get_flag
     Class1 *SH_this = static_cast<Class1 *>(self->addr);

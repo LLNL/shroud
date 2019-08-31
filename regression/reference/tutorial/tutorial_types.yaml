@@ -14,7 +14,7 @@ declarations:
       fields:
         base: shadow
         cxx_type: tutorial::Class1
-        c_type: TUT_class1
+        c_type: TUT_Class1
         f_module_name: tutorial_mod
         f_derived_type: class1
         f_capsule_data_type: SHROUD_class1_capsule
@@ -23,7 +23,7 @@ declarations:
       fields:
         base: shadow
         cxx_type: tutorial::Singleton
-        c_type: TUT_singleton
+        c_type: TUT_Singleton
         f_module_name: tutorial_mod
         f_derived_type: singleton
         f_capsule_data_type: SHROUD_singleton_capsule

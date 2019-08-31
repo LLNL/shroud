@@ -14,7 +14,7 @@
 void test_class(void)
 {
   int flag;
-  TUT_class1 c1_buf, *c1;
+  TUT_Class1 c1_buf, *c1;
 
   c1 = TUT_Class1_new_default(&c1_buf);
   assert(c1 == &c1_buf && "TUT_class1_new_default");

@@ -24,7 +24,7 @@ declarations:
           base: shadow
           cxx_header: ExClass1.hpp
           cxx_type: example::nested::ExClass1
-          c_type: AA_exclass1
+          c_type: AA_example_nested_ExClass1
           f_module_name: userlibrary_example_nested_mod
           f_derived_type: exclass1
           f_capsule_data_type: SHROUD_exclass1_capsule
@@ -34,7 +34,7 @@ declarations:
           base: shadow
           cxx_header: ExClass2.hpp
           cxx_type: example::nested::ExClass2
-          c_type: AA_exclass2
+          c_type: AA_example_nested_ExClass2
           f_module_name: userlibrary_example_nested_mod
           f_derived_type: exclass2
           f_capsule_data_type: SHROUD_exclass2_capsule

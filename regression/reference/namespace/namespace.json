@@ -587,7 +587,7 @@
                             "C_header_filename": "wrapClassWork.h",
                             "C_impl_filename": "wrapClassWork.cpp",
                             "C_name_scope": "nswork_ClassWork_",
-                            "C_type_name": "NS_classwork",
+                            "C_type_name": "NS_nswork_ClassWork",
                             "F_capsule_data_type": "SHROUD_classwork_capsule",
                             "F_derived_name": "classwork",
                             "F_name_scope": "classwork_",
@@ -1200,7 +1200,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}nswork::ClassWork *>({c_var}{c_member}addr)",
-            "c_type": "NS_classwork",
+            "c_type": "NS_nswork_ClassWork",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "nswork::ClassWork",
             "f_c_module": {

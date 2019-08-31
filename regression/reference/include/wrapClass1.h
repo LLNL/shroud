@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 
-void LIB_three_Class1_method1(LIB_class1 * self, int arg1);
+void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1);
 
 #ifdef __cplusplus
 }

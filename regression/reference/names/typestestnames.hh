@@ -24,59 +24,59 @@
 extern "C" {
 #endif
 
-struct s_TES_implworker1 {
+struct s_TES_Names2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_implworker1 TES_implworker1;
+typedef struct s_TES_Names2 TES_Names2;
 
-struct s_TES_names {
+struct s_TES_internal_ImplWorker1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_names TES_names;
+typedef struct s_TES_internal_ImplWorker1 TES_internal_ImplWorker1;
 
-struct s_TES_names2 {
+struct s_TES_ns0_Names {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_names2 TES_names2;
+typedef struct s_TES_ns0_Names TES_ns0_Names;
 
-struct s_TES_twots_0 {
+struct s_TES_std_Vvv1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_twots_0 TES_twots_0;
+typedef struct s_TES_std_Vvv1 TES_std_Vvv1;
 
-struct s_TES_twots_instantiation4 {
+struct s_TES_std_vector_double {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_twots_instantiation4 TES_twots_instantiation4;
+typedef struct s_TES_std_vector_double TES_std_vector_double;
 
-struct s_TES_vector_double {
+struct s_TES_std_vector_instantiation3 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_vector_double TES_vector_double;
+typedef struct s_TES_std_vector_instantiation3 TES_std_vector_instantiation3;
 
-struct s_TES_vector_instantiation3 {
+struct s_TES_std_vector_instantiation5 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_vector_instantiation3 TES_vector_instantiation3;
+typedef struct s_TES_std_vector_instantiation5 TES_std_vector_instantiation5;
 
-struct s_TES_vector_instantiation5 {
+struct s_TES_twoTs_0 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_vector_instantiation5 TES_vector_instantiation5;
+typedef struct s_TES_twoTs_0 TES_twoTs_0;
 
-struct s_TES_vvv1 {
+struct s_TES_twoTs_instantiation4 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TES_vvv1 TES_vvv1;
+typedef struct s_TES_twoTs_instantiation4 TES_twoTs_instantiation4;
 
 struct s_TES_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

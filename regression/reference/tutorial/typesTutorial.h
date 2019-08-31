@@ -18,19 +18,19 @@
 extern "C" {
 #endif
 
-// start struct TUT_class1
-struct s_TUT_class1 {
+// start struct TUT_Class1
+struct s_TUT_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TUT_class1 TUT_class1;
-// end struct TUT_class1
+typedef struct s_TUT_Class1 TUT_Class1;
+// end struct TUT_Class1
 
-struct s_TUT_singleton {
+struct s_TUT_Singleton {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_TUT_singleton TUT_singleton;
+typedef struct s_TUT_Singleton TUT_Singleton;
 
 struct s_TUT_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

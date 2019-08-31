@@ -24,17 +24,17 @@
 extern "C" {
 #endif
 
-struct s_LIB_class1 {
+struct s_LIB_Class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_LIB_class1 LIB_class1;
+typedef struct s_LIB_Class2 LIB_Class2;
 
-struct s_LIB_class2 {
+struct s_LIB_three_Class1 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_LIB_class2 LIB_class2;
+typedef struct s_LIB_three_Class1 LIB_three_Class1;
 
 struct s_LIB_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

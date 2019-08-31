@@ -28,7 +28,7 @@ extern "C" {
 
 // void exfunc()
 #ifdef USE_CLASS3_A
-void PRE_User2_exfunc_0(PRE_user2 * self)
+void PRE_User2_exfunc_0(PRE_User2 * self)
 {
 // splicer begin class.User2.method.exfunc_0
     User2 *SH_this = static_cast<User2 *>(self->addr);
@@ -40,7 +40,7 @@ void PRE_User2_exfunc_0(PRE_user2 * self)
 
 // void exfunc(int flag +intent(in)+value)
 #ifndef USE_CLASS3_A
-void PRE_User2_exfunc_1(PRE_user2 * self, int flag)
+void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {
 // splicer begin class.User2.method.exfunc_1
     User2 *SH_this = static_cast<User2 *>(self->addr);

@@ -20,7 +20,7 @@ declarations:
     fields:
       base: shadow
       cxx_type: Class1
-      c_type: SCO_class1
+      c_type: SCO_Class1
       f_module_name: scope_mod
       f_derived_type: class1
       f_capsule_data_type: SHROUD_class1_capsule
@@ -29,7 +29,7 @@ declarations:
     fields:
       base: shadow
       cxx_type: Class2
-      c_type: SCO_class2
+      c_type: SCO_Class2
       f_module_name: scope_mod
       f_derived_type: class2
       f_capsule_data_type: SHROUD_class2_capsule

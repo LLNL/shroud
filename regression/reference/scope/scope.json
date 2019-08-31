@@ -69,7 +69,7 @@
                     "C_header_filename": "wrapClass1.h",
                     "C_impl_filename": "wrapClass1.cpp",
                     "C_name_scope": "Class1_",
-                    "C_type_name": "SCO_class1",
+                    "C_type_name": "SCO_Class1",
                     "F_capsule_data_type": "SHROUD_class1_capsule",
                     "F_derived_name": "class1",
                     "F_name_scope": "class1_",
@@ -150,7 +150,7 @@
                     "C_header_filename": "wrapClass2.h",
                     "C_impl_filename": "wrapClass2.cpp",
                     "C_name_scope": "Class2_",
-                    "C_type_name": "SCO_class2",
+                    "C_type_name": "SCO_Class2",
                     "F_capsule_data_type": "SHROUD_class2_capsule",
                     "F_derived_name": "class2",
                     "F_name_scope": "class2_",
@@ -730,7 +730,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}Class1 *>({c_var}{c_member}addr)",
-            "c_type": "SCO_class1",
+            "c_type": "SCO_Class1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class1",
             "f_c_module": {
@@ -836,7 +836,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}Class2 *>({c_var}{c_member}addr)",
-            "c_type": "SCO_class2",
+            "c_type": "SCO_Class2",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Class2",
             "f_c_module": {

@@ -22,7 +22,7 @@ declarations:
       fields:
         base: shadow
         cxx_type: tutorial::Class2
-        c_type: FOR_class2
+        c_type: FOR_Class2
         f_module_name: forward_mod
         f_derived_type: class2
         f_capsule_data_type: SHROUD_class2_capsule
@@ -31,7 +31,7 @@ declarations:
       fields:
         base: shadow
         cxx_type: tutorial::Class3
-        c_type: FOR_class3
+        c_type: FOR_Class3
         f_module_name: forward_mod
         f_derived_type: class3
         f_capsule_data_type: SHROUD_class3_capsule

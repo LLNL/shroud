@@ -24,17 +24,17 @@
 extern "C" {
 #endif
 
-struct s_FOR_class2 {
+struct s_FOR_Class2 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_FOR_class2 FOR_class2;
+typedef struct s_FOR_Class2 FOR_Class2;
 
-struct s_FOR_class3 {
+struct s_FOR_Class3 {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
-typedef struct s_FOR_class3 FOR_class3;
+typedef struct s_FOR_Class3 FOR_Class3;
 
 struct s_FOR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

@@ -34,53 +34,59 @@ extern "C" {
 // splicer begin namespace.example::nested.class.ExClass1.C_declarations
 // splicer end namespace.example::nested.class.ExClass1.C_declarations
 
-AA_exclass1 * AA_example_nested_ExClass1_ctor_0(AA_exclass1 * SHC_rv);
+AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
+    AA_example_nested_ExClass1 * SHC_rv);
 
-AA_exclass1 * AA_example_nested_ExClass1_ctor_1(const char * name,
-    AA_exclass1 * SHC_rv);
+AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
+    const char * name, AA_example_nested_ExClass1 * SHC_rv);
 
-AA_exclass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
-    const char * name, int Lname, AA_exclass1 * SHC_rv);
+AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
+    const char * name, int Lname, AA_example_nested_ExClass1 * SHC_rv);
 
-void AA_example_nested_ExClass1_dtor(AA_exclass1 * self);
+void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self);
 
-int AA_example_nested_ExClass1_increment_count(AA_exclass1 * self,
-    int incr);
+int AA_example_nested_ExClass1_increment_count(
+    AA_example_nested_ExClass1 * self, int incr);
 
 const char * AA_example_nested_ExClass1_get_name_error_pattern(
-    const AA_exclass1 * self);
+    const AA_example_nested_ExClass1 * self);
 
 void AA_example_nested_ExClass1_get_name_error_pattern_bufferify(
-    const AA_exclass1 * self, char * SHF_rv, int NSHF_rv);
+    const AA_example_nested_ExClass1 * self, char * SHF_rv,
+    int NSHF_rv);
 
 int AA_example_nested_ExClass1_get_name_length(
-    const AA_exclass1 * self);
+    const AA_example_nested_ExClass1 * self);
 
 const char * AA_example_nested_ExClass1_get_name_error_check(
-    const AA_exclass1 * self);
+    const AA_example_nested_ExClass1 * self);
 
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
-    const AA_exclass1 * self, AA_SHROUD_array *DSHF_rv);
+    const AA_example_nested_ExClass1 * self, AA_SHROUD_array *DSHF_rv);
 
 const char * AA_example_nested_ExClass1_get_name_arg(
-    const AA_exclass1 * self);
+    const AA_example_nested_ExClass1 * self);
 
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
-    const AA_exclass1 * self, char * name, int Nname);
+    const AA_example_nested_ExClass1 * self, char * name, int Nname);
 
-void * AA_example_nested_ExClass1_get_root(AA_exclass1 * self);
+void * AA_example_nested_ExClass1_get_root(
+    AA_example_nested_ExClass1 * self);
 
-int AA_example_nested_ExClass1_get_value_from_int(AA_exclass1 * self,
-    int value);
+int AA_example_nested_ExClass1_get_value_from_int(
+    AA_example_nested_ExClass1 * self, int value);
 
-long AA_example_nested_ExClass1_get_value_1(AA_exclass1 * self,
-    long value);
+long AA_example_nested_ExClass1_get_value_1(
+    AA_example_nested_ExClass1 * self, long value);
 
-void * AA_example_nested_ExClass1_get_addr(AA_exclass1 * self);
+void * AA_example_nested_ExClass1_get_addr(
+    AA_example_nested_ExClass1 * self);
 
-bool AA_example_nested_ExClass1_has_addr(AA_exclass1 * self, bool in);
+bool AA_example_nested_ExClass1_has_addr(
+    AA_example_nested_ExClass1 * self, bool in);
 
-void AA_example_nested_ExClass1_splicer_special(AA_exclass1 * self);
+void AA_example_nested_ExClass1_splicer_special(
+    AA_example_nested_ExClass1 * self);
 
 #ifdef __cplusplus
 }

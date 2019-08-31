@@ -9,7 +9,7 @@
                     "C_header_filename": "wrapWorker.h",
                     "C_impl_filename": "wrapWorker.cpp",
                     "C_name_scope": "Worker_",
-                    "C_type_name": "TEM_worker",
+                    "C_type_name": "TEM_Worker",
                     "F_capsule_data_type": "SHROUD_worker_capsule",
                     "F_derived_name": "worker",
                     "F_name_scope": "worker_",
@@ -2126,7 +2126,7 @@
                             "C_header_filename": "wrapImplWorker1.h",
                             "C_impl_filename": "wrapImplWorker1.cpp",
                             "C_name_scope": "internal_ImplWorker1_",
-                            "C_type_name": "TEM_implworker1",
+                            "C_type_name": "TEM_internal_ImplWorker1",
                             "F_capsule_data_type": "SHROUD_implworker1_capsule",
                             "F_derived_name": "implworker1",
                             "F_name_scope": "implworker1_",
@@ -2309,7 +2309,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}Worker *>({c_var}{c_member}addr)",
-            "c_type": "TEM_worker",
+            "c_type": "TEM_Worker",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Worker",
             "f_c_module": {
@@ -2790,7 +2790,7 @@
                 }
             },
             "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>({c_var}{c_member}addr)",
-            "c_type": "TEM_implworker1",
+            "c_type": "TEM_internal_ImplWorker1",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "internal::ImplWorker1",
             "f_c_module": {
