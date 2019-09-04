@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - A C++ namespace corresponds to a module in Fortran and Python.
+  Options *flatten_namespace* and *F_flatten_namespace* can be used
+  to reproduce the previous behavior.
 - Added format dictionary field template_suffix.
 - Added the **F_create_bufferify_function** option.
 - Support `true` and `false` with implied attribute.
@@ -33,6 +35,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Renamed option *C_header_helper_template* to *C_header_utility_template*.
   Renamed option *PY_helper_filename_template* to *PY_utililty_filename_template*.
   This is to avoid confusion with helper functions which have file static scope.
+- Changed C_name_template to use *C_name_scope* instead of *class_prefix*.
+  *C_name_scope* is case sensitive while *class_prefix* was lower case.
 - Changed how the *fortran_generic* arguments are specified to allow multiple arguments
   and to associate attributes with arguments.
   previous format:
