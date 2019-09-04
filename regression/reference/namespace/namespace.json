@@ -326,7 +326,7 @@
                         "_fmtmembers": {
                             "ERROR": {
                                 "C_enum_member": "NS_upper_ERROR",
-                                "F_enum_member": "error",
+                                "F_enum_member": "upper_error",
                                 "enum_member_lower": "error",
                                 "enum_member_name": "ERROR",
                                 "enum_member_upper": "ERROR",
@@ -334,7 +334,7 @@
                             },
                             "WARN": {
                                 "C_enum_member": "NS_upper_WARN",
-                                "F_enum_member": "warn",
+                                "F_enum_member": "upper_warn",
                                 "enum_member_lower": "warn",
                                 "enum_member_name": "WARN",
                                 "enum_member_upper": "WARN",
@@ -372,6 +372,7 @@
                     "C_name_scope": "upper_",
                     "F_impl_filename": "wrapfns_upper.f",
                     "F_module_name": "ns_upper_mod",
+                    "F_name_scope": "upper_",
                     "LUA_this_call": "upper::",
                     "PY_module_init": "ns_upper",
                     "PY_module_name": "upper",
@@ -661,9 +662,9 @@
                             "C_impl_filename": "wrapClassWork.cpp",
                             "C_name_scope": "nswork_ClassWork_",
                             "C_type_name": "NS_nswork_ClassWork",
-                            "F_capsule_data_type": "SHROUD_classwork_capsule",
+                            "F_capsule_data_type": "SHROUD_nswork_classwork_capsule",
                             "F_derived_name": "classwork",
-                            "F_name_scope": "classwork_",
+                            "F_name_scope": "nswork_classwork_",
                             "PY_PyObject": "PY_ClassWork",
                             "PY_PyTypeObject": "PY_ClassWork_Type",
                             "PY_capsule_name": "PY_ClassWork_capsule_name",
@@ -689,6 +690,7 @@
                     "C_name_scope": "nswork_",
                     "F_impl_filename": "wrapfns_nswork.f",
                     "F_module_name": "ns_nswork_mod",
+                    "F_name_scope": "nswork_",
                     "LUA_this_call": "nswork::",
                     "PY_library_doc": "library documentation",
                     "PY_module_filename": "pyns_nsworkmodule.cpp",
@@ -1278,11 +1280,11 @@
             "cxx_type": "nswork::ClassWork",
             "f_c_module": {
                 "--import--": [
-                    "SHROUD_classwork_capsule"
+                    "SHROUD_nswork_classwork_capsule"
                 ]
             },
-            "f_c_type": "type(SHROUD_classwork_capsule)",
-            "f_capsule_data_type": "SHROUD_classwork_capsule",
+            "f_c_type": "type(SHROUD_nswork_classwork_capsule)",
+            "f_capsule_data_type": "SHROUD_nswork_classwork_capsule",
             "f_derived_type": "classwork",
             "f_module": {
                 "ns_nswork_mod": [

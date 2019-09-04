@@ -28,32 +28,32 @@ module ns_mod
     end type SHROUD_array
 
     !  enum upper::Color
-    integer(C_INT), parameter :: error = 0
-    integer(C_INT), parameter :: warn = 1
+    integer(C_INT), parameter :: upper_error = 0
+    integer(C_INT), parameter :: upper_warn = 1
 
-    type, bind(C) :: SHROUD_classwork_capsule
+    type, bind(C) :: SHROUD_nswork_classwork_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_classwork_capsule
+    end type SHROUD_nswork_classwork_capsule
 
     type classwork
-        type(SHROUD_classwork_capsule) :: cxxmem
+        type(SHROUD_nswork_classwork_capsule) :: cxxmem
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
     contains
-        procedure :: get_instance => classwork_get_instance
-        procedure :: set_instance => classwork_set_instance
-        procedure :: associated => classwork_associated
+        procedure :: get_instance => nswork_classwork_get_instance
+        procedure :: set_instance => nswork_classwork_set_instance
+        procedure :: associated => nswork_classwork_associated
         ! splicer begin namespace.outer.class.ClassWork.type_bound_procedure_part
         ! splicer end namespace.outer.class.ClassWork.type_bound_procedure_part
     end type classwork
 
     interface operator (.eq.)
-        module procedure classwork_eq
+        module procedure nswork_classwork_eq
     end interface
 
     interface operator (.ne.)
-        module procedure classwork_ne
+        module procedure nswork_classwork_ne
     end interface
 
     interface
@@ -117,32 +117,32 @@ contains
     ! splicer end additional_functions
 
     ! Return pointer to C++ memory.
-    function classwork_get_instance(obj) result (cxxptr)
+    function nswork_classwork_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
         class(classwork), intent(IN) :: obj
         type(C_PTR) :: cxxptr
         cxxptr = obj%cxxmem%addr
-    end function classwork_get_instance
+    end function nswork_classwork_get_instance
 
-    subroutine classwork_set_instance(obj, cxxmem)
+    subroutine nswork_classwork_set_instance(obj, cxxmem)
         use iso_c_binding, only: C_PTR
         class(classwork), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: cxxmem
         obj%cxxmem%addr = cxxmem
         obj%cxxmem%idtor = 0
-    end subroutine classwork_set_instance
+    end subroutine nswork_classwork_set_instance
 
-    function classwork_associated(obj) result (rv)
+    function nswork_classwork_associated(obj) result (rv)
         use iso_c_binding, only: c_associated
         class(classwork), intent(IN) :: obj
         logical rv
         rv = c_associated(obj%cxxmem%addr)
-    end function classwork_associated
+    end function nswork_classwork_associated
 
     ! splicer begin namespace.outer.class.ClassWork.additional_functions
     ! splicer end namespace.outer.class.ClassWork.additional_functions
 
-    function classwork_eq(a,b) result (rv)
+    function nswork_classwork_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(classwork), intent(IN) ::a,b
         logical :: rv
@@ -151,9 +151,9 @@ contains
         else
             rv = .false.
         endif
-    end function classwork_eq
+    end function nswork_classwork_eq
 
-    function classwork_ne(a,b) result (rv)
+    function nswork_classwork_ne(a,b) result (rv)
         use iso_c_binding, only: c_associated
         type(classwork), intent(IN) ::a,b
         logical :: rv
@@ -162,6 +162,6 @@ contains
         else
             rv = .false.
         endif
-    end function classwork_ne
+    end function nswork_classwork_ne
 
 end module ns_mod

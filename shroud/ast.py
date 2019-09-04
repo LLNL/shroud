@@ -818,6 +818,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
     def default_format(self, parent, format, skip=False):
         """Set format dictionary."""
 
+        options = self.options
         self.fmtdict = util.Scope(parent=parent.fmtdict)
 
         fmt_ns = self.fmtdict
@@ -828,7 +829,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
             fmt_ns.C_name_scope = (
                 parent.fmtdict.C_name_scope + self.name + "_"
             )
-            if self.options.flatten_namespace:
+            if options.flatten_namespace or options.F_flatten_namespace:
                 fmt_ns.F_name_scope = (
                     parent.fmtdict.F_name_scope + self.name.lower() + "_"
                 )
