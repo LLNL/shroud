@@ -35,6 +35,7 @@ Contents
    installing
    tutorial
    input
+   namespaces
    struct
    declarations
    types
